@@ -1,0 +1,99 @@
+{
+  "id": "crm",
+  "version": 1,
+  "name": "CRM",
+  "description": "Customer Relationship Management",
+  "icon": "users",
+  "classes": [
+    {"id": "company", "name": "Company", "rank": 0, "title": "name"},
+    {"id": "contact", "name": "Contact", "rank": 1, "title": "name"},
+    {"id": "deal", "name": "Deal", "rank": 2, "title": "name"},
+    {"id": "activity", "name": "Activity", "rank": 3, "title": "subject"}
+  ],
+  "fields": {
+    "company": [
+      {"id": "name", "name": "Name", "fieldtype": "text", "flags": "required,sort", "card": 1, "rank": 0, "rows": 1},
+      {"id": "domain", "name": "Domain", "fieldtype": "text", "flags": "sort", "card": 1, "rank": 1, "rows": 1},
+      {"id": "industry", "name": "Industry", "fieldtype": "enumerated", "flags": "sort", "card": 0, "rank": 2},
+      {"id": "size", "name": "Size", "fieldtype": "enumerated", "flags": "sort", "card": 0, "rank": 3},
+      {"id": "owner", "name": "Owner", "fieldtype": "user", "flags": "", "card": 0, "rank": 4},
+      {"id": "notes", "name": "Notes", "fieldtype": "text", "flags": "", "card": 0, "rank": 5, "rows": 3}
+    ],
+    "contact": [
+      {"id": "name", "name": "Name", "fieldtype": "text", "flags": "required,sort", "card": 1, "rank": 0, "rows": 1},
+      {"id": "email", "name": "Email", "fieldtype": "text", "flags": "sort", "card": 1, "rank": 1, "rows": 1},
+      {"id": "phone", "name": "Phone", "fieldtype": "text", "flags": "", "card": 0, "rank": 2, "rows": 1},
+      {"id": "jobtitle", "name": "Job title", "fieldtype": "text", "flags": "", "card": 1, "rank": 3, "rows": 1},
+      {"id": "owner", "name": "Owner", "fieldtype": "user", "flags": "", "card": 0, "rank": 4},
+      {"id": "notes", "name": "Notes", "fieldtype": "text", "flags": "", "card": 0, "rank": 5, "rows": 3}
+    ],
+    "deal": [
+      {"id": "name", "name": "Name", "fieldtype": "text", "flags": "required,sort", "card": 1, "rank": 0, "rows": 1},
+      {"id": "value", "name": "Value", "fieldtype": "text", "flags": "sort", "card": 1, "rank": 1, "rows": 1},
+      {"id": "stage", "name": "Stage", "fieldtype": "enumerated", "flags": "required,sort", "card": 0, "rank": 2},
+      {"id": "closedate", "name": "Close date", "fieldtype": "date", "flags": "sort", "card": 0, "rank": 3},
+      {"id": "owner", "name": "Owner", "fieldtype": "user", "flags": "", "card": 0, "rank": 4},
+      {"id": "notes", "name": "Notes", "fieldtype": "text", "flags": "", "card": 0, "rank": 5, "rows": 3}
+    ],
+    "activity": [
+      {"id": "subject", "name": "Subject", "fieldtype": "text", "flags": "required,sort", "card": 1, "rank": 0, "rows": 1},
+      {"id": "type", "name": "Type", "fieldtype": "enumerated", "flags": "sort", "card": 1, "rank": 1},
+      {"id": "due", "name": "Due", "fieldtype": "date", "flags": "sort", "card": 0, "rank": 2},
+      {"id": "completed", "name": "Completed", "fieldtype": "enumerated", "flags": "sort", "card": 0, "rank": 3},
+      {"id": "owner", "name": "Owner", "fieldtype": "user", "flags": "", "card": 0, "rank": 4},
+      {"id": "notes", "name": "Notes", "fieldtype": "text", "flags": "", "card": 0, "rank": 5, "rows": 3}
+    ]
+  },
+  "options": {
+    "company": {
+      "industry": [
+        {"id": "tech", "name": "Technology", "colour": "#60a5fa", "rank": 0},
+        {"id": "finance", "name": "Finance", "colour": "#4ade80", "rank": 1},
+        {"id": "healthcare", "name": "Healthcare", "colour": "#f87171", "rank": 2},
+        {"id": "retail", "name": "Retail", "colour": "#fbbf24", "rank": 3},
+        {"id": "services", "name": "Services", "colour": "#a78bfa", "rank": 4},
+        {"id": "other", "name": "Other", "colour": "#94a3b8", "rank": 5}
+      ],
+      "size": [
+        {"id": "small", "name": "1-50", "colour": "#94a3b8", "rank": 0},
+        {"id": "medium", "name": "51-200", "colour": "#fbbf24", "rank": 1},
+        {"id": "large", "name": "201-1000", "colour": "#60a5fa", "rank": 2},
+        {"id": "enterprise", "name": "1000+", "colour": "#a78bfa", "rank": 3}
+      ]
+    },
+    "deal": {
+      "stage": [
+        {"id": "lead", "name": "Lead", "colour": "#94a3b8", "rank": 0},
+        {"id": "qualified", "name": "Qualified", "colour": "#60a5fa", "rank": 1},
+        {"id": "proposal", "name": "Proposal", "colour": "#fbbf24", "rank": 2},
+        {"id": "negotiation", "name": "Negotiation", "colour": "#fb923c", "rank": 3},
+        {"id": "won", "name": "Won", "colour": "#4ade80", "rank": 4},
+        {"id": "lost", "name": "Lost", "colour": "#f87171", "rank": 5}
+      ]
+    },
+    "activity": {
+      "type": [
+        {"id": "call", "name": "Call", "colour": "#60a5fa", "rank": 0},
+        {"id": "email", "name": "Email", "colour": "#4ade80", "rank": 1},
+        {"id": "meeting", "name": "Meeting", "colour": "#fbbf24", "rank": 2},
+        {"id": "task", "name": "Task", "colour": "#a78bfa", "rank": 3}
+      ],
+      "completed": [
+        {"id": "no", "name": "No", "colour": "#94a3b8", "rank": 0},
+        {"id": "yes", "name": "Yes", "colour": "#4ade80", "rank": 1}
+      ]
+    }
+  },
+  "hierarchy": {
+    "company": [""],
+    "contact": ["company"],
+    "deal": ["company", "contact"],
+    "activity": ["company", "contact", "deal"]
+  },
+  "views": [
+    {"id": "pipeline", "name": "Pipeline", "viewtype": "board", "columns": "stage", "fields": "name,value,closedate,owner", "classes": ["deal"]},
+    {"id": "contacts", "name": "Contacts", "viewtype": "list", "fields": "name,email,phone,jobtitle,owner", "classes": ["contact"]},
+    {"id": "companies", "name": "Companies", "viewtype": "list", "fields": "name,domain,industry,size,owner", "classes": ["company"]},
+    {"id": "activities", "name": "Activities", "viewtype": "list", "fields": "subject,type,due,completed,owner", "classes": ["activity"]}
+  ]
+}

@@ -1,0 +1,158 @@
+// Mochi CRM app
+// Copyright Alistair Cunningham 2026
+
+{
+	"version": "1.0",
+	"label": "app_name",
+	"classes": ["crm"],
+	"paths": ["crm"],
+	"services": ["crm"],
+
+	"architecture": {"engine": "starlark", "version": 4},
+	"execute": ["crm.star"],
+
+	"database": {
+		"schema": 1,
+		"file": "crm.db",
+		"create": {"function": "database_create"}
+	},
+
+	"icons": [
+		{"action": "", "label": "app_name", "icon": "users"}
+	],
+
+	"actions": {
+		"": {"file": "web/dist/index.html"},
+		"new": {"file": "web/dist/index.html"},
+		"search": {"file": "web/dist/index.html"},
+		"assets": {"files": "web/dist/assets", "public": true},
+		"images": {"files": "web/dist/images", "public": true},
+		":crm/assets": {"files": "web/dist/assets", "public": true},
+		":crm/images": {"files": "web/dist/images", "public": true},
+
+		"-/list": {"function": "action_crm_list"},
+		"-/create": {"function": "action_crm_create"},
+		"-/directory/search": {"function": "action_search"},
+		"-/probe": {"function": "action_probe"},
+		"-/recommendations": {"function": "action_recommendations"},
+		"-/subscribe": {"function": "action_subscribe"},
+		"-/unsubscribe": {"function": "action_unsubscribe"},
+
+		":crm": {"file": "web/dist/index.html"},
+		":crm/design": {"file": "web/dist/index.html"},
+		":crm/settings": {"file": "web/dist/index.html"},
+		":crm/-/info": {"function": "action_crm_get"},
+		":crm/-/update": {"function": "action_crm_update"},
+		":crm/-/delete": {"function": "action_crm_delete"},
+		":crm/-/people": {"function": "action_people_list"},
+		":crm/-/access": {"function": "action_access_list"},
+		":crm/-/access/set": {"function": "action_access_set"},
+		":crm/-/access/revoke": {"function": "action_access_revoke"},
+
+		":crm/-/objects": {"function": "action_object_list"},
+		":crm/-/objects/create": {"function": "action_object_create"},
+		":crm/-/objects/:object": {"function": "action_object_get"},
+		":crm/-/objects/:object/update": {"function": "action_object_update"},
+		":crm/-/objects/:object/delete": {"function": "action_object_delete"},
+		":crm/-/objects/:object/move": {"function": "action_object_move"},
+
+		":crm/-/objects/:object/values": {"function": "action_values_set"},
+		":crm/-/objects/:object/values/:field": {"function": "action_value_set"},
+
+		":crm/-/objects/:object/links": {"function": "action_link_list"},
+		":crm/-/objects/:object/links/create": {"function": "action_link_create"},
+		":crm/-/objects/:object/links/delete": {"function": "action_link_delete"},
+
+		":crm/-/objects/:object/comments": {"function": "action_comment_list"},
+		":crm/-/objects/:object/comments/create": {"function": "action_comment_create"},
+		":crm/-/objects/:object/comments/:comment/update": {"function": "action_comment_update"},
+		":crm/-/objects/:object/comments/:comment/delete": {"function": "action_comment_delete"},
+
+		":crm/-/objects/:object/attachments": {"function": "action_attachment_list"},
+		":crm/-/objects/:object/attachments/create": {"function": "action_attachment_create"},
+		":crm/-/objects/:object/attachments/:attachment/delete": {"function": "action_attachment_delete"},
+
+		":crm/-/attachments/:id": {"feature": "attachment"},
+		":crm/-/attachments/:id/thumbnail": {"feature": "attachment/thumbnail"},
+
+		":crm/-/objects/:object/activity": {"function": "action_activity_list"},
+
+		":crm/-/objects/:object/watchers": {"function": "action_watcher_list"},
+		":crm/-/objects/:object/watchers/add": {"function": "action_watcher_add"},
+		":crm/-/objects/:object/watchers/remove": {"function": "action_watcher_remove"},
+
+		":crm/-/design/export": {"function": "action_design_export"},
+		":crm/-/design/import": {"function": "action_design_import"},
+
+		":crm/-/views": {"function": "action_view_list"},
+		":crm/-/views/create": {"function": "action_view_create"},
+		":crm/-/views/reorder": {"function": "action_view_reorder"},
+		":crm/-/views/:view/update": {"function": "action_view_update"},
+		":crm/-/views/:view/delete": {"function": "action_view_delete"},
+
+		":crm/-/classes": {"function": "action_class_list"},
+		":crm/-/classes/create": {"function": "action_class_create"},
+		":crm/-/classes/:class/update": {"function": "action_class_update"},
+		":crm/-/classes/:class/delete": {"function": "action_class_delete"},
+
+		":crm/-/classes/:class/hierarchy": {"function": "action_hierarchy_get"},
+		":crm/-/classes/:class/hierarchy/set": {"function": "action_hierarchy_set"},
+
+		":crm/-/classes/:class/fields": {"function": "action_field_list"},
+		":crm/-/classes/:class/fields/create": {"function": "action_field_create"},
+		":crm/-/classes/:class/fields/reorder": {"function": "action_field_reorder"},
+		":crm/-/classes/:class/fields/:field/update": {"function": "action_field_update"},
+		":crm/-/classes/:class/fields/:field/delete": {"function": "action_field_delete"},
+
+		":crm/-/classes/:class/fields/:field/options": {"function": "action_option_list"},
+		":crm/-/classes/:class/fields/:field/options/create": {"function": "action_option_create"},
+		":crm/-/classes/:class/fields/:field/options/reorder": {"function": "action_option_reorder"},
+		":crm/-/classes/:class/fields/:field/options/:option/update": {"function": "action_option_update"},
+		":crm/-/classes/:class/fields/:field/options/:option/delete": {"function": "action_option_delete"},
+
+		"-/notifications/subscribe": {"function": "action_notifications_subscribe"},
+		"-/notifications/check": {"function": "action_notifications_check"},
+		"-/notifications/destinations": {"function": "action_notifications_destinations"}
+	},
+
+	"events": {
+		"info": {"function": "event_info"},
+		"schema": {"function": "event_schema"},
+		"subscribe": {"function": "event_subscribe"},
+		"unsubscribe": {"function": "event_unsubscribe"},
+		"deleted": {"function": "event_deleted"},
+
+		"crm/update": {"function": "event_crm_update"},
+		"object/create": {"function": "event_object_create"},
+		"object/update": {"function": "event_object_update"},
+		"object/delete": {"function": "event_object_delete"},
+		"values/update": {"function": "event_values_update"},
+		"attachment/submit": {"function": "event_attachment_submit"},
+		"attachment/add": {"function": "event_attachment_add"},
+		"attachment/remove": {"function": "event_attachment_remove"},
+		"comment/submit": {"function": "event_comment_submit"},
+		"comment/create": {"function": "event_comment_create"},
+		"comment/update": {"function": "event_comment_update"},
+		"comment/delete": {"function": "event_comment_delete"},
+		"link/create": {"function": "event_link_create"},
+		"link/delete": {"function": "event_link_delete"},
+		"view/create": {"function": "event_view_create"},
+		"view/update": {"function": "event_view_update"},
+		"view/delete": {"function": "event_view_delete"},
+		"class/create": {"function": "event_class_create"},
+		"class/update": {"function": "event_class_update"},
+		"class/delete": {"function": "event_class_delete"},
+		"hierarchy/set": {"function": "event_hierarchy_set"},
+		"field/create": {"function": "event_field_create"},
+		"field/update": {"function": "event_field_update"},
+		"field/delete": {"function": "event_field_delete"},
+		"field/reorder": {"function": "event_field_reorder"},
+		"option/create": {"function": "event_option_create"},
+		"option/update": {"function": "event_option_update"},
+		"option/delete": {"function": "event_option_delete"},
+		"option/reorder": {"function": "event_option_reorder"},
+
+		"request": {"function": "event_request"},
+		"access/check": {"function": "event_access_check"}
+	}
+}
