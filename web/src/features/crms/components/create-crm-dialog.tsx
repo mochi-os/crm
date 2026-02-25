@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import {
   Button,
@@ -18,14 +18,6 @@ import { Plus, Users } from "lucide-react";
 import crmsApi from "@/api/crms";
 import { useCrmsStore } from "@/stores/crms-store";
 
-function nameToPrefix(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "")
-    .slice(0, 20);
-}
-
 interface CreateCrmDialogProps {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -39,9 +31,7 @@ export function CreateCrmDialog({
 }: CreateCrmDialogProps) {
   const [isPending, setIsPending] = useState(false);
   const [name, setName] = useState("");
-  const [prefix, setPrefix] = useState("");
   const [allowSearch, setAllowSearch] = useState(true);
-  const prefixDirty = useRef(false);
   const navigate = useNavigate();
   const refreshCrms = useCrmsStore((state) => state.refresh);
 
@@ -49,9 +39,7 @@ export function CreateCrmDialog({
   useEffect(() => {
     if (!open) {
       setName("");
-      setPrefix("");
       setAllowSearch(true);
-      prefixDirty.current = false;
     }
   }, [open]);
 
@@ -67,7 +55,6 @@ export function CreateCrmDialog({
     try {
       const response = await crmsApi.create({
         name: name.trim(),
-        prefix: prefix.trim().toLowerCase() || "crm",
         privacy: allowSearch ? "public" : "private",
       });
 
@@ -119,31 +106,10 @@ export function CreateCrmDialog({
               <Input
                 id="name"
                 value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                  if (!prefixDirty.current) {
-                    setPrefix(nameToPrefix(e.target.value));
-                  }
-                }}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Sales CRM"
                 autoFocus
               />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="prefix">Prefix</Label>
-              <Input
-                id="prefix"
-                value={prefix}
-                onChange={(e) => {
-                  prefixDirty.current = true;
-                  setPrefix(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "").slice(0, 20));
-                }}
-                className="lowercase"
-              />
-              <p className="text-muted-foreground text-xs">
-                Used for readable IDs like {prefix || "crm"}-1, {prefix || "crm"}-2
-              </p>
             </div>
 
             <div className="flex items-center justify-between rounded-lg border px-4 py-3">

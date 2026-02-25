@@ -8,7 +8,6 @@ import {
   Button,
   Input,
   ConfirmDialog,
-  DataChip,
   Sheet,
   SheetContent,
   Select,
@@ -85,12 +84,12 @@ export function ObjectDetailPanel({
     enabled: !!objectId,
     // Use cached objects list as placeholder so the panel renders immediately
     placeholderData: () => {
-      const cached = queryClient.getQueryData<{ objects: Array<{ id: string; crm: string; class: string; number: number; parent: string; rank: number; created: number; updated: number; values: Record<string, string> }>; watched?: string[] }>(["objects", crmId]);
+      const cached = queryClient.getQueryData<{ objects: Array<{ id: string; crm: string; class: string; parent: string; rank: number; created: number; updated: number; values: Record<string, string> }>; watched?: string[] }>(["objects", crmId]);
       if (!cached || !objectId) return undefined;
       const obj = cached.objects.find((o) => o.id === objectId);
       if (!obj) return undefined;
       return {
-        object: { ...obj, readable: `${crm.crm.prefix}-${obj.number}` },
+        object: obj,
         values: obj.values,
         outgoing: [],
         incoming: [],
@@ -246,11 +245,11 @@ export function ObjectDetailPanel({
   const classOptions = crm.options[object.class] || {};
   const cls = crm.classes.find((c) => c.id === object.class);
   const titleField = cls?.title ? classFields.find((f) => f.id === cls.title) : undefined;
-  const title = (titleField ? data.values[titleField.id] : "") || object.readable;
+  const title = (titleField ? data.values[titleField.id] : "") || "Untitled";
   // Get display title for any object using its class's title field
-  const objectTitle = (obj: { class: string; number: number; values: Record<string, string> }) => {
+  const objectTitle = (obj: { class: string; values: Record<string, string> }) => {
     const objCls = crm.classes.find((c) => c.id === obj.class);
-    return (objCls?.title ? obj.values[objCls.title] : "") || `${crm.crm.prefix}-${obj.number}`;
+    return (objCls?.title ? obj.values[objCls.title] : "") || "Untitled";
   };
 
   const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
@@ -369,14 +368,6 @@ export function ObjectDetailPanel({
         <div className="flex-1 overflow-y-auto p-6">
           {activeTab === "properties" && (
             <div className="max-w-2xl space-y-6">
-              {/* ID */}
-              <div className="grid grid-cols-[120px_1fr] gap-4 items-start">
-                <label className="text-sm font-medium text-muted-foreground pt-2">
-                  ID
-                </label>
-                <DataChip value={object.readable} copyable chipClassName="bg-primary/10 border-primary/20 text-primary font-bold text-[11px]" />
-              </div>
-
               {/* Parent */}
               {(validParentOptions.length > 0 || currentParent) && (
                 <div className="grid grid-cols-[120px_1fr] gap-4 items-start">
@@ -446,7 +437,6 @@ export function ObjectDetailPanel({
                 objectId={objectId!}
                 outgoing={data.outgoing}
                 incoming={data.incoming}
-                prefix={crm.crm.prefix}
                 classes={crm.classes}
                 readOnly={!canWrite(access)}
               />

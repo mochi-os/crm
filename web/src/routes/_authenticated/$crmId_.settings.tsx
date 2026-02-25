@@ -149,7 +149,6 @@ function CrmSettingsPage() {
     async (updates: {
       name?: string;
       description?: string;
-      prefix?: string;
     }) => {
       if (!crm || !isOwner) return;
 
@@ -271,7 +270,6 @@ interface GeneralTabProps {
   onUpdate: (updates: {
     name?: string;
     description?: string;
-    prefix?: string;
   }) => Promise<void>;
 }
 
@@ -307,14 +305,6 @@ function GeneralTab({
             isOwner={isOwner}
             onSave={(value) => onUpdate({ description: value })}
             multiline
-          />
-
-          <EditableFieldRow
-            label="Prefix"
-            value={crm.crm.prefix}
-            isOwner={isOwner}
-            onSave={(value) => onUpdate({ prefix: value })}
-            validate={validatePrefix}
           />
 
           <FieldRow label="Entity ID">
@@ -402,13 +392,6 @@ function validateName(name: string): string | null {
   if (name.length > 1000) return "Name must be 1000 characters or less";
   if (DISALLOWED_NAME_CHARS.test(name))
     return "Name cannot contain < or > characters";
-  return null;
-}
-
-function validatePrefix(prefix: string): string | null {
-  if (prefix && !/^[A-Za-z0-9-]+$/.test(prefix))
-    return "Prefix can only contain letters, numbers, and hyphens";
-  if (prefix.length > 10) return "Prefix must be 10 characters or less";
   return null;
 }
 

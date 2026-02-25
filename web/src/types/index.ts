@@ -6,8 +6,6 @@ export interface Crm {
   fingerprint: string;
   name: string;
   description: string;
-  prefix: string;
-  counter: number;
   owner: number;
   ownername: string;
   server: string;
@@ -73,12 +71,10 @@ export interface CrmObject {
   id: string;
   crm: string;
   class: string;
-  number: number;
   parent: string;
   rank: number;
   created: number;
   updated: number;
-  readable?: string;
   values: Record<string, string>;
 }
 
@@ -87,7 +83,6 @@ export interface ObjectLink {
   source?: string;
   linktype: string;
   created: number;
-  number?: number;
   type?: string;
   title?: string;
 }
@@ -164,14 +159,12 @@ export interface ObjectListResponse {
 export interface ObjectCreateResponse {
   data: {
     id: string;
-    number: number;
-    readable: string;
   };
 }
 
 export interface ObjectGetResponse {
   data: {
-    object: CrmObject & { readable: string };
+    object: CrmObject;
     values: Record<string, string>;
     outgoing: ObjectLink[];
     incoming: ObjectLink[];

@@ -23,6 +23,7 @@ interface BoardContainerProps {
   rowField?: string;
   borderField?: string;
   viewFields?: string;
+  viewClasses?: string[];
   sort?: SortState | null;
   peopleMap?: Record<string, string>;
   onCardClick?: (object: CrmObject) => void;
@@ -55,9 +56,6 @@ function sortObjects(objects: CrmObject[], sort?: SortState | null): CrmObject[]
     } else if (sortField === "updated") {
       aVal = a.updated || 0;
       bVal = b.updated || 0;
-    } else if (sortField === "number") {
-      aVal = a.number || 0;
-      bVal = b.number || 0;
     } else {
       const fieldId = sortField.startsWith("field:") ? sortField.slice(6) : sortField;
       aVal = a.values[fieldId] || "";
@@ -78,6 +76,7 @@ export function BoardContainer({
   rowField,
   borderField,
   viewFields,
+  viewClasses,
   sort,
   peopleMap,
   onCardClick,
@@ -90,8 +89,13 @@ export function BoardContainer({
   isReordering,
   onReorderColumns,
 }: BoardContainerProps) {
-  // Get the default class's fields (first class)
-  const defaultClass = crm.classes[0];
+  // Get the effective class — use the view's class filter if set, otherwise first class
+  const defaultClass = useMemo(() => {
+    if (viewClasses?.length) {
+      return crm.classes.find((c) => c.id === viewClasses[0]) || crm.classes[0];
+    }
+    return crm.classes[0];
+  }, [crm.classes, viewClasses]);
   const classFields = useMemo(() => defaultClass ? crm.fields[defaultClass.id] || [] : [], [defaultClass, crm.fields]);
   const classOptions = useMemo(() => defaultClass ? crm.options[defaultClass.id] || {} : {}, [defaultClass, crm.options]);
 
@@ -571,7 +575,6 @@ export function BoardContainer({
           objects={columnObjects}
           fields={visibleFields}
           options={classOptions}
-          prefix={crm.crm.prefix}
           objectMap={objectMap}
           allFields={crm.fields}
           allObjects={objects}
@@ -690,7 +693,7 @@ export function BoardContainer({
               objects={[]}
               fields={visibleFields}
               options={classOptions}
-              prefix={crm.crm.prefix}
+
               objectMap={objectMap}
               allFields={crm.fields}
               allObjects={objects}
@@ -732,7 +735,6 @@ export function BoardContainer({
           objects={objectsByStatus[""]}
           fields={visibleFields}
           options={classOptions}
-          prefix={crm.crm.prefix}
           objectMap={objectMap}
           allFields={crm.fields}
           allObjects={objects}

@@ -10,7 +10,6 @@ interface BoardCardProps {
   object: CrmObject;
   fields: CrmField[];
   options: Record<string, FieldOption[]>;
-  prefix: string;
   objectMap?: Record<string, CrmObject>;
   allFields?: Record<string, CrmField[]>;
   allObjects?: CrmObject[];
@@ -47,7 +46,6 @@ export function BoardCard({
   object,
   fields,
   options,
-  prefix,
   objectMap,
   allFields,
   allObjects,
@@ -75,8 +73,8 @@ export function BoardCard({
   const titleFieldId = cls?.title;
   const headerField = titleFieldId ? fields.find((f) => f.id === titleFieldId) : undefined;
   const rawTitle = headerField
-    ? (object.values[headerField.id] || `${prefix}-${object.number}`)
-    : `${prefix}-${object.number}`;
+    ? (object.values[headerField.id] || "Untitled")
+    : "Untitled";
   const title = truncate(rawTitle, 160);
 
   // Body fields: exclude the header field, statusField, and rowField
@@ -292,7 +290,6 @@ export function BoardCard({
                     object={child}
                     fields={childFields}
                     options={childOptions}
-                    prefix={prefix}
                     objectMap={objectMap}
                     allFields={allFields}
                     allObjects={allObjects}

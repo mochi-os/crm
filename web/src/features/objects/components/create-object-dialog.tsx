@@ -28,7 +28,7 @@ interface CreateObjectDialogProps {
   defaultFields?: { field: string; value: string }[];
   defaultParent?: string;
   allowedClasses?: string[];
-  onCreated?: (id: string, number: number, readable: string) => void;
+  onCreated?: (id: string) => void;
 }
 
 export function CreateObjectDialog({
@@ -131,9 +131,9 @@ export function CreateObjectDialog({
   );
 
   // Get display title for any object using its class's title field
-  const objectTitle = (obj: { class: string; number: number; values: Record<string, string> }) => {
+  const objectTitle = (obj: { class: string; values: Record<string, string> }) => {
     const cls = crm.classes.find((c) => c.id === obj.class);
-    return (cls?.title ? obj.values[cls.title] : "") || `${crm.crm.prefix}-${obj.number}`;
+    return (cls?.title ? obj.values[cls.title] : "") || "Untitled";
   };
 
   // Filter objects to only show valid parents based on hierarchy rules
@@ -193,7 +193,6 @@ export function CreateObjectDialog({
         id: data.id,
         crm: crm.crm.id,
         class: selectedClass,
-        number: data.number,
         parent: data.parent || "",
         rank: 999999,
         created: Math.floor(Date.now() / 1000),
@@ -210,7 +209,7 @@ export function CreateObjectDialog({
       queryClient.invalidateQueries({
         queryKey: ["objects", crmId],
       });
-      onCreated?.(data.id, data.number, data.readable);
+      onCreated?.(data.id);
       onOpenChange(false);
     },
     onError: (err: Error) => {

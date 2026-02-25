@@ -1,7 +1,7 @@
 // Mochi CRM: CRM page with board and tree views
 // Copyright Alistair Cunningham 2026
 
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { createFileRoute, Link, useNavigate, useRouter } from "@tanstack/react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
@@ -82,7 +82,7 @@ function CrmPage() {
   const [showShortcutsHelp, setShowShortcutsHelp] = useState(false);
   const [showViewOptions, setShowViewOptions] = useState(() => {
     const saved = localStorage.getItem("crms-view-options-expanded");
-    return saved === "true";
+    return saved !== "false";
   });
   const [selectedCardIndex, setSelectedCardIndex] = useState(-1);
   const [addColumnDialogOpen, setAddColumnDialogOpen] = useState(false);
@@ -159,6 +159,19 @@ function CrmPage() {
   });
   const objectsData = objectListData?.objects;
   const watchedIds = objectListData?.watched;
+
+  // When CRM is empty and no view was specified in URL, switch to the companies view
+  const didAutoSwitch = useRef(false);
+  useEffect(() => {
+    if (didAutoSwitch.current || search.view) return;
+    if (objectsData && objectsData.length === 0) {
+      const companiesView = crm.views.find((v) => v.classes?.includes("company"));
+      if (companiesView && companiesView.id !== activeViewId) {
+        didAutoSwitch.current = true;
+        setActiveViewId(companiesView.id);
+      }
+    }
+  }, [objectsData, crm.views, search.view, activeViewId]);
 
   // Load people for resolving user field values to names
   const { data: peopleData } = useQuery({
@@ -516,14 +529,17 @@ function CrmPage() {
   const columnField = activeView?.columns || "";
   const rowField = activeView?.rows || "";
 
-  // Get default column value (first option of column field for first type)
+  // Get default column value (first option of column field for the view's class)
+  const viewClasses = activeView?.classes || [];
   const getDefaultColumnValue = useCallback(() => {
-    const firstType = crm.classes[0]?.id;
-    if (firstType && crm.options[firstType]?.[columnField]?.length > 0) {
-      return [{ field: columnField, value: crm.options[firstType][columnField][0].id }];
+    const effectiveType = viewClasses.length > 0
+      ? viewClasses[0]
+      : crm.classes[0]?.id;
+    if (effectiveType && crm.options[effectiveType]?.[columnField]?.length > 0) {
+      return [{ field: columnField, value: crm.options[effectiveType][columnField][0].id }];
     }
     return undefined;
-  }, [crm.classes, crm.options, columnField]);
+  }, [crm.classes, crm.options, columnField, viewClasses]);
 
   const handleOpenCreateDialog = useCallback(() => {
     if (crm.classes.length === 0) {
@@ -673,6 +689,11 @@ function CrmPage() {
               filters={filters}
               onFilterChange={setFilters}
             />
+            {canWrite(access) && (
+              <Button variant="ghost" size="icon" onClick={handleOpenCreateDialog} title="Create (C)">
+                <Plus className="size-4" />
+              </Button>
+            )}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -680,12 +701,6 @@ function CrmPage() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                {canWrite(access) && (
-                  <DropdownMenuItem onClick={handleOpenCreateDialog}>
-                    <Plus className="size-4 mr-2" />
-                    Create
-                  </DropdownMenuItem>
-                )}
                 <DropdownMenuItem
                   onSelect={(e) => e.preventDefault()}
                 >
@@ -796,6 +811,7 @@ function CrmPage() {
                 onCardClick={handleCardClick}
                 onReparent={canWrite(access) ? handleReparent : undefined}
                 onReorder={canWrite(access) ? handleReorder : undefined}
+                onCreateClick={canWrite(access) ? handleOpenCreateDialog : undefined}
               />
             </div>
           ) : (
@@ -807,6 +823,7 @@ function CrmPage() {
                 rowField={rowField}
                 borderField={activeView?.border}
                 viewFields={activeView?.fields}
+                viewClasses={activeView?.classes}
                 sort={sort}
                 peopleMap={peopleMap}
                 onCardClick={handleCardClick}

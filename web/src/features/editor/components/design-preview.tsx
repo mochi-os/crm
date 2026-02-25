@@ -25,7 +25,6 @@ interface DesignPreviewProps {
 const SAMPLE_CARDS = [
   {
     id: "1",
-    number: 1,
     values: {
       title: "Implement login feature",
       status: "progress",
@@ -35,7 +34,6 @@ const SAMPLE_CARDS = [
   },
   {
     id: "2",
-    number: 2,
     values: {
       title: "Fix navigation bug",
       status: "todo",
@@ -45,7 +43,6 @@ const SAMPLE_CARDS = [
   },
   {
     id: "3",
-    number: 3,
     values: {
       title: "Update documentation",
       status: "done",
@@ -59,21 +56,18 @@ const SAMPLE_CARDS = [
 const SAMPLE_TREE = [
   {
     id: "1",
-    number: 1,
     title: "Crm setup",
     status: "done",
     expanded: true,
     children: [
       {
         id: "2",
-        number: 2,
         title: "Configure build system",
         status: "done",
         children: [],
       },
       {
         id: "3",
-        number: 3,
         title: "Set up testing framework",
         status: "progress",
         children: [],
@@ -82,21 +76,18 @@ const SAMPLE_TREE = [
   },
   {
     id: "4",
-    number: 4,
     title: "Core features",
     status: "progress",
     expanded: true,
     children: [
       {
         id: "5",
-        number: 5,
         title: "User authentication",
         status: "progress",
         children: [],
       },
       {
         id: "6",
-        number: 6,
         title: "Data persistence",
         status: "todo",
         children: [],
@@ -105,7 +96,6 @@ const SAMPLE_TREE = [
   },
   {
     id: "7",
-    number: 7,
     title: "Documentation",
     status: "todo",
     children: [],
@@ -157,9 +147,6 @@ export function DesignPreview({
   const renderCard = (card: (typeof SAMPLE_CARDS)[0]) => {
     return (
       <Card className="p-3 py-3">
-        <div className="text-xs text-muted-foreground font-mono">
-          proj-{card.number}
-        </div>
         {cardFields.map((fieldId) => {
           const field = classFields.find((f) => f.id === fieldId);
           if (!field) return null;
@@ -230,11 +217,6 @@ export function DesignPreview({
     return (
       <div className="max-w-md mx-auto">
         <Card className="p-4 py-4 gap-0 space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-mono text-muted-foreground">
-              proj-{card.number}
-            </span>
-          </div>
           {classFields.map((field) => {
             const value = card.values[field.id as keyof typeof card.values];
             return (
@@ -286,9 +268,6 @@ export function DesignPreview({
                 )
               ) : null}
             </div>
-            <span className="text-xs text-muted-foreground font-mono mr-2">
-              proj-{item.number}
-            </span>
             <span className="flex-1">{item.title}</span>
             {statusField && (
               <span className="inline-flex items-center gap-1">

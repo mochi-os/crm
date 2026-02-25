@@ -25,8 +25,6 @@ def database_create():
 		id text primary key,
 		name text not null,
 		description text not null default '',
-		prefix text not null default 'CRM',
-		counter integer not null default 0,
 		owner integer not null default 1,
 		server text not null default '',
 		fingerprint text not null default '',
@@ -153,7 +151,6 @@ def database_create():
 		id text primary key,
 		crm text not null references crms(id),
 		class text not null,
-		number integer not null,
 		parent text not null default '',
 		rank integer not null default 0,
 		created integer not null,
@@ -560,7 +557,7 @@ def action_design_import(a):
 # List user's crms
 def action_crm_list(a):
 
-	rows = mochi.db.rows("""select p.id, p.name, p.description, p.prefix, p.owner, p.server, p.created, p.updated,
+	rows = mochi.db.rows("""select p.id, p.name, p.description, p.owner, p.server, p.created, p.updated,
 		(select s.name from subscribers s where s.crm=p.id order by s.subscribed asc limit 1) as ownername
 		from crms p order by p.updated desc""")
 	crms = []
@@ -570,7 +567,6 @@ def action_crm_list(a):
 			"fingerprint": mochi.entity.fingerprint(row["id"]),
 			"name": row["name"],
 			"description": row["description"],
-			"prefix": row["prefix"],
 			"owner": row["owner"],
 			"ownername": row["ownername"] or "",
 			"server": row["server"],
@@ -588,14 +584,10 @@ def action_crm_create(a):
 		return
 
 	description = a.input("description") or ""
-	prefix = a.input("prefix") or "crm"
 	privacy = a.input("privacy") or "private"
 
 	if len(description) > 10000:
 		a.error(400, "Description too long")
-		return
-	if len(prefix) > 20:
-		a.error(400, "Prefix too long")
 		return
 
 	# Load CRM template version
@@ -614,8 +606,8 @@ def action_crm_create(a):
 	# Insert CRM record
 	fp = mochi.entity.fingerprint(entity) or ""
 	mochi.db.execute(
-		"insert into crms (id, name, description, prefix, counter, owner, server, fingerprint, template, template_version, created, updated) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-		entity, name, description, prefix, 0, 1, "", fp, "crm", tmpl_version, now, now
+		"insert into crms (id, name, description, owner, server, fingerprint, template, template_version, created, updated) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+		entity, name, description, 1, "", fp, "crm", tmpl_version, now, now
 	)
 
 	# Add creator as subscriber
@@ -647,7 +639,7 @@ def action_crm_get(a):
 		a.error(400, "CRM ID required")
 		return
 
-	row = mochi.db.row("select id, name, description, prefix, counter, owner, server, template, template_version, created, updated from crms where id=?", crm_id)
+	row = mochi.db.row("select id, name, description, owner, server, template, template_version, created, updated from crms where id=?", crm_id)
 	if not row:
 		a.error(404, "CRM not found")
 		return
@@ -730,8 +722,6 @@ def action_crm_get(a):
 			"fingerprint": mochi.entity.fingerprint(row["id"]),
 			"name": row["name"],
 			"description": row["description"],
-			"prefix": row["prefix"],
-			"counter": row["counter"],
 			"owner": row["owner"],
 			"server": row["server"],
 			"template": row["template"],
@@ -770,7 +760,6 @@ def action_crm_update(a):
 
 	name = a.input("name")
 	description = a.input("description")
-	prefix = a.input("prefix")
 
 	now = mochi.time.now()
 
@@ -787,19 +776,11 @@ def action_crm_update(a):
 			return
 		mochi.db.execute("update crms set description=?, updated=? where id=?", description, now, crm_id)
 
-	if prefix:
-		if len(prefix) > 20:
-			a.error(400, "Prefix too long")
-			return
-		mochi.db.execute("update crms set prefix=?, updated=? where id=?", prefix, now, crm_id)
-
 	update = {"crm": crm_id}
 	if name:
 		update["name"] = name
 	if a.input("description") != None:
 		update["description"] = description
-	if prefix:
-		update["prefix"] = prefix
 	broadcast_event(crm_id, "crm/update", update)
 
 	return {"data": {"success": True}}
@@ -1146,7 +1127,7 @@ def notify_watchers(object_id, crm_id, local_identity, user_id, body):
 	crm = get_crm(crm_id)
 	if not crm:
 		return
-	obj = mochi.db.row("select number, class from objects where id=?", object_id)
+	obj = mochi.db.row("select class from objects where id=?", object_id)
 	if not obj:
 		return
 	title = get_object_display(crm, obj, object_id)
@@ -1223,7 +1204,7 @@ def action_object_list(a):
 	parent_filter = a.input("parent")
 
 	# Build query
-	query = "select o.id, o.crm, o.class, o.number, o.parent, o.rank, o.created, o.updated from objects o where o.crm=?"
+	query = "select o.id, o.crm, o.class, o.parent, o.rank, o.created, o.updated from objects o where o.crm=?"
 	params = [crm_id]
 
 	if class_filter:
@@ -1255,7 +1236,6 @@ def action_object_list(a):
 			"id": row["id"],
 			"crm": row["crm"],
 			"class": row["class"],
-			"number": row["number"],
 			"parent": row["parent"],
 			"rank": row["rank"],
 			"created": row["created"],
@@ -1304,13 +1284,11 @@ def action_object_create(a):
 			if d.get("id"):
 				now = mochi.time.now()
 				mochi.db.execute(
-					"insert or ignore into objects (id, crm, class, number, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?, ?)",
-					d["id"], crm_id, obj_class, d.get("number", 0), parent, 0, now, now
+					"insert or ignore into objects (id, crm, class, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?)",
+					d["id"], crm_id, obj_class, parent, 0, now, now
 				)
 				if title and title_field:
 					mochi.db.execute("insert or replace into \"values\" (object, field, value) values (?, ?, ?)", d["id"], title_field, title)
-				# Update local counter
-				mochi.db.execute("update crms set counter=counter+1, updated=? where id=?", now, crm_id)
 		return result
 
 	if not check_crm_access(a.user.identity.id, crm_id, "write"):
@@ -1340,10 +1318,6 @@ def action_object_create(a):
 		a.error(400, "Cannot create here: hierarchy rules do not allow this relationship")
 		return
 
-	# Increment counter atomically and get number
-	mochi.db.execute("update crms set counter=counter+1, updated=? where id=?", mochi.time.now(), crm_id)
-	new_counter = mochi.db.row("select counter from crms where id=?", crm_id)["counter"]
-
 	# Calculate initial rank (add to end)
 	max_rank_row = mochi.db.row("select coalesce(max(rank), 0) as max_rank from objects where crm=?", crm_id)
 	initial_rank = (max_rank_row["max_rank"] if max_rank_row else 0) + 1
@@ -1353,8 +1327,8 @@ def action_object_create(a):
 	now = mochi.time.now()
 
 	mochi.db.execute(
-		"insert into objects (id, crm, class, number, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?, ?)",
-		object_id, crm_id, obj_class, new_counter, parent, initial_rank, now, now
+		"insert into objects (id, crm, class, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?)",
+		object_id, crm_id, obj_class, parent, initial_rank, now, now
 	)
 
 	# Set title if provided
@@ -1372,14 +1346,12 @@ def action_object_create(a):
 	# Broadcast to subscribers
 	broadcast_event(crm_id, "object/create", {
 		"crm": crm_id, "id": object_id, "class": obj_class,
-		"number": new_counter, "parent": parent, "values": values,
+		"parent": parent, "values": values,
 		"created": now, "user": a.user.identity.id
 	})
 
 	return {"data": {
 		"id": object_id,
-		"number": new_counter,
-		"readable": crm["prefix"] + "-" + str(new_counter)
 	}}
 
 def action_object_get(a):
@@ -1435,11 +1407,9 @@ def action_object_get(a):
 			"id": row["id"],
 			"crm": row["crm"],
 			"class": row["class"],
-			"number": row["number"],
 			"parent": row["parent"],
 			"created": row["created"],
 			"updated": row["updated"],
-			"readable": crm["prefix"] + "-" + str(row["number"])
 		},
 		"values": values,
 		"outgoing": links,
@@ -1980,7 +1950,7 @@ def action_link_list(a):
 
 	# Get outgoing links
 	outgoing = mochi.db.rows("""
-		select l.target, l.linktype, l.created, o.number, o.class, v.value as title
+		select l.target, l.linktype, l.created, o.class, v.value as title
 		from links l
 		join objects o on o.id = l.target
 		left join "values" v on v.object = l.target and v.field = 'title'
@@ -1989,7 +1959,7 @@ def action_link_list(a):
 
 	# Get incoming links
 	incoming = mochi.db.rows("""
-		select l.source, l.linktype, l.created, o.number, o.class, v.value as title
+		select l.source, l.linktype, l.created, o.class, v.value as title
 		from links l
 		join objects o on o.id = l.source
 		left join "values" v on v.object = l.source and v.field = 'title'
@@ -4321,7 +4291,6 @@ def action_subscribe(a):
 			return
 		crm_name = response.get("name", "")
 		crm_desc = response.get("description", "")
-		crm_prefix = response.get("prefix", "PROJ")
 		# Fetch schema so it is available before the frontend navigates
 		schema = mochi.remote.request(crm_id, "crm", "schema", {}, peer)
 	else:
@@ -4332,7 +4301,6 @@ def action_subscribe(a):
 			return
 		crm_name = directory.get("name", "")
 		crm_desc = ""
-		crm_prefix = "PROJ"
 		server = directory.get("location", "")
 		# Fetch full info and schema from the resolved server
 		if server:
@@ -4342,7 +4310,6 @@ def action_subscribe(a):
 				if response and not response.get("error"):
 					crm_name = response.get("name", crm_name)
 					crm_desc = response.get("description", "")
-					crm_prefix = response.get("prefix", "PROJ")
 				schema = mochi.remote.request(crm_id, "crm", "schema", {}, peer)
 
 	now = mochi.time.now()
@@ -4350,8 +4317,8 @@ def action_subscribe(a):
 
 	# Insert the remote crm
 	mochi.db.execute(
-		"insert into crms (id, name, description, prefix, counter, owner, server, fingerprint, created, updated) values (?, ?, ?, ?, 0, 0, ?, ?, ?, ?)",
-		crm_id, crm_name, crm_desc, crm_prefix, server or "", fp, now, now
+		"insert into crms (id, name, description, owner, server, fingerprint, created, updated) values (?, ?, ?, 0, ?, ?, ?, ?)",
+		crm_id, crm_name, crm_desc, server or "", fp, now, now
 	)
 
 	# Insert schema so the crm page has content immediately
@@ -4444,7 +4411,6 @@ def event_info(e):
 		"id": entity["id"],
 		"name": crm["name"],
 		"description": crm["description"],
-		"prefix": crm["prefix"],
 		"fingerprint": entity.get("fingerprint", mochi.entity.fingerprint(crm_id)),
 	})
 
@@ -4501,7 +4467,7 @@ def event_schema(e):
 
 	# Objects with values and comments
 	objects = []
-	for obj in (mochi.db.rows("select id, class, number, parent, rank, created, updated from objects where crm=?", crm_id) or []):
+	for obj in (mochi.db.rows("select id, class, parent, rank, created, updated from objects where crm=?", crm_id) or []):
 		vals = mochi.db.rows("select field, value from \"values\" where object=?", obj["id"])
 		if vals:
 			values_map = {}
@@ -4575,9 +4541,9 @@ def insert_schema(crm_id, schema):
 					mochi.db.execute("insert or ignore into view_classes (crm, view, class) values (?, ?, ?)", crm_id, view_id, class_id)
 	for obj in (schema.get("objects") or []):
 		mochi.db.execute(
-			"insert or ignore into objects (id, crm, class, number, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?, ?)",
+			"insert or ignore into objects (id, crm, class, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?)",
 			obj.get("id", ""), crm_id, obj.get("class", ""),
-			obj.get("number", 0), obj.get("parent", ""), obj.get("rank", 0),
+			obj.get("parent", ""), obj.get("rank", 0),
 			obj.get("created", 0), obj.get("updated", 0)
 		)
 		values = obj.get("values")
@@ -4654,7 +4620,7 @@ def send_crm_data(crm_id, subscriber_id):
 		h["event"] = "object/create"
 		mochi.message.send(h, {
 			"crm": crm_id, "id": obj["id"], "class": obj["class"],
-			"number": obj["number"], "parent": obj["parent"], "rank": obj["rank"],
+			"parent": obj["parent"], "rank": obj["rank"],
 			"created": obj["created"], "updated": obj["updated"], "sync": True
 		})
 
@@ -4813,13 +4779,10 @@ def event_crm_update(e):
 		return
 	name = e.content("name")
 	description = e.content("description")
-	prefix = e.content("prefix")
 	if name != None:
 		mochi.db.execute("update crms set name=? where id=?", name, crm_id)
 	if description != None:
 		mochi.db.execute("update crms set description=? where id=?", description, crm_id)
-	if prefix != None:
-		mochi.db.execute("update crms set prefix=? where id=?", prefix, crm_id)
 	mochi.db.execute("update crms set updated=? where id=?", mochi.time.now(), crm_id)
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
@@ -4832,9 +4795,9 @@ def event_object_create(e):
 		return
 	object_id = e.content("id")
 	mochi.db.execute(
-		"insert or ignore into objects (id, crm, class, number, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?, ?)",
+		"insert or ignore into objects (id, crm, class, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?)",
 		object_id, crm_id, e.content("class") or "",
-		e.content("number") or 0, e.content("parent") or "", e.content("rank") or 0,
+		e.content("parent") or "", e.content("rank") or 0,
 		e.content("created") or mochi.time.now(), e.content("updated") or mochi.time.now()
 	)
 	# Store field values included in the broadcast
@@ -4931,7 +4894,7 @@ def event_values_update(e):
 							assigned = True
 							crm = get_crm(crm_id)
 							if crm:
-								obj = mochi.db.row("select number, class from objects where id=?", object_id)
+								obj = mochi.db.row("select class from objects where id=?", object_id)
 								if obj:
 									title = get_object_display(crm, obj, object_id)
 									fp2 = mochi.entity.fingerprint(crm_id)
@@ -6093,15 +6056,13 @@ def do_object_create(crm_id, crm, params, user_id):
 
 	title_field_row = mochi.db.row("select title from classes where crm=? and id=?", crm_id, obj_class)
 	title_field = title_field_row["title"] if title_field_row else ""
-	mochi.db.execute("update crms set counter=counter+1, updated=? where id=?", mochi.time.now(), crm_id)
-	new_counter = mochi.db.row("select counter from crms where id=?", crm_id)["counter"]
 	max_rank_row = mochi.db.row("select coalesce(max(rank), 0) as max_rank from objects where crm=?", crm_id)
 	initial_rank = (max_rank_row["max_rank"] if max_rank_row else 0) + 1
 	object_id = mochi.uid()
 	now = mochi.time.now()
 	mochi.db.execute(
-		"insert into objects (id, crm, class, number, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?, ?)",
-		object_id, crm_id, obj_class, new_counter, parent, initial_rank, now, now
+		"insert into objects (id, crm, class, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?)",
+		object_id, crm_id, obj_class, parent, initial_rank, now, now
 	)
 	values = {}
 	if title and title_field:
@@ -6111,20 +6072,19 @@ def do_object_create(crm_id, crm, params, user_id):
 	mochi.db.execute("insert into watchers (object, user, created) values (?, ?, ?)", object_id, user_id, now)
 	broadcast_event(crm_id, "object/create", {
 		"crm": crm_id, "id": object_id, "class": obj_class,
-		"number": new_counter, "parent": parent, "values": values,
+		"parent": parent, "values": values,
 		"created": now, "user": user_id
 	})
 	# Notify owner when subscriber creates an object
 	owner_id = get_owner_identity(crm_id)
 	if owner_id and owner_id != user_id:
-		obj = mochi.db.row("select number, class from objects where id=?", object_id)
+		obj = mochi.db.row("select class from objects where id=?", object_id)
 		display = get_object_display(crm, obj, object_id)
 		fp = mochi.entity.fingerprint(crm_id)
 		url = "/crm/" + fp if fp else "/crm"
 		mochi.service.call("notifications", "send", "update",
 			display, "Created", object_id, url)
-	return {"id": object_id, "number": new_counter,
-			"readable": crm["prefix"] + "-" + str(new_counter)}
+	return {"id": object_id}
 
 def do_object_update(crm_id, crm, params, user_id):
 	object_id = params.get("object")

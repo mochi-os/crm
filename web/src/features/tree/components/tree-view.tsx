@@ -2,8 +2,8 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useMemo, useEffect, useLayoutEffect, useCallback, useRef } from "react";
-import { EmptyState } from "@mochi/common";
-import { Folder } from 'lucide-react';
+import { Button, EmptyState } from "@mochi/common";
+import { Folder, Plus } from 'lucide-react';
 import { TreeRow } from "./tree-row";
 import type { CrmDetails, CrmObject, SortState } from "@/types";
 
@@ -17,6 +17,7 @@ interface TreeViewProps {
   onCardClick: (object: CrmObject) => void;
   onReparent?: (objectId: string, newParentId: string | null) => void;
   onReorder?: (objectId: string, newRank: number) => void;
+  onCreateClick?: () => void;
 }
 
 export interface TreeNode {
@@ -63,9 +64,6 @@ function buildTree(objects: CrmObject[], sort?: SortState | null): TreeNode[] {
     } else if (sortField === "updated") {
       aVal = a.updated || 0;
       bVal = b.updated || 0;
-    } else if (sortField === "number") {
-      aVal = a.number || 0;
-      bVal = b.number || 0;
     } else {
       const fieldId = sortField.startsWith("field:") ? sortField.slice(6) : sortField;
       aVal = a.values[fieldId] || "";
@@ -146,6 +144,7 @@ export function TreeView({
   onCardClick,
   onReparent,
   onReorder,
+  onCreateClick,
 }: TreeViewProps) {
   // Storage key for expanded state
   const storageKey = `crms:${crmId}:tree:expanded`;
@@ -193,7 +192,6 @@ export function TreeView({
   // Get visible fields from view's fields setting, or fall back to field's card property
   const viewFieldsList = viewFields?.split(",").filter(Boolean) || [];
   const showClass = viewFieldsList.includes("class");
-  const showId = viewFieldsList.includes("id");
   const fieldMap = new Map(fields.map((f) => [f.id, f]));
   const visibleFields = viewFieldsList
     .map((id) => fieldMap.get(id))
@@ -363,7 +361,14 @@ export function TreeView({
 
   if (objects.length === 0) {
     return (
-      <EmptyState icon={Folder} title="No items found" className="py-12" />
+      <EmptyState icon={Folder} title="Nothing found" className="py-12">
+        {onCreateClick && (
+          <Button variant="outline" size="sm" onClick={onCreateClick}>
+            <Plus className="size-4 mr-1" />
+            Create
+          </Button>
+        )}
+      </EmptyState>
     );
   }
 
@@ -389,9 +394,7 @@ export function TreeView({
                 peopleMap={peopleMap}
                 classMap={classMap}
                 titleFieldId={crm.classes.find((c) => c.id === node.object.class)?.title}
-                prefix={crm.crm.prefix}
                 showClass={showClass}
-                showId={showId}
                 isDragOver={dragOverId === node.object.id && dropPosition === "on"}
                 isDragBefore={dragOverId === node.object.id && dropPosition === "before"}
                 isDragAfter={dragOverId === node.object.id && dropPosition === "after"}

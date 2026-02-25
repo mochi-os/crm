@@ -17,9 +17,7 @@ interface TreeRowProps {
   peopleMap: Record<string, string>;
   classMap: Record<string, string>;
   titleFieldId?: string;
-  prefix: string;
   showClass?: boolean;
-  showId?: boolean;
   isDragOver: boolean;
   isDragBefore: boolean;
   isDragAfter: boolean;
@@ -48,9 +46,7 @@ export function TreeRow({
   peopleMap,
   classMap,
   titleFieldId,
-  prefix,
   showClass = true,
-  showId = true,
   isDragOver,
   isDragBefore,
   isDragAfter,
@@ -135,7 +131,7 @@ export function TreeRow({
 
   // Calculate indentation (24px per level, applied to first content column)
   const indentPx = depth * 24;
-  const firstContentCol = showClass ? "class" : showId ? "id" : fields[0]?.id || "";
+  const firstContentCol = showClass ? "class" : fields[0]?.id || "";
   const indentStyle = indentPx > 0 ? { paddingLeft: indentPx } : undefined;
 
   // Determine drop position based on mouse position within row
@@ -227,13 +223,6 @@ export function TreeRow({
           <span className="text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
             {classMap[object.class] || object.class}
           </span>
-        </td>
-      )}
-
-      {/* Object number */}
-      {showId && (
-        <td className="whitespace-nowrap pl-1 pr-2 py-1.5 text-xs text-muted-foreground font-mono" style={firstContentCol === "id" ? indentStyle : undefined}>
-          {prefix}-{object.number}
         </td>
       )}
 

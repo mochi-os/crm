@@ -41,7 +41,6 @@ interface BoardColumnProps {
   objects: CrmObject[];
   fields: CrmField[];
   options: Record<string, FieldOption[]>;
-  prefix: string;
   objectMap: Record<string, CrmObject>;
   allFields?: Record<string, CrmField[]>;
   allObjects?: CrmObject[];
@@ -72,7 +71,6 @@ export function BoardColumn({
   objects,
   fields,
   options,
-  prefix,
   objectMap,
   allFields,
   allObjects,
@@ -388,7 +386,6 @@ export function BoardColumn({
         object={object}
         fields={fields}
         options={options}
-        prefix={prefix}
         objectMap={objectMap}
         allFields={allFields}
         allObjects={allObjects}
@@ -599,8 +596,17 @@ export function BoardColumn({
           {objects.map((object) => renderCard(object))}
 
           {totalCount === 0 && !hideHeader && (
-            <div className="flex items-center justify-center py-8">
+            <div className="flex flex-col items-center justify-center py-8 gap-2">
               <Inbox className="size-8 text-muted-foreground/30" />
+              {onCreateClick && (
+                <button
+                  onClick={onCreateClick}
+                  className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1"
+                >
+                  <Plus className="size-3" />
+                  Create
+                </button>
+              )}
             </div>
           )}
         </div>

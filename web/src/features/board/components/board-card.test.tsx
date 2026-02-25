@@ -6,16 +6,18 @@ import {
   fireEvent,
   createMockObject,
   createMockField,
+  createMockClass,
   createMockOption,
 } from "@/test/test-utils";
 import { BoardCard } from "./board-card";
 
 describe("BoardCard", () => {
+  const titleField = createMockField({ id: "title", name: "Title", fieldtype: "text" });
   const defaultProps = {
     object: createMockObject(),
-    fields: [],
+    fields: [titleField],
     options: {},
-    prefix: "TEST",
+    classMap: { task: createMockClass() },
   };
 
   it("should render object title", () => {
@@ -24,15 +26,15 @@ describe("BoardCard", () => {
     expect(screen.getByText("Test Task")).toBeInTheDocument();
   });
 
-  it("should use prefix-number as title when title is missing", () => {
+  it("should use Untitled as title when title is missing", () => {
     const objectWithoutTitle = createMockObject({
       values: { status: "todo" },
     });
 
     render(<BoardCard {...defaultProps} object={objectWithoutTitle} />);
 
-    // The title should fall back to prefix-number
-    const elements = screen.getAllByText("TEST-1");
+    // The title should fall back to "Untitled"
+    const elements = screen.getAllByText("Untitled");
     expect(elements.length).toBeGreaterThanOrEqual(1);
   });
 
@@ -162,7 +164,7 @@ describe("BoardCard", () => {
     expect(screen.queryByText("Bug")).not.toBeInTheDocument();
   });
 
-  it("should apply option colour to enumerated badge", () => {
+  it("should apply option colour as a dot next to enumerated badge", () => {
     const categoryField = createMockField({
       id: "category",
       name: "Category",
@@ -182,17 +184,20 @@ describe("BoardCard", () => {
       },
     });
 
-    render(
+    const { container } = render(
       <BoardCard
         {...defaultProps}
         object={objectWithCategory}
-        fields={[categoryField]}
+        fields={[titleField, categoryField]}
         options={{ category: categoryOptions }}
       />,
     );
 
-    const badge = screen.getByText("Bug");
-    expect(badge).toHaveStyle({ color: "#6b7280" });
+    expect(screen.getByText("Bug")).toBeInTheDocument();
+    // Colour is rendered as a dot (rounded-full span) next to the option name
+    const dot = container.querySelector("span.rounded-full");
+    expect(dot).toBeInTheDocument();
+    expect(dot).toHaveStyle({ backgroundColor: "#6b7280" });
   });
 
   it("should render multiple card fields", () => {
@@ -243,7 +248,7 @@ describe("BoardCard", () => {
     expect(screen.getByText("Urgent")).toBeInTheDocument();
   });
 
-  it("should show priority color strip when priority is set", () => {
+  it("should apply border color from borderField option", () => {
     const object = createMockObject({
       values: {
         title: "Test Task",
@@ -260,39 +265,30 @@ describe("BoardCard", () => {
         {...defaultProps}
         object={object}
         options={{ priority: priorityOptions }}
+        borderField="priority"
       />,
     );
 
-    // Look for the priority strip element
-    const strip = container.querySelector(".w-1.rounded-r-full");
-    expect(strip).toBeInTheDocument();
-    expect(strip).toHaveStyle({ backgroundColor: "rgb(239, 68, 68)" });
+    // Border color is applied via inline style on the card
+    const card = container.firstChild as HTMLElement;
+    expect(card).toHaveStyle({ borderColor: "#ef4444" });
   });
 
-  it("should show parent icon when parent is set", () => {
-    const parentObject = createMockObject({
-      id: "parent-1",
-      class: "epic",
-      number: 5,
-      values: { title: "Parent Epic" },
-    });
-
+  it("should render nested children when provided", () => {
     const childObject = createMockObject({
-      parent: "parent-1",
+      id: "child-1",
       values: { title: "Child Task" },
     });
 
-    const objectMap = { "parent-1": parentObject };
-
-    const { container } = render(
+    render(
       <BoardCard
         {...defaultProps}
-        object={childObject}
-        objectMap={objectMap}
+        children={[childObject]}
+        childrenByParent={{}}
       />,
     );
 
-    // Parent indicator icon should be rendered
-    expect(container.querySelector("svg")).toBeInTheDocument();
+    // Child should be rendered nested inside the parent card
+    expect(screen.getByText("Child Task")).toBeInTheDocument();
   });
 });

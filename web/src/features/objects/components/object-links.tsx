@@ -27,7 +27,6 @@ interface ObjectLinksProps {
   objectId: string;
   outgoing: ObjectLink[];
   incoming: ObjectLink[];
-  prefix: string;
   classes: CrmClass[];
   readOnly: boolean;
 }
@@ -44,7 +43,6 @@ export function ObjectLinks({
   objectId,
   outgoing,
   incoming,
-  prefix,
   classes,
   readOnly,
 }: ObjectLinksProps) {
@@ -53,9 +51,9 @@ export function ObjectLinks({
   const [search, setSearch] = useState("");
   const queryClient = useQueryClient();
 
-  const objectTitle = (obj: { class: string; number: number; values: Record<string, string> }) => {
+  const objectTitle = (obj: { class: string; values: Record<string, string> }) => {
     const cls = classes.find((c) => c.id === obj.class);
-    return (cls?.title ? obj.values[cls.title] : "") || `${prefix}-${obj.number}`;
+    return (cls?.title ? obj.values[cls.title] : "") || "Untitled";
   };
 
   const { data: objectListData } = useQuery({
@@ -137,7 +135,7 @@ export function ObjectLinks({
       items.push({
         id: `out-${link.target}-${link.linktype}`,
         label: LINK_TYPE_LABELS[link.linktype] || link.linktype,
-        displayName: linkedObj ? objectTitle(linkedObj) : (link.title || `${prefix}-${link.number}`),
+        displayName: linkedObj ? objectTitle(linkedObj) : (link.title || "Untitled"),
         source: objectId,
         target: link.target!,
         linktype: link.linktype,
@@ -149,7 +147,7 @@ export function ObjectLinks({
       items.push({
         id: `in-${link.source}-${link.linktype}`,
         label: link.linktype === "blocks" ? "Blocked by" : (LINK_TYPE_LABELS[link.linktype] || link.linktype),
-        displayName: linkedObj ? objectTitle(linkedObj) : (link.title || `${prefix}-${link.number}`),
+        displayName: linkedObj ? objectTitle(linkedObj) : (link.title || "Untitled"),
         source: link.source!,
         target: objectId,
         linktype: link.linktype,
@@ -157,7 +155,7 @@ export function ObjectLinks({
     }
 
     return items;
-  }, [outgoing, incoming, objectId, prefix, objectsMap]);
+  }, [outgoing, incoming, objectId, objectsMap]);
 
   // Filter objects for the add-link search
   const linkedObjectIds = useMemo(() => {
@@ -178,12 +176,11 @@ export function ObjectLinks({
     return objectListData.objects
       .filter((obj: CrmObject) => {
         if (linkedObjectIds.has(obj.id)) return false;
-        const readable = `${prefix}-${obj.number}`.toLowerCase();
         const title = objectTitle(obj).toLowerCase();
-        return readable.includes(q) || title.includes(q);
+        return title.includes(q);
       })
       .slice(0, 10);
-  }, [objectListData, search, linkedObjectIds, prefix]);
+  }, [objectListData, search, linkedObjectIds]);
 
   const handleAddLink = (targetObj: CrmObject) => {
     if (linkType === "blocked by") {

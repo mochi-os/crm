@@ -57,8 +57,6 @@ export function createMockCrm(overrides?: Partial<Crm>): Crm {
     fingerprint: "abc123def",
     name: "Test Crm",
     description: "A test crm",
-    prefix: "TEST",
-    counter: 10,
     owner: 1,
     ownername: "testuser",
     server: "local",
@@ -131,12 +129,10 @@ export function createMockObject(
     id: "obj-1",
     crm: "proj-1",
     class: "task",
-    number: 1,
     parent: "",
     rank: 1,
     created: Date.now(),
     updated: Date.now(),
-    readable: "TEST-1",
     values: {
       title: "Test Task",
       status: "todo",
@@ -197,8 +193,6 @@ export function createMockObjects(count: number): CrmObject[] {
   return Array.from({ length: count }, (_, i) =>
     createMockObject({
       id: `obj-${i + 1}`,
-      number: i + 1,
-      readable: `TEST-${i + 1}`,
       values: {
         title: `Task ${i + 1}`,
         status: ["todo", "in_progress", "done"][i % 3],
