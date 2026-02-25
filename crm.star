@@ -1442,8 +1442,8 @@ def action_object_get(a):
 			"readable": crm["prefix"] + "-" + str(row["number"])
 		},
 		"values": values,
-		"links": links,
-		"linked_by": linked_by,
+		"outgoing": links,
+		"incoming": linked_by,
 		"watching": watching,
 		"requests": requests,
 		"comment_count": comment_count,
@@ -2035,7 +2035,7 @@ def action_link_create(a):
 		a.error(400, "Link type is required")
 		return
 
-	if linktype not in ["blocks", "blocked_by", "relates", "duplicates"]:
+	if linktype not in ["blocks", "relates", "duplicates"]:
 		a.error(400, "Invalid link type")
 		return
 
@@ -2103,7 +2103,7 @@ def action_link_delete(a):
 		a.error(400, "Object, target, and linktype are required")
 		return
 
-	if linktype not in ["blocks", "blocked_by", "relates", "duplicates"]:
+	if linktype not in ["blocks", "relates", "duplicates"]:
 		a.error(400, "Invalid link type")
 		return
 

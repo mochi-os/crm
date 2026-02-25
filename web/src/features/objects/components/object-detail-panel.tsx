@@ -27,6 +27,7 @@ import { FieldEditor } from "./field-editor";
 import { CommentList } from "./comment-list";
 import { ActivityList } from "./activity-list";
 import { ObjectAttachments } from "./object-attachments";
+import { ObjectLinks } from "./object-links";
 
 interface ObjectDetailPanelProps {
   crmId: string;
@@ -91,8 +92,8 @@ export function ObjectDetailPanel({
       return {
         object: { ...obj, readable: `${crm.crm.prefix}-${obj.number}` },
         values: obj.values,
-        links: [],
-        linked_by: [],
+        outgoing: [],
+        incoming: [],
         watching: cached.watched?.includes(objectId) ?? false,
         comment_count: 0,
       };
@@ -437,6 +438,16 @@ export function ObjectDetailPanel({
               <ObjectAttachments
                 crmId={crmId}
                 objectId={objectId!}
+                readOnly={!canWrite(access)}
+              />
+
+              <ObjectLinks
+                crmId={crmId}
+                objectId={objectId!}
+                outgoing={data.outgoing}
+                incoming={data.incoming}
+                prefix={crm.crm.prefix}
+                classes={crm.classes}
                 readOnly={!canWrite(access)}
               />
             </div>

@@ -173,8 +173,8 @@ export interface ObjectGetResponse {
   data: {
     object: CrmObject & { readable: string };
     values: Record<string, string>;
-    links: ObjectLink[];
-    linked_by: ObjectLink[];
+    outgoing: ObjectLink[];
+    incoming: ObjectLink[];
     watching: boolean;
     comment_count: number;
   };
