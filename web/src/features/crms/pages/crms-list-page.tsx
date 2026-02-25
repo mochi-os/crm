@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -59,8 +59,12 @@ export function CrmsListPage() {
     staleTime: Infinity,
   });
 
+  // Show notification subscription dialog once on mount if user has CRMs but hasn't been asked
+  const promptedNotifications = useRef(false);
   useEffect(() => {
+    if (promptedNotifications.current) return;
     if (!isLoading && crms.length > 0 && subscriptionData?.data?.exists === false) {
+      promptedNotifications.current = true;
       setSubscribeOpen(true);
     }
   }, [isLoading, crms.length, subscriptionData?.data?.exists]);
