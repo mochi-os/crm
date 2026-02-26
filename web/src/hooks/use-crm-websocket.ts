@@ -9,6 +9,8 @@ interface CrmWebsocketEvent {
   crm: string;
   object?: string;
   id?: string;
+  source?: string;
+  target?: string;
 }
 
 const RECONNECT_DELAY = 3000;
@@ -172,6 +174,62 @@ export function useCrmWebsocket(crmFingerprint?: string) {
               queryKey: ["object", pid, data.id],
             });
           }
+          break;
+        case "values/update":
+          if (data.id) {
+            void queryClient.invalidateQueries({
+              queryKey: ["object", pid, data.id],
+            });
+          }
+          void queryClient.invalidateQueries({
+            queryKey: ["objects", pid],
+          });
+          break;
+        case "link/create":
+        case "link/delete":
+          if (data.source) {
+            void queryClient.invalidateQueries({
+              queryKey: ["object", pid, data.source],
+            });
+          }
+          if (data.target) {
+            void queryClient.invalidateQueries({
+              queryKey: ["object", pid, data.target],
+            });
+          }
+          break;
+        case "attachment/add":
+        case "attachment/remove":
+          if (data.object) {
+            void queryClient.invalidateQueries({
+              queryKey: ["attachments", pid, data.object],
+            });
+          }
+          break;
+        case "crm/update":
+          void queryClient.invalidateQueries({
+            queryKey: ["crm", pid],
+          });
+          break;
+        case "class/create":
+        case "class/update":
+        case "class/delete":
+        case "field/create":
+        case "field/update":
+        case "field/delete":
+        case "field/reorder":
+        case "option/create":
+        case "option/update":
+        case "option/delete":
+        case "option/reorder":
+        case "view/create":
+        case "view/update":
+        case "view/delete":
+        case "view/reorder":
+        case "hierarchy/set":
+          void queryClient.invalidateQueries({
+            queryKey: ["crm", pid],
+          });
           break;
       }
     };
