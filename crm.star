@@ -241,9 +241,6 @@ def database_create():
 	)""")
 	mochi.db.execute("create index if not exists requests_object on requests(object)")
 
-	# Migrations
-	mochi.db.execute("update views set viewtype='list' where viewtype='tree'")
-
 def database_upgrade(version):
 	if version == 2:
 		mochi.db.execute("""create table if not exists subscribers (
@@ -278,10 +275,10 @@ def get_templates():
 	return templates
 
 # Apply a template to a crm by loading from JSON or from provided data
-def apply_template(crm_id, template_id, data=None):
+def apply_template(crm_id, data=None):
 	# Load template JSON from file if no data provided
 	if not data:
-		content = mochi.app.file.read("templates/" + template_id + ".json")
+		content = mochi.app.file.read("templates/crm.json")
 		data = json.decode(str(content))
 
 	# Create classes
@@ -338,11 +335,11 @@ def apply_template(crm_id, template_id, data=None):
 			)
 		# Add fields
 		fields = v.get("fields", "").split(",")
-		for i, field in enumerate(fields):
+		for j, field in enumerate(fields):
 			if field.strip():
 				mochi.db.execute(
 					"insert into view_fields (crm, view, field, rank) values (?, ?, ?, ?)",
-					crm_id, v["id"], field.strip(), i
+					crm_id, v["id"], field.strip(), j
 				)
 
 
@@ -553,7 +550,7 @@ def action_design_import(a):
 	mochi.db.execute("delete from classes where crm=?", crm_id)
 
 	# Apply the new design
-	apply_template(crm_id, None, data)
+	apply_template(crm_id, data)
 
 	# Update template tracking
 	mochi.db.execute(
@@ -632,7 +629,7 @@ def action_crm_create(a):
 	)
 
 	# Apply CRM template
-	apply_template(entity, "crm")
+	apply_template(entity)
 
 	# Set up access control
 	resource = "crm/" + entity
@@ -856,18 +853,8 @@ def action_crm_delete(a):
 # List crm members (subscribers + unique owners + current user)
 def action_people_list(a):
 
-	crm_id = resolve_crm(a)
+	crm_id, crm = require_crm(a)
 	if not crm_id:
-		a.error(400, "CRM ID required")
-		return
-
-	crm = get_crm(crm_id)
-	if not crm:
-		a.error(404, "CRM not found")
-		return
-
-	if crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error(403, "Access denied")
 		return
 
 	# Collect unique people with names
@@ -1111,6 +1098,26 @@ def get_crm(crm_id):
 		row = mochi.db.row("select * from crms where fingerprint=?", crm_id)
 	return row
 
+def require_crm(a, level="view"):
+	"""Resolve CRM, check existence and access. Returns (crm_id, crm) or (None, None) on error."""
+	crm_id = resolve_crm(a)
+	if not crm_id:
+		a.error(400, "CRM ID required")
+		return None, None
+	crm = get_crm(crm_id)
+	if not crm:
+		a.error(404, "CRM not found")
+		return None, None
+	if level == "view":
+		if crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, level):
+			a.error(403, "Access denied")
+			return None, None
+	else:
+		if not check_crm_access(a.user.identity.id, crm_id, level):
+			a.error(403, "Access denied")
+			return None, None
+	return crm_id, crm
+
 def log_activity(object_id, user, action, field="", oldvalue="", newvalue=""):
 	"""Log an activity entry for an object."""
 	activity_id = mochi.uid()
@@ -1200,18 +1207,8 @@ def delete_object_cascade(crm_id, object_id, user=""):
 
 def action_object_list(a):
 
-	crm_id = resolve_crm(a)
+	crm_id, crm = require_crm(a)
 	if not crm_id:
-		a.error(400, "CRM ID required")
-		return
-
-	crm = get_crm(crm_id)
-	if not crm:
-		a.error(404, "CRM not found")
-		return
-
-	if crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error(403, "Access denied")
 		return
 
 	# Get filter params
@@ -1371,14 +1368,8 @@ def action_object_create(a):
 
 def action_object_get(a):
 
-	crm_id = resolve_crm(a)
+	crm_id, crm = require_crm(a)
 	if not crm_id:
-		a.error(400, "CRM ID required")
-		return
-
-	crm = get_crm(crm_id)
-	if crm and crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error(403, "Access denied")
 		return
 
 	object_id = a.input("object")
@@ -1650,6 +1641,10 @@ def action_object_move(a):
 	field = a.input("field") or ""
 	value = a.input("value")  # New column value
 	new_rank = a.input("rank")
+
+	if field and len(field) > 100:
+		a.error(400, "Field name too long")
+		return
 
 	if value and len(str(value)) > 10000:
 		a.error(400, "Value too long")
@@ -1943,14 +1938,8 @@ def action_value_set(a):
 
 def action_link_list(a):
 
-	crm_id = resolve_crm(a)
+	crm_id, crm = require_crm(a)
 	if not crm_id:
-		a.error(400, "CRM ID required")
-		return
-
-	crm = get_crm(crm_id)
-	if crm and crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error(403, "Access denied")
 		return
 
 	object_id = a.input("object")
@@ -2148,14 +2137,8 @@ def delete_crm_comment_attachments(crm_id):
 
 def action_comment_list(a):
 
-	crm_id = resolve_crm(a)
+	crm_id, crm = require_crm(a)
 	if not crm_id:
-		a.error(400, "CRM ID required")
-		return
-
-	crm = get_crm(crm_id)
-	if crm and crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error(403, "Access denied")
 		return
 
 	object_id = a.input("object")
@@ -2398,14 +2381,8 @@ def action_comment_delete(a):
 
 def action_attachment_list(a):
 
-	crm_id = resolve_crm(a)
+	crm_id, crm = require_crm(a)
 	if not crm_id:
-		a.error(400, "CRM ID required")
-		return
-
-	crm = get_crm(crm_id)
-	if crm and crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error(403, "Access denied")
 		return
 
 	object_id = a.input("object")
@@ -2541,14 +2518,8 @@ def action_attachment_delete(a):
 
 def action_activity_list(a):
 
-	crm_id = resolve_crm(a)
+	crm_id, crm = require_crm(a)
 	if not crm_id:
-		a.error(400, "CRM ID required")
-		return
-
-	crm = get_crm(crm_id)
-	if crm and crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error(403, "Access denied")
 		return
 
 	object_id = a.input("object")
@@ -2561,9 +2532,16 @@ def action_activity_list(a):
 		a.error(404, "Object not found")
 		return
 
+	limit = int(a.input("limit") or "100")
+	offset = int(a.input("offset") or "0")
+	if limit < 1 or limit > 500:
+		limit = 100
+	if offset < 0:
+		offset = 0
+
 	rows = mochi.db.rows(
-		"select id, user, action, field, oldvalue, newvalue, created from activity where object=? order by created desc",
-		object_id
+		"select id, user, action, field, oldvalue, newvalue, created from activity where object=? order by created desc limit ? offset ?",
+		object_id, limit, offset
 	) or []
 
 	# Resolve user names
@@ -2591,14 +2569,8 @@ def action_activity_list(a):
 
 def action_watcher_list(a):
 
-	crm_id = resolve_crm(a)
+	crm_id, crm = require_crm(a)
 	if not crm_id:
-		a.error(400, "CRM ID required")
-		return
-
-	crm = get_crm(crm_id)
-	if crm and crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error(403, "Access denied")
 		return
 
 	object_id = a.input("object")
@@ -2620,24 +2592,13 @@ def action_watcher_list(a):
 
 def action_watcher_add(a):
 
-	crm_id = resolve_crm(a)
+	crm_id, crm = require_crm(a)
 	if not crm_id:
-		a.error(400, "CRM ID required")
-		return
-
-	crm = get_crm(crm_id)
-	if not crm:
-		a.error(404, "CRM not found")
 		return
 
 	object_id = a.input("object")
 	if not object_id:
 		a.error(400, "Object ID required")
-		return
-
-	# Watchers are stored locally since object_get checks the local DB
-	if crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error(403, "Access denied")
 		return
 
 	row = mochi.db.row("select id from objects where id=? and crm=?", object_id, crm_id)
@@ -2656,24 +2617,13 @@ def action_watcher_add(a):
 
 def action_watcher_remove(a):
 
-	crm_id = resolve_crm(a)
+	crm_id, crm = require_crm(a)
 	if not crm_id:
-		a.error(400, "CRM ID required")
-		return
-
-	crm = get_crm(crm_id)
-	if not crm:
-		a.error(404, "CRM not found")
 		return
 
 	object_id = a.input("object")
 	if not object_id:
 		a.error(400, "Object ID required")
-		return
-
-	# Watchers are stored locally since object_get checks the local DB
-	if crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error(403, "Access denied")
 		return
 
 	row = mochi.db.row("select id from objects where id=? and crm=?", object_id, crm_id)
@@ -2693,18 +2643,8 @@ def action_watcher_remove(a):
 
 def action_view_list(a):
 
-	crm_id = resolve_crm(a)
+	crm_id, crm = require_crm(a)
 	if not crm_id:
-		a.error(400, "CRM ID required")
-		return
-
-	crm = get_crm(crm_id)
-	if not crm:
-		a.error(404, "CRM not found")
-		return
-
-	if crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error(403, "Access denied")
 		return
 
 	views = mochi.db.rows(
@@ -3012,18 +2952,8 @@ def action_view_reorder(a):
 
 def action_class_list(a):
 
-	crm_id = resolve_crm(a)
+	crm_id, crm = require_crm(a)
 	if not crm_id:
-		a.error(400, "CRM ID required")
-		return
-
-	crm = get_crm(crm_id)
-	if not crm:
-		a.error(404, "CRM not found")
-		return
-
-	if crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error(403, "Access denied")
 		return
 
 	classes = mochi.db.rows("select id, name, rank, title from classes where crm=? order by rank", crm_id) or []
@@ -3207,18 +3137,8 @@ def action_class_delete(a):
 
 def action_hierarchy_get(a):
 
-	crm_id = resolve_crm(a)
+	crm_id, crm = require_crm(a)
 	if not crm_id:
-		a.error(400, "CRM ID required")
-		return
-
-	crm = get_crm(crm_id)
-	if not crm:
-		a.error(404, "CRM not found")
-		return
-
-	if crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error(403, "Access denied")
 		return
 
 	class_id = a.input("class")
@@ -3303,18 +3223,8 @@ def action_hierarchy_set(a):
 
 def action_field_list(a):
 
-	crm_id = resolve_crm(a)
+	crm_id, crm = require_crm(a)
 	if not crm_id:
-		a.error(400, "CRM ID required")
-		return
-
-	crm = get_crm(crm_id)
-	if not crm:
-		a.error(404, "CRM not found")
-		return
-
-	if crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error(403, "Access denied")
 		return
 
 	class_id = a.input("class")
@@ -3612,18 +3522,8 @@ def action_field_reorder(a):
 
 def action_option_list(a):
 
-	crm_id = resolve_crm(a)
+	crm_id, crm = require_crm(a)
 	if not crm_id:
-		a.error(400, "CRM ID required")
-		return
-
-	crm = get_crm(crm_id)
-	if not crm:
-		a.error(404, "CRM not found")
-		return
-
-	if crm["owner"] == 1 and not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error(403, "Access denied")
 		return
 
 	class_id = a.input("class")
@@ -3883,6 +3783,7 @@ def action_search(a):
 		return
 
 	results = []
+	all_crms = None  # Lazy-loaded for fingerprint lookups
 
 	# Check if search term is an entity ID (49-51 word characters)
 	if mochi.valid(search, "entity"):
@@ -3957,7 +3858,8 @@ def action_search(a):
 
 			# Try as fingerprint — check local directory first, then probe remote
 			elif mochi.valid(crm_id, "fingerprint"):
-				all_crms = mochi.directory.search("crm", "", False)
+				if all_crms == None:
+					all_crms = mochi.directory.search("crm", "", False)
 				for entry in all_crms:
 					entry_fp = entry.get("fingerprint", "").replace("-", "")
 					if entry_fp == crm_id.replace("-", ""):
