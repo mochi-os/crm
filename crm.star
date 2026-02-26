@@ -18,7 +18,7 @@ def broadcast_event(crm_id, event, data, exclude=None):
 			continue
 		mochi.message.send(p2p_headers(crm_id, sub["id"], event), data)
 
-# Create database with all 14 tables
+# Create database with all 17 tables
 def database_create():
 	# 1. crms - the container, a Mochi entity
 	mochi.db.execute("""create table if not exists crms (
@@ -1913,8 +1913,8 @@ def action_value_set(a):
 		a.error(400, "Invalid field for this class")
 		return
 
-	new_value = a.input("value")
-	if len(str(new_value)) > 10000:
+	new_value = a.input("value") or ""
+	if len(new_value) > 10000:
 		a.error(400, "Value too long")
 		return
 
@@ -2191,6 +2191,9 @@ def action_comment_create(a):
 	if crm["owner"] != 1:
 		if not object_id:
 			a.error(400, "Object ID required")
+			return
+		if not mochi.db.row("select id from objects where id=? and crm=?", object_id, crm_id):
+			a.error(404, "Object not found")
 			return
 		comment_id = mochi.uid()
 		now = mochi.time.now()
@@ -5017,6 +5020,8 @@ def event_view_delete(e):
 	if not view_id:
 		return
 	mochi.db.execute("delete from views where id=? and crm=?", view_id, crm_id)
+	mochi.db.execute("delete from view_fields where view=? and crm=?", view_id, crm_id)
+	mochi.db.execute("delete from view_classes where view=? and crm=?", view_id, crm_id)
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "view/delete", "crm": crm_id, "id": view_id})
@@ -5968,7 +5973,7 @@ def do_field_create(crm_id, crm, params):
 	flags = params.get("flags", "")
 	multi = 1 if params.get("multi") == "1" or params.get("multi") == "true" else 0
 	card = 1 if params.get("card") != "0" and params.get("card") != "false" else 0
-	rows = int(params.get("rows")) if params.get("rows") else 1
+	rows = safe_int(params.get("rows"), 1)
 	mochi.db.execute(
 		"insert into fields (crm, class, id, name, fieldtype, flags, multi, rank, card, rows) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 		crm_id, class_id, field_id, name.strip(), fieldtype, flags, multi, rank, card, rows
