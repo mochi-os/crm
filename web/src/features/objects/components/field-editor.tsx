@@ -219,7 +219,6 @@ export function FieldEditor({
             onBlur={handleBlur}
             disabled={disabled}
             autoFocus={autoFocus}
-            rows={field.rows}
           />
         );
 
