@@ -256,6 +256,15 @@ def database_upgrade(version):
 # Templates
 # ============================================================================
 
+def safe_int(value, default=0):
+	"""Convert value to int, returning default if not a valid integer."""
+	s = str(value) if value else ""
+	if not s:
+		return default
+	if s[0] == "-":
+		return int(s) if s[1:].isdigit() else default
+	return int(s) if s.isdigit() else default
+
 # Get available crm templates from JSON files
 def get_templates():
 	templates = {}
@@ -514,7 +523,7 @@ def action_design_import(a):
 
 	data_str = a.input("data")
 	template_id = a.input("template") or ""
-	template_version = int(a.input("template_version") or "0")
+	template_version = safe_int(a.input("template_version"))
 
 	if data_str and len(data_str) > 1000000:
 		a.error(400, "Design data too large")
@@ -659,36 +668,39 @@ def action_crm_get(a):
 	# Get classes
 	classes = mochi.db.rows("select id, name, rank, requests, title from classes where crm=? order by rank", crm_id) or []
 
-	# Get fields by class
+	# Get all fields in one query, group by class
 	fields = {}
-	for c in classes:
-		class_fields = mochi.db.rows("select id, name, fieldtype, flags, multi, rank, card, position, rows from fields where crm=? and class=? order by rank", crm_id, c["id"]) or []
-		fields[c["id"]] = class_fields
+	all_fields = mochi.db.rows("select class, id, name, fieldtype, flags, multi, rank, card, position, rows from fields where crm=? order by class, rank", crm_id) or []
+	for f in all_fields:
+		fields.setdefault(f["class"], []).append(f)
 
-	# Get options by class and field
+	# Get all options in one query, group by class and field
 	options = {}
-	for c in classes:
-		options[c["id"]] = {}
-		for f in fields.get(c["id"], []):
-			if f["fieldtype"] == "enumerated":
-				field_options = mochi.db.rows("select id, name, colour, icon, rank from options where crm=? and class=? and field=? order by rank", crm_id, c["id"], f["id"]) or []
-				options[c["id"]][f["id"]] = field_options
+	all_options = mochi.db.rows("select class, field, id, name, colour, icon, rank from options where crm=? order by class, field, rank", crm_id) or []
+	for o in all_options:
+		options.setdefault(o["class"], {}).setdefault(o["field"], []).append(o)
 
 	# Get views
 	views = mochi.db.rows("select id, name, viewtype, filter, columns, rows, sort, direction, rank, border from views where crm=? order by rank, name", crm_id) or []
 
-	# Add classes and fields to each view
+	# Batch-fetch view classes and fields
+	all_view_classes = mochi.db.rows("select view, class from view_classes where crm=?", crm_id) or []
+	vc_map = {}
+	for vc in all_view_classes:
+		vc_map.setdefault(vc["view"], []).append(vc["class"])
+	all_view_fields = mochi.db.rows("select view, field from view_fields where crm=? order by rank", crm_id) or []
+	vf_map = {}
+	for vf in all_view_fields:
+		vf_map.setdefault(vf["view"], []).append(vf["field"])
 	for v in views:
-		view_classes = mochi.db.rows("select class from view_classes where crm=? and view=?", crm_id, v["id"]) or []
-		v["classes"] = [vc["class"] for vc in view_classes]
-		view_fields = mochi.db.rows("select field from view_fields where crm=? and view=? order by rank", crm_id, v["id"]) or []
-		v["fields"] = ",".join([vf["field"] for vf in view_fields])
+		v["classes"] = vc_map.get(v["id"], [])
+		v["fields"] = ",".join(vf_map.get(v["id"], []))
 
-	# Get hierarchy
+	# Get all hierarchy in one query, group by class
 	hierarchy = {}
-	for c in classes:
-		parents = mochi.db.rows("select parent from hierarchy where crm=? and class=?", crm_id, c["id"]) or []
-		hierarchy[c["id"]] = [p["parent"] for p in parents]
+	all_hierarchy = mochi.db.rows("select class, parent from hierarchy where crm=?", crm_id) or []
+	for h in all_hierarchy:
+		hierarchy.setdefault(h["class"], []).append(h["parent"])
 
 	# Determine access level
 	if row["owner"] == 1:
@@ -1401,9 +1413,6 @@ def action_object_get(a):
 	if watching:
 		mochi.service.call("notifications", "clear.object", "crm", object_id)
 
-	# Get requests (merge requests etc.)
-	requests = mochi.db.rows("select id, object, type, repository, source, target, status, title, description, draft, created, updated from requests where object=?", object_id) or []
-
 	# Get comment count
 	comment_row = mochi.db.row("select count(*) as count from comments where object=?", object_id)
 	comment_count = comment_row["count"] if comment_row else 0
@@ -1421,7 +1430,6 @@ def action_object_get(a):
 		"outgoing": links,
 		"incoming": linked_by,
 		"watching": watching,
-		"requests": requests,
 		"comment_count": comment_count,
 	}}
 
@@ -2532,12 +2540,10 @@ def action_activity_list(a):
 		a.error(404, "Object not found")
 		return
 
-	limit = int(a.input("limit") or "100")
-	offset = int(a.input("offset") or "0")
+	limit = safe_int(a.input("limit"), 100)
+	offset = safe_int(a.input("offset"))
 	if limit < 1 or limit > 500:
 		limit = 100
-	if offset < 0:
-		offset = 0
 
 	rows = mochi.db.rows(
 		"select id, user, action, field, oldvalue, newvalue, created from activity where object=? order by created desc limit ? offset ?",
@@ -3302,7 +3308,7 @@ def action_field_create(a):
 	flags = a.input("flags") or ""
 	multi = 1 if a.input("multi") == "1" or a.input("multi") == "true" else 0
 	card = 1 if a.input("card") != "0" and a.input("card") != "false" else 0
-	rows = int(a.input("rows")) if a.input("rows") else 1
+	rows = safe_int(a.input("rows"), 1)
 
 	mochi.db.execute(
 		"insert into fields (crm, class, id, name, fieldtype, flags, multi, rank, card, rows) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
@@ -3383,11 +3389,11 @@ def action_field_update(a):
 		mochi.db.execute("update fields set pattern=? where crm=? and class=? and id=?", pattern, crm_id, class_id, field_id)
 		update_data["pattern"] = pattern
 	if a.input("minlength") != None:
-		minlength = int(a.input("minlength"))
+		minlength = safe_int(a.input("minlength"))
 		mochi.db.execute("update fields set minlength=? where crm=? and class=? and id=?", minlength, crm_id, class_id, field_id)
 		update_data["minlength"] = minlength
 	if a.input("maxlength") != None:
-		maxlength = int(a.input("maxlength"))
+		maxlength = safe_int(a.input("maxlength"))
 		mochi.db.execute("update fields set maxlength=? where crm=? and class=? and id=?", maxlength, crm_id, class_id, field_id)
 		update_data["maxlength"] = maxlength
 	if a.input("prefix") != None:
@@ -3407,7 +3413,7 @@ def action_field_update(a):
 		mochi.db.execute("update fields set position=? where crm=? and class=? and id=?", position, crm_id, class_id, field_id)
 		update_data["position"] = position
 	if a.input("rows") != None:
-		rows_val = int(a.input("rows"))
+		rows_val = safe_int(a.input("rows"), 1)
 		mochi.db.execute("update fields set rows=? where crm=? and class=? and id=?", rows_val, crm_id, class_id, field_id)
 		update_data["rows"] = rows_val
 
@@ -3901,6 +3907,20 @@ def action_search(a):
 
 
 # ============================================================================
+# User/Group Proxy Actions (proxy to people app)
+# ============================================================================
+
+def action_users_search(a):
+	query = a.input("q", "")
+	results = mochi.service.call("people", "users/search", query)
+	return {"data": {"results": results}}
+
+def action_groups(a):
+	groups = mochi.service.call("people", "groups/list")
+	return {"data": {"groups": groups}}
+
+
+# ============================================================================
 # Notification Actions
 # ============================================================================
 
@@ -4218,53 +4238,59 @@ def event_schema(e):
 	# Classes
 	classes = mochi.db.rows("select id, name, rank, requests, title from classes where crm=?", crm_id) or []
 
-	# Fields with class context
-	fields = []
-	for c in classes:
-		class_fields = mochi.db.rows("select id, name, fieldtype, flags, multi, rank, card, position, rows from fields where crm=? and class=? order by rank", crm_id, c["id"]) or []
-		for f in class_fields:
-			f["class"] = c["id"]
-			fields.append(f)
+	# Fields — batch fetch, already include class column
+	fields = mochi.db.rows("select class, id, name, fieldtype, flags, multi, rank, card, position, rows from fields where crm=? order by class, rank", crm_id) or []
 
-	# Options with class and field context
-	options = []
-	for c in classes:
-		for f in (mochi.db.rows("select id, fieldtype from fields where crm=? and class=?", crm_id, c["id"]) or []):
-			if f["fieldtype"] == "enumerated":
-				field_options = mochi.db.rows("select id, name, colour, icon, rank from options where crm=? and class=? and field=? order by rank", crm_id, c["id"], f["id"]) or []
-				for o in field_options:
-					o["class"] = c["id"]
-					o["field"] = f["id"]
-					options.append(o)
+	# Options — batch fetch, already include class and field columns
+	options = mochi.db.rows("select class, field, id, name, colour, icon, rank from options where crm=? order by class, field, rank", crm_id) or []
 
-	# Hierarchy
+	# Hierarchy — batch fetch, group by class
 	hierarchy = []
-	for c in classes:
-		parents = mochi.db.rows("select parent from hierarchy where crm=? and class=?", crm_id, c["id"]) or []
-		if parents:
-			hierarchy.append({"class": c["id"], "parents": [p["parent"] for p in parents]})
+	all_hierarchy = mochi.db.rows("select class, parent from hierarchy where crm=?", crm_id) or []
+	hierarchy_map = {}
+	for h in all_hierarchy:
+		hierarchy_map.setdefault(h["class"], []).append(h["parent"])
+	for cls, parents in hierarchy_map.items():
+		hierarchy.append({"class": cls, "parents": parents})
 
-	# Views with fields and classes
-	views = []
-	for v in (mochi.db.rows("select id, name, viewtype, filter, columns, rows, sort, direction, rank, border from views where crm=? order by rank, name", crm_id) or []):
-		view_fields = mochi.db.rows("select field from view_fields where crm=? and view=? order by rank", crm_id, v["id"]) or []
-		view_classes = mochi.db.rows("select class from view_classes where crm=? and view=?", crm_id, v["id"]) or []
-		v["fields"] = ",".join([vf["field"] for vf in view_fields])
-		v["classes"] = ",".join([vc["class"] for vc in view_classes])
-		views.append(v)
+	# Views — batch fetch view classes and fields
+	views = mochi.db.rows("select id, name, viewtype, filter, columns, rows, sort, direction, rank, border from views where crm=? order by rank, name", crm_id) or []
+	all_view_fields = mochi.db.rows("select view, field from view_fields where crm=? order by rank", crm_id) or []
+	vf_map = {}
+	for vf in all_view_fields:
+		vf_map.setdefault(vf["view"], []).append(vf["field"])
+	all_view_classes = mochi.db.rows("select view, class from view_classes where crm=?", crm_id) or []
+	vc_map = {}
+	for vc in all_view_classes:
+		vc_map.setdefault(vc["view"], []).append(vc["class"])
+	for v in views:
+		v["fields"] = ",".join(vf_map.get(v["id"], []))
+		v["classes"] = ",".join(vc_map.get(v["id"], []))
 
-	# Objects with values and comments
+	# Objects — batch fetch all, then batch fetch values and comments
+	all_objects = mochi.db.rows("select id, class, parent, rank, created, updated from objects where crm=?", crm_id) or []
+	object_ids = [obj["id"] for obj in all_objects]
+
+	values_map = {}
+	if object_ids:
+		placeholders = ",".join(["?" for _ in object_ids])
+		all_values = mochi.db.rows("select object, field, value from \"values\" where object in (" + placeholders + ")", *object_ids) or []
+		for v in all_values:
+			values_map.setdefault(v["object"], {})[v["field"]] = v["value"]
+
+	comments_map = {}
+	if object_ids:
+		placeholders = ",".join(["?" for _ in object_ids])
+		all_comments = mochi.db.rows("select object, id, parent, author, name, content, created, edited from comments where object in (" + placeholders + ") order by created", *object_ids) or []
+		for c in all_comments:
+			comments_map.setdefault(c["object"], []).append(c)
+
 	objects = []
-	for obj in (mochi.db.rows("select id, class, parent, rank, created, updated from objects where crm=?", crm_id) or []):
-		vals = mochi.db.rows("select field, value from \"values\" where object=?", obj["id"])
-		if vals:
-			values_map = {}
-			for v in vals:
-				values_map[v["field"]] = v["value"]
-			obj["values"] = values_map
-		comments = mochi.db.rows("select id, parent, author, name, content, created, edited from comments where object=? order by created", obj["id"])
-		if comments:
-			obj["comments"] = comments
+	for obj in all_objects:
+		if obj["id"] in values_map:
+			obj["values"] = values_map[obj["id"]]
+		if obj["id"] in comments_map:
+			obj["comments"] = comments_map[obj["id"]]
 		objects.append(obj)
 
 	# Links
@@ -5243,104 +5269,7 @@ def event_option_reorder(e):
 	if fp:
 		mochi.websocket.write(fp, {"type": "option/reorder", "crm": crm_id})
 
-# Handle merge request from subscriber (P2P request-response)
-def event_merge_request(e):
-	requester = e.header("from")
-	crm_id = e.content("crm")
-
-	crm = mochi.db.row("select * from crms where id=? and owner=1", crm_id)
-	if not crm:
-		e.stream.write({"error": "CRM not found", "code": 404})
-		return
-
-	# Check the requester has write access
-	if not mochi.access.check(requester, "crm/" + crm_id, "write"):
-		e.stream.write({"error": "Write access required", "code": 403})
-		return
-
-	repo_id = e.content("repo")
-	source = e.content("source")
-	target = e.content("target")
-	message = e.content("message") or "Merge branch"
-	method = e.content("method") or "merge"
-	author_name = e.content("author_name") or "Mochi"
-	author_email = e.content("author_email") or ""
-
-	result = mochi.service.call("repositories", "merge", {
-		"repo": repo_id,
-		"source": source,
-		"target": target,
-		"message": message,
-		"method": method,
-		"author_name": author_name,
-		"author_email": author_email,
-	})
-
-	if result == None:
-		e.stream.write({"error": "Repositories service unavailable", "code": 500})
-		return
-
-	e.stream.write(result)
-
-
 # ============================================================================
-# Request P2P Events
-# ============================================================================
-
-# Request created remotely
-def event_request_create(e):
-	crm_id = verify_subscription(e)
-	if not crm_id:
-		return
-	req = e.content("request")
-	if not req:
-		return
-	mochi.db.execute(
-		"insert or ignore into requests (id, object, type, repository, source, target, status, title, description, draft, created, updated) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-		req.get("id", ""), req.get("object", ""), req.get("type", "merge"),
-		req.get("repository", ""), req.get("source", ""), req.get("target", ""),
-		req.get("status", "open"), req.get("title", ""), req.get("description", ""),
-		req.get("draft", 0), req.get("created", mochi.time.now()), req.get("updated", mochi.time.now())
-	)
-	fp = mochi.entity.fingerprint(crm_id)
-	if fp:
-		mochi.websocket.write(fp, {"type": "request/create", "crm": crm_id, "request": req})
-
-# Request updated remotely
-def event_request_update(e):
-	crm_id = verify_subscription(e)
-	if not crm_id:
-		return
-	req = e.content("request")
-	if not req:
-		return
-	request_id = req.get("id", "")
-	if not request_id:
-		return
-	mochi.db.execute(
-		"update requests set repository=?, source=?, target=?, status=?, title=?, description=?, draft=?, updated=? where id=?",
-		req.get("repository", ""), req.get("source", ""), req.get("target", ""),
-		req.get("status", ""), req.get("title", ""), req.get("description", ""),
-		req.get("draft", 0), req.get("updated", mochi.time.now()), request_id
-	)
-	fp = mochi.entity.fingerprint(crm_id)
-	if fp:
-		mochi.websocket.write(fp, {"type": "request/update", "crm": crm_id, "request": req})
-
-# Request deleted remotely
-def event_request_delete(e):
-	crm_id = verify_subscription(e)
-	if not crm_id:
-		return
-	request_id = e.content("id")
-	if not request_id:
-		return
-	mochi.db.execute("delete from requests where id=?", request_id)
-	fp = mochi.entity.fingerprint(crm_id)
-	if fp:
-		mochi.websocket.write(fp, {"type": "request/delete", "crm": crm_id, "id": request_id, "object": e.content("object")})
-
-
 # ============================================================================
 # Remote Request Handling (P2P request-response for subscriber actions)
 # ============================================================================
@@ -5353,7 +5282,6 @@ REQUEST_LEVELS = {
 	"object/move": "write", "values/set": "write", "value/set": "write",
 	"link/create": "write", "link/delete": "write",
 	"attachment/delete": "write",
-	"pr/create": "write", "pr/update": "write", "pr/delete": "write",
 	"class/create": "design", "class/update": "design", "class/delete": "design",
 	"field/create": "design", "field/update": "design", "field/delete": "design",
 	"field/reorder": "design",
@@ -5420,12 +5348,6 @@ def event_request(e):
 		result = do_link_delete(crm_id, crm, params, user_id)
 	elif action == "attachment/delete":
 		result = do_attachment_delete(crm_id, crm, params, user_id)
-	elif action == "request/create":
-		result = do_request_create(crm_id, crm, params, user_id)
-	elif action == "request/update":
-		result = do_request_update(crm_id, crm, params, user_id)
-	elif action == "request/delete":
-		result = do_request_delete(crm_id, crm, params, user_id)
 	elif action == "class/create":
 		result = do_class_create(crm_id, crm, params)
 	elif action == "class/update":
@@ -5953,86 +5875,6 @@ def do_attachment_delete(crm_id, crm, params, user_id):
 	mochi.attachment.delete(attachment_id, [])
 	broadcast_event(crm_id, "attachment/remove", {
 		"crm": crm_id, "attachment": attachment_id
-	})
-	return {"success": True}
-
-# Request helpers
-def do_request_create(crm_id, crm, params, user_id):
-	object_id = params.get("object")
-	if not object_id:
-		return {"error": "Object ID required", "code": 400}
-	obj = mochi.db.row("select * from objects where id=? and crm=?", object_id, crm_id)
-	if not obj:
-		return {"error": "Object not found", "code": 404}
-	request_type = params.get("type", "merge")
-	cls = mochi.db.row("select requests from classes where crm=? and id=?", crm_id, obj["class"])
-	if not cls or request_type not in cls["requests"].split(","):
-		return {"error": "Request type '" + request_type + "' not enabled for this class", "code": 400}
-	repository = params.get("repository", "")
-	source = params.get("source", "")
-	target = params.get("target", "")
-	title = params.get("title", "")
-	description = params.get("description", "")
-	draft = 1 if params.get("draft") == "1" else 0
-	now = mochi.time.now()
-	request_id = mochi.uid()
-	mochi.db.execute(
-		"insert into requests (id, object, type, repository, source, target, status, title, description, draft, created, updated) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-		request_id, object_id, request_type, repository, source, target, "open", title, description, draft, now, now
-	)
-	request_data = {
-		"id": request_id, "object": object_id, "type": request_type,
-		"repository": repository, "source": source, "target": target,
-		"status": "open", "title": title, "description": description,
-		"draft": draft, "created": now, "updated": now,
-	}
-	broadcast_event(crm_id, "request/create", {"crm": crm_id, "request": request_data})
-	return request_data
-
-def do_request_update(crm_id, crm, params, user_id):
-	request_id = params.get("request")
-	if not request_id:
-		return {"error": "Request ID required", "code": 400}
-	req = mochi.db.row("select r.* from requests r join objects o on r.object=o.id where r.id=? and o.crm=?", request_id, crm_id)
-	if not req:
-		return {"error": "Request not found", "code": 404}
-	now = mochi.time.now()
-	repository = params.get("repository")
-	source = params.get("source")
-	target = params.get("target")
-	status = params.get("status")
-	title = params.get("title")
-	description = params.get("description")
-	draft_input = params.get("draft")
-	if repository:
-		mochi.db.execute("update requests set repository=?, updated=? where id=?", repository, now, request_id)
-	if source:
-		mochi.db.execute("update requests set source=?, updated=? where id=?", source, now, request_id)
-	if target:
-		mochi.db.execute("update requests set target=?, updated=? where id=?", target, now, request_id)
-	if status:
-		mochi.db.execute("update requests set status=?, updated=? where id=?", status, now, request_id)
-	if title:
-		mochi.db.execute("update requests set title=?, updated=? where id=?", title, now, request_id)
-	if description != None:
-		mochi.db.execute("update requests set description=?, updated=? where id=?", description, now, request_id)
-	if draft_input:
-		draft = 1 if draft_input == "1" else 0
-		mochi.db.execute("update requests set draft=?, updated=? where id=?", draft, now, request_id)
-	req = mochi.db.row("select r.id, r.object, r.type, r.repository, r.source, r.target, r.status, r.title, r.description, r.draft, r.created, r.updated from requests r join objects o on r.object=o.id where r.id=? and o.crm=?", request_id, crm_id)
-	broadcast_event(crm_id, "request/update", {"crm": crm_id, "request": req})
-	return req
-
-def do_request_delete(crm_id, crm, params, user_id):
-	request_id = params.get("request")
-	if not request_id:
-		return {"error": "Request ID required", "code": 400}
-	req = mochi.db.row("select r.* from requests r join objects o on r.object=o.id where r.id=? and o.crm=?", request_id, crm_id)
-	if not req:
-		return {"error": "Request not found", "code": 404}
-	mochi.db.execute("delete from requests where id=?", request_id)
-	broadcast_event(crm_id, "request/delete", {
-		"crm": crm_id, "id": request_id, "object": req["object"]
 	})
 	return {"success": True}
 
