@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 {
-	"version": "1.4",
+	"version": "1.5",
 	"label": "app_name",
 	"classes": ["crm"],
 	"paths": ["crm"],
@@ -124,6 +124,7 @@
 		"subscribe": {"function": "event_subscribe"},
 		"unsubscribe": {"function": "event_unsubscribe"},
 		"deleted": {"function": "event_deleted"},
+		"sync/batch": {"function": "event_sync_batch"},
 
 		"crm/update": {"function": "event_crm_update"},
 		"object/create": {"function": "event_object_create"},
