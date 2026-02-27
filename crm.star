@@ -5730,6 +5730,23 @@ def do_object_move(crm_id, crm, params, user_id):
 		# Notify owner if watching
 		owner_id = get_owner_identity(crm_id)
 		notify_watchers(object_id, crm_id, owner_id, user_id, "Fields changed")
+
+	# Broadcast rank changes to subscribers
+	if new_rank != None:
+		if scope_parent:
+			all_in_scope = mochi.db.rows("select id, rank from objects where crm=? and parent=? order by rank asc", crm_id, scope_parent) or []
+		else:
+			all_in_scope = mochi.db.rows("""
+				select o.id, o.rank from objects o
+				left join "values" v on v.object = o.id and v.field=?
+				where o.crm=? and coalesce(v.value, '')=?
+				order by o.rank asc
+			""", field, crm_id, target_value) or []
+		for obj in all_in_scope:
+			broadcast_event(crm_id, "object/update", {
+				"crm": crm_id, "id": obj["id"], "rank": obj["rank"], "user": user_id
+			})
+
 	return {"success": True}
 
 # Value helpers
