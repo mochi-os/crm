@@ -1411,7 +1411,7 @@ def action_object_get(a):
 
 	# Clear notifications for this object if watching
 	if watching:
-		mochi.service.call("notifications", "clear.object", "crm", object_id)
+		mochi.service.call("notifications", "clear/object", "crm", object_id)
 
 	# Get comment count
 	comment_row = mochi.db.row("select count(*) as count from comments where object=?", object_id)
