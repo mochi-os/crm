@@ -94,8 +94,8 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
 
   // Class mutations
   const createClassMutation = useMutation({
-    mutationFn: ({ name, requests }: { name: string; requests?: string }) =>
-      crmsApi.createClass(crmId, { name, requests }),
+    mutationFn: ({ name }: { name: string }) =>
+      crmsApi.createClass(crmId, { name }),
     onSuccess: (data) => {
       invalidateCrm();
       setSelectedClassId(data.data.id);
@@ -106,8 +106,8 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
   });
 
   const updateClassMutation = useMutation({
-    mutationFn: ({ classId, name, requests, title }: { classId: string; name: string; requests?: string; title?: string }) =>
-      crmsApi.updateClass(crmId, classId, { name, requests, title }),
+    mutationFn: ({ classId, name, title }: { classId: string; name: string; title?: string }) =>
+      crmsApi.updateClass(crmId, classId, { name, title }),
     onSuccess: invalidateCrm,
   });
 
@@ -357,8 +357,8 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
   };
 
   // Create class with chained API calls
-  const handleCreateClass = async (name: string, parents: string[], pendingFields: PendingField[], mergeRequests: boolean) => {
-    const result = await createClassMutation.mutateAsync({ name, requests: mergeRequests ? "merge" : undefined });
+  const handleCreateClass = async (name: string, parents: string[], pendingFields: PendingField[]) => {
+    const result = await createClassMutation.mutateAsync({ name });
     const classId = result.data?.id;
     if (!classId) return;
 
@@ -645,9 +645,9 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
         classes={crm.classes}
         hierarchy={hierarchy}
         fields={selectedFields}
-        onUpdate={(name, requests, title) => {
+        onUpdate={(name, title) => {
           if (selectedClassId) {
-            updateClassMutation.mutate({ classId: selectedClassId, name, requests, title });
+            updateClassMutation.mutate({ classId: selectedClassId, name, title });
           }
         }}
         onUpdateHierarchy={(parents) => {

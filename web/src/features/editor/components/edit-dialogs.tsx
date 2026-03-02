@@ -499,14 +499,14 @@ interface ClassSheetProps {
   cls?: CrmClass | null;
   hierarchy?: string[];
   fields?: CrmField[];
-  onUpdate?: (name: string, requests?: string, title?: string) => void;
+  onUpdate?: (name: string, title?: string) => void;
   onUpdateHierarchy?: (parents: string[]) => void;
   onDelete?: () => void;
   onAddField?: () => void;
   onEditField?: (field: CrmField) => void;
   onReorderFields?: (order: string[]) => void;
   // Create mode props
-  onCreate?: (name: string, parents: string[], fields: PendingField[], mergeRequests: boolean) => void | Promise<void>;
+  onCreate?: (name: string, parents: string[], fields: PendingField[]) => void | Promise<void>;
 }
 
 export function ClassSheet({
@@ -533,7 +533,6 @@ export function ClassSheet({
   const [pendingParents, setPendingParents] = useState<string[]>([""]);
   const [pendingFields, setPendingFields] = useState<PendingField[]>([]);
   const [addFieldOpen, setAddFieldOpen] = useState(false);
-  const [mergeRequests, setMergeRequests] = useState(false);
 
   // Reset state on open
   useEffect(() => {
@@ -542,10 +541,8 @@ export function ClassSheet({
       setName("");
       setPendingParents([]);
       setPendingFields([{ id: "title", name: "Title", fieldtype: "text", flags: "required,sort" }]);
-      setMergeRequests(false);
     } else if (cls) {
       setName(cls.name);
-      setMergeRequests(cls.requests?.includes("merge") ?? false);
     }
   }, [open, cls, mode]);
 
@@ -642,7 +639,7 @@ export function ClassSheet({
   const handleCreate = async () => {
     if (onCreate && name.trim()) {
       try {
-        await onCreate(name.trim(), pendingParents, pendingFields, mergeRequests);
+        await onCreate(name.trim(), pendingParents, pendingFields);
         onOpenChange(false);
       } catch {
         // Error displayed by caller via toast
@@ -707,7 +704,7 @@ export function ClassSheet({
                   value={cls.title || ""}
                   onChange={(e) => {
                     if (onUpdate) {
-                      onUpdate(cls.name, undefined, e.target.value);
+                      onUpdate(cls.name, e.target.value);
                     }
                   }}
                   className="w-full h-9 rounded-md border border-input bg-background px-3 py-1 text-sm"
@@ -745,24 +742,6 @@ export function ClassSheet({
                   {c.name}{c.id === cls?.id ? " (itself)" : ""}
                 </label>
               ))}
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <Label>Requests</Label>
-            <div className="pl-4">
-              <label className="flex items-center gap-2 text-sm cursor-pointer">
-                <Switch
-                  checked={mergeRequests}
-                  onCheckedChange={(checked) => {
-                    setMergeRequests(checked);
-                    if (mode === "edit" && onUpdate) {
-                      onUpdate(name, checked ? "merge" : "none");
-                    }
-                  }}
-                />
-                Allow merge requests
-              </label>
             </div>
           </div>
 

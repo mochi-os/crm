@@ -116,7 +116,6 @@ export function createMockClass(overrides?: Partial<CrmClass>): CrmClass {
     id: "task",
     name: "Task",
     rank: 0,
-    requests: "",
     title: "title",
     ...overrides,
   };

@@ -18,7 +18,6 @@ export interface CrmClass {
   id: string;
   name: string;
   rank: number;
-  requests: string;
   title: string;
 }
 
