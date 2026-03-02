@@ -131,13 +131,11 @@ interface ClassCreateResponse {
 
 interface CreateClassRequest {
   name: string;
-  requests?: string;
   title?: string;
 }
 
 interface UpdateClassRequest {
   name?: string;
-  requests?: string;
   title?: string;
 }
 
