@@ -22,6 +22,8 @@ function FindCrmsPage() {
     data: recommendationsData,
     isLoading: isLoadingRecommendations,
     isError: isRecommendationsError,
+    error: recommendationsError,
+    refetch: refetchRecommendations,
   } = useQuery({
     queryKey: ['crms', 'recommendations'],
     queryFn: () => crmsApi.recommendations(),
@@ -64,6 +66,10 @@ function FindCrmsPage() {
       recommendations={recommendations}
       isLoadingRecommendations={isLoadingRecommendations}
       isRecommendationsError={isRecommendationsError}
+      recommendationsError={recommendationsError}
+      onRetryRecommendations={() => {
+        void refetchRecommendations();
+      }}
     />
   )
 }

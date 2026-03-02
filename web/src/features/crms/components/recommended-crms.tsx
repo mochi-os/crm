@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Button, Skeleton, toast, getErrorMessage } from "@mochi/common";
+import { useCallback, useEffect, useState } from "react";
+import { Button, GeneralError, Skeleton, toast, getErrorMessage } from "@mochi/common";
 import { Users, Loader2 } from "lucide-react";
 import crmsApi from "@/api/crms";
 
@@ -23,22 +23,30 @@ export function RecommendedCrms({
     RecommendedCrm[]
   >([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
   const [pendingId, setPendingId] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchRecommendations = async () => {
-      try {
-        const response = await crmsApi.recommendations();
-        setRecommendations(response.data?.crms ?? []);
-      } catch {
-        // Silently fail for recommendations
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    void fetchRecommendations();
+  const fetchRecommendations = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await crmsApi.recommendations();
+      setRecommendations(response.data?.crms ?? []);
+    } catch (loadError) {
+      setRecommendations([]);
+      setError(
+        loadError instanceof Error
+          ? loadError
+          : new Error("Failed to load recommended CRMs"),
+      );
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
+
+  useEffect(() => {
+    void fetchRecommendations();
+  }, [fetchRecommendations]);
 
   const handleSubscribe = async (crm: RecommendedCrm) => {
     setPendingId(crm.id);
@@ -78,6 +86,25 @@ export function RecommendedCrms({
               </div>
             ))}
           </div>
+        </div>
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <hr className="my-6 w-full max-w-md border-t" />
+        <div className="w-full max-w-md">
+          <p className="text-muted-foreground mb-3 text-xs font-medium uppercase tracking-wide">
+            Recommended CRMs
+          </p>
+          <GeneralError
+            error={error}
+            minimal
+            mode="inline"
+            reset={fetchRecommendations}
+          />
         </div>
       </>
     );

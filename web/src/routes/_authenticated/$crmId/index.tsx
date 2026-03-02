@@ -2,9 +2,10 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
-import { createFileRoute, Link, useNavigate, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect, useNavigate, useRouter } from "@tanstack/react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
+  ApiError,
   GeneralError,
   Main,
   PageHeader,
@@ -44,22 +45,73 @@ export const Route = createFileRoute("/_authenticated/$crmId/")({
     view: typeof search.view === "string" ? search.view : undefined,
   }),
   loader: async ({ params }) => {
-    const crmResponse = await crmsApi.get(params.crmId);
-    return { crm: crmResponse.data };
+    try {
+      const crmResponse = await crmsApi.get(params.crmId);
+      return { crm: crmResponse.data, loaderError: null };
+    } catch (error) {
+      const status = getErrorStatus(error);
+      if (status === 403 || status === 404) {
+        throw redirect({ to: "/" });
+      }
+
+      return {
+        crm: null as CrmDetails | null,
+        loaderError: error instanceof Error ? error.message : "Failed to load CRM",
+      };
+    }
   },
   component: CrmPage,
-  errorComponent: ({ error }) => <GeneralError error={error} />,
 });
 
 function CrmPage() {
-  const { crm } = Route.useLoaderData() as {
-    crm: CrmDetails;
+  const { crm, loaderError } = Route.useLoaderData() as {
+    crm: CrmDetails | null;
+    loaderError: string | null;
   };
   const params = Route.useParams();
   const search = Route.useSearch();
   const navigate = useNavigate();
   const router = useRouter();
 
+  if (!crm) {
+    return (
+      <>
+        <PageHeader
+          title="CRM"
+          icon={<Users className="size-4 md:size-5" />}
+          back={{ label: "Back to CRMs", onFallback: () => navigate({ to: "/" }) }}
+        />
+        <Main>
+          <GeneralError
+            error={new Error(loaderError ?? "Failed to load CRM")}
+            minimal
+            mode="inline"
+            reset={() => void router.invalidate()}
+          />
+        </Main>
+      </>
+    );
+  }
+
+  return (
+    <CrmPageContent
+      crm={crm}
+      crmId={params.crmId}
+      search={search}
+    />
+  );
+}
+
+interface CrmPageContentProps {
+  crm: CrmDetails;
+  crmId: string;
+  search: SearchParams;
+}
+
+function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
+  const navigate = useNavigate();
+  const router = useRouter();
+  const params = { crmId };
   const access = crm.crm.access;
 
   usePageTitle(crm.crm.name);
@@ -876,4 +928,15 @@ function CrmPage() {
       />
     </>
   );
+}
+
+function getErrorStatus(error: unknown): number | undefined {
+  if (error instanceof ApiError) {
+    return error.status;
+  }
+  if (error && typeof error === "object") {
+    const maybeError = error as { status?: number; response?: { status?: number } };
+    return maybeError.status ?? maybeError.response?.status;
+  }
+  return undefined;
 }

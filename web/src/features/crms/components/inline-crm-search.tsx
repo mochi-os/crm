@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { Search, Loader2, Users } from "lucide-react";
-import { Button, Input, toast, getErrorMessage } from "@mochi/common";
+import { Button, GeneralError, Input, toast, getErrorMessage } from "@mochi/common";
 import crmsApi from "@/api/crms";
 import { useCrmsStore } from "@/stores/crms-store";
 
@@ -25,9 +25,44 @@ export function InlineCrmSearch({
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [results, setResults] = useState<DirectoryEntry[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchError, setSearchError] = useState<Error | null>(null);
   const [pendingCrmId, setPendingCrmId] = useState<string | null>(null);
+  const requestSeqRef = useRef(0);
   const navigate = useNavigate();
   const refresh = useCrmsStore((state) => state.refresh);
+
+  const runSearch = useCallback(async (query: string) => {
+    if (query.length === 0) {
+      setResults([]);
+      setSearchError(null);
+      return;
+    }
+
+    const requestSeq = ++requestSeqRef.current;
+    setIsLoading(true);
+    setSearchError(null);
+    try {
+      const response = await crmsApi.search({
+        search: query,
+      });
+      if (requestSeq !== requestSeqRef.current) {
+        return;
+      }
+      setResults(response.data ?? []);
+    } catch (error) {
+      if (requestSeq !== requestSeqRef.current) {
+        return;
+      }
+      setResults([]);
+      setSearchError(
+        error instanceof Error ? error : new Error("Failed to search CRMs"),
+      );
+    } finally {
+      if (requestSeq === requestSeqRef.current) {
+        setIsLoading(false);
+      }
+    }
+  }, []);
 
   // Debounce search query
   useEffect(() => {
@@ -37,29 +72,19 @@ export function InlineCrmSearch({
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
-  // Search when debounced query changes
   useEffect(() => {
     if (debouncedQuery.length === 0) {
       setResults([]);
+      setSearchError(null);
       return;
     }
 
-    const search = async () => {
-      setIsLoading(true);
-      try {
-        const response = await crmsApi.search({
-          search: debouncedQuery,
-        });
-        setResults(response.data ?? []);
-      } catch {
-        setResults([]);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    void runSearch(debouncedQuery);
+  }, [debouncedQuery, runSearch]);
 
-    void search();
-  }, [debouncedQuery]);
+  const retrySearch = useCallback(() => {
+    void runSearch(debouncedQuery);
+  }, [debouncedQuery, runSearch]);
 
   const handleSubscribe = async (crm: DirectoryEntry) => {
     setPendingCrmId(crm.id);
@@ -101,13 +126,22 @@ export function InlineCrmSearch({
         </div>
       )}
 
-      {!isLoading && showResults && results.length === 0 && (
+      {!isLoading && showResults && searchError && (
+        <GeneralError
+          error={searchError}
+          minimal
+          mode="inline"
+          reset={retrySearch}
+        />
+      )}
+
+      {!isLoading && showResults && !searchError && results.length === 0 && (
         <p className="text-muted-foreground py-4 text-center text-sm">
           No CRMs found
         </p>
       )}
 
-      {!isLoading && results.length > 0 && (
+      {!isLoading && !searchError && results.length > 0 && (
         <div className="divide-border divide-y rounded-[10px] border">
           {results
             .filter(

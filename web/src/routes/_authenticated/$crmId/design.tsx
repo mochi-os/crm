@@ -39,7 +39,6 @@ import { DesignEditor } from "@/features/editor";
 
 export const Route = createFileRoute("/_authenticated/$crmId/design")({
   component: DesignPage,
-  errorComponent: ({ error }) => <GeneralError error={error} />,
 });
 
 function DesignPage() {
@@ -50,6 +49,7 @@ function DesignPage() {
     data: crmData,
     isLoading,
     error,
+    refetch,
   } = useQuery({
     queryKey: ["crm", crmId],
     queryFn: async () => {
@@ -124,7 +124,24 @@ function DesignPage() {
   }
 
   if (error || !crm) {
-    return <GeneralError error={error} />;
+    return (
+      <>
+        <PageHeader
+          title="Design"
+          icon={<Settings2 className="size-4 md:size-5" />}
+        />
+        <Main>
+          <GeneralError
+            error={error ?? new Error("Failed to load CRM design")}
+            minimal
+            mode="inline"
+            reset={() => {
+              void refetch();
+            }}
+          />
+        </Main>
+      </>
+    );
   }
 
   if (!canDesign(crm.crm.access)) {

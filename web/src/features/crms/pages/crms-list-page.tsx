@@ -93,7 +93,14 @@ export function CrmsListPage() {
       <Main>
         {error && (
           <div className="mb-4">
-            <GeneralError error={new Error(error)} minimal mode="inline" />
+            <GeneralError
+              error={new Error(error)}
+              minimal
+              mode="inline"
+              reset={() => {
+                void refresh();
+              }}
+            />
           </div>
         )}
         {isLoading ? (

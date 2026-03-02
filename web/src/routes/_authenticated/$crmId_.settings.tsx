@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   AlertDialog,
@@ -27,8 +27,11 @@ import {
   DataChip,
   toast,
   getErrorMessage,
+  ApiError,
   AccessDialog,
   AccessList,
+  GeneralError,
+  type AccessRule,
   type AccessLevel,
 } from "@mochi/common";
 import {
@@ -43,12 +46,27 @@ import {
   Plus,
 } from "lucide-react";
 import crmsApi from "@/api/crms";
-import type { AccessRule } from "@mochi/common";
 import type { CrmDetails } from "@/types";
 import { useCrmsStore } from "@/stores/crms-store";
 
 // Characters disallowed in CRM names (matches backend validation)
 const DISALLOWED_NAME_CHARS = /[<>\r\n]/;
+
+function toError(error: unknown, fallback: string): Error {
+  if (error instanceof Error) return error;
+  return new Error(fallback);
+}
+
+function getErrorStatus(error: unknown): number | undefined {
+  if (error instanceof ApiError) {
+    return error.status;
+  }
+  if (error && typeof error === "object") {
+    const anyError = error as { status?: number; response?: { status?: number } };
+    return anyError.status ?? anyError.response?.status;
+  }
+  return undefined;
+}
 
 type TabId = "general" | "access";
 
@@ -98,16 +116,26 @@ function CrmSettingsPage() {
     data: crmData,
     isLoading,
     error,
+    refetch: refetchCrm,
   } = useQuery({
     queryKey: ["crm", crmId],
     queryFn: async () => {
       const response = await crmsApi.get(crmId);
       return response.data;
     },
+    retry: false,
+    refetchOnWindowFocus: false,
   });
 
   const crm = crmData as CrmDetails | undefined;
   const isOwner = crm?.crm.owner === 1;
+  const crmStatus = getErrorStatus(error);
+  const crmLookupError =
+    error && crmStatus !== 403 && crmStatus !== 404
+      ? toError(error, "Failed to load CRM settings")
+      : null;
+  const crmNotFound =
+    !crm && (crmStatus === 403 || crmStatus === 404 || (!isLoading && !error));
 
   usePageTitle(
     crm ? `${crm.crm.name} settings` : "Crm settings"
@@ -187,7 +215,7 @@ function CrmSettingsPage() {
     );
   }
 
-  if (error || !crm) {
+  if (!crm) {
     return (
       <>
         <PageHeader
@@ -195,11 +223,26 @@ function CrmSettingsPage() {
           icon={<Settings className="size-4 md:size-5" />}
         />
         <Main>
-          <EmptyState
-            icon={Users}
-            title="Crm not found"
-            description="This crm may have been deleted or you don't have access to it."
-          />
+          {crmLookupError ? (
+            <GeneralError
+              error={crmLookupError}
+              minimal
+              mode="inline"
+              reset={() => {
+                void refetchCrm();
+              }}
+            />
+          ) : (
+            <EmptyState
+              icon={Users}
+              title={crmNotFound ? "CRM not found" : "CRM unavailable"}
+              description={
+                crmNotFound
+                  ? "This CRM may have been deleted or you don't have access to it."
+                  : "This CRM could not be loaded right now."
+              }
+            />
+          )}
         </Main>
       </>
     );
@@ -550,52 +593,70 @@ interface AccessTabProps {
 }
 
 function AccessTab({ crmId }: AccessTabProps) {
-  const [rules, setRules] = useState<AccessRule[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-
   const [dialogOpen, setDialogOpen] = useState(false);
   const [userSearchQuery, setUserSearchQuery] = useState("");
 
-  const { data: userSearchData, isLoading: userSearchLoading } = useQuery({
+  const {
+    data: rulesData,
+    isLoading: isLoadingRules,
+    error: rulesErrorRaw,
+    refetch: refetchRules,
+  } = useQuery({
+    queryKey: ["crms", "access-rules", crmId],
+    queryFn: () => crmsApi.getAccessRules(crmId),
+    retry: false,
+    refetchOnWindowFocus: false,
+  });
+
+  const {
+    data: userSearchData,
+    isLoading: userSearchLoading,
+    error: userSearchErrorRaw,
+    refetch: refetchUserSearch,
+  } = useQuery({
     queryKey: ["users", "search", userSearchQuery],
     queryFn: () => crmsApi.searchUsers(userSearchQuery),
     enabled: userSearchQuery.length >= 1,
+    retry: false,
   });
 
-  const { data: groupsData } = useQuery({
+  const {
+    data: groupsData,
+    error: groupsErrorRaw,
+    refetch: refetchGroups,
+  } = useQuery({
     queryKey: ["groups", "list"],
     queryFn: () => crmsApi.listGroups(),
+    retry: false,
+    refetchOnWindowFocus: false,
   });
 
-  const loadRules = useCallback(async () => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const response = await crmsApi.getAccessRules(crmId);
-      setRules(response.data?.rules ?? []);
-    } catch (err) {
-      setError(
-        err instanceof Error ? err : new Error("Failed to load access rules")
-      );
-    } finally {
-      setIsLoading(false);
-    }
-  }, [crmId]);
-
-  useEffect(() => {
-    void loadRules();
-  }, [loadRules]);
+  const rules = useMemo<AccessRule[]>(
+    () => rulesData?.data?.rules ?? [],
+    [rulesData],
+  );
+  const rulesError = rulesErrorRaw
+    ? toError(rulesErrorRaw, "Failed to load access rules")
+    : null;
+  const userSearchError =
+    userSearchQuery.length >= 1 && userSearchErrorRaw
+      ? toError(userSearchErrorRaw, "Failed to search users")
+      : null;
+  const groupsError = groupsErrorRaw
+    ? toError(groupsErrorRaw, "Failed to load groups")
+    : null;
+  const canManageRules = !rulesError && !isLoadingRules && !!rulesData;
 
   const handleAdd = async (
     subject: string,
     subjectName: string,
     level: string
   ) => {
+    if (!canManageRules) return;
     try {
       await crmsApi.setAccessLevel(crmId, subject, level);
       toast.success(`Access set for ${subjectName}`);
-      void loadRules();
+      await refetchRules();
     } catch (err) {
       toast.error(getErrorMessage(err, "Failed to set access level"));
       throw err;
@@ -603,20 +664,22 @@ function AccessTab({ crmId }: AccessTabProps) {
   };
 
   const handleRevoke = async (subject: string) => {
+    if (!canManageRules) return;
     try {
       await crmsApi.revokeAccess(crmId, subject);
       toast.success("Access removed");
-      void loadRules();
+      await refetchRules();
     } catch (err) {
       toast.error(getErrorMessage(err, "Failed to remove access"));
     }
   };
 
   const handleLevelChange = async (subject: string, newLevel: string) => {
+    if (!canManageRules) return;
     try {
       await crmsApi.setAccessLevel(crmId, subject, newLevel);
       toast.success("Access level updated");
-      void loadRules();
+      await refetchRules();
     } catch (err) {
       toast.error(getErrorMessage(err, "Failed to update access level"));
     }
@@ -629,7 +692,7 @@ function AccessTab({ crmId }: AccessTabProps) {
     >
       <div className="space-y-4">
         <div className="flex justify-end">
-          <Button onClick={() => setDialogOpen(true)} size="sm">
+          <Button onClick={() => setDialogOpen(true)} size="sm" disabled={!canManageRules}>
             <Plus className="h-4 w-4 mr-2" />
             Add Rule
           </Button>
@@ -643,18 +706,37 @@ function AccessTab({ crmId }: AccessTabProps) {
           defaultLevel="comment"
           userSearchResults={userSearchData?.results ?? []}
           userSearchLoading={userSearchLoading}
+          userSearchError={userSearchError}
+          onRetryUserSearch={() => {
+            void refetchUserSearch();
+          }}
           onUserSearch={setUserSearchQuery}
           groups={groupsData?.groups ?? []}
+          groupsError={groupsError}
+          onRetryGroups={() => {
+            void refetchGroups();
+          }}
         />
 
-        <AccessList
-          rules={rules}
-          levels={CRM_ACCESS_LEVELS}
-          onLevelChange={handleLevelChange}
-          onRevoke={handleRevoke}
-          isLoading={isLoading}
-          error={error}
-        />
+        {rulesError ? (
+          <GeneralError
+            error={rulesError}
+            minimal
+            mode="inline"
+            reset={() => {
+              void refetchRules();
+            }}
+          />
+        ) : (
+          <AccessList
+            rules={rules}
+            levels={CRM_ACCESS_LEVELS}
+            onLevelChange={handleLevelChange}
+            onRevoke={handleRevoke}
+            isLoading={isLoadingRules}
+            error={null}
+          />
+        )}
       </div>
     </Section>
   );
