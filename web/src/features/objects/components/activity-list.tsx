@@ -3,7 +3,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { Activity } from "lucide-react";
-import { EmptyState, ListSkeleton } from "@mochi/common";
+import { EmptyState, ListSkeleton, formatTimestamp } from "@mochi/common";
 import crmsApi from "@/api/crms";
 
 interface ActivityListProps {
@@ -19,17 +19,6 @@ export function ActivityList({ crmId, objectId }: ActivityListProps) {
       return response.data.activities;
     },
   });
-
-  const formatDate = (timestamp: number) => {
-    const d = new Date(timestamp * 1000);
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, "0");
-    const day = String(d.getDate()).padStart(2, "0");
-    const hours = String(d.getHours()).padStart(2, "0");
-    const minutes = String(d.getMinutes()).padStart(2, "0");
-    const seconds = String(d.getSeconds()).padStart(2, "0");
-    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-  };
 
   const formatAction = (action: string) => {
     switch (action) {
@@ -65,7 +54,7 @@ export function ActivityList({ crmId, objectId }: ActivityListProps) {
         >
           <div className="flex items-center gap-2">
             <span className="text-xs text-muted-foreground">
-              {formatDate(activity.created)}
+              {formatTimestamp(activity.created)}
             </span>
             <span className="font-medium">
               {activity.name || activity.user}
