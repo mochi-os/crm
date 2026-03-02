@@ -144,6 +144,10 @@ const endpoints = {
 
     // Notification endpoints
     notificationsCheck: "-/notifications/check",
+
+    // User and group endpoints
+    usersSearch: "-/users/search",
+    groups: "-/groups",
   },
 } as const;
 

@@ -2661,10 +2661,12 @@ def action_view_list(a):
 		crm_id
 	) or []
 
-	# Add fields to each view
+	# Add fields and classes to each view
 	for v in views:
 		view_fields = mochi.db.rows("select field from view_fields where crm=? and view=? order by rank", crm_id, v["id"]) or []
 		v["fields"] = ",".join([vf["field"] for vf in view_fields])
+		view_classes = mochi.db.rows("select class from view_classes where crm=? and view=?", crm_id, v["id"]) or []
+		v["classes"] = [vc["class"] for vc in view_classes]
 
 	return {"data": {"views": views}}
 
@@ -3792,7 +3794,6 @@ def action_search(a):
 		return
 
 	results = []
-	all_crms = None  # Lazy-loaded for fingerprint lookups
 
 	# Check if search term is an entity ID (49-51 word characters)
 	if mochi.valid(search, "entity"):
@@ -3803,20 +3804,15 @@ def action_search(a):
 	# Check if search term is a fingerprint (9 alphanumeric, with or without hyphens)
 	fingerprint = search.replace("-", "")
 	if mochi.valid(fingerprint, "fingerprint"):
-		# Search directory by fingerprint
-		all_crms = mochi.directory.search("crm", "", False)
-		for entry in all_crms:
-			entry_fp = entry.get("fingerprint", "").replace("-", "")
-			if entry_fp == fingerprint:
-				# Avoid duplicates if already found by ID
-				found = False
-				for r in results:
-					if r.get("id") == entry.get("id"):
-						found = True
-						break
-				if not found:
-					results.append(entry)
-				break
+		matches = mochi.directory.search("crm", "", False, fingerprint=fingerprint)
+		for entry in matches:
+			found = False
+			for r in results:
+				if r.get("id") == entry.get("id"):
+					found = True
+					break
+			if not found:
+				results.append(entry)
 
 	# Check if search term is a URL (e.g., https://example.com/crm/ENTITY_ID)
 	if search.startswith("http://") or search.startswith("https://"):
