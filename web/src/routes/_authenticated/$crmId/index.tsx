@@ -546,6 +546,7 @@ function CrmPage() {
       toast.error("Please add one or more classes to the CRM design.");
       return;
     }
+    setSelectedObjectId(null);
     setCreateDefaultFields(getDefaultColumnValue());
     setCreateDialogOpen(true);
   }, [crm.classes.length, getDefaultColumnValue]);
@@ -583,6 +584,7 @@ function CrmPage() {
     if (rowValue !== undefined && rowField) {
       fields.push({ field: rowField, value: rowValue });
     }
+    setSelectedObjectId(null);
     setCreateDefaultFields(fields);
     setCreateDefaultParent(undefined);
     setCreateChildClasses(undefined);
