@@ -600,6 +600,7 @@ function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
       toast.error("Please add one or more classes to the CRM design.");
       return;
     }
+    setSelectedObjectId(null);
     setCreateDefaultFields(getDefaultColumnValue());
     setCreateDialogOpen(true);
   }, [crm.classes.length, getDefaultColumnValue]);
@@ -637,6 +638,7 @@ function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
     if (rowValue !== undefined && rowField) {
       fields.push({ field: rowField, value: rowValue });
     }
+    setSelectedObjectId(null);
     setCreateDefaultFields(fields);
     setCreateDefaultParent(undefined);
     setCreateChildClasses(undefined);
