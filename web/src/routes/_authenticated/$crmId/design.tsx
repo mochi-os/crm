@@ -1,7 +1,7 @@
 // Mochi CRM: Design editor page
 // Copyright Alistair Cunningham 2026
 
-import { createFileRoute, Navigate } from "@tanstack/react-router";
+import { createFileRoute, Navigate, useNavigate } from "@tanstack/react-router";
 import { useCallback, useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -43,6 +43,8 @@ export const Route = createFileRoute("/_authenticated/$crmId/design")({
 
 function DesignPage() {
   const { crmId } = Route.useParams();
+  const navigate = useNavigate();
+  const goBackToCrm = () => navigate({ to: "/$crmId", params: { crmId } });
   const queryClient = useQueryClient();
 
   const {
@@ -117,9 +119,16 @@ function DesignPage() {
 
   if (isLoading) {
     return (
-      <Main>
-        <ListSkeleton count={3} />
-      </Main>
+      <>
+        <PageHeader
+          title="Design"
+          icon={<Settings2 className="size-4 md:size-5" />}
+          back={{ label: "Back to CRM", onFallback: goBackToCrm }}
+        />
+        <Main>
+          <ListSkeleton count={3} />
+        </Main>
+      </>
     );
   }
 
@@ -129,6 +138,7 @@ function DesignPage() {
         <PageHeader
           title="Design"
           icon={<Settings2 className="size-4 md:size-5" />}
+          back={{ label: "Back to CRM", onFallback: goBackToCrm }}
         />
         <Main>
           <GeneralError
@@ -153,6 +163,7 @@ function DesignPage() {
       <PageHeader
         title={`${crm.crm.name} - Design`}
         icon={<Settings2 className="size-4 md:size-5" />}
+        back={{ label: "Back to CRM", onFallback: goBackToCrm }}
         actions={
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

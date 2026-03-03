@@ -82,6 +82,7 @@ const tabs: Tab[] = [
 function CrmSettingsPage() {
   const { crmId } = Route.useParams();
   const navigate = useNavigate();
+  const goBackToCrm = () => navigate({ to: "/$crmId", params: { crmId } });
   const navigateSettings = Route.useNavigate();
   const { tab } = Route.useSearch();
   const activeTab = tab ?? "general";
@@ -185,6 +186,7 @@ function CrmSettingsPage() {
         <PageHeader
           title="Settings"
           icon={<Settings className="size-4 md:size-5" />}
+          back={{ label: "Back to CRM", onFallback: goBackToCrm }}
         />
         <Main className="space-y-6">
           <div className="flex gap-1 border-b">
@@ -207,6 +209,7 @@ function CrmSettingsPage() {
         <PageHeader
           title="Settings"
           icon={<Settings className="size-4 md:size-5" />}
+          back={{ label: "Back to CRM", onFallback: goBackToCrm }}
         />
         <Main>
           {crmLookupError ? (
@@ -239,6 +242,7 @@ function CrmSettingsPage() {
       <PageHeader
         title={`${crm.crm.name} settings`}
         icon={<Settings className="size-4 md:size-5" />}
+        back={{ label: "Back to CRM", onFallback: goBackToCrm }}
       />
       <Main className="space-y-6">
         {/* Tabs - only show for owners */}
