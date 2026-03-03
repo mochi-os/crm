@@ -5,7 +5,6 @@ import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { createFileRoute, Link, redirect, useNavigate, useRouter } from "@tanstack/react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
-  ApiError,
   GeneralError,
   Main,
   PageHeader,
@@ -18,6 +17,7 @@ import {
   Switch,
   useSearch,
   toast,
+  extractStatus,
 } from "@mochi/common";
 import { Columns3, Ellipsis, Users, GripVertical, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
 import crmsApi from "@/api/crms";
@@ -49,14 +49,14 @@ export const Route = createFileRoute("/_authenticated/$crmId/")({
       const crmResponse = await crmsApi.get(params.crmId);
       return { crm: crmResponse.data, loaderError: null };
     } catch (error) {
-      const status = getErrorStatus(error);
+      const status = extractStatus(error);
       if (status === 403 || status === 404) {
         throw redirect({ to: "/" });
       }
 
       return {
         crm: null as CrmDetails | null,
-        loaderError: error instanceof Error ? error.message : "Failed to load CRM",
+        loaderError: error,
       };
     }
   },
@@ -66,7 +66,7 @@ export const Route = createFileRoute("/_authenticated/$crmId/")({
 function CrmPage() {
   const { crm, loaderError } = Route.useLoaderData() as {
     crm: CrmDetails | null;
-    loaderError: string | null;
+    loaderError: unknown | null;
   };
   const params = Route.useParams();
   const search = Route.useSearch();
@@ -83,7 +83,7 @@ function CrmPage() {
         />
         <Main>
           <GeneralError
-            error={new Error(loaderError ?? "Failed to load CRM")}
+            error={loaderError ?? "Failed to load CRM"}
             minimal
             mode="inline"
             reset={() => void router.invalidate()}
@@ -928,15 +928,4 @@ function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
       />
     </>
   );
-}
-
-function getErrorStatus(error: unknown): number | undefined {
-  if (error instanceof ApiError) {
-    return error.status;
-  }
-  if (error && typeof error === "object") {
-    const maybeError = error as { status?: number; response?: { status?: number } };
-    return maybeError.status ?? maybeError.response?.status;
-  }
-  return undefined;
 }
