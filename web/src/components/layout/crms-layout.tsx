@@ -4,7 +4,7 @@ import {
   type SidebarData,
   type NavItem,
 } from "@mochi/common";
-import { Plus, Search, Users } from "lucide-react";
+import { Plus, RefreshCw, Search, Users } from "lucide-react";
 import { useCrmsStore } from "@/stores/crms-store";
 import { SidebarProvider, useSidebarContext } from "@/context/sidebar-context";
 import { CreateCrmDialog } from "@/features/crms/components/create-crm-dialog";
@@ -13,6 +13,7 @@ import { APP_ROUTES } from "@/config/routes";
 function CrmsLayoutInner() {
   const crms = useCrmsStore((state) => state.crms);
   const isLoading = useCrmsStore((state) => state.isLoading);
+  const error = useCrmsStore((state) => state.error);
   const refresh = useCrmsStore((state) => state.refresh);
   const {
     createDialogOpen,
@@ -52,7 +53,22 @@ function CrmsLayoutInner() {
     const groups: SidebarData["navGroups"] = [
       {
         title: "CRMs",
-        items: [allCrmsItem, ...crmItems],
+        items: [
+          allCrmsItem,
+          ...crmItems,
+          ...(error
+            ? [
+                {
+                  title: "Retry CRMs load",
+                  icon: RefreshCw,
+                  onClick: () => {
+                    void refresh();
+                  },
+                  className: "text-destructive",
+                },
+              ]
+            : []),
+        ],
       },
       {
         title: "",
@@ -62,7 +78,7 @@ function CrmsLayoutInner() {
     ];
 
     return { navGroups: groups };
-  }, [crms, openCreateDialog]);
+  }, [crms, openCreateDialog, error, refresh]);
 
   return (
     <>

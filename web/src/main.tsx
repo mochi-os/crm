@@ -15,9 +15,7 @@ import { routeTree } from "./routeTree.gen";
 // Styles
 import "./styles/index.css";
 
-const queryClient = createQueryClient({
-  onServerError: () => router.navigate({ to: "/500" }),
-});
+const queryClient = createQueryClient();
 
 // Use app path as basepath, ignoring entity fingerprint.
 // Routes use $crmId to handle entity fingerprints — including the fingerprint
