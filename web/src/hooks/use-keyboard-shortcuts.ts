@@ -53,6 +53,9 @@ export function useKeyboardShortcuts({
       // Don't handle other shortcuts in inputs
       if (isInput) return;
 
+      // Don't handle single-key shortcuts when modifier keys are held
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+
       switch (e.key) {
         case "c":
         case "n":
