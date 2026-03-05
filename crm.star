@@ -3936,7 +3936,7 @@ def action_notifications_destinations(a):
 
 
 # ============================================================================
-# Remote CRMs (Subscribe/Bookmark)
+# Remote CRMs (Subscribe)
 # ============================================================================
 
 # Public endpoint: resolve a crm fingerprint to basic info
