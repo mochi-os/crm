@@ -104,7 +104,7 @@ export function CreateObjectDialog({
   const { data: objectListData } = useQuery({
     queryKey: ["objects", crmId],
     queryFn: async () => {
-      const response = await crmsApi.listObjects(crm.crm.id);
+      const response = await crmsApi.listObjects(crmId);
       return response.data;
     },
   });
