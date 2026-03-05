@@ -22,7 +22,7 @@ import {
 } from "@mochi/common";
 import { Columns3, Ellipsis, Users, GripVertical, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
 import crmsApi from "@/api/crms";
-import type { CrmDetails, CrmObject, SortState } from "@/types";
+import type { CrmDetails, CrmField, CrmObject, SortState } from "@/types";
 import { canDesign, canWrite } from "@/lib/access";
 import { BoardContainer } from "@/features/board/components";
 import { TreeView } from "@/features/tree";
@@ -167,7 +167,7 @@ function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
   // Deduplicated field list across all classes (for sort dropdown)
   const allFields = useMemo(() => {
     const seen = new Set<string>();
-    const result: typeof crm.fields[string] = [];
+    const result: CrmField[] = [];
     for (const fields of Object.values(crm.fields)) {
       for (const f of fields) {
         if (!seen.has(f.id)) {
@@ -583,9 +583,9 @@ function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
   const rowField = activeView?.rows || "";
 
   // Get default column value (first option of column field for the view's class)
-  const viewClasses = activeView?.classes || [];
+  const viewClasses = activeView?.classes;
   const getDefaultColumnValue = useCallback(() => {
-    const effectiveType = viewClasses.length > 0
+    const effectiveType = viewClasses && viewClasses.length > 0
       ? viewClasses[0]
       : crm.classes[0]?.id;
     if (effectiveType && crm.options[effectiveType]?.[columnField]?.length > 0) {
@@ -932,4 +932,3 @@ function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
     </>
   );
 }
-

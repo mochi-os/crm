@@ -77,4 +77,10 @@ export default defineConfig(
       ],
     },
   },
+  {
+    files: ["src/routes/**/*.{ts,tsx}", "src/context/**/*.{ts,tsx}", "src/test/**/*.{ts,tsx}"],
+    rules: {
+      "react-refresh/only-export-components": "off",
+    },
+  },
 );

@@ -179,7 +179,6 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       crmsApi.reorderFields(crmId, classId, order),
     onSuccess: invalidateCrm,
     onError: (error) => {
-      console.error("Reorder fields error:", error);
       toast.error(getErrorMessage(error, "Failed to reorder fields"));
     },
   });

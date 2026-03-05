@@ -82,7 +82,7 @@ export function CreateObjectDialog({
       }
       setFieldValues(initialValues);
     }
-  }, [open, crm.classes, defaultFields, defaultParent]);
+  }, [open, availableClasses, defaultFields, defaultParent, crm.fields, crm.options]);
 
   // Update default field values when type changes (if fields exist in new type)
   useEffect(() => {

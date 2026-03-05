@@ -1,7 +1,7 @@
 // Mochi CRMs: Object link display and management
 // Copyright Alistair Cunningham 2026
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { Link2, Plus, X } from "lucide-react";
 import {
@@ -51,10 +51,10 @@ export function ObjectLinks({
   const [search, setSearch] = useState("");
   const queryClient = useQueryClient();
 
-  const objectTitle = (obj: { class: string; values: Record<string, string> }) => {
+  const objectTitle = useCallback((obj: { class: string; values: Record<string, string> }) => {
     const cls = classes.find((c) => c.id === obj.class);
     return (cls?.title ? obj.values[cls.title] : "") || "Untitled";
-  };
+  }, [classes]);
 
   const { data: objectListData } = useQuery({
     queryKey: ["objects", crmId],
@@ -155,7 +155,7 @@ export function ObjectLinks({
     }
 
     return items;
-  }, [outgoing, incoming, objectId, objectsMap]);
+  }, [outgoing, incoming, objectId, objectsMap, objectTitle]);
 
   // Filter objects for the add-link search
   const linkedObjectIds = useMemo(() => {
@@ -180,7 +180,7 @@ export function ObjectLinks({
         return title.includes(q);
       })
       .slice(0, 10);
-  }, [objectListData, search, linkedObjectIds]);
+  }, [objectListData, search, linkedObjectIds, objectTitle]);
 
   const handleAddLink = (targetObj: CrmObject) => {
     if (linkType === "blocked by") {

@@ -4,7 +4,7 @@
 import { useMemo, useState, useEffect, useLayoutEffect, useCallback, useRef } from "react";
 import { cn } from "@mochi/common";
 import { BoardColumn, type BoardColumnRow } from "./board-column";
-import type { CrmObject, CrmDetails, FieldOption, SortState } from "@/types";
+import type { CrmObject, CrmDetails, CrmClass, FieldOption, SortState } from "@/types";
 
 // Check if objectId is a descendant of ancestorId
 function isDescendantOf(objectId: string, ancestorId: string, objectMap: Record<string, CrmObject>): boolean {
@@ -122,7 +122,7 @@ export function BoardContainer({
 
   // Build a class map for quick lookups
   const classMap = useMemo(() => {
-    const map: Record<string, typeof crm.classes[0]> = {};
+    const map: Record<string, CrmClass> = {};
     for (const cls of crm.classes) {
       map[cls.id] = cls;
     }

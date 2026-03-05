@@ -103,7 +103,11 @@ export function OptionDialog({
               onKeyDown={(e) => {
                 if (e.key === "Enter" && name.trim()) {
                   e.preventDefault();
-                  isEdit ? handleSave() : handleAdd();
+                  if (isEdit) {
+                    handleSave();
+                  } else {
+                    handleAdd();
+                  }
                 }
               }}
             />
