@@ -1,9 +1,9 @@
 // Mochi CRMs: Create object dialog component
 // Copyright Alistair Cunningham 2026
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
-import { Check, X } from "lucide-react";
+import { Check, Paperclip, Upload, X } from "lucide-react";
 import {
   Button,
   Label,
@@ -45,6 +45,8 @@ export function CreateObjectDialog({
   const [selectedClass, setSelectedType] = useState(crm.classes[0]?.id || "");
   const [fieldValues, setFieldValues] = useState<Record<string, string>>({});
   const [parent, setParent] = useState("");
+  const [pendingFiles, setPendingFiles] = useState<File[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const queryClient = useQueryClient();
 
   // Filter classes to those allowed by the current view
@@ -58,6 +60,7 @@ export function CreateObjectDialog({
       const initialType = availableClasses[0]?.id || "";
       setSelectedType(initialType);
       setParent(defaultParent || "");
+      setPendingFiles([]);
       setError(null);
       // Initialize field values with defaults
       const initialValues: Record<string, string> = {};
@@ -179,6 +182,11 @@ export function CreateObjectDialog({
         if (fieldId !== titleFieldId && value && validFields.has(fieldId)) {
           await crmsApi.setValue(crm.crm.id, objectId, fieldId, value);
         }
+      }
+
+      // Upload any attached files
+      if (pendingFiles.length > 0) {
+        await crmsApi.uploadAttachments(crm.crm.id, objectId, pendingFiles);
       }
 
       return {
@@ -366,6 +374,56 @@ export function CreateObjectDialog({
                   </div>
                   );
                 })}
+
+              {/* File attachments */}
+              <div className="grid grid-cols-[120px_1fr] gap-4 items-start">
+                <label className="text-sm font-medium text-muted-foreground pt-2 flex items-center gap-1.5">
+                  <Paperclip className="size-3.5" />
+                  Files
+                </label>
+                <div className="space-y-2 pt-1">
+                  {pendingFiles.length > 0 && (
+                    <div className="space-y-1">
+                      {pendingFiles.map((file, i) => (
+                        <div key={`${file.name}-${i}`} className="flex items-center gap-1.5 text-xs">
+                          <span className="truncate">{file.name}</span>
+                          <button
+                            type="button"
+                            className="text-muted-foreground hover:text-destructive shrink-0"
+                            onClick={() => setPendingFiles((prev) => prev.filter((_, j) => j !== i))}
+                          >
+                            <X className="size-3" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    multiple
+                    className="hidden"
+                    onChange={(e) => {
+                      const files = e.target.files;
+                      if (files && files.length > 0) {
+                        setPendingFiles((prev) => [...prev, ...Array.from(files)]);
+                      }
+                      e.target.value = "";
+                    }}
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    className="h-7 text-xs"
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={createMutation.isPending}
+                  >
+                    <Upload className="size-3 mr-1.5" />
+                    Upload
+                  </Button>
+                </div>
+              </div>
 
               {error && (
                 <div className="text-sm text-destructive bg-destructive/10 p-3 rounded-md">

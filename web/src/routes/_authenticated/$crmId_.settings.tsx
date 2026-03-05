@@ -88,6 +88,7 @@ function CrmSettingsPage() {
   const activeTab = tab ?? "general";
   const queryClient = useQueryClient();
   const refreshSidebar = useCrmsStore((state) => state.refresh);
+  const goBackToCrm = () => navigate({ to: "/$crmId", params: { crmId } });
 
   const setActiveTab = (newTab: TabId) => {
     void navigateSettings({ search: { tab: newTab }, replace: true });
@@ -184,6 +185,7 @@ function CrmSettingsPage() {
         <PageHeader
           title="Settings"
           icon={<Settings className="size-4 md:size-5" />}
+          back={{ label: "Back to CRM", onFallback: goBackToCrm }}
         />
         <Main className="space-y-6">
           <div className="flex gap-1 border-b">
@@ -206,6 +208,7 @@ function CrmSettingsPage() {
         <PageHeader
           title="Settings"
           icon={<Settings className="size-4 md:size-5" />}
+          back={{ label: "Back to CRM", onFallback: goBackToCrm }}
         />
         <Main>
           {crmLookupError ? (
@@ -238,6 +241,7 @@ function CrmSettingsPage() {
       <PageHeader
         title={`${crm.crm.name} settings`}
         icon={<Settings className="size-4 md:size-5" />}
+        back={{ label: "Back to CRM", onFallback: goBackToCrm }}
       />
       <Main className="space-y-6">
         {/* Tabs - only show for owners */}
