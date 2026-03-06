@@ -116,7 +116,8 @@ export function ViewSheet({
       setDirection((view.direction as "asc" | "desc") || "asc");
       setSelectedClasses(view.classes?.length ? view.classes : allClassIds);
     }
-  }, [open, view, mode, allClassIds, classes, fields, enumeratedFields.length]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, view, mode]);
 
   if (mode === "edit" && !view) return null;
 

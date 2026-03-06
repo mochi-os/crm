@@ -6,10 +6,11 @@ import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { Check, Paperclip, Upload, X } from "lucide-react";
 import {
   Button,
-  Label,
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetFooter,
+  SheetTitle,
   Select,
   SelectContent,
   SelectItem,
@@ -50,9 +51,12 @@ export function CreateObjectDialog({
   const queryClient = useQueryClient();
 
   // Filter classes to those allowed by the current view
-  const availableClasses = allowedClasses?.length
-    ? crm.classes.filter((c) => allowedClasses.includes(c.id))
-    : crm.classes;
+  const availableClasses = useMemo(() => {
+    if (!allowedClasses?.length) {
+      return crm.classes;
+    }
+    return crm.classes.filter((c) => allowedClasses.includes(c.id));
+  }, [allowedClasses, crm.classes]);
 
   // Reset state when dialog opens/closes or type changes
   useEffect(() => {
@@ -285,10 +289,12 @@ export function CreateObjectDialog({
   return (
     <Sheet open={open} onOpenChange={handleClose} modal={false}>
       <SheetContent className="w-full sm:max-w-2xl p-0 gap-0 [&>button:last-child]:hidden">
+        <SheetTitle className="sr-only">Create object</SheetTitle>
+        <SheetDescription className="sr-only">Create a new CRM object.</SheetDescription>
         {/* Header */}
         <div className="flex items-center gap-3 px-6 py-4 border-b shrink-0">
           <div className="flex items-center gap-2 flex-1">
-            <Label className="text-xl font-bold">New</Label>
+            <span className="text-xl font-bold">New</span>
             <Select value={selectedClass} onValueChange={handleTypeChange}>
               <SelectTrigger className="w-auto h-auto py-1 px-2 text-xl font-bold">
                 <SelectValue />
