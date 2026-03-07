@@ -890,7 +890,8 @@ export function EditFieldDialog({
       setFieldId(field.id);
       setRows(field.rows || 1);
     }
-  }, [field]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [field?.id]);
 
   if (!field) return null;
 
