@@ -98,7 +98,7 @@ export function ViewSheet({
     if (mode === "create") {
       setName("");
       setViewtype(enumeratedFields.length > 0 ? "board" : "list");
-      setColumns("");
+      setColumns(enumeratedFields[0]?.id || "");
       setRows("");
       setBorder("");
       setSelectedFields(fields.map((f) => f.id));
