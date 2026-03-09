@@ -4,6 +4,7 @@ import {
   Button,
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -97,6 +98,7 @@ export function CreateCrmDialog({
             </div>
             Create CRM
           </DialogTitle>
+          <DialogDescription className="sr-only">Create a new CRM</DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit}>

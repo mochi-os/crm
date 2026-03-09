@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogFooter,
@@ -76,6 +77,7 @@ export function OptionDialog({
       <DialogContent showCloseButton={false}>
         <DialogHeader className="flex flex-row items-center justify-between">
           <DialogTitle>{title || (isEdit ? "Edit option" : "Add option")}</DialogTitle>
+          <DialogDescription className="sr-only">Configure option settings</DialogDescription>
           {isEdit && onDelete && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

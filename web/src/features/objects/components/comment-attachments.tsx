@@ -10,6 +10,7 @@ import {
   getFileIcon,
   ImageLightbox,
   type LightboxMedia,
+  authenticatedUrl,
 } from "@mochi/common";
 import type { CommentAttachment } from "@/types";
 
@@ -27,13 +28,14 @@ export function CommentAttachments({
   if (!attachments || attachments.length === 0) return null;
 
   const basePath = `${getAppPath()}/${crmId}/-/attachments/`;
+  const attUrl = (id: string, suffix = "") => authenticatedUrl(`${basePath}${id}${suffix}`);
   const images = attachments.filter((a) => isImage(a.type));
   const files = attachments.filter((a) => !isImage(a.type));
 
   const lightboxMedia: LightboxMedia[] = images.map((img) => ({
     id: img.id,
     name: img.name,
-    url: `${basePath}${img.id}`,
+    url: attUrl(img.id),
     type: "image",
   }));
 
@@ -49,7 +51,7 @@ export function CommentAttachments({
               onClick={() => setLightboxIndex(i)}
             >
               <img
-                src={`${basePath}${img.id}/thumbnail`}
+                src={attUrl(img.id, "/thumbnail")}
                 alt={img.name}
                 className="h-20 w-auto object-cover"
               />
@@ -64,7 +66,7 @@ export function CommentAttachments({
             return (
               <a
                 key={file.id}
-                href={`${basePath}${file.id}`}
+                href={attUrl(file.id)}
                 download={file.name}
                 className="text-muted-foreground hover:text-foreground flex items-center gap-1.5 text-xs"
               >

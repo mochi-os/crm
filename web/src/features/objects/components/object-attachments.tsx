@@ -13,6 +13,7 @@ import {
   getFileIcon,
   ImageLightbox,
   getErrorMessage,
+  authenticatedUrl,
   toast,
   type LightboxMedia,
 } from "@mochi/common";
@@ -82,6 +83,7 @@ export function ObjectAttachments({
   };
 
   const basePath = `${getAppPath()}/${crmId}/-/attachments/`;
+  const attUrl = (id: string, suffix = "") => authenticatedUrl(`${basePath}${id}${suffix}`);
   const attachments = data || [];
   const images = attachments.filter((a) => isImage(a.type));
   const files = attachments.filter((a) => !isImage(a.type));
@@ -89,7 +91,7 @@ export function ObjectAttachments({
   const lightboxMedia: LightboxMedia[] = images.map((img) => ({
     id: img.id,
     name: img.name,
-    url: `${basePath}${img.id}`,
+    url: attUrl(img.id),
     type: "image",
   }));
 
@@ -128,7 +130,7 @@ export function ObjectAttachments({
                   onClick={() => setLightboxIndex(i)}
                 >
                   <img
-                    src={`${basePath}${img.id}/thumbnail`}
+                    src={attUrl(img.id, "/thumbnail")}
                     alt={img.name}
                     className="h-20 w-auto object-cover"
                   />
@@ -156,7 +158,7 @@ export function ObjectAttachments({
                   className="group flex items-center gap-1.5 text-xs"
                 >
                   <a
-                    href={`${basePath}${file.id}`}
+                    href={attUrl(file.id)}
                     download={file.name}
                     className="text-muted-foreground hover:text-foreground flex items-center gap-1.5"
                   >

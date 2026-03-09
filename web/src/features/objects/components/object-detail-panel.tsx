@@ -10,6 +10,9 @@ import {
   ConfirmDialog,
   Sheet,
   SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
   Select,
   SelectContent,
   SelectItem,
@@ -231,6 +234,10 @@ export function ObjectDetailPanel({
     return (
       <Sheet open={true} onOpenChange={handleClose} modal={false}>
         <SheetContent className="w-full sm:max-w-2xl p-0 gap-0">
+          <SheetHeader className="sr-only">
+            <SheetTitle>Loading item</SheetTitle>
+            <SheetDescription>Loading item details</SheetDescription>
+          </SheetHeader>
           <div className="p-6">
             <ListSkeleton variant="simple" height="h-12" count={3} />
           </div>
@@ -243,6 +250,10 @@ export function ObjectDetailPanel({
     return (
       <Sheet open={true} onOpenChange={handleClose} modal={false}>
         <SheetContent className="w-full sm:max-w-2xl p-6">
+          <SheetHeader className="sr-only">
+            <SheetTitle>Error</SheetTitle>
+            <SheetDescription>Failed to load item</SheetDescription>
+          </SheetHeader>
           <GeneralError
             error={error ?? new Error("Failed to load object")}
             minimal
@@ -289,6 +300,10 @@ export function ObjectDetailPanel({
   return (
     <Sheet open={true} onOpenChange={handleClose} modal={false}>
       <SheetContent className="w-full sm:max-w-3xl p-0 gap-0 [&>button:last-child]:hidden">
+        <SheetHeader className="sr-only">
+          <SheetTitle>Item details</SheetTitle>
+          <SheetDescription>View and edit item details</SheetDescription>
+        </SheetHeader>
         {/* Header */}
         <div className="flex items-center gap-3 px-6 py-4 border-b shrink-0">
           {editingTitle && canWrite(access) ? (
