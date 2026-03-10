@@ -266,6 +266,8 @@ export function CommentThread({
               size="icon"
               className="size-8"
               onClick={() => replyFileRef.current?.click()}
+              aria-label="Attach reply files"
+              title="Attach reply files"
             >
               <Paperclip className="size-4" />
             </Button>
@@ -275,6 +277,8 @@ export function CommentThread({
               variant="ghost"
               className="size-8"
               onClick={onCancelReply}
+              aria-label="Cancel reply"
+              title="Cancel reply"
             >
               <X className="size-4" />
             </Button>
@@ -289,6 +293,8 @@ export function CommentThread({
                   replyFiles.length > 0 ? replyFiles : undefined,
                 )
               }
+              aria-label="Submit reply"
+              title="Submit reply"
             >
               <Send className="size-4" />
             </Button>

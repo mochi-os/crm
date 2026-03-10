@@ -227,6 +227,8 @@ export function CommentList({
               size="icon"
               className="size-8"
               onClick={() => fileInputRef.current?.click()}
+              aria-label="Attach comment files"
+              title="Attach comment files"
             >
               <Paperclip className="size-4" />
             </Button>
@@ -236,6 +238,8 @@ export function CommentList({
               className="size-8"
               disabled={!newComment.trim() || createMutation.isPending}
               onClick={handleCreate}
+              aria-label="Submit comment"
+              title="Submit comment"
             >
               <Send className="size-4" />
             </Button>
