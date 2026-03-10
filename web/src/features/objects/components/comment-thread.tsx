@@ -8,6 +8,7 @@ import {
   CommentTreeLayout,
   ConfirmDialog,
   formatTimestamp,
+  useImageObjectUrls,
 } from "@mochi/common";
 import type { Comment } from "@/types";
 import { CommentAttachments } from "./comment-attachments";
@@ -48,6 +49,7 @@ export function CommentThread({
   const [editBody, setEditBody] = useState("");
   const [deleting, setDeleting] = useState(false);
   const [replyFiles, setReplyFiles] = useState<File[]>([]);
+  const replyPreviewUrls = useImageObjectUrls(replyFiles);
   const replyFileRef = { current: null as HTMLInputElement | null };
 
   const isReplying = replyingTo === comment.id;
@@ -224,7 +226,7 @@ export function CommentThread({
                 >
                   {file.type.startsWith("image/") && (
                     <img
-                      src={URL.createObjectURL(file)}
+                      src={replyPreviewUrls[i] ?? undefined}
                       alt={file.name}
                       className="h-8 w-8 rounded object-cover"
                     />

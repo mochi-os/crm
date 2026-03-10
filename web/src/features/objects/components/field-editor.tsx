@@ -139,7 +139,7 @@ export function FieldEditor({
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <div className="flex-1 h-1.5 bg-muted rounded-full overflow-hidden">
-                <div className="h-full bg-primary transition-all" style={{ width: `${(doneCount / items.length) * 100}%` }} />
+                <div className="h-full bg-primary transition-[width]" style={{ width: `${(doneCount / items.length) * 100}%` }} />
               </div>
               <span className="tabular-nums">{doneCount}/{items.length}</span>
             </div>
@@ -445,7 +445,7 @@ function ChecklistEditor({ value, onChange, disabled }: ChecklistEditorProps) {
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <div className="flex-1 h-1.5 bg-muted rounded-full overflow-hidden">
             <div
-              className="h-full bg-primary transition-all"
+              className="h-full bg-primary transition-[width]"
               style={{ width: `${(doneCount / totalCount) * 100}%` }}
             />
           </div>
@@ -472,7 +472,7 @@ function ChecklistEditor({ value, onChange, disabled }: ChecklistEditorProps) {
               value={item.text}
               onChange={(e) => updateItemText(item.id, e.target.value)}
               disabled={disabled}
-              className={`flex-1 bg-transparent text-sm border-none outline-none ${
+              className={`flex-1 rounded-sm border-none bg-transparent text-sm focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none ${
                 item.done ? "line-through text-muted-foreground" : ""
               }`}
             />
@@ -512,7 +512,7 @@ function ChecklistEditor({ value, onChange, disabled }: ChecklistEditorProps) {
             onChange={(e) => setNewItemText(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Add item..."
-            className="flex-1 bg-transparent text-sm border-none outline-none placeholder:text-muted-foreground"
+            className="flex-1 rounded-sm border-none bg-transparent text-sm placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none"
           />
           {newItemText && (
             <Button

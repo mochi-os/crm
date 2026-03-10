@@ -210,7 +210,7 @@ export function BoardCard({
   return (
     <Card
       className={cn(
-        "group/card relative transition-all",
+        "group/card relative transition-[background-color,border-color,box-shadow,transform] duration-200",
         isNested ? "bg-surface-1 p-2" : "p-3 py-3 hover:bg-surface-2 hover:shadow-md",
         "cursor-pointer active:scale-[0.99]",
       )}

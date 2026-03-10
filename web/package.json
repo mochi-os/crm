@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "knip": "pnpm -w exec knip",
+    "knip": "pnpm -C ../../.. exec knip --workspace apps/crm/web",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "test": "vitest run",
