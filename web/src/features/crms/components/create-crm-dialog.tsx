@@ -6,6 +6,7 @@ import {
   DialogContent,
   DialogFooter,
   DialogHeader,
+  DialogDescription,
   DialogTitle,
   DialogTrigger,
   Input,
@@ -97,6 +98,9 @@ export function CreateCrmDialog({
             </div>
             Create CRM
           </DialogTitle>
+          <DialogDescription>
+            Create a CRM and choose whether it is searchable.
+          </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit}>

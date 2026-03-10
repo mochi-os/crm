@@ -74,4 +74,14 @@ describe("CreateCrmDialog", () => {
 
     expect(screen.getByText("Allow anyone to search for CRM")).toBeInTheDocument();
   });
+
+  it("should include descriptive dialog text for assistive tech", () => {
+    render(
+      <CreateCrmDialog open={true} onOpenChange={vi.fn()} hideTrigger />,
+    );
+
+    expect(
+      screen.getByText("Create a CRM and choose whether it is searchable."),
+    ).toBeInTheDocument();
+  });
 });

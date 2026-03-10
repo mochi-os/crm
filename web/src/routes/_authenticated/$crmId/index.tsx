@@ -12,6 +12,7 @@ import {
   PageHeader,
   usePageTitle,
   Button,
+  IconButton,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -745,15 +746,19 @@ function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
               onFilterChange={setFilters}
             />
             {canWrite(access) && (
-              <Button variant="ghost" size="icon" onClick={handleOpenCreateDialog} title="Create (C)">
+              <IconButton
+                variant='ghost'
+                onClick={handleOpenCreateDialog}
+                label='Create object'
+              >
                 <Plus className="size-4" />
-              </Button>
+              </IconButton>
             )}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <IconButton variant='ghost' label='Open page actions'>
                   <Ellipsis className="size-4" />
-                </Button>
+                </IconButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem
@@ -846,6 +851,8 @@ function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
             size="icon"
             className="size-6"
             onClick={dismissBoardHint}
+            aria-label="Dismiss board hint"
+            title="Dismiss board hint"
           >
             <X className="size-4" />
           </Button>

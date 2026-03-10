@@ -253,13 +253,13 @@ export function ViewSheet({
         <div className="flex items-center justify-between px-6 py-4 border-b">
           <SheetTitle>{mode === "create" ? "Add view" : "Edit view"}</SheetTitle>
           <div className="flex items-center gap-1">
-            <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)}>
+            <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label="Close dialog">
               <X className="size-4" />
             </Button>
             {mode === "edit" && onDelete && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="size-8">
+                  <Button variant="ghost" size="icon" className="size-8" aria-label="Open view actions">
                     <MoreHorizontal className="size-4" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -654,13 +654,13 @@ export function ClassSheet({
         <div className="flex items-center justify-between px-6 py-4 border-b">
           <SheetTitle>{mode === "create" ? "Add class" : "Edit class"}</SheetTitle>
           <div className="flex items-center gap-1">
-            <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)}>
+            <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label="Close dialog">
               <X className="size-4" />
             </Button>
             {mode === "edit" && onDelete && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="size-8">
+                  <Button variant="ghost" size="icon" className="size-8" aria-label="Open class actions">
                     <MoreHorizontal className="size-4" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -787,6 +787,8 @@ export function ClassSheet({
                           size="icon"
                           className="size-6 shrink-0"
                           onClick={() => removePendingField(field.id)}
+                          aria-label={`Remove field ${field.name || field.id}`}
+                          title={`Remove field ${field.name || field.id}`}
                         >
                           <X className="size-3" />
                         </Button>
@@ -1023,6 +1025,8 @@ export function EditFieldDialog({
                         size="icon"
                         className="size-7"
                         onClick={() => onEditOption(opt)}
+                        aria-label={`Edit option ${opt.name}`}
+                        title={`Edit option ${opt.name}`}
                       >
                         <Pencil className="size-3.5" />
                       </Button>
@@ -1032,6 +1036,8 @@ export function EditFieldDialog({
                         size="icon"
                         className="size-7"
                         onClick={() => onDeleteOption(opt.id)}
+                        aria-label={`Delete option ${opt.name}`}
+                        title={`Delete option ${opt.name}`}
                       >
                         <Trash2 className="size-3.5" />
                       </Button>

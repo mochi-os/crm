@@ -14,6 +14,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   Button,
+  IconButton,
   Dialog,
   DialogContent,
   DialogFooter,
@@ -160,9 +161,13 @@ function DesignPage() {
         actions={
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="size-8">
+              <IconButton
+                variant='ghost'
+                className='size-8'
+                label='Open design actions'
+              >
                 <MoreHorizontal className="size-4" />
-              </Button>
+              </IconButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={handleExport}>

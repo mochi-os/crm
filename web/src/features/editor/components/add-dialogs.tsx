@@ -97,7 +97,7 @@ export function AddFieldDialog({
       <SheetContent className="w-full sm:max-w-md p-0 flex flex-col [&>button:last-child]:hidden">
         <div className="flex items-center justify-between px-6 py-4 border-b">
           <SheetTitle>Add field</SheetTitle>
-          <Button variant="ghost" size="icon" className="size-8" onClick={handleClose}>
+          <Button variant="ghost" size="icon" className="size-8" onClick={handleClose} aria-label="Close dialog">
             <X className="size-4" />
           </Button>
         </div>
@@ -217,4 +217,3 @@ export function AddFieldDialog({
     </Sheet>
   );
 }
-
