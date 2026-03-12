@@ -17,6 +17,7 @@ import {
   IconButton,
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -270,6 +271,7 @@ function ImportDialog({
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Import design</DialogTitle>
+          <DialogDescription className="sr-only">Import a design configuration</DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">

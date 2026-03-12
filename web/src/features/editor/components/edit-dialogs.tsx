@@ -5,10 +5,12 @@ import { useState, useEffect, useMemo } from "react";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetTitle,
   SheetFooter,
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogFooter,
@@ -252,6 +254,7 @@ export function ViewSheet({
       <SheetContent className="w-full sm:max-w-md p-0 flex flex-col [&>button:last-child]:hidden">
         <div className="flex items-center justify-between px-6 py-4 border-b">
           <SheetTitle>{mode === "create" ? "Add view" : "Edit view"}</SheetTitle>
+          <SheetDescription className="sr-only">Configure view settings</SheetDescription>
           <div className="flex items-center gap-1">
             <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label="Close dialog">
               <X className="size-4" />
@@ -653,6 +656,7 @@ export function ClassSheet({
       <SheetContent className="w-full sm:max-w-md p-0 flex flex-col [&>button:last-child]:hidden">
         <div className="flex items-center justify-between px-6 py-4 border-b">
           <SheetTitle>{mode === "create" ? "Add class" : "Edit class"}</SheetTitle>
+          <SheetDescription className="sr-only">Configure class settings</SheetDescription>
           <div className="flex items-center gap-1">
             <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label="Close dialog">
               <X className="size-4" />
@@ -939,6 +943,7 @@ export function EditFieldDialog({
       <DialogContent className="max-w-md flex flex-col max-h-[85vh]" showCloseButton={false}>
         <DialogHeader>
           <DialogTitle>Edit field</DialogTitle>
+          <DialogDescription className="sr-only">Edit field settings</DialogDescription>
         </DialogHeader>
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
           <div className="space-y-2">

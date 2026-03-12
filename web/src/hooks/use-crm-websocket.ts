@@ -3,6 +3,7 @@
 
 import { useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
+import { isInShell } from "@mochi/common";
 
 interface CrmWebsocketEvent {
   type: string;
@@ -146,7 +147,7 @@ export function useCrmWebsocket(crmFingerprint?: string) {
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    if (!crmFingerprint) return;
+    if (!crmFingerprint || isInShell()) return;
 
     const handleMessage = (data: CrmWebsocketEvent) => {
       const pid = crmFingerprint;

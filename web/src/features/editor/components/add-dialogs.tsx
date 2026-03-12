@@ -5,6 +5,7 @@ import { useState } from "react";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetTitle,
   SheetFooter,
   Button,
@@ -97,7 +98,8 @@ export function AddFieldDialog({
       <SheetContent className="w-full sm:max-w-md p-0 flex flex-col [&>button:last-child]:hidden">
         <div className="flex items-center justify-between px-6 py-4 border-b">
           <SheetTitle>Add field</SheetTitle>
-          <Button variant="ghost" size="icon" className="size-8" onClick={handleClose} aria-label="Close dialog">
+          <SheetDescription className="sr-only">Add a new field to this class</SheetDescription>
+          <Button variant="ghost" size="icon" className="size-8" onClick={handleClose}>
             <X className="size-4" />
           </Button>
         </div>
