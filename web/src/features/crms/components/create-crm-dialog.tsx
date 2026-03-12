@@ -98,9 +98,7 @@ export function CreateCrmDialog({
             </div>
             Create CRM
           </DialogTitle>
-          <DialogDescription>
-            Create a CRM and choose whether it is searchable.
-          </DialogDescription>
+          <DialogDescription className="sr-only">Create a new CRM</DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit}>

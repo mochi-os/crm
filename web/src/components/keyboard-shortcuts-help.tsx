@@ -4,6 +4,7 @@
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@mochi/common";
@@ -36,6 +37,7 @@ export function KeyboardShortcutsHelp({
       <DialogContent className="max-w-md">
         <DialogHeader>
           <DialogTitle>Keyboard shortcuts</DialogTitle>
+          <DialogDescription className="sr-only">Available keyboard shortcuts</DialogDescription>
         </DialogHeader>
         <div className="space-y-1">
           {shortcuts.map((shortcut) => (

@@ -2,7 +2,7 @@
 // Uses getAppPath() + '/' as baseURL
 
 import axios, { type AxiosRequestConfig } from "axios";
-import { getAppPath, getCookie, useAuthStore } from "@mochi/common";
+import { getAppPath, useAuthStore, isInShell } from "@mochi/common";
 
 // Create a CRM-specific axios instance that uses app path as baseURL
 const crmsClient = axios.create({
@@ -23,10 +23,13 @@ crmsClient.interceptors.request.use((config) => {
     delete config.headers["Content-Type"];
   }
 
+  // In sandboxed iframe, cookies are unavailable — always use Bearer auth only
+  if (isInShell()) {
+    config.withCredentials = false;
+  }
+
   // Add auth token
-  const storeToken = useAuthStore.getState().token;
-  const cookieToken = getCookie("token");
-  const token = storeToken || cookieToken;
+  const token = useAuthStore.getState().token;
 
   if (token) {
     config.headers.Authorization = token.startsWith("Bearer ")

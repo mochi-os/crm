@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 {
-	"version": "1.14",
+	"version": "1.15",
 	"label": "app_name",
 	"classes": ["crm"],
 	"paths": ["crm"],
@@ -37,6 +37,7 @@
 		"-/recommendations": {"function": "action_recommendations"},
 		"-/subscribe": {"function": "action_subscribe"},
 		"-/unsubscribe": {"function": "action_unsubscribe"},
+		"-/notifications/check": {"function": "action_notifications_check"},
 
 		":crm": {"file": "web/dist/index.html"},
 		":crm/design": {"file": "web/dist/index.html"},
@@ -111,11 +112,7 @@
 		":crm/-/classes/:class/fields/:field/options/:option/delete": {"function": "action_option_delete"},
 
 		"-/users/search": {"function": "action_users_search"},
-		"-/groups": {"function": "action_groups"},
-
-		"-/notifications/subscribe": {"function": "action_notifications_subscribe"},
-		"-/notifications/check": {"function": "action_notifications_check"},
-		"-/notifications/destinations": {"function": "action_notifications_destinations"}
+		"-/groups": {"function": "action_groups"}
 	},
 
 	"events": {

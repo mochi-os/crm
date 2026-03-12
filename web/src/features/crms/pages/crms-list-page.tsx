@@ -11,13 +11,12 @@ import {
   GeneralError,
   EntityOnboardingEmptyState,
   PageHeader,
-  SubscribeDialog,
   ConfirmDialog,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  getAppPath,
+  shellSubscribeNotifications,
   getErrorMessage,
   toast,
 } from "@mochi/common";
@@ -34,7 +33,6 @@ export function CrmsListPage() {
   const error = useCrmsStore((state) => state.error);
   const refresh = useCrmsStore((state) => state.refresh);
   const { openCreateDialog } = useSidebarContext();
-  const [subscribeOpen, setSubscribeOpen] = useState(false);
   const [unsubscribeId, setUnsubscribeId] = useState<string | null>(null);
   const queryClient = useQueryClient();
 
@@ -59,13 +57,16 @@ export function CrmsListPage() {
     staleTime: Infinity,
   });
 
-  // Show notification subscription dialog once on mount if user has CRMs but hasn't been asked
+  // Prompt for notification subscription once on mount if user has CRMs but hasn't subscribed
   const promptedNotifications = useRef(false);
   useEffect(() => {
     if (promptedNotifications.current) return;
     if (!isLoading && crms.length > 0 && subscriptionData?.data?.exists === false) {
       promptedNotifications.current = true;
-      setSubscribeOpen(true);
+      shellSubscribeNotifications('crm', [
+        { label: 'CRM updates', type: 'update', defaultEnabled: true },
+        { label: 'Assignments', type: 'assignment', defaultEnabled: true },
+      ]).then(() => refetchSubscription());
     }
   }, [isLoading, crms.length, subscriptionData?.data?.exists]);
 
@@ -188,18 +189,6 @@ export function CrmsListPage() {
         }}
       />
 
-      <SubscribeDialog
-        open={subscribeOpen}
-        onOpenChange={setSubscribeOpen}
-        app="crm"
-        label="CRM updates"
-        appBase={getAppPath()}
-        subscriptions={[
-          { label: "CRM updates", type: "update", defaultEnabled: true },
-          { label: "Assignments", type: "assignment", defaultEnabled: true },
-        ]}
-        onResult={() => refetchSubscription()}
-      />
     </>
   );
 }
