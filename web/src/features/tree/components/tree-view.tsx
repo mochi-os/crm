@@ -1,8 +1,8 @@
 // Mochi CRMs: Tree view component
 // Copyright Alistair Cunningham 2026
 
-import { useState, useMemo, useEffect, useLayoutEffect, useCallback, useRef } from "react";
-import { Button, EmptyState } from "@mochi/common";
+import { useState, useMemo, useLayoutEffect, useCallback, useRef } from "react";
+import { Button, EmptyState, useShellStorage } from "@mochi/common";
 import { Folder, Plus } from 'lucide-react';
 import { TreeRow } from "./tree-row";
 import type { CrmDetails, CrmObject, SortState } from "@/types";
@@ -149,20 +149,9 @@ export function TreeView({
   // Storage key for expanded state
   const storageKey = `crms:${crmId}:tree:expanded`;
 
-  // Load expanded state from localStorage
-  const [expanded, setExpanded] = useState<Set<string>>(() => {
-    try {
-      const saved = localStorage.getItem(storageKey);
-      return new Set(saved ? JSON.parse(saved) : []);
-    } catch {
-      return new Set();
-    }
-  });
-
-  // Save expanded state to localStorage
-  useEffect(() => {
-    localStorage.setItem(storageKey, JSON.stringify([...expanded]));
-  }, [expanded, storageKey]);
+  // Persist expanded state via shell storage
+  const [expandedList, setExpandedList] = useShellStorage<string[]>(storageKey, []);
+  const expanded = useMemo(() => new Set(expandedList), [expandedList]);
 
   // Build tree structure
   const tree = useMemo(() => buildTree(objects, sort), [objects, sort]);
@@ -172,16 +161,14 @@ export function TreeView({
 
   // Toggle expand/collapse
   const toggleExpand = useCallback((objectId: string) => {
-    setExpanded((prev) => {
-      const next = new Set(prev);
-      if (next.has(objectId)) {
-        next.delete(objectId);
-      } else {
-        next.add(objectId);
-      }
-      return next;
-    });
-  }, []);
+    const set = new Set(expandedList);
+    if (set.has(objectId)) {
+      set.delete(objectId);
+    } else {
+      set.add(objectId);
+    }
+    setExpandedList([...set]);
+  }, [expandedList, setExpandedList]);
 
   // Get fields and options for the first class (for now)
   // TODO: Support per-class fields when class filtering is implemented

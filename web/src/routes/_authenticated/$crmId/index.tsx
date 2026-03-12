@@ -19,6 +19,7 @@ import {
   DropdownMenuTrigger,
   Switch,
   useSearch,
+  useShellStorage,
   toast,
 } from "@mochi/common";
 import { Columns3, Ellipsis, Users, GripVertical, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
@@ -134,27 +135,16 @@ function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
   const [createDefaultParent, setCreateDefaultParent] = useState<string | undefined>();
   const [createChildClasses, setCreateChildClasses] = useState<string[] | undefined>();
   const [showShortcutsHelp, setShowShortcutsHelp] = useState(false);
-  const [showViewOptions, setShowViewOptions] = useState(() => {
-    const saved = localStorage.getItem("crms-view-options-expanded");
-    return saved !== "false";
-  });
+  const [showViewOptions, setShowViewOptions] = useShellStorage("crms-view-options-expanded", true);
   const [selectedCardIndex, setSelectedCardIndex] = useState(-1);
   const [addColumnDialogOpen, setAddColumnDialogOpen] = useState(false);
   const [isReorderingColumns, setIsReorderingColumns] = useState(false);
   const [pendingColumnOrder, setPendingColumnOrder] = useState<string[] | null>(null);
-  const [showBoardHint, setShowBoardHint] = useState(() => {
-    return localStorage.getItem("crms-hint-double-click-dismissed") !== "true";
-  });
+  const [hintDismissed, setHintDismissed] = useShellStorage("crms-hint-dismissed", false);
 
   const dismissBoardHint = () => {
-    setShowBoardHint(false);
-    localStorage.setItem("crms-hint-double-click-dismissed", "true");
+    setHintDismissed(true);
   };
-
-  // Persist view options bar state
-  useEffect(() => {
-    localStorage.setItem("crms-view-options-expanded", String(showViewOptions));
-  }, [showViewOptions]);
 
   // View state - initialize from URL or first view
   const defaultViewId = crm.views[0]?.id || "board";
@@ -608,7 +598,7 @@ function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
   // Keyboard shortcuts
   useKeyboardShortcuts({
     onCreateNew: handleOpenCreateDialog,
-    onFocusSearch: () => setShowViewOptions((prev) => !prev),
+    onFocusSearch: () => setShowViewOptions(!showViewOptions),
     onSwitchView: handleSwitchView,
     onSelectNext: handleSelectNext,
     onSelectPrevious: handleSelectPrevious,
@@ -841,7 +831,7 @@ function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
           </div>
         </div>
       )}
-      {showBoardHint && !isReorderingColumns && activeView?.viewtype !== "list" && (
+      {!hintDismissed && !isReorderingColumns && activeView?.viewtype !== "list" && (
         <div className="flex items-center justify-between px-4 py-2 bg-muted border-b">
           <span className="text-sm text-muted-foreground">
             Double click on a column to add content
