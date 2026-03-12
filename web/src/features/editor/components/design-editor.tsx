@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useMemo } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button, Label, toast, getErrorMessage } from "@mochi/common";
 import { Blocks, GripVertical, Plus } from "lucide-react";
 import crmsApi from "@/api/crms";
@@ -18,6 +18,16 @@ interface DesignEditorProps {
 
 export function DesignEditor({ crmId, crm }: DesignEditorProps) {
   const queryClient = useQueryClient();
+
+  // Fetch objects for preview
+  const { data: objectsData } = useQuery({
+    queryKey: ["crm-objects", crmId],
+    queryFn: async () => {
+      const response = await crmsApi.listObjects(crmId);
+      return response.data.objects;
+    },
+  });
+  const objects = objectsData || [];
 
   // Selection state
   const [selectedClassId, setSelectedClassId] = useState<string | null>(
@@ -520,6 +530,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
           fields={crm.fields}
           options={crm.options}
           views={crm.views}
+          objects={objects}
           selectedClassId={selectedClassId}
         />
       </div>

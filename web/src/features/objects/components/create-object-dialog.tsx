@@ -58,10 +58,31 @@ export function CreateObjectDialog({
     return crm.classes.filter((c) => allowedClasses.includes(c.id));
   }, [allowedClasses, crm.classes]);
 
+  // Load objects for parent selection (shares cache with crm page)
+  const { data: objectListData } = useQuery({
+    queryKey: ["objects", crmId],
+    queryFn: async () => {
+      const response = await crmsApi.listObjects(crmId);
+      return response.data;
+    },
+  });
+  const objectsData = objectListData?.objects;
+
+  // Filter out classes that require a parent but have no valid parent objects
+  const creatableClasses = useMemo(() => {
+    if (!objectsData) return availableClasses;
+    return availableClasses.filter((cls) => {
+      const parentClasses = crm.hierarchy[cls.id] || [];
+      if (parentClasses.length === 0 || parentClasses.includes("")) return true;
+      const parentClassIds = parentClasses.filter((t) => t !== "");
+      return objectsData.some((obj) => parentClassIds.includes(obj.class));
+    });
+  }, [availableClasses, crm.hierarchy, objectsData]);
+
   // Reset state when dialog opens/closes or type changes
   useEffect(() => {
     if (open) {
-      const initialType = availableClasses[0]?.id || "";
+      const initialType = creatableClasses[0]?.id || "";
       setSelectedType(initialType);
       setParent(defaultParent || "");
       setPendingFiles([]);
@@ -86,7 +107,7 @@ export function CreateObjectDialog({
       }
       setFieldValues(initialValues);
     }
-  }, [open, availableClasses, defaultFields, defaultParent, crm.fields, crm.options]);
+  }, [open, creatableClasses, defaultFields, defaultParent, crm.fields, crm.options]);
 
   // Update default field values when type changes (if fields exist in new type)
   useEffect(() => {
@@ -103,16 +124,6 @@ export function CreateObjectDialog({
       }
     }
   }, [selectedClass, defaultFields, crm.fields]);
-
-  // Load objects for parent selection (shares cache with crm page)
-  const { data: objectListData } = useQuery({
-    queryKey: ["objects", crmId],
-    queryFn: async () => {
-      const response = await crmsApi.listObjects(crmId);
-      return response.data;
-    },
-  });
-  const objectsData = objectListData?.objects;
 
   // Fetch crm members for the owner picker
   const { data: peopleData } = useQuery({
@@ -300,7 +311,7 @@ export function CreateObjectDialog({
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="z-[60]">
-                {availableClasses.map((type) => (
+                {creatableClasses.map((type) => (
                   <SelectItem key={type.id} value={type.id}>
                     {type.name}
                   </SelectItem>
