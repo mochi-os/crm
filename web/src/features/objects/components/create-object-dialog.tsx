@@ -162,6 +162,14 @@ export function CreateObjectDialog({
   const canBeTopLevel = allowedParentClasses.includes("");
   const parentRequired = !canBeTopLevel && allowedParentClasses.length > 0;
 
+  // Human-readable names for required parent classes (used in "no parents" message)
+  const parentClassNames = useMemo(() => {
+    return allowedParentClasses
+      .filter((t) => t !== "")
+      .map((id) => crm.classes.find((c) => c.id === id)?.name || id)
+      .join(" or ");
+  }, [allowedParentClasses, crm.classes]);
+
   const validParentOptions = useMemo(() => {
     if (!objectsData || !selectedClass) return [];
 
@@ -305,19 +313,25 @@ export function CreateObjectDialog({
         {/* Header */}
         <div className="flex items-center gap-3 px-6 py-4 border-b shrink-0">
           <div className="flex items-center gap-2 flex-1">
-            <span className="text-xl font-bold">New</span>
-            <Select value={selectedClass} onValueChange={handleTypeChange}>
-              <SelectTrigger className="w-auto h-auto py-1 px-2 text-xl font-bold">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="z-[60]">
-                {creatableClasses.map((type) => (
-                  <SelectItem key={type.id} value={type.id}>
-                    {type.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            {creatableClasses.length > 0 ? (
+              <>
+                <span className="text-xl font-bold">New</span>
+                <Select value={selectedClass} onValueChange={handleTypeChange}>
+                  <SelectTrigger className="w-auto h-auto py-1 px-2 text-xl font-bold">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="z-[60]">
+                    {creatableClasses.map((type) => (
+                      <SelectItem key={type.id} value={type.id}>
+                        {type.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </>
+            ) : (
+              <span className="text-xl font-bold">Create</span>
+            )}
           </div>
           <Button
             variant="ghost"
@@ -334,6 +348,12 @@ export function CreateObjectDialog({
         <form onSubmit={handleSubmit} className="flex flex-col flex-1 overflow-hidden">
           <div className="flex-1 overflow-y-auto p-6">
             <div className="max-w-2xl space-y-6">
+              {creatableClasses.length === 0 && (
+                <p className="text-sm text-muted-foreground">
+                  No item types can be created yet. Create the required parent items first.
+                </p>
+              )}
+
               {/* Parent picker */}
               {(validParentOptions.length > 0 || parentRequired) && (
                 <div className="grid grid-cols-[120px_1fr] gap-4 items-start">
@@ -363,7 +383,7 @@ export function CreateObjectDialog({
                     </Select>
                   ) : (
                     <p className="text-sm text-muted-foreground pt-2">
-                      No {allowedParentClasses.filter((t) => t !== "").map((id) => crm.classes.find((c) => c.id === id)?.name || id).join(" or ")} to add to
+                      {"No " + parentClassNames + " to add to"}
                     </p>
                   )}
                 </div>

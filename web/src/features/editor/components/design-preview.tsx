@@ -110,8 +110,7 @@ export function DesignPreview({
   };
 
   const renderCardPreview = () => {
-    const obj = classObjects[0];
-    if (!obj) {
+    if (classObjects.length === 0) {
       return (
         <div className="text-sm text-muted-foreground text-center py-8">
           No items
@@ -120,29 +119,36 @@ export function DesignPreview({
     }
 
     return (
-      <div className="max-w-md mx-auto">
-        <Card className="p-4 py-4 gap-0 space-y-4">
-          {classFields.map((field) => {
-            const value = obj.values[field.id] || "";
-            const displayValue =
-              field.fieldtype === "enumerated"
-                ? classOptions[field.id]?.find((o) => o.id === value)?.name || value
-                : value;
-            return (
-              <div key={field.id} className="space-y-1">
-                <label className="text-xs font-medium text-muted-foreground">
-                  {field.name}
-                  {field.flags?.split(",").includes("required") && (
-                    <span className="text-destructive ml-0.5">*</span>
-                  )}
-                </label>
-                <div className={cn("text-sm", !displayValue && "text-muted-foreground italic")}>
-                  {displayValue || "Empty"}
+      <div className="max-w-md mx-auto space-y-4">
+        {classObjects.slice(0, 10).map((obj) => (
+          <Card key={obj.id} className="p-4 py-4 gap-0 space-y-4">
+            {classFields.map((field) => {
+              const value = obj.values[field.id] || "";
+              const displayValue =
+                field.fieldtype === "enumerated"
+                  ? classOptions[field.id]?.find((o) => o.id === value)?.name || value
+                  : value;
+              return (
+                <div key={field.id} className="space-y-1">
+                  <label className="text-xs font-medium text-muted-foreground">
+                    {field.name}
+                    {field.flags?.split(",").includes("required") && (
+                      <span className="text-destructive ml-0.5">*</span>
+                    )}
+                  </label>
+                  <div className={cn("text-sm", !displayValue && "text-muted-foreground italic")}>
+                    {displayValue || "Empty"}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </Card>
+              );
+            })}
+          </Card>
+        ))}
+        {classObjects.length > 10 && (
+          <div className="text-xs text-muted-foreground text-center">
+            +{classObjects.length - 10} more
+          </div>
+        )}
       </div>
     );
   };
