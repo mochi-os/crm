@@ -26,6 +26,7 @@ import {
 } from "@mochi/common";
 import { Inbox, MoreHorizontal, Pencil, Plus, Trash2 } from "lucide-react";
 import { BoardCard } from "./board-card";
+import type { DragPreview } from "./board-container";
 import type { CrmObject, CrmField, CrmClass, FieldOption } from "@/types";
 
 export interface BoardColumnRow {
@@ -57,6 +58,8 @@ interface BoardColumnProps {
   onCreateClick?: () => void;
   onCreateInRow?: (rowId: string) => void;
   onDrop?: (objectId: string, columnId: string, newRank?: number, rowId?: string, dropOnCardId?: string, reorderParentId?: string, reorderRank?: number) => void;
+  onDragPreview?: (preview: DragPreview | null) => void;
+  dragPreview?: DragPreview | null;
   onRenameColumn?: (newName: string) => Promise<void>;
   onDeleteColumn?: () => Promise<void>;
   isReordering?: boolean;
@@ -87,6 +90,8 @@ export function BoardColumn({
   onCreateClick,
   onCreateInRow,
   onDrop,
+  onDragPreview,
+  dragPreview,
   onRenameColumn,
   onDeleteColumn,
   isReordering,
@@ -120,9 +125,21 @@ export function BoardColumn({
   objectMapRef.current = objectMap;
   const hierarchyRef = useRef(hierarchy);
   hierarchyRef.current = hierarchy;
+  const dragSourceRef = useRef<{ id: string; column: string; row: string; height: number } | null>(null);
+  const onDragPreviewRef = useRef(onDragPreview);
+  onDragPreviewRef.current = onDragPreview;
 
   useEffect(() => {
-    return () => clearTimeout(safetyTimeoutRef.current);
+    // Clear preview on dragend (cancelled drag, escape key, etc.)
+    const onDragEnd = () => {
+      dragSourceRef.current = null;
+      onDragPreviewRef.current?.(null);
+    };
+    document.addEventListener("dragend", onDragEnd);
+    return () => {
+      clearTimeout(safetyTimeoutRef.current);
+      document.removeEventListener("dragend", onDragEnd);
+    };
   }, []);
 
   // Clear all drop-target highlights from card elements
@@ -137,6 +154,7 @@ export function BoardColumn({
     dropModeRef.current = "between";
     dropTargetCardRef.current = "";
     childReorderRef.current = null;
+    dragSourceRef.current = null;
     columnRef.current?.removeAttribute("data-drag-over");
     if (indicatorRef.current) indicatorRef.current.style.opacity = "0";
     clearDropTargetHighlights();
@@ -159,15 +177,11 @@ export function BoardColumn({
       columnRef.current?.setAttribute("data-drag-over", "");
     }
 
-    // Safety net: clear if dragover stops firing (500ms allows for browsers
-    // that reduce dragover rate when the mouse is stationary)
+    // Safety net: clear if dragover stops firing
     clearTimeout(safetyTimeoutRef.current);
     safetyTimeoutRef.current = setTimeout(clearDragState, 500);
 
-    // Calculate drop position based on mouse Y
     const mouseY = e.clientY;
-
-    // Extract dragged object info from dataTransfer types (readable during dragover)
     const om = objectMapRef.current;
     const hr = hierarchyRef.current;
     let draggedId = "";
@@ -178,7 +192,20 @@ export function BoardColumn({
     }
     const draggedObj = draggedId ? om[draggedId] : undefined;
 
-    // Hierarchy validation helpers
+    // Capture drag source info on first dragover if not yet set
+    if (draggedId && !dragSourceRef.current) {
+      const draggedObjData = om[draggedId];
+      if (draggedObjData) {
+        const sourceStatus = draggedObjData.values[statusField || ""] || "";
+        const sourceRow = rowField ? (draggedObjData.values[rowField] || "") : "";
+        // Measure card height from the DOM
+        const cardEl = columnRef.current?.querySelector(`[data-card-id="${CSS.escape(draggedId)}"]`) ||
+          document.querySelector(`[data-card-id="${CSS.escape(draggedId)}"]`);
+        const height = cardEl ? cardEl.getBoundingClientRect().height : 60;
+        dragSourceRef.current = { id: draggedId, column: sourceStatus, row: sourceRow, height };
+      }
+    }
+
     const canParent = (parentClass: string) => {
       if (!draggedClass || !hr) return true;
       return hr[draggedClass]?.includes(parentClass) ?? true;
@@ -195,13 +222,12 @@ export function BoardColumn({
     // Drop detection: find deepest card under cursor
     let dropOnEl: Element | null = null;
     let dropOnId = "";
-    let siblingReorder: { parentId: string; rank: number; container: Element; siblings: NodeListOf<Element>; index: number } | null = null;
+    let siblingReorder: { parentId: string; rank: number; index: number; container: Element; siblings: NodeListOf<Element> } | null = null;
 
     const targetEl = (e.target as HTMLElement).closest?.("[data-card-id]");
     if (targetEl) {
       const parentCardEl = targetEl.parentElement?.closest("[data-card-id]");
       const rect = targetEl.getBoundingClientRect();
-      // Larger edge zone for nested cards so sibling reordering is easier to target
       const edgeZone = parentCardEl
         ? Math.min(rect.height * 0.35, 20)
         : Math.min(rect.height * 0.2, 12);
@@ -209,7 +235,6 @@ export function BoardColumn({
       const distFromBottom = rect.bottom - mouseY;
 
       if (distFromTop > edgeZone && distFromBottom > edgeZone) {
-        // Center zone → drop ON this card (if hierarchy allows)
         const cardId = targetEl.getAttribute("data-card-id") || "";
         const cardObj = om[cardId];
         if (cardId && cardId !== draggedId && cardObj &&
@@ -220,7 +245,6 @@ export function BoardColumn({
         }
       } else {
         if (parentCardEl) {
-          // Nested card edge → reorder among siblings (if hierarchy allows)
           const parentId = parentCardEl.getAttribute("data-card-id") || "";
           const parentObj = om[parentId];
           const isAlreadySibling = draggedObj?.parent === parentId;
@@ -238,12 +262,10 @@ export function BoardColumn({
             siblingReorder = { parentId, rank: sibIndex + 1, container: sibContainer, siblings, index: sibIndex };
           }
         }
-        // else: top-level card edge → falls through to between mode
       }
     }
 
-    // Drop index for top-level between mode (skips the dragged card so
-    // dropping just below yourself doesn't count as moving down one slot)
+    // Calculate drop index for top-level between mode
     const calculateDropIndex = (cards: NodeListOf<Element>) => {
       let index = 0;
       for (let i = 0; i < cards.length; i++) {
@@ -276,18 +298,34 @@ export function BoardColumn({
     // Visual feedback
     clearDropTargetHighlights();
 
+    const source = dragSourceRef.current;
+
     if (dropOnEl && dropOnId) {
       dropModeRef.current = "on";
       dropTargetCardRef.current = dropOnId;
       childReorderRef.current = null;
       dropOnEl.setAttribute("data-drop-target", "");
       if (indicatorRef.current) indicatorRef.current.style.opacity = "0";
+      // Send preview for drop-on-card mode
+      if (onDragPreviewRef.current && source) {
+        onDragPreviewRef.current({
+          draggedId,
+          sourceColumn: source.column,
+          sourceRow: source.row,
+          targetColumn: id,
+          targetRow: dropRowRef.current,
+          targetIndex: dropIndexRef.current,
+          mode: "on",
+          dropOnCardId: dropOnId,
+          cardHeight: source.height,
+        });
+      }
     } else if (siblingReorder) {
       dropModeRef.current = "between";
       dropTargetCardRef.current = "";
       childReorderRef.current = { parentId: siblingReorder.parentId, rank: siblingReorder.rank };
 
-      // Show line indicator between siblings
+      // Show line indicator between siblings (keep for nested reorder)
       if (indicatorRef.current) {
         const containerRect = siblingReorder.container.getBoundingClientRect();
         const idx = siblingReorder.index;
@@ -302,59 +340,49 @@ export function BoardColumn({
         indicatorRef.current.style.width = `${containerRect.width - 8}px`;
         indicatorRef.current.style.opacity = "1";
       }
+      // Send preview for sibling reorder
+      if (onDragPreviewRef.current && source) {
+        onDragPreviewRef.current({
+          draggedId,
+          sourceColumn: source.column,
+          sourceRow: source.row,
+          targetColumn: id,
+          targetRow: dropRowRef.current,
+          targetIndex: dropIndexRef.current,
+          mode: "between",
+          cardHeight: source.height,
+          childReorder: { parentId: siblingReorder.parentId, rank: siblingReorder.rank },
+        });
+      }
     } else {
       dropModeRef.current = "between";
       dropTargetCardRef.current = "";
       childReorderRef.current = null;
 
-      // A child being promoted to top-level needs hierarchy to allow it
       const isChild = draggedObj?.parent && om[draggedObj.parent];
       const canDropBetween = !isChild || canParent("");
 
-      // Position drop indicator line (fixed positioning, viewport coordinates)
       if (!canDropBetween) {
         if (indicatorRef.current) indicatorRef.current.style.opacity = "0";
-      } else if (indicatorRef.current && columnRef.current) {
-        let container: Element | null = null;
-        let targetCards: NodeListOf<Element> | null = null;
-
-        if (rowsRef.current) {
-          const section = columnRef.current.querySelector(
-            `[data-row-id="${CSS.escape(dropRowRef.current)}"]`
-          );
-          if (section) {
-            container = section;
-            targetCards = section.querySelectorAll(":scope > [data-card-id]");
-          }
-        } else if (cardsContainerRef.current) {
-          container = cardsContainerRef.current;
-          targetCards = cardsContainerRef.current.querySelectorAll(":scope > [data-card-id]");
-        }
-
-        // Filter out the dragged card so indicator position matches calculateDropIndex
-        const filtered = targetCards
-          ? Array.from(targetCards).filter((el) => el.getAttribute("data-card-id") !== draggedId)
-          : [];
-
-        if (container && filtered.length > 0) {
-          const containerRect = container.getBoundingClientRect();
-          const idx = dropIndexRef.current;
-          let top: number;
-          if (idx < filtered.length) {
-            top = filtered[idx].getBoundingClientRect().top;
-          } else {
-            top = filtered[filtered.length - 1].getBoundingClientRect().bottom + 4;
-          }
-          indicatorRef.current.style.top = `${top}px`;
-          indicatorRef.current.style.left = `${containerRect.left + 4}px`;
-          indicatorRef.current.style.width = `${containerRect.width - 8}px`;
-          indicatorRef.current.style.opacity = "1";
-        } else {
-          indicatorRef.current.style.opacity = "0";
+      } else {
+        // Hide the line indicator — the gap placeholder provides visual feedback
+        if (indicatorRef.current) indicatorRef.current.style.opacity = "0";
+        // Send preview for between-cards mode
+        if (onDragPreviewRef.current && source) {
+          onDragPreviewRef.current({
+            draggedId,
+            sourceColumn: source.column,
+            sourceRow: source.row,
+            targetColumn: id,
+            targetRow: dropRowRef.current,
+            targetIndex: dropIndexRef.current,
+            mode: "between",
+            cardHeight: source.height,
+          });
         }
       }
     }
-  }, [isReordering, clearDragState, clearDropTargetHighlights]);
+  }, [isReordering, id, statusField, rowField, clearDragState, clearDropTargetHighlights]);
 
   const handleDragLeave = useCallback((e: React.DragEvent) => {
     if (isReordering) return;
@@ -378,7 +406,19 @@ export function BoardColumn({
     if (objectId && onDrop) {
       onDrop(objectId, id, rank, rowId, dropOnCardId, childReorder?.parentId, childReorder?.rank);
     }
+    onDragPreviewRef.current?.(null);
   }, [id, onDrop, clearDragState]);
+
+  // Render a gap placeholder where the dragged card will land.
+  // For same-column moves, include data-card-id so calculateDropIndex skips it.
+  const renderGap = (height: number, cardId?: string) => (
+    <div
+      key="__drag-gap__"
+      data-card-id={cardId}
+      className="rounded-[10px] border-2 border-dashed border-primary/30 bg-primary/5 transition-all duration-150"
+      style={{ height }}
+    />
+  );
 
   // Render a single card with its children
   const renderCard = (object: CrmObject) => (
@@ -406,6 +446,33 @@ export function BoardColumn({
       />
     </div>
   );
+
+  // Render cards for a list, inserting gap placeholder at the preview target index
+  const renderCardsWithGap = (cardObjects: CrmObject[], rowId?: string) => {
+    const preview = dragPreview;
+    const showGap = preview &&
+      preview.mode === "between" &&
+      !preview.childReorder &&
+      preview.targetColumn === id &&
+      (rowId !== undefined ? preview.targetRow === rowId : !rows);
+    if (!showGap) return cardObjects.map(obj => renderCard(obj));
+
+    const sameColumn = preview.sourceColumn === preview.targetColumn;
+    if (sameColumn) {
+      // Same-column: remove card from list, insert gap with data-card-id at target.
+      // The gap has data-card-id so calculateDropIndex will skip it, keeping
+      // index calculations consistent between the first and subsequent dragover events.
+      const filtered = cardObjects.filter(o => o.id !== preview.draggedId);
+      const cards = filtered.map(obj => renderCard(obj));
+      cards.splice(preview.targetIndex, 0, renderGap(preview.cardHeight, preview.draggedId));
+      return cards;
+    } else {
+      // Cross-column: card already removed by applyPreviewToList, just insert gap
+      const cards = cardObjects.map(obj => renderCard(obj));
+      cards.splice(preview.targetIndex, 0, renderGap(preview.cardHeight));
+      return cards;
+    }
+  };
 
   return (
     <div
@@ -582,7 +649,7 @@ export function BoardColumn({
               }
             } : undefined}
           >
-            {row.objects.map((object) => renderCard(object))}
+            {renderCardsWithGap(row.objects, row.id)}
           </div>
         ))
       ) : (
@@ -595,7 +662,7 @@ export function BoardColumn({
             }
           }}
         >
-          {objects.map((object) => renderCard(object))}
+          {renderCardsWithGap(objects)}
 
           {totalCount === 0 && !hideHeader && (
             <div className="flex flex-col items-center justify-center py-8 gap-2">

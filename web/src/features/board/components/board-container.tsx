@@ -69,6 +69,20 @@ function sortObjects(objects: CrmObject[], sort?: SortState | null): CrmObject[]
   });
 }
 
+// Drag preview state: tracks where cards would be if dropped at current cursor position
+export interface DragPreview {
+  draggedId: string;
+  sourceColumn: string;
+  sourceRow: string;
+  targetColumn: string;
+  targetRow: string;
+  targetIndex: number;
+  mode: "between" | "on";
+  dropOnCardId?: string;
+  cardHeight: number;
+  childReorder?: { parentId: string; rank: number };
+}
+
 export function BoardContainer({
   crm,
   objects,
@@ -182,36 +196,44 @@ export function BoardContainer({
     return () => observer.disconnect();
   }, []);
 
-  // FLIP animation: capture card positions before drop, animate after re-render
+  // Drag preview state for real-time card reflow during drag
+  const [dragPreview, setDragPreview] = useState<DragPreview | null>(null);
+  const dragPreviewRef = useRef<DragPreview | null>(null);
+
+  // FLIP animation: capture card positions before re-render, animate after
   const flipRef = useRef<Map<string, DOMRect>>(new Map());
-  const flipDraggedRef = useRef<string | null>(null);
   const lastDragPosRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
+  // Capture positions of all top-level cards for FLIP
+  const capturePositions = useCallback(() => {
+    if (!boardRef.current) return;
+    const positions = new Map<string, DOMRect>();
+    boardRef.current.querySelectorAll('[data-card-id]').forEach(el => {
+      if (!el.parentElement?.closest('[data-card-id]')) {
+        positions.set(el.getAttribute('data-card-id')!, el.getBoundingClientRect());
+      }
+    });
+    flipRef.current = positions;
+  }, []);
+
+  // FLIP animation effect — runs after every render when positions are captured
   useLayoutEffect(() => {
     const prev = flipRef.current;
     if (!prev.size || !boardRef.current) return;
 
-    const draggedId = flipDraggedRef.current;
-    const dropPos = lastDragPosRef.current;
-    flipDraggedRef.current = null;
+    const preview = dragPreviewRef.current;
     const animations: HTMLElement[] = [];
     boardRef.current.querySelectorAll('[data-card-id]').forEach(card => {
-      // Skip nested cards — they move with their parent
       if (card.parentElement?.closest('[data-card-id]')) return;
       const id = card.getAttribute('data-card-id');
       if (!id) return;
+      // Skip the dragged card during preview — it's hidden
+      if (preview && id === preview.draggedId) return;
+      const oldRect = prev.get(id);
+      if (!oldRect) return;
       const newRect = card.getBoundingClientRect();
-      let dx: number, dy: number;
-      if (id === draggedId) {
-        // Animate the dragged card from where the cursor was at drop time
-        dx = dropPos.x - newRect.left - newRect.width / 2;
-        dy = dropPos.y - newRect.top - newRect.height / 2;
-      } else {
-        const oldRect = prev.get(id);
-        if (!oldRect) return;
-        dx = oldRect.left - newRect.left;
-        dy = oldRect.top - newRect.top;
-      }
+      const dx = oldRect.left - newRect.left;
+      const dy = oldRect.top - newRect.top;
       if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
       const el = card as HTMLElement;
       el.style.transition = 'none';
@@ -219,13 +241,12 @@ export function BoardContainer({
       animations.push(el);
     });
 
-    // Only consume positions once cards have actually moved
     if (animations.length === 0) return;
     flipRef.current = new Map();
 
     document.body.getBoundingClientRect(); // force reflow
     for (const el of animations) {
-      el.style.transition = 'transform 200ms ease-out';
+      el.style.transition = 'transform 150ms ease-out';
       el.style.transform = '';
       el.addEventListener('transitionend', () => { el.style.transition = ''; }, { once: true });
     }
@@ -317,17 +338,75 @@ export function BoardContainer({
     return grouped;
   }, [objects, objectMap, statusOptions, rowOptions, statusField, rowField, hasRows, sort]);
 
-  // Capture card positions for FLIP animation before a drop triggers re-render
-  const capturePositions = useCallback(() => {
-    if (!boardRef.current) return;
-    const positions = new Map<string, DOMRect>();
-    boardRef.current.querySelectorAll('[data-card-id]').forEach(el => {
-      if (!el.parentElement?.closest('[data-card-id]')) {
-        positions.set(el.getAttribute('data-card-id')!, el.getBoundingClientRect());
+  // Apply drag preview to get the card lists columns should render.
+  // For same-column moves, keep the card in the list (renderCardsWithGap will handle it).
+  // For cross-column moves, remove the card from the source column.
+  const applyPreviewToList = useCallback((list: CrmObject[]): CrmObject[] => {
+    if (!dragPreview || dragPreview.mode === "on" || dragPreview.childReorder) return list;
+    // Same-column: keep the card in the list so it stays in the DOM for calculateDropIndex to skip
+    if (dragPreview.sourceColumn === dragPreview.targetColumn) return list;
+    // Cross-column: remove from source
+    return list.filter(o => o.id !== dragPreview.draggedId);
+  }, [dragPreview]);
+
+  // Handle drag preview updates from columns
+  const handleDragPreview = useCallback((preview: DragPreview | null) => {
+    if (!preview) {
+      dragPreviewRef.current = null;
+      setDragPreview(null);
+      return;
+    }
+    // Only update if something actually changed
+    const prev = dragPreviewRef.current;
+    if (prev &&
+        prev.targetColumn === preview.targetColumn &&
+        prev.targetRow === preview.targetRow &&
+        prev.targetIndex === preview.targetIndex &&
+        prev.mode === preview.mode &&
+        prev.dropOnCardId === preview.dropOnCardId &&
+        prev.childReorder?.parentId === preview.childReorder?.parentId &&
+        prev.childReorder?.rank === preview.childReorder?.rank) {
+      return;
+    }
+    capturePositions();
+    dragPreviewRef.current = preview;
+    setDragPreview(preview);
+  }, [capturePositions]);
+
+  // Clear preview when server response arrives (not on the optimistic update).
+  // The optimistic update fires first (changes objects), then the server response
+  // fires second (changes objects again via query invalidation). We skip the first
+  // change and clear on the second so the gap stays visible until real data arrives.
+  const prevObjectsRef = useRef(objects);
+  const objectsChangeCount = useRef(0);
+  useEffect(() => {
+    if (objects !== prevObjectsRef.current) {
+      if (dragPreview) {
+        objectsChangeCount.current++;
+        if (objectsChangeCount.current >= 2) {
+          handleDragPreview(null);
+          objectsChangeCount.current = 0;
+        }
       }
-    });
-    flipRef.current = positions;
-  }, []);
+    }
+    prevObjectsRef.current = objects;
+  }, [objects, dragPreview, handleDragPreview]);
+  // Reset counter when preview starts
+  useEffect(() => {
+    if (dragPreview) objectsChangeCount.current = 0;
+  }, [!!dragPreview]);
+
+  // Count descendants of a card that have the same status value (the server
+  // includes these in its scope but the board only shows top-level cards)
+  const countDescendantsInStatus = useCallback((parentId: string, statusValue: string): number => {
+    const children = childrenByParent[parentId] || [];
+    let count = 0;
+    for (const child of children) {
+      if ((child.values[statusField] || "") === statusValue) count++;
+      count += countDescendantsInStatus(child.id, statusValue);
+    }
+    return count;
+  }, [childrenByParent, statusField]);
 
   // Handle drop events — distinguishes between-cards, drop-on-card, and sibling reorder
   const handleDrop = (onMoveObject || onReparentObject) ? (
@@ -336,16 +415,11 @@ export function BoardContainer({
     const draggedObj = objectMap[objectId];
     if (!draggedObj) return;
 
-    flipDraggedRef.current = objectId;
-    capturePositions();
-
     // Reorder child among siblings
     if (reorderParentId && reorderRank !== undefined) {
       if (draggedObj.parent === reorderParentId) {
-        // Already a sibling — just reorder
         onMoveObject?.(objectId, columnId, reorderRank, rowId, reorderParentId);
       } else if (onReparentObject) {
-        // Not a sibling — reparent into this parent
         const parentObj = objectMap[reorderParentId];
         if (!parentObj) return;
         const allowedParents = crm.hierarchy[draggedObj.class];
@@ -358,16 +432,12 @@ export function BoardContainer({
 
     // Drop on a card → reparent
     if (dropOnCardId && onReparentObject) {
-      // Prevent dropping on self or own descendants
       if (dropOnCardId === objectId) return;
       if (isDescendantOf(dropOnCardId, objectId, objectMap)) return;
-
-      // Check hierarchy rules allow this relationship
       const targetObj = objectMap[dropOnCardId];
       if (!targetObj) return;
       const allowedParents = crm.hierarchy[draggedObj.class];
       if (!allowedParents || !allowedParents.includes(targetObj.class)) return;
-
       onReparentObject(objectId, dropOnCardId);
       return;
     }
@@ -380,17 +450,42 @@ export function BoardContainer({
       const columnChanged = columnId !== parentStatus;
       const rowChanged = rowId !== undefined && rowId !== parentRow;
       if (columnChanged || rowChanged) {
-        // Check if hierarchy allows top-level before promoting
         const allowedParents = crm.hierarchy[draggedObj.class];
         if (!allowedParents || !allowedParents.includes("")) return;
-        // Promote to top-level and move in a single atomic operation
         onMoveObject?.(objectId, columnId, newRank, rowId, undefined, true);
         return;
       }
     }
 
-    // Normal move
-    onMoveObject?.(objectId, columnId, newRank, rowId);
+    // Adjust rank to account for child objects that the server includes in its
+    // scope but the board displays nested inside their parent cards. The server
+    // renumbers ALL objects with the matching status, not just top-level ones,
+    // and children can have ranks anywhere in the flat list (not necessarily
+    // adjacent to their parent). Build the full flat list, find where the
+    // top-level insertion point falls, and count preceding non-top-level objects.
+    let adjustedRank = newRank;
+    if (newRank) {
+      const topLevel = (objectsByStatus[columnId] || []).filter(o => o.id !== objectId);
+      // Build flat list of all objects in scope (same status), sorted by rank
+      const allInScope = objects
+        .filter(o => o.id !== objectId && (o.values[statusField] || "") === columnId)
+        .sort((a, b) => (a.rank || 0) - (b.rank || 0));
+      const topLevelIds = new Set(topLevel.map(o => o.id));
+      // Walk the flat list until we reach the newRank-th top-level card,
+      // then insert just before it. flatPos counts items we've passed.
+      let topCount = 0;
+      let flatPos = 0;
+      for (const obj of allInScope) {
+        if (topLevelIds.has(obj.id)) {
+          topCount++;
+          if (topCount >= newRank) break;
+        }
+        flatPos++;
+      }
+      adjustedRank = flatPos + 1;
+    }
+
+    onMoveObject?.(objectId, columnId, adjustedRank, rowId);
   } : undefined;
 
   // Auto-scroll the nearest scrollable ancestor when dragging near its edges
@@ -550,6 +645,12 @@ export function BoardContainer({
     onCreateInRow?: (rowId: string) => void,
   ) => {
     const isDragging = draggedColumnId === status.id;
+    // Apply preview filtering to card lists
+    const previewObjects = applyPreviewToList(columnObjects);
+    const previewRows = rows?.map(r => ({
+      ...r,
+      objects: applyPreviewToList(r.objects),
+    }));
     return (
       <div
         key={status.id}
@@ -572,7 +673,7 @@ export function BoardContainer({
           id={status.id}
           name={status.name}
           colour={status.colour}
-          objects={columnObjects}
+          objects={previewObjects}
           fields={visibleFields}
           options={classOptions}
           objectMap={objectMap}
@@ -590,6 +691,8 @@ export function BoardContainer({
           onCreateClick={isReordering ? undefined : () => onCreateClick?.(status.id)}
           onCreateInRow={isReordering ? undefined : onCreateInRow}
           onDrop={isReordering ? undefined : handleDrop}
+          onDragPreview={isReordering ? undefined : handleDragPreview}
+          dragPreview={isReordering ? undefined : dragPreview}
           onRenameColumn={
             !isReordering && onRenameColumn && defaultClass
               ? (newName: string) => onRenameColumn(defaultClass.id, statusField, status.id, newName)
@@ -602,7 +705,7 @@ export function BoardContainer({
           }
           isReordering={isReordering}
           isDragging={isDragging}
-          rows={rows}
+          rows={previewRows}
         />
       </div>
     );
@@ -693,7 +796,6 @@ export function BoardContainer({
               objects={[]}
               fields={visibleFields}
               options={classOptions}
-
               objectMap={objectMap}
               allFields={crm.fields}
               allObjects={objects}
@@ -707,11 +809,13 @@ export function BoardContainer({
               onCardClick={onCardClick}
               onCardDoubleClick={onCardDoubleClick}
               onDrop={isReordering ? undefined : handleDrop}
+              onDragPreview={handleDragPreview}
+              dragPreview={dragPreview}
               rows={swimlaneRows.map((row) => ({
                 id: row.id,
                 label: row.label,
                 colour: row.colour,
-                objects: objectsByRowAndStatus[row.id]?.[""] || [],
+                objects: applyPreviewToList(objectsByRowAndStatus[row.id]?.[""] || []),
               }))}
             />
           </div>
@@ -732,7 +836,7 @@ export function BoardContainer({
         <BoardColumn
           id=""
           name="No status"
-          objects={objectsByStatus[""]}
+          objects={applyPreviewToList(objectsByStatus[""])}
           fields={visibleFields}
           options={classOptions}
           objectMap={objectMap}
@@ -748,6 +852,8 @@ export function BoardContainer({
           onCardClick={onCardClick}
           onCardDoubleClick={onCardDoubleClick}
           onDrop={handleDrop}
+          onDragPreview={handleDragPreview}
+          dragPreview={dragPreview}
         />
       )}
     </div>
