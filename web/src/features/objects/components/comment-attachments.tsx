@@ -11,7 +11,7 @@ import {
   ImageLightbox,
   type LightboxMedia,
   authenticatedUrl,
-} from "@mochi/common";
+} from "@mochi/web";
 import type { CommentAttachment } from "@/types";
 
 interface CommentAttachmentsProps {

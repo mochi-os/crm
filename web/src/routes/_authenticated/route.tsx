@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useAuthStore } from "@mochi/common";
+import { useAuthStore } from "@mochi/web";
 import { CrmsLayout } from "@/components/layout/crms-layout";
 
 export const Route = createFileRoute("/_authenticated")({

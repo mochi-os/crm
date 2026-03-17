@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState } from "react";
-import { Card, cn } from "@mochi/common";
+import { Card, cn } from "@mochi/web";
 import { Check, CheckSquare, ChevronDown, ChevronRight } from "lucide-react";
 import type { CrmObject, CrmField, CrmClass, FieldOption, ChecklistItem } from "@/types";
 

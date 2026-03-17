@@ -12,7 +12,7 @@ import {
   getErrorMessage,
   ListSkeleton,
   useAuthStore,
-} from "@mochi/common";
+} from "@mochi/web";
 import crmsApi from "@/api/crms";
 import { CommentThread } from "./comment-thread";
 

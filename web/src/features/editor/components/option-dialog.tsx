@@ -18,7 +18,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "@mochi/common";
+} from "@mochi/web";
 import { Minus, MoreHorizontal } from "lucide-react";
 import type { FieldOption } from "@/types";
 

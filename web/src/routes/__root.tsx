@@ -8,7 +8,7 @@ import {
   NotificationTitle,
   GeneralError,
   NotFoundError,
-} from "@mochi/common";
+} from "@mochi/web";
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;

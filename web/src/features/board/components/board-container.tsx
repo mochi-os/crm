@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useMemo, useState, useEffect, useLayoutEffect, useCallback, useRef } from "react";
-import { cn } from "@mochi/common";
+import { cn } from "@mochi/web";
 import { BoardColumn, type BoardColumnRow } from "./board-column";
 import type { CrmObject, CrmDetails, CrmClass, FieldOption, SortState } from "@/types";
 

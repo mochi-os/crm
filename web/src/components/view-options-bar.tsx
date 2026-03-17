@@ -14,7 +14,7 @@ import {
   SelectValue,
   SortDirectionButton,
   cn,
-} from "@mochi/common";
+} from "@mochi/web";
 import { Eye, LayoutGrid, ListTree } from "lucide-react";
 import type { CrmDetails, CrmField, CrmView, SortState } from "@/types";
 import type { FilterState } from "@/features/views/components/filter-bar";

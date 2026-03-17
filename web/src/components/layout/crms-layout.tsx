@@ -3,7 +3,7 @@ import {
   AuthenticatedLayout,
   type SidebarData,
   type NavItem,
-} from "@mochi/common";
+} from "@mochi/web";
 import { Plus, RefreshCw, Search, Users } from "lucide-react";
 import { useCrmsStore } from "@/stores/crms-store";
 import { SidebarProvider, useSidebarContext } from "@/context/sidebar-context";

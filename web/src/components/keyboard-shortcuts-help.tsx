@@ -7,7 +7,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@mochi/common";
+} from "@mochi/web";
 
 interface KeyboardShortcutsHelpProps {
   open: boolean;
