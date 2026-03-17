@@ -21,7 +21,7 @@ import {
   cn,
   GeneralError,
   ListSkeleton,
-} from "@mochi/common";
+} from "@mochi/web";
 import crmsApi from "@/api/crms";
 import type { CrmAccess, CrmDetails } from "@/types";
 import { canWrite, canComment } from "@/lib/access";

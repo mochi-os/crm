@@ -3,7 +3,7 @@
 
 import { useRef } from "react";
 import { CheckSquare, ChevronRight, ChevronDown, GripVertical } from "lucide-react";
-import { cn } from "@mochi/common";
+import { cn } from "@mochi/web";
 import type { CrmObject, CrmField, FieldOption, ChecklistItem } from "@/types";
 
 interface TreeRowProps {

@@ -3,7 +3,7 @@
 
 import { useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import { isInShell } from "@mochi/common";
+import { isInShell } from "@mochi/web";
 
 interface CrmWebsocketEvent {
   type: string;

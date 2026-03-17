@@ -32,7 +32,7 @@ import {
   toast,
   getErrorMessage,
   usePageTitle,
-} from "@mochi/common";
+} from "@mochi/web";
 import { Download, Loader2, MoreHorizontal, Settings2, Upload } from "lucide-react";
 import crmsApi from "@/api/crms";
 import type { CrmDetails } from "@/types";

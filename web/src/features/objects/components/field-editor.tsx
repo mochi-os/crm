@@ -14,7 +14,7 @@ import {
   SelectValue,
   PersonPicker,
   type Person,
-} from "@mochi/common";
+} from "@mochi/web";
 import { Plus, Trash2 } from "lucide-react";
 import type { CrmField, FieldOption, ChecklistItem } from "@/types";
 

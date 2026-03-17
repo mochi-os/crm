@@ -25,7 +25,7 @@ import {
   DropdownMenuItem,
   SortDirectionButton,
   Switch,
-} from "@mochi/common";
+} from "@mochi/web";
 import { Check, GripVertical, Minus, MoreHorizontal, Pencil, Plus, Trash2, X } from "lucide-react";
 import type { CrmView, CrmField, CrmClass, FieldOption } from "@/types";
 import { AddFieldDialog } from "./add-dialogs";

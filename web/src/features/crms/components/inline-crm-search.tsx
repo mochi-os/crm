@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { Search, Loader2, Users } from "lucide-react";
-import { Button, GeneralError, Input, toast, getErrorMessage } from "@mochi/common";
+import { Button, GeneralError, Input, toast, getErrorMessage } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import { useCrmsStore } from "@/stores/crms-store";
 

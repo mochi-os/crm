@@ -14,7 +14,7 @@ import {
   Switch,
   toast,
   getErrorMessage,
-} from "@mochi/common";
+} from "@mochi/web";
 import { Plus, Users } from "lucide-react";
 import crmsApi from "@/api/crms";
 import { useCrmsStore } from "@/stores/crms-store";

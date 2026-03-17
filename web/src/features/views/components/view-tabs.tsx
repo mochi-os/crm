@@ -1,7 +1,7 @@
 // Mochi CRMs: View tabs component
 // Copyright Alistair Cunningham 2026
 
-import { cn } from "@mochi/common";
+import { cn } from "@mochi/web";
 import { LayoutGrid, ListTree, Plus } from "lucide-react";
 import type { CrmView } from "@/types";
 

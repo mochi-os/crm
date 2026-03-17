@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { X } from "lucide-react";
-import { Button } from "@mochi/common";
+import { Button } from "@mochi/web";
 
 export interface FilterState {
   search: string;

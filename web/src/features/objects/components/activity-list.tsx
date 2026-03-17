@@ -3,7 +3,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { Activity } from "lucide-react";
-import { EmptyState, ListSkeleton, formatTimestamp } from "@mochi/common";
+import { EmptyState, ListSkeleton, formatTimestamp } from "@mochi/web";
 import crmsApi from "@/api/crms";
 
 interface ActivityListProps {

@@ -18,7 +18,7 @@ import {
   SelectValue,
   getErrorMessage,
   toast,
-} from "@mochi/common";
+} from "@mochi/web";
 import crmsApi from "@/api/crms";
 import type { CrmObject, CrmClass, ObjectLink } from "@/types";
 

@@ -1,6 +1,6 @@
 import endpoints from "./endpoints";
 import { crmsRequest } from "./request";
-import type { AccessRule } from "@mochi/common";
+import type { AccessRule } from "@mochi/web";
 import type {
   Crm,
   CrmDetails,

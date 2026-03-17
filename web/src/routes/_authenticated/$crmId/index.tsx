@@ -21,7 +21,7 @@ import {
   useSearch,
   useShellStorage,
   toast,
-} from "@mochi/common";
+} from "@mochi/web";
 import { Columns3, Ellipsis, Users, GripVertical, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
 import crmsApi from "@/api/crms";
 import type { CrmDetails, CrmField, CrmObject, SortState } from "@/types";

@@ -3,7 +3,7 @@
 
 import { useState, useMemo } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Button, Label, toast, getErrorMessage } from "@mochi/common";
+import { Button, Label, toast, getErrorMessage } from "@mochi/web";
 import { Blocks, GripVertical, Plus } from "lucide-react";
 import crmsApi from "@/api/crms";
 import type { CrmDetails, CrmField, CrmView, FieldOption } from "@/types";

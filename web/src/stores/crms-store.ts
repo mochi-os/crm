@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getErrorMessage } from "@mochi/common";
+import { getErrorMessage } from "@mochi/web";
 import type { Crm } from "@/types";
 import crmsApi from "@/api/crms";
 

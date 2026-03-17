@@ -16,7 +16,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@mochi/common";
+} from "@mochi/web";
 import crmsApi from "@/api/crms";
 import type { CrmDetails } from "@/types";
 import { FieldEditor } from "./field-editor";

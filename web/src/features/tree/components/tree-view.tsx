@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useMemo, useLayoutEffect, useCallback, useRef } from "react";
-import { Button, EmptyState, useShellStorage } from "@mochi/common";
+import { Button, EmptyState, useShellStorage } from "@mochi/web";
 import { Folder, Plus } from 'lucide-react';
 import { TreeRow } from "./tree-row";
 import type { CrmDetails, CrmObject, SortState } from "@/types";

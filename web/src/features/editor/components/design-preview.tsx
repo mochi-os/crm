@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useMemo, useState } from "react";
-import { Card, cn } from "@mochi/common";
+import { Card, cn } from "@mochi/web";
 import type {
   CrmClass,
   CrmField,

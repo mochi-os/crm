@@ -12,7 +12,7 @@ import {
   Input,
   Label,
   PRESET_COLOURS,
-} from "@mochi/common";
+} from "@mochi/web";
 import { Check, Plus, X } from "lucide-react";
 
 // Add Field Dialog

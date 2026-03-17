@@ -23,7 +23,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@mochi/common";
+} from "@mochi/web";
 import { Inbox, MoreHorizontal, Pencil, Plus, Trash2 } from "lucide-react";
 import { BoardCard } from "./board-card";
 import type { DragPreview } from "./board-container";

@@ -33,7 +33,7 @@ import {
   GeneralError,
   type AccessRule,
   type AccessLevel,
-} from "@mochi/common";
+} from "@mochi/web";
 import {
   Loader2,
   Users,
