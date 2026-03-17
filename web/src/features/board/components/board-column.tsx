@@ -519,7 +519,7 @@ export function BoardColumn({
         {!isReordering && (onCreateClick || onRenameColumn || (totalCount === 0 && onDeleteColumn)) && (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button data-column-menu className="rounded p-1 transition-colors hover:bg-interactive-hover active:bg-interactive-active">
+              <button type="button" data-column-menu className="rounded p-1 transition-colors hover:bg-interactive-hover active:bg-interactive-active">
                 <MoreHorizontal className="size-4 text-muted-foreground" />
               </button>
             </DropdownMenuTrigger>
@@ -669,6 +669,7 @@ export function BoardColumn({
               <Inbox className="size-8 text-muted-foreground/30" />
               {onCreateClick && (
                 <button
+                  type="button"
                   onClick={onCreateClick}
                   className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1"
                 >

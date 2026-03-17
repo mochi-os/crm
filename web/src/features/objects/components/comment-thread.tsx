@@ -82,6 +82,7 @@ export function CommentThread({
       <span className="text-muted-foreground">&middot;</span>
       <span className="text-muted-foreground">{timestamp}</span>
       <button
+        type="button"
         onClick={() => setCollapsed(false)}
         className="text-primary ml-2 flex cursor-pointer items-center gap-1 hover:underline"
       >
