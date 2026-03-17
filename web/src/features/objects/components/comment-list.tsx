@@ -7,6 +7,7 @@ import { MessageSquare, Paperclip, Send, X } from "lucide-react";
 import {
   Button,
   EmptyState,
+  Textarea,
   toast,
   getErrorMessage,
   ListSkeleton,
@@ -171,7 +172,7 @@ export function CommentList({
     <div className="space-y-4">
       {!readOnly && (
         <div className="space-y-2">
-          <textarea
+          <Textarea
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             onKeyDown={(e) => {
@@ -181,7 +182,6 @@ export function CommentList({
               }
             }}
             placeholder="Add a comment..."
-            className="border-input bg-background min-h-16 w-full rounded-lg border px-3 py-2 text-sm"
             rows={3}
           />
           {newFiles.length > 0 && (

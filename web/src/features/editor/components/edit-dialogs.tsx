@@ -23,6 +23,11 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
   SortDirectionButton,
   Switch,
 } from "@mochi/common";
@@ -334,22 +339,18 @@ export function ViewSheet({
             <div className="space-y-2">
               <Label>Columns group by</Label>
               <div className="pl-4">
-                <select
-                  value={columns}
-                  onChange={(e) => handleColumnsChange(e.target.value)}
-                  className="w-full h-9 rounded-md border border-input bg-background px-3 py-1 text-sm"
-                >
-                  {!enumeratedFields.some((f) => f.id === columns) && (
-                    <option value={columns} disabled>
-                      Select a field
-                    </option>
-                  )}
-                  {enumeratedFields.map((field) => (
-                    <option key={field.id} value={field.id}>
-                      {field.name}
-                    </option>
-                  ))}
-                </select>
+                <Select value={columns} onValueChange={handleColumnsChange}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select a field" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {enumeratedFields.map((field) => (
+                      <SelectItem key={field.id} value={field.id}>
+                        {field.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </div>
           )}
@@ -358,18 +359,19 @@ export function ViewSheet({
             <div className="space-y-2">
               <Label>Rows group by</Label>
               <div className="pl-4">
-                <select
-                  value={rows}
-                  onChange={(e) => handleRowsChange(e.target.value)}
-                  className="w-full h-9 rounded-md border border-input bg-background px-3 py-1 text-sm"
-                >
-                  <option value="">None</option>
-                  {enumeratedFields.map((field) => (
-                    <option key={field.id} value={field.id}>
-                      {field.name}
-                    </option>
-                  ))}
-                </select>
+                <Select value={rows} onValueChange={handleRowsChange}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="None" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="">None</SelectItem>
+                    {enumeratedFields.map((field) => (
+                      <SelectItem key={field.id} value={field.id}>
+                        {field.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </div>
           )}
@@ -378,23 +380,27 @@ export function ViewSheet({
             <div className="space-y-2">
               <Label>Border colour</Label>
               <div className="pl-4">
-                <select
+                <Select
                   value={border}
-                  onChange={(e) => {
-                    setBorder(e.target.value);
+                  onValueChange={(value) => {
+                    setBorder(value);
                     if (mode === "edit" && onUpdate) {
-                      onUpdate({ border: e.target.value });
+                      onUpdate({ border: value });
                     }
                   }}
-                  className="w-full h-9 rounded-md border border-input bg-background px-3 py-1 text-sm"
                 >
-                  <option value="">None</option>
-                  {enumeratedFields.map((field) => (
-                    <option key={field.id} value={field.id}>
-                      {field.name}
-                    </option>
-                  ))}
-                </select>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="None" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="">None</SelectItem>
+                    {enumeratedFields.map((field) => (
+                      <SelectItem key={field.id} value={field.id}>
+                        {field.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </div>
           )}
@@ -453,21 +459,22 @@ export function ViewSheet({
           <div className="space-y-2">
             <Label>Default sort</Label>
             <div className="pl-4 flex gap-2">
-              <select
-                value={sort}
-                onChange={(e) => handleSortChange(e.target.value)}
-                className="flex-1 h-9 rounded-md border border-input bg-background px-3 py-1 text-sm"
-              >
-                <option value="">None</option>
-                <option value="created">Created</option>
-                <option value="number">Number</option>
-                <option value="updated">Updated</option>
-                {[...fields].sort((a, b) => a.name.localeCompare(b.name)).map((field) => (
-                  <option key={field.id} value={field.id}>
-                    {field.name}
-                  </option>
-                ))}
-              </select>
+              <Select value={sort} onValueChange={handleSortChange}>
+                <SelectTrigger className="flex-1">
+                  <SelectValue placeholder="None" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="">None</SelectItem>
+                  <SelectItem value="created">Created</SelectItem>
+                  <SelectItem value="number">Number</SelectItem>
+                  <SelectItem value="updated">Updated</SelectItem>
+                  {[...fields].sort((a, b) => a.name.localeCompare(b.name)).map((field) => (
+                    <SelectItem key={field.id} value={field.id}>
+                      {field.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <SortDirectionButton
                 direction={direction}
                 onToggle={handleDirectionToggle}
@@ -705,22 +712,26 @@ export function ClassSheet({
             <div className="space-y-2">
               <Label>Title field</Label>
               <div className="pl-4">
-                <select
+                <Select
                   value={cls.title || ""}
-                  onChange={(e) => {
+                  onValueChange={(value) => {
                     if (onUpdate) {
-                      onUpdate(cls.name, e.target.value);
+                      onUpdate(cls.name, value);
                     }
                   }}
-                  className="w-full h-9 rounded-md border border-input bg-background px-3 py-1 text-sm"
                 >
-                  <option value="">None</option>
-                  {fields.map((field) => (
-                    <option key={field.id} value={field.id}>
-                      {field.name}
-                    </option>
-                  ))}
-                </select>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="None" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="">None</SelectItem>
+                    {fields.map((field) => (
+                      <SelectItem key={field.id} value={field.id}>
+                        {field.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </div>
           )}

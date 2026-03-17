@@ -11,6 +11,11 @@ import {
   Button,
   Input,
   Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
   PRESET_COLOURS,
 } from "@mochi/common";
 import { Check, Plus, X } from "lucide-react";
@@ -119,18 +124,18 @@ export function AddFieldDialog({
           <div className="space-y-2">
             <Label htmlFor="field-type">Type</Label>
             <div className="pl-4">
-              <select
-                id="field-type"
-                value={fieldtype}
-                onChange={(e) => setFieldtype(e.target.value)}
-                className="w-full h-9 rounded-md border border-input bg-background px-3 py-1 text-sm"
-              >
-                {FIELD_TYPES.map((ft) => (
-                  <option key={ft.id} value={ft.id}>
-                    {ft.name}
-                  </option>
-                ))}
-              </select>
+              <Select value={fieldtype} onValueChange={setFieldtype}>
+                <SelectTrigger id="field-type" className="w-full">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {FIELD_TYPES.map((ft) => (
+                    <SelectItem key={ft.id} value={ft.id}>
+                      {ft.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           </div>
           {fieldtype === "text" && (

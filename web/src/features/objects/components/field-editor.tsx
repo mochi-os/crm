@@ -4,6 +4,7 @@
 import { useState, useEffect, useRef } from "react";
 import {
   Button,
+  IconButton,
   Switch,
   Input,
   Textarea,
@@ -477,13 +478,14 @@ function ChecklistEditor({ value, onChange, disabled }: ChecklistEditorProps) {
               }`}
             />
             {!disabled && (
-              <button
-                type="button"
+              <IconButton
+                variant="ghost"
+                label="Remove item"
                 onClick={() => removeItem(item.id)}
-                className="opacity-0 group-hover:opacity-100 p-1 text-muted-foreground hover:text-destructive transition-opacity"
+                className="size-6 shrink-0 opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive transition-opacity"
               >
                 <Trash2 className="h-3.5 w-3.5" />
-              </button>
+              </IconButton>
             )}
           </div>
         ))}
@@ -492,8 +494,9 @@ function ChecklistEditor({ value, onChange, disabled }: ChecklistEditorProps) {
       {/* Add new item */}
       {!disabled && (
         <div className="flex items-center gap-2">
-          <button
-            type="button"
+          <IconButton
+            variant="ghost"
+            label="Add checklist item"
             onClick={() => {
               if (newItemText.trim()) {
                 addItem();
@@ -501,10 +504,10 @@ function ChecklistEditor({ value, onChange, disabled }: ChecklistEditorProps) {
                 inputRef.current?.focus();
               }
             }}
-            className="p-1 -m-1 text-muted-foreground hover:text-foreground cursor-pointer"
+            className="size-7 -m-1 shrink-0 text-muted-foreground hover:text-foreground"
           >
             <Plus className="h-4 w-4" />
-          </button>
+          </IconButton>
           <input
             ref={inputRef}
             type="text"
