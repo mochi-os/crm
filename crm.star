@@ -1278,9 +1278,11 @@ def action_object_create(a):
 			d = result["data"]
 			if d.get("id"):
 				now = mochi.time.now()
+				max_rank_row = mochi.db.row("select coalesce(max(rank), 0) as max_rank from objects where crm=? and parent=?", crm_id, parent)
+				initial_rank = (max_rank_row["max_rank"] if max_rank_row else 0) + 1
 				mochi.db.execute(
 					"insert or ignore into objects (id, crm, class, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?)",
-					d["id"], crm_id, obj_class, parent, 0, now, now
+					d["id"], crm_id, obj_class, parent, initial_rank, now, now
 				)
 				if title and title_field:
 					mochi.db.execute("insert or replace into \"values\" (object, field, value) values (?, ?, ?)", d["id"], title_field, title)
@@ -1313,8 +1315,8 @@ def action_object_create(a):
 		a.error(400, "Cannot create here: hierarchy rules do not allow this relationship")
 		return
 
-	# Calculate initial rank (add to end)
-	max_rank_row = mochi.db.row("select coalesce(max(rank), 0) as max_rank from objects where crm=?", crm_id)
+	# Calculate initial rank (add to end of parent or CRM)
+	max_rank_row = mochi.db.row("select coalesce(max(rank), 0) as max_rank from objects where crm=? and parent=?", crm_id, parent)
 	initial_rank = (max_rank_row["max_rank"] if max_rank_row else 0) + 1
 
 	# Create object
@@ -5571,7 +5573,7 @@ def do_object_create(crm_id, crm, params, user_id):
 
 	title_field_row = mochi.db.row("select title from classes where crm=? and id=?", crm_id, obj_class)
 	title_field = title_field_row["title"] if title_field_row else ""
-	max_rank_row = mochi.db.row("select coalesce(max(rank), 0) as max_rank from objects where crm=?", crm_id)
+	max_rank_row = mochi.db.row("select coalesce(max(rank), 0) as max_rank from objects where crm=? and parent=?", crm_id, parent)
 	initial_rank = (max_rank_row["max_rank"] if max_rank_row else 0) + 1
 	object_id = mochi.uid()
 	now = mochi.time.now()

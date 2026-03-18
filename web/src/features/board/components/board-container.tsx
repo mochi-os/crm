@@ -153,10 +153,10 @@ export function BoardContainer({
       }
     }
     for (const key of Object.keys(map)) {
-      map[key] = sortObjects(map[key], sort);
+      map[key] = sortObjects(map[key], { field: "rank", direction: "asc" });
     }
     return map;
-  }, [objects, objectMap, sort]);
+  }, [objects, objectMap]);
 
   // Get status options for columns
   const statusOptions = useMemo(() => {
