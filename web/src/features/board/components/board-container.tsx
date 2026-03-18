@@ -418,7 +418,7 @@ export function BoardContainer({
     // Reorder child among siblings
     if (reorderParentId && reorderRank !== undefined) {
       if (draggedObj.parent === reorderParentId) {
-        onMoveObject?.(objectId, columnId, reorderRank, rowId, reorderParentId);
+        onMoveObject?.(objectId, "", reorderRank, undefined, reorderParentId);
       } else if (onReparentObject) {
         const parentObj = objectMap[reorderParentId];
         if (!parentObj) return;
