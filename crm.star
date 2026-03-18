@@ -225,15 +225,7 @@ def database_create():
 
 
 def database_upgrade(version):
-	if version == 2:
-		mochi.db.execute("""create table if not exists subscribers (
-			crm text not null references crms(id),
-			id text not null,
-			name text not null default '',
-			subscribed integer not null,
-			primary key (crm, id)
-		)""")
-		mochi.db.execute("create index if not exists subscribers_id on subscribers(id)")
+	pass
 
 # ============================================================================
 # Templates
