@@ -7,7 +7,6 @@ import { MessageSquare, Paperclip, Send, X } from "lucide-react";
 import {
   Button,
   EmptyState,
-  Textarea,
   toast,
   getErrorMessage,
   ListSkeleton,
@@ -15,6 +14,7 @@ import {
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import { CommentThread } from "./comment-thread";
+import { MentionTextarea } from "./mention-textarea";
 
 interface CommentListProps {
   crmId: string;
@@ -42,6 +42,16 @@ export function CommentList({
       return response.data;
     },
   });
+
+  const { data: peopleData } = useQuery({
+    queryKey: ["people", crmId],
+    queryFn: async () => {
+      const response = await crmsApi.listPeople(crmId);
+      return response.data.people;
+    },
+    staleTime: 60000,
+  });
+  const people = peopleData ?? [];
 
   const createMutation = useMutation({
     mutationFn: async ({
@@ -172,9 +182,9 @@ export function CommentList({
     <div className="space-y-4">
       {!readOnly && (
         <div className="space-y-2">
-          <Textarea
+          <MentionTextarea
             value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
+            onValueChange={setNewComment}
             onKeyDown={(e) => {
               if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
                 e.preventDefault();
@@ -183,6 +193,7 @@ export function CommentList({
             }}
             placeholder="Add a comment..."
             rows={3}
+            people={people}
           />
           {newFiles.length > 0 && (
             <div className="flex flex-wrap gap-2">
@@ -262,6 +273,7 @@ export function CommentList({
               comment={comment}
               crmId={crmId}
               currentUserId={currentUserId}
+              people={people}
               readOnly={!!readOnly}
               replyingTo={replyingTo}
               replyDraft={replyDraft}

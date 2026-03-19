@@ -22,7 +22,7 @@ import {
   useShellStorage,
   toast,
 } from "@mochi/web";
-import { Columns3, Ellipsis, Users, GripVertical, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
+import { Columns3, Download, Ellipsis, Users, GripVertical, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
 import crmsApi from "@/api/crms";
 import type { CrmDetails, CrmField, CrmObject, SortState } from "@/types";
 import { canDesign, canWrite } from "@/lib/access";
@@ -707,6 +707,50 @@ function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
     // Object created successfully, queries will be invalidated by the mutation
   };
 
+  const handleExportCSV = useCallback(() => {
+    if (filteredObjects.length === 0) {
+      toast.error("No objects to export.");
+      return;
+    }
+
+    // Collect option name lookups: fieldId -> optionId -> displayName
+    const optionNames: Record<string, Record<string, string>> = {};
+    for (const classOptions of Object.values(crm.options)) {
+      for (const [fieldId, opts] of Object.entries(classOptions)) {
+        if (!optionNames[fieldId]) optionNames[fieldId] = {};
+        for (const opt of opts) {
+          optionNames[fieldId][opt.id] = opt.name;
+        }
+      }
+    }
+
+    const headers = ["ID", "Class", "Parent", ...allFields.map((f) => f.name)];
+    const rows = filteredObjects.map((obj) => {
+      const cls = crm.classes.find((c) => c.id === obj.class);
+      const cells = [
+        obj.id,
+        cls?.name ?? obj.class,
+        obj.parent,
+        ...allFields.map((f) => {
+          const raw = obj.values[f.id] ?? "";
+          if (f.fieldtype === "enumerated") return optionNames[f.id]?.[raw] ?? raw;
+          if (f.fieldtype === "user") return peopleMap[raw] ?? raw;
+          return raw;
+        }),
+      ];
+      return cells.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(",");
+    });
+
+    const csv = [headers.map((h) => `"${h}"`).join(","), ...rows].join("\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${crm.crm.name}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }, [filteredObjects, allFields, crm, peopleMap]);
+
   const handleViewChange = (viewId: string) => {
     setActiveViewId(viewId);
     // Reset sort when switching views
@@ -804,6 +848,10 @@ function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
                     </Link>
                   </DropdownMenuItem>
                 )}
+                <DropdownMenuItem onClick={handleExportCSV}>
+                  <Download className="size-4 mr-2" />
+                  Export CSV
+                </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link
                     to="/$crmId/settings"
