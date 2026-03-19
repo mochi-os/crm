@@ -107,7 +107,7 @@ export function CreateObjectDialog({
       }
       setFieldValues(initialValues);
     }
-  }, [open, creatableClasses, defaultFields, defaultParent, crm.fields, crm.options]);
+  }, [open, crm.classes, defaultFields, defaultParent]);
 
   // Update default field values when type changes (if fields exist in new type)
   useEffect(() => {
@@ -176,7 +176,9 @@ export function CreateObjectDialog({
     const parentClassIds = allowedParentClasses.filter((t) => t !== "");
     if (parentClassIds.length === 0) return [];
 
-    return objectsData.filter((obj) => parentClassIds.includes(obj.class));
+    return objectsData
+      .filter((obj) => parentClassIds.includes(obj.class))
+      .sort((a, b) => objectTitle(a).localeCompare(objectTitle(b)));
   }, [objectsData, selectedClass, allowedParentClasses]);
 
   // Get current parent object info
