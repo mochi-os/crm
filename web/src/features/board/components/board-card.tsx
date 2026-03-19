@@ -1,7 +1,7 @@
 // Mochi CRMs: Board card component
 // Copyright Alistair Cunningham 2026
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Card, cn } from "@mochi/web";
 import { Check, CheckSquare, ChevronDown, ChevronRight } from "lucide-react";
 import type { CrmObject, CrmField, CrmClass, FieldOption, ChecklistItem } from "@/types";
@@ -65,6 +65,7 @@ export function BoardCard({
   onChildDoubleClick,
 }: BoardCardProps) {
   const [collapsed, setCollapsed] = useState(false);
+  const clickTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isNested = depth > 0;
 
@@ -217,10 +218,22 @@ export function BoardCard({
       style={borderColor ? { borderColor: borderColor } : undefined}
       onClick={(e) => {
         e.stopPropagation();
-        onClick?.();
+        if (onDoubleClick) {
+          if (clickTimer.current) clearTimeout(clickTimer.current);
+          clickTimer.current = setTimeout(() => {
+            clickTimer.current = null;
+            onClick?.();
+          }, 300);
+        } else {
+          onClick?.();
+        }
       }}
       onDoubleClick={onDoubleClick ? (e) => {
         e.stopPropagation();
+        if (clickTimer.current) {
+          clearTimeout(clickTimer.current);
+          clickTimer.current = null;
+        }
         onDoubleClick();
       } : undefined}
       draggable={canDrag}
