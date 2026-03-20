@@ -61,14 +61,22 @@ export function CrmsListPage() {
   const promptedNotifications = useRef(false);
   useEffect(() => {
     if (promptedNotifications.current) return;
-    if (!isLoading && crms.length > 0 && subscriptionData?.data?.exists === false) {
+    if (isLoading || crms.length === 0 || !subscriptionData?.data) return;
+    const { exists, types } = subscriptionData.data as { exists: boolean; types?: string[] };
+    if (!exists) {
       promptedNotifications.current = true;
       shellSubscribeNotifications('crm', [
         { label: 'CRM updates', type: 'update', defaultEnabled: true },
         { label: 'Assignments', type: 'assignment', defaultEnabled: true },
+        { label: 'Mentions', type: 'mention', defaultEnabled: true },
+      ]).then(() => refetchSubscription());
+    } else if (types && !types.includes('mention')) {
+      promptedNotifications.current = true;
+      shellSubscribeNotifications('crm', [
+        { label: 'Mentions', type: 'mention', defaultEnabled: true },
       ]).then(() => refetchSubscription());
     }
-  }, [isLoading, crms.length, subscriptionData?.data?.exists]);
+  }, [isLoading, crms.length, subscriptionData?.data]);
 
   useEffect(() => {
     void refresh();

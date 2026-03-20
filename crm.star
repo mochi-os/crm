@@ -1142,17 +1142,20 @@ def notify_watchers(object_id, crm_id, local_identity, user_id, body):
 	mochi.service.call("notifications", "send", "update", title, body, object_id, url)
 
 def notify_mentions(object_id, crm_id, content, author_id, author_name):
-	"""Notify the local owner if they are @mentioned in a comment."""
-	owner_id = get_owner_identity(crm_id)
-	if not owner_id or owner_id == author_id:
+	"""Notify subscribers who are @mentioned in a comment."""
+	content_lower = content.lower()
+	subscribers = mochi.db.rows(
+		"select id, name from subscribers where crm=? and id!=?",
+		crm_id, author_id)
+	if not subscribers:
 		return
-	owner_sub = mochi.db.row(
-		"select name from subscribers where crm=? and id=?",
-		crm_id, owner_id)
-	if not owner_sub or not owner_sub.get("name"):
-		return
-	owner_name = owner_sub["name"]
-	if ("@" + owner_name).lower() not in content.lower():
+	mentioned = False
+	for sub in subscribers:
+		name = sub.get("name")
+		if name and ("@[" + name + "]").lower() in content_lower:
+			mentioned = True
+			break
+	if not mentioned:
 		return
 	crm = get_crm(crm_id)
 	obj = mochi.db.row("select class from objects where id=?", object_id)
@@ -6475,4 +6478,5 @@ def do_view_reorder(crm_id, crm, params):
 def action_notifications_check(a):
 	"""Check if a notification subscription exists for this app."""
 	result = mochi.service.call("notifications", "subscriptions")
-	return {"data": {"exists": len(result) > 0}}
+	types = [sub.get("type", "") for sub in result if sub.get("type")]
+	return {"data": {"exists": len(result) > 0, "types": types}}

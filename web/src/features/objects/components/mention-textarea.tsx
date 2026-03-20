@@ -59,7 +59,7 @@ export function MentionTextarea({
     const textarea = textareaRef.current;
     if (!textarea) return;
     const cursor = textarea.selectionStart ?? value.length;
-    const before = value.slice(0, cursor).replace(/@\w*$/, `@${person.name} `);
+    const before = value.slice(0, cursor).replace(/@\w*$/, `@[${person.name}] `);
     onValueChange(before + value.slice(cursor));
     setMentionQuery(null);
     setTimeout(() => {

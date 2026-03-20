@@ -215,13 +215,8 @@ export function ObjectDetailPanel({
     };
     findDescendants(object.id);
 
-    const title = (obj: { class: string; values: Record<string, string> }) => {
-      const cls = crm.classes.find((c) => c.id === obj.class);
-      return (cls?.title ? obj.values[cls.title] : "") || "Untitled";
-    };
     return objectsData
-      .filter((obj) => parentClassIds.includes(obj.class) && !descendants.has(obj.id))
-      .sort((a, b) => title(a).localeCompare(title(b)));
+      .filter((obj) => parentClassIds.includes(obj.class) && !descendants.has(obj.id));
   }, [objectsData, data, crm.hierarchy]);
 
   // Get current parent object info - must be before early returns
