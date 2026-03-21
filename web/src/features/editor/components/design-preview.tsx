@@ -36,10 +36,10 @@ export function DesignPreview({
   const classFields = fields[classId] || [];
   const classOptions = options[classId] || {};
 
-  // Filter objects to the selected class
+  // Show all real objects in the preview regardless of selected class
   const classObjects = useMemo(
-    () => objects.filter((o) => o.class === classId),
-    [objects, classId],
+    () => objects,
+    [objects],
   );
 
   // Get the first board view
