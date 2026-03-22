@@ -61,50 +61,60 @@ export function DesignPreview({
       );
     }
 
-    return (
-      <div className="flex gap-4 overflow-x-auto pb-4">
-        {columnOptions.map((opt) => {
-          const columnObjects = classObjects.filter(
-            (o) => o.values[columnField] === opt.id,
-          );
+    // Build object map for parent lookups and group by column
+    const objectMap: Record<string, CrmObject> = {};
+    for (const obj of classObjects) objectMap[obj.id] = obj;
+
+    const grouped: Record<string, CrmObject[]> = {};
+    for (const opt of columnOptions) grouped[opt.id] = [];
+    grouped[""] = [];
+
+    for (const obj of classObjects) {
+      if (obj.parent && objectMap[obj.parent]) continue;
+      const val = obj.values[columnField] || "";
+      if (grouped[val]) {
+        grouped[val].push(obj);
+      } else {
+        grouped[""].push(obj);
+      }
+    }
+
+    const otherObjects = grouped[""];
+
+    const renderColumn = (key: string, label: string, colour: string | undefined, items: CrmObject[]) => (
+      <div key={key} className="w-64 shrink-0 bg-muted/50 rounded-lg p-3 space-y-2">
+        <div className="flex items-center gap-2">
+          {colour && <span className="size-3 rounded-full" style={{ backgroundColor: colour }} />}
+          <span className="font-medium text-sm">{label}</span>
+          <span className="text-xs text-muted-foreground ml-auto">{items.length}</span>
+        </div>
+        {items.slice(0, 5).map((obj) => {
+          const borderValue = borderField ? obj.values[borderField] : "";
+          const borderColor = borderValue
+            ? classOptions[borderField]?.find((o) => o.id === borderValue)?.colour
+            : undefined;
           return (
             <div
-              key={opt.id}
-              className="w-64 shrink-0 bg-muted/50 rounded-lg p-3 space-y-2"
+              key={obj.id}
+              className="bg-background rounded-[10px] p-2 text-sm border"
+              style={borderColor ? { borderColor } : undefined}
             >
-              <div className="flex items-center gap-2">
-                <span
-                  className="size-3 rounded-full"
-                  style={{ backgroundColor: opt.colour }}
-                />
-                <span className="font-medium text-sm">{opt.name}</span>
-                <span className="text-xs text-muted-foreground ml-auto">
-                  {columnObjects.length}
-                </span>
-              </div>
-              {columnObjects.slice(0, 5).map((obj) => {
-                const borderValue = borderField ? obj.values[borderField] : "";
-                const borderColor = borderValue
-                  ? classOptions[borderField]?.find((o) => o.id === borderValue)?.colour
-                  : undefined;
-                return (
-                  <div
-                    key={obj.id}
-                    className="bg-background rounded-[10px] p-2 text-sm border"
-                    style={borderColor ? { borderColor } : undefined}
-                  >
-                    {obj.values[titleFieldId] || "Untitled"}
-                  </div>
-                );
-              })}
-              {columnObjects.length > 5 && (
-                <div className="text-xs text-muted-foreground text-center">
-                  +{columnObjects.length - 5} more
-                </div>
-              )}
+              {obj.values[titleFieldId] || "Untitled"}
             </div>
           );
         })}
+        {items.length > 5 && (
+          <div className="text-xs text-muted-foreground text-center">
+            +{items.length - 5} more
+          </div>
+        )}
+      </div>
+    );
+
+    return (
+      <div className="flex gap-4 overflow-x-auto pb-4">
+        {columnOptions.map((opt) => renderColumn(opt.id, opt.name, opt.colour, grouped[opt.id]))}
+        {otherObjects.length > 0 && renderColumn("__other", "Other", undefined, otherObjects)}
       </div>
     );
   };
