@@ -4693,6 +4693,19 @@ def event_object_create(e):
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "object/create", "crm": crm_id, "id": object_id})
+	# Notify local user about new object
+	user = e.content("user") or ""
+	local_id = e.header("to")
+	if local_id and local_id != user:
+		crm = get_crm(crm_id)
+		if crm:
+			obj = mochi.db.row("select class from objects where id=?", object_id)
+			if obj:
+				title = get_object_display(crm, obj, object_id)
+				fp2 = mochi.entity.fingerprint(crm_id)
+				url = "/crm/" + fp2 if fp2 else "/crm"
+				mochi.service.call("notifications", "send", "update",
+					title, "Created", object_id, url)
 
 # Object updated
 def event_object_update(e):
