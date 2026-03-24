@@ -20,6 +20,7 @@ import { Route as errors401RouteImport } from './routes/(errors)/401'
 import { Route as AuthenticatedCrmIdIndexRouteImport } from './routes/_authenticated/$crmId/index'
 import { Route as AuthenticatedCrmIdSettingsRouteImport } from './routes/_authenticated/$crmId_.settings'
 import { Route as AuthenticatedCrmIdDesignRouteImport } from './routes/_authenticated/$crmId/design'
+import { Route as AuthenticatedCrmIdObjectIdRouteImport } from './routes/_authenticated/$crmId/$objectId'
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
@@ -77,6 +78,12 @@ const AuthenticatedCrmIdDesignRoute =
     path: '/$crmId/design',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedCrmIdObjectIdRoute =
+  AuthenticatedCrmIdObjectIdRouteImport.update({
+    id: '/$crmId/$objectId',
+    path: '/$crmId/$objectId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/401': typeof errors401Route
@@ -86,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/503': typeof errors503Route
   '/find': typeof AuthenticatedFindRoute
   '/': typeof AuthenticatedIndexRoute
+  '/$crmId/$objectId': typeof AuthenticatedCrmIdObjectIdRoute
   '/$crmId/design': typeof AuthenticatedCrmIdDesignRoute
   '/$crmId/settings': typeof AuthenticatedCrmIdSettingsRoute
   '/$crmId': typeof AuthenticatedCrmIdIndexRoute
@@ -98,6 +106,7 @@ export interface FileRoutesByTo {
   '/503': typeof errors503Route
   '/find': typeof AuthenticatedFindRoute
   '/': typeof AuthenticatedIndexRoute
+  '/$crmId/$objectId': typeof AuthenticatedCrmIdObjectIdRoute
   '/$crmId/design': typeof AuthenticatedCrmIdDesignRoute
   '/$crmId/settings': typeof AuthenticatedCrmIdSettingsRoute
   '/$crmId': typeof AuthenticatedCrmIdIndexRoute
@@ -112,6 +121,7 @@ export interface FileRoutesById {
   '/(errors)/503': typeof errors503Route
   '/_authenticated/find': typeof AuthenticatedFindRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/$crmId/$objectId': typeof AuthenticatedCrmIdObjectIdRoute
   '/_authenticated/$crmId/design': typeof AuthenticatedCrmIdDesignRoute
   '/_authenticated/$crmId_/settings': typeof AuthenticatedCrmIdSettingsRoute
   '/_authenticated/$crmId/': typeof AuthenticatedCrmIdIndexRoute
@@ -126,6 +136,7 @@ export interface FileRouteTypes {
     | '/503'
     | '/find'
     | '/'
+    | '/$crmId/$objectId'
     | '/$crmId/design'
     | '/$crmId/settings'
     | '/$crmId'
@@ -138,6 +149,7 @@ export interface FileRouteTypes {
     | '/503'
     | '/find'
     | '/'
+    | '/$crmId/$objectId'
     | '/$crmId/design'
     | '/$crmId/settings'
     | '/$crmId'
@@ -151,6 +163,7 @@ export interface FileRouteTypes {
     | '/(errors)/503'
     | '/_authenticated/find'
     | '/_authenticated/'
+    | '/_authenticated/$crmId/$objectId'
     | '/_authenticated/$crmId/design'
     | '/_authenticated/$crmId_/settings'
     | '/_authenticated/$crmId/'
@@ -244,12 +257,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCrmIdDesignRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/$crmId/$objectId': {
+      id: '/_authenticated/$crmId/$objectId'
+      path: '/$crmId/$objectId'
+      fullPath: '/$crmId/$objectId'
+      preLoaderRoute: typeof AuthenticatedCrmIdObjectIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedFindRoute: typeof AuthenticatedFindRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+  AuthenticatedCrmIdObjectIdRoute: typeof AuthenticatedCrmIdObjectIdRoute
   AuthenticatedCrmIdDesignRoute: typeof AuthenticatedCrmIdDesignRoute
   AuthenticatedCrmIdSettingsRoute: typeof AuthenticatedCrmIdSettingsRoute
   AuthenticatedCrmIdIndexRoute: typeof AuthenticatedCrmIdIndexRoute
@@ -258,6 +279,7 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedFindRoute: AuthenticatedFindRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AuthenticatedCrmIdObjectIdRoute: AuthenticatedCrmIdObjectIdRoute,
   AuthenticatedCrmIdDesignRoute: AuthenticatedCrmIdDesignRoute,
   AuthenticatedCrmIdSettingsRoute: AuthenticatedCrmIdSettingsRoute,
   AuthenticatedCrmIdIndexRoute: AuthenticatedCrmIdIndexRoute,

@@ -1138,7 +1138,7 @@ def notify_watchers(object_id, crm_id, local_identity, user_id, body):
 		return
 	title = get_object_display(crm, obj, object_id)
 	fp = mochi.entity.fingerprint(crm_id)
-	url = "/crm/" + fp if fp else "/crm"
+	url = "/crm/" + fp + "/" + object_id if fp else "/crm"
 	mochi.service.call("notifications", "send", "update", title, body, object_id, url)
 
 def notify_mentions(object_id, crm_id, content, author_id, author_name):
@@ -1163,7 +1163,7 @@ def notify_mentions(object_id, crm_id, content, author_id, author_name):
 		return
 	title = get_object_display(crm, obj, object_id)
 	fp = mochi.entity.fingerprint(crm_id)
-	url = "/crm/" + fp if fp else "/crm"
+	url = "/crm/" + fp + "/" + object_id if fp else "/crm"
 	excerpt = content.strip()[:80]
 	mochi.service.call("notifications", "send", "mention",
 		title, author_name + " mentioned you: " + excerpt, object_id, url)
@@ -4690,11 +4690,13 @@ def event_object_create(e):
 	values = e.content("values") or {}
 	for field, value in values.items():
 		mochi.db.execute("insert or replace into \"values\" (object, field, value) values (?, ?, ?)", object_id, field, value)
+	user = e.content("user") or ""
+	if user:
+		log_activity(object_id, user, "created")
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "object/create", "crm": crm_id, "id": object_id})
 	# Notify local user about new object
-	user = e.content("user") or ""
 	local_id = e.header("to")
 	if local_id and local_id != user:
 		crm = get_crm(crm_id)
@@ -4703,7 +4705,7 @@ def event_object_create(e):
 			if obj:
 				title = get_object_display(crm, obj, object_id)
 				fp2 = mochi.entity.fingerprint(crm_id)
-				url = "/crm/" + fp2 if fp2 else "/crm"
+				url = "/crm/" + fp2 + "/" + object_id if fp2 else "/crm"
 				mochi.service.call("notifications", "send", "update",
 					title, "Created", object_id, url)
 
@@ -4797,7 +4799,7 @@ def event_values_update(e):
 								if obj:
 									title = get_object_display(crm, obj, object_id)
 									fp2 = mochi.entity.fingerprint(crm_id)
-									url = "/crm/" + fp2 if fp2 else "/crm"
+									url = "/crm/" + fp2 + "/" + object_id if fp2 else "/crm"
 									mochi.service.call("notifications", "send", "assignment",
 										title, "Assigned to you",
 										object_id, url)
@@ -5639,7 +5641,7 @@ def do_object_create(crm_id, crm, params, user_id):
 		obj = mochi.db.row("select class from objects where id=?", object_id)
 		display = get_object_display(crm, obj, object_id)
 		fp = mochi.entity.fingerprint(crm_id)
-		url = "/crm/" + fp if fp else "/crm"
+		url = "/crm/" + fp + "/" + object_id if fp else "/crm"
 		mochi.service.call("notifications", "send", "update",
 			display, "Created", object_id, url)
 	return {"id": object_id}

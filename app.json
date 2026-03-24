@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 {
-	"version": "1.27",
+	"version": "1.28",
 	"label": "app_name",
 	"classes": ["crm"],
 	"paths": ["crm"],
@@ -42,6 +42,7 @@
 		":crm": {"file": "web/dist/index.html"},
 		":crm/design": {"file": "web/dist/index.html"},
 		":crm/settings": {"file": "web/dist/index.html"},
+		":crm/:object": {"file": "web/dist/index.html"},
 		":crm/-/info": {"function": "action_crm_get"},
 		":crm/-/update": {"function": "action_crm_update"},
 		":crm/-/delete": {"function": "action_crm_delete"},

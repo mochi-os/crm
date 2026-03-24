@@ -105,13 +105,14 @@ function CrmPage() {
   );
 }
 
-interface CrmPageContentProps {
+export interface CrmPageContentProps {
   crm: CrmDetails;
   crmId: string;
   search: SearchParams;
+  initialObjectId?: string;
 }
 
-function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
+export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageContentProps) {
   const navigate = useNavigate();
   const router = useRouter();
   const params = { crmId };
@@ -127,7 +128,7 @@ function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
     return () => setShortcutEnabled(true);
   }, [setShortcutEnabled]);
 
-  const [selectedObjectId, setSelectedObjectId] = useState<string | null>(null);
+  const [selectedObjectId, setSelectedObjectId] = useState<string | null>(initialObjectId ?? null);
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [createDefaultFields, setCreateDefaultFields] = useState<
     { field: string; value: string }[] | undefined
@@ -966,7 +967,12 @@ function CrmPageContent({ crm, crmId, search }: CrmPageContentProps) {
         objectId={selectedObjectId}
         crm={crm}
         access={access}
-        onClose={() => setSelectedObjectId(null)}
+        onClose={() => {
+          setSelectedObjectId(null);
+          if (initialObjectId) {
+            navigate({ to: '/$crmId', params: { crmId }, replace: true });
+          }
+        }}
       />
 
       {canWrite(access) && (
