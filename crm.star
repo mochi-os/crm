@@ -6493,5 +6493,7 @@ def do_view_reorder(crm_id, crm, params):
 def action_notifications_check(a):
 	"""Check if a notification subscription exists for this app."""
 	result = mochi.service.call("notifications", "subscriptions")
+	if result == None:
+		return {"data": {"exists": False, "types": []}}
 	types = [sub.get("type", "") for sub in result if sub.get("type")]
 	return {"data": {"exists": len(result) > 0, "types": types}}
