@@ -1629,9 +1629,9 @@ def action_object_move(a):
 				old_value = old_value_row["value"] if old_value_row else ""
 				target_value = value if value else old_value
 				if sp:
-					objects_in_scope = mochi.db.rows("select o.id, o.rank from objects o where o.project=? and o.parent=? and o.id!=? order by o.rank asc", crm_id, sp, object_id) or []
+					objects_in_scope = mochi.db.rows("select o.id, o.rank from objects o where o.crm=? and o.parent=? and o.id!=? order by o.rank asc", crm_id, sp, object_id) or []
 				else:
-					objects_in_scope = mochi.db.rows("select o.id, o.rank from objects o left join \"values\" v on v.object = o.id and v.field=? where o.project=? and coalesce(v.value, '')=? and o.id!=? order by o.rank asc", field, crm_id, target_value, object_id) or []
+					objects_in_scope = mochi.db.rows("select o.id, o.rank from objects o left join \"values\" v on v.object = o.id and v.field=? where o.crm=? and coalesce(v.value, '')=? and o.id!=? order by o.rank asc", field, crm_id, target_value, object_id) or []
 				r = 1
 				for obj in objects_in_scope:
 					if r == new_rank:
