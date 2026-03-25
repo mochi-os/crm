@@ -21,6 +21,7 @@ import {
   useSearch,
   useShellStorage,
   toast,
+  getAppPath,
 } from "@mochi/web";
 import { Columns3, Download, Ellipsis, Users, GripVertical, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
 import crmsApi from "@/api/crms";
@@ -113,7 +114,6 @@ export interface CrmPageContentProps {
 }
 
 export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageContentProps) {
-  const navigate = useNavigate();
   const router = useRouter();
   const params = { crmId };
   const access = crm.crm.access;
@@ -171,17 +171,20 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
     return result;
   }, [crm.fields]);
 
-  // Sync URL when view changes
+  // Sync view and selected object to URL for bookmarkability
+  const isInitialMount = useRef(true);
   useEffect(() => {
-    const newView = activeViewId === defaultViewId ? undefined : activeViewId;
-    if (search.view !== newView) {
-      navigate({
-        to: ".",
-        search: { view: newView },
-        replace: true,
-      });
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
     }
-  }, [activeViewId, defaultViewId, search.view, navigate]);
+    const appPath = getAppPath() || '';
+    const path = selectedObjectId
+      ? `${appPath}/${crmId}/${selectedObjectId}`
+      : `${appPath}/${crmId}`;
+    const viewParam = activeViewId !== defaultViewId ? `?view=${activeViewId}` : '';
+    window.history.replaceState(null, '', `${path}${viewParam}`);
+  }, [selectedObjectId, activeViewId, defaultViewId, crmId]);
 
   // Filter state
   const [filters, setFilters] = useState<FilterState>({
@@ -967,12 +970,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         objectId={selectedObjectId}
         crm={crm}
         access={access}
-        onClose={() => {
-          setSelectedObjectId(null);
-          if (initialObjectId) {
-            navigate({ to: '/$crmId', params: { crmId }, replace: true });
-          }
-        }}
+        onClose={() => setSelectedObjectId(null)}
       />
 
       {canWrite(access) && (
