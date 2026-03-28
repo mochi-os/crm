@@ -803,13 +803,21 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
               onFilterChange={setFilters}
             />
             {canWrite(access) && (
-              <IconButton
+              <Button
                 variant='ghost'
+                size='sm'
                 onClick={handleOpenCreateDialog}
-                label='Create object'
               >
                 <Plus className="size-4" />
-              </IconButton>
+                {(() => {
+                  const viewClasses = activeView?.classes || [];
+                  if (viewClasses.length === 1) {
+                    const cls = crm.classes.find((c) => c.id === viewClasses[0]);
+                    if (cls) return `New ${cls.name.toLowerCase()}`;
+                  }
+                  return "New";
+                })()}
+              </Button>
             )}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

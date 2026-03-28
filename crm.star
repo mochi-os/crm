@@ -3928,7 +3928,7 @@ def action_search(a):
 # ============================================================================
 
 def action_users_search(a):
-	query = a.input("q", "")
+	query = a.input("search", "")
 	results = mochi.service.call("people", "users/search", query)
 	return {"data": {"results": results}}
 

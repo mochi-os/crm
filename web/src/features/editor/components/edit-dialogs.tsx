@@ -150,16 +150,18 @@ export function ViewSheet({
   };
 
   const handleRowsChange = (value: string) => {
-    setRows(value);
-    if (mode === "edit" && onUpdate && view && value !== view.rows) {
-      onUpdate({ rows: value });
+    const v = value === "__none" ? "" : value;
+    setRows(v);
+    if (mode === "edit" && onUpdate && view && v !== view.rows) {
+      onUpdate({ rows: v });
     }
   };
 
   const handleSortChange = (value: string) => {
-    setSort(value);
-    if (mode === "edit" && onUpdate && view && value !== view.sort) {
-      onUpdate({ sort: value });
+    const v = value === "__none" ? "" : value;
+    setSort(v);
+    if (mode === "edit" && onUpdate && view && v !== view.sort) {
+      onUpdate({ sort: v });
     }
   };
 
@@ -359,12 +361,12 @@ export function ViewSheet({
             <div className="space-y-2">
               <Label>Rows group by</Label>
               <div className="pl-4">
-                <Select value={rows} onValueChange={handleRowsChange}>
+                <Select value={rows || "__none"} onValueChange={handleRowsChange}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="None" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">None</SelectItem>
+                    <SelectItem value="__none">None</SelectItem>
                     {enumeratedFields.map((field) => (
                       <SelectItem key={field.id} value={field.id}>
                         {field.name}
@@ -381,11 +383,12 @@ export function ViewSheet({
               <Label>Border colour</Label>
               <div className="pl-4">
                 <Select
-                  value={border}
+                  value={border || "__none"}
                   onValueChange={(value) => {
-                    setBorder(value);
+                    const v = value === "__none" ? "" : value;
+                    setBorder(v);
                     if (mode === "edit" && onUpdate) {
-                      onUpdate({ border: value });
+                      onUpdate({ border: v });
                     }
                   }}
                 >
@@ -393,7 +396,7 @@ export function ViewSheet({
                     <SelectValue placeholder="None" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">None</SelectItem>
+                    <SelectItem value="__none">None</SelectItem>
                     {enumeratedFields.map((field) => (
                       <SelectItem key={field.id} value={field.id}>
                         {field.name}
@@ -459,12 +462,12 @@ export function ViewSheet({
           <div className="space-y-2">
             <Label>Default sort</Label>
             <div className="pl-4 flex gap-2">
-              <Select value={sort} onValueChange={handleSortChange}>
+              <Select value={sort || "__none"} onValueChange={handleSortChange}>
                 <SelectTrigger className="flex-1">
                   <SelectValue placeholder="None" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">None</SelectItem>
+                  <SelectItem value="__none">None</SelectItem>
                   <SelectItem value="created">Created</SelectItem>
                   <SelectItem value="number">Number</SelectItem>
                   <SelectItem value="updated">Updated</SelectItem>
@@ -713,10 +716,10 @@ export function ClassSheet({
               <Label>Title field</Label>
               <div className="pl-4">
                 <Select
-                  value={cls.title || ""}
+                  value={cls.title || "__none"}
                   onValueChange={(value) => {
                     if (onUpdate) {
-                      onUpdate(cls.name, value);
+                      onUpdate(cls.name, value === "__none" ? "" : value);
                     }
                   }}
                 >
@@ -724,7 +727,7 @@ export function ClassSheet({
                     <SelectValue placeholder="None" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">None</SelectItem>
+                    <SelectItem value="__none">None</SelectItem>
                     {fields.map((field) => (
                       <SelectItem key={field.id} value={field.id}>
                         {field.name}

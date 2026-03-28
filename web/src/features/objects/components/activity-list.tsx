@@ -52,25 +52,22 @@ export function ActivityList({ crmId, objectId }: ActivityListProps) {
           key={activity.id}
           className="text-sm border-l-2 border-muted pl-3 py-1"
         >
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-muted-foreground">
-              {formatTimestamp(activity.created)}
-            </span>
-            <span className="font-medium">
-              {activity.name || activity.user}
-            </span>
-          </div>
-          <div className="text-muted-foreground">
+          <div className="font-medium">
             {formatAction(activity.action)}
             {activity.field && ` ${activity.field}`}
             {activity.oldvalue && activity.newvalue && (
               <>
                 {": "}
-                <span className="line-through">{activity.oldvalue}</span>
+                <span className="line-through font-normal text-muted-foreground">{activity.oldvalue}</span>
                 {" → "}
-                <span className="text-foreground">{activity.newvalue}</span>
+                <span>{activity.newvalue}</span>
               </>
             )}
+          </div>
+          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+            <span>{activity.name || activity.user}</span>
+            <span>·</span>
+            <span>{formatTimestamp(activity.created)}</span>
           </div>
         </div>
       ))}

@@ -1,7 +1,7 @@
 // Mochi CRMs: Design preview component
 // Copyright Alistair Cunningham 2026
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Card, cn } from "@mochi/web";
 import type {
   CrmClass,
@@ -30,24 +30,48 @@ export function DesignPreview({
   objects,
   selectedClassId,
 }: DesignPreviewProps) {
-  const [previewMode, setPreviewMode] = useState<PreviewMode>("board");
-
   const classId = selectedClassId || classes[0]?.id || "task";
   const classFields = fields[classId] || [];
   const classOptions = options[classId] || {};
 
-  // Show all real objects in the preview regardless of selected class
+  // Find views that include the selected class
+  const classViews = useMemo(() => {
+    return views.filter(
+      (v) => v.classes.length === 0 || v.classes.includes(classId),
+    );
+  }, [views, classId]);
+
+  const availableModes = useMemo(() => {
+    const modes: PreviewMode[] = [];
+    if (classViews.some((v) => v.viewtype === "board")) modes.push("board");
+    if (classViews.some((v) => v.viewtype === "list")) modes.push("list");
+    modes.push("card");
+    return modes;
+  }, [classViews]);
+
+  const [previewMode, setPreviewMode] = useState<PreviewMode>(availableModes[0]);
+
+  // Reset preview mode when available modes change
+  useEffect(() => {
+    if (!availableModes.includes(previewMode)) {
+      setPreviewMode(availableModes[0]);
+    }
+  }, [availableModes, previewMode]);
+
+  // Filter objects to the selected class
   const classObjects = useMemo(
-    () => objects,
-    [objects],
+    () => objects.filter((obj) => obj.class === classId),
+    [objects, classId],
   );
 
-  // Get the first board view
-  const boardView = views.find((v) => v.viewtype === "board");
-
+  // Get the board view for this class
+  const boardView = classViews.find((v) => v.viewtype === "board");
   const columnField = boardView?.columns || "";
   const columnOptions = classOptions[columnField] || [];
   const borderField = boardView?.border || "";
+
+  // Get the list view for this class
+  const listView = classViews.find((v) => v.viewtype === "list");
 
   // Get the title field for the selected class
   const titleFieldId = classes.find((c) => c.id === classId)?.title || "title";
@@ -164,7 +188,11 @@ export function DesignPreview({
   };
 
   const renderListPreview = () => {
-    const listFields = classFields.slice(0, 4);
+    // Use the view's field list if available, otherwise fall back to first 4 class fields
+    const listFieldIds = listView?.fields ? listView.fields.split(",").map((f) => f.trim()) : [];
+    const listFields = listFieldIds.length > 0
+      ? listFieldIds.map((id) => classFields.find((f) => f.id === id)).filter(Boolean) as CrmField[]
+      : classFields.slice(0, 4);
 
     return (
       <div className="bg-background border rounded-[10px] overflow-hidden max-w-2xl">
@@ -212,7 +240,7 @@ export function DesignPreview({
     <div className="h-full flex flex-col">
       <div className="flex items-center gap-2 p-2 border-b">
         <span className="text-sm font-medium">Preview:</span>
-        {(["board", "list", "card"] as const).map((mode) => (
+        {availableModes.map((mode) => (
           <button
             key={mode}
             onClick={() => setPreviewMode(mode)}
