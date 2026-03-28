@@ -4,7 +4,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import {
   Toaster,
-  NavigationProgress,
   NotificationTitle,
   GeneralError,
   NotFoundError,
@@ -17,7 +16,6 @@ export const Route = createRootRouteWithContext<{
     return (
       <>
         <NotificationTitle />
-        <NavigationProgress />
         <Outlet />
         <Toaster duration={5000} />
         {import.meta.env.MODE === "development" && (
