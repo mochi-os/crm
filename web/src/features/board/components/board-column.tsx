@@ -66,6 +66,7 @@ interface BoardColumnProps {
   isDragging?: boolean;
   hideHeader?: boolean;
   rows?: BoardColumnRow[];
+  preview?: boolean;
 }
 
 export function BoardColumn({
@@ -98,6 +99,7 @@ export function BoardColumn({
   isDragging,
   hideHeader,
   rows,
+  preview,
 }: BoardColumnProps) {
   const [showRenameDialog, setShowRenameDialog] = useState(false);
   const [newName, setNewName] = useState(name);
@@ -485,16 +487,16 @@ export function BoardColumn({
         isReordering && !isDragging && "border-dashed border-border-strong",
         isDragging && "border-primary border-2 bg-background shadow-lg",
       )}
-      onDragStart={!onDrop ? (e) => e.preventDefault() : undefined}
-      onDragEnter={isReordering ? undefined : handleDragEnter}
-      onDragOver={isReordering ? undefined : handleDragOver}
-      onDragLeave={isReordering ? undefined : handleDragLeave}
-      onDrop={isReordering ? undefined : handleDrop}
+      onDragStart={!onDrop || preview ? (e) => e.preventDefault() : undefined}
+      onDragEnter={isReordering || preview ? undefined : handleDragEnter}
+      onDragOver={isReordering || preview ? undefined : handleDragOver}
+      onDragLeave={isReordering || preview ? undefined : handleDragLeave}
+      onDrop={isReordering || preview ? undefined : handleDrop}
     >
       {/* Column header */}
       <div
         className="flex items-center justify-between p-3 border-b cursor-pointer"
-        onDoubleClick={(e) => {
+        onDoubleClick={preview ? undefined : (e) => {
           if (!(e.target as HTMLElement).closest("[data-column-menu]")) {
             onCreateClick?.();
           }
@@ -516,7 +518,7 @@ export function BoardColumn({
             </Tooltip>
           </TooltipProvider>
         </div>
-        {!isReordering && (onCreateClick || onRenameColumn || (totalCount === 0 && onDeleteColumn)) && (
+        {!isReordering && (preview || onCreateClick || onRenameColumn || (totalCount === 0 && onDeleteColumn)) && (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button type="button" data-column-menu className="rounded p-1 transition-colors hover:bg-interactive-hover active:bg-interactive-active">
@@ -524,15 +526,15 @@ export function BoardColumn({
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              {onCreateClick && (
-                <DropdownMenuItem onClick={onCreateClick}>
+              {(onCreateClick || preview) && (
+                <DropdownMenuItem onClick={preview ? undefined : onCreateClick}>
                   <Plus className="size-4 mr-2" />
                   Create
                 </DropdownMenuItem>
               )}
-              {onRenameColumn && (
+              {(onRenameColumn || preview) && (
                 <DropdownMenuItem
-                  onClick={() => {
+                  onClick={preview ? undefined : () => {
                     setNewName(name);
                     setShowRenameDialog(true);
                   }}
@@ -541,9 +543,9 @@ export function BoardColumn({
                   Rename
                 </DropdownMenuItem>
               )}
-              {totalCount === 0 && onDeleteColumn && (
+              {totalCount === 0 && (onDeleteColumn || preview) && (
                 <DropdownMenuItem
-                  onClick={() => setShowDeleteDialog(true)}
+                  onClick={preview ? undefined : () => setShowDeleteDialog(true)}
                 >
                   <Trash2 className="size-4 mr-2" />
                   Delete
@@ -643,7 +645,7 @@ export function BoardColumn({
               "p-2 space-y-2",
               index < rows.length - 1 && "border-b"
             )}
-            onDoubleClick={onCreateInRow ? (e) => {
+            onDoubleClick={onCreateInRow && !preview ? (e) => {
               if (e.target === e.currentTarget || (e.target as HTMLElement).closest("[data-card-id]") === null) {
                 onCreateInRow(row.id);
               }
@@ -656,7 +658,7 @@ export function BoardColumn({
         <div
           ref={cardsContainerRef}
           className="p-2 space-y-2 flex-1 relative"
-          onDoubleClick={(e) => {
+          onDoubleClick={preview ? undefined : (e) => {
             if (e.target === e.currentTarget || (e.target as HTMLElement).closest("[data-card-id]") === null) {
               onCreateClick?.();
             }
@@ -667,10 +669,10 @@ export function BoardColumn({
           {totalCount === 0 && !hideHeader && (
             <div className="flex flex-col items-center justify-center py-8 gap-2">
               <Inbox className="size-8 text-muted-foreground/30" />
-              {onCreateClick && (
+              {(onCreateClick || preview) && (
                 <button
                   type="button"
-                  onClick={onCreateClick}
+                  onClick={preview ? undefined : onCreateClick}
                   className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1"
                 >
                   <Plus className="size-3" />

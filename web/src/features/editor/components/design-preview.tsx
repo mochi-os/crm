@@ -2,263 +2,85 @@
 // Copyright Alistair Cunningham 2026
 
 import { useMemo, useState, useEffect } from "react";
-import { Card, cn } from "@mochi/web";
-import type {
-  CrmClass,
-  CrmField,
-  FieldOption,
-  CrmView,
-  CrmObject,
-} from "@/types";
-
-type PreviewMode = "board" | "list" | "card";
+import { ViewTabs } from "@mochi/web";
+import type { CrmDetails, CrmObject } from "@/types";
+import { BoardContainer } from "@/features/board/components/board-container";
+import { TreeView } from "@/features/tree/components/tree-view";
 
 interface DesignPreviewProps {
-  classes: CrmClass[];
-  fields: Record<string, CrmField[]>;
-  options: Record<string, Record<string, FieldOption[]>>;
-  views: CrmView[];
+  crm: CrmDetails;
+  crmId: string;
   objects: CrmObject[];
   selectedClassId: string | null;
 }
 
 export function DesignPreview({
-  classes,
-  fields,
-  options,
-  views,
+  crm,
+  crmId,
   objects,
-  selectedClassId,
+  selectedClassId: _selectedClassId,
 }: DesignPreviewProps) {
-  const classId = selectedClassId || classes[0]?.id || "task";
-  const classFields = fields[classId] || [];
-  const classOptions = options[classId] || {};
-
-  // Find views that include the selected class
-  const classViews = useMemo(() => {
-    return views.filter(
-      (v) => v.classes.length === 0 || v.classes.includes(classId),
-    );
-  }, [views, classId]);
-
-  const availableModes = useMemo(() => {
-    const modes: PreviewMode[] = [];
-    if (classViews.some((v) => v.viewtype === "board")) modes.push("board");
-    if (classViews.some((v) => v.viewtype === "list")) modes.push("list");
-    modes.push("card");
-    return modes;
-  }, [classViews]);
-
-  const [previewMode, setPreviewMode] = useState<PreviewMode>(availableModes[0]);
-
-  // Reset preview mode when available modes change
-  useEffect(() => {
-    if (!availableModes.includes(previewMode)) {
-      setPreviewMode(availableModes[0]);
-    }
-  }, [availableModes, previewMode]);
-
-  // Filter objects to the selected class
-  const classObjects = useMemo(
-    () => objects.filter((obj) => obj.class === classId),
-    [objects, classId],
+  const [selectedViewId, setSelectedViewId] = useState<string | null>(
+    crm.views[0]?.id || null,
   );
 
-  // Get the board view for this class
-  const boardView = classViews.find((v) => v.viewtype === "board");
-  const columnField = boardView?.columns || "";
-  const columnOptions = classOptions[columnField] || [];
-  const borderField = boardView?.border || "";
-
-  // Get the list view for this class
-  const listView = classViews.find((v) => v.viewtype === "list");
-
-  // Get the title field for the selected class
-  const titleFieldId = classes.find((c) => c.id === classId)?.title || "title";
-
-  const renderBoardPreview = () => {
-    if (columnOptions.length === 0) {
-      return (
-        <div className="text-sm text-muted-foreground text-center py-8">
-          Add options to the &ldquo;{columnField}&rdquo; field to see board columns
-        </div>
-      );
-    }
-
-    // Build object map for parent lookups and group by column
-    const objectMap: Record<string, CrmObject> = {};
-    for (const obj of classObjects) objectMap[obj.id] = obj;
-
-    const grouped: Record<string, CrmObject[]> = {};
-    for (const opt of columnOptions) grouped[opt.id] = [];
-    grouped[""] = [];
-
-    for (const obj of classObjects) {
-      if (obj.parent && objectMap[obj.parent]) continue;
-      const val = obj.values[columnField] || "";
-      if (grouped[val]) {
-        grouped[val].push(obj);
-      } else {
-        grouped[""].push(obj);
-      }
-    }
-
-    const otherObjects = grouped[""];
-
-    const renderColumn = (key: string, label: string, colour: string | undefined, items: CrmObject[]) => (
-      <div key={key} className="w-64 shrink-0 bg-muted/50 rounded-lg p-3 space-y-2">
-        <div className="flex items-center gap-2">
-          {colour && <span className="size-3 rounded-full" style={{ backgroundColor: colour }} />}
-          <span className="font-medium text-sm">{label}</span>
-          <span className="text-xs text-muted-foreground ml-auto">{items.length}</span>
-        </div>
-        {items.slice(0, 5).map((obj) => {
-          const borderValue = borderField ? obj.values[borderField] : "";
-          const borderColor = borderValue
-            ? classOptions[borderField]?.find((o) => o.id === borderValue)?.colour
-            : undefined;
-          return (
-            <div
-              key={obj.id}
-              className="bg-background rounded-[10px] p-2 text-sm border"
-              style={borderColor ? { borderColor } : undefined}
-            >
-              {obj.values[titleFieldId] || "Untitled"}
-            </div>
-          );
-        })}
-        {items.length > 5 && (
-          <div className="text-xs text-muted-foreground text-center">
-            +{items.length - 5} more
-          </div>
-        )}
-      </div>
+  // Sync to editor's class selection: pick the first view for that class
+  useEffect(() => {
+    if (!_selectedClassId) return;
+    const match = crm.views.find(
+      (v) => v.classes.length === 0 || v.classes.includes(_selectedClassId),
     );
+    if (match) setSelectedViewId(match.id);
+  }, [_selectedClassId, crm.views]);
 
-    return (
-      <div className="flex gap-4 overflow-x-auto pb-4">
-        {columnOptions.map((opt) => renderColumn(opt.id, opt.name, opt.colour, grouped[opt.id]))}
-        {otherObjects.length > 0 && renderColumn("__other", "Other", undefined, otherObjects)}
-      </div>
-    );
-  };
+  const selectedView = crm.views.find((v) => v.id === selectedViewId);
 
-  const renderCardPreview = () => {
-    if (classObjects.length === 0) {
-      return (
-        <div className="text-sm text-muted-foreground text-center py-8">
-          No items
-        </div>
-      );
-    }
+  // Filter objects to the view's classes (or show all if view has no class filter)
+  const viewClasses = selectedView?.classes || [];
+  const classObjects = useMemo(
+    () => viewClasses.length > 0
+      ? objects.filter((obj) => viewClasses.includes(obj.class))
+      : objects,
+    [objects, viewClasses],
+  );
 
-    return (
-      <div className="max-w-md mx-auto space-y-4">
-        {classObjects.slice(0, 10).map((obj) => (
-          <Card key={obj.id} className="p-4 py-4 gap-0 space-y-4">
-            {classFields.map((field) => {
-              const value = obj.values[field.id] || "";
-              const displayValue =
-                field.fieldtype === "enumerated"
-                  ? classOptions[field.id]?.find((o) => o.id === value)?.name || value
-                  : value;
-              return (
-                <div key={field.id} className="space-y-1">
-                  <label className="text-xs font-medium text-muted-foreground">
-                    {field.name}
-                    {field.flags?.split(",").includes("required") && (
-                      <span className="text-destructive ml-0.5">*</span>
-                    )}
-                  </label>
-                  <div className={cn("text-sm", !displayValue && "text-muted-foreground italic")}>
-                    {displayValue || "Empty"}
-                  </div>
-                </div>
-              );
-            })}
-          </Card>
-        ))}
-        {classObjects.length > 10 && (
-          <div className="text-xs text-muted-foreground text-center">
-            +{classObjects.length - 10} more
-          </div>
-        )}
-      </div>
-    );
-  };
-
-  const renderListPreview = () => {
-    // Use the view's field list if available, otherwise fall back to first 4 class fields
-    const listFieldIds = listView?.fields ? listView.fields.split(",").map((f) => f.trim()) : [];
-    const listFields = listFieldIds.length > 0
-      ? listFieldIds.map((id) => classFields.find((f) => f.id === id)).filter(Boolean) as CrmField[]
-      : classFields.slice(0, 4);
-
-    return (
-      <div className="bg-background border rounded-[10px] overflow-hidden max-w-2xl">
-        <div className="flex items-center gap-4 py-2 px-3 border-b bg-muted/30">
-          <div className="w-5" />
-          {listFields.map((field) => (
-            <span key={field.id} className="text-xs font-medium text-muted-foreground flex-1">
-              {field.name}
-            </span>
-          ))}
-        </div>
-        {classObjects.length === 0 ? (
-          <div className="py-8 text-center text-sm text-muted-foreground">
-            No items
-          </div>
-        ) : (
-          classObjects.slice(0, 10).map((obj) => (
-            <div key={obj.id} className="flex items-center gap-4 py-2 px-3 border-b last:border-b-0">
-              <div className="w-5" />
-              {listFields.map((field) => {
-                const value = obj.values[field.id] || "";
-                const displayValue =
-                  field.fieldtype === "enumerated"
-                    ? classOptions[field.id]?.find((o) => o.id === value)?.name || value
-                    : value;
-                return (
-                  <span key={field.id} className="text-sm flex-1 truncate">
-                    {displayValue}
-                  </span>
-                );
-              })}
-            </div>
-          ))
-        )}
-        {classObjects.length > 10 && (
-          <div className="py-2 text-center text-xs text-muted-foreground">
-            +{classObjects.length - 10} more
-          </div>
-        )}
-      </div>
-    );
-  };
+  const noop = () => {};
 
   return (
     <div className="h-full flex flex-col">
-      <div className="flex items-center gap-2 p-2 border-b">
-        <span className="text-sm font-medium">Preview:</span>
-        {availableModes.map((mode) => (
-          <button
-            key={mode}
-            onClick={() => setPreviewMode(mode)}
-            className={cn(
-              "px-2 py-1 text-sm rounded",
-              previewMode === mode
-                ? "bg-primary text-primary-foreground"
-                : "hover:bg-muted",
-            )}
-          >
-            {mode.charAt(0).toUpperCase() + mode.slice(1)}
-          </button>
-        ))}
-      </div>
-      <div className="flex-1 p-4 overflow-auto bg-muted/30">
-        {previewMode === "board" && renderBoardPreview()}
-        {previewMode === "list" && renderListPreview()}
-        {previewMode === "card" && renderCardPreview()}
+      <ViewTabs
+        views={crm.views}
+        activeViewId={selectedViewId || ""}
+        onViewChange={setSelectedViewId}
+      />
+      <div className="flex-1 p-4 overflow-auto">
+        {selectedView ? (
+          selectedView.viewtype === "board"
+            ? <BoardContainer
+                crm={crm}
+                objects={classObjects}
+                statusField={selectedView.columns || ""}
+                rowField={selectedView.rows || undefined}
+                borderField={selectedView.border || undefined}
+                viewFields={selectedView.fields}
+                viewClasses={selectedView.classes}
+                preview
+              />
+            : <TreeView
+                crm={crm}
+                crmId={crmId}
+                objects={classObjects}
+                peopleMap={{}}
+                viewFields={selectedView.fields}
+                viewClasses={selectedView.classes}
+                onCardClick={noop}
+                preview
+              />
+        ) : (
+          <div className="text-sm text-muted-foreground text-center py-8">
+            No views
+          </div>
+        )}
       </div>
     </div>
   );

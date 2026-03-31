@@ -938,6 +938,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                 objects={filteredObjects}
                 peopleMap={peopleMap}
                 viewFields={activeView?.fields}
+                viewClasses={activeView?.classes}
                 sort={sort}
                 onCardClick={handleCardClick}
                 onReparent={canWrite(access) ? handleReparent : undefined}

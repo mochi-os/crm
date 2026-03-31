@@ -35,6 +35,7 @@ interface BoardContainerProps {
   onDeleteColumn?: (classId: string, fieldId: string, optionId: string) => Promise<void>;
   isReordering?: boolean;
   onReorderColumns?: (order: string[]) => void;
+  preview?: boolean;
 }
 
 // Sort objects within a group by the active sort field
@@ -102,6 +103,7 @@ export function BoardContainer({
   onDeleteColumn,
   isReordering,
   onReorderColumns,
+  preview,
 }: BoardContainerProps) {
   // Get the effective class — use the view's class filter if set, otherwise first class
   const defaultClass = useMemo(() => {
@@ -706,6 +708,7 @@ export function BoardContainer({
           isReordering={isReordering}
           isDragging={isDragging}
           rows={previewRows}
+          preview={preview}
         />
       </div>
     );

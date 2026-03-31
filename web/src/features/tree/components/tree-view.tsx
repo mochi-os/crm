@@ -13,11 +13,13 @@ interface TreeViewProps {
   objects: CrmObject[];
   peopleMap: Record<string, string>;
   viewFields?: string;
+  viewClasses?: string[];
   sort?: SortState | null;
   onCardClick: (object: CrmObject) => void;
   onReparent?: (objectId: string, newParentId: string | null) => void;
   onReorder?: (objectId: string, newRank: number) => void;
   onCreateClick?: () => void;
+  preview?: boolean;
 }
 
 export interface TreeNode {
@@ -140,11 +142,13 @@ export function TreeView({
   objects,
   peopleMap,
   viewFields,
+  viewClasses,
   sort,
   onCardClick,
   onReparent,
   onReorder,
   onCreateClick,
+  preview,
 }: TreeViewProps) {
   // Storage key for expanded state
   const storageKey = `crms:${crmId}:tree:expanded`;
@@ -170,11 +174,12 @@ export function TreeView({
     setExpandedList([...set]);
   }, [expandedList, setExpandedList]);
 
-  // Get fields and options for the first class (for now)
-  // TODO: Support per-class fields when class filtering is implemented
-  const firstClass = crm.classes[0]?.id || "task";
-  const fields = crm.fields[firstClass] || [];
-  const options = crm.options[firstClass] || {};
+  // Use the view's class filter to pick the right fields/options
+  const effectiveClass = viewClasses && viewClasses.length > 0
+    ? viewClasses[0]
+    : crm.classes[0]?.id || "task";
+  const fields = crm.fields[effectiveClass] || [];
+  const options = crm.options[effectiveClass] || {};
 
   // Get visible fields from view's fields setting, or fall back to field's card property
   const viewFieldsList = viewFields?.split(",").filter(Boolean) || [];
@@ -349,8 +354,8 @@ export function TreeView({
   if (objects.length === 0) {
     return (
       <EmptyState icon={Folder} title="Nothing found" className="py-12">
-        {onCreateClick && (
-          <Button variant="outline" size="sm" onClick={onCreateClick}>
+        {(onCreateClick || preview) && (
+          <Button variant="outline" size="sm" onClick={preview ? undefined : onCreateClick}>
             <Plus className="size-4 mr-1" />
             Create
           </Button>
@@ -382,16 +387,16 @@ export function TreeView({
                 classMap={classMap}
                 titleFieldId={crm.classes.find((c) => c.id === node.object.class)?.title}
                 showClass={showClass}
-                isDragOver={dragOverId === node.object.id && dropPosition === "on"}
-                isDragBefore={dragOverId === node.object.id && dropPosition === "before"}
-                isDragAfter={dragOverId === node.object.id && dropPosition === "after"}
-                canReorder={!!canReorderHere}
-                canReparent={!!draggedId && draggedId !== node.object.id && isReparentAllowed(draggedId, node.object.id)}
+                isDragOver={!preview && dragOverId === node.object.id && dropPosition === "on"}
+                isDragBefore={!preview && dragOverId === node.object.id && dropPosition === "before"}
+                isDragAfter={!preview && dragOverId === node.object.id && dropPosition === "after"}
+                canReorder={!preview && !!canReorderHere}
+                canReparent={!preview && !!draggedId && draggedId !== node.object.id && isReparentAllowed(draggedId, node.object.id)}
                 onToggleExpand={() => toggleExpand(node.object.id)}
-                onClick={() => onCardClick(node.object)}
-                onDragStart={() => handleDragStart(node.object.id)}
-                onDragOver={handleDragOver}
-                onDragEnd={handleDragEnd}
+                onClick={preview ? () => {} : () => onCardClick(node.object)}
+                onDragStart={preview ? () => {} : () => handleDragStart(node.object.id)}
+                onDragOver={preview ? () => {} : handleDragOver}
+                onDragEnd={preview ? () => {} : handleDragEnd}
               />
             );
           })}

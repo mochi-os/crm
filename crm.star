@@ -1313,6 +1313,8 @@ def action_object_create(a):
 				)
 				if title and title_field:
 					mochi.db.execute("insert or replace into \"values\" (object, field, value) values (?, ?, ?)", d["id"], title_field, title)
+				# Auto-watch creator locally so subscriber gets notifications
+				mochi.db.execute("insert or ignore into watchers (object, user, created) values (?, ?, ?)", d["id"], a.user.identity.id, now)
 		return result
 
 	if not check_crm_access(a.user.identity.id, crm_id, "write"):
@@ -2238,6 +2240,10 @@ def action_comment_create(a):
 			{"from": a.user.identity.id, "to": crm_id, "service": "crm", "event": "comment/submit"},
 			submit_data
 		)
+		# Auto-watch commenter locally so subscriber gets notifications
+		mochi.db.execute(
+			"insert or ignore into watchers (object, user, created) values (?, ?, ?)",
+			object_id, a.user.identity.id, now)
 		return {"data": {
 			"id": comment_id, "parent": parent,
 			"author": a.user.identity.id, "name": a.user.identity.name,

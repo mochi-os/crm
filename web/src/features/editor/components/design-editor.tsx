@@ -526,10 +526,8 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       {/* Preview panel (right) */}
       <div className="flex-1 overflow-hidden">
         <DesignPreview
-          classes={crm.classes}
-          fields={crm.fields}
-          options={crm.options}
-          views={crm.views}
+          crm={crm}
+          crmId={crmId}
           objects={objects}
           selectedClassId={selectedClassId}
         />
