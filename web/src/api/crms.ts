@@ -951,12 +951,12 @@ const crmsApi = {
   // Search users (for adding access rules)
   searchUsers: async (
     query: string,
-  ): Promise<{ results: { id: string; name: string; fingerprint: string }[] }> => {
+  ): Promise<{ data: { results: { id: string; name: string; fingerprint: string }[] } }> => {
     return crmsRequest.get(`${endpoints.crms.usersSearch}?search=${encodeURIComponent(query)}`);
   },
 
   // List groups (for adding access rules)
-  listGroups: async (): Promise<{ groups: { id: string; name: string }[] }> => {
+  listGroups: async (): Promise<{ data: { groups: { id: string; name: string }[] } }> => {
     return crmsRequest.get(endpoints.crms.groups);
   },
 };

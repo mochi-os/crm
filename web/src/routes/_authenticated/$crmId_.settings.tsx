@@ -689,14 +689,14 @@ function AccessTab({ crmId }: AccessTabProps) {
           onAdd={handleAdd}
           levels={CRM_ACCESS_LEVELS}
           defaultLevel="comment"
-          userSearchResults={userSearchData?.results ?? []}
+          userSearchResults={userSearchData?.data?.results ?? []}
           userSearchLoading={userSearchLoading}
           userSearchError={userSearchError}
           onRetryUserSearch={() => {
             void refetchUserSearch();
           }}
           onUserSearch={setUserSearchQuery}
-          groups={groupsData?.groups ?? []}
+          groups={groupsData?.data?.groups ?? []}
           groupsError={groupsError}
           onRetryGroups={() => {
             void refetchGroups();
