@@ -140,18 +140,14 @@ export function CommentList({
     );
   };
 
-  const handleReply = (parentId: string, files?: File[]) => {
+  const handleReply = async (parentId: string, files?: File[]) => {
     const trimmed = replyDraft.trim();
     if (!trimmed) return;
-    createMutation.mutate(
+    await createMutation.mutateAsync(
       { content: trimmed, parent: parentId, files },
-      {
-        onSuccess: () => {
-          setReplyingTo(null);
-          setReplyDraft("");
-        },
-      },
     );
+    setReplyingTo(null);
+    setReplyDraft("");
   };
 
   const handleEdit = (commentId: string, content: string) => {
