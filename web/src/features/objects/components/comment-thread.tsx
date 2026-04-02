@@ -12,23 +12,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   formatTimestamp,
+  MentionTextarea,
+  renderMentions,
   useImageObjectUrls,
 } from "@mochi/web";
 import type { Comment } from "@/types";
 import { CommentAttachments } from "./comment-attachments";
-import { MentionTextarea } from "./mention-textarea";
-
-function renderMentions(content: string): React.ReactNode {
-  return content.split(/(@\[[^\]]+\])/g).map((part, i) =>
-    part.startsWith("@[") ? (
-      <span key={i} className="text-primary font-medium">
-        @{part.slice(2, -1)}
-      </span>
-    ) : (
-      part
-    ),
-  );
-}
 
 interface Person {
   id: string;

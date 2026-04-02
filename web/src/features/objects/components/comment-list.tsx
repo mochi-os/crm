@@ -10,11 +10,11 @@ import {
   toast,
   getErrorMessage,
   ListSkeleton,
+  MentionTextarea,
   useAuthStore,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import { CommentThread } from "./comment-thread";
-import { MentionTextarea } from "./mention-textarea";
 
 interface CommentListProps {
   crmId: string;

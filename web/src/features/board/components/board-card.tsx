@@ -140,7 +140,7 @@ export function BoardCard({
               className={cn(
                 "inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-medium ring-1 ring-inset",
                 allDone
-                  ? "bg-green-500/10 text-green-600 ring-green-500/30"
+                  ? "bg-green-100 text-green-900 ring-green-200 dark:bg-green-950/30 dark:text-green-100 dark:ring-green-900/40"
                   : "bg-surface-2 text-muted-foreground ring-border"
               )}
             >
@@ -294,8 +294,8 @@ export function BoardCard({
               const childFields = allFields?.[child.class] || fields;
               const childOptions = allFields
                 ? Object.fromEntries(
-                    childFields.map((f) => [f.id, options[f.id] || []])
-                  )
+                  childFields.map((f) => [f.id, options[f.id] || []])
+                )
                 : options;
               return (
                 <div key={child.id} data-card-id={child.id} className="rounded-[10px] data-[drop-target]:ring-2 data-[drop-target]:ring-primary">

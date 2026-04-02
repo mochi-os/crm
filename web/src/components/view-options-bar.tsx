@@ -62,99 +62,102 @@ export function ViewOptionsBar({
   }, []);
 
   return (
-    <div className="flex items-center gap-2 px-4 py-2 bg-muted/30 flex-wrap">
-      {/* View Switcher */}
-      <div className="flex gap-1">
-        {crm.views.map((view: CrmView) => (
-          <button
-            key={view.id}
-            onClick={() => onViewChange(view.id)}
-            className={cn(
-              "flex items-center gap-1.5 px-2 py-1 rounded-md text-sm transition-colors",
-              activeViewId === view.id
-                ? "bg-primary text-primary-foreground"
-                : "hover:bg-muted"
-            )}
-          >
-            {view.viewtype === "list" ? (
-              <ListTree className="size-3.5" />
-            ) : (
-              <LayoutGrid className="size-3.5" />
-            )}
-            {view.name}
-          </button>
-        ))}
+    <div className="bg-muted/30">
+      {/* View switcher — scrolls horizontally on mobile */}
+      <div className="overflow-x-auto scrollbar-none">
+        <div className="flex items-center gap-1 px-4 pt-2 pb-1 min-w-max">
+          {crm.views.map((view: CrmView) => (
+            <button
+              key={view.id}
+              onClick={() => onViewChange(view.id)}
+              className={cn(
+                "flex items-center gap-1.5 px-2 py-1 rounded-md text-sm transition-colors whitespace-nowrap",
+                activeViewId === view.id
+                  ? "bg-primary text-primary-foreground"
+                  : "hover:bg-muted"
+              )}
+            >
+              {view.viewtype === "list" ? (
+                <ListTree className="size-3.5" />
+              ) : (
+                <LayoutGrid className="size-3.5" />
+              )}
+              {view.name}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div className="w-px h-5 bg-border" />
+      {/* Controls row */}
+      <div className="flex items-center gap-2 px-4 pb-2 flex-wrap">
+        {/* Search */}
+        <Input
+          ref={searchRef}
+          type="search"
+          placeholder="Search..."
+          value={filters.search}
+          onChange={(e) => onFilterChange({ ...filters, search: e.target.value })}
+          className="h-7 text-xs w-[200px]"
+        />
 
-      {/* Search */}
-      <Input
-        ref={searchRef}
-        type="search"
-        placeholder="Search..."
-        value={filters.search}
-        onChange={(e) => onFilterChange({ ...filters, search: e.target.value })}
-        className="h-7 text-xs w-[200px]"
-      />
+        {/* Watched filter */}
+        <Button
+          variant={filters.watched ? "secondary" : "ghost"}
+          size="sm"
+          className="h-7 px-2 text-xs"
+          onClick={() => onFilterChange({ ...filters, watched: !filters.watched })}
+        >
+          <Eye className="size-3.5 mr-1" />
+          Watched
+        </Button>
 
-      {/* Watched filter */}
-      <Button
-        variant={filters.watched ? "secondary" : "ghost"}
-        size="sm"
-        className="h-7 px-2 text-xs"
-        onClick={() => onFilterChange({ ...filters, watched: !filters.watched })}
-      >
-        <Eye className="size-3.5 mr-1" />
-        Watched
-      </Button>
-
-      {/* Sort (only for list view) */}
-      {showSort && (
-        <div className="flex items-center gap-2 ml-auto">
-          <Select
-            value={sort?.field || "rank"}
-            onValueChange={(value) =>
-              onSortChange({ field: value, direction: sort?.direction || "asc" })
-            }
-          >
-            <SelectTrigger className="h-7 text-xs w-auto">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              {sortFieldOptions.length > 0 && (
-                <>
+        {/* Sort (only for list view) */}
+        {showSort && (
+          <div className="flex items-center gap-2 ml-auto">
+            <Select
+              value={sort?.field || "rank"}
+              onValueChange={(value) =>
+                onSortChange({ field: value, direction: sort?.direction || "asc" })
+              }
+            >
+              <SelectTrigger className="h-7 text-xs w-auto">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {sortFieldOptions.length > 0 && (
+                  <>
+                  <SelectGroup>
+                    {sortFieldOptions.map((option) => (
+                      <SelectItem key={option.id} value={option.id}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                  <SelectSeparator />
+                  </>
+                )}
                 <SelectGroup>
-                  {sortFieldOptions.map((option) => (
+                  {BUILT_IN_SORT_OPTIONS.map((option) => (
                     <SelectItem key={option.id} value={option.id}>
                       {option.label}
                     </SelectItem>
                   ))}
                 </SelectGroup>
-                <SelectSeparator />
-                </>
-              )}
-              <SelectGroup>
-                {BUILT_IN_SORT_OPTIONS.map((option) => (
-                  <SelectItem key={option.id} value={option.id}>
-                    {option.label}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-          <SortDirectionButton
-            direction={sort?.direction || "asc"}
-            onToggle={() =>
-              onSortChange({
-                field: sort?.field || "rank",
-                direction: sort?.direction === "asc" ? "desc" : "asc",
-              })
-            }
-            size="sm"
-          />
-        </div>
-      )}
+              </SelectContent>
+            </Select>
+            <SortDirectionButton
+              direction={sort?.direction || "asc"}
+              onToggle={() =>
+                onSortChange({
+                  field: sort?.field || "rank",
+                  direction: sort?.direction === "asc" ? "desc" : "asc",
+                })
+              }
+              size="sm"
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
