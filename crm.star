@@ -4709,8 +4709,12 @@ def event_object_create(e):
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "object/create", "crm": crm_id, "id": object_id})
-	# Notify local user about new object
+	# Auto-watch creator locally (safety net for when forward_to_owner response is lost)
 	local_id = e.header("to")
+	if user and user == local_id:
+		mochi.db.execute("insert or ignore into watchers (object, user, created) values (?, ?, ?)",
+			object_id, local_id, e.content("created") or mochi.time.now())
+	# Notify local user about new object
 	if local_id and local_id != user:
 		crm = get_crm(crm_id)
 		if crm:
@@ -4951,18 +4955,19 @@ def event_comment_create(e):
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "comment/create", "crm": crm_id, "object": e.content("object")})
-	# Notify local user if watching
-	mochi.log.debug("event_comment_create: sync=" + str(e.content("sync")) + " user=" + str(e.content("user")) + " to=" + str(e.header("to")) + " object=" + str(e.content("object")))
+	# Auto-watch commenter and notify local user if watching
 	if not e.content("sync"):
 		user = e.content("user") or ""
 		local_id = e.header("to")
 		object_id = e.content("object")
 		if object_id and local_id:
+			# Auto-watch commenter locally (safety net for when forward_to_owner response is lost)
+			if user and user == local_id:
+				mochi.db.execute("insert or ignore into watchers (object, user, created) values (?, ?, ?)",
+					object_id, local_id, e.content("created") or mochi.time.now())
 			name = e.content("name") or "Someone"
 			excerpt = (e.content("content") or "")[:80]
 			notify_watchers(object_id, crm_id, local_id, user, name + ": " + excerpt)
-		else:
-			mochi.log.debug("event_comment_create: skipped notify, object_id=" + str(object_id) + " local_id=" + str(local_id))
 
 # Comment updated
 def event_comment_update(e):
