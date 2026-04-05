@@ -231,8 +231,8 @@ export function ObjectDetailPanel({
 
   if (isLoading) {
     return (
-      <Sheet open={true} onOpenChange={handleClose} modal={false}>
-        <SheetContent className="w-full sm:max-w-2xl p-0 gap-0">
+      <Sheet open={true} onOpenChange={handleClose}>
+        <SheetContent className="w-full sm:max-w-2xl p-0 gap-0" onInteractOutside={() => {}}>
           <SheetHeader className="sr-only">
             <SheetTitle>Loading item</SheetTitle>
             <SheetDescription>Loading item details</SheetDescription>
@@ -247,8 +247,8 @@ export function ObjectDetailPanel({
 
   if (error || !data) {
     return (
-      <Sheet open={true} onOpenChange={handleClose} modal={false}>
-        <SheetContent className="w-full sm:max-w-2xl p-6">
+      <Sheet open={true} onOpenChange={handleClose}>
+        <SheetContent className="w-full sm:max-w-2xl p-6" onInteractOutside={() => {}}>
           <SheetHeader className="sr-only">
             <SheetTitle>Error</SheetTitle>
             <SheetDescription>Failed to load item</SheetDescription>
@@ -297,8 +297,8 @@ export function ObjectDetailPanel({
   };
 
   return (
-    <Sheet open={true} onOpenChange={handleClose} modal={false}>
-      <SheetContent className="w-full sm:max-w-3xl p-0 gap-0 [&>button:last-child]:hidden">
+    <Sheet open={true} onOpenChange={handleClose}>
+      <SheetContent className="w-full sm:max-w-3xl p-0 gap-0 [&>button:last-child]:hidden" onInteractOutside={() => {}}>
         <SheetHeader className="sr-only">
           <SheetTitle>Item details</SheetTitle>
           <SheetDescription>View and edit item details</SheetDescription>
