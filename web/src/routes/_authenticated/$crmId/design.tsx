@@ -159,7 +159,7 @@ function DesignPage() {
         title={`${crm.crm.name} - Design`}
         icon={<Settings2 className="size-4 md:size-5" />}
         back={{ label: "Back to CRM", onFallback: goBackToCrm }}
-        actions={
+        menuAction={
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <IconButton
