@@ -797,7 +797,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         title={crm.crm.name}
         icon={<Users className="size-4 md:size-5" />}
         actions={
-          <div className="flex items-center gap-2">
+          <>
             <FilterBar
               filters={filters}
               onFilterChange={setFilters}
@@ -819,63 +819,65 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                 })()}
               </Button>
             )}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <IconButton variant='ghost' label='Open page actions'>
-                  <Ellipsis className="size-4" />
-                </IconButton>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem
-                  onSelect={(e) => e.preventDefault()}
-                >
-                  <SlidersHorizontal className="size-4 mr-2" />
-                  View options
-                  <Switch
-                    className="ml-auto"
-                    checked={showViewOptions}
-                    onCheckedChange={setShowViewOptions}
-                  />
-                </DropdownMenuItem>
-                {canDesign(access) && activeView?.viewtype !== "list" && (
-                  <>
-                    <DropdownMenuItem onClick={() => setAddColumnDialogOpen(true)}>
-                      <Columns3 className="size-4 mr-2" />
-                      Add column
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => setIsReorderingColumns(true)}>
-                      <GripVertical className="size-4 mr-2" />
-                      Re-order columns
-                    </DropdownMenuItem>
-                  </>
-                )}
-                {canDesign(access) && (
-                  <DropdownMenuItem asChild>
-                    <Link
-                      to="/$crmId/design"
-                      params={{ crmId: params.crmId }}
-                    >
-                      <Settings2 className="size-4 mr-2" />
-                      Design
-                    </Link>
+          </>
+        }
+        menuAction={
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <IconButton variant='ghost' label='Open page actions'>
+                <Ellipsis className="size-4" />
+              </IconButton>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem
+                onSelect={(e) => e.preventDefault()}
+              >
+                <SlidersHorizontal className="size-4 mr-2" />
+                View options
+                <Switch
+                  className="ml-auto"
+                  checked={showViewOptions}
+                  onCheckedChange={setShowViewOptions}
+                />
+              </DropdownMenuItem>
+              {canDesign(access) && activeView?.viewtype !== "list" && (
+                <>
+                  <DropdownMenuItem onClick={() => setAddColumnDialogOpen(true)}>
+                    <Columns3 className="size-4 mr-2" />
+                    Add column
                   </DropdownMenuItem>
-                )}
-                <DropdownMenuItem onClick={handleExportCSV}>
-                  <Download className="size-4 mr-2" />
-                  Export CSV
-                </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setIsReorderingColumns(true)}>
+                    <GripVertical className="size-4 mr-2" />
+                    Re-order columns
+                  </DropdownMenuItem>
+                </>
+              )}
+              {canDesign(access) && (
                 <DropdownMenuItem asChild>
                   <Link
-                    to="/$crmId/settings"
+                    to="/$crmId/design"
                     params={{ crmId: params.crmId }}
                   >
-                    <Settings className="size-4 mr-2" />
-                    Settings
+                    <Settings2 className="size-4 mr-2" />
+                    Design
                   </Link>
                 </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
+              )}
+              <DropdownMenuItem onClick={handleExportCSV}>
+                <Download className="size-4 mr-2" />
+                Export CSV
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
+                  to="/$crmId/settings"
+                  params={{ crmId: params.crmId }}
+                >
+                  <Settings className="size-4 mr-2" />
+                  Settings
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         }
       />
       {showViewOptions && (
