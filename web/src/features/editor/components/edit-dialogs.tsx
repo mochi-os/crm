@@ -8,12 +8,12 @@ import {
   SheetDescription,
   SheetTitle,
   SheetFooter,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
+  ResponsiveDialog,
+  ResponsiveDialogContent,
+  ResponsiveDialogDescription,
+  ResponsiveDialogHeader,
+  ResponsiveDialogTitle,
+  ResponsiveDialogFooter,
   Button,
   Input,
   Label,
@@ -953,12 +953,12 @@ export function EditFieldDialog({
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md flex flex-col max-h-[85vh]" showCloseButton={false}>
-        <DialogHeader>
-          <DialogTitle>Edit field</DialogTitle>
-          <DialogDescription className="sr-only">Edit field settings</DialogDescription>
-        </DialogHeader>
+    <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
+      <ResponsiveDialogContent className="max-w-md flex flex-col max-h-[85vh]" showCloseButton={false}>
+        <ResponsiveDialogHeader>
+          <ResponsiveDialogTitle>Edit field</ResponsiveDialogTitle>
+          <ResponsiveDialogDescription className="sr-only">Edit field settings</ResponsiveDialogDescription>
+        </ResponsiveDialogHeader>
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
           <div className="space-y-2">
             <Label htmlFor="field-name">Name</Label>
@@ -1070,7 +1070,7 @@ export function EditFieldDialog({
             </div>
           )}
         </div>
-        <DialogFooter className="justify-between">
+        <ResponsiveDialogFooter className="justify-between">
           {!isSystemField ? (
             <Button type="button" variant="outline" onClick={onDelete}>
               <Minus className="size-4" />
@@ -1081,8 +1081,8 @@ export function EditFieldDialog({
             <Check className="size-4" />
             Done
           </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        </ResponsiveDialogFooter>
+      </ResponsiveDialogContent>
+    </ResponsiveDialog>
   );
 }

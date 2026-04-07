@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import {
   Button,
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogDescription,
-  DialogTitle,
-  DialogTrigger,
+  ResponsiveDialog,
+  ResponsiveDialogContent,
+  ResponsiveDialogFooter,
+  ResponsiveDialogHeader,
+  ResponsiveDialogDescription,
+  ResponsiveDialogTitle,
+  ResponsiveDialogTrigger,
   Input,
   Label,
   Switch,
@@ -81,25 +81,25 @@ export function CreateCrmDialog({
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
       {!hideTrigger && (
-        <DialogTrigger asChild>
+        <ResponsiveDialogTrigger asChild>
           <Button>
             <Plus className="mr-2 size-4" />
             Create CRM
           </Button>
-        </DialogTrigger>
+        </ResponsiveDialogTrigger>
       )}
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
+      <ResponsiveDialogContent className="sm:max-w-md">
+        <ResponsiveDialogHeader>
+          <ResponsiveDialogTitle className="flex items-center gap-2">
             <div className="bg-primary/10 text-primary flex size-8 items-center justify-center rounded-lg">
               <Users className="size-4" />
             </div>
             Create CRM
-          </DialogTitle>
-          <DialogDescription className="sr-only">Create a new CRM</DialogDescription>
-        </DialogHeader>
+          </ResponsiveDialogTitle>
+          <ResponsiveDialogDescription className="sr-only">Create a new CRM</ResponsiveDialogDescription>
+        </ResponsiveDialogHeader>
 
         <form onSubmit={handleSubmit}>
           <div className="mt-4 space-y-4">
@@ -126,7 +126,7 @@ export function CreateCrmDialog({
             </div>
           </div>
 
-          <DialogFooter className="mt-6">
+          <ResponsiveDialogFooter className="mt-6">
             <Button
               type="button"
               variant="outline"
@@ -137,9 +137,9 @@ export function CreateCrmDialog({
             <Button type="submit" disabled={isPending}>
               {isPending ? "Creating..." : <><Plus className="mr-2 size-4" />Create CRM</>}
             </Button>
-          </DialogFooter>
+          </ResponsiveDialogFooter>
         </form>
-      </DialogContent>
-    </Dialog>
+      </ResponsiveDialogContent>
+    </ResponsiveDialog>
   );
 }

@@ -3,12 +3,12 @@
 
 import { useState, useEffect } from "react";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
+  ResponsiveDialog,
+  ResponsiveDialogContent,
+  ResponsiveDialogDescription,
+  ResponsiveDialogHeader,
+  ResponsiveDialogTitle,
+  ResponsiveDialogFooter,
   Button,
   Input,
   Label,
@@ -73,11 +73,11 @@ export function OptionDialog({
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent showCloseButton={false}>
-        <DialogHeader className="flex flex-row items-center justify-between">
-          <DialogTitle>{title || (isEdit ? "Edit option" : "Add option")}</DialogTitle>
-          <DialogDescription className="sr-only">Configure option settings</DialogDescription>
+    <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
+      <ResponsiveDialogContent showCloseButton={false}>
+        <ResponsiveDialogHeader className="flex flex-row items-center justify-between">
+          <ResponsiveDialogTitle>{title || (isEdit ? "Edit option" : "Add option")}</ResponsiveDialogTitle>
+          <ResponsiveDialogDescription className="sr-only">Configure option settings</ResponsiveDialogDescription>
           {isEdit && onDelete && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -93,7 +93,7 @@ export function OptionDialog({
               </DropdownMenuContent>
             </DropdownMenu>
           )}
-        </DialogHeader>
+        </ResponsiveDialogHeader>
         <div className="py-4 space-y-4">
           <div className="space-y-2">
             <Label htmlFor="option-name">Name</Label>
@@ -126,7 +126,7 @@ export function OptionDialog({
             <span className="text-sm">{name || "Option name"}</span>
           </div>
         </div>
-        <DialogFooter>
+        <ResponsiveDialogFooter>
           {isEdit ? (
             <>
               <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
@@ -141,8 +141,8 @@ export function OptionDialog({
               Add option
             </Button>
           )}
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        </ResponsiveDialogFooter>
+      </ResponsiveDialogContent>
+    </ResponsiveDialog>
   );
 }
