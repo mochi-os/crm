@@ -877,6 +877,7 @@ const crmsApi = {
         name: string;
         blurb: string;
         fingerprint: string;
+        server: string;
       }>;
     };
   }> => {

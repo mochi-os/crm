@@ -13,6 +13,7 @@ interface RecommendedCrm {
   name: string;
   blurb: string;
   fingerprint: string;
+  server: string;
 }
 
 export function RecommendedCrms({
@@ -51,7 +52,7 @@ export function RecommendedCrms({
   const handleSubscribe = async (crm: RecommendedCrm) => {
     setPendingId(crm.id);
     try {
-      await crmsApi.subscribe(crm.id);
+      await crmsApi.subscribe(crm.id, crm.server || undefined);
       onSubscribe();
       toast.success(`Subscribed to ${crm.name}`);
       setRecommendations((prev) => prev.filter((p) => p.id !== crm.id));
