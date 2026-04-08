@@ -223,7 +223,7 @@ export function BoardCard({
           clickTimer.current = setTimeout(() => {
             clickTimer.current = null;
             onClick?.();
-          }, 300);
+          }, 200);
         } else {
           onClick?.();
         }
