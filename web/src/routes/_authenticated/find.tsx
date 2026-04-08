@@ -59,7 +59,7 @@ function FindCrmsPage() {
       entityClass="crm"
       searchEndpoint={endpoints.crms.search}
       icon={Users}
-      iconClassName="bg-blue-500/10 text-blue-600"
+      iconClassName="bg-primary/10 text-primary"
       title="Find CRMs"
       placeholder="Search by name, ID, fingerprint, or URL..."
       emptyMessage="No CRMs found"
