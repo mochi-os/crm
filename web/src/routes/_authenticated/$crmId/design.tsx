@@ -5,22 +5,15 @@ import { createFileRoute, Navigate, useNavigate } from "@tanstack/react-router";
 import { useCallback, useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
   Button,
+  ConfirmDialog,
   IconButton,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
+  ResponsiveDialog,
+  ResponsiveDialogContent,
+  ResponsiveDialogDescription,
+  ResponsiveDialogFooter,
+  ResponsiveDialogHeader,
+  ResponsiveDialogTitle,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -159,7 +152,7 @@ function DesignPage() {
         title={`${crm.crm.name} - Design`}
         icon={<Settings2 className="size-4 md:size-5" />}
         back={{ label: "Back to CRM", onFallback: goBackToCrm }}
-        actions={
+        menuAction={
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <IconButton
@@ -198,30 +191,36 @@ function DesignPage() {
       />
 
       {/* Confirm import dialog */}
-      <AlertDialog open={confirmOpen} onOpenChange={setConfirmOpen}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Replace design?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This will replace the current design with{" "}
-              <strong>{pendingImport?.label}</strong>. All existing classes,
-              fields, options, and views will be deleted. Existing objects will
-              not be deleted but may no longer appear in views.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel disabled={importing}>Cancel</AlertDialogCancel>
-            <Button variant="ghost" onClick={handleExport} disabled={importing}>
-              <Download className="size-4 mr-1.5" />
-              Download backup first
-            </Button>
-            <AlertDialogAction onClick={handleConfirmImport} disabled={importing}>
-              {importing && <Loader2 className="size-4 mr-1.5 animate-spin" />}
-              Replace design
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      <ConfirmDialog
+        open={confirmOpen}
+        onOpenChange={setConfirmOpen}
+        title="Replace design?"
+        desc={
+          <>
+            This will replace the current design with{" "}
+            <strong>{pendingImport?.label}</strong>. All existing classes,
+            fields, options, and views will be deleted. Existing objects will
+            not be deleted but may no longer appear in views.
+          </>
+        }
+        confirmText={
+          importing ? (
+            <>
+              <Loader2 className="size-4 mr-1.5 animate-spin" />
+              Replacing...
+            </>
+          ) : (
+            "Replace design"
+          )
+        }
+        handleConfirm={handleConfirmImport}
+        isLoading={importing}
+      >
+        <Button variant="outline" className="w-full" onClick={handleExport} disabled={importing}>
+          <Download className="size-4 mr-1.5" />
+          Download backup first
+        </Button>
+      </ConfirmDialog>
     </>
   );
 }
@@ -267,12 +266,12 @@ function ImportDialog({
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Import design</DialogTitle>
-          <DialogDescription className="sr-only">Import a design configuration</DialogDescription>
-        </DialogHeader>
+    <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
+      <ResponsiveDialogContent>
+        <ResponsiveDialogHeader>
+          <ResponsiveDialogTitle>Import design</ResponsiveDialogTitle>
+          <ResponsiveDialogDescription className="sr-only">Import a design configuration</ResponsiveDialogDescription>
+        </ResponsiveDialogHeader>
 
         <div className="space-y-4">
           <div className="space-y-2">
@@ -294,12 +293,12 @@ function ImportDialog({
           </div>
         </div>
 
-        <DialogFooter>
+        <ResponsiveDialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
             Cancel
           </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        </ResponsiveDialogFooter>
+      </ResponsiveDialogContent>
+    </ResponsiveDialog>
   );
 }

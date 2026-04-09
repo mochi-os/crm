@@ -6,12 +6,12 @@ import { createPortal } from "react-dom";
 import {
   cn,
   ConfirmDialog,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
+  ResponsiveDialog,
+  ResponsiveDialogContent,
+  ResponsiveDialogDescription,
+  ResponsiveDialogHeader,
+  ResponsiveDialogTitle,
+  ResponsiveDialogFooter,
   Button,
   Input,
   Label,
@@ -556,8 +556,8 @@ export function BoardColumn({
         )}
       </div>
 
-      <Dialog open={showRenameDialog} onOpenChange={setShowRenameDialog}>
-        <DialogContent>
+      <ResponsiveDialog open={showRenameDialog} onOpenChange={setShowRenameDialog}>
+        <ResponsiveDialogContent>
           <form
             onSubmit={async (e) => {
               e.preventDefault();
@@ -574,10 +574,10 @@ export function BoardColumn({
               }
             }}
           >
-            <DialogHeader>
-              <DialogTitle>Rename column</DialogTitle>
-              <DialogDescription className="sr-only">Rename this board column</DialogDescription>
-            </DialogHeader>
+            <ResponsiveDialogHeader>
+              <ResponsiveDialogTitle>Rename column</ResponsiveDialogTitle>
+              <ResponsiveDialogDescription className="sr-only">Rename this board column</ResponsiveDialogDescription>
+            </ResponsiveDialogHeader>
             <div className="py-4 space-y-2">
               <Label htmlFor="column-name">Name</Label>
               <Input
@@ -587,7 +587,7 @@ export function BoardColumn({
                 autoFocus
               />
             </div>
-            <DialogFooter>
+            <ResponsiveDialogFooter>
               <Button
                 type="button"
                 variant="outline"
@@ -598,10 +598,10 @@ export function BoardColumn({
               <Button type="submit" disabled={!newName.trim() || isRenaming}>
                 Rename
               </Button>
-            </DialogFooter>
+            </ResponsiveDialogFooter>
           </form>
-        </DialogContent>
-      </Dialog>
+        </ResponsiveDialogContent>
+      </ResponsiveDialog>
 
       <ConfirmDialog
         open={showDeleteDialog}
