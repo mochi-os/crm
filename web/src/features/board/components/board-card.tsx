@@ -1,9 +1,9 @@
 // Mochi CRMs: Board card component
 // Copyright Alistair Cunningham 2026
 
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { Card, cn } from "@mochi/web";
-import { Check, CheckSquare, ChevronDown, ChevronRight } from "lucide-react";
+import { Check, CheckSquare } from "lucide-react";
 import type { CrmObject, CrmField, CrmClass, FieldOption, ChecklistItem } from "@/types";
 
 interface BoardCardProps {
@@ -64,7 +64,6 @@ export function BoardCard({
   onChildClick,
   onChildDoubleClick,
 }: BoardCardProps) {
-  const [collapsed, setCollapsed] = useState(false);
   const clickTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isNested = depth > 0;
@@ -212,7 +211,7 @@ export function BoardCard({
     <Card
       className={cn(
         "group/card relative transition-[background-color,border-color,box-shadow,transform] duration-200",
-        isNested ? "bg-surface-1 p-2" : "p-3 py-3 hover:bg-surface-2 hover:shadow-md",
+        isNested ? "bg-surface-1 p-1.5 md:p-1.5" : "px-3 py-2.5 md:py-2.5 gap-2 hover:bg-surface-2 hover:shadow-md",
         "cursor-pointer active:scale-[0.99]",
       )}
       style={borderColor ? { borderColor: borderColor } : undefined}
@@ -247,32 +246,12 @@ export function BoardCard({
     >
       {/* Header row */}
       <div className="flex items-baseline gap-1.5">
-        {hasChildren && (
-          <button
-            className="text-muted-foreground -ml-1 shrink-0 self-center rounded p-0.5 transition-colors hover:bg-interactive-hover active:bg-interactive-active"
-            onClick={(e) => {
-              e.stopPropagation();
-              setCollapsed(!collapsed);
-            }}
-          >
-            {collapsed ? (
-              <ChevronRight className="size-3.5" />
-            ) : (
-              <ChevronDown className="size-3.5" />
-            )}
-          </button>
-        )}
         <div className={cn(
           "font-medium leading-tight text-card-foreground flex-1 min-w-0",
           isNested ? "text-xs" : "text-sm",
         )}>
           {title}
         </div>
-        {hasChildren && collapsed && (
-          <span className="text-[10px] text-muted-foreground shrink-0 tabular-nums">
-            {childObjects.length}
-          </span>
-        )}
       </div>
 
       {/* Body fields (top-level only) */}
@@ -283,8 +262,8 @@ export function BoardCard({
       )}
 
       {/* Nested children */}
-      {hasChildren && !collapsed && (
-        <div className="mt-2 space-y-1.5 border-t pt-2">
+      {hasChildren && (
+        <div className="space-y-1.5 border-t pt-1.5">
           {atDepthCap ? (
             <span className="text-[10px] text-muted-foreground">
               +{countDeepChildren(object.id)} nested
