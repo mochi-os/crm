@@ -819,6 +819,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         primaryAction={
           canWrite(access) ? (
             <Button
+              variant='outline'
               size='sm'
               className='px-2.5'
               onClick={handleOpenCreateDialog}
