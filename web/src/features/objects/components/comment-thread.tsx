@@ -11,7 +11,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  formatTimestamp,
+  useFormat,
   MentionTextarea,
   renderMentions,
   useImageObjectUrls,
@@ -57,6 +57,7 @@ export function CommentThread({
   people = [],
   depth = 0,
 }: CommentThreadProps) {
+  const { formatTimestamp } = useFormat();
   const [collapsed, setCollapsed] = useState(false);
   const [editing, setEditing] = useState(false);
   const [editBody, setEditBody] = useState("");

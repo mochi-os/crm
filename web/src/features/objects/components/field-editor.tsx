@@ -15,6 +15,7 @@ import {
   SelectValue,
   PersonPicker,
   type Person,
+  useFormat,
 } from "@mochi/web";
 import { Plus, Trash2 } from "lucide-react";
 import type { CrmField, FieldOption, ChecklistItem } from "@/types";
@@ -45,6 +46,7 @@ export function FieldEditor({
   localPeople = [],
   onValidationError,
 }: FieldEditorProps & { hideLabel?: boolean }) {
+  const { formatDate } = useFormat();
   const [localValue, setLocalValue] = useState(value);
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
   const focusedRef = useRef(false);
@@ -117,7 +119,7 @@ export function FieldEditor({
         return <span className="text-sm h-9 flex items-center">{value}</span>;
       case "date":
         if (!value) return <span className="text-sm text-muted-foreground h-9 flex items-center">—</span>;
-        return <span className="text-sm h-9 flex items-center">{new Date(value + "T00:00:00").toLocaleDateString()}</span>;
+        return <span className="text-sm h-9 flex items-center">{formatDate(new Date(value + "T00:00:00"))}</span>;
       case "user": {
         const person = localPeople.find((p) => p.id === value);
         if (!person) return <span className="text-sm text-muted-foreground h-9 flex items-center">—</span>;

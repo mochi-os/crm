@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useRef } from "react";
-import { Card, cn } from "@mochi/web";
+import { Card, cn, useFormat } from "@mochi/web";
 import { Check, CheckSquare } from "lucide-react";
 import type { CrmObject, CrmField, CrmClass, FieldOption, ChecklistItem } from "@/types";
 
@@ -36,12 +36,6 @@ function truncate(text: string, maxLength: number): string {
   return text.slice(0, maxLength - 1) + "…";
 }
 
-// Format a date value for display
-function formatDate(value: string): string {
-  const date = new Date(value + "T00:00:00");
-  return date.toLocaleDateString();
-}
-
 export function BoardCard({
   object,
   fields,
@@ -64,6 +58,7 @@ export function BoardCard({
   onChildClick,
   onChildDoubleClick,
 }: BoardCardProps) {
+  const { formatDate } = useFormat();
   const clickTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isNested = depth > 0;
@@ -154,7 +149,7 @@ export function BoardCard({
       case "date":
         return (
           <span key={field.id} className="text-[10px] text-muted-foreground">
-            {formatDate(value)}
+            {formatDate(new Date(value + "T00:00:00"))}
           </span>
         );
 

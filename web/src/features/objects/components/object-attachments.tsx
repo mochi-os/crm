@@ -8,7 +8,7 @@ import {
   Button,
   ConfirmDialog,
   getAppPath,
-  formatFileSize,
+  useFormat,
   isImage,
   getFileIcon,
   ImageLightbox,
@@ -35,6 +35,7 @@ export function ObjectAttachments({
   const [deleteTarget, setDeleteTarget] = useState<Attachment | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const queryClient = useQueryClient();
+  const { formatFileSize } = useFormat();
 
   const { data, isLoading } = useQuery({
     queryKey: ["attachments", crmId, objectId],

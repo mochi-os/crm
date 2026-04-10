@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Download } from "lucide-react";
 import {
   getAppPath,
-  formatFileSize,
+  useFormat,
   isImage,
   getFileIcon,
   ImageLightbox,
@@ -24,6 +24,7 @@ export function CommentAttachments({
   crmId,
 }: CommentAttachmentsProps) {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
+  const { formatFileSize } = useFormat();
 
   if (!attachments || attachments.length === 0) return null;
 
