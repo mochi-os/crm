@@ -5,15 +5,8 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useCallback, useMemo, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
   Button,
+  ConfirmDialog,
   PageHeader,
   Main,
   cn,
@@ -97,6 +90,7 @@ function CrmSettingsPage() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isUnsubscribing, setIsUnsubscribing] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [showUnsubscribeDialog, setShowUnsubscribeDialog] = useState(false);
 
   const {
     data: crmData,
@@ -275,7 +269,9 @@ function CrmSettingsPage() {
               isDeleting={isDeleting}
               isUnsubscribing={isUnsubscribing}
               showDeleteDialog={showDeleteDialog}
+              showUnsubscribeDialog={showUnsubscribeDialog}
               setShowDeleteDialog={setShowDeleteDialog}
+              setShowUnsubscribeDialog={setShowUnsubscribeDialog}
               onDelete={handleDelete}
               onUnsubscribe={handleUnsubscribe}
               onUpdate={handleUpdate}
@@ -296,7 +292,9 @@ interface GeneralTabProps {
   isDeleting: boolean;
   isUnsubscribing: boolean;
   showDeleteDialog: boolean;
+  showUnsubscribeDialog: boolean;
   setShowDeleteDialog: (show: boolean) => void;
+  setShowUnsubscribeDialog: (show: boolean) => void;
   onDelete: () => void;
   onUnsubscribe: () => void;
   onUpdate: (updates: {
@@ -311,7 +309,9 @@ function GeneralTab({
   isDeleting,
   isUnsubscribing,
   showDeleteDialog,
+  showUnsubscribeDialog,
   setShowDeleteDialog,
+  setShowUnsubscribeDialog,
   onDelete,
   onUnsubscribe,
   onUpdate,
@@ -366,7 +366,7 @@ function GeneralTab({
           action={
             <Button
               variant="outline"
-              onClick={onUnsubscribe}
+              onClick={() => setShowUnsubscribeDialog(true)}
               disabled={isUnsubscribing}
               size="sm"
             >
@@ -398,23 +398,26 @@ function GeneralTab({
         />
       )}
 
-      <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Delete crm?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This will permanently delete "{crm.crm.name}" and all its
-              objects, comments, and attachments. This action cannot be undone.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction variant="destructive" onClick={onDelete}>
-              Delete crm
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      <ConfirmDialog
+        open={showUnsubscribeDialog}
+        onOpenChange={setShowUnsubscribeDialog}
+        title="Unsubscribe from crm?"
+        desc={`This will remove "${crm.crm.name}" from your sidebar and stop updates for this crm.`}
+        confirmText="Unsubscribe"
+        handleConfirm={onUnsubscribe}
+        isLoading={isUnsubscribing}
+      />
+
+      <ConfirmDialog
+        open={showDeleteDialog}
+        onOpenChange={setShowDeleteDialog}
+        title="Delete crm?"
+        desc={`This will permanently delete "${crm.crm.name}" and all its objects, comments, and attachments. This action cannot be undone.`}
+        confirmText="Delete crm"
+        destructive
+        handleConfirm={onDelete}
+        isLoading={isDeleting}
+      />
     </div>
   );
 }

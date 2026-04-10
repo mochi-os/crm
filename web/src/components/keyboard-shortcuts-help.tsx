@@ -2,11 +2,11 @@
 // Copyright Alistair Cunningham 2026
 
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
+  ResponsiveDialog,
+  ResponsiveDialogContent,
+  ResponsiveDialogDescription,
+  ResponsiveDialogHeader,
+  ResponsiveDialogTitle,
 } from "@mochi/web";
 
 interface KeyboardShortcutsHelpProps {
@@ -33,12 +33,12 @@ export function KeyboardShortcutsHelp({
   onOpenChange,
 }: KeyboardShortcutsHelpProps) {
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md">
-        <DialogHeader>
-          <DialogTitle>Keyboard shortcuts</DialogTitle>
-          <DialogDescription className="sr-only">Available keyboard shortcuts</DialogDescription>
-        </DialogHeader>
+    <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
+      <ResponsiveDialogContent className="max-w-md">
+        <ResponsiveDialogHeader>
+          <ResponsiveDialogTitle>Keyboard shortcuts</ResponsiveDialogTitle>
+          <ResponsiveDialogDescription className="sr-only">Available keyboard shortcuts</ResponsiveDialogDescription>
+        </ResponsiveDialogHeader>
         <div className="space-y-1">
           {shortcuts.map((shortcut) => (
             <div
@@ -54,7 +54,7 @@ export function KeyboardShortcutsHelp({
             </div>
           ))}
         </div>
-      </DialogContent>
-    </Dialog>
+      </ResponsiveDialogContent>
+    </ResponsiveDialog>
   );
 }
