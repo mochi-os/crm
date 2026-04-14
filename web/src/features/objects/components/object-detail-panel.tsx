@@ -395,7 +395,7 @@ export function ObjectDetailPanel({
 
         {/* Tab content */}
         <div className="flex-1 overflow-y-auto p-6">
-          <div className="max-w-2xl space-y-6" hidden={activeTab !== "properties"}>
+          {activeTab === "properties" && <div className="max-w-2xl space-y-6">
               {/* Parent */}
               {(validParentOptions.length > 0 || currentParent) && (
                 <div className="grid grid-cols-[120px_1fr] gap-4 items-start">
@@ -468,15 +468,15 @@ export function ObjectDetailPanel({
                 classes={crm.classes}
                 readOnly={!canWrite(access)}
               />
-            </div>
+            </div>}
 
-          <div className="max-w-2xl" hidden={activeTab !== "comments"}>
+          {activeTab === "comments" && <div className="max-w-2xl">
               <CommentList crmId={crmId} objectId={objectId} readOnly={!canComment(access)} />
-          </div>
+          </div>}
 
-          <div className="max-w-2xl" hidden={activeTab !== "activity"}>
+          {activeTab === "activity" && <div className="max-w-2xl">
               <ActivityList crmId={crmId} objectId={objectId} />
-          </div>
+          </div>}
         </div>
 
         <ConfirmDialog
