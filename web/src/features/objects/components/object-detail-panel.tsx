@@ -169,7 +169,7 @@ export function ObjectDetailPanel({
       queryClient.invalidateQueries({
         queryKey: ["objects", crmId],
       });
-      onClose();
+      requestAnimationFrame(() => onClose());
     },
   });
 
