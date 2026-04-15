@@ -6,7 +6,6 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Eye, EyeOff, Trash2, MessageSquare, Activity, Settings2 } from "lucide-react";
 import {
   Button,
-  Input,
   ConfirmDialog,
   Sheet,
   SheetContent,
@@ -49,8 +48,6 @@ export function ObjectDetailPanel({
   onClose,
 }: ObjectDetailPanelProps) {
   const [activeTab, setActiveTab] = useState<Tab>("properties");
-  const [editingTitle, setEditingTitle] = useState(false);
-  const [titleValue, setTitleValue] = useState("");
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [validationErrors, setValidationErrors] = useState<Set<string>>(new Set());
   const queryClient = useQueryClient();
@@ -284,14 +281,6 @@ export function ObjectDetailPanel({
     { id: "activity", label: "Activity", icon: <Activity className="size-4" /> },
   ];
 
-  const handleTitleSave = () => {
-    const currentTitle = titleField ? data.values[titleField.id] : "";
-    if (titleField && titleValue !== currentTitle) {
-      updateValueMutation.mutate({ field: titleField.id, value: titleValue });
-    }
-    setEditingTitle(false);
-  };
-
   const handleFieldChange = (fieldId: string, value: string) => {
     updateValueMutation.mutate({ field: fieldId, value });
   };
@@ -305,37 +294,9 @@ export function ObjectDetailPanel({
         </SheetHeader>
         {/* Header */}
         <div className="flex items-center gap-3 px-6 py-4 border-b shrink-0">
-          {editingTitle && canWrite(access) ? (
-            <Input
-              value={titleValue}
-              onChange={(e) => setTitleValue(e.target.value)}
-              onBlur={handleTitleSave}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  e.preventDefault();
-                  handleTitleSave();
-                }
-                if (e.key === "Escape") {
-                  setEditingTitle(false);
-                }
-              }}
-              className="text-xl font-bold flex-1"
-              autoFocus
-            />
-          ) : (
-            <h2
-              className={cn(
-                "text-xl font-bold leading-tight truncate flex-1 min-w-0",
-                canWrite(access) && "cursor-pointer hover:text-primary transition-colors"
-              )}
-              onClick={canWrite(access) && titleField ? () => {
-                setTitleValue(titleField ? data.values[titleField.id] || "" : "");
-                setEditingTitle(true);
-              } : undefined}
-            >
-              {title}
-            </h2>
-          )}
+          <h2 className="text-xl font-bold leading-tight truncate flex-1 min-w-0">
+            {title}
+          </h2>
           <div className="flex items-center gap-1 shrink-0">
             <Button
               variant="ghost"
@@ -396,6 +357,25 @@ export function ObjectDetailPanel({
         {/* Tab content */}
         <div className="flex-1 overflow-y-auto p-6">
           <div className="max-w-2xl space-y-6" hidden={activeTab !== "properties"}>
+              {/* Title */}
+              {titleField && (
+                <div className="grid grid-cols-[120px_1fr] gap-4 items-start">
+                  <label className="text-sm font-medium text-muted-foreground pt-2">
+                    {titleField.name}
+                  </label>
+                  <FieldEditor
+                    field={titleField}
+                    value={data.values[titleField.id] || ""}
+                    options={classOptions[titleField.id] || []}
+                    onChange={(value) => handleFieldChange(titleField.id, value)}
+                    readOnly={!canWrite(access)}
+                    hideLabel
+                    localPeople={peopleData}
+                    onValidationError={(hasError) => handleValidationError(titleField.id, hasError)}
+                  />
+                </div>
+              )}
+
               {/* Parent */}
               {(validParentOptions.length > 0 || currentParent) && (
                 <div className="grid grid-cols-[120px_1fr] gap-4 items-start">
