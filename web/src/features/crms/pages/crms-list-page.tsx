@@ -66,7 +66,7 @@ export function CrmsListPage() {
     if (!exists) {
       promptedNotifications.current = true;
       shellSubscribeNotifications('crm', [
-        { label: 'CRM updates', type: 'update', defaultEnabled: true },
+        { label: 'Updates', type: 'update', defaultEnabled: true },
         { label: 'Assignments', type: 'assignment', defaultEnabled: true },
         { label: 'Mentions', type: 'mention', defaultEnabled: true },
       ]).then(() => refetchSubscription());
