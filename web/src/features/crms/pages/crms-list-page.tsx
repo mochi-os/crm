@@ -66,14 +66,14 @@ export function CrmsListPage() {
     if (!exists) {
       promptedNotifications.current = true;
       shellSubscribeNotifications('crm', [
-        { label: 'Updates', type: 'update', defaultEnabled: true },
-        { label: 'Assignments', type: 'assignment', defaultEnabled: true },
-        { label: 'Mentions', type: 'mention', defaultEnabled: true },
+        { label: 'Updates', topic: 'update', defaultEnabled: true },
+        { label: 'Assignments', topic: 'assignment', defaultEnabled: true },
+        { label: 'Mentions', topic: 'mention', defaultEnabled: true },
       ]).then(() => refetchSubscription());
     } else if (types && !types.includes('mention')) {
       promptedNotifications.current = true;
       shellSubscribeNotifications('crm', [
-        { label: 'Mentions', type: 'mention', defaultEnabled: true },
+        { label: 'Mentions', topic: 'mention', defaultEnabled: true },
       ]).then(() => refetchSubscription());
     }
   }, [isLoading, crms.length, subscriptionData?.data]);
