@@ -1146,7 +1146,7 @@ def notify_watchers(object_id, crm_id, local_identity, user_id, body):
 	fp = mochi.entity.fingerprint(crm_id)
 	url = "/crm/" + fp + "/" + object_id if fp else "/crm"
 	mochi.log.debug("notify_watchers: sending notification title=" + title)
-	mochi.service.call("notifications", "send", "update", title, body, object_id, url)
+	mochi.service.call("notifications", "send", "update/modified", title, body, object_id, url)
 
 def notify_mentions(object_id, crm_id, content, author_id, author_name):
 	"""Notify subscribers who are @mentioned in a comment."""
@@ -4730,7 +4730,7 @@ def event_object_create(e):
 				title = get_object_display(crm, obj, object_id)
 				fp2 = mochi.entity.fingerprint(crm_id)
 				url = "/crm/" + fp2 + "/" + object_id if fp2 else "/crm"
-				mochi.service.call("notifications", "send", "update",
+				mochi.service.call("notifications", "send", "update/created",
 					title, "Created", object_id, url)
 
 # Object updated
@@ -5670,7 +5670,7 @@ def do_object_create(crm_id, crm, params, user_id):
 		display = get_object_display(crm, obj, object_id)
 		fp = mochi.entity.fingerprint(crm_id)
 		url = "/crm/" + fp + "/" + object_id if fp else "/crm"
-		mochi.service.call("notifications", "send", "update",
+		mochi.service.call("notifications", "send", "update/created",
 			display, "Created", object_id, url)
 	return {"id": object_id}
 
