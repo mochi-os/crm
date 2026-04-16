@@ -495,7 +495,7 @@ export function BoardColumn({
     >
       {/* Column header */}
       <div
-        className="flex items-center justify-between p-3 border-b cursor-pointer"
+        className="flex items-center justify-between p-3 border-b cursor-pointer bg-primary/10 text-primary rounded-t-[10px]"
         onDoubleClick={preview ? undefined : (e) => {
           if (!(e.target as HTMLElement).closest("[data-column-menu]")) {
             onCreateClick?.();

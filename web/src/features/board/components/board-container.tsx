@@ -737,7 +737,7 @@ export function BoardContainer({
     return (
       <div
         ref={boardRef}
-        className="grid pb-2 gap-x-4"
+        className="grid pt-4 pb-2 gap-x-4"
         style={{
           minHeight,
           gridTemplateColumns: `max-content repeat(${totalCols}, 18rem)`,
@@ -829,7 +829,7 @@ export function BoardContainer({
 
   // Flat layout (no row field — existing behavior)
   return (
-    <div ref={boardRef} className="flex gap-4 pb-2" style={{ minHeight }}>
+    <div ref={boardRef} className="flex gap-4 pt-4 pb-2" style={{ minHeight }}>
       {columnsToRender.map((status) =>
         renderColumn(status, objectsByStatus[status.id] || [])
       )}

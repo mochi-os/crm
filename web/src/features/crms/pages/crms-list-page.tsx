@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   Main,
   Card,
@@ -50,33 +50,16 @@ export function CrmsListPage() {
 
   usePageTitle("CRMs");
 
-  // Notification subscription check
-  const { data: subscriptionData, refetch: refetchSubscription } = useQuery({
-    queryKey: ["subscription-check", "crms"],
-    queryFn: () => crmsApi.checkSubscription(),
-    staleTime: Infinity,
-  });
-
-  // Prompt for notification subscription once on mount if user has CRMs but hasn't subscribed
-  const promptedNotifications = useRef(false);
+  // Declare desired topics on mount; shell reconciles against existing subs.
   useEffect(() => {
-    if (promptedNotifications.current) return;
-    if (isLoading || crms.length === 0 || !subscriptionData?.data) return;
-    const { exists, types } = subscriptionData.data as { exists: boolean; types?: string[] };
-    if (!exists) {
-      promptedNotifications.current = true;
-      shellSubscribeNotifications('crm', [
-        { label: 'CRM updates', type: 'update', defaultEnabled: true },
-        { label: 'Assignments', type: 'assignment', defaultEnabled: true },
-        { label: 'Mentions', type: 'mention', defaultEnabled: true },
-      ]).then(() => refetchSubscription());
-    } else if (types && !types.includes('mention')) {
-      promptedNotifications.current = true;
-      shellSubscribeNotifications('crm', [
-        { label: 'Mentions', type: 'mention', defaultEnabled: true },
-      ]).then(() => refetchSubscription());
-    }
-  }, [isLoading, crms.length, subscriptionData?.data]);
+    if (isLoading || crms.length === 0) return;
+    void shellSubscribeNotifications('crm', [
+      { label: 'New items', topic: 'update/created', defaultEnabled: true },
+      { label: 'Changes', topic: 'update/modified', defaultEnabled: true },
+      { label: 'Assignments', topic: 'assignment', defaultEnabled: true },
+      { label: 'Mentions', topic: 'mention', defaultEnabled: true },
+    ]);
+  }, [isLoading, crms.length]);
 
   useEffect(() => {
     void refresh();
