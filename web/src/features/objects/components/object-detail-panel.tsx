@@ -448,7 +448,7 @@ export function ObjectDetailPanel({
                 classes={crm.classes}
                 readOnly={!canWrite(access)}
               />
-            </div>}
+            </div>
 
           {activeTab === "comments" && <div className="max-w-2xl">
               <CommentList crmId={crmId} objectId={objectId} readOnly={!canComment(access)} />
