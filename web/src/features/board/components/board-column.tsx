@@ -417,14 +417,14 @@ export function BoardColumn({
     <div
       key="__drag-gap__"
       data-card-id={cardId}
-      className="rounded-[10px] border-2 border-dashed border-primary/30 bg-primary/5 transition-all duration-150"
+      className="rounded-lg border-2 border-dashed border-primary/30 bg-primary/5 transition-all duration-150"
       style={{ height }}
     />
   );
 
   // Render a single card with its children
   const renderCard = (object: CrmObject) => (
-    <div key={object.id} data-card-id={object.id} className="rounded-[10px] transition-shadow data-[drop-target]:ring-2 data-[drop-target]:ring-primary">
+    <div key={object.id} data-card-id={object.id} className="rounded-lg transition-shadow data-[drop-target]:ring-2 data-[drop-target]:ring-primary">
       <BoardCard
         object={object}
         fields={fields}
@@ -480,7 +480,7 @@ export function BoardColumn({
     <div
       ref={columnRef}
       className={cn(
-        "rounded-[10px]",
+        "rounded-lg",
         rows ? "grid grid-rows-subgrid row-span-full" : "flex flex-col w-72 shrink-0 h-full",
         "bg-surface-1 border border-border transition-colors",
         "data-[drag-over]:border-primary data-[drag-over]:bg-primary/5",

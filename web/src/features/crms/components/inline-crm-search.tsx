@@ -142,7 +142,7 @@ export function InlineCrmSearch({
       )}
 
       {!isLoading && !searchError && results.length > 0 && (
-        <div className="divide-border divide-y rounded-[10px] border">
+        <div className="divide-border divide-y rounded-lg border">
           {results
             .filter(
               (crm) =>

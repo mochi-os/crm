@@ -365,7 +365,7 @@ export function TreeView({
   }
 
   return (
-    <div ref={containerRef} className="border rounded-[10px] overflow-hidden bg-background relative">
+    <div ref={containerRef} className="border rounded-lg overflow-hidden bg-background relative">
       <table className="w-full border-collapse">
         <tbody className="divide-y divide-border">
           {flatNodes.map(({ node, hasChildren, isExpanded, anySiblingHasChildren }) => {
