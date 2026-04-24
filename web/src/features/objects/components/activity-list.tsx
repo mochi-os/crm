@@ -3,7 +3,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { Activity } from "lucide-react";
-import { EmptyState, EntityAvatar, ListSkeleton, useFormat } from "@mochi/web";
+import { EmptyState, EntityAvatar, ListSkeleton, useFormat, getAppPath } from "@mochi/web";
 import crmsApi from "@/api/crms";
 
 interface ActivityListProps {
@@ -67,7 +67,9 @@ export function ActivityList({ crmId, objectId }: ActivityListProps) {
           </div>
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <EntityAvatar
-              fingerprint={activity.user}
+              src={`${getAppPath()}/${crmId}/-/activity/${activity.id}/asset/avatar`}
+              styleUrl={`${getAppPath()}/${crmId}/-/activity/${activity.id}/asset/style`}
+              seed={activity.user}
               name={activity.name || activity.user}
               size={16}
             />

@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 {
-	"version": "1.54",
+	"version": "1.56",
 	"label": "app_name",
 	"classes": ["crm"],
 	"paths": ["crm"],
@@ -69,6 +69,9 @@
 		":crm/-/objects/:object/comments/create": {"function": "action_comment_create"},
 		":crm/-/objects/:object/comments/:comment/update": {"function": "action_comment_update"},
 		":crm/-/objects/:object/comments/:comment/delete": {"function": "action_comment_delete"},
+		":crm/-/comment/:comment/asset/:asset": {"function": "action_comment_asset", "public": true},
+		":crm/-/activity/:activity/asset/:asset": {"function": "action_activity_asset", "public": true},
+		":crm/-/user/:user/asset/:asset": {"function": "action_user_asset", "public": true},
 
 		":crm/-/objects/:object/attachments": {"function": "action_attachment_list"},
 		":crm/-/objects/:object/attachments/create": {"function": "action_attachment_create"},

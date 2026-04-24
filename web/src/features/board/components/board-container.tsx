@@ -678,6 +678,7 @@ export function BoardContainer({
           objects={previewObjects}
           fields={visibleFields}
           options={classOptions}
+          crmId={crm.crm.id}
           objectMap={objectMap}
           allFields={crm.fields}
           allObjects={objects}
@@ -799,6 +800,7 @@ export function BoardContainer({
               objects={[]}
               fields={visibleFields}
               options={classOptions}
+              crmId={crm.crm.id}
               objectMap={objectMap}
               allFields={crm.fields}
               allObjects={objects}
@@ -842,6 +844,7 @@ export function BoardContainer({
           objects={applyPreviewToList(objectsByStatus[""])}
           fields={visibleFields}
           options={classOptions}
+          crmId={crm.crm.id}
           objectMap={objectMap}
           allFields={crm.fields}
           allObjects={objects}

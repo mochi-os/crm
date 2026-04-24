@@ -40,6 +40,7 @@ interface BoardColumnProps {
   id: string;
   name: string;
   colour?: string;
+  crmId?: string;
   objects: CrmObject[];
   fields: CrmField[];
   options: Record<string, FieldOption[]>;
@@ -73,6 +74,7 @@ export function BoardColumn({
   id,
   name,
   colour,
+  crmId,
   objects,
   fields,
   options,
@@ -426,6 +428,7 @@ export function BoardColumn({
   const renderCard = (object: CrmObject) => (
     <div key={object.id} data-card-id={object.id} className="rounded-lg transition-shadow data-[drop-target]:ring-2 data-[drop-target]:ring-primary">
       <BoardCard
+        crmId={crmId}
         object={object}
         fields={fields}
         options={options}

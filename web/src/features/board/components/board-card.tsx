@@ -2,12 +2,13 @@
 // Copyright Alistair Cunningham 2026
 
 import { useRef } from "react";
-import { Card, EntityAvatar, cn, useFormat } from "@mochi/web";
+import { Card, EntityAvatar, cn, useFormat, getAppPath } from "@mochi/web";
 import { Check, CheckSquare } from "lucide-react";
 import type { CrmObject, CrmField, CrmClass, FieldOption, ChecklistItem } from "@/types";
 
 interface BoardCardProps {
   object: CrmObject;
+  crmId?: string;
   fields: CrmField[];
   options: Record<string, FieldOption[]>;
   objectMap?: Record<string, CrmObject>;
@@ -37,6 +38,7 @@ function truncate(text: string, maxLength: number): string {
 }
 
 export function BoardCard({
+  crmId,
   object,
   fields,
   options,
@@ -157,7 +159,14 @@ export function BoardCard({
         const name = peopleMap?.[value] || value;
         return (
           <span key={field.id} className="inline-flex items-center gap-1 text-[10px] text-muted-foreground">
-            <EntityAvatar fingerprint={value} name={name} size={14} />
+            <EntityAvatar
+              src={crmId ? `${getAppPath()}/${crmId}/-/user/${value}/asset/avatar` : undefined}
+              styleUrl={crmId ? `${getAppPath()}/${crmId}/-/user/${value}/asset/style` : undefined}
+              fingerprint={crmId ? undefined : value}
+              seed={value}
+              name={name}
+              size={14}
+            />
             {truncate(name, 25)}
           </span>
         );
@@ -275,6 +284,7 @@ export function BoardCard({
               return (
                 <div key={child.id} data-card-id={child.id} className="rounded-lg data-[drop-target]:ring-2 data-[drop-target]:ring-primary">
                   <BoardCard
+                    crmId={crmId}
                     object={child}
                     fields={childFields}
                     options={childOptions}

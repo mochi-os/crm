@@ -16,6 +16,7 @@ import {
   MentionTextarea,
   renderMentions,
   useImageObjectUrls,
+  getAppPath,
 } from "@mochi/web";
 import type { Comment } from "@/types";
 import { CommentAttachments } from "./comment-attachments";
@@ -98,9 +99,13 @@ export function CommentThread({
 
   const timestamp = formatTimestamp(comment.created);
 
+  const assetUrl = (slot: string) =>
+    `${getAppPath()}/${crmId}/-/comment/${comment.id}/asset/${slot}`;
   const avatar = (
     <EntityAvatar
-      fingerprint={comment.author}
+      src={assetUrl("avatar")}
+      styleUrl={assetUrl("style")}
+      seed={comment.author}
       name={comment.name || comment.author}
       size={20}
       className="z-10"
