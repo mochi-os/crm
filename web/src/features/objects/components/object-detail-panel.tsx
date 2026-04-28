@@ -335,23 +335,24 @@ export function ObjectDetailPanel({
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-1 border-b px-6 shrink-0">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={cn(
-                "flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors",
-                "border-b-2 -mb-px",
-                activeTab === tab.id
-                  ? "border-primary text-foreground"
-                  : "border-transparent text-muted-foreground hover:text-foreground"
-              )}
-            >
-              {tab.icon}
-              {tab.label}
-            </button>
-          ))}
+        <div className="border-b shrink-0">
+          <div className="flex gap-1 px-6 overflow-x-auto no-scrollbar">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={cn(
+                  "relative flex shrink-0 items-center gap-2 px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors",
+                  activeTab === tab.id
+                    ? "text-foreground after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:bg-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                {tab.icon}
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Tab content */}
