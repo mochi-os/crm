@@ -242,8 +242,8 @@ export function BoardColumn({
         const cardId = targetEl.getAttribute("data-card-id") || "";
         const cardObj = om[cardId];
         if (cardId && cardId !== draggedId && cardObj &&
-            canParent(cardObj.class) &&
-            (!draggedId || !isAncestor(cardId, draggedId))) {
+          canParent(cardObj.class) &&
+          (!draggedId || !isAncestor(cardId, draggedId))) {
           dropOnEl = targetEl;
           dropOnId = cardId;
         }
@@ -426,7 +426,7 @@ export function BoardColumn({
 
   // Render a single card with its children
   const renderCard = (object: CrmObject) => (
-    <div key={object.id} data-card-id={object.id} className="rounded-lg transition-shadow data-[drop-target]:ring-2 data-[drop-target]:ring-primary">
+    <div key={object.id} data-card-id={object.id} className="rounded-lg transition-shadow data-drop-target:ring-2 data-drop-target:ring-primary">
       <BoardCard
         crmId={crmId}
         object={object}
@@ -485,8 +485,8 @@ export function BoardColumn({
       className={cn(
         "rounded-lg",
         rows ? "grid grid-rows-subgrid row-span-full" : "flex flex-col w-72 shrink-0 h-full",
-        "bg-surface-1 border border-border transition-colors",
-        "data-[drag-over]:border-primary data-[drag-over]:bg-primary/5",
+        "bg-surface-1 overflow-hidden border border-border transition-colors",
+        "data-drag-over:border-primary data-drag-over:bg-primary/5",
         isReordering && !isDragging && "border-dashed border-border-strong",
         isDragging && "border-primary border-2 bg-background shadow-lg",
       )}
@@ -498,7 +498,7 @@ export function BoardColumn({
     >
       {/* Column header */}
       <div
-        className="flex items-center justify-between p-3 border-b cursor-pointer bg-primary/10 text-primary rounded-t-[10px]"
+        className="flex items-center justify-between p-3 border-b cursor-pointer bg-primary/10 text-primary"
         onDoubleClick={preview ? undefined : (e) => {
           if (!(e.target as HTMLElement).closest("[data-column-menu]")) {
             onCreateClick?.();

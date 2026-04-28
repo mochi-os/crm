@@ -20,6 +20,7 @@ import {
   cn,
   GeneralError,
   ListSkeleton,
+  useShellOverlay,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import type { CrmAccess, CrmDetails } from "@/types";
@@ -47,6 +48,7 @@ export function ObjectDetailPanel({
   access,
   onClose,
 }: ObjectDetailPanelProps) {
+  useShellOverlay()
   const [activeTab, setActiveTab] = useState<Tab>("properties");
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [validationErrors, setValidationErrors] = useState<Set<string>>(new Set());
