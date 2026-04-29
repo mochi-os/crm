@@ -86,17 +86,17 @@ const AuthenticatedCrmIdObjectIdRoute =
   } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof AuthenticatedIndexRoute
   '/401': typeof errors401Route
   '/403': typeof errors403Route
   '/404': typeof errors404Route
   '/500': typeof errors500Route
   '/503': typeof errors503Route
   '/find': typeof AuthenticatedFindRoute
+  '/': typeof AuthenticatedIndexRoute
   '/$crmId/$objectId': typeof AuthenticatedCrmIdObjectIdRoute
   '/$crmId/design': typeof AuthenticatedCrmIdDesignRoute
   '/$crmId/settings': typeof AuthenticatedCrmIdSettingsRoute
-  '/$crmId/': typeof AuthenticatedCrmIdIndexRoute
+  '/$crmId': typeof AuthenticatedCrmIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/401': typeof errors401Route
@@ -129,17 +129,17 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/401'
     | '/403'
     | '/404'
     | '/500'
     | '/503'
     | '/find'
+    | '/'
     | '/$crmId/$objectId'
     | '/$crmId/design'
     | '/$crmId/settings'
-    | '/$crmId/'
+    | '/$crmId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/401'
@@ -183,7 +183,7 @@ declare module '@tanstack/react-router' {
     '/_authenticated': {
       id: '/_authenticated'
       path: ''
-      fullPath: '/'
+      fullPath: ''
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
@@ -239,7 +239,7 @@ declare module '@tanstack/react-router' {
     '/_authenticated/$crmId/': {
       id: '/_authenticated/$crmId/'
       path: '/$crmId'
-      fullPath: '/$crmId/'
+      fullPath: '/$crmId'
       preLoaderRoute: typeof AuthenticatedCrmIdIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
