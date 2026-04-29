@@ -48,7 +48,7 @@ export function ObjectDetailPanel({
   access,
   onClose,
 }: ObjectDetailPanelProps) {
-  useShellOverlay()
+  useShellOverlay(!!objectId)
   const [activeTab, setActiveTab] = useState<Tab>("properties");
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [validationErrors, setValidationErrors] = useState<Set<string>>(new Set());
