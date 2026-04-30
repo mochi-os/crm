@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useEffect, useRef } from "react";
+import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
   IconButton,
@@ -46,6 +47,7 @@ export function FieldEditor({
   localPeople = [],
   onValidationError,
 }: FieldEditorProps & { hideLabel?: boolean }) {
+  const { t } = useLingui()
   const { formatDate } = useFormat();
   const [localValue, setLocalValue] = useState(value);
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -179,7 +181,7 @@ export function FieldEditor({
         return (
           <Select value={value} onValueChange={onChange} disabled={disabled}>
             <SelectTrigger className="h-9 w-full">
-              <SelectValue placeholder="Select..." />
+              <SelectValue placeholder={t`Select...`} />
             </SelectTrigger>
             <SelectContent>
               {options.map((opt) => (
@@ -258,7 +260,7 @@ export function FieldEditor({
             friends
             directory
             disabled={disabled}
-            placeholder="Select..."
+            placeholder={t`Select...`}
             emptyMessage="No people found"
           />
         );
@@ -359,7 +361,7 @@ function DateEditor({ value, onChange, disabled, onErrorChange }: DateEditorProp
         className={`h-9 ${showError ? "border-destructive" : ""}`}
       />
       {showError && (
-        <p className="text-xs text-destructive">Invalid date</p>
+        <p className="text-xs text-destructive"><Trans>Invalid date</Trans></p>
       )}
     </div>
   );
@@ -373,6 +375,7 @@ interface ChecklistEditorProps {
 }
 
 function ChecklistEditor({ value, onChange, disabled }: ChecklistEditorProps) {
+  const { t } = useLingui()
   const [newItemText, setNewItemText] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -482,7 +485,7 @@ function ChecklistEditor({ value, onChange, disabled }: ChecklistEditorProps) {
             {!disabled && (
               <IconButton
                 variant="ghost"
-                label="Remove item"
+                label={t`Remove item`}
                 onClick={() => removeItem(item.id)}
                 className="size-6 shrink-0 opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive transition-opacity"
               >
@@ -498,7 +501,7 @@ function ChecklistEditor({ value, onChange, disabled }: ChecklistEditorProps) {
         <div className="flex items-center gap-2">
           <IconButton
             variant="ghost"
-            label="Add checklist item"
+            label={t`Add checklist item`}
             onClick={() => {
               if (newItemText.trim()) {
                 addItem();
@@ -516,7 +519,7 @@ function ChecklistEditor({ value, onChange, disabled }: ChecklistEditorProps) {
             value={newItemText}
             onChange={(e) => setNewItemText(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Add item..."
+            placeholder={t`Add item...`}
             className="flex-1 rounded-sm border-none bg-transparent text-sm placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none"
           />
           {newItemText && (
@@ -527,7 +530,7 @@ function ChecklistEditor({ value, onChange, disabled }: ChecklistEditorProps) {
               onClick={addItem}
               className="h-6 px-2 text-xs"
             >
-              Add
+              <Trans>Add</Trans>
             </Button>
           )}
         </div>

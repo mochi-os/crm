@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useRef } from "react";
+import { Trans, useLingui } from '@lingui/react/macro'
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Download, Loader2, Paperclip, Trash2, Upload } from "lucide-react";
 import {
@@ -31,6 +32,7 @@ export function ObjectAttachments({
   objectId,
   readOnly,
 }: ObjectAttachmentsProps) {
+  const { t } = useLingui()
   const [lightboxIndex, setLightboxIndex] = useState(-1);
   const [deleteTarget, setDeleteTarget] = useState<Attachment | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -55,7 +57,7 @@ export function ObjectAttachments({
       });
     },
     onError: (error) => {
-      toast.error(getErrorMessage(error, "Failed to upload attachment"));
+      toast.error(getErrorMessage(error, t`Failed to upload attachment`));
     },
   });
 
@@ -70,7 +72,7 @@ export function ObjectAttachments({
       });
     },
     onError: (error) => {
-      toast.error(getErrorMessage(error, "Failed to delete attachment"));
+      toast.error(getErrorMessage(error, t`Failed to delete attachment`));
     },
   });
 
@@ -101,7 +103,7 @@ export function ObjectAttachments({
       <div className="grid grid-cols-[120px_1fr] gap-4 items-start">
         <label className="text-sm font-medium text-muted-foreground pt-2 flex items-center gap-1.5">
           <Paperclip className="size-3.5" />
-          Files
+          <Trans>Files</Trans>
         </label>
         <div className="flex items-center gap-2 pt-2">
           <Loader2 className="size-4 animate-spin text-muted-foreground" />
@@ -118,7 +120,7 @@ export function ObjectAttachments({
     <div className="grid grid-cols-[120px_1fr] gap-4 items-start">
       <label className="text-sm font-medium text-muted-foreground pt-2 flex items-center gap-1.5">
         <Paperclip className="size-3.5" />
-        Files
+        <Trans>Files</Trans>
       </label>
       <div className="space-y-2 pt-1">
         {images.length > 0 && (
@@ -226,7 +228,7 @@ export function ObjectAttachments({
         onOpenChange={(open) => {
           if (!open) setDeleteTarget(null);
         }}
-        title="Delete attachment"
+        title={t`Delete attachment`}
         desc={`Are you sure you want to delete "${deleteTarget?.name}"?`}
         confirmText="Delete"
         destructive

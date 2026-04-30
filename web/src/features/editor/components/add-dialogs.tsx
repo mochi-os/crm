@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState } from "react";
+import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Sheet,
   SheetContent,
@@ -48,6 +49,7 @@ export function AddFieldDialog({
   onOpenChange,
   onAdd,
 }: AddFieldDialogProps) {
+  const { t } = useLingui()
   const [name, setName] = useState("");
   const [fieldtype, setFieldtype] = useState("text");
   const [rows, setRows] = useState(1);
@@ -102,15 +104,15 @@ export function AddFieldDialog({
     <Sheet open={open} onOpenChange={handleClose}>
       <SheetContent className="w-full sm:max-w-md p-0 flex flex-col [&>button:last-child]:hidden">
         <div className="flex items-center justify-between px-6 py-4 border-b">
-          <SheetTitle>Add field</SheetTitle>
-          <SheetDescription className="sr-only">Add a new field to this class</SheetDescription>
+          <SheetTitle><Trans>Add field</Trans></SheetTitle>
+          <SheetDescription className="sr-only"><Trans>Add a new field to this class</Trans></SheetDescription>
           <Button variant="ghost" size="icon" className="size-8" onClick={handleClose}>
             <X className="size-4" />
           </Button>
         </div>
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="field-name">Name</Label>
+            <Label htmlFor="field-name"><Trans>Name</Trans></Label>
             <div className="pl-4">
               <Input
                 id="field-name"
@@ -122,7 +124,7 @@ export function AddFieldDialog({
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="field-type">Type</Label>
+            <Label htmlFor="field-type"><Trans>Type</Trans></Label>
             <div className="pl-4">
               <Select value={fieldtype} onValueChange={setFieldtype}>
                 <SelectTrigger id="field-type" className="w-full">
@@ -140,7 +142,7 @@ export function AddFieldDialog({
           </div>
           {fieldtype === "text" && (
             <div className="space-y-2">
-              <Label htmlFor="field-rows">Rows</Label>
+              <Label htmlFor="field-rows"><Trans>Rows</Trans></Label>
               <div className="pl-4">
                 <Input
                   id="field-rows"
@@ -151,14 +153,14 @@ export function AddFieldDialog({
                   onChange={(e) => setRows(parseInt(e.target.value) || 1)}
                 />
                 <p className={`text-xs text-muted-foreground mt-1 ${rows === 1 ? "" : "invisible"}`}>
-                  Single line of text only
+                  <Trans>Single line of text only</Trans>
                 </p>
               </div>
             </div>
           )}
           {fieldtype === "enumerated" && (
             <div className="space-y-2">
-              <Label>Options</Label>
+              <Label><Trans>Options</Trans></Label>
               <div className="pl-4 space-y-2">
                 {options.length > 0 && (
                   <div className="space-y-1">
@@ -180,7 +182,7 @@ export function AddFieldDialog({
                           size="sm"
                           onClick={() => removeOption(opt.id)}
                         >
-                          Remove
+                          <Trans>Remove</Trans>
                         </Button>
                       </div>
                     ))}
@@ -190,7 +192,7 @@ export function AddFieldDialog({
                   <Input
                     value={newOptionName}
                     onChange={(e) => setNewOptionName(e.target.value)}
-                    placeholder="Option name"
+                    placeholder={t`Option name`}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
                         e.preventDefault();
@@ -217,7 +219,7 @@ export function AddFieldDialog({
             disabled={!name.trim() || (fieldtype === "enumerated" && options.length === 0)}
           >
             <Check className="size-4" />
-            Add field
+            <Trans>Add field</Trans>
           </Button>
         </SheetFooter>
       </SheetContent>

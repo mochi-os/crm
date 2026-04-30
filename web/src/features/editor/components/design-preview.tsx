@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useMemo, useState, useEffect } from "react";
+import { Trans } from '@lingui/react/macro'
 import { ViewTabs } from "@mochi/web";
 import type { CrmDetails, CrmObject } from "@/types";
 import { BoardContainer } from "@/features/board/components/board-container";
@@ -78,7 +79,7 @@ export function DesignPreview({
               />
         ) : (
           <div className="text-sm text-muted-foreground text-center py-8">
-            No views
+            <Trans>No views</Trans>
           </div>
         )}
       </div>

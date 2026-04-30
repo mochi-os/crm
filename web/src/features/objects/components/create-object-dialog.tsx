@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useMemo, useEffect, useRef } from "react";
+import { Trans, useLingui } from '@lingui/react/macro'
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { Check, Paperclip, Upload, X } from "lucide-react";
 import {
@@ -42,6 +43,7 @@ export function CreateObjectDialog({
   allowedClasses,
   onCreated,
 }: CreateObjectDialogProps) {
+  const { t } = useLingui()
   const [error, setError] = useState<string | null>(null);
   const [selectedClass, setSelectedType] = useState(crm.classes[0]?.id || "");
   const [fieldValues, setFieldValues] = useState<Record<string, string>>({});
@@ -309,14 +311,14 @@ export function CreateObjectDialog({
   return (
     <Sheet open={open} onOpenChange={handleClose} modal={false}>
       <SheetContent className="w-full sm:max-w-2xl p-0 gap-0 [&>button:last-child]:hidden">
-        <SheetTitle className="sr-only">Create object</SheetTitle>
-        <SheetDescription className="sr-only">Create a new CRM object.</SheetDescription>
+        <SheetTitle className="sr-only"><Trans>Create object</Trans></SheetTitle>
+        <SheetDescription className="sr-only"><Trans>Create a new CRM object.</Trans></SheetDescription>
         {/* Header */}
         <div className="flex items-center gap-3 px-6 py-4 border-b shrink-0">
           <div className="flex items-center gap-2 flex-1">
             {creatableClasses.length > 0 ? (
               <>
-                <span className="text-xl font-bold">New</span>
+                <span className="text-xl font-bold"><Trans>New</Trans></span>
                 <Select value={selectedClass} onValueChange={handleTypeChange}>
                   <SelectTrigger className="w-auto h-auto py-1 px-2 text-xl font-bold">
                     <SelectValue />
@@ -331,7 +333,7 @@ export function CreateObjectDialog({
                 </Select>
               </>
             ) : (
-              <span className="text-xl font-bold">Create</span>
+              <span className="text-xl font-bold"><Trans>Create</Trans></span>
             )}
           </div>
           <Button
@@ -339,7 +341,7 @@ export function CreateObjectDialog({
             size="icon"
             className="h-8 w-8"
             onClick={handleClose}
-            title="Close"
+            title={t`Close`}
           >
             <X className="size-4" />
           </Button>
@@ -351,7 +353,7 @@ export function CreateObjectDialog({
             <div className="max-w-2xl space-y-6">
               {creatableClasses.length === 0 && (
                 <p className="text-sm text-muted-foreground">
-                  No item types can be created yet. Create the required parent items first.
+                  <Trans>No item types can be created yet. Create the required parent items first.</Trans>
                 </p>
               )}
 
@@ -359,7 +361,7 @@ export function CreateObjectDialog({
               {(validParentOptions.length > 0 || parentRequired) && (
                 <div className="grid grid-cols-[120px_1fr] gap-4 items-start">
                   <label className="text-sm font-medium text-muted-foreground pt-2">
-                    Parent
+                    <Trans>Parent</Trans>
                   </label>
                   {validParentOptions.length > 0 ? (
                     <Select
@@ -367,14 +369,14 @@ export function CreateObjectDialog({
                       onValueChange={(v) => setParent(v === "_none_" ? "" : v)}
                     >
                       <SelectTrigger className="w-full">
-                        <SelectValue placeholder="None">
+                        <SelectValue placeholder={t`None`}>
                           {currentParent
                             ? objectTitle(currentParent)
                             : "None"}
                         </SelectValue>
                       </SelectTrigger>
                       <SelectContent className="z-[60]">
-                        {!parentRequired && <SelectItem value="_none_">None</SelectItem>}
+                        {!parentRequired && <SelectItem value="_none_"><Trans>None</Trans></SelectItem>}
                         {validParentOptions.map((obj) => (
                           <SelectItem key={obj.id} value={obj.id}>
                             {objectTitle(obj)}
@@ -417,7 +419,7 @@ export function CreateObjectDialog({
               <div className="grid grid-cols-[120px_1fr] gap-4 items-start">
                 <label className="text-sm font-medium text-muted-foreground pt-2 flex items-center gap-1.5">
                   <Paperclip className="size-3.5" />
-                  Files
+                  <Trans>Files</Trans>
                 </label>
                 <div className="space-y-2 pt-1">
                   {pendingFiles.length > 0 && (
@@ -458,7 +460,7 @@ export function CreateObjectDialog({
                     disabled={createMutation.isPending}
                   >
                     <Upload className="size-3 mr-1.5" />
-                    Upload
+                    <Trans>Upload</Trans>
                   </Button>
                 </div>
               </div>

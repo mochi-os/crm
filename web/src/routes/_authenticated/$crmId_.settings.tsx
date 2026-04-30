@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { Trans, useLingui } from '@lingui/react/macro'
 import { useCallback, useMemo, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -74,6 +75,7 @@ const tabs: Tab[] = [
 ];
 
 function CrmSettingsPage() {
+  const { t } = useLingui()
   const { crmId } = Route.useParams();
   const navigate = useNavigate();
   const navigateSettings = Route.useNavigate();
@@ -128,10 +130,10 @@ function CrmSettingsPage() {
     try {
       await crmsApi.delete(crm.crm.id);
       void refreshSidebar();
-      toast.success("Crm deleted");
+      toast.success(t`Crm deleted`);
       void navigate({ to: "/" });
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to delete crm"));
+      toast.error(getErrorMessage(err, t`Failed to delete crm`));
     } finally {
       setIsDeleting(false);
     }
@@ -144,10 +146,10 @@ function CrmSettingsPage() {
     try {
       await crmsApi.unsubscribe(crm.crm.id);
       void refreshSidebar();
-      toast.success("Unsubscribed");
+      toast.success(t`Unsubscribed`);
       void navigate({ to: "/" });
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to unsubscribe"));
+      toast.error(getErrorMessage(err, t`Failed to unsubscribe`));
     } finally {
       setIsUnsubscribing(false);
     }
@@ -164,9 +166,9 @@ function CrmSettingsPage() {
         await crmsApi.update(crm.crm.id, updates);
         void refreshSidebar();
         queryClient.invalidateQueries({ queryKey: ["crm", crmId] });
-        toast.success("Crm updated");
+        toast.success(t`Crm updated`);
       } catch (err) {
-        toast.error(getErrorMessage(err, "Failed to update crm"));
+        toast.error(getErrorMessage(err, t`Failed to update crm`));
         throw err;
       }
     },
@@ -177,7 +179,7 @@ function CrmSettingsPage() {
     return (
       <>
         <PageHeader
-          title="Settings"
+          title={t`Settings`}
           icon={<Settings className="size-4 md:size-5" />}
           back={{ label: "Back to CRM", onFallback: goBackToCrm }}
         />
@@ -200,7 +202,7 @@ function CrmSettingsPage() {
     return (
       <>
         <PageHeader
-          title="Settings"
+          title={t`Settings`}
           icon={<Settings className="size-4 md:size-5" />}
           back={{ label: "Back to CRM", onFallback: goBackToCrm }}
         />
@@ -316,15 +318,16 @@ function GeneralTab({
   onUnsubscribe,
   onUpdate,
 }: GeneralTabProps) {
+  const { t } = useLingui()
   return (
     <div className="space-y-6">
       <Section
-        title="Identity"
-        description="Core information about this crm"
+        title={t`Identity`}
+        description={t`Core information about this crm`}
       >
         <div className="divide-y-0">
           <EditableFieldRow
-            label="Name"
+            label={t`Name`}
             value={crm.crm.name}
             isOwner={isOwner}
             onSave={(value) => onUpdate({ name: value })}
@@ -332,19 +335,19 @@ function GeneralTab({
           />
 
           <EditableFieldRow
-            label="Description"
+            label={t`Description`}
             value={crm.crm.description}
             isOwner={isOwner}
             onSave={(value) => onUpdate({ description: value })}
             multiline
           />
 
-          <FieldRow label="Entity ID">
+          <FieldRow label={t`Entity ID`}>
             <DataChip value={crm.crm.id} truncate='middle' />
           </FieldRow>
 
           {crm.crm.fingerprint && (
-            <FieldRow label="Fingerprint">
+            <FieldRow label={t`Fingerprint`}>
               <DataChip
                 value={crm.crm.fingerprint}
                 truncate='middle'
@@ -353,7 +356,7 @@ function GeneralTab({
           )}
 
           {crm.crm.server && (
-            <FieldRow label="Server">
+            <FieldRow label={t`Server`}>
               <DataChip value={crm.crm.server} />
             </FieldRow>
           )}
@@ -362,7 +365,7 @@ function GeneralTab({
 
       {!isOwner && (
         <Section
-          title="Unsubscribe from crm"
+          title={t`Unsubscribe from crm`}
           action={
             <Button
               variant="outline"
@@ -382,8 +385,8 @@ function GeneralTab({
 
       {isOwner && (
         <Section
-          title="Delete crm"
-          description="Permanently delete this crm and all its content."
+          title={t`Delete crm`}
+          description={t`Permanently delete this crm and all its content.`}
           action={
             <Button
               variant="outline"
@@ -392,7 +395,7 @@ function GeneralTab({
               size="sm"
             >
               <Trash2 className="size-4 mr-2" />
-              Delete
+              <Trans>Delete</Trans>
             </Button>
           }
         />
@@ -401,7 +404,7 @@ function GeneralTab({
       <ConfirmDialog
         open={showUnsubscribeDialog}
         onOpenChange={setShowUnsubscribeDialog}
-        title="Unsubscribe from crm?"
+        title={t`Unsubscribe from crm?`}
         desc={`This will remove "${crm.crm.name}" from your sidebar and stop updates for this crm.`}
         confirmText="Unsubscribe"
         handleConfirm={onUnsubscribe}
@@ -411,7 +414,7 @@ function GeneralTab({
       <ConfirmDialog
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
-        title="Delete crm?"
+        title={t`Delete crm?`}
         desc={`This will permanently delete "${crm.crm.name}" and all its objects, comments, and attachments. This action cannot be undone.`}
         confirmText="Delete crm"
         destructive
@@ -553,7 +556,7 @@ function EditableFieldRow({
               {value}
             </span>
           ) : (
-            <span className="text-muted-foreground italic">Not set</span>
+            <span className="text-muted-foreground italic"><Trans>Not set</Trans></span>
           )}
           {isOwner && (
             <Button
@@ -585,6 +588,7 @@ interface AccessTabProps {
 }
 
 function AccessTab({ crmId }: AccessTabProps) {
+  const { t } = useLingui()
   const [dialogOpen, setDialogOpen] = useState(false);
   const [userSearchQuery, setUserSearchQuery] = useState("");
 
@@ -646,7 +650,7 @@ function AccessTab({ crmId }: AccessTabProps) {
       toast.success(`Access set for ${subjectName}`);
       await refetchRules();
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to set access level"));
+      toast.error(getErrorMessage(err, t`Failed to set access level`));
       throw err;
     }
   };
@@ -655,10 +659,10 @@ function AccessTab({ crmId }: AccessTabProps) {
     if (!canManageRules) return;
     try {
       await crmsApi.revokeAccess(crmId, subject);
-      toast.success("Access removed");
+      toast.success(t`Access removed`);
       await refetchRules();
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to remove access"));
+      toast.error(getErrorMessage(err, t`Failed to remove access`));
     }
   };
 
@@ -666,23 +670,23 @@ function AccessTab({ crmId }: AccessTabProps) {
     if (!canManageRules) return;
     try {
       await crmsApi.setAccessLevel(crmId, subject, newLevel);
-      toast.success("Access level updated");
+      toast.success(t`Access level updated`);
       await refetchRules();
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to update access level"));
+      toast.error(getErrorMessage(err, t`Failed to update access level`));
     }
   };
 
   return (
     <Section
-      title="Access Management"
-      description="Control who can view and interact with this crm"
+      title={t`Access Management`}
+      description={t`Control who can view and interact with this crm`}
     >
       <div className="space-y-4">
         <div className="flex justify-end">
           <Button onClick={() => setDialogOpen(true)} size="sm" disabled={!canManageRules}>
             <Plus className="h-4 w-4 mr-2" />
-            Add Rule
+            <Trans>Add Rule</Trans>
           </Button>
         </div>
 

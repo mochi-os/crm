@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState } from "react";
+import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
   Input,
@@ -55,6 +56,7 @@ export function ViewOptionsBar({
   onSortChange,
   showSort,
 }: ViewOptionsBarProps) {
+  const { t } = useLingui()
   const [isMobileControlsOpen, setIsMobileControlsOpen] = useState(false);
   const hasSearchValue = filters.search.trim().length > 0;
 
@@ -94,7 +96,7 @@ export function ViewOptionsBar({
               variant={hasActiveMobileControls ? "secondary" : "ghost"}
               size="icon"
               className="size-9"
-              aria-label="Open view controls"
+              aria-label={t`Open view controls`}
               onClick={() => setIsMobileControlsOpen(true)}
             >
               <SlidersHorizontal className="size-4" />
@@ -110,16 +112,16 @@ export function ViewOptionsBar({
           onOpenAutoFocus={(event) => event.preventDefault()}
         >
           <SheetHeader>
-            <SheetTitle>View controls</SheetTitle>
-            <SheetDescription>Search, watch, and sort this view.</SheetDescription>
+            <SheetTitle><Trans>View controls</Trans></SheetTitle>
+            <SheetDescription><Trans>Search, watch, and sort this view.</Trans></SheetDescription>
           </SheetHeader>
           <div className="space-y-5 overflow-y-auto p-4 pt-0">
             <div className="space-y-2">
-              <Label htmlFor="crm-mobile-view-search">Search</Label>
+              <Label htmlFor="crm-mobile-view-search"><Trans>Search</Trans></Label>
               <Input
                 id="crm-mobile-view-search"
                 type="search"
-                placeholder="Search..."
+                placeholder={t`Search...`}
                 value={filters.search}
                 onChange={(e) => updateSearch(e.target.value)}
               />
@@ -128,16 +130,16 @@ export function ViewOptionsBar({
             <Button
               variant={filters.watched ? "secondary" : "outline"}
               className="w-full justify-start"
-              aria-label="Toggle watched filter"
+              aria-label={t`Toggle watched filter`}
               onClick={() => onFilterChange({ ...filters, watched: !filters.watched })}
             >
               <Eye className="size-4" />
-              Watched only
+              <Trans>Watched only</Trans>
             </Button>
 
             {showSort && (
               <div className="space-y-2">
-                <Label>Sort</Label>
+                <Label><Trans>Sort</Trans></Label>
                 <div className="flex items-center gap-2">
                   <Select
                     value={sort?.field || "rank"}
@@ -208,7 +210,7 @@ export function ViewOptionsBar({
             {/* Search */}
             <Input
               type="search"
-              placeholder="Search..."
+              placeholder={t`Search...`}
               value={filters.search}
               onChange={(e) => updateSearch(e.target.value)}
               className="h-7 w-[200px] text-xs"
@@ -219,11 +221,11 @@ export function ViewOptionsBar({
               variant={filters.watched ? "secondary" : "ghost"}
               size="sm"
               className="h-7 px-2 text-xs"
-              aria-label="Toggle watched filter"
+              aria-label={t`Toggle watched filter`}
               onClick={() => onFilterChange({ ...filters, watched: !filters.watched })}
             >
               <Eye className="size-3.5 sm:mr-1" />
-              <span>Watched</span>
+              <span><Trans>Watched</Trans></span>
             </Button>
 
             {/* Sort (only for list view) */}

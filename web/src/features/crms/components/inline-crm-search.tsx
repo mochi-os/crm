@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Trans, useLingui } from '@lingui/react/macro'
 import { useNavigate } from "@tanstack/react-router";
 import { Search, Loader2, Users } from "lucide-react";
 import { Button, GeneralError, Input, toast, getErrorMessage } from "@mochi/web";
@@ -21,6 +22,7 @@ export function InlineCrmSearch({
   subscribedIds,
   onRefresh,
 }: InlineCrmSearchProps) {
+  const { t } = useLingui()
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [results, setResults] = useState<DirectoryEntry[]>([]);
@@ -97,7 +99,7 @@ export function InlineCrmSearch({
         params: { crmId: crm.fingerprint || crm.id },
       });
     } catch (error) {
-      toast.error(getErrorMessage(error, "Failed to subscribe"));
+      toast.error(getErrorMessage(error, t`Failed to subscribe`));
       setPendingCrmId(null);
     }
   };
@@ -111,7 +113,7 @@ export function InlineCrmSearch({
       <div className="relative mb-4">
         <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
         <Input
-          placeholder="Search for CRMs..."
+          placeholder={t`Search for CRMs...`}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="h-10 pl-9"
@@ -137,7 +139,7 @@ export function InlineCrmSearch({
 
       {!isLoading && showResults && !searchError && results.length === 0 && (
         <p className="text-muted-foreground py-4 text-center text-sm">
-          No CRMs found
+          <Trans>No CRMs found</Trans>
         </p>
       )}
 

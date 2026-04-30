@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useEffect } from "react";
+import { Trans, useLingui } from '@lingui/react/macro'
 import {
   ResponsiveDialog,
   ResponsiveDialogContent,
@@ -41,6 +42,7 @@ export function OptionDialog({
   onDelete,
   onAdd,
 }: OptionDialogProps) {
+  const { t } = useLingui()
   const isEdit = !!option;
   const [name, setName] = useState("");
   const [colour, setColour] = useState(PRESET_COLOURS[1]);
@@ -77,18 +79,18 @@ export function OptionDialog({
       <ResponsiveDialogContent showCloseButton={false}>
         <ResponsiveDialogHeader className="flex flex-row items-center justify-between">
           <ResponsiveDialogTitle>{title || (isEdit ? "Edit option" : "Add option")}</ResponsiveDialogTitle>
-          <ResponsiveDialogDescription className="sr-only">Configure option settings</ResponsiveDialogDescription>
+          <ResponsiveDialogDescription className="sr-only"><Trans>Configure option settings</Trans></ResponsiveDialogDescription>
           {isEdit && onDelete && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="size-8" aria-label="Open option actions">
+                <Button variant="ghost" size="icon" className="size-8" aria-label={t`Open option actions`}>
                   <MoreHorizontal className="size-4" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem onClick={onDelete}>
                   <Minus className="size-4" />
-                  Delete option
+                  <Trans>Delete option</Trans>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -96,7 +98,7 @@ export function OptionDialog({
         </ResponsiveDialogHeader>
         <div className="py-4 space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="option-name">Name</Label>
+            <Label htmlFor="option-name"><Trans>Name</Trans></Label>
             <Input
               id="option-name"
               value={name}
@@ -115,7 +117,7 @@ export function OptionDialog({
             />
           </div>
           <div className="space-y-2">
-            <Label>Colour</Label>
+            <Label><Trans>Colour</Trans></Label>
             <ColourPicker value={colour} onChange={setColour} />
           </div>
           <div className="flex items-center gap-2">
@@ -130,15 +132,15 @@ export function OptionDialog({
           {isEdit ? (
             <>
               <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
-                Cancel
+                <Trans>Cancel</Trans>
               </Button>
               <Button type="button" onClick={handleSave}>
-                Save
+                <Trans>Save</Trans>
               </Button>
             </>
           ) : (
             <Button type="button" onClick={handleAdd} disabled={!name.trim()}>
-              Add option
+              <Trans>Add option</Trans>
             </Button>
           )}
         </ResponsiveDialogFooter>

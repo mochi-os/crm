@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { createFileRoute, Navigate, useNavigate } from "@tanstack/react-router";
+import { Trans, useLingui } from '@lingui/react/macro'
 import { useCallback, useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -37,6 +38,7 @@ export const Route = createFileRoute("/_authenticated/$crmId/design")({
 });
 
 function DesignPage() {
+  const { t } = useLingui()
   const { crmId } = Route.useParams();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -85,7 +87,7 @@ function DesignPage() {
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to export design"));
+      toast.error(getErrorMessage(err, t`Failed to export design`));
     }
   }, [crmId, crm]);
 
@@ -101,12 +103,12 @@ function DesignPage() {
         pendingImport.templateVersion,
       );
       queryClient.invalidateQueries({ queryKey: ["crm", crmId] });
-      toast.success("Design imported");
+      toast.success(t`Design imported`);
       setConfirmOpen(false);
       setImportOpen(false);
       setPendingImport(null);
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to import design"));
+      toast.error(getErrorMessage(err, t`Failed to import design`));
     } finally {
       setImporting(false);
     }
@@ -124,7 +126,7 @@ function DesignPage() {
     return (
       <>
         <PageHeader
-          title="Design"
+          title={t`Design`}
           icon={<Settings2 className="size-4 md:size-5" />}
           back={{ label: "Back to CRM", onFallback: goBackToCrm }}
         />
@@ -158,7 +160,7 @@ function DesignPage() {
               <IconButton
                 variant='ghost'
                 className='size-8'
-                label='Open design actions'
+                label={t`Open design actions`}
               >
                 <MoreHorizontal className="size-4" />
               </IconButton>
@@ -166,11 +168,11 @@ function DesignPage() {
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={handleExport}>
                 <Download className="size-4 mr-2" />
-                Export design
+                <Trans>Export design</Trans>
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setImportOpen(true)}>
                 <Upload className="size-4 mr-2" />
-                Import design
+                <Trans>Import design</Trans>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -194,7 +196,7 @@ function DesignPage() {
       <ConfirmDialog
         open={confirmOpen}
         onOpenChange={setConfirmOpen}
-        title="Replace design?"
+        title={t`Replace design?`}
         desc={
           <>
             This will replace the current design with{" "}
@@ -207,7 +209,7 @@ function DesignPage() {
           importing ? (
             <>
               <Loader2 className="size-4 mr-1.5 animate-spin" />
-              Replacing...
+              <Trans>Replacing...</Trans>
             </>
           ) : (
             "Replace design"
@@ -218,7 +220,7 @@ function DesignPage() {
       >
         <Button variant="outline" className="w-full" onClick={handleExport} disabled={importing}>
           <Download className="size-4 mr-1.5" />
-          Download backup first
+          <Trans>Download backup first</Trans>
         </Button>
       </ConfirmDialog>
     </>
@@ -240,6 +242,7 @@ function ImportDialog({
     label: string,
   ) => void;
 }) {
+  const { t } = useLingui()
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Handle file upload
@@ -253,11 +256,11 @@ function ImportDialog({
         const data = JSON.parse(reader.result as string);
         onSelect(data, undefined, undefined, file.name);
       } catch {
-        toast.error("Invalid JSON file");
+        toast.error(t`Invalid JSON file`);
       }
     };
     reader.onerror = () => {
-      toast.error("Failed to read file");
+      toast.error(t`Failed to read file`);
     };
     reader.readAsText(file);
 
@@ -269,8 +272,8 @@ function ImportDialog({
     <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
       <ResponsiveDialogContent>
         <ResponsiveDialogHeader>
-          <ResponsiveDialogTitle>Import design</ResponsiveDialogTitle>
-          <ResponsiveDialogDescription className="sr-only">Import a design configuration</ResponsiveDialogDescription>
+          <ResponsiveDialogTitle><Trans>Import design</Trans></ResponsiveDialogTitle>
+          <ResponsiveDialogDescription className="sr-only"><Trans>Import a design configuration</Trans></ResponsiveDialogDescription>
         </ResponsiveDialogHeader>
 
         <div className="space-y-4">
@@ -288,14 +291,14 @@ function ImportDialog({
               onClick={() => fileInputRef.current?.click()}
             >
               <Upload className="size-4 mr-1.5" />
-              Upload .json file
+              <Trans>Upload .json file</Trans>
             </Button>
           </div>
         </div>
 
         <ResponsiveDialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancel
+            <Trans>Cancel</Trans>
           </Button>
         </ResponsiveDialogFooter>
       </ResponsiveDialogContent>

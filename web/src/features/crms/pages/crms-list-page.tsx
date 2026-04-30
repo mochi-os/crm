@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Link } from "@tanstack/react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
@@ -27,6 +28,7 @@ import { RecommendedCrms } from "../components/recommended-crms";
 import crmsApi from "@/api/crms";
 
 export function CrmsListPage() {
+  const { t } = useLingui()
   const crms = useCrmsStore((state) => state.crms);
   const isLoading = useCrmsStore((state) => state.isLoading);
   const error = useCrmsStore((state) => state.error);
@@ -43,11 +45,11 @@ export function CrmsListPage() {
       setUnsubscribeId(null);
     },
     onError: (error) => {
-      toast.error(getErrorMessage(error, "Failed to unsubscribe"));
+      toast.error(getErrorMessage(error, t`Failed to unsubscribe`));
     },
   });
 
-  usePageTitle("CRMs");
+  usePageTitle(t`CRMs`);
 
   useEffect(() => {
     void refresh();
@@ -67,7 +69,7 @@ export function CrmsListPage() {
   return (
     <>
       <PageHeader
-        title="CRMs"
+        title={t`CRMs`}
         icon={<Users className="size-4 md:size-5" />}
       />
       <Main>
@@ -88,13 +90,13 @@ export function CrmsListPage() {
         ) : crms.length === 0 ? (
           <EntityOnboardingEmptyState
             icon={Users}
-            title="CRMs"
-            description="You have no CRMs yet."
+            title={t`CRMs`}
+            description={t`You have no CRMs yet.`}
             searchSlot={<InlineCrmSearch subscribedIds={subscribedCrmIds} />}
             primaryActionSlot={(
               <Button variant="outline" onClick={openCreateDialog}>
                 <Plus className="mr-2 h-4 w-4" />
-                Create a new CRM
+                <Trans>Create a new CRM</Trans>
               </Button>
             )}
             secondarySlot={(
@@ -141,7 +143,7 @@ export function CrmsListPage() {
                                 setUnsubscribeId(crm.id);
                               }}
                             >
-                              Unsubscribe
+                              <Trans>Unsubscribe</Trans>
                             </DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
@@ -158,7 +160,7 @@ export function CrmsListPage() {
       <ConfirmDialog
         open={!!unsubscribeId}
         onOpenChange={(open) => { if (!open) setUnsubscribeId(null); }}
-        title="Unsubscribe"
+        title={t`Unsubscribe`}
         desc="Are you sure you want to unsubscribe from this CRM?"
         confirmText="Unsubscribe"
         destructive

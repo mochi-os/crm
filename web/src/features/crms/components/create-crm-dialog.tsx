@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Trans, useLingui } from '@lingui/react/macro'
 import { useNavigate } from "@tanstack/react-router";
 import {
   Button,
@@ -30,6 +31,7 @@ export function CreateCrmDialog({
   onOpenChange,
   hideTrigger,
 }: CreateCrmDialogProps) {
+  const { t } = useLingui()
   const [isPending, setIsPending] = useState(false);
   const [name, setName] = useState("");
   const [allowSearch, setAllowSearch] = useState(true);
@@ -48,7 +50,7 @@ export function CreateCrmDialog({
     e.preventDefault();
 
     if (!name.trim()) {
-      toast.error("Name is required");
+      toast.error(t`Name is required`);
       return;
     }
 
@@ -62,7 +64,7 @@ export function CreateCrmDialog({
       const fingerprint = response.data?.fingerprint;
       await refreshCrms();
 
-      toast.success("CRM created");
+      toast.success(t`CRM created`);
       onOpenChange?.(false);
 
       if (fingerprint) {
@@ -74,7 +76,7 @@ export function CreateCrmDialog({
         void navigate({ to: "/" });
       }
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to create CRM"));
+      toast.error(getErrorMessage(err, t`Failed to create CRM`));
     } finally {
       setIsPending(false);
     }
@@ -86,7 +88,7 @@ export function CreateCrmDialog({
         <ResponsiveDialogTrigger asChild>
           <Button>
             <Plus className="mr-2 size-4" />
-            Create CRM
+            <Trans>Create CRM</Trans>
           </Button>
         </ResponsiveDialogTrigger>
       )}
@@ -96,27 +98,27 @@ export function CreateCrmDialog({
             <div className="bg-primary/10 text-primary flex size-8 items-center justify-center rounded-lg">
               <Users className="size-4" />
             </div>
-            Create CRM
+            <Trans>Create CRM</Trans>
           </ResponsiveDialogTitle>
-          <ResponsiveDialogDescription className="sr-only">Create a new CRM</ResponsiveDialogDescription>
+          <ResponsiveDialogDescription className="sr-only"><Trans>Create a new CRM</Trans></ResponsiveDialogDescription>
         </ResponsiveDialogHeader>
 
         <form onSubmit={handleSubmit}>
           <div className="mt-4 space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name"><Trans>Name</Trans></Label>
               <Input
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Sales CRM"
+                placeholder={t`Sales CRM`}
                 autoFocus
               />
             </div>
 
             <div className="flex items-center justify-between rounded-lg border px-4 py-3">
               <Label htmlFor="allow-search" className="text-sm font-medium cursor-pointer">
-                Allow anyone to search for CRM
+                <Trans>Allow anyone to search for CRM</Trans>
               </Label>
               <Switch
                 id="allow-search"
@@ -132,10 +134,10 @@ export function CreateCrmDialog({
               variant="outline"
               onClick={() => onOpenChange?.(false)}
             >
-              Cancel
+              <Trans>Cancel</Trans>
             </Button>
             <Button type="submit" disabled={isPending}>
-              {isPending ? "Creating..." : <><Plus className="mr-2 size-4" />Create CRM</>}
+              {isPending ? "Creating..." : <><Plus className="mr-2 size-4" /><Trans>Create CRM</Trans></>}
             </Button>
           </ResponsiveDialogFooter>
         </form>

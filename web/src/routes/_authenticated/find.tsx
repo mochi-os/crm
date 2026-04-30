@@ -1,4 +1,5 @@
 import { useCallback, useMemo } from 'react'
+import { useLingui } from '@lingui/react/macro'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import { Users } from 'lucide-react'
@@ -13,6 +14,7 @@ export const Route = createFileRoute('/_authenticated/find')({
 })
 
 function FindCrmsPage() {
+  const { t } = useLingui()
   const crms = useCrmsStore((state) => state.crms)
   const refresh = useCrmsStore((state) => state.refresh)
   const navigate = useNavigate()
@@ -60,8 +62,8 @@ function FindCrmsPage() {
       searchEndpoint={endpoints.crms.search}
       icon={Users}
       iconClassName="bg-primary/10 text-primary"
-      title="Find CRMs"
-      placeholder="Search by name, ID, fingerprint, or URL..."
+      title={t`Find CRMs`}
+      placeholder={t`Search by name, ID, fingerprint, or URL...`}
       emptyMessage="No CRMs found"
       recommendations={recommendations}
       isLoadingRecommendations={isLoadingRecommendations}

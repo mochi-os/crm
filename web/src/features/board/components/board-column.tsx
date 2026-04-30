@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import { Trans, useLingui } from '@lingui/react/macro'
 import { createPortal } from "react-dom";
 import {
   cn,
@@ -103,6 +104,7 @@ export function BoardColumn({
   rows,
   preview,
 }: BoardColumnProps) {
+  const { t } = useLingui()
   const [showRenameDialog, setShowRenameDialog] = useState(false);
   const [newName, setNewName] = useState(name);
   const [isRenaming, setIsRenaming] = useState(false);
@@ -532,7 +534,7 @@ export function BoardColumn({
               {(onCreateClick || preview) && (
                 <DropdownMenuItem onClick={preview ? undefined : onCreateClick}>
                   <Plus className="size-4 mr-2" />
-                  Create
+                  <Trans>Create</Trans>
                 </DropdownMenuItem>
               )}
               {(onRenameColumn || preview) && (
@@ -543,7 +545,7 @@ export function BoardColumn({
                   }}
                 >
                   <Pencil className="size-4 mr-2" />
-                  Rename
+                  <Trans>Rename</Trans>
                 </DropdownMenuItem>
               )}
               {totalCount === 0 && (onDeleteColumn || preview) && (
@@ -551,7 +553,7 @@ export function BoardColumn({
                   onClick={preview ? undefined : () => setShowDeleteDialog(true)}
                 >
                   <Trash2 className="size-4 mr-2" />
-                  Delete
+                  <Trans>Delete</Trans>
                 </DropdownMenuItem>
               )}
             </DropdownMenuContent>
@@ -578,11 +580,11 @@ export function BoardColumn({
             }}
           >
             <ResponsiveDialogHeader>
-              <ResponsiveDialogTitle>Rename column</ResponsiveDialogTitle>
-              <ResponsiveDialogDescription className="sr-only">Rename this board column</ResponsiveDialogDescription>
+              <ResponsiveDialogTitle><Trans>Rename column</Trans></ResponsiveDialogTitle>
+              <ResponsiveDialogDescription className="sr-only"><Trans>Rename this board column</Trans></ResponsiveDialogDescription>
             </ResponsiveDialogHeader>
             <div className="py-4 space-y-2">
-              <Label htmlFor="column-name">Name</Label>
+              <Label htmlFor="column-name"><Trans>Name</Trans></Label>
               <Input
                 id="column-name"
                 value={newName}
@@ -596,10 +598,10 @@ export function BoardColumn({
                 variant="outline"
                 onClick={() => setShowRenameDialog(false)}
               >
-                Cancel
+                <Trans>Cancel</Trans>
               </Button>
               <Button type="submit" disabled={!newName.trim() || isRenaming}>
-                Rename
+                <Trans>Rename</Trans>
               </Button>
             </ResponsiveDialogFooter>
           </form>
@@ -609,7 +611,7 @@ export function BoardColumn({
       <ConfirmDialog
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
-        title="Delete column"
+        title={t`Delete column`}
         desc={`Are you sure you want to delete the "${name}" column? This cannot be undone.`}
         confirmText="Delete"
         destructive
@@ -679,7 +681,7 @@ export function BoardColumn({
                   className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1"
                 >
                   <Plus className="size-3" />
-                  Create
+                  <Trans>Create</Trans>
                 </button>
               )}
             </div>

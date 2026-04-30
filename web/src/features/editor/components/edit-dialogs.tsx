@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useEffect, useMemo } from "react";
+import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Sheet,
   SheetContent,
@@ -83,6 +84,7 @@ export function ViewSheet({
   onDelete,
   onCreate,
 }: ViewSheetProps) {
+  const { t } = useLingui()
   const allClassIds = useMemo(() => classes.map((c) => c.id), [classes]);
 
   const [name, setName] = useState("");
@@ -261,22 +263,22 @@ export function ViewSheet({
       <SheetContent className="w-full sm:max-w-md p-0 flex flex-col [&>button:last-child]:hidden">
         <div className="flex items-center justify-between px-6 py-4 border-b">
           <SheetTitle>{mode === "create" ? "Add view" : "Edit view"}</SheetTitle>
-          <SheetDescription className="sr-only">Configure view settings</SheetDescription>
+          <SheetDescription className="sr-only"><Trans>Configure view settings</Trans></SheetDescription>
           <div className="flex items-center gap-1">
-            <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label="Close dialog">
+            <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label={t`Close dialog`}>
               <X className="size-4" />
             </Button>
             {mode === "edit" && onDelete && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="size-8" aria-label="Open view actions">
+                  <Button variant="ghost" size="icon" className="size-8" aria-label={t`Open view actions`}>
                     <MoreHorizontal className="size-4" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" onCloseAutoFocus={(e) => e.preventDefault()}>
                   <DropdownMenuItem onSelect={onDelete}>
                     <Minus className="size-4" />
-                    Delete view
+                    <Trans>Delete view</Trans>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -285,7 +287,7 @@ export function ViewSheet({
         </div>
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="view-name">Name</Label>
+            <Label htmlFor="view-name"><Trans>Name</Trans></Label>
             <div className="pl-4">
               <Input
                 id="view-name"
@@ -298,19 +300,19 @@ export function ViewSheet({
           </div>
 
           <div className="space-y-2">
-            <Label>Layout</Label>
+            <Label><Trans>Layout</Trans></Label>
             <div className="pl-4">
               <RadioGroup value={viewtype} onValueChange={handleViewtypeChange}>
                 <div className="flex items-center gap-2">
                   <RadioGroupItem value="board" id="vt-board" />
                   <Label htmlFor="vt-board" className="font-normal cursor-pointer">
-                    Board
+                    <Trans>Board</Trans>
                   </Label>
                 </div>
                 <div className="flex items-center gap-2">
                   <RadioGroupItem value="list" id="vt-list" />
                   <Label htmlFor="vt-list" className="font-normal cursor-pointer">
-                    List
+                    <Trans>List</Trans>
                   </Label>
                 </div>
               </RadioGroup>
@@ -319,7 +321,7 @@ export function ViewSheet({
 
           {classes.length > 1 && (
             <div className="space-y-2">
-              <Label>Show classes</Label>
+              <Label><Trans>Show classes</Trans></Label>
               <div className="pl-4 space-y-1">
                 {classes.map((cls) => (
                   <label
@@ -339,11 +341,11 @@ export function ViewSheet({
 
           {viewtype === "board" && enumeratedFields.length > 0 && (
             <div className="space-y-2">
-              <Label>Columns group by</Label>
+              <Label><Trans>Columns group by</Trans></Label>
               <div className="pl-4">
                 <Select value={columns} onValueChange={handleColumnsChange}>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select a field" />
+                    <SelectValue placeholder={t`Select a field`} />
                   </SelectTrigger>
                   <SelectContent>
                     {enumeratedFields.map((field) => (
@@ -359,14 +361,14 @@ export function ViewSheet({
 
           {viewtype === "board" && enumeratedFields.length > 0 && (
             <div className="space-y-2">
-              <Label>Rows group by</Label>
+              <Label><Trans>Rows group by</Trans></Label>
               <div className="pl-4">
                 <Select value={rows || "__none"} onValueChange={handleRowsChange}>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="None" />
+                    <SelectValue placeholder={t`None`} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="__none">None</SelectItem>
+                    <SelectItem value="__none"><Trans>None</Trans></SelectItem>
                     {enumeratedFields.map((field) => (
                       <SelectItem key={field.id} value={field.id}>
                         {field.name}
@@ -380,7 +382,7 @@ export function ViewSheet({
 
           {viewtype === "board" && enumeratedFields.length > 0 && (
             <div className="space-y-2">
-              <Label>Border colour</Label>
+              <Label><Trans>Border colour</Trans></Label>
               <div className="pl-4">
                 <Select
                   value={border || "__none"}
@@ -393,10 +395,10 @@ export function ViewSheet({
                   }}
                 >
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="None" />
+                    <SelectValue placeholder={t`None`} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="__none">None</SelectItem>
+                    <SelectItem value="__none"><Trans>None</Trans></SelectItem>
                     {enumeratedFields.map((field) => (
                       <SelectItem key={field.id} value={field.id}>
                         {field.name}
@@ -409,7 +411,7 @@ export function ViewSheet({
           )}
 
           <div className="space-y-2">
-            <Label>Show fields</Label>
+            <Label><Trans>Show fields</Trans></Label>
             <div className="pl-4 space-y-1">
               {selectedFields
                 .map((id) => fields.find((f) => f.id === id))
@@ -460,17 +462,17 @@ export function ViewSheet({
           </div>
 
           <div className="space-y-2">
-            <Label>Default sort</Label>
+            <Label><Trans>Default sort</Trans></Label>
             <div className="pl-4 flex gap-2">
               <Select value={sort || "__none"} onValueChange={handleSortChange}>
                 <SelectTrigger className="flex-1">
-                  <SelectValue placeholder="None" />
+                  <SelectValue placeholder={t`None`} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="__none">None</SelectItem>
-                  <SelectItem value="created">Created</SelectItem>
-                  <SelectItem value="number">Number</SelectItem>
-                  <SelectItem value="updated">Updated</SelectItem>
+                  <SelectItem value="__none"><Trans>None</Trans></SelectItem>
+                  <SelectItem value="created"><Trans>Created</Trans></SelectItem>
+                  <SelectItem value="number"><Trans>Number</Trans></SelectItem>
+                  <SelectItem value="updated"><Trans>Updated</Trans></SelectItem>
                   {[...fields].sort((a, b) => a.name.localeCompare(b.name)).map((field) => (
                     <SelectItem key={field.id} value={field.id}>
                       {field.name}
@@ -489,12 +491,12 @@ export function ViewSheet({
           {mode === "create" ? (
             <Button type="button" onClick={handleCreate} disabled={!canSubmit}>
               <Check className="size-4" />
-              Add view
+              <Trans>Add view</Trans>
             </Button>
           ) : (
             <Button type="button" onClick={() => onOpenChange(false)}>
               <Check className="size-4" />
-              Done
+              <Trans>Done</Trans>
             </Button>
           )}
         </SheetFooter>
@@ -539,6 +541,7 @@ export function ClassSheet({
   onReorderFields,
   onCreate,
 }: ClassSheetProps) {
+  const { t } = useLingui()
   const [name, setName] = useState("");
   const [draggedFieldId, setDraggedFieldId] = useState<string | null>(null);
   const [dropIndicator, setDropIndicator] = useState<{ fieldId: string; position: "before" | "after" } | null>(null);
@@ -666,22 +669,22 @@ export function ClassSheet({
       <SheetContent className="w-full sm:max-w-md p-0 flex flex-col [&>button:last-child]:hidden">
         <div className="flex items-center justify-between px-6 py-4 border-b">
           <SheetTitle>{mode === "create" ? "Add class" : "Edit class"}</SheetTitle>
-          <SheetDescription className="sr-only">Configure class settings</SheetDescription>
+          <SheetDescription className="sr-only"><Trans>Configure class settings</Trans></SheetDescription>
           <div className="flex items-center gap-1">
-            <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label="Close dialog">
+            <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label={t`Close dialog`}>
               <X className="size-4" />
             </Button>
             {mode === "edit" && onDelete && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="size-8" aria-label="Open class actions">
+                  <Button variant="ghost" size="icon" className="size-8" aria-label={t`Open class actions`}>
                     <MoreHorizontal className="size-4" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" onCloseAutoFocus={(e) => e.preventDefault()}>
                   <DropdownMenuItem onSelect={onDelete}>
                     <Minus className="size-4" />
-                    Delete class
+                    <Trans>Delete class</Trans>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -690,7 +693,7 @@ export function ClassSheet({
         </div>
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="class-name">Name</Label>
+            <Label htmlFor="class-name"><Trans>Name</Trans></Label>
             <div className="pl-4">
               <Input
                 id="class-name"
@@ -713,7 +716,7 @@ export function ClassSheet({
 
           {mode === "edit" && cls && fields && fields.length > 0 && (
             <div className="space-y-2">
-              <Label>Title field</Label>
+              <Label><Trans>Title field</Trans></Label>
               <div className="pl-4">
                 <Select
                   value={cls.title || "__none"}
@@ -724,10 +727,10 @@ export function ClassSheet({
                   }}
                 >
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="None" />
+                    <SelectValue placeholder={t`None`} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="__none">None</SelectItem>
+                    <SelectItem value="__none"><Trans>None</Trans></SelectItem>
                     {fields.map((field) => (
                       <SelectItem key={field.id} value={field.id}>
                         {field.name}
@@ -740,14 +743,14 @@ export function ClassSheet({
           )}
 
           <div className="space-y-2">
-            <Label>Can be child of</Label>
+            <Label><Trans>Can be child of</Trans></Label>
             <div className="pl-4 space-y-2">
               <label className="flex items-center gap-2 text-sm cursor-pointer">
                 <Switch
                   checked={currentHierarchy.includes("")}
                   onCheckedChange={() => toggleParent("")}
                 />
-                Top level
+                <Trans>Top level</Trans>
               </label>
               {[...classes].sort((a, b) => a.name.localeCompare(b.name)).map((c) => (
                 <label
@@ -765,7 +768,7 @@ export function ClassSheet({
           </div>
 
           <div className="space-y-2">
-            <Label>Fields</Label>
+            <Label><Trans>Fields</Trans></Label>
             <div className="pl-4 space-y-2">
               <div className="space-y-1">
                 {displayFields.map((field) => (
@@ -835,17 +838,17 @@ export function ClassSheet({
             }}
           >
             <Plus className="size-4" />
-            Add field
+            <Trans>Add field</Trans>
           </Button>
           {mode === "create" ? (
             <Button type="button" onClick={handleCreate} disabled={!name.trim()}>
               <Check className="size-4" />
-              Add class
+              <Trans>Add class</Trans>
             </Button>
           ) : (
             <Button type="button" onClick={() => onOpenChange(false)}>
               <Check className="size-4" />
-              Done
+              <Trans>Done</Trans>
             </Button>
           )}
         </SheetFooter>
@@ -956,12 +959,12 @@ export function EditFieldDialog({
     <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
       <ResponsiveDialogContent className="max-w-md flex flex-col max-h-[85vh]" showCloseButton={false}>
         <ResponsiveDialogHeader>
-          <ResponsiveDialogTitle>Edit field</ResponsiveDialogTitle>
-          <ResponsiveDialogDescription className="sr-only">Edit field settings</ResponsiveDialogDescription>
+          <ResponsiveDialogTitle><Trans>Edit field</Trans></ResponsiveDialogTitle>
+          <ResponsiveDialogDescription className="sr-only"><Trans>Edit field settings</Trans></ResponsiveDialogDescription>
         </ResponsiveDialogHeader>
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="field-name">Name</Label>
+            <Label htmlFor="field-name"><Trans>Name</Trans></Label>
             <Input
               id="field-name"
               value={name}
@@ -981,13 +984,13 @@ export function EditFieldDialog({
           </div>
 
           <div className="space-y-2">
-            <Label>Type</Label>
+            <Label><Trans>Type</Trans></Label>
             <p className="text-sm text-muted-foreground capitalize">{field.fieldtype}</p>
           </div>
 
           {field.fieldtype === "text" && (
             <div className="space-y-2">
-              <Label htmlFor="field-rows">Rows</Label>
+              <Label htmlFor="field-rows"><Trans>Rows</Trans></Label>
               <Input
                 id="field-rows"
                 type="number"
@@ -998,13 +1001,13 @@ export function EditFieldDialog({
                 onBlur={handleRowsBlur}
               />
               <p className={`text-xs text-muted-foreground ${rows === 1 ? "" : "invisible"}`}>
-                Single line of text only
+                <Trans>Single line of text only</Trans>
               </p>
             </div>
           )}
 
           <div className="space-y-2">
-            <Label>Flags</Label>
+            <Label><Trans>Flags</Trans></Label>
             <div className="pl-4 space-y-2">
               {[
                 { id: "required", label: "Required" },
@@ -1023,7 +1026,7 @@ export function EditFieldDialog({
 
           {field.fieldtype === "enumerated" && (
             <div className="space-y-2">
-              <Label>Options</Label>
+              <Label><Trans>Options</Trans></Label>
               <div className="space-y-1">
                 {options.map((opt) => (
                   <div
@@ -1065,7 +1068,7 @@ export function EditFieldDialog({
                 ))}
               </div>
               <Button type="button" variant="outline" size="sm" onClick={onAddOption}>
-                Add option
+                <Trans>Add option</Trans>
               </Button>
             </div>
           )}
@@ -1074,12 +1077,12 @@ export function EditFieldDialog({
           {!isSystemField ? (
             <Button type="button" variant="outline" onClick={onDelete}>
               <Minus className="size-4" />
-              Delete field
+              <Trans>Delete field</Trans>
             </Button>
           ) : <div />}
           <Button type="button" onClick={() => onOpenChange(false)}>
             <Check className="size-4" />
-            Done
+            <Trans>Done</Trans>
           </Button>
         </ResponsiveDialogFooter>
       </ResponsiveDialogContent>

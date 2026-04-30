@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useMemo, useLayoutEffect, useCallback, useRef } from "react";
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Button, EmptyState, useShellStorage } from "@mochi/web";
 import { Folder, Plus } from 'lucide-react';
 import { TreeRow } from "./tree-row";
@@ -150,6 +151,7 @@ export function TreeView({
   onCreateClick,
   preview,
 }: TreeViewProps) {
+  const { t } = useLingui()
   // Storage key for expanded state
   const storageKey = `crms:${crmId}:tree:expanded`;
 
@@ -353,11 +355,11 @@ export function TreeView({
 
   if (objects.length === 0) {
     return (
-      <EmptyState icon={Folder} title="Nothing found" className="py-12">
+      <EmptyState icon={Folder} title={t`Nothing found`} className="py-12">
         {(onCreateClick || preview) && (
           <Button variant="outline" size="sm" onClick={preview ? undefined : onCreateClick}>
             <Plus className="size-4 mr-1" />
-            Create
+            <Trans>Create</Trans>
           </Button>
         )}
       </EmptyState>

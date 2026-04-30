@@ -9,6 +9,7 @@ import {
   ResponsiveDialogTitle,
 } from "@mochi/web";
 
+import { Trans } from '@lingui/react/macro'
 interface KeyboardShortcutsHelpProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -36,8 +37,8 @@ export function KeyboardShortcutsHelp({
     <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
       <ResponsiveDialogContent className="max-w-md">
         <ResponsiveDialogHeader>
-          <ResponsiveDialogTitle>Keyboard shortcuts</ResponsiveDialogTitle>
-          <ResponsiveDialogDescription className="sr-only">Available keyboard shortcuts</ResponsiveDialogDescription>
+          <ResponsiveDialogTitle><Trans>Keyboard shortcuts</Trans></ResponsiveDialogTitle>
+          <ResponsiveDialogDescription className="sr-only"><Trans>Available keyboard shortcuts</Trans></ResponsiveDialogDescription>
         </ResponsiveDialogHeader>
         <div className="space-y-1">
           {shortcuts.map((shortcut) => (
