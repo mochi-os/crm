@@ -16,7 +16,6 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  shellSubscribeNotifications,
   getErrorMessage,
   toast,
 } from "@mochi/web";
@@ -49,17 +48,6 @@ export function CrmsListPage() {
   });
 
   usePageTitle("CRMs");
-
-  // Declare desired topics on mount; shell reconciles against existing subs.
-  useEffect(() => {
-    if (isLoading || crms.length === 0) return;
-    void shellSubscribeNotifications('crm', [
-      { label: 'New items', topic: 'update/created', defaultEnabled: true },
-      { label: 'Changes', topic: 'update/modified', defaultEnabled: true },
-      { label: 'Assignments', topic: 'assignment', defaultEnabled: true },
-      { label: 'Mentions', topic: 'mention', defaultEnabled: true },
-    ]);
-  }, [isLoading, crms.length]);
 
   useEffect(() => {
     void refresh();

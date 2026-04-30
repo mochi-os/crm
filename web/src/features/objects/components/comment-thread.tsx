@@ -107,7 +107,7 @@ export function CommentThread({
       styleUrl={assetUrl("style")}
       seed={comment.author}
       name={comment.name || comment.author}
-      size={20}
+      size="xs"
       className="z-10"
     />
   );

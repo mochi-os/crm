@@ -1,6 +1,9 @@
 # Mochi CRM app
 # Copyright Alistair Cunningham 2026
 
+def notify(topic, object="", title="", body="", url=""):
+	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notification_topic_" + topic.replace("/", "_")))
+
 # Helper to create P2P message headers
 def p2p_headers(from_id, to_id, event):
 	return {
@@ -1146,7 +1149,7 @@ def notify_watchers(object_id, crm_id, local_identity, user_id, body):
 	fp = mochi.entity.fingerprint(crm_id)
 	url = "/crm/" + fp + "/" + object_id if fp else "/crm"
 	mochi.log.debug("notify_watchers: sending notification title=" + title)
-	mochi.service.call("notifications", "send", "update/modified", title, body, object_id, url)
+	notify("update/modified", crm_id, title, body, url)
 
 def notify_mentions(object_id, crm_id, content, author_id, author_name):
 	"""Notify subscribers who are @mentioned in a comment."""
@@ -1172,8 +1175,7 @@ def notify_mentions(object_id, crm_id, content, author_id, author_name):
 	fp = mochi.entity.fingerprint(crm_id)
 	url = "/crm/" + fp + "/" + object_id if fp else "/crm"
 	excerpt = content.strip()[:80]
-	mochi.service.call("notifications", "send", "mention",
-		title, author_name + " mentioned you: " + excerpt, object_id, url)
+	notify("mention", crm_id, title, author_name + " mentioned you: " + excerpt, url)
 
 def would_create_cycle(object_id, new_parent_id):
 	"""Check if setting new_parent_id as parent of object_id would create a cycle."""
@@ -4782,8 +4784,7 @@ def event_object_create(e):
 				title = get_object_display(crm, obj, object_id)
 				fp2 = mochi.entity.fingerprint(crm_id)
 				url = "/crm/" + fp2 + "/" + object_id if fp2 else "/crm"
-				mochi.service.call("notifications", "send", "update/created",
-					title, "Created", object_id, url)
+				notify("update/created", crm_id, title, "Created", url)
 
 # Object updated
 def event_object_update(e):
@@ -4876,9 +4877,7 @@ def event_values_update(e):
 									title = get_object_display(crm, obj, object_id)
 									fp2 = mochi.entity.fingerprint(crm_id)
 									url = "/crm/" + fp2 + "/" + object_id if fp2 else "/crm"
-									mochi.service.call("notifications", "send", "assignment",
-										title, "Assigned to you",
-										object_id, url)
+									notify("assignment", crm_id, title, "Assigned to you", url)
 							# Auto-watch on assignment
 							mochi.db.execute(
 								"insert or ignore into watchers (object, user, created) values (?, ?, ?)",
@@ -5722,8 +5721,7 @@ def do_object_create(crm_id, crm, params, user_id):
 		display = get_object_display(crm, obj, object_id)
 		fp = mochi.entity.fingerprint(crm_id)
 		url = "/crm/" + fp + "/" + object_id if fp else "/crm"
-		mochi.service.call("notifications", "send", "update/created",
-			display, "Created", object_id, url)
+		notify("update/created", crm_id, display, "Created", url)
 	return {"id": object_id}
 
 def do_object_update(crm_id, crm, params, user_id):
@@ -6570,10 +6568,3 @@ def do_view_reorder(crm_id, crm, params):
 	broadcast_event(crm_id, "view/reorder", {"crm": crm_id, "order": order})
 	return {"success": True}
 
-def action_notifications_check(a):
-	"""Check if a notification subscription exists for this app."""
-	result = mochi.service.call("notifications", "subscriptions")
-	if result == None:
-		return {"data": {"exists": False, "types": []}}
-	types = [sub.get("type", "") for sub in result if sub.get("type")]
-	return {"data": {"exists": len(result) > 0, "types": types}}
