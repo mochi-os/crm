@@ -318,7 +318,7 @@ export function ObjectDetailPanel({
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                className="h-8 w-8 text-muted-foreground"
                 onClick={() => setShowDeleteDialog(true)}
                 title="Delete item"
               >
