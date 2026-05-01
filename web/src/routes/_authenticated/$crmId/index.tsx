@@ -3,6 +3,7 @@
 
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { Trans, useLingui } from '@lingui/react/macro'
+import { t } from '@lingui/core/macro'
 import { createFileRoute, Link, redirect, useNavigate, useRouter } from "@tanstack/react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
@@ -61,7 +62,7 @@ export const Route = createFileRoute("/_authenticated/$crmId/")({
 
       return {
         crm: null as CrmDetails | null,
-        loaderError: getErrorMessage(error, "Failed to load CRM"),
+        loaderError: getErrorMessage(error, t`Failed to load CRM`),
       };
     }
   },
@@ -624,7 +625,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
 
   const handleOpenCreateDialog = useCallback(() => {
     if (crm.classes.length === 0) {
-      toast.error("Please add one or more classes to the CRM design.");
+      toast.error(t`Please add one or more classes to the CRM design.`);
       return;
     }
     setSelectedObjectId(null);
@@ -658,7 +659,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
 
   const handleCreateClick = (columnValue: string, rowValue?: string) => {
     if (crm.classes.length === 0) {
-      toast.error("Please add one or more classes to the CRM design.");
+      toast.error(t`Please add one or more classes to the CRM design.`);
       return;
     }
     const fields = [{ field: columnField, value: columnValue }];
@@ -727,7 +728,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
 
   const handleExportCSV = useCallback(() => {
     if (filteredObjects.length === 0) {
-      toast.error("No objects to export.");
+      toast.error(t`No objects to export.`);
       return;
     }
 

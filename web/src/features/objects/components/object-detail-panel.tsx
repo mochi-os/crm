@@ -3,6 +3,7 @@
 
 import { useState, useEffect, useRef, useMemo } from "react";
 import { Trans } from '@lingui/react/macro'
+import { t } from '@lingui/core/macro'
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Eye, EyeOff, Trash2, MessageSquare, Activity, Settings2 } from "lucide-react";
 import {
@@ -321,7 +322,7 @@ export function ObjectDetailPanel({
                 size="icon"
                 className="h-8 w-8 text-muted-foreground"
                 onClick={() => setShowDeleteDialog(true)}
-                title={"Delete item"}
+                title={t`Delete item`}
               >
                 <Trash2 className="size-4" />
               </Button>
@@ -399,7 +400,7 @@ export function ObjectDetailPanel({
                       disabled={updateParentMutation.isPending}
                     >
                       <SelectTrigger className="w-full">
-                        <SelectValue placeholder={"None"}>
+                        <SelectValue placeholder={t`None`}>
                           {currentParent
                             ? objectTitle(currentParent)
                             : "None"}
@@ -466,9 +467,9 @@ export function ObjectDetailPanel({
         <ConfirmDialog
           open={showDeleteDialog}
           onOpenChange={setShowDeleteDialog}
-          title={"Delete item"}
-          desc={`Are you sure you want to delete "${title}"? This action cannot be undone.`}
-          confirmText="Delete"
+          title={t`Delete item`}
+          desc={t`Are you sure you want to delete "${title}"? This action cannot be undone.`}
+          confirmText={t`Delete`}
           destructive
           isLoading={deleteMutation.isPending}
           handleConfirm={() => deleteMutation.mutate()}

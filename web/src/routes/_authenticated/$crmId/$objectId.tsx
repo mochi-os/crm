@@ -3,6 +3,7 @@
 
 import { createFileRoute, redirect, useNavigate, useRouter } from "@tanstack/react-router";
 import { useLingui } from '@lingui/react/macro'
+import { t } from '@lingui/core/macro'
 import {
   GeneralError,
   extractStatus,
@@ -36,7 +37,7 @@ export const Route = createFileRoute("/_authenticated/$crmId/$objectId")({
       return {
         crm: null as CrmDetails | null,
         loaderError:
-          getErrorMessage(error, "Failed to load CRM"),
+          getErrorMessage(error, t`Failed to load CRM`),
       };
     }
   },
@@ -64,7 +65,7 @@ function ObjectPage() {
         />
         <Main>
           <GeneralError
-            error={new Error(loaderError ?? "Failed to load CRM")}
+            error={new Error(loaderError ?? t`Failed to load CRM`)}
             minimal
             mode="inline"
             reset={() => void router.invalidate()}

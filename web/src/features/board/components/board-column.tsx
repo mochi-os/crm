@@ -3,6 +3,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Trans } from '@lingui/react/macro'
+import { t } from '@lingui/core/macro'
 import { createPortal } from "react-dom";
 import {
   cn,
@@ -610,9 +611,9 @@ export function BoardColumn({
       <ConfirmDialog
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
-        title={"Delete column"}
-        desc={`Are you sure you want to delete the "${name}" column? This cannot be undone.`}
-        confirmText="Delete"
+        title={t`Delete column`}
+        desc={t`Are you sure you want to delete the "${name}" column? This cannot be undone.`}
+        confirmText={t`Delete`}
         destructive
         isLoading={isDeleting}
         handleConfirm={async () => {

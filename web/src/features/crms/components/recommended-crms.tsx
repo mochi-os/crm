@@ -56,7 +56,7 @@ export function RecommendedCrms({
     try {
       await crmsApi.subscribe(crm.id, crm.server || undefined);
       onSubscribe();
-      toast.success(`Subscribed to ${crm.name}`);
+      toast.success(t`Subscribed to ${crm.name}`);
       setRecommendations((prev) => prev.filter((p) => p.id !== crm.id));
     } catch (error) {
       toast.error(getErrorMessage(error, t`Failed to subscribe`));

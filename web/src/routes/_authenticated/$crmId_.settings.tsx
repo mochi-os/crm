@@ -322,7 +322,7 @@ function GeneralTab({
     <div className="space-y-6">
       <Section
         title={t`Identity`}
-        description={"Core information about this crm"}
+        description={t`Core information about this CRM`}
       >
         <div className="divide-y-0">
           <EditableFieldRow
@@ -385,7 +385,7 @@ function GeneralTab({
       {isOwner && (
         <Section
           title={t`Delete crm`}
-          description={"Permanently delete this crm and all its content."}
+          description={t`Permanently delete this CRM and all its content.`}
           action={
             <Button
               variant="outline"
@@ -403,9 +403,9 @@ function GeneralTab({
       <ConfirmDialog
         open={showUnsubscribeDialog}
         onOpenChange={setShowUnsubscribeDialog}
-        title={t`Unsubscribe from crm?`}
-        desc={`This will remove "${crm.crm.name}" from your sidebar and stop updates for this crm.`}
-        confirmText="Unsubscribe"
+        title={t`Unsubscribe from CRM?`}
+        desc={t`This will remove "${crm.crm.name}" from your sidebar and stop updates for this CRM.`}
+        confirmText={t`Unsubscribe`}
         handleConfirm={onUnsubscribe}
         isLoading={isUnsubscribing}
       />
@@ -413,9 +413,9 @@ function GeneralTab({
       <ConfirmDialog
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
-        title={t`Delete crm?`}
-        desc={`This will permanently delete "${crm.crm.name}" and all its objects, comments, and attachments. This action cannot be undone.`}
-        confirmText="Delete crm"
+        title={t`Delete CRM?`}
+        desc={t`This will permanently delete "${crm.crm.name}" and all its objects, comments, and attachments. This action cannot be undone.`}
+        confirmText={t`Delete CRM`}
         destructive
         handleConfirm={onDelete}
         isLoading={isDeleting}
@@ -573,21 +573,19 @@ function EditableFieldRow({
   );
 }
 
-// Access levels for crms
-const CRM_ACCESS_LEVELS: AccessLevel[] = [
-  { value: "design", label: "Design, write, comment, and view" },
-  { value: "write", label: "Write, comment, and view" },
-  { value: "comment", label: "Comment and view" },
-  { value: "view", label: "View only" },
-  { value: "none", label: "No access" },
-];
-
 interface AccessTabProps {
   crmId: string;
 }
 
 function AccessTab({ crmId }: AccessTabProps) {
   const { t } = useLingui()
+  const CRM_ACCESS_LEVELS: AccessLevel[] = [
+    { value: "design", label: t`Design, write, comment, and view` },
+    { value: "write", label: t`Write, comment, and view` },
+    { value: "comment", label: t`Comment and view` },
+    { value: "view", label: t`View only` },
+    { value: "none", label: t`No access` },
+  ];
   const [dialogOpen, setDialogOpen] = useState(false);
   const [userSearchQuery, setUserSearchQuery] = useState("");
 
@@ -646,7 +644,7 @@ function AccessTab({ crmId }: AccessTabProps) {
     if (!canManageRules) return;
     try {
       await crmsApi.setAccessLevel(crmId, subject, level);
-      toast.success(`Access set for ${subjectName}`);
+      toast.success(t`Access set for ${subjectName}`);
       await refetchRules();
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to set access level`));
@@ -679,7 +677,7 @@ function AccessTab({ crmId }: AccessTabProps) {
   return (
     <Section
       title={t`Access Management`}
-      description={"Control who can view and interact with this crm"}
+      description={t`Control who can view and interact with this CRM`}
     >
       <div className="space-y-4">
         <div className="flex justify-end">

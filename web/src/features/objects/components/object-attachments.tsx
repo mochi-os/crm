@@ -229,8 +229,8 @@ export function ObjectAttachments({
           if (!open) setDeleteTarget(null);
         }}
         title={t`Delete attachment`}
-        desc={`Are you sure you want to delete "${deleteTarget?.name}"?`}
-        confirmText="Delete"
+        desc={t`Are you sure you want to delete "${deleteTarget?.name}"?`}
+        confirmText={t`Delete`}
         destructive
         isLoading={deleteMutation.isPending}
         handleConfirm={() => {
