@@ -443,7 +443,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
   return (
     <div className="flex h-full">
       {/* Editor panel (left) */}
-      <div className="w-80 border-r flex flex-col overflow-hidden">
+      <div className="w-80 border-e flex flex-col overflow-hidden">
         <div className="flex-1 overflow-auto p-4 space-y-6">
           {/* Views Section */}
           <section>
@@ -478,7 +478,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
                     <button
                       type="button"
                       onClick={() => handleEditView(view)}
-                      className="flex-1 text-left"
+                      className="flex-1 text-start"
                     >
                       <span className="font-medium">{view.name}</span>
                     </button>
@@ -513,7 +513,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
                     setSelectedClassId(cls.id);
                     setEditClassOpen(true);
                   }}
-                  className="w-full text-left px-3 py-2 text-sm rounded-md transition-colors hover:bg-muted flex items-center gap-2"
+                  className="w-full text-start px-3 py-2 text-sm rounded-md transition-colors hover:bg-muted flex items-center gap-2"
                 >
                   <Blocks className="size-4 text-muted-foreground shrink-0" />
                   {cls.name}

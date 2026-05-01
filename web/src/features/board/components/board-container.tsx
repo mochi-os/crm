@@ -751,7 +751,7 @@ export function BoardContainer({
           <div
             key={`label-${row.id}`}
             className={cn(
-              "flex items-start gap-2 pt-2 pr-3",
+              "flex items-start gap-2 pt-2 pe-3",
               r < swimlaneRows.length - 1 && "border-b"
             )}
             style={{ gridColumn: 1, gridRow: r + 2 }}

@@ -845,10 +845,10 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
               <DropdownMenuItem
                 onSelect={(e) => e.preventDefault()}
               >
-                <SlidersHorizontal className="size-4 mr-2" />
+                <SlidersHorizontal className="size-4 me-2" />
                 View options
                 <Switch
-                  className="ml-auto"
+                  className="ms-auto"
                   checked={showViewOptions}
                   onCheckedChange={setShowViewOptions}
                 />
@@ -856,11 +856,11 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
               {canDesign(access) && activeView?.viewtype !== "list" && (
                 <>
                   <DropdownMenuItem onClick={() => setAddColumnDialogOpen(true)}>
-                    <Columns3 className="size-4 mr-2" />
+                    <Columns3 className="size-4 me-2" />
                     <Trans>Add column</Trans>
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => setIsReorderingColumns(true)}>
-                    <GripVertical className="size-4 mr-2" />
+                    <GripVertical className="size-4 me-2" />
                     <Trans>Re-order columns</Trans>
                   </DropdownMenuItem>
                 </>
@@ -871,13 +871,13 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                     to="/$crmId/design"
                     params={{ crmId: params.crmId }}
                   >
-                    <Settings2 className="size-4 mr-2" />
+                    <Settings2 className="size-4 me-2" />
                     <Trans>Design</Trans>
                   </Link>
                 </DropdownMenuItem>
               )}
               <DropdownMenuItem onClick={handleExportCSV}>
-                <Download className="size-4 mr-2" />
+                <Download className="size-4 me-2" />
                 <Trans>Export CSV</Trans>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
@@ -885,7 +885,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                   to="/$crmId/settings"
                   params={{ crmId: params.crmId }}
                 >
-                  <Settings className="size-4 mr-2" />
+                  <Settings className="size-4 me-2" />
                   <Trans>Settings</Trans>
                 </Link>
               </DropdownMenuItem>

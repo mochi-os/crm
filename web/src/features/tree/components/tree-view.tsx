@@ -359,7 +359,7 @@ export function TreeView({
       <EmptyState icon={Folder} title={t`Nothing found`} className="py-12">
         {(onCreateClick || preview) && (
           <Button variant="outline" size="sm" onClick={preview ? undefined : onCreateClick}>
-            <Plus className="size-4 mr-1" />
+            <Plus className="size-4 me-1" />
             <Trans>Create</Trans>
           </Button>
         )}

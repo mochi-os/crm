@@ -116,7 +116,7 @@ export function InlineCrmSearch({
           placeholder={t`Search for CRMs...`}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="h-10 pl-9"
+          className="h-10 ps-9"
           autoFocus
         />
       </div>
@@ -163,7 +163,7 @@ export function InlineCrmSearch({
                     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary/10">
                       <Users className="h-4 w-4 text-primary" />
                     </div>
-                    <div className="flex min-w-0 flex-1 flex-col text-left">
+                    <div className="flex min-w-0 flex-1 flex-col text-start">
                       <span className="truncate text-sm font-medium">
                         {crm.name}
                       </span>

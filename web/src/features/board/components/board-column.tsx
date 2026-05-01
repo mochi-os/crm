@@ -533,7 +533,7 @@ export function BoardColumn({
             <DropdownMenuContent align="end">
               {(onCreateClick || preview) && (
                 <DropdownMenuItem onClick={preview ? undefined : onCreateClick}>
-                  <Plus className="size-4 mr-2" />
+                  <Plus className="size-4 me-2" />
                   <Trans>Create</Trans>
                 </DropdownMenuItem>
               )}
@@ -544,7 +544,7 @@ export function BoardColumn({
                     setShowRenameDialog(true);
                   }}
                 >
-                  <Pencil className="size-4 mr-2" />
+                  <Pencil className="size-4 me-2" />
                   <Trans>Rename</Trans>
                 </DropdownMenuItem>
               )}
@@ -552,7 +552,7 @@ export function BoardColumn({
                 <DropdownMenuItem
                   onClick={preview ? undefined : () => setShowDeleteDialog(true)}
                 >
-                  <Trash2 className="size-4 mr-2" />
+                  <Trash2 className="size-4 me-2" />
                   <Trans>Delete</Trans>
                 </DropdownMenuItem>
               )}

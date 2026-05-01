@@ -103,7 +103,7 @@ export function AddFieldDialog({
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
           <div className="space-y-2">
             <Label htmlFor="field-name"><Trans>Name</Trans></Label>
-            <div className="pl-4">
+            <div className="ps-4">
               <Input
                 id="field-name"
                 value={name}
@@ -115,7 +115,7 @@ export function AddFieldDialog({
           </div>
           <div className="space-y-2">
             <Label htmlFor="field-type"><Trans>Type</Trans></Label>
-            <div className="pl-4">
+            <div className="ps-4">
               <Select value={fieldtype} onValueChange={setFieldtype}>
                 <SelectTrigger id="field-type" className="w-full">
                   <SelectValue />
@@ -135,7 +135,7 @@ export function AddFieldDialog({
           {fieldtype === "text" && (
             <div className="space-y-2">
               <Label htmlFor="field-rows"><Trans>Rows</Trans></Label>
-              <div className="pl-4">
+              <div className="ps-4">
                 <Input
                   id="field-rows"
                   type="number"
@@ -153,7 +153,7 @@ export function AddFieldDialog({
           {fieldtype === "enumerated" && (
             <div className="space-y-2">
               <Label><Trans>Options</Trans></Label>
-              <div className="pl-4 space-y-2">
+              <div className="ps-4 space-y-2">
                 {options.length > 0 && (
                   <div className="space-y-1">
                     {options.map((opt) => (

@@ -52,7 +52,7 @@ export function ActivityList({ crmId, objectId }: ActivityListProps) {
       {activities.map((activity) => (
         <div
           key={activity.id}
-          className="text-sm border-l-2 border-muted pl-3 py-1"
+          className="text-sm border-s-2 border-muted ps-3 py-1"
         >
           <div className="font-medium">
             {formatAction(activity.action)}

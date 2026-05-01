@@ -124,7 +124,7 @@ export function CommentThread({
       <button
         type="button"
         onClick={() => setCollapsed(false)}
-        className="text-primary ml-2 flex cursor-pointer items-center gap-1 hover:underline"
+        className="text-primary ms-2 flex cursor-pointer items-center gap-1 hover:underline"
       >
         {totalDescendants > 0 ? (
           <span>
@@ -246,7 +246,7 @@ export function CommentThread({
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
                 <DropdownMenuItem onClick={() => onStartReply(comment.id)}>
-                  <Reply className="mr-2 size-4" />
+                  <Reply className="me-2 size-4" />
                   <Trans>Reply</Trans>
                 </DropdownMenuItem>
                 {canEdit && (
@@ -256,7 +256,7 @@ export function CommentThread({
                       setEditBody(comment.content);
                     }}
                   >
-                    <Pencil className="mr-2 size-4" />
+                    <Pencil className="me-2 size-4" />
                     <Trans>Edit</Trans>
                   </DropdownMenuItem>
                 )}
@@ -265,7 +265,7 @@ export function CommentThread({
                     className="text-destructive focus:text-destructive"
                     onClick={() => setDeleting(true)}
                   >
-                    <Trash2 className="mr-2 size-4" />
+                    <Trash2 className="me-2 size-4" />
                     <Trans>Delete</Trans>
                   </DropdownMenuItem>
                 )}
@@ -314,7 +314,7 @@ export function CommentThread({
                     onClick={() =>
                       setReplyFiles((prev) => prev.filter((_, idx) => idx !== i))
                     }
-                    className="text-muted-foreground hover:text-foreground ml-0.5"
+                    className="text-muted-foreground hover:text-foreground ms-0.5"
                   >
                     <X className="size-3.5" />
                   </button>

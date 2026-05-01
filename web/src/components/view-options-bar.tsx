@@ -91,7 +91,7 @@ export function ViewOptionsBar({
               ))}
             </div>
           </div>
-          <div className="flex shrink-0 items-center border-l px-2">
+          <div className="flex shrink-0 items-center border-s px-2">
             <Button
               variant={hasActiveMobileControls ? "secondary" : "ghost"}
               size="icon"
@@ -224,13 +224,13 @@ export function ViewOptionsBar({
               aria-label={t`Toggle watched filter`}
               onClick={() => onFilterChange({ ...filters, watched: !filters.watched })}
             >
-              <Eye className="size-3.5 sm:mr-1" />
+              <Eye className="size-3.5 sm:me-1" />
               <span><Trans>Watched</Trans></span>
             </Button>
 
             {/* Sort (only for list view) */}
             {showSort && (
-              <div className="ml-auto flex items-center gap-2">
+              <div className="ms-auto flex items-center gap-2">
                 <Select
                   value={sort?.field || "rank"}
                   onValueChange={(value) =>

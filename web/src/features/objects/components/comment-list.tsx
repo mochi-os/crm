@@ -214,7 +214,7 @@ export function CommentList({
                     onClick={() =>
                       setNewFiles((prev) => prev.filter((_, idx) => idx !== i))
                     }
-                    className="text-muted-foreground hover:text-foreground ml-0.5"
+                    className="text-muted-foreground hover:text-foreground ms-0.5"
                   >
                     <X className="size-3.5" />
                   </button>

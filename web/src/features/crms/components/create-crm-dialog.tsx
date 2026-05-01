@@ -87,7 +87,7 @@ export function CreateCrmDialog({
       {!hideTrigger && (
         <ResponsiveDialogTrigger asChild>
           <Button>
-            <Plus className="mr-2 size-4" />
+            <Plus className="me-2 size-4" />
             <Trans>Create CRM</Trans>
           </Button>
         </ResponsiveDialogTrigger>
@@ -137,7 +137,7 @@ export function CreateCrmDialog({
               <Trans>Cancel</Trans>
             </Button>
             <Button type="submit" disabled={isPending}>
-              {isPending ? "Creating..." : <><Plus className="mr-2 size-4" /><Trans>Create CRM</Trans></>}
+              {isPending ? "Creating..." : <><Plus className="me-2 size-4" /><Trans>Create CRM</Trans></>}
             </Button>
           </ResponsiveDialogFooter>
         </form>

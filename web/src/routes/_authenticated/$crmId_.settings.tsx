@@ -373,7 +373,7 @@ function GeneralTab({
               size="sm"
             >
               {isUnsubscribing ? (
-                <Loader2 className="mr-2 size-4 animate-spin" />
+                <Loader2 className="me-2 size-4 animate-spin" />
               ) : (
                 "Unsubscribe"
               )}
@@ -393,7 +393,7 @@ function GeneralTab({
               disabled={isDeleting}
               size="sm"
             >
-              <Trash2 className="size-4 mr-2" />
+              <Trash2 className="size-4 me-2" />
               <Trans>Delete</Trans>
             </Button>
           }
@@ -682,7 +682,7 @@ function AccessTab({ crmId }: AccessTabProps) {
       <div className="space-y-4">
         <div className="flex justify-end">
           <Button onClick={() => setDialogOpen(true)} size="sm" disabled={!canManageRules}>
-            <Plus className="h-4 w-4 mr-2" />
+            <Plus className="h-4 w-4 me-2" />
             <Trans>Add Rule</Trans>
           </Button>
         </div>

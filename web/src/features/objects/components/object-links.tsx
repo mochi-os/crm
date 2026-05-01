@@ -227,7 +227,7 @@ export function ObjectLinks({
             {!readOnly && (
               <button
                 type="button"
-                className="hidden group-hover:inline-flex ml-auto text-muted-foreground hover:text-destructive shrink-0"
+                className="hidden group-hover:inline-flex ms-auto text-muted-foreground hover:text-destructive shrink-0"
                 onClick={() =>
                   deleteLinkMutation.mutate({
                     source: link.source,
@@ -246,7 +246,7 @@ export function ObjectLinks({
           <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
             <PopoverTrigger asChild>
               <Button variant="outline" size="sm" className="h-7 text-xs">
-                <Plus className="size-3 mr-1.5" />
+                <Plus className="size-3 me-1.5" />
                 <Trans>Add link</Trans>
               </Button>
             </PopoverTrigger>
@@ -276,7 +276,7 @@ export function ObjectLinks({
                     <button
                       key={obj.id}
                       type="button"
-                      className="w-full text-left px-2 py-1.5 text-xs rounded hover:bg-accent flex items-center gap-1.5"
+                      className="w-full text-start px-2 py-1.5 text-xs rounded hover:bg-accent flex items-center gap-1.5"
                       onClick={() => handleAddLink(obj)}
                       disabled={createLinkMutation.isPending}
                     >

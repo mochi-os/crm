@@ -203,9 +203,9 @@ export function ObjectAttachments({
               disabled={uploadMutation.isPending}
             >
               {uploadMutation.isPending ? (
-                <Loader2 className="size-3 mr-1.5 animate-spin" />
+                <Loader2 className="size-3 me-1.5 animate-spin" />
               ) : (
-                <Upload className="size-3 mr-1.5" />
+                <Upload className="size-3 me-1.5" />
               )}
               Upload
             </Button>

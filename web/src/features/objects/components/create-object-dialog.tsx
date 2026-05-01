@@ -459,7 +459,7 @@ export function CreateObjectDialog({
                     onClick={() => fileInputRef.current?.click()}
                     disabled={createMutation.isPending}
                   >
-                    <Upload className="size-3 mr-1.5" />
+                    <Upload className="size-3 me-1.5" />
                     <Trans>Upload</Trans>
                   </Button>
                 </div>

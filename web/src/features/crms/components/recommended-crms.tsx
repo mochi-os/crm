@@ -124,7 +124,7 @@ export function RecommendedCrms({
         <p className="text-muted-foreground mb-3 text-xs font-medium uppercase tracking-wide">
           <Trans>Recommended CRMs</Trans>
         </p>
-        <div className="divide-border divide-y rounded-lg border text-left">
+        <div className="divide-border divide-y rounded-lg border text-start">
           {filteredRecommendations.map((crm) => {
             const isPending = pendingId === crm.id;
 

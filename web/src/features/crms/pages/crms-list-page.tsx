@@ -95,7 +95,7 @@ export function CrmsListPage() {
             searchSlot={<InlineCrmSearch subscribedIds={subscribedCrmIds} />}
             primaryActionSlot={(
               <Button variant="outline" onClick={openCreateDialog}>
-                <Plus className="mr-2 h-4 w-4" />
+                <Plus className="me-2 h-4 w-4" />
                 <Trans>Create a new CRM</Trans>
               </Button>
             )}
