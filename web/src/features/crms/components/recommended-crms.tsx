@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Trans } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Button, GeneralError, Skeleton, toast, getErrorMessage } from "@mochi/web";
 import { Users, Loader2 } from "lucide-react";
 import crmsApi from "@/api/crms";
@@ -21,6 +21,7 @@ export function RecommendedCrms({
   subscribedIds,
   onSubscribe,
 }: RecommendedCrmsProps) {
+  const { t } = useLingui()
   const [recommendations, setRecommendations] = useState<
     RecommendedCrm[]
   >([]);
@@ -58,7 +59,7 @@ export function RecommendedCrms({
       toast.success(`Subscribed to ${crm.name}`);
       setRecommendations((prev) => prev.filter((p) => p.id !== crm.id));
     } catch (error) {
-      toast.error(getErrorMessage(error, "Failed to subscribe"));
+      toast.error(getErrorMessage(error, t`Failed to subscribe`));
     } finally {
       setPendingId(null);
     }

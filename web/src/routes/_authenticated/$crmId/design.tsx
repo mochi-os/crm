@@ -242,6 +242,7 @@ function ImportDialog({
     label: string,
   ) => void;
 }) {
+  const { t } = useLingui()
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Handle file upload
@@ -255,11 +256,11 @@ function ImportDialog({
         const data = JSON.parse(reader.result as string);
         onSelect(data, undefined, undefined, file.name);
       } catch {
-        toast.error("Invalid JSON file");
+        toast.error(t`Invalid JSON file`);
       }
     };
     reader.onerror = () => {
-      toast.error("Failed to read file");
+      toast.error(t`Failed to read file`);
     };
     reader.readAsText(file);
 

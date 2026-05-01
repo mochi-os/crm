@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useRef } from "react";
+import { useLingui } from '@lingui/react/macro'
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { MessageSquare, Paperclip, Send, X } from "lucide-react";
 import {
@@ -27,6 +28,7 @@ export function CommentList({
   objectId,
   readOnly,
 }: CommentListProps) {
+  const { t } = useLingui()
   const [newComment, setNewComment] = useState("");
   const [newFiles, setNewFiles] = useState<File[]>([]);
   const [replyingTo, setReplyingTo] = useState<string | null>(null);
@@ -80,7 +82,7 @@ export function CommentList({
       });
     },
     onError: (err) => {
-      toast.error(getErrorMessage(err, "Failed to post comment"));
+      toast.error(getErrorMessage(err, t`Failed to post comment`));
     },
   });
 
@@ -105,7 +107,7 @@ export function CommentList({
       });
     },
     onError: (err) => {
-      toast.error(getErrorMessage(err, "Failed to update comment"));
+      toast.error(getErrorMessage(err, t`Failed to update comment`));
     },
   });
 
@@ -122,7 +124,7 @@ export function CommentList({
       });
     },
     onError: (err) => {
-      toast.error(getErrorMessage(err, "Failed to delete comment"));
+      toast.error(getErrorMessage(err, t`Failed to delete comment`));
     },
   });
 

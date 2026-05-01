@@ -586,6 +586,7 @@ interface AccessTabProps {
 }
 
 function AccessTab({ crmId }: AccessTabProps) {
+  const { t } = useLingui()
   const [dialogOpen, setDialogOpen] = useState(false);
   const [userSearchQuery, setUserSearchQuery] = useState("");
 
@@ -647,7 +648,7 @@ function AccessTab({ crmId }: AccessTabProps) {
       toast.success(`Access set for ${subjectName}`);
       await refetchRules();
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to set access level"));
+      toast.error(getErrorMessage(err, t`Failed to set access level`));
       throw err;
     }
   };
@@ -656,10 +657,10 @@ function AccessTab({ crmId }: AccessTabProps) {
     if (!canManageRules) return;
     try {
       await crmsApi.revokeAccess(crmId, subject);
-      toast.success("Access removed");
+      toast.success(t`Access removed`);
       await refetchRules();
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to remove access"));
+      toast.error(getErrorMessage(err, t`Failed to remove access`));
     }
   };
 
@@ -667,10 +668,10 @@ function AccessTab({ crmId }: AccessTabProps) {
     if (!canManageRules) return;
     try {
       await crmsApi.setAccessLevel(crmId, subject, newLevel);
-      toast.success("Access level updated");
+      toast.success(t`Access level updated`);
       await refetchRules();
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to update access level"));
+      toast.error(getErrorMessage(err, t`Failed to update access level`));
     }
   };
 

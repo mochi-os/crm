@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Trans } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { useNavigate } from "@tanstack/react-router";
 import { Search, Loader2, Users } from "lucide-react";
 import { Button, GeneralError, Input, toast, getErrorMessage } from "@mochi/web";
@@ -22,6 +22,7 @@ export function InlineCrmSearch({
   subscribedIds,
   onRefresh,
 }: InlineCrmSearchProps) {
+  const { t } = useLingui()
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [results, setResults] = useState<DirectoryEntry[]>([]);
@@ -98,7 +99,7 @@ export function InlineCrmSearch({
         params: { crmId: crm.fingerprint || crm.id },
       });
     } catch (error) {
-      toast.error(getErrorMessage(error, "Failed to subscribe"));
+      toast.error(getErrorMessage(error, t`Failed to subscribe`));
       setPendingCrmId(null);
     }
   };
