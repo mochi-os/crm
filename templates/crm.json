@@ -1,58 +1,58 @@
 {
   "id": "crm",
-  "version": 1,
-  "name": "CRM",
-  "description": "Customer Relationship Management",
+  "version": 2,
+  "name": "{labels.template_name}",
+  "description": "{labels.template_description}",
   "icon": "users",
   "classes": [
-    {"id": "company", "name": "Company", "rank": 0, "title": "name"},
-    {"id": "contact", "name": "Contact", "rank": 1, "title": "name"},
-    {"id": "deal", "name": "Deal", "rank": 2, "title": "name"},
-    {"id": "activity", "name": "Activity", "rank": 3, "title": "subject"}
+    {"id": "company", "name": "{labels.class.company}", "rank": 0, "title": "name"},
+    {"id": "contact", "name": "{labels.class.contact}", "rank": 1, "title": "name"},
+    {"id": "deal", "name": "{labels.class.deal}", "rank": 2, "title": "name"},
+    {"id": "activity", "name": "{labels.class.activity}", "rank": 3, "title": "subject"}
   ],
   "fields": {
     "company": [
-      {"id": "name", "name": "Name", "fieldtype": "text", "flags": "required,sort", "card": 1, "rank": 0, "rows": 1},
-      {"id": "domain", "name": "Domain", "fieldtype": "text", "flags": "sort", "card": 1, "rank": 1, "rows": 1},
-      {"id": "industry", "name": "Industry", "fieldtype": "enumerated", "flags": "sort", "card": 0, "rank": 2},
-      {"id": "size", "name": "Size", "fieldtype": "enumerated", "flags": "sort", "card": 0, "rank": 3},
-      {"id": "owner", "name": "Owner", "fieldtype": "user", "flags": "", "card": 0, "rank": 4},
-      {"id": "notes", "name": "Notes", "fieldtype": "text", "flags": "", "card": 0, "rank": 5, "rows": 3}
+      {"id": "name", "name": "{labels.field.name}", "fieldtype": "text", "flags": "required,sort", "card": 1, "rank": 0, "rows": 1},
+      {"id": "domain", "name": "{labels.field.domain}", "fieldtype": "text", "flags": "sort", "card": 1, "rank": 1, "rows": 1},
+      {"id": "industry", "name": "{labels.field.industry}", "fieldtype": "enumerated", "flags": "sort", "card": 0, "rank": 2},
+      {"id": "size", "name": "{labels.field.size}", "fieldtype": "enumerated", "flags": "sort", "card": 0, "rank": 3},
+      {"id": "owner", "name": "{labels.field.owner}", "fieldtype": "user", "flags": "", "card": 0, "rank": 4},
+      {"id": "notes", "name": "{labels.field.notes}", "fieldtype": "text", "flags": "", "card": 0, "rank": 5, "rows": 3}
     ],
     "contact": [
-      {"id": "name", "name": "Name", "fieldtype": "text", "flags": "required,sort", "card": 1, "rank": 0, "rows": 1},
-      {"id": "email", "name": "Email", "fieldtype": "text", "flags": "sort", "card": 1, "rank": 1, "rows": 1},
-      {"id": "phone", "name": "Phone", "fieldtype": "text", "flags": "", "card": 0, "rank": 2, "rows": 1},
-      {"id": "jobtitle", "name": "Job title", "fieldtype": "text", "flags": "", "card": 1, "rank": 3, "rows": 1},
-      {"id": "owner", "name": "Owner", "fieldtype": "user", "flags": "", "card": 0, "rank": 4},
-      {"id": "notes", "name": "Notes", "fieldtype": "text", "flags": "", "card": 0, "rank": 5, "rows": 3}
+      {"id": "name", "name": "{labels.field.name}", "fieldtype": "text", "flags": "required,sort", "card": 1, "rank": 0, "rows": 1},
+      {"id": "email", "name": "{labels.field.email}", "fieldtype": "text", "flags": "sort", "card": 1, "rank": 1, "rows": 1},
+      {"id": "phone", "name": "{labels.field.phone}", "fieldtype": "text", "flags": "", "card": 0, "rank": 2, "rows": 1},
+      {"id": "jobtitle", "name": "{labels.field.jobtitle}", "fieldtype": "text", "flags": "", "card": 1, "rank": 3, "rows": 1},
+      {"id": "owner", "name": "{labels.field.owner}", "fieldtype": "user", "flags": "", "card": 0, "rank": 4},
+      {"id": "notes", "name": "{labels.field.notes}", "fieldtype": "text", "flags": "", "card": 0, "rank": 5, "rows": 3}
     ],
     "deal": [
-      {"id": "name", "name": "Name", "fieldtype": "text", "flags": "required,sort", "card": 1, "rank": 0, "rows": 1},
-      {"id": "value", "name": "Value", "fieldtype": "text", "flags": "sort", "card": 1, "rank": 1, "rows": 1},
-      {"id": "stage", "name": "Stage", "fieldtype": "enumerated", "flags": "required,sort", "card": 0, "rank": 2},
-      {"id": "closedate", "name": "Close date", "fieldtype": "date", "flags": "sort", "card": 0, "rank": 3},
-      {"id": "owner", "name": "Owner", "fieldtype": "user", "flags": "", "card": 0, "rank": 4},
-      {"id": "notes", "name": "Notes", "fieldtype": "text", "flags": "", "card": 0, "rank": 5, "rows": 3}
+      {"id": "name", "name": "{labels.field.name}", "fieldtype": "text", "flags": "required,sort", "card": 1, "rank": 0, "rows": 1},
+      {"id": "value", "name": "{labels.field.value}", "fieldtype": "text", "flags": "sort", "card": 1, "rank": 1, "rows": 1},
+      {"id": "stage", "name": "{labels.field.stage}", "fieldtype": "enumerated", "flags": "required,sort", "card": 0, "rank": 2},
+      {"id": "closedate", "name": "{labels.field.closedate}", "fieldtype": "date", "flags": "sort", "card": 0, "rank": 3},
+      {"id": "owner", "name": "{labels.field.owner}", "fieldtype": "user", "flags": "", "card": 0, "rank": 4},
+      {"id": "notes", "name": "{labels.field.notes}", "fieldtype": "text", "flags": "", "card": 0, "rank": 5, "rows": 3}
     ],
     "activity": [
-      {"id": "subject", "name": "Subject", "fieldtype": "text", "flags": "required,sort", "card": 1, "rank": 0, "rows": 1},
-      {"id": "type", "name": "Type", "fieldtype": "enumerated", "flags": "sort", "card": 1, "rank": 1},
-      {"id": "due", "name": "Due", "fieldtype": "date", "flags": "sort", "card": 0, "rank": 2},
-      {"id": "completed", "name": "Completed", "fieldtype": "enumerated", "flags": "sort", "card": 0, "rank": 3},
-      {"id": "owner", "name": "Owner", "fieldtype": "user", "flags": "", "card": 0, "rank": 4},
-      {"id": "notes", "name": "Notes", "fieldtype": "text", "flags": "", "card": 0, "rank": 5, "rows": 3}
+      {"id": "subject", "name": "{labels.field.subject}", "fieldtype": "text", "flags": "required,sort", "card": 1, "rank": 0, "rows": 1},
+      {"id": "type", "name": "{labels.field.type}", "fieldtype": "enumerated", "flags": "sort", "card": 1, "rank": 1},
+      {"id": "due", "name": "{labels.field.due}", "fieldtype": "date", "flags": "sort", "card": 0, "rank": 2},
+      {"id": "completed", "name": "{labels.field.completed}", "fieldtype": "enumerated", "flags": "sort", "card": 0, "rank": 3},
+      {"id": "owner", "name": "{labels.field.owner}", "fieldtype": "user", "flags": "", "card": 0, "rank": 4},
+      {"id": "notes", "name": "{labels.field.notes}", "fieldtype": "text", "flags": "", "card": 0, "rank": 5, "rows": 3}
     ]
   },
   "options": {
     "company": {
       "industry": [
-        {"id": "tech", "name": "Technology", "colour": "#60a5fa", "rank": 0},
-        {"id": "finance", "name": "Finance", "colour": "#4ade80", "rank": 1},
-        {"id": "healthcare", "name": "Healthcare", "colour": "#f87171", "rank": 2},
-        {"id": "retail", "name": "Retail", "colour": "#fbbf24", "rank": 3},
-        {"id": "services", "name": "Services", "colour": "#a78bfa", "rank": 4},
-        {"id": "other", "name": "Other", "colour": "#94a3b8", "rank": 5}
+        {"id": "tech", "name": "{labels.option.industry.tech}", "colour": "#60a5fa", "rank": 0},
+        {"id": "finance", "name": "{labels.option.industry.finance}", "colour": "#4ade80", "rank": 1},
+        {"id": "healthcare", "name": "{labels.option.industry.healthcare}", "colour": "#f87171", "rank": 2},
+        {"id": "retail", "name": "{labels.option.industry.retail}", "colour": "#fbbf24", "rank": 3},
+        {"id": "services", "name": "{labels.option.industry.services}", "colour": "#a78bfa", "rank": 4},
+        {"id": "other", "name": "{labels.option.industry.other}", "colour": "#94a3b8", "rank": 5}
       ],
       "size": [
         {"id": "small", "name": "1-50", "colour": "#94a3b8", "rank": 0},
@@ -63,24 +63,24 @@
     },
     "deal": {
       "stage": [
-        {"id": "lead", "name": "Lead", "colour": "#94a3b8", "rank": 0},
-        {"id": "qualified", "name": "Qualified", "colour": "#60a5fa", "rank": 1},
-        {"id": "proposal", "name": "Proposal", "colour": "#fbbf24", "rank": 2},
-        {"id": "negotiation", "name": "Negotiation", "colour": "#fb923c", "rank": 3},
-        {"id": "won", "name": "Won", "colour": "#4ade80", "rank": 4},
-        {"id": "lost", "name": "Lost", "colour": "#f87171", "rank": 5}
+        {"id": "lead", "name": "{labels.option.stage.lead}", "colour": "#94a3b8", "rank": 0},
+        {"id": "qualified", "name": "{labels.option.stage.qualified}", "colour": "#60a5fa", "rank": 1},
+        {"id": "proposal", "name": "{labels.option.stage.proposal}", "colour": "#fbbf24", "rank": 2},
+        {"id": "negotiation", "name": "{labels.option.stage.negotiation}", "colour": "#fb923c", "rank": 3},
+        {"id": "won", "name": "{labels.option.stage.won}", "colour": "#4ade80", "rank": 4},
+        {"id": "lost", "name": "{labels.option.stage.lost}", "colour": "#f87171", "rank": 5}
       ]
     },
     "activity": {
       "type": [
-        {"id": "call", "name": "Call", "colour": "#60a5fa", "rank": 0},
-        {"id": "email", "name": "Email", "colour": "#4ade80", "rank": 1},
-        {"id": "meeting", "name": "Meeting", "colour": "#fbbf24", "rank": 2},
-        {"id": "task", "name": "Task", "colour": "#a78bfa", "rank": 3}
+        {"id": "call", "name": "{labels.option.type.call}", "colour": "#60a5fa", "rank": 0},
+        {"id": "email", "name": "{labels.option.type.email}", "colour": "#4ade80", "rank": 1},
+        {"id": "meeting", "name": "{labels.option.type.meeting}", "colour": "#fbbf24", "rank": 2},
+        {"id": "task", "name": "{labels.option.type.task}", "colour": "#a78bfa", "rank": 3}
       ],
       "completed": [
-        {"id": "no", "name": "No", "colour": "#94a3b8", "rank": 0},
-        {"id": "yes", "name": "Yes", "colour": "#4ade80", "rank": 1}
+        {"id": "no", "name": "{labels.option.completed.no}", "colour": "#94a3b8", "rank": 0},
+        {"id": "yes", "name": "{labels.option.completed.yes}", "colour": "#4ade80", "rank": 1}
       ]
     }
   },
@@ -91,10 +91,10 @@
     "activity": ["company", "contact", "deal"]
   },
   "views": [
-    {"id": "pipeline", "name": "Pipeline", "viewtype": "board", "columns": "stage", "fields": "name,value,closedate,owner", "classes": ["deal"]},
-    {"id": "deals", "name": "Deals", "viewtype": "list", "fields": "name,value,stage,closedate,owner", "classes": ["deal"]},
-    {"id": "contacts", "name": "Contacts", "viewtype": "list", "fields": "name,email,phone,jobtitle,owner", "classes": ["contact"]},
-    {"id": "companies", "name": "Companies", "viewtype": "list", "fields": "name,domain,industry,size,owner", "classes": ["company"]},
-    {"id": "activities", "name": "Activities", "viewtype": "list", "fields": "subject,type,due,completed,owner", "classes": ["activity"]}
+    {"id": "pipeline", "name": "{labels.view.pipeline}", "viewtype": "board", "columns": "stage", "fields": "name,value,closedate,owner", "classes": ["deal"]},
+    {"id": "deals", "name": "{labels.view.deals}", "viewtype": "list", "fields": "name,value,stage,closedate,owner", "classes": ["deal"]},
+    {"id": "contacts", "name": "{labels.view.contacts}", "viewtype": "list", "fields": "name,email,phone,jobtitle,owner", "classes": ["contact"]},
+    {"id": "companies", "name": "{labels.view.companies}", "viewtype": "list", "fields": "name,domain,industry,size,owner", "classes": ["company"]},
+    {"id": "activities", "name": "{labels.view.activities}", "viewtype": "list", "fields": "subject,type,due,completed,owner", "classes": ["activity"]}
   ]
 }
