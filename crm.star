@@ -2,7 +2,7 @@
 # Copyright Alistair Cunningham 2026
 
 def notify(topic, object="", title="", body="", url=""):
-	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notification_topic_" + topic.replace("/", "_")))
+	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")))
 
 # Helper to create P2P message headers
 def p2p_headers(from_id, to_id, event):
@@ -695,7 +695,7 @@ def action_crm_list(a):
 def action_crm_create(a):
 
 	name = a.input("name")
-	if not name or not mochi.valid(name, "name"):
+	if not name or not mochi.text.valid(name, "name"):
 		a.error_label(400, "errors.invalid_name")
 		return
 
@@ -884,7 +884,7 @@ def action_crm_update(a):
 	now = mochi.time.now()
 
 	if name:
-		if not mochi.valid(name, "name"):
+		if not mochi.text.valid(name, "name"):
 			a.error_label(400, "errors.invalid_name")
 			return
 		mochi.db.execute("update crms set name=?, updated=? where id=?", name, now, crm_id)
@@ -1191,7 +1191,7 @@ def resolve_crm(a):
 	crm_id = a.input("crm")
 	if not crm_id:
 		return None
-	if mochi.valid(crm_id, "fingerprint"):
+	if mochi.text.valid(crm_id, "fingerprint"):
 		row = mochi.db.row("select id from crms where fingerprint=?", crm_id)
 		if row:
 			return row["id"]
@@ -3996,14 +3996,14 @@ def action_search(a):
 	all_crms = None
 
 	# Check if search term is an entity ID (49-51 word characters)
-	if mochi.valid(search, "entity"):
+	if mochi.text.valid(search, "entity"):
 		entry = mochi.directory.get(search)
 		if entry and entry.get("class") == "crm":
 			results.append(entry)
 
 	# Check if search term is a fingerprint (9 alphanumeric, with or without hyphens)
 	fingerprint = search.replace("-", "")
-	if mochi.valid(fingerprint, "fingerprint"):
+	if mochi.text.valid(fingerprint, "fingerprint"):
 		matches = mochi.directory.search("crm", "", False, fingerprint=fingerprint)
 		for entry in matches:
 			found = False
@@ -4036,7 +4036,7 @@ def action_search(a):
 				if "#" in crm_id:
 					crm_id = crm_id.split("#")[0]
 
-			if mochi.valid(crm_id, "entity"):
+			if mochi.text.valid(crm_id, "entity"):
 				entry = mochi.directory.get(crm_id)
 				if entry and entry.get("class") == "crm":
 					# Avoid duplicates
@@ -4062,7 +4062,7 @@ def action_search(a):
 							})
 
 			# Try as fingerprint — check local directory first, then probe remote
-			elif mochi.valid(crm_id, "fingerprint"):
+			elif mochi.text.valid(crm_id, "fingerprint"):
 				if all_crms == None:
 					all_crms = mochi.directory.search("crm", "", False)
 				for entry in all_crms:
@@ -4173,7 +4173,7 @@ def action_probe(a):
 		a.error_label(400, "errors.could_not_extract_server_from_url")
 		return
 
-	if not crm_id or (not mochi.valid(crm_id, "entity") and not mochi.valid(crm_id, "fingerprint")):
+	if not crm_id or (not mochi.text.valid(crm_id, "entity") and not mochi.text.valid(crm_id, "fingerprint")):
 		a.error_label(400, "errors.could_not_extract_valid_crm_id_from_url")
 		return
 
@@ -4244,7 +4244,7 @@ def action_subscribe(a):
 
 	crm_id = a.input("crm")
 	server = a.input("server")
-	if not mochi.valid(crm_id, "entity"):
+	if not mochi.text.valid(crm_id, "entity"):
 		a.error_label(400, "errors.invalid_crm_id")
 		return
 
@@ -4314,7 +4314,7 @@ def action_unsubscribe(a):
 	user_id = a.user.identity.id
 
 	crm_id = a.input("crm")
-	if not mochi.valid(crm_id, "entity") and not mochi.valid(crm_id, "fingerprint"):
+	if not mochi.text.valid(crm_id, "entity") and not mochi.text.valid(crm_id, "fingerprint"):
 		a.error_label(400, "errors.invalid_crm_id")
 		return
 
@@ -4653,7 +4653,7 @@ def event_subscribe(e):
 		return
 
 	subscriber_id = e.header("from")
-	if not mochi.valid(subscriber_id, "entity"):
+	if not mochi.text.valid(subscriber_id, "entity"):
 		return
 
 	# Check subscriber has at least view access
@@ -4661,7 +4661,7 @@ def event_subscribe(e):
 		return
 
 	name = e.content("name")
-	if not mochi.valid(name, "line"):
+	if not mochi.text.valid(name, "line"):
 		return
 
 	now = mochi.time.now()
