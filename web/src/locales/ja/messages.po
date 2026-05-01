@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/editor/components/edit-dialogs.tsx:764
+msgid "(itself)"
+msgstr "(自身)"
+
 #: ../../../lib/web/src/features/errors/forbidden.tsx:12
 msgid "Access Forbidden"
 msgstr "アクセスが禁止されています"
@@ -21,15 +25,15 @@ msgstr "アクセスが禁止されています"
 msgid "Access level"
 msgstr "アクセスレベル"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:671
+#: src/routes/_authenticated/$crmId_.settings.tsx:672
 msgid "Access level updated"
 msgstr "アクセスレベルを更新しました"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:680
+#: src/routes/_authenticated/$crmId_.settings.tsx:681
 msgid "Access Management"
 msgstr "アクセス管理"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:660
+#: src/routes/_authenticated/$crmId_.settings.tsx:661
 msgid "Access removed"
 msgstr "アクセスを削除しました"
 
@@ -49,7 +53,7 @@ msgstr "コメントを追加…"
 msgid "Add a new account"
 msgstr "新しいアカウントを追加"
 
-#: src/features/editor/components/add-dialogs.tsx:107
+#: src/features/editor/components/add-dialogs.tsx:98
 msgid "Add a new field to this class"
 msgstr "このクラスに新しいフィールドを追加"
 
@@ -58,25 +62,27 @@ msgid "Add access"
 msgstr "アクセスを追加"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx:115
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:278
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:279
 msgid "Add account"
 msgstr "アカウントを追加"
 
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:287
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:288
 msgid "Add an account to receive notifications and use services."
 msgstr "通知を受け取り、サービスを利用するには、アカウントを追加してください。"
 
-#: src/features/editor/components/edit-dialogs.tsx:844
+#: src/features/editor/components/edit-dialogs.tsx:671
+#: src/features/editor/components/edit-dialogs.tsx:846
 msgid "Add class"
 msgstr "クラスを追加"
 
-#: src/routes/_authenticated/$crmId/index.tsx:858
+#: src/routes/_authenticated/$crmId/index.tsx:859
+#: src/routes/_authenticated/$crmId/index.tsx:1021
 msgid "Add column"
 msgstr "列を追加"
 
-#: src/features/editor/components/add-dialogs.tsx:106
-#: src/features/editor/components/add-dialogs.tsx:221
-#: src/features/editor/components/edit-dialogs.tsx:839
+#: src/features/editor/components/add-dialogs.tsx:97
+#: src/features/editor/components/add-dialogs.tsx:214
+#: src/features/editor/components/edit-dialogs.tsx:841
 msgid "Add field"
 msgstr "フィールドを追加"
 
@@ -88,12 +94,12 @@ msgstr "リンクを追加"
 msgid "Add new account"
 msgstr "新しいアカウントを追加"
 
-#: src/features/editor/components/edit-dialogs.tsx:1069
+#: src/features/editor/components/edit-dialogs.tsx:1071
 #: src/features/editor/components/option-dialog.tsx:142
 msgid "Add option"
 msgstr "オプションを追加"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:687
+#: src/routes/_authenticated/$crmId_.settings.tsx:688
 msgid "Add Rule"
 msgstr "ルールを追加"
 
@@ -105,7 +111,8 @@ msgstr "チーム/アプリを追加"
 msgid "Add to existing notifications"
 msgstr "既存の通知に追加"
 
-#: src/features/editor/components/edit-dialogs.tsx:493
+#: src/features/editor/components/edit-dialogs.tsx:266
+#: src/features/editor/components/edit-dialogs.tsx:495
 msgid "Add view"
 msgstr "ビューを追加"
 
@@ -121,13 +128,17 @@ msgstr "AI"
 msgid "All"
 msgstr "すべて"
 
-#: src/components/layout/crms-layout.tsx:45
+#: src/components/layout/crms-layout.tsx:46
 msgid "All CRMs"
 msgstr "すべての CRM"
 
 #: src/features/crms/components/create-crm-dialog.tsx:121
 msgid "Allow anyone to search for CRM"
 msgstr "誰でも CRM を検索できるようにする"
+
+#: src/features/editor/components/edit-dialogs.tsx:1014
+msgid "Allow sort by"
+msgstr "並べ替えを許可"
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:56
 msgid "Asc"
@@ -165,15 +176,15 @@ msgstr "CRM 一覧に戻る"
 msgid "Back to Home"
 msgstr "ホームに戻る"
 
-#: src/features/editor/components/edit-dialogs.tsx:308
+#: src/features/editor/components/edit-dialogs.tsx:310
 msgid "Board"
 msgstr "ボード"
 
-#: src/features/editor/components/edit-dialogs.tsx:384
+#: src/features/editor/components/edit-dialogs.tsx:386
 msgid "Border colour"
 msgstr "枠線の色"
 
-#: src/features/editor/components/edit-dialogs.tsx:744
+#: src/features/editor/components/edit-dialogs.tsx:746
 msgid "Can be child of"
 msgstr "親にできるもの"
 
@@ -188,13 +199,21 @@ msgstr "親にできるもの"
 #: src/features/editor/components/option-dialog.tsx:134
 #: src/features/objects/components/comment-thread.tsx:171
 #: src/routes/_authenticated/$crmId/design.tsx:301
-#: src/routes/_authenticated/$crmId/index.tsx:914
+#: src/routes/_authenticated/$crmId/index.tsx:915
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:129
+#: ../../../lib/web/src/components/notification-category-button.tsx:130
 msgid "Category for this notification"
 msgstr "この通知のカテゴリ"
+
+#: src/features/editor/components/add-dialogs.tsx:124
+msgid "Checkbox"
+msgstr "チェックボックス"
+
+#: src/features/editor/components/add-dialogs.tsx:125
+msgid "Checklist"
+msgstr "チェックリスト"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:315
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -238,6 +257,11 @@ msgstr "選択をクリア"
 msgid "Close"
 msgstr "閉じる"
 
+#: src/features/editor/components/edit-dialogs.tsx:269
+#: src/features/editor/components/edit-dialogs.tsx:674
+msgid "Close dialog"
+msgstr "ダイアログを閉じる"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:97
 msgid "Close navigation"
 msgstr "ナビゲーションを閉じる"
@@ -254,7 +278,7 @@ msgstr "サイドバーを折りたたむ"
 msgid "Colour"
 msgstr "色"
 
-#: src/features/editor/components/edit-dialogs.tsx:343
+#: src/features/editor/components/edit-dialogs.tsx:345
 msgid "Columns group by"
 msgstr "列のグループ化"
 
@@ -266,7 +290,7 @@ msgstr "近日公開!"
 msgid "Compact"
 msgstr "コンパクト"
 
-#: src/features/editor/components/edit-dialogs.tsx:670
+#: src/features/editor/components/edit-dialogs.tsx:672
 msgid "Configure class settings"
 msgstr "クラスの設定"
 
@@ -274,7 +298,7 @@ msgstr "クラスの設定"
 msgid "Configure option settings"
 msgstr "オプションの設定"
 
-#: src/features/editor/components/edit-dialogs.tsx:265
+#: src/features/editor/components/edit-dialogs.tsx:267
 msgid "Configure view settings"
 msgstr "ビューの設定"
 
@@ -294,7 +318,7 @@ msgstr "コピー"
 #: src/features/board/components/board-column.tsx:536
 #: src/features/board/components/board-column.tsx:683
 #: src/features/objects/components/create-object-dialog.tsx:335
-#: src/features/tree/components/tree-view.tsx:361
+#: src/features/tree/components/tree-view.tsx:362
 msgid "Create"
 msgstr "作成"
 
@@ -307,7 +331,7 @@ msgstr "新しい CRM を作成"
 msgid "Create a new CRM object."
 msgstr "新しい CRM オブジェクトを作成します。"
 
-#: src/components/layout/crms-layout.tsx:52
+#: src/components/layout/crms-layout.tsx:53
 #: src/features/crms/components/create-crm-dialog.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:101
 #: src/features/crms/components/create-crm-dialog.tsx:140
@@ -318,7 +342,7 @@ msgstr "CRM を作成"
 msgid "Create object"
 msgstr "オブジェクトを作成"
 
-#: src/features/editor/components/edit-dialogs.tsx:472
+#: src/features/editor/components/edit-dialogs.tsx:474
 msgid "Created"
 msgstr "作成日"
 
@@ -342,7 +366,7 @@ msgstr "CRM を利用できません"
 msgid "Crm updated"
 msgstr "CRM を更新しました"
 
-#: src/components/layout/crms-layout.tsx:57
+#: src/components/layout/crms-layout.tsx:58
 #: src/features/crms/pages/crms-list-page.tsx:52
 #: src/features/crms/pages/crms-list-page.tsx:72
 #: src/features/crms/pages/crms-list-page.tsx:93
@@ -361,6 +385,10 @@ msgstr "ダーク"
 msgid "Dark mode"
 msgstr "ダークモード"
 
+#: src/features/editor/components/add-dialogs.tsx:126
+msgid "Date"
+msgstr "日付"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:297
 msgid "Default"
 msgstr "デフォルト"
@@ -369,14 +397,14 @@ msgstr "デフォルト"
 msgid "Default AI account"
 msgstr "デフォルト AI アカウント"
 
-#: src/features/editor/components/edit-dialogs.tsx:464
+#: src/features/editor/components/edit-dialogs.tsx:466
 msgid "Default sort"
 msgstr "デフォルトの並び順"
 
 #: src/features/board/components/board-column.tsx:555
 #: src/features/objects/components/comment-thread.tsx:231
 #: src/features/objects/components/comment-thread.tsx:268
-#: src/routes/_authenticated/$crmId_.settings.tsx:396
+#: src/routes/_authenticated/$crmId_.settings.tsx:397
 msgid "Delete"
 msgstr "削除"
 
@@ -384,11 +412,19 @@ msgstr "削除"
 msgid "Delete attachment"
 msgstr "添付を削除"
 
-#: src/features/editor/components/edit-dialogs.tsx:685
+#: src/features/editor/components/edit-dialogs.tsx:687
 msgid "Delete class"
 msgstr "クラスを削除"
 
-#: src/features/editor/components/edit-dialogs.tsx:1078
+#: src/routes/_authenticated/$crmId_.settings.tsx:387
+msgid "Delete crm"
+msgstr "CRMを削除"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:416
+msgid "Delete crm?"
+msgstr "CRMを削除しますか？"
+
+#: src/features/editor/components/edit-dialogs.tsx:1080
 msgid "Delete field"
 msgstr "フィールドを削除"
 
@@ -396,7 +432,12 @@ msgstr "フィールドを削除"
 msgid "Delete option"
 msgstr "オプションを削除"
 
-#: src/features/editor/components/edit-dialogs.tsx:280
+#. placeholder {0}: opt.name
+#: src/features/editor/components/edit-dialogs.tsx:1061
+msgid "Delete option {0}"
+msgstr "オプション「{0}」を削除"
+
+#: src/features/editor/components/edit-dialogs.tsx:282
 msgid "Delete view"
 msgstr "ビューを削除"
 
@@ -404,8 +445,12 @@ msgstr "ビューを削除"
 msgid "Desc"
 msgstr "降順"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:337
+msgid "Description"
+msgstr "説明"
+
 #: src/routes/_authenticated/$crmId/design.tsx:129
-#: src/routes/_authenticated/$crmId/index.tsx:873
+#: src/routes/_authenticated/$crmId/index.tsx:874
 msgid "Design"
 msgstr "デザイン"
 
@@ -421,18 +466,23 @@ msgstr "詳細パネル"
 msgid "Direction"
 msgstr "方向"
 
+#: src/routes/_authenticated/$crmId/index.tsx:937
+#: src/routes/_authenticated/$crmId/index.tsx:938
+msgid "Dismiss board hint"
+msgstr "ボードのヒントを閉じる"
+
 #: ../../../lib/web/src/components/ui/sidebar.tsx:234
 msgid "Displays the mobile sidebar."
 msgstr "モバイルサイドバーを表示します。"
 
-#: src/features/editor/components/edit-dialogs.tsx:498
-#: src/features/editor/components/edit-dialogs.tsx:849
-#: src/features/editor/components/edit-dialogs.tsx:1083
+#: src/features/editor/components/edit-dialogs.tsx:500
+#: src/features/editor/components/edit-dialogs.tsx:851
+#: src/features/editor/components/edit-dialogs.tsx:1085
 #: src/features/objects/components/object-detail-panel.tsx:335
 msgid "Done"
 msgstr "完了"
 
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:930
 msgid "Double click on a column to add content"
 msgstr "列をダブルクリックして内容を追加"
 
@@ -440,7 +490,7 @@ msgstr "列をダブルクリックして内容を追加"
 msgid "Download backup first"
 msgstr "先にバックアップをダウンロード"
 
-#: src/routes/_authenticated/$crmId/index.tsx:910
+#: src/routes/_authenticated/$crmId/index.tsx:911
 msgid "Drag columns to re-order them"
 msgstr "列をドラッグして並べ替えます"
 
@@ -449,13 +499,30 @@ msgstr "列をドラッグして並べ替えます"
 msgid "Edit"
 msgstr "編集"
 
-#: src/features/editor/components/edit-dialogs.tsx:960
+#: src/features/editor/components/edit-dialogs.tsx:671
+msgid "Edit class"
+msgstr "クラスを編集"
+
+#: src/features/editor/components/edit-dialogs.tsx:962
 msgid "Edit field"
 msgstr "フィールドを編集"
 
-#: src/features/editor/components/edit-dialogs.tsx:961
+#: src/features/editor/components/edit-dialogs.tsx:963
 msgid "Edit field settings"
 msgstr "フィールド設定を編集"
+
+#. placeholder {0}: opt.name
+#: src/features/editor/components/edit-dialogs.tsx:1050
+msgid "Edit option {0}"
+msgstr "オプション「{0}」を編集"
+
+#: src/features/editor/components/edit-dialogs.tsx:266
+msgid "Edit view"
+msgstr "ビューを編集"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:344
+msgid "Entity ID"
+msgstr "エンティティID"
 
 #: src/features/objects/components/object-detail-panel.tsx:253
 msgid "Error"
@@ -465,7 +532,7 @@ msgstr "エラー"
 msgid "Expand sidebar"
 msgstr "サイドバーを展開"
 
-#: src/routes/_authenticated/$crmId/index.tsx:879
+#: src/routes/_authenticated/$crmId/index.tsx:880
 msgid "Export CSV"
 msgstr "CSV をエクスポート"
 
@@ -541,7 +608,7 @@ msgstr "コメントの投稿に失敗しました"
 msgid "Failed to read file"
 msgstr "ファイルの読み取りに失敗しました"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:663
+#: src/routes/_authenticated/$crmId_.settings.tsx:664
 msgid "Failed to remove access"
 msgstr "アクセスの削除に失敗しました"
 
@@ -553,7 +620,7 @@ msgstr "フィールドの並べ替えに失敗しました"
 msgid "Failed to reorder views"
 msgstr "ビューの並べ替えに失敗しました"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:651
+#: src/routes/_authenticated/$crmId_.settings.tsx:652
 msgid "Failed to set access level"
 msgstr "アクセスレベルの設定に失敗しました"
 
@@ -567,7 +634,7 @@ msgstr "購読に失敗しました"
 msgid "Failed to unsubscribe"
 msgstr "購読解除に失敗しました"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:674
+#: src/routes/_authenticated/$crmId_.settings.tsx:675
 msgid "Failed to update access level"
 msgstr "アクセスレベルの更新に失敗しました"
 
@@ -587,7 +654,7 @@ msgstr "フィールドの更新に失敗しました"
 msgid "Failed to upload attachment"
 msgstr "添付ファイルのアップロードに失敗しました"
 
-#: src/features/editor/components/edit-dialogs.tsx:769
+#: src/features/editor/components/edit-dialogs.tsx:771
 msgid "Fields"
 msgstr "フィールド"
 
@@ -597,12 +664,16 @@ msgstr "フィールド"
 msgid "Files"
 msgstr "ファイル"
 
-#: src/components/layout/crms-layout.tsx:51
+#: src/components/layout/crms-layout.tsx:52
 #: src/routes/_authenticated/find.tsx:65
 msgid "Find CRMs"
 msgstr "CRM を検索"
 
-#: src/features/editor/components/edit-dialogs.tsx:1008
+#: src/routes/_authenticated/$crmId_.settings.tsx:349
+msgid "Fingerprint"
+msgstr "フィンガープリント"
+
+#: src/features/editor/components/edit-dialogs.tsx:1010
 msgid "Flags"
 msgstr "フラグ"
 
@@ -656,6 +727,10 @@ msgstr "ホーム"
 msgid "Hot"
 msgstr "人気"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:324
+msgid "Identity"
+msgstr "アイデンティティ"
+
 #: src/routes/_authenticated/$crmId/design.tsx:276
 msgid "Import a design configuration"
 msgstr "デザイン設定をインポート"
@@ -690,7 +765,7 @@ msgid "Keyboard shortcuts"
 msgstr "キーボードショートカット"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:273
-#: src/features/editor/components/edit-dialogs.tsx:302
+#: src/features/editor/components/edit-dialogs.tsx:304
 msgid "Layout"
 msgstr "レイアウト"
 
@@ -710,7 +785,7 @@ msgstr "ライト"
 msgid "Links"
 msgstr "リンク"
 
-#: src/features/editor/components/edit-dialogs.tsx:314
+#: src/features/editor/components/edit-dialogs.tsx:316
 msgid "List"
 msgstr "リスト"
 
@@ -756,11 +831,12 @@ msgstr "メニュー"
 
 #: src/features/board/components/board-column.tsx:586
 #: src/features/crms/components/create-crm-dialog.tsx:109
-#: src/features/editor/components/add-dialogs.tsx:114
-#: src/features/editor/components/edit-dialogs.tsx:289
-#: src/features/editor/components/edit-dialogs.tsx:694
-#: src/features/editor/components/edit-dialogs.tsx:965
+#: src/features/editor/components/add-dialogs.tsx:105
+#: src/features/editor/components/edit-dialogs.tsx:291
+#: src/features/editor/components/edit-dialogs.tsx:696
+#: src/features/editor/components/edit-dialogs.tsx:967
 #: src/features/editor/components/option-dialog.tsx:100
+#: src/routes/_authenticated/$crmId_.settings.tsx:329
 msgid "Name"
 msgstr "名前"
 
@@ -770,7 +846,7 @@ msgstr "名前が必要です"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:40
 #: src/features/objects/components/create-object-dialog.tsx:320
-#: src/routes/_authenticated/$crmId/index.tsx:830
+#: src/routes/_authenticated/$crmId/index.tsx:831
 msgid "New"
 msgstr "新規"
 
@@ -782,7 +858,7 @@ msgstr "アクセスルールが設定されていません。このリソース
 msgid "No comments yet"
 msgstr "まだコメントがありません"
 
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:285
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:286
 msgid "No connected accounts"
 msgstr "接続されたアカウントがありません"
 
@@ -799,7 +875,7 @@ msgstr "利用可能なグループがありません"
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "まだ作成可能な項目タイプがありません。必要な親項目を先に作成してください。"
 
-#: ../../../lib/web/src/components/language-picker.tsx:96
+#: ../../../lib/web/src/components/language-picker.tsx:116
 msgid "No matches."
 msgstr "一致するものがありません。"
 
@@ -824,7 +900,7 @@ msgstr "結果が見つかりません。"
 msgid "No time zone found."
 msgstr "タイムゾーンが見つかりません。"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:133
+#: ../../../lib/web/src/components/notification-category-button.tsx:134
 msgid "No topic record yet — try again after the next notification."
 msgstr "まだトピック記録がありません — 次の通知後にもう一度お試しください。"
 
@@ -837,16 +913,20 @@ msgid "No views"
 msgstr "ビューがありません"
 
 #: ../../../lib/web/src/components/person-picker.tsx:332
-#: src/features/editor/components/edit-dialogs.tsx:370
-#: src/features/editor/components/edit-dialogs.tsx:400
-#: src/features/editor/components/edit-dialogs.tsx:471
-#: src/features/editor/components/edit-dialogs.tsx:731
+#: src/features/editor/components/edit-dialogs.tsx:369
+#: src/features/editor/components/edit-dialogs.tsx:372
+#: src/features/editor/components/edit-dialogs.tsx:399
+#: src/features/editor/components/edit-dialogs.tsx:402
+#: src/features/editor/components/edit-dialogs.tsx:470
+#: src/features/editor/components/edit-dialogs.tsx:473
+#: src/features/editor/components/edit-dialogs.tsx:730
+#: src/features/editor/components/edit-dialogs.tsx:733
 #: src/features/objects/components/create-object-dialog.tsx:378
 #: src/features/objects/components/object-detail-panel.tsx:409
 msgid "None"
 msgstr "なし"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:557
+#: src/routes/_authenticated/$crmId_.settings.tsx:558
 msgid "Not set"
 msgstr "未設定"
 
@@ -855,7 +935,8 @@ msgstr "未設定"
 msgid "Notifications"
 msgstr "通知"
 
-#: src/features/editor/components/edit-dialogs.tsx:473
+#: src/features/editor/components/add-dialogs.tsx:127
+#: src/features/editor/components/edit-dialogs.tsx:475
 msgid "Number"
 msgstr "数値"
 
@@ -863,16 +944,32 @@ msgstr "数値"
 msgid "Oops! Page Not Found!"
 msgstr "ページが見つかりません!"
 
+#: src/features/editor/components/edit-dialogs.tsx:680
+msgid "Open class actions"
+msgstr "クラスのアクションを開く"
+
 #: src/routes/_authenticated/$crmId/design.tsx:163
 msgid "Open design actions"
 msgstr "デザイン操作を開く"
+
+#: src/routes/_authenticated/$crmId/index.tsx:839
+msgid "Open page actions"
+msgstr "ページのアクションを開く"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:51
 msgid "Open theme settings"
 msgstr "テーマ設定を開く"
 
-#: src/features/editor/components/add-dialogs.tsx:162
-#: src/features/editor/components/edit-dialogs.tsx:1027
+#: src/features/editor/components/edit-dialogs.tsx:275
+msgid "Open view actions"
+msgstr "ビューのアクションを開く"
+
+#: src/features/editor/components/add-dialogs.tsx:187
+msgid "Option name"
+msgstr "オプション名"
+
+#: src/features/editor/components/add-dialogs.tsx:155
+#: src/features/editor/components/edit-dialogs.tsx:1029
 msgid "Options"
 msgstr "オプション"
 
@@ -894,7 +991,7 @@ msgstr "親"
 msgid "Profile"
 msgstr "プロフィール"
 
-#: src/routes/_authenticated/$crmId/index.tsx:862
+#: src/routes/_authenticated/$crmId/index.tsx:863
 msgid "Re-order columns"
 msgstr "列を並べ替え"
 
@@ -913,14 +1010,19 @@ msgid "Redirecting to login."
 msgstr "ログイン画面にリダイレクトしています。"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:256
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:170
-#: src/features/editor/components/add-dialogs.tsx:184
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:171
+#: src/features/editor/components/add-dialogs.tsx:177
 msgid "Remove"
 msgstr "削除"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:248
 msgid "Remove access?"
 msgstr "アクセスを削除しますか?"
+
+#. placeholder {0}: field.name || field.id
+#: src/features/editor/components/edit-dialogs.tsx:811
+msgid "Remove field {0}"
+msgstr "フィールド「{0}」を削除"
 
 #: src/features/board/components/board-column.tsx:547
 #: src/features/board/components/board-column.tsx:603
@@ -948,6 +1050,10 @@ msgstr "置き換え中..."
 msgid "Reply"
 msgstr "返信"
 
+#: src/features/editor/components/edit-dialogs.tsx:1013
+msgid "Required"
+msgstr "必須"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:77
 msgid "Reset"
 msgstr "リセット"
@@ -956,7 +1062,7 @@ msgstr "リセット"
 msgid "Reset all settings to default values"
 msgstr "すべての設定をデフォルト値にリセット"
 
-#: src/components/layout/crms-layout.tsx:64
+#: src/components/layout/crms-layout.tsx:65
 msgid "Retry CRMs load"
 msgstr "CRM の再読み込み"
 
@@ -964,12 +1070,12 @@ msgstr "CRM の再読み込み"
 msgid "Right to Left"
 msgstr "右から左"
 
-#: src/features/editor/components/add-dialogs.tsx:144
-#: src/features/editor/components/edit-dialogs.tsx:991
+#: src/features/editor/components/add-dialogs.tsx:137
+#: src/features/editor/components/edit-dialogs.tsx:993
 msgid "Rows"
 msgstr "行"
 
-#: src/features/editor/components/edit-dialogs.tsx:363
+#: src/features/editor/components/edit-dialogs.tsx:365
 msgid "Rows group by"
 msgstr "行のグループ化"
 
@@ -983,7 +1089,7 @@ msgstr "セールスCRM"
 
 #: src/features/editor/components/option-dialog.tsx:137
 #: src/features/objects/components/comment-thread.tsx:182
-#: src/routes/_authenticated/$crmId/index.tsx:921
+#: src/routes/_authenticated/$crmId/index.tsx:922
 msgid "Save"
 msgstr "保存"
 
@@ -1021,6 +1127,14 @@ msgstr "このビューを検索、ウォッチ、並べ替えします。"
 msgid "Searching..."
 msgstr "検索中..."
 
+#: src/features/editor/components/add-dialogs.tsx:128
+msgid "Select"
+msgstr "セレクト"
+
+#: src/features/editor/components/edit-dialogs.tsx:349
+msgid "Select a field"
+msgstr "フィールドを選択"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:146
 msgid "Select a user, group, or other rule to grant access."
 msgstr "アクセスを付与するユーザー、グループ、または他のルールを選択してください。"
@@ -1049,6 +1163,10 @@ msgstr "サイトの表示方向を選択"
 msgid "Select theme preference"
 msgstr "テーマの設定を選択"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:358
+msgid "Server"
+msgstr "サーバー"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx:142
 msgid "Set origin and destination"
 msgstr "出発地と目的地を設定"
@@ -1058,15 +1176,15 @@ msgstr "出発地と目的地を設定"
 #: ../../../lib/web/src/components/layout/nav-user.tsx:195
 #: src/routes/_authenticated/$crmId_.settings.tsx:182
 #: src/routes/_authenticated/$crmId_.settings.tsx:205
-#: src/routes/_authenticated/$crmId/index.tsx:887
+#: src/routes/_authenticated/$crmId/index.tsx:888
 msgid "Settings"
 msgstr "設定"
 
-#: src/features/editor/components/edit-dialogs.tsx:323
+#: src/features/editor/components/edit-dialogs.tsx:325
 msgid "Show classes"
 msgstr "クラスを表示"
 
-#: src/features/editor/components/edit-dialogs.tsx:413
+#: src/features/editor/components/edit-dialogs.tsx:415
 msgid "Show fields"
 msgstr "フィールドを表示"
 
@@ -1084,8 +1202,8 @@ msgstr "サイドバー"
 msgid "Signing out..."
 msgstr "サインアウト中..."
 
-#: src/features/editor/components/add-dialogs.tsx:155
-#: src/features/editor/components/edit-dialogs.tsx:1002
+#: src/features/editor/components/add-dialogs.tsx:148
+#: src/features/editor/components/edit-dialogs.tsx:1004
 msgid "Single line of text only"
 msgstr "1 行のテキストのみ"
 
@@ -1122,6 +1240,10 @@ msgstr "タグ"
 msgid "Teams/Apps"
 msgstr "チーム/アプリ"
 
+#: src/features/editor/components/add-dialogs.tsx:129
+msgid "Text"
+msgstr "テキスト"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:181
 msgid "Theme"
 msgstr "テーマ"
@@ -1138,7 +1260,7 @@ msgstr "現在この CRM を読み込めません。"
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "この CRM は削除されたか、アクセス権がない可能性があります。"
 
-#: src/features/editor/components/edit-dialogs.tsx:717
+#: src/features/editor/components/edit-dialogs.tsx:719
 msgid "Title field"
 msgstr "タイトルフィールド"
 
@@ -1162,7 +1284,7 @@ msgstr "テーマを切り替え"
 msgid "Top"
 msgstr "トップ"
 
-#: src/features/editor/components/edit-dialogs.tsx:751
+#: src/features/editor/components/edit-dialogs.tsx:753
 msgid "Top level"
 msgstr "最上位"
 
@@ -1181,8 +1303,8 @@ msgstr "検索語を変えてみてください"
 msgid "Try again"
 msgstr "再試行"
 
-#: src/features/editor/components/add-dialogs.tsx:126
-#: src/features/editor/components/edit-dialogs.tsx:985
+#: src/features/editor/components/add-dialogs.tsx:117
+#: src/features/editor/components/edit-dialogs.tsx:987
 msgid "Type"
 msgstr "タイプ"
 
@@ -1199,15 +1321,23 @@ msgstr "認証されていないアクセス"
 msgid "Unsubscribe"
 msgstr "購読解除"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:367
+msgid "Unsubscribe from crm"
+msgstr "CRMの購読を解除"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:406
+msgid "Unsubscribe from crm?"
+msgstr "CRMの購読を解除しますか？"
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:149
 msgid "Unsubscribed"
 msgstr "購読を解除しました"
 
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:129
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:130
 msgid "Unverified"
 msgstr "未認証"
 
-#: src/features/editor/components/edit-dialogs.tsx:474
+#: src/features/editor/components/edit-dialogs.tsx:476
 msgid "Updated"
 msgstr "更新日"
 
@@ -1220,6 +1350,7 @@ msgid "Upload .json file"
 msgstr ".json ファイルをアップロード"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:154
+#: src/features/editor/components/add-dialogs.tsx:130
 msgid "User"
 msgstr "ユーザー"
 
@@ -1227,7 +1358,7 @@ msgstr "ユーザー"
 msgid "Verification code"
 msgstr "認証コード"
 
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:162
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:163
 msgid "Verify"
 msgstr "認証"
 

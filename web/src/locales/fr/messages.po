@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/editor/components/edit-dialogs.tsx:764
+msgid "(itself)"
+msgstr "(elle-même)"
+
 #: ../../../lib/web/src/features/errors/forbidden.tsx:12
 msgid "Access Forbidden"
 msgstr "Accès interdit"
@@ -21,15 +25,15 @@ msgstr "Accès interdit"
 msgid "Access level"
 msgstr "Niveau d'accès"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:671
+#: src/routes/_authenticated/$crmId_.settings.tsx:672
 msgid "Access level updated"
 msgstr "Niveau d'accès mis à jour"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:680
+#: src/routes/_authenticated/$crmId_.settings.tsx:681
 msgid "Access Management"
 msgstr "Gestion des accès"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:660
+#: src/routes/_authenticated/$crmId_.settings.tsx:661
 msgid "Access removed"
 msgstr "Accès retiré"
 
@@ -49,7 +53,7 @@ msgstr "Ajouter un commentaire…"
 msgid "Add a new account"
 msgstr "Ajouter un nouveau compte"
 
-#: src/features/editor/components/add-dialogs.tsx:107
+#: src/features/editor/components/add-dialogs.tsx:98
 msgid "Add a new field to this class"
 msgstr "Ajouter un nouveau champ à cette classe"
 
@@ -58,25 +62,27 @@ msgid "Add access"
 msgstr "Ajouter un accès"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx:115
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:278
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:279
 msgid "Add account"
 msgstr "Ajouter un compte"
 
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:287
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:288
 msgid "Add an account to receive notifications and use services."
 msgstr "Ajoutez un compte pour recevoir des notifications et utiliser les services."
 
-#: src/features/editor/components/edit-dialogs.tsx:844
+#: src/features/editor/components/edit-dialogs.tsx:671
+#: src/features/editor/components/edit-dialogs.tsx:846
 msgid "Add class"
 msgstr "Ajouter une classe"
 
-#: src/routes/_authenticated/$crmId/index.tsx:858
+#: src/routes/_authenticated/$crmId/index.tsx:859
+#: src/routes/_authenticated/$crmId/index.tsx:1021
 msgid "Add column"
 msgstr "Ajouter une colonne"
 
-#: src/features/editor/components/add-dialogs.tsx:106
-#: src/features/editor/components/add-dialogs.tsx:221
-#: src/features/editor/components/edit-dialogs.tsx:839
+#: src/features/editor/components/add-dialogs.tsx:97
+#: src/features/editor/components/add-dialogs.tsx:214
+#: src/features/editor/components/edit-dialogs.tsx:841
 msgid "Add field"
 msgstr "Ajouter un champ"
 
@@ -88,12 +94,12 @@ msgstr "Ajouter un lien"
 msgid "Add new account"
 msgstr "Ajouter un nouveau compte"
 
-#: src/features/editor/components/edit-dialogs.tsx:1069
+#: src/features/editor/components/edit-dialogs.tsx:1071
 #: src/features/editor/components/option-dialog.tsx:142
 msgid "Add option"
 msgstr "Ajouter une option"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:687
+#: src/routes/_authenticated/$crmId_.settings.tsx:688
 msgid "Add Rule"
 msgstr "Ajouter une règle"
 
@@ -105,7 +111,8 @@ msgstr "Ajouter une équipe/application"
 msgid "Add to existing notifications"
 msgstr "Ajouter aux notifications existantes"
 
-#: src/features/editor/components/edit-dialogs.tsx:493
+#: src/features/editor/components/edit-dialogs.tsx:266
+#: src/features/editor/components/edit-dialogs.tsx:495
 msgid "Add view"
 msgstr "Ajouter une vue"
 
@@ -121,13 +128,17 @@ msgstr "IA"
 msgid "All"
 msgstr "Tout"
 
-#: src/components/layout/crms-layout.tsx:45
+#: src/components/layout/crms-layout.tsx:46
 msgid "All CRMs"
 msgstr "Tous les CRM"
 
 #: src/features/crms/components/create-crm-dialog.tsx:121
 msgid "Allow anyone to search for CRM"
 msgstr "Autoriser tout le monde à rechercher le CRM"
+
+#: src/features/editor/components/edit-dialogs.tsx:1014
+msgid "Allow sort by"
+msgstr "Autoriser le tri"
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:56
 msgid "Asc"
@@ -165,15 +176,15 @@ msgstr "Retour aux CRM"
 msgid "Back to Home"
 msgstr "Retour à l'accueil"
 
-#: src/features/editor/components/edit-dialogs.tsx:308
+#: src/features/editor/components/edit-dialogs.tsx:310
 msgid "Board"
 msgstr "Tableau"
 
-#: src/features/editor/components/edit-dialogs.tsx:384
+#: src/features/editor/components/edit-dialogs.tsx:386
 msgid "Border colour"
 msgstr "Couleur de la bordure"
 
-#: src/features/editor/components/edit-dialogs.tsx:744
+#: src/features/editor/components/edit-dialogs.tsx:746
 msgid "Can be child of"
 msgstr "Peut être enfant de"
 
@@ -188,13 +199,21 @@ msgstr "Peut être enfant de"
 #: src/features/editor/components/option-dialog.tsx:134
 #: src/features/objects/components/comment-thread.tsx:171
 #: src/routes/_authenticated/$crmId/design.tsx:301
-#: src/routes/_authenticated/$crmId/index.tsx:914
+#: src/routes/_authenticated/$crmId/index.tsx:915
 msgid "Cancel"
 msgstr "Annuler"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:129
+#: ../../../lib/web/src/components/notification-category-button.tsx:130
 msgid "Category for this notification"
 msgstr "Catégorie de cette notification"
+
+#: src/features/editor/components/add-dialogs.tsx:124
+msgid "Checkbox"
+msgstr "Case à cocher"
+
+#: src/features/editor/components/add-dialogs.tsx:125
+msgid "Checklist"
+msgstr "Checklist"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:315
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -238,6 +257,11 @@ msgstr "Effacer la sélection"
 msgid "Close"
 msgstr "Fermer"
 
+#: src/features/editor/components/edit-dialogs.tsx:269
+#: src/features/editor/components/edit-dialogs.tsx:674
+msgid "Close dialog"
+msgstr "Fermer la boîte de dialogue"
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:97
 msgid "Close navigation"
 msgstr "Fermer la navigation"
@@ -254,7 +278,7 @@ msgstr "Réduire la barre latérale"
 msgid "Colour"
 msgstr "Couleur"
 
-#: src/features/editor/components/edit-dialogs.tsx:343
+#: src/features/editor/components/edit-dialogs.tsx:345
 msgid "Columns group by"
 msgstr "Colonnes regroupées par"
 
@@ -266,7 +290,7 @@ msgstr "Bientôt disponible !"
 msgid "Compact"
 msgstr "Compact"
 
-#: src/features/editor/components/edit-dialogs.tsx:670
+#: src/features/editor/components/edit-dialogs.tsx:672
 msgid "Configure class settings"
 msgstr "Configurer les paramètres de la classe"
 
@@ -274,7 +298,7 @@ msgstr "Configurer les paramètres de la classe"
 msgid "Configure option settings"
 msgstr "Configurer les paramètres de l'option"
 
-#: src/features/editor/components/edit-dialogs.tsx:265
+#: src/features/editor/components/edit-dialogs.tsx:267
 msgid "Configure view settings"
 msgstr "Configurer les paramètres de la vue"
 
@@ -294,7 +318,7 @@ msgstr "Copier"
 #: src/features/board/components/board-column.tsx:536
 #: src/features/board/components/board-column.tsx:683
 #: src/features/objects/components/create-object-dialog.tsx:335
-#: src/features/tree/components/tree-view.tsx:361
+#: src/features/tree/components/tree-view.tsx:362
 msgid "Create"
 msgstr "Créer"
 
@@ -307,7 +331,7 @@ msgstr "Créer un nouveau CRM"
 msgid "Create a new CRM object."
 msgstr "Créer un nouvel objet CRM."
 
-#: src/components/layout/crms-layout.tsx:52
+#: src/components/layout/crms-layout.tsx:53
 #: src/features/crms/components/create-crm-dialog.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:101
 #: src/features/crms/components/create-crm-dialog.tsx:140
@@ -318,7 +342,7 @@ msgstr "Créer un CRM"
 msgid "Create object"
 msgstr "Créer un objet"
 
-#: src/features/editor/components/edit-dialogs.tsx:472
+#: src/features/editor/components/edit-dialogs.tsx:474
 msgid "Created"
 msgstr "Créé"
 
@@ -342,7 +366,7 @@ msgstr "CRM indisponible"
 msgid "Crm updated"
 msgstr "CRM mis à jour"
 
-#: src/components/layout/crms-layout.tsx:57
+#: src/components/layout/crms-layout.tsx:58
 #: src/features/crms/pages/crms-list-page.tsx:52
 #: src/features/crms/pages/crms-list-page.tsx:72
 #: src/features/crms/pages/crms-list-page.tsx:93
@@ -361,6 +385,10 @@ msgstr "Sombre"
 msgid "Dark mode"
 msgstr "Mode sombre"
 
+#: src/features/editor/components/add-dialogs.tsx:126
+msgid "Date"
+msgstr "Date"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:297
 msgid "Default"
 msgstr "Par défaut"
@@ -369,14 +397,14 @@ msgstr "Par défaut"
 msgid "Default AI account"
 msgstr "Compte IA par défaut"
 
-#: src/features/editor/components/edit-dialogs.tsx:464
+#: src/features/editor/components/edit-dialogs.tsx:466
 msgid "Default sort"
 msgstr "Tri par défaut"
 
 #: src/features/board/components/board-column.tsx:555
 #: src/features/objects/components/comment-thread.tsx:231
 #: src/features/objects/components/comment-thread.tsx:268
-#: src/routes/_authenticated/$crmId_.settings.tsx:396
+#: src/routes/_authenticated/$crmId_.settings.tsx:397
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -384,11 +412,19 @@ msgstr "Supprimer"
 msgid "Delete attachment"
 msgstr "Supprimer la pièce jointe"
 
-#: src/features/editor/components/edit-dialogs.tsx:685
+#: src/features/editor/components/edit-dialogs.tsx:687
 msgid "Delete class"
 msgstr "Supprimer la classe"
 
-#: src/features/editor/components/edit-dialogs.tsx:1078
+#: src/routes/_authenticated/$crmId_.settings.tsx:387
+msgid "Delete crm"
+msgstr "Supprimer le CRM"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:416
+msgid "Delete crm?"
+msgstr "Supprimer le CRM ?"
+
+#: src/features/editor/components/edit-dialogs.tsx:1080
 msgid "Delete field"
 msgstr "Supprimer le champ"
 
@@ -396,7 +432,12 @@ msgstr "Supprimer le champ"
 msgid "Delete option"
 msgstr "Supprimer l'option"
 
-#: src/features/editor/components/edit-dialogs.tsx:280
+#. placeholder {0}: opt.name
+#: src/features/editor/components/edit-dialogs.tsx:1061
+msgid "Delete option {0}"
+msgstr "Supprimer l'option {0}"
+
+#: src/features/editor/components/edit-dialogs.tsx:282
 msgid "Delete view"
 msgstr "Supprimer la vue"
 
@@ -404,8 +445,12 @@ msgstr "Supprimer la vue"
 msgid "Desc"
 msgstr "Décroissant"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:337
+msgid "Description"
+msgstr "Description"
+
 #: src/routes/_authenticated/$crmId/design.tsx:129
-#: src/routes/_authenticated/$crmId/index.tsx:873
+#: src/routes/_authenticated/$crmId/index.tsx:874
 msgid "Design"
 msgstr "Conception"
 
@@ -421,18 +466,23 @@ msgstr "Panneau des détails"
 msgid "Direction"
 msgstr "Direction"
 
+#: src/routes/_authenticated/$crmId/index.tsx:937
+#: src/routes/_authenticated/$crmId/index.tsx:938
+msgid "Dismiss board hint"
+msgstr "Masquer l'aide du tableau"
+
 #: ../../../lib/web/src/components/ui/sidebar.tsx:234
 msgid "Displays the mobile sidebar."
 msgstr "Affiche la barre latérale mobile."
 
-#: src/features/editor/components/edit-dialogs.tsx:498
-#: src/features/editor/components/edit-dialogs.tsx:849
-#: src/features/editor/components/edit-dialogs.tsx:1083
+#: src/features/editor/components/edit-dialogs.tsx:500
+#: src/features/editor/components/edit-dialogs.tsx:851
+#: src/features/editor/components/edit-dialogs.tsx:1085
 #: src/features/objects/components/object-detail-panel.tsx:335
 msgid "Done"
 msgstr "Terminé"
 
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:930
 msgid "Double click on a column to add content"
 msgstr "Double-cliquez sur une colonne pour ajouter du contenu"
 
@@ -440,7 +490,7 @@ msgstr "Double-cliquez sur une colonne pour ajouter du contenu"
 msgid "Download backup first"
 msgstr "Télécharger d'abord la sauvegarde"
 
-#: src/routes/_authenticated/$crmId/index.tsx:910
+#: src/routes/_authenticated/$crmId/index.tsx:911
 msgid "Drag columns to re-order them"
 msgstr "Faites glisser les colonnes pour les réorganiser"
 
@@ -449,13 +499,30 @@ msgstr "Faites glisser les colonnes pour les réorganiser"
 msgid "Edit"
 msgstr "Modifier"
 
-#: src/features/editor/components/edit-dialogs.tsx:960
+#: src/features/editor/components/edit-dialogs.tsx:671
+msgid "Edit class"
+msgstr "Modifier la classe"
+
+#: src/features/editor/components/edit-dialogs.tsx:962
 msgid "Edit field"
 msgstr "Modifier le champ"
 
-#: src/features/editor/components/edit-dialogs.tsx:961
+#: src/features/editor/components/edit-dialogs.tsx:963
 msgid "Edit field settings"
 msgstr "Modifier les paramètres du champ"
+
+#. placeholder {0}: opt.name
+#: src/features/editor/components/edit-dialogs.tsx:1050
+msgid "Edit option {0}"
+msgstr "Modifier l'option {0}"
+
+#: src/features/editor/components/edit-dialogs.tsx:266
+msgid "Edit view"
+msgstr "Modifier la vue"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:344
+msgid "Entity ID"
+msgstr "ID de l'entité"
 
 #: src/features/objects/components/object-detail-panel.tsx:253
 msgid "Error"
@@ -465,7 +532,7 @@ msgstr "Erreur"
 msgid "Expand sidebar"
 msgstr "Développer la barre latérale"
 
-#: src/routes/_authenticated/$crmId/index.tsx:879
+#: src/routes/_authenticated/$crmId/index.tsx:880
 msgid "Export CSV"
 msgstr "Exporter en CSV"
 
@@ -541,7 +608,7 @@ msgstr "Échec de la publication du commentaire"
 msgid "Failed to read file"
 msgstr "Échec de la lecture du fichier"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:663
+#: src/routes/_authenticated/$crmId_.settings.tsx:664
 msgid "Failed to remove access"
 msgstr "Échec du retrait de l'accès"
 
@@ -553,7 +620,7 @@ msgstr "Échec de la réorganisation des champs"
 msgid "Failed to reorder views"
 msgstr "Échec de la réorganisation des vues"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:651
+#: src/routes/_authenticated/$crmId_.settings.tsx:652
 msgid "Failed to set access level"
 msgstr "Échec de la définition du niveau d'accès"
 
@@ -567,7 +634,7 @@ msgstr "Échec de l'abonnement"
 msgid "Failed to unsubscribe"
 msgstr "Échec du désabonnement"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:674
+#: src/routes/_authenticated/$crmId_.settings.tsx:675
 msgid "Failed to update access level"
 msgstr "Échec de la mise à jour du niveau d'accès"
 
@@ -587,7 +654,7 @@ msgstr "Échec de la mise à jour du champ"
 msgid "Failed to upload attachment"
 msgstr "Échec du téléversement de la pièce jointe"
 
-#: src/features/editor/components/edit-dialogs.tsx:769
+#: src/features/editor/components/edit-dialogs.tsx:771
 msgid "Fields"
 msgstr "Champs"
 
@@ -597,12 +664,16 @@ msgstr "Champs"
 msgid "Files"
 msgstr "Fichiers"
 
-#: src/components/layout/crms-layout.tsx:51
+#: src/components/layout/crms-layout.tsx:52
 #: src/routes/_authenticated/find.tsx:65
 msgid "Find CRMs"
 msgstr "Trouver des CRM"
 
-#: src/features/editor/components/edit-dialogs.tsx:1008
+#: src/routes/_authenticated/$crmId_.settings.tsx:349
+msgid "Fingerprint"
+msgstr "Empreinte"
+
+#: src/features/editor/components/edit-dialogs.tsx:1010
 msgid "Flags"
 msgstr "Indicateurs"
 
@@ -656,6 +727,10 @@ msgstr "Accueil"
 msgid "Hot"
 msgstr "Populaire"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:324
+msgid "Identity"
+msgstr "Identité"
+
 #: src/routes/_authenticated/$crmId/design.tsx:276
 msgid "Import a design configuration"
 msgstr "Importer une configuration de conception"
@@ -690,7 +765,7 @@ msgid "Keyboard shortcuts"
 msgstr "Raccourcis clavier"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:273
-#: src/features/editor/components/edit-dialogs.tsx:302
+#: src/features/editor/components/edit-dialogs.tsx:304
 msgid "Layout"
 msgstr "Disposition"
 
@@ -710,7 +785,7 @@ msgstr "Clair"
 msgid "Links"
 msgstr "Liens"
 
-#: src/features/editor/components/edit-dialogs.tsx:314
+#: src/features/editor/components/edit-dialogs.tsx:316
 msgid "List"
 msgstr "Liste"
 
@@ -756,11 +831,12 @@ msgstr "Menu"
 
 #: src/features/board/components/board-column.tsx:586
 #: src/features/crms/components/create-crm-dialog.tsx:109
-#: src/features/editor/components/add-dialogs.tsx:114
-#: src/features/editor/components/edit-dialogs.tsx:289
-#: src/features/editor/components/edit-dialogs.tsx:694
-#: src/features/editor/components/edit-dialogs.tsx:965
+#: src/features/editor/components/add-dialogs.tsx:105
+#: src/features/editor/components/edit-dialogs.tsx:291
+#: src/features/editor/components/edit-dialogs.tsx:696
+#: src/features/editor/components/edit-dialogs.tsx:967
 #: src/features/editor/components/option-dialog.tsx:100
+#: src/routes/_authenticated/$crmId_.settings.tsx:329
 msgid "Name"
 msgstr "Nom"
 
@@ -770,7 +846,7 @@ msgstr "Le nom est obligatoire"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:40
 #: src/features/objects/components/create-object-dialog.tsx:320
-#: src/routes/_authenticated/$crmId/index.tsx:830
+#: src/routes/_authenticated/$crmId/index.tsx:831
 msgid "New"
 msgstr "Nouveau"
 
@@ -782,7 +858,7 @@ msgstr "Aucune règle d'accès configurée. Ajoutez des règles pour contrôler 
 msgid "No comments yet"
 msgstr "Aucun commentaire pour le moment"
 
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:285
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:286
 msgid "No connected accounts"
 msgstr "Aucun compte connecté"
 
@@ -799,7 +875,7 @@ msgstr "Aucun groupe disponible"
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Aucun type d'élément ne peut encore être créé. Créez d'abord les éléments parents requis."
 
-#: ../../../lib/web/src/components/language-picker.tsx:96
+#: ../../../lib/web/src/components/language-picker.tsx:116
 msgid "No matches."
 msgstr "Aucune correspondance."
 
@@ -824,7 +900,7 @@ msgstr "Aucun résultat trouvé."
 msgid "No time zone found."
 msgstr "Aucun fuseau horaire trouvé."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:133
+#: ../../../lib/web/src/components/notification-category-button.tsx:134
 msgid "No topic record yet — try again after the next notification."
 msgstr "Aucun enregistrement de sujet pour le moment — réessayez après la prochaine notification."
 
@@ -837,16 +913,20 @@ msgid "No views"
 msgstr "Aucune vue"
 
 #: ../../../lib/web/src/components/person-picker.tsx:332
-#: src/features/editor/components/edit-dialogs.tsx:370
-#: src/features/editor/components/edit-dialogs.tsx:400
-#: src/features/editor/components/edit-dialogs.tsx:471
-#: src/features/editor/components/edit-dialogs.tsx:731
+#: src/features/editor/components/edit-dialogs.tsx:369
+#: src/features/editor/components/edit-dialogs.tsx:372
+#: src/features/editor/components/edit-dialogs.tsx:399
+#: src/features/editor/components/edit-dialogs.tsx:402
+#: src/features/editor/components/edit-dialogs.tsx:470
+#: src/features/editor/components/edit-dialogs.tsx:473
+#: src/features/editor/components/edit-dialogs.tsx:730
+#: src/features/editor/components/edit-dialogs.tsx:733
 #: src/features/objects/components/create-object-dialog.tsx:378
 #: src/features/objects/components/object-detail-panel.tsx:409
 msgid "None"
 msgstr "Aucun"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:557
+#: src/routes/_authenticated/$crmId_.settings.tsx:558
 msgid "Not set"
 msgstr "Non défini"
 
@@ -855,7 +935,8 @@ msgstr "Non défini"
 msgid "Notifications"
 msgstr "Notifications"
 
-#: src/features/editor/components/edit-dialogs.tsx:473
+#: src/features/editor/components/add-dialogs.tsx:127
+#: src/features/editor/components/edit-dialogs.tsx:475
 msgid "Number"
 msgstr "Nombre"
 
@@ -863,16 +944,32 @@ msgstr "Nombre"
 msgid "Oops! Page Not Found!"
 msgstr "Oups ! Page introuvable !"
 
+#: src/features/editor/components/edit-dialogs.tsx:680
+msgid "Open class actions"
+msgstr "Ouvrir les actions de la classe"
+
 #: src/routes/_authenticated/$crmId/design.tsx:163
 msgid "Open design actions"
 msgstr "Ouvrir les actions de conception"
+
+#: src/routes/_authenticated/$crmId/index.tsx:839
+msgid "Open page actions"
+msgstr "Ouvrir les actions de la page"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:51
 msgid "Open theme settings"
 msgstr "Ouvrir les paramètres du thème"
 
-#: src/features/editor/components/add-dialogs.tsx:162
-#: src/features/editor/components/edit-dialogs.tsx:1027
+#: src/features/editor/components/edit-dialogs.tsx:275
+msgid "Open view actions"
+msgstr "Ouvrir les actions de la vue"
+
+#: src/features/editor/components/add-dialogs.tsx:187
+msgid "Option name"
+msgstr "Nom de l'option"
+
+#: src/features/editor/components/add-dialogs.tsx:155
+#: src/features/editor/components/edit-dialogs.tsx:1029
 msgid "Options"
 msgstr "Options"
 
@@ -894,7 +991,7 @@ msgstr "Parent"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/routes/_authenticated/$crmId/index.tsx:862
+#: src/routes/_authenticated/$crmId/index.tsx:863
 msgid "Re-order columns"
 msgstr "Réorganiser les colonnes"
 
@@ -913,14 +1010,19 @@ msgid "Redirecting to login."
 msgstr "Redirection vers la connexion."
 
 #: ../../../lib/web/src/features/access/access-list.tsx:256
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:170
-#: src/features/editor/components/add-dialogs.tsx:184
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:171
+#: src/features/editor/components/add-dialogs.tsx:177
 msgid "Remove"
 msgstr "Retirer"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:248
 msgid "Remove access?"
 msgstr "Supprimer l'accès ?"
+
+#. placeholder {0}: field.name || field.id
+#: src/features/editor/components/edit-dialogs.tsx:811
+msgid "Remove field {0}"
+msgstr "Supprimer le champ {0}"
 
 #: src/features/board/components/board-column.tsx:547
 #: src/features/board/components/board-column.tsx:603
@@ -948,6 +1050,10 @@ msgstr "Remplacement..."
 msgid "Reply"
 msgstr "Répondre"
 
+#: src/features/editor/components/edit-dialogs.tsx:1013
+msgid "Required"
+msgstr "Requis"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:77
 msgid "Reset"
 msgstr "Réinitialiser"
@@ -956,7 +1062,7 @@ msgstr "Réinitialiser"
 msgid "Reset all settings to default values"
 msgstr "Réinitialiser tous les paramètres aux valeurs par défaut"
 
-#: src/components/layout/crms-layout.tsx:64
+#: src/components/layout/crms-layout.tsx:65
 msgid "Retry CRMs load"
 msgstr "Réessayer le chargement des CRM"
 
@@ -964,12 +1070,12 @@ msgstr "Réessayer le chargement des CRM"
 msgid "Right to Left"
 msgstr "Droite à gauche"
 
-#: src/features/editor/components/add-dialogs.tsx:144
-#: src/features/editor/components/edit-dialogs.tsx:991
+#: src/features/editor/components/add-dialogs.tsx:137
+#: src/features/editor/components/edit-dialogs.tsx:993
 msgid "Rows"
 msgstr "Lignes"
 
-#: src/features/editor/components/edit-dialogs.tsx:363
+#: src/features/editor/components/edit-dialogs.tsx:365
 msgid "Rows group by"
 msgstr "Lignes regroupées par"
 
@@ -983,7 +1089,7 @@ msgstr "CRM Ventes"
 
 #: src/features/editor/components/option-dialog.tsx:137
 #: src/features/objects/components/comment-thread.tsx:182
-#: src/routes/_authenticated/$crmId/index.tsx:921
+#: src/routes/_authenticated/$crmId/index.tsx:922
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -1021,6 +1127,14 @@ msgstr "Rechercher, surveiller et trier cette vue."
 msgid "Searching..."
 msgstr "Recherche..."
 
+#: src/features/editor/components/add-dialogs.tsx:128
+msgid "Select"
+msgstr "Sélection"
+
+#: src/features/editor/components/edit-dialogs.tsx:349
+msgid "Select a field"
+msgstr "Sélectionner un champ"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:146
 msgid "Select a user, group, or other rule to grant access."
 msgstr "Sélectionnez un utilisateur, un groupe, ou une autre règle pour accorder l'accès."
@@ -1049,6 +1163,10 @@ msgstr "Sélectionner la direction du site"
 msgid "Select theme preference"
 msgstr "Sélectionner la préférence de thème"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:358
+msgid "Server"
+msgstr "Serveur"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx:142
 msgid "Set origin and destination"
 msgstr "Définir l'origine et la destination"
@@ -1058,15 +1176,15 @@ msgstr "Définir l'origine et la destination"
 #: ../../../lib/web/src/components/layout/nav-user.tsx:195
 #: src/routes/_authenticated/$crmId_.settings.tsx:182
 #: src/routes/_authenticated/$crmId_.settings.tsx:205
-#: src/routes/_authenticated/$crmId/index.tsx:887
+#: src/routes/_authenticated/$crmId/index.tsx:888
 msgid "Settings"
 msgstr "Paramètres"
 
-#: src/features/editor/components/edit-dialogs.tsx:323
+#: src/features/editor/components/edit-dialogs.tsx:325
 msgid "Show classes"
 msgstr "Afficher les classes"
 
-#: src/features/editor/components/edit-dialogs.tsx:413
+#: src/features/editor/components/edit-dialogs.tsx:415
 msgid "Show fields"
 msgstr "Afficher les champs"
 
@@ -1084,8 +1202,8 @@ msgstr "Barre latérale"
 msgid "Signing out..."
 msgstr "Déconnexion..."
 
-#: src/features/editor/components/add-dialogs.tsx:155
-#: src/features/editor/components/edit-dialogs.tsx:1002
+#: src/features/editor/components/add-dialogs.tsx:148
+#: src/features/editor/components/edit-dialogs.tsx:1004
 msgid "Single line of text only"
 msgstr "Une seule ligne de texte"
 
@@ -1122,6 +1240,10 @@ msgstr "Étiquette"
 msgid "Teams/Apps"
 msgstr "Équipes/Applications"
 
+#: src/features/editor/components/add-dialogs.tsx:129
+msgid "Text"
+msgstr "Texte"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:181
 msgid "Theme"
 msgstr "Thème"
@@ -1138,7 +1260,7 @@ msgstr "Ce CRM n'a pas pu être chargé pour le moment."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Ce CRM a peut-être été supprimé ou vous n'y avez pas accès."
 
-#: src/features/editor/components/edit-dialogs.tsx:717
+#: src/features/editor/components/edit-dialogs.tsx:719
 msgid "Title field"
 msgstr "Champ titre"
 
@@ -1162,7 +1284,7 @@ msgstr "Basculer le thème"
 msgid "Top"
 msgstr "Meilleur"
 
-#: src/features/editor/components/edit-dialogs.tsx:751
+#: src/features/editor/components/edit-dialogs.tsx:753
 msgid "Top level"
 msgstr "Niveau supérieur"
 
@@ -1181,8 +1303,8 @@ msgstr "Essayez d'ajuster vos termes de recherche"
 msgid "Try again"
 msgstr "Réessayer"
 
-#: src/features/editor/components/add-dialogs.tsx:126
-#: src/features/editor/components/edit-dialogs.tsx:985
+#: src/features/editor/components/add-dialogs.tsx:117
+#: src/features/editor/components/edit-dialogs.tsx:987
 msgid "Type"
 msgstr "Type"
 
@@ -1199,15 +1321,23 @@ msgstr "Accès non autorisé"
 msgid "Unsubscribe"
 msgstr "Se désabonner"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:367
+msgid "Unsubscribe from crm"
+msgstr "Se désabonner du CRM"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:406
+msgid "Unsubscribe from crm?"
+msgstr "Se désabonner du CRM ?"
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:149
 msgid "Unsubscribed"
 msgstr "Désabonné"
 
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:129
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:130
 msgid "Unverified"
 msgstr "Non vérifié"
 
-#: src/features/editor/components/edit-dialogs.tsx:474
+#: src/features/editor/components/edit-dialogs.tsx:476
 msgid "Updated"
 msgstr "Mis à jour"
 
@@ -1220,6 +1350,7 @@ msgid "Upload .json file"
 msgstr "Téléverser un fichier .json"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:154
+#: src/features/editor/components/add-dialogs.tsx:130
 msgid "User"
 msgstr "Utilisateur"
 
@@ -1227,7 +1358,7 @@ msgstr "Utilisateur"
 msgid "Verification code"
 msgstr "Code de vérification"
 
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:162
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:163
 msgid "Verify"
 msgstr "Vérifier"
 

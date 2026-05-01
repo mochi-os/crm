@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { Trans } from '@lingui/react/macro'
+import { t } from '@lingui/core/macro'
 import {
   Sheet,
   SheetContent,
@@ -33,16 +34,6 @@ interface AddFieldDialogProps {
   onOpenChange: (open: boolean) => void;
   onAdd: (name: string, fieldtype: string, rows?: number, options?: PendingOption[]) => void | Promise<void>;
 }
-
-const FIELD_TYPES = [
-  { id: "checkbox", name: "Checkbox" },
-  { id: "checklist", name: "Checklist" },
-  { id: "date", name: "Date" },
-  { id: "number", name: "Number" },
-  { id: "enumerated", name: "Select" },
-  { id: "text", name: "Text" },
-  { id: "user", name: "User" },
-];
 
 export function AddFieldDialog({
   open,
@@ -130,11 +121,13 @@ export function AddFieldDialog({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  {FIELD_TYPES.map((ft) => (
-                    <SelectItem key={ft.id} value={ft.id}>
-                      {ft.name}
-                    </SelectItem>
-                  ))}
+                  <SelectItem value="checkbox"><Trans>Checkbox</Trans></SelectItem>
+                  <SelectItem value="checklist"><Trans>Checklist</Trans></SelectItem>
+                  <SelectItem value="date"><Trans>Date</Trans></SelectItem>
+                  <SelectItem value="number"><Trans>Number</Trans></SelectItem>
+                  <SelectItem value="enumerated"><Trans>Select</Trans></SelectItem>
+                  <SelectItem value="text"><Trans>Text</Trans></SelectItem>
+                  <SelectItem value="user"><Trans>User</Trans></SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -191,7 +184,7 @@ export function AddFieldDialog({
                   <Input
                     value={newOptionName}
                     onChange={(e) => setNewOptionName(e.target.value)}
-                    placeholder={"Option name"}
+                    placeholder={t`Option name`}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
                         e.preventDefault();
