@@ -260,7 +260,7 @@ export function FieldEditor({
             directory
             disabled={disabled}
             placeholder={"Select..."}
-            emptyMessage="No people found"
+            emptyMessage={"No people found"}
           />
         );
 

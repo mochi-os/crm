@@ -64,7 +64,7 @@ function FindCrmsPage() {
       iconClassName="bg-primary/10 text-primary"
       title={t`Find CRMs`}
       placeholder={t`Search by name, ID, fingerprint, or URL...`}
-      emptyMessage="No CRMs found"
+      emptyMessage={t`No CRMs found`}
       recommendations={recommendations}
       isLoadingRecommendations={isLoadingRecommendations}
       isRecommendationsError={isRecommendationsError}
