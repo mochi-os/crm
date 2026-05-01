@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useMemo } from "react";
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Trans } from '@lingui/react/macro'
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button, Label, toast, getErrorMessage } from "@mochi/web";
 import { Blocks, GripVertical, Plus } from "lucide-react";
@@ -18,7 +18,6 @@ interface DesignEditorProps {
 }
 
 export function DesignEditor({ crmId, crm }: DesignEditorProps) {
-  const { t } = useLingui()
   const queryClient = useQueryClient();
 
   // Fetch objects for preview
@@ -107,7 +106,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       setSelectedClassId(data.data.id);
     },
     onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to create class`));
+      toast.error(getErrorMessage(error, "Failed to create class"));
     },
   });
 
@@ -173,7 +172,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       invalidateCrm();
     },
     onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to update field`));
+      toast.error(getErrorMessage(error, "Failed to update field"));
     },
   });
 
@@ -191,7 +190,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       crmsApi.reorderFields(crmId, classId, order),
     onSuccess: invalidateCrm,
     onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to reorder fields`));
+      toast.error(getErrorMessage(error, "Failed to reorder fields"));
     },
   });
 
@@ -280,7 +279,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       }),
     onSuccess: invalidateCrm,
     onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to create view`));
+      toast.error(getErrorMessage(error, "Failed to create view"));
     },
   });
 
@@ -332,7 +331,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       setEditViewOpen(false);
     },
     onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to delete view`));
+      toast.error(getErrorMessage(error, "Failed to delete view"));
     },
   });
 
@@ -341,7 +340,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       crmsApi.reorderViews(crmId, order),
     onSuccess: invalidateCrm,
     onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to reorder views`));
+      toast.error(getErrorMessage(error, "Failed to reorder views"));
     },
   });
 
@@ -590,7 +589,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
                 }
               }
             } catch (error) {
-              toast.error(getErrorMessage(error, t`Failed to create field`));
+              toast.error(getErrorMessage(error, "Failed to create field"));
               throw error;
             }
           }
@@ -610,7 +609,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
                 colour,
               });
             } catch (error) {
-              toast.error(getErrorMessage(error, t`Failed to create option`));
+              toast.error(getErrorMessage(error, "Failed to create option"));
               throw error;
             }
           }

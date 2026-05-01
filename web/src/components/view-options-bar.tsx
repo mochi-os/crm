@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState } from "react";
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Trans } from '@lingui/react/macro'
 import {
   Button,
   Input,
@@ -56,7 +56,6 @@ export function ViewOptionsBar({
   onSortChange,
   showSort,
 }: ViewOptionsBarProps) {
-  const { t } = useLingui()
   const [isMobileControlsOpen, setIsMobileControlsOpen] = useState(false);
   const hasSearchValue = filters.search.trim().length > 0;
 
@@ -96,7 +95,7 @@ export function ViewOptionsBar({
               variant={hasActiveMobileControls ? "secondary" : "ghost"}
               size="icon"
               className="size-9"
-              aria-label={t`Open view controls`}
+              aria-label={"Open view controls"}
               onClick={() => setIsMobileControlsOpen(true)}
             >
               <SlidersHorizontal className="size-4" />
@@ -121,7 +120,7 @@ export function ViewOptionsBar({
               <Input
                 id="crm-mobile-view-search"
                 type="search"
-                placeholder={t`Search...`}
+                placeholder={"Search..."}
                 value={filters.search}
                 onChange={(e) => updateSearch(e.target.value)}
               />
@@ -130,7 +129,7 @@ export function ViewOptionsBar({
             <Button
               variant={filters.watched ? "secondary" : "outline"}
               className="w-full justify-start"
-              aria-label={t`Toggle watched filter`}
+              aria-label={"Toggle watched filter"}
               onClick={() => onFilterChange({ ...filters, watched: !filters.watched })}
             >
               <Eye className="size-4" />
@@ -210,7 +209,7 @@ export function ViewOptionsBar({
             {/* Search */}
             <Input
               type="search"
-              placeholder={t`Search...`}
+              placeholder={"Search..."}
               value={filters.search}
               onChange={(e) => updateSearch(e.target.value)}
               className="h-7 w-[200px] text-xs"
@@ -221,7 +220,7 @@ export function ViewOptionsBar({
               variant={filters.watched ? "secondary" : "ghost"}
               size="sm"
               className="h-7 px-2 text-xs"
-              aria-label={t`Toggle watched filter`}
+              aria-label={"Toggle watched filter"}
               onClick={() => onFilterChange({ ...filters, watched: !filters.watched })}
             >
               <Eye className="size-3.5 sm:mr-1" />

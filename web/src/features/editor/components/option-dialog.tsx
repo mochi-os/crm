@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useEffect } from "react";
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Trans } from '@lingui/react/macro'
 import {
   ResponsiveDialog,
   ResponsiveDialogContent,
@@ -42,7 +42,6 @@ export function OptionDialog({
   onDelete,
   onAdd,
 }: OptionDialogProps) {
-  const { t } = useLingui()
   const isEdit = !!option;
   const [name, setName] = useState("");
   const [colour, setColour] = useState(PRESET_COLOURS[1]);
@@ -83,7 +82,7 @@ export function OptionDialog({
           {isEdit && onDelete && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="size-8" aria-label={t`Open option actions`}>
+                <Button variant="ghost" size="icon" className="size-8" aria-label={"Open option actions"}>
                   <MoreHorizontal className="size-4" />
                 </Button>
               </DropdownMenuTrigger>

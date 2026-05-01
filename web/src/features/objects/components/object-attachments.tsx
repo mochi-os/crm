@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useRef } from "react";
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Trans } from '@lingui/react/macro'
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Download, Loader2, Paperclip, Trash2, Upload } from "lucide-react";
 import {
@@ -32,7 +32,6 @@ export function ObjectAttachments({
   objectId,
   readOnly,
 }: ObjectAttachmentsProps) {
-  const { t } = useLingui()
   const [lightboxIndex, setLightboxIndex] = useState(-1);
   const [deleteTarget, setDeleteTarget] = useState<Attachment | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -57,7 +56,7 @@ export function ObjectAttachments({
       });
     },
     onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to upload attachment`));
+      toast.error(getErrorMessage(error, "Failed to upload attachment"));
     },
   });
 
@@ -72,7 +71,7 @@ export function ObjectAttachments({
       });
     },
     onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to delete attachment`));
+      toast.error(getErrorMessage(error, "Failed to delete attachment"));
     },
   });
 
@@ -228,7 +227,7 @@ export function ObjectAttachments({
         onOpenChange={(open) => {
           if (!open) setDeleteTarget(null);
         }}
-        title={t`Delete attachment`}
+        title={"Delete attachment"}
         desc={`Are you sure you want to delete "${deleteTarget?.name}"?`}
         confirmText="Delete"
         destructive

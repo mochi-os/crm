@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useEffect, useMemo } from "react";
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Trans } from '@lingui/react/macro'
 import {
   Sheet,
   SheetContent,
@@ -84,7 +84,6 @@ export function ViewSheet({
   onDelete,
   onCreate,
 }: ViewSheetProps) {
-  const { t } = useLingui()
   const allClassIds = useMemo(() => classes.map((c) => c.id), [classes]);
 
   const [name, setName] = useState("");
@@ -265,13 +264,13 @@ export function ViewSheet({
           <SheetTitle>{mode === "create" ? "Add view" : "Edit view"}</SheetTitle>
           <SheetDescription className="sr-only"><Trans>Configure view settings</Trans></SheetDescription>
           <div className="flex items-center gap-1">
-            <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label={t`Close dialog`}>
+            <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label={"Close dialog"}>
               <X className="size-4" />
             </Button>
             {mode === "edit" && onDelete && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="size-8" aria-label={t`Open view actions`}>
+                  <Button variant="ghost" size="icon" className="size-8" aria-label={"Open view actions"}>
                     <MoreHorizontal className="size-4" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -345,7 +344,7 @@ export function ViewSheet({
               <div className="pl-4">
                 <Select value={columns} onValueChange={handleColumnsChange}>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder={t`Select a field`} />
+                    <SelectValue placeholder={"Select a field"} />
                   </SelectTrigger>
                   <SelectContent>
                     {enumeratedFields.map((field) => (
@@ -365,7 +364,7 @@ export function ViewSheet({
               <div className="pl-4">
                 <Select value={rows || "__none"} onValueChange={handleRowsChange}>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder={t`None`} />
+                    <SelectValue placeholder={"None"} />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="__none"><Trans>None</Trans></SelectItem>
@@ -395,7 +394,7 @@ export function ViewSheet({
                   }}
                 >
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder={t`None`} />
+                    <SelectValue placeholder={"None"} />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="__none"><Trans>None</Trans></SelectItem>
@@ -466,7 +465,7 @@ export function ViewSheet({
             <div className="pl-4 flex gap-2">
               <Select value={sort || "__none"} onValueChange={handleSortChange}>
                 <SelectTrigger className="flex-1">
-                  <SelectValue placeholder={t`None`} />
+                  <SelectValue placeholder={"None"} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="__none"><Trans>None</Trans></SelectItem>
@@ -541,7 +540,6 @@ export function ClassSheet({
   onReorderFields,
   onCreate,
 }: ClassSheetProps) {
-  const { t } = useLingui()
   const [name, setName] = useState("");
   const [draggedFieldId, setDraggedFieldId] = useState<string | null>(null);
   const [dropIndicator, setDropIndicator] = useState<{ fieldId: string; position: "before" | "after" } | null>(null);
@@ -671,13 +669,13 @@ export function ClassSheet({
           <SheetTitle>{mode === "create" ? "Add class" : "Edit class"}</SheetTitle>
           <SheetDescription className="sr-only"><Trans>Configure class settings</Trans></SheetDescription>
           <div className="flex items-center gap-1">
-            <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label={t`Close dialog`}>
+            <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label={"Close dialog"}>
               <X className="size-4" />
             </Button>
             {mode === "edit" && onDelete && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="size-8" aria-label={t`Open class actions`}>
+                  <Button variant="ghost" size="icon" className="size-8" aria-label={"Open class actions"}>
                     <MoreHorizontal className="size-4" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -727,7 +725,7 @@ export function ClassSheet({
                   }}
                 >
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder={t`None`} />
+                    <SelectValue placeholder={"None"} />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="__none"><Trans>None</Trans></SelectItem>

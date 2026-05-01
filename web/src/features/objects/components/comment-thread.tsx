@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useCallback, useState } from "react";
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Trans } from '@lingui/react/macro'
 import { Loader2, MoreHorizontal, Pencil, Reply, Send, Trash2, X, Paperclip } from "lucide-react";
 import {
   Button,
@@ -60,7 +60,6 @@ export function CommentThread({
   people = [],
   depth = 0,
 }: CommentThreadProps) {
-  const { t } = useLingui()
   const { formatTimestamp } = useFormat();
   const [collapsed, setCollapsed] = useState(false);
   const [editing, setEditing] = useState(false);
@@ -345,8 +344,8 @@ export function CommentThread({
               className="size-8"
               onClick={() => replyFileRef.current?.click()}
               disabled={isSubmittingReply}
-              aria-label={t`Attach reply files`}
-              title={t`Attach reply files`}
+              aria-label={"Attach reply files"}
+              title={"Attach reply files"}
             >
               <Paperclip className="size-4" />
             </Button>
@@ -357,8 +356,8 @@ export function CommentThread({
               className="size-8"
               onClick={onCancelReply}
               disabled={isSubmittingReply}
-              aria-label={t`Cancel reply`}
-              title={t`Cancel reply`}
+              aria-label={"Cancel reply"}
+              title={"Cancel reply"}
             >
               <X className="size-4" />
             </Button>
@@ -368,8 +367,8 @@ export function CommentThread({
               className="size-8"
               disabled={!replyDraft.trim() || isSubmittingReply}
               onClick={() => void handleSubmitReply()}
-              aria-label={t`Submit reply`}
-              title={t`Submit reply`}
+              aria-label={"Submit reply"}
+              title={"Submit reply"}
             >
               {isSubmittingReply ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
             </Button>
@@ -380,7 +379,7 @@ export function CommentThread({
       <ConfirmDialog
         open={deleting}
         onOpenChange={setDeleting}
-        title={t`Delete comment`}
+        title={"Delete comment"}
         desc="Are you sure you want to delete this comment? This will also delete all replies."
         confirmText="Delete"
         destructive

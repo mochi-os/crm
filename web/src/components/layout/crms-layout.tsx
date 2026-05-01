@@ -1,4 +1,5 @@
 import { useEffect, useMemo } from "react";
+import { useLingui } from '@lingui/react/macro'
 import {
   AuthenticatedLayout,
   type SidebarData,
@@ -11,6 +12,7 @@ import { CreateCrmDialog } from "@/features/crms/components/create-crm-dialog";
 import { APP_ROUTES } from "@/config/routes";
 
 function CrmsLayoutInner() {
+  const { t } = useLingui()
   const crms = useCrmsStore((state) => state.crms);
   const isLoading = useCrmsStore((state) => state.isLoading);
   const error = useCrmsStore((state) => state.error);
@@ -40,26 +42,26 @@ function CrmsLayoutInner() {
     });
 
     const allCrmsItem: NavItem = {
-      title: "All CRMs",
+      title: t`All CRMs`,
       url: "/",
       icon: Users,
     };
 
     const actionItems: NavItem[] = [
-      { title: "Find CRMs", icon: Search, url: "/find" },
-      { title: "Create CRM", icon: Plus, onClick: openCreateDialog },
+      { title: t`Find CRMs`, icon: Search, url: "/find" },
+      { title: t`Create CRM`, icon: Plus, onClick: openCreateDialog },
     ];
 
     const groups: SidebarData["navGroups"] = [
       {
-        title: "CRMs",
+        title: t`CRMs`,
         items: [
           allCrmsItem,
           ...crmItems,
           ...(error
             ? [
                 {
-                  title: "Retry CRMs load",
+                  title: t`Retry CRMs load`,
                   icon: RefreshCw,
                   onClick: () => {
                     void refresh();

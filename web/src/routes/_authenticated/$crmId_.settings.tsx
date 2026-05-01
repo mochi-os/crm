@@ -181,7 +181,7 @@ function CrmSettingsPage() {
         <PageHeader
           title={t`Settings`}
           icon={<Settings className="size-4 md:size-5" />}
-          back={{ label: "Back to CRM", onFallback: goBackToCrm }}
+          back={{ label: t`Back to CRM`, onFallback: goBackToCrm }}
         />
         <Main className="space-y-6">
           <div className="flex gap-1 border-b">
@@ -204,7 +204,7 @@ function CrmSettingsPage() {
         <PageHeader
           title={t`Settings`}
           icon={<Settings className="size-4 md:size-5" />}
-          back={{ label: "Back to CRM", onFallback: goBackToCrm }}
+          back={{ label: t`Back to CRM`, onFallback: goBackToCrm }}
         />
         <Main>
           {crmLookupError ? (
@@ -219,11 +219,10 @@ function CrmSettingsPage() {
           ) : (
             <EmptyState
               icon={Users}
-              title={crmNotFound ? "CRM not found" : "CRM unavailable"}
+              title={crmNotFound ? t`CRM not found` : t`CRM unavailable`}
               description={
                 crmNotFound
-                  ? "This CRM may have been deleted or you don't have access to it."
-                  : "This CRM could not be loaded right now."
+                  ? t`This CRM may have been deleted or you don't have access to it.` : t`This CRM could not be loaded right now.`
               }
             />
           )}
@@ -237,7 +236,7 @@ function CrmSettingsPage() {
       <PageHeader
         title={`${crm.crm.name} settings`}
         icon={<Settings className="size-4 md:size-5" />}
-        back={{ label: "Back to CRM", onFallback: goBackToCrm }}
+        back={{ label: t`Back to CRM`, onFallback: goBackToCrm }}
       />
       <Main className="space-y-6">
         {/* Tabs - only show for owners */}
@@ -318,16 +317,15 @@ function GeneralTab({
   onUnsubscribe,
   onUpdate,
 }: GeneralTabProps) {
-  const { t } = useLingui()
   return (
     <div className="space-y-6">
       <Section
-        title={t`Identity`}
-        description={t`Core information about this crm`}
+        title={"Identity"}
+        description={"Core information about this crm"}
       >
         <div className="divide-y-0">
           <EditableFieldRow
-            label={t`Name`}
+            label={"Name"}
             value={crm.crm.name}
             isOwner={isOwner}
             onSave={(value) => onUpdate({ name: value })}
@@ -335,19 +333,19 @@ function GeneralTab({
           />
 
           <EditableFieldRow
-            label={t`Description`}
+            label={"Description"}
             value={crm.crm.description}
             isOwner={isOwner}
             onSave={(value) => onUpdate({ description: value })}
             multiline
           />
 
-          <FieldRow label={t`Entity ID`}>
+          <FieldRow label={"Entity ID"}>
             <DataChip value={crm.crm.id} truncate='middle' />
           </FieldRow>
 
           {crm.crm.fingerprint && (
-            <FieldRow label={t`Fingerprint`}>
+            <FieldRow label={"Fingerprint"}>
               <DataChip
                 value={crm.crm.fingerprint}
                 truncate='middle'
@@ -356,7 +354,7 @@ function GeneralTab({
           )}
 
           {crm.crm.server && (
-            <FieldRow label={t`Server`}>
+            <FieldRow label={"Server"}>
               <DataChip value={crm.crm.server} />
             </FieldRow>
           )}
@@ -365,7 +363,7 @@ function GeneralTab({
 
       {!isOwner && (
         <Section
-          title={t`Unsubscribe from crm`}
+          title={"Unsubscribe from crm"}
           action={
             <Button
               variant="outline"
@@ -385,8 +383,8 @@ function GeneralTab({
 
       {isOwner && (
         <Section
-          title={t`Delete crm`}
-          description={t`Permanently delete this crm and all its content.`}
+          title={"Delete crm"}
+          description={"Permanently delete this crm and all its content."}
           action={
             <Button
               variant="outline"
@@ -404,7 +402,7 @@ function GeneralTab({
       <ConfirmDialog
         open={showUnsubscribeDialog}
         onOpenChange={setShowUnsubscribeDialog}
-        title={t`Unsubscribe from crm?`}
+        title={"Unsubscribe from crm?"}
         desc={`This will remove "${crm.crm.name}" from your sidebar and stop updates for this crm.`}
         confirmText="Unsubscribe"
         handleConfirm={onUnsubscribe}
@@ -414,7 +412,7 @@ function GeneralTab({
       <ConfirmDialog
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
-        title={t`Delete crm?`}
+        title={"Delete crm?"}
         desc={`This will permanently delete "${crm.crm.name}" and all its objects, comments, and attachments. This action cannot be undone.`}
         confirmText="Delete crm"
         destructive
@@ -588,7 +586,6 @@ interface AccessTabProps {
 }
 
 function AccessTab({ crmId }: AccessTabProps) {
-  const { t } = useLingui()
   const [dialogOpen, setDialogOpen] = useState(false);
   const [userSearchQuery, setUserSearchQuery] = useState("");
 
@@ -650,7 +647,7 @@ function AccessTab({ crmId }: AccessTabProps) {
       toast.success(`Access set for ${subjectName}`);
       await refetchRules();
     } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to set access level`));
+      toast.error(getErrorMessage(err, "Failed to set access level"));
       throw err;
     }
   };
@@ -659,10 +656,10 @@ function AccessTab({ crmId }: AccessTabProps) {
     if (!canManageRules) return;
     try {
       await crmsApi.revokeAccess(crmId, subject);
-      toast.success(t`Access removed`);
+      toast.success("Access removed");
       await refetchRules();
     } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to remove access`));
+      toast.error(getErrorMessage(err, "Failed to remove access"));
     }
   };
 
@@ -670,17 +667,17 @@ function AccessTab({ crmId }: AccessTabProps) {
     if (!canManageRules) return;
     try {
       await crmsApi.setAccessLevel(crmId, subject, newLevel);
-      toast.success(t`Access level updated`);
+      toast.success("Access level updated");
       await refetchRules();
     } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to update access level`));
+      toast.error(getErrorMessage(err, "Failed to update access level"));
     }
   };
 
   return (
     <Section
-      title={t`Access Management`}
-      description={t`Control who can view and interact with this crm`}
+      title={"Access Management"}
+      description={"Control who can view and interact with this crm"}
     >
       <div className="space-y-4">
         <div className="flex justify-end">

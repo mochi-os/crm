@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Trans } from '@lingui/react/macro'
 import { useNavigate } from "@tanstack/react-router";
 import {
   Button,
@@ -31,7 +31,6 @@ export function CreateCrmDialog({
   onOpenChange,
   hideTrigger,
 }: CreateCrmDialogProps) {
-  const { t } = useLingui()
   const [isPending, setIsPending] = useState(false);
   const [name, setName] = useState("");
   const [allowSearch, setAllowSearch] = useState(true);
@@ -50,7 +49,7 @@ export function CreateCrmDialog({
     e.preventDefault();
 
     if (!name.trim()) {
-      toast.error(t`Name is required`);
+      toast.error("Name is required");
       return;
     }
 
@@ -64,7 +63,7 @@ export function CreateCrmDialog({
       const fingerprint = response.data?.fingerprint;
       await refreshCrms();
 
-      toast.success(t`CRM created`);
+      toast.success("CRM created");
       onOpenChange?.(false);
 
       if (fingerprint) {
@@ -76,7 +75,7 @@ export function CreateCrmDialog({
         void navigate({ to: "/" });
       }
     } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to create CRM`));
+      toast.error(getErrorMessage(err, "Failed to create CRM"));
     } finally {
       setIsPending(false);
     }
@@ -111,7 +110,7 @@ export function CreateCrmDialog({
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder={t`Sales CRM`}
+                placeholder={"Sales CRM"}
                 autoFocus
               />
             </div>

@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { createFileRoute, redirect, useNavigate, useRouter } from "@tanstack/react-router";
+import { useLingui } from '@lingui/react/macro'
 import {
   GeneralError,
   extractStatus,
@@ -43,6 +44,7 @@ export const Route = createFileRoute("/_authenticated/$crmId/$objectId")({
 });
 
 function ObjectPage() {
+  const { t } = useLingui()
   const { crm, loaderError } = Route.useLoaderData() as {
     crm: CrmDetails | null;
     loaderError: string | null;
@@ -58,7 +60,7 @@ function ObjectPage() {
         <PageHeader
           title="CRM"
           icon={<Users className="size-4 md:size-5" />}
-          back={{ label: "Back to CRMs", onFallback: () => navigate({ to: "/" }) }}
+          back={{ label: t`Back to CRMs`, onFallback: () => navigate({ to: "/" }) }}
         />
         <Main>
           <GeneralError

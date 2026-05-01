@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useEffect, useRef, useMemo } from "react";
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Trans } from '@lingui/react/macro'
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Eye, EyeOff, Trash2, MessageSquare, Activity, Settings2 } from "lucide-react";
 import {
@@ -49,7 +49,6 @@ export function ObjectDetailPanel({
   access,
   onClose,
 }: ObjectDetailPanelProps) {
-  const { t } = useLingui()
   useShellOverlay(!!objectId)
   const [activeTab, setActiveTab] = useState<Tab>("properties");
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
@@ -322,7 +321,7 @@ export function ObjectDetailPanel({
                 size="icon"
                 className="h-8 w-8 text-muted-foreground"
                 onClick={() => setShowDeleteDialog(true)}
-                title={t`Delete item`}
+                title={"Delete item"}
               >
                 <Trash2 className="size-4" />
               </Button>
@@ -400,7 +399,7 @@ export function ObjectDetailPanel({
                       disabled={updateParentMutation.isPending}
                     >
                       <SelectTrigger className="w-full">
-                        <SelectValue placeholder={t`None`}>
+                        <SelectValue placeholder={"None"}>
                           {currentParent
                             ? objectTitle(currentParent)
                             : "None"}
@@ -467,7 +466,7 @@ export function ObjectDetailPanel({
         <ConfirmDialog
           open={showDeleteDialog}
           onOpenChange={setShowDeleteDialog}
-          title={t`Delete item`}
+          title={"Delete item"}
           desc={`Are you sure you want to delete "${title}"? This action cannot be undone.`}
           confirmText="Delete"
           destructive

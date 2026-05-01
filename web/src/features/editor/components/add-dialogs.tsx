@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState } from "react";
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Trans } from '@lingui/react/macro'
 import {
   Sheet,
   SheetContent,
@@ -49,7 +49,6 @@ export function AddFieldDialog({
   onOpenChange,
   onAdd,
 }: AddFieldDialogProps) {
-  const { t } = useLingui()
   const [name, setName] = useState("");
   const [fieldtype, setFieldtype] = useState("text");
   const [rows, setRows] = useState(1);
@@ -192,7 +191,7 @@ export function AddFieldDialog({
                   <Input
                     value={newOptionName}
                     onChange={(e) => setNewOptionName(e.target.value)}
-                    placeholder={t`Option name`}
+                    placeholder={"Option name"}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
                         e.preventDefault();

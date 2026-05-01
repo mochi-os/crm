@@ -128,11 +128,11 @@ function DesignPage() {
         <PageHeader
           title={t`Design`}
           icon={<Settings2 className="size-4 md:size-5" />}
-          back={{ label: "Back to CRM", onFallback: goBackToCrm }}
+          back={{ label: t`Back to CRM`, onFallback: goBackToCrm }}
         />
         <Main>
           <GeneralError
-            error={error ?? new Error("Failed to load CRM design")}
+            error={error ?? new Error(t`Failed to load CRM design`)}
             minimal
             mode="inline"
             reset={() => {
@@ -153,7 +153,7 @@ function DesignPage() {
       <PageHeader
         title={`${crm.crm.name} - Design`}
         icon={<Settings2 className="size-4 md:size-5" />}
-        back={{ label: "Back to CRM", onFallback: goBackToCrm }}
+        back={{ label: t`Back to CRM`, onFallback: goBackToCrm }}
         menuAction={
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -242,7 +242,6 @@ function ImportDialog({
     label: string,
   ) => void;
 }) {
-  const { t } = useLingui()
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Handle file upload
@@ -256,11 +255,11 @@ function ImportDialog({
         const data = JSON.parse(reader.result as string);
         onSelect(data, undefined, undefined, file.name);
       } catch {
-        toast.error(t`Invalid JSON file`);
+        toast.error("Invalid JSON file");
       }
     };
     reader.onerror = () => {
-      toast.error(t`Failed to read file`);
+      toast.error("Failed to read file");
     };
     reader.readAsText(file);
 
