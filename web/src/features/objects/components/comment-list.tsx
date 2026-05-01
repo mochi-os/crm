@@ -260,7 +260,7 @@ export function CommentList({
         <EmptyState
           icon={MessageSquare}
           title={t`No comments yet`}
-          description={"Start the discussion by adding the first comment."}
+          description={t`Start the discussion by adding the first comment.`}
           className="py-4"
         />
       ) : (

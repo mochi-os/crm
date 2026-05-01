@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useQuery } from "@tanstack/react-query";
+import { t } from '@lingui/core/macro'
 import { Activity } from "lucide-react";
 import { EmptyState, EntityAvatar, ListSkeleton, useFormat, getAppPath } from "@mochi/web";
 import crmsApi from "@/api/crms";
@@ -43,7 +44,7 @@ export function ActivityList({ crmId, objectId }: ActivityListProps) {
   const activities = data || [];
 
   if (activities.length === 0) {
-    return <EmptyState icon={Activity} title={"No activity yet"} className="py-4" />;
+    return <EmptyState icon={Activity} title={t`No activity yet`} className="py-4" />;
   }
 
   return (

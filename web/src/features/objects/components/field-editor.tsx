@@ -3,6 +3,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Trans } from '@lingui/react/macro'
+import { t } from '@lingui/core/macro'
 import {
   Button,
   IconButton,
@@ -180,7 +181,7 @@ export function FieldEditor({
         return (
           <Select value={value} onValueChange={onChange} disabled={disabled}>
             <SelectTrigger className="h-9 w-full">
-              <SelectValue placeholder={"Select..."} />
+              <SelectValue placeholder={t`Select...`} />
             </SelectTrigger>
             <SelectContent>
               {options.map((opt) => (
@@ -259,7 +260,7 @@ export function FieldEditor({
             friends
             directory
             disabled={disabled}
-            placeholder={"Select..."}
+            placeholder={t`Select...`}
             emptyMessage={"No people found"}
           />
         );
@@ -483,7 +484,7 @@ function ChecklistEditor({ value, onChange, disabled }: ChecklistEditorProps) {
             {!disabled && (
               <IconButton
                 variant="ghost"
-                label={"Remove item"}
+                label={t`Remove item`}
                 onClick={() => removeItem(item.id)}
                 className="size-6 shrink-0 opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive transition-opacity"
               >
@@ -499,7 +500,7 @@ function ChecklistEditor({ value, onChange, disabled }: ChecklistEditorProps) {
         <div className="flex items-center gap-2">
           <IconButton
             variant="ghost"
-            label={"Add checklist item"}
+            label={t`Add checklist item`}
             onClick={() => {
               if (newItemText.trim()) {
                 addItem();
@@ -517,7 +518,7 @@ function ChecklistEditor({ value, onChange, disabled }: ChecklistEditorProps) {
             value={newItemText}
             onChange={(e) => setNewItemText(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder={"Add item..."}
+            placeholder={t`Add item...`}
             className="flex-1 rounded-sm border-none bg-transparent text-sm placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none"
           />
           {newItemText && (

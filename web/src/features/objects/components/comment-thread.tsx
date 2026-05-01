@@ -3,6 +3,7 @@
 
 import { useCallback, useState } from "react";
 import { Trans } from '@lingui/react/macro'
+import { t } from '@lingui/core/macro'
 import { Loader2, MoreHorizontal, Pencil, Reply, Send, Trash2, X, Paperclip } from "lucide-react";
 import {
   Button,
@@ -344,8 +345,8 @@ export function CommentThread({
               className="size-8"
               onClick={() => replyFileRef.current?.click()}
               disabled={isSubmittingReply}
-              aria-label={"Attach reply files"}
-              title={"Attach reply files"}
+              aria-label={t`Attach reply files`}
+              title={t`Attach reply files`}
             >
               <Paperclip className="size-4" />
             </Button>
@@ -356,8 +357,8 @@ export function CommentThread({
               className="size-8"
               onClick={onCancelReply}
               disabled={isSubmittingReply}
-              aria-label={"Cancel reply"}
-              title={"Cancel reply"}
+              aria-label={t`Cancel reply`}
+              title={t`Cancel reply`}
             >
               <X className="size-4" />
             </Button>
@@ -367,8 +368,8 @@ export function CommentThread({
               className="size-8"
               disabled={!replyDraft.trim() || isSubmittingReply}
               onClick={() => void handleSubmitReply()}
-              aria-label={"Submit reply"}
-              title={"Submit reply"}
+              aria-label={t`Submit reply`}
+              title={t`Submit reply`}
             >
               {isSubmittingReply ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
             </Button>
@@ -379,9 +380,9 @@ export function CommentThread({
       <ConfirmDialog
         open={deleting}
         onOpenChange={setDeleting}
-        title={"Delete comment"}
-        desc="Are you sure you want to delete this comment? This will also delete all replies."
-        confirmText="Delete"
+        title={t`Delete comment`}
+        desc={t`Are you sure you want to delete this comment? This will also delete all replies.`}
+        confirmText={t`Delete`}
         destructive
         handleConfirm={() => {
           onDelete(comment.id);

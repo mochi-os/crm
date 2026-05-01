@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { getErrorMessage } from "@mochi/web";
+import { t } from '@lingui/core/macro'
 import type { Crm } from "@/types";
 import crmsApi from "@/api/crms";
 
@@ -22,7 +23,7 @@ export const useCrmsStore = create<CrmsState>()((set) => ({
       const crms = response.data?.crms ?? [];
       set({ crms, isLoading: false });
     } catch (error) {
-      set({ error: getErrorMessage(error, "Failed to load CRMs"), isLoading: false });
+      set({ error: getErrorMessage(error, t`Failed to load CRMs`), isLoading: false });
     }
   },
 }));

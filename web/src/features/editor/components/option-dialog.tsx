@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from "react";
 import { Trans } from '@lingui/react/macro'
+import { t } from '@lingui/core/macro'
 import {
   ResponsiveDialog,
   ResponsiveDialogContent,
@@ -82,7 +83,7 @@ export function OptionDialog({
           {isEdit && onDelete && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="size-8" aria-label={"Open option actions"}>
+                <Button variant="ghost" size="icon" className="size-8" aria-label={t`Open option actions`}>
                   <MoreHorizontal className="size-4" />
                 </Button>
               </DropdownMenuTrigger>

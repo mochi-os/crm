@@ -10,6 +10,7 @@ import { useCrmsStore } from "@/stores/crms-store";
 import { SidebarProvider, useSidebarContext } from "@/context/sidebar-context";
 import { CreateCrmDialog } from "@/features/crms/components/create-crm-dialog";
 import { APP_ROUTES } from "@/config/routes";
+import { naturalCompare } from '@mochi/web'
 
 function CrmsLayoutInner() {
   const { t } = useLingui()
@@ -29,7 +30,7 @@ function CrmsLayoutInner() {
 
   const sidebarData: SidebarData = useMemo(() => {
     const sortedCrms = [...crms].sort((a, b) =>
-      a.name.localeCompare(b.name, undefined, { sensitivity: "base" }),
+      naturalCompare(a.name, b.name),
     );
 
     const crmItems: NavItem[] = sortedCrms.map((crm) => {

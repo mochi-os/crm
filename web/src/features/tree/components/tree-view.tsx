@@ -3,10 +3,12 @@
 
 import { useState, useMemo, useLayoutEffect, useCallback, useRef } from "react";
 import { Trans } from '@lingui/react/macro'
+import { t } from '@lingui/core/macro'
 import { Button, EmptyState, useShellStorage } from "@mochi/web";
 import { Folder, Plus } from 'lucide-react';
 import { TreeRow } from "./tree-row";
 import type { CrmDetails, CrmObject, SortState } from "@/types";
+import { naturalCompare } from '@mochi/web'
 
 interface TreeViewProps {
   crm: CrmDetails;
@@ -76,7 +78,7 @@ function buildTree(objects: CrmObject[], sort?: SortState | null): TreeNode[] {
     if (typeof aVal === "number" && typeof bVal === "number") {
       return (aVal - bVal) * multiplier;
     }
-    return String(aVal).localeCompare(String(bVal)) * multiplier;
+    return naturalCompare(String(aVal), String(bVal)) * multiplier;
   };
 
   // Recursively build tree nodes
@@ -354,7 +356,7 @@ export function TreeView({
 
   if (objects.length === 0) {
     return (
-      <EmptyState icon={Folder} title={"Nothing found"} className="py-12">
+      <EmptyState icon={Folder} title={t`Nothing found`} className="py-12">
         {(onCreateClick || preview) && (
           <Button variant="outline" size="sm" onClick={preview ? undefined : onCreateClick}>
             <Plus className="size-4 mr-1" />
