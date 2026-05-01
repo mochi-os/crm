@@ -228,7 +228,7 @@ export function ObjectAttachments({
         onOpenChange={(open) => {
           if (!open) setDeleteTarget(null);
         }}
-        title={"Delete attachment"}
+        title={t`Delete attachment`}
         desc={`Are you sure you want to delete "${deleteTarget?.name}"?`}
         confirmText="Delete"
         destructive

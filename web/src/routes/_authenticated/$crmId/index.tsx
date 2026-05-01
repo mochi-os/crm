@@ -116,6 +116,7 @@ export interface CrmPageContentProps {
 }
 
 export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageContentProps) {
+  const { t } = useLingui()
   const router = useRouter();
   const params = { crmId };
   const access = crm.crm.access;
@@ -835,7 +836,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         menuAction={
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <IconButton variant='ghost' label={"Open page actions"}>
+              <IconButton variant='ghost' label={t`Open page actions`}>
                 <Ellipsis className="size-4" />
               </IconButton>
             </DropdownMenuTrigger>
@@ -933,8 +934,8 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
             size="icon"
             className="size-6"
             onClick={dismissBoardHint}
-            aria-label={"Dismiss board hint"}
-            title={"Dismiss board hint"}
+            aria-label={t`Dismiss board hint`}
+            title={t`Dismiss board hint`}
           >
             <X className="size-4" />
           </Button>
@@ -1017,7 +1018,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         open={addColumnDialogOpen}
         onOpenChange={setAddColumnDialogOpen}
         onAdd={handleAddColumn}
-        title={"Add column"}
+        title={t`Add column`}
       />
     </>
   );

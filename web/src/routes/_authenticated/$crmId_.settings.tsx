@@ -317,15 +317,16 @@ function GeneralTab({
   onUnsubscribe,
   onUpdate,
 }: GeneralTabProps) {
+  const { t } = useLingui()
   return (
     <div className="space-y-6">
       <Section
-        title={"Identity"}
+        title={t`Identity`}
         description={"Core information about this crm"}
       >
         <div className="divide-y-0">
           <EditableFieldRow
-            label={"Name"}
+            label={t`Name`}
             value={crm.crm.name}
             isOwner={isOwner}
             onSave={(value) => onUpdate({ name: value })}
@@ -333,19 +334,19 @@ function GeneralTab({
           />
 
           <EditableFieldRow
-            label={"Description"}
+            label={t`Description`}
             value={crm.crm.description}
             isOwner={isOwner}
             onSave={(value) => onUpdate({ description: value })}
             multiline
           />
 
-          <FieldRow label={"Entity ID"}>
+          <FieldRow label={t`Entity ID`}>
             <DataChip value={crm.crm.id} truncate='middle' />
           </FieldRow>
 
           {crm.crm.fingerprint && (
-            <FieldRow label={"Fingerprint"}>
+            <FieldRow label={t`Fingerprint`}>
               <DataChip
                 value={crm.crm.fingerprint}
                 truncate='middle'
@@ -354,7 +355,7 @@ function GeneralTab({
           )}
 
           {crm.crm.server && (
-            <FieldRow label={"Server"}>
+            <FieldRow label={t`Server`}>
               <DataChip value={crm.crm.server} />
             </FieldRow>
           )}
@@ -363,7 +364,7 @@ function GeneralTab({
 
       {!isOwner && (
         <Section
-          title={"Unsubscribe from crm"}
+          title={t`Unsubscribe from crm`}
           action={
             <Button
               variant="outline"
@@ -383,7 +384,7 @@ function GeneralTab({
 
       {isOwner && (
         <Section
-          title={"Delete crm"}
+          title={t`Delete crm`}
           description={"Permanently delete this crm and all its content."}
           action={
             <Button
@@ -402,7 +403,7 @@ function GeneralTab({
       <ConfirmDialog
         open={showUnsubscribeDialog}
         onOpenChange={setShowUnsubscribeDialog}
-        title={"Unsubscribe from crm?"}
+        title={t`Unsubscribe from crm?`}
         desc={`This will remove "${crm.crm.name}" from your sidebar and stop updates for this crm.`}
         confirmText="Unsubscribe"
         handleConfirm={onUnsubscribe}
@@ -412,7 +413,7 @@ function GeneralTab({
       <ConfirmDialog
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
-        title={"Delete crm?"}
+        title={t`Delete crm?`}
         desc={`This will permanently delete "${crm.crm.name}" and all its objects, comments, and attachments. This action cannot be undone.`}
         confirmText="Delete crm"
         destructive
@@ -677,7 +678,7 @@ function AccessTab({ crmId }: AccessTabProps) {
 
   return (
     <Section
-      title={"Access Management"}
+      title={t`Access Management`}
       description={"Control who can view and interact with this crm"}
     >
       <div className="space-y-4">
