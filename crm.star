@@ -310,7 +310,7 @@ def template_labels(template_id, lang):
 	if not template_id or ".." in template_id or "/" in template_id:
 		return {}
 	available = {}
-	files = mochi.app.file.list("templates/" + template_id + "/labels") or []
+	files = mochi.app.asset.list("templates/" + template_id + "/labels") or []
 	for f in files:
 		if f.endswith(".conf"):
 			tag = f[:-5].lower()
@@ -319,7 +319,7 @@ def template_labels(template_id, lang):
 	for tag in language_fallbacks(lang):
 		if tag not in available:
 			continue
-		content = mochi.app.file.read("templates/" + template_id + "/labels/" + available[tag])
+		content = mochi.app.asset.read("templates/" + template_id + "/labels/" + available[tag])
 		if not content:
 			continue
 		parsed = parse_labels_conf(str(content))
@@ -345,10 +345,10 @@ def substitute_labels(text, labels):
 # template_description against `lang` so the template metadata is localised.
 def get_templates(lang="en"):
 	templates = {}
-	files = mochi.app.file.list("templates") or []
+	files = mochi.app.asset.list("templates") or []
 	for filename in files:
 		if filename.endswith(".json"):
-			content = mochi.app.file.read("templates/" + filename)
+			content = mochi.app.asset.read("templates/" + filename)
 			if content:
 				data = json.decode(str(content))
 				labels = template_labels(data["id"], lang)
@@ -372,7 +372,7 @@ def apply_template(crm_id, data=None, lang="en", template_id="crm"):
 	if not data:
 		if not template_id or ".." in template_id or "/" in template_id:
 			return
-		content = mochi.app.file.read("templates/" + template_id + ".json")
+		content = mochi.app.asset.read("templates/" + template_id + ".json")
 		data = json.decode(str(content))
 
 	# Load labels once and apply substitution to every user-facing name
@@ -634,7 +634,7 @@ def action_design_import(a):
 		if template_id not in templates:
 			a.error_label(400, "errors.invalid_template")
 			return
-		content = mochi.app.file.read("templates/" + template_id + ".json")
+		content = mochi.app.asset.read("templates/" + template_id + ".json")
 		data = json.decode(str(content))
 		template_version = templates[template_id]["version"]
 	else:
