@@ -24,6 +24,7 @@ const catalogs: Catalogs = {
   "en-us": () => import("./locales/en-US/messages.po"),
   fr: () => import("./locales/fr/messages.po"),
   ja: () => import("./locales/ja/messages.po"),
+  ar: () => import("./locales/ar/messages.po"),
 };
 
 const queryClient = createQueryClient();
