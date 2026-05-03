@@ -21,6 +21,7 @@ import {
 } from "@mochi/web";
 import { Plus, Trash2 } from "lucide-react";
 import type { CrmField, FieldOption, ChecklistItem } from "@/types";
+import crmsApi from "@/api/crms";
 
 interface FieldEditorProps {
   field: CrmField;
@@ -257,8 +258,8 @@ export function FieldEditor({
             value={value}
             onChange={(v) => onChange(v as string)}
             local={localPeople}
-            friends
             directory
+            directoryFn={async (q) => (await crmsApi.searchUsers(q)).data.results}
             disabled={disabled}
             placeholder={t`Select...`}
             emptyMessage={"No people found"}
