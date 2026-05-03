@@ -1465,7 +1465,7 @@ def action_object_create(a):
 		parent_class = parent_row["class"]
 	allowed = mochi.db.exists("select 1 from hierarchy where crm=? and class=? and parent=?", crm_id, obj_class, parent_class)
 	if not allowed:
-		a.error.label(400, "errors.cannot_create_here_hierarchy_rules_do_not_allow_this_relatio")
+		a.error.label(400, "errors.hierarchy_disallowed")
 		return
 
 	# Calculate initial rank (add to end of parent or CRM)
@@ -1625,7 +1625,7 @@ def action_object_update(a):
 				parent_class = ""
 			allowed = mochi.db.exists("select 1 from hierarchy where crm=? and class=? and parent=?", crm_id, row["class"], parent_class)
 			if not allowed:
-				a.error.label(400, "errors.cannot_set_parent_hierarchy_rules_do_not_allow_this_relation")
+				a.error.label(400, "errors.parent_hierarchy_disallowed")
 				return
 			mochi.db.execute("update objects set parent=?, updated=? where id=?", parent, now, object_id)
 			log_activity(object_id, a.user.identity.id, "moved", "parent", old_parent, parent)
@@ -1911,6 +1911,22 @@ def action_object_move(a):
 			"crm": crm_id, "id": object_id,
 			"values": updated_values, "user": a.user.identity.id
 		})
+
+	# Broadcast rank changes to subscribers
+	if a.input("rank") != None:
+		if scope_parent:
+			all_in_scope = mochi.db.rows("select id, rank from objects where crm=? and parent=? order by rank asc", crm_id, scope_parent) or []
+		else:
+			all_in_scope = mochi.db.rows("""
+				select o.id, o.rank from objects o
+				left join "values" v on v.object = o.id and v.field=?
+				where o.crm=? and coalesce(v.value, '')=?
+				order by o.rank asc
+			""", field, crm_id, target_value) or []
+		for obj in all_in_scope:
+			broadcast_event(crm_id, "object/update", {
+				"crm": crm_id, "id": obj["id"], "rank": obj["rank"], "user": a.user.identity.id
+			})
 
 	return {"data": {"success": True}}
 
@@ -2527,7 +2543,7 @@ def action_comment_update(a):
 
 	# Only author can edit
 	if comment["author"] != a.user.identity.id:
-		a.error.label(403, "errors.cannot_edit_another_user_s_comment")
+		a.error.label(403, "errors.cannot_edit_others_comment")
 		return
 
 	if not content or not content.strip():
@@ -2933,7 +2949,7 @@ def action_view_create(a):
 	# Check if ID already exists
 	existing = mochi.db.exists("select 1 from views where crm=? and id=?", crm_id, view_id)
 	if existing:
-		a.error.label(400, "errors.a_view_with_this_name_already_exists")
+		a.error.label(400, "errors.view_name_taken")
 		return
 
 	filter_str = a.input("filter") or ""
@@ -3220,7 +3236,7 @@ def action_class_create(a):
 	# Check if ID already exists
 	existing = mochi.db.exists("select 1 from classes where crm=? and id=?", crm_id, class_id)
 	if existing:
-		a.error.label(400, "errors.a_class_with_this_name_already_exists")
+		a.error.label(400, "errors.class_name_taken")
 		return
 
 	# Get max rank
@@ -3330,7 +3346,7 @@ def action_class_delete(a):
 	# Check if there are objects of this class
 	has_objects = mochi.db.exists("select 1 from objects where crm=? and class=?", crm_id, class_id)
 	if has_objects:
-		a.error.label(400, "errors.cannot_delete_class_with_existing_objects")
+		a.error.label(400, "errors.class_in_use")
 		return
 
 	# Delete in order: options, fields, hierarchy, class
@@ -3634,7 +3650,7 @@ def action_field_update(a):
 			# Validate: lowercase alphanumeric + underscores only
 			for ch in new_id.elems():
 				if ch != "_" and not ch.isalnum():
-					a.error.label(400, "errors.field_id_must_contain_only_lowercase_letters_numbers_and_und")
+					a.error.label(400, "errors.invalid_field_id")
 					return
 			# Check for duplicates
 			if mochi.db.exists("select 1 from fields where crm=? and class=? and id=?", crm_id, class_id, new_id):
@@ -3788,7 +3804,7 @@ def action_option_create(a):
 		a.error.label(404, "errors.field_not_found")
 		return
 	if field_row["fieldtype"] != "enumerated":
-		a.error.label(400, "errors.options_can_only_be_added_to_enumerated_fields")
+		a.error.label(400, "errors.field_not_enumerated")
 		return
 
 	name = a.input("name")
@@ -3861,7 +3877,7 @@ def action_option_update(a):
 	field_id = a.input("field")
 	option_id = a.input("option")
 	if not class_id or not field_id or not option_id:
-		a.error.label(400, "errors.type_field_and_option_id_required")
+		a.error.label(400, "errors.option_id_required")
 		return
 
 	option_row = mochi.db.row("select * from options where crm=? and class=? and field=? and id=?", crm_id, class_id, field_id, option_id)
@@ -3929,7 +3945,7 @@ def action_option_delete(a):
 	field_id = a.input("field")
 	option_id = a.input("option")
 	if not class_id or not field_id or not option_id:
-		a.error.label(400, "errors.type_field_and_option_id_required")
+		a.error.label(400, "errors.option_id_required")
 		return
 
 	mochi.db.execute("delete from options where crm=? and class=? and field=? and id=?", crm_id, class_id, field_id, option_id)
@@ -4170,7 +4186,7 @@ def action_probe(a):
 		return
 
 	if not server or server == protocol:
-		a.error.label(400, "errors.could_not_extract_server_from_url")
+		a.error.label(400, "errors.invalid_url")
 		return
 
 	if not crm_id or (not mochi.text.valid(crm_id, "entity") and not mochi.text.valid(crm_id, "fingerprint")):
