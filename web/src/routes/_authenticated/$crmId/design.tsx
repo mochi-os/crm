@@ -58,7 +58,7 @@ function DesignPage() {
   });
 
   const crm = crmData as CrmDetails | undefined;
-  usePageTitle(crm ? `${crm.crm.name} - Design` : "Design");
+  usePageTitle(crm ? t`${crm.crm.name} - Design` : t`Design`);
 
   // Import dialog state
   const [importOpen, setImportOpen] = useState(false);
@@ -89,7 +89,7 @@ function DesignPage() {
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to export design`));
     }
-  }, [crmId, crm]);
+  }, [crmId, crm, t]);
 
   // Import confirmation handler
   const handleConfirmImport = useCallback(async () => {
@@ -112,7 +112,7 @@ function DesignPage() {
     } finally {
       setImporting(false);
     }
-  }, [crmId, pendingImport, queryClient]);
+  }, [crmId, pendingImport, queryClient, t]);
 
   if (isLoading) {
     return (
@@ -151,7 +151,7 @@ function DesignPage() {
   return (
     <>
       <PageHeader
-        title={`${crm.crm.name} - Design`}
+        title={t`${crm.crm.name} - Design`}
         icon={<Settings2 className="size-4 md:size-5" />}
         back={{ label: t`Back to CRM`, onFallback: goBackToCrm }}
         menuAction={
@@ -198,12 +198,12 @@ function DesignPage() {
         onOpenChange={setConfirmOpen}
         title={t`Replace design?`}
         desc={
-          <>
+          <Trans>
             This will replace the current design with{" "}
             <strong>{pendingImport?.label}</strong>. All existing classes,
             fields, options, and views will be deleted. Existing objects will
             not be deleted but may no longer appear in views.
-          </>
+          </Trans>
         }
         confirmText={
           importing ? (
@@ -212,7 +212,7 @@ function DesignPage() {
               <Trans>Replacing...</Trans>
             </>
           ) : (
-            "Replace design"
+            t`Replace design`
           )
         }
         handleConfirm={handleConfirmImport}

@@ -207,7 +207,7 @@ export function ObjectAttachments({
               ) : (
                 <Upload className="size-3 me-1.5" />
               )}
-              Upload
+              <Trans>Upload</Trans>
             </Button>
           </>
         )}

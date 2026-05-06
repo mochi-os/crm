@@ -32,11 +32,11 @@ import {
   SelectValue,
   SortDirectionButton,
   Switch,
+  naturalCompare,
 } from "@mochi/web";
 import { Check, GripVertical, Minus, MoreHorizontal, Pencil, Plus, Trash2, X } from "lucide-react";
 import type { CrmView, CrmField, CrmClass, FieldOption } from "@/types";
 import { AddFieldDialog } from "./add-dialogs";
-import { naturalCompare } from '@mochi/web'
 
 // Pending field for create mode
 export interface PendingField {
@@ -557,7 +557,7 @@ export function ClassSheet({
     if (mode === "create") {
       setName("");
       setPendingParents([]);
-      setPendingFields([{ id: "title", name: "Title", fieldtype: "text", flags: "required,sort" }]);
+      setPendingFields([{ id: "title", name: t`Title`, fieldtype: "text", flags: "required,sort" }]);
     } else if (cls) {
       setName(cls.name);
     }
@@ -809,7 +809,7 @@ export function ClassSheet({
                           className="size-6 shrink-0"
                           onClick={() => removePendingField(field.id)}
                           aria-label={t`Remove field ${field.name || field.id}`}
-                          title={`Remove field ${field.name || field.id}`}
+                          title={t`Remove field ${field.name || field.id}`}
                         >
                           <X className="size-3" />
                         </Button>
@@ -1048,7 +1048,7 @@ export function EditFieldDialog({
                         className="size-7"
                         onClick={() => onEditOption(opt)}
                         aria-label={t`Edit option ${opt.name}`}
-                        title={`Edit option ${opt.name}`}
+                        title={t`Edit option ${opt.name}`}
                       >
                         <Pencil className="size-3.5" />
                       </Button>
@@ -1059,7 +1059,7 @@ export function EditFieldDialog({
                         className="size-7"
                         onClick={() => onDeleteOption(opt.id)}
                         aria-label={t`Delete option ${opt.name}`}
-                        title={`Delete option ${opt.name}`}
+                        title={t`Delete option ${opt.name}`}
                       >
                         <Trash2 className="size-3.5" />
                       </Button>

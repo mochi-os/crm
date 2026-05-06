@@ -78,7 +78,7 @@ export function OptionDialog({
     <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
       <ResponsiveDialogContent showCloseButton={false}>
         <ResponsiveDialogHeader className="flex flex-row items-center justify-between">
-          <ResponsiveDialogTitle>{title || (isEdit ? "Edit option" : "Add option")}</ResponsiveDialogTitle>
+          <ResponsiveDialogTitle>{title || (isEdit ? t`Edit option` : t`Add option`)}</ResponsiveDialogTitle>
           <ResponsiveDialogDescription className="sr-only"><Trans>Configure option settings</Trans></ResponsiveDialogDescription>
           {isEdit && onDelete && (
             <DropdownMenu>
@@ -125,7 +125,7 @@ export function OptionDialog({
               className="size-4 rounded-full"
               style={{ backgroundColor: colour }}
             />
-            <span className="text-sm">{name || "Option name"}</span>
+            <span className="text-sm">{name || t`Option name`}</span>
           </div>
         </div>
         <ResponsiveDialogFooter>

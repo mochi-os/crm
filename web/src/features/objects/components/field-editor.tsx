@@ -122,6 +122,7 @@ export function FieldEditor({
         return <span className="text-sm h-9 flex items-center">{value}</span>;
       case "date":
         if (!value) return <span className="text-sm text-muted-foreground h-9 flex items-center">—</span>;
+        // eslint-disable-next-line lingui/no-unlocalized-strings
         return <span className="text-sm h-9 flex items-center">{formatDate(new Date(value + "T00:00:00"))}</span>;
       case "user": {
         const person = localPeople.find((p) => p.id === value);
@@ -262,7 +263,7 @@ export function FieldEditor({
             directoryFn={async (q) => (await crmsApi.searchUsers(q)).data.results}
             disabled={disabled}
             placeholder={t`Select...`}
-            emptyMessage={"No people found"}
+            emptyMessage={t`No people found`}
           />
         );
 

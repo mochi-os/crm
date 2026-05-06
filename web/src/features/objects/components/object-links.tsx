@@ -32,12 +32,18 @@ interface ObjectLinksProps {
   readOnly: boolean;
 }
 
-const LINK_TYPE_LABELS: Record<string, string> = {
-  relates: "Relates",
-  blocks: "Blocks",
-  duplicates: "Duplicates",
-  "blocked by": "Blocked by",
-};
+function useLinkTypeLabels(): Record<string, string> {
+  const { t } = useLingui();
+  return useMemo(
+    () => ({
+      relates: t`Relates`,
+      blocks: t`Blocks`,
+      duplicates: t`Duplicates`,
+      "blocked by": t`Blocked by`,
+    }),
+    [t],
+  );
+}
 
 export function ObjectLinks({
   crmId,
@@ -48,6 +54,7 @@ export function ObjectLinks({
   readOnly,
 }: ObjectLinksProps) {
   const { t } = useLingui()
+  const linkTypeLabels = useLinkTypeLabels();
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [linkType, setLinkType] = useState("relates");
   const [search, setSearch] = useState("");
@@ -55,8 +62,8 @@ export function ObjectLinks({
 
   const objectTitle = useCallback((obj: { class: string; values: Record<string, string> }) => {
     const cls = classes.find((c) => c.id === obj.class);
-    return (cls?.title ? obj.values[cls.title] : "") || "Untitled";
-  }, [classes]);
+    return (cls?.title ? obj.values[cls.title] : "") || t`Untitled`;
+  }, [classes, t]);
 
   const { data: objectListData } = useQuery({
     queryKey: ["objects", crmId],
@@ -136,8 +143,8 @@ export function ObjectLinks({
       const linkedObj = objectsMap.get(link.target!);
       items.push({
         id: `out-${link.target}-${link.linktype}`,
-        label: LINK_TYPE_LABELS[link.linktype] || link.linktype,
-        displayName: linkedObj ? objectTitle(linkedObj) : (link.title || "Untitled"),
+        label: linkTypeLabels[link.linktype] || link.linktype,
+        displayName: linkedObj ? objectTitle(linkedObj) : (link.title || t`Untitled`),
         source: objectId,
         target: link.target!,
         linktype: link.linktype,
@@ -148,8 +155,8 @@ export function ObjectLinks({
       const linkedObj = objectsMap.get(link.source!);
       items.push({
         id: `in-${link.source}-${link.linktype}`,
-        label: link.linktype === "blocks" ? "Blocked by" : (LINK_TYPE_LABELS[link.linktype] || link.linktype),
-        displayName: linkedObj ? objectTitle(linkedObj) : (link.title || "Untitled"),
+        label: link.linktype === "blocks" ? t`Blocked by` : (linkTypeLabels[link.linktype] || link.linktype),
+        displayName: linkedObj ? objectTitle(linkedObj) : (link.title || t`Untitled`),
         source: link.source!,
         target: objectId,
         linktype: link.linktype,
@@ -157,7 +164,7 @@ export function ObjectLinks({
     }
 
     return items;
-  }, [outgoing, incoming, objectId, objectsMap, objectTitle]);
+  }, [outgoing, incoming, objectId, objectsMap, objectTitle, linkTypeLabels, t]);
 
   // Filter objects for the add-link search
   const linkedObjectIds = useMemo(() => {
@@ -256,7 +263,7 @@ export function ObjectLinks({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  {Object.entries(LINK_TYPE_LABELS).map(([value, label]) => (
+                  {Object.entries(linkTypeLabels).map(([value, label]) => (
                     <SelectItem key={value} value={value} className="text-xs">
                       {label}
                     </SelectItem>

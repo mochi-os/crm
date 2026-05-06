@@ -2,8 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useState, useMemo, useEffect, useRef } from "react";
-import { Trans } from '@lingui/react/macro'
-import { t } from '@lingui/core/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { Check, Paperclip, Upload, X } from "lucide-react";
 import {
@@ -44,6 +43,7 @@ export function CreateObjectDialog({
   allowedClasses,
   onCreated,
 }: CreateObjectDialogProps) {
+  const { t } = useLingui();
   const [error, setError] = useState<string | null>(null);
   const [selectedClass, setSelectedType] = useState(crm.classes[0]?.id || "");
   const [fieldValues, setFieldValues] = useState<Record<string, string>>({});
@@ -153,7 +153,7 @@ export function CreateObjectDialog({
   // Get display title for any object using its class's title field
   const objectTitle = (obj: { class: string; values: Record<string, string> }) => {
     const cls = crm.classes.find((c) => c.id === obj.class);
-    return (cls?.title ? obj.values[cls.title] : "") || "Untitled";
+    return (cls?.title ? obj.values[cls.title] : "") || t`Untitled`;
   };
 
   // Filter objects to only show valid parents based on hierarchy rules
@@ -167,10 +167,10 @@ export function CreateObjectDialog({
   // Human-readable names for required parent classes (used in "no parents" message)
   const parentClassNames = useMemo(() => {
     return allowedParentClasses
-      .filter((t) => t !== "")
+      .filter((cls) => cls !== "")
       .map((id) => crm.classes.find((c) => c.id === id)?.name || id)
-      .join(" or ");
-  }, [allowedParentClasses, crm.classes]);
+      .join(t` or `);
+  }, [allowedParentClasses, crm.classes, t]);
 
   const validParentOptions = useMemo(() => {
     if (!objectsData || !selectedClass) return [];
@@ -372,7 +372,7 @@ export function CreateObjectDialog({
                         <SelectValue placeholder={t`None`}>
                           {currentParent
                             ? objectTitle(currentParent)
-                            : "None"}
+                            : t`None`}
                         </SelectValue>
                       </SelectTrigger>
                       <SelectContent className="z-[60]">
@@ -386,7 +386,7 @@ export function CreateObjectDialog({
                     </Select>
                   ) : (
                     <p className="text-sm text-muted-foreground pt-2">
-                      {"No " + parentClassNames + " to add to"}
+                      {t`No ${parentClassNames} to add to`}
                     </p>
                   )}
                 </div>
@@ -476,7 +476,7 @@ export function CreateObjectDialog({
           <SheetFooter className="px-6 py-4 border-t">
             <Button type="submit" disabled={createMutation.isPending || (parentRequired && !parent) || missingRequired}>
               <Check className="size-4" />
-              {createMutation.isPending ? "Creating..." : "Create"}
+              {createMutation.isPending ? t`Creating...` : t`Create`}
             </Button>
           </SheetFooter>
         </form>

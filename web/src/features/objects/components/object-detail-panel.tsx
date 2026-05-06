@@ -272,17 +272,17 @@ export function ObjectDetailPanel({
   const classOptions = crm.options[object.class] || {};
   const cls = crm.classes.find((c) => c.id === object.class);
   const titleField = cls?.title ? classFields.find((f) => f.id === cls.title) : undefined;
-  const title = (titleField ? data.values[titleField.id] : "") || "Untitled";
+  const title = (titleField ? data.values[titleField.id] : "") || t`Untitled`;
   // Get display title for any object using its class's title field
   const objectTitle = (obj: { class: string; values: Record<string, string> }) => {
     const objCls = crm.classes.find((c) => c.id === obj.class);
-    return (objCls?.title ? obj.values[objCls.title] : "") || "Untitled";
+    return (objCls?.title ? obj.values[objCls.title] : "") || t`Untitled`;
   };
 
   const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
-    { id: "properties", label: "Properties", icon: <Settings2 className="size-4" /> },
-    { id: "comments", label: `Comments (${data.comment_count || 0})`, icon: <MessageSquare className="size-4" /> },
-    { id: "activity", label: "Activity", icon: <Activity className="size-4" /> },
+    { id: "properties", label: t`Properties`, icon: <Settings2 className="size-4" /> },
+    { id: "comments", label: t`Comments (${data.comment_count || 0})`, icon: <MessageSquare className="size-4" /> },
+    { id: "activity", label: t`Activity`, icon: <Activity className="size-4" /> },
   ];
 
   const handleFieldChange = (fieldId: string, value: string) => {
@@ -308,7 +308,7 @@ export function ObjectDetailPanel({
               className="h-8 w-8"
               onClick={() => watchMutation.mutate(data.watching)}
               disabled={watchMutation.isPending}
-              title={data.watching ? "Stop watching" : "Watch"}
+              title={data.watching ? t`Stop watching` : t`Watch`}
             >
               {data.watching ? (
                 <Eye className="size-4" />
@@ -391,7 +391,7 @@ export function ObjectDetailPanel({
                     <span className="text-sm h-9 flex items-center">
                       {currentParent
                         ? objectTitle(currentParent)
-                        : "None"}
+                        : t`None`}
                     </span>
                   ) : (
                     <Select
@@ -403,7 +403,7 @@ export function ObjectDetailPanel({
                         <SelectValue placeholder={t`None`}>
                           {currentParent
                             ? objectTitle(currentParent)
-                            : "None"}
+                            : t`None`}
                         </SelectValue>
                       </SelectTrigger>
                       <SelectContent>

@@ -631,7 +631,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
     setSelectedObjectId(null);
     setCreateDefaultFields(getDefaultColumnValue());
     setCreateDialogOpen(true);
-  }, [crm.classes.length, getDefaultColumnValue]);
+  }, [crm.classes.length, getDefaultColumnValue, t]);
 
   // Keyboard shortcuts
   useKeyboardShortcuts({
@@ -743,7 +743,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
       }
     }
 
-    const headers = ["ID", "Class", "Parent", ...allFields.map((f) => f.name)];
+    const headers = [t`ID`, t`Class`, t`Parent`, ...allFields.map((f) => f.name)];
     const rows = filteredObjects.map((obj) => {
       const cls = crm.classes.find((c) => c.id === obj.class);
       const cells = [
@@ -768,7 +768,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
     a.download = `${crm.crm.name}.csv`;
     a.click();
     URL.revokeObjectURL(url);
-  }, [filteredObjects, allFields, crm, peopleMap]);
+  }, [filteredObjects, allFields, crm, peopleMap, t]);
 
   const handleViewChange = (viewId: string) => {
     setActiveViewId(viewId);
@@ -810,9 +810,9 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
     const viewClasses = activeView?.classes || [];
     if (viewClasses.length === 1) {
       const cls = crm.classes.find((c) => c.id === viewClasses[0]);
-      if (cls) return `New ${cls.name.toLowerCase()}`;
+      if (cls) return t`New ${cls.name.toLowerCase()}`;
     }
-    return "New";
+    return t`New`;
   })();
 
   return (
@@ -846,7 +846,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                 onSelect={(e) => e.preventDefault()}
               >
                 <SlidersHorizontal className="size-4 me-2" />
-                View options
+                <Trans>View options</Trans>
                 <Switch
                   className="ms-auto"
                   checked={showViewOptions}

@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 // Tests for FilterBar component (shows active filter chips)
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@/test/test-utils";

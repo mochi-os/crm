@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 // Comprehensive tests for the CRMs API
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import crmsApi from "./crms";

@@ -37,7 +37,7 @@ export function DesignPreview({
   const selectedView = crm.views.find((v) => v.id === selectedViewId);
 
   // Filter objects to the view's classes (or show all if view has no class filter)
-  const viewClasses = selectedView?.classes || [];
+  const viewClasses = useMemo(() => selectedView?.classes || [], [selectedView]);
   const classObjects = useMemo(
     () => viewClasses.length > 0
       ? objects.filter((obj) => viewClasses.includes(obj.class))

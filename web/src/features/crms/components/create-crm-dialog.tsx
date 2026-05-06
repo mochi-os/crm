@@ -137,7 +137,7 @@ export function CreateCrmDialog({
               <Trans>Cancel</Trans>
             </Button>
             <Button type="submit" disabled={isPending}>
-              {isPending ? "Creating..." : <><Plus className="me-2 size-4" /><Trans>Create CRM</Trans></>}
+              {isPending ? <Trans>Creating...</Trans> : <><Plus className="me-2 size-4" /><Trans>Create CRM</Trans></>}
             </Button>
           </ResponsiveDialogFooter>
         </form>

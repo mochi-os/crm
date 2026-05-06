@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 // Tests for CreateObjectDialog component
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import {

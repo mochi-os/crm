@@ -13,9 +13,37 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/objects/components/create-object-dialog.tsx:172
+msgid " or "
+msgstr "或"
+
 #: src/features/editor/components/edit-dialogs.tsx:764
 msgid "(itself)"
 msgstr "(自身)"
+
+#: src/features/board/components/board-container.tsx:734
+msgid "[not set]"
+msgstr "[未设置]"
+
+#. placeholder {0}: crm.crm.name
+#: src/routes/_authenticated/$crmId/design.tsx:61
+#: src/routes/_authenticated/$crmId/design.tsx:154
+msgid "{0} - Design"
+msgstr "{0} - 设计"
+
+#. placeholder {0}: crm.crm.name
+#: src/routes/_authenticated/$crmId_.settings.tsx:122
+#: src/routes/_authenticated/$crmId_.settings.tsx:236
+msgid "{0} settings"
+msgstr "{0} 设置"
+
+#: src/features/objects/components/comment-thread.tsx:133
+msgid "+{totalDescendants} more replies"
+msgstr "+{totalDescendants} 条回复"
+
+#: src/features/objects/components/comment-thread.tsx:132
+msgid "1 reply"
+msgstr "1 条回复"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:52
 msgid "12 hours"
@@ -29,6 +57,10 @@ msgstr "24 小时"
 msgid "Absolute (date and time)"
 msgstr "绝对(日期和时间)"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:84
+msgid "Access"
+msgstr "访问"
+
 #: ../../../lib/web/src/features/errors/forbidden.tsx:12
 msgid "Access Forbidden"
 msgstr "禁止访问"
@@ -37,19 +69,19 @@ msgstr "禁止访问"
 msgid "Access level"
 msgstr "访问级别"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:670
+#: src/routes/_authenticated/$crmId_.settings.tsx:672
 msgid "Access level updated"
 msgstr "访问级别已更新"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:679
+#: src/routes/_authenticated/$crmId_.settings.tsx:681
 msgid "Access Management"
 msgstr "访问管理"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:659
+#: src/routes/_authenticated/$crmId_.settings.tsx:661
 msgid "Access removed"
 msgstr "访问权限已移除"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:647
+#: src/routes/_authenticated/$crmId_.settings.tsx:649
 msgid "Access set for {subjectName}"
 msgstr "已为 {subjectName} 设置访问权限"
 
@@ -69,7 +101,11 @@ msgstr "账户类型"
 msgid "Account verified"
 msgstr "账户已验证"
 
-#: src/features/objects/components/field-editor.tsx:533
+#: src/features/objects/components/object-detail-panel.tsx:285
+msgid "Activity"
+msgstr "动态"
+
+#: src/features/objects/components/field-editor.tsx:534
 msgid "Add"
 msgstr "添加"
 
@@ -98,7 +134,7 @@ msgstr "添加账户"
 msgid "Add an account to receive notifications and use services."
 msgstr "添加账户以接收通知并使用服务。"
 
-#: src/features/objects/components/field-editor.tsx:504
+#: src/features/objects/components/field-editor.tsx:505
 msgid "Add checklist item"
 msgstr "添加清单项"
 
@@ -118,11 +154,11 @@ msgstr "添加列"
 msgid "Add field"
 msgstr "添加字段"
 
-#: src/features/objects/components/field-editor.tsx:522
+#: src/features/objects/components/field-editor.tsx:523
 msgid "Add item..."
 msgstr "添加条目..."
 
-#: src/features/objects/components/object-links.tsx:250
+#: src/features/objects/components/object-links.tsx:257
 msgid "Add link"
 msgstr "添加链接"
 
@@ -131,11 +167,12 @@ msgid "Add new account"
 msgstr "添加新账户"
 
 #: src/features/editor/components/edit-dialogs.tsx:1071
+#: src/features/editor/components/option-dialog.tsx:81
 #: src/features/editor/components/option-dialog.tsx:143
 msgid "Add option"
 msgstr "添加选项"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:686
+#: src/routes/_authenticated/$crmId_.settings.tsx:688
 msgid "Add Rule"
 msgstr "添加规则"
 
@@ -220,7 +257,7 @@ msgstr "附加评论文件"
 msgid "Attach reply files"
 msgstr "附加回复文件"
 
-#: src/components/keyboard-shortcuts-help.tsx:41
+#: src/components/keyboard-shortcuts-help.tsx:47
 msgid "Available keyboard shortcuts"
 msgstr "可用键盘快捷键"
 
@@ -228,9 +265,9 @@ msgstr "可用键盘快捷键"
 msgid "Back"
 msgstr "返回"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:184
-#: src/routes/_authenticated/$crmId_.settings.tsx:207
-#: src/routes/_authenticated/$crmId_.settings.tsx:239
+#: src/routes/_authenticated/$crmId_.settings.tsx:183
+#: src/routes/_authenticated/$crmId_.settings.tsx:206
+#: src/routes/_authenticated/$crmId_.settings.tsx:238
 #: src/routes/_authenticated/$crmId/design.tsx:131
 #: src/routes/_authenticated/$crmId/design.tsx:156
 msgid "Back to CRM"
@@ -246,6 +283,15 @@ msgstr "返回 CRM 列表"
 #: ../../../lib/web/src/features/errors/unauthorized-error.tsx:21
 msgid "Back to Home"
 msgstr "返回首页"
+
+#: src/features/objects/components/object-links.tsx:42
+#: src/features/objects/components/object-links.tsx:158
+msgid "Blocked by"
+msgstr "被以下阻止"
+
+#: src/features/objects/components/object-links.tsx:40
+msgid "Blocks"
+msgstr "阻止"
 
 #: src/features/editor/components/edit-dialogs.tsx:310
 msgid "Board"
@@ -320,6 +366,10 @@ msgstr "在跟随系统、浅色模式或深色模式之间选择"
 msgid "Choose language"
 msgstr "选择语言"
 
+#: src/routes/_authenticated/$crmId/index.tsx:746
+msgid "Class"
+msgstr "类"
+
 #: src/features/editor/components/design-editor.tsx:499
 msgid "Classes"
 msgstr "类"
@@ -365,6 +415,10 @@ msgstr "关闭导航"
 msgid "Close Panel"
 msgstr "关闭面板"
 
+#: src/components/keyboard-shortcuts-help.tsx:31
+msgid "Close panel / cancel"
+msgstr "关闭面板 / 取消"
+
 #: ../../../lib/web/src/components/header-search.tsx:51
 msgid "Close search"
 msgstr "关闭搜索"
@@ -385,9 +439,14 @@ msgstr "列分组依据"
 msgid "Coming Soon!"
 msgstr "即将推出!"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:585
+#: src/routes/_authenticated/$crmId_.settings.tsx:587
 msgid "Comment and view"
 msgstr "评论和查看"
+
+#. placeholder {0}: data.comment_count || 0
+#: src/features/objects/components/object-detail-panel.tsx:284
+msgid "Comments ({0})"
+msgstr "评论 ({0})"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:302
 msgid "Compact"
@@ -422,7 +481,7 @@ msgstr "上下文信息和详情。"
 msgid "Continue"
 msgstr "继续"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:680
+#: src/routes/_authenticated/$crmId_.settings.tsx:682
 msgid "Control who can view and interact with this CRM"
 msgstr "控制谁可以查看此 CRM 并与之互动"
 
@@ -430,13 +489,14 @@ msgstr "控制谁可以查看此 CRM 并与之互动"
 msgid "Copy"
 msgstr "复制"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:325
+#: src/routes/_authenticated/$crmId_.settings.tsx:324
 msgid "Core information about this CRM"
 msgstr "关于此 CRM 的核心信息"
 
 #: src/features/board/components/board-column.tsx:537
 #: src/features/board/components/board-column.tsx:684
 #: src/features/objects/components/create-object-dialog.tsx:336
+#: src/features/objects/components/create-object-dialog.tsx:479
 #: src/features/tree/components/tree-view.tsx:363
 msgid "Create"
 msgstr "创建"
@@ -457,31 +517,45 @@ msgstr "创建新的 CRM 对象。"
 msgid "Create CRM"
 msgstr "创建 CRM"
 
+#: src/components/keyboard-shortcuts-help.tsx:24
+msgid "Create new item"
+msgstr "创建新条目"
+
 #: src/features/objects/components/create-object-dialog.tsx:314
 msgid "Create object"
 msgstr "创建对象"
 
+#: src/components/view-options-bar.tsx:36
 #: src/features/editor/components/edit-dialogs.tsx:474
 msgid "Created"
 msgstr "已创建"
+
+#: src/features/crms/components/create-crm-dialog.tsx:140
+#: src/features/objects/components/create-object-dialog.tsx:479
+msgid "Creating..."
+msgstr "创建中..."
 
 #: src/features/crms/components/create-crm-dialog.tsx:67
 msgid "CRM created"
 msgstr "CRM 已创建"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:133
+#: src/routes/_authenticated/$crmId_.settings.tsx:132
 msgid "Crm deleted"
 msgstr "CRM 已删除"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:222
+#: src/routes/_authenticated/$crmId_.settings.tsx:221
 msgid "CRM not found"
 msgstr "未找到 CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:222
+#: src/routes/_authenticated/$crmId_.settings.tsx:122
+msgid "Crm settings"
+msgstr "CRM 设置"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:221
 msgid "CRM unavailable"
 msgstr "CRM 不可用"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:169
+#: src/routes/_authenticated/$crmId_.settings.tsx:168
 msgid "Crm updated"
 msgstr "CRM 已更新"
 
@@ -528,7 +602,7 @@ msgstr "默认排序"
 #: src/features/objects/components/comment-thread.tsx:385
 #: src/features/objects/components/object-attachments.tsx:233
 #: src/features/objects/components/object-detail-panel.tsx:472
-#: src/routes/_authenticated/$crmId_.settings.tsx:397
+#: src/routes/_authenticated/$crmId_.settings.tsx:396
 msgid "Delete"
 msgstr "删除"
 
@@ -548,15 +622,15 @@ msgstr "删除列"
 msgid "Delete comment"
 msgstr "删除评论"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:387
+#: src/routes/_authenticated/$crmId_.settings.tsx:386
 msgid "Delete crm"
 msgstr "删除 CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:418
+#: src/routes/_authenticated/$crmId_.settings.tsx:417
 msgid "Delete CRM"
 msgstr "删除 CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:416
+#: src/routes/_authenticated/$crmId_.settings.tsx:415
 msgid "Delete CRM?"
 msgstr "删除 CRM 吗?"
 
@@ -575,6 +649,7 @@ msgstr "删除选项"
 
 #. placeholder {0}: opt.name
 #: src/features/editor/components/edit-dialogs.tsx:1061
+#: src/features/editor/components/edit-dialogs.tsx:1062
 msgid "Delete option {0}"
 msgstr "删除选项 {0}"
 
@@ -586,10 +661,11 @@ msgstr "删除视图"
 msgid "Desc"
 msgstr "降序"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:337
+#: src/routes/_authenticated/$crmId_.settings.tsx:336
 msgid "Description"
 msgstr "描述"
 
+#: src/routes/_authenticated/$crmId/design.tsx:61
 #: src/routes/_authenticated/$crmId/design.tsx:129
 #: src/routes/_authenticated/$crmId/index.tsx:875
 msgid "Design"
@@ -599,7 +675,7 @@ msgstr "设计"
 msgid "Design imported"
 msgstr "设计已导入"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:583
+#: src/routes/_authenticated/$crmId_.settings.tsx:585
 msgid "Design, write, comment, and view"
 msgstr "设计、撰写、评论和查看"
 
@@ -654,6 +730,10 @@ msgstr "请先下载备份"
 msgid "Drag columns to re-order them"
 msgstr "拖动列以重新排序"
 
+#: src/features/objects/components/object-links.tsx:41
+msgid "Duplicates"
+msgstr "重复"
+
 #: src/features/objects/components/comment-thread.tsx:221
 #: src/features/objects/components/comment-thread.tsx:260
 msgid "Edit"
@@ -671,16 +751,25 @@ msgstr "编辑字段"
 msgid "Edit field settings"
 msgstr "编辑字段设置"
 
+#: src/features/editor/components/option-dialog.tsx:81
+msgid "Edit option"
+msgstr "编辑选项"
+
 #. placeholder {0}: opt.name
 #: src/features/editor/components/edit-dialogs.tsx:1050
+#: src/features/editor/components/edit-dialogs.tsx:1051
 msgid "Edit option {0}"
 msgstr "编辑选项 {0}"
+
+#: src/components/keyboard-shortcuts-help.tsx:30
+msgid "Edit selected card"
+msgstr "编辑选中的卡片"
 
 #: src/features/editor/components/edit-dialogs.tsx:266
 msgid "Edit view"
 msgstr "编辑视图"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:344
+#: src/routes/_authenticated/$crmId_.settings.tsx:343
 msgid "Entity ID"
 msgstr "实体 ID"
 
@@ -716,7 +805,7 @@ msgstr "创建 CRM 失败"
 msgid "Failed to create field"
 msgstr "创建字段失败"
 
-#: src/features/objects/components/object-links.tsx:90
+#: src/features/objects/components/object-links.tsx:97
 msgid "Failed to create link"
 msgstr "创建链接失败"
 
@@ -736,11 +825,11 @@ msgstr "删除附件失败"
 msgid "Failed to delete comment"
 msgstr "删除评论失败"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:136
+#: src/routes/_authenticated/$crmId_.settings.tsx:135
 msgid "Failed to delete crm"
 msgstr "删除 CRM 失败"
 
-#: src/features/objects/components/object-links.tsx:112
+#: src/features/objects/components/object-links.tsx:119
 msgid "Failed to delete link"
 msgstr "删除链接失败"
 
@@ -782,7 +871,7 @@ msgstr "发布评论失败"
 msgid "Failed to read file"
 msgstr "读取文件失败"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:662
+#: src/routes/_authenticated/$crmId_.settings.tsx:664
 msgid "Failed to remove access"
 msgstr "移除访问权限失败"
 
@@ -802,7 +891,7 @@ msgstr "重新排序视图失败"
 msgid "Failed to send verification code"
 msgstr "发送验证码失败"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:650
+#: src/routes/_authenticated/$crmId_.settings.tsx:652
 msgid "Failed to set access level"
 msgstr "设置访问级别失败"
 
@@ -812,11 +901,11 @@ msgid "Failed to subscribe"
 msgstr "订阅失败"
 
 #: src/features/crms/pages/crms-list-page.tsx:48
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:151
 msgid "Failed to unsubscribe"
 msgstr "取消订阅失败"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:673
+#: src/routes/_authenticated/$crmId_.settings.tsx:675
 msgid "Failed to update access level"
 msgstr "更新访问级别失败"
 
@@ -828,7 +917,7 @@ msgstr "更新分类失败"
 msgid "Failed to update comment"
 msgstr "更新评论失败"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:171
+#: src/routes/_authenticated/$crmId_.settings.tsx:170
 msgid "Failed to update crm"
 msgstr "更新 CRM 失败"
 
@@ -855,7 +944,7 @@ msgstr "文件"
 msgid "Find CRMs"
 msgstr "查找 CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:349
+#: src/routes/_authenticated/$crmId_.settings.tsx:348
 msgid "Fingerprint"
 msgstr "指纹"
 
@@ -920,7 +1009,11 @@ msgstr "首页"
 msgid "Hot"
 msgstr "热门"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:324
+#: src/routes/_authenticated/$crmId/index.tsx:746
+msgid "ID"
+msgstr "ID"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:323
 msgid "Identity"
 msgstr "身份"
 
@@ -945,7 +1038,7 @@ msgstr "嵌入"
 msgid "Interests"
 msgstr "兴趣"
 
-#: src/features/objects/components/field-editor.tsx:365
+#: src/features/objects/components/field-editor.tsx:366
 msgid "Invalid date"
 msgstr "日期无效"
 
@@ -961,7 +1054,7 @@ msgstr "验证码无效"
 msgid "Item details"
 msgstr "条目详情"
 
-#: src/components/keyboard-shortcuts-help.tsx:40
+#: src/components/keyboard-shortcuts-help.tsx:46
 msgid "Keyboard shortcuts"
 msgstr "键盘快捷键"
 
@@ -983,7 +1076,7 @@ msgstr "从左到右"
 msgid "Light"
 msgstr "浅色"
 
-#: src/features/objects/components/object-links.tsx:212
+#: src/features/objects/components/object-links.tsx:219
 msgid "Links"
 msgstr "链接"
 
@@ -1033,6 +1126,10 @@ msgstr "正在退出登录…"
 msgid "Luma (Default)"
 msgstr "Luma(默认)"
 
+#: src/components/view-options-bar.tsx:34
+msgid "Manual"
+msgstr "手动"
+
 #: ../../../lib/web/src/components/layout/notification-menu.tsx:86
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:220
 msgid "Mark all as read"
@@ -1057,7 +1154,7 @@ msgstr "星期一"
 #: src/features/editor/components/edit-dialogs.tsx:696
 #: src/features/editor/components/edit-dialogs.tsx:967
 #: src/features/editor/components/option-dialog.tsx:101
-#: src/routes/_authenticated/$crmId_.settings.tsx:329
+#: src/routes/_authenticated/$crmId_.settings.tsx:328
 msgid "Name"
 msgstr "名称"
 
@@ -1067,15 +1164,25 @@ msgstr "名称为必填项"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:40
 #: src/features/objects/components/create-object-dialog.tsx:321
+#: src/routes/_authenticated/$crmId/index.tsx:815
 #: src/routes/_authenticated/$crmId/index.tsx:832
 msgid "New"
 msgstr "新建"
+
+#. placeholder {0}: cls.name.toLowerCase()
+#: src/routes/_authenticated/$crmId/index.tsx:813
+msgid "New {0}"
+msgstr "新建{0}"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
 msgid "Next image"
 msgstr "下一张图片"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:587
+#: src/features/objects/components/create-object-dialog.tsx:389
+msgid "No {parentClassNames} to add to"
+msgstr "没有可添加到的 {parentClassNames}"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:589
 msgid "No access"
 msgstr "无访问权限"
 
@@ -1112,13 +1219,17 @@ msgstr "尚无可创建的条目类型。请先创建所需的父级条目。"
 msgid "No matches."
 msgstr "无匹配项。"
 
-#: src/features/objects/components/object-links.tsx:292
+#: src/features/objects/components/object-links.tsx:299
 msgid "No matching objects"
 msgstr "无匹配的对象"
 
 #: src/routes/_authenticated/$crmId/index.tsx:731
 msgid "No objects to export."
 msgstr "无可导出的对象。"
+
+#: src/features/objects/components/field-editor.tsx:266
+msgid "No people found"
+msgstr "未找到任何人"
 
 #: ../../../lib/web/src/components/place-picker.tsx:129
 msgid "No places found"
@@ -1132,6 +1243,11 @@ msgstr "无资料"
 #: ../../../lib/web/src/components/data-table/faceted-filter.tsx:87
 msgid "No results found."
 msgstr "未找到结果。"
+
+#: src/features/board/components/board-container.tsx:805
+#: src/features/board/components/board-container.tsx:849
+msgid "No status"
+msgstr "无状态"
 
 #: ../../../lib/web/src/components/timezone-select.tsx:64
 msgid "No time zone found."
@@ -1159,13 +1275,16 @@ msgstr "无浏览量"
 #: src/features/editor/components/edit-dialogs.tsx:730
 #: src/features/editor/components/edit-dialogs.tsx:733
 #: src/features/objects/components/create-object-dialog.tsx:372
+#: src/features/objects/components/create-object-dialog.tsx:375
 #: src/features/objects/components/create-object-dialog.tsx:379
+#: src/features/objects/components/object-detail-panel.tsx:394
 #: src/features/objects/components/object-detail-panel.tsx:403
+#: src/features/objects/components/object-detail-panel.tsx:406
 #: src/features/objects/components/object-detail-panel.tsx:410
 msgid "None"
 msgstr "无"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:558
+#: src/routes/_authenticated/$crmId_.settings.tsx:560
 msgid "Not set"
 msgstr "未设置"
 
@@ -1179,6 +1298,7 @@ msgstr "未找到任何内容"
 msgid "Notifications"
 msgstr "通知"
 
+#: src/components/view-options-bar.tsx:35
 #: src/features/editor/components/add-dialogs.tsx:127
 #: src/features/editor/components/edit-dialogs.tsx:475
 msgid "Number"
@@ -1218,6 +1338,10 @@ msgstr "打开选项操作"
 msgid "Open page actions"
 msgstr "打开页面操作"
 
+#: src/components/keyboard-shortcuts-help.tsx:29
+msgid "Open selected card"
+msgstr "打开选中的卡片"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:51
 msgid "Open theme settings"
 msgstr "打开主题设置"
@@ -1226,11 +1350,12 @@ msgstr "打开主题设置"
 msgid "Open view actions"
 msgstr "打开视图操作"
 
-#: src/components/view-options-bar.tsx:99
+#: src/components/view-options-bar.tsx:106
 msgid "Open view controls"
 msgstr "打开视图控件"
 
 #: src/features/editor/components/add-dialogs.tsx:187
+#: src/features/editor/components/option-dialog.tsx:128
 msgid "Option name"
 msgstr "选项名称"
 
@@ -1249,10 +1374,11 @@ msgstr "所有者"
 
 #: src/features/objects/components/create-object-dialog.tsx:364
 #: src/features/objects/components/object-detail-panel.tsx:388
+#: src/routes/_authenticated/$crmId/index.tsx:746
 msgid "Parent"
 msgstr "父级"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:388
+#: src/routes/_authenticated/$crmId_.settings.tsx:387
 msgid "Permanently delete this CRM and all its content."
 msgstr "永久删除此 CRM 及其所有内容。"
 
@@ -1269,6 +1395,10 @@ msgstr "上一张图片"
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
 msgid "Profile"
 msgstr "个人资料"
+
+#: src/features/objects/components/object-detail-panel.tsx:283
+msgid "Properties"
+msgstr "属性"
 
 #: src/routes/_authenticated/$crmId/index.tsx:864
 msgid "Re-order columns"
@@ -1291,6 +1421,10 @@ msgstr "正在重定向到登录。"
 #: ../../../lib/web/src/components/post-tags.tsx:175
 msgid "Reduce interest"
 msgstr "降低兴趣"
+
+#: src/features/objects/components/object-links.tsx:39
+msgid "Relates"
+msgstr "关联"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:60
 msgid "Relative (5m, 3h, 2d)"
@@ -1317,6 +1451,7 @@ msgstr "移除访问权限?"
 
 #. placeholder {0}: field.name || field.id
 #: src/features/editor/components/edit-dialogs.tsx:811
+#: src/features/editor/components/edit-dialogs.tsx:812
 msgid "Remove field {0}"
 msgstr "移除字段 {0}"
 
@@ -1324,7 +1459,7 @@ msgstr "移除字段 {0}"
 msgid "Remove interest"
 msgstr "移除兴趣"
 
-#: src/features/objects/components/field-editor.tsx:488
+#: src/features/objects/components/field-editor.tsx:489
 msgid "Remove item"
 msgstr "移除条目"
 
@@ -1341,6 +1476,10 @@ msgstr "重命名列"
 msgid "Rename this board column"
 msgstr "重命名此看板列"
 
+#: src/routes/_authenticated/$crmId/design.tsx:215
+msgid "Replace design"
+msgstr "替换设计"
+
 #: src/routes/_authenticated/$crmId/design.tsx:199
 msgid "Replace design?"
 msgstr "替换设计?"
@@ -1353,6 +1492,11 @@ msgstr "正在替换..."
 #: src/features/objects/components/comment-thread.tsx:250
 msgid "Reply"
 msgstr "回复"
+
+#. placeholder {0}: comment.name || comment.author
+#: src/features/objects/components/comment-thread.tsx:281
+msgid "Reply to {0}..."
+msgstr "回复 {0}..."
 
 #: src/features/editor/components/edit-dialogs.tsx:1013
 msgid "Required"
@@ -1401,7 +1545,7 @@ msgstr "星期六"
 msgid "Save"
 msgstr "保存"
 
-#: src/components/view-options-bar.tsx:120
+#: src/components/view-options-bar.tsx:127
 msgid "Search"
 msgstr "搜索"
 
@@ -1425,7 +1569,7 @@ msgstr "搜索目的地..."
 msgid "Search for origin..."
 msgstr "搜索起点..."
 
-#: src/features/objects/components/object-links.tsx:267
+#: src/features/objects/components/object-links.tsx:274
 msgid "Search objects..."
 msgstr "搜索对象..."
 
@@ -1437,13 +1581,13 @@ msgstr "搜索时区..."
 msgid "Search users"
 msgstr "搜索用户"
 
-#: src/components/view-options-bar.tsx:116
+#: src/components/view-options-bar.tsx:123
 msgid "Search, watch, and sort this view."
 msgstr "搜索、关注并排序此视图。"
 
 #: ../../../lib/web/src/components/person-picker.tsx:323
-#: src/components/view-options-bar.tsx:124
-#: src/components/view-options-bar.tsx:213
+#: src/components/view-options-bar.tsx:131
+#: src/components/view-options-bar.tsx:220
 msgid "Search..."
 msgstr "搜索..."
 
@@ -1485,6 +1629,14 @@ msgstr "选择群组"
 msgid "Select layout style"
 msgstr "选择布局样式"
 
+#: src/components/keyboard-shortcuts-help.tsx:27
+msgid "Select next card"
+msgstr "选择下一张卡片"
+
+#: src/components/keyboard-shortcuts-help.tsx:28
+msgid "Select previous card"
+msgstr "选择上一张卡片"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:233
 msgid "Select sidebar style"
 msgstr "选择侧边栏样式"
@@ -1497,12 +1649,12 @@ msgstr "选择站点方向"
 msgid "Select theme preference"
 msgstr "选择主题偏好"
 
-#: src/features/objects/components/field-editor.tsx:185
-#: src/features/objects/components/field-editor.tsx:264
+#: src/features/objects/components/field-editor.tsx:186
+#: src/features/objects/components/field-editor.tsx:265
 msgid "Select..."
 msgstr "选择..."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:358
+#: src/routes/_authenticated/$crmId_.settings.tsx:357
 msgid "Server"
 msgstr "服务器"
 
@@ -1517,8 +1669,9 @@ msgstr "设置起点和终点"
 #: ../../../lib/web/src/components/layout/nav-user.tsx:81
 #: ../../../lib/web/src/components/layout/nav-user.tsx:145
 #: ../../../lib/web/src/components/layout/nav-user.tsx:195
-#: src/routes/_authenticated/$crmId_.settings.tsx:182
-#: src/routes/_authenticated/$crmId_.settings.tsx:205
+#: src/routes/_authenticated/$crmId_.settings.tsx:83
+#: src/routes/_authenticated/$crmId_.settings.tsx:181
+#: src/routes/_authenticated/$crmId_.settings.tsx:204
 #: src/routes/_authenticated/$crmId/index.tsx:889
 msgid "Settings"
 msgstr "设置"
@@ -1530,6 +1683,10 @@ msgstr "显示分类"
 #: src/features/editor/components/edit-dialogs.tsx:415
 msgid "Show fields"
 msgstr "显示字段"
+
+#: src/components/keyboard-shortcuts-help.tsx:32
+msgid "Show this help"
+msgstr "显示此帮助"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:36
 msgid "Showing {totalShown} of {total}"
@@ -1554,7 +1711,7 @@ msgstr "仅限单行文本"
 msgid "Skip to Main"
 msgstr "跳至主内容"
 
-#: src/components/view-options-bar.tsx:142
+#: src/components/view-options-bar.tsx:149
 msgid "Sort"
 msgstr "排序"
 
@@ -1565,6 +1722,10 @@ msgstr "添加第一条评论以开始讨论。"
 #: ../../../lib/web/src/components/coming-soon.tsx:12
 msgid "Stay tuned though!"
 msgstr "敬请期待!"
+
+#: src/features/objects/components/object-detail-panel.tsx:311
+msgid "Stop watching"
+msgstr "停止关注"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:187
 msgid "Subject"
@@ -1580,6 +1741,11 @@ msgstr "提交评论"
 msgid "Submit reply"
 msgstr "提交回复"
 
+#: src/features/crms/components/inline-crm-search.tsx:185
+#: src/features/crms/components/recommended-crms.tsx:159
+msgid "Subscribe"
+msgstr "订阅"
+
 #. placeholder {0}: crm.name
 #: src/features/crms/components/recommended-crms.tsx:59
 msgid "Subscribed to {0}"
@@ -1588,6 +1754,10 @@ msgstr "已订阅 {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts:75
 msgid "Sunday"
 msgstr "星期日"
+
+#: src/components/keyboard-shortcuts-help.tsx:26
+msgid "Switch to view 1-9"
+msgstr "切换到视图 1-9"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:195
 #: ../../../lib/web/src/lib/preference-utils.ts:18
@@ -1614,27 +1784,36 @@ msgstr "主题"
 msgid "Theme Settings"
 msgstr "主题设置"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:225
+#: src/routes/_authenticated/$crmId_.settings.tsx:224
 msgid "This CRM could not be loaded right now."
 msgstr "目前无法加载此 CRM。"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:225
+#: src/routes/_authenticated/$crmId_.settings.tsx:224
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "此 CRM 可能已被删除,或您没有访问权限。"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:417
+#: src/routes/_authenticated/$crmId_.settings.tsx:416
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "这将永久删除“{0}”及其所有对象、评论和附件。此操作无法撤销。"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:407
+#: src/routes/_authenticated/$crmId_.settings.tsx:406
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "这将从您的侧边栏中移除“{0}”并停止此 CRM 的更新。"
+
+#. placeholder {0}: pendingImport?.label
+#: src/routes/_authenticated/$crmId/design.tsx:201
+msgid "This will replace the current design with <0>{0}</0>. All existing classes, fields, options, and views will be deleted. Existing objects will not be deleted but may no longer appear in views."
+msgstr "此操作会将当前设计替换为 <0>{0}</0>。所有现有的类、字段、选项和视图都将被删除。现有对象不会被删除，但可能不再出现在视图中。"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:72
 msgid "Thursday"
 msgstr "星期四"
+
+#: src/features/editor/components/edit-dialogs.tsx:560
+msgid "Title"
+msgstr "标题"
 
 #: src/features/editor/components/edit-dialogs.tsx:719
 msgid "Title field"
@@ -1658,8 +1837,12 @@ msgstr "切换侧边栏"
 msgid "Toggle theme"
 msgstr "切换主题"
 
-#: src/components/view-options-bar.tsx:133
-#: src/components/view-options-bar.tsx:224
+#: src/components/keyboard-shortcuts-help.tsx:25
+msgid "Toggle view options"
+msgstr "切换视图选项"
+
+#: src/components/view-options-bar.tsx:140
+#: src/components/view-options-bar.tsx:231
 msgid "Toggle watched filter"
 msgstr "切换已关注筛选"
 
@@ -1727,31 +1910,45 @@ msgstr "美国"
 #: src/features/crms/pages/crms-list-page.tsx:146
 #: src/features/crms/pages/crms-list-page.tsx:163
 #: src/features/crms/pages/crms-list-page.tsx:165
-#: src/routes/_authenticated/$crmId_.settings.tsx:408
+#: src/routes/_authenticated/$crmId_.settings.tsx:377
+#: src/routes/_authenticated/$crmId_.settings.tsx:407
 msgid "Unsubscribe"
 msgstr "取消订阅"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:367
+#: src/routes/_authenticated/$crmId_.settings.tsx:366
 msgid "Unsubscribe from crm"
 msgstr "取消订阅 CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:406
+#: src/routes/_authenticated/$crmId_.settings.tsx:405
 msgid "Unsubscribe from CRM?"
 msgstr "取消订阅 CRM?"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:149
+#: src/routes/_authenticated/$crmId_.settings.tsx:148
 msgid "Unsubscribed"
 msgstr "已取消订阅"
+
+#: src/features/board/components/board-card.tsx:75
+#: src/features/board/components/board-card.tsx:76
+#: src/features/objects/components/create-object-dialog.tsx:156
+#: src/features/objects/components/object-detail-panel.tsx:275
+#: src/features/objects/components/object-detail-panel.tsx:279
+#: src/features/objects/components/object-links.tsx:65
+#: src/features/objects/components/object-links.tsx:147
+#: src/features/objects/components/object-links.tsx:159
+msgid "Untitled"
+msgstr "未命名"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:131
 msgid "Unverified"
 msgstr "未验证"
 
+#: src/components/view-options-bar.tsx:37
 #: src/features/editor/components/edit-dialogs.tsx:476
 msgid "Updated"
 msgstr "已更新"
 
 #: src/features/objects/components/create-object-dialog.tsx:463
+#: src/features/objects/components/object-attachments.tsx:210
 msgid "Upload"
 msgstr "上传"
 
@@ -1800,23 +1997,31 @@ msgstr "查看所有通知"
 msgid "View and edit item details"
 msgstr "查看并编辑条目详情"
 
-#: src/components/view-options-bar.tsx:115
+#: src/components/view-options-bar.tsx:122
 msgid "View controls"
 msgstr "视图控制"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:586
+#: src/routes/_authenticated/$crmId_.settings.tsx:588
 msgid "View only"
 msgstr "仅查看"
+
+#: src/routes/_authenticated/$crmId/index.tsx:849
+msgid "View options"
+msgstr "查看选项"
 
 #: src/features/editor/components/design-editor.tsx:451
 msgid "Views"
 msgstr "查看"
 
-#: src/components/view-options-bar.tsx:228
+#: src/features/objects/components/object-detail-panel.tsx:311
+msgid "Watch"
+msgstr "关注"
+
+#: src/components/view-options-bar.tsx:235
 msgid "Watched"
 msgstr "已关注"
 
-#: src/components/view-options-bar.tsx:137
+#: src/components/view-options-bar.tsx:144
 msgid "Watched only"
 msgstr "仅显示已关注"
 
@@ -1832,7 +2037,7 @@ msgstr "网站正在维护中!"
 msgid "Wednesday"
 msgstr "星期三"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:584
+#: src/routes/_authenticated/$crmId_.settings.tsx:586
 msgid "Write, comment, and view"
 msgstr "撰写、评论和查看"
 

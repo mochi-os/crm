@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 // Tests for API endpoint URL generation
 import { describe, it, expect } from "vitest";
 import endpoints from "./endpoints";

@@ -129,8 +129,8 @@ export function CommentThread({
         {totalDescendants > 0 ? (
           <span>
             {totalDescendants === 1
-              ? "1 reply"
-              : `+${totalDescendants} more replies`}
+              ? t`1 reply`
+              : t`+${totalDescendants} more replies`}
           </span>
         ) : (
           <span className="text-muted-foreground italic">(expand)</span>
@@ -278,7 +278,7 @@ export function CommentThread({
       {isReplying && (
         <div className="mt-2 space-y-2 border-t pt-2">
           <MentionTextarea
-            placeholder={`Reply to ${comment.name || comment.author}...`}
+            placeholder={t`Reply to ${comment.name || comment.author}...`}
             value={replyDraft}
             onValueChange={onReplyDraftChange}
             onKeyDown={(e) => {

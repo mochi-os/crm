@@ -69,11 +69,6 @@ interface Tab {
   icon: React.ReactNode;
 }
 
-const tabs: Tab[] = [
-  { id: "general", label: "Settings", icon: <Settings className="h-4 w-4" /> },
-  { id: "access", label: "Access", icon: <Shield className="h-4 w-4" /> },
-];
-
 function CrmSettingsPage() {
   const { t } = useLingui()
   const { crmId } = Route.useParams();
@@ -84,6 +79,10 @@ function CrmSettingsPage() {
   const queryClient = useQueryClient();
   const refreshSidebar = useCrmsStore((state) => state.refresh);
   const goBackToCrm = () => navigate({ to: "/$crmId", params: { crmId } });
+  const tabs: Tab[] = [
+    { id: "general", label: t`Settings`, icon: <Settings className="h-4 w-4" /> },
+    { id: "access", label: t`Access`, icon: <Shield className="h-4 w-4" /> },
+  ];
 
   const setActiveTab = (newTab: TabId) => {
     void navigateSettings({ search: { tab: newTab }, replace: true });
@@ -120,7 +119,7 @@ function CrmSettingsPage() {
     !crm && (crmStatus === 403 || crmStatus === 404 || (!isLoading && !error));
 
   usePageTitle(
-    crm ? `${crm.crm.name} settings` : "Crm settings"
+    crm ? t`${crm.crm.name} settings` : t`Crm settings`
   );
 
   const handleDelete = useCallback(async () => {
@@ -137,7 +136,7 @@ function CrmSettingsPage() {
     } finally {
       setIsDeleting(false);
     }
-  }, [crm, isOwner, isDeleting, refreshSidebar, navigate]);
+  }, [crm, isOwner, isDeleting, refreshSidebar, navigate, t]);
 
   const handleUnsubscribe = useCallback(async () => {
     if (!crm || isUnsubscribing) return;
@@ -153,7 +152,7 @@ function CrmSettingsPage() {
     } finally {
       setIsUnsubscribing(false);
     }
-  }, [crm, isUnsubscribing, refreshSidebar, navigate]);
+  }, [crm, isUnsubscribing, refreshSidebar, navigate, t]);
 
   const handleUpdate = useCallback(
     async (updates: {
@@ -172,7 +171,7 @@ function CrmSettingsPage() {
         throw err;
       }
     },
-    [crm, isOwner, refreshSidebar, queryClient, crmId]
+    [crm, isOwner, refreshSidebar, queryClient, crmId, t]
   );
 
   if (isLoading) {
@@ -234,7 +233,7 @@ function CrmSettingsPage() {
   return (
     <>
       <PageHeader
-        title={`${crm.crm.name} settings`}
+        title={t`${crm.crm.name} settings`}
         icon={<Settings className="size-4 md:size-5" />}
         back={{ label: t`Back to CRM`, onFallback: goBackToCrm }}
       />
@@ -375,7 +374,7 @@ function GeneralTab({
               {isUnsubscribing ? (
                 <Loader2 className="me-2 size-4 animate-spin" />
               ) : (
-                "Unsubscribe"
+                t`Unsubscribe`
               )}
             </Button>
           }
@@ -424,11 +423,13 @@ function GeneralTab({
   );
 }
 
-function validateName(name: string): string | null {
-  if (!name.trim()) return "Crm name is required";
-  if (name.length > 1000) return "Name must be 1000 characters or less";
+type Translator = ReturnType<typeof useLingui>["t"];
+
+function validateName(t: Translator, name: string): string | null {
+  if (!name.trim()) return t`Crm name is required`;
+  if (name.length > 1000) return t`Name must be 1000 characters or less`;
   if (DISALLOWED_NAME_CHARS.test(name))
-    return "Name cannot contain < or > characters";
+    return t`Name cannot contain < or > characters`;
   return null;
 }
 
@@ -437,7 +438,7 @@ interface EditableFieldRowProps {
   value: string;
   isOwner: boolean;
   onSave: (value: string) => Promise<void>;
-  validate?: (value: string) => string | null;
+  validate?: (t: Translator, value: string) => string | null;
   multiline?: boolean;
 }
 
@@ -449,6 +450,7 @@ function EditableFieldRow({
   validate,
   multiline,
 }: EditableFieldRowProps) {
+  const { t } = useLingui();
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState(value);
   const [isSaving, setIsSaving] = useState(false);
@@ -469,7 +471,7 @@ function EditableFieldRow({
   const handleSaveEdit = async () => {
     const trimmedValue = editValue.trim();
     if (validate) {
-      const validationError = validate(trimmedValue);
+      const validationError = validate(t, trimmedValue);
       if (validationError) {
         setError(validationError);
         return;

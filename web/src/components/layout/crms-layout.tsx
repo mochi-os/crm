@@ -2,6 +2,7 @@ import { useEffect, useMemo } from "react";
 import { useLingui } from '@lingui/react/macro'
 import {
   AuthenticatedLayout,
+  naturalCompare,
   type SidebarData,
   type NavItem,
 } from "@mochi/web";
@@ -10,7 +11,6 @@ import { useCrmsStore } from "@/stores/crms-store";
 import { SidebarProvider, useSidebarContext } from "@/context/sidebar-context";
 import { CreateCrmDialog } from "@/features/crms/components/create-crm-dialog";
 import { APP_ROUTES } from "@/config/routes";
-import { naturalCompare } from '@mochi/web'
 
 function CrmsLayoutInner() {
   const { t } = useLingui()
@@ -81,7 +81,7 @@ function CrmsLayoutInner() {
     ];
 
     return { navGroups: groups };
-  }, [crms, openCreateDialog, error, refresh]);
+  }, [crms, openCreateDialog, error, refresh, t]);
 
   return (
     <>

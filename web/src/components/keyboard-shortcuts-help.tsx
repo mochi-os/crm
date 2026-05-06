@@ -9,7 +9,7 @@ import {
   ResponsiveDialogTitle,
 } from "@mochi/web";
 
-import { Trans } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 interface KeyboardShortcutsHelpProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -17,22 +17,28 @@ interface KeyboardShortcutsHelpProps {
 
 const isMac = typeof navigator !== "undefined" && navigator.platform.includes("Mac");
 
-const shortcuts = [
-  { key: "c / n", description: "Create new item" },
-  { key: isMac ? "⌘ K" : "Ctrl+K", description: "Toggle view options" },
-  { key: "1-9", description: "Switch to view 1-9" },
-  { key: "j / ↓", description: "Select next card" },
-  { key: "k / ↑", description: "Select previous card" },
-  { key: "Enter", description: "Open selected card" },
-  { key: "e", description: "Edit selected card" },
-  { key: "Escape", description: "Close panel / cancel" },
-  { key: "?", description: "Show this help" },
-];
+function useShortcuts() {
+  const { t } = useLingui();
+  /* eslint-disable lingui/no-unlocalized-strings */
+  return [
+    { key: "c / n", description: t`Create new item` },
+    { key: isMac ? "⌘ K" : "Ctrl+K", description: t`Toggle view options` },
+    { key: "1-9", description: t`Switch to view 1-9` },
+    { key: "j / ↓", description: t`Select next card` },
+    { key: "k / ↑", description: t`Select previous card` },
+    { key: "Enter", description: t`Open selected card` },
+    { key: "e", description: t`Edit selected card` },
+    { key: "Escape", description: t`Close panel / cancel` },
+    { key: "?", description: t`Show this help` },
+  ];
+  /* eslint-enable lingui/no-unlocalized-strings */
+}
 
 export function KeyboardShortcutsHelp({
   open,
   onOpenChange,
 }: KeyboardShortcutsHelpProps) {
+  const shortcuts = useShortcuts();
   return (
     <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
       <ResponsiveDialogContent className="max-w-md">

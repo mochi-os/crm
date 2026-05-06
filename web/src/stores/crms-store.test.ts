@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 // Tests for the crms store
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { useCrmsStore } from "./crms-store";

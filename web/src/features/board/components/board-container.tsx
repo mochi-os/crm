@@ -2,10 +2,10 @@
 // Copyright Alistair Cunningham 2026
 
 import { useMemo, useState, useEffect, useLayoutEffect, useCallback, useRef } from "react";
-import { cn } from "@mochi/web";
+import { useLingui } from '@lingui/react/macro'
+import { cn, naturalCompare } from "@mochi/web";
 import { BoardColumn, type BoardColumnRow } from "./board-column";
 import type { CrmObject, CrmDetails, CrmClass, FieldOption, SortState } from "@/types";
-import { naturalCompare } from '@mochi/web'
 
 // Check if objectId is a descendant of ancestorId
 function isDescendantOf(objectId: string, ancestorId: string, objectMap: Record<string, CrmObject>): boolean {
@@ -106,6 +106,7 @@ export function BoardContainer({
   onReorderColumns,
   preview,
 }: BoardContainerProps) {
+  const { t } = useLingui();
   // Get the effective class — use the view's class filter if set, otherwise first class
   const defaultClass = useMemo(() => {
     if (viewClasses?.length) {
@@ -187,6 +188,7 @@ export function BoardContainer({
     if (!el) return;
     const update = () => {
       const top = Math.ceil(el.getBoundingClientRect().top);
+      // eslint-disable-next-line lingui/no-unlocalized-strings
       setMinHeight(`calc(100dvh - ${top}px)`);
     };
     update();
@@ -240,6 +242,7 @@ export function BoardContainer({
       if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
       const el = card as HTMLElement;
       el.style.transition = 'none';
+      // eslint-disable-next-line lingui/no-unlocalized-strings
       el.style.transform = `translate(${dx}px, ${dy}px)`;
       animations.push(el);
     });
@@ -249,6 +252,7 @@ export function BoardContainer({
 
     document.body.getBoundingClientRect(); // force reflow
     for (const el of animations) {
+      // eslint-disable-next-line lingui/no-unlocalized-strings
       el.style.transition = 'transform 150ms ease-out';
       el.style.transform = '';
       el.addEventListener('transitionend', () => { el.style.transition = ''; }, { once: true });
@@ -395,9 +399,10 @@ export function BoardContainer({
     prevObjectsRef.current = objects;
   }, [objects, dragPreview, handleDragPreview]);
   // Reset counter when preview starts
+  const isPreviewActive = !!dragPreview;
   useEffect(() => {
-    if (dragPreview) objectsChangeCount.current = 0;
-  }, [!!dragPreview]);
+    if (isPreviewActive) objectsChangeCount.current = 0;
+  }, [isPreviewActive]);
 
   // Count descendants of a card that have the same status value (the server
   // includes these in its scope but the board only shows top-level cards)
@@ -726,7 +731,7 @@ export function BoardContainer({
     // Build row metadata for swimlane columns
     const swimlaneRows: { id: string; label: string; colour?: string }[] = [
       ...rowOptions.map((r) => ({ id: r.id, label: r.name, colour: r.colour })),
-      ...(hasNoRowObjects ? [{ id: "", label: "[not set]" }] : []),
+      ...(hasNoRowObjects ? [{ id: "", label: t`[not set]` }] : []),
     ];
 
     // Check if any row has objects without a status
@@ -797,7 +802,7 @@ export function BoardContainer({
           >
             <BoardColumn
               id=""
-              name="No status"
+              name={t`No status`}
               objects={[]}
               fields={visibleFields}
               options={classOptions}
@@ -841,7 +846,7 @@ export function BoardContainer({
       {!isReordering && objectsByStatus[""]?.length > 0 && (
         <BoardColumn
           id=""
-          name="No status"
+          name={t`No status`}
           objects={applyPreviewToList(objectsByStatus[""])}
           fields={visibleFields}
           options={classOptions}

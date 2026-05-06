@@ -87,5 +87,12 @@ export default defineConfig(
   {
     files: ['**/*.{ts,tsx}'],
     ...i18nConfig,
+    rules: {
+      ...i18nConfig.rules,
+      'lingui/no-unlocalized-strings': [
+        'error',
+        i18nConfig.rules['lingui/no-unlocalized-strings'][1],
+      ],
+    },
   }
 );

@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 // Tests for ViewTabs component
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, createMockView } from "@/test/test-utils";

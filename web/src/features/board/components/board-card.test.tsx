@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 // Tests for BoardCard component
 import { describe, it, expect, vi } from "vitest";
 import {

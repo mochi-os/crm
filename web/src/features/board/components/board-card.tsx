@@ -2,6 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 import { useRef } from "react";
+import { useLingui } from '@lingui/react/macro'
 import { Card, EntityAvatar, cn, useFormat, getAppPath } from "@mochi/web";
 import { Check, CheckSquare } from "lucide-react";
 import type { CrmObject, CrmField, CrmClass, FieldOption, ChecklistItem } from "@/types";
@@ -60,6 +61,7 @@ export function BoardCard({
   onChildClick,
   onChildDoubleClick,
 }: BoardCardProps) {
+  const { t } = useLingui();
   const { formatDate } = useFormat();
   const clickTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -70,8 +72,8 @@ export function BoardCard({
   const titleFieldId = cls?.title;
   const headerField = titleFieldId ? fields.find((f) => f.id === titleFieldId) : undefined;
   const rawTitle = headerField
-    ? (object.values[headerField.id] || "Untitled")
-    : "Untitled";
+    ? (object.values[headerField.id] || t`Untitled`)
+    : t`Untitled`;
   const title = truncate(rawTitle, 160);
 
   // Body fields: exclude the header field, statusField, and rowField
@@ -151,6 +153,7 @@ export function BoardCard({
       case "date":
         return (
           <span key={field.id} className="text-[10px] text-muted-foreground">
+            {/* eslint-disable-next-line lingui/no-unlocalized-strings */}
             {formatDate(new Date(value + "T00:00:00"))}
           </span>
         );

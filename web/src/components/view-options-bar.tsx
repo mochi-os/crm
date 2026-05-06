@@ -1,8 +1,8 @@
 // Mochi CRMs: Collapsible view options bar
 // Copyright Alistair Cunningham 2026
 
-import { useState } from "react";
-import { Trans } from '@lingui/react/macro'
+import { useState, useMemo } from "react";
+import { Trans, useLingui } from '@lingui/react/macro'
 import { t } from '@lingui/core/macro'
 import {
   Button,
@@ -27,12 +27,18 @@ import { Eye, LayoutGrid, ListTree, SlidersHorizontal } from "lucide-react";
 import type { CrmDetails, CrmField, CrmView, SortState } from "@/types";
 import type { FilterState } from "@/features/views/components/filter-bar";
 
-const BUILT_IN_SORT_OPTIONS = [
-  { id: "rank", label: "Manual" },
-  { id: "number", label: "Number" },
-  { id: "created", label: "Created" },
-  { id: "updated", label: "Updated" },
-] as const;
+function useBuiltInSortOptions() {
+  const { t } = useLingui();
+  return useMemo(
+    () => [
+      { id: "rank", label: t`Manual` },
+      { id: "number", label: t`Number` },
+      { id: "created", label: t`Created` },
+      { id: "updated", label: t`Updated` },
+    ],
+    [t],
+  );
+}
 
 interface ViewOptionsBarProps {
   crm: CrmDetails;
@@ -58,6 +64,7 @@ export function ViewOptionsBar({
   showSort,
 }: ViewOptionsBarProps) {
   const [isMobileControlsOpen, setIsMobileControlsOpen] = useState(false);
+  const builtInSortOptions = useBuiltInSortOptions();
   const hasSearchValue = filters.search.trim().length > 0;
 
   // Build sort options: built-in + fields with 'sort' flag
@@ -164,7 +171,7 @@ export function ViewOptionsBar({
                         </>
                       )}
                       <SelectGroup>
-                        {BUILT_IN_SORT_OPTIONS.map((option) => (
+                        {builtInSortOptions.map((option) => (
                           <SelectItem key={option.id} value={option.id}>
                             {option.label}
                           </SelectItem>
@@ -254,7 +261,7 @@ export function ViewOptionsBar({
                       </>
                     )}
                     <SelectGroup>
-                      {BUILT_IN_SORT_OPTIONS.map((option) => (
+                      {builtInSortOptions.map((option) => (
                         <SelectItem key={option.id} value={option.id}>
                           {option.label}
                         </SelectItem>

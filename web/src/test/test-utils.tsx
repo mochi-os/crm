@@ -1,3 +1,4 @@
+/* eslint-disable lingui/no-unlocalized-strings */
 // Test utilities for React component testing
 import React, { type ReactElement } from "react";
 import { render, type RenderOptions } from "@testing-library/react";
