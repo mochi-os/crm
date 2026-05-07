@@ -455,9 +455,11 @@ export function ObjectDetailPanel({
               />
             </div>
 
-          {activeTab === "comments" && <div className="max-w-2xl">
-              <CommentList crmId={crmId} objectId={objectId} readOnly={!canComment(access)} />
-          </div>}
+          {/* Comments tab stays mounted so the new-comment draft survives
+              tab switches — same pattern as the properties tab. */}
+          <div className="max-w-2xl" hidden={activeTab !== "comments"}>
+            <CommentList crmId={crmId} objectId={objectId} readOnly={!canComment(access)} />
+          </div>
 
           {activeTab === "activity" && <div className="max-w-2xl">
               <ActivityList crmId={crmId} objectId={objectId} />
