@@ -4915,7 +4915,7 @@ def event_object_create(e):
 				title = get_object_display(crm, obj, object_id)
 				fp2 = mochi.entity.fingerprint(crm_id)
 				url = "/crm/" + fp2 + "/" + object_id if fp2 else "/crm"
-				notify("update/created", crm_id, title, "Created", url)
+				notify("update/created", crm_id, title, mochi.app.label("notifications.body.created"), url)
 
 # Object updated
 def event_object_update(e):
@@ -5008,7 +5008,7 @@ def event_values_update(e):
 									title = get_object_display(crm, obj, object_id)
 									fp2 = mochi.entity.fingerprint(crm_id)
 									url = "/crm/" + fp2 + "/" + object_id if fp2 else "/crm"
-									notify("assignment", crm_id, title, "Assigned to you", url)
+									notify("assignment", crm_id, title, mochi.app.label("notifications.body.assigned_to_you"), url)
 							# Auto-watch on assignment
 							mochi.db.execute(
 								"insert or ignore into watchers (object, user, created) values (?, ?, ?)",
@@ -5852,7 +5852,7 @@ def do_object_create(crm_id, crm, params, user_id):
 		display = get_object_display(crm, obj, object_id)
 		fp = mochi.entity.fingerprint(crm_id)
 		url = "/crm/" + fp + "/" + object_id if fp else "/crm"
-		notify("update/created", crm_id, display, "Created", url)
+		notify("update/created", crm_id, display, mochi.app.label("notifications.body.created"), url)
 	return {"id": object_id}
 
 def do_object_update(crm_id, crm, params, user_id):
