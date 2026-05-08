@@ -4,7 +4,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Trans } from '@lingui/react/macro'
 import { t } from '@lingui/core/macro'
-import { createPortal } from "react-dom";
 import {
   cn,
   ConfirmDialog,
@@ -123,7 +122,6 @@ export function BoardColumn({
   rowsRef.current = rows;
   const isDragOverRef = useRef(false);
   const safetyTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
-  const indicatorRef = useRef<HTMLDivElement>(null);
   const dropModeRef = useRef<"between" | "on">("between");
   const dropTargetCardRef = useRef<string>("");
   const childReorderRef = useRef<{ parentId: string; rank: number } | null>(null);
@@ -162,7 +160,6 @@ export function BoardColumn({
     childReorderRef.current = null;
     dragSourceRef.current = null;
     columnRef.current?.removeAttribute("data-drag-over");
-    if (indicatorRef.current) indicatorRef.current.style.opacity = "0";
     clearDropTargetHighlights();
     clearTimeout(safetyTimeoutRef.current);
   }, [clearDropTargetHighlights]);
@@ -239,11 +236,17 @@ export function BoardColumn({
         : Math.min(rect.height * 0.2, 12);
       const distFromTop = mouseY - rect.top;
       const distFromBottom = rect.bottom - mouseY;
+      const cardId = targetEl.getAttribute("data-card-id") || "";
+      // The gap placeholder also has data-card-id={draggedId}. Hovering its
+      // middle would otherwise miss both drop-on (skipped: same id) and sibling
+      // reorder (only checked in the edge branch), falling through to top-level
+      // mode which sends field=columnField — and fails for classes that lack
+      // that field. Treat any hover on our own gap as the sibling-reorder branch.
+      const cursorOnGap = cardId === draggedId;
 
-      if (distFromTop > edgeZone && distFromBottom > edgeZone) {
-        const cardId = targetEl.getAttribute("data-card-id") || "";
+      if (!cursorOnGap && distFromTop > edgeZone && distFromBottom > edgeZone) {
         const cardObj = om[cardId];
-        if (cardId && cardId !== draggedId && cardObj &&
+        if (cardId && cardObj &&
           canParent(cardObj.class) &&
           (!draggedId || !isAncestor(cardId, draggedId))) {
           dropOnEl = targetEl;
@@ -257,13 +260,14 @@ export function BoardColumn({
           if (isAlreadySibling || (parentObj && canParent(parentObj.class) && (!draggedId || !isAncestor(parentId, draggedId)))) {
             const sibContainer = targetEl.parentElement!;
             const siblings = sibContainer.querySelectorAll(":scope > [data-card-id]");
-            let sibIndex = siblings.length;
+            // Match calculateDropIndex: skip the gap (data-card-id === draggedId)
+            // so sibIndex stays consistent across re-renders as the gap moves.
+            let sibIndex = 0;
             for (let i = 0; i < siblings.length; i++) {
+              if (siblings[i].getAttribute("data-card-id") === draggedId) continue;
               const sibRect = siblings[i].getBoundingClientRect();
-              if (mouseY < sibRect.top + sibRect.height / 2) {
-                sibIndex = i;
-                break;
-              }
+              if (mouseY < sibRect.top + sibRect.height / 2) break;
+              sibIndex++;
             }
             siblingReorder = { parentId, rank: sibIndex + 1, container: sibContainer, siblings, index: sibIndex };
           }
@@ -311,7 +315,6 @@ export function BoardColumn({
       dropTargetCardRef.current = dropOnId;
       childReorderRef.current = null;
       dropOnEl.setAttribute("data-drop-target", "");
-      if (indicatorRef.current) indicatorRef.current.style.opacity = "0";
       // Send preview for drop-on-card mode
       if (onDragPreviewRef.current && source) {
         onDragPreviewRef.current({
@@ -331,21 +334,7 @@ export function BoardColumn({
       dropTargetCardRef.current = "";
       childReorderRef.current = { parentId: siblingReorder.parentId, rank: siblingReorder.rank };
 
-      // Show line indicator between siblings (keep for nested reorder)
-      if (indicatorRef.current) {
-        const containerRect = siblingReorder.container.getBoundingClientRect();
-        const idx = siblingReorder.index;
-        let top: number;
-        if (idx < siblingReorder.siblings.length) {
-          top = siblingReorder.siblings[idx].getBoundingClientRect().top;
-        } else {
-          top = siblingReorder.siblings[siblingReorder.siblings.length - 1].getBoundingClientRect().bottom + 4;
-        }
-        indicatorRef.current.style.top = `${top}px`;
-        indicatorRef.current.style.left = `${containerRect.left + 4}px`;
-        indicatorRef.current.style.width = `${containerRect.width - 8}px`;
-        indicatorRef.current.style.opacity = "1";
-      }
+      // Gap placeholder in BoardCard's children list provides visual feedback
       // Send preview for sibling reorder
       if (onDragPreviewRef.current && source) {
         onDragPreviewRef.current({
@@ -368,11 +357,7 @@ export function BoardColumn({
       const isChild = draggedObj?.parent && om[draggedObj.parent];
       const canDropBetween = !isChild || canParent("");
 
-      if (!canDropBetween) {
-        if (indicatorRef.current) indicatorRef.current.style.opacity = "0";
-      } else {
-        // Hide the line indicator — the gap placeholder provides visual feedback
-        if (indicatorRef.current) indicatorRef.current.style.opacity = "0";
+      if (canDropBetween) {
         // Send preview for between-cards mode
         if (onDragPreviewRef.current && source) {
           onDragPreviewRef.current({
@@ -419,7 +404,7 @@ export function BoardColumn({
   // For same-column moves, include data-card-id so calculateDropIndex skips it.
   const renderGap = (height: number, cardId?: string) => (
     <div
-      key="__drag-gap__"
+      key={cardId || "__drag-gap__"}
       data-card-id={cardId}
       className="rounded-lg border-2 border-dashed border-primary/30 bg-primary/5 transition-all duration-150"
       style={{ height }}
@@ -450,6 +435,7 @@ export function BoardColumn({
         hierarchy={hierarchy}
         onChildClick={onCardClick}
         onChildDoubleClick={onCardDoubleClick}
+        dragPreview={dragPreview}
       />
     </div>
   );
@@ -630,15 +616,6 @@ export function BoardColumn({
           }
         }}
       />
-
-      {/* Drop indicator (portaled to body to avoid grid layout impact) */}
-      {createPortal(
-        <div
-          ref={indicatorRef}
-          className="fixed h-0.5 rounded-full bg-primary z-50 pointer-events-none opacity-0 -translate-y-1/2"
-        />,
-        document.body,
-      )}
 
       {/* Cards */}
       {rows ? (

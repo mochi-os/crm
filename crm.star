@@ -1428,12 +1428,16 @@ def action_object_create(a):
 		if result and result.get("data"):
 			d = result["data"]
 			if d.get("id"):
+				# Use the canonical rank/timestamps from the owner's response so
+				# every subscriber agrees on the order. Falling back to local now()
+				# only if an old owner is replying without these fields.
 				now = mochi.time.now()
-				max_rank_row = mochi.db.row("select coalesce(max(rank), 0) as max_rank from objects where crm=? and parent=?", crm_id, parent)
-				initial_rank = (max_rank_row["max_rank"] if max_rank_row else 0) + 1
+				rank = d.get("rank", 0)
+				created = d.get("created") or now
+				updated = d.get("updated") or now
 				mochi.db.execute(
 					"insert or ignore into objects (id, crm, class, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?)",
-					d["id"], crm_id, obj_class, parent, initial_rank, now, now
+					d["id"], crm_id, obj_class, parent, rank, created, updated
 				)
 				if title and title_field:
 					mochi.db.execute("insert or replace into \"values\" (object, field, value) values (?, ?, ?)", d["id"], title_field, title)
@@ -1496,8 +1500,8 @@ def action_object_create(a):
 	# Broadcast to subscribers
 	broadcast_event(crm_id, "object/create", {
 		"crm": crm_id, "id": object_id, "class": obj_class,
-		"parent": parent, "values": values,
-		"created": now, "user": a.user.identity.id
+		"parent": parent, "rank": initial_rank, "values": values,
+		"created": now, "updated": now, "user": a.user.identity.id
 	})
 
 	return {"data": {
@@ -5842,8 +5846,8 @@ def do_object_create(crm_id, crm, params, user_id):
 	mochi.db.execute("insert into watchers (object, user, created) values (?, ?, ?)", object_id, user_id, now)
 	broadcast_event(crm_id, "object/create", {
 		"crm": crm_id, "id": object_id, "class": obj_class,
-		"parent": parent, "values": values,
-		"created": now, "user": user_id
+		"parent": parent, "rank": initial_rank, "values": values,
+		"created": now, "updated": now, "user": user_id
 	})
 	# Notify owner when subscriber creates an object
 	owner_id = get_owner_identity(crm_id)
@@ -5853,7 +5857,7 @@ def do_object_create(crm_id, crm, params, user_id):
 		fp = mochi.entity.fingerprint(crm_id)
 		url = "/crm/" + fp + "/" + object_id if fp else "/crm"
 		notify("update/created", crm_id, display, mochi.app.label("notifications.body.created"), url)
-	return {"id": object_id}
+	return {"id": object_id, "rank": initial_rank, "created": now, "updated": now}
 
 def do_object_update(crm_id, crm, params, user_id):
 	object_id = params.get("object")

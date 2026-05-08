@@ -209,14 +209,13 @@ export function BoardContainer({
   const flipRef = useRef<Map<string, DOMRect>>(new Map());
   const lastDragPosRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
-  // Capture positions of all top-level cards for FLIP
+  // Capture positions of all cards (top-level and nested) for FLIP
   const capturePositions = useCallback(() => {
     if (!boardRef.current) return;
     const positions = new Map<string, DOMRect>();
     boardRef.current.querySelectorAll('[data-card-id]').forEach(el => {
-      if (!el.parentElement?.closest('[data-card-id]')) {
-        positions.set(el.getAttribute('data-card-id')!, el.getBoundingClientRect());
-      }
+      const id = el.getAttribute('data-card-id');
+      if (id) positions.set(id, el.getBoundingClientRect());
     });
     flipRef.current = positions;
   }, []);
@@ -229,7 +228,6 @@ export function BoardContainer({
     const preview = dragPreviewRef.current;
     const animations: HTMLElement[] = [];
     boardRef.current.querySelectorAll('[data-card-id]').forEach(card => {
-      if (card.parentElement?.closest('[data-card-id]')) return;
       const id = card.getAttribute('data-card-id');
       if (!id) return;
       // Skip the dragged card during preview — it's hidden
@@ -348,8 +346,11 @@ export function BoardContainer({
   // Apply drag preview to get the card lists columns should render.
   // For same-column moves, keep the card in the list (renderCardsWithGap will handle it).
   // For cross-column moves, remove the card from the source column.
+  // For child-reorder moves, remove the card too: BoardCard renders a gap inside
+  // the target parent's children list, so the source column shouldn't also show it.
   const applyPreviewToList = useCallback((list: CrmObject[]): CrmObject[] => {
-    if (!dragPreview || dragPreview.mode === "on" || dragPreview.childReorder) return list;
+    if (!dragPreview || dragPreview.mode === "on") return list;
+    if (dragPreview.childReorder) return list.filter(o => o.id !== dragPreview.draggedId);
     // Same-column: keep the card in the list so it stays in the DOM for calculateDropIndex to skip
     if (dragPreview.sourceColumn === dragPreview.targetColumn) return list;
     // Cross-column: remove from source

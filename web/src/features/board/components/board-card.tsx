@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { useLingui } from '@lingui/react/macro'
 import { Card, EntityAvatar, cn, useFormat, getAppPath } from "@mochi/web";
 import { Check, CheckSquare } from "lucide-react";
+import type { DragPreview } from "./board-container";
 import type { CrmObject, CrmField, CrmClass, FieldOption, ChecklistItem } from "@/types";
 
 interface BoardCardProps {
@@ -29,6 +30,7 @@ interface BoardCardProps {
   hierarchy?: Record<string, string[]>;
   onChildClick?: (object: CrmObject) => void;
   onChildDoubleClick?: (object: CrmObject) => void;
+  dragPreview?: DragPreview | null;
 }
 
 const MAX_NESTING_DEPTH = 3;
@@ -60,6 +62,7 @@ export function BoardCard({
   hierarchy,
   onChildClick,
   onChildDoubleClick,
+  dragPreview,
 }: BoardCardProps) {
   const { t } = useLingui();
   const { formatDate } = useFormat();
@@ -215,6 +218,71 @@ export function BoardCard({
   const hasChildren = childObjects && childObjects.length > 0;
   const atDepthCap = depth >= MAX_NESTING_DEPTH;
 
+  // Render a single nested child wrapped in its drag-target div
+  const renderChild = (child: CrmObject) => {
+    const childFields = allFields?.[child.class] || fields;
+    const childOptions = allFields
+      ? Object.fromEntries(
+        childFields.map((f) => [f.id, options[f.id] || []])
+      )
+      : options;
+    return (
+      <div key={child.id} data-card-id={child.id} className="rounded-lg data-drop-target:ring-2 data-drop-target:ring-primary">
+        <BoardCard
+          crmId={crmId}
+          object={child}
+          fields={childFields}
+          options={childOptions}
+          objectMap={objectMap}
+          allFields={allFields}
+          allObjects={allObjects}
+          statusField={statusField}
+          rowField={rowField}
+          borderField={borderField}
+          classMap={classMap}
+          peopleMap={peopleMap}
+          draggable={canDrag}
+          onClick={() => onChildClick?.(child)}
+          onDoubleClick={onChildDoubleClick ? () => onChildDoubleClick(child) : undefined}
+          children={childrenByParent?.[child.id] || []}
+          childrenByParent={childrenByParent}
+          depth={depth + 1}
+          hierarchy={hierarchy}
+          onChildClick={onChildClick}
+          onChildDoubleClick={onChildDoubleClick}
+          dragPreview={dragPreview}
+        />
+      </div>
+    );
+  };
+
+  // Render children with a gap placeholder when the drag preview targets this card.
+  // Mirrors renderCardsWithGap in board-column.tsx for top-level cards.
+  const renderChildrenWithGap = () => {
+    const list = childObjects || [];
+    const reorder = dragPreview?.childReorder;
+    const draggedId = dragPreview?.draggedId;
+    // During a child-reorder preview the dragged card is hidden from any current
+    // parent; the target parent shows a gap at the drop position. Mirrors the
+    // top-level cross-column pattern (card "disappears" from source).
+    const filtered = reorder && draggedId
+      ? list.filter((c) => c.id !== draggedId)
+      : list;
+    const cards = filtered.map(renderChild);
+    if (reorder && reorder.parentId === object.id) {
+      const insertAt = Math.max(0, Math.min(filtered.length, reorder.rank - 1));
+      cards.splice(insertAt, 0, (
+        <div
+          key={draggedId}
+          data-card-id={draggedId}
+          className="rounded-lg border-2 border-dashed border-primary/30 bg-primary/5"
+          style={{ height: dragPreview!.cardHeight }}
+        />
+      ));
+    }
+    return cards;
+  };
+
   return (
     <Card
       className={cn(
@@ -277,41 +345,7 @@ export function BoardCard({
               +{countDeepChildren(object.id)} nested
             </span>
           ) : (
-            childObjects.map((child) => {
-              const childFields = allFields?.[child.class] || fields;
-              const childOptions = allFields
-                ? Object.fromEntries(
-                  childFields.map((f) => [f.id, options[f.id] || []])
-                )
-                : options;
-              return (
-                <div key={child.id} data-card-id={child.id} className="rounded-lg data-drop-target:ring-2 data-drop-target:ring-primary">
-                  <BoardCard
-                    crmId={crmId}
-                    object={child}
-                    fields={childFields}
-                    options={childOptions}
-                    objectMap={objectMap}
-                    allFields={allFields}
-                    allObjects={allObjects}
-                    statusField={statusField}
-                    rowField={rowField}
-                    borderField={borderField}
-                    classMap={classMap}
-                    peopleMap={peopleMap}
-                    draggable={canDrag}
-                    onClick={() => onChildClick?.(child)}
-                    onDoubleClick={onChildDoubleClick ? () => onChildDoubleClick(child) : undefined}
-                    children={childrenByParent?.[child.id] || []}
-                    childrenByParent={childrenByParent}
-                    depth={depth + 1}
-                    hierarchy={hierarchy}
-                    onChildClick={onChildClick}
-                    onChildDoubleClick={onChildDoubleClick}
-                  />
-                </div>
-              );
-            })
+            renderChildrenWithGap()
           )}
         </div>
       )}
