@@ -89,9 +89,7 @@ function CrmSettingsPage() {
   };
 
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isUnsubscribing, setIsUnsubscribing] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
-  const [showUnsubscribeDialog, setShowUnsubscribeDialog] = useState(false);
 
   const {
     data: crmData,
@@ -137,22 +135,6 @@ function CrmSettingsPage() {
       setIsDeleting(false);
     }
   }, [crm, isOwner, isDeleting, refreshSidebar, navigate, t]);
-
-  const handleUnsubscribe = useCallback(async () => {
-    if (!crm || isUnsubscribing) return;
-
-    setIsUnsubscribing(true);
-    try {
-      await crmsApi.unsubscribe(crm.crm.id);
-      void refreshSidebar();
-      toast.success(t`Unsubscribed`);
-      void navigate({ to: "/" });
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to unsubscribe`));
-    } finally {
-      setIsUnsubscribing(false);
-    }
-  }, [crm, isUnsubscribing, refreshSidebar, navigate, t]);
 
   const handleUpdate = useCallback(
     async (updates: {
@@ -267,13 +249,9 @@ function CrmSettingsPage() {
               crm={crm}
               isOwner={isOwner}
               isDeleting={isDeleting}
-              isUnsubscribing={isUnsubscribing}
               showDeleteDialog={showDeleteDialog}
-              showUnsubscribeDialog={showUnsubscribeDialog}
               setShowDeleteDialog={setShowDeleteDialog}
-              setShowUnsubscribeDialog={setShowUnsubscribeDialog}
               onDelete={handleDelete}
-              onUnsubscribe={handleUnsubscribe}
               onUpdate={handleUpdate}
             />
           )}
@@ -290,13 +268,9 @@ interface GeneralTabProps {
   crm: CrmDetails;
   isOwner: boolean;
   isDeleting: boolean;
-  isUnsubscribing: boolean;
   showDeleteDialog: boolean;
-  showUnsubscribeDialog: boolean;
   setShowDeleteDialog: (show: boolean) => void;
-  setShowUnsubscribeDialog: (show: boolean) => void;
   onDelete: () => void;
-  onUnsubscribe: () => void;
   onUpdate: (updates: {
     name?: string;
     description?: string;
@@ -307,13 +281,9 @@ function GeneralTab({
   crm,
   isOwner,
   isDeleting,
-  isUnsubscribing,
   showDeleteDialog,
-  showUnsubscribeDialog,
   setShowDeleteDialog,
-  setShowUnsubscribeDialog,
   onDelete,
-  onUnsubscribe,
   onUpdate,
 }: GeneralTabProps) {
   const { t } = useLingui()
@@ -361,26 +331,6 @@ function GeneralTab({
         </div>
       </Section>
 
-      {!isOwner && (
-        <Section
-          title={t`Unsubscribe from crm`}
-          action={
-            <Button
-              variant="outline"
-              onClick={() => setShowUnsubscribeDialog(true)}
-              disabled={isUnsubscribing}
-              size="sm"
-            >
-              {isUnsubscribing ? (
-                <Loader2 className="me-2 size-4 animate-spin" />
-              ) : (
-                t`Unsubscribe`
-              )}
-            </Button>
-          }
-        />
-      )}
-
       {isOwner && (
         <Section
           title={t`Delete crm`}
@@ -398,16 +348,6 @@ function GeneralTab({
           }
         />
       )}
-
-      <ConfirmDialog
-        open={showUnsubscribeDialog}
-        onOpenChange={setShowUnsubscribeDialog}
-        title={t`Unsubscribe from CRM?`}
-        desc={t`This will remove "${crm.crm.name}" from your sidebar and stop updates for this CRM.`}
-        confirmText={t`Unsubscribe`}
-        handleConfirm={onUnsubscribe}
-        isLoading={isUnsubscribing}
-      />
 
       <ConfirmDialog
         open={showDeleteDialog}

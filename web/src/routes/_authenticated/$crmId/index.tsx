@@ -7,6 +7,7 @@ import { t } from '@lingui/core/macro'
 import { createFileRoute, Link, redirect, useNavigate, useRouter } from "@tanstack/react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
+  ConfirmDialog,
   GeneralError,
   extractStatus,
   getErrorMessage,
@@ -25,10 +26,11 @@ import {
   toast,
   getAppPath,
 } from "@mochi/web";
-import { Columns3, Download, Ellipsis, Users, GripVertical, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
+import { Columns3, Download, Ellipsis, Users, GripVertical, LogOut, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
 import crmsApi from "@/api/crms";
 import type { CrmDetails, CrmField, CrmObject, SortState } from "@/types";
 import { canDesign, canWrite } from "@/lib/access";
+import { useCrmsStore } from "@/stores/crms-store";
 import { BoardContainer } from "@/features/board/components";
 import { TreeView } from "@/features/tree";
 import type { FilterState } from "@/features/views";
@@ -119,8 +121,12 @@ export interface CrmPageContentProps {
 export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageContentProps) {
   const { t } = useLingui()
   const router = useRouter();
+  const navigate = useNavigate();
   const params = { crmId };
   const access = crm.crm.access;
+  const isOwner = crm.crm.owner === 1;
+  const refreshSidebar = useCrmsStore((state) => state.refresh);
+  const [unsubscribeOpen, setUnsubscribeOpen] = useState(false);
 
   usePageTitle(crm.crm.name);
   useCrmWebsocket(crm.crm.fingerprint);
@@ -537,6 +543,20 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
     },
   });
 
+  const unsubscribeMutation = useMutation({
+    mutationFn: () => crmsApi.unsubscribe(crm.crm.id),
+    onSuccess: () => {
+      setUnsubscribeOpen(false);
+      void refreshSidebar();
+      queryClient.invalidateQueries({ queryKey: ["crms"] });
+      toast.success(t`Unsubscribed`);
+      void navigate({ to: "/" });
+    },
+    onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to unsubscribe`));
+    },
+  });
+
   // Filter objects
   const filteredObjects = useMemo(() => {
     let result = objectsData || [];
@@ -889,6 +909,12 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                   <Trans>Settings</Trans>
                 </Link>
               </DropdownMenuItem>
+              {!isOwner && (
+                <DropdownMenuItem onClick={() => setUnsubscribeOpen(true)}>
+                  <LogOut className="size-4 me-2" />
+                  <Trans>Unsubscribe</Trans>
+                </DropdownMenuItem>
+              )}
             </DropdownMenuContent>
           </DropdownMenu>
         }
@@ -1020,6 +1046,16 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         onOpenChange={setAddColumnDialogOpen}
         onAdd={handleAddColumn}
         title={t`Add column`}
+      />
+
+      <ConfirmDialog
+        open={unsubscribeOpen}
+        onOpenChange={setUnsubscribeOpen}
+        title={t`Unsubscribe from CRM?`}
+        desc={t`This will remove "${crm.crm.name}" from your sidebar and stop updates for this CRM.`}
+        confirmText={t`Unsubscribe`}
+        handleConfirm={() => unsubscribeMutation.mutate()}
+        isLoading={unsubscribeMutation.isPending}
       />
     </>
   );

@@ -32,8 +32,8 @@ msgid "{0} - Design"
 msgstr "{0} — Дызайн"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:122
-#: src/routes/_authenticated/$crmId_.settings.tsx:236
+#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:218
 msgid "{0} settings"
 msgstr "Налады {0}"
 
@@ -69,19 +69,19 @@ msgstr "Доступ забаронены"
 msgid "Access level"
 msgstr "Узровень доступу"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:672
+#: src/routes/_authenticated/$crmId_.settings.tsx:612
 msgid "Access level updated"
 msgstr "Узровень доступу абноўлены"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:681
+#: src/routes/_authenticated/$crmId_.settings.tsx:621
 msgid "Access Management"
 msgstr "Кіраванне доступам"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:661
+#: src/routes/_authenticated/$crmId_.settings.tsx:601
 msgid "Access removed"
 msgstr "Доступ выдалены"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:649
+#: src/routes/_authenticated/$crmId_.settings.tsx:589
 msgid "Access set for {subjectName}"
 msgstr "Доступ усталяваны для {subjectName}"
 
@@ -143,8 +143,8 @@ msgstr "Дадаць пункт спіса"
 msgid "Add class"
 msgstr "Дадаць клас"
 
-#: src/routes/_authenticated/$crmId/index.tsx:860
-#: src/routes/_authenticated/$crmId/index.tsx:1022
+#: src/routes/_authenticated/$crmId/index.tsx:881
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Add column"
 msgstr "Дадаць слупок"
 
@@ -172,7 +172,7 @@ msgstr "Дадаць новы ўліковы запіс"
 msgid "Add option"
 msgstr "Дадаць опцыю"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:688
+#: src/routes/_authenticated/$crmId_.settings.tsx:628
 msgid "Add Rule"
 msgstr "Дадаць правіла"
 
@@ -265,16 +265,16 @@ msgstr "Даступныя спалучэнні клавіш"
 msgid "Back"
 msgstr "Назад"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:183
-#: src/routes/_authenticated/$crmId_.settings.tsx:206
-#: src/routes/_authenticated/$crmId_.settings.tsx:238
+#: src/routes/_authenticated/$crmId_.settings.tsx:165
+#: src/routes/_authenticated/$crmId_.settings.tsx:188
+#: src/routes/_authenticated/$crmId_.settings.tsx:220
 #: src/routes/_authenticated/$crmId/design.tsx:131
 #: src/routes/_authenticated/$crmId/design.tsx:156
 msgid "Back to CRM"
 msgstr "Назад да CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:89
+#: src/routes/_authenticated/$crmId/index.tsx:92
 msgid "Back to CRMs"
 msgstr "Назад да CRM"
 
@@ -321,7 +321,7 @@ msgstr "Можа быць даччыным для"
 #: src/features/editor/components/option-dialog.tsx:135
 #: src/features/objects/components/comment-thread.tsx:172
 #: src/routes/_authenticated/$crmId/design.tsx:301
-#: src/routes/_authenticated/$crmId/index.tsx:916
+#: src/routes/_authenticated/$crmId/index.tsx:946
 msgid "Cancel"
 msgstr "Адмена"
 
@@ -362,11 +362,11 @@ msgstr "Выберыце напрамак сайта: злева направа 
 msgid "Choose between system preference, light mode, or dark mode"
 msgstr "Выберыце сістэмныя налады, светлы або цёмны рэжым"
 
-#: ../../../lib/web/src/components/language-picker.tsx:167
+#: ../../../lib/web/src/components/language-picker.tsx:174
 msgid "Choose language"
 msgstr "Выберыце мову"
 
-#: src/routes/_authenticated/$crmId/index.tsx:746
+#: src/routes/_authenticated/$crmId/index.tsx:767
 msgid "Class"
 msgstr "Клас"
 
@@ -435,11 +435,15 @@ msgstr "Колер"
 msgid "Columns group by"
 msgstr "Слупкі групуюцца па"
 
+#: ../../../lib/web/src/lib/preference-utils.ts:93
+msgid "Comfortable"
+msgstr "Камфортна"
+
 #: ../../../lib/web/src/components/coming-soon.tsx:9
 msgid "Coming Soon!"
 msgstr "Хутка!"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:587
+#: src/routes/_authenticated/$crmId_.settings.tsx:527
 msgid "Comment and view"
 msgstr "Каментаваць і праглядаць"
 
@@ -449,6 +453,7 @@ msgid "Comments ({0})"
 msgstr "Каментарыі ({0})"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:302
+#: ../../../lib/web/src/lib/preference-utils.ts:92
 msgid "Compact"
 msgstr "Кампактна"
 
@@ -481,7 +486,7 @@ msgstr "Кантэкстная інфармацыя і дэталі."
 msgid "Continue"
 msgstr "Працягнуць"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:682
+#: src/routes/_authenticated/$crmId_.settings.tsx:622
 msgid "Control who can view and interact with this CRM"
 msgstr "Кіруйце тым, хто можа праглядаць і ўзаемадзейнічаць з гэтай CRM"
 
@@ -489,9 +494,13 @@ msgstr "Кіруйце тым, хто можа праглядаць і ўзае�
 msgid "Copy"
 msgstr "Капіраваць"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:324
+#: src/routes/_authenticated/$crmId_.settings.tsx:294
 msgid "Core information about this CRM"
 msgstr "Асноўная інфармацыя пра гэту CRM"
+
+#: ../../../lib/web/src/features/document/document-page.tsx:81
+msgid "Could not load this document. Please try again later."
+msgstr "Не атрымалася загрузіць гэты дакумент. Калі ласка, паспрабуйце пазней."
 
 #: src/features/board/components/board-column.tsx:523
 #: src/features/board/components/board-column.tsx:661
@@ -539,23 +548,23 @@ msgstr "Стварэнне..."
 msgid "CRM created"
 msgstr "CRM створана"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:132
+#: src/routes/_authenticated/$crmId_.settings.tsx:130
 msgid "Crm deleted"
 msgstr "CRM выдалена"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:221
+#: src/routes/_authenticated/$crmId_.settings.tsx:203
 msgid "CRM not found"
 msgstr "CRM не знойдзена"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:122
+#: src/routes/_authenticated/$crmId_.settings.tsx:120
 msgid "Crm settings"
 msgstr "Налады CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:221
+#: src/routes/_authenticated/$crmId_.settings.tsx:203
 msgid "CRM unavailable"
 msgstr "CRM недаступна"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:168
+#: src/routes/_authenticated/$crmId_.settings.tsx:150
 msgid "Crm updated"
 msgstr "CRM абноўлена"
 
@@ -602,7 +611,7 @@ msgstr "Сартаванне па змаўчанні"
 #: src/features/objects/components/comment-thread.tsx:385
 #: src/features/objects/components/object-attachments.tsx:233
 #: src/features/objects/components/object-detail-panel.tsx:474
-#: src/routes/_authenticated/$crmId_.settings.tsx:396
+#: src/routes/_authenticated/$crmId_.settings.tsx:346
 msgid "Delete"
 msgstr "Выдаліць"
 
@@ -622,15 +631,15 @@ msgstr "Выдаліць слупок"
 msgid "Delete comment"
 msgstr "Выдаліць каментарый"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:386
+#: src/routes/_authenticated/$crmId_.settings.tsx:336
 msgid "Delete crm"
 msgstr "Выдаліць CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:417
+#: src/routes/_authenticated/$crmId_.settings.tsx:357
 msgid "Delete CRM"
 msgstr "Выдаліць CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:415
+#: src/routes/_authenticated/$crmId_.settings.tsx:355
 msgid "Delete CRM?"
 msgstr "Выдаліць CRM?"
 
@@ -661,13 +670,13 @@ msgstr "Выдаліць выгляд"
 msgid "Desc"
 msgstr "Спаданне"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:336
+#: src/routes/_authenticated/$crmId_.settings.tsx:306
 msgid "Description"
 msgstr "Апісанне"
 
 #: src/routes/_authenticated/$crmId/design.tsx:61
 #: src/routes/_authenticated/$crmId/design.tsx:129
-#: src/routes/_authenticated/$crmId/index.tsx:875
+#: src/routes/_authenticated/$crmId/index.tsx:896
 msgid "Design"
 msgstr "Дызайн"
 
@@ -675,7 +684,7 @@ msgstr "Дызайн"
 msgid "Design imported"
 msgstr "Дызайн імпартаваны"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:585
+#: src/routes/_authenticated/$crmId_.settings.tsx:525
 msgid "Design, write, comment, and view"
 msgstr "Праектаваць, пісаць, каментаваць і праглядаць"
 
@@ -683,7 +692,7 @@ msgstr "Праектаваць, пісаць, каментаваць і праг
 msgid "Details Panel"
 msgstr "Панэль дэталяў"
 
-#: ../../../lib/web/src/components/language-picker.tsx:145
+#: ../../../lib/web/src/components/language-picker.tsx:152
 #: ../../../lib/web/src/components/timezone-select.tsx:43
 #: ../../../lib/web/src/components/timezone-select.tsx:80
 #: ../../../lib/web/src/lib/preference-utils.ts:25
@@ -698,8 +707,8 @@ msgstr "Вызначыць з вэб-браўзера"
 msgid "Direction"
 msgstr "Напрамак"
 
-#: src/routes/_authenticated/$crmId/index.tsx:938
-#: src/routes/_authenticated/$crmId/index.tsx:939
+#: src/routes/_authenticated/$crmId/index.tsx:968
+#: src/routes/_authenticated/$crmId/index.tsx:969
 msgid "Dismiss board hint"
 msgstr "Закрыць падказку дошкі"
 
@@ -714,7 +723,7 @@ msgstr "Адлюстроўвае мабільную бакавую панэль.
 msgid "Done"
 msgstr "Гатова"
 
-#: src/routes/_authenticated/$crmId/index.tsx:931
+#: src/routes/_authenticated/$crmId/index.tsx:961
 msgid "Double click on a column to add content"
 msgstr "Двойчы націсніце на калонку, каб дадаць змесціва"
 
@@ -726,13 +735,17 @@ msgstr "Спампаваць"
 msgid "Download backup first"
 msgstr "Спачатку спампуйце рэзервовую копію"
 
-#: src/routes/_authenticated/$crmId/index.tsx:912
+#: src/routes/_authenticated/$crmId/index.tsx:942
 msgid "Drag columns to re-order them"
 msgstr "Перацягвайце калонкі, каб змяніць іх парадак"
 
 #: src/features/objects/components/object-links.tsx:41
 msgid "Duplicates"
 msgstr "Дублікаты"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:134
+msgid "Dyslexia-friendly"
+msgstr "Сябар дыслексіі"
 
 #: src/features/objects/components/comment-thread.tsx:221
 #: src/features/objects/components/comment-thread.tsx:260
@@ -769,7 +782,7 @@ msgstr "Рэдагаваць выбраную картку"
 msgid "Edit view"
 msgstr "Рэдагаваць выгляд"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:343
+#: src/routes/_authenticated/$crmId_.settings.tsx:313
 msgid "Entity ID"
 msgstr "ID сутнасці"
 
@@ -781,13 +794,17 @@ msgstr "Памылка"
 msgid "Expand sidebar"
 msgstr "Разгарнуць бакавую панэль"
 
-#: src/routes/_authenticated/$crmId/index.tsx:881
+#: src/routes/_authenticated/$crmId/index.tsx:902
 msgid "Export CSV"
 msgstr "Экспартаваць CSV"
 
 #: src/routes/_authenticated/$crmId/design.tsx:171
 msgid "Export design"
 msgstr "Экспартаваць дызайн"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:124
+msgid "Extra large"
+msgstr "Вельмі вялікі"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:217
 msgid "Failed to add account"
@@ -825,7 +842,7 @@ msgstr "Не ўдалося выдаліць укладанне"
 msgid "Failed to delete comment"
 msgstr "Не ўдалося выдаліць каментарый"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:135
+#: src/routes/_authenticated/$crmId_.settings.tsx:133
 msgid "Failed to delete crm"
 msgstr "Не ўдалося выдаліць crm"
 
@@ -847,7 +864,7 @@ msgstr "Не ўдалося імпартаваць дызайн"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:40
 #: src/routes/_authenticated/$crmId/$objectId.tsx:68
-#: src/routes/_authenticated/$crmId/index.tsx:65
+#: src/routes/_authenticated/$crmId/index.tsx:68
 msgid "Failed to load CRM"
 msgstr "Не ўдалося загрузіць CRM"
 
@@ -871,7 +888,7 @@ msgstr "Не ўдалося апублікаваць каментарый"
 msgid "Failed to read file"
 msgstr "Не ўдалося прачытаць файл"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:664
+#: src/routes/_authenticated/$crmId_.settings.tsx:604
 msgid "Failed to remove access"
 msgstr "Не ўдалося выдаліць доступ"
 
@@ -891,7 +908,7 @@ msgstr "Не ўдалося змяніць парадак выглядаў"
 msgid "Failed to send verification code"
 msgstr "Не ўдалося адправіць код пацвярджэння"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:652
+#: src/routes/_authenticated/$crmId_.settings.tsx:592
 msgid "Failed to set access level"
 msgstr "Не ўдалося ўсталяваць узровень доступу"
 
@@ -901,11 +918,11 @@ msgid "Failed to subscribe"
 msgstr "Не ўдалося падпісацца"
 
 #: src/features/crms/pages/crms-list-page.tsx:48
-#: src/routes/_authenticated/$crmId_.settings.tsx:151
+#: src/routes/_authenticated/$crmId/index.tsx:557
 msgid "Failed to unsubscribe"
 msgstr "Не ўдалося адпісацца"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:675
+#: src/routes/_authenticated/$crmId_.settings.tsx:615
 msgid "Failed to update access level"
 msgstr "Не ўдалося абнавіць узровень доступу"
 
@@ -917,7 +934,7 @@ msgstr "Не ўдалося абнавіць катэгорыю"
 msgid "Failed to update comment"
 msgstr "Не ўдалося абнавіць каментарый"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:170
+#: src/routes/_authenticated/$crmId_.settings.tsx:152
 msgid "Failed to update crm"
 msgstr "Не ўдалося абнавіць crm"
 
@@ -944,7 +961,7 @@ msgstr "Файлы"
 msgid "Find CRMs"
 msgstr "Знайсці CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:348
+#: src/routes/_authenticated/$crmId_.settings.tsx:318
 msgid "Fingerprint"
 msgstr "Адбітак пальца"
 
@@ -963,6 +980,14 @@ msgstr "Пятніца"
 #: ../../../lib/web/src/components/travelling-picker.tsx:149
 msgid "From"
 msgstr "Ад"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:91
+#: ../../../lib/web/src/lib/preference-utils.ts:101
+#: ../../../lib/web/src/lib/preference-utils.ts:112
+#: ../../../lib/web/src/lib/preference-utils.ts:120
+#: ../../../lib/web/src/lib/preference-utils.ts:131
+msgid "From theme"
+msgstr "З тэмы"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:307
 msgid "Full layout"
@@ -1009,11 +1034,11 @@ msgstr "Галоўная"
 msgid "Hot"
 msgstr "Папулярнае"
 
-#: src/routes/_authenticated/$crmId/index.tsx:746
+#: src/routes/_authenticated/$crmId/index.tsx:767
 msgid "ID"
 msgstr "ID"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:323
+#: src/routes/_authenticated/$crmId_.settings.tsx:293
 msgid "Identity"
 msgstr "Асоба"
 
@@ -1058,6 +1083,11 @@ msgstr "Дэталі элемента"
 msgid "Keyboard shortcuts"
 msgstr "Спалучэнні клавіш"
 
+#: ../../../lib/web/src/lib/preference-utils.ts:105
+#: ../../../lib/web/src/lib/preference-utils.ts:123
+msgid "Large"
+msgstr "Вялікі"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:273
 #: src/features/editor/components/edit-dialogs.tsx:304
 msgid "Layout"
@@ -1097,6 +1127,7 @@ msgid "Loading item details"
 msgstr "Загрузка дэталяў элемента"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:32
+#: ../../../lib/web/src/features/document/document-page.tsx:87
 msgid "Loading…"
 msgstr "Загрузка…"
 
@@ -1131,6 +1162,10 @@ msgstr "Уручную"
 msgid "Mark all as read"
 msgstr "Адзначыць усё як прачытанае"
 
+#: ../../../lib/web/src/lib/preference-utils.ts:104
+msgid "Medium"
+msgstr "Сярэдні"
+
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:152
 msgid "Menu"
 msgstr "Меню"
@@ -1150,7 +1185,7 @@ msgstr "Панядзелак"
 #: src/features/editor/components/edit-dialogs.tsx:696
 #: src/features/editor/components/edit-dialogs.tsx:967
 #: src/features/editor/components/option-dialog.tsx:101
-#: src/routes/_authenticated/$crmId_.settings.tsx:328
+#: src/routes/_authenticated/$crmId_.settings.tsx:298
 msgid "Name"
 msgstr "Назва"
 
@@ -1160,13 +1195,13 @@ msgstr "Назва абавязковая"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:40
 #: src/features/objects/components/create-object-dialog.tsx:321
-#: src/routes/_authenticated/$crmId/index.tsx:815
-#: src/routes/_authenticated/$crmId/index.tsx:832
+#: src/routes/_authenticated/$crmId/index.tsx:836
+#: src/routes/_authenticated/$crmId/index.tsx:853
 msgid "New"
 msgstr "Новы"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:813
+#: src/routes/_authenticated/$crmId/index.tsx:834
 msgid "New {0}"
 msgstr "Новы {0}"
 
@@ -1178,7 +1213,7 @@ msgstr "Наступная выява"
 msgid "No {parentClassNames} to add to"
 msgstr "Няма {parentClassNames} для дадання"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:589
+#: src/routes/_authenticated/$crmId_.settings.tsx:529
 msgid "No access"
 msgstr "Няма доступу"
 
@@ -1212,14 +1247,14 @@ msgid "No item types can be created yet. Create the required parent items first.
 msgstr "Пакуль нельга стварыць тыпы элементаў. Спачатку стварыце патрэбныя бацькоўскія элементы."
 
 #: ../../../lib/web/src/components/language-picker.tsx:177
-msgid "No matches."
-msgstr "Супадзенняў няма."
+#~ msgid "No matches."
+#~ msgstr "Супадзенняў няма."
 
 #: src/features/objects/components/object-links.tsx:299
 msgid "No matching objects"
 msgstr "Адпаведных аб'ектаў няма"
 
-#: src/routes/_authenticated/$crmId/index.tsx:731
+#: src/routes/_authenticated/$crmId/index.tsx:752
 msgid "No objects to export."
 msgstr "Аб'ектаў для экспарту няма."
 
@@ -1262,6 +1297,8 @@ msgid "No views"
 msgstr "Праглядаў няма"
 
 #: ../../../lib/web/src/components/person-picker.tsx:349
+#: ../../../lib/web/src/lib/preference-utils.ts:102
+#: ../../../lib/web/src/lib/preference-utils.ts:113
 #: src/features/editor/components/edit-dialogs.tsx:369
 #: src/features/editor/components/edit-dialogs.tsx:372
 #: src/features/editor/components/edit-dialogs.tsx:399
@@ -1280,7 +1317,11 @@ msgstr "Праглядаў няма"
 msgid "None"
 msgstr "Няма"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:560
+#: ../../../lib/web/src/lib/preference-utils.ts:122
+msgid "Normal"
+msgstr "Звычайны"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:500
 msgid "Not set"
 msgstr "Не ўсталявана"
 
@@ -1330,7 +1371,7 @@ msgstr "Адкрыць меню навігацыі"
 msgid "Open option actions"
 msgstr "Адкрыць дзеянні параметру"
 
-#: src/routes/_authenticated/$crmId/index.tsx:840
+#: src/routes/_authenticated/$crmId/index.tsx:861
 msgid "Open page actions"
 msgstr "Адкрыць дзеянні старонкі"
 
@@ -1370,22 +1411,27 @@ msgstr "Уладальнік"
 
 #: src/features/objects/components/create-object-dialog.tsx:364
 #: src/features/objects/components/object-detail-panel.tsx:388
-#: src/routes/_authenticated/$crmId/index.tsx:746
+#: src/routes/_authenticated/$crmId/index.tsx:767
 msgid "Parent"
 msgstr "Бацькоўскі"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:387
+#: src/routes/_authenticated/$crmId_.settings.tsx:337
 msgid "Permanently delete this CRM and all its content."
 msgstr "Назаўжды выдаліць гэты CRM і ўвесь яго змест."
 
-#: src/routes/_authenticated/$crmId/index.tsx:628
-#: src/routes/_authenticated/$crmId/index.tsx:662
+#: src/routes/_authenticated/$crmId/index.tsx:649
+#: src/routes/_authenticated/$crmId/index.tsx:683
 msgid "Please add one or more classes to the CRM design."
 msgstr "Дадайце адзін або больш класаў у дызайн CRM."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:332
 msgid "Previous image"
 msgstr "Папярэдняя выява"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx:24
+#: ../../../lib/web/src/features/document/document-page.tsx:41
+msgid "Privacy"
+msgstr "Канфідэнцыяльнасць"
 
 #: ../../../lib/web/src/components/layout/nav-user.tsx:134
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
@@ -1396,7 +1442,7 @@ msgstr "Профіль"
 msgid "Properties"
 msgstr "Уласцівасці"
 
-#: src/routes/_authenticated/$crmId/index.tsx:864
+#: src/routes/_authenticated/$crmId/index.tsx:885
 msgid "Re-order columns"
 msgstr "Перапарадкаваць слупкі"
 
@@ -1537,7 +1583,7 @@ msgstr "Субота"
 
 #: src/features/editor/components/option-dialog.tsx:138
 #: src/features/objects/components/comment-thread.tsx:183
-#: src/routes/_authenticated/$crmId/index.tsx:923
+#: src/routes/_authenticated/$crmId/index.tsx:953
 msgid "Save"
 msgstr "Захаваць"
 
@@ -1588,8 +1634,8 @@ msgid "Search..."
 msgstr "Пошук..."
 
 #: ../../../lib/web/src/components/language-picker.tsx:175
-msgid "Search…"
-msgstr "Пошук…"
+#~ msgid "Search…"
+#~ msgstr "Пошук…"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
 #: ../../../lib/web/src/components/search-entity-page.tsx:149
@@ -1650,9 +1696,18 @@ msgstr "Выбраць перавагу тэмы"
 msgid "Select..."
 msgstr "Выбраць..."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:357
+#: ../../../lib/web/src/lib/preference-utils.ts:133
+msgid "Serif"
+msgstr "З засечкамі"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:327
 msgid "Server"
 msgstr "Сервер"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx:16
+#: ../../../lib/web/src/features/document/document-page.tsx:37
+msgid "Server rules"
+msgstr "Правілы сервера"
 
 #: ../../../lib/web/src/lib/api-client.ts:224
 msgid "Session expired"
@@ -1666,9 +1721,9 @@ msgstr "Задаць адпраўленне і прызначэнне"
 #: ../../../lib/web/src/components/layout/nav-user.tsx:145
 #: ../../../lib/web/src/components/layout/nav-user.tsx:195
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:181
-#: src/routes/_authenticated/$crmId_.settings.tsx:204
-#: src/routes/_authenticated/$crmId/index.tsx:889
+#: src/routes/_authenticated/$crmId_.settings.tsx:163
+#: src/routes/_authenticated/$crmId_.settings.tsx:186
+#: src/routes/_authenticated/$crmId/index.tsx:910
 msgid "Settings"
 msgstr "Налады"
 
@@ -1707,9 +1762,18 @@ msgstr "Толькі адзін радок тэксту"
 msgid "Skip to Main"
 msgstr "Перайсці да галоўнага"
 
+#: ../../../lib/web/src/lib/preference-utils.ts:103
+#: ../../../lib/web/src/lib/preference-utils.ts:121
+msgid "Small"
+msgstr "Малы"
+
 #: src/components/view-options-bar.tsx:149
 msgid "Sort"
 msgstr "Сартаваць"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:94
+msgid "Spacious"
+msgstr "Прасторны"
 
 #: src/features/objects/components/comment-list.tsx:263
 msgid "Start the discussion by adding the first comment."
@@ -1757,6 +1821,7 @@ msgstr "Пераключыцца на выгляд 1-9"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:195
 #: ../../../lib/web/src/lib/preference-utils.ts:18
+#: ../../../lib/web/src/lib/preference-utils.ts:132
 msgid "System"
 msgstr "Сістэма"
 
@@ -1767,6 +1832,11 @@ msgstr "Тэг"
 #: ../../../lib/web/src/components/layout/team-switcher.tsx:60
 msgid "Teams/Apps"
 msgstr "Каманды/Праграмы"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx:20
+#: ../../../lib/web/src/features/document/document-page.tsx:39
+msgid "Terms and conditions"
+msgstr "Умовы і палажэнні"
 
 #: src/features/editor/components/add-dialogs.tsx:129
 msgid "Text"
@@ -1780,21 +1850,21 @@ msgstr "Тэма"
 msgid "Theme Settings"
 msgstr "Налады тэмы"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:224
+#: src/routes/_authenticated/$crmId_.settings.tsx:206
 msgid "This CRM could not be loaded right now."
 msgstr "Гэты CRM зараз не ўдалося загрузіць."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:224
+#: src/routes/_authenticated/$crmId_.settings.tsx:206
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Гэты CRM мог быць выдалены, або ў вас няма доступу да яго."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:416
+#: src/routes/_authenticated/$crmId_.settings.tsx:356
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Гэта незваротна выдаліць «{0}» і ўсе яго аб'екты, каментарыі і ўкладанні. Гэта дзеянне нельга адмяніць."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:406
+#: src/routes/_authenticated/$crmId/index.tsx:1059
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Гэта выдаліць «{0}» з вашай бакавой панэлі і спыніць абнаўленні для гэтага CRM."
 
@@ -1906,20 +1976,20 @@ msgstr "Злучаныя Штаты"
 #: src/features/crms/pages/crms-list-page.tsx:146
 #: src/features/crms/pages/crms-list-page.tsx:163
 #: src/features/crms/pages/crms-list-page.tsx:165
-#: src/routes/_authenticated/$crmId_.settings.tsx:377
-#: src/routes/_authenticated/$crmId_.settings.tsx:407
+#: src/routes/_authenticated/$crmId/index.tsx:918
+#: src/routes/_authenticated/$crmId/index.tsx:1060
 msgid "Unsubscribe"
 msgstr "Адпісацца"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:366
-msgid "Unsubscribe from crm"
-msgstr "Адпісацца ад crm"
+#~ msgid "Unsubscribe from crm"
+#~ msgstr "Адпісацца ад crm"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:405
+#: src/routes/_authenticated/$crmId/index.tsx:1058
 msgid "Unsubscribe from CRM?"
 msgstr "Адпісацца ад CRM?"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:148
+#: src/routes/_authenticated/$crmId/index.tsx:553
 msgid "Unsubscribed"
 msgstr "Адпісана"
 
@@ -1997,11 +2067,11 @@ msgstr "Паглядзіце і адрэдагуйце дэталі элемен
 msgid "View controls"
 msgstr "Элементы кіравання выглядам"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:588
+#: src/routes/_authenticated/$crmId_.settings.tsx:528
 msgid "View only"
 msgstr "Толькі прагляд"
 
-#: src/routes/_authenticated/$crmId/index.tsx:849
+#: src/routes/_authenticated/$crmId/index.tsx:870
 msgid "View options"
 msgstr "Параметры выгляду"
 
@@ -2033,7 +2103,7 @@ msgstr "Сайт на тэхнічным абслугоўванні!"
 msgid "Wednesday"
 msgstr "Серада"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:586
+#: src/routes/_authenticated/$crmId_.settings.tsx:526
 msgid "Write, comment, and view"
 msgstr "Пісаць, каментаваць і праглядаць"
 
