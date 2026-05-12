@@ -1666,7 +1666,8 @@ def action_object_update(a):
 		"crm": crm_id, "id": object_id,
 		"parent": parent if a.input("parent") != None else row["parent"],
 		"class": new_class if new_class and new_class != row["class"] else row["class"],
-		"user": a.user.identity.id
+		"user": a.user.identity.id,
+		"updated": now
 	})
 
 	return {"data": {"success": True}}
@@ -4929,6 +4930,24 @@ def event_object_update(e):
 	object_id = e.content("id")
 	if not object_id:
 		return
+
+	# LWW gate: drop the event when its `updated` is no newer than the
+	# locally-stored row's updated. Concurrent reparenting / reclass on
+	# the same object from different subscriber hosts would otherwise
+	# overwrite each other; the gate makes the lower-timestamp event
+	# lose deterministically. Backwards-compatible with senders that
+	# don't yet include the field — we fall back to local now.
+	now = mochi.time.now()
+	incoming = str(e.content("updated", "0"))
+	if mochi.text.valid(incoming, "integer"):
+		incoming = int(incoming)
+	else:
+		incoming = 0
+	if incoming:
+		local = mochi.db.row("select updated from objects where id=? and crm=?", object_id, crm_id)
+		if local and local["updated"] and incoming <= local["updated"]:
+			return
+
 	class_id = e.content("class")
 	parent = e.content("parent")
 	rank = e.content("rank")
@@ -4938,7 +4957,7 @@ def event_object_update(e):
 		mochi.db.execute("update objects set parent=? where id=? and crm=?", parent, object_id, crm_id)
 	if rank != None:
 		mochi.db.execute("update objects set rank=? where id=? and crm=?", rank, object_id, crm_id)
-	mochi.db.execute("update objects set updated=? where id=? and crm=?", mochi.time.now(), object_id, crm_id)
+	mochi.db.execute("update objects set updated=? where id=? and crm=?", incoming if incoming else now, object_id, crm_id)
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "object/update", "crm": crm_id, "id": object_id})
