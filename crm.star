@@ -29,12 +29,13 @@ def broadcast_event(crm_id, event, data, exclude=None):
 # canonical source; insert_schema applies it idempotently. Throttled so a
 # burst of bad events can't spam the owner.
 def request_resync(crm_id):
+	"""Returns True iff a fresh schema was actually fetched and applied."""
 	row = mochi.db.row("select server, synced from crms where id=? and owner=0", crm_id)
 	if not row:
-		return
+		return False
 	now = mochi.time.now()
 	if row["synced"] and now - row["synced"] < 60:
-		return
+		return False
 	mochi.db.execute("update crms set synced=? where id=?", now, crm_id)
 	server = row["server"] or ""
 	peer = ""
@@ -42,11 +43,12 @@ def request_resync(crm_id):
 		peer = mochi.remote.peer(server)
 	schema = mochi.remote.request(crm_id, "crm", "schema", {}, peer)
 	if not schema or schema.get("error"):
-		return
+		return False
 	insert_schema(crm_id, schema)
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "crm/resynced", "crm": crm_id})
+	return True
 
 # Create database with all 17 tables
 def database_create():
@@ -958,8 +960,8 @@ def action_crm_resync(a):
 	if row["owner"] != 0:
 		return {"data": {"synced": False}}
 	mochi.db.execute("update crms set synced=0 where id=?", crm_id)
-	request_resync(crm_id)
-	return {"data": {"synced": True}}
+	synced = request_resync(crm_id)
+	return {"data": {"synced": synced}}
 
 # Delete crm
 def action_crm_delete(a):
