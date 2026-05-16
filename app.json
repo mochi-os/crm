@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 {
-	"version": "2.15",
+	"version": "2.17",
 	"label": "app.name",
 	"classes": ["crm"],
 	"paths": ["crm"],
@@ -12,7 +12,7 @@
 	"execute": ["crm.star"],
 
 	"database": {
-		"schema": 2,
+		"schema": 3,
 		"file": "crm.db",
 		"create": {"function": "database_create"}
 	},
@@ -45,6 +45,7 @@
 		":crm/-/info": {"function": "action_crm_get"},
 		":crm/-/update": {"function": "action_crm_update"},
 		":crm/-/delete": {"function": "action_crm_delete"},
+		":crm/-/resync": {"function": "action_crm_resync"},
 		":crm/-/people": {"function": "action_people_list"},
 		":crm/-/access": {"function": "action_access_list"},
 		":crm/-/access/set": {"function": "action_access_set"},

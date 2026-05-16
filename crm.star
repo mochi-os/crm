@@ -21,6 +21,33 @@ def broadcast_event(crm_id, event, data, exclude=None):
 			continue
 		mochi.message.send(p2p_headers(crm_id, sub["id"], event), data)
 
+# request_resync pulls a fresh schema dump from the CRM owner when an
+# incoming event references data we don't have yet. Out-of-order delivery,
+# lost messages, and the strict FK enforcement on ncruces all surface as
+# the same symptom — a values/update or comment/create arriving for an
+# object the subscriber hasn't seen. The owner's event_schema is the
+# canonical source; insert_schema applies it idempotently. Throttled so a
+# burst of bad events can't spam the owner.
+def request_resync(crm_id):
+	row = mochi.db.row("select server, synced from crms where id=? and owner=0", crm_id)
+	if not row:
+		return
+	now = mochi.time.now()
+	if row["synced"] and now - row["synced"] < 60:
+		return
+	mochi.db.execute("update crms set synced=? where id=?", now, crm_id)
+	server = row["server"] or ""
+	peer = ""
+	if server:
+		peer = mochi.remote.peer(server)
+	schema = mochi.remote.request(crm_id, "crm", "schema", {}, peer)
+	if not schema or schema.get("error"):
+		return
+	insert_schema(crm_id, schema)
+	fp = mochi.entity.fingerprint(crm_id)
+	if fp:
+		mochi.websocket.write(fp, {"type": "crm/resynced", "crm": crm_id})
+
 # Create database with all 17 tables
 def database_create():
 	# 1. crms - the container, a Mochi entity
@@ -34,7 +61,8 @@ def database_create():
 		template text not null default '',
 		template_version integer not null default 0,
 		created integer not null,
-		updated integer not null
+		updated integer not null,
+		synced integer not null default 0
 	)""")
 	mochi.db.execute("create index if not exists crms_fingerprint on crms(fingerprint)")
 
@@ -228,7 +256,12 @@ def database_create():
 
 
 def database_upgrade(version):
-	pass
+	if version == 3:
+		# Add crms.synced for throttled resync requests when an incoming
+		# event references an object/class we haven't seen yet.
+		cols = [r["name"] for r in mochi.db.table("crms") or []]
+		if "synced" not in cols:
+			mochi.db.execute("alter table crms add column synced integer not null default 0")
 
 # ============================================================================
 # Templates
@@ -904,6 +937,29 @@ def action_crm_update(a):
 	broadcast_event(crm_id, "crm/update", update)
 
 	return {"data": {"success": True}}
+
+# Force a fresh schema pull from the CRM owner. Mirrors action_project_resync
+# in the projects app — subscribers fall behind when an inbound event
+# references data they don't have. The event handlers self-heal via
+# request_resync on the next bad event; this action lets the UI / a user
+# trigger it on demand.
+def action_crm_resync(a):
+	if not a.user:
+		a.error.label(401, "errors.not_logged_in")
+		return
+	crm_id = resolve_crm(a)
+	if not crm_id:
+		a.error.label(400, "errors.crm_id_required")
+		return
+	row = mochi.db.row("select id, owner from crms where id=?", crm_id)
+	if not row:
+		a.error.label(404, "errors.crm_not_found")
+		return
+	if row["owner"] != 0:
+		return {"data": {"synced": False}}
+	mochi.db.execute("update crms set synced=0 where id=?", crm_id)
+	request_resync(crm_id)
+	return {"data": {"synced": True}}
 
 # Delete crm
 def action_crm_delete(a):
@@ -4890,9 +4946,16 @@ def event_object_create(e):
 	if not crm_id:
 		return
 	object_id = e.content("id")
+	class_id = e.content("class") or ""
+	# Skip when the class isn't local yet — objects(crm,class) FK would
+	# otherwise abort the handler. Resync pulls the canonical schema so
+	# future events apply cleanly.
+	if class_id and not mochi.db.exists("select 1 from classes where crm=? and id=?", crm_id, class_id):
+		request_resync(crm_id)
+		return
 	mochi.db.execute(
 		"insert or ignore into objects (id, crm, class, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?)",
-		object_id, crm_id, e.content("class") or "",
+		object_id, crm_id, class_id,
 		e.content("parent") or "", e.content("rank") or 0,
 		e.content("created") or mochi.time.now(), e.content("updated") or mochi.time.now()
 	)
@@ -4929,6 +4992,13 @@ def event_object_update(e):
 		return
 	object_id = e.content("id")
 	if not object_id:
+		return
+
+	# Skip when the object isn't local yet — the UPDATE would silently
+	# no-op, leaving us with stale or missing rows until something else
+	# triggers a sync.
+	if not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
+		request_resync(crm_id)
 		return
 
 	# LWW gate: drop the event when its `updated` is no newer than the
@@ -5001,6 +5071,13 @@ def event_values_update(e):
 		return
 	values = e.content("values")
 	if not values:
+		return
+	# Skip when the referenced object isn't local yet. The values.object FK
+	# would otherwise abort the handler and the update would be lost
+	# forever (the owner has no idea we couldn't apply it). request_resync
+	# pulls the canonical schema so we converge on the next event.
+	if not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
+		request_resync(crm_id)
 		return
 	for field in values:
 		mochi.db.execute("replace into \"values\" (object, field, value) values (?, ?, ?)", object_id, field, values[field])
@@ -5154,9 +5231,15 @@ def event_comment_create(e):
 	if not crm_id:
 		return
 	comment_id = e.content("id")
+	object_id = e.content("object") or ""
+	# Skip when the comment's object isn't local yet — comments.object FK
+	# would otherwise abort the handler and the comment would be lost.
+	if not object_id or not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
+		request_resync(crm_id)
+		return
 	mochi.db.execute(
 		"insert or ignore into comments (id, object, parent, author, name, content, created, edited) values (?, ?, ?, ?, ?, ?, ?, ?)",
-		comment_id, e.content("object") or "", e.content("parent") or "",
+		comment_id, object_id, e.content("parent") or "",
 		e.content("author") or "", e.content("name") or "",
 		e.content("content") or "", e.content("created") or mochi.time.now(), 0
 	)
@@ -5189,6 +5272,12 @@ def event_comment_update(e):
 	comment_id = e.content("id")
 	if not comment_id:
 		return
+	# Skip when the comment isn't local yet — the UPDATE would silently
+	# no-op, leaving us with an out-of-date row until something else
+	# triggers a sync.
+	if not mochi.db.exists("select 1 from comments where id=?", comment_id):
+		request_resync(crm_id)
+		return
 	content = e.content("content")
 	if content:
 		mochi.db.execute("update comments set content=?, edited=? where id=?", content, mochi.time.now(), comment_id)
@@ -5214,9 +5303,18 @@ def event_link_create(e):
 	crm_id = verify_subscription(e)
 	if not crm_id:
 		return
+	source = e.content("source") or ""
+	target = e.content("target") or ""
+	# Skip when either endpoint isn't local yet — links FKs would abort.
+	if not source or not target:
+		return
+	if not mochi.db.exists("select 1 from objects where id=? and crm=?", source, crm_id) or \
+		not mochi.db.exists("select 1 from objects where id=? and crm=?", target, crm_id):
+		request_resync(crm_id)
+		return
 	mochi.db.execute(
 		"insert or ignore into links (crm, source, target, linktype, created) values (?, ?, ?, ?, ?)",
-		crm_id, e.content("source") or "", e.content("target") or "",
+		crm_id, source, target,
 		e.content("linktype") or "related", e.content("created") or mochi.time.now()
 	)
 	fp = mochi.entity.fingerprint(crm_id)
