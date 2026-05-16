@@ -486,7 +486,7 @@ export function BoardColumn({
     >
       {/* Column header */}
       <div
-        className="flex items-center justify-between p-3 border-b cursor-pointer bg-primary/10 text-primary"
+        className="flex items-center justify-between px-3 py-2 border-b cursor-pointer bg-primary/10 text-primary"
         onDoubleClick={preview ? undefined : (e) => {
           if (!(e.target as HTMLElement).closest("[data-column-menu]")) {
             onCreateClick?.();
@@ -624,7 +624,7 @@ export function BoardColumn({
             key={row.id}
             data-row-id={row.id}
             className={cn(
-              "p-2 space-y-2",
+              "p-2 space-y-2 min-h-0 overflow-y-auto",
               index < rows.length - 1 && "border-b"
             )}
             onDoubleClick={onCreateInRow && !preview ? (e) => {
@@ -639,7 +639,7 @@ export function BoardColumn({
       ) : (
         <div
           ref={cardsContainerRef}
-          className="p-2 space-y-2 flex-1 relative"
+          className="p-2 space-y-2 flex-1 min-h-0 overflow-y-auto relative"
           onDoubleClick={preview ? undefined : (e) => {
             if (e.target === e.currentTarget || (e.target as HTMLElement).closest("[data-card-id]") === null) {
               onCreateClick?.();

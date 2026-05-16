@@ -177,11 +177,14 @@ export function BoardContainer({
 
   const hasRows = rowField && rowOptions.length > 0;
 
-  // Measure board position to compute viewport-filling min-height dynamically.
-  // Observes ancestor elements for resize so minHeight recalculates when
-  // siblings like the view options bar appear or disappear.
+  // Measure board position to compute viewport-filling height dynamically.
+  // Observes ancestor elements for resize so the height recalculates when
+  // siblings like the view options bar appear or disappear. We use an exact
+  // height (not min-height) so a tall column can't grow the board past the
+  // viewport — column headers stay visible and cards scroll inside each
+  // column instead of the whole page.
   const boardRef = useRef<HTMLDivElement>(null);
-  const [minHeight, setMinHeight] = useState("");
+  const [boardHeight, setBoardHeight] = useState("");
 
   useLayoutEffect(() => {
     const el = boardRef.current;
@@ -189,7 +192,7 @@ export function BoardContainer({
     const update = () => {
       const top = Math.ceil(el.getBoundingClientRect().top);
       // eslint-disable-next-line lingui/no-unlocalized-strings
-      setMinHeight(`calc(100dvh - ${top}px)`);
+      setBoardHeight(`calc(100dvh - ${top}px)`);
     };
     update();
     const observer = new ResizeObserver(update);
@@ -745,9 +748,9 @@ export function BoardContainer({
     return (
       <div
         ref={boardRef}
-        className="grid pt-4 pb-2 gap-x-4"
+        className="grid pt-3 pb-2 gap-x-4"
         style={{
-          minHeight,
+          height: boardHeight,
           gridTemplateColumns: `max-content repeat(${totalCols}, 18rem)`,
           gridTemplateRows: `auto repeat(${swimlaneRows.length}, 1fr)`,
         }}
@@ -838,7 +841,7 @@ export function BoardContainer({
 
   // Flat layout (no row field — existing behavior)
   return (
-    <div ref={boardRef} className="flex gap-4 pt-4 pb-2" style={{ minHeight }}>
+    <div ref={boardRef} className="flex gap-4 pt-3 pb-2" style={{ height: boardHeight }}>
       {columnsToRender.map((status) =>
         renderColumn(status, objectsByStatus[status.id] || [])
       )}
