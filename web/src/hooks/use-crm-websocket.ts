@@ -3,7 +3,7 @@
 
 import { useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import { isInShell } from "@mochi/web";
+import { useAuthStore } from "@mochi/web";
 
 interface CrmWebsocketEvent {
   type: string;
@@ -18,7 +18,10 @@ const RECONNECT_DELAY = 3000;
 
 function getWebSocketUrl(key: string): string {
   const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-  return `${protocol}//${window.location.host}/_/websocket?key=${key}`;
+  const raw = useAuthStore.getState().token;
+  const token = raw?.startsWith("Bearer ") ? raw.slice(7) : raw;
+  const tokenParam = token ? `&token=${encodeURIComponent(token)}` : "";
+  return `${protocol}//${window.location.host}/_/websocket?key=${key}${tokenParam}`;
 }
 
 // Singleton WebSocket manager to prevent duplicate connections
@@ -145,9 +148,12 @@ const wsManager = new WebSocketManager();
 // Subscribe to crm WebSocket events and invalidate relevant queries
 export function useCrmWebsocket(crmFingerprint?: string) {
   const queryClient = useQueryClient();
+  const authReady = useAuthStore((state) => state.isInitialized);
+  const authToken = useAuthStore((state) => state.token);
 
   useEffect(() => {
-    if (!crmFingerprint || isInShell()) return;
+    if (!authReady) return;
+    if (!crmFingerprint) return;
 
     const handleMessage = (data: CrmWebsocketEvent) => {
       const pid = crmFingerprint;
@@ -236,5 +242,5 @@ export function useCrmWebsocket(crmFingerprint?: string) {
     };
 
     return wsManager.subscribe(crmFingerprint, handleMessage);
-  }, [crmFingerprint, queryClient]);
+  }, [authReady, authToken, crmFingerprint, queryClient]);
 }
