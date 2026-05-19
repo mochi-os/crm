@@ -342,6 +342,7 @@ export function CreateObjectDialog({
             className="h-8 w-8"
             onClick={handleClose}
             title={t`Close`}
+            aria-label={t`Close`}
           >
             <X className="size-4" />
           </Button>

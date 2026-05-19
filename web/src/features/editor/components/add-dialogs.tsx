@@ -96,7 +96,7 @@ export function AddFieldDialog({
         <div className="flex items-center justify-between px-6 py-4 border-b">
           <SheetTitle><Trans>Add field</Trans></SheetTitle>
           <SheetDescription className="sr-only"><Trans>Add a new field to this class</Trans></SheetDescription>
-          <Button variant="ghost" size="icon" className="size-8" onClick={handleClose}>
+          <Button variant="ghost" size="icon" className="size-8" onClick={handleClose} aria-label={t`Close dialog`}>
             <X className="size-4" />
           </Button>
         </div>
@@ -197,6 +197,7 @@ export function AddFieldDialog({
                     variant="outline"
                     onClick={addOption}
                     disabled={!newOptionName.trim()}
+                    aria-label={t`Add option`}
                   >
                     <Plus className="size-4" />
                   </Button>

@@ -453,6 +453,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
                 variant="ghost"
                 size="sm"
                 onClick={() => setAddViewOpen(true)}
+                aria-label={t`Add view`}
               >
                 <Plus className="size-4" />
               </Button>
@@ -501,6 +502,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
                 variant="ghost"
                 size="sm"
                 onClick={() => setAddClassOpen(true)}
+                aria-label={t`Add class`}
               >
                 <Plus className="size-4" />
               </Button>

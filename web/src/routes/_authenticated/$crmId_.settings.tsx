@@ -484,6 +484,7 @@ function EditableFieldRow({
               onClick={handleCancelEdit}
               disabled={isSaving}
               className="h-9 w-9 p-0 shrink-0"
+              aria-label={t`Cancel edit`}
             >
               <X className="size-4 text-destructive" />
             </Button>
@@ -505,6 +506,7 @@ function EditableFieldRow({
               variant="ghost"
               onClick={handleStartEdit}
               className="h-6 w-6 p-0 hover:bg-muted"
+              aria-label={t`Edit field`}
             >
               <Pencil className="size-3.5 text-muted-foreground" />
             </Button>
@@ -625,7 +627,7 @@ function AccessTab({ crmId }: AccessTabProps) {
         <div className="flex justify-end">
           <Button onClick={() => setDialogOpen(true)} size="sm" disabled={!canManageRules}>
             <Plus className="h-4 w-4 me-2" />
-            <Trans>Add Rule</Trans>
+            <Trans>Add rule</Trans>
           </Button>
         </div>
 

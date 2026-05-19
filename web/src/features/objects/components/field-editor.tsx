@@ -531,6 +531,7 @@ function ChecklistEditor({ value, onChange, disabled }: ChecklistEditorProps) {
               onClick={addItem}
               className="h-6 px-2 text-xs"
             >
+              <Plus className="size-3.5" />
               <Trans>Add</Trans>
             </Button>
           )}
