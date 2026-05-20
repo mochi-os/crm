@@ -13,13 +13,12 @@ def p2p_headers(from_id, to_id, event):
 		"event": event
 	}
 
-# Broadcast an event to all subscribers of a crm
+# Broadcast an event to all subscribers of a CRM via the durable
+# broadcast log. Sequence + log + gap-detection live in core.
 def broadcast_event(crm_id, event, data, exclude=None):
 	subscribers = mochi.db.rows("select id from subscribers where crm=?", crm_id)
-	for sub in subscribers:
-		if exclude and sub["id"] == exclude:
-			continue
-		mochi.message.send(p2p_headers(crm_id, sub["id"], event), data)
+	subscriber_ids = [sub["id"] for sub in subscribers]
+	mochi.broadcast.send(crm_id, crm_id, subscriber_ids, "crm", event, data, exclude or "")
 
 # request_resync pulls a fresh schema dump from the CRM owner when an
 # incoming event references data we don't have yet. Out-of-order delivery,

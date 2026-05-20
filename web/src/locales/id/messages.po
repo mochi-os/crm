@@ -21,7 +21,7 @@ msgstr " atau "
 msgid "(itself)"
 msgstr "(sendiri)"
 
-#: src/features/board/components/board-container.tsx:735
+#: src/features/board/components/board-container.tsx:738
 msgid "[not set]"
 msgstr "[tidak diatur]"
 
@@ -61,7 +61,7 @@ msgstr "Absolut (tanggal dan waktu)"
 msgid "Access"
 msgstr "Akses"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:12
+#: ../../../lib/web/src/features/errors/forbidden.tsx:13
 msgid "Access Forbidden"
 msgstr "Akses Dilarang"
 
@@ -69,19 +69,19 @@ msgstr "Akses Dilarang"
 msgid "Access level"
 msgstr "Tingkat akses"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:612
+#: src/routes/_authenticated/$crmId_.settings.tsx:614
 msgid "Access level updated"
 msgstr "Tingkat akses diperbarui"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:621
+#: src/routes/_authenticated/$crmId_.settings.tsx:623
 msgid "Access Management"
 msgstr "Manajemen Akses"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:601
+#: src/routes/_authenticated/$crmId_.settings.tsx:603
 msgid "Access removed"
 msgstr "Akses dihapus"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:589
+#: src/routes/_authenticated/$crmId_.settings.tsx:591
 msgid "Access set for {subjectName}"
 msgstr "Akses ditetapkan untuk {subjectName}"
 
@@ -105,7 +105,8 @@ msgstr "Akun terverifikasi"
 msgid "Activity"
 msgstr "Aktivitas"
 
-#: src/features/objects/components/field-editor.tsx:534
+#: ../../../lib/web/src/features/accounts/account-add.tsx:193
+#: src/features/objects/components/field-editor.tsx:535
 msgid "Add"
 msgstr "Tambah"
 
@@ -138,18 +139,19 @@ msgstr "Tambahkan akun untuk menerima notifikasi dan menggunakan layanan."
 msgid "Add checklist item"
 msgstr "Tambah item checklist"
 
+#: src/features/editor/components/design-editor.tsx:505
 #: src/features/editor/components/edit-dialogs.tsx:671
 #: src/features/editor/components/edit-dialogs.tsx:846
 msgid "Add class"
 msgstr "Tambah kelas"
 
-#: src/routes/_authenticated/$crmId/index.tsx:881
-#: src/routes/_authenticated/$crmId/index.tsx:1052
+#: src/routes/_authenticated/$crmId/index.tsx:880
+#: src/routes/_authenticated/$crmId/index.tsx:1048
 msgid "Add column"
 msgstr "Tambah kolom"
 
 #: src/features/editor/components/add-dialogs.tsx:97
-#: src/features/editor/components/add-dialogs.tsx:214
+#: src/features/editor/components/add-dialogs.tsx:215
 #: src/features/editor/components/edit-dialogs.tsx:841
 msgid "Add field"
 msgstr "Tambah field"
@@ -166,15 +168,16 @@ msgstr "Tambah tautan"
 msgid "Add new account"
 msgstr "Tambah akun baru"
 
-#: src/features/editor/components/edit-dialogs.tsx:1071
+#: src/features/editor/components/add-dialogs.tsx:200
+#: src/features/editor/components/edit-dialogs.tsx:1072
 #: src/features/editor/components/option-dialog.tsx:81
 #: src/features/editor/components/option-dialog.tsx:143
 msgid "Add option"
 msgstr "Tambah opsi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:628
-msgid "Add Rule"
-msgstr "Tambah Aturan"
+#: src/routes/_authenticated/$crmId_.settings.tsx:630
+msgid "Add rule"
+msgstr ""
 
 #: ../../../lib/web/src/components/post-tags.tsx:119
 msgid "Add tag..."
@@ -189,6 +192,7 @@ msgid "Add to existing notifications"
 msgstr "Tambah ke notifikasi yang ada"
 
 #: ../../../lib/web/src/components/view-tabs.tsx:57
+#: src/features/editor/components/design-editor.tsx:456
 #: src/features/editor/components/edit-dialogs.tsx:266
 #: src/features/editor/components/edit-dialogs.tsx:495
 msgid "Add view"
@@ -223,7 +227,7 @@ msgstr "Izinkan urutkan berdasarkan"
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Apakah Anda yakin ingin menghapus \"{0}\"?"
 
-#: src/features/objects/components/object-detail-panel.tsx:473
+#: src/features/objects/components/object-detail-panel.tsx:475
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Apakah Anda yakin ingin menghapus \"{title}\"? Tindakan ini tidak dapat dibatalkan."
 
@@ -274,15 +278,15 @@ msgid "Back to CRM"
 msgstr "Kembali ke CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:92
+#: src/routes/_authenticated/$crmId/index.tsx:91
 msgid "Back to CRMs"
 msgstr "Kembali ke CRM"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:21
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:21
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:21
-msgid "Back to Home"
-msgstr "Kembali ke Beranda"
+#: ../../../lib/web/src/features/errors/forbidden.tsx:23
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:23
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:23
+msgid "Back to home"
+msgstr ""
 
 #: src/features/objects/components/object-links.tsx:42
 #: src/features/objects/components/object-links.tsx:158
@@ -321,9 +325,13 @@ msgstr "Bisa menjadi anak dari"
 #: src/features/editor/components/option-dialog.tsx:135
 #: src/features/objects/components/comment-thread.tsx:172
 #: src/routes/_authenticated/$crmId/design.tsx:301
-#: src/routes/_authenticated/$crmId/index.tsx:946
+#: src/routes/_authenticated/$crmId/index.tsx:942
 msgid "Cancel"
 msgstr "Batal"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:487
+msgid "Cancel edit"
+msgstr ""
 
 #: src/features/objects/components/comment-thread.tsx:360
 #: src/features/objects/components/comment-thread.tsx:361
@@ -366,11 +374,11 @@ msgstr "Pilih antara preferensi sistem, mode terang, atau mode gelap"
 msgid "Choose language"
 msgstr "Pilih bahasa"
 
-#: src/routes/_authenticated/$crmId/index.tsx:767
+#: src/routes/_authenticated/$crmId/index.tsx:766
 msgid "Class"
 msgstr "Kelas"
 
-#: src/features/editor/components/design-editor.tsx:499
+#: src/features/editor/components/design-editor.tsx:500
 msgid "Classes"
 msgstr "Kelas"
 
@@ -399,9 +407,11 @@ msgstr "Bersihkan pilihan (Escape)"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:318
 #: ../../../lib/web/src/components/ui/sheet.tsx:76
 #: src/features/objects/components/create-object-dialog.tsx:344
+#: src/features/objects/components/create-object-dialog.tsx:345
 msgid "Close"
 msgstr "Tutup"
 
+#: src/features/editor/components/add-dialogs.tsx:99
 #: src/features/editor/components/edit-dialogs.tsx:269
 #: src/features/editor/components/edit-dialogs.tsx:674
 msgid "Close dialog"
@@ -412,8 +422,8 @@ msgid "Close navigation"
 msgstr "Tutup navigasi"
 
 #: ../../../lib/web/src/components/layout/right-panel.tsx:254
-msgid "Close Panel"
-msgstr "Tutup Panel"
+msgid "Close panel"
+msgstr ""
 
 #: src/components/keyboard-shortcuts-help.tsx:31
 msgid "Close panel / cancel"
@@ -443,7 +453,7 @@ msgstr "Nyaman"
 msgid "Coming Soon!"
 msgstr "Segera Hadir!"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:527
+#: src/routes/_authenticated/$crmId_.settings.tsx:529
 msgid "Comment and view"
 msgstr "Komentar dan lihat"
 
@@ -486,7 +496,7 @@ msgstr "Informasi dan detail kontekstual."
 msgid "Continue"
 msgstr "Lanjutkan"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:622
+#: src/routes/_authenticated/$crmId_.settings.tsx:624
 msgid "Control who can view and interact with this CRM"
 msgstr "Kontrol siapa yang dapat melihat dan berinteraksi dengan CRM ini"
 
@@ -505,7 +515,7 @@ msgstr "Tidak dapat memuat dokumen ini. Silakan coba lagi nanti."
 #: src/features/board/components/board-column.tsx:523
 #: src/features/board/components/board-column.tsx:661
 #: src/features/objects/components/create-object-dialog.tsx:336
-#: src/features/objects/components/create-object-dialog.tsx:479
+#: src/features/objects/components/create-object-dialog.tsx:480
 #: src/features/tree/components/tree-view.tsx:363
 msgid "Create"
 msgstr "Buat"
@@ -540,7 +550,7 @@ msgid "Created"
 msgstr "Dibuat"
 
 #: src/features/crms/components/create-crm-dialog.tsx:140
-#: src/features/objects/components/create-object-dialog.tsx:479
+#: src/features/objects/components/create-object-dialog.tsx:480
 msgid "Creating..."
 msgstr "Membuat..."
 
@@ -610,7 +620,7 @@ msgstr "Pengurutan default"
 #: src/features/objects/components/comment-thread.tsx:269
 #: src/features/objects/components/comment-thread.tsx:385
 #: src/features/objects/components/object-attachments.tsx:233
-#: src/features/objects/components/object-detail-panel.tsx:474
+#: src/features/objects/components/object-detail-panel.tsx:476
 #: src/routes/_authenticated/$crmId_.settings.tsx:346
 msgid "Delete"
 msgstr "Hapus"
@@ -643,12 +653,13 @@ msgstr "Hapus CRM"
 msgid "Delete CRM?"
 msgstr "Hapus CRM?"
 
-#: src/features/editor/components/edit-dialogs.tsx:1080
+#: src/features/editor/components/edit-dialogs.tsx:1081
 msgid "Delete field"
 msgstr "Hapus field"
 
-#: src/features/objects/components/object-detail-panel.tsx:325
-#: src/features/objects/components/object-detail-panel.tsx:472
+#: src/features/objects/components/object-detail-panel.tsx:326
+#: src/features/objects/components/object-detail-panel.tsx:327
+#: src/features/objects/components/object-detail-panel.tsx:474
 msgid "Delete item"
 msgstr "Hapus item"
 
@@ -676,7 +687,7 @@ msgstr "Deskripsi"
 
 #: src/routes/_authenticated/$crmId/design.tsx:61
 #: src/routes/_authenticated/$crmId/design.tsx:129
-#: src/routes/_authenticated/$crmId/index.tsx:896
+#: src/routes/_authenticated/$crmId/index.tsx:895
 msgid "Design"
 msgstr "Desain"
 
@@ -684,7 +695,7 @@ msgstr "Desain"
 msgid "Design imported"
 msgstr "Desain diimpor"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:525
+#: src/routes/_authenticated/$crmId_.settings.tsx:527
 msgid "Design, write, comment, and view"
 msgstr "Desain, tulis, komentari, dan lihat"
 
@@ -707,8 +718,8 @@ msgstr "Deteksi dari web browser"
 msgid "Direction"
 msgstr "Arah"
 
-#: src/routes/_authenticated/$crmId/index.tsx:968
-#: src/routes/_authenticated/$crmId/index.tsx:969
+#: src/routes/_authenticated/$crmId/index.tsx:964
+#: src/routes/_authenticated/$crmId/index.tsx:965
 msgid "Dismiss board hint"
 msgstr "Tutup petunjuk papan"
 
@@ -718,12 +729,12 @@ msgstr "Menampilkan sidebar seluler."
 
 #: src/features/editor/components/edit-dialogs.tsx:500
 #: src/features/editor/components/edit-dialogs.tsx:851
-#: src/features/editor/components/edit-dialogs.tsx:1085
-#: src/features/objects/components/object-detail-panel.tsx:336
+#: src/features/editor/components/edit-dialogs.tsx:1086
+#: src/features/objects/components/object-detail-panel.tsx:338
 msgid "Done"
 msgstr "Selesai"
 
-#: src/routes/_authenticated/$crmId/index.tsx:961
+#: src/routes/_authenticated/$crmId/index.tsx:957
 msgid "Double click on a column to add content"
 msgstr "Klik dua kali pada kolom untuk menambahkan konten"
 
@@ -735,7 +746,7 @@ msgstr "Unduh"
 msgid "Download backup first"
 msgstr "Unduh cadangan terlebih dahulu"
 
-#: src/routes/_authenticated/$crmId/index.tsx:942
+#: src/routes/_authenticated/$crmId/index.tsx:938
 msgid "Drag columns to re-order them"
 msgstr "Seret kolom untuk mengatur ulang urutannya"
 
@@ -757,6 +768,7 @@ msgid "Edit class"
 msgstr "Edit kelas"
 
 #: src/features/editor/components/edit-dialogs.tsx:962
+#: src/routes/_authenticated/$crmId_.settings.tsx:509
 msgid "Edit field"
 msgstr "Edit bidang"
 
@@ -794,7 +806,7 @@ msgstr "Galat"
 msgid "Expand sidebar"
 msgstr "Perluas sidebar"
 
-#: src/routes/_authenticated/$crmId/index.tsx:902
+#: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "Export CSV"
 msgstr "Ekspor CSV"
 
@@ -818,7 +830,7 @@ msgstr "Gagal membuat kelas"
 msgid "Failed to create CRM"
 msgstr "Gagal membuat CRM"
 
-#: src/features/editor/components/design-editor.tsx:593
+#: src/features/editor/components/design-editor.tsx:595
 msgid "Failed to create field"
 msgstr "Gagal membuat bidang"
 
@@ -826,7 +838,7 @@ msgstr "Gagal membuat bidang"
 msgid "Failed to create link"
 msgstr "Gagal membuat tautan"
 
-#: src/features/editor/components/design-editor.tsx:613
+#: src/features/editor/components/design-editor.tsx:615
 msgid "Failed to create option"
 msgstr "Gagal membuat opsi"
 
@@ -864,7 +876,7 @@ msgstr "Gagal mengimpor desain"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:40
 #: src/routes/_authenticated/$crmId/$objectId.tsx:68
-#: src/routes/_authenticated/$crmId/index.tsx:68
+#: src/routes/_authenticated/$crmId/index.tsx:67
 msgid "Failed to load CRM"
 msgstr "Gagal memuat CRM"
 
@@ -888,7 +900,7 @@ msgstr "Gagal mengirim komentar"
 msgid "Failed to read file"
 msgstr "Gagal membaca berkas"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:604
+#: src/routes/_authenticated/$crmId_.settings.tsx:606
 msgid "Failed to remove access"
 msgstr "Gagal menghapus akses"
 
@@ -908,7 +920,7 @@ msgstr "Gagal mengurutkan ulang tampilan"
 msgid "Failed to send verification code"
 msgstr "Gagal mengirim kode verifikasi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:592
+#: src/routes/_authenticated/$crmId_.settings.tsx:594
 msgid "Failed to set access level"
 msgstr "Gagal menetapkan tingkat akses"
 
@@ -918,11 +930,11 @@ msgid "Failed to subscribe"
 msgstr "Gagal berlangganan"
 
 #: src/features/crms/pages/crms-list-page.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:557
+#: src/routes/_authenticated/$crmId/index.tsx:556
 msgid "Failed to unsubscribe"
 msgstr "Gagal berhenti berlangganan"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:615
+#: src/routes/_authenticated/$crmId_.settings.tsx:617
 msgid "Failed to update access level"
 msgstr "Gagal memperbarui tingkat akses"
 
@@ -950,7 +962,7 @@ msgstr "Gagal mengunggah lampiran"
 msgid "Fields"
 msgstr "Bidang"
 
-#: src/features/objects/components/create-object-dialog.tsx:422
+#: src/features/objects/components/create-object-dialog.tsx:423
 #: src/features/objects/components/object-attachments.tsx:106
 #: src/features/objects/components/object-attachments.tsx:123
 msgid "Files"
@@ -993,11 +1005,11 @@ msgstr "Dari tema"
 msgid "Full layout"
 msgstr "Tata letak penuh"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:19
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:19
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:19
-msgid "Go Back"
-msgstr "Kembali"
+#: ../../../lib/web/src/features/errors/forbidden.tsx:21
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:21
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:21
+msgid "Go back"
+msgstr ""
 
 #: ../../../lib/web/src/components/data-table/pagination.tsx:75
 msgid "Go to first page"
@@ -1010,6 +1022,10 @@ msgstr "Ke halaman terakhir"
 #: ../../../lib/web/src/components/data-table/pagination.tsx:112
 msgid "Go to next page"
 msgstr "Ke halaman berikutnya"
+
+#: ../../../lib/web/src/components/data-table/pagination.tsx:99
+msgid "Go to page {pageNumber}"
+msgstr ""
 
 #: ../../../lib/web/src/components/data-table/pagination.tsx:84
 msgid "Go to previous page"
@@ -1034,7 +1050,7 @@ msgstr "Beranda"
 msgid "Hot"
 msgstr "Populer"
 
-#: src/routes/_authenticated/$crmId/index.tsx:767
+#: src/routes/_authenticated/$crmId/index.tsx:766
 msgid "ID"
 msgstr "ID"
 
@@ -1195,13 +1211,13 @@ msgstr "Nama wajib diisi"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:40
 #: src/features/objects/components/create-object-dialog.tsx:321
-#: src/routes/_authenticated/$crmId/index.tsx:836
-#: src/routes/_authenticated/$crmId/index.tsx:853
+#: src/routes/_authenticated/$crmId/index.tsx:835
+#: src/routes/_authenticated/$crmId/index.tsx:852
 msgid "New"
 msgstr "Baru"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:834
+#: src/routes/_authenticated/$crmId/index.tsx:833
 msgid "New {0}"
 msgstr "{0} baru"
 
@@ -1209,11 +1225,11 @@ msgstr "{0} baru"
 msgid "Next image"
 msgstr "Gambar berikutnya"
 
-#: src/features/objects/components/create-object-dialog.tsx:389
+#: src/features/objects/components/create-object-dialog.tsx:390
 msgid "No {parentClassNames} to add to"
 msgstr "Tidak ada {parentClassNames} untuk ditambahkan"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:529
+#: src/routes/_authenticated/$crmId_.settings.tsx:531
 msgid "No access"
 msgstr "Tidak ada akses"
 
@@ -1242,19 +1258,15 @@ msgstr "Tidak ada CRM yang ditemukan"
 msgid "No groups available"
 msgstr "Tidak ada grup yang tersedia"
 
-#: src/features/objects/components/create-object-dialog.tsx:356
+#: src/features/objects/components/create-object-dialog.tsx:357
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Belum ada jenis item yang dapat dibuat. Buat item induk yang diperlukan terlebih dahulu."
-
-#: ../../../lib/web/src/components/language-picker.tsx:177
-#~ msgid "No matches."
-#~ msgstr "Tidak ada kecocokan."
 
 #: src/features/objects/components/object-links.tsx:299
 msgid "No matching objects"
 msgstr "Tidak ada objek yang cocok"
 
-#: src/routes/_authenticated/$crmId/index.tsx:752
+#: src/routes/_authenticated/$crmId/index.tsx:751
 msgid "No objects to export."
 msgstr "Tidak ada objek untuk diekspor."
 
@@ -1275,8 +1287,8 @@ msgstr "Tidak ada profil"
 msgid "No results found."
 msgstr "Tidak ada hasil yang ditemukan."
 
-#: src/features/board/components/board-container.tsx:806
-#: src/features/board/components/board-container.tsx:850
+#: src/features/board/components/board-container.tsx:809
+#: src/features/board/components/board-container.tsx:853
 msgid "No status"
 msgstr "Tanpa status"
 
@@ -1307,13 +1319,13 @@ msgstr "Tidak ada tampilan"
 #: src/features/editor/components/edit-dialogs.tsx:473
 #: src/features/editor/components/edit-dialogs.tsx:730
 #: src/features/editor/components/edit-dialogs.tsx:733
-#: src/features/objects/components/create-object-dialog.tsx:372
-#: src/features/objects/components/create-object-dialog.tsx:375
-#: src/features/objects/components/create-object-dialog.tsx:379
-#: src/features/objects/components/object-detail-panel.tsx:394
-#: src/features/objects/components/object-detail-panel.tsx:403
-#: src/features/objects/components/object-detail-panel.tsx:406
-#: src/features/objects/components/object-detail-panel.tsx:410
+#: src/features/objects/components/create-object-dialog.tsx:373
+#: src/features/objects/components/create-object-dialog.tsx:376
+#: src/features/objects/components/create-object-dialog.tsx:380
+#: src/features/objects/components/object-detail-panel.tsx:396
+#: src/features/objects/components/object-detail-panel.tsx:405
+#: src/features/objects/components/object-detail-panel.tsx:408
+#: src/features/objects/components/object-detail-panel.tsx:412
 msgid "None"
 msgstr "Tidak ada"
 
@@ -1321,7 +1333,7 @@ msgstr "Tidak ada"
 msgid "Normal"
 msgstr "Normal"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:500
+#: src/routes/_authenticated/$crmId_.settings.tsx:501
 msgid "Not set"
 msgstr "Belum diatur"
 
@@ -1341,7 +1353,7 @@ msgstr "Notifikasi"
 msgid "Number"
 msgstr "Angka"
 
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:12
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:13
 msgid "Oops! Page Not Found!"
 msgstr "Ups! Halaman Tidak Ditemukan!"
 
@@ -1371,7 +1383,7 @@ msgstr "Buka menu navigasi"
 msgid "Open option actions"
 msgstr "Buka tindakan opsi"
 
-#: src/routes/_authenticated/$crmId/index.tsx:861
+#: src/routes/_authenticated/$crmId/index.tsx:860
 msgid "Open page actions"
 msgstr "Buka tindakan halaman"
 
@@ -1409,9 +1421,9 @@ msgstr "Lainnya"
 msgid "Owner"
 msgstr "Pemilik"
 
-#: src/features/objects/components/create-object-dialog.tsx:364
-#: src/features/objects/components/object-detail-panel.tsx:388
-#: src/routes/_authenticated/$crmId/index.tsx:767
+#: src/features/objects/components/create-object-dialog.tsx:365
+#: src/features/objects/components/object-detail-panel.tsx:390
+#: src/routes/_authenticated/$crmId/index.tsx:766
 msgid "Parent"
 msgstr "Induk"
 
@@ -1419,8 +1431,8 @@ msgstr "Induk"
 msgid "Permanently delete this CRM and all its content."
 msgstr "Hapus permanen CRM ini dan semua kontennya."
 
-#: src/routes/_authenticated/$crmId/index.tsx:649
-#: src/routes/_authenticated/$crmId/index.tsx:683
+#: src/routes/_authenticated/$crmId/index.tsx:648
+#: src/routes/_authenticated/$crmId/index.tsx:682
 msgid "Please add one or more classes to the CRM design."
 msgstr "Harap tambahkan satu atau lebih class ke desain CRM."
 
@@ -1442,7 +1454,7 @@ msgstr "Profil"
 msgid "Properties"
 msgstr "Properti"
 
-#: src/routes/_authenticated/$crmId/index.tsx:885
+#: src/routes/_authenticated/$crmId/index.tsx:884
 msgid "Re-order columns"
 msgstr "Susun ulang kolom"
 
@@ -1545,6 +1557,7 @@ msgid "Required"
 msgstr "Wajib"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:77
+#: ../../../lib/web/src/components/data-table/toolbar.tsx:78
 msgid "Reset"
 msgstr "Reset"
 
@@ -1583,7 +1596,7 @@ msgstr "Sabtu"
 
 #: src/features/editor/components/option-dialog.tsx:138
 #: src/features/objects/components/comment-thread.tsx:183
-#: src/routes/_authenticated/$crmId/index.tsx:953
+#: src/routes/_authenticated/$crmId/index.tsx:949
 msgid "Save"
 msgstr "Simpan"
 
@@ -1632,10 +1645,6 @@ msgstr "Cari, pantau, dan urutkan tampilan ini."
 #: src/components/view-options-bar.tsx:220
 msgid "Search..."
 msgstr "Cari..."
-
-#: ../../../lib/web/src/components/language-picker.tsx:175
-#~ msgid "Search…"
-#~ msgstr "Cari…"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
 #: ../../../lib/web/src/components/search-entity-page.tsx:149
@@ -1696,6 +1705,10 @@ msgstr "Pilih preferensi tema"
 msgid "Select..."
 msgstr "Pilih..."
 
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:95
+msgid "Send again"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:133
 msgid "Serif"
 msgstr "Serif"
@@ -1723,7 +1736,7 @@ msgstr "Tetapkan asal dan tujuan"
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:163
 #: src/routes/_authenticated/$crmId_.settings.tsx:186
-#: src/routes/_authenticated/$crmId/index.tsx:910
+#: src/routes/_authenticated/$crmId/index.tsx:909
 msgid "Settings"
 msgstr "Pengaturan"
 
@@ -1784,6 +1797,7 @@ msgid "Stay tuned though!"
 msgstr "Tetap pantau!"
 
 #: src/features/objects/components/object-detail-panel.tsx:311
+#: src/features/objects/components/object-detail-panel.tsx:312
 msgid "Stop watching"
 msgstr "Berhenti memantau"
 
@@ -1864,7 +1878,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "Ini akan menghapus \"{0}\" secara permanen beserta semua objek, komentar, dan lampirannya. Tindakan ini tidak dapat dibatalkan."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1059
+#: src/routes/_authenticated/$crmId/index.tsx:1055
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Ini akan menghapus \"{0}\" dari bilah samping Anda dan menghentikan pembaruan untuk CRM ini."
 
@@ -1890,10 +1904,13 @@ msgid "Toggle columns"
 msgstr "Alihkan kolom"
 
 #: ../../../lib/web/src/components/layout/right-panel.tsx:227
-msgid "Toggle Right Panel"
-msgstr "Alihkan Panel Kanan"
+msgid "Toggle right panel"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx:312
+msgid "Toggle sidebar"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/sidebar.tsx:324
 #: ../../../lib/web/src/components/ui/sidebar.tsx:327
 msgid "Toggle Sidebar"
@@ -1931,7 +1948,7 @@ msgstr "Coba sesuaikan istilah pencarian Anda"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:125
 #: ../../../lib/web/src/features/errors/general-error.tsx:165
-#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:16
 msgid "Try again"
 msgstr "Coba lagi"
 
@@ -1965,7 +1982,7 @@ msgstr "Tidak dapat mengalihkan ke halaman masuk. Silakan coba lagi."
 msgid "Unassigned"
 msgstr "Tidak ditugaskan"
 
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:12
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:13
 msgid "Unauthorized Access"
 msgstr "Akses Tidak Diizinkan"
 
@@ -1976,20 +1993,16 @@ msgstr "Amerika Serikat"
 #: src/features/crms/pages/crms-list-page.tsx:146
 #: src/features/crms/pages/crms-list-page.tsx:163
 #: src/features/crms/pages/crms-list-page.tsx:165
-#: src/routes/_authenticated/$crmId/index.tsx:918
-#: src/routes/_authenticated/$crmId/index.tsx:1060
+#: src/routes/_authenticated/$crmId/index.tsx:915
+#: src/routes/_authenticated/$crmId/index.tsx:1056
 msgid "Unsubscribe"
 msgstr "Berhenti berlangganan"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:366
-#~ msgid "Unsubscribe from crm"
-#~ msgstr "Berhenti berlangganan crm"
-
-#: src/routes/_authenticated/$crmId/index.tsx:1058
+#: src/routes/_authenticated/$crmId/index.tsx:1054
 msgid "Unsubscribe from CRM?"
 msgstr "Berhenti berlangganan CRM?"
 
-#: src/routes/_authenticated/$crmId/index.tsx:553
+#: src/routes/_authenticated/$crmId/index.tsx:552
 msgid "Unsubscribed"
 msgstr "Berhenti berlangganan"
 
@@ -2013,7 +2026,7 @@ msgstr "Belum diverifikasi"
 msgid "Updated"
 msgstr "Diperbarui"
 
-#: src/features/objects/components/create-object-dialog.tsx:463
+#: src/features/objects/components/create-object-dialog.tsx:464
 #: src/features/objects/components/object-attachments.tsx:210
 msgid "Upload"
 msgstr "Unggah"
@@ -2040,6 +2053,7 @@ msgid "Verification failed"
 msgstr "Verifikasi gagal"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:164
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:106
 msgid "Verify"
 msgstr "Verifikasi"
 
@@ -2067,11 +2081,11 @@ msgstr "Lihat dan edit detail item"
 msgid "View controls"
 msgstr "Kontrol tampilan"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:528
+#: src/routes/_authenticated/$crmId_.settings.tsx:530
 msgid "View only"
 msgstr "Hanya lihat"
 
-#: src/routes/_authenticated/$crmId/index.tsx:870
+#: src/routes/_authenticated/$crmId/index.tsx:869
 msgid "View options"
 msgstr "Opsi tampilan"
 
@@ -2080,6 +2094,7 @@ msgid "Views"
 msgstr "Tampilan"
 
 #: src/features/objects/components/object-detail-panel.tsx:311
+#: src/features/objects/components/object-detail-panel.tsx:312
 msgid "Watch"
 msgstr "Pantau"
 
@@ -2091,11 +2106,11 @@ msgstr "Dipantau"
 msgid "Watched only"
 msgstr "Hanya yang dipantau"
 
-#: ../../../lib/web/src/features/errors/maintenance-error.tsx:12
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:13
 msgid "We'll be back online shortly."
 msgstr "Kami akan kembali online sebentar lagi."
 
-#: ../../../lib/web/src/features/errors/maintenance-error.tsx:9
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:10
 msgid "Website is under maintenance!"
 msgstr "Situs web sedang dalam pemeliharaan!"
 
@@ -2103,7 +2118,7 @@ msgstr "Situs web sedang dalam pemeliharaan!"
 msgid "Wednesday"
 msgstr "Rabu"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:526
+#: src/routes/_authenticated/$crmId_.settings.tsx:528
 msgid "Write, comment, and view"
 msgstr "Tulis, komentar, dan lihat"
 

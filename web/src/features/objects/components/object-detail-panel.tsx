@@ -309,6 +309,7 @@ export function ObjectDetailPanel({
               onClick={() => watchMutation.mutate(data.watching)}
               disabled={watchMutation.isPending}
               title={data.watching ? t`Stop watching` : t`Watch`}
+              aria-label={data.watching ? t`Stop watching` : t`Watch`}
             >
               {data.watching ? (
                 <Eye className="size-4" />
@@ -323,6 +324,7 @@ export function ObjectDetailPanel({
                 className="h-8 w-8 text-muted-foreground"
                 onClick={() => setShowDeleteDialog(true)}
                 title={t`Delete item`}
+                aria-label={t`Delete item`}
               >
                 <Trash2 className="size-4" />
               </Button>
