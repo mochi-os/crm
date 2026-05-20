@@ -524,8 +524,8 @@ interface AccessTabProps {
 function AccessTab({ crmId }: AccessTabProps) {
   const { t } = useLingui()
   const CRM_ACCESS_LEVELS: AccessLevel[] = [
-    { value: "design", label: t`Design, write, comment, and view` },
-    { value: "write", label: t`Write, comment, and view` },
+    { value: "design", label: t`Design, create, edit, comment, and view` },
+    { value: "write", label: t`Edit, comment, and view` },
     { value: "comment", label: t`Comment and view` },
     { value: "view", label: t`View only` },
     { value: "none", label: t`No access` },

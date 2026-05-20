@@ -701,7 +701,7 @@ export function BoardContainer({
           hierarchy={crm.hierarchy}
           onCardClick={isReordering ? undefined : onCardClick}
           onCardDoubleClick={isReordering ? undefined : onCardDoubleClick}
-          onCreateClick={isReordering ? undefined : () => onCreateClick?.(status.id)}
+          onCreateClick={isReordering || !onCreateClick ? undefined : () => onCreateClick(status.id)}
           onCreateInRow={isReordering ? undefined : onCreateInRow}
           onDrop={isReordering ? undefined : handleDrop}
           onDragPreview={isReordering ? undefined : handleDragPreview}
