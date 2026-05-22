@@ -5158,7 +5158,7 @@ def event_values_update(e):
 								"insert or ignore into watchers (object, user, created) values (?, ?, ?)",
 								object_id, local_id, mochi.time.now())
 			if not assigned:
-				notify_watchers(object_id, crm_id, local_id, user, "Fields changed")
+				notify_watchers(object_id, crm_id, local_id, user, "Updated")
 
 # Activity row replicated from owner — insert with the same UID so the
 # activity table converges across hosts. If the referenced object isn't
@@ -6234,7 +6234,7 @@ def do_object_move(crm_id, crm, params, user_id):
 		})
 		# Notify owner if watching
 		owner_id = get_owner_identity(crm_id)
-		notify_watchers(object_id, crm_id, owner_id, user_id, "Fields changed")
+		notify_watchers(object_id, crm_id, owner_id, user_id, "Updated")
 
 	# Broadcast rank changes to subscribers
 	if new_rank != None:
@@ -6296,7 +6296,7 @@ def do_values_set(crm_id, crm, params, user_id):
 		})
 		# Notify owner if watching
 		owner_id = get_owner_identity(crm_id)
-		notify_watchers(object_id, crm_id, owner_id, user_id, "Fields changed")
+		notify_watchers(object_id, crm_id, owner_id, user_id, "Updated")
 		# Auto-watch assigned users
 		for fid in changes:
 			if field_types.get(fid) == "user":
@@ -6336,7 +6336,7 @@ def do_value_set(crm_id, crm, params, user_id):
 		})
 		# Notify owner if watching
 		owner_id = get_owner_identity(crm_id)
-		notify_watchers(object_id, crm_id, owner_id, user_id, "Fields changed")
+		notify_watchers(object_id, crm_id, owner_id, user_id, "Updated")
 		# Auto-watch assigned user
 		if field_row["fieldtype"] == "user" and str(new_value):
 			mochi.db.execute(
