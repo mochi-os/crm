@@ -4555,9 +4555,19 @@ def event_schema(e):
 		if obj["id"] in values_map:
 			obj["values"] = values_map[obj["id"]]
 		if obj["id"] in comments_map:
+			# Attach per-comment attachment metadata before nesting.
+			for c in comments_map[obj["id"]]:
+				c_atts = mochi.attachment.list(c["id"])
+				if c_atts:
+					c["attachments"] = c_atts
 			obj["comments"] = comments_map[obj["id"]]
 		if obj["id"] in activity_map:
 			obj["activity"] = activity_map[obj["id"]]
+		# Inline object-level attachment metadata so subscribers don't have to
+		# rely on real-time events arriving after the initial schema dump.
+		obj_atts = mochi.attachment.list(obj["id"])
+		if obj_atts:
+			obj["attachments"] = obj_atts
 		objects.append(obj)
 
 	# Links
@@ -4627,6 +4637,9 @@ def insert_schema(crm_id, schema):
 			obj.get("parent", ""), obj.get("rank", 0),
 			obj.get("created", 0), obj.get("updated", 0)
 		)
+		obj_atts = obj.get("attachments") or []
+		if obj_atts:
+			mochi.attachment.store(obj_atts, crm_id, obj.get("id", ""))
 		values = obj.get("values")
 		if values:
 			for field in values:
@@ -4638,6 +4651,9 @@ def insert_schema(crm_id, schema):
 				c.get("author", ""), c.get("name", ""),
 				c.get("content", ""), c.get("created", ""), c.get("edited", 0)
 			)
+			c_atts = c.get("attachments") or []
+			if c_atts:
+				mochi.attachment.store(c_atts, crm_id, c.get("id", ""))
 		for act in (obj.get("activity") or []):
 			mochi.db.execute(
 				"insert or ignore into activity (id, object, user, action, field, oldvalue, newvalue, created) values (?, ?, ?, ?, ?, ?, ?, ?)",
