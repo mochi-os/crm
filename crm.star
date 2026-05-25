@@ -5098,7 +5098,7 @@ def event_object_update(e):
 		user = e.content("user") or ""
 		local_id = e.header("to")
 		if local_id:
-			notify_watchers(object_id, crm_id, local_id, user, "Updated")
+			notify_watchers(object_id, crm_id, local_id, user, mochi.app.label("notifications.body.updated"))
 
 # Object deleted
 def event_object_delete(e):
@@ -5112,7 +5112,7 @@ def event_object_delete(e):
 	user = e.content("user") or ""
 	local_id = e.header("to")
 	if local_id:
-		notify_watchers(object_id, crm_id, local_id, user, "Deleted")
+		notify_watchers(object_id, crm_id, local_id, user, mochi.app.label("notifications.body.deleted"))
 	mochi.db.execute("delete from watchers where object=?", object_id)
 	mochi.db.execute("delete from activity where object=?", object_id)
 	delete_object_comments(object_id, crm_id)
@@ -5176,7 +5176,7 @@ def event_values_update(e):
 								"insert or ignore into watchers (object, user, created) values (?, ?, ?)",
 								object_id, local_id, mochi.time.now())
 			if not assigned:
-				notify_watchers(object_id, crm_id, local_id, user, "Updated")
+				notify_watchers(object_id, crm_id, local_id, user, mochi.app.label("notifications.body.updated"))
 
 # Activity row replicated from owner — insert with the same UID so the
 # activity table converges across hosts. If the referenced object isn't
@@ -5419,7 +5419,7 @@ def event_link_create(e):
 		local_id = e.header("to")
 		source = e.content("source")
 		if source and local_id:
-			notify_watchers(source, crm_id, local_id, user, "Link added")
+			notify_watchers(source, crm_id, local_id, user, mochi.app.label("notifications.body.link_added"))
 
 # Link deleted
 def event_link_delete(e):
@@ -6128,7 +6128,7 @@ def do_object_update(crm_id, crm, params, user_id):
 	})
 	# Notify owner if watching
 	owner_id = get_owner_identity(crm_id)
-	notify_watchers(object_id, crm_id, owner_id, user_id, "Updated")
+	notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.updated"))
 	return {"success": True}
 
 def do_object_delete(crm_id, crm, params, user_id):
@@ -6140,7 +6140,7 @@ def do_object_delete(crm_id, crm, params, user_id):
 		return {"error": "Object not found", "code": 404}
 	# Notify owner before cascade (watchers get deleted in cascade)
 	owner_id = get_owner_identity(crm_id)
-	notify_watchers(object_id, crm_id, owner_id, user_id, "Deleted")
+	notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.deleted"))
 	delete_object_cascade(crm_id, object_id, user_id)
 	return {"success": True}
 
@@ -6252,7 +6252,7 @@ def do_object_move(crm_id, crm, params, user_id):
 		})
 		# Notify owner if watching
 		owner_id = get_owner_identity(crm_id)
-		notify_watchers(object_id, crm_id, owner_id, user_id, "Updated")
+		notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.updated"))
 
 	# Broadcast rank changes to subscribers
 	if new_rank != None:
@@ -6314,7 +6314,7 @@ def do_values_set(crm_id, crm, params, user_id):
 		})
 		# Notify owner if watching
 		owner_id = get_owner_identity(crm_id)
-		notify_watchers(object_id, crm_id, owner_id, user_id, "Updated")
+		notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.updated"))
 		# Auto-watch assigned users
 		for fid in changes:
 			if field_types.get(fid) == "user":
@@ -6354,7 +6354,7 @@ def do_value_set(crm_id, crm, params, user_id):
 		})
 		# Notify owner if watching
 		owner_id = get_owner_identity(crm_id)
-		notify_watchers(object_id, crm_id, owner_id, user_id, "Updated")
+		notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.updated"))
 		# Auto-watch assigned user
 		if field_row["fieldtype"] == "user" and str(new_value):
 			mochi.db.execute(
@@ -6392,7 +6392,7 @@ def do_link_create(crm_id, crm, params, user_id):
 	})
 	# Notify owner if watching
 	owner_id = get_owner_identity(crm_id)
-	notify_watchers(object_id, crm_id, owner_id, user_id, "Link added")
+	notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.link_added"))
 	return {"success": True}
 
 def do_link_delete(crm_id, crm, params, user_id):
@@ -6408,7 +6408,7 @@ def do_link_delete(crm_id, crm, params, user_id):
 	})
 	# Notify owner if watching
 	owner_id = get_owner_identity(crm_id)
-	notify_watchers(object_id, crm_id, owner_id, user_id, "Link removed")
+	notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.link_removed"))
 	return {"success": True}
 
 # Attachment helper
