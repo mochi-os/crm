@@ -4425,15 +4425,24 @@ def action_unsubscribe(a):
 		a.error.label(400, "errors.you_own_this_crm")
 		return
 
-	# Delete all local data for this remote crm
+	# Delete all local data for this remote crm.
+	#
+	# Each mochi.db.execute is a pair-replicated sql/op event - one
+	# per call, regardless of how many rows it touches. The previous
+	# shape (per-object loop, 5 statements each) emitted ~5N sql/op
+	# events for an N-object CRM and took ~10s to drain through the
+	# per-(target, from-entity) bucket cap=1 on busy CRMs (task #95,
+	# same fix as projects task #94). The subquery shape below
+	# collapses each table's deletion to one event regardless of
+	# object count. Receiver applies the same SQL; the pair-
+	# replicated objects rows match locally so the subquery resolves
+	# to the same id set.
 	delete_crm_comment_attachments(crm_id)
-	objects = mochi.db.rows("select id from objects where crm=?", crm_id)
-	for obj in objects:
-		mochi.db.execute("delete from watchers where object=?", obj["id"])
-		mochi.db.execute("delete from activity where object=?", obj["id"])
-		mochi.db.execute("delete from comments where object=?", obj["id"])
-		mochi.db.execute("delete from \"values\" where object=?", obj["id"])
-		mochi.db.execute("delete from links where source=? or target=?", obj["id"], obj["id"])
+	mochi.db.execute("delete from watchers where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from activity where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from comments where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from \"values\" where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from links where source in (select id from objects where crm=?) or target in (select id from objects where crm=?)", crm_id, crm_id)
 
 	mochi.db.execute("delete from objects where crm=?", crm_id)
 	mochi.db.execute("delete from view_fields where crm=?", crm_id)
@@ -4902,15 +4911,24 @@ def event_deleted(e):
 	if not crm:
 		return
 
-	# Delete all local data for this remote crm
+	# Delete all local data for this remote crm.
+	#
+	# Each mochi.db.execute is a pair-replicated sql/op event - one
+	# per call, regardless of how many rows it touches. The previous
+	# shape (per-object loop, 5 statements each) emitted ~5N sql/op
+	# events for an N-object CRM and took ~10s to drain through the
+	# per-(target, from-entity) bucket cap=1 on busy CRMs (task #95,
+	# same fix as projects task #94). The subquery shape below
+	# collapses each table's deletion to one event regardless of
+	# object count. Receiver applies the same SQL; the pair-
+	# replicated objects rows match locally so the subquery resolves
+	# to the same id set.
 	delete_crm_comment_attachments(crm_id)
-	objects = mochi.db.rows("select id from objects where crm=?", crm_id)
-	for obj in objects:
-		mochi.db.execute("delete from watchers where object=?", obj["id"])
-		mochi.db.execute("delete from activity where object=?", obj["id"])
-		mochi.db.execute("delete from comments where object=?", obj["id"])
-		mochi.db.execute("delete from \"values\" where object=?", obj["id"])
-		mochi.db.execute("delete from links where source=? or target=?", obj["id"], obj["id"])
+	mochi.db.execute("delete from watchers where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from activity where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from comments where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from \"values\" where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from links where source in (select id from objects where crm=?) or target in (select id from objects where crm=?)", crm_id, crm_id)
 
 	mochi.db.execute("delete from objects where crm=?", crm_id)
 	mochi.db.execute("delete from view_fields where crm=?", crm_id)
