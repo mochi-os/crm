@@ -1988,7 +1988,13 @@ def action_object_move(a):
 			"values": updated_values, "user": a.user.identity.id
 		})
 
-	# Broadcast rank changes to subscribers
+	# Broadcast rank changes as a single batched event. The previous shape
+	# broadcast one object/update per in-scope object, which on a CRM with
+	# N objects in the target scope and S subscribers wrote N log rows
+	# plus N*S queue inserts — for a busy column and a popular CRM this
+	# could take >10s and cause the originating user's optimistic UI
+	# update to be overwritten by stale refetches before the action
+	# returned.
 	if a.input("rank") != None:
 		if scope_parent:
 			all_in_scope = mochi.db.rows("select id, rank from objects where crm=? and parent=? order by rank asc", crm_id, scope_parent) or []
@@ -1999,9 +2005,11 @@ def action_object_move(a):
 				where o.crm=? and coalesce(v.value, '')=?
 				order by o.rank asc
 			""", field, crm_id, target_value) or []
-		for obj in all_in_scope:
-			broadcast_event(crm_id, "object/update", {
-				"crm": crm_id, "id": obj["id"], "rank": obj["rank"], "user": a.user.identity.id
+		if all_in_scope:
+			broadcast_event(crm_id, "object/ranks", {
+				"crm": crm_id,
+				"ranks": [{"id": obj["id"], "rank": obj["rank"]} for obj in all_in_scope],
+				"user": a.user.identity.id,
 			})
 
 	return {"data": {"success": True}}
@@ -5171,6 +5179,30 @@ def event_object_update(e):
 		if local_id:
 			notify_watchers(object_id, crm_id, local_id, user, mochi.app.label("notifications.body.updated"))
 
+# Batched rank update from a move. One inbound event carries the new rank
+# for every object in the affected scope; we apply them all under the same
+# subscription verification + websocket notification as a single
+# object/update. No LWW gate because rank-only updates are derived from
+# the owner's authoritative renumber — applying them out of order with
+# concurrent moves still converges since the next move re-broadcasts the
+# whole scope.
+def event_object_ranks(e):
+	crm_id = verify_subscription(e)
+	if not crm_id:
+		return
+	ranks = e.content("ranks") or []
+	if not ranks:
+		return
+	now = mochi.time.now()
+	for r in ranks:
+		obj_id = r.get("id")
+		rank = r.get("rank")
+		if obj_id and rank != None:
+			mochi.db.execute("update objects set rank=?, updated=? where id=? and crm=?", rank, now, obj_id, crm_id)
+	fp = mochi.entity.fingerprint(crm_id)
+	if fp:
+		mochi.websocket.write(fp, {"type": "object/ranks", "crm": crm_id})
+
 # Object deleted
 def event_object_delete(e):
 	crm_id = verify_subscription(e)
@@ -6325,7 +6357,8 @@ def do_object_move(crm_id, crm, params, user_id):
 		owner_id = get_owner_identity(crm_id)
 		notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.updated"))
 
-	# Broadcast rank changes to subscribers
+	# Broadcast rank changes as a single batched event — see the matching
+	# comment in action_object_move for why we don't loop here.
 	if new_rank != None:
 		if scope_parent:
 			all_in_scope = mochi.db.rows("select id, rank from objects where crm=? and parent=? order by rank asc", crm_id, scope_parent) or []
@@ -6336,9 +6369,11 @@ def do_object_move(crm_id, crm, params, user_id):
 				where o.crm=? and coalesce(v.value, '')=?
 				order by o.rank asc
 			""", field, crm_id, target_value) or []
-		for obj in all_in_scope:
-			broadcast_event(crm_id, "object/update", {
-				"crm": crm_id, "id": obj["id"], "rank": obj["rank"], "user": user_id
+		if all_in_scope:
+			broadcast_event(crm_id, "object/ranks", {
+				"crm": crm_id,
+				"ranks": [{"id": obj["id"], "rank": obj["rank"]} for obj in all_in_scope],
+				"user": user_id,
 			})
 
 	return {"success": True}
