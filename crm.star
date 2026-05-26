@@ -4485,7 +4485,11 @@ def event_info(e):
 # Return the full crm schema (classes, fields, options, hierarchy, views)
 def event_schema(e):
 	crm_id = e.header("to")
-	crm = mochi.db.row("select id from crms where id=? and owner=1", crm_id)
+	# Include the crm row's own metadata (name/description) so the
+	# subscriber's resync reconciles renames - the directory rename via
+	# mochi.entity.update doesn't fire crm/update, so without this dump
+	# the row-level name drifts forever. Mirrors projects task #86.
+	crm = mochi.db.row("select id, name, description from crms where id=? and owner=1", crm_id)
 	if not crm:
 		e.stream.write({"error": "CRM not found"})
 		return
@@ -4576,6 +4580,13 @@ def event_schema(e):
 	links = mochi.db.rows("select l.source, l.target, l.linktype from links l join objects o on l.source = o.id where o.crm=?", crm_id) or []
 
 	e.stream.write({
+		# CRM row first so subscribers can reconcile metadata
+		# (name / description) on resync without waiting for a
+		# crm/update broadcast that might never come.
+		"crm": {
+			"name": crm.get("name", ""),
+			"description": crm.get("description", ""),
+		},
 		"classes": classes,
 		"fields": fields,
 		"options": options,
@@ -4585,28 +4596,58 @@ def event_schema(e):
 		"links": links,
 	})
 
-# Insert crm schema and objects into local database
+# Insert crm schema and objects into local database.
+#
+# Pre-task-#86-port every insert was `insert or ignore`, so a resync
+# only filled GAPS in the subscriber's local state - renames, reorders,
+# edited comments, changed view configurations all stayed at their old
+# values until manually fixed. This converts to UPSERTs that update the
+# editable columns in place; primary-key identity stays stable so child
+# FKs (fields->classes, options->fields, etc.) are never broken by a
+# delete-then-insert.
+#
+# Append-only tables (activity) and natural-key tables that have no
+# editable columns once created (links, view_classes, hierarchy) stay
+# as `insert or ignore` - the row's existence IS the data; there's
+# nothing to reconcile.
 def insert_schema(crm_id, schema):
+	# Reconcile the crm row itself (name / description). UPDATE only -
+	# the crm row was created at subscribe time and we never want to
+	# flip owner away from 0 on a resync. Idempotent when the
+	# subscriber's row already matches.
+	crm_data = schema.get("crm")
+	if crm_data:
+		mochi.db.execute(
+			"update crms set name=?, description=? where id=? and owner=0",
+			crm_data.get("name", ""),
+			crm_data.get("description", ""),
+			crm_id
+		)
 	for c in (schema.get("classes") or []):
 		mochi.db.execute(
-			"insert or ignore into classes (id, crm, name, rank, title) values (?, ?, ?, ?, ?)",
+			"insert into classes (id, crm, name, rank, title) values (?, ?, ?, ?, ?) " +
+			"on conflict (crm, id) do update set name=excluded.name, rank=excluded.rank, title=excluded.title",
 			c.get("id", ""), crm_id, c.get("name", ""), c.get("rank", 0), c.get("title", "")
 		)
 	for f in (schema.get("fields") or []):
 		mochi.db.execute(
-			"insert or ignore into fields (crm, class, id, name, fieldtype, flags, multi, rank, card, position, rows) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+			"insert into fields (crm, class, id, name, fieldtype, flags, multi, rank, card, position, rows) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) " +
+			"on conflict (crm, class, id) do update set name=excluded.name, fieldtype=excluded.fieldtype, flags=excluded.flags, multi=excluded.multi, rank=excluded.rank, card=excluded.card, position=excluded.position, rows=excluded.rows",
 			crm_id, f.get("class", ""), f.get("id", ""), f.get("name", ""),
 			f.get("fieldtype", "text"), f.get("flags", ""), f.get("multi", 0),
 			f.get("rank", 0), f.get("card", 1), f.get("position", ""), f.get("rows", 1)
 		)
 	for o in (schema.get("options") or []):
 		mochi.db.execute(
-			"insert or ignore into options (crm, class, field, id, name, colour, icon, rank) values (?, ?, ?, ?, ?, ?, ?, ?)",
+			"insert into options (crm, class, field, id, name, colour, icon, rank) values (?, ?, ?, ?, ?, ?, ?, ?) " +
+			"on conflict (crm, class, field, id) do update set name=excluded.name, colour=excluded.colour, icon=excluded.icon, rank=excluded.rank",
 			crm_id, o.get("class", ""), o.get("field", ""), o.get("id", ""),
 			o.get("name", ""), o.get("colour", "#94a3b8"), o.get("icon", ""), o.get("rank", 0)
 		)
 	for h in (schema.get("hierarchy") or []):
 		for parent in (h.get("parents") or []):
+			# (crm, class, parent) is the full primary key; there is
+			# no editable payload to reconcile, so ignore is right.
 			mochi.db.execute(
 				"insert or ignore into hierarchy (crm, class, parent) values (?, ?, ?)",
 				crm_id, h.get("class", ""), parent
@@ -4614,7 +4655,8 @@ def insert_schema(crm_id, schema):
 	for v in (schema.get("views") or []):
 		view_id = v.get("id", "")
 		mochi.db.execute(
-			"insert or ignore into views (id, crm, name, viewtype, filter, columns, rows, sort, direction, rank, border) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+			"insert into views (id, crm, name, viewtype, filter, columns, rows, sort, direction, rank, border) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) " +
+			"on conflict (crm, id) do update set name=excluded.name, viewtype=excluded.viewtype, filter=excluded.filter, columns=excluded.columns, rows=excluded.rows, sort=excluded.sort, direction=excluded.direction, rank=excluded.rank, border=excluded.border",
 			view_id, crm_id, v.get("name", ""), v.get("viewtype", "board"),
 			v.get("filter", ""), v.get("columns", ""), v.get("rows", ""),
 			v.get("sort", ""), v.get("direction", "asc"), v.get("rank", 0),
@@ -4625,16 +4667,23 @@ def insert_schema(crm_id, schema):
 			rank = 0
 			for field_id in fields_csv.split(","):
 				if field_id:
-					mochi.db.execute("insert or ignore into view_fields (crm, view, field, rank) values (?, ?, ?, ?)", crm_id, view_id, field_id, rank)
+					# view_fields has an editable rank; reconcile it.
+					mochi.db.execute(
+						"insert into view_fields (crm, view, field, rank) values (?, ?, ?, ?) " +
+						"on conflict (crm, view, field) do update set rank=excluded.rank",
+						crm_id, view_id, field_id, rank
+					)
 					rank += 1
 		classes_csv = v.get("classes", "")
 		if classes_csv:
 			for class_id in classes_csv.split(","):
 				if class_id:
+					# (crm, view, class) has no payload columns.
 					mochi.db.execute("insert or ignore into view_classes (crm, view, class) values (?, ?, ?)", crm_id, view_id, class_id)
 	for obj in (schema.get("objects") or []):
 		mochi.db.execute(
-			"insert or ignore into objects (id, crm, class, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?)",
+			"insert into objects (id, crm, class, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?) " +
+			"on conflict (id) do update set class=excluded.class, parent=excluded.parent, rank=excluded.rank, updated=excluded.updated",
 			obj.get("id", ""), crm_id, obj.get("class", ""),
 			obj.get("parent", ""), obj.get("rank", 0),
 			obj.get("created", 0), obj.get("updated", 0)
@@ -4648,7 +4697,8 @@ def insert_schema(crm_id, schema):
 				mochi.db.execute("replace into \"values\" (object, field, value) values (?, ?, ?)", obj.get("id", ""), field, values[field])
 		for c in (obj.get("comments") or []):
 			mochi.db.execute(
-				"insert or ignore into comments (id, object, parent, author, name, content, created, edited) values (?, ?, ?, ?, ?, ?, ?, ?)",
+				"insert into comments (id, object, parent, author, name, content, created, edited) values (?, ?, ?, ?, ?, ?, ?, ?) " +
+				"on conflict (id) do update set content=excluded.content, edited=excluded.edited",
 				c.get("id", ""), obj.get("id", ""), c.get("parent", ""),
 				c.get("author", ""), c.get("name", ""),
 				c.get("content", ""), c.get("created", ""), c.get("edited", 0)
@@ -4657,6 +4707,7 @@ def insert_schema(crm_id, schema):
 			if c_atts:
 				mochi.attachment.store(c_atts, crm_id, c.get("id", ""))
 		for act in (obj.get("activity") or []):
+			# Activity is append-only; ignore is correct.
 			mochi.db.execute(
 				"insert or ignore into activity (id, object, user, action, field, oldvalue, newvalue, created) values (?, ?, ?, ?, ?, ?, ?, ?)",
 				act.get("id", ""), obj.get("id", ""), act.get("user", ""),
@@ -4665,6 +4716,8 @@ def insert_schema(crm_id, schema):
 				act.get("created", 0)
 			)
 	for l in (schema.get("links") or []):
+		# (crm, source, target, linktype) is the full key; links are
+		# created/deleted, never edited in place.
 		mochi.db.execute(
 			"insert or ignore into links (crm, source, target, linktype, created) values (?, ?, ?, ?, ?)",
 			crm_id, l.get("source", ""), l.get("target", ""), l.get("linktype", ""), 0
