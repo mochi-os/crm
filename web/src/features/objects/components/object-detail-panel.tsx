@@ -23,6 +23,7 @@ import {
   GeneralError,
   ListSkeleton,
   useShellOverlay,
+  naturalCompare,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import type { CrmAccess, CrmDetails } from "@/types";
@@ -410,7 +411,7 @@ export function ObjectDetailPanel({
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="_none_"><Trans>None</Trans></SelectItem>
-                        {validParentOptions.map((obj) => (
+                        {[...validParentOptions].sort((a, b) => naturalCompare(objectTitle(a), objectTitle(b))).map((obj) => (
                           <SelectItem key={obj.id} value={obj.id}>
                             {objectTitle(obj)}
                           </SelectItem>
