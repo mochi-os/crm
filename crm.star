@@ -22,6 +22,22 @@ def broadcast_event(crm_id, event, data, exclude=None):
 	subscriber_ids = [s["id"] for s in subscribers]
 	mochi.broadcast.send(crm_id, crm_id, subscriber_ids, "crm", event, data, exclude or "")
 
+# error_message_timeout: core calls this when a fan-out to a subscriber aged
+# out undelivered. Remove them only when the directory shows no host left
+# (locations == 0) - definitely gone, not a transient outage or a server
+# migration in progress.
+def error_message_timeout(e):
+	if e.detail.get("locations", 1) != 0:
+		return
+	mochi.db.execute("delete from subscribers where id=?", e.entity)
+
+# error_broadcast_gap: core calls this when an unfillable broadcast gap was
+# skipped and events were permanently lost. broadcast/resync can't replay a
+# pruned gap, so pull a fresh full snapshot.
+def error_broadcast_gap(e):
+	request_resync(e.entity)
+
+
 # request_resync pulls a fresh schema dump from the CRM owner when an
 # incoming event references data we don't have yet. Out-of-order delivery,
 # lost messages, and the strict FK enforcement on ncruces all surface as
