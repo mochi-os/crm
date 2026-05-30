@@ -164,14 +164,14 @@ export function BoardCard({
       case "user": {
         const name = peopleMap?.[value] || value;
         return (
-          <span key={field.id} className="inline-flex items-center gap-1 text-[10px] text-muted-foreground">
+          <span key={field.id} className="inline-flex items-center gap-1.5 text-[10px] text-muted-foreground">
             <EntityAvatar
               src={crmId ? `${getAppPath()}/${crmId}/-/user/${value}/asset/avatar` : undefined}
               styleUrl={crmId ? `${getAppPath()}/${crmId}/-/user/${value}/asset/style` : undefined}
               fingerprint={crmId ? undefined : value}
               seed={value}
               name={name}
-              size={14}
+              size="xs"
             />
             {truncate(name, 25)}
           </span>
