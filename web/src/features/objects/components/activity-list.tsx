@@ -72,7 +72,7 @@ export function ActivityList({ crmId, objectId }: ActivityListProps) {
               styleUrl={`${getAppPath()}/${crmId}/-/activity/${activity.id}/asset/style`}
               seed={activity.user}
               name={activity.name || activity.user}
-              size={16}
+              size="xs"
             />
             <span>{activity.name || activity.user}</span>
             <span>·</span>

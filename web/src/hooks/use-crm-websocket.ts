@@ -182,6 +182,11 @@ export function useCrmWebsocket(crmFingerprint?: string) {
             });
           }
           break;
+        case "object/ranks":
+          void queryClient.invalidateQueries({
+            queryKey: ["objects", pid],
+          });
+          break;
         case "values/update":
           if (data.id) {
             void queryClient.invalidateQueries({

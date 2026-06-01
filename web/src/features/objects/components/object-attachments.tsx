@@ -6,17 +6,16 @@ import { Trans, useLingui } from '@lingui/react/macro'
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Download, Loader2, Paperclip, Trash2, Upload } from "lucide-react";
 import {
+  AttachmentGallery,
   Button,
   ConfirmDialog,
   getAppPath,
   useFormat,
   isImage,
   getFileIcon,
-  ImageLightbox,
   getErrorMessage,
   authenticatedUrl,
   toast,
-  type LightboxMedia,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import type { Attachment } from "@/types";
@@ -33,7 +32,6 @@ export function ObjectAttachments({
   readOnly,
 }: ObjectAttachmentsProps) {
   const { t } = useLingui()
-  const [lightboxIndex, setLightboxIndex] = useState(-1);
   const [deleteTarget, setDeleteTarget] = useState<Attachment | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const queryClient = useQueryClient();
@@ -81,22 +79,14 @@ export function ObjectAttachments({
     if (files && files.length > 0) {
       uploadMutation.mutate(Array.from(files));
     }
-    // Reset so the same files can be selected again
     e.target.value = "";
   };
 
   const basePath = `${getAppPath()}/${crmId}/-/attachments/`;
   const attUrl = (id: string, suffix = "") => authenticatedUrl(`${basePath}${id}${suffix}`);
-  const attachments = data || [];
+  const attachments: Attachment[] = data || [];
   const images = attachments.filter((a) => isImage(a.type));
   const files = attachments.filter((a) => !isImage(a.type));
-
-  const lightboxMedia: LightboxMedia[] = images.map((img) => ({
-    id: img.id,
-    name: img.name,
-    url: attUrl(img.id),
-    type: "image",
-  }));
 
   if (isLoading) {
     return (
@@ -124,32 +114,29 @@ export function ObjectAttachments({
       </label>
       <div className="space-y-2 pt-1">
         {images.length > 0 && (
-          <div className="flex flex-wrap gap-1.5">
-            {images.map((img, i) => (
-              <div key={img.id} className="group relative">
-                <button
-                  type="button"
-                  className="overflow-hidden rounded"
-                  onClick={() => setLightboxIndex(i)}
-                >
-                  <img
-                    src={attUrl(img.id, "/thumbnail")}
-                    alt={img.name}
-                    className="h-20 w-auto object-cover"
-                  />
-                </button>
-                {!readOnly && (
-                  <button
-                    type="button"
-                    className="absolute -top-1.5 -right-1.5 hidden group-hover:flex size-5 items-center justify-center rounded-full bg-destructive text-destructive-foreground shadow-sm"
-                    onClick={() => setDeleteTarget(img)}
-                  >
-                    <Trash2 className="size-3" />
-                  </button>
-                )}
-              </div>
-            ))}
-          </div>
+          <AttachmentGallery
+            attachments={images}
+            getUrl={(att) => attUrl(att.id)}
+            getThumbnailUrl={(att) => attUrl(att.id, "/thumbnail")}
+            rowHeight={80}
+            hideFiles
+            renderMediaOverlay={
+              readOnly
+                ? undefined
+                : (att) => (
+                    <button
+                      type="button"
+                      className="absolute -top-1.5 -right-1.5 hidden group-hover/item:flex size-5 items-center justify-center rounded-full bg-destructive text-destructive-foreground shadow-sm"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setDeleteTarget(att as Attachment)
+                      }}
+                    >
+                      <Trash2 className="size-3" />
+                    </button>
+                  )
+            }
+          />
         )}
         {files.length > 0 && (
           <div className="space-y-1">
@@ -212,16 +199,6 @@ export function ObjectAttachments({
           </>
         )}
       </div>
-
-      <ImageLightbox
-        images={lightboxMedia}
-        currentIndex={lightboxIndex}
-        open={lightboxIndex >= 0}
-        onOpenChange={(open) => {
-          if (!open) setLightboxIndex(-1);
-        }}
-        onIndexChange={setLightboxIndex}
-      />
 
       <ConfirmDialog
         open={!!deleteTarget}

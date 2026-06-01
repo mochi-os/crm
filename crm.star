@@ -1,8 +1,8 @@
 # Mochi CRM app
 # Copyright Alistair Cunningham 2026
 
-def notify(topic, object="", title="", body="", url=""):
-	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")))
+def notify(topic, object="", title="", body="", url="", event_id=""):
+	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), "", "", None, event_id)
 
 # Helper to create P2P message headers
 def p2p_headers(from_id, to_id, event):
@@ -13,12 +13,30 @@ def p2p_headers(from_id, to_id, event):
 		"event": event
 	}
 
-# Broadcast an event to all subscribers of a CRM via the durable
+# Helper: Broadcast event to all subscribers of a CRM via the durable
 # broadcast log. Sequence + log + gap-detection live in core.
 def broadcast_event(crm_id, event, data, exclude=None):
+	if not crm_id:
+		return
 	subscribers = mochi.db.rows("select id from subscribers where crm=?", crm_id)
-	subscriber_ids = [sub["id"] for sub in subscribers]
+	subscriber_ids = [s["id"] for s in subscribers]
 	mochi.broadcast.send(crm_id, crm_id, subscriber_ids, "crm", event, data, exclude or "")
+
+# error_message_timeout: core calls this when a fan-out to a subscriber aged
+# out undelivered. Remove them only when the directory shows no host left
+# (locations == 0) - definitely gone, not a transient outage or a server
+# migration in progress.
+def error_message_timeout(e):
+	if e.detail.get("locations", 1) != 0:
+		return
+	mochi.db.execute("delete from subscribers where id=?", e.entity)
+
+# error_broadcast_gap: core calls this when an unfillable broadcast gap was
+# skipped and events were permanently lost. broadcast/resync can't replay a
+# pruned gap, so pull a fresh full snapshot.
+def error_broadcast_gap(e):
+	request_resync(e.entity)
+
 
 # request_resync pulls a fresh schema dump from the CRM owner when an
 # incoming event references data we don't have yet. Out-of-order delivery,
@@ -27,6 +45,12 @@ def broadcast_event(crm_id, event, data, exclude=None):
 # object the subscriber hasn't seen. The owner's event_schema is the
 # canonical source; insert_schema applies it idempotently. Throttled so a
 # burst of bad events can't spam the owner.
+
+# idle_resync_age: how long without applying any broadcast from a subscribed
+# CRM before the next view re-subscribes (the owner may have pruned us after a
+# long idle). Matches core's broadcast_log_age.
+idle_resync_age = 7 * 86400
+
 def request_resync(crm_id):
 	"""Returns True iff a fresh schema was actually fetched and applied."""
 	row = mochi.db.row("select server, synced from crms where id=? and owner=0", crm_id)
@@ -44,10 +68,27 @@ def request_resync(crm_id):
 	if not schema or schema.get("error"):
 		return False
 	insert_schema(crm_id, schema)
+	mochi.broadcast.touch(crm_id)
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "crm/resynced", "crm": crm_id})
 	return True
+
+# maybe_resubscribe re-establishes a subscribed CRM with its owner when the
+# subscription has gone idle (idle_resync_age). The owner's event_subscribe is
+# idempotent and pushes catch-up, so a bare re-subscribe re-adds us and re-syncs;
+# touch() stamps the idle timer so a quiet CRM re-subscribes at most once per
+# window and a dead owner isn't re-poked per view.
+def maybe_resubscribe(a, crm_id):
+	user_id = a.user.identity.id if a.user else None
+	if not user_id:
+		return
+	if not mochi.db.row("select 1 from crms where id=? and owner=0", crm_id):
+		return
+	if mochi.time.now() - mochi.broadcast.seen(crm_id) <= idle_resync_age:
+		return
+	mochi.message.send(p2p_headers(user_id, crm_id, "subscribe"), {"name": a.user.identity.name})
+	mochi.broadcast.touch(crm_id)
 
 # Create database with all 17 tables
 def database_create():
@@ -795,6 +836,9 @@ def action_crm_get(a):
 		a.error.label(404, "errors.crm_not_found")
 		return
 
+	# Re-establish with the owner if this subscription has gone idle.
+	maybe_resubscribe(a, crm_id)
+
 	# Get classes
 	classes = mochi.db.rows("select id, name, rank, title from classes where crm=? order by rank", crm_id) or []
 
@@ -1333,7 +1377,7 @@ def notify_watchers(object_id, crm_id, local_identity, user_id, body):
 	fp = mochi.entity.fingerprint(crm_id)
 	url = "/crm/" + fp + "/" + object_id if fp else "/crm"
 	mochi.log.debug("notify_watchers: sending notification title=" + title)
-	notify("update/modified", crm_id, title, body, url)
+	notify("update/modified", crm_id, title, body, url, event_id="update/modified:" + object_id)
 
 def notify_mentions(object_id, crm_id, content, author_id, author_name):
 	"""Notify subscribers who are @mentioned in a comment."""
@@ -1359,7 +1403,7 @@ def notify_mentions(object_id, crm_id, content, author_id, author_name):
 	fp = mochi.entity.fingerprint(crm_id)
 	url = "/crm/" + fp + "/" + object_id if fp else "/crm"
 	excerpt = content.strip()[:80]
-	notify("mention", crm_id, title, author_name + " mentioned you: " + excerpt, url)
+	notify("mention", crm_id, title, author_name + " mentioned you: " + excerpt, url, event_id="mention:" + object_id)
 
 def would_create_cycle(object_id, new_parent_id):
 	"""Check if setting new_parent_id as parent of object_id would create a cycle."""
@@ -1986,7 +2030,13 @@ def action_object_move(a):
 			"values": updated_values, "user": a.user.identity.id
 		})
 
-	# Broadcast rank changes to subscribers
+	# Broadcast rank changes as a single batched event. The previous shape
+	# broadcast one object/update per in-scope object, which on a CRM with
+	# N objects in the target scope and S subscribers wrote N log rows
+	# plus N*S queue inserts — for a busy column and a popular CRM this
+	# could take >10s and cause the originating user's optimistic UI
+	# update to be overwritten by stale refetches before the action
+	# returned.
 	if a.input("rank") != None:
 		if scope_parent:
 			all_in_scope = mochi.db.rows("select id, rank from objects where crm=? and parent=? order by rank asc", crm_id, scope_parent) or []
@@ -1997,9 +2047,11 @@ def action_object_move(a):
 				where o.crm=? and coalesce(v.value, '')=?
 				order by o.rank asc
 			""", field, crm_id, target_value) or []
-		for obj in all_in_scope:
-			broadcast_event(crm_id, "object/update", {
-				"crm": crm_id, "id": obj["id"], "rank": obj["rank"], "user": a.user.identity.id
+		if all_in_scope:
+			broadcast_event(crm_id, "object/ranks", {
+				"crm": crm_id,
+				"ranks": [{"id": obj["id"], "rank": obj["rank"]} for obj in all_in_scope],
+				"user": a.user.identity.id,
 			})
 
 	return {"data": {"success": True}}
@@ -2389,15 +2441,15 @@ def delete_crm_comment_attachments(crm_id):
 # entity lives on this server, or goes over P2P otherwise.
 def stream_asset(a, entity_id, service, asset):
 	if not entity_id:
-		a.error(404, asset + " unavailable")
+		a.error.label(404, "errors.asset_unavailable", asset=asset)
 		return None
 	s = mochi.remote.stream(entity_id, service, asset, {})
 	if not s:
-		a.error(404, asset + " unavailable")
+		a.error.label(404, "errors.asset_unavailable", asset=asset)
 		return None
 	header = s.read()
 	if not header or header.get("status") != "200":
-		a.error(404, asset + " not set")
+		a.error.label(404, "errors.asset_not_set", asset=asset)
 		return None
 	a.header("Cache-Control", "private, max-age=300")
 	if "data" in header:
@@ -4396,6 +4448,7 @@ def action_subscribe(a):
 
 	# Send P2P subscribe message to crm owner
 	mochi.message.send(p2p_headers(user_id, crm_id, "subscribe"), {"name": a.user.identity.name})
+	mochi.broadcast.touch(crm_id)
 
 	return {"data": {"fingerprint": fp}}
 
@@ -4423,15 +4476,24 @@ def action_unsubscribe(a):
 		a.error.label(400, "errors.you_own_this_crm")
 		return
 
-	# Delete all local data for this remote crm
+	# Delete all local data for this remote crm.
+	#
+	# Each mochi.db.execute is a pair-replicated sql/op event - one
+	# per call, regardless of how many rows it touches. The previous
+	# shape (per-object loop, 5 statements each) emitted ~5N sql/op
+	# events for an N-object CRM and took ~10s to drain through the
+	# per-(target, from-entity) bucket cap=1 on busy CRMs (task #95,
+	# same fix as projects task #94). The subquery shape below
+	# collapses each table's deletion to one event regardless of
+	# object count. Receiver applies the same SQL; the pair-
+	# replicated objects rows match locally so the subquery resolves
+	# to the same id set.
 	delete_crm_comment_attachments(crm_id)
-	objects = mochi.db.rows("select id from objects where crm=?", crm_id)
-	for obj in objects:
-		mochi.db.execute("delete from watchers where object=?", obj["id"])
-		mochi.db.execute("delete from activity where object=?", obj["id"])
-		mochi.db.execute("delete from comments where object=?", obj["id"])
-		mochi.db.execute("delete from \"values\" where object=?", obj["id"])
-		mochi.db.execute("delete from links where source=? or target=?", obj["id"], obj["id"])
+	mochi.db.execute("delete from watchers where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from activity where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from comments where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from \"values\" where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from links where source in (select id from objects where crm=?) or target in (select id from objects where crm=?)", crm_id, crm_id)
 
 	mochi.db.execute("delete from objects where crm=?", crm_id)
 	mochi.db.execute("delete from view_fields where crm=?", crm_id)
@@ -4483,7 +4545,11 @@ def event_info(e):
 # Return the full crm schema (classes, fields, options, hierarchy, views)
 def event_schema(e):
 	crm_id = e.header("to")
-	crm = mochi.db.row("select id from crms where id=? and owner=1", crm_id)
+	# Include the crm row's own metadata (name/description) so the
+	# subscriber's resync reconciles renames - the directory rename via
+	# mochi.entity.update doesn't fire crm/update, so without this dump
+	# the row-level name drifts forever. Mirrors projects task #86.
+	crm = mochi.db.row("select id, name, description from crms where id=? and owner=1", crm_id)
 	if not crm:
 		e.stream.write({"error": "CRM not found"})
 		return
@@ -4555,15 +4621,32 @@ def event_schema(e):
 		if obj["id"] in values_map:
 			obj["values"] = values_map[obj["id"]]
 		if obj["id"] in comments_map:
+			# Attach per-comment attachment metadata before nesting.
+			for c in comments_map[obj["id"]]:
+				c_atts = mochi.attachment.list(c["id"])
+				if c_atts:
+					c["attachments"] = c_atts
 			obj["comments"] = comments_map[obj["id"]]
 		if obj["id"] in activity_map:
 			obj["activity"] = activity_map[obj["id"]]
+		# Inline object-level attachment metadata so subscribers don't have to
+		# rely on real-time events arriving after the initial schema dump.
+		obj_atts = mochi.attachment.list(obj["id"])
+		if obj_atts:
+			obj["attachments"] = obj_atts
 		objects.append(obj)
 
 	# Links
 	links = mochi.db.rows("select l.source, l.target, l.linktype from links l join objects o on l.source = o.id where o.crm=?", crm_id) or []
 
 	e.stream.write({
+		# CRM row first so subscribers can reconcile metadata
+		# (name / description) on resync without waiting for a
+		# crm/update broadcast that might never come.
+		"crm": {
+			"name": crm.get("name", ""),
+			"description": crm.get("description", ""),
+		},
 		"classes": classes,
 		"fields": fields,
 		"options": options,
@@ -4573,28 +4656,58 @@ def event_schema(e):
 		"links": links,
 	})
 
-# Insert crm schema and objects into local database
+# Insert crm schema and objects into local database.
+#
+# Pre-task-#86-port every insert was `insert or ignore`, so a resync
+# only filled GAPS in the subscriber's local state - renames, reorders,
+# edited comments, changed view configurations all stayed at their old
+# values until manually fixed. This converts to UPSERTs that update the
+# editable columns in place; primary-key identity stays stable so child
+# FKs (fields->classes, options->fields, etc.) are never broken by a
+# delete-then-insert.
+#
+# Append-only tables (activity) and natural-key tables that have no
+# editable columns once created (links, view_classes, hierarchy) stay
+# as `insert or ignore` - the row's existence IS the data; there's
+# nothing to reconcile.
 def insert_schema(crm_id, schema):
+	# Reconcile the crm row itself (name / description). UPDATE only -
+	# the crm row was created at subscribe time and we never want to
+	# flip owner away from 0 on a resync. Idempotent when the
+	# subscriber's row already matches.
+	crm_data = schema.get("crm")
+	if crm_data:
+		mochi.db.execute(
+			"update crms set name=?, description=? where id=? and owner=0",
+			crm_data.get("name", ""),
+			crm_data.get("description", ""),
+			crm_id
+		)
 	for c in (schema.get("classes") or []):
 		mochi.db.execute(
-			"insert or ignore into classes (id, crm, name, rank, title) values (?, ?, ?, ?, ?)",
+			"insert into classes (id, crm, name, rank, title) values (?, ?, ?, ?, ?) " +
+			"on conflict (crm, id) do update set name=excluded.name, rank=excluded.rank, title=excluded.title",
 			c.get("id", ""), crm_id, c.get("name", ""), c.get("rank", 0), c.get("title", "")
 		)
 	for f in (schema.get("fields") or []):
 		mochi.db.execute(
-			"insert or ignore into fields (crm, class, id, name, fieldtype, flags, multi, rank, card, position, rows) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+			"insert into fields (crm, class, id, name, fieldtype, flags, multi, rank, card, position, rows) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) " +
+			"on conflict (crm, class, id) do update set name=excluded.name, fieldtype=excluded.fieldtype, flags=excluded.flags, multi=excluded.multi, rank=excluded.rank, card=excluded.card, position=excluded.position, rows=excluded.rows",
 			crm_id, f.get("class", ""), f.get("id", ""), f.get("name", ""),
 			f.get("fieldtype", "text"), f.get("flags", ""), f.get("multi", 0),
 			f.get("rank", 0), f.get("card", 1), f.get("position", ""), f.get("rows", 1)
 		)
 	for o in (schema.get("options") or []):
 		mochi.db.execute(
-			"insert or ignore into options (crm, class, field, id, name, colour, icon, rank) values (?, ?, ?, ?, ?, ?, ?, ?)",
+			"insert into options (crm, class, field, id, name, colour, icon, rank) values (?, ?, ?, ?, ?, ?, ?, ?) " +
+			"on conflict (crm, class, field, id) do update set name=excluded.name, colour=excluded.colour, icon=excluded.icon, rank=excluded.rank",
 			crm_id, o.get("class", ""), o.get("field", ""), o.get("id", ""),
 			o.get("name", ""), o.get("colour", "#94a3b8"), o.get("icon", ""), o.get("rank", 0)
 		)
 	for h in (schema.get("hierarchy") or []):
 		for parent in (h.get("parents") or []):
+			# (crm, class, parent) is the full primary key; there is
+			# no editable payload to reconcile, so ignore is right.
 			mochi.db.execute(
 				"insert or ignore into hierarchy (crm, class, parent) values (?, ?, ?)",
 				crm_id, h.get("class", ""), parent
@@ -4602,7 +4715,8 @@ def insert_schema(crm_id, schema):
 	for v in (schema.get("views") or []):
 		view_id = v.get("id", "")
 		mochi.db.execute(
-			"insert or ignore into views (id, crm, name, viewtype, filter, columns, rows, sort, direction, rank, border) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+			"insert into views (id, crm, name, viewtype, filter, columns, rows, sort, direction, rank, border) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) " +
+			"on conflict (crm, id) do update set name=excluded.name, viewtype=excluded.viewtype, filter=excluded.filter, columns=excluded.columns, rows=excluded.rows, sort=excluded.sort, direction=excluded.direction, rank=excluded.rank, border=excluded.border",
 			view_id, crm_id, v.get("name", ""), v.get("viewtype", "board"),
 			v.get("filter", ""), v.get("columns", ""), v.get("rows", ""),
 			v.get("sort", ""), v.get("direction", "asc"), v.get("rank", 0),
@@ -4613,32 +4727,47 @@ def insert_schema(crm_id, schema):
 			rank = 0
 			for field_id in fields_csv.split(","):
 				if field_id:
-					mochi.db.execute("insert or ignore into view_fields (crm, view, field, rank) values (?, ?, ?, ?)", crm_id, view_id, field_id, rank)
+					# view_fields has an editable rank; reconcile it.
+					mochi.db.execute(
+						"insert into view_fields (crm, view, field, rank) values (?, ?, ?, ?) " +
+						"on conflict (crm, view, field) do update set rank=excluded.rank",
+						crm_id, view_id, field_id, rank
+					)
 					rank += 1
 		classes_csv = v.get("classes", "")
 		if classes_csv:
 			for class_id in classes_csv.split(","):
 				if class_id:
+					# (crm, view, class) has no payload columns.
 					mochi.db.execute("insert or ignore into view_classes (crm, view, class) values (?, ?, ?)", crm_id, view_id, class_id)
 	for obj in (schema.get("objects") or []):
 		mochi.db.execute(
-			"insert or ignore into objects (id, crm, class, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?)",
+			"insert into objects (id, crm, class, parent, rank, created, updated) values (?, ?, ?, ?, ?, ?, ?) " +
+			"on conflict (id) do update set class=excluded.class, parent=excluded.parent, rank=excluded.rank, updated=excluded.updated",
 			obj.get("id", ""), crm_id, obj.get("class", ""),
 			obj.get("parent", ""), obj.get("rank", 0),
 			obj.get("created", 0), obj.get("updated", 0)
 		)
+		obj_atts = obj.get("attachments") or []
+		if obj_atts:
+			mochi.attachment.store(obj_atts, crm_id, obj.get("id", ""))
 		values = obj.get("values")
 		if values:
 			for field in values:
 				mochi.db.execute("replace into \"values\" (object, field, value) values (?, ?, ?)", obj.get("id", ""), field, values[field])
 		for c in (obj.get("comments") or []):
 			mochi.db.execute(
-				"insert or ignore into comments (id, object, parent, author, name, content, created, edited) values (?, ?, ?, ?, ?, ?, ?, ?)",
+				"insert into comments (id, object, parent, author, name, content, created, edited) values (?, ?, ?, ?, ?, ?, ?, ?) " +
+				"on conflict (id) do update set content=excluded.content, edited=excluded.edited",
 				c.get("id", ""), obj.get("id", ""), c.get("parent", ""),
 				c.get("author", ""), c.get("name", ""),
 				c.get("content", ""), c.get("created", ""), c.get("edited", 0)
 			)
+			c_atts = c.get("attachments") or []
+			if c_atts:
+				mochi.attachment.store(c_atts, crm_id, c.get("id", ""))
 		for act in (obj.get("activity") or []):
+			# Activity is append-only; ignore is correct.
 			mochi.db.execute(
 				"insert or ignore into activity (id, object, user, action, field, oldvalue, newvalue, created) values (?, ?, ?, ?, ?, ?, ?, ?)",
 				act.get("id", ""), obj.get("id", ""), act.get("user", ""),
@@ -4647,6 +4776,8 @@ def insert_schema(crm_id, schema):
 				act.get("created", 0)
 			)
 	for l in (schema.get("links") or []):
+		# (crm, source, target, linktype) is the full key; links are
+		# created/deleted, never edited in place.
 		mochi.db.execute(
 			"insert or ignore into links (crm, source, target, linktype, created) values (?, ?, ?, ?, ?)",
 			crm_id, l.get("source", ""), l.get("target", ""), l.get("linktype", ""), 0
@@ -4831,15 +4962,24 @@ def event_deleted(e):
 	if not crm:
 		return
 
-	# Delete all local data for this remote crm
+	# Delete all local data for this remote crm.
+	#
+	# Each mochi.db.execute is a pair-replicated sql/op event - one
+	# per call, regardless of how many rows it touches. The previous
+	# shape (per-object loop, 5 statements each) emitted ~5N sql/op
+	# events for an N-object CRM and took ~10s to drain through the
+	# per-(target, from-entity) bucket cap=1 on busy CRMs (task #95,
+	# same fix as projects task #94). The subquery shape below
+	# collapses each table's deletion to one event regardless of
+	# object count. Receiver applies the same SQL; the pair-
+	# replicated objects rows match locally so the subquery resolves
+	# to the same id set.
 	delete_crm_comment_attachments(crm_id)
-	objects = mochi.db.rows("select id from objects where crm=?", crm_id)
-	for obj in objects:
-		mochi.db.execute("delete from watchers where object=?", obj["id"])
-		mochi.db.execute("delete from activity where object=?", obj["id"])
-		mochi.db.execute("delete from comments where object=?", obj["id"])
-		mochi.db.execute("delete from \"values\" where object=?", obj["id"])
-		mochi.db.execute("delete from links where source=? or target=?", obj["id"], obj["id"])
+	mochi.db.execute("delete from watchers where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from activity where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from comments where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from \"values\" where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from links where source in (select id from objects where crm=?) or target in (select id from objects where crm=?)", crm_id, crm_id)
 
 	mochi.db.execute("delete from objects where crm=?", crm_id)
 	mochi.db.execute("delete from view_fields where crm=?", crm_id)
@@ -5027,7 +5167,7 @@ def event_object_create(e):
 				title = get_object_display(crm, obj, object_id)
 				fp2 = mochi.entity.fingerprint(crm_id)
 				url = "/crm/" + fp2 + "/" + object_id if fp2 else "/crm"
-				notify("update/created", crm_id, title, mochi.app.label("notifications.body.created"), url)
+				notify("update/created", crm_id, title, mochi.app.label("notifications.body.created"), url, event_id="update/created:" + object_id)
 
 # Object updated
 def event_object_update(e):
@@ -5080,7 +5220,31 @@ def event_object_update(e):
 		user = e.content("user") or ""
 		local_id = e.header("to")
 		if local_id:
-			notify_watchers(object_id, crm_id, local_id, user, "Updated")
+			notify_watchers(object_id, crm_id, local_id, user, mochi.app.label("notifications.body.updated"))
+
+# Batched rank update from a move. One inbound event carries the new rank
+# for every object in the affected scope; we apply them all under the same
+# subscription verification + websocket notification as a single
+# object/update. No LWW gate because rank-only updates are derived from
+# the owner's authoritative renumber — applying them out of order with
+# concurrent moves still converges since the next move re-broadcasts the
+# whole scope.
+def event_object_ranks(e):
+	crm_id = verify_subscription(e)
+	if not crm_id:
+		return
+	ranks = e.content("ranks") or []
+	if not ranks:
+		return
+	now = mochi.time.now()
+	for r in ranks:
+		obj_id = r.get("id")
+		rank = r.get("rank")
+		if obj_id and rank != None:
+			mochi.db.execute("update objects set rank=?, updated=? where id=? and crm=?", rank, now, obj_id, crm_id)
+	fp = mochi.entity.fingerprint(crm_id)
+	if fp:
+		mochi.websocket.write(fp, {"type": "object/ranks", "crm": crm_id})
 
 # Object deleted
 def event_object_delete(e):
@@ -5094,7 +5258,7 @@ def event_object_delete(e):
 	user = e.content("user") or ""
 	local_id = e.header("to")
 	if local_id:
-		notify_watchers(object_id, crm_id, local_id, user, "Deleted")
+		notify_watchers(object_id, crm_id, local_id, user, mochi.app.label("notifications.body.deleted"))
 	mochi.db.execute("delete from watchers where object=?", object_id)
 	mochi.db.execute("delete from activity where object=?", object_id)
 	delete_object_comments(object_id, crm_id)
@@ -5152,13 +5316,13 @@ def event_values_update(e):
 									title = get_object_display(crm, obj, object_id)
 									fp2 = mochi.entity.fingerprint(crm_id)
 									url = "/crm/" + fp2 + "/" + object_id if fp2 else "/crm"
-									notify("assignment", crm_id, title, mochi.app.label("notifications.body.assigned_to_you"), url)
+									notify("assignment", crm_id, title, mochi.app.label("notifications.body.assigned_to_you"), url, event_id="assignment:" + object_id + ":" + local_id)
 							# Auto-watch on assignment
 							mochi.db.execute(
 								"insert or ignore into watchers (object, user, created) values (?, ?, ?)",
 								object_id, local_id, mochi.time.now())
 			if not assigned:
-				notify_watchers(object_id, crm_id, local_id, user, "Fields changed")
+				notify_watchers(object_id, crm_id, local_id, user, mochi.app.label("notifications.body.updated"))
 
 # Activity row replicated from owner — insert with the same UID so the
 # activity table converges across hosts. If the referenced object isn't
@@ -5401,7 +5565,7 @@ def event_link_create(e):
 		local_id = e.header("to")
 		source = e.content("source")
 		if source and local_id:
-			notify_watchers(source, crm_id, local_id, user, "Link added")
+			notify_watchers(source, crm_id, local_id, user, mochi.app.label("notifications.body.link_added"))
 
 # Link deleted
 def event_link_delete(e):
@@ -6048,7 +6212,7 @@ def do_object_create(crm_id, crm, params, user_id):
 		display = get_object_display(crm, obj, object_id)
 		fp = mochi.entity.fingerprint(crm_id)
 		url = "/crm/" + fp + "/" + object_id if fp else "/crm"
-		notify("update/created", crm_id, display, mochi.app.label("notifications.body.created"), url)
+		notify("update/created", crm_id, display, mochi.app.label("notifications.body.created"), url, event_id="update/created:" + object_id)
 	return {"id": object_id, "rank": initial_rank, "created": now, "updated": now}
 
 def do_object_update(crm_id, crm, params, user_id):
@@ -6110,7 +6274,7 @@ def do_object_update(crm_id, crm, params, user_id):
 	})
 	# Notify owner if watching
 	owner_id = get_owner_identity(crm_id)
-	notify_watchers(object_id, crm_id, owner_id, user_id, "Updated")
+	notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.updated"))
 	return {"success": True}
 
 def do_object_delete(crm_id, crm, params, user_id):
@@ -6122,7 +6286,7 @@ def do_object_delete(crm_id, crm, params, user_id):
 		return {"error": "Object not found", "code": 404}
 	# Notify owner before cascade (watchers get deleted in cascade)
 	owner_id = get_owner_identity(crm_id)
-	notify_watchers(object_id, crm_id, owner_id, user_id, "Deleted")
+	notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.deleted"))
 	delete_object_cascade(crm_id, object_id, user_id)
 	return {"success": True}
 
@@ -6234,9 +6398,10 @@ def do_object_move(crm_id, crm, params, user_id):
 		})
 		# Notify owner if watching
 		owner_id = get_owner_identity(crm_id)
-		notify_watchers(object_id, crm_id, owner_id, user_id, "Fields changed")
+		notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.updated"))
 
-	# Broadcast rank changes to subscribers
+	# Broadcast rank changes as a single batched event — see the matching
+	# comment in action_object_move for why we don't loop here.
 	if new_rank != None:
 		if scope_parent:
 			all_in_scope = mochi.db.rows("select id, rank from objects where crm=? and parent=? order by rank asc", crm_id, scope_parent) or []
@@ -6247,9 +6412,11 @@ def do_object_move(crm_id, crm, params, user_id):
 				where o.crm=? and coalesce(v.value, '')=?
 				order by o.rank asc
 			""", field, crm_id, target_value) or []
-		for obj in all_in_scope:
-			broadcast_event(crm_id, "object/update", {
-				"crm": crm_id, "id": obj["id"], "rank": obj["rank"], "user": user_id
+		if all_in_scope:
+			broadcast_event(crm_id, "object/ranks", {
+				"crm": crm_id,
+				"ranks": [{"id": obj["id"], "rank": obj["rank"]} for obj in all_in_scope],
+				"user": user_id,
 			})
 
 	return {"success": True}
@@ -6296,7 +6463,7 @@ def do_values_set(crm_id, crm, params, user_id):
 		})
 		# Notify owner if watching
 		owner_id = get_owner_identity(crm_id)
-		notify_watchers(object_id, crm_id, owner_id, user_id, "Fields changed")
+		notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.updated"))
 		# Auto-watch assigned users
 		for fid in changes:
 			if field_types.get(fid) == "user":
@@ -6336,7 +6503,7 @@ def do_value_set(crm_id, crm, params, user_id):
 		})
 		# Notify owner if watching
 		owner_id = get_owner_identity(crm_id)
-		notify_watchers(object_id, crm_id, owner_id, user_id, "Fields changed")
+		notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.updated"))
 		# Auto-watch assigned user
 		if field_row["fieldtype"] == "user" and str(new_value):
 			mochi.db.execute(
@@ -6374,7 +6541,7 @@ def do_link_create(crm_id, crm, params, user_id):
 	})
 	# Notify owner if watching
 	owner_id = get_owner_identity(crm_id)
-	notify_watchers(object_id, crm_id, owner_id, user_id, "Link added")
+	notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.link_added"))
 	return {"success": True}
 
 def do_link_delete(crm_id, crm, params, user_id):
@@ -6390,7 +6557,7 @@ def do_link_delete(crm_id, crm, params, user_id):
 	})
 	# Notify owner if watching
 	owner_id = get_owner_identity(crm_id)
-	notify_watchers(object_id, crm_id, owner_id, user_id, "Link removed")
+	notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.link_removed"))
 	return {"success": True}
 
 # Attachment helper

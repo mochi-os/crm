@@ -17,6 +17,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  naturalCompare,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import type { CrmDetails } from "@/types";
@@ -378,7 +379,7 @@ export function CreateObjectDialog({
                       </SelectTrigger>
                       <SelectContent className="z-[60]">
                         {!parentRequired && <SelectItem value="_none_"><Trans>None</Trans></SelectItem>}
-                        {validParentOptions.map((obj) => (
+                        {[...validParentOptions].sort((a, b) => naturalCompare(objectTitle(a), objectTitle(b))).map((obj) => (
                           <SelectItem key={obj.id} value={obj.id}>
                             {objectTitle(obj)}
                           </SelectItem>
