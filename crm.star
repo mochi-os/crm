@@ -1044,10 +1044,12 @@ def action_crm_delete(a):
 	mochi.db.execute("delete from fields where crm=?", crm_id)
 	mochi.db.execute("delete from hierarchy where crm=?", crm_id)
 	mochi.db.execute("delete from classes where crm=?", crm_id)
-	# Notify subscribers that crm is being deleted (before removing subscriber list)
+	# Notify subscribers that crm is being deleted (before removing subscriber
+	# list). Send from the CRM entity so receivers can verify the sender,
+	# matching broadcast_event and the verify_subscription check.
 	subscribers = mochi.db.rows("select id from subscribers where crm=?", crm_id)
 	for sub in subscribers:
-		mochi.message.send(p2p_headers(a.user.identity.id, sub["id"], "deleted"), {"crm": crm_id})
+		mochi.message.send(p2p_headers(crm_id, sub["id"], "deleted"), {"crm": crm_id})
 
 	mochi.db.execute("delete from subscribers where crm=?", crm_id)
 	mochi.db.execute("delete from crms where id=?", crm_id)
@@ -1114,7 +1116,8 @@ def check_crm_access(user_id, crm_id, level):
 
 # Forward a subscriber action to the crm owner via P2P
 def forward_to_owner(a, crm_id, action, params):
-	params["_user"] = a.user.identity.id
+	# Authorship is set from the authenticated P2P sender on the owner side, so
+	# we only pass the display name here, not an identity the owner would trust.
 	params["_name"] = a.user.identity.name
 	# Look up the server for this remote crm and resolve peer
 	server_row = mochi.db.row("select server from crms where id=?", crm_id)
@@ -1128,7 +1131,9 @@ def forward_to_owner(a, crm_id, action, params):
 		a.error.label(502, "errors.could_not_reach_crm_owner")
 		return None
 	if result.get("error"):
-		a.error(result.get("code", 500), result["error"])
+		# The error field is a label key; resolve it in the requester's language,
+		# with any ICU args the owner returned alongside it.
+		a.error.label(result.get("code", 500), result["error"], **(result.get("args") or {}))
 		return None
 	return {"data": result}
 
@@ -1357,26 +1362,21 @@ def get_object_display(crm, obj, object_id):
 
 def notify_watchers(object_id, crm_id, local_identity, user_id, body):
 	"""Notify local user if they watch this object and didn't make the change."""
-	mochi.log.debug("notify_watchers: object=" + str(object_id) + " local=" + str(local_identity) + " user=" + str(user_id))
 	if local_identity == user_id:
-		mochi.log.debug("notify_watchers: skipped, local==user")
 		return
 	watching = mochi.db.exists("select 1 from watchers where object=? and user=?", object_id, local_identity)
-	mochi.log.debug("notify_watchers: watching=" + str(watching))
 	if not watching:
 		return
 	crm = get_crm(crm_id)
 	if not crm:
-		mochi.log.debug("notify_watchers: crm not found")
 		return
 	obj = mochi.db.row("select class from objects where id=?", object_id)
 	if not obj:
-		mochi.log.debug("notify_watchers: object not found")
 		return
 	title = get_object_display(crm, obj, object_id)
 	fp = mochi.entity.fingerprint(crm_id)
 	url = "/crm/" + fp + "/" + object_id if fp else "/crm"
-	mochi.log.debug("notify_watchers: sending notification title=" + title)
+	mochi.log.debug("notify_watchers: notifying " + str(local_identity) + " about " + str(object_id))
 	notify("update/modified", crm_id, title, body, url, event_id="update/modified:" + object_id)
 
 def notify_mentions(object_id, crm_id, content, author_id, author_name):
@@ -1403,7 +1403,7 @@ def notify_mentions(object_id, crm_id, content, author_id, author_name):
 	fp = mochi.entity.fingerprint(crm_id)
 	url = "/crm/" + fp + "/" + object_id if fp else "/crm"
 	excerpt = content.strip()[:80]
-	notify("mention", crm_id, title, author_name + " mentioned you: " + excerpt, url, event_id="mention:" + object_id)
+	notify("mention", crm_id, title, mochi.app.label("notifications.body.mentioned_you", author=author_name, excerpt=excerpt), url, event_id="mention:" + object_id)
 
 def would_create_cycle(object_id, new_parent_id):
 	"""Check if setting new_parent_id as parent of object_id would create a cycle."""
@@ -1525,10 +1525,6 @@ def action_object_create(a):
 	parent = a.input("parent") or ""
 	title = a.input("title") or ""
 
-	if len(title) > 500:
-		a.error.label(400, "errors.title_too_long")
-		return
-
 	# Look up the title field for this class
 	title_field_row = mochi.db.row("select title from classes where crm=? and id=?", crm_id, obj_class)
 	title_field = title_field_row["title"] if title_field_row else ""
@@ -1560,6 +1556,10 @@ def action_object_create(a):
 
 	if not check_crm_access(a.user.identity.id, crm_id, "write"):
 		a.error.label(403, "errors.access_denied")
+		return
+
+	if len(title) > 500:
+		a.error.label(400, "errors.title_too_long")
 		return
 
 	if not obj_class:
@@ -2123,6 +2123,10 @@ def action_values_set(a):
 		if len(str(new_value)) > 10000:
 			a.error.label(400, "errors.value_too_long")
 			return
+		invalid = validate_field_value(crm_id, row["class"], field_id, new_value)
+		if invalid:
+			a.error.label(400, invalid["key"], **(invalid.get("args") or {}))
+			return
 		# Get old value
 		old_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field_id)
 		old_value = old_row["value"] if old_row else ""
@@ -2209,6 +2213,11 @@ def action_value_set(a):
 	new_value = a.input("value") or ""
 	if len(new_value) > 10000:
 		a.error.label(400, "errors.value_too_long")
+		return
+
+	invalid = validate_field_value(crm_id, row["class"], field_id, new_value)
+	if invalid:
+		a.error.label(400, invalid["key"], **(invalid.get("args") or {}))
 		return
 
 	# Get old value
@@ -4325,7 +4334,7 @@ def action_probe(a):
 		return
 	response = mochi.remote.request(crm_id, "crm", "info", {"crm": crm_id}, peer)
 	if response.get("error"):
-		a.error(response.get("code", 404), response["error"])
+		a.error.label(response.get("code", 404), response["error"])
 		return
 
 	return {"data": {
@@ -4408,7 +4417,7 @@ def action_subscribe(a):
 			return
 		response = mochi.remote.request(crm_id, "crm", "info", {"crm": crm_id}, peer)
 		if response.get("error"):
-			a.error(response.get("code", 404), response["error"])
+			a.error.label(response.get("code", 404), response["error"])
 			return
 		crm_name = response.get("name", "")
 		crm_desc = response.get("description", "")
@@ -4522,17 +4531,17 @@ def event_info(e):
 
 	entity = mochi.entity.info(crm_id)
 	if not entity or entity.get("class") != "crm":
-		e.stream.write({"error": "CRM not found"})
+		e.stream.write({"error": "errors.crm_not_found"})
 		return
 
 	crm = mochi.db.row("select * from crms where id=?", crm_id)
 	if not crm:
-		e.stream.write({"error": "CRM not found"})
+		e.stream.write({"error": "errors.crm_not_found"})
 		return
 
 	requester = e.header("from")
 	if crm["owner"] == 1 and not check_crm_access(requester, crm_id, "view"):
-		e.stream.write({"error": "Access denied"})
+		e.stream.write({"error": "errors.access_denied"})
 		return
 
 	e.stream.write({
@@ -4551,12 +4560,12 @@ def event_schema(e):
 	# the row-level name drifts forever. Mirrors projects task #86.
 	crm = mochi.db.row("select id, name, description from crms where id=? and owner=1", crm_id)
 	if not crm:
-		e.stream.write({"error": "CRM not found"})
+		e.stream.write({"error": "errors.crm_not_found"})
 		return
 
 	requester = e.header("from")
 	if not check_crm_access(requester, crm_id, "view"):
-		e.stream.write({"error": "Access denied"})
+		e.stream.write({"error": "errors.access_denied"})
 		return
 
 	# Classes
@@ -4953,9 +4962,10 @@ def event_unsubscribe(e):
 
 # Handle notification that a crm has been deleted by its owner
 def event_deleted(e):
-	crm_id = e.content("crm")
-	if not crm_id:
-		crm_id = e.header("from")
+	# The deletion notice is sent from the CRM entity itself, so the authenticated
+	# sender IS the CRM. Using the from header (not a spoofable content field)
+	# stops any peer wiping a CRM we subscribe to.
+	crm_id = e.header("from")
 
 	# Only delete if we don't own this crm
 	crm = mochi.db.row("select * from crms where id=? and owner=0", crm_id)
@@ -4999,7 +5009,10 @@ def event_deleted(e):
 
 # Handle batched sync data from owner (single message with all CRM data)
 def event_sync_batch(e):
-	crm_id = e.content("crm")
+	# Sync is sent from the CRM entity (p2p_headers(crm_id, ...)), so the
+	# authenticated sender is the CRM. Trust the from header, not a spoofable
+	# content field, so a peer can't inject forged data into a subscribed CRM.
+	crm_id = e.header("from")
 	if not crm_id:
 		return
 	crm = mochi.db.row("select id from crms where id=? and owner=0", crm_id)
@@ -5099,7 +5112,11 @@ def event_sync_batch(e):
 
 # Helper to verify a content event is for a crm we subscribe to
 def verify_subscription(e):
-	crm_id = e.content("crm")
+	# Broadcasts are sent from the CRM entity itself (broadcast_event uses
+	# from=crm_id), so the authenticated P2P sender IS the CRM. Trust the from
+	# header rather than a spoofable content field, so a peer can't push forged
+	# state into a CRM we subscribe to.
+	crm_id = e.header("from")
 	if not crm_id:
 		return None
 	crm = mochi.db.row("select id from crms where id=? and owner=0", crm_id)
@@ -5403,7 +5420,7 @@ def event_comment_submit(e):
 	# Notify watchers
 	owner_id = get_owner_identity(crm_id)
 	excerpt = content.strip()[:80]
-	notify_watchers(object_id, crm_id, owner_id, sender, name + ": " + excerpt)
+	notify_watchers(object_id, crm_id, owner_id, sender, mochi.app.label("notifications.body.commented", name=name, excerpt=excerpt))
 
 # Attachment submitted by subscriber
 def event_attachment_submit(e):
@@ -5501,7 +5518,7 @@ def event_comment_create(e):
 					object_id, local_id, e.content("created") or mochi.time.now())
 			name = e.content("name") or "Someone"
 			excerpt = (e.content("content") or "")[:80]
-			notify_watchers(object_id, crm_id, local_id, user, name + ": " + excerpt)
+			notify_watchers(object_id, crm_id, local_id, user, mochi.app.label("notifications.body.commented", name=name, excerpt=excerpt))
 
 # Comment updated
 def event_comment_update(e):
@@ -5953,26 +5970,29 @@ def event_request(e):
 	requester = e.header("from")
 	action = e.content("action")
 	params = e.content("params") or {}
-	user_id = params.get("_user", requester)
+	# Authorship and ownership are governed by the authenticated P2P sender, not
+	# a content-supplied id: a content "_user" is spoofable and would let a peer
+	# post as, or edit/delete the comments of, another user.
+	user_id = requester
 	user_name = params.get("_name", "")
 
 	crm_id = params.get("crm")
 	if not crm_id:
-		e.stream.write({"error": "CRM required", "code": 400})
+		e.stream.write({"error": "errors.crm_id_required", "code": 400})
 		return
 
 	crm = mochi.db.row("select * from crms where id=? and owner=1", crm_id)
 	if not crm:
-		e.stream.write({"error": "CRM not found", "code": 404})
+		e.stream.write({"error": "errors.crm_not_found", "code": 404})
 		return
 
 	level = REQUEST_LEVELS.get(action)
 	if not level:
-		e.stream.write({"error": "Unknown action", "code": 400})
+		e.stream.write({"error": "errors.unknown_action", "code": 400})
 		return
 
 	if not check_crm_access(requester, crm_id, level):
-		e.stream.write({"error": "Access denied", "code": 403})
+		e.stream.write({"error": "errors.access_denied", "code": 403})
 		return
 
 	# Dispatch to handler
@@ -6037,7 +6057,7 @@ def event_request(e):
 	elif action == "view/reorder":
 		result = do_view_reorder(crm_id, crm, params)
 	else:
-		result = {"error": "Not implemented", "code": 501}
+		result = {"error": "errors.not_implemented", "code": 501}
 
 	e.stream.write(result)
 
@@ -6062,11 +6082,11 @@ def do_comment_create(crm_id, crm, params, user_id, user_name):
 	parent = params.get("parent", "")
 	row = mochi.db.row("select id from objects where id=? and crm=?", object_id, crm_id)
 	if not row:
-		return {"error": "Object not found", "code": 404}
+		return {"error": "errors.object_not_found", "code": 404}
 	if not content or not content.strip():
-		return {"error": "Content is required", "code": 400}
+		return {"error": "errors.content_is_required", "code": 400}
 	if check_length(content, 50000):
-		return {"error": "Content too long", "code": 400}
+		return {"error": "errors.content_too_long", "code": 400}
 	comment_id = params.get("id") or mochi.uid()
 	now = mochi.time.now()
 	mochi.db.execute(
@@ -6092,7 +6112,7 @@ def do_comment_create(crm_id, crm, params, user_id, user_name):
 	# Notify owner if watching
 	owner_id = get_owner_identity(crm_id)
 	excerpt = (content.strip())[:80]
-	notify_watchers(object_id, crm_id, owner_id, user_id, user_name + ": " + excerpt)
+	notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.commented", name=user_name, excerpt=excerpt))
 	return {"id": comment_id, "author": user_id, "name": user_name,
 			"content": content.strip(), "created": now}
 
@@ -6101,16 +6121,16 @@ def do_comment_update(crm_id, crm, params, user_id):
 	comment_id = params.get("comment")
 	content = params.get("content")
 	if not object_id or not comment_id:
-		return {"error": "Object and comment ID required", "code": 400}
+		return {"error": "errors.object_and_comment_id_required", "code": 400}
 	comment = mochi.db.row("select * from comments where id=? and object=?", comment_id, object_id)
 	if not comment:
-		return {"error": "Comment not found", "code": 404}
+		return {"error": "errors.comment_not_found", "code": 404}
 	if comment["author"] != user_id:
-		return {"error": "Cannot edit another user's comment", "code": 403}
+		return {"error": "errors.cannot_edit_others_comment", "code": 403}
 	if not content or not content.strip():
-		return {"error": "Content is required", "code": 400}
+		return {"error": "errors.content_is_required", "code": 400}
 	if check_length(content, 50000):
-		return {"error": "Content too long", "code": 400}
+		return {"error": "errors.content_too_long", "code": 400}
 	now = mochi.time.now()
 	mochi.db.execute("update comments set content=?, edited=? where id=?", content.strip(), now, comment_id)
 	broadcast_event(crm_id, "comment/update", {
@@ -6123,12 +6143,12 @@ def do_comment_delete(crm_id, crm, params, user_id):
 	object_id = params.get("object")
 	comment_id = params.get("comment")
 	if not object_id or not comment_id:
-		return {"error": "Object and comment ID required", "code": 400}
+		return {"error": "errors.object_and_comment_id_required", "code": 400}
 	comment = mochi.db.row("select * from comments where id=? and object=?", comment_id, object_id)
 	if not comment:
-		return {"error": "Comment not found", "code": 404}
+		return {"error": "errors.comment_not_found", "code": 404}
 	if comment["author"] != user_id:
-		return {"error": "Cannot delete another user's comment", "code": 403}
+		return {"error": "errors.cannot_delete_another_user_s_comment", "code": 403}
 	delete_comment_tree(comment_id, crm_id)
 	broadcast_event(crm_id, "comment/delete", {
 		"crm": crm_id, "object": object_id, "id": comment_id, "user": user_id
@@ -6139,10 +6159,10 @@ def do_comment_delete(crm_id, crm, params, user_id):
 def do_watcher_add(crm_id, params, user_id):
 	object_id = params.get("object")
 	if not object_id:
-		return {"error": "Object ID required", "code": 400}
+		return {"error": "errors.object_id_required", "code": 400}
 	row = mochi.db.row("select id from objects where id=? and crm=?", object_id, crm_id)
 	if not row:
-		return {"error": "Object not found", "code": 404}
+		return {"error": "errors.object_not_found", "code": 404}
 	now = mochi.time.now()
 	mochi.db.execute(
 		"insert or ignore into watchers (object, user, created) values (?, ?, ?)",
@@ -6153,10 +6173,10 @@ def do_watcher_add(crm_id, params, user_id):
 def do_watcher_remove(crm_id, params, user_id):
 	object_id = params.get("object")
 	if not object_id:
-		return {"error": "Object ID required", "code": 400}
+		return {"error": "errors.object_id_required", "code": 400}
 	row = mochi.db.row("select id from objects where id=? and crm=?", object_id, crm_id)
 	if not row:
-		return {"error": "Object not found", "code": 404}
+		return {"error": "errors.object_not_found", "code": 404}
 	mochi.db.execute("delete from watchers where object=? and user=?", object_id, user_id)
 	return {"success": True, "watching": False}
 
@@ -6164,25 +6184,25 @@ def do_watcher_remove(crm_id, params, user_id):
 def do_object_create(crm_id, crm, params, user_id):
 	obj_class = params.get("class")
 	if not obj_class:
-		return {"error": "Class is required", "code": 400}
+		return {"error": "errors.class_is_required", "code": 400}
 	class_row = mochi.db.row("select id from classes where crm=? and id=?", crm_id, obj_class)
 	if not class_row:
-		return {"error": "Invalid class", "code": 400}
+		return {"error": "errors.invalid_class", "code": 400}
 	parent = params.get("parent", "")
 	title = params.get("title", "")
 	if check_length(title, 500):
-		return {"error": "Title too long", "code": 400}
+		return {"error": "errors.title_too_long", "code": 400}
 
 	# Check hierarchy rules
 	parent_class = ""
 	if parent:
 		parent_row = mochi.db.row("select class from objects where id=? and crm=?", parent, crm_id)
 		if not parent_row:
-			return {"error": "Parent object not found", "code": 404}
+			return {"error": "errors.parent_object_not_found", "code": 404}
 		parent_class = parent_row["class"]
 	allowed = mochi.db.exists("select 1 from hierarchy where crm=? and class=? and parent=?", crm_id, obj_class, parent_class)
 	if not allowed:
-		return {"error": "Cannot create here: hierarchy rules do not allow this relationship", "code": 400}
+		return {"error": "errors.hierarchy_disallowed", "code": 400}
 
 	title_field_row = mochi.db.row("select title from classes where crm=? and id=?", crm_id, obj_class)
 	title_field = title_field_row["title"] if title_field_row else ""
@@ -6218,27 +6238,27 @@ def do_object_create(crm_id, crm, params, user_id):
 def do_object_update(crm_id, crm, params, user_id):
 	object_id = params.get("object")
 	if not object_id:
-		return {"error": "Object ID required", "code": 400}
+		return {"error": "errors.object_id_required", "code": 400}
 	row = mochi.db.row("select * from objects where id=? and crm=?", object_id, crm_id)
 	if not row:
-		return {"error": "Object not found", "code": 404}
+		return {"error": "errors.object_not_found", "code": 404}
 	now = mochi.time.now()
 	parent = params.get("parent")
 	if parent != None:
 		old_parent = row["parent"]
 		if parent != old_parent:
 			if parent and would_create_cycle(object_id, parent):
-				return {"error": "Cannot set parent: would create a cycle", "code": 400}
+				return {"error": "errors.cannot_set_parent_would_create_a_cycle", "code": 400}
 			if parent:
 				parent_row = mochi.db.row("select class from objects where id=? and crm=?", parent, crm_id)
 				if not parent_row:
-					return {"error": "Parent object not found", "code": 404}
+					return {"error": "errors.parent_object_not_found", "code": 404}
 				parent_class = parent_row["class"]
 			else:
 				parent_class = ""
 			allowed = mochi.db.exists("select 1 from hierarchy where crm=? and class=? and parent=?", crm_id, row["class"], parent_class)
 			if not allowed:
-				return {"error": "Cannot set parent: hierarchy rules do not allow this relationship", "code": 400}
+				return {"error": "errors.parent_hierarchy_disallowed", "code": 400}
 			mochi.db.execute("update objects set parent=?, updated=? where id=?", parent, now, object_id)
 			log_activity(object_id, user_id, "moved", "parent", old_parent, parent)
 
@@ -6280,10 +6300,10 @@ def do_object_update(crm_id, crm, params, user_id):
 def do_object_delete(crm_id, crm, params, user_id):
 	object_id = params.get("object")
 	if not object_id:
-		return {"error": "Object ID required", "code": 400}
+		return {"error": "errors.object_id_required", "code": 400}
 	row = mochi.db.row("select id from objects where id=? and crm=?", object_id, crm_id)
 	if not row:
-		return {"error": "Object not found", "code": 404}
+		return {"error": "errors.object_not_found", "code": 404}
 	# Notify owner before cascade (watchers get deleted in cascade)
 	owner_id = get_owner_identity(crm_id)
 	notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.deleted"))
@@ -6293,21 +6313,21 @@ def do_object_delete(crm_id, crm, params, user_id):
 def do_object_move(crm_id, crm, params, user_id):
 	object_id = params.get("object")
 	if not object_id:
-		return {"error": "Object ID required", "code": 400}
+		return {"error": "errors.object_id_required", "code": 400}
 	row = mochi.db.row("select id, class, rank from objects where id=? and crm=?", object_id, crm_id)
 	if not row:
-		return {"error": "Object not found", "code": 404}
+		return {"error": "errors.object_not_found", "code": 404}
 	if check_length(params.get("value"), 50000):
-		return {"error": "Value too long", "code": 400}
+		return {"error": "errors.value_too_long", "code": 400}
 	if check_length(params.get("row_value"), 50000):
-		return {"error": "Row value too long", "code": 400}
+		return {"error": "errors.value_too_long", "code": 400}
 	old_rank = row["rank"]
 	obj_class = row["class"]
 	field = params.get("field", "")
 	if check_length(field, 100):
-		return {"error": "Field name too long", "code": 400}
+		return {"error": "errors.field_name_too_long", "code": 400}
 	if field and not mochi.db.exists("select 1 from fields where crm=? and class=? and id=?", crm_id, obj_class, field):
-		return {"error": "Field not found", "code": 400}
+		return {"error": "errors.field_not_found", "code": 400}
 	value = params.get("value")
 	new_rank = params.get("rank")
 	old_value_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field)
@@ -6352,9 +6372,9 @@ def do_object_move(crm_id, crm, params, user_id):
 	row_field = params.get("row_field")
 	row_value = params.get("row_value")
 	if check_length(row_field, 100):
-		return {"error": "Field name too long", "code": 400}
+		return {"error": "errors.field_name_too_long", "code": 400}
 	if row_field and not mochi.db.exists("select 1 from fields where crm=? and class=? and id=?", crm_id, obj_class, row_field):
-		return {"error": "Field not found", "code": 400}
+		return {"error": "errors.field_not_found", "code": 400}
 	row_changed = False
 	if row_field:
 		old_row_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, row_field)
@@ -6421,14 +6441,77 @@ def do_object_move(crm_id, crm, params, user_id):
 
 	return {"success": True}
 
+# Validate a YYYY-MM-DD calendar date.
+def is_iso_date(value):
+	parts = value.split("-")
+	if len(parts) != 3:
+		return False
+	if len(parts[0]) != 4 or len(parts[1]) != 2 or len(parts[2]) != 2:
+		return False
+	for p in parts:
+		if not mochi.text.valid(p, "natural"):
+			return False
+	month = int(parts[1])
+	day = int(parts[2])
+	return month >= 1 and month <= 12 and day >= 1 and day <= 31
+
+# Validate a value against a field's type and declared constraints. Returns
+# {"key", "args"} describing the first violation, or None if acceptable. Empty
+# values are always allowed (clearing the field); "required" is a separate
+# concern. The custom-regex `pattern` constraint is not enforced here - Starlark
+# has no general regex API.
+def validate_field_value(crm_id, class_id, field_id, value):
+	value = "" if value == None else str(value)
+	if value == "":
+		return None
+	field = mochi.db.row("select fieldtype, min, max, minlength, maxlength from fields where crm=? and class=? and id=?", crm_id, class_id, field_id)
+	if not field:
+		return None
+	ftype = field["fieldtype"]
+
+	if ftype == "enumerated":
+		if not mochi.db.exists("select 1 from options where crm=? and class=? and field=? and id=?", crm_id, class_id, field_id, value):
+			return {"key": "errors.invalid_option"}
+
+	elif ftype == "number":
+		if not mochi.text.valid(value, "numeric"):
+			return {"key": "errors.value_not_a_number"}
+		number = float(value)
+		if field["min"] != "" and mochi.text.valid(field["min"], "numeric") and number < float(field["min"]):
+			return {"key": "errors.value_below_minimum", "args": {"minimum": field["min"]}}
+		if field["max"] != "" and mochi.text.valid(field["max"], "numeric") and number > float(field["max"]):
+			return {"key": "errors.value_above_maximum", "args": {"maximum": field["max"]}}
+
+	elif ftype == "date":
+		if not is_iso_date(value):
+			return {"key": "errors.invalid_date"}
+		# ISO dates compare correctly as strings.
+		if field["min"] != "" and value < field["min"]:
+			return {"key": "errors.value_below_minimum", "args": {"minimum": field["min"]}}
+		if field["max"] != "" and value > field["max"]:
+			return {"key": "errors.value_above_maximum", "args": {"maximum": field["max"]}}
+
+	elif ftype == "text":
+		length = len(value)
+		if field["minlength"] and length < field["minlength"]:
+			return {"key": "errors.minimum_length", "args": {"minimum": field["minlength"]}}
+		if field["maxlength"] and length > field["maxlength"]:
+			return {"key": "errors.maximum_length", "args": {"maximum": field["maxlength"]}}
+
+	elif ftype == "checkbox":
+		if value not in ("0", "1", "true", "false"):
+			return {"key": "errors.invalid_value"}
+
+	return None
+
 # Value helpers
 def do_values_set(crm_id, crm, params, user_id):
 	object_id = params.get("object")
 	if not object_id:
-		return {"error": "Object ID required", "code": 400}
+		return {"error": "errors.object_id_required", "code": 400}
 	row = mochi.db.row("select id, class from objects where id=? and crm=?", object_id, crm_id)
 	if not row:
-		return {"error": "Object not found", "code": 404}
+		return {"error": "errors.object_not_found", "code": 404}
 	valid_fields = {}
 	field_types = {}
 	field_rows = mochi.db.rows("select id, name, fieldtype from fields where crm=? and class=?", crm_id, row["class"]) or []
@@ -6440,11 +6523,14 @@ def do_values_set(crm_id, crm, params, user_id):
 	values = params.get("values", {})
 	for v in values.values():
 		if check_length(v, 50000):
-			return {"error": "Value too long", "code": 400}
+			return {"error": "errors.value_too_long", "code": 400}
 	for field_id in values:
 		if field_id not in valid_fields:
 			continue
 		new_value = values[field_id]
+		invalid = validate_field_value(crm_id, row["class"], field_id, new_value)
+		if invalid:
+			return {"error": invalid["key"], "args": invalid.get("args"), "code": 400}
 		old_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field_id)
 		old_value = old_row["value"] if old_row else ""
 		if str(new_value) != old_value:
@@ -6478,18 +6564,21 @@ def do_value_set(crm_id, crm, params, user_id):
 	object_id = params.get("object")
 	field_id = params.get("field")
 	if not object_id:
-		return {"error": "Object ID required", "code": 400}
+		return {"error": "errors.object_id_required", "code": 400}
 	if not field_id:
-		return {"error": "Field ID required", "code": 400}
+		return {"error": "errors.field_id_required", "code": 400}
 	row = mochi.db.row("select id, class from objects where id=? and crm=?", object_id, crm_id)
 	if not row:
-		return {"error": "Object not found", "code": 404}
+		return {"error": "errors.object_not_found", "code": 404}
 	field_row = mochi.db.row("select id, fieldtype from fields where crm=? and class=? and id=?", crm_id, row["class"], field_id)
 	if not field_row:
-		return {"error": "Invalid field for this class", "code": 400}
+		return {"error": "errors.invalid_field_for_this_class", "code": 400}
 	new_value = params.get("value", "")
 	if check_length(new_value, 50000):
-		return {"error": "Value too long", "code": 400}
+		return {"error": "errors.value_too_long", "code": 400}
+	invalid = validate_field_value(crm_id, row["class"], field_id, new_value)
+	if invalid:
+		return {"error": invalid["key"], "args": invalid.get("args"), "code": 400}
 	old_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field_id)
 	old_value = old_row["value"] if old_row else ""
 	if str(new_value) != old_value:
@@ -6517,18 +6606,18 @@ def do_link_create(crm_id, crm, params, user_id):
 	target_id = params.get("target")
 	linktype = params.get("linktype")
 	if not object_id or not target_id or not linktype:
-		return {"error": "Object, target, and linktype are required", "code": 400}
+		return {"error": "errors.object_target_and_linktype_are_required", "code": 400}
 	if linktype not in ["blocks", "relates", "duplicates"]:
-		return {"error": "Invalid link type", "code": 400}
+		return {"error": "errors.invalid_link_type", "code": 400}
 	source_row = mochi.db.row("select id from objects where id=? and crm=?", object_id, crm_id)
 	target_row = mochi.db.row("select id from objects where id=? and crm=?", target_id, crm_id)
 	if not source_row or not target_row:
-		return {"error": "Object not found", "code": 404}
+		return {"error": "errors.object_not_found", "code": 404}
 	if object_id == target_id:
-		return {"error": "Cannot link object to itself", "code": 400}
+		return {"error": "errors.cannot_link_object_to_itself", "code": 400}
 	existing = mochi.db.exists("select 1 from links where source=? and target=? and linktype=?", object_id, target_id, linktype)
 	if existing:
-		return {"error": "Link already exists", "code": 400}
+		return {"error": "errors.link_already_exists", "code": 400}
 	now = mochi.time.now()
 	mochi.db.execute(
 		"insert into links (crm, source, target, linktype, created) values (?, ?, ?, ?, ?)",
@@ -6549,7 +6638,7 @@ def do_link_delete(crm_id, crm, params, user_id):
 	target_id = params.get("target")
 	linktype = params.get("linktype")
 	if not object_id or not target_id or not linktype:
-		return {"error": "Object, target, and linktype are required", "code": 400}
+		return {"error": "errors.object_target_and_linktype_are_required", "code": 400}
 	mochi.db.execute("delete from links where crm=? and source=? and target=? and linktype=?", crm_id, object_id, target_id, linktype)
 	broadcast_event(crm_id, "link/delete", {
 		"crm": crm_id, "source": object_id,
@@ -6565,12 +6654,12 @@ def do_attachment_delete(crm_id, crm, params, user_id):
 	attachment_id = params.get("attachment")
 	object_id = params.get("object")
 	if not attachment_id:
-		return {"error": "Attachment ID required", "code": 400}
+		return {"error": "errors.attachment_id_required", "code": 400}
 	if object_id:
 		if not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
-			return {"error": "Object not found", "code": 404}
+			return {"error": "errors.object_not_found", "code": 404}
 	if not mochi.attachment.exists(attachment_id):
-		return {"error": "Attachment not found", "code": 404}
+		return {"error": "errors.attachment_not_found", "code": 404}
 	mochi.attachment.delete(attachment_id, [])
 	broadcast_event(crm_id, "attachment/remove", {
 		"crm": crm_id, "attachment": attachment_id
@@ -6581,13 +6670,13 @@ def do_attachment_delete(crm_id, crm, params, user_id):
 def do_class_create(crm_id, crm, params):
 	name = params.get("name")
 	if not name or not name.strip():
-		return {"error": "Name is required", "code": 400}
+		return {"error": "errors.name_is_required", "code": 400}
 	if check_length(name, 100):
-		return {"error": "Name too long", "code": 400}
+		return {"error": "errors.name_too_long", "code": 400}
 	class_id = name.strip().lower().replace(" ", "_")
 	existing = mochi.db.exists("select 1 from classes where crm=? and id=?", crm_id, class_id)
 	if existing:
-		return {"error": "A class with this name already exists", "code": 400}
+		return {"error": "errors.class_name_taken", "code": 400}
 	max_rank = mochi.db.row("select max(rank) as m from classes where crm=?", crm_id)
 	rank = (max_rank["m"] or 0) + 1 if max_rank else 0
 	mochi.db.execute(
@@ -6610,16 +6699,16 @@ def do_class_create(crm_id, crm, params):
 def do_class_update(crm_id, crm, params):
 	class_id = params.get("class")
 	if not class_id:
-		return {"error": "Type ID required", "code": 400}
+		return {"error": "errors.type_id_required", "code": 400}
 	class_row = mochi.db.row("select * from classes where crm=? and id=?", crm_id, class_id)
 	if not class_row:
-		return {"error": "Class not found", "code": 404}
+		return {"error": "errors.class_not_found", "code": 404}
 	name = params.get("name")
 	if check_length(name, 100):
-		return {"error": "Name too long", "code": 400}
+		return {"error": "errors.name_too_long", "code": 400}
 	title_input = params.get("title")
 	if check_length(title_input, 100):
-		return {"error": "Title too long", "code": 400}
+		return {"error": "errors.title_too_long", "code": 400}
 	if name:
 		mochi.db.execute("update classes set name=? where crm=? and id=?", name.strip(), crm_id, class_id)
 	if title_input:
@@ -6633,10 +6722,10 @@ def do_class_update(crm_id, crm, params):
 def do_class_delete(crm_id, crm, params):
 	class_id = params.get("class")
 	if not class_id:
-		return {"error": "Class ID required", "code": 400}
+		return {"error": "errors.class_id_required", "code": 400}
 	has_objects = mochi.db.exists("select 1 from objects where crm=? and class=?", crm_id, class_id)
 	if has_objects:
-		return {"error": "Cannot delete class with existing objects", "code": 400}
+		return {"error": "errors.class_in_use", "code": 400}
 	mochi.db.execute("delete from options where crm=? and class=?", crm_id, class_id)
 	mochi.db.execute("delete from fields where crm=? and class=?", crm_id, class_id)
 	mochi.db.execute("delete from hierarchy where crm=? and class=?", crm_id, class_id)
@@ -6648,24 +6737,24 @@ def do_class_delete(crm_id, crm, params):
 def do_field_create(crm_id, crm, params):
 	class_id = params.get("class")
 	if not class_id:
-		return {"error": "Type ID required", "code": 400}
+		return {"error": "errors.type_id_required", "code": 400}
 	class_row = mochi.db.row("select id from classes where crm=? and id=?", crm_id, class_id)
 	if not class_row:
-		return {"error": "Type not found", "code": 404}
+		return {"error": "errors.type_not_found", "code": 404}
 	name = params.get("name")
 	if not name or not name.strip():
-		return {"error": "Name is required", "code": 400}
+		return {"error": "errors.name_is_required", "code": 400}
 	if check_length(name, 100):
-		return {"error": "Name too long", "code": 400}
+		return {"error": "errors.name_too_long", "code": 400}
 	if check_length(params.get("flags"), 200):
-		return {"error": "Flags too long", "code": 400}
+		return {"error": "errors.value_too_long", "code": 400}
 	fieldtype = params.get("fieldtype", "text")
 	if fieldtype not in ["text", "number", "date", "enumerated", "user", "object", "checkbox", "checklist"]:
-		return {"error": "Invalid field type", "code": 400}
+		return {"error": "errors.invalid_field_type", "code": 400}
 	field_id = name.strip().lower().replace(" ", "_")
 	existing = mochi.db.exists("select 1 from fields where crm=? and class=? and id=?", crm_id, class_id, field_id)
 	if existing:
-		return {"error": "A field with this name already exists", "code": 400}
+		return {"error": "errors.a_field_with_this_name_already_exists", "code": 400}
 	max_rank = mochi.db.row("select max(rank) as m from fields where crm=? and class=?", crm_id, class_id)
 	rank = (max_rank["m"] or 0) + 1 if max_rank else 0
 	flags = params.get("flags", "")
@@ -6702,16 +6791,16 @@ def do_field_update(crm_id, crm, params):
 	class_id = params.get("class")
 	field_id = params.get("field")
 	if not class_id or not field_id:
-		return {"error": "Type and field ID required", "code": 400}
+		return {"error": "errors.type_and_field_id_required", "code": 400}
 	field_row = mochi.db.row("select * from fields where crm=? and class=? and id=?", crm_id, class_id, field_id)
 	if not field_row:
-		return {"error": "Field not found", "code": 404}
+		return {"error": "errors.field_not_found", "code": 404}
 	if check_length(params.get("name"), 100):
-		return {"error": "Name too long", "code": 400}
+		return {"error": "errors.name_too_long", "code": 400}
 	if check_length(params.get("flags"), 200):
-		return {"error": "Flags too long", "code": 400}
+		return {"error": "errors.value_too_long", "code": 400}
 	if check_length(params.get("id"), 100):
-		return {"error": "Field ID too long", "code": 400}
+		return {"error": "errors.value_too_long", "code": 400}
 	name = params.get("name")
 	flags = params.get("flags")
 	multi = params.get("multi")
@@ -6739,9 +6828,9 @@ def do_field_update(crm_id, crm, params):
 		if new_id and new_id != field_id:
 			for ch in new_id.elems():
 				if ch != "_" and not ch.isalnum():
-					return {"error": "Field ID must contain only lowercase letters, numbers, and underscores", "code": 400}
+					return {"error": "errors.invalid_field_id", "code": 400}
 			if mochi.db.exists("select 1 from fields where crm=? and class=? and id=?", crm_id, class_id, new_id):
-				return {"error": "A field with this ID already exists", "code": 400}
+				return {"error": "errors.a_field_with_this_id_already_exists", "code": 400}
 			rename_field_id(crm_id, class_id, field_id, new_id)
 	update_data = {"crm": crm_id, "class": class_id, "id": new_id if (new_id != None and new_id and new_id != field_id) else field_id}
 	if new_id != None and new_id and new_id != field_id:
@@ -6765,7 +6854,7 @@ def do_field_delete(crm_id, crm, params):
 	class_id = params.get("class")
 	field_id = params.get("field")
 	if not class_id or not field_id:
-		return {"error": "Type and field ID required", "code": 400}
+		return {"error": "errors.type_and_field_id_required", "code": 400}
 	mochi.db.execute("delete from options where crm=? and class=? and field=?", crm_id, class_id, field_id)
 	mochi.db.execute("delete from fields where crm=? and class=? and id=?", crm_id, class_id, field_id)
 	broadcast_event(crm_id, "field/delete", {"crm": crm_id, "class": class_id, "id": field_id})
@@ -6774,7 +6863,7 @@ def do_field_delete(crm_id, crm, params):
 def do_field_reorder(crm_id, crm, params):
 	class_id = params.get("class")
 	if not class_id:
-		return {"error": "Type ID required", "code": 400}
+		return {"error": "errors.type_id_required", "code": 400}
 	order_str = params.get("order", "")
 	order = [f.strip() for f in order_str.split(",") if f.strip()]
 	for i, field_id in enumerate(order):
@@ -6790,25 +6879,25 @@ def do_option_create(crm_id, crm, params):
 	class_id = params.get("class")
 	field_id = params.get("field")
 	if not class_id or not field_id:
-		return {"error": "Type and field ID required", "code": 400}
+		return {"error": "errors.type_and_field_id_required", "code": 400}
 	field_row = mochi.db.row("select fieldtype from fields where crm=? and class=? and id=?", crm_id, class_id, field_id)
 	if not field_row:
-		return {"error": "Field not found", "code": 404}
+		return {"error": "errors.field_not_found", "code": 404}
 	if field_row["fieldtype"] != "enumerated":
-		return {"error": "Options can only be added to enumerated fields", "code": 400}
+		return {"error": "errors.field_not_enumerated", "code": 400}
 	name = params.get("name")
 	if not name or not name.strip():
-		return {"error": "Name is required", "code": 400}
+		return {"error": "errors.name_is_required", "code": 400}
 	if check_length(name, 100):
-		return {"error": "Name too long", "code": 400}
+		return {"error": "errors.name_too_long", "code": 400}
 	if check_length(params.get("colour"), 20):
-		return {"error": "Colour too long", "code": 400}
+		return {"error": "errors.colour_too_long", "code": 400}
 	if check_length(params.get("icon"), 100):
-		return {"error": "Icon too long", "code": 400}
+		return {"error": "errors.icon_too_long", "code": 400}
 	option_id = name.strip().lower().replace(" ", "_")
 	existing = mochi.db.exists("select 1 from options where crm=? and class=? and field=? and id=?", crm_id, class_id, field_id, option_id)
 	if existing:
-		return {"error": "An option with this name already exists", "code": 400}
+		return {"error": "errors.an_option_with_this_name_already_exists", "code": 400}
 	max_rank = mochi.db.row("select max(rank) as m from options where crm=? and class=? and field=?", crm_id, class_id, field_id)
 	rank = (max_rank["m"] or 0) + 1 if max_rank else 0
 	colour = params.get("colour", "#94a3b8")
@@ -6828,16 +6917,16 @@ def do_option_update(crm_id, crm, params):
 	field_id = params.get("field")
 	option_id = params.get("option")
 	if not class_id or not field_id or not option_id:
-		return {"error": "Type, field, and option ID required", "code": 400}
+		return {"error": "errors.option_id_required", "code": 400}
 	option_row = mochi.db.row("select * from options where crm=? and class=? and field=? and id=?", crm_id, class_id, field_id, option_id)
 	if not option_row:
-		return {"error": "Option not found", "code": 404}
+		return {"error": "errors.option_not_found", "code": 404}
 	if check_length(params.get("name"), 100):
-		return {"error": "Name too long", "code": 400}
+		return {"error": "errors.name_too_long", "code": 400}
 	if check_length(params.get("colour"), 20):
-		return {"error": "Colour too long", "code": 400}
+		return {"error": "errors.colour_too_long", "code": 400}
 	if check_length(params.get("icon"), 100):
-		return {"error": "Icon too long", "code": 400}
+		return {"error": "errors.icon_too_long", "code": 400}
 	name = params.get("name")
 	colour = params.get("colour")
 	icon = params.get("icon")
@@ -6862,7 +6951,7 @@ def do_option_delete(crm_id, crm, params):
 	field_id = params.get("field")
 	option_id = params.get("option")
 	if not class_id or not field_id or not option_id:
-		return {"error": "Type, field, and option ID required", "code": 400}
+		return {"error": "errors.option_id_required", "code": 400}
 	mochi.db.execute("delete from options where crm=? and class=? and field=? and id=?", crm_id, class_id, field_id, option_id)
 	broadcast_event(crm_id, "option/delete", {"crm": crm_id, "class": class_id, "field": field_id, "id": option_id})
 	return {"success": True}
@@ -6871,7 +6960,7 @@ def do_option_reorder(crm_id, crm, params):
 	class_id = params.get("class")
 	field_id = params.get("field")
 	if not class_id or not field_id:
-		return {"error": "Type and field ID required", "code": 400}
+		return {"error": "errors.type_and_field_id_required", "code": 400}
 	order_str = params.get("order", "")
 	order = [o.strip() for o in order_str.split(",") if o.strip()]
 	for i, option_id in enumerate(order):
@@ -6886,10 +6975,10 @@ def do_option_reorder(crm_id, crm, params):
 def do_hierarchy_set(crm_id, crm, params):
 	class_id = params.get("class")
 	if not class_id:
-		return {"error": "Type ID required", "code": 400}
+		return {"error": "errors.type_id_required", "code": 400}
 	class_row = mochi.db.row("select id from classes where crm=? and id=?", crm_id, class_id)
 	if not class_row:
-		return {"error": "Type not found", "code": 404}
+		return {"error": "errors.type_not_found", "code": 404}
 	parents_str = params.get("parents")
 	if parents_str == None or parents_str == "_none_":
 		parents = []
@@ -6916,23 +7005,23 @@ def do_hierarchy_set(crm_id, crm, params):
 def do_view_create(crm_id, crm, params):
 	name = params.get("name")
 	if not name or not name.strip():
-		return {"error": "Name is required", "code": 400}
+		return {"error": "errors.name_is_required", "code": 400}
 	if check_length(name, 100):
-		return {"error": "Name too long", "code": 400}
+		return {"error": "errors.name_too_long", "code": 400}
 	for vf in ["filter", "columns", "rows", "fields", "sort", "border"]:
 		if check_length(params.get(vf), 10000):
-			return {"error": vf.capitalize() + " too long", "code": 400}
+			return {"error": "errors.value_too_long", "code": 400}
 	viewtype = params.get("viewtype", "board")
 	if viewtype not in ["board", "list"]:
-		return {"error": "Invalid view type", "code": 400}
+		return {"error": "errors.invalid_view_type", "code": 400}
 	view_id = name.strip().lower().replace(" ", "_")
 	existing = mochi.db.exists("select 1 from views where crm=? and id=?", crm_id, view_id)
 	if existing:
-		return {"error": "A view with this name already exists", "code": 400}
+		return {"error": "errors.view_name_taken", "code": 400}
 	filter_str = params.get("filter", "")
 	columns = params.get("columns", "")
 	if viewtype == "board" and not columns:
-		return {"error": "Columns field is required for board views", "code": 400}
+		return {"error": "errors.columns_field_is_required_for_board_views", "code": 400}
 	rows = params.get("rows", "")
 	fields = params.get("fields", "title,priority,owner,due")
 	sort = params.get("sort", "")
@@ -6968,15 +7057,15 @@ def do_view_create(crm_id, crm, params):
 def do_view_update(crm_id, crm, params):
 	view_id = params.get("view")
 	if not view_id:
-		return {"error": "View ID required", "code": 400}
+		return {"error": "errors.view_id_required", "code": 400}
 	view = mochi.db.row("select * from views where crm=? and id=?", crm_id, view_id)
 	if not view:
-		return {"error": "View not found", "code": 404}
+		return {"error": "errors.view_not_found", "code": 404}
 	if check_length(params.get("name"), 100):
-		return {"error": "Name too long", "code": 400}
+		return {"error": "errors.name_too_long", "code": 400}
 	for vf in ["filter", "columns", "rows", "fields", "sort", "border"]:
 		if check_length(params.get(vf), 10000):
-			return {"error": vf.capitalize() + " too long", "code": 400}
+			return {"error": "errors.value_too_long", "code": 400}
 	name = params.get("name")
 	viewtype = params.get("viewtype")
 	filter_str = params.get("filter")
@@ -6989,7 +7078,7 @@ def do_view_update(crm_id, crm, params):
 		mochi.db.execute("update views set name=? where crm=? and id=?", name.strip(), crm_id, view_id)
 	if viewtype != None and viewtype != "":
 		if viewtype not in ["board", "list"]:
-			return {"error": "Invalid view type", "code": 400}
+			return {"error": "errors.invalid_view_type", "code": 400}
 		mochi.db.execute("update views set viewtype=? where crm=? and id=?", viewtype, crm_id, view_id)
 	if filter_str != None:
 		mochi.db.execute("update views set filter=? where crm=? and id=?", filter_str, crm_id, view_id)
@@ -7009,7 +7098,7 @@ def do_view_update(crm_id, crm, params):
 		mochi.db.execute("update views set sort=? where crm=? and id=?", sort, crm_id, view_id)
 	if direction != None and direction != "":
 		if direction not in ["asc", "desc"]:
-			return {"error": "Invalid direction", "code": 400}
+			return {"error": "errors.invalid_direction", "code": 400}
 		mochi.db.execute("update views set direction=? where crm=? and id=?", direction, crm_id, view_id)
 	border = params.get("border")
 	if border != None:
@@ -7041,10 +7130,10 @@ def do_view_update(crm_id, crm, params):
 def do_view_delete(crm_id, crm, params):
 	view_id = params.get("view")
 	if not view_id:
-		return {"error": "View ID required", "code": 400}
+		return {"error": "errors.view_id_required", "code": 400}
 	count = mochi.db.row("select count(*) as cnt from views where crm=?", crm_id)
 	if count and count["cnt"] <= 1:
-		return {"error": "Cannot delete the last view", "code": 400}
+		return {"error": "errors.cannot_delete_the_last_view", "code": 400}
 	mochi.db.execute("delete from view_fields where crm=? and view=?", crm_id, view_id)
 	mochi.db.execute("delete from view_classes where crm=? and view=?", crm_id, view_id)
 	mochi.db.execute("delete from views where crm=? and id=?", crm_id, view_id)
