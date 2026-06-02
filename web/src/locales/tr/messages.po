@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/objects/components/create-object-dialog.tsx:172
+#: src/features/objects/components/create-object-dialog.tsx:173
 msgid " or "
 msgstr " veya "
 
@@ -101,7 +101,7 @@ msgstr "Hesap türü"
 msgid "Account verified"
 msgstr "Hesap doğrulandı"
 
-#: src/features/objects/components/object-detail-panel.tsx:285
+#: src/features/objects/components/object-detail-panel.tsx:286
 msgid "Activity"
 msgstr "Etkinlik"
 
@@ -145,8 +145,8 @@ msgstr "Kontrol listesi öğesi ekle"
 msgid "Add class"
 msgstr "Sınıf ekle"
 
-#: src/routes/_authenticated/$crmId/index.tsx:880
-#: src/routes/_authenticated/$crmId/index.tsx:1048
+#: src/routes/_authenticated/$crmId/index.tsx:895
+#: src/routes/_authenticated/$crmId/index.tsx:1063
 msgid "Add column"
 msgstr "Sütun ekle"
 
@@ -223,11 +223,11 @@ msgid "Allow sort by"
 msgstr "Şuna göre sıralamaya izin ver"
 
 #. placeholder {0}: deleteTarget?.name
-#: src/features/objects/components/object-attachments.tsx:232
+#: src/features/objects/components/object-attachments.tsx:209
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "\"{0}\" öğesini silmek istediğinizden emin misiniz?"
 
-#: src/features/objects/components/object-detail-panel.tsx:475
+#: src/features/objects/components/object-detail-panel.tsx:476
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "\"{title}\" öğesini silmek istediğinizden emin misiniz? Bu işlem geri alınamaz."
 
@@ -261,6 +261,10 @@ msgstr "Yorum dosyalarını ekle"
 msgid "Attach reply files"
 msgstr "Yanıt dosyalarını ekle"
 
+#: ../../../lib/web/src/components/step-up-dialog.tsx:312
+msgid "Authenticator code"
+msgstr "Authenticator kodu"
+
 #: src/components/keyboard-shortcuts-help.tsx:47
 msgid "Available keyboard shortcuts"
 msgstr "Mevcut klavye kısayolları"
@@ -278,7 +282,7 @@ msgid "Back to CRM"
 msgstr "CRM'e dön"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:91
+#: src/routes/_authenticated/$crmId/index.tsx:106
 msgid "Back to CRMs"
 msgstr "CRM'lere dön"
 
@@ -314,6 +318,7 @@ msgid "Can be child of"
 msgstr "Şunun alt öğesi olabilir"
 
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:64
+#: ../../../lib/web/src/components/step-up-dialog.tsx:360
 #: ../../../lib/web/src/components/travelling-picker.tsx:292
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:245
 #: ../../../lib/web/src/features/access/access-dialog.tsx:325
@@ -325,7 +330,7 @@ msgstr "Şunun alt öğesi olabilir"
 #: src/features/editor/components/option-dialog.tsx:135
 #: src/features/objects/components/comment-thread.tsx:172
 #: src/routes/_authenticated/$crmId/design.tsx:301
-#: src/routes/_authenticated/$crmId/index.tsx:942
+#: src/routes/_authenticated/$crmId/index.tsx:957
 msgid "Cancel"
 msgstr "İptal"
 
@@ -338,11 +343,11 @@ msgstr "Düzenlemeyi iptal et"
 msgid "Cancel reply"
 msgstr "Yanıtı iptal et"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:131
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Category for this notification"
 msgstr "Bu bildirim için kategori"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:115
+#: ../../../lib/web/src/components/notification-category-button.tsx:119
 msgid "Change notification category"
 msgstr "Bildirim kategorisini değiştir"
 
@@ -374,7 +379,7 @@ msgstr "Sistem tercihi, açık mod veya koyu mod arasında seçim yapın"
 msgid "Choose language"
 msgstr "Dil seçin"
 
-#: src/routes/_authenticated/$crmId/index.tsx:766
+#: src/routes/_authenticated/$crmId/index.tsx:781
 msgid "Class"
 msgstr "Sınıf"
 
@@ -406,8 +411,8 @@ msgstr "Seçimi temizle (Escape)"
 #: ../../../lib/web/src/components/ui/dialog.tsx:75
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:318
 #: ../../../lib/web/src/components/ui/sheet.tsx:76
-#: src/features/objects/components/create-object-dialog.tsx:344
 #: src/features/objects/components/create-object-dialog.tsx:345
+#: src/features/objects/components/create-object-dialog.tsx:346
 msgid "Close"
 msgstr "Kapat"
 
@@ -458,7 +463,7 @@ msgid "Comment and view"
 msgstr "Yorum yap ve görüntüle"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:284
+#: src/features/objects/components/object-detail-panel.tsx:285
 msgid "Comments ({0})"
 msgstr "Yorumlar ({0})"
 
@@ -496,6 +501,10 @@ msgstr "Bağlamsal bilgi ve ayrıntılar."
 msgid "Continue"
 msgstr "Devam et"
 
+#: ../../../lib/web/src/components/step-up-dialog.tsx:349
+msgid "Continue with {label}"
+msgstr "{label} ile devam et"
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:624
 msgid "Control who can view and interact with this CRM"
 msgstr "Bu CRM'i kimin görüntüleyebileceğini ve etkileşime girebileceğini kontrol edin"
@@ -512,10 +521,22 @@ msgstr "Bu CRM hakkında temel bilgiler"
 msgid "Could not load this document. Please try again later."
 msgstr "Bu belge yüklenemedi. Lütfen daha sonra tekrar deneyin."
 
+#: ../../../lib/web/src/components/step-up-dialog.tsx:181
+msgid "Couldn't send the code. Please try again."
+msgstr "Kod gönderilemedi. Lütfen tekrar deneyin."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:133
+msgid "Couldn't start re-authentication. Please try again."
+msgstr "Yeniden kimlik doğrulama başlatılamadı. Lütfen tekrar deneyin."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:218
+msgid "Couldn't verify with that account. Please try again."
+msgstr "Bu hesapla doğrulama yapılamadı. Lütfen tekrar deneyin."
+
 #: src/features/board/components/board-column.tsx:523
 #: src/features/board/components/board-column.tsx:661
-#: src/features/objects/components/create-object-dialog.tsx:336
-#: src/features/objects/components/create-object-dialog.tsx:480
+#: src/features/objects/components/create-object-dialog.tsx:337
+#: src/features/objects/components/create-object-dialog.tsx:481
 #: src/features/tree/components/tree-view.tsx:363
 msgid "Create"
 msgstr "Oluştur"
@@ -525,7 +546,7 @@ msgstr "Oluştur"
 msgid "Create a new CRM"
 msgstr "Yeni bir CRM oluştur"
 
-#: src/features/objects/components/create-object-dialog.tsx:315
+#: src/features/objects/components/create-object-dialog.tsx:316
 msgid "Create a new CRM object."
 msgstr "Yeni bir CRM nesnesi oluştur."
 
@@ -540,7 +561,7 @@ msgstr "CRM oluştur"
 msgid "Create new item"
 msgstr "Yeni öğe oluştur"
 
-#: src/features/objects/components/create-object-dialog.tsx:314
+#: src/features/objects/components/create-object-dialog.tsx:315
 msgid "Create object"
 msgstr "Nesne oluştur"
 
@@ -550,7 +571,7 @@ msgid "Created"
 msgstr "Oluşturuldu"
 
 #: src/features/crms/components/create-crm-dialog.tsx:140
-#: src/features/objects/components/create-object-dialog.tsx:480
+#: src/features/objects/components/create-object-dialog.tsx:481
 msgid "Creating..."
 msgstr "Oluşturuluyor..."
 
@@ -619,13 +640,13 @@ msgstr "Varsayılan sıralama"
 #: src/features/objects/components/comment-thread.tsx:232
 #: src/features/objects/components/comment-thread.tsx:269
 #: src/features/objects/components/comment-thread.tsx:385
-#: src/features/objects/components/object-attachments.tsx:233
-#: src/features/objects/components/object-detail-panel.tsx:476
+#: src/features/objects/components/object-attachments.tsx:210
+#: src/features/objects/components/object-detail-panel.tsx:477
 #: src/routes/_authenticated/$crmId_.settings.tsx:346
 msgid "Delete"
 msgstr "Sil"
 
-#: src/features/objects/components/object-attachments.tsx:231
+#: src/features/objects/components/object-attachments.tsx:208
 msgid "Delete attachment"
 msgstr "Eki sil"
 
@@ -657,9 +678,9 @@ msgstr "CRM silinsin mi?"
 msgid "Delete field"
 msgstr "Alanı sil"
 
-#: src/features/objects/components/object-detail-panel.tsx:326
 #: src/features/objects/components/object-detail-panel.tsx:327
-#: src/features/objects/components/object-detail-panel.tsx:474
+#: src/features/objects/components/object-detail-panel.tsx:328
+#: src/features/objects/components/object-detail-panel.tsx:475
 msgid "Delete item"
 msgstr "Öğeyi sil"
 
@@ -677,6 +698,10 @@ msgstr "{0} seçeneğini sil"
 msgid "Delete view"
 msgstr "Görünümü sil"
 
+#: ../../../lib/web/src/components/restore-banner.tsx:90
+msgid "Delete your account on the old server"
+msgstr "Eski sunucudaki hesabınızı silin"
+
 #: ../../../lib/web/src/components/data-table/column-header.tsx:60
 msgid "Desc"
 msgstr "Azalan"
@@ -687,7 +712,7 @@ msgstr "Açıklama"
 
 #: src/routes/_authenticated/$crmId/design.tsx:61
 #: src/routes/_authenticated/$crmId/design.tsx:129
-#: src/routes/_authenticated/$crmId/index.tsx:895
+#: src/routes/_authenticated/$crmId/index.tsx:910
 msgid "Design"
 msgstr "Tasarım"
 
@@ -696,8 +721,8 @@ msgid "Design imported"
 msgstr "Tasarım içe aktarıldı"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:527
-msgid "Design, write, comment, and view"
-msgstr "Tasarla, yaz, yorum yap ve görüntüle"
+msgid "Design, create, edit, comment, and view"
+msgstr "Tasarlama, oluşturma, düzenleme, yorum yapma ve görüntüleme"
 
 #: ../../../lib/web/src/components/layout/right-panel.tsx:144
 msgid "Details Panel"
@@ -718,8 +743,12 @@ msgstr "Web tarayıcıdan algıla"
 msgid "Direction"
 msgstr "Yön"
 
-#: src/routes/_authenticated/$crmId/index.tsx:964
-#: src/routes/_authenticated/$crmId/index.tsx:965
+#: ../../../lib/web/src/components/restore-banner.tsx:73
+msgid "Dismiss"
+msgstr "Kapat"
+
+#: src/routes/_authenticated/$crmId/index.tsx:979
+#: src/routes/_authenticated/$crmId/index.tsx:980
 msgid "Dismiss board hint"
 msgstr "Tahta ipucunu kapat"
 
@@ -730,11 +759,11 @@ msgstr "Mobil kenar çubuğunu görüntüler."
 #: src/features/editor/components/edit-dialogs.tsx:500
 #: src/features/editor/components/edit-dialogs.tsx:851
 #: src/features/editor/components/edit-dialogs.tsx:1086
-#: src/features/objects/components/object-detail-panel.tsx:338
+#: src/features/objects/components/object-detail-panel.tsx:339
 msgid "Done"
 msgstr "Tamamlandı"
 
-#: src/routes/_authenticated/$crmId/index.tsx:957
+#: src/routes/_authenticated/$crmId/index.tsx:972
 msgid "Double click on a column to add content"
 msgstr "İçerik eklemek için sütuna çift tıklayın"
 
@@ -746,7 +775,7 @@ msgstr "İndir"
 msgid "Download backup first"
 msgstr "Önce yedeği indirin"
 
-#: src/routes/_authenticated/$crmId/index.tsx:938
+#: src/routes/_authenticated/$crmId/index.tsx:953
 msgid "Drag columns to re-order them"
 msgstr "Yeniden sıralamak için sütunları sürükleyin"
 
@@ -794,11 +823,27 @@ msgstr "Seçili kartı düzenle"
 msgid "Edit view"
 msgstr "Görünümü düzenle"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:528
+msgid "Edit, comment, and view"
+msgstr "Düzenleme, yorum yapma ve görüntüleme"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:286
+msgid "Email code"
+msgstr "E-posta kodu"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:296
+msgid "Enter the code from your email"
+msgstr "E-postanızdaki kodu girin"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:321
+msgid "Enter your authenticator code"
+msgstr "Kimlik doğrulayıcı kodunuzu girin"
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:313
 msgid "Entity ID"
 msgstr "Varlık kimliği"
 
-#: src/features/objects/components/object-detail-panel.tsx:254
+#: src/features/objects/components/object-detail-panel.tsx:255
 msgid "Error"
 msgstr "Hata"
 
@@ -806,7 +851,7 @@ msgstr "Hata"
 msgid "Expand sidebar"
 msgstr "Kenar çubuğunu genişlet"
 
-#: src/routes/_authenticated/$crmId/index.tsx:901
+#: src/routes/_authenticated/$crmId/index.tsx:916
 msgid "Export CSV"
 msgstr "CSV olarak dışa aktar"
 
@@ -846,7 +891,7 @@ msgstr "Seçenek oluşturulamadı"
 msgid "Failed to create view"
 msgstr "Görünüm oluşturulamadı"
 
-#: src/features/objects/components/object-attachments.tsx:75
+#: src/features/objects/components/object-attachments.tsx:73
 msgid "Failed to delete attachment"
 msgstr "Ek silinemedi"
 
@@ -876,7 +921,7 @@ msgstr "Tasarım içe aktarılamadı"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:40
 #: src/routes/_authenticated/$crmId/$objectId.tsx:68
-#: src/routes/_authenticated/$crmId/index.tsx:67
+#: src/routes/_authenticated/$crmId/index.tsx:70
 msgid "Failed to load CRM"
 msgstr "CRM yüklenemedi"
 
@@ -888,7 +933,7 @@ msgstr "CRM tasarımı yüklenemedi"
 msgid "Failed to load CRMs"
 msgstr "CRM'ler yüklenemedi"
 
-#: src/features/objects/components/object-detail-panel.tsx:255
+#: src/features/objects/components/object-detail-panel.tsx:256
 msgid "Failed to load item"
 msgstr "Öğe yüklenemedi"
 
@@ -930,7 +975,7 @@ msgid "Failed to subscribe"
 msgstr "Abone olunamadı"
 
 #: src/features/crms/pages/crms-list-page.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:556
+#: src/routes/_authenticated/$crmId/index.tsx:571
 msgid "Failed to unsubscribe"
 msgstr "Abonelikten çıkılamadı"
 
@@ -938,7 +983,7 @@ msgstr "Abonelikten çıkılamadı"
 msgid "Failed to update access level"
 msgstr "Erişim düzeyi güncellenemedi"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:104
+#: ../../../lib/web/src/components/notification-category-button.tsx:108
 msgid "Failed to update category"
 msgstr "Kategori güncellenemedi"
 
@@ -954,7 +999,7 @@ msgstr "CRM güncellenemedi"
 msgid "Failed to update field"
 msgstr "Alan güncellenemedi"
 
-#: src/features/objects/components/object-attachments.tsx:60
+#: src/features/objects/components/object-attachments.tsx:58
 msgid "Failed to upload attachment"
 msgstr "Ek yüklenemedi"
 
@@ -962,9 +1007,9 @@ msgstr "Ek yüklenemedi"
 msgid "Fields"
 msgstr "Alanlar"
 
-#: src/features/objects/components/create-object-dialog.tsx:423
-#: src/features/objects/components/object-attachments.tsx:106
-#: src/features/objects/components/object-attachments.tsx:123
+#: src/features/objects/components/create-object-dialog.tsx:424
+#: src/features/objects/components/object-attachments.tsx:96
+#: src/features/objects/components/object-attachments.tsx:113
 msgid "Files"
 msgstr "Dosyalar"
 
@@ -976,6 +1021,10 @@ msgstr "CRM bul"
 #: src/routes/_authenticated/$crmId_.settings.tsx:318
 msgid "Fingerprint"
 msgstr "Parmak izi"
+
+#: ../../../lib/web/src/components/restore-banner.tsx:79
+msgid "Finish moving your account"
+msgstr "Hesap taşımayı tamamlayın"
 
 #: src/features/editor/components/edit-dialogs.tsx:1010
 msgid "Flags"
@@ -1050,7 +1099,7 @@ msgstr "Ana sayfa"
 msgid "Hot"
 msgstr "Popüler"
 
-#: src/routes/_authenticated/$crmId/index.tsx:766
+#: src/routes/_authenticated/$crmId/index.tsx:781
 msgid "ID"
 msgstr "Kimlik"
 
@@ -1091,7 +1140,7 @@ msgstr "Geçersiz JSON dosyası"
 msgid "Invalid verification code"
 msgstr "Geçersiz doğrulama kodu"
 
-#: src/features/objects/components/object-detail-panel.tsx:296
+#: src/features/objects/components/object-detail-panel.tsx:297
 msgid "Item details"
 msgstr "Öğe ayrıntıları"
 
@@ -1134,11 +1183,11 @@ msgstr "Liste"
 msgid "Load more"
 msgstr "Daha fazla yükle"
 
-#: src/features/objects/components/object-detail-panel.tsx:238
+#: src/features/objects/components/object-detail-panel.tsx:239
 msgid "Loading item"
 msgstr "Öğe yükleniyor"
 
-#: src/features/objects/components/object-detail-panel.tsx:239
+#: src/features/objects/components/object-detail-panel.tsx:240
 msgid "Loading item details"
 msgstr "Öğe ayrıntıları yükleniyor"
 
@@ -1210,14 +1259,14 @@ msgid "Name is required"
 msgstr "Ad gerekli"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:40
-#: src/features/objects/components/create-object-dialog.tsx:321
-#: src/routes/_authenticated/$crmId/index.tsx:835
-#: src/routes/_authenticated/$crmId/index.tsx:852
+#: src/features/objects/components/create-object-dialog.tsx:322
+#: src/routes/_authenticated/$crmId/index.tsx:850
+#: src/routes/_authenticated/$crmId/index.tsx:867
 msgid "New"
 msgstr "Yeni"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:833
+#: src/routes/_authenticated/$crmId/index.tsx:848
 msgid "New {0}"
 msgstr "Yeni {0}"
 
@@ -1225,7 +1274,7 @@ msgstr "Yeni {0}"
 msgid "Next image"
 msgstr "Sonraki görsel"
 
-#: src/features/objects/components/create-object-dialog.tsx:390
+#: src/features/objects/components/create-object-dialog.tsx:391
 msgid "No {parentClassNames} to add to"
 msgstr "Eklenecek {parentClassNames} yok"
 
@@ -1258,7 +1307,7 @@ msgstr "CRM bulunamadı"
 msgid "No groups available"
 msgstr "Grup yok"
 
-#: src/features/objects/components/create-object-dialog.tsx:357
+#: src/features/objects/components/create-object-dialog.tsx:358
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Henüz oluşturulabilecek öge türü yok. Önce gerekli üst ögeleri oluşturun."
 
@@ -1266,7 +1315,7 @@ msgstr "Henüz oluşturulabilecek öge türü yok. Önce gerekli üst ögeleri o
 msgid "No matching objects"
 msgstr "Eşleşen nesne yok"
 
-#: src/routes/_authenticated/$crmId/index.tsx:751
+#: src/routes/_authenticated/$crmId/index.tsx:766
 msgid "No objects to export."
 msgstr "Dışa aktarılacak nesne yok."
 
@@ -1296,7 +1345,7 @@ msgstr "Durum yok"
 msgid "No time zone found."
 msgstr "Saat dilimi bulunamadı."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:135
+#: ../../../lib/web/src/components/notification-category-button.tsx:139
 msgid "No topic record yet — try again after the next notification."
 msgstr "Henüz konu kaydı yok — bir sonraki bildirimden sonra tekrar deneyin."
 
@@ -1319,13 +1368,13 @@ msgstr "Görüntüleme yok"
 #: src/features/editor/components/edit-dialogs.tsx:473
 #: src/features/editor/components/edit-dialogs.tsx:730
 #: src/features/editor/components/edit-dialogs.tsx:733
-#: src/features/objects/components/create-object-dialog.tsx:373
-#: src/features/objects/components/create-object-dialog.tsx:376
-#: src/features/objects/components/create-object-dialog.tsx:380
-#: src/features/objects/components/object-detail-panel.tsx:396
-#: src/features/objects/components/object-detail-panel.tsx:405
-#: src/features/objects/components/object-detail-panel.tsx:408
-#: src/features/objects/components/object-detail-panel.tsx:412
+#: src/features/objects/components/create-object-dialog.tsx:374
+#: src/features/objects/components/create-object-dialog.tsx:377
+#: src/features/objects/components/create-object-dialog.tsx:381
+#: src/features/objects/components/object-detail-panel.tsx:397
+#: src/features/objects/components/object-detail-panel.tsx:406
+#: src/features/objects/components/object-detail-panel.tsx:409
+#: src/features/objects/components/object-detail-panel.tsx:413
 msgid "None"
 msgstr "Yok"
 
@@ -1383,7 +1432,7 @@ msgstr "Gezinme menüsünü aç"
 msgid "Open option actions"
 msgstr "Seçenek eylemlerini aç"
 
-#: src/routes/_authenticated/$crmId/index.tsx:860
+#: src/routes/_authenticated/$crmId/index.tsx:875
 msgid "Open page actions"
 msgstr "Sayfa eylemlerini aç"
 
@@ -1421,18 +1470,30 @@ msgstr "Diğer"
 msgid "Owner"
 msgstr "Sahip"
 
-#: src/features/objects/components/create-object-dialog.tsx:365
-#: src/features/objects/components/object-detail-panel.tsx:390
-#: src/routes/_authenticated/$crmId/index.tsx:766
+#: src/features/objects/components/create-object-dialog.tsx:366
+#: src/features/objects/components/object-detail-panel.tsx:391
+#: src/routes/_authenticated/$crmId/index.tsx:781
 msgid "Parent"
 msgstr "Üst"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:331
+msgid "Passkey"
+msgstr "Geçiş anahtarı"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:206
+msgid "Passkey verification failed. Please try again."
+msgstr "Geçiş anahtarı doğrulaması başarısız oldu. Lütfen tekrar deneyin."
+
+#: ../../../lib/web/src/components/restore-banner.tsx:126
+msgid "Passkeys"
+msgstr "Passkey'ler"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:337
 msgid "Permanently delete this CRM and all its content."
 msgstr "Bu CRM'i ve tüm içeriğini kalıcı olarak silin."
 
-#: src/routes/_authenticated/$crmId/index.tsx:648
-#: src/routes/_authenticated/$crmId/index.tsx:682
+#: src/routes/_authenticated/$crmId/index.tsx:663
+#: src/routes/_authenticated/$crmId/index.tsx:697
 msgid "Please add one or more classes to the CRM design."
 msgstr "Lütfen CRM tasarımına bir veya daha fazla sınıf ekleyin."
 
@@ -1450,13 +1511,21 @@ msgstr "Gizlilik"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/objects/components/object-detail-panel.tsx:283
+#: src/features/objects/components/object-detail-panel.tsx:284
 msgid "Properties"
 msgstr "Özellikler"
 
-#: src/routes/_authenticated/$crmId/index.tsx:884
+#: ../../../lib/web/src/components/restore-banner.tsx:98
+msgid "Re-link your accounts on this server"
+msgstr "Hesaplarınızı bu sunucuda yeniden bağlayın"
+
+#: src/routes/_authenticated/$crmId/index.tsx:899
 msgid "Re-order columns"
 msgstr "Sütunları yeniden sırala"
+
+#: ../../../lib/web/src/components/restore-banner.tsx:120
+msgid "Re-register your passkeys on this server"
+msgstr "Bu sunucuda parola anahtarlarınızı yeniden kaydedin"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
 #: ../../../lib/web/src/components/search-entity-page.tsx:191
@@ -1556,6 +1625,10 @@ msgstr "{0} kullanıcısına yanıt ver..."
 msgid "Required"
 msgstr "Gerekli"
 
+#: ../../../lib/web/src/components/step-up-dialog.tsx:364
+msgid "Resend email"
+msgstr "E-postayı yeniden gönder"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:77
 #: ../../../lib/web/src/components/data-table/toolbar.tsx:78
 msgid "Reset"
@@ -1596,7 +1669,7 @@ msgstr "Cumartesi"
 
 #: src/features/editor/components/option-dialog.tsx:138
 #: src/features/objects/components/comment-thread.tsx:183
-#: src/routes/_authenticated/$crmId/index.tsx:949
+#: src/routes/_authenticated/$crmId/index.tsx:964
 msgid "Save"
 msgstr "Kaydet"
 
@@ -1709,6 +1782,10 @@ msgstr "Seç..."
 msgid "Send again"
 msgstr "Tekrar gönder"
 
+#: ../../../lib/web/src/components/step-up-dialog.tsx:304
+msgid "Send email"
+msgstr "E-posta gönder"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:133
 msgid "Serif"
 msgstr "Tırnaklı"
@@ -1736,7 +1813,7 @@ msgstr "Başlangıç ve hedef belirle"
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:163
 #: src/routes/_authenticated/$crmId_.settings.tsx:186
-#: src/routes/_authenticated/$crmId/index.tsx:909
+#: src/routes/_authenticated/$crmId/index.tsx:924
 msgid "Settings"
 msgstr "Ayarlar"
 
@@ -1796,8 +1873,8 @@ msgstr "İlk yorumu ekleyerek tartışmayı başlat."
 msgid "Stay tuned though!"
 msgstr "Yine de takipte kal!"
 
-#: src/features/objects/components/object-detail-panel.tsx:311
 #: src/features/objects/components/object-detail-panel.tsx:312
+#: src/features/objects/components/object-detail-panel.tsx:313
 msgid "Stop watching"
 msgstr "İzlemeyi bırak"
 
@@ -1856,6 +1933,10 @@ msgstr "Şartlar ve koşullar"
 msgid "Text"
 msgstr "Metin"
 
+#: ../../../lib/web/src/components/step-up-dialog.tsx:192
+msgid "That code is incorrect or has expired."
+msgstr "Bu kod yanlış veya süresi dolmuş."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:181
 msgid "Theme"
 msgstr "Tema"
@@ -1878,7 +1959,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "Bu işlem \"{0}\" ve tüm nesnelerini, yorumlarını ve eklerini kalıcı olarak silecek. Bu işlem geri alınamaz."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1055
+#: src/routes/_authenticated/$crmId/index.tsx:1070
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Bu işlem \"{0}\" öğesini kenar çubuğundan kaldıracak ve bu CRM için güncellemeleri durduracak."
 
@@ -1978,7 +2059,7 @@ msgstr "Aramak için yaz..."
 msgid "Unable to redirect to login. Please try again."
 msgstr "Giriş sayfasına yönlendirilemedi. Lütfen tekrar dene."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:143
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "Unassigned"
 msgstr "Atanmamış"
 
@@ -1993,24 +2074,24 @@ msgstr "Amerika Birleşik Devletleri"
 #: src/features/crms/pages/crms-list-page.tsx:146
 #: src/features/crms/pages/crms-list-page.tsx:163
 #: src/features/crms/pages/crms-list-page.tsx:165
-#: src/routes/_authenticated/$crmId/index.tsx:915
-#: src/routes/_authenticated/$crmId/index.tsx:1056
+#: src/routes/_authenticated/$crmId/index.tsx:930
+#: src/routes/_authenticated/$crmId/index.tsx:1071
 msgid "Unsubscribe"
 msgstr "Aboneliği iptal et"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1054
+#: src/routes/_authenticated/$crmId/index.tsx:1069
 msgid "Unsubscribe from CRM?"
 msgstr "CRM aboneliği iptal edilsin mi?"
 
-#: src/routes/_authenticated/$crmId/index.tsx:552
+#: src/routes/_authenticated/$crmId/index.tsx:567
 msgid "Unsubscribed"
 msgstr "Abonelik iptal edildi"
 
 #: src/features/board/components/board-card.tsx:78
 #: src/features/board/components/board-card.tsx:79
-#: src/features/objects/components/create-object-dialog.tsx:156
-#: src/features/objects/components/object-detail-panel.tsx:275
-#: src/features/objects/components/object-detail-panel.tsx:279
+#: src/features/objects/components/create-object-dialog.tsx:157
+#: src/features/objects/components/object-detail-panel.tsx:276
+#: src/features/objects/components/object-detail-panel.tsx:280
 #: src/features/objects/components/object-links.tsx:65
 #: src/features/objects/components/object-links.tsx:147
 #: src/features/objects/components/object-links.tsx:159
@@ -2026,14 +2107,18 @@ msgstr "Doğrulanmamış"
 msgid "Updated"
 msgstr "Güncellendi"
 
-#: src/features/objects/components/create-object-dialog.tsx:464
-#: src/features/objects/components/object-attachments.tsx:210
+#: src/features/objects/components/create-object-dialog.tsx:465
+#: src/features/objects/components/object-attachments.tsx:197
 msgid "Upload"
 msgstr "Yükle"
 
 #: src/routes/_authenticated/$crmId/design.tsx:294
 msgid "Upload .json file"
 msgstr ".json dosyası yükle"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:335
+msgid "Use your passkey"
+msgstr "Geçiş anahtarınızı kullanın"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:155
 #: src/features/editor/components/add-dialogs.tsx:130
@@ -2052,6 +2137,7 @@ msgstr "Doğrulama kodu gönderildi"
 msgid "Verification failed"
 msgstr "Doğrulama başarısız"
 
+#: ../../../lib/web/src/components/step-up-dialog.tsx:385
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:164
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:106
 msgid "Verify"
@@ -2060,6 +2146,10 @@ msgstr "Doğrula"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:58
 msgid "Verify email address"
 msgstr "E-posta adresini doğrula"
+
+#: ../../../lib/web/src/components/attachment-gallery.tsx:63
+msgid "Video thumbnail"
+msgstr "Video küçük resmi"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:30
 msgid "View"
@@ -2073,7 +2163,7 @@ msgstr "Tümünü görüntüle"
 msgid "View all notifications"
 msgstr "Tüm bildirimleri görüntüle"
 
-#: src/features/objects/components/object-detail-panel.tsx:297
+#: src/features/objects/components/object-detail-panel.tsx:298
 msgid "View and edit item details"
 msgstr "Öğe detaylarını görüntüle ve düzenle"
 
@@ -2085,7 +2175,7 @@ msgstr "Kontrolleri görüntüle"
 msgid "View only"
 msgstr "Yalnızca görüntüleme"
 
-#: src/routes/_authenticated/$crmId/index.tsx:869
+#: src/routes/_authenticated/$crmId/index.tsx:884
 msgid "View options"
 msgstr "Görünüm seçenekleri"
 
@@ -2093,8 +2183,8 @@ msgstr "Görünüm seçenekleri"
 msgid "Views"
 msgstr "Görünümler"
 
-#: src/features/objects/components/object-detail-panel.tsx:311
 #: src/features/objects/components/object-detail-panel.tsx:312
+#: src/features/objects/components/object-detail-panel.tsx:313
 msgid "Watch"
 msgstr "İzle"
 
@@ -2118,10 +2208,14 @@ msgstr "Web sitesi bakımda!"
 msgid "Wednesday"
 msgstr "Çarşamba"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:528
-msgid "Write, comment, and view"
-msgstr "Yaz, yorum yap ve görüntüle"
+#: src/routes/_authenticated/$crmId/index.tsx:92
+msgid "You don't have access to this CRM."
+msgstr "Bu CRM'e erişiminiz yok."
 
 #: src/features/crms/pages/crms-list-page.tsx:94
 msgid "You have no CRMs yet."
 msgstr "Henüz CRM'in yok."
+
+#: ../../../lib/web/src/components/restore-banner.tsx:82
+msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
+msgstr "Hesabınız {source} adresinden buraya taşındı. Orada silene kadar mesajlar ve bildirimler her iki sunucuya da ulaşabilir, bazı içerikleriniz eski sunucudan sunulmaya devam eder ve takipçileriniz sizi burada bulmak için birkaç dakika bekleyebilir."

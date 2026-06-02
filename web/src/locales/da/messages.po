@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/objects/components/create-object-dialog.tsx:172
+#: src/features/objects/components/create-object-dialog.tsx:173
 msgid " or "
 msgstr " eller "
 
@@ -101,7 +101,7 @@ msgstr "Kontotype"
 msgid "Account verified"
 msgstr "Konto bekræftet"
 
-#: src/features/objects/components/object-detail-panel.tsx:285
+#: src/features/objects/components/object-detail-panel.tsx:286
 msgid "Activity"
 msgstr "Aktivitet"
 
@@ -145,8 +145,8 @@ msgstr "Tilføj checklistepunkt"
 msgid "Add class"
 msgstr "Tilføj klasse"
 
-#: src/routes/_authenticated/$crmId/index.tsx:880
-#: src/routes/_authenticated/$crmId/index.tsx:1048
+#: src/routes/_authenticated/$crmId/index.tsx:895
+#: src/routes/_authenticated/$crmId/index.tsx:1063
 msgid "Add column"
 msgstr "Tilføj kolonne"
 
@@ -223,11 +223,11 @@ msgid "Allow sort by"
 msgstr "Tillad sortering efter"
 
 #. placeholder {0}: deleteTarget?.name
-#: src/features/objects/components/object-attachments.tsx:232
+#: src/features/objects/components/object-attachments.tsx:209
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Er du sikker på, at du vil slette \"{0}\"?"
 
-#: src/features/objects/components/object-detail-panel.tsx:475
+#: src/features/objects/components/object-detail-panel.tsx:476
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Er du sikker på, at du vil slette \"{title}\"? Denne handling kan ikke fortrydes."
 
@@ -261,6 +261,10 @@ msgstr "Vedhæft kommentarfiler"
 msgid "Attach reply files"
 msgstr "Vedhæft svarfiler"
 
+#: ../../../lib/web/src/components/step-up-dialog.tsx:312
+msgid "Authenticator code"
+msgstr "Authenticator-kode"
+
 #: src/components/keyboard-shortcuts-help.tsx:47
 msgid "Available keyboard shortcuts"
 msgstr "Tilgængelige tastaturgenveje"
@@ -278,7 +282,7 @@ msgid "Back to CRM"
 msgstr "Tilbage til CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:91
+#: src/routes/_authenticated/$crmId/index.tsx:106
 msgid "Back to CRMs"
 msgstr "Tilbage til CRM'er"
 
@@ -314,6 +318,7 @@ msgid "Can be child of"
 msgstr "Kan være underordnet"
 
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:64
+#: ../../../lib/web/src/components/step-up-dialog.tsx:360
 #: ../../../lib/web/src/components/travelling-picker.tsx:292
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:245
 #: ../../../lib/web/src/features/access/access-dialog.tsx:325
@@ -325,7 +330,7 @@ msgstr "Kan være underordnet"
 #: src/features/editor/components/option-dialog.tsx:135
 #: src/features/objects/components/comment-thread.tsx:172
 #: src/routes/_authenticated/$crmId/design.tsx:301
-#: src/routes/_authenticated/$crmId/index.tsx:942
+#: src/routes/_authenticated/$crmId/index.tsx:957
 msgid "Cancel"
 msgstr "Annuller"
 
@@ -338,11 +343,11 @@ msgstr "Annullér redigering"
 msgid "Cancel reply"
 msgstr "Annuller svar"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:131
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Category for this notification"
 msgstr "Kategori for denne notifikation"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:115
+#: ../../../lib/web/src/components/notification-category-button.tsx:119
 msgid "Change notification category"
 msgstr "Skift notifikationskategori"
 
@@ -374,7 +379,7 @@ msgstr "Vælg mellem systemindstilling, lys tilstand eller mørk tilstand"
 msgid "Choose language"
 msgstr "Vælg sprog"
 
-#: src/routes/_authenticated/$crmId/index.tsx:766
+#: src/routes/_authenticated/$crmId/index.tsx:781
 msgid "Class"
 msgstr "Klasse"
 
@@ -406,8 +411,8 @@ msgstr "Ryd valg (Escape)"
 #: ../../../lib/web/src/components/ui/dialog.tsx:75
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:318
 #: ../../../lib/web/src/components/ui/sheet.tsx:76
-#: src/features/objects/components/create-object-dialog.tsx:344
 #: src/features/objects/components/create-object-dialog.tsx:345
+#: src/features/objects/components/create-object-dialog.tsx:346
 msgid "Close"
 msgstr "Luk"
 
@@ -458,7 +463,7 @@ msgid "Comment and view"
 msgstr "Kommenter og se"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:284
+#: src/features/objects/components/object-detail-panel.tsx:285
 msgid "Comments ({0})"
 msgstr "Kommentarer ({0})"
 
@@ -496,6 +501,10 @@ msgstr "Kontekstuelle oplysninger og detaljer."
 msgid "Continue"
 msgstr "Fortsæt"
 
+#: ../../../lib/web/src/components/step-up-dialog.tsx:349
+msgid "Continue with {label}"
+msgstr "Fortsæt med {label}"
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:624
 msgid "Control who can view and interact with this CRM"
 msgstr "Styr hvem der kan se og interagere med denne CRM"
@@ -512,10 +521,22 @@ msgstr "Kerneoplysninger om denne CRM"
 msgid "Could not load this document. Please try again later."
 msgstr "Kunne ikke indlæse dette dokument. Prøv igen senere."
 
+#: ../../../lib/web/src/components/step-up-dialog.tsx:181
+msgid "Couldn't send the code. Please try again."
+msgstr "Koden kunne ikke sendes. Prøv igen."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:133
+msgid "Couldn't start re-authentication. Please try again."
+msgstr "Kunne ikke starte gentaget godkendelse. Prøv igen."
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:218
+msgid "Couldn't verify with that account. Please try again."
+msgstr "Kunne ikke verificere med den konto. Prøv venligst igen."
+
 #: src/features/board/components/board-column.tsx:523
 #: src/features/board/components/board-column.tsx:661
-#: src/features/objects/components/create-object-dialog.tsx:336
-#: src/features/objects/components/create-object-dialog.tsx:480
+#: src/features/objects/components/create-object-dialog.tsx:337
+#: src/features/objects/components/create-object-dialog.tsx:481
 #: src/features/tree/components/tree-view.tsx:363
 msgid "Create"
 msgstr "Opret"
@@ -525,7 +546,7 @@ msgstr "Opret"
 msgid "Create a new CRM"
 msgstr "Opret en ny CRM"
 
-#: src/features/objects/components/create-object-dialog.tsx:315
+#: src/features/objects/components/create-object-dialog.tsx:316
 msgid "Create a new CRM object."
 msgstr "Opret et nyt CRM-objekt."
 
@@ -540,7 +561,7 @@ msgstr "Opret CRM"
 msgid "Create new item"
 msgstr "Opret nyt punkt"
 
-#: src/features/objects/components/create-object-dialog.tsx:314
+#: src/features/objects/components/create-object-dialog.tsx:315
 msgid "Create object"
 msgstr "Opret objekt"
 
@@ -550,7 +571,7 @@ msgid "Created"
 msgstr "Oprettet"
 
 #: src/features/crms/components/create-crm-dialog.tsx:140
-#: src/features/objects/components/create-object-dialog.tsx:480
+#: src/features/objects/components/create-object-dialog.tsx:481
 msgid "Creating..."
 msgstr "Opretter..."
 
@@ -619,13 +640,13 @@ msgstr "Standardsortering"
 #: src/features/objects/components/comment-thread.tsx:232
 #: src/features/objects/components/comment-thread.tsx:269
 #: src/features/objects/components/comment-thread.tsx:385
-#: src/features/objects/components/object-attachments.tsx:233
-#: src/features/objects/components/object-detail-panel.tsx:476
+#: src/features/objects/components/object-attachments.tsx:210
+#: src/features/objects/components/object-detail-panel.tsx:477
 #: src/routes/_authenticated/$crmId_.settings.tsx:346
 msgid "Delete"
 msgstr "Slet"
 
-#: src/features/objects/components/object-attachments.tsx:231
+#: src/features/objects/components/object-attachments.tsx:208
 msgid "Delete attachment"
 msgstr "Slet vedhæftning"
 
@@ -657,9 +678,9 @@ msgstr "Slet CRM?"
 msgid "Delete field"
 msgstr "Slet felt"
 
-#: src/features/objects/components/object-detail-panel.tsx:326
 #: src/features/objects/components/object-detail-panel.tsx:327
-#: src/features/objects/components/object-detail-panel.tsx:474
+#: src/features/objects/components/object-detail-panel.tsx:328
+#: src/features/objects/components/object-detail-panel.tsx:475
 msgid "Delete item"
 msgstr "Slet punkt"
 
@@ -677,6 +698,10 @@ msgstr "Slet valgmulighed {0}"
 msgid "Delete view"
 msgstr "Slet visning"
 
+#: ../../../lib/web/src/components/restore-banner.tsx:90
+msgid "Delete your account on the old server"
+msgstr "Slet din konto på den gamle server"
+
 #: ../../../lib/web/src/components/data-table/column-header.tsx:60
 msgid "Desc"
 msgstr "Faldende"
@@ -687,7 +712,7 @@ msgstr "Beskrivelse"
 
 #: src/routes/_authenticated/$crmId/design.tsx:61
 #: src/routes/_authenticated/$crmId/design.tsx:129
-#: src/routes/_authenticated/$crmId/index.tsx:895
+#: src/routes/_authenticated/$crmId/index.tsx:910
 msgid "Design"
 msgstr "Design"
 
@@ -696,8 +721,8 @@ msgid "Design imported"
 msgstr "Design importeret"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:527
-msgid "Design, write, comment, and view"
-msgstr "Design, skriv, kommenter og se"
+msgid "Design, create, edit, comment, and view"
+msgstr "Design, opret, rediger, kommenter og se"
 
 #: ../../../lib/web/src/components/layout/right-panel.tsx:144
 msgid "Details Panel"
@@ -718,8 +743,12 @@ msgstr "Registrer fra webbrowser"
 msgid "Direction"
 msgstr "Retning"
 
-#: src/routes/_authenticated/$crmId/index.tsx:964
-#: src/routes/_authenticated/$crmId/index.tsx:965
+#: ../../../lib/web/src/components/restore-banner.tsx:73
+msgid "Dismiss"
+msgstr "Afvis"
+
+#: src/routes/_authenticated/$crmId/index.tsx:979
+#: src/routes/_authenticated/$crmId/index.tsx:980
 msgid "Dismiss board hint"
 msgstr "Afvis tavletip"
 
@@ -730,11 +759,11 @@ msgstr "Viser mobil-sidebjælken."
 #: src/features/editor/components/edit-dialogs.tsx:500
 #: src/features/editor/components/edit-dialogs.tsx:851
 #: src/features/editor/components/edit-dialogs.tsx:1086
-#: src/features/objects/components/object-detail-panel.tsx:338
+#: src/features/objects/components/object-detail-panel.tsx:339
 msgid "Done"
 msgstr "Færdig"
 
-#: src/routes/_authenticated/$crmId/index.tsx:957
+#: src/routes/_authenticated/$crmId/index.tsx:972
 msgid "Double click on a column to add content"
 msgstr "Dobbeltklik på en kolonne for at tilføje indhold"
 
@@ -746,7 +775,7 @@ msgstr "Download"
 msgid "Download backup first"
 msgstr "Download sikkerhedskopi først"
 
-#: src/routes/_authenticated/$crmId/index.tsx:938
+#: src/routes/_authenticated/$crmId/index.tsx:953
 msgid "Drag columns to re-order them"
 msgstr "Træk kolonner for at omarrangere dem"
 
@@ -794,11 +823,27 @@ msgstr "Rediger valgt kort"
 msgid "Edit view"
 msgstr "Redigér visning"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:528
+msgid "Edit, comment, and view"
+msgstr "Rediger, kommenter og se"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:286
+msgid "Email code"
+msgstr "E-mailkode"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:296
+msgid "Enter the code from your email"
+msgstr "Indtast koden fra din e-mail"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:321
+msgid "Enter your authenticator code"
+msgstr "Indtast din autentificeringskode"
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:313
 msgid "Entity ID"
 msgstr "Entitets-ID"
 
-#: src/features/objects/components/object-detail-panel.tsx:254
+#: src/features/objects/components/object-detail-panel.tsx:255
 msgid "Error"
 msgstr "Fejl"
 
@@ -806,7 +851,7 @@ msgstr "Fejl"
 msgid "Expand sidebar"
 msgstr "Udvid sidebjælke"
 
-#: src/routes/_authenticated/$crmId/index.tsx:901
+#: src/routes/_authenticated/$crmId/index.tsx:916
 msgid "Export CSV"
 msgstr "Eksportér CSV"
 
@@ -846,7 +891,7 @@ msgstr "Kunne ikke oprette valgmulighed"
 msgid "Failed to create view"
 msgstr "Kunne ikke oprette visning"
 
-#: src/features/objects/components/object-attachments.tsx:75
+#: src/features/objects/components/object-attachments.tsx:73
 msgid "Failed to delete attachment"
 msgstr "Kunne ikke slette vedhæftning"
 
@@ -876,7 +921,7 @@ msgstr "Kunne ikke importere design"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:40
 #: src/routes/_authenticated/$crmId/$objectId.tsx:68
-#: src/routes/_authenticated/$crmId/index.tsx:67
+#: src/routes/_authenticated/$crmId/index.tsx:70
 msgid "Failed to load CRM"
 msgstr "Kunne ikke indlæse CRM"
 
@@ -888,7 +933,7 @@ msgstr "Kunne ikke indlæse CRM-design"
 msgid "Failed to load CRMs"
 msgstr "Kunne ikke indlæse CRM'er"
 
-#: src/features/objects/components/object-detail-panel.tsx:255
+#: src/features/objects/components/object-detail-panel.tsx:256
 msgid "Failed to load item"
 msgstr "Kunne ikke indlæse element"
 
@@ -930,7 +975,7 @@ msgid "Failed to subscribe"
 msgstr "Kunne ikke abonnere"
 
 #: src/features/crms/pages/crms-list-page.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:556
+#: src/routes/_authenticated/$crmId/index.tsx:571
 msgid "Failed to unsubscribe"
 msgstr "Kunne ikke afmelde"
 
@@ -938,7 +983,7 @@ msgstr "Kunne ikke afmelde"
 msgid "Failed to update access level"
 msgstr "Kunne ikke opdatere adgangsniveau"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:104
+#: ../../../lib/web/src/components/notification-category-button.tsx:108
 msgid "Failed to update category"
 msgstr "Kunne ikke opdatere kategori"
 
@@ -954,7 +999,7 @@ msgstr "Kunne ikke opdatere crm"
 msgid "Failed to update field"
 msgstr "Kunne ikke opdatere felt"
 
-#: src/features/objects/components/object-attachments.tsx:60
+#: src/features/objects/components/object-attachments.tsx:58
 msgid "Failed to upload attachment"
 msgstr "Kunne ikke uploade vedhæftning"
 
@@ -962,9 +1007,9 @@ msgstr "Kunne ikke uploade vedhæftning"
 msgid "Fields"
 msgstr "Felter"
 
-#: src/features/objects/components/create-object-dialog.tsx:423
-#: src/features/objects/components/object-attachments.tsx:106
-#: src/features/objects/components/object-attachments.tsx:123
+#: src/features/objects/components/create-object-dialog.tsx:424
+#: src/features/objects/components/object-attachments.tsx:96
+#: src/features/objects/components/object-attachments.tsx:113
 msgid "Files"
 msgstr "Filer"
 
@@ -976,6 +1021,10 @@ msgstr "Find CRM'er"
 #: src/routes/_authenticated/$crmId_.settings.tsx:318
 msgid "Fingerprint"
 msgstr "Fingeraftryk"
+
+#: ../../../lib/web/src/components/restore-banner.tsx:79
+msgid "Finish moving your account"
+msgstr "Afslut flytning af din konto"
 
 #: src/features/editor/components/edit-dialogs.tsx:1010
 msgid "Flags"
@@ -1050,7 +1099,7 @@ msgstr "Hjem"
 msgid "Hot"
 msgstr "Populære"
 
-#: src/routes/_authenticated/$crmId/index.tsx:766
+#: src/routes/_authenticated/$crmId/index.tsx:781
 msgid "ID"
 msgstr "ID"
 
@@ -1091,7 +1140,7 @@ msgstr "Ugyldig JSON-fil"
 msgid "Invalid verification code"
 msgstr "Ugyldig verifikationskode"
 
-#: src/features/objects/components/object-detail-panel.tsx:296
+#: src/features/objects/components/object-detail-panel.tsx:297
 msgid "Item details"
 msgstr "Elementdetaljer"
 
@@ -1134,11 +1183,11 @@ msgstr "Liste"
 msgid "Load more"
 msgstr "Indlæs flere"
 
-#: src/features/objects/components/object-detail-panel.tsx:238
+#: src/features/objects/components/object-detail-panel.tsx:239
 msgid "Loading item"
 msgstr "Indlæser element"
 
-#: src/features/objects/components/object-detail-panel.tsx:239
+#: src/features/objects/components/object-detail-panel.tsx:240
 msgid "Loading item details"
 msgstr "Indlæser elementdetaljer"
 
@@ -1210,14 +1259,14 @@ msgid "Name is required"
 msgstr "Navn er påkrævet"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:40
-#: src/features/objects/components/create-object-dialog.tsx:321
-#: src/routes/_authenticated/$crmId/index.tsx:835
-#: src/routes/_authenticated/$crmId/index.tsx:852
+#: src/features/objects/components/create-object-dialog.tsx:322
+#: src/routes/_authenticated/$crmId/index.tsx:850
+#: src/routes/_authenticated/$crmId/index.tsx:867
 msgid "New"
 msgstr "Ny"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:833
+#: src/routes/_authenticated/$crmId/index.tsx:848
 msgid "New {0}"
 msgstr "Ny {0}"
 
@@ -1225,7 +1274,7 @@ msgstr "Ny {0}"
 msgid "Next image"
 msgstr "Næste billede"
 
-#: src/features/objects/components/create-object-dialog.tsx:390
+#: src/features/objects/components/create-object-dialog.tsx:391
 msgid "No {parentClassNames} to add to"
 msgstr "Ingen {parentClassNames} at tilføje til"
 
@@ -1258,7 +1307,7 @@ msgstr "Ingen CRM'er fundet"
 msgid "No groups available"
 msgstr "Ingen grupper tilgængelige"
 
-#: src/features/objects/components/create-object-dialog.tsx:357
+#: src/features/objects/components/create-object-dialog.tsx:358
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Ingen emnetyper kan oprettes endnu. Opret først de nødvendige overordnede emner."
 
@@ -1266,7 +1315,7 @@ msgstr "Ingen emnetyper kan oprettes endnu. Opret først de nødvendige overordn
 msgid "No matching objects"
 msgstr "Ingen matchende objekter"
 
-#: src/routes/_authenticated/$crmId/index.tsx:751
+#: src/routes/_authenticated/$crmId/index.tsx:766
 msgid "No objects to export."
 msgstr "Ingen objekter at eksportere."
 
@@ -1296,7 +1345,7 @@ msgstr "Ingen status"
 msgid "No time zone found."
 msgstr "Ingen tidszone fundet."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:135
+#: ../../../lib/web/src/components/notification-category-button.tsx:139
 msgid "No topic record yet — try again after the next notification."
 msgstr "Ingen emnepost endnu — prøv igen efter næste notifikation."
 
@@ -1319,13 +1368,13 @@ msgstr "Ingen visninger"
 #: src/features/editor/components/edit-dialogs.tsx:473
 #: src/features/editor/components/edit-dialogs.tsx:730
 #: src/features/editor/components/edit-dialogs.tsx:733
-#: src/features/objects/components/create-object-dialog.tsx:373
-#: src/features/objects/components/create-object-dialog.tsx:376
-#: src/features/objects/components/create-object-dialog.tsx:380
-#: src/features/objects/components/object-detail-panel.tsx:396
-#: src/features/objects/components/object-detail-panel.tsx:405
-#: src/features/objects/components/object-detail-panel.tsx:408
-#: src/features/objects/components/object-detail-panel.tsx:412
+#: src/features/objects/components/create-object-dialog.tsx:374
+#: src/features/objects/components/create-object-dialog.tsx:377
+#: src/features/objects/components/create-object-dialog.tsx:381
+#: src/features/objects/components/object-detail-panel.tsx:397
+#: src/features/objects/components/object-detail-panel.tsx:406
+#: src/features/objects/components/object-detail-panel.tsx:409
+#: src/features/objects/components/object-detail-panel.tsx:413
 msgid "None"
 msgstr "Ingen"
 
@@ -1383,7 +1432,7 @@ msgstr "Åbn navigationsmenu"
 msgid "Open option actions"
 msgstr "Åbn indstillingshandlinger"
 
-#: src/routes/_authenticated/$crmId/index.tsx:860
+#: src/routes/_authenticated/$crmId/index.tsx:875
 msgid "Open page actions"
 msgstr "Åbn sidehandlinger"
 
@@ -1421,18 +1470,30 @@ msgstr "Andet"
 msgid "Owner"
 msgstr "Ejer"
 
-#: src/features/objects/components/create-object-dialog.tsx:365
-#: src/features/objects/components/object-detail-panel.tsx:390
-#: src/routes/_authenticated/$crmId/index.tsx:766
+#: src/features/objects/components/create-object-dialog.tsx:366
+#: src/features/objects/components/object-detail-panel.tsx:391
+#: src/routes/_authenticated/$crmId/index.tsx:781
 msgid "Parent"
 msgstr "Overordnet"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:331
+msgid "Passkey"
+msgstr "Adgangsnøgle"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:206
+msgid "Passkey verification failed. Please try again."
+msgstr "Verificering med adgangsnøgle mislykkedes. Prøv igen."
+
+#: ../../../lib/web/src/components/restore-banner.tsx:126
+msgid "Passkeys"
+msgstr "Adgangsnøgler"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:337
 msgid "Permanently delete this CRM and all its content."
 msgstr "Slet denne CRM og alt dens indhold permanent."
 
-#: src/routes/_authenticated/$crmId/index.tsx:648
-#: src/routes/_authenticated/$crmId/index.tsx:682
+#: src/routes/_authenticated/$crmId/index.tsx:663
+#: src/routes/_authenticated/$crmId/index.tsx:697
 msgid "Please add one or more classes to the CRM design."
 msgstr "Tilføj en eller flere klasser til CRM-designet."
 
@@ -1450,13 +1511,21 @@ msgstr "Privatliv"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/objects/components/object-detail-panel.tsx:283
+#: src/features/objects/components/object-detail-panel.tsx:284
 msgid "Properties"
 msgstr "Egenskaber"
 
-#: src/routes/_authenticated/$crmId/index.tsx:884
+#: ../../../lib/web/src/components/restore-banner.tsx:98
+msgid "Re-link your accounts on this server"
+msgstr "Gentilknyt dine konti på denne server"
+
+#: src/routes/_authenticated/$crmId/index.tsx:899
 msgid "Re-order columns"
 msgstr "Omarrangér kolonner"
+
+#: ../../../lib/web/src/components/restore-banner.tsx:120
+msgid "Re-register your passkeys on this server"
+msgstr "Registrer dine adgangsnøgler på denne server igen"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
 #: ../../../lib/web/src/components/search-entity-page.tsx:191
@@ -1556,6 +1625,10 @@ msgstr "Svar til {0}..."
 msgid "Required"
 msgstr "Påkrævet"
 
+#: ../../../lib/web/src/components/step-up-dialog.tsx:364
+msgid "Resend email"
+msgstr "Send e-mail igen"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:77
 #: ../../../lib/web/src/components/data-table/toolbar.tsx:78
 msgid "Reset"
@@ -1596,7 +1669,7 @@ msgstr "Lørdag"
 
 #: src/features/editor/components/option-dialog.tsx:138
 #: src/features/objects/components/comment-thread.tsx:183
-#: src/routes/_authenticated/$crmId/index.tsx:949
+#: src/routes/_authenticated/$crmId/index.tsx:964
 msgid "Save"
 msgstr "Gem"
 
@@ -1709,6 +1782,10 @@ msgstr "Vælg..."
 msgid "Send again"
 msgstr "Send igen"
 
+#: ../../../lib/web/src/components/step-up-dialog.tsx:304
+msgid "Send email"
+msgstr "Send e-mail"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:133
 msgid "Serif"
 msgstr "Serif"
@@ -1736,7 +1813,7 @@ msgstr "Angiv oprindelse og destination"
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:163
 #: src/routes/_authenticated/$crmId_.settings.tsx:186
-#: src/routes/_authenticated/$crmId/index.tsx:909
+#: src/routes/_authenticated/$crmId/index.tsx:924
 msgid "Settings"
 msgstr "Indstillinger"
 
@@ -1796,8 +1873,8 @@ msgstr "Start diskussionen ved at tilføje den første kommentar."
 msgid "Stay tuned though!"
 msgstr "Hold dig dog opdateret!"
 
-#: src/features/objects/components/object-detail-panel.tsx:311
 #: src/features/objects/components/object-detail-panel.tsx:312
+#: src/features/objects/components/object-detail-panel.tsx:313
 msgid "Stop watching"
 msgstr "Stop overvågning"
 
@@ -1856,6 +1933,10 @@ msgstr "Vilkår og betingelser"
 msgid "Text"
 msgstr "Tekst"
 
+#: ../../../lib/web/src/components/step-up-dialog.tsx:192
+msgid "That code is incorrect or has expired."
+msgstr "Koden er forkert eller udløbet."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:181
 msgid "Theme"
 msgstr "Tema"
@@ -1878,7 +1959,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "Dette vil permanent slette \"{0}\" og alle dens objekter, kommentarer og vedhæftede filer. Denne handling kan ikke fortrydes."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1055
+#: src/routes/_authenticated/$crmId/index.tsx:1070
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Dette vil fjerne \"{0}\" fra dit sidepanel og stoppe opdateringer for denne CRM."
 
@@ -1978,7 +2059,7 @@ msgstr "Skriv for at søge..."
 msgid "Unable to redirect to login. Please try again."
 msgstr "Kan ikke omdirigere til login. Prøv igen."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:143
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "Unassigned"
 msgstr "Ikke tildelt"
 
@@ -1993,24 +2074,24 @@ msgstr "USA"
 #: src/features/crms/pages/crms-list-page.tsx:146
 #: src/features/crms/pages/crms-list-page.tsx:163
 #: src/features/crms/pages/crms-list-page.tsx:165
-#: src/routes/_authenticated/$crmId/index.tsx:915
-#: src/routes/_authenticated/$crmId/index.tsx:1056
+#: src/routes/_authenticated/$crmId/index.tsx:930
+#: src/routes/_authenticated/$crmId/index.tsx:1071
 msgid "Unsubscribe"
 msgstr "Afmeld"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1054
+#: src/routes/_authenticated/$crmId/index.tsx:1069
 msgid "Unsubscribe from CRM?"
 msgstr "Afmeld CRM?"
 
-#: src/routes/_authenticated/$crmId/index.tsx:552
+#: src/routes/_authenticated/$crmId/index.tsx:567
 msgid "Unsubscribed"
 msgstr "Afmeldt"
 
 #: src/features/board/components/board-card.tsx:78
 #: src/features/board/components/board-card.tsx:79
-#: src/features/objects/components/create-object-dialog.tsx:156
-#: src/features/objects/components/object-detail-panel.tsx:275
-#: src/features/objects/components/object-detail-panel.tsx:279
+#: src/features/objects/components/create-object-dialog.tsx:157
+#: src/features/objects/components/object-detail-panel.tsx:276
+#: src/features/objects/components/object-detail-panel.tsx:280
 #: src/features/objects/components/object-links.tsx:65
 #: src/features/objects/components/object-links.tsx:147
 #: src/features/objects/components/object-links.tsx:159
@@ -2026,14 +2107,18 @@ msgstr "Uverificeret"
 msgid "Updated"
 msgstr "Opdateret"
 
-#: src/features/objects/components/create-object-dialog.tsx:464
-#: src/features/objects/components/object-attachments.tsx:210
+#: src/features/objects/components/create-object-dialog.tsx:465
+#: src/features/objects/components/object-attachments.tsx:197
 msgid "Upload"
 msgstr "Upload"
 
 #: src/routes/_authenticated/$crmId/design.tsx:294
 msgid "Upload .json file"
 msgstr "Upload .json-fil"
+
+#: ../../../lib/web/src/components/step-up-dialog.tsx:335
+msgid "Use your passkey"
+msgstr "Brug din adgangsnøgle"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:155
 #: src/features/editor/components/add-dialogs.tsx:130
@@ -2052,6 +2137,7 @@ msgstr "Verifikationskode sendt"
 msgid "Verification failed"
 msgstr "Verifikation mislykkedes"
 
+#: ../../../lib/web/src/components/step-up-dialog.tsx:385
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:164
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:106
 msgid "Verify"
@@ -2060,6 +2146,10 @@ msgstr "Verificer"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:58
 msgid "Verify email address"
 msgstr "Verificer e-mailadresse"
+
+#: ../../../lib/web/src/components/attachment-gallery.tsx:63
+msgid "Video thumbnail"
+msgstr "Videominiature"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:30
 msgid "View"
@@ -2073,7 +2163,7 @@ msgstr "Vis alle"
 msgid "View all notifications"
 msgstr "Vis alle notifikationer"
 
-#: src/features/objects/components/object-detail-panel.tsx:297
+#: src/features/objects/components/object-detail-panel.tsx:298
 msgid "View and edit item details"
 msgstr "Vis og redigér elementets detaljer"
 
@@ -2085,7 +2175,7 @@ msgstr "Vis kontroller"
 msgid "View only"
 msgstr "Kun læseadgang"
 
-#: src/routes/_authenticated/$crmId/index.tsx:869
+#: src/routes/_authenticated/$crmId/index.tsx:884
 msgid "View options"
 msgstr "Visningsindstillinger"
 
@@ -2093,8 +2183,8 @@ msgstr "Visningsindstillinger"
 msgid "Views"
 msgstr "Visninger"
 
-#: src/features/objects/components/object-detail-panel.tsx:311
 #: src/features/objects/components/object-detail-panel.tsx:312
+#: src/features/objects/components/object-detail-panel.tsx:313
 msgid "Watch"
 msgstr "Overvåg"
 
@@ -2118,10 +2208,14 @@ msgstr "Webstedet er under vedligeholdelse!"
 msgid "Wednesday"
 msgstr "Onsdag"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:528
-msgid "Write, comment, and view"
-msgstr "Skriv, kommenter og vis"
+#: src/routes/_authenticated/$crmId/index.tsx:92
+msgid "You don't have access to this CRM."
+msgstr "Du har ikke adgang til dette CRM."
 
 #: src/features/crms/pages/crms-list-page.tsx:94
 msgid "You have no CRMs yet."
 msgstr "Du har endnu ingen CRM'er."
+
+#: ../../../lib/web/src/components/restore-banner.tsx:82
+msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
+msgstr "Din konto blev flyttet hertil fra {source}. Indtil du sletter den dér, kan beskeder og notifikationer nå begge servere, noget af dit indhold serveres stadig fra den gamle server, og følgere kan have brug for et par minutter på at finde dig her."
