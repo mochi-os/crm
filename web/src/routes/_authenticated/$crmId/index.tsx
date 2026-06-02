@@ -29,7 +29,7 @@ import {
 import { Columns3, Download, Ellipsis, Users, GripVertical, LogOut, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
 import crmsApi from "@/api/crms";
 import type { CrmDetails, CrmField, CrmObject, SortState } from "@/types";
-import { canDesign, canWrite } from "@/lib/access";
+import { canDesign, canCreate, canWrite } from "@/lib/access";
 import { useCrmsStore } from "@/stores/crms-store";
 import { BoardContainer } from "@/features/board/components";
 import { TreeView } from "@/features/tree";
@@ -55,16 +55,20 @@ export const Route = createFileRoute("/_authenticated/$crmId/")({
   loader: async ({ params }) => {
     try {
       const crmResponse = await crmsApi.get(params.crmId);
-      return { crm: crmResponse.data, loaderError: null };
+      return { crm: crmResponse.data, loaderError: null, loaderStatus: null };
     } catch (error) {
       const status = extractStatus(error);
-      if (status === 403 || status === 404) {
+      if (status === 403) {
+        return { crm: null as CrmDetails | null, loaderError: null, loaderStatus: 403 };
+      }
+      if (status === 404) {
         throw redirect({ to: "/" });
       }
 
       return {
         crm: null as CrmDetails | null,
         loaderError: getErrorMessage(error, t`Failed to load CRM`),
+        loaderStatus: status,
       };
     }
   },
@@ -73,14 +77,25 @@ export const Route = createFileRoute("/_authenticated/$crmId/")({
 
 function CrmPage() {
   const { t } = useLingui()
-  const { crm, loaderError } = Route.useLoaderData() as {
+  const { crm, loaderError, loaderStatus } = Route.useLoaderData() as {
     crm: CrmDetails | null;
     loaderError: string | null;
+    loaderStatus: number | null;
   };
   const params = Route.useParams();
   const search = Route.useSearch();
   const navigate = useNavigate();
   const router = useRouter();
+
+  useEffect(() => {
+    if (loaderStatus === 403) {
+      toast.error(t`You don't have access to this CRM.`);
+      void navigate({ to: "/" });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (loaderStatus === 403) return null;
 
   if (!crm) {
     return (
@@ -655,7 +670,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
 
   // Keyboard shortcuts
   useKeyboardShortcuts({
-    onCreateNew: handleOpenCreateDialog,
+    onCreateNew: canCreate(access) ? handleOpenCreateDialog : undefined,
     onFocusSearch: () => setShowViewOptions(!showViewOptions),
     onSwitchView: handleSwitchView,
     onSelectNext: handleSelectNext,
@@ -841,7 +856,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         title={crm.crm.name}
         icon={<Users className="size-4 md:size-5" />}
         primaryAction={
-          canWrite(access) ? (
+          canCreate(access) ? (
             <Button
               variant='outline'
               size='sm'
@@ -951,7 +966,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
           </div>
         </div>
       )}
-      {!hintDismissed && !isReorderingColumns && activeView?.viewtype !== "list" && (
+      {!hintDismissed && !isReorderingColumns && activeView?.viewtype !== "list" && canCreate(access) && (
         <div className="flex items-center justify-between px-4 py-2 bg-muted border-b">
           <span className="text-sm text-muted-foreground">
             <Trans>Double click on a column to add content</Trans>
@@ -984,7 +999,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                 onCardClick={handleCardClick}
                 onReparent={canWrite(access) ? handleReparent : undefined}
                 onReorder={canWrite(access) ? handleReorder : undefined}
-                onCreateClick={canWrite(access) ? handleOpenCreateDialog : undefined}
+                onCreateClick={canCreate(access) ? handleOpenCreateDialog : undefined}
               />
             </div>
           ) : (
@@ -1000,8 +1015,8 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                 sort={sort}
                 peopleMap={peopleMap}
                 onCardClick={handleCardClick}
-                onCardDoubleClick={canWrite(access) ? handleCreateChild : undefined}
-                onCreateClick={canWrite(access) ? handleCreateClick : undefined}
+                onCardDoubleClick={canCreate(access) ? handleCreateChild : undefined}
+                onCreateClick={canCreate(access) ? handleCreateClick : undefined}
                 onMoveObject={canWrite(access) ? handleMoveObject : undefined}
                 onReparentObject={canWrite(access) ? handleReparent : undefined}
                 onRenameColumn={canDesign(access) ? handleRenameColumn : undefined}
@@ -1023,7 +1038,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         onClose={() => setSelectedObjectId(null)}
       />
 
-      {canWrite(access) && (
+      {canCreate(access) && (
         <CreateObjectDialog
           open={createDialogOpen}
           onOpenChange={setCreateDialogOpen}
