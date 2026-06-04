@@ -4,7 +4,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { t } from '@lingui/core/macro'
 import { Activity } from "lucide-react";
-import { EmptyState, EntityAvatar, ListSkeleton, useFormat, getAppPath } from "@mochi/web";
+import { ActivityTimeline, EmptyState, EntityAvatar, ListSkeleton, useFormat, getAppPath } from "@mochi/web";
 import crmsApi from "@/api/crms";
 
 interface ActivityListProps {
@@ -48,13 +48,11 @@ export function ActivityList({ crmId, objectId }: ActivityListProps) {
   }
 
   return (
-    <div className="space-y-3">
-      {activities.map((activity) => (
-        <div
-          key={activity.id}
-          className="text-sm border-s-2 border-muted ps-3 py-1"
-        >
-          <div className="font-medium">
+    <ActivityTimeline
+      items={activities.map((activity) => ({
+        id: activity.id,
+        primary: (
+          <p className="text-sm font-medium">
             {formatAction(activity.action)}
             {activity.field && ` ${activity.field}`}
             {activity.oldvalue && activity.newvalue && (
@@ -65,7 +63,9 @@ export function ActivityList({ crmId, objectId }: ActivityListProps) {
                 <span>{activity.newvalue}</span>
               </>
             )}
-          </div>
+          </p>
+        ),
+        secondary: (
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <EntityAvatar
               src={`${getAppPath()}/${crmId}/-/activity/${activity.id}/asset/avatar`}
@@ -78,8 +78,8 @@ export function ActivityList({ crmId, objectId }: ActivityListProps) {
             <span>·</span>
             <span>{formatTimestamp(activity.created)}</span>
           </div>
-        </div>
-      ))}
-    </div>
+        ),
+      }))}
+    />
   );
 }
