@@ -942,13 +942,6 @@ const crmsApi = {
     });
   },
 
-  // ============= Notification Methods =============
-
-  // Check if notification subscriptions exist
-  checkSubscription: async (): Promise<{ data: { exists: boolean } }> => {
-    return crmsRequest.get(endpoints.crms.notificationsCheck);
-  },
-
   // Search users (for adding access rules)
   searchUsers: async (
     query: string,
