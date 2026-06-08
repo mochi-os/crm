@@ -4389,6 +4389,15 @@ def action_recommendations(a):
 
 	return {"data": {"crms": recommendations}}
 
+# List the built-in crm templates (from app assets) for the create-crm and
+# design-import pickers.
+def action_templates(a):
+	if not a.user:
+		a.error.label(401, "errors.not_logged_in")
+		return
+	templates = get_templates(user_language(a))
+	return {"data": {"templates": templates.values()}}
+
 # Subscribe to a remote crm
 def action_subscribe(a):
 	user_id = a.user.identity.id
