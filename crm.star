@@ -5026,6 +5026,7 @@ def event_sync_batch(e):
 		return
 	crm = mochi.db.row("select id from crms where id=? and owner=0", crm_id)
 	if not crm:
+		unsubscribe_stale(e)
 		return
 	now = mochi.time.now()
 
@@ -5120,6 +5121,19 @@ def event_sync_batch(e):
 		mochi.websocket.write(fp, {"type": "crm/update", "crm": crm_id})
 
 # Helper to verify a content event is for a crm we subscribe to
+# unsubscribe_stale tells a CRM owner to drop this member when a broadcast
+# arrives for a CRM the member no longer holds locally. Subscribe writes the
+# local crms(owner=0) row before notifying the owner, so a missing row in a
+# broadcast handler always means a stale roster entry, never an in-flight
+# subscribe. event_unsubscribe deletes by (crm, member), so a non-member
+# unsubscribe is a harmless no-op. The broadcast headers invert: from=crm,
+# to=this member.
+def unsubscribe_stale(e):
+	crm_id = e.header("from")
+	member_id = e.header("to")
+	if crm_id and member_id:
+		mochi.message.send(p2p_headers(member_id, crm_id, "unsubscribe"), {})
+
 def verify_subscription(e):
 	# Broadcasts are sent from the CRM entity itself (broadcast_event uses
 	# from=crm_id), so the authenticated P2P sender IS the CRM. Trust the from
@@ -5130,6 +5144,7 @@ def verify_subscription(e):
 		return None
 	crm = mochi.db.row("select id from crms where id=? and owner=0", crm_id)
 	if not crm:
+		unsubscribe_stale(e)
 		return None
 	return crm_id
 
