@@ -26,7 +26,7 @@ import {
   toast,
   getAppPath,
 } from "@mochi/web";
-import { Columns3, Download, Ellipsis, Users, GripVertical, LogOut, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
+import { Check, Columns3, Download, Ellipsis, Users, GripVertical, LogOut, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
 import crmsApi from "@/api/crms";
 import type { CrmDetails, CrmField, CrmObject, SortState } from "@/types";
 import { canDesign, canCreate, canWrite } from "@/lib/access";
@@ -961,6 +961,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
               onClick={handleSaveColumnOrder}
               disabled={!pendingColumnOrder || reorderColumnsMutation.isPending}
             >
+              <Check className="size-4" />
               <Trans>Save</Trans>
             </Button>
           </div>

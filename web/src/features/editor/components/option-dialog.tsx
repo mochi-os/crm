@@ -21,7 +21,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@mochi/web";
-import { Minus, MoreHorizontal } from "lucide-react";
+import { Check, Minus, MoreHorizontal, Plus } from "lucide-react";
 import type { FieldOption } from "@/types";
 
 interface OptionDialogProps {
@@ -135,11 +135,13 @@ export function OptionDialog({
                 <Trans>Cancel</Trans>
               </Button>
               <Button type="button" onClick={handleSave}>
+                <Check className="size-4" />
                 <Trans>Save</Trans>
               </Button>
             </>
           ) : (
             <Button type="button" onClick={handleAdd} disabled={!name.trim()}>
+              <Plus className="size-4" />
               <Trans>Add option</Trans>
             </Button>
           )}
