@@ -10,7 +10,9 @@ import {
   ConfirmDialog,
   PageHeader,
   Main,
-  cn,
+  Tabs,
+  TabsList,
+  TabsTrigger,
   usePageTitle,
   Input,
   Textarea,
@@ -222,24 +224,20 @@ function CrmSettingsPage() {
       <Main className="space-y-6">
         {/* Tabs - only show for owners */}
         {isOwner && (
-          <div className="flex gap-1 border-b">
-            {tabs.map((t) => (
-              <button
-                key={t.id}
-                onClick={() => setActiveTab(t.id)}
-                className={cn(
-                  "flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors",
-                  "border-b-2 -mb-px",
-                  activeTab === t.id
-                    ? "border-primary text-foreground"
-                    : "border-transparent text-muted-foreground hover:text-foreground"
-                )}
-              >
-                {t.icon}
-                {t.label}
-              </button>
-            ))}
-          </div>
+          <Tabs
+            variant="underline"
+            value={activeTab}
+            onValueChange={(value) => setActiveTab(value as TabId)}
+          >
+            <TabsList>
+              {tabs.map((t) => (
+                <TabsTrigger key={t.id} value={t.id} className="gap-2">
+                  {t.icon}
+                  {t.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
         )}
 
         {/* Tab content */}
@@ -475,7 +473,7 @@ function EditableFieldRow({
               {isSaving ? (
                 <Loader2 className="size-4 animate-spin" />
               ) : (
-                <Check className="size-4 text-green-600" />
+                <Check className="size-4 text-success" />
               )}
             </Button>
             <Button

@@ -50,8 +50,8 @@ describe("ViewTabs", () => {
     const boardButton = screen.getByText("Board").closest("button");
     const listButton = screen.getByText("List").closest("button");
 
-    expect(boardButton).toHaveClass("border-primary");
-    expect(listButton).not.toHaveClass("border-primary");
+    expect(boardButton).toHaveAttribute("data-state", "active");
+    expect(listButton).toHaveAttribute("data-state", "inactive");
   });
 
   it("should render add view button when onAddView is provided", () => {

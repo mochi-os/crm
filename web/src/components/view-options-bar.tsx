@@ -87,15 +87,17 @@ export function ViewOptionsBar({
       <div className="sticky top-[calc(var(--sticky-top,0px)+56px)] z-20 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90 sm:hidden">
         <div className="flex items-center">
           <div className="min-w-0 flex-1 overflow-x-auto no-scrollbar">
-            <div className="flex min-w-max items-center gap-1 px-4 py-2">
-              {crm.views.map((view: CrmView) => (
-                <ViewTab
-                  key={view.id}
-                  view={view}
-                  active={activeViewId === view.id}
-                  onClick={() => onViewChange(view.id)}
-                />
-              ))}
+            <div className="flex min-w-max items-center px-4 py-2">
+              <div className="inline-flex items-center gap-1 rounded-lg bg-muted p-[3px]">
+                {crm.views.map((view: CrmView) => (
+                  <ViewTab
+                    key={view.id}
+                    view={view}
+                    active={activeViewId === view.id}
+                    onClick={() => onViewChange(view.id)}
+                  />
+                ))}
+              </div>
             </div>
           </div>
           <div className="flex shrink-0 items-center border-s px-2">
@@ -196,18 +198,20 @@ export function ViewOptionsBar({
         </SheetContent>
       </Sheet>
 
-      <div className="hidden bg-muted/30 sm:block">
+      <div className="hidden sm:block">
         {/* View switcher */}
         <div className="overflow-x-auto no-scrollbar">
-          <div className="flex items-center gap-1 px-4 pt-2 pb-1 min-w-max">
-            {crm.views.map((view: CrmView) => (
-              <ViewTab
-                key={view.id}
-                view={view}
-                active={activeViewId === view.id}
-                onClick={() => onViewChange(view.id)}
-              />
-            ))}
+          <div className="flex items-center px-4 pt-2 pb-1 min-w-max">
+            <div className="inline-flex items-center gap-1 rounded-lg bg-muted p-[3px]">
+              {crm.views.map((view: CrmView) => (
+                <ViewTab
+                  key={view.id}
+                  view={view}
+                  active={activeViewId === view.id}
+                  onClick={() => onViewChange(view.id)}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
@@ -298,9 +302,12 @@ function ViewTab({ view, active, onClick }: ViewTabProps) {
   return (
     <button
       onClick={onClick}
+      data-state={active ? "active" : "inactive"}
       className={cn(
-        "flex h-9 items-center gap-1.5 rounded-md px-2.5 text-sm transition-colors whitespace-nowrap",
-        active ? "bg-primary text-primary-foreground" : "hover:bg-muted"
+        "inline-flex h-8 items-center gap-1.5 whitespace-nowrap rounded-md border border-transparent px-2.5 text-sm font-medium transition-[color,box-shadow]",
+        active
+          ? "bg-primary text-primary-foreground shadow-sm"
+          : "text-muted-foreground hover:text-foreground"
       )}
     >
       {view.viewtype === "list" ? (

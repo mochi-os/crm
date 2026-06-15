@@ -141,7 +141,7 @@ export function BoardCard({
               className={cn(
                 "inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-medium ring-1 ring-inset",
                 allDone
-                  ? "bg-green-100 text-green-900 ring-green-200 dark:bg-green-950/30 dark:text-green-100 dark:ring-green-900/40"
+                  ? "bg-success/10 text-success ring-success/30"
                   : "bg-surface-2 text-muted-foreground ring-border"
               )}
             >
