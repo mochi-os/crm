@@ -4,8 +4,6 @@ import { Link } from "@tanstack/react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   Main,
-  Card,
-  CardContent,
   Button,
   usePageTitle,
   CardSkeleton,
@@ -17,10 +15,11 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  cn,
   getErrorMessage,
   toast,
 } from "@mochi/web";
-import { MoreHorizontal, Plus, Users } from "lucide-react";
+import { Ellipsis, Plus, Users } from "lucide-react";
 import { useCrmsStore } from "@/stores/crms-store";
 import { useSidebarContext } from "@/context/sidebar-context";
 import { InlineCrmSearch } from "../components/inline-crm-search";
@@ -107,52 +106,59 @@ export function CrmsListPage() {
             )}
           />
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {crms.map((crm) => (
-              <Link
-                key={crm.id}
-                to="/$crmId"
-                params={{ crmId: crm.fingerprint }}
-              >
-                <Card className="hover:border-primary/50 h-full cursor-pointer transition-colors">
-                  <CardContent className="p-4">
-                    <div className="flex items-start justify-between gap-2">
-                      <Users className="text-muted-foreground mt-0.5 size-5 shrink-0" />
-                      <div className="min-w-0 flex-1">
-                        <h3 className="truncate font-medium">{crm.name}</h3>
-                        {crm.description && (
-                          <p className="text-muted-foreground mt-1 line-clamp-2 text-sm">
-                            {crm.description}
-                          </p>
-                        )}
-                      </div>
-                      {crm.owner !== 1 && (
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {crms.map((crm) => {
+              const isSubscribed = crm.owner !== 1
+              return (
+                <div
+                  key={crm.id}
+                  className="group relative flex flex-col rounded-xl border bg-card p-4 transition-all hover:border-primary/40 hover:shadow-md"
+                >
+                  <Link
+                    to="/$crmId"
+                    params={{ crmId: crm.fingerprint }}
+                    className="absolute inset-0 rounded-xl focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    <span className="sr-only"><Trans>Open {crm.name}</Trans></span>
+                  </Link>
+
+                  <div className="mb-3 flex items-start justify-between">
+                    <div className={cn(
+                      "flex h-10 w-10 items-center justify-center rounded-lg",
+                      isSubscribed ? "bg-primary/10 text-primary" : "bg-muted text-foreground"
+                    )}>
+                      <Users className="size-5" />
+                    </div>
+                    {isSubscribed && (
+                      <div className="relative z-10 -me-1 -mt-1">
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
-                            <button
-                              className="hover:bg-muted shrink-0 rounded p-1 transition-colors"
-                              onClick={(e) => e.preventDefault()}
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              aria-label={t`CRM actions`}
+                              className="size-8 opacity-0 transition-opacity group-hover:opacity-100 data-[state=open]:opacity-100"
                             >
-                              <MoreHorizontal className="text-muted-foreground size-4" />
-                            </button>
+                              <Ellipsis className="size-4" />
+                            </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
-                            <DropdownMenuItem
-                              onClick={(e) => {
-                                e.preventDefault();
-                                setUnsubscribeId(crm.id);
-                              }}
-                            >
+                            <DropdownMenuItem onSelect={() => setUnsubscribeId(crm.id)}>
                               <Trans>Unsubscribe</Trans>
                             </DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <p className="truncate font-semibold leading-snug">{crm.name}</p>
+                  {crm.description && (
+                    <p className="text-muted-foreground mt-1 line-clamp-2 text-sm">{crm.description}</p>
+                  )}
+                </div>
+              )
+            })}
           </div>
         )}
       </Main>

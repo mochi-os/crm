@@ -49,11 +49,16 @@ export function DesignPreview({
 
   return (
     <div className="h-full flex flex-col">
-      <ViewTabs
-        views={crm.views}
-        activeViewId={selectedViewId || ""}
-        onViewChange={setSelectedViewId}
-      />
+      <div className="overflow-x-auto no-scrollbar border-b">
+        <div className="flex items-center px-4 py-2 min-w-max">
+          <ViewTabs
+            variant="pill"
+            views={crm.views}
+            activeViewId={selectedViewId || ""}
+            onViewChange={setSelectedViewId}
+          />
+        </div>
+      </div>
       <div className="flex-1 p-4 overflow-auto">
         {selectedView ? (
           selectedView.viewtype === "board"
