@@ -164,6 +164,9 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
         name: updates.name,
         flags: updates.flags,
         rows: updates.rows?.toString(),
+        pattern: updates.pattern,
+        minlength: updates.minlength?.toString(),
+        maxlength: updates.maxlength?.toString(),
       }),
     onSuccess: (_, variables) => {
       // If the field was renamed, update editingField to point to the new ID

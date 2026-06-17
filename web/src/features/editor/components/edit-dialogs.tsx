@@ -906,12 +906,18 @@ export function EditFieldDialog({
   const [name, setName] = useState("");
   const [fieldId, setFieldId] = useState("");
   const [rows, setRows] = useState(1);
+  const [pattern, setPattern] = useState("");
+  const [minLength, setMinLength] = useState("");
+  const [maxLength, setMaxLength] = useState("");
 
   useEffect(() => {
     if (field) {
       setName(field.name);
       setFieldId(field.id);
       setRows(field.rows || 1);
+      setPattern(field.pattern || "");
+      setMinLength(field.minlength ? String(field.minlength) : "");
+      setMaxLength(field.maxlength ? String(field.maxlength) : "");
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [field?.id]);
@@ -940,6 +946,27 @@ export function EditFieldDialog({
   const handleRowsBlur = () => {
     if (field.fieldtype === "text" && rows !== (field.rows || 1)) {
       onUpdate({ rows });
+    }
+  };
+
+  const handlePatternBlur = () => {
+    const trimmed = pattern.trim();
+    if (trimmed !== (field.pattern || "")) {
+      onUpdate({ pattern: trimmed } as Partial<CrmField>);
+    }
+  };
+
+  const handleMinLengthBlur = () => {
+    const value = parseInt(minLength, 10) || 0;
+    if (value !== (field.minlength || 0)) {
+      onUpdate({ minlength: value } as Partial<CrmField>);
+    }
+  };
+
+  const handleMaxLengthBlur = () => {
+    const value = parseInt(maxLength, 10) || 0;
+    if (value !== (field.maxlength || 0)) {
+      onUpdate({ maxlength: value } as Partial<CrmField>);
     }
   };
 
@@ -1004,6 +1031,42 @@ export function EditFieldDialog({
                 <Trans>Single line of text only</Trans>
               </p>
             </div>
+          )}
+
+          {field.fieldtype === "text" && (
+            <>
+              <div className="space-y-2">
+                <Label htmlFor="field-minlength"><Trans>Minimum length</Trans></Label>
+                <Input
+                  id="field-minlength"
+                  type="number"
+                  min={0}
+                  value={minLength}
+                  onChange={(e) => setMinLength(e.target.value)}
+                  onBlur={handleMinLengthBlur}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="field-maxlength"><Trans>Maximum length</Trans></Label>
+                <Input
+                  id="field-maxlength"
+                  type="number"
+                  min={0}
+                  value={maxLength}
+                  onChange={(e) => setMaxLength(e.target.value)}
+                  onBlur={handleMaxLengthBlur}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="field-pattern"><Trans>Pattern (regex)</Trans></Label>
+                <Input
+                  id="field-pattern"
+                  value={pattern}
+                  onChange={(e) => setPattern(e.target.value)}
+                  onBlur={handlePatternBlur}
+                />
+              </div>
+            </>
           )}
 
           <div className="space-y-2">
