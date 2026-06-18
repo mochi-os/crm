@@ -31,6 +31,9 @@ export interface CrmField {
   card: number;
   position: string;
   rows: number;
+  pattern?: string;
+  minlength?: number;
+  maxlength?: number;
 }
 
 export interface FieldOption {
