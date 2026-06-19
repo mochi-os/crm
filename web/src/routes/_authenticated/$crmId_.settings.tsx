@@ -14,12 +14,11 @@ import {
   TabsList,
   TabsTrigger,
   usePageTitle,
-  Input,
-  Textarea,
   EmptyState,
   Skeleton,
   Section,
   FieldRow,
+  EditableFieldRow,
   DataChip,
   toast,
   getErrorMessage,
@@ -31,14 +30,10 @@ import {
   type AccessLevel,
 } from "@mochi/web";
 import {
-  Loader2,
   Users,
   Settings,
   Shield,
   Trash2,
-  Pencil,
-  Check,
-  X,
   Plus,
 } from "lucide-react";
 import crmsApi from "@/api/crms";
@@ -295,15 +290,16 @@ function GeneralTab({
           <EditableFieldRow
             label={t`Name`}
             value={crm.crm.name}
-            isOwner={isOwner}
+            canEdit={isOwner}
             onSave={(value) => onUpdate({ name: value })}
-            validate={validateName}
+            validate={(value) => validateName(t, value)}
+            emphasize
           />
 
           <EditableFieldRow
             label={t`Description`}
             value={crm.crm.description}
-            isOwner={isOwner}
+            canEdit={isOwner}
             onSave={(value) => onUpdate({ description: value })}
             multiline
           />
@@ -371,149 +367,6 @@ function validateName(t: Translator, name: string): string | null {
   return null;
 }
 
-interface EditableFieldRowProps {
-  label: string;
-  value: string;
-  isOwner: boolean;
-  onSave: (value: string) => Promise<void>;
-  validate?: (t: Translator, value: string) => string | null;
-  multiline?: boolean;
-}
-
-function EditableFieldRow({
-  label,
-  value,
-  isOwner,
-  onSave,
-  validate,
-  multiline,
-}: EditableFieldRowProps) {
-  const { t } = useLingui();
-  const [isEditing, setIsEditing] = useState(false);
-  const [editValue, setEditValue] = useState(value);
-  const [isSaving, setIsSaving] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleStartEdit = () => {
-    setEditValue(value);
-    setError(null);
-    setIsEditing(true);
-  };
-
-  const handleCancelEdit = () => {
-    setIsEditing(false);
-    setEditValue(value);
-    setError(null);
-  };
-
-  const handleSaveEdit = async () => {
-    const trimmedValue = editValue.trim();
-    if (validate) {
-      const validationError = validate(t, trimmedValue);
-      if (validationError) {
-        setError(validationError);
-        return;
-      }
-    }
-    if (trimmedValue === value) {
-      setIsEditing(false);
-      return;
-    }
-    setIsSaving(true);
-    try {
-      await onSave(trimmedValue);
-      setIsEditing(false);
-    } finally {
-      setIsSaving(false);
-    }
-  };
-
-  return (
-    <FieldRow label={label}>
-      {isOwner && isEditing ? (
-        <div className="flex flex-col gap-1 w-full max-w-md">
-          <div className="flex items-start gap-2">
-            {multiline ? (
-              <Textarea
-                value={editValue}
-                onChange={(e) => {
-                  setEditValue(e.target.value);
-                  setError(null);
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === "Escape") handleCancelEdit();
-                }}
-                className="min-h-[80px]"
-                disabled={isSaving}
-                autoFocus
-              />
-            ) : (
-              <Input
-                value={editValue}
-                onChange={(e) => {
-                  setEditValue(e.target.value);
-                  setError(null);
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") void handleSaveEdit();
-                  if (e.key === "Escape") handleCancelEdit();
-                }}
-                className="h-9"
-                disabled={isSaving}
-                autoFocus
-              />
-            )}
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={() => void handleSaveEdit()}
-              disabled={isSaving}
-              className="h-9 w-9 p-0 shrink-0"
-            >
-              {isSaving ? (
-                <Loader2 className="size-4 animate-spin" />
-              ) : (
-                <Check className="size-4 text-success" />
-              )}
-            </Button>
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={handleCancelEdit}
-              disabled={isSaving}
-              className="h-9 w-9 p-0 shrink-0"
-              aria-label={t`Cancel edit`}
-            >
-              <X className="size-4 text-destructive" />
-            </Button>
-          </div>
-          {error && <span className="text-sm text-destructive">{error}</span>}
-        </div>
-      ) : (
-        <div className="flex items-center gap-2">
-          {value ? (
-            <span className={label === "Name" ? "text-base font-semibold" : ""}>
-              {value}
-            </span>
-          ) : (
-            <span className="text-muted-foreground italic"><Trans>Not set</Trans></span>
-          )}
-          {isOwner && (
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={handleStartEdit}
-              className="h-6 w-6 p-0 hover:bg-hover"
-              aria-label={t`Edit field`}
-            >
-              <Pencil className="size-3.5 text-muted-foreground" />
-            </Button>
-          )}
-        </div>
-      )}
-    </FieldRow>
-  );
-}
 
 interface AccessTabProps {
   crmId: string;
