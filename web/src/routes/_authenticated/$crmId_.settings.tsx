@@ -503,7 +503,7 @@ function EditableFieldRow({
               size="sm"
               variant="ghost"
               onClick={handleStartEdit}
-              className="h-6 w-6 p-0 hover:bg-muted"
+              className="h-6 w-6 p-0 hover:bg-hover"
               aria-label={t`Edit field`}
             >
               <Pencil className="size-3.5 text-muted-foreground" />

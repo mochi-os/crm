@@ -283,7 +283,7 @@ export function ObjectLinks({
                     <button
                       key={obj.id}
                       type="button"
-                      className="w-full text-start px-2 py-1.5 text-xs rounded hover:bg-accent flex items-center gap-1.5"
+                      className="w-full text-start px-2 py-1.5 text-xs rounded hover:bg-hover flex items-center gap-1.5"
                       onClick={() => handleAddLink(obj)}
                       disabled={createLinkMutation.isPending}
                     >

@@ -202,7 +202,7 @@ export function CommentThread({
             <div className="pointer-events-none hidden items-center gap-1 opacity-0 transition-opacity group-hover/row:pointer-events-auto group-hover/row:opacity-100 md:flex">
               <button
                 type="button"
-                className="text-muted-foreground hover:bg-muted hover:text-foreground inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-xs transition-colors"
+                className="text-muted-foreground hover:bg-hover hover:text-foreground inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-xs transition-colors"
                 onClick={() => onStartReply(comment.id)}
               >
                 <Reply className="size-3" />
@@ -212,7 +212,7 @@ export function CommentThread({
               {canEdit && (
                 <button
                   type="button"
-                  className="text-muted-foreground hover:bg-muted hover:text-foreground inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-xs transition-colors"
+                  className="text-muted-foreground hover:bg-hover hover:text-foreground inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-xs transition-colors"
                   onClick={() => {
                     setEditing(true);
                     setEditBody(comment.content);
@@ -226,7 +226,7 @@ export function CommentThread({
               {canDelete && (
                 <button
                   type="button"
-                  className="text-muted-foreground hover:bg-muted hover:text-foreground inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-xs transition-colors"
+                  className="text-muted-foreground hover:bg-hover hover:text-foreground inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-xs transition-colors"
                   onClick={() => setDeleting(true)}
                 >
                   <Trash2 className="size-3" />
@@ -240,7 +240,7 @@ export function CommentThread({
               <DropdownMenuTrigger asChild>
                 <button
                   type="button"
-                  className="text-muted-foreground hover:bg-muted rounded-full p-1 transition-colors md:hidden"
+                  className="text-muted-foreground hover:bg-hover rounded-full p-1 transition-colors md:hidden"
                 >
                   <MoreHorizontal className="size-4" />
                 </button>

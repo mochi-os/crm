@@ -429,7 +429,7 @@ export function ViewSheet({
                       onDragOver={(e) => handleViewFieldDragOver(e, field!.id)}
                       onDragLeave={() => setViewFieldDropIndicator(null)}
                       onDrop={(e) => handleViewFieldDrop(e, field!.id)}
-                      className={`flex items-center gap-2 px-3 py-1.5 text-sm rounded-md hover:bg-muted transition-colors cursor-grab ${
+                      className={`flex items-center gap-2 px-3 py-1.5 text-sm rounded-md hover:bg-hover transition-colors cursor-grab ${
                         draggedViewFieldId === field!.id ? "opacity-50" : ""
                       }`}
                     >
@@ -783,7 +783,7 @@ export function ClassSheet({
                       onDragOver={(e) => handleDragOver(e, field.id)}
                       onDragLeave={handleDragLeave}
                       onDrop={(e) => handleDrop(e, field.id)}
-                      className={`flex items-center gap-2 px-3 py-2 text-sm rounded-md hover:bg-muted transition-colors cursor-grab ${
+                      className={`flex items-center gap-2 px-3 py-2 text-sm rounded-md hover:bg-hover transition-colors cursor-grab ${
                         draggedFieldId === field.id ? "opacity-50" : ""
                       }`}
                     >

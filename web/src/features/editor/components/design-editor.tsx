@@ -474,7 +474,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
                     onDragOver={(e) => handleViewDragOver(e, view.id)}
                     onDragLeave={handleViewDragLeave}
                     onDrop={(e) => handleViewDrop(e, view.id)}
-                    className={`flex items-center gap-2 px-3 py-2 text-sm rounded-md hover:bg-muted transition-colors cursor-grab ${
+                    className={`flex items-center gap-2 px-3 py-2 text-sm rounded-md hover:bg-hover transition-colors cursor-grab ${
                       draggedViewId === view.id ? "opacity-50" : ""
                     }`}
                   >
@@ -518,7 +518,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
                     setSelectedClassId(cls.id);
                     setEditClassOpen(true);
                   }}
-                  className="w-full text-start px-3 py-2 text-sm rounded-md transition-colors hover:bg-muted flex items-center gap-2"
+                  className="w-full text-start px-3 py-2 text-sm rounded-md transition-colors hover:bg-hover flex items-center gap-2"
                 >
                   <Blocks className="size-4 text-muted-foreground shrink-0" />
                   {cls.name}
