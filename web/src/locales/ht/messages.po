@@ -32,8 +32,8 @@ msgid "{0} - Design"
 msgstr "{0} - Desen"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
-#: src/routes/_authenticated/$crmId_.settings.tsx:218
+#: src/routes/_authenticated/$crmId_.settings.tsx:117
+#: src/routes/_authenticated/$crmId_.settings.tsx:215
 msgid "{0} settings"
 msgstr "Paramèt {0}"
 
@@ -57,7 +57,7 @@ msgstr "24 èdtan"
 msgid "Absolute (date and time)"
 msgstr "Absoli (dat ak lè)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:84
+#: src/routes/_authenticated/$crmId_.settings.tsx:81
 msgid "Access"
 msgstr "Aksè"
 
@@ -69,19 +69,19 @@ msgstr "Aksè Entèdi"
 msgid "Access level"
 msgstr "Nivo aksè"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:614
+#: src/routes/_authenticated/$crmId_.settings.tsx:465
 msgid "Access level updated"
 msgstr "Nivo aksè mete ajou"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:623
+#: src/routes/_authenticated/$crmId_.settings.tsx:474
 msgid "Access Management"
 msgstr "Jesyon Aksè"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:603
+#: src/routes/_authenticated/$crmId_.settings.tsx:454
 msgid "Access removed"
 msgstr "Aksè retire"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:591
+#: src/routes/_authenticated/$crmId_.settings.tsx:442
 msgid "Access set for {subjectName}"
 msgstr "Aksè defini pou {subjectName}"
 
@@ -175,7 +175,7 @@ msgstr "Ajoute nouvo kont"
 msgid "Add option"
 msgstr "Ajoute opsyon"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:630
+#: src/routes/_authenticated/$crmId_.settings.tsx:481
 msgid "Add rule"
 msgstr "Ajoute yon règ"
 
@@ -252,7 +252,7 @@ msgstr "Èske ou sèten ou vle efase kòmantè sa a? Sa a pral efase tout repons
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "Èske ou sèten ou vle dekonekte? Ou pral bezwen konekte ankò pou aksede kont ou."
 
-#: src/features/crms/pages/crms-list-page.tsx:164
+#: src/features/crms/pages/crms-list-page.tsx:157
 msgid "Are you sure you want to unsubscribe from this CRM?"
 msgstr "Èske ou sèten ou vle dezabòne nan CRM sa a?"
 
@@ -282,9 +282,9 @@ msgstr "Rakousi klavye disponib"
 msgid "Back"
 msgstr "Retounen"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:165
-#: src/routes/_authenticated/$crmId_.settings.tsx:188
-#: src/routes/_authenticated/$crmId_.settings.tsx:220
+#: src/routes/_authenticated/$crmId_.settings.tsx:162
+#: src/routes/_authenticated/$crmId_.settings.tsx:185
+#: src/routes/_authenticated/$crmId_.settings.tsx:217
 #: src/routes/_authenticated/$crmId/design.tsx:131
 #: src/routes/_authenticated/$crmId/design.tsx:156
 msgid "Back to CRM"
@@ -330,6 +330,7 @@ msgstr "Ka pitit"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:360
 #: ../../../lib/web/src/components/travelling-picker.tsx:292
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:245
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:129
 #: ../../../lib/web/src/features/access/access-dialog.tsx:325
 #: ../../../lib/web/src/features/access/access-list.tsx:255
 #: ../../../lib/web/src/features/accounts/account-add.tsx:185
@@ -342,10 +343,6 @@ msgstr "Ka pitit"
 #: src/routes/_authenticated/$crmId/index.tsx:957
 msgid "Cancel"
 msgstr "Anile"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:487
-msgid "Cancel edit"
-msgstr "Anile chanjman"
 
 #: src/features/objects/components/comment-thread.tsx:361
 #: src/features/objects/components/comment-thread.tsx:362
@@ -468,7 +465,7 @@ msgstr "Konfòtab"
 msgid "Coming Soon!"
 msgstr "Vini Talè!"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:529
+#: src/routes/_authenticated/$crmId_.settings.tsx:380
 msgid "Comment and view"
 msgstr "Kòmante ak gade"
 
@@ -515,7 +512,7 @@ msgstr "Kontinye"
 msgid "Continue with {label}"
 msgstr "Kontinye ak {label}"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:624
+#: src/routes/_authenticated/$crmId_.settings.tsx:475
 msgid "Control who can view and interact with this CRM"
 msgstr "Kontwole kiyès ki ka gade ak entèraji ak CRM sa a"
 
@@ -523,7 +520,7 @@ msgstr "Kontwole kiyès ki ka gade ak entèraji ak CRM sa a"
 msgid "Copy"
 msgstr "Kopye"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:294
+#: src/routes/_authenticated/$crmId_.settings.tsx:287
 msgid "Core information about this CRM"
 msgstr "Enfòmasyon prensipal sou CRM sa a"
 
@@ -552,7 +549,7 @@ msgid "Create"
 msgstr "Kreye"
 
 #: src/features/crms/components/create-crm-dialog.tsx:103
-#: src/features/crms/pages/crms-list-page.tsx:99
+#: src/features/crms/pages/crms-list-page.tsx:98
 msgid "Create a new CRM"
 msgstr "Kreye yon nouvo CRM"
 
@@ -575,7 +572,7 @@ msgstr "Kreye nouvo eleman"
 msgid "Create object"
 msgstr "Kreye objè"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:528
+#: src/routes/_authenticated/$crmId_.settings.tsx:379
 msgid "Create, edit, comment, and view"
 msgstr "Kreye, modifye, kòmante, epi gade"
 
@@ -589,34 +586,38 @@ msgstr "Kreye"
 msgid "Creating..."
 msgstr "Ap kreye..."
 
+#: src/features/crms/pages/crms-list-page.tsx:129
+msgid "CRM actions"
+msgstr "Aksyon CRM"
+
 #: src/features/crms/components/create-crm-dialog.tsx:67
 msgid "CRM created"
 msgstr "CRM kreye"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:130
+#: src/routes/_authenticated/$crmId_.settings.tsx:127
 msgid "Crm deleted"
 msgstr "Crm efase"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:203
+#: src/routes/_authenticated/$crmId_.settings.tsx:200
 msgid "CRM not found"
 msgstr "CRM pa jwenn"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:117
 msgid "Crm settings"
 msgstr "Paramèt crm"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:203
+#: src/routes/_authenticated/$crmId_.settings.tsx:200
 msgid "CRM unavailable"
 msgstr "CRM pa disponib"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:150
+#: src/routes/_authenticated/$crmId_.settings.tsx:147
 msgid "Crm updated"
 msgstr "Crm mete ajou"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/features/crms/pages/crms-list-page.tsx:52
-#: src/features/crms/pages/crms-list-page.tsx:72
-#: src/features/crms/pages/crms-list-page.tsx:93
+#: src/features/crms/pages/crms-list-page.tsx:51
+#: src/features/crms/pages/crms-list-page.tsx:71
+#: src/features/crms/pages/crms-list-page.tsx:92
 msgid "CRMs"
 msgstr "CRM yo"
 
@@ -660,7 +661,7 @@ msgstr "Klasman defo"
 #: src/features/objects/components/comment-thread.tsx:386
 #: src/features/objects/components/object-attachments.tsx:210
 #: src/features/objects/components/object-detail-panel.tsx:477
-#: src/routes/_authenticated/$crmId_.settings.tsx:346
+#: src/routes/_authenticated/$crmId_.settings.tsx:340
 msgid "Delete"
 msgstr "Efase"
 
@@ -680,15 +681,15 @@ msgstr "Efase kolòn"
 msgid "Delete comment"
 msgstr "Efase kòmantè"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:336
+#: src/routes/_authenticated/$crmId_.settings.tsx:330
 msgid "Delete crm"
 msgstr "Efase crm"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:357
+#: src/routes/_authenticated/$crmId_.settings.tsx:351
 msgid "Delete CRM"
 msgstr "Efase CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:355
+#: src/routes/_authenticated/$crmId_.settings.tsx:349
 msgid "Delete CRM?"
 msgstr "Efase CRM?"
 
@@ -724,7 +725,7 @@ msgstr "Efase kont ou sou ansyen sèvè a"
 msgid "Desc"
 msgstr "Desann"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:306
+#: src/routes/_authenticated/$crmId_.settings.tsx:300
 msgid "Description"
 msgstr "Deskripsyon"
 
@@ -738,7 +739,7 @@ msgstr "Konsepsyon"
 msgid "Design imported"
 msgstr "Konsepsyon enpòte"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:527
+#: src/routes/_authenticated/$crmId_.settings.tsx:378
 msgid "Design, create, edit, comment, and view"
 msgstr "Konsevwa, kreye, modifye, kòmante, epi gade"
 
@@ -810,12 +811,15 @@ msgstr "Adapte pou disleksi"
 msgid "Edit"
 msgstr "Modifye"
 
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:151
+msgid "Edit {label}"
+msgstr "Modifye {label}"
+
 #: src/features/editor/components/edit-dialogs.tsx:671
 msgid "Edit class"
 msgstr "Modifye klas"
 
 #: src/features/editor/components/edit-dialogs.tsx:989
-#: src/routes/_authenticated/$crmId_.settings.tsx:509
 msgid "Edit field"
 msgstr "Modifye chan"
 
@@ -853,7 +857,7 @@ msgstr "Antre kòd la ki nan imel ou"
 msgid "Enter your authenticator code"
 msgstr "Antre kòd otantifikatè ou"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:313
+#: src/routes/_authenticated/$crmId_.settings.tsx:307
 msgid "Entity ID"
 msgstr "ID Antite"
 
@@ -913,7 +917,7 @@ msgstr "Echwe pou efase atachman"
 msgid "Failed to delete comment"
 msgstr "Echwe pou efase kòmantè"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:133
+#: src/routes/_authenticated/$crmId_.settings.tsx:130
 msgid "Failed to delete crm"
 msgstr "Echwe pou efase crm"
 
@@ -959,7 +963,7 @@ msgstr "Echwe pou poste kòmantè"
 msgid "Failed to read file"
 msgstr "Echwe pou li fichye"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:606
+#: src/routes/_authenticated/$crmId_.settings.tsx:457
 msgid "Failed to remove access"
 msgstr "Echwe pou retire aksè"
 
@@ -979,7 +983,7 @@ msgstr "Echwe pou reòganize vi"
 msgid "Failed to send verification code"
 msgstr "Echwe pou voye kòd verifikasyon"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:594
+#: src/routes/_authenticated/$crmId_.settings.tsx:445
 msgid "Failed to set access level"
 msgstr "Echwe pou mete nivo aksè"
 
@@ -988,12 +992,12 @@ msgstr "Echwe pou mete nivo aksè"
 msgid "Failed to subscribe"
 msgstr "Echwe pou abòne"
 
-#: src/features/crms/pages/crms-list-page.tsx:48
+#: src/features/crms/pages/crms-list-page.tsx:47
 #: src/routes/_authenticated/$crmId/index.tsx:571
 msgid "Failed to unsubscribe"
 msgstr "Echwe pou dezabòne"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:617
+#: src/routes/_authenticated/$crmId_.settings.tsx:468
 msgid "Failed to update access level"
 msgstr "Echwe pou mete ajou nivo aksè"
 
@@ -1005,7 +1009,7 @@ msgstr "Echwe pou mete ajou kategori"
 msgid "Failed to update comment"
 msgstr "Echwe pou mete ajou kòmantè"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:149
 msgid "Failed to update crm"
 msgstr "Echwe pou mete ajou crm"
 
@@ -1032,7 +1036,7 @@ msgstr "Fichye"
 msgid "Find CRMs"
 msgstr "Jwenn CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:318
+#: src/routes/_authenticated/$crmId_.settings.tsx:312
 msgid "Fingerprint"
 msgstr "Anprent dijital"
 
@@ -1117,7 +1121,7 @@ msgstr "Cho"
 msgid "ID"
 msgstr "ID"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:293
+#: src/routes/_authenticated/$crmId_.settings.tsx:286
 msgid "Identity"
 msgstr "Idantite"
 
@@ -1272,7 +1276,7 @@ msgstr "Lendi"
 #: src/features/editor/components/edit-dialogs.tsx:696
 #: src/features/editor/components/edit-dialogs.tsx:994
 #: src/features/editor/components/option-dialog.tsx:101
-#: src/routes/_authenticated/$crmId_.settings.tsx:298
+#: src/routes/_authenticated/$crmId_.settings.tsx:291
 msgid "Name"
 msgstr "Non"
 
@@ -1304,7 +1308,7 @@ msgstr "Pwochen imaj"
 msgid "No {parentClassNames} to add to"
 msgstr "Pa gen {parentClassNames} pou ajoute"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:531
+#: src/routes/_authenticated/$crmId_.settings.tsx:382
 msgid "No access"
 msgstr "Pa gen aksè"
 
@@ -1379,7 +1383,7 @@ msgstr "Poko gen anrejistreman sijè — eseye ankò apre pwochèn notifikasyon 
 msgid "No users found"
 msgstr "Pa gen itilizatè ki jwenn"
 
-#: src/features/editor/components/design-preview.tsx:82
+#: src/features/editor/components/design-preview.tsx:87
 msgid "No views"
 msgstr "Pa gen vi"
 
@@ -1408,7 +1412,7 @@ msgstr "Okenn"
 msgid "Normal"
 msgstr "Nòmal"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:501
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:143
 msgid "Not set"
 msgstr "Pa defini"
 
@@ -1431,6 +1435,11 @@ msgstr "Nimewo"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:13
 msgid "Oops! Page Not Found!"
 msgstr "Oops! Paj Pa Jwenn!"
+
+#. placeholder {0}: crm.name
+#: src/features/crms/pages/crms-list-page.tsx:120
+msgid "Open {0}"
+msgstr "Ouvri {0}"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:150
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:151
@@ -1478,7 +1487,7 @@ msgstr "Ouvri paramèt tèm"
 msgid "Open view actions"
 msgstr "Ouvri aksyon vi yo"
 
-#: src/components/view-options-bar.tsx:106
+#: src/components/view-options-bar.tsx:99
 msgid "Open view controls"
 msgstr "Ouvri kontwòl vi"
 
@@ -1522,7 +1531,7 @@ msgstr "Paskey"
 msgid "Pattern (regex)"
 msgstr "Modèl (regex)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:337
+#: src/routes/_authenticated/$crmId_.settings.tsx:331
 msgid "Permanently delete this CRM and all its content."
 msgstr "Efase pèmanan CRM sa a ak tout kontni li."
 
@@ -1705,6 +1714,7 @@ msgstr "CRM Vant"
 msgid "Saturday"
 msgstr "Samdi"
 
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:119
 #: ../../../lib/web/src/components/ui/secret-field.tsx:74
 #: src/features/editor/components/option-dialog.tsx:139
 #: src/features/objects/components/comment-thread.tsx:184
@@ -1712,7 +1722,7 @@ msgstr "Samdi"
 msgid "Save"
 msgstr "Sove"
 
-#: src/components/view-options-bar.tsx:127
+#: src/components/view-options-bar.tsx:120
 msgid "Search"
 msgstr "Chèche"
 
@@ -1748,13 +1758,13 @@ msgstr "Chèche zòn lè..."
 msgid "Search users"
 msgstr "Chèche itilizatè"
 
-#: src/components/view-options-bar.tsx:123
+#: src/components/view-options-bar.tsx:116
 msgid "Search, watch, and sort this view."
 msgstr "Chèche, gade, ak triye vi sa a."
 
 #: ../../../lib/web/src/components/person-picker.tsx:323
-#: src/components/view-options-bar.tsx:131
-#: src/components/view-options-bar.tsx:220
+#: src/components/view-options-bar.tsx:124
+#: src/components/view-options-bar.tsx:206
 msgid "Search..."
 msgstr "Chèche..."
 
@@ -1829,7 +1839,7 @@ msgstr "Voye imèl"
 msgid "Serif"
 msgstr "Serif"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:327
+#: src/routes/_authenticated/$crmId_.settings.tsx:321
 msgid "Server"
 msgstr "Sèvè"
 
@@ -1854,9 +1864,9 @@ msgstr "Mete orijin ak destinasyon"
 #: ../../../lib/web/src/components/layout/nav-user.tsx:81
 #: ../../../lib/web/src/components/layout/nav-user.tsx:145
 #: ../../../lib/web/src/components/layout/nav-user.tsx:195
-#: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:163
-#: src/routes/_authenticated/$crmId_.settings.tsx:186
+#: src/routes/_authenticated/$crmId_.settings.tsx:80
+#: src/routes/_authenticated/$crmId_.settings.tsx:160
+#: src/routes/_authenticated/$crmId_.settings.tsx:183
 #: src/routes/_authenticated/$crmId/index.tsx:924
 msgid "Settings"
 msgstr "Paramèt"
@@ -1901,7 +1911,7 @@ msgstr "Sote pou Prensipal"
 msgid "Small"
 msgstr "Piti"
 
-#: src/components/view-options-bar.tsx:149
+#: src/components/view-options-bar.tsx:142
 msgid "Sort"
 msgstr "Klase"
 
@@ -1989,16 +1999,16 @@ msgstr "Tèm"
 msgid "Theme Settings"
 msgstr "Paramèt Tèm"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:206
+#: src/routes/_authenticated/$crmId_.settings.tsx:203
 msgid "This CRM could not be loaded right now."
 msgstr "CRM sa pa ka chaje kounye a."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:206
+#: src/routes/_authenticated/$crmId_.settings.tsx:203
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "CRM sa ka efase oswa ou pa gen aksè ladan l."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:356
+#: src/routes/_authenticated/$crmId_.settings.tsx:350
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Sa pral efase \"{0}\" pèmanan ak tout objè, kòmantè, ak atachman li yo. Aksyon sa pa ka anile."
 
@@ -2049,8 +2059,8 @@ msgstr "Aktive tèm"
 msgid "Toggle view options"
 msgstr "Aktive opsyon vi"
 
-#: src/components/view-options-bar.tsx:140
-#: src/components/view-options-bar.tsx:231
+#: src/components/view-options-bar.tsx:133
+#: src/components/view-options-bar.tsx:217
 msgid "Toggle watched filter"
 msgstr "Aktive filtè gade"
 
@@ -2119,9 +2129,9 @@ msgstr "Aksè Pa Otorize"
 msgid "United States"
 msgstr "Etazini"
 
-#: src/features/crms/pages/crms-list-page.tsx:146
-#: src/features/crms/pages/crms-list-page.tsx:163
-#: src/features/crms/pages/crms-list-page.tsx:165
+#: src/features/crms/pages/crms-list-page.tsx:137
+#: src/features/crms/pages/crms-list-page.tsx:156
+#: src/features/crms/pages/crms-list-page.tsx:158
 #: src/routes/_authenticated/$crmId/index.tsx:930
 #: src/routes/_authenticated/$crmId/index.tsx:1072
 msgid "Unsubscribe"
@@ -2215,11 +2225,11 @@ msgstr "Wè tout notifikasyon"
 msgid "View and edit item details"
 msgstr "Wè epi modifye detay atik"
 
-#: src/components/view-options-bar.tsx:122
+#: src/components/view-options-bar.tsx:115
 msgid "View controls"
 msgstr "Kontwòl vi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:530
+#: src/routes/_authenticated/$crmId_.settings.tsx:381
 msgid "View only"
 msgstr "Wè sèlman"
 
@@ -2236,11 +2246,11 @@ msgstr "Vi"
 msgid "Watch"
 msgstr "Gade"
 
-#: src/components/view-options-bar.tsx:235
+#: src/components/view-options-bar.tsx:221
 msgid "Watched"
 msgstr "Gade"
 
-#: src/components/view-options-bar.tsx:144
+#: src/components/view-options-bar.tsx:137
 msgid "Watched only"
 msgstr "Gade sèlman"
 
@@ -2260,7 +2270,7 @@ msgstr "Mèkredi"
 msgid "You don't have access to this CRM."
 msgstr "Ou pa gen aksè a CRM sa a."
 
-#: src/features/crms/pages/crms-list-page.tsx:94
+#: src/features/crms/pages/crms-list-page.tsx:93
 msgid "You have no CRMs yet."
 msgstr "Ou poko gen okenn CRM."
 

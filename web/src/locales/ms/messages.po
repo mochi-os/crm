@@ -32,8 +32,8 @@ msgid "{0} - Design"
 msgstr "{0} - Reka bentuk"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
-#: src/routes/_authenticated/$crmId_.settings.tsx:218
+#: src/routes/_authenticated/$crmId_.settings.tsx:117
+#: src/routes/_authenticated/$crmId_.settings.tsx:215
 msgid "{0} settings"
 msgstr "Tetapan {0}"
 
@@ -57,7 +57,7 @@ msgstr "24 jam"
 msgid "Absolute (date and time)"
 msgstr "Mutlak (tarikh dan masa)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:84
+#: src/routes/_authenticated/$crmId_.settings.tsx:81
 msgid "Access"
 msgstr "Akses"
 
@@ -69,19 +69,19 @@ msgstr "Akses Dilarang"
 msgid "Access level"
 msgstr "Tahap akses"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:614
+#: src/routes/_authenticated/$crmId_.settings.tsx:465
 msgid "Access level updated"
 msgstr "Tahap akses dikemas kini"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:623
+#: src/routes/_authenticated/$crmId_.settings.tsx:474
 msgid "Access Management"
 msgstr "Pengurusan Akses"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:603
+#: src/routes/_authenticated/$crmId_.settings.tsx:454
 msgid "Access removed"
 msgstr "Akses dialih keluar"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:591
+#: src/routes/_authenticated/$crmId_.settings.tsx:442
 msgid "Access set for {subjectName}"
 msgstr "Akses ditetapkan untuk {subjectName}"
 
@@ -175,7 +175,7 @@ msgstr "Tambah akaun baharu"
 msgid "Add option"
 msgstr "Tambah pilihan"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:630
+#: src/routes/_authenticated/$crmId_.settings.tsx:481
 msgid "Add rule"
 msgstr "Tambah peraturan"
 
@@ -252,7 +252,7 @@ msgstr "Adakah anda pasti mahu memadam komen ini? Ini juga akan memadam semua ba
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "Adakah anda pasti mahu log keluar? Anda perlu log masuk semula untuk mengakses akaun anda."
 
-#: src/features/crms/pages/crms-list-page.tsx:164
+#: src/features/crms/pages/crms-list-page.tsx:157
 msgid "Are you sure you want to unsubscribe from this CRM?"
 msgstr "Adakah anda pasti mahu berhenti melanggan CRM ini?"
 
@@ -282,9 +282,9 @@ msgstr "Pintasan papan kekunci yang tersedia"
 msgid "Back"
 msgstr "Kembali"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:165
-#: src/routes/_authenticated/$crmId_.settings.tsx:188
-#: src/routes/_authenticated/$crmId_.settings.tsx:220
+#: src/routes/_authenticated/$crmId_.settings.tsx:162
+#: src/routes/_authenticated/$crmId_.settings.tsx:185
+#: src/routes/_authenticated/$crmId_.settings.tsx:217
 #: src/routes/_authenticated/$crmId/design.tsx:131
 #: src/routes/_authenticated/$crmId/design.tsx:156
 msgid "Back to CRM"
@@ -330,6 +330,7 @@ msgstr "Boleh menjadi anak kepada"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:360
 #: ../../../lib/web/src/components/travelling-picker.tsx:292
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:245
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:129
 #: ../../../lib/web/src/features/access/access-dialog.tsx:325
 #: ../../../lib/web/src/features/access/access-list.tsx:255
 #: ../../../lib/web/src/features/accounts/account-add.tsx:185
@@ -342,10 +343,6 @@ msgstr "Boleh menjadi anak kepada"
 #: src/routes/_authenticated/$crmId/index.tsx:957
 msgid "Cancel"
 msgstr "Batal"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:487
-msgid "Cancel edit"
-msgstr "Batal suntingan"
 
 #: src/features/objects/components/comment-thread.tsx:361
 #: src/features/objects/components/comment-thread.tsx:362
@@ -468,7 +465,7 @@ msgstr "Selesa"
 msgid "Coming Soon!"
 msgstr "Akan Datang!"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:529
+#: src/routes/_authenticated/$crmId_.settings.tsx:380
 msgid "Comment and view"
 msgstr "Komen dan lihat"
 
@@ -515,7 +512,7 @@ msgstr "Teruskan"
 msgid "Continue with {label}"
 msgstr "Teruskan dengan {label}"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:624
+#: src/routes/_authenticated/$crmId_.settings.tsx:475
 msgid "Control who can view and interact with this CRM"
 msgstr "Kawal siapa boleh melihat dan berinteraksi dengan CRM ini"
 
@@ -523,7 +520,7 @@ msgstr "Kawal siapa boleh melihat dan berinteraksi dengan CRM ini"
 msgid "Copy"
 msgstr "Salin"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:294
+#: src/routes/_authenticated/$crmId_.settings.tsx:287
 msgid "Core information about this CRM"
 msgstr "Maklumat teras tentang CRM ini"
 
@@ -552,7 +549,7 @@ msgid "Create"
 msgstr "Cipta"
 
 #: src/features/crms/components/create-crm-dialog.tsx:103
-#: src/features/crms/pages/crms-list-page.tsx:99
+#: src/features/crms/pages/crms-list-page.tsx:98
 msgid "Create a new CRM"
 msgstr "Cipta CRM baharu"
 
@@ -575,7 +572,7 @@ msgstr "Cipta item baharu"
 msgid "Create object"
 msgstr "Cipta objek"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:528
+#: src/routes/_authenticated/$crmId_.settings.tsx:379
 msgid "Create, edit, comment, and view"
 msgstr "Cipta, edit, komen dan lihat"
 
@@ -589,34 +586,38 @@ msgstr "Dicipta"
 msgid "Creating..."
 msgstr "Mencipta..."
 
+#: src/features/crms/pages/crms-list-page.tsx:129
+msgid "CRM actions"
+msgstr "Tindakan CRM"
+
 #: src/features/crms/components/create-crm-dialog.tsx:67
 msgid "CRM created"
 msgstr "CRM dicipta"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:130
+#: src/routes/_authenticated/$crmId_.settings.tsx:127
 msgid "Crm deleted"
 msgstr "CRM dipadam"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:203
+#: src/routes/_authenticated/$crmId_.settings.tsx:200
 msgid "CRM not found"
 msgstr "CRM tidak dijumpai"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:117
 msgid "Crm settings"
 msgstr "Tetapan CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:203
+#: src/routes/_authenticated/$crmId_.settings.tsx:200
 msgid "CRM unavailable"
 msgstr "CRM tidak tersedia"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:150
+#: src/routes/_authenticated/$crmId_.settings.tsx:147
 msgid "Crm updated"
 msgstr "CRM dikemas kini"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/features/crms/pages/crms-list-page.tsx:52
-#: src/features/crms/pages/crms-list-page.tsx:72
-#: src/features/crms/pages/crms-list-page.tsx:93
+#: src/features/crms/pages/crms-list-page.tsx:51
+#: src/features/crms/pages/crms-list-page.tsx:71
+#: src/features/crms/pages/crms-list-page.tsx:92
 msgid "CRMs"
 msgstr "CRM"
 
@@ -660,7 +661,7 @@ msgstr "Susunan lalai"
 #: src/features/objects/components/comment-thread.tsx:386
 #: src/features/objects/components/object-attachments.tsx:210
 #: src/features/objects/components/object-detail-panel.tsx:477
-#: src/routes/_authenticated/$crmId_.settings.tsx:346
+#: src/routes/_authenticated/$crmId_.settings.tsx:340
 msgid "Delete"
 msgstr "Padam"
 
@@ -680,15 +681,15 @@ msgstr "Padam lajur"
 msgid "Delete comment"
 msgstr "Padam komen"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:336
+#: src/routes/_authenticated/$crmId_.settings.tsx:330
 msgid "Delete crm"
 msgstr "Padam crm"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:357
+#: src/routes/_authenticated/$crmId_.settings.tsx:351
 msgid "Delete CRM"
 msgstr "Padam CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:355
+#: src/routes/_authenticated/$crmId_.settings.tsx:349
 msgid "Delete CRM?"
 msgstr "Padam CRM?"
 
@@ -724,7 +725,7 @@ msgstr "Padamkan akaun anda di pelayan lama"
 msgid "Desc"
 msgstr "Menurun"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:306
+#: src/routes/_authenticated/$crmId_.settings.tsx:300
 msgid "Description"
 msgstr "Penerangan"
 
@@ -738,7 +739,7 @@ msgstr "Reka bentuk"
 msgid "Design imported"
 msgstr "Reka bentuk diimport"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:527
+#: src/routes/_authenticated/$crmId_.settings.tsx:378
 msgid "Design, create, edit, comment, and view"
 msgstr "Reka bentuk, cipta, edit, komen dan lihat"
 
@@ -810,12 +811,15 @@ msgstr "Mesra disleksia"
 msgid "Edit"
 msgstr "Edit"
 
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:151
+msgid "Edit {label}"
+msgstr "Edit {label}"
+
 #: src/features/editor/components/edit-dialogs.tsx:671
 msgid "Edit class"
 msgstr "Edit kelas"
 
 #: src/features/editor/components/edit-dialogs.tsx:989
-#: src/routes/_authenticated/$crmId_.settings.tsx:509
 msgid "Edit field"
 msgstr "Edit medan"
 
@@ -853,7 +857,7 @@ msgstr "Masukkan kod dari e-mel anda"
 msgid "Enter your authenticator code"
 msgstr "Masukkan kod pengesah anda"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:313
+#: src/routes/_authenticated/$crmId_.settings.tsx:307
 msgid "Entity ID"
 msgstr "ID Entiti"
 
@@ -913,7 +917,7 @@ msgstr "Gagal memadam lampiran"
 msgid "Failed to delete comment"
 msgstr "Gagal memadam komen"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:133
+#: src/routes/_authenticated/$crmId_.settings.tsx:130
 msgid "Failed to delete crm"
 msgstr "Gagal memadam crm"
 
@@ -959,7 +963,7 @@ msgstr "Gagal mencatat komen"
 msgid "Failed to read file"
 msgstr "Gagal membaca fail"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:606
+#: src/routes/_authenticated/$crmId_.settings.tsx:457
 msgid "Failed to remove access"
 msgstr "Gagal mengalih keluar akses"
 
@@ -979,7 +983,7 @@ msgstr "Gagal menyusun semula paparan"
 msgid "Failed to send verification code"
 msgstr "Gagal menghantar kod pengesahan"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:594
+#: src/routes/_authenticated/$crmId_.settings.tsx:445
 msgid "Failed to set access level"
 msgstr "Gagal menetapkan tahap akses"
 
@@ -988,12 +992,12 @@ msgstr "Gagal menetapkan tahap akses"
 msgid "Failed to subscribe"
 msgstr "Gagal melanggan"
 
-#: src/features/crms/pages/crms-list-page.tsx:48
+#: src/features/crms/pages/crms-list-page.tsx:47
 #: src/routes/_authenticated/$crmId/index.tsx:571
 msgid "Failed to unsubscribe"
 msgstr "Gagal berhenti melanggan"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:617
+#: src/routes/_authenticated/$crmId_.settings.tsx:468
 msgid "Failed to update access level"
 msgstr "Gagal mengemas kini tahap akses"
 
@@ -1005,7 +1009,7 @@ msgstr "Gagal mengemas kini kategori"
 msgid "Failed to update comment"
 msgstr "Gagal mengemas kini komen"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:149
 msgid "Failed to update crm"
 msgstr "Gagal mengemas kini crm"
 
@@ -1032,7 +1036,7 @@ msgstr "Fail"
 msgid "Find CRMs"
 msgstr "Cari CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:318
+#: src/routes/_authenticated/$crmId_.settings.tsx:312
 msgid "Fingerprint"
 msgstr "Cap jari"
 
@@ -1117,7 +1121,7 @@ msgstr "Panas"
 msgid "ID"
 msgstr "ID"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:293
+#: src/routes/_authenticated/$crmId_.settings.tsx:286
 msgid "Identity"
 msgstr "Identiti"
 
@@ -1272,7 +1276,7 @@ msgstr "Isnin"
 #: src/features/editor/components/edit-dialogs.tsx:696
 #: src/features/editor/components/edit-dialogs.tsx:994
 #: src/features/editor/components/option-dialog.tsx:101
-#: src/routes/_authenticated/$crmId_.settings.tsx:298
+#: src/routes/_authenticated/$crmId_.settings.tsx:291
 msgid "Name"
 msgstr "Nama"
 
@@ -1304,7 +1308,7 @@ msgstr "Imej seterusnya"
 msgid "No {parentClassNames} to add to"
 msgstr "Tiada {parentClassNames} untuk ditambah"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:531
+#: src/routes/_authenticated/$crmId_.settings.tsx:382
 msgid "No access"
 msgstr "Tiada akses"
 
@@ -1379,7 +1383,7 @@ msgstr "Tiada rekod topik lagi — cuba lagi selepas pemberitahuan seterusnya."
 msgid "No users found"
 msgstr "Tiada pengguna dijumpai"
 
-#: src/features/editor/components/design-preview.tsx:82
+#: src/features/editor/components/design-preview.tsx:87
 msgid "No views"
 msgstr "Tiada paparan"
 
@@ -1408,7 +1412,7 @@ msgstr "Tiada"
 msgid "Normal"
 msgstr "Biasa"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:501
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:143
 msgid "Not set"
 msgstr "Tidak ditetapkan"
 
@@ -1431,6 +1435,11 @@ msgstr "Nombor"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:13
 msgid "Oops! Page Not Found!"
 msgstr "Alamak! Halaman Tidak Dijumpai!"
+
+#. placeholder {0}: crm.name
+#: src/features/crms/pages/crms-list-page.tsx:120
+msgid "Open {0}"
+msgstr "Buka {0}"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:150
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:151
@@ -1478,7 +1487,7 @@ msgstr "Buka tetapan tema"
 msgid "Open view actions"
 msgstr "Buka tindakan paparan"
 
-#: src/components/view-options-bar.tsx:106
+#: src/components/view-options-bar.tsx:99
 msgid "Open view controls"
 msgstr "Buka kawalan paparan"
 
@@ -1522,7 +1531,7 @@ msgstr "Passkey"
 msgid "Pattern (regex)"
 msgstr "Corak (regex)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:337
+#: src/routes/_authenticated/$crmId_.settings.tsx:331
 msgid "Permanently delete this CRM and all its content."
 msgstr "Padam CRM ini dan semua kandungannya secara kekal."
 
@@ -1705,6 +1714,7 @@ msgstr "CRM Jualan"
 msgid "Saturday"
 msgstr "Sabtu"
 
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:119
 #: ../../../lib/web/src/components/ui/secret-field.tsx:74
 #: src/features/editor/components/option-dialog.tsx:139
 #: src/features/objects/components/comment-thread.tsx:184
@@ -1712,7 +1722,7 @@ msgstr "Sabtu"
 msgid "Save"
 msgstr "Simpan"
 
-#: src/components/view-options-bar.tsx:127
+#: src/components/view-options-bar.tsx:120
 msgid "Search"
 msgstr "Cari"
 
@@ -1748,13 +1758,13 @@ msgstr "Cari zon masa..."
 msgid "Search users"
 msgstr "Cari pengguna"
 
-#: src/components/view-options-bar.tsx:123
+#: src/components/view-options-bar.tsx:116
 msgid "Search, watch, and sort this view."
 msgstr "Cari, pantau dan susun paparan ini."
 
 #: ../../../lib/web/src/components/person-picker.tsx:323
-#: src/components/view-options-bar.tsx:131
-#: src/components/view-options-bar.tsx:220
+#: src/components/view-options-bar.tsx:124
+#: src/components/view-options-bar.tsx:206
 msgid "Search..."
 msgstr "Cari..."
 
@@ -1829,7 +1839,7 @@ msgstr "Hantar e-mel"
 msgid "Serif"
 msgstr "Serif"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:327
+#: src/routes/_authenticated/$crmId_.settings.tsx:321
 msgid "Server"
 msgstr "Pelayan"
 
@@ -1854,9 +1864,9 @@ msgstr "Tetapkan asal dan destinasi"
 #: ../../../lib/web/src/components/layout/nav-user.tsx:81
 #: ../../../lib/web/src/components/layout/nav-user.tsx:145
 #: ../../../lib/web/src/components/layout/nav-user.tsx:195
-#: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:163
-#: src/routes/_authenticated/$crmId_.settings.tsx:186
+#: src/routes/_authenticated/$crmId_.settings.tsx:80
+#: src/routes/_authenticated/$crmId_.settings.tsx:160
+#: src/routes/_authenticated/$crmId_.settings.tsx:183
 #: src/routes/_authenticated/$crmId/index.tsx:924
 msgid "Settings"
 msgstr "Tetapan"
@@ -1901,7 +1911,7 @@ msgstr "Langkau ke Utama"
 msgid "Small"
 msgstr "Kecil"
 
-#: src/components/view-options-bar.tsx:149
+#: src/components/view-options-bar.tsx:142
 msgid "Sort"
 msgstr "Susun"
 
@@ -1989,16 +1999,16 @@ msgstr "Tema"
 msgid "Theme Settings"
 msgstr "Tetapan Tema"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:206
+#: src/routes/_authenticated/$crmId_.settings.tsx:203
 msgid "This CRM could not be loaded right now."
 msgstr "CRM ini tidak dapat dimuatkan sekarang."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:206
+#: src/routes/_authenticated/$crmId_.settings.tsx:203
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "CRM ini mungkin telah dipadam atau anda tidak mempunyai akses kepadanya."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:356
+#: src/routes/_authenticated/$crmId_.settings.tsx:350
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Ini akan memadam \"{0}\" dan semua objek, komen dan lampirannya secara kekal. Tindakan ini tidak boleh dibatalkan."
 
@@ -2049,8 +2059,8 @@ msgstr "Togol tema"
 msgid "Toggle view options"
 msgstr "Togol pilihan paparan"
 
-#: src/components/view-options-bar.tsx:140
-#: src/components/view-options-bar.tsx:231
+#: src/components/view-options-bar.tsx:133
+#: src/components/view-options-bar.tsx:217
 msgid "Toggle watched filter"
 msgstr "Togol penapis dipantau"
 
@@ -2119,9 +2129,9 @@ msgstr "Akses Tidak Dibenarkan"
 msgid "United States"
 msgstr "Amerika Syarikat"
 
-#: src/features/crms/pages/crms-list-page.tsx:146
-#: src/features/crms/pages/crms-list-page.tsx:163
-#: src/features/crms/pages/crms-list-page.tsx:165
+#: src/features/crms/pages/crms-list-page.tsx:137
+#: src/features/crms/pages/crms-list-page.tsx:156
+#: src/features/crms/pages/crms-list-page.tsx:158
 #: src/routes/_authenticated/$crmId/index.tsx:930
 #: src/routes/_authenticated/$crmId/index.tsx:1072
 msgid "Unsubscribe"
@@ -2215,11 +2225,11 @@ msgstr "Lihat semua pemberitahuan"
 msgid "View and edit item details"
 msgstr "Lihat dan edit butiran item"
 
-#: src/components/view-options-bar.tsx:122
+#: src/components/view-options-bar.tsx:115
 msgid "View controls"
 msgstr "Kawalan paparan"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:530
+#: src/routes/_authenticated/$crmId_.settings.tsx:381
 msgid "View only"
 msgstr "Lihat sahaja"
 
@@ -2236,11 +2246,11 @@ msgstr "Paparan"
 msgid "Watch"
 msgstr "Perhati"
 
-#: src/components/view-options-bar.tsx:235
+#: src/components/view-options-bar.tsx:221
 msgid "Watched"
 msgstr "Dipantau"
 
-#: src/components/view-options-bar.tsx:144
+#: src/components/view-options-bar.tsx:137
 msgid "Watched only"
 msgstr "Dipantau sahaja"
 
@@ -2260,7 +2270,7 @@ msgstr "Rabu"
 msgid "You don't have access to this CRM."
 msgstr "Anda tidak mempunyai akses ke CRM ini."
 
-#: src/features/crms/pages/crms-list-page.tsx:94
+#: src/features/crms/pages/crms-list-page.tsx:93
 msgid "You have no CRMs yet."
 msgstr "Anda belum mempunyai CRM lagi."
 

@@ -32,8 +32,8 @@ msgid "{0} - Design"
 msgstr "{0} - Design"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
-#: src/routes/_authenticated/$crmId_.settings.tsx:218
+#: src/routes/_authenticated/$crmId_.settings.tsx:117
+#: src/routes/_authenticated/$crmId_.settings.tsx:215
 msgid "{0} settings"
 msgstr "Configurações de {0}"
 
@@ -57,7 +57,7 @@ msgstr "24 horas"
 msgid "Absolute (date and time)"
 msgstr "Absoluto (data e hora)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:84
+#: src/routes/_authenticated/$crmId_.settings.tsx:81
 msgid "Access"
 msgstr "Acesso"
 
@@ -69,19 +69,19 @@ msgstr "Acesso proibido"
 msgid "Access level"
 msgstr "Nível de acesso"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:614
+#: src/routes/_authenticated/$crmId_.settings.tsx:465
 msgid "Access level updated"
 msgstr "Nível de acesso atualizado"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:623
+#: src/routes/_authenticated/$crmId_.settings.tsx:474
 msgid "Access Management"
 msgstr "Gerenciamento de acesso"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:603
+#: src/routes/_authenticated/$crmId_.settings.tsx:454
 msgid "Access removed"
 msgstr "Acesso removido"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:591
+#: src/routes/_authenticated/$crmId_.settings.tsx:442
 msgid "Access set for {subjectName}"
 msgstr "Acesso definido para {subjectName}"
 
@@ -175,7 +175,7 @@ msgstr "Adicionar nova conta"
 msgid "Add option"
 msgstr "Adicionar opção"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:630
+#: src/routes/_authenticated/$crmId_.settings.tsx:481
 msgid "Add rule"
 msgstr "Adicionar regra"
 
@@ -252,7 +252,7 @@ msgstr "Tem certeza de que deseja excluir este comentário? Isto também excluir
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "Tem certeza de que deseja sair? Você precisará entrar novamente para acessar sua conta."
 
-#: src/features/crms/pages/crms-list-page.tsx:164
+#: src/features/crms/pages/crms-list-page.tsx:157
 msgid "Are you sure you want to unsubscribe from this CRM?"
 msgstr "Tem certeza de que deseja cancelar a assinatura deste CRM?"
 
@@ -282,9 +282,9 @@ msgstr "Atalhos de teclado disponíveis"
 msgid "Back"
 msgstr "Voltar"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:165
-#: src/routes/_authenticated/$crmId_.settings.tsx:188
-#: src/routes/_authenticated/$crmId_.settings.tsx:220
+#: src/routes/_authenticated/$crmId_.settings.tsx:162
+#: src/routes/_authenticated/$crmId_.settings.tsx:185
+#: src/routes/_authenticated/$crmId_.settings.tsx:217
 #: src/routes/_authenticated/$crmId/design.tsx:131
 #: src/routes/_authenticated/$crmId/design.tsx:156
 msgid "Back to CRM"
@@ -330,6 +330,7 @@ msgstr "Pode ser filho de"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:360
 #: ../../../lib/web/src/components/travelling-picker.tsx:292
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:245
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:129
 #: ../../../lib/web/src/features/access/access-dialog.tsx:325
 #: ../../../lib/web/src/features/access/access-list.tsx:255
 #: ../../../lib/web/src/features/accounts/account-add.tsx:185
@@ -342,10 +343,6 @@ msgstr "Pode ser filho de"
 #: src/routes/_authenticated/$crmId/index.tsx:957
 msgid "Cancel"
 msgstr "Cancelar"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:487
-msgid "Cancel edit"
-msgstr "Cancelar edição"
 
 #: src/features/objects/components/comment-thread.tsx:361
 #: src/features/objects/components/comment-thread.tsx:362
@@ -468,7 +465,7 @@ msgstr "Confortável"
 msgid "Coming Soon!"
 msgstr "Em breve!"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:529
+#: src/routes/_authenticated/$crmId_.settings.tsx:380
 msgid "Comment and view"
 msgstr "Comentar e visualizar"
 
@@ -515,7 +512,7 @@ msgstr "Continuar"
 msgid "Continue with {label}"
 msgstr "Continuar com {label}"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:624
+#: src/routes/_authenticated/$crmId_.settings.tsx:475
 msgid "Control who can view and interact with this CRM"
 msgstr "Controle quem pode visualizar e interagir com este CRM"
 
@@ -523,7 +520,7 @@ msgstr "Controle quem pode visualizar e interagir com este CRM"
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:294
+#: src/routes/_authenticated/$crmId_.settings.tsx:287
 msgid "Core information about this CRM"
 msgstr "Informações principais sobre este CRM"
 
@@ -552,7 +549,7 @@ msgid "Create"
 msgstr "Criar"
 
 #: src/features/crms/components/create-crm-dialog.tsx:103
-#: src/features/crms/pages/crms-list-page.tsx:99
+#: src/features/crms/pages/crms-list-page.tsx:98
 msgid "Create a new CRM"
 msgstr "Criar um novo CRM"
 
@@ -575,7 +572,7 @@ msgstr "Criar novo item"
 msgid "Create object"
 msgstr "Criar objeto"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:528
+#: src/routes/_authenticated/$crmId_.settings.tsx:379
 msgid "Create, edit, comment, and view"
 msgstr "Criar, editar, comentar e visualizar"
 
@@ -589,34 +586,38 @@ msgstr "Criado"
 msgid "Creating..."
 msgstr "Criando..."
 
+#: src/features/crms/pages/crms-list-page.tsx:129
+msgid "CRM actions"
+msgstr "Ações de CRM"
+
 #: src/features/crms/components/create-crm-dialog.tsx:67
 msgid "CRM created"
 msgstr "CRM criado"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:130
+#: src/routes/_authenticated/$crmId_.settings.tsx:127
 msgid "Crm deleted"
 msgstr "CRM excluído"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:203
+#: src/routes/_authenticated/$crmId_.settings.tsx:200
 msgid "CRM not found"
 msgstr "CRM não encontrado"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:117
 msgid "Crm settings"
 msgstr "Configurações do CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:203
+#: src/routes/_authenticated/$crmId_.settings.tsx:200
 msgid "CRM unavailable"
 msgstr "CRM indisponível"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:150
+#: src/routes/_authenticated/$crmId_.settings.tsx:147
 msgid "Crm updated"
 msgstr "CRM atualizado"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/features/crms/pages/crms-list-page.tsx:52
-#: src/features/crms/pages/crms-list-page.tsx:72
-#: src/features/crms/pages/crms-list-page.tsx:93
+#: src/features/crms/pages/crms-list-page.tsx:51
+#: src/features/crms/pages/crms-list-page.tsx:71
+#: src/features/crms/pages/crms-list-page.tsx:92
 msgid "CRMs"
 msgstr "CRMs"
 
@@ -660,7 +661,7 @@ msgstr "Ordenação padrão"
 #: src/features/objects/components/comment-thread.tsx:386
 #: src/features/objects/components/object-attachments.tsx:210
 #: src/features/objects/components/object-detail-panel.tsx:477
-#: src/routes/_authenticated/$crmId_.settings.tsx:346
+#: src/routes/_authenticated/$crmId_.settings.tsx:340
 msgid "Delete"
 msgstr "Excluir"
 
@@ -680,15 +681,15 @@ msgstr "Excluir coluna"
 msgid "Delete comment"
 msgstr "Excluir comentário"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:336
+#: src/routes/_authenticated/$crmId_.settings.tsx:330
 msgid "Delete crm"
 msgstr "Excluir CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:357
+#: src/routes/_authenticated/$crmId_.settings.tsx:351
 msgid "Delete CRM"
 msgstr "Excluir CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:355
+#: src/routes/_authenticated/$crmId_.settings.tsx:349
 msgid "Delete CRM?"
 msgstr "Excluir CRM?"
 
@@ -724,7 +725,7 @@ msgstr "Exclua sua conta no servidor antigo"
 msgid "Desc"
 msgstr "Decresc"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:306
+#: src/routes/_authenticated/$crmId_.settings.tsx:300
 msgid "Description"
 msgstr "Descrição"
 
@@ -738,7 +739,7 @@ msgstr "Design"
 msgid "Design imported"
 msgstr "Design importado"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:527
+#: src/routes/_authenticated/$crmId_.settings.tsx:378
 msgid "Design, create, edit, comment, and view"
 msgstr "Projetar, criar, editar, comentar e visualizar"
 
@@ -810,12 +811,15 @@ msgstr "Adequado para dislexia"
 msgid "Edit"
 msgstr "Editar"
 
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:151
+msgid "Edit {label}"
+msgstr "Editar {label}"
+
 #: src/features/editor/components/edit-dialogs.tsx:671
 msgid "Edit class"
 msgstr "Editar classe"
 
 #: src/features/editor/components/edit-dialogs.tsx:989
-#: src/routes/_authenticated/$crmId_.settings.tsx:509
 msgid "Edit field"
 msgstr "Editar campo"
 
@@ -853,7 +857,7 @@ msgstr "Digite o código do seu e-mail"
 msgid "Enter your authenticator code"
 msgstr "Digite o código do autenticador"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:313
+#: src/routes/_authenticated/$crmId_.settings.tsx:307
 msgid "Entity ID"
 msgstr "ID da entidade"
 
@@ -913,7 +917,7 @@ msgstr "Falha ao excluir anexo"
 msgid "Failed to delete comment"
 msgstr "Falha ao excluir comentário"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:133
+#: src/routes/_authenticated/$crmId_.settings.tsx:130
 msgid "Failed to delete crm"
 msgstr "Falha ao excluir CRM"
 
@@ -959,7 +963,7 @@ msgstr "Falha ao publicar comentário"
 msgid "Failed to read file"
 msgstr "Falha ao ler arquivo"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:606
+#: src/routes/_authenticated/$crmId_.settings.tsx:457
 msgid "Failed to remove access"
 msgstr "Falha ao remover acesso"
 
@@ -979,7 +983,7 @@ msgstr "Falha ao reordenar visualizações"
 msgid "Failed to send verification code"
 msgstr "Falha ao enviar código de verificação"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:594
+#: src/routes/_authenticated/$crmId_.settings.tsx:445
 msgid "Failed to set access level"
 msgstr "Falha ao definir nível de acesso"
 
@@ -988,12 +992,12 @@ msgstr "Falha ao definir nível de acesso"
 msgid "Failed to subscribe"
 msgstr "Falha ao assinar"
 
-#: src/features/crms/pages/crms-list-page.tsx:48
+#: src/features/crms/pages/crms-list-page.tsx:47
 #: src/routes/_authenticated/$crmId/index.tsx:571
 msgid "Failed to unsubscribe"
 msgstr "Falha ao cancelar assinatura"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:617
+#: src/routes/_authenticated/$crmId_.settings.tsx:468
 msgid "Failed to update access level"
 msgstr "Falha ao atualizar nível de acesso"
 
@@ -1005,7 +1009,7 @@ msgstr "Falha ao atualizar categoria"
 msgid "Failed to update comment"
 msgstr "Falha ao atualizar comentário"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:149
 msgid "Failed to update crm"
 msgstr "Falha ao atualizar CRM"
 
@@ -1032,7 +1036,7 @@ msgstr "Arquivos"
 msgid "Find CRMs"
 msgstr "Encontrar CRMs"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:318
+#: src/routes/_authenticated/$crmId_.settings.tsx:312
 msgid "Fingerprint"
 msgstr "Impressão digital"
 
@@ -1117,7 +1121,7 @@ msgstr "Em alta"
 msgid "ID"
 msgstr "ID"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:293
+#: src/routes/_authenticated/$crmId_.settings.tsx:286
 msgid "Identity"
 msgstr "Identidade"
 
@@ -1272,7 +1276,7 @@ msgstr "Segunda-feira"
 #: src/features/editor/components/edit-dialogs.tsx:696
 #: src/features/editor/components/edit-dialogs.tsx:994
 #: src/features/editor/components/option-dialog.tsx:101
-#: src/routes/_authenticated/$crmId_.settings.tsx:298
+#: src/routes/_authenticated/$crmId_.settings.tsx:291
 msgid "Name"
 msgstr "Nome"
 
@@ -1304,7 +1308,7 @@ msgstr "Próxima imagem"
 msgid "No {parentClassNames} to add to"
 msgstr "Não há {parentClassNames} aos quais adicionar"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:531
+#: src/routes/_authenticated/$crmId_.settings.tsx:382
 msgid "No access"
 msgstr "Sem acesso"
 
@@ -1379,7 +1383,7 @@ msgstr "Ainda não há registro do tópico — tente novamente após a próxima 
 msgid "No users found"
 msgstr "Nenhum usuário encontrado"
 
-#: src/features/editor/components/design-preview.tsx:82
+#: src/features/editor/components/design-preview.tsx:87
 msgid "No views"
 msgstr "Sem visualizações"
 
@@ -1408,7 +1412,7 @@ msgstr "Nenhum"
 msgid "Normal"
 msgstr "Normal"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:501
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:143
 msgid "Not set"
 msgstr "Não definido"
 
@@ -1431,6 +1435,11 @@ msgstr "Número"
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:13
 msgid "Oops! Page Not Found!"
 msgstr "Ops! Página não encontrada!"
+
+#. placeholder {0}: crm.name
+#: src/features/crms/pages/crms-list-page.tsx:120
+msgid "Open {0}"
+msgstr "Abrir {0}"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:150
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:151
@@ -1478,7 +1487,7 @@ msgstr "Abrir configurações do tema"
 msgid "Open view actions"
 msgstr "Abrir ações de visualização"
 
-#: src/components/view-options-bar.tsx:106
+#: src/components/view-options-bar.tsx:99
 msgid "Open view controls"
 msgstr "Abrir controles de visualização"
 
@@ -1522,7 +1531,7 @@ msgstr "Chaves de acesso"
 msgid "Pattern (regex)"
 msgstr "Padrão (regex)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:337
+#: src/routes/_authenticated/$crmId_.settings.tsx:331
 msgid "Permanently delete this CRM and all its content."
 msgstr "Excluir permanentemente este CRM e todo o seu conteúdo."
 
@@ -1705,6 +1714,7 @@ msgstr "CRM de vendas"
 msgid "Saturday"
 msgstr "Sábado"
 
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:119
 #: ../../../lib/web/src/components/ui/secret-field.tsx:74
 #: src/features/editor/components/option-dialog.tsx:139
 #: src/features/objects/components/comment-thread.tsx:184
@@ -1712,7 +1722,7 @@ msgstr "Sábado"
 msgid "Save"
 msgstr "Salvar"
 
-#: src/components/view-options-bar.tsx:127
+#: src/components/view-options-bar.tsx:120
 msgid "Search"
 msgstr "Pesquisar"
 
@@ -1748,13 +1758,13 @@ msgstr "Pesquisar fuso horário..."
 msgid "Search users"
 msgstr "Pesquisar usuários"
 
-#: src/components/view-options-bar.tsx:123
+#: src/components/view-options-bar.tsx:116
 msgid "Search, watch, and sort this view."
 msgstr "Pesquise, observe e ordene esta visualização."
 
 #: ../../../lib/web/src/components/person-picker.tsx:323
-#: src/components/view-options-bar.tsx:131
-#: src/components/view-options-bar.tsx:220
+#: src/components/view-options-bar.tsx:124
+#: src/components/view-options-bar.tsx:206
 msgid "Search..."
 msgstr "Pesquisar..."
 
@@ -1829,7 +1839,7 @@ msgstr "Enviar e-mail"
 msgid "Serif"
 msgstr "Com serifa"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:327
+#: src/routes/_authenticated/$crmId_.settings.tsx:321
 msgid "Server"
 msgstr "Servidor"
 
@@ -1854,9 +1864,9 @@ msgstr "Definir origem e destino"
 #: ../../../lib/web/src/components/layout/nav-user.tsx:81
 #: ../../../lib/web/src/components/layout/nav-user.tsx:145
 #: ../../../lib/web/src/components/layout/nav-user.tsx:195
-#: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:163
-#: src/routes/_authenticated/$crmId_.settings.tsx:186
+#: src/routes/_authenticated/$crmId_.settings.tsx:80
+#: src/routes/_authenticated/$crmId_.settings.tsx:160
+#: src/routes/_authenticated/$crmId_.settings.tsx:183
 #: src/routes/_authenticated/$crmId/index.tsx:924
 msgid "Settings"
 msgstr "Configurações"
@@ -1901,7 +1911,7 @@ msgstr "Pular para o conteúdo principal"
 msgid "Small"
 msgstr "Pequeno"
 
-#: src/components/view-options-bar.tsx:149
+#: src/components/view-options-bar.tsx:142
 msgid "Sort"
 msgstr "Ordenar"
 
@@ -1989,16 +1999,16 @@ msgstr "Tema"
 msgid "Theme Settings"
 msgstr "Configurações de tema"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:206
+#: src/routes/_authenticated/$crmId_.settings.tsx:203
 msgid "This CRM could not be loaded right now."
 msgstr "Este CRM não pôde ser carregado agora."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:206
+#: src/routes/_authenticated/$crmId_.settings.tsx:203
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Este CRM pode ter sido excluído ou você não tem acesso a ele."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:356
+#: src/routes/_authenticated/$crmId_.settings.tsx:350
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Isso excluirá permanentemente \"{0}\" e todos os seus objetos, comentários e anexos. Esta ação não pode ser desfeita."
 
@@ -2049,8 +2059,8 @@ msgstr "Alternar tema"
 msgid "Toggle view options"
 msgstr "Alternar opções de visualização"
 
-#: src/components/view-options-bar.tsx:140
-#: src/components/view-options-bar.tsx:231
+#: src/components/view-options-bar.tsx:133
+#: src/components/view-options-bar.tsx:217
 msgid "Toggle watched filter"
 msgstr "Alternar filtro de observados"
 
@@ -2119,9 +2129,9 @@ msgstr "Acesso não permitido"
 msgid "United States"
 msgstr "Estados Unidos"
 
-#: src/features/crms/pages/crms-list-page.tsx:146
-#: src/features/crms/pages/crms-list-page.tsx:163
-#: src/features/crms/pages/crms-list-page.tsx:165
+#: src/features/crms/pages/crms-list-page.tsx:137
+#: src/features/crms/pages/crms-list-page.tsx:156
+#: src/features/crms/pages/crms-list-page.tsx:158
 #: src/routes/_authenticated/$crmId/index.tsx:930
 #: src/routes/_authenticated/$crmId/index.tsx:1072
 msgid "Unsubscribe"
@@ -2215,11 +2225,11 @@ msgstr "Ver todas as notificações"
 msgid "View and edit item details"
 msgstr "Visualizar e editar detalhes do item"
 
-#: src/components/view-options-bar.tsx:122
+#: src/components/view-options-bar.tsx:115
 msgid "View controls"
 msgstr "Visualizar controles"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:530
+#: src/routes/_authenticated/$crmId_.settings.tsx:381
 msgid "View only"
 msgstr "Apenas visualizar"
 
@@ -2236,11 +2246,11 @@ msgstr "Visualizações"
 msgid "Watch"
 msgstr "Observar"
 
-#: src/components/view-options-bar.tsx:235
+#: src/components/view-options-bar.tsx:221
 msgid "Watched"
 msgstr "Observado"
 
-#: src/components/view-options-bar.tsx:144
+#: src/components/view-options-bar.tsx:137
 msgid "Watched only"
 msgstr "Apenas observados"
 
@@ -2260,7 +2270,7 @@ msgstr "Quarta-feira"
 msgid "You don't have access to this CRM."
 msgstr "Você não tem acesso a este CRM."
 
-#: src/features/crms/pages/crms-list-page.tsx:94
+#: src/features/crms/pages/crms-list-page.tsx:93
 msgid "You have no CRMs yet."
 msgstr "Você ainda não tem CRMs."
 
