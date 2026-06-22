@@ -20,6 +20,7 @@ web/dist/index.html: $(shell find web/src ../../lib/web/src -type f 2>/dev/null)
 release: web/dist/index.html
 	rm -f $(RELEASE)/$(APP)_*.zip
 	zip -r $(RELEASE)/$(APP)_$(VERSION).zip app.json *.star labels templates web/dist
+	git tag -a $(VERSION) -m "$(VERSION)" 2>/dev/null || true
 
 deploy:
 	../../test/claude/deploy.sh $(APP)
