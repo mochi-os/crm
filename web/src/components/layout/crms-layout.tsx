@@ -51,6 +51,7 @@ function CrmsLayoutInner() {
       title: t`All CRMs`,
       url: "/",
       icon: Users,
+      aggregate: true,
     };
 
     const actionItems: NavItem[] = [
