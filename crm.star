@@ -1858,7 +1858,7 @@ def action_object_move(a):
 			params["row_field"] = rf
 			params["row_value"] = a.input("row_value")
 		sp = a.input("scope_parent")
-		if sp:
+		if sp != None:
 			params["scope_parent"] = sp
 		if a.input("promote") == "true":
 			params["promote"] = "true"
@@ -1875,7 +1875,7 @@ def action_object_move(a):
 				old_value_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field)
 				old_value = old_value_row["value"] if old_value_row else ""
 				target_value = value if value else old_value
-				if sp:
+				if sp != None:
 					objects_in_scope = mochi.db.rows("select o.id, o.rank from objects o where o.crm=? and o.parent=? and o.id!=? order by o.rank asc", crm_id, sp, object_id) or []
 				else:
 					objects_in_scope = mochi.db.rows("select o.id, o.rank from objects o left join \"values\" v on v.object = o.id and v.field=? where o.crm=? and coalesce(v.value, '')=? and o.id!=? order by o.rank asc", field, crm_id, target_value, object_id) or []
@@ -1943,7 +1943,7 @@ def action_object_move(a):
 		new_rank = int(new_rank)
 		# Shift other objects to make room
 		if value_changed or new_rank != old_rank:
-			if scope_parent:
+			if scope_parent != None:
 				# Scope renumbering to siblings of the same parent
 				objects_in_scope = mochi.db.rows("""
 					select o.id, o.rank from objects o
@@ -2041,7 +2041,7 @@ def action_object_move(a):
 	# update to be overwritten by stale refetches before the action
 	# returned.
 	if a.input("rank") != None:
-		if scope_parent:
+		if scope_parent != None:
 			all_in_scope = mochi.db.rows("select id, rank from objects where crm=? and parent=? order by rank asc", crm_id, scope_parent) or []
 		else:
 			all_in_scope = mochi.db.rows("""
@@ -6371,11 +6371,11 @@ def do_object_move(crm_id, crm, params, user_id):
 	if value_changed:
 		mochi.db.execute("replace into \"values\" (object, field, value) values (?, ?, ?)", object_id, field, target_value)
 		log_activity(object_id, user_id, "updated", field, old_value, target_value)
-	scope_parent = params.get("scope_parent", "")
+	scope_parent = params.get("scope_parent", None)
 	if new_rank != None:
 		new_rank = int(new_rank)
 		if value_changed or new_rank != old_rank:
-			if scope_parent:
+			if scope_parent != None:
 				objects_in_scope = mochi.db.rows("""
 					select o.id, o.rank from objects o
 					where o.crm=? and o.parent=? and o.id!=?
@@ -6457,7 +6457,7 @@ def do_object_move(crm_id, crm, params, user_id):
 	# Broadcast rank changes as a single batched event — see the matching
 	# comment in action_object_move for why we don't loop here.
 	if new_rank != None:
-		if scope_parent:
+		if scope_parent != None:
 			all_in_scope = mochi.db.rows("select id, rank from objects where crm=? and parent=? order by rank asc", crm_id, scope_parent) or []
 		else:
 			all_in_scope = mochi.db.rows("""

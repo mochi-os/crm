@@ -22,6 +22,9 @@ import {
   SelectTrigger,
   SelectValue,
   PRESET_COLOURS,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@mochi/web";
 import { Check, Plus, X } from "lucide-react";
 
@@ -99,9 +102,14 @@ export function AddFieldDialog({
         <div className="flex items-center justify-between px-6 py-4 border-b">
           <SheetTitle><Trans>Add field</Trans></SheetTitle>
           <SheetDescription className="sr-only"><Trans>Add a new field to this class</Trans></SheetDescription>
-          <Button variant="ghost" size="icon" className="size-8" onClick={handleClose} aria-label={t`Close dialog`}>
-            <X className="size-4" />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="ghost" size="icon" className="size-8" onClick={handleClose} aria-label={t`Close dialog`}>
+                <X className="size-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>{t`Close dialog`}</TooltipContent>
+          </Tooltip>
         </div>
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
           <div className="space-y-2">
@@ -195,15 +203,20 @@ export function AddFieldDialog({
                       }
                     }}
                   />
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={addOption}
-                    disabled={!newOptionName.trim()}
-                    aria-label={t`Add option`}
-                  >
-                    <Plus className="size-4" />
-                  </Button>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={addOption}
+                        disabled={!newOptionName.trim()}
+                        aria-label={t`Add option`}
+                      >
+                        <Plus className="size-4" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>{t`Add option`}</TooltipContent>
+                  </Tooltip>
                 </div>
               </div>
             </div>

@@ -7,7 +7,7 @@
 import { useState, useMemo } from "react";
 import { Trans, useLingui } from '@lingui/react/macro'
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Button, Label, toast, getErrorMessage } from "@mochi/web";
+import { Button, Label, toast, getErrorMessage, Tooltip, TooltipContent, TooltipTrigger } from "@mochi/web";
 import { Blocks, GripVertical, Plus } from "lucide-react";
 import crmsApi from "@/api/crms";
 import type { CrmDetails, CrmField, CrmView, FieldOption } from "@/types";
@@ -455,14 +455,19 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
           <section>
             <div className="flex items-center justify-between mb-2">
               <Label className="text-sm font-medium"><Trans>Views</Trans></Label>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setAddViewOpen(true)}
-                aria-label={t`Add view`}
-              >
-                <Plus className="size-4" />
-              </Button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setAddViewOpen(true)}
+                    aria-label={t`Add view`}
+                  >
+                    <Plus className="size-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>{t`Add view`}</TooltipContent>
+              </Tooltip>
             </div>
             <div className="space-y-1">
               {crm.views.map((view) => (
@@ -504,14 +509,19 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
           <section>
             <div className="flex items-center justify-between mb-2">
               <Label className="text-sm font-medium"><Trans>Classes</Trans></Label>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setAddClassOpen(true)}
-                aria-label={t`Add class`}
-              >
-                <Plus className="size-4" />
-              </Button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setAddClassOpen(true)}
+                    aria-label={t`Add class`}
+                  >
+                    <Plus className="size-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>{t`Add class`}</TooltipContent>
+              </Tooltip>
             </div>
             <div className="space-y-1">
               {crm.classes.map((cls) => (

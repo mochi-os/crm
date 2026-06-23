@@ -22,6 +22,9 @@ import {
   SelectValue,
   getErrorMessage,
   toast,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import type { CrmObject, CrmClass, ObjectLink } from "@/types";
@@ -235,19 +238,25 @@ export function ObjectLinks({
             </Badge>
             <span className="truncate">{link.displayName}</span>
             {!readOnly && (
-              <button
-                type="button"
-                className="hidden group-hover:inline-flex ms-auto text-muted-foreground hover:text-destructive shrink-0"
-                onClick={() =>
-                  deleteLinkMutation.mutate({
-                    source: link.source,
-                    target: link.target,
-                    linktype: link.linktype,
-                  })
-                }
-              >
-                <X className="size-3" />
-              </button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    type="button"
+                    aria-label={t`Remove`}
+                    className="hidden group-hover:inline-flex ms-auto text-muted-foreground hover:text-destructive shrink-0"
+                    onClick={() =>
+                      deleteLinkMutation.mutate({
+                        source: link.source,
+                        target: link.target,
+                        linktype: link.linktype,
+                      })
+                    }
+                  >
+                    <X className="size-3" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>{t`Remove`}</TooltipContent>
+              </Tooltip>
             )}
           </div>
         ))}

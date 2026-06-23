@@ -21,6 +21,9 @@ import {
   SelectTrigger,
   SelectValue,
   naturalCompare,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import type { CrmDetails } from "@/types";
@@ -340,16 +343,20 @@ export function CreateObjectDialog({
               <span className="text-xl font-bold"><Trans>Create</Trans></span>
             )}
           </div>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-8 w-8"
-            onClick={handleClose}
-            title={t`Close`}
-            aria-label={t`Close`}
-          >
-            <X className="size-4" />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8"
+                onClick={handleClose}
+                aria-label={t`Close`}
+              >
+                <X className="size-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>{t`Close`}</TooltipContent>
+          </Tooltip>
         </div>
 
         {/* Content */}
@@ -432,13 +439,19 @@ export function CreateObjectDialog({
                       {pendingFiles.map((file, i) => (
                         <div key={`${file.name}-${i}`} className="flex items-center gap-1.5 text-xs">
                           <span className="truncate">{file.name}</span>
-                          <button
-                            type="button"
-                            className="text-muted-foreground hover:text-destructive shrink-0"
-                            onClick={() => setPendingFiles((prev) => prev.filter((_, j) => j !== i))}
-                          >
-                            <X className="size-3" />
-                          </button>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <button
+                                type="button"
+                                aria-label={t`Remove`}
+                                className="text-muted-foreground hover:text-destructive shrink-0"
+                                onClick={() => setPendingFiles((prev) => prev.filter((_, j) => j !== i))}
+                              >
+                                <X className="size-3" />
+                              </button>
+                            </TooltipTrigger>
+                            <TooltipContent>{t`Remove`}</TooltipContent>
+                          </Tooltip>
                         </div>
                       ))}
                     </div>

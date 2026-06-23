@@ -36,6 +36,9 @@ import {
   SortDirectionButton,
   Switch,
   naturalCompare,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@mochi/web";
 import { Check, GripVertical, Minus, MoreHorizontal, Pencil, Plus, Trash2, X } from "lucide-react";
 import type { CrmView, CrmField, CrmClass, FieldOption } from "@/types";
@@ -269,16 +272,26 @@ export function ViewSheet({
           <SheetTitle>{mode === "create" ? <Trans>Add view</Trans> : <Trans>Edit view</Trans>}</SheetTitle>
           <SheetDescription className="sr-only"><Trans>Configure view settings</Trans></SheetDescription>
           <div className="flex items-center gap-1">
-            <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label={t`Close dialog`}>
-              <X className="size-4" />
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label={t`Close dialog`}>
+                  <X className="size-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>{t`Close dialog`}</TooltipContent>
+            </Tooltip>
             {mode === "edit" && onDelete && (
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="size-8" aria-label={t`Open view actions`}>
-                    <MoreHorizontal className="size-4" />
-                  </Button>
-                </DropdownMenuTrigger>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" size="icon" className="size-8" aria-label={t`Open view actions`}>
+                        <MoreHorizontal className="size-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                  </TooltipTrigger>
+                  <TooltipContent>{t`Open view actions`}</TooltipContent>
+                </Tooltip>
                 <DropdownMenuContent align="end" onCloseAutoFocus={(e) => e.preventDefault()}>
                   <DropdownMenuItem onSelect={onDelete}>
                     <Minus className="size-4" />
@@ -674,16 +687,26 @@ export function ClassSheet({
           <SheetTitle>{mode === "create" ? <Trans>Add class</Trans> : <Trans>Edit class</Trans>}</SheetTitle>
           <SheetDescription className="sr-only"><Trans>Configure class settings</Trans></SheetDescription>
           <div className="flex items-center gap-1">
-            <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label={t`Close dialog`}>
-              <X className="size-4" />
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="ghost" size="icon" className="size-8" onClick={() => onOpenChange(false)} aria-label={t`Close dialog`}>
+                  <X className="size-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>{t`Close dialog`}</TooltipContent>
+            </Tooltip>
             {mode === "edit" && onDelete && (
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="size-8" aria-label={t`Open class actions`}>
-                    <MoreHorizontal className="size-4" />
-                  </Button>
-                </DropdownMenuTrigger>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" size="icon" className="size-8" aria-label={t`Open class actions`}>
+                        <MoreHorizontal className="size-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                  </TooltipTrigger>
+                  <TooltipContent>{t`Open class actions`}</TooltipContent>
+                </Tooltip>
                 <DropdownMenuContent align="end" onCloseAutoFocus={(e) => e.preventDefault()}>
                   <DropdownMenuItem onSelect={onDelete}>
                     <Minus className="size-4" />
@@ -805,17 +828,21 @@ export function ClassSheet({
                         </span>
                       )}
                       {mode === "create" && field.id !== "title" && (
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          size="icon"
-                          className="size-6 shrink-0"
-                          onClick={() => removePendingField(field.id)}
-                          aria-label={t`Remove field ${field.name || field.id}`}
-                          title={t`Remove field ${field.name || field.id}`}
-                        >
-                          <X className="size-3" />
-                        </Button>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              type="button"
+                              variant="ghost"
+                              size="icon"
+                              className="size-6 shrink-0"
+                              onClick={() => removePendingField(field.id)}
+                              aria-label={t`Remove field ${field.name || field.id}`}
+                            >
+                              <X className="size-3" />
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>{t`Remove field ${field.name || field.id}`}</TooltipContent>
+                        </Tooltip>
                       )}
                     </div>
                     {dropIndicator?.fieldId === field.id && dropIndicator.position === "after" && (
@@ -1107,28 +1134,36 @@ export function EditFieldDialog({
                       <span className="text-sm">{opt.name}</span>
                     </div>
                     <div className="flex gap-1">
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="icon"
-                        className="size-7"
-                        onClick={() => onEditOption(opt)}
-                        aria-label={t`Edit option ${opt.name}`}
-                        title={t`Edit option ${opt.name}`}
-                      >
-                        <Pencil className="size-3.5" />
-                      </Button>
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="icon"
-                        className="size-7"
-                        onClick={() => onDeleteOption(opt.id)}
-                        aria-label={t`Delete option ${opt.name}`}
-                        title={t`Delete option ${opt.name}`}
-                      >
-                        <Trash2 className="size-3.5" />
-                      </Button>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="icon"
+                            className="size-7"
+                            onClick={() => onEditOption(opt)}
+                            aria-label={t`Edit option ${opt.name}`}
+                          >
+                            <Pencil className="size-3.5" />
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>{t`Edit option ${opt.name}`}</TooltipContent>
+                      </Tooltip>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="icon"
+                            className="size-7"
+                            onClick={() => onDeleteOption(opt.id)}
+                            aria-label={t`Delete option ${opt.name}`}
+                          >
+                            <Trash2 className="size-3.5" />
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>{t`Delete option ${opt.name}`}</TooltipContent>
+                      </Tooltip>
                     </div>
                   </div>
                 ))}

@@ -27,6 +27,9 @@ import {
   ListSkeleton,
   useShellOverlay,
   naturalCompare,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import type { CrmAccess, CrmDetails } from "@/types";
@@ -306,32 +309,40 @@ export function ObjectDetailPanel({
             {title}
           </h2>
           <div className="flex items-center gap-1 shrink-0">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8"
-              onClick={() => watchMutation.mutate(data.watching)}
-              disabled={watchMutation.isPending}
-              title={data.watching ? t`Stop watching` : t`Watch`}
-              aria-label={data.watching ? t`Stop watching` : t`Watch`}
-            >
-              {data.watching ? (
-                <Eye className="size-4" />
-              ) : (
-                <EyeOff className="size-4" />
-              )}
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-8 w-8"
+                  onClick={() => watchMutation.mutate(data.watching)}
+                  disabled={watchMutation.isPending}
+                  aria-label={data.watching ? t`Stop watching` : t`Watch`}
+                >
+                  {data.watching ? (
+                    <Eye className="size-4" />
+                  ) : (
+                    <EyeOff className="size-4" />
+                  )}
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>{data.watching ? t`Stop watching` : t`Watch`}</TooltipContent>
+            </Tooltip>
             {canWrite(access) && (
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-8 w-8 text-muted-foreground"
-                onClick={() => setShowDeleteDialog(true)}
-                title={t`Delete item`}
-                aria-label={t`Delete item`}
-              >
-                <Trash2 className="size-4" />
-              </Button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-8 w-8 text-muted-foreground"
+                    onClick={() => setShowDeleteDialog(true)}
+                    aria-label={t`Delete item`}
+                  >
+                    <Trash2 className="size-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>{t`Delete item`}</TooltipContent>
+              </Tooltip>
             )}
             <Button
               variant="outline"

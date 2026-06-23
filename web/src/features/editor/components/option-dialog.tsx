@@ -23,6 +23,9 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@mochi/web";
 import { Check, Minus, MoreHorizontal, Plus } from "lucide-react";
 import type { FieldOption } from "@/types";
@@ -85,11 +88,16 @@ export function OptionDialog({
           <ResponsiveDialogDescription className="sr-only"><Trans>Configure option settings</Trans></ResponsiveDialogDescription>
           {isEdit && onDelete && (
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="size-8" aria-label={t`Open option actions`}>
-                  <MoreHorizontal className="size-4" />
-                </Button>
-              </DropdownMenuTrigger>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon" className="size-8" aria-label={t`Open option actions`}>
+                      <MoreHorizontal className="size-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                </TooltipTrigger>
+                <TooltipContent>{t`Open option actions`}</TooltipContent>
+              </Tooltip>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem onClick={onDelete}>
                   <Minus className="size-4" />

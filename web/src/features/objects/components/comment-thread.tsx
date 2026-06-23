@@ -22,6 +22,9 @@ import {
   renderMentions,
   useImageObjectUrls,
   getAppPath,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@mochi/web";
 import type { Comment } from "@/types";
 import { CommentAttachments } from "./comment-attachments";
@@ -240,14 +243,20 @@ export function CommentThread({
 
             {/* Mobile: always-visible dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  type="button"
-                  className="text-muted-foreground hover:bg-hover rounded-full p-1 transition-colors md:hidden"
-                >
-                  <MoreHorizontal className="size-4" />
-                </button>
-              </DropdownMenuTrigger>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <DropdownMenuTrigger asChild>
+                    <button
+                      type="button"
+                      aria-label={t`Comment actions`}
+                      className="text-muted-foreground hover:bg-hover rounded-full p-1 transition-colors md:hidden"
+                    >
+                      <MoreHorizontal className="size-4" />
+                    </button>
+                  </DropdownMenuTrigger>
+                </TooltipTrigger>
+                <TooltipContent>{t`Comment actions`}</TooltipContent>
+              </Tooltip>
               <DropdownMenuContent align="start">
                 <DropdownMenuItem onClick={() => onStartReply(comment.id)}>
                   <Reply className="me-2 size-4" />
@@ -313,15 +322,21 @@ export function CommentThread({
                   )}
                   <Paperclip className="text-muted-foreground size-3 shrink-0" />
                   <span className="max-w-40 truncate">{file.name}</span>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setReplyFiles((prev) => prev.filter((_, idx) => idx !== i))
-                    }
-                    className="text-muted-foreground hover:text-foreground ms-0.5"
-                  >
-                    <X className="size-3.5" />
-                  </button>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button
+                        type="button"
+                        aria-label={t`Remove`}
+                        onClick={() =>
+                          setReplyFiles((prev) => prev.filter((_, idx) => idx !== i))
+                        }
+                        className="text-muted-foreground hover:text-foreground ms-0.5"
+                      >
+                        <X className="size-3.5" />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent>{t`Remove`}</TooltipContent>
+                  </Tooltip>
                 </div>
               ))}
             </div>
@@ -342,41 +357,53 @@ export function CommentThread({
               }}
               className="hidden"
             />
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              className="size-8"
-              onClick={() => replyFileRef.current?.click()}
-              disabled={isSubmittingReply}
-              aria-label={t`Attach reply files`}
-              title={t`Attach reply files`}
-            >
-              <Paperclip className="size-4" />
-            </Button>
-            <Button
-              type="button"
-              size="icon"
-              variant="ghost"
-              className="size-8"
-              onClick={onCancelReply}
-              disabled={isSubmittingReply}
-              aria-label={t`Cancel reply`}
-              title={t`Cancel reply`}
-            >
-              <X className="size-4" />
-            </Button>
-            <Button
-              type="button"
-              size="icon"
-              className="size-8"
-              disabled={!replyDraft.trim() || isSubmittingReply}
-              onClick={() => void handleSubmitReply()}
-              aria-label={t`Submit reply`}
-              title={t`Submit reply`}
-            >
-              {isSubmittingReply ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  className="size-8"
+                  onClick={() => replyFileRef.current?.click()}
+                  disabled={isSubmittingReply}
+                  aria-label={t`Attach reply files`}
+                >
+                  <Paperclip className="size-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>{t`Attach reply files`}</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  type="button"
+                  size="icon"
+                  variant="ghost"
+                  className="size-8"
+                  onClick={onCancelReply}
+                  disabled={isSubmittingReply}
+                  aria-label={t`Cancel reply`}
+                >
+                  <X className="size-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>{t`Cancel reply`}</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  type="button"
+                  size="icon"
+                  className="size-8"
+                  disabled={!replyDraft.trim() || isSubmittingReply}
+                  onClick={() => void handleSubmitReply()}
+                  aria-label={t`Submit reply`}
+                >
+                  {isSubmittingReply ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>{t`Submit reply`}</TooltipContent>
+            </Tooltip>
           </div>
         </div>
       )}

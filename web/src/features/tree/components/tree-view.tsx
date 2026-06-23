@@ -129,18 +129,6 @@ function flattenTree(nodes: TreeNode[], expanded: Set<string>): FlatNode[] {
   return result;
 }
 
-// Calculate rank for inserting at a position between siblings
-function calculateRank(siblings: CrmObject[], insertIndex: number): number {
-  const prevItem = insertIndex > 0 ? siblings[insertIndex - 1] : null;
-  const nextItem = insertIndex < siblings.length ? siblings[insertIndex] : null;
-
-  const prevRank = prevItem?.rank ?? 0;
-  const nextRank = nextItem?.rank ?? prevRank + 1000;
-
-  // Insert midway between prev and next
-  return Math.floor((prevRank + nextRank) / 2);
-}
-
 export function TreeView({
   crm,
   crmId,
@@ -353,14 +341,14 @@ export function TreeView({
           const flatNode = flatNodes.find((fn) => fn.node.object.id === over);
           if (flatNode) {
             const { siblings } = flatNode;
-            // Filter out the dragged item from siblings for rank calculation
+            // Filter out the dragged item from siblings to find the drop slot
             const siblingsWithoutDragged = siblings.filter((s) => s.id !== dragged);
             // Find where target is in the filtered list
             const targetIndex = siblingsWithoutDragged.findIndex((s) => s.id === over);
-            // Calculate insert index
+            // 1-based position within the parent's children. onReorder renumbers
+            // the siblings around this position (not a midpoint rank value).
             const insertIndex = position === "before" ? targetIndex : targetIndex + 1;
-            const newRank = calculateRank(siblingsWithoutDragged, insertIndex);
-            onReorder(dragged, newRank);
+            onReorder(dragged, insertIndex + 1);
           }
         }
       }

@@ -5,6 +5,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 import { useState } from "react";
+import { t } from "@lingui/core/macro";
 import { Download } from "lucide-react";
 import {
   getAppPath,
@@ -14,6 +15,9 @@ import {
   ImageLightbox,
   type LightboxMedia,
   authenticatedUrl,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@mochi/web";
 import type { CommentAttachment } from "@/types";
 
@@ -48,18 +52,23 @@ export function CommentAttachments({
       {images.length > 0 && (
         <div className="flex flex-wrap gap-1">
           {images.map((img, i) => (
-            <button
-              key={img.id}
-              type="button"
-              className="overflow-hidden rounded"
-              onClick={() => setLightboxIndex(i)}
-            >
-              <img
-                src={attUrl(img.id, "/thumbnail")}
-                alt={img.name}
-                className="h-20 w-auto object-cover"
-              />
-            </button>
+            <Tooltip key={img.id}>
+              <TooltipTrigger asChild>
+                <button
+                  type="button"
+                  aria-label={t`View`}
+                  className="overflow-hidden rounded"
+                  onClick={() => setLightboxIndex(i)}
+                >
+                  <img
+                    src={attUrl(img.id, "/thumbnail")}
+                    alt={img.name}
+                    className="h-20 w-auto object-cover"
+                  />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent>{t`View`}</TooltipContent>
+            </Tooltip>
           ))}
         </div>
       )}

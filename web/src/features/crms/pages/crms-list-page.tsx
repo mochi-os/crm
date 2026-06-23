@@ -23,6 +23,9 @@ import {
   ListCard,
   getErrorMessage,
   toast,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@mochi/web";
 import { Ellipsis, Plus, Users } from "lucide-react";
 import { useCrmsStore } from "@/stores/crms-store";
@@ -127,16 +130,21 @@ export function CrmsListPage() {
                   )}
                   menu={isSubscribed && (
                     <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          aria-label={t`CRM actions`}
-                          className="size-8 opacity-0 transition-opacity group-hover:opacity-100 data-[state=open]:opacity-100"
-                        >
-                          <Ellipsis className="size-4" />
-                        </Button>
-                      </DropdownMenuTrigger>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              aria-label={t`CRM actions`}
+                              className="size-8 opacity-0 transition-opacity group-hover:opacity-100 data-[state=open]:opacity-100"
+                            >
+                              <Ellipsis className="size-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                        </TooltipTrigger>
+                        <TooltipContent>{t`CRM actions`}</TooltipContent>
+                      </Tooltip>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem onSelect={() => setUnsubscribeId(crm.id)}>
                           <Trans>Unsubscribe</Trans>

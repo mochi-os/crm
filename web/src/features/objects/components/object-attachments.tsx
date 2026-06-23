@@ -19,6 +19,9 @@ import {
   getErrorMessage,
   authenticatedUrl,
   toast,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import type { Attachment } from "@/types";
@@ -127,16 +130,22 @@ export function ObjectAttachments({
               readOnly
                 ? undefined
                 : (att) => (
-                    <button
-                      type="button"
-                      className="absolute -top-1.5 -right-1.5 hidden group-hover/item:flex size-5 items-center justify-center rounded-full bg-destructive text-destructive-foreground shadow-sm"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        setDeleteTarget(att as Attachment)
-                      }}
-                    >
-                      <Trash2 className="size-3" />
-                    </button>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button
+                          type="button"
+                          aria-label={t`Delete`}
+                          className="absolute -top-1.5 -right-1.5 hidden group-hover/item:flex size-5 items-center justify-center rounded-full bg-destructive text-destructive-foreground shadow-sm"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            setDeleteTarget(att as Attachment)
+                          }}
+                        >
+                          <Trash2 className="size-3" />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent>{t`Delete`}</TooltipContent>
+                    </Tooltip>
                   )
             }
           />
@@ -163,13 +172,19 @@ export function ObjectAttachments({
                     <Download className="size-3" />
                   </a>
                   {!readOnly && (
-                    <button
-                      type="button"
-                      className="hidden group-hover:inline-flex text-muted-foreground hover:text-destructive"
-                      onClick={() => setDeleteTarget(file)}
-                    >
-                      <Trash2 className="size-3" />
-                    </button>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button
+                          type="button"
+                          aria-label={t`Delete`}
+                          className="hidden group-hover:inline-flex text-muted-foreground hover:text-destructive"
+                          onClick={() => setDeleteTarget(file)}
+                        >
+                          <Trash2 className="size-3" />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent>{t`Delete`}</TooltipContent>
+                    </Tooltip>
                   )}
                 </div>
               );

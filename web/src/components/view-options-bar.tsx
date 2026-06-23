@@ -24,6 +24,9 @@ import {
   SheetHeader,
   SheetTitle,
   SortDirectionButton,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
   ViewTabs,
 } from "@mochi/web";
 import { Eye, SlidersHorizontal } from "lucide-react";
@@ -95,15 +98,20 @@ export function ViewOptionsBar({
             </div>
           </div>
           <div className="flex shrink-0 items-center border-s px-2">
-            <Button
-              variant={hasActiveMobileControls ? "default" : "ghost"}
-              size="icon"
-              className="size-9"
-              aria-label={t`Open view controls`}
-              onClick={() => setIsMobileControlsOpen(true)}
-            >
-              <SlidersHorizontal className="size-4" />
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant={hasActiveMobileControls ? "default" : "ghost"}
+                  size="icon"
+                  className="size-9"
+                  aria-label={t`Open view controls`}
+                  onClick={() => setIsMobileControlsOpen(true)}
+                >
+                  <SlidersHorizontal className="size-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>{t`Open view controls`}</TooltipContent>
+            </Tooltip>
           </div>
         </div>
       </div>

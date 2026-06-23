@@ -28,6 +28,9 @@ import {
   useShellStorage,
   toast,
   getAppPath,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@mochi/web";
 import { Check, Columns3, Download, Ellipsis, Users, GripVertical, LogOut, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
 import crmsApi from "@/api/crms";
@@ -336,8 +339,9 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         (old) => {
           if (!old) return old;
 
-          // Sibling reorder: renumber siblings sequentially
-          if (scopeParent && rank) {
+          // Sibling reorder: renumber siblings sequentially. scopeParent may be
+          // "" (top-level), so test for presence, not truthiness.
+          if (scopeParent !== undefined && rank) {
             const siblings = old.objects
               .filter((o) => o.parent === scopeParent && o.id !== objectId)
               .sort((a, b) => (a.rank || 0) - (b.rank || 0));
@@ -747,9 +751,13 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
     reparentMutation.mutate({ objectId, parentId: newParentId });
   };
 
-  const handleReorder = (objectId: string, newRank: number) => {
-    // Use move mutation with just rank (no field/value change)
-    moveMutation.mutate({ objectId, field: "", value: "", rank: newRank });
+  const handleReorder = (objectId: string, position: number) => {
+    // Reorder within the object's own parent: the move handler treats `rank` as
+    // a 1-based position and renumbers the siblings of `scopeParent` around it.
+    // Scope to the parent (which may be "" for top-level) so only its children
+    // are renumbered, not every object in the CRM.
+    const parent = objectsData?.find((o) => o.id === objectId)?.parent ?? "";
+    moveMutation.mutate({ objectId, field: "", value: "", rank: position, scopeParent: parent });
   };
 
   const handleDeleteColumn = async (classId: string, fieldId: string, optionId: string) => {
@@ -975,16 +983,20 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
           <span className="text-sm text-muted-foreground">
             <Trans>Double click on a column to add content</Trans>
           </span>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="size-6"
-            onClick={dismissBoardHint}
-            aria-label={t`Dismiss board hint`}
-            title={t`Dismiss board hint`}
-          >
-            <X className="size-4" />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="size-6"
+                onClick={dismissBoardHint}
+                aria-label={t`Dismiss board hint`}
+              >
+                <X className="size-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>{t`Dismiss board hint`}</TooltipContent>
+          </Tooltip>
         </div>
       )}
       <Main fluid className="flex flex-col min-h-0 min-w-0 flex-1 !p-0">
