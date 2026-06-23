@@ -272,12 +272,24 @@ export function TreeView({
   // Only allow reordering when sorting by rank
   const canReorder = sort?.field === "rank" || (!sort && true);
 
-  // Drag state
+  // Drag state. The state below drives the visual drop indicators, but the
+  // actual drop decision is read from dragTargetRef. `dragover` is a React
+  // continuous-priority event, so its setState is not flushed before the
+  // discrete `drop`/`dragend` fires — reading the state in the drop handler can
+  // therefore see a stale target (e.g. a "before" on the previous sibling,
+  // which lands the item at the top of its current parent). The ref is updated
+  // synchronously, so the drop always acts on the last computed target.
   const [draggedId, setDraggedId] = useState<string | null>(null);
   const [dragOverId, setDragOverId] = useState<string | null>(null);
   const [dropPosition, setDropPosition] = useState<"before" | "after" | "on" | null>(null);
+  const dragTargetRef = useRef<{
+    draggedId: string | null;
+    overId: string | null;
+    position: "before" | "after" | "on" | null;
+  }>({ draggedId: null, overId: null, position: null });
 
   const handleDragStart = useCallback((objectId: string) => {
+    dragTargetRef.current = { draggedId: objectId, overId: null, position: null };
     setDraggedId(objectId);
   }, []);
 
@@ -300,6 +312,8 @@ export function TreeView({
         if (draggedObj.parent !== targetObj.parent) return;
       }
 
+      dragTargetRef.current.overId = objectId;
+      dragTargetRef.current.position = position;
       setDragOverId(objectId);
       setDropPosition(position);
     },
@@ -308,7 +322,10 @@ export function TreeView({
 
 
   const handleDragEnd = useCallback(() => {
-    if (draggedId && dragOverId && draggedId !== dragOverId) {
+    // Read the live target from the ref, not from state — see the dragTargetRef
+    // note above for why the state can be stale at drop time.
+    const { draggedId: dragged, overId: over, position } = dragTargetRef.current;
+    if (dragged && over && dragged !== over) {
       // Capture row positions for FLIP animation before mutation
       if (containerRef.current) {
         const positions = new Map<string, DOMRect>();
@@ -318,43 +335,50 @@ export function TreeView({
         flipRef.current = positions;
       }
 
-      if (dropPosition === "on" && onReparent && isReparentAllowed(draggedId, dragOverId)) {
+      if (position === "on" && onReparent && isReparentAllowed(dragged, over)) {
         // Reparent: make dragged item a child of target
-        onReparent(draggedId, dragOverId);
-      } else if ((dropPosition === "before" || dropPosition === "after") && onReorder && canReorder) {
+        onReparent(dragged, over);
+        // Reveal the moved item under its new parent, so dropping onto a
+        // collapsed parent is visibly applied instead of appearing to do
+        // nothing.
+        if (!expanded.has(over)) {
+          setExpandedList([...expandedList, over]);
+        }
+      } else if ((position === "before" || position === "after") && onReorder && canReorder) {
         // Reorder within same parent
-        const targetObj = objectMap[dragOverId];
-        const draggedObj = objectMap[draggedId];
+        const targetObj = objectMap[over];
+        const draggedObj = objectMap[dragged];
         if (targetObj && draggedObj && targetObj.parent === draggedObj.parent) {
           // Find siblings and calculate new rank
-          const flatNode = flatNodes.find((fn) => fn.node.object.id === dragOverId);
+          const flatNode = flatNodes.find((fn) => fn.node.object.id === over);
           if (flatNode) {
             const { siblings } = flatNode;
             // Filter out the dragged item from siblings for rank calculation
-            const siblingsWithoutDragged = siblings.filter((s) => s.id !== draggedId);
+            const siblingsWithoutDragged = siblings.filter((s) => s.id !== dragged);
             // Find where target is in the filtered list
-            const targetIndex = siblingsWithoutDragged.findIndex((s) => s.id === dragOverId);
+            const targetIndex = siblingsWithoutDragged.findIndex((s) => s.id === over);
             // Calculate insert index
-            const insertIndex = dropPosition === "before" ? targetIndex : targetIndex + 1;
+            const insertIndex = position === "before" ? targetIndex : targetIndex + 1;
             const newRank = calculateRank(siblingsWithoutDragged, insertIndex);
-            onReorder(draggedId, newRank);
+            onReorder(dragged, newRank);
           }
         }
       }
     }
+    dragTargetRef.current = { draggedId: null, overId: null, position: null };
     setDraggedId(null);
     setDragOverId(null);
     setDropPosition(null);
   }, [
-    draggedId,
-    dragOverId,
-    dropPosition,
     onReparent,
     onReorder,
     isReparentAllowed,
     canReorder,
     objectMap,
     flatNodes,
+    expanded,
+    expandedList,
+    setExpandedList,
   ]);
 
   if (objects.length === 0) {
