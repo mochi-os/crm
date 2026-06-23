@@ -27,6 +27,7 @@ import {
   useSearch,
   useShellStorage,
   toast,
+  toastAction,
   getAppPath,
   Tooltip,
   TooltipContent,
@@ -568,16 +569,24 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
   const unsubscribeMutation = useMutation({
     mutationFn: () => crmsApi.unsubscribe(crm.crm.id),
     onSuccess: () => {
-      setUnsubscribeOpen(false);
       void refreshSidebar();
       queryClient.invalidateQueries({ queryKey: ["crms"] });
-      toast.success(t`Unsubscribed`);
-      void navigate({ to: "/" });
-    },
-    onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to unsubscribe`));
     },
   });
+
+  const handleUnsubscribe = async () => {
+    try {
+      await toastAction(unsubscribeMutation.mutateAsync(), {
+        loading: t`Unsubscribing...`,
+        success: t`Unsubscribed`,
+        error: (e) => getErrorMessage(e, t`Failed to unsubscribe`),
+      });
+      setUnsubscribeOpen(false);
+      void navigate({ to: "/" });
+    } catch {
+      // toast already shown
+    }
+  };
 
   // Filter objects
   const filteredObjects = useMemo(() => {
@@ -1085,7 +1094,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         title={t`Unsubscribe from CRM?`}
         desc={t`This will remove "${crm.crm.name}" from your sidebar and stop updates for this CRM.`}
         confirmText={t`Unsubscribe`}
-        handleConfirm={() => unsubscribeMutation.mutate()}
+        handleConfirm={() => void handleUnsubscribe()}
         isLoading={unsubscribeMutation.isPending}
       />
     </>

@@ -23,7 +23,7 @@ import {
   FieldRow,
   EditableFieldRow,
   DataChip,
-  toast,
+  toastAction,
   getErrorMessage,
   extractStatus,
   AccessDialog,
@@ -125,12 +125,15 @@ function CrmSettingsPage() {
 
     setIsDeleting(true);
     try {
-      await crmsApi.delete(crm.crm.id);
+      await toastAction(crmsApi.delete(crm.crm.id), {
+        loading: t`Deleting CRM...`,
+        success: t`Crm deleted`,
+        error: (e) => getErrorMessage(e, t`Failed to delete crm`),
+      });
       void refreshSidebar();
-      toast.success(t`Crm deleted`);
       void navigate({ to: "/" });
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to delete crm`));
+    } catch {
+      // toast already shown
     } finally {
       setIsDeleting(false);
     }
@@ -144,12 +147,14 @@ function CrmSettingsPage() {
       if (!crm || !isOwner) return;
 
       try {
-        await crmsApi.update(crm.crm.id, updates);
+        await toastAction(crmsApi.update(crm.crm.id, updates), {
+          loading: t`Saving...`,
+          success: t`Crm updated`,
+          error: (e) => getErrorMessage(e, t`Failed to update crm`),
+        });
         void refreshSidebar();
         queryClient.invalidateQueries({ queryKey: ["crm", crmId] });
-        toast.success(t`Crm updated`);
       } catch (err) {
-        toast.error(getErrorMessage(err, t`Failed to update crm`));
         throw err;
       }
     },
@@ -440,35 +445,39 @@ function AccessTab({ crmId }: AccessTabProps) {
     level: string
   ) => {
     if (!canManageRules) return;
-    try {
-      await crmsApi.setAccessLevel(crmId, subject, level);
-      toast.success(t`Access set for ${subjectName}`);
-      await refetchRules();
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to set access level`));
-      throw err;
-    }
+    await toastAction(crmsApi.setAccessLevel(crmId, subject, level), {
+      loading: t`Setting access...`,
+      success: t`Access set for ${subjectName}`,
+      error: (e) => getErrorMessage(e, t`Failed to set access level`),
+    });
+    await refetchRules();
   };
 
   const handleRevoke = async (subject: string) => {
     if (!canManageRules) return;
     try {
-      await crmsApi.revokeAccess(crmId, subject);
-      toast.success(t`Access removed`);
+      await toastAction(crmsApi.revokeAccess(crmId, subject), {
+        loading: t`Removing access...`,
+        success: t`Access removed`,
+        error: (e) => getErrorMessage(e, t`Failed to remove access`),
+      });
       await refetchRules();
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to remove access`));
+    } catch {
+      // toast already shown
     }
   };
 
   const handleLevelChange = async (subject: string, newLevel: string) => {
     if (!canManageRules) return;
     try {
-      await crmsApi.setAccessLevel(crmId, subject, newLevel);
-      toast.success(t`Access level updated`);
+      await toastAction(crmsApi.setAccessLevel(crmId, subject, newLevel), {
+        loading: t`Updating access...`,
+        success: t`Access level updated`,
+        error: (e) => getErrorMessage(e, t`Failed to update access level`),
+      });
       await refetchRules();
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to update access level`));
+    } catch {
+      // toast already shown
     }
   };
 

@@ -5,7 +5,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { Trans, useLingui } from '@lingui/react/macro'
-import { Button, GeneralError, Skeleton, toast, getErrorMessage } from "@mochi/web";
+import { Button, GeneralError, Skeleton, toastAction, getErrorMessage } from "@mochi/web";
 import { Users, Loader2 } from "lucide-react";
 import crmsApi from "@/api/crms";
 
@@ -59,12 +59,15 @@ export function RecommendedCrms({
   const handleSubscribe = async (crm: RecommendedCrm) => {
     setPendingId(crm.id);
     try {
-      await crmsApi.subscribe(crm.id, crm.server || undefined);
+      await toastAction(crmsApi.subscribe(crm.id, crm.server || undefined), {
+        loading: t`Subscribing...`,
+        success: t`Subscribed to ${crm.name}`,
+        error: (e) => getErrorMessage(e, t`Failed to subscribe`),
+      });
       onSubscribe();
-      toast.success(t`Subscribed to ${crm.name}`);
       setRecommendations((prev) => prev.filter((p) => p.id !== crm.id));
-    } catch (error) {
-      toast.error(getErrorMessage(error, t`Failed to subscribe`));
+    } catch {
+      // toast already shown
     } finally {
       setPendingId(null);
     }
