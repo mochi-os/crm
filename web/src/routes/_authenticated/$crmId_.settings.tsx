@@ -117,7 +117,7 @@ function CrmSettingsPage() {
     !crm && (crmStatus === 403 || crmStatus === 404 || (!isLoading && !error));
 
   usePageTitle(
-    crm ? t`${crm.crm.name} settings` : t`Crm settings`
+    crm ? t`${crm.crm.name} settings` : t`CRM settings`
   );
 
   const handleDelete = useCallback(async () => {
@@ -127,8 +127,8 @@ function CrmSettingsPage() {
     try {
       await toastAction(crmsApi.delete(crm.crm.id), {
         loading: t`Deleting CRM...`,
-        success: t`Crm deleted`,
-        error: (e) => getErrorMessage(e, t`Failed to delete crm`),
+        success: t`CRM deleted`,
+        error: (e) => getErrorMessage(e, t`Failed to delete CRM`),
       });
       void refreshSidebar();
       void navigate({ to: "/" });
@@ -149,7 +149,7 @@ function CrmSettingsPage() {
       try {
         await toastAction(crmsApi.update(crm.crm.id, updates), {
           loading: t`Saving...`,
-          success: t`Crm updated`,
+          success: t`CRM updated`,
           error: (e) => getErrorMessage(e, t`Failed to update crm`),
         });
         void refreshSidebar();
@@ -368,7 +368,7 @@ function GeneralTab({
 type Translator = ReturnType<typeof useLingui>["t"];
 
 function validateName(t: Translator, name: string): string | null {
-  if (!name.trim()) return t`Crm name is required`;
+  if (!name.trim()) return t`CRM name is required`;
   if (name.length > 1000) return t`Name must be 1000 characters or less`;
   if (DISALLOWED_NAME_CHARS.test(name))
     return t`Name cannot contain < or > characters`;
