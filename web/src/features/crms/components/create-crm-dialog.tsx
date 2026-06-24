@@ -19,6 +19,7 @@ import {
   Label,
   Switch,
   toast,
+  toastAction,
   getErrorMessage,
 } from "@mochi/web";
 import { Plus, Users } from "lucide-react";
@@ -61,15 +62,21 @@ export function CreateCrmDialog({
 
     setIsPending(true);
     try {
-      const response = await crmsApi.create({
-        name: name.trim(),
-        privacy: allowSearch ? "public" : "private",
-      });
+      const response = await toastAction(
+        crmsApi.create({
+          name: name.trim(),
+          privacy: allowSearch ? "public" : "private",
+        }),
+        {
+          loading: t`Creating CRM...`,
+          success: t`CRM created`,
+          error: (e) => getErrorMessage(e, t`Failed to create CRM`),
+        }
+      );
 
       const fingerprint = response.data?.fingerprint;
       await refreshCrms();
 
-      toast.success(t`CRM created`);
       onOpenChange?.(false);
 
       if (fingerprint) {
@@ -80,8 +87,8 @@ export function CreateCrmDialog({
       } else {
         void navigate({ to: "/" });
       }
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to create CRM`));
+    } catch {
+      // toast already shown
     } finally {
       setIsPending(false);
     }

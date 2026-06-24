@@ -22,7 +22,7 @@ import {
   DropdownMenuTrigger,
   ListCard,
   getErrorMessage,
-  toast,
+  toastAction,
   Tooltip,
   TooltipContent,
   TooltipTrigger,
@@ -50,9 +50,6 @@ export function CrmsListPage() {
       void refresh();
       queryClient.invalidateQueries({ queryKey: ["crms"] });
       setUnsubscribeId(null);
-    },
-    onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to unsubscribe`));
     },
   });
 
@@ -171,8 +168,17 @@ export function CrmsListPage() {
         confirmText={t`Unsubscribe`}
         destructive
         isLoading={unsubscribeMutation.isPending}
-        handleConfirm={() => {
-          if (unsubscribeId) unsubscribeMutation.mutate(unsubscribeId);
+        handleConfirm={async () => {
+          if (!unsubscribeId) return;
+          try {
+            await toastAction(unsubscribeMutation.mutateAsync(unsubscribeId), {
+              loading: t`Unsubscribing...`,
+              success: t`Unsubscribed`,
+              error: (e) => getErrorMessage(e, t`Failed to unsubscribe`),
+            });
+          } catch {
+            // toast already shown
+          }
         }}
       />
 
