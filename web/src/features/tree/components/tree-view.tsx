@@ -25,7 +25,7 @@ interface TreeViewProps {
   onCardClick: (object: CrmObject) => void;
   onReparent?: (objectId: string, newParentId: string | null) => void;
   onReorder?: (objectId: string, newRank: number) => void;
-  onMoveObject?: (objectId: string, newStatus: string, newRank?: number) => void;
+  onMoveObject?: (objectId: string, statusFieldId: string, newStatus: string, newRank?: number) => void;
   selectedObjectId?: string | null;
   onCreateClick?: () => void;
   preview?: boolean;
@@ -58,34 +58,8 @@ function buildTree(objects: CrmObject[], sort?: SortState | null): TreeNode[] {
   }
 
   // Sort comparator based on sort state
-  const sortField = sort?.field || "rank";
-  const sortDirection = sort?.direction || "asc";
-  const multiplier = sortDirection === "asc" ? 1 : -1;
-
-  const compare = (a: CrmObject, b: CrmObject): number => {
-    let aVal: string | number;
-    let bVal: string | number;
-
-    if (sortField === "rank") {
-      aVal = a.rank || 0;
-      bVal = b.rank || 0;
-    } else if (sortField === "created") {
-      aVal = a.created || 0;
-      bVal = b.created || 0;
-    } else if (sortField === "updated") {
-      aVal = a.updated || 0;
-      bVal = b.updated || 0;
-    } else {
-      const fieldId = sortField.startsWith("field:") ? sortField.slice(6) : sortField;
-      aVal = a.values[fieldId] || "";
-      bVal = b.values[fieldId] || "";
-    }
-
-    if (typeof aVal === "number" && typeof bVal === "number") {
-      return (aVal - bVal) * multiplier;
-    }
-    return naturalCompare(String(aVal), String(bVal)) * multiplier;
-  };
+  const compare = (a: CrmObject, b: CrmObject): number =>
+    compareObjects(a, b, sort);
 
   // Recursively build tree nodes
   function buildNodes(parentId: string, depth: number): TreeNode[] {
@@ -133,6 +107,17 @@ function flattenTree(nodes: TreeNode[], expanded: Set<string>): FlatNode[] {
   return result;
 }
 
+function buildGroupedFlatNodes(objects: CrmObject[], sort?: SortState | null): FlatNode[] {
+  const sorted = sortObjects(objects, sort);
+  return sorted.map((obj) => ({
+    node: { object: obj, children: [], depth: 0, parent: obj.parent },
+    hasChildren: false,
+    isExpanded: false,
+    siblings: sorted,
+    anySiblingHasChildren: false,
+  }));
+}
+
 interface StatusGroup {
   id: string;
   name: string;
@@ -146,11 +131,57 @@ function resolveGroupField(
   statusField: string | undefined,
   visibleFields: { id: string; fieldtype: string }[],
 ): string {
+  if (statusField === "") return "";
+
   if (statusField) return statusField;
+
   const match = visibleFields.find(
     (f) => f.fieldtype === "enumerated" && (f.id === "status" || f.id === "stage"),
   );
   return match?.id || "";
+}
+
+function compareObjects<T extends { rank?: number; created?: number; updated?: number; number?: number; values: Record<string, string> }>(
+  a: T,
+  b: T,
+  sort?: SortState | null,
+): number {
+  const sortField = sort?.field || "rank";
+  const sortDirection = sort?.direction || "asc";
+  const multiplier = sortDirection === "asc" ? 1 : -1;
+
+  let aVal: string | number;
+  let bVal: string | number;
+
+  if (sortField === "rank") {
+    aVal = a.rank || 0;
+    bVal = b.rank || 0;
+  } else if (sortField === "created") {
+    aVal = a.created || 0;
+    bVal = b.created || 0;
+  } else if (sortField === "updated") {
+    aVal = a.updated || 0;
+    bVal = b.updated || 0;
+  } else if (sortField === "number") {
+    aVal = a.number || 0;
+    bVal = b.number || 0;
+  } else {
+    const fieldId = sortField.startsWith("field:") ? sortField.slice(6) : sortField;
+    aVal = a.values[fieldId] || "";
+    bVal = b.values[fieldId] || "";
+  }
+
+  if (typeof aVal === "number" && typeof bVal === "number") {
+    return (aVal - bVal) * multiplier;
+  }
+  return naturalCompare(String(aVal), String(bVal)) * multiplier;
+}
+
+function sortObjects<T extends { rank?: number; created?: number; updated?: number; number?: number; values: Record<string, string> }>(
+  objects: T[],
+  sort?: SortState | null,
+): T[] {
+  return [...objects].sort((a, b) => compareObjects(a, b, sort));
 }
 
 function mergeGroupOptions(
@@ -431,12 +462,14 @@ export function TreeView({
     const draggedObj = objectMap[dragged];
     if (!draggedObj) return;
     const statusValue = sectionId === UNGROUPED_STATUS ? "" : sectionId;
+    const currentStatus = draggedObj.values[groupField] || "";
+    if (currentStatus === statusValue) return;
     const siblings = objects.filter(
       (o) => o.id !== dragged
         && (o.values[groupField] || "") === statusValue
         && o.parent === draggedObj.parent,
     );
-    onMoveObject(dragged, statusValue, siblings.length + 1);
+    onMoveObject(dragged, groupField, statusValue, siblings.length + 1);
   }, [onMoveObject, groupField, objectMap, objects]);
 
   const handleDragStart = useCallback((objectId: string) => {
@@ -663,8 +696,7 @@ export function TreeView({
           {statusGroups.length > 0 ? (
             statusGroups.map((group) => {
               const sectionExpanded = !collapsedSectionSet.has(group.id);
-              const groupTree = buildTree(group.objects, sort);
-              const groupFlat = flattenTree(groupTree, expanded);
+              const groupFlat = buildGroupedFlatNodes(group.objects, sort);
               return (
                 <Fragment key={group.id}>
                   <ListSectionHeader

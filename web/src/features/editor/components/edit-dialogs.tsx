@@ -44,6 +44,8 @@ import { Check, GripVertical, Minus, MoreHorizontal, Pencil, Plus, Trash2, X } f
 import type { CrmView, CrmField, CrmClass, FieldOption } from "@/types";
 import { AddFieldDialog } from "./add-dialogs";
 
+const NONE_SELECT_VALUE = "_none_";
+
 // Pending field for create mode
 export interface PendingField {
   id: string;
@@ -360,11 +362,17 @@ export function ViewSheet({
             <div className="space-y-2">
               <Label>{viewtype === "list" ? <Trans>Group by</Trans> : <Trans>Columns group by</Trans>}</Label>
               <div className="ps-4">
-                <Select value={columns} onValueChange={handleColumnsChange}>
+                <Select
+                  value={columns || NONE_SELECT_VALUE}
+                  onValueChange={(value) =>
+                    handleColumnsChange(value === NONE_SELECT_VALUE ? "" : value)
+                  }
+                >
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder={t`Select a field`} />
                   </SelectTrigger>
                   <SelectContent>
+                    <SelectItem value={NONE_SELECT_VALUE}><Trans>None</Trans></SelectItem>
                     {enumeratedFields.map((field) => (
                       <SelectItem key={field.id} value={field.id}>
                         {field.name}
