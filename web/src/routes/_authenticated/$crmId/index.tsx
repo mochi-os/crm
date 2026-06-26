@@ -32,6 +32,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
+  LoadingContent,
 } from "@mochi/web";
 import { Check, Columns3, Download, Ellipsis, Users, GripVertical, LogOut, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
 import crmsApi from "@/api/crms";
@@ -241,7 +242,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
   const queryClient = useQueryClient();
 
   // Load objects
-  const { data: objectListData } = useQuery({
+  const { data: objectListData, isLoading: objectsLoading } = useQuery({
     queryKey: ["objects", params.crmId],
     queryFn: async () => {
       const response = await crmsApi.listObjects(params.crmId);
@@ -1023,7 +1024,9 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
       <Main fluid className="flex flex-col min-h-0 min-w-0 flex-1 !p-0">
         {/* Content area */}
         <div className={activeView?.viewtype === "list" ? "flex-1 min-h-0 overflow-auto" : "flex-1 min-h-0 overflow-x-auto"}>
-          {activeView?.viewtype === "list" ? (
+          {objectsLoading ? (
+            <LoadingContent />
+          ) : activeView?.viewtype === "list" ? (
             <div className="p-4">
               <TreeView
                 crm={crm}

@@ -222,8 +222,19 @@ export function useCrmWebsocket(crmFingerprint?: string) {
           }
           break;
         case "crm/update":
+          // A crm/update arrives after a bulk sync batch (event_sync_batch)
+          // lands all of a subscribed CRM's data at once. Refresh the schema
+          // AND the objects + people, so a freshly-subscribed CRM populates
+          // the moment its data arrives instead of staying empty until the
+          // next window refocus/remount.
           void queryClient.invalidateQueries({
             queryKey: ["crm", pid],
+          });
+          void queryClient.invalidateQueries({
+            queryKey: ["objects", pid],
+          });
+          void queryClient.invalidateQueries({
+            queryKey: ["people", pid],
           });
           break;
         case "class/create":
