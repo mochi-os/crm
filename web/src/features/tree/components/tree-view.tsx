@@ -63,8 +63,8 @@ function buildTree(objects: CrmObject[], sort?: SortState | null): TreeNode[] {
     let bVal: string | number;
 
     if (sortField === "rank") {
-      aVal = a.rank || 0;
-      bVal = b.rank || 0;
+      aVal = a.rank || "";
+      bVal = b.rank || "";
     } else if (sortField === "created") {
       aVal = a.created || 0;
       bVal = b.created || 0;

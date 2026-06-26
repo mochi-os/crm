@@ -38,6 +38,7 @@ import { Check, Columns3, Download, Ellipsis, Users, GripVertical, LogOut, Plus,
 import crmsApi from "@/api/crms";
 import type { CrmDetails, CrmField, CrmObject, SortState } from "@/types";
 import { canDesign, canCreate, canWrite } from "@/lib/access";
+import { rankBetween, rankCompare } from "@/lib/rank";
 import { useCrmsStore } from "@/stores/crms-store";
 import { BoardContainer } from "@/features/board/components";
 import { TreeView } from "@/features/tree";
@@ -341,40 +342,27 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         (old) => {
           if (!old) return old;
 
-          // Sibling reorder: renumber siblings sequentially. scopeParent may be
-          // "" (top-level), so test for presence, not truthiness.
-          if (scopeParent !== undefined && rank) {
-            const siblings = old.objects
-              .filter((o) => o.parent === scopeParent && o.id !== objectId)
-              .sort((a, b) => (a.rank || 0) - (b.rank || 0));
-            const movedObj = old.objects.find((o) => o.id === objectId);
-            if (movedObj) {
-              siblings.splice(rank - 1, 0, movedObj);
-              const rankMap: Record<string, number> = {};
-              siblings.forEach((s, i) => { rankMap[s.id] = i + 1; });
-              return {
-                ...old,
-                objects: old.objects.map((obj) =>
-                  rankMap[obj.id] !== undefined ? { ...obj, rank: rankMap[obj.id] } : obj,
-                ),
-              };
-            }
-          }
-
-          // Renumber objects in scope to avoid rank ties (mirrors server logic)
-          const oldVal = old.objects.find((o) => o.id === objectId)?.values[field] || "";
-          const targetValue = value || oldVal;
-          const inScope = old.objects
-            .filter((o) => o.id !== objectId && (o.values[field] || "") === targetValue)
-            .sort((a, b) => (a.rank || 0) - (b.rank || 0));
-          const rankMap: Record<string, number> = {};
+          // Compute the moved object's new fractional key between the neighbours
+          // at the 1-based target position (#53): one key change, matching the
+          // server — no whole-scope renumber. scopeParent may be "" (top-level),
+          // so test for presence, not truthiness.
+          let newRank: string | undefined;
           if (rank) {
-            let r = 1;
-            for (const obj of inScope) {
-              if (r === rank) r++;
-              rankMap[obj.id] = r;
-              r++;
+            let others: CrmObject[];
+            if (scopeParent !== undefined) {
+              others = old.objects.filter((o) => o.parent === scopeParent && o.id !== objectId);
+            } else {
+              const oldVal = old.objects.find((o) => o.id === objectId)?.values[field] || "";
+              const targetValue = value || oldVal;
+              others = old.objects.filter((o) => o.id !== objectId && (o.values[field] || "") === targetValue);
             }
+            others.sort((a, b) => rankCompare(a.rank, b.rank));
+            let pos = rank;
+            if (pos < 1) pos = 1;
+            if (pos > others.length + 1) pos = others.length + 1;
+            const before = pos >= 2 ? others[pos - 2].rank : null;
+            const after = pos - 1 < others.length ? others[pos - 1].rank : null;
+            newRank = rankBetween(before, after);
           }
 
           return {
@@ -387,21 +375,18 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                 }
                 return {
                   ...obj,
-                  rank: rank ?? obj.rank,
+                  rank: newRank ?? obj.rank,
                   values: updatedValues,
                   ...(promote ? { parent: "" } : {}),
                 };
               }
-              // Cascade status/row changes to descendants
+              // Cascade status/row changes to descendants (rank unchanged).
               if (field && isDescendant(obj, objectId, old.objects)) {
                 const updatedValues = { ...obj.values, [field]: value };
                 if (rf && rowValue !== undefined) {
                   updatedValues[rf] = rowValue;
                 }
-                return { ...obj, rank: rankMap[obj.id] ?? obj.rank, values: updatedValues };
-              }
-              if (rankMap[obj.id] !== undefined) {
-                return { ...obj, rank: rankMap[obj.id] };
+                return { ...obj, values: updatedValues };
               }
               return obj;
             }),

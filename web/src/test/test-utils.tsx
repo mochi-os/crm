@@ -135,7 +135,7 @@ export function createMockObject(
     crm: "proj-1",
     class: "task",
     parent: "",
-    rank: 1,
+    rank: "V",
     created: Date.now(),
     updated: Date.now(),
     values: {

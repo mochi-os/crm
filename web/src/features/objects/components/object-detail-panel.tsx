@@ -95,7 +95,7 @@ export function ObjectDetailPanel({
     enabled: !!objectId,
     // Use cached objects list as placeholder so the panel renders immediately
     placeholderData: () => {
-      const cached = queryClient.getQueryData<{ objects: Array<{ id: string; crm: string; class: string; parent: string; rank: number; created: number; updated: number; values: Record<string, string> }>; watched?: string[] }>(["objects", crmId]);
+      const cached = queryClient.getQueryData<{ objects: Array<{ id: string; crm: string; class: string; parent: string; rank: string; created: number; updated: number; values: Record<string, string> }>; watched?: string[] }>(["objects", crmId]);
       if (!cached || !objectId) return undefined;
       const obj = cached.objects.find((o) => o.id === objectId);
       if (!obj) return undefined;
