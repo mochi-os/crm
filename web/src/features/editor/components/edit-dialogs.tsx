@@ -356,9 +356,9 @@ export function ViewSheet({
             </div>
           )}
 
-          {viewtype === "board" && enumeratedFields.length > 0 && (
+          {(viewtype === "board" || viewtype === "list") && enumeratedFields.length > 0 && (
             <div className="space-y-2">
-              <Label><Trans>Columns group by</Trans></Label>
+              <Label>{viewtype === "list" ? <Trans>Group by</Trans> : <Trans>Columns group by</Trans>}</Label>
               <div className="ps-4">
                 <Select value={columns} onValueChange={handleColumnsChange}>
                   <SelectTrigger className="w-full">
@@ -397,7 +397,7 @@ export function ViewSheet({
             </div>
           )}
 
-          {viewtype === "board" && enumeratedFields.length > 0 && (
+          {(viewtype === "board" || viewtype === "list") && enumeratedFields.length > 0 && (
             <div className="space-y-2">
               <Label><Trans>Border colour</Trans></Label>
               <div className="ps-4">

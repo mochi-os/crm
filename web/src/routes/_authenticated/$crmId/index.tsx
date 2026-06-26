@@ -1020,10 +1020,14 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                 peopleMap={peopleMap}
                 viewFields={activeView?.fields}
                 viewClasses={activeView?.classes}
+                statusField={columnField}
+                borderField={activeView?.border}
                 sort={sort}
                 onCardClick={handleCardClick}
                 onReparent={canWrite(access) ? handleReparent : undefined}
                 onReorder={canWrite(access) ? handleReorder : undefined}
+                onMoveObject={canWrite(access) && columnField ? handleMoveObject : undefined}
+                selectedObjectId={selectedObjectId}
                 onCreateClick={canCreate(access) ? handleOpenCreateDialog : undefined}
               />
             </div>

@@ -82,6 +82,8 @@ export function DesignPreview({
                 peopleMap={{}}
                 viewFields={selectedView.fields}
                 viewClasses={selectedView.classes}
+                statusField={selectedView.columns || undefined}
+                borderField={selectedView.border || undefined}
                 onCardClick={noop}
                 preview
               />

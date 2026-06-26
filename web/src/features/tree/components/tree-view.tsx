@@ -4,13 +4,13 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useState, useMemo, useLayoutEffect, useCallback, useRef } from "react";
+import { useState, useMemo, useLayoutEffect, useCallback, useRef, Fragment, type DragEvent } from "react";
 import { Trans } from '@lingui/react/macro'
 import { t } from '@lingui/core/macro'
-import { Button, EmptyState, naturalCompare, useShellStorage } from "@mochi/web";
+import { Button, EmptyState, ListSectionHeader, naturalCompare, TreeTableHeader, useShellStorage } from "@mochi/web";
 import { Folder, Plus } from 'lucide-react';
 import { TreeRow } from "./tree-row";
-import type { CrmDetails, CrmObject, SortState } from "@/types";
+import type { CrmDetails, CrmObject, SortState, FieldOption } from "@/types";
 
 interface TreeViewProps {
   crm: CrmDetails;
@@ -19,10 +19,14 @@ interface TreeViewProps {
   peopleMap: Record<string, string>;
   viewFields?: string;
   viewClasses?: string[];
+  statusField?: string;
+  borderField?: string;
   sort?: SortState | null;
   onCardClick: (object: CrmObject) => void;
   onReparent?: (objectId: string, newParentId: string | null) => void;
   onReorder?: (objectId: string, newRank: number) => void;
+  onMoveObject?: (objectId: string, newStatus: string, newRank?: number) => void;
+  selectedObjectId?: string | null;
   onCreateClick?: () => void;
   preview?: boolean;
 }
@@ -129,6 +133,104 @@ function flattenTree(nodes: TreeNode[], expanded: Set<string>): FlatNode[] {
   return result;
 }
 
+interface StatusGroup {
+  id: string;
+  name: string;
+  colour?: string;
+  objects: CrmObject[];
+}
+
+const UNGROUPED_STATUS = "__none__";
+
+function resolveGroupField(
+  statusField: string | undefined,
+  visibleFields: { id: string; fieldtype: string }[],
+): string {
+  if (statusField) return statusField;
+  const match = visibleFields.find(
+    (f) => f.fieldtype === "enumerated" && (f.id === "status" || f.id === "stage"),
+  );
+  return match?.id || "";
+}
+
+function mergeGroupOptions(
+  crm: CrmDetails,
+  groupField: string,
+  viewClasses?: string[],
+): FieldOption[] {
+  const classIds = viewClasses?.length
+    ? viewClasses
+    : crm.classes.map((c) => c.id);
+  const seen = new Map<string, FieldOption>();
+  for (const classId of classIds) {
+    for (const opt of crm.options[classId]?.[groupField] || []) {
+      if (!seen.has(opt.id)) seen.set(opt.id, opt);
+    }
+  }
+  return [...seen.values()].sort((a, b) => (a.rank ?? 0) - (b.rank ?? 0));
+}
+
+function optionLabelForObject(
+  obj: CrmObject,
+  groupField: string,
+  crm: CrmDetails,
+): { name: string; colour?: string } {
+  const value = obj.values[groupField];
+  if (!value) return { name: "" };
+  const opt = crm.options[obj.class]?.[groupField]?.find((o) => o.id === value);
+  return opt ? { name: opt.name, colour: opt.colour } : { name: value };
+}
+
+function buildStatusGroups(
+  objects: CrmObject[],
+  groupField: string,
+  groupOptions: FieldOption[],
+  crm: CrmDetails,
+  noStatusLabel: string,
+): StatusGroup[] {
+  const buckets = new Map<string, CrmObject[]>();
+  for (const opt of groupOptions) {
+    buckets.set(opt.id, []);
+  }
+  buckets.set(UNGROUPED_STATUS, []);
+
+  for (const obj of objects) {
+    const value = obj.values[groupField] || UNGROUPED_STATUS;
+    if (!buckets.has(value)) buckets.set(value, []);
+    buckets.get(value)!.push(obj);
+  }
+
+  const groups: StatusGroup[] = [];
+  for (const opt of groupOptions) {
+    groups.push({
+      id: opt.id,
+      name: opt.name,
+      colour: opt.colour,
+      objects: buckets.get(opt.id) || [],
+    });
+  }
+
+  const unassigned = buckets.get(UNGROUPED_STATUS) || [];
+  if (unassigned.length > 0) {
+    const sample = optionLabelForObject(unassigned[0], groupField, crm);
+    groups.push({
+      id: UNGROUPED_STATUS,
+      name: sample.name || noStatusLabel,
+      colour: sample.colour,
+      objects: unassigned,
+    });
+  }
+
+  for (const [id, objs] of buckets) {
+    if (id === UNGROUPED_STATUS || groupOptions.some((o) => o.id === id)) continue;
+    if (objs.length === 0) continue;
+    const sample = optionLabelForObject(objs[0], groupField, crm);
+    groups.push({ id, name: sample.name || id, colour: sample.colour, objects: objs });
+  }
+
+  return groups;
+}
+
 export function TreeView({
   crm,
   crmId,
@@ -136,10 +238,14 @@ export function TreeView({
   peopleMap,
   viewFields,
   viewClasses,
+  statusField,
+  borderField,
   sort,
   onCardClick,
   onReparent,
   onReorder,
+  onMoveObject,
+  selectedObjectId,
   onCreateClick,
   preview,
 }: TreeViewProps) {
@@ -181,6 +287,39 @@ export function TreeView({
   const visibleFields = viewFieldsList
     .map((id) => fieldMap.get(id))
     .filter(Boolean) as typeof fields;
+
+  const groupField = resolveGroupField(statusField, visibleFields);
+  const rowFields = groupField
+    ? visibleFields.filter((f) => f.id !== groupField)
+    : visibleFields;
+
+  const groupOptions = useMemo(
+    () => (groupField ? mergeGroupOptions(crm, groupField, viewClasses) : []),
+    [crm, groupField, viewClasses],
+  );
+
+  const sectionStorageKey = `${storageKey}:sections:${groupField || "none"}`;
+  const [collapsedSections, setCollapsedSections] = useShellStorage<string[]>(sectionStorageKey, []);
+  const collapsedSectionSet = useMemo(() => new Set(collapsedSections), [collapsedSections]);
+
+  const toggleSection = useCallback((sectionId: string) => {
+    const set = new Set(collapsedSections);
+    if (set.has(sectionId)) {
+      set.delete(sectionId);
+    } else {
+      set.add(sectionId);
+    }
+    setCollapsedSections([...set]);
+  }, [collapsedSections, setCollapsedSections]);
+
+  const statusGroups = useMemo(
+    () => (groupField && groupOptions.length > 0
+      ? buildStatusGroups(objects, groupField, groupOptions, crm, t`No status`)
+      : []),
+    [objects, groupField, groupOptions, crm],
+  );
+
+  const tableColSpan = 1 + (showClass ? 1 : 0) + rowFields.length;
 
   // Build class map for looking up class names
   const classMap = useMemo(() => {
@@ -270,15 +409,41 @@ export function TreeView({
   const [draggedId, setDraggedId] = useState<string | null>(null);
   const [dragOverId, setDragOverId] = useState<string | null>(null);
   const [dropPosition, setDropPosition] = useState<"before" | "after" | "on" | null>(null);
+  const [dragOverSectionId, setDragOverSectionId] = useState<string | null>(null);
   const dragTargetRef = useRef<{
     draggedId: string | null;
     overId: string | null;
     position: "before" | "after" | "on" | null;
-  }>({ draggedId: null, overId: null, position: null });
+    sectionId: string | null;
+  }>({ draggedId: null, overId: null, position: null, sectionId: null });
+  const sectionDropHandledRef = useRef(false);
+
+  const clearDragState = useCallback(() => {
+    dragTargetRef.current = { draggedId: null, overId: null, position: null, sectionId: null };
+    setDraggedId(null);
+    setDragOverId(null);
+    setDropPosition(null);
+    setDragOverSectionId(null);
+  }, []);
+
+  const moveToSection = useCallback((dragged: string, sectionId: string) => {
+    if (!onMoveObject || !groupField) return;
+    const draggedObj = objectMap[dragged];
+    if (!draggedObj) return;
+    const statusValue = sectionId === UNGROUPED_STATUS ? "" : sectionId;
+    const siblings = objects.filter(
+      (o) => o.id !== dragged
+        && (o.values[groupField] || "") === statusValue
+        && o.parent === draggedObj.parent,
+    );
+    onMoveObject(dragged, statusValue, siblings.length + 1);
+  }, [onMoveObject, groupField, objectMap, objects]);
 
   const handleDragStart = useCallback((objectId: string) => {
-    dragTargetRef.current = { draggedId: objectId, overId: null, position: null };
+    sectionDropHandledRef.current = false;
+    dragTargetRef.current = { draggedId: objectId, overId: null, position: null, sectionId: null };
     setDraggedId(objectId);
+    setDragOverSectionId(null);
   }, []);
 
   const handleDragOver = useCallback(
@@ -302,17 +467,81 @@ export function TreeView({
 
       dragTargetRef.current.overId = objectId;
       dragTargetRef.current.position = position;
+      dragTargetRef.current.sectionId = null;
+      setDragOverSectionId(null);
       setDragOverId(objectId);
       setDropPosition(position);
     },
     [draggedId, isReparentAllowed, canReorder, objectMap],
   );
 
+  const handleSectionDragOver = useCallback((sectionId: string, e: DragEvent) => {
+    e.preventDefault();
+    if (!draggedId || preview || !onMoveObject || !groupField) return;
+    e.dataTransfer.dropEffect = "move";
+    dragTargetRef.current.sectionId = sectionId;
+    dragTargetRef.current.overId = null;
+    dragTargetRef.current.position = null;
+    setDragOverSectionId(sectionId);
+    setDragOverId(null);
+    setDropPosition(null);
+  }, [draggedId, preview, onMoveObject, groupField]);
+
+  const handleSectionDrop = useCallback((sectionId: string, e: DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const dragged = dragTargetRef.current.draggedId;
+    if (!dragged || preview || !onMoveObject) return;
+
+    if (containerRef.current) {
+      const positions = new Map<string, DOMRect>();
+      containerRef.current.querySelectorAll("[data-card-id]").forEach((el) => {
+        positions.set(el.getAttribute("data-card-id")!, el.getBoundingClientRect());
+      });
+      flipRef.current = positions;
+    }
+
+    sectionDropHandledRef.current = true;
+    moveToSection(dragged, sectionId);
+
+    if (collapsedSectionSet.has(sectionId)) {
+      setCollapsedSections(collapsedSections.filter((id) => id !== sectionId));
+    }
+
+    clearDragState();
+  }, [preview, onMoveObject, moveToSection, collapsedSectionSet, collapsedSections, setCollapsedSections, clearDragState]);
+
+  const handleSectionDragLeave = useCallback(() => {
+    dragTargetRef.current.sectionId = null;
+    setDragOverSectionId(null);
+  }, []);
+
 
   const handleDragEnd = useCallback(() => {
+    if (sectionDropHandledRef.current) {
+      sectionDropHandledRef.current = false;
+      return;
+    }
+
+    const { draggedId: dragged, overId: over, position, sectionId } = dragTargetRef.current;
+    if (sectionId && dragged && onMoveObject) {
+      if (containerRef.current) {
+        const positions = new Map<string, DOMRect>();
+        containerRef.current.querySelectorAll("[data-card-id]").forEach((el) => {
+          positions.set(el.getAttribute("data-card-id")!, el.getBoundingClientRect());
+        });
+        flipRef.current = positions;
+      }
+      moveToSection(dragged, sectionId);
+      if (collapsedSectionSet.has(sectionId)) {
+        setCollapsedSections(collapsedSections.filter((id) => id !== sectionId));
+      }
+      clearDragState();
+      return;
+    }
+
     // Read the live target from the ref, not from state — see the dragTargetRef
     // note above for why the state can be stale at drop time.
-    const { draggedId: dragged, overId: over, position } = dragTargetRef.current;
     if (dragged && over && dragged !== over) {
       // Capture row positions for FLIP animation before mutation
       if (containerRef.current) {
@@ -353,13 +582,12 @@ export function TreeView({
         }
       }
     }
-    dragTargetRef.current = { draggedId: null, overId: null, position: null };
-    setDraggedId(null);
-    setDragOverId(null);
-    setDropPosition(null);
+    clearDragState();
   }, [
     onReparent,
     onReorder,
+    onMoveObject,
+    moveToSection,
     isReparentAllowed,
     canReorder,
     objectMap,
@@ -367,7 +595,48 @@ export function TreeView({
     expanded,
     expandedList,
     setExpandedList,
+    collapsedSectionSet,
+    collapsedSections,
+    setCollapsedSections,
+    clearDragState,
   ]);
+
+  const renderFlatNodes = (nodes: FlatNode[]) =>
+    nodes.map(({ node, hasChildren, isExpanded, anySiblingHasChildren }) => {
+      const draggedObj = draggedId ? objectMap[draggedId] : null;
+      const canReorderHere =
+        canReorder && draggedObj && draggedObj.parent === node.object.parent && draggedId !== node.object.id;
+
+      return (
+        <TreeRow
+          key={node.object.id}
+          object={node.object}
+          depth={node.depth}
+          hasChildren={hasChildren}
+          isExpanded={isExpanded}
+          anySiblingHasChildren={anySiblingHasChildren}
+          fields={rowFields}
+          options={crm.options[node.object.class] || options}
+          peopleMap={peopleMap}
+          classMap={classMap}
+          titleFieldId={crm.classes.find((c) => c.id === node.object.class)?.title}
+          showClass={showClass}
+          borderField={borderField}
+          resourceId={crmId}
+          isSelected={selectedObjectId === node.object.id}
+          isDragOver={!preview && dragOverId === node.object.id && dropPosition === "on"}
+          isDragBefore={!preview && dragOverId === node.object.id && dropPosition === "before"}
+          isDragAfter={!preview && dragOverId === node.object.id && dropPosition === "after"}
+          canReorder={!preview && !!canReorderHere}
+          canReparent={!preview && !!draggedId && draggedId !== node.object.id && isReparentAllowed(draggedId, node.object.id)}
+          onToggleExpand={() => toggleExpand(node.object.id)}
+          onClick={preview ? () => {} : () => onCardClick(node.object)}
+          onDragStart={preview ? () => {} : () => handleDragStart(node.object.id)}
+          onDragOver={preview ? () => {} : handleDragOver}
+          onDragEnd={preview ? () => {} : handleDragEnd}
+        />
+      );
+    });
 
   if (objects.length === 0) {
     return (
@@ -383,41 +652,41 @@ export function TreeView({
   }
 
   return (
-    <div ref={containerRef} className="border rounded-lg overflow-hidden bg-background relative">
-      <table className="w-full border-collapse">
-        <tbody className="divide-y divide-border">
-          {flatNodes.map(({ node, hasChildren, isExpanded, anySiblingHasChildren }) => {
-            const draggedObj = draggedId ? objectMap[draggedId] : null;
-            const canReorderHere =
-              canReorder && draggedObj && draggedObj.parent === node.object.parent && draggedId !== node.object.id;
-
-            return (
-              <TreeRow
-                key={node.object.id}
-                object={node.object}
-                depth={node.depth}
-                hasChildren={hasChildren}
-                isExpanded={isExpanded}
-                anySiblingHasChildren={anySiblingHasChildren}
-                fields={visibleFields}
-                options={options}
-                peopleMap={peopleMap}
-                classMap={classMap}
-                titleFieldId={crm.classes.find((c) => c.id === node.object.class)?.title}
-                showClass={showClass}
-                isDragOver={!preview && dragOverId === node.object.id && dropPosition === "on"}
-                isDragBefore={!preview && dragOverId === node.object.id && dropPosition === "before"}
-                isDragAfter={!preview && dragOverId === node.object.id && dropPosition === "after"}
-                canReorder={!preview && !!canReorderHere}
-                canReparent={!preview && !!draggedId && draggedId !== node.object.id && isReparentAllowed(draggedId, node.object.id)}
-                onToggleExpand={() => toggleExpand(node.object.id)}
-                onClick={preview ? () => {} : () => onCardClick(node.object)}
-                onDragStart={preview ? () => {} : () => handleDragStart(node.object.id)}
-                onDragOver={preview ? () => {} : handleDragOver}
-                onDragEnd={preview ? () => {} : handleDragEnd}
-              />
-            );
-          })}
+    <div ref={containerRef} className="border rounded-lg bg-background relative">
+      <table className="w-full border-collapse table-fixed">
+        <TreeTableHeader
+          fields={rowFields}
+          showClass={showClass}
+          titleFieldId={crm.classes.find((c) => c.id === effectiveClass)?.title}
+        />
+        <tbody>
+          {statusGroups.length > 0 ? (
+            statusGroups.map((group) => {
+              const sectionExpanded = !collapsedSectionSet.has(group.id);
+              const groupTree = buildTree(group.objects, sort);
+              const groupFlat = flattenTree(groupTree, expanded);
+              return (
+                <Fragment key={group.id}>
+                  <ListSectionHeader
+                    name={group.name}
+                    colour={group.colour}
+                    count={group.objects.length}
+                    isExpanded={sectionExpanded}
+                    onToggle={() => toggleSection(group.id)}
+                    colSpan={tableColSpan}
+                    canAcceptDrop={!preview && !!draggedId && !!onMoveObject && !!groupField}
+                    isDragOver={dragOverSectionId === group.id}
+                    onSectionDragOver={(e) => handleSectionDragOver(group.id, e)}
+                    onSectionDrop={(e) => handleSectionDrop(group.id, e)}
+                    onSectionDragLeave={handleSectionDragLeave}
+                  />
+                  {sectionExpanded ? renderFlatNodes(groupFlat) : null}
+                </Fragment>
+              );
+            })
+          ) : (
+            renderFlatNodes(flatNodes)
+          )}
         </tbody>
       </table>
     </div>
