@@ -108,7 +108,7 @@ describe("CreateObjectDialog", () => {
       />,
     );
 
-    expect(screen.getByTitle("Close")).toBeInTheDocument();
+    expect(screen.getByLabelText("Close")).toBeInTheDocument();
   });
 
   it("should not render when closed", () => {

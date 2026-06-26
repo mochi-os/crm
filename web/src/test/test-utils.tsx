@@ -8,6 +8,8 @@
 import React, { type ReactElement } from "react";
 import { render, type RenderOptions } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { i18n } from "@lingui/core";
+import { I18nProvider } from "@lingui/react";
 import type {
   Crm,
   CrmDetails,
@@ -37,10 +39,14 @@ interface WrapperProps {
   children: React.ReactNode;
 }
 
+// i18n is activated globally in src/test/setup.ts; here we just provide it to
+// the React tree so <Trans> / useLingui resolve.
 function AllProviders({ children }: WrapperProps) {
   const queryClient = createTestQueryClient();
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <I18nProvider i18n={i18n}>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    </I18nProvider>
   );
 }
 

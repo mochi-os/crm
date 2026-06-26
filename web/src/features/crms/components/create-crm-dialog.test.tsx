@@ -86,8 +86,6 @@ describe("CreateCrmDialog", () => {
       <CreateCrmDialog open={true} onOpenChange={vi.fn()} hideTrigger />,
     );
 
-    expect(
-      screen.getByText("Create a CRM and choose whether it is searchable."),
-    ).toBeInTheDocument();
+    expect(screen.getByText("Create a new CRM")).toBeInTheDocument();
   });
 });
