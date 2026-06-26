@@ -6,7 +6,7 @@
 
 import { useRef } from "react";
 import { useLingui } from '@lingui/react/macro'
-import { Card, EntityAvatar, cn, useFormat, getAppPath } from "@mochi/web";
+import { Card, EntityAvatar, Skeleton, cn, useFormat, getAppPath } from "@mochi/web";
 import { Check, CheckSquare } from "lucide-react";
 import type { DragPreview } from "./board-container";
 import type { CrmObject, CrmField, CrmClass, FieldOption, ChecklistItem } from "@/types";
@@ -165,7 +165,12 @@ export function BoardCard({
         );
 
       case "user": {
-        const name = peopleMap?.[value] || value;
+        // Resolve the assignee's entity ID to a name. During a fresh
+        // subscribe the people list may not have synced yet; never fall
+        // back to printing the raw entity ID (that reads as corrupt data) —
+        // show the avatar (its asset URL resolves independently) with a
+        // skeleton in place of the name until it resolves.
+        const name = peopleMap?.[value];
         return (
           <span key={field.id} className="inline-flex items-center gap-1.5 text-[10px] text-muted-foreground">
             <EntityAvatar
@@ -176,7 +181,7 @@ export function BoardCard({
               name={name}
               size="xs"
             />
-            {truncate(name, 25)}
+            {name ? truncate(name, 25) : <Skeleton className="h-2.5 w-14" />}
           </span>
         );
       }
