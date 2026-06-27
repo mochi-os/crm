@@ -2,7 +2,7 @@
 // Copyright © 2026 Mochi OÜ
 
 {
-	"version": "2.48",
+	"version": "2.49",
 	"label": "app.name",
 	"classes": ["crm"],
 	"paths": ["crm"],
@@ -12,9 +12,10 @@
 	"execute": ["crm.star"],
 
 	"database": {
-		"schema": 4,
+		"schema": 5,
 		"file": "crm.db",
-		"create": {"function": "database_create"}
+		"create": {"function": "database_create"},
+		"upgrade": {"function": "database_upgrade"}
 	},
 
 	"icons": [
