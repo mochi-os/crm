@@ -16,6 +16,9 @@ export interface Crm {
   server: string;
   created: number;
   updated: number;
+  // 0 while a freshly-subscribed CRM's bulk content is still arriving over P2P;
+  // 1 once it has landed. The board shows a loading state until then.
+  populated: number;
   access: CrmAccess;
 }
 

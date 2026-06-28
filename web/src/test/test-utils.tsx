@@ -74,6 +74,7 @@ export function createMockCrm(overrides?: Partial<Crm>): Crm {
     server: "local",
     created: Date.now(),
     updated: Date.now(),
+    populated: 1,
     access: "owner",
     ...overrides,
   };

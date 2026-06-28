@@ -300,7 +300,8 @@ def database_create():
 		template_version integer not null default 0,
 		created integer not null,
 		updated integer not null,
-		synced integer not null default 0
+		synced integer not null default 0,
+		populated integer not null default 1
 	)""")
 	mochi.db.execute("create index if not exists crms_fingerprint on crms(fingerprint)")
 
@@ -523,6 +524,15 @@ def database_upgrade(version):
 		crm_ids = mochi.db.rows("select distinct crm from objects") or []
 		for c in crm_ids:
 			rank_resequence(c["crm"])
+
+	if version == 6:
+		# Add crms.populated: 0 while a freshly-subscribed CRM's bulk content is
+		# still arriving over P2P (set 1 by event_sync_batch), so the board shows a
+		# loading state instead of partial/empty data rather than a half-synced
+		# board. Existing rows already hold their data, hence default 1.
+		cols = [r["name"] for r in mochi.db.table("crms") or []]
+		if "populated" not in cols:
+			mochi.db.execute("alter table crms add column populated integer not null default 1")
 
 # ============================================================================
 # Templates
@@ -1050,7 +1060,7 @@ def action_crm_get(a):
 		a.error.label(400, "errors.crm_id_required")
 		return
 
-	row = mochi.db.row("select id, name, description, owner, server, template, template_version, created, updated from crms where id=?", crm_id)
+	row = mochi.db.row("select id, name, description, owner, server, template, template_version, created, updated, populated from crms where id=?", crm_id)
 	if not row:
 		a.error.label(404, "errors.crm_not_found")
 		return
@@ -1145,6 +1155,7 @@ def action_crm_get(a):
 			"template_version": row["template_version"],
 			"created": row["created"],
 			"updated": row["updated"],
+			"populated": row["populated"],
 			"access": access,
 		},
 		"classes": classes,
@@ -4629,9 +4640,12 @@ def action_subscribe(a):
 	now = mochi.time.now()
 	fp = mochi.entity.fingerprint(crm_id) or ""
 
-	# Insert the remote crm
+	# Insert the remote crm. populated=0: the schema is fetched synchronously
+	# below, but the bulk object data arrives asynchronously via the owner's
+	# sync/batch. The board shows a loading state until event_sync_batch flips
+	# this to 1.
 	mochi.db.execute(
-		"insert into crms (id, name, description, owner, server, fingerprint, created, updated) values (?, ?, ?, 0, ?, ?, ?, ?)",
+		"insert into crms (id, name, description, owner, server, fingerprint, created, updated, populated) values (?, ?, ?, 0, ?, ?, ?, ?, 0)",
 		crm_id, crm_name, crm_desc, server or "", fp, now, now
 	)
 
@@ -5289,6 +5303,10 @@ def event_sync_batch(e):
 			"insert or ignore into links (crm, source, target, linktype, created) values (?, ?, ?, ?, ?)",
 			crm_id, l["source"], l["target"], l.get("linktype", "relates"), l.get("created", 0)
 		)
+
+	# Mark the subscription's initial bulk content as arrived so the board stops
+	# showing its loading state and renders the now-complete data.
+	mochi.db.execute("update crms set populated=1 where id=? and owner=0", crm_id)
 
 	# Notify UI
 	fp = mochi.entity.fingerprint(crm_id)
