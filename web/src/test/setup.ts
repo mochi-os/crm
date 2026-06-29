@@ -7,6 +7,12 @@
 import "@testing-library/jest-dom/vitest";
 import { cleanup } from "@testing-library/react";
 import { afterEach, vi } from "vitest";
+import { i18n } from "@lingui/core";
+
+// Activate a locale globally so the Lingui `t` macro works in any test —
+// including non-component code (stores, helpers) that never renders under an
+// I18nProvider. Empty catalog → the macro's embedded English source is used.
+i18n.loadAndActivate({ locale: "en", messages: {} });
 
 // Cleanup after each test
 afterEach(() => {

@@ -9,6 +9,7 @@ import { useLingui } from '@lingui/react/macro'
 import { cn, naturalCompare } from "@mochi/web";
 import { BoardColumn, type BoardColumnRow } from "./board-column";
 import type { CrmObject, CrmDetails, CrmClass, FieldOption, SortState } from "@/types";
+import { rankCompare } from "@/lib/rank";
 
 // Check if objectId is a descendant of ancestorId
 function isDescendantOf(objectId: string, ancestorId: string, objectMap: Record<string, CrmObject>): boolean {
@@ -53,8 +54,8 @@ function sortObjects(objects: CrmObject[], sort?: SortState | null): CrmObject[]
     let bVal: string | number;
 
     if (sortField === "rank") {
-      aVal = a.rank || 0;
-      bVal = b.rank || 0;
+      aVal = a.rank || "";
+      bVal = b.rank || "";
     } else if (sortField === "created") {
       aVal = a.created || 0;
       bVal = b.created || 0;
@@ -69,6 +70,12 @@ function sortObjects(objects: CrmObject[], sort?: SortState | null): CrmObject[]
 
     if (typeof aVal === "number" && typeof bVal === "number") {
       return (aVal - bVal) * multiplier;
+    }
+    // Rank keys are opaque fractional-index strings — compare BINARY (rankCompare),
+    // never naturalCompare (case/accent-insensitive + numeric-aware reorders them
+    // and lands dragged cards at the wrong slot, #53).
+    if (sortField === "rank") {
+      return rankCompare(String(aVal), String(bVal)) * multiplier;
     }
     return naturalCompare(String(aVal), String(bVal)) * multiplier;
   });
@@ -214,6 +221,11 @@ export function BoardContainer({
   // FLIP animation: capture card positions before re-render, animate after
   const flipRef = useRef<Map<string, DOMRect>>(new Map());
   const lastDragPosRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  // Id of the dragged card, held across the preview→drop transition. Its captured
+  // "First" rect is its source column, so the FLIP effect must keep skipping it
+  // for the render after the preview clears (the drop) — otherwise it snaps back
+  // to the source and slides across instead of landing where the gap showed it.
+  const droppedCardRef = useRef<string | null>(null);
 
   // Capture positions of all cards (top-level and nested) for FLIP
   const capturePositions = useCallback(() => {
@@ -228,16 +240,42 @@ export function BoardContainer({
 
   // FLIP animation effect — runs after every render when positions are captured
   useLayoutEffect(() => {
+    const preview = dragPreviewRef.current;
+    // Skip the dragged card while the preview is active AND on the render right
+    // after it clears (the drop), then stop protecting it so later reflows
+    // animate it normally. See droppedCardRef above.
+    const skipId = preview ? preview.draggedId : droppedCardRef.current;
+    if (!preview) droppedCardRef.current = null;
+
     const prev = flipRef.current;
     if (!prev.size || !boardRef.current) return;
 
-    const preview = dragPreviewRef.current;
+    // Skip the dragged card AND its nested descendants: a dragged parent's
+    // children move with it, and their captured "First" rect is the source
+    // column, so without this they snap back across too (a parent with many
+    // subtasks made this obvious).
+    const skip = new Set<string>();
+    if (skipId) {
+      skip.add(skipId);
+      const stack = [skipId];
+      while (stack.length) {
+        const parentId = stack.pop()!;
+        for (const child of (childrenByParent[parentId] || [])) {
+          if (!skip.has(child.id)) { skip.add(child.id); stack.push(child.id); }
+        }
+      }
+    }
+
     const animations: HTMLElement[] = [];
     boardRef.current.querySelectorAll('[data-card-id]').forEach(card => {
       const id = card.getAttribute('data-card-id');
       if (!id) return;
-      // Skip the dragged card during preview — it's hidden
-      if (preview && id === preview.draggedId) return;
+      // Drop the skipped subtree's stale "First" rects from the capture map so
+      // no later render can FLIP them. The protection (droppedCardRef) clears on
+      // the first post-drop render, but the dragged card's animation can land a
+      // render later — its source rect lingers in the capture (which isn't
+      // cleared when nothing else animated). That delayed FLIP was the snap-back.
+      if (skip.has(id)) { prev.delete(id); return; }
       const oldRect = prev.get(id);
       if (!oldRect) return;
       const newRect = card.getBoundingClientRect();
@@ -383,33 +421,30 @@ export function BoardContainer({
       return;
     }
     capturePositions();
+    droppedCardRef.current = preview.draggedId;
     dragPreviewRef.current = preview;
     setDragPreview(preview);
   }, [capturePositions]);
 
-  // Clear preview when server response arrives (not on the optimistic update).
-  // The optimistic update fires first (changes objects), then the server response
-  // fires second (changes objects again via query invalidation). We skip the first
-  // change and clear on the second so the gap stays visible until real data arrives.
+  // Tear the preview down when the moved row's data lands (data-driven), rather
+  // than on dragend. The preview hides the dragged card during the drag; the
+  // optimistic move applies a render after the drop, so clearing on dragend
+  // reveals the card in its source column for one frame first (the flash). The
+  // objects-change here means the move applied, so we clear then — the card is
+  // revealed already at its destination, regardless of how slow the column is to
+  // render. previewSafetyRef (set on a successful dragend below) is the fallback
+  // so a failed/misreported drop can't leave the preview stuck.
   const prevObjectsRef = useRef(objects);
-  const objectsChangeCount = useRef(0);
+  const previewSafetyRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => {
     if (objects !== prevObjectsRef.current) {
-      if (dragPreview) {
-        objectsChangeCount.current++;
-        if (objectsChangeCount.current >= 2) {
-          handleDragPreview(null);
-          objectsChangeCount.current = 0;
-        }
+      if (dragPreviewRef.current) {
+        clearTimeout(previewSafetyRef.current);
+        handleDragPreview(null);
       }
     }
     prevObjectsRef.current = objects;
-  }, [objects, dragPreview, handleDragPreview]);
-  // Reset counter when preview starts
-  const isPreviewActive = !!dragPreview;
-  useEffect(() => {
-    if (isPreviewActive) objectsChangeCount.current = 0;
-  }, [isPreviewActive]);
+  }, [objects, handleDragPreview]);
 
   // Count descendants of a card that have the same status value (the server
   // includes these in its scope but the board only shows top-level cards)
@@ -484,7 +519,7 @@ export function BoardContainer({
       // Build flat list of all objects in scope (same status), sorted by rank
       const allInScope = objects
         .filter(o => o.id !== objectId && (o.values[statusField] || "") === columnId)
-        .sort((a, b) => (a.rank || 0) - (b.rank || 0));
+        .sort((a, b) => rankCompare(a.rank, b.rank));
       const topLevelIds = new Set(topLevel.map(o => o.id));
       // Walk the flat list until we reach the newRank-th top-level card,
       // then insert just before it. flatPos counts items we've passed.
@@ -577,11 +612,24 @@ export function BoardContainer({
       }
     };
 
-    const onDragEnd = () => {
+    const onDragEnd = (e?: DragEvent) => {
       scrollVelocityRef.current = { x: 0, y: 0 };
       if (scrollRafRef.current) {
         cancelAnimationFrame(scrollRafRef.current);
         scrollRafRef.current = 0;
+      }
+      // Preview teardown. On a cancelled drag (no valid drop target / Escape),
+      // restore the card to its source now. On a successful drop, leave the
+      // preview up so the card stays hidden until the move's data lands (cleared
+      // by the objects-change effect above) — clearing now would flash the card
+      // in its source column. The timeout only fires if the data never lands
+      // (failed/misreported drop), so the preview can't get stuck.
+      if (!e || !e.dataTransfer || e.dataTransfer.dropEffect === "none") {
+        clearTimeout(previewSafetyRef.current);
+        handleDragPreview(null);
+      } else {
+        clearTimeout(previewSafetyRef.current);
+        previewSafetyRef.current = setTimeout(() => handleDragPreview(null), 800);
       }
     };
 
@@ -592,9 +640,10 @@ export function BoardContainer({
       document.removeEventListener("dragover", onDragOver);
       document.removeEventListener("dragend", onDragEnd);
       document.removeEventListener("drop", onDragEnd);
-      onDragEnd();
+      if (scrollRafRef.current) cancelAnimationFrame(scrollRafRef.current);
+      clearTimeout(previewSafetyRef.current);
     };
-  }, []);
+  }, [handleDragPreview]);
 
   // Create invisible drag image
   const emptyDragImage = useRef<HTMLDivElement | null>(null);

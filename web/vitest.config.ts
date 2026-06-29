@@ -8,7 +8,10 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig({
-  plugins: [react()],
+  // Mirror the build's Lingui macro transform (see vite.config.ts) so that
+  // components importing @lingui/*/macro compile in tests instead of falling
+  // through to babel-plugin-macros (which isn't installed).
+  plugins: [react({ plugins: [["@lingui/swc-plugin", {}]] })],
   test: {
     environment: "jsdom",
     globals: true,
