@@ -21,6 +21,7 @@ import {
   PersonPicker,
   type Person,
   useFormat,
+  textUnchanged,
 } from "@mochi/web";
 import { Plus, Trash2 } from "lucide-react";
 import type { CrmField, FieldOption, ChecklistItem } from "@/types";
@@ -73,13 +74,19 @@ export function FieldEditor({
     focusedRef.current = true;
   };
 
+  const commitChange = (newValue: string) => {
+    if (!textUnchanged(newValue, value)) {
+      onChangeRef.current(newValue);
+    }
+  };
+
   const handleBlur = () => {
     focusedRef.current = false;
     if (debounceTimerRef.current) {
       clearTimeout(debounceTimerRef.current);
       debounceTimerRef.current = null;
     }
-    onChangeRef.current(localValueRef.current);
+    commitChange(localValueRef.current);
   };
 
   const handleTextChange = (newValue: string) => {
@@ -87,7 +94,7 @@ export function FieldEditor({
     localValueRef.current = newValue;
 
     if (immediate) {
-      onChangeRef.current(newValue);
+      commitChange(newValue);
       return;
     }
 
@@ -97,7 +104,7 @@ export function FieldEditor({
     }
 
     debounceTimerRef.current = setTimeout(() => {
-      onChangeRef.current(localValueRef.current);
+      commitChange(localValueRef.current);
     }, 1000); // 1 second debounce
   };
 

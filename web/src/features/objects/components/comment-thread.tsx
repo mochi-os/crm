@@ -25,6 +25,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
+  textUnchanged,
 } from "@mochi/web";
 import type { Comment } from "@/types";
 import { CommentAttachments } from "./comment-attachments";
@@ -180,9 +181,17 @@ export function CommentThread({
               <Button
                 size="sm"
                 className="h-7 text-xs"
-                disabled={!editBody.trim()}
+                disabled={
+                  !editBody.trim() ||
+                  textUnchanged(editBody.trim(), comment.content)
+                }
                 onClick={() => {
-                  onEdit(comment.id, editBody.trim());
+                  const trimmed = editBody.trim();
+                  if (textUnchanged(trimmed, comment.content)) {
+                    setEditing(false);
+                    return;
+                  }
+                  onEdit(comment.id, trimmed);
                   setEditing(false);
                 }}
               >
