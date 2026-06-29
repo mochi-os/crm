@@ -8,7 +8,7 @@ import { useLingui } from '@lingui/react/macro'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import { Users } from 'lucide-react'
-import { FindEntityPage, toastAction, getErrorMessage } from '@mochi/web'
+import { FindEntityPage, toastAction, getErrorMessage, callWithServerFallback } from '@mochi/web'
 import { useCrmsStore } from '@/stores/crms-store'
 import { APP_ROUTES } from '@/config/routes'
 import endpoints from '@/api/endpoints'
@@ -52,7 +52,12 @@ function FindCrmsPage() {
   const handleSubscribe = useCallback(
     async (crmId: string, entity: { fingerprint?: string; server?: string }) => {
       try {
-        await toastAction(crmsApi.subscribe(crmId, entity.server), {
+        await toastAction(
+          callWithServerFallback(
+            (server) => crmsApi.subscribe(crmId, server),
+            entity.server,
+          ),
+          {
           loading: t`Subscribing...`,
           success: t`Subscribed`,
           error: (e) => getErrorMessage(e, t`Failed to subscribe`),

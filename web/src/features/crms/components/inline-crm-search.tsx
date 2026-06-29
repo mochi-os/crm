@@ -7,7 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Trans, useLingui } from '@lingui/react/macro'
 import { useNavigate } from "@tanstack/react-router";
 import { Search, Loader2, Users } from "lucide-react";
-import { Button, GeneralError, Input, toastAction, getErrorMessage } from "@mochi/web";
+import { Button, GeneralError, Input, toastAction, getErrorMessage, callWithServerFallback } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import { useCrmsStore } from "@/stores/crms-store";
 
@@ -96,7 +96,12 @@ export function InlineCrmSearch({
   const handleSubscribe = async (crm: DirectoryEntry) => {
     setPendingCrmId(crm.id);
     try {
-      await toastAction(crmsApi.subscribe(crm.id, crm.location || undefined), {
+      await toastAction(
+        callWithServerFallback(
+          (location) => crmsApi.subscribe(crm.id, location),
+          crm.location || undefined,
+        ),
+        {
         loading: t`Subscribing...`,
         success: t`Subscribed`,
         error: (e) => getErrorMessage(e, t`Failed to subscribe`),
@@ -108,6 +113,8 @@ export function InlineCrmSearch({
         params: { crmId: crm.fingerprint || crm.id },
       });
     } catch {
+      // toast already shown
+    } finally {
       setPendingCrmId(null);
     }
   };
