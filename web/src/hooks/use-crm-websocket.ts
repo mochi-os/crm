@@ -4,7 +4,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useAuthStore } from "@mochi/web";
 
@@ -149,10 +149,13 @@ class WebSocketManager {
 const wsManager = new WebSocketManager();
 
 // Subscribe to crm WebSocket events and invalidate relevant queries
-export function useCrmWebsocket(crmFingerprint?: string) {
+export function useCrmWebsocket(crmFingerprint?: string, onSync?: () => void) {
   const queryClient = useQueryClient();
   const authReady = useAuthStore((state) => state.isInitialized);
   const authToken = useAuthStore((state) => state.token);
+  // Keep the latest onSync without re-subscribing the socket on every render.
+  const onSyncRef = useRef(onSync);
+  onSyncRef.current = onSync;
 
   useEffect(() => {
     if (!authReady) return;
@@ -222,8 +225,18 @@ export function useCrmWebsocket(crmFingerprint?: string) {
           }
           break;
         case "crm/update":
+          // A crm/update arrives after a bulk sync batch (event_sync_batch)
+          // lands all of a subscribed CRM's data at once. The crm + schema +
+          // populated flag come from the route loader (not a react-query key),
+          // so onSync() re-runs the loader; the objects + people lists are
+          // react-query, so invalidate those too. Together a freshly-subscribed
+          // CRM flips out of its loading state the moment its data arrives.
+          onSyncRef.current?.();
           void queryClient.invalidateQueries({
-            queryKey: ["crm", pid],
+            queryKey: ["objects", pid],
+          });
+          void queryClient.invalidateQueries({
+            queryKey: ["people", pid],
           });
           break;
         case "class/create":

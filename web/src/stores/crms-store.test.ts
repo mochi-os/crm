@@ -65,6 +65,7 @@ describe("useCrmsStore", () => {
         server: "local",
         created: Date.now(),
         updated: Date.now(),
+        populated: 1,
         access: "owner",
       },
       {
@@ -77,6 +78,7 @@ describe("useCrmsStore", () => {
         server: "local",
         created: Date.now(),
         updated: Date.now(),
+        populated: 1,
         access: "owner",
       },
     ];

@@ -16,6 +16,9 @@ export interface Crm {
   server: string;
   created: number;
   updated: number;
+  // 0 while a freshly-subscribed CRM's bulk content is still arriving over P2P;
+  // 1 once it has landed. The board shows a loading state until then.
+  populated: number;
   access: CrmAccess;
 }
 
@@ -79,7 +82,10 @@ export interface CrmObject {
   crm: string;
   class: string;
   parent: string;
-  rank: number;
+  // Fractional-index ordering key (#53): an opaque base-62 string, compared
+  // lexicographically. Not a position — the move action still sends a 1-based
+  // target index, the server computes the key.
+  rank: string;
   created: number;
   updated: number;
   values: Record<string, string>;
