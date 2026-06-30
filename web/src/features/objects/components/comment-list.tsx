@@ -19,6 +19,8 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
+  textUnchanged,
+  findCommentTextInTree,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import { CommentThread } from "./comment-thread";
@@ -159,6 +161,14 @@ export function CommentList({
   };
 
   const handleEdit = (commentId: string, content: string) => {
+    const original = findCommentTextInTree(data?.comments ?? [], commentId, {
+      getId: (c) => c.id,
+      getText: (c) => c.content,
+      getChildren: (c) => c.children,
+    });
+    if (original !== undefined && textUnchanged(content, original)) {
+      return;
+    }
     updateMutation.mutate({ commentId, content });
   };
 
