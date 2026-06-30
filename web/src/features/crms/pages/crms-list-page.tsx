@@ -121,7 +121,7 @@ export function CrmsListPage() {
                   title={crm.name}
                   highlighted={isSubscribed}
                   renderLink={(className) => (
-                    <Link to="/$crmId" params={{ crmId: crm.fingerprint }} className={className}>
+                    <Link preload={false} to="/$crmId" params={{ crmId: crm.fingerprint }} className={className}>
                       <span className="sr-only"><Trans>Open {crm.name}</Trans></span>
                     </Link>
                   )}
