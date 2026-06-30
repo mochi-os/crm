@@ -33,6 +33,7 @@ import {
   TooltipContent,
   TooltipTrigger,
   LoadingContent,
+  arraysEqual,
 } from "@mochi/web";
 import { Check, Columns3, Download, Ellipsis, Users, GripVertical, LogOut, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
 import crmsApi from "@/api/crms";
@@ -663,15 +664,26 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
 
   // Get default column value (first option of column field for the view's class)
   const viewClasses = activeView?.classes;
+  const boardClass = useMemo(() => {
+    if (viewClasses?.length) {
+      return crm.classes.find((c) => c.id === viewClasses[0]) ?? crm.classes[0];
+    }
+    return crm.classes[0];
+  }, [crm.classes, viewClasses]);
+
   const getDefaultColumnValue = useCallback(() => {
-    const effectiveType = viewClasses && viewClasses.length > 0
-      ? viewClasses[0]
-      : crm.classes[0]?.id;
+    const effectiveType = boardClass?.id;
     if (effectiveType && crm.options[effectiveType]?.[columnField]?.length > 0) {
       return [{ field: columnField, value: crm.options[effectiveType][columnField][0].id }];
     }
     return undefined;
-  }, [crm.classes, crm.options, columnField, viewClasses]);
+  }, [boardClass, crm.options, columnField]);
+
+  const baselineColumnOrder = useMemo(() => {
+    const effectiveType = boardClass?.id;
+    if (!effectiveType || !columnField) return [];
+    return crm.options[effectiveType]?.[columnField]?.map((o) => o.id) ?? [];
+  }, [boardClass, crm.options, columnField]);
 
   const handleOpenCreateDialog = useCallback(() => {
     if (crm.classes.length === 0) {
@@ -843,10 +855,9 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
   };
 
   const handleAddColumn = (name: string, colour: string) => {
-    const defaultClass = crm.classes[0];
-    if (!defaultClass) return;
+    if (!boardClass) return;
     createColumnMutation.mutate({
-      classId: defaultClass.id,
+      classId: boardClass.id,
       fieldId: columnField,
       name,
       colour,
@@ -858,10 +869,13 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
   };
 
   const handleSaveColumnOrder = () => {
-    const defaultClass = crm.classes[0];
-    if (!defaultClass || !pendingColumnOrder) return;
+    if (!boardClass || !pendingColumnOrder) return;
+    if (arraysEqual(pendingColumnOrder, baselineColumnOrder)) {
+      handleCancelReorder();
+      return;
+    }
     reorderColumnsMutation.mutate({
-      classId: defaultClass.id,
+      classId: boardClass.id,
       fieldId: columnField,
       order: pendingColumnOrder,
     });
@@ -990,7 +1004,11 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
             <Button
               size="sm"
               onClick={handleSaveColumnOrder}
-              disabled={!pendingColumnOrder || reorderColumnsMutation.isPending}
+              disabled={
+                !pendingColumnOrder ||
+                reorderColumnsMutation.isPending ||
+                arraysEqual(pendingColumnOrder, baselineColumnOrder)
+              }
             >
               <Check className="size-4" />
               <Trans>Save</Trans>
