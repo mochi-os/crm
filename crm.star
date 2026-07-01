@@ -1262,6 +1262,32 @@ def action_crm_resync(a):
 	return {"data": {"synced": synced}}
 
 # Delete crm
+# Remove every local row of a CRM — physical deletes, NOT tombstones. Used
+# only by the whole-CRM cleanup paths (unsubscribe, owner delete, the owner's
+# deleted notice): those are per-host housekeeping, not user-intent removals
+# that must converge, and tombstones there poison a later re-subscribe — the
+# sync import (and the old insert-or-ignore) skips rows that still exist in
+# <t>_all, so a re-subscribed CRM would come back as an empty shell with every
+# object and comment invisible (#466 follow-up, mirrors projects). Each
+# execute pair-replicates as one statement, so the user's own hosts purge
+# identically. Children before parents so the foreign keys stay satisfied.
+def purge_crm(crm_id):
+	mochi.db.execute("delete from watchers_all where object in (select id from objects_all where crm=?)", crm_id)
+	mochi.db.execute("delete from activity where object in (select id from objects_all where crm=?)", crm_id)
+	mochi.db.execute("delete from comments_all where object in (select id from objects_all where crm=?)", crm_id)
+	mochi.db.execute("delete from values_all where object in (select id from objects_all where crm=?)", crm_id)
+	mochi.db.execute("delete from links_all where crm=?", crm_id)
+	mochi.db.execute("delete from objects_all where crm=?", crm_id)
+	mochi.db.execute("delete from view_fields_all where crm=?", crm_id)
+	mochi.db.execute("delete from view_classes_all where crm=?", crm_id)
+	mochi.db.execute("delete from views_all where crm=?", crm_id)
+	mochi.db.execute("delete from options_all where crm=?", crm_id)
+	mochi.db.execute("delete from fields_all where crm=?", crm_id)
+	mochi.db.execute("delete from hierarchy_all where crm=?", crm_id)
+	mochi.db.execute("delete from classes_all where crm=?", crm_id)
+	mochi.db.execute("delete from subscribers_all where crm=?", crm_id)
+	mochi.db.execute("delete from crms_all where id=?", crm_id)
+
 def action_crm_delete(a):
 
 	crm_id = resolve_crm(a)
@@ -1282,32 +1308,17 @@ def action_crm_delete(a):
 		a.error.label(403, "errors.access_denied")
 		return
 
-	# Delete in reverse dependency order
 	delete_crm_comment_attachments(crm_id)
 	for obj in (mochi.db.rows("select id from objects where crm=?", crm_id) or []):
 		mochi.attachment.clear(obj["id"])
-	reg_remove("watchers", ["object", "user"], "object in (select id from objects where crm=?)", [crm_id])
-	mochi.db.execute("delete from activity where object in (select id from objects where crm=?)", crm_id)
-	reg_remove("comments", ["id"], "object in (select id from objects where crm=?)", [crm_id])
-	reg_remove("values", ["object", "field"], "object in (select id from objects where crm=?)", [crm_id])
-	reg_remove("links", ["source", "target", "linktype"], "crm=?", [crm_id])
-	reg_remove("objects", ["id"], "crm=?", [crm_id])
-	reg_remove("view_fields", ["crm", "view", "field"], "crm=?", [crm_id])
-	reg_remove("view_classes", ["crm", "view", "class"], "crm=?", [crm_id])
-	reg_remove("views", ["crm", "id"], "crm=?", [crm_id])
-	reg_remove("options", ["crm", "class", "field", "id"], "crm=?", [crm_id])
-	reg_remove("fields", ["crm", "class", "id"], "crm=?", [crm_id])
-	reg_remove("hierarchy", ["crm", "class", "parent"], "crm=?", [crm_id])
-	reg_remove("classes", ["crm", "id"], "crm=?", [crm_id])
-	# Notify subscribers that crm is being deleted (before removing subscriber
-	# list). Send from the CRM entity so receivers can verify the sender,
-	# matching broadcast_event and the verify_subscription check.
+	# Notify subscribers that crm is being deleted (before purging the
+	# subscriber list). Send from the CRM entity so receivers can verify the
+	# sender, matching broadcast_event and the verify_subscription check.
 	subscribers = mochi.db.rows("select id from subscribers where crm=?", crm_id)
 	for sub in subscribers:
 		mochi.message.send(p2p_headers(crm_id, sub["id"], "deleted"), {"crm": crm_id})
 
-	reg_remove("subscribers", ["crm", "id"], "crm=?", [crm_id])
-	reg_remove("crms", ["id"], "id=?", [crm_id])
+	purge_crm(crm_id)
 	# Delete entity
 	mochi.entity.delete(crm_id)
 
@@ -1368,8 +1379,11 @@ def check_crm_access(user_id, crm_id, level):
 				return True
 	return False
 
-# Forward a subscriber action to the crm owner via P2P
-def forward_to_owner(a, crm_id, action, params):
+# Forward a subscriber action to the crm owner via P2P. `handled` names error
+# keys the CALLER recovers from itself — those return the raw error dict
+# instead of writing the response, so the caller can fall back (e.g. the
+# phantom-comment cleanup in action_comment_delete).
+def forward_to_owner(a, crm_id, action, params, handled=None):
 	# Authorship is set from the authenticated P2P sender on the owner side, so
 	# we only pass the display name here, not an identity the owner would trust.
 	params["_name"] = a.user.identity.name
@@ -1385,6 +1399,8 @@ def forward_to_owner(a, crm_id, action, params):
 		a.error.label(502, "errors.could_not_reach_crm_owner")
 		return None
 	if result.get("error"):
+		if handled and result["error"] in handled:
+			return {"error": result["error"], "code": result.get("code", 500), "args": result.get("args")}
 		# The error field is a label key; resolve it in the requester's language,
 		# with any ICU args the owner returned alongside it.
 		a.error.label(result.get("code", 500), result["error"], **(result.get("args") or {}))
@@ -2878,10 +2894,24 @@ def action_comment_delete(a):
 	comment_id = a.input("comment")
 
 	if crm["owner"] != 1:
-		return forward_to_owner(a, crm_id, "comment/delete", {
+		result = forward_to_owner(a, crm_id, "comment/delete", {
 			"crm": crm_id, "object": object_id,
 			"comment": comment_id,
-		})
+		}, handled=["errors.comment_not_found"])
+		if result and result.get("error") == "errors.comment_not_found":
+			# The owner has no such comment. If a local copy authored by this
+			# user exists, it is a phantom — an optimistic write whose submit
+			# never reached the owner — and no remote delete can ever succeed,
+			# so clean it up locally instead of leaving it stuck forever
+			# (#466, mirrors projects). The local tombstone replicates only to
+			# this user's own hosts, where the phantom lives.
+			comment = mochi.db.row("select * from comments where id=? and object=?", comment_id, object_id)
+			if comment and comment["author"] == a.user.identity.id:
+				delete_comment_tree(comment_id, crm_id)
+				return {"data": {"success": True}}
+			a.error.label(404, "errors.comment_not_found")
+			return
+		return result
 
 	if not check_crm_access(a.user.identity.id, crm_id, "comment"):
 		a.error.label(403, "errors.access_denied")
@@ -4608,34 +4638,10 @@ def action_unsubscribe(a):
 		a.error.label(400, "errors.you_own_this_crm")
 		return
 
-	# Delete all local data for this remote crm.
-	#
-	# Each mochi.db.execute is a pair-replicated sql/op event - one
-	# per call, regardless of how many rows it touches. The previous
-	# shape (per-object loop, 5 statements each) emitted ~5N sql/op
-	# events for an N-object CRM and took ~10s to drain through the
-	# per-(target, from-entity) bucket cap=1 on busy CRMs (task #95,
-	# same fix as projects task #94). The subquery shape below
-	# collapses each table's deletion to one event regardless of
-	# object count. Receiver applies the same SQL; the pair-
-	# replicated objects rows match locally so the subquery resolves
-	# to the same id set.
+	# Delete all local data for this remote crm — physical purge, so a later
+	# re-subscribe imports cleanly (see purge_crm).
 	delete_crm_comment_attachments(crm_id)
-	reg_remove("watchers", ["object", "user"], "object in (select id from objects where crm=?)", [crm_id])
-	mochi.db.execute("delete from activity where object in (select id from objects where crm=?)", crm_id)
-	reg_remove("comments", ["id"], "object in (select id from objects where crm=?)", [crm_id])
-	reg_remove("values", ["object", "field"], "object in (select id from objects where crm=?)", [crm_id])
-	reg_remove("links", ["source", "target", "linktype"], "source in (select id from objects where crm=?) or target in (select id from objects where crm=?)", [crm_id, crm_id])
-	reg_remove("objects", ["id"], "crm=?", [crm_id])
-	reg_remove("view_fields", ["crm", "view", "field"], "crm=?", [crm_id])
-	reg_remove("view_classes", ["crm", "view", "class"], "crm=?", [crm_id])
-	reg_remove("views", ["crm", "id"], "crm=?", [crm_id])
-	reg_remove("options", ["crm", "class", "field", "id"], "crm=?", [crm_id])
-	reg_remove("fields", ["crm", "class", "id"], "crm=?", [crm_id])
-	reg_remove("hierarchy", ["crm", "class", "parent"], "crm=?", [crm_id])
-	reg_remove("classes", ["crm", "id"], "crm=?", [crm_id])
-	reg_remove("subscribers", ["crm", "id"], "crm=?", [crm_id])
-	reg_remove("crms", ["id"], "id=?", [crm_id])
+	purge_crm(crm_id)
 	# Send P2P unsubscribe message
 	mochi.message.send(p2p_headers(user_id, crm_id, "unsubscribe"), {})
 
@@ -5039,34 +5045,10 @@ def event_deleted(e):
 	if not crm:
 		return
 
-	# Delete all local data for this remote crm.
-	#
-	# Each mochi.db.execute is a pair-replicated sql/op event - one
-	# per call, regardless of how many rows it touches. The previous
-	# shape (per-object loop, 5 statements each) emitted ~5N sql/op
-	# events for an N-object CRM and took ~10s to drain through the
-	# per-(target, from-entity) bucket cap=1 on busy CRMs (task #95,
-	# same fix as projects task #94). The subquery shape below
-	# collapses each table's deletion to one event regardless of
-	# object count. Receiver applies the same SQL; the pair-
-	# replicated objects rows match locally so the subquery resolves
-	# to the same id set.
+	# Delete all local data for this remote crm — physical purge, so a later
+	# re-share imports cleanly (see purge_crm).
 	delete_crm_comment_attachments(crm_id)
-	reg_remove("watchers", ["object", "user"], "object in (select id from objects where crm=?)", [crm_id])
-	mochi.db.execute("delete from activity where object in (select id from objects where crm=?)", crm_id)
-	reg_remove("comments", ["id"], "object in (select id from objects where crm=?)", [crm_id])
-	reg_remove("values", ["object", "field"], "object in (select id from objects where crm=?)", [crm_id])
-	reg_remove("links", ["source", "target", "linktype"], "source in (select id from objects where crm=?) or target in (select id from objects where crm=?)", [crm_id, crm_id])
-	reg_remove("objects", ["id"], "crm=?", [crm_id])
-	reg_remove("view_fields", ["crm", "view", "field"], "crm=?", [crm_id])
-	reg_remove("view_classes", ["crm", "view", "class"], "crm=?", [crm_id])
-	reg_remove("views", ["crm", "id"], "crm=?", [crm_id])
-	reg_remove("options", ["crm", "class", "field", "id"], "crm=?", [crm_id])
-	reg_remove("fields", ["crm", "class", "id"], "crm=?", [crm_id])
-	reg_remove("hierarchy", ["crm", "class", "parent"], "crm=?", [crm_id])
-	reg_remove("classes", ["crm", "id"], "crm=?", [crm_id])
-	reg_remove("subscribers", ["crm", "id"], "crm=?", [crm_id])
-	reg_remove("crms", ["id"], "id=?", [crm_id])
+	purge_crm(crm_id)
 # ============================================================================
 # Content Sync Event Handlers (received by subscribers)
 # ============================================================================
