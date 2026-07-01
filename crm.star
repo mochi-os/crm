@@ -1797,7 +1797,8 @@ def action_object_create(a):
 				rank = d.get("rank", 0)
 				created = d.get("created") or now
 				updated = d.get("updated") or now
-				reg_merge("objects", ["id"], {"id": d["id"], "crm": crm_id, "class": obj_class, "parent": parent, "rank": rank, "created": created, "updated": updated})
+				if not mochi.db.exists("select 1 from objects_all where id=?", d["id"]):
+					reg_merge("objects", ["id"], {"id": d["id"], "crm": crm_id, "class": obj_class, "parent": parent, "rank": rank, "created": created, "updated": updated})
 				if title and title_field:
 					reg_merge("values", ["object", "field"], {"object": d["id"], "field": title_field, "value": title})
 				# Auto-watch creator locally so subscriber gets notifications
@@ -4836,7 +4837,8 @@ def insert_schema(crm_id, schema):
 					# (crm, view, class) has no payload columns.
 					reg_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": class_id})
 	for obj in (schema.get("objects") or []):
-		reg_merge("objects", ["id"], {"id": obj.get("id", ""), "crm": crm_id, "class": obj.get("class", ""), "parent": obj.get("parent", ""), "rank": obj.get("rank", 0), "created": obj.get("created", 0), "updated": obj.get("updated", 0)})
+		if not mochi.db.exists("select 1 from objects_all where id=?", obj.get("id", "")):
+			reg_merge("objects", ["id"], {"id": obj.get("id", ""), "crm": crm_id, "class": obj.get("class", ""), "parent": obj.get("parent", ""), "rank": obj.get("rank", 0), "created": obj.get("created", 0), "updated": obj.get("updated", 0)})
 		obj_atts = obj.get("attachments") or []
 		if obj_atts:
 			mochi.attachment.store(obj_atts, crm_id, obj.get("id", ""))
@@ -4845,7 +4847,8 @@ def insert_schema(crm_id, schema):
 			for field in values:
 				reg_merge("values", ["object", "field"], {"object": obj.get("id", ""), "field": field, "value": values[field]})
 		for c in (obj.get("comments") or []):
-			reg_merge("comments", ["id"], {"id": c.get("id", ""), "object": obj.get("id", ""), "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", ""), "edited": c.get("edited", 0)})
+			if not mochi.db.exists("select 1 from comments_all where id=?", c.get("id", "")):
+				reg_merge("comments", ["id"], {"id": c.get("id", ""), "object": obj.get("id", ""), "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", ""), "edited": c.get("edited", 0)})
 			c_atts = c.get("attachments") or []
 			if c_atts:
 				mochi.attachment.store(c_atts, crm_id, c.get("id", ""))
@@ -5118,7 +5121,8 @@ def event_sync_batch(e):
 					reg_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": v["id"], "class": class_id})
 	# Process objects
 	for obj in (e.content("objects") or []):
-		reg_merge("objects", ["id"], {"id": obj["id"], "crm": crm_id, "class": obj.get("class", ""), "parent": obj.get("parent", ""), "rank": obj.get("rank", 0), "created": obj.get("created", now), "updated": obj.get("updated", now)})
+		if not mochi.db.exists("select 1 from objects_all where id=?", obj["id"]):
+			reg_merge("objects", ["id"], {"id": obj["id"], "crm": crm_id, "class": obj.get("class", ""), "parent": obj.get("parent", ""), "rank": obj.get("rank", 0), "created": obj.get("created", now), "updated": obj.get("updated", now)})
 		# Values
 		values = obj.get("values")
 		if values:
@@ -5126,7 +5130,8 @@ def event_sync_batch(e):
 				reg_merge("values", ["object", "field"], {"object": obj["id"], "field": field, "value": value})
 		# Comments
 		for c in (obj.get("comments") or []):
-			reg_merge("comments", ["id"], {"id": c["id"], "object": obj["id"], "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", now), "edited": c.get("edited", 0)})
+			if not mochi.db.exists("select 1 from comments_all where id=?", c["id"]):
+				reg_merge("comments", ["id"], {"id": c["id"], "object": obj["id"], "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", now), "edited": c.get("edited", 0)})
 		# Activity history
 		for act in (obj.get("activity") or []):
 			mochi.db.execute(
@@ -5205,7 +5210,8 @@ def event_object_create(e):
 	if class_id and not mochi.db.exists("select 1 from classes where crm=? and id=?", crm_id, class_id):
 		request_resync(crm_id)
 		return
-	reg_merge("objects", ["id"], {"id": object_id, "crm": crm_id, "class": class_id, "parent": e.content("parent") or "", "rank": e.content("rank") or 0, "created": e.content("created") or mochi.time.now(), "updated": e.content("updated") or mochi.time.now()})
+	if not mochi.db.exists("select 1 from objects_all where id=?", object_id):
+		reg_merge("objects", ["id"], {"id": object_id, "crm": crm_id, "class": class_id, "parent": e.content("parent") or "", "rank": e.content("rank") or 0, "created": e.content("created") or mochi.time.now(), "updated": e.content("updated") or mochi.time.now()})
 	# Store field values included in the broadcast
 	values = e.content("values") or {}
 	for field, value in values.items():
@@ -5437,7 +5443,8 @@ def event_comment_submit(e):
 	if not content.strip():
 		return
 	now = mochi.time.now()
-	reg_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": sender, "name": name, "content": content.strip(), "created": now, "edited": 0})
+	if not mochi.db.exists("select 1 from comments_all where id=?", comment_id):
+		reg_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": sender, "name": name, "content": content.strip(), "created": now, "edited": 0})
 	# Store attachment metadata from the subscriber's event
 	attachments = e.content("attachments") or []
 	if attachments:
@@ -5534,7 +5541,8 @@ def event_comment_create(e):
 	if not object_id or not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
 		request_resync(crm_id)
 		return
-	reg_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": e.content("parent") or "", "author": e.content("author") or "", "name": e.content("name") or "", "content": e.content("content") or "", "created": e.content("created") or mochi.time.now(), "edited": 0})
+	if not mochi.db.exists("select 1 from comments_all where id=?", comment_id):
+		reg_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": e.content("parent") or "", "author": e.content("author") or "", "name": e.content("name") or "", "content": e.content("content") or "", "created": e.content("created") or mochi.time.now(), "edited": 0})
 	# Store attachment metadata from the event
 	attachments = e.content("attachments") or []
 	if attachments:
@@ -6096,7 +6104,8 @@ def do_comment_create(crm_id, crm, params, user_id, user_name):
 		return {"error": "errors.content_too_long", "code": 400}
 	comment_id = params.get("id") or mochi.uid()
 	now = mochi.time.now()
-	reg_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": user_id, "name": user_name, "content": content.strip(), "created": now, "edited": 0})
+	if not mochi.db.exists("select 1 from comments_all where id=?", comment_id):
+		reg_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": user_id, "name": user_name, "content": content.strip(), "created": now, "edited": 0})
 	reg_set("objects", ["id"], "id=?", [object_id], {"updated": now})
 	log_activity(object_id, user_id, "commented")
 	# Auto-watch commenter on owner's server
