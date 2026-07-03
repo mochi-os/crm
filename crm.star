@@ -284,6 +284,19 @@ def rank_resequence(crm_id):
 	for row in ids:
 		previous = rank_between(previous, None)
 		reg_set("objects", ["id"], "id=?", [row["id"]], {"rank": previous})
+
+def rank_resequence_migration(crm_id):
+	# Frozen copy of rank_resequence AS IT MUST RUN inside the v4/v5 migrations
+	# (#191). Those run BEFORE v7 renames objects -> objects_all, so it writes the
+	# base `objects` table directly instead of via reg_set (which the v7 register
+	# conversion later pointed at objects_all, a table that does not exist yet at
+	# v4/v5). Same deterministic keys as rank_resequence; keep this frozen even if
+	# the live helper evolves further.
+	ids = mochi.db.rows("select id from objects where crm=? order by rank, id", crm_id) or []
+	previous = None
+	for row in ids:
+		previous = rank_between(previous, None)
+		mochi.db.execute("update objects set rank=? where id=?", previous, row["id"])
 # Create database with all 17 tables
 def database_create():
 	# 1. crms - the container, a Mochi entity
@@ -512,7 +525,7 @@ def database_upgrade(version):
 		# table rebuild is needed.)
 		crm_ids = mochi.db.rows("select distinct crm from objects") or []
 		for c in crm_ids:
-			rank_resequence(c["crm"])
+			rank_resequence_migration(c["crm"])
 
 	if version == 5:
 		# Repair #53 duplicate keys: the original append path minted end keys by
@@ -524,7 +537,7 @@ def database_upgrade(version):
 		# crm-wide max (rank_after_all), so duplicates can't reappear.
 		crm_ids = mochi.db.rows("select distinct crm from objects") or []
 		for c in crm_ids:
-			rank_resequence(c["crm"])
+			rank_resequence_migration(c["crm"])
 
 	if version == 6:
 		# Add crms.populated: 0 while a freshly-subscribed CRM's bulk content is
