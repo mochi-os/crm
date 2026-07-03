@@ -589,7 +589,7 @@ def reg_set(table, keys, where, args, updates):
 
 def reg_remove(table, keys, where, args):
 	for row in mochi.db.rows("select " + _REG_COLS[table] + " from " + table + "_all where (" + where + ") and removed=0", *args):
-		mochi.db.tombstone(table + "_all", keys, row)
+		mochi.db.remove(table + "_all", keys, row)
 
 def reg_rekey(table, keys, where, args, newkeys):
 	for row in mochi.db.rows("select " + _REG_COLS[table] + " from " + table + "_all where (" + where + ") and removed=0", *args):
@@ -598,6 +598,27 @@ def reg_rekey(table, keys, where, args, newkeys):
 			row[k] = newkeys[k]
 		mochi.db.merge(table + "_all", keys, row)
 		reg_remove(table, keys, " and ".join([k + "=?" for k in keys]), oldvals)
+
+# Reclaim register tombstones past the replication forget horizon. Only the LEAF
+# child registers that nothing FK-references are purged - `values` (the dominant
+# EAV accumulator, one row per object field) and `comments`. The parent `objects`
+# tombstone is left: the activity log plus links/watchers FK-reference objects_all,
+# so a hard delete would violate them, and object tombstones are one-per-deleted-
+# object (low volume) against values' many-per-object. Safe because the delete
+# already propagated via the op stream; the tombstone row is only a snapshot
+# backstop, and a replica past the horizon gets a full reseed (not op-replay).
+# The cutoff is a bound parameter (deterministic) and every delete is guarded on
+# removed=1, so a concurrent re-merge (resurrection) is never wiped. `values` has
+# no timestamp so it ages by its parent object's `updated`. Existence-guarded for
+# schema variance across hosts.
+forget_horizon_seconds = 30 * 86400
+
+def crm_gc_tombstones():
+	cutoff = mochi.time.now() - forget_horizon_seconds
+	if mochi.db.table("values_all"):
+		mochi.db.execute("delete from values_all where removed=1 and object in (select id from objects_all where updated < ?)", cutoff)
+	if mochi.db.table("comments_all"):
+		mochi.db.execute("delete from comments_all where removed=1 and created < ?", cutoff)
 
 # ============================================================================
 # Templates
@@ -1085,6 +1106,9 @@ def action_crm_get(a):
 	if not crm_id:
 		a.error.label(400, "errors.crm_id_required")
 		return
+
+	# Reclaim old register tombstones on CRM open (a low-frequency path).
+	crm_gc_tombstones()
 
 	row = mochi.db.row("select id, name, description, owner, server, template, template_version, created, updated, populated from crms where id=?", crm_id)
 	if not row:
