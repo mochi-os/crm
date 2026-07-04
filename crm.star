@@ -504,9 +504,6 @@ def database_create():
 	)""")
 	mochi.db.execute("create index if not exists watchers_user on watchers(user)")
 
-	# Every CRM table becomes a versioned LWW-Register on fresh installs too.
-	eav_register()
-
 
 def database_upgrade(version):
 	if version == 3:
@@ -552,12 +549,20 @@ def database_upgrade(version):
 		# Every CRM table except the append-only activity log becomes a versioned
 		# LWW-Register so it converges across a CRM's host set.
 		eav_register()
+	if version == 8:
+		# Replication is removed: fold every register table back to its plain
+		# shape (purge tombstones, drop the register columns, rename back).
+		# Idempotent per table.
+		for name in _REG_COLS:
+			if not mochi.db.table(name + "_all"):
+				continue
+			mochi.db.execute("drop view if exists \"" + name + "\"")
+			mochi.db.execute("delete from \"" + name + "_all\" where removed=1")
+			for c in ["writer", "version", "removed"]:
+				mochi.db.execute("alter table \"" + name + "_all\" drop column " + c)
+			mochi.db.execute("alter table \"" + name + "_all\" rename to \"" + name + "\"")
 
-# --- EAV LWW-Registers ------------------------------------------------------
-# Each table lives on <t>_all (per-key Lamport version + writer + removed tombstone);
-# the <t> views expose removed=0 so reads stay unchanged. Writes go through reg_*:
-# merge = upsert the whole row; set = read-modify-merge a partial update; remove =
-# full-row tombstone; rekey = change a key column (merge new, tombstone old).
+# --- Historical register conversion (migrations 7 and earlier) --------------
 def _register_table(name, cols):
 	# Rename to <name>_all (SQLite auto-updates incoming FKs; ALTER-add avoids the
 	# FK-on-drop a rebuild would trigger), add the register columns, expose a removed=0
@@ -592,46 +597,21 @@ _REG_COLS = {
 }
 
 def reg_merge(table, keys, row):
-	mochi.db.merge(table + "_all", keys, row)
+	cols = list(row)
+	fields = [c for c in cols if c not in keys]
+	conflict = "do update set " + ", ".join(["\"" + c + "\"=excluded.\"" + c + "\"" for c in fields]) if fields else "do nothing"
+	mochi.db.execute("insert into \"" + table + "\" (" + ", ".join(["\"" + c + "\"" for c in cols]) + ") values (" + ", ".join(["?" for c in cols]) + ") on conflict (" + ", ".join(["\"" + k + "\"" for k in keys]) + ") " + conflict, *[row[c] for c in cols])
 
 def reg_set(table, keys, where, args, updates):
-	for row in mochi.db.rows("select " + _REG_COLS[table] + " from " + table + "_all where (" + where + ") and removed=0", *args):
-		for k in updates:
-			row[k] = updates[k]
-		mochi.db.merge(table + "_all", keys, row)
+	fields = list(updates)
+	mochi.db.execute("update \"" + table + "\" set " + ", ".join(["\"" + c + "\"=?" for c in fields]) + " where (" + where + ")", *([updates[c] for c in fields] + list(args)))
 
 def reg_remove(table, keys, where, args):
-	for row in mochi.db.rows("select " + _REG_COLS[table] + " from " + table + "_all where (" + where + ") and removed=0", *args):
-		mochi.db.remove(table + "_all", keys, row)
+	mochi.db.execute("delete from \"" + table + "\" where (" + where + ")", *args)
 
 def reg_rekey(table, keys, where, args, newkeys):
-	for row in mochi.db.rows("select " + _REG_COLS[table] + " from " + table + "_all where (" + where + ") and removed=0", *args):
-		oldvals = [row[k] for k in keys]
-		for k in newkeys:
-			row[k] = newkeys[k]
-		mochi.db.merge(table + "_all", keys, row)
-		reg_remove(table, keys, " and ".join([k + "=?" for k in keys]), oldvals)
-
-# Reclaim register tombstones past the replication forget horizon. Only the LEAF
-# child registers that nothing FK-references are purged - `values` (the dominant
-# EAV accumulator, one row per object field) and `comments`. The parent `objects`
-# tombstone is left: the activity log plus links/watchers FK-reference objects_all,
-# so a hard delete would violate them, and object tombstones are one-per-deleted-
-# object (low volume) against values' many-per-object. Safe because the delete
-# already propagated via the op stream; the tombstone row is only a snapshot
-# backstop, and a replica past the horizon gets a full reseed (not op-replay).
-# The cutoff is a bound parameter (deterministic) and every delete is guarded on
-# removed=1, so a concurrent re-merge (resurrection) is never wiped. `values` has
-# no timestamp so it ages by its parent object's `updated`. Existence-guarded for
-# schema variance across hosts.
-forget_horizon_seconds = 30 * 86400
-
-def crm_gc_tombstones():
-	cutoff = mochi.time.now() - forget_horizon_seconds
-	if mochi.db.table("values_all"):
-		mochi.db.execute("delete from values_all where removed=1 and object in (select id from objects_all where updated < ?)", cutoff)
-	if mochi.db.table("comments_all"):
-		mochi.db.execute("delete from comments_all where removed=1 and created < ?", cutoff)
+	fields = list(newkeys)
+	mochi.db.execute("update \"" + table + "\" set " + ", ".join(["\"" + c + "\"=?" for c in fields]) + " where (" + where + ")", *([newkeys[c] for c in fields] + list(args)))
 
 # ============================================================================
 # Templates
@@ -1361,7 +1341,6 @@ def action_crm_get(a):
 		return
 
 	# Reclaim old register tombstones on CRM open (a low-frequency path).
-	crm_gc_tombstones()
 
 	row = mochi.db.row("select id, name, description, owner, server, template, template_version, created, updated, populated from crms where id=?", crm_id)
 	if not row:
@@ -1549,21 +1528,21 @@ def action_crm_resync(a):
 # execute pair-replicates as one statement, so the user's own hosts purge
 # identically. Children before parents so the foreign keys stay satisfied.
 def purge_crm(crm_id):
-	mochi.db.execute("delete from watchers_all where object in (select id from objects_all where crm=?)", crm_id)
-	mochi.db.execute("delete from activity where object in (select id from objects_all where crm=?)", crm_id)
-	mochi.db.execute("delete from comments_all where object in (select id from objects_all where crm=?)", crm_id)
-	mochi.db.execute("delete from values_all where object in (select id from objects_all where crm=?)", crm_id)
-	mochi.db.execute("delete from links_all where crm=?", crm_id)
-	mochi.db.execute("delete from objects_all where crm=?", crm_id)
-	mochi.db.execute("delete from view_fields_all where crm=?", crm_id)
-	mochi.db.execute("delete from view_classes_all where crm=?", crm_id)
-	mochi.db.execute("delete from views_all where crm=?", crm_id)
-	mochi.db.execute("delete from options_all where crm=?", crm_id)
-	mochi.db.execute("delete from fields_all where crm=?", crm_id)
-	mochi.db.execute("delete from hierarchy_all where crm=?", crm_id)
-	mochi.db.execute("delete from classes_all where crm=?", crm_id)
-	mochi.db.execute("delete from subscribers_all where crm=?", crm_id)
-	mochi.db.execute("delete from crms_all where id=?", crm_id)
+	mochi.db.execute("delete from watchers where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from activity where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from comments where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from \"values\" where object in (select id from objects where crm=?)", crm_id)
+	mochi.db.execute("delete from links where crm=?", crm_id)
+	mochi.db.execute("delete from objects where crm=?", crm_id)
+	mochi.db.execute("delete from view_fields where crm=?", crm_id)
+	mochi.db.execute("delete from view_classes where crm=?", crm_id)
+	mochi.db.execute("delete from views where crm=?", crm_id)
+	mochi.db.execute("delete from options where crm=?", crm_id)
+	mochi.db.execute("delete from fields where crm=?", crm_id)
+	mochi.db.execute("delete from hierarchy where crm=?", crm_id)
+	mochi.db.execute("delete from classes where crm=?", crm_id)
+	mochi.db.execute("delete from subscribers where crm=?", crm_id)
+	mochi.db.execute("delete from crms where id=?", crm_id)
 
 def action_crm_delete(a):
 
@@ -2090,7 +2069,7 @@ def action_object_create(a):
 				rank = d.get("rank", 0)
 				created = d.get("created") or now
 				updated = d.get("updated") or now
-				if not mochi.db.exists("select 1 from objects_all where id=?", d["id"]):
+				if not mochi.db.exists("select 1 from objects where id=?", d["id"]):
 					reg_merge("objects", ["id"], {"id": d["id"], "crm": crm_id, "class": obj_class, "parent": parent, "rank": rank, "created": created, "updated": updated})
 				if title and title_field:
 					reg_merge("values", ["object", "field"], {"object": d["id"], "field": title_field, "value": title})
@@ -5120,7 +5099,7 @@ def insert_schema(crm_id, schema):
 					# (crm, view, class) has no payload columns.
 					reg_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": class_id})
 	for obj in (schema.get("objects") or []):
-		if not mochi.db.exists("select 1 from objects_all where id=?", obj.get("id", "")):
+		if not mochi.db.exists("select 1 from objects where id=?", obj.get("id", "")):
 			reg_merge("objects", ["id"], {"id": obj.get("id", ""), "crm": crm_id, "class": obj.get("class", ""), "parent": obj.get("parent", ""), "rank": obj.get("rank", 0), "created": obj.get("created", 0), "updated": obj.get("updated", 0)})
 		obj_atts = obj.get("attachments") or []
 		if obj_atts:
@@ -5130,7 +5109,7 @@ def insert_schema(crm_id, schema):
 			for field in values:
 				reg_merge("values", ["object", "field"], {"object": obj.get("id", ""), "field": field, "value": values[field]})
 		for c in (obj.get("comments") or []):
-			if not mochi.db.exists("select 1 from comments_all where id=?", c.get("id", "")):
+			if not mochi.db.exists("select 1 from comments where id=?", c.get("id", "")):
 				reg_merge("comments", ["id"], {"id": c.get("id", ""), "object": obj.get("id", ""), "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", ""), "edited": c.get("edited", 0)})
 			c_atts = c.get("attachments") or []
 			if c_atts:
@@ -5380,7 +5359,7 @@ def event_sync_batch(e):
 					reg_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": v["id"], "class": class_id})
 	# Process objects
 	for obj in (e.content("objects") or []):
-		if not mochi.db.exists("select 1 from objects_all where id=?", obj["id"]):
+		if not mochi.db.exists("select 1 from objects where id=?", obj["id"]):
 			reg_merge("objects", ["id"], {"id": obj["id"], "crm": crm_id, "class": obj.get("class", ""), "parent": obj.get("parent", ""), "rank": obj.get("rank", 0), "created": obj.get("created", now), "updated": obj.get("updated", now)})
 		# Values
 		values = obj.get("values")
@@ -5389,7 +5368,7 @@ def event_sync_batch(e):
 				reg_merge("values", ["object", "field"], {"object": obj["id"], "field": field, "value": value})
 		# Comments
 		for c in (obj.get("comments") or []):
-			if not mochi.db.exists("select 1 from comments_all where id=?", c["id"]):
+			if not mochi.db.exists("select 1 from comments where id=?", c["id"]):
 				reg_merge("comments", ["id"], {"id": c["id"], "object": obj["id"], "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", now), "edited": c.get("edited", 0)})
 		# Activity history
 		for act in (obj.get("activity") or []):
@@ -5469,7 +5448,7 @@ def event_object_create(e):
 	if class_id and not mochi.db.exists("select 1 from classes where crm=? and id=?", crm_id, class_id):
 		request_resync(crm_id)
 		return
-	if not mochi.db.exists("select 1 from objects_all where id=?", object_id):
+	if not mochi.db.exists("select 1 from objects where id=?", object_id):
 		reg_merge("objects", ["id"], {"id": object_id, "crm": crm_id, "class": class_id, "parent": e.content("parent") or "", "rank": e.content("rank") or 0, "created": e.content("created") or mochi.time.now(), "updated": e.content("updated") or mochi.time.now()})
 	# Store field values included in the broadcast
 	values = e.content("values") or {}
@@ -5702,7 +5681,7 @@ def event_comment_submit(e):
 	if not content.strip():
 		return
 	now = mochi.time.now()
-	if not mochi.db.exists("select 1 from comments_all where id=?", comment_id):
+	if not mochi.db.exists("select 1 from comments where id=?", comment_id):
 		reg_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": sender, "name": name, "content": content.strip(), "created": now, "edited": 0})
 	# Store attachment metadata from the subscriber's event
 	attachments = e.content("attachments") or []
@@ -5800,7 +5779,7 @@ def event_comment_create(e):
 	if not object_id or not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
 		request_resync(crm_id)
 		return
-	if not mochi.db.exists("select 1 from comments_all where id=?", comment_id):
+	if not mochi.db.exists("select 1 from comments where id=?", comment_id):
 		reg_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": e.content("parent") or "", "author": e.content("author") or "", "name": e.content("name") or "", "content": e.content("content") or "", "created": e.content("created") or mochi.time.now(), "edited": 0})
 	# Store attachment metadata from the event
 	attachments = e.content("attachments") or []
@@ -6363,7 +6342,7 @@ def do_comment_create(crm_id, crm, params, user_id, user_name):
 		return {"error": "errors.content_too_long", "code": 400}
 	comment_id = params.get("id") or mochi.uid()
 	now = mochi.time.now()
-	if not mochi.db.exists("select 1 from comments_all where id=?", comment_id):
+	if not mochi.db.exists("select 1 from comments where id=?", comment_id):
 		reg_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": user_id, "name": user_name, "content": content.strip(), "created": now, "edited": 0})
 	reg_set("objects", ["id"], "id=?", [object_id], {"updated": now})
 	log_activity(object_id, user_id, "commented")
@@ -6996,7 +6975,7 @@ def rename_field_id(crm_id, class_id, old_id, new_id):
 	reg_rekey("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=?", [crm_id, class_id, old_id], {"field": new_id})
 	# Re-key field old_id -> new_id across this class's objects: re-merge each value under
 	# the new field id and tombstone the old (the merge upsert handles any new_id conflict).
-	for _v in mochi.db.rows("select object, value from values_all where field=? and object in (select id from objects_all where crm=? and class=?) and removed=0", old_id, crm_id, class_id):
+	for _v in mochi.db.rows("select object, value from \"values\" where field=? and object in (select id from objects where crm=? and class=?)", old_id, crm_id, class_id):
 		reg_merge("values", ["object", "field"], {"object": _v["object"], "field": new_id, "value": _v["value"]})
 		reg_remove("values", ["object", "field"], "object=? and field=?", [_v["object"], old_id])
 	reg_rekey("view_fields", ["crm", "view", "field"], "crm=? and field=?", [crm_id, old_id], {"field": new_id})

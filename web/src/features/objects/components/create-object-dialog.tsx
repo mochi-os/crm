@@ -317,7 +317,7 @@ export function CreateObjectDialog({
 
   return (
     <Sheet open={open} onOpenChange={handleClose} modal={false}>
-      <SheetContent className="w-full sm:max-w-2xl p-0 gap-0 [&>button:last-child]:hidden">
+      <SheetContent className="w-full sm:max-w-2xl p-0 gap-0 [&>button:last-child]:hidden" onOpenAutoFocus={(event) => event.preventDefault()}>
         <SheetTitle className="sr-only"><Trans>Create object</Trans></SheetTitle>
         <SheetDescription className="sr-only"><Trans>Create a new CRM object.</Trans></SheetDescription>
         {/* Header */}

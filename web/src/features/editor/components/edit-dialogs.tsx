@@ -269,7 +269,7 @@ export function ViewSheet({
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="w-full sm:max-w-md p-0 flex flex-col [&>button:last-child]:hidden">
+      <SheetContent className="w-full sm:max-w-md p-0 flex flex-col [&>button:last-child]:hidden" onOpenAutoFocus={(event) => event.preventDefault()}>
         <div className="flex items-center justify-between px-6 py-4 border-b">
           <SheetTitle>{mode === "create" ? <Trans>Add view</Trans> : <Trans>Edit view</Trans>}</SheetTitle>
           <SheetDescription className="sr-only"><Trans>Configure view settings</Trans></SheetDescription>
@@ -690,7 +690,7 @@ export function ClassSheet({
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="w-full sm:max-w-md p-0 flex flex-col [&>button:last-child]:hidden">
+      <SheetContent className="w-full sm:max-w-md p-0 flex flex-col [&>button:last-child]:hidden" onOpenAutoFocus={(event) => event.preventDefault()}>
         <div className="flex items-center justify-between px-6 py-4 border-b">
           <SheetTitle>{mode === "create" ? <Trans>Add class</Trans> : <Trans>Edit class</Trans>}</SheetTitle>
           <SheetDescription className="sr-only"><Trans>Configure class settings</Trans></SheetDescription>

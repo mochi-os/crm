@@ -61,6 +61,13 @@ export function ObjectDetailPanel({
   useShellOverlay(!!objectId)
   const [activeTab, setActiveTab] = useState<Tab>("properties");
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  // While the sheet plays its 500ms slide-in, cold queries (object detail,
+  // attachments, comments, people) resolve one after another and repeatedly
+  // reflow the panel — re-rasterizing the animating layer and stuttering the
+  // slide on the first open after a hard refresh. Hold the heavy tab body behind
+  // a stable skeleton until the slide settles; the body can't be read mid-slide
+  // anyway, so on a warm cache this is imperceptible.
+  const [slideSettled, setSlideSettled] = useState(false);
   const [validationErrors, setValidationErrors] = useState<Set<string>>(new Set());
   const queryClient = useQueryClient();
 
@@ -110,6 +117,27 @@ export function ObjectDetailPanel({
       };
     },
   });
+
+  // Reveal the tab body once the open slide (500ms, see sheet.tsx) has settled.
+  // Only defer on a real closed → open transition, which is the one that plays
+  // the slide; switching directly from one object to another keeps the sheet in
+  // place with no animation, so it should swap content immediately (no skeleton).
+  const previousObjectId = useRef<string | null>(null);
+  useEffect(() => {
+    const wasClosed = previousObjectId.current === null;
+    previousObjectId.current = objectId;
+    if (!objectId) {
+      setSlideSettled(false);
+      return;
+    }
+    if (!wasClosed) {
+      setSlideSettled(true);
+      return;
+    }
+    setSlideSettled(false);
+    const timer = setTimeout(() => setSlideSettled(true), 500);
+    return () => clearTimeout(timer);
+  }, [objectId]);
 
   // When opening a different object, default to comments tab if it has comments
   const tabInitializedFor = useRef<string | null>(null);
@@ -300,7 +328,7 @@ export function ObjectDetailPanel({
 
   return (
     <Sheet open={true} onOpenChange={handleClose}>
-      <SheetContent className="w-full sm:max-w-3xl p-0 gap-0 [&>button:last-child]:hidden" onInteractOutside={() => {}}>
+      <SheetContent className="w-full sm:max-w-3xl p-0 gap-0 [&>button:last-child]:hidden" onInteractOutside={() => {}} onOpenAutoFocus={(event) => event.preventDefault()}>
         <SheetHeader className="sr-only">
           <SheetTitle><Trans>Item details</Trans></SheetTitle>
           <SheetDescription><Trans>View and edit item details</Trans></SheetDescription>
@@ -378,8 +406,15 @@ export function ObjectDetailPanel({
           </div>
         </div>
 
-        {/* Tab content */}
+        {/* Tab content — deferred until the open slide settles so cold queries
+            don't reflow the animating panel (first-open jank). */}
         <div className="flex-1 overflow-y-auto p-6">
+          {!slideSettled ? (
+            <div className="max-w-2xl space-y-6">
+              <ListSkeleton variant="simple" height="h-12" count={4} />
+            </div>
+          ) : (
+            <>
           <div className="max-w-2xl space-y-6" hidden={activeTab !== "properties"}>
               {/* Title */}
               {titleField && (
@@ -487,6 +522,8 @@ export function ObjectDetailPanel({
           {activeTab === "activity" && <div className="max-w-2xl">
               <ActivityList crmId={crmId} objectId={objectId} />
           </div>}
+            </>
+          )}
         </div>
 
         <ConfirmDialog
