@@ -568,6 +568,13 @@ def database_upgrade(version):
 		mochi.db.execute("drop table if exists requests")
 
 # --- Historical register conversion (migrations 7 and earlier) --------------
+	if version == 10:
+		# Schema alignment for the baseline squash: drop the classes.requests
+		# column inherited from the Projects fork, and heal any missing
+		# tables/indexes via the idempotent create.
+		if [c for c in mochi.db.table("classes") or [] if c["name"] == "requests"]:
+			mochi.db.execute("alter table classes drop column requests")
+		database_create()
 def _register_table(name, cols):
 	# Rename to <name>_all (SQLite auto-updates incoming FKs; ALTER-add avoids the
 	# FK-on-drop a rebuild would trigger), add the register columns, expose a removed=0
