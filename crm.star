@@ -39,7 +39,6 @@ def error_message_timeout(e):
 def error_broadcast_gap(e):
 	request_resync(e.entity)
 
-
 # request_resync pulls a fresh schema dump from the CRM owner when an
 # incoming event references data we don't have yet. Out-of-order delivery,
 # lost messages, and the strict FK enforcement on ncruces all surface as
@@ -504,93 +503,6 @@ def database_create():
 	)""")
 	mochi.db.execute("create index if not exists watchers_user on watchers(user)")
 
-
-def database_upgrade(version):
-	if version == 3:
-		# Add crms.synced for throttled resync requests when an incoming
-		# event references an object/class we haven't seen yet.
-		cols = [r["name"] for r in mochi.db.table("crms") or []]
-		if "synced" not in cols:
-			mochi.db.execute("alter table crms add column synced integer not null default 0")
-
-	if version == 4:
-		# objects.rank becomes a fractional-index text key so a reorder writes ONE
-		# row and converges under multi-master (#53). Backfill per crm in (rank, id)
-		# order via sequential append, so every replica computes the same
-		# deterministic increasing keys; migrations run replication-suppressed.
-		# (Non-numeric text in the INTEGER-affinity column is stored as text, so no
-		# table rebuild is needed.)
-		crm_ids = mochi.db.rows("select distinct crm from objects") or []
-		for c in crm_ids:
-			rank_resequence_migration(c["crm"])
-
-	if version == 5:
-		# Repair #53 duplicate keys: the original append path minted end keys by
-		# incrementing a per-column/per-parent max, so two scopes whose local max
-		# was equal produced the same global key (harmless only while the halves
-		# stay in different columns — a collision the moment one moves into the
-		# other's scope). Re-sequence every crm to fresh globally-unique keys,
-		# preserving the current (rank, id) order. Appends now anchor on the
-		# crm-wide max (rank_after_all), so duplicates can't reappear.
-		crm_ids = mochi.db.rows("select distinct crm from objects") or []
-		for c in crm_ids:
-			rank_resequence_migration(c["crm"])
-
-	if version == 6:
-		# Add crms.populated: 0 while a freshly-subscribed CRM's bulk content is
-		# still arriving over P2P (set 1 by event_sync_batch), so the board shows a
-		# loading state instead of partial/empty data rather than a half-synced
-		# board. Existing rows already hold their data, hence default 1.
-		cols = [r["name"] for r in mochi.db.table("crms") or []]
-		if "populated" not in cols:
-			mochi.db.execute("alter table crms add column populated integer not null default 1")
-
-	if version == 7:
-		# Every CRM table except the append-only activity log becomes a versioned
-		# LWW-Register so it converges across a CRM's host set.
-		eav_register()
-	if version == 8:
-		# Replication is removed: fold every register table back to its plain
-		# shape (purge tombstones, drop the register columns, rename back).
-		# Idempotent per table.
-		for name in _REG_COLS:
-			if not mochi.db.table(name + "_all"):
-				continue
-			mochi.db.execute("drop view if exists \"" + name + "\"")
-			mochi.db.execute("delete from \"" + name + "_all\" where removed=1")
-			for c in ["writer", "version", "removed"]:
-				mochi.db.execute("alter table \"" + name + "_all\" drop column " + c)
-			mochi.db.execute("alter table \"" + name + "_all\" rename to \"" + name + "\"")
-	if version == 9:
-		# Drop the requests table inherited from the Projects fork: its creation
-		# was removed from database_create long ago, but DBs created before that
-		# still carry the empty table. CRM has no merge-request feature.
-		mochi.db.execute("drop table if exists requests")
-
-# --- Historical register conversion (migrations 7 and earlier) --------------
-	if version == 10:
-		# Schema alignment for the baseline squash: drop the classes.requests
-		# column inherited from the Projects fork, and heal any missing
-		# tables/indexes via the idempotent create.
-		if [c for c in mochi.db.table("classes") or [] if c["name"] == "requests"]:
-			mochi.db.execute("alter table classes drop column requests")
-		database_create()
-def _register_table(name, cols):
-	# Rename to <name>_all (SQLite auto-updates incoming FKs; ALTER-add avoids the
-	# FK-on-drop a rebuild would trigger), add the register columns, expose a removed=0
-	# view under the old name. Per-table idempotent; identifiers quoted so "values" works.
-	if mochi.db.table(name + "_all"):
-		return
-	mochi.db.execute("alter table \"" + name + "\" rename to \"" + name + "_all\"")
-	mochi.db.execute("alter table \"" + name + "_all\" add column writer text not null default ''")
-	mochi.db.execute("alter table \"" + name + "_all\" add column version integer not null default 0")
-	mochi.db.execute("alter table \"" + name + "_all\" add column removed integer not null default 0")
-	mochi.db.execute("create view \"" + name + "\" as select " + cols + " from \"" + name + "_all\" where removed=0")
-
-def eav_register():
-	for name in _REG_COLS:
-		_register_table(name, _REG_COLS[name])
-
 _REG_COLS = {
 	"crms": "id, name, description, owner, server, fingerprint, template, template_version, created, updated, synced, populated",
 	"subscribers": "crm, id, name, subscribed",
@@ -804,7 +716,6 @@ def apply_template(crm_id, data=None, lang="en", template_id="crm"):
 		for j, field in enumerate(fields):
 			if field.strip():
 				reg_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": v["id"], "field": field.strip(), "rank": j})
-
 
 # Export the current crm design as template JSON. The exported JSON contains
 # literal strings (whatever the CRM DB currently holds) rather than
@@ -1266,7 +1177,6 @@ def action_data_import(a):
 
 	return {"data": {"objects": len(objects), "comments": comment_count, "links": len(links)}}
 
-
 # ============================================================================
 # CRM Actions
 # ============================================================================
@@ -1592,7 +1502,6 @@ def action_crm_delete(a):
 
 	return {"data": {"success": True}}
 
-
 # List crm members (subscribers + unique owners + current user)
 def action_people_list(a):
 
@@ -1625,7 +1534,6 @@ def action_people_list(a):
 			people[owner_id] = {"id": owner_id, "name": name}
 
 	return {"data": {"people": list(people.values())}}
-
 
 # ============================================================================
 # Access Control
@@ -1819,12 +1727,9 @@ def action_access_revoke(a):
 
 	return {"data": {"success": True}}
 
-
 # ============================================================================
 # Object Templates
 # ============================================================================
-
-
 
 # ============================================================================
 # Helper Functions
@@ -1983,7 +1888,6 @@ def delete_object_cascade(crm_id, object_id, user=""):
 	reg_remove("objects", ["id"], "id=?", [object_id])
 	# Broadcast delete event for each object
 	broadcast_event(crm_id, "object/delete", {"crm": crm_id, "id": object_id, "user": user})
-
 
 # ============================================================================
 # Object Actions
@@ -2533,7 +2437,6 @@ def action_object_move(a):
 
 	return {"data": {"success": True}}
 
-
 # ============================================================================
 # Value Actions
 # ============================================================================
@@ -2708,7 +2611,6 @@ def action_value_set(a):
 
 	return {"data": {"success": True}}
 
-
 # ============================================================================
 # Link Actions
 # ============================================================================
@@ -2863,7 +2765,6 @@ def action_link_delete(a):
 
 	return {"data": {"success": True}}
 
-
 # Build a recursive comment tree for an object
 def object_comments(crm_id, object_id, parent_id, depth):
 	if depth > 100:
@@ -2900,7 +2801,6 @@ def delete_crm_comment_attachments(crm_id):
 	for c in comments:
 		for att in (mochi.attachment.list(c["id"], crm_id) or []):
 			mochi.attachment.delete(att["id"])
-
 
 # ============================================================================
 # Person asset proxy (avatar, banner, favicon, style, information)
@@ -2952,7 +2852,6 @@ def action_user_asset(a):
 		a.error.label(404, "errors.unknown_asset")
 		return
 	return stream_asset(a, a.input("user") or "", "people", asset)
-
 
 # ============================================================================
 # Comment Actions
@@ -3208,7 +3107,6 @@ def action_comment_delete(a):
 
 	return {"data": {"success": True}}
 
-
 # ============================================================================
 # Attachment Actions
 # ============================================================================
@@ -3345,7 +3243,6 @@ def action_attachment_delete(a):
 
 	return {"data": {"success": True}}
 
-
 # ============================================================================
 # Activity Actions
 # ============================================================================
@@ -3393,7 +3290,6 @@ def action_activity_list(a):
 		})
 
 	return {"data": {"activities": activities}}
-
 
 # ============================================================================
 # Watcher Actions
@@ -3463,7 +3359,6 @@ def action_watcher_remove(a):
 	# Remove current user as watcher
 	reg_remove("watchers", ["object", "user"], "object=? and user=?", [object_id, a.user.identity.id])
 	return {"data": {"success": True, "watching": False}}
-
 
 # ============================================================================
 # View Actions
@@ -3760,7 +3655,6 @@ def action_view_reorder(a):
 
 	return {"data": {"success": True}}
 
-
 # ============================================================================
 # Type Actions
 # ============================================================================
@@ -3926,7 +3820,6 @@ def action_class_delete(a):
 
 	return {"data": {"success": True}}
 
-
 # ============================================================================
 # Hierarchy Actions
 # ============================================================================
@@ -4007,7 +3900,6 @@ def action_hierarchy_set(a):
 	})
 
 	return {"data": {"success": True}}
-
 
 # ============================================================================
 # Field Actions
@@ -4298,7 +4190,6 @@ def action_field_reorder(a):
 	broadcast_event(crm_id, "field/reorder", {"crm": crm_id, "class": class_id, "order": order})
 
 	return {"data": {"success": True}}
-
 
 # ============================================================================
 # Option Actions
@@ -4667,7 +4558,6 @@ def action_search(a):
 
 	return {"data": results}
 
-
 # ============================================================================
 # User/Group Proxy Actions (proxy to people app)
 # ============================================================================
@@ -4681,11 +4571,9 @@ def action_groups(a):
 	groups = mochi.service.call("people", "groups/list")
 	return {"data": {"groups": groups}}
 
-
 # ============================================================================
 # Notification Actions
 # ============================================================================
-
 
 # ============================================================================
 # Remote CRMs (Subscribe)
@@ -4914,7 +4802,6 @@ def action_unsubscribe(a):
 	mochi.message.send(p2p_headers(user_id, crm_id, "unsubscribe"), {})
 
 	return {"data": {"success": True}}
-
 
 # ============================================================================
 # P2P Events
@@ -6334,7 +6221,6 @@ def event_access_check(e):
 	for op in ["design", "write", "comment", "view"]:
 		result[op] = check_crm_access(user_id, crm_id, op)
 	e.stream.write(result)
-
 
 # ============================================================================
 # Remote Request Do Helpers (shared by action handlers and event_request)
