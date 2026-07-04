@@ -561,6 +561,11 @@ def database_upgrade(version):
 			for c in ["writer", "version", "removed"]:
 				mochi.db.execute("alter table \"" + name + "_all\" drop column " + c)
 			mochi.db.execute("alter table \"" + name + "_all\" rename to \"" + name + "\"")
+	if version == 9:
+		# Drop the requests table inherited from the Projects fork: its creation
+		# was removed from database_create long ago, but DBs created before that
+		# still carry the empty table. CRM has no merge-request feature.
+		mochi.db.execute("drop table if exists requests")
 
 # --- Historical register conversion (migrations 7 and earlier) --------------
 def _register_table(name, cols):
