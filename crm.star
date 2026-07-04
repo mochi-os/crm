@@ -32,7 +32,7 @@ def broadcast_event(crm_id, event, data, exclude=None):
 def error_message_timeout(e):
 	if e.detail.get("locations", 1) != 0:
 		return
-	reg_remove("subscribers", ["crm", "id"], "id=?", [e.entity])
+	row_remove("subscribers", ["crm", "id"], "id=?", [e.entity])
 # error_broadcast_gap: core calls this when an unfillable broadcast gap was
 # skipped and events were permanently lost. broadcast/resync can't replay a
 # pruned gap, so pull a fresh full snapshot.
@@ -60,7 +60,7 @@ def request_resync(crm_id):
 	now = mochi.time.now()
 	if row["synced"] and now - row["synced"] < 60:
 		return False
-	reg_set("crms", ["id"], "id=?", [crm_id], {"synced": now})
+	row_set("crms", ["id"], "id=?", [crm_id], {"synced": now})
 	server = row["server"] or ""
 	peer = ""
 	if server:
@@ -282,7 +282,7 @@ def rank_resequence(crm_id):
 	previous = None
 	for row in ids:
 		previous = rank_between(previous, None)
-		reg_set("objects", ["id"], "id=?", [row["id"]], {"rank": previous})
+		row_set("objects", ["id"], "id=?", [row["id"]], {"rank": previous})
 
 def rank_resequence_migration(crm_id):
 	# Frozen copy of rank_resequence AS IT MUST RUN inside the v4/v5 migrations
@@ -503,37 +503,20 @@ def database_create():
 	)""")
 	mochi.db.execute("create index if not exists watchers_user on watchers(user)")
 
-_REG_COLS = {
-	"crms": "id, name, description, owner, server, fingerprint, template, template_version, created, updated, synced, populated",
-	"subscribers": "crm, id, name, subscribed",
-	"classes": "crm, id, name, rank, title",
-	"hierarchy": "crm, class, parent",
-	"fields": "crm, class, id, name, fieldtype, flags, multi, rank, min, max, pattern, minlength, maxlength, prefix, suffix, format, card, position, rows",
-	"options": "crm, class, field, id, name, colour, icon, rank",
-	"views": "crm, id, name, viewtype, filter, columns, rows, sort, direction, rank, border",
-	"view_classes": "crm, view, class",
-	"view_fields": "crm, view, field, rank",
-	"objects": "id, crm, class, parent, rank, created, updated",
-	"links": "crm, source, target, linktype, created",
-	"values": "object, field, value",
-	"comments": "id, object, parent, author, name, content, created, edited",
-	"watchers": "object, user, created",
-}
-
-def reg_merge(table, keys, row):
+def row_merge(table, keys, row):
 	cols = list(row)
 	fields = [c for c in cols if c not in keys]
 	conflict = "do update set " + ", ".join(["\"" + c + "\"=excluded.\"" + c + "\"" for c in fields]) if fields else "do nothing"
 	mochi.db.execute("insert into \"" + table + "\" (" + ", ".join(["\"" + c + "\"" for c in cols]) + ") values (" + ", ".join(["?" for c in cols]) + ") on conflict (" + ", ".join(["\"" + k + "\"" for k in keys]) + ") " + conflict, *[row[c] for c in cols])
 
-def reg_set(table, keys, where, args, updates):
+def row_set(table, keys, where, args, updates):
 	fields = list(updates)
 	mochi.db.execute("update \"" + table + "\" set " + ", ".join(["\"" + c + "\"=?" for c in fields]) + " where (" + where + ")", *([updates[c] for c in fields] + list(args)))
 
-def reg_remove(table, keys, where, args):
+def row_remove(table, keys, where, args):
 	mochi.db.execute("delete from \"" + table + "\" where (" + where + ")", *args)
 
-def reg_rekey(table, keys, where, args, newkeys):
+def row_rekey(table, keys, where, args, newkeys):
 	fields = list(newkeys)
 	mochi.db.execute("update \"" + table + "\" set " + ", ".join(["\"" + c + "\"=?" for c in fields]) + " where (" + where + ")", *([newkeys[c] for c in fields] + list(args)))
 
@@ -687,35 +670,35 @@ def apply_template(crm_id, data=None, lang="en", template_id="crm"):
 
 	# Create classes
 	for t in data.get("classes", []):
-		reg_merge("classes", ["crm", "id"], {"crm": crm_id, "id": t["id"], "name": substitute_labels(t["name"], labels), "rank": t.get("rank", 0), "title": t.get("title", "title")})
+		row_merge("classes", ["crm", "id"], {"crm": crm_id, "id": t["id"], "name": substitute_labels(t["name"], labels), "rank": t.get("rank", 0), "title": t.get("title", "title")})
 
 	# Set hierarchy for each class
 	for cls_id, parents in data.get("hierarchy", {}).items():
 		for parent in parents:
-			reg_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": cls_id, "parent": parent})
+			row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": cls_id, "parent": parent})
 
 	# Create fields for each class
 	for cls_id, fields in data.get("fields", {}).items():
 		for f in fields:
-			reg_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": cls_id, "id": f["id"], "name": substitute_labels(f["name"], labels), "fieldtype": f.get("fieldtype", "text"), "flags": f.get("flags", ""), "multi": f.get("multi", 0), "rank": f.get("rank", 0), "min": f.get("min", ""), "max": f.get("max", ""), "pattern": f.get("pattern", ""), "minlength": f.get("minlength", 0), "maxlength": f.get("maxlength", 0), "prefix": f.get("prefix", ""), "suffix": f.get("suffix", ""), "format": f.get("format", ""), "card": f.get("card", 0), "position": f.get("position", ""), "rows": f.get("rows", 1)})
+			row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": cls_id, "id": f["id"], "name": substitute_labels(f["name"], labels), "fieldtype": f.get("fieldtype", "text"), "flags": f.get("flags", ""), "multi": f.get("multi", 0), "rank": f.get("rank", 0), "min": f.get("min", ""), "max": f.get("max", ""), "pattern": f.get("pattern", ""), "minlength": f.get("minlength", 0), "maxlength": f.get("maxlength", 0), "prefix": f.get("prefix", ""), "suffix": f.get("suffix", ""), "format": f.get("format", ""), "card": f.get("card", 0), "position": f.get("position", ""), "rows": f.get("rows", 1)})
 
 	# Create options for each class's enumerated fields
 	for cls_id, class_options in data.get("options", {}).items():
 		for field_id, field_options in class_options.items():
 			for opt in field_options:
-				reg_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": cls_id, "field": field_id, "id": opt["id"], "name": substitute_labels(opt["name"], labels), "colour": opt.get("colour", "#94a3b8"), "icon": opt.get("icon", ""), "rank": opt.get("rank", 0)})
+				row_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": cls_id, "field": field_id, "id": opt["id"], "name": substitute_labels(opt["name"], labels), "colour": opt.get("colour", "#94a3b8"), "icon": opt.get("icon", ""), "rank": opt.get("rank", 0)})
 
 	# Create views
 	for i, v in enumerate(data.get("views", [])):
-		reg_merge("views", ["crm", "id"], {"crm": crm_id, "id": v["id"], "name": substitute_labels(v["name"], labels), "viewtype": v.get("viewtype", "board"), "filter": v.get("filter", ""), "columns": v.get("columns", ""), "rows": v.get("rows", ""), "sort": v.get("sort", ""), "direction": v.get("direction", "asc"), "rank": i, "border": v.get("border", "")})
+		row_merge("views", ["crm", "id"], {"crm": crm_id, "id": v["id"], "name": substitute_labels(v["name"], labels), "viewtype": v.get("viewtype", "board"), "filter": v.get("filter", ""), "columns": v.get("columns", ""), "rows": v.get("rows", ""), "sort": v.get("sort", ""), "direction": v.get("direction", "asc"), "rank": i, "border": v.get("border", "")})
 		# Add view classes if specified
 		for vclass in v.get("classes", []):
-			reg_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": v["id"], "class": vclass})
+			row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": v["id"], "class": vclass})
 		# Add fields
 		fields = v.get("fields", "").split(",")
 		for j, field in enumerate(fields):
 			if field.strip():
-				reg_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": v["id"], "field": field.strip(), "rank": j})
+				row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": v["id"], "field": field.strip(), "rank": j})
 
 # Export the current crm design as template JSON. The exported JSON contains
 # literal strings (whatever the CRM DB currently holds) rather than
@@ -919,13 +902,13 @@ def action_design_import(a):
 		return
 
 	# Delete existing design in correct order (foreign key dependencies)
-	reg_remove("view_fields", ["crm", "view", "field"], "crm=?", [crm_id])
-	reg_remove("view_classes", ["crm", "view", "class"], "crm=?", [crm_id])
-	reg_remove("views", ["crm", "id"], "crm=?", [crm_id])
-	reg_remove("options", ["crm", "class", "field", "id"], "crm=?", [crm_id])
-	reg_remove("fields", ["crm", "class", "id"], "crm=?", [crm_id])
-	reg_remove("hierarchy", ["crm", "class", "parent"], "crm=?", [crm_id])
-	reg_remove("classes", ["crm", "id"], "crm=?", [crm_id])
+	row_remove("view_fields", ["crm", "view", "field"], "crm=?", [crm_id])
+	row_remove("view_classes", ["crm", "view", "class"], "crm=?", [crm_id])
+	row_remove("views", ["crm", "id"], "crm=?", [crm_id])
+	row_remove("options", ["crm", "class", "field", "id"], "crm=?", [crm_id])
+	row_remove("fields", ["crm", "class", "id"], "crm=?", [crm_id])
+	row_remove("hierarchy", ["crm", "class", "parent"], "crm=?", [crm_id])
+	row_remove("classes", ["crm", "id"], "crm=?", [crm_id])
 	# Apply the new design. template_id is passed so {labels.X} placeholders in
 	# Mochi-shipped templates resolve; user-exported templates with literal
 	# names pass through unchanged because substitute_labels short-circuits
@@ -933,7 +916,7 @@ def action_design_import(a):
 	apply_template(crm_id, data, lang, template_id)
 
 	# Update template tracking
-	reg_set("crms", ["id"], "id=?", [crm_id], {"template": template_id, "template_version": template_version})
+	row_set("crms", ["id"], "id=?", [crm_id], {"template": template_id, "template_version": template_version})
 
 	return {"data": {"success": True}}
 
@@ -1142,10 +1125,10 @@ def action_data_import(a):
 		previous = rank_between(previous, None)
 		created = safe_int(o.get("created")) or now
 		updated = safe_int(o.get("updated")) or now
-		reg_merge("objects", ["id"], {"id": object_id, "crm": crm_id, "class": o["class"], "parent": parent, "rank": previous, "created": created, "updated": updated})
+		row_merge("objects", ["id"], {"id": object_id, "crm": crm_id, "class": o["class"], "parent": parent, "rank": previous, "created": created, "updated": updated})
 		for field, value in (o.get("values") or {}).items():
 			if value != "":
-				reg_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": str(value)})
+				row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": str(value)})
 		file_comments = o.get("comments") or []
 		comment_ids = []
 		comment_remap = {}
@@ -1156,7 +1139,7 @@ def action_data_import(a):
 				comment_remap[c["id"]] = comment_id
 		for i, c in enumerate(file_comments):
 			comment_parent = comment_remap.get(c.get("parent") or "", "")
-			reg_merge("comments", ["id"], {"id": comment_ids[i], "object": object_id, "parent": comment_parent, "author": c.get("author") or user, "name": c.get("name") or a.user.identity.name, "content": str(c["content"]), "created": safe_int(c.get("created")) or now, "edited": safe_int(c.get("edited"))})
+			row_merge("comments", ["id"], {"id": comment_ids[i], "object": object_id, "parent": comment_parent, "author": c.get("author") or user, "name": c.get("name") or a.user.identity.name, "content": str(c["content"]), "created": safe_int(c.get("created")) or now, "edited": safe_int(c.get("edited"))})
 			comment_count += 1
 		mochi.db.execute(
 			"insert into activity (id, object, user, action, field, oldvalue, newvalue, created) values (?, ?, ?, 'created', '', '', '', ?)",
@@ -1166,9 +1149,9 @@ def action_data_import(a):
 	for l in links:
 		source = remap.get(l["source"], l["source"])
 		target = remap.get(l["target"], l["target"])
-		reg_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": source, "target": target, "linktype": str(l["linktype"]), "created": safe_int(l.get("created")) or now})
+		row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": source, "target": target, "linktype": str(l["linktype"]), "created": safe_int(l.get("created")) or now})
 
-	reg_set("crms", ["id"], "id=?", [crm_id], {"updated": now})
+	row_set("crms", ["id"], "id=?", [crm_id], {"updated": now})
 
 	# Push a full snapshot to every subscriber - event_sync_batch applies it
 	# idempotently, so this replaces per-record broadcasts for bulk changes
@@ -1234,10 +1217,10 @@ def action_crm_create(a):
 
 	# Insert CRM record
 	fp = mochi.entity.fingerprint(entity) or ""
-	reg_merge("crms", ["id"], {"id": entity, "name": name, "description": description, "owner": 1, "server": "", "fingerprint": fp, "template": "crm", "template_version": tmpl_version, "created": now, "updated": now})
+	row_merge("crms", ["id"], {"id": entity, "name": name, "description": description, "owner": 1, "server": "", "fingerprint": fp, "template": "crm", "template_version": tmpl_version, "created": now, "updated": now})
 
 	# Add creator as subscriber
-	reg_merge("subscribers", ["crm", "id"], {"crm": entity, "id": creator, "name": a.user.identity.name, "subscribed": now})
+	row_merge("subscribers", ["crm", "id"], {"crm": entity, "id": creator, "name": a.user.identity.name, "subscribed": now})
 
 	# Apply CRM template
 	apply_template(entity, None, lang, "crm")
@@ -1399,14 +1382,14 @@ def action_crm_update(a):
 		if not mochi.text.valid(name, "name"):
 			a.error.label(400, "errors.invalid_name")
 			return
-		reg_set("crms", ["id"], "id=?", [crm_id], {"name": name, "updated": now})
+		row_set("crms", ["id"], "id=?", [crm_id], {"name": name, "updated": now})
 		mochi.entity.update(crm_id, name=name)
 
 	if a.input("description") != None:
 		if len(description) > 10000:
 			a.error.label(400, "errors.description_too_long")
 			return
-		reg_set("crms", ["id"], "id=?", [crm_id], {"description": description, "updated": now})
+		row_set("crms", ["id"], "id=?", [crm_id], {"description": description, "updated": now})
 	update = {"crm": crm_id}
 	if name:
 		update["name"] = name
@@ -1435,7 +1418,7 @@ def action_crm_resync(a):
 		return
 	if row["owner"] != 0:
 		return {"data": {"synced": False}}
-	reg_set("crms", ["id"], "id=?", [crm_id], {"synced": 0})
+	row_set("crms", ["id"], "id=?", [crm_id], {"synced": 0})
 	synced = request_resync(crm_id)
 	return {"data": {"synced": synced}}
 
@@ -1880,12 +1863,12 @@ def delete_object_cascade(crm_id, object_id, user=""):
 
 	# Then delete this object's related data
 	mochi.attachment.clear(object_id)
-	reg_remove("watchers", ["object", "user"], "object=?", [object_id])
+	row_remove("watchers", ["object", "user"], "object=?", [object_id])
 	mochi.db.execute("delete from activity where object=?", object_id)
 	delete_object_comments(object_id, crm_id)
-	reg_remove("values", ["object", "field"], "object=?", [object_id])
-	reg_remove("links", ["source", "target", "linktype"], "source=? or target=?", [object_id, object_id])
-	reg_remove("objects", ["id"], "id=?", [object_id])
+	row_remove("values", ["object", "field"], "object=?", [object_id])
+	row_remove("links", ["source", "target", "linktype"], "source=? or target=?", [object_id, object_id])
+	row_remove("objects", ["id"], "id=?", [object_id])
 	# Broadcast delete event for each object
 	broadcast_event(crm_id, "object/delete", {"crm": crm_id, "id": object_id, "user": user})
 
@@ -1986,11 +1969,11 @@ def action_object_create(a):
 				created = d.get("created") or now
 				updated = d.get("updated") or now
 				if not mochi.db.exists("select 1 from objects where id=?", d["id"]):
-					reg_merge("objects", ["id"], {"id": d["id"], "crm": crm_id, "class": obj_class, "parent": parent, "rank": rank, "created": created, "updated": updated})
+					row_merge("objects", ["id"], {"id": d["id"], "crm": crm_id, "class": obj_class, "parent": parent, "rank": rank, "created": created, "updated": updated})
 				if title and title_field:
-					reg_merge("values", ["object", "field"], {"object": d["id"], "field": title_field, "value": title})
+					row_merge("values", ["object", "field"], {"object": d["id"], "field": title_field, "value": title})
 				# Auto-watch creator locally so subscriber gets notifications
-				reg_merge("watchers", ["object", "user"], {"object": d["id"], "user": a.user.identity.id, "created": now})
+				row_merge("watchers", ["object", "user"], {"object": d["id"], "user": a.user.identity.id, "created": now})
 		return result
 
 	if not check_crm_access(a.user.identity.id, crm_id, "write"):
@@ -2031,19 +2014,19 @@ def action_object_create(a):
 	object_id = mochi.uid()
 	now = mochi.time.now()
 
-	reg_merge("objects", ["id"], {"id": object_id, "crm": crm_id, "class": obj_class, "parent": parent, "rank": initial_rank, "created": now, "updated": now})
+	row_merge("objects", ["id"], {"id": object_id, "crm": crm_id, "class": obj_class, "parent": parent, "rank": initial_rank, "created": now, "updated": now})
 
 	# Set title if provided
 	values = {}
 	if title and title_field:
-		reg_merge("values", ["object", "field"], {"object": object_id, "field": title_field, "value": title})
+		row_merge("values", ["object", "field"], {"object": object_id, "field": title_field, "value": title})
 		values[title_field] = title
 
 	# Log activity
 	log_activity(object_id, a.user.identity.id, "created")
 
 	# Auto-watch creator
-	reg_merge("watchers", ["object", "user"], {"object": object_id, "user": a.user.identity.id, "created": now})
+	row_merge("watchers", ["object", "user"], {"object": object_id, "user": a.user.identity.id, "created": now})
 	# Broadcast to subscribers
 	broadcast_event(crm_id, "object/create", {
 		"crm": crm_id, "id": object_id, "class": obj_class,
@@ -2136,9 +2119,9 @@ def action_object_update(a):
 		if result and object_id:
 			now = mochi.time.now()
 			if a.input("parent") != None:
-				reg_set("objects", ["id"], "id=?", [object_id], {"parent": p, "updated": now})
+				row_set("objects", ["id"], "id=?", [object_id], {"parent": p, "updated": now})
 			if c:
-				reg_set("objects", ["id"], "id=?", [object_id], {"class": c, "updated": now})
+				row_set("objects", ["id"], "id=?", [object_id], {"class": c, "updated": now})
 		return result
 
 	if not check_crm_access(a.user.identity.id, crm_id, "write"):
@@ -2178,7 +2161,7 @@ def action_object_update(a):
 			if not allowed:
 				a.error.label(400, "errors.parent_hierarchy_disallowed")
 				return
-			reg_set("objects", ["id"], "id=?", [object_id], {"parent": parent, "updated": now})
+			row_set("objects", ["id"], "id=?", [object_id], {"parent": parent, "updated": now})
 			log_activity(object_id, a.user.identity.id, "moved", "parent", old_parent, parent)
 
 			# Sync child's column/row values to match new parent
@@ -2196,17 +2179,17 @@ def action_object_update(a):
 				for sync_id in all_ids:
 					for field_id in sync_fields:
 						parent_val = parent_val_map.get(field_id, "")
-						reg_merge("values", ["object", "field"], {"object": sync_id, "field": field_id, "value": parent_val})
+						row_merge("values", ["object", "field"], {"object": sync_id, "field": field_id, "value": parent_val})
 	# Update class if provided
 	new_class = a.input("class")
 	if new_class and new_class != row["class"]:
 		# Verify class exists
 		class_row = mochi.db.row("select id from classes where crm=? and id=?", crm_id, new_class)
 		if class_row:
-			reg_set("objects", ["id"], "id=?", [object_id], {"class": new_class, "updated": now})
+			row_set("objects", ["id"], "id=?", [object_id], {"class": new_class, "updated": now})
 			log_activity(object_id, a.user.identity.id, "updated", "class", row["class"], new_class)
 
-	reg_set("objects", ["id"], "id=?", [object_id], {"updated": now})
+	row_set("objects", ["id"], "id=?", [object_id], {"updated": now})
 	broadcast_event(crm_id, "object/update", {
 		"crm": crm_id, "id": object_id,
 		"parent": parent if a.input("parent") != None else row["parent"],
@@ -2236,11 +2219,11 @@ def action_object_delete(a):
 			"crm": crm_id, "object": object_id,
 		})
 		if result and object_id:
-			reg_remove("values", ["object", "field"], "object=?", [object_id])
-			reg_remove("watchers", ["object", "user"], "object=?", [object_id])
+			row_remove("values", ["object", "field"], "object=?", [object_id])
+			row_remove("watchers", ["object", "user"], "object=?", [object_id])
 			delete_object_comments(object_id, crm_id)
-			reg_remove("links", ["source", "target", "linktype"], "source=? or target=?", [object_id, object_id])
-			reg_remove("objects", ["id"], "id=?", [object_id])
+			row_remove("links", ["source", "target", "linktype"], "source=? or target=?", [object_id, object_id])
+			row_remove("objects", ["id"], "id=?", [object_id])
 		return result
 
 	if not check_crm_access(a.user.identity.id, crm_id, "write"):
@@ -2298,7 +2281,7 @@ def action_object_move(a):
 			value = a.input("value")
 			rank = a.input("rank")
 			if value:
-				reg_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": value})
+				row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": value})
 			if rank:
 				old_value_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field)
 				old_value = old_value_row["value"] if old_value_row else ""
@@ -2306,12 +2289,12 @@ def action_object_move(a):
 				# Fractional key between the neighbours at the drop slot (#53): one
 				# write, converges under multi-master — no whole-scope renumber.
 				new_key = rank_move_key(crm_id, object_id, field, target_value, sp, int(rank))
-				reg_set("objects", ["id"], "id=?", [object_id], {"rank": new_key, "updated": now})
+				row_set("objects", ["id"], "id=?", [object_id], {"rank": new_key, "updated": now})
 			if rf:
-				reg_merge("values", ["object", "field"], {"object": object_id, "field": rf, "value": a.input("row_value")})
+				row_merge("values", ["object", "field"], {"object": object_id, "field": rf, "value": a.input("row_value")})
 			if a.input("promote") == "true":
-				reg_set("objects", ["id"], "id=?", [object_id], {"parent": '', "updated": now})
-			reg_set("objects", ["id"], "id=?", [object_id], {"updated": now})
+				row_set("objects", ["id"], "id=?", [object_id], {"parent": '', "updated": now})
+			row_set("objects", ["id"], "id=?", [object_id], {"updated": now})
 		return result
 
 	if not check_crm_access(a.user.identity.id, crm_id, "write"):
@@ -2355,7 +2338,7 @@ def action_object_move(a):
 
 	# Handle field value change
 	if value_changed:
-		reg_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": target_value})
+		row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": target_value})
 		log_activity(object_id, a.user.identity.id, "updated", field, old_value, target_value)
 
 	# Handle rank change
@@ -2364,13 +2347,13 @@ def action_object_move(a):
 	# (#53): one write, converges under multi-master — no whole-scope renumber.
 	if a.input("rank") != None:
 		new_key = rank_move_key(crm_id, object_id, field, target_value, scope_parent, int(new_rank))
-		reg_set("objects", ["id"], "id=?", [object_id], {"rank": new_key})
+		row_set("objects", ["id"], "id=?", [object_id], {"rank": new_key})
 	elif value_changed:
 		# Moving to a new column without a specific rank — append to its end.
 		# Anchor on the crm-wide max for a globally-unique key (see rank_after_all);
 		# crm-max >= the column's last, so it still lands last.
 		new_key = rank_after_all(crm_id, object_id)
-		reg_set("objects", ["id"], "id=?", [object_id], {"rank": new_key})
+		row_set("objects", ["id"], "id=?", [object_id], {"rank": new_key})
 	# Handle row field change (for swimlane drag-drop)
 	row_field = a.input("row_field")
 	row_value = a.input("row_value")
@@ -2388,7 +2371,7 @@ def action_object_move(a):
 		old_row_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, row_field)
 		old_row_value = old_row_row["value"] if old_row_row else ""
 		if old_row_value != row_value:
-			reg_merge("values", ["object", "field"], {"object": object_id, "field": row_field, "value": row_value})
+			row_merge("values", ["object", "field"], {"object": object_id, "field": row_field, "value": row_value})
 			log_activity(object_id, a.user.identity.id, "updated", row_field, old_row_value, row_value)
 			row_changed = True
 
@@ -2398,20 +2381,20 @@ def action_object_move(a):
 		old_parent_row = mochi.db.row("select parent from objects where id=?", object_id)
 		old_parent = old_parent_row["parent"] if old_parent_row else ""
 		if old_parent:
-			reg_set("objects", ["id"], "id=?", [object_id], {"parent": '', "updated": mochi.time.now()})
+			row_set("objects", ["id"], "id=?", [object_id], {"parent": '', "updated": mochi.time.now()})
 			log_activity(object_id, a.user.identity.id, "moved", "parent", old_parent, "")
 
-	reg_set("objects", ["id"], "id=?", [object_id], {"updated": mochi.time.now()})
+	row_set("objects", ["id"], "id=?", [object_id], {"updated": mochi.time.now()})
 	# Cascade status/row changes to all descendants
 	if value_changed or row_changed:
 		descendants = get_all_descendants(object_id)
 		now = mochi.time.now()
 		for desc_id in descendants:
 			if value_changed:
-				reg_merge("values", ["object", "field"], {"object": desc_id, "field": field, "value": target_value})
+				row_merge("values", ["object", "field"], {"object": desc_id, "field": field, "value": target_value})
 			if row_changed:
-				reg_merge("values", ["object", "field"], {"object": desc_id, "field": row_field, "value": row_value})
-			reg_set("objects", ["id"], "id=?", [desc_id], {"updated": now})
+				row_merge("values", ["object", "field"], {"object": desc_id, "field": row_field, "value": row_value})
+			row_set("objects", ["id"], "id=?", [desc_id], {"updated": now})
 	updated_values = {}
 	if value_changed:
 		updated_values[field] = target_value
@@ -2482,7 +2465,7 @@ def action_values_set(a):
 		})
 		if result:
 			for field_id, value in values.items():
-				reg_merge("values", ["object", "field"], {"object": object_id, "field": field_id, "value": value})
+				row_merge("values", ["object", "field"], {"object": object_id, "field": field_id, "value": value})
 		return result
 
 	if not check_crm_access(a.user.identity.id, crm_id, "write"):
@@ -2509,12 +2492,12 @@ def action_values_set(a):
 		old_value = old_row["value"] if old_row else ""
 
 		if str(new_value) != old_value:
-			reg_merge("values", ["object", "field"], {"object": object_id, "field": field_id, "value": str(new_value)})
+			row_merge("values", ["object", "field"], {"object": object_id, "field": field_id, "value": str(new_value)})
 			log_activity(object_id, a.user.identity.id, "updated", field_id, old_value, str(new_value))
 			changes.append(field_id)
 
 	if changes:
-		reg_set("objects", ["id"], "id=?", [object_id], {"updated": now})
+		row_set("objects", ["id"], "id=?", [object_id], {"updated": now})
 		# Collect changed values for broadcast
 		changed_values = {}
 		for fid in changes:
@@ -2530,7 +2513,7 @@ def action_values_set(a):
 			if field_types.get(fid) == "user":
 				assigned = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, fid)
 				if assigned and assigned["value"]:
-					reg_merge("watchers", ["object", "user"], {"object": object_id, "user": assigned["value"], "created": now})
+					row_merge("watchers", ["object", "user"], {"object": object_id, "user": assigned["value"], "created": now})
 
 	return {"data": {"success": True, "changed": changes}}
 
@@ -2554,7 +2537,7 @@ def action_value_set(a):
 		})
 		if result:
 			# Update local cache so subsequent reads reflect the change
-			reg_merge("values", ["object", "field"], {"object": a.input("object"), "field": a.input("field"), "value": a.input("value") or ""})
+			row_merge("values", ["object", "field"], {"object": a.input("object"), "field": a.input("field"), "value": a.input("value") or ""})
 		return result
 
 	if not check_crm_access(a.user.identity.id, crm_id, "write"):
@@ -2597,9 +2580,9 @@ def action_value_set(a):
 	old_value = old_row["value"] if old_row else ""
 
 	if str(new_value) != old_value:
-		reg_merge("values", ["object", "field"], {"object": object_id, "field": field_id, "value": str(new_value)})
+		row_merge("values", ["object", "field"], {"object": object_id, "field": field_id, "value": str(new_value)})
 		now = mochi.time.now()
-		reg_set("objects", ["id"], "id=?", [object_id], {"updated": now})
+		row_set("objects", ["id"], "id=?", [object_id], {"updated": now})
 		log_activity(object_id, a.user.identity.id, "updated", field_id, old_value, str(new_value))
 		broadcast_event(crm_id, "values/update", {
 			"crm": crm_id, "id": object_id,
@@ -2607,7 +2590,7 @@ def action_value_set(a):
 		})
 		# Auto-watch assigned user
 		if field_row["fieldtype"] == "user" and str(new_value):
-			reg_merge("watchers", ["object", "user"], {"object": object_id, "user": str(new_value), "created": now})
+			row_merge("watchers", ["object", "user"], {"object": object_id, "user": str(new_value), "created": now})
 
 	return {"data": {"success": True}}
 
@@ -2711,7 +2694,7 @@ def action_link_create(a):
 		return
 
 	now = mochi.time.now()
-	reg_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": object_id, "target": target_id, "linktype": linktype, "created": now})
+	row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": object_id, "target": target_id, "linktype": linktype, "created": now})
 
 	log_activity(object_id, a.user.identity.id, "linked", linktype, "", target_id)
 
@@ -2757,7 +2740,7 @@ def action_link_delete(a):
 		a.error.label(400, "errors.invalid_link_type")
 		return
 
-	reg_remove("links", ["source", "target", "linktype"], "crm=? and source=? and target=? and linktype=?", [crm_id, object_id, target_id, linktype])
+	row_remove("links", ["source", "target", "linktype"], "crm=? and source=? and target=? and linktype=?", [crm_id, object_id, target_id, linktype])
 	broadcast_event(crm_id, "link/delete", {
 		"crm": crm_id, "source": object_id,
 		"target": target_id, "linktype": linktype, "user": a.user.identity.id
@@ -2785,14 +2768,14 @@ def delete_comment_tree(comment_id, crm_id):
 		delete_comment_tree(child["id"], crm_id)
 	for att in (mochi.attachment.list(comment_id, crm_id) or []):
 		mochi.attachment.delete(att["id"])
-	reg_remove("comments", ["id"], "id=?", [comment_id])
+	row_remove("comments", ["id"], "id=?", [comment_id])
 # Delete all comments and their attachments for an object
 def delete_object_comments(object_id, crm_id):
 	comments = mochi.db.rows("select id from comments where object=?", object_id) or []
 	for c in comments:
 		for att in (mochi.attachment.list(c["id"], crm_id) or []):
 			mochi.attachment.delete(att["id"])
-	reg_remove("comments", ["id"], "object=?", [object_id])
+	row_remove("comments", ["id"], "object=?", [object_id])
 # Delete all comment attachments for all objects in a crm
 def delete_crm_comment_attachments(crm_id):
 	comments = mochi.db.rows(
@@ -2912,7 +2895,7 @@ def action_comment_create(a):
 		comment_id = mochi.uid()
 		now = mochi.time.now()
 		# Save locally for optimistic UI
-		reg_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": a.user.identity.id, "name": a.user.identity.name, "content": content.strip(), "created": now, "edited": 0})
+		row_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": a.user.identity.id, "name": a.user.identity.name, "content": content.strip(), "created": now, "edited": 0})
 		# Save attachments locally
 		attachments = mochi.attachment.save(comment_id, "files", [], [], [])
 		# Fire-and-forget to crm owner with attachment metadata
@@ -2925,7 +2908,7 @@ def action_comment_create(a):
 			submit_data
 		)
 		# Auto-watch commenter locally so subscriber gets notifications
-		reg_merge("watchers", ["object", "user"], {"object": object_id, "user": a.user.identity.id, "created": now})
+		row_merge("watchers", ["object", "user"], {"object": object_id, "user": a.user.identity.id, "created": now})
 		return {"data": {
 			"id": comment_id, "parent": parent,
 			"author": a.user.identity.id, "name": a.user.identity.name,
@@ -2958,15 +2941,15 @@ def action_comment_create(a):
 	comment_id = mochi.uid()
 	now = mochi.time.now()
 
-	reg_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": a.user.identity.id, "name": a.user.identity.name, "content": content.strip(), "created": now, "edited": 0})
+	row_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": a.user.identity.id, "name": a.user.identity.name, "content": content.strip(), "created": now, "edited": 0})
 
 	attachments = mochi.attachment.save(comment_id, "files", [], [], []) or []
 
-	reg_set("objects", ["id"], "id=?", [object_id], {"updated": now})
+	row_set("objects", ["id"], "id=?", [object_id], {"updated": now})
 	log_activity(object_id, a.user.identity.id, "commented")
 
 	# Auto-watch on comment
-	reg_merge("watchers", ["object", "user"], {"object": object_id, "user": a.user.identity.id, "created": now})
+	row_merge("watchers", ["object", "user"], {"object": object_id, "user": a.user.identity.id, "created": now})
 
 	# Broadcast with attachment metadata
 	comment_event = {
@@ -3036,7 +3019,7 @@ def action_comment_update(a):
 		return
 
 	now = mochi.time.now()
-	reg_set("comments", ["id"], "id=?", [comment_id], {"content": content.strip(), "edited": now})
+	row_set("comments", ["id"], "id=?", [comment_id], {"content": content.strip(), "edited": now})
 	broadcast_event(crm_id, "comment/update", {
 		"crm": crm_id, "object": object_id,
 		"id": comment_id, "content": content.strip(), "edited": now,
@@ -3185,7 +3168,7 @@ def action_attachment_create(a):
 		a.error.label(400, "errors.file_is_required")
 		return
 
-	reg_set("objects", ["id"], "id=?", [object_id], {"updated": now})
+	row_set("objects", ["id"], "id=?", [object_id], {"updated": now})
 	for att in attachments:
 		log_activity(object_id, a.user.identity.id, "attached", "", "", att["name"])
 
@@ -3336,7 +3319,7 @@ def action_watcher_add(a):
 
 	# Add current user as watcher
 	now = mochi.time.now()
-	reg_merge("watchers", ["object", "user"], {"object": object_id, "user": a.user.identity.id, "created": now})
+	row_merge("watchers", ["object", "user"], {"object": object_id, "user": a.user.identity.id, "created": now})
 
 	return {"data": {"success": True, "watching": True}}
 
@@ -3357,7 +3340,7 @@ def action_watcher_remove(a):
 		return
 
 	# Remove current user as watcher
-	reg_remove("watchers", ["object", "user"], "object=? and user=?", [object_id, a.user.identity.id])
+	row_remove("watchers", ["object", "user"], "object=? and user=?", [object_id, a.user.identity.id])
 	return {"data": {"success": True, "watching": False}}
 
 # ============================================================================
@@ -3457,18 +3440,18 @@ def action_view_create(a):
 	next_rank = mochi.db.row("select coalesce(max(rank), -1) + 1 as r from views where crm=?", crm_id)
 	rank = next_rank["r"] if next_rank else 0
 
-	reg_merge("views", ["crm", "id"], {"crm": crm_id, "id": view_id, "name": name.strip(), "viewtype": viewtype, "filter": filter_str, "columns": columns, "rows": rows, "sort": sort, "direction": direction, "rank": rank, "border": border})
+	row_merge("views", ["crm", "id"], {"crm": crm_id, "id": view_id, "name": name.strip(), "viewtype": viewtype, "filter": filter_str, "columns": columns, "rows": rows, "sort": sort, "direction": direction, "rank": rank, "border": border})
 
 	# Add fields to junction table
 	for i, field in enumerate(fields.split(",")):
 		if field.strip():
-			reg_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": view_id, "field": field.strip(), "rank": i})
+			row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": view_id, "field": field.strip(), "rank": i})
 
 	# Add classes to junction table
 	view_classes = a.input("classes") or ""
 	if view_classes:
 		for cls_id in [c.strip() for c in view_classes.split(",") if c.strip()]:
-			reg_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": cls_id})
+			row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": cls_id})
 
 	broadcast_event(crm_id, "view/create", {
 		"crm": crm_id, "id": view_id, "name": name.strip(),
@@ -3527,44 +3510,44 @@ def action_view_update(a):
 	direction = a.input("direction")
 
 	if a.input("name") != None and name.strip() != "":
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"name": name.strip()})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"name": name.strip()})
 	if a.input("viewtype") != None and viewtype != "":
 		if viewtype not in ["board", "list"]:
 			a.error.label(400, "errors.invalid_view_type")
 			return
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"viewtype": viewtype})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"viewtype": viewtype})
 	if a.input("filter") != None:
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"filter": filter_str})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"filter": filter_str})
 	if a.input("columns") != None:
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"columns": columns})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"columns": columns})
 	if a.input("rows") != None:
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"rows": rows})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"rows": rows})
 	if a.input("fields") != None:
 		# Delete existing fields and insert new ones
-		reg_remove("view_fields", ["crm", "view", "field"], "crm=? and view=?", [crm_id, view_id])
+		row_remove("view_fields", ["crm", "view", "field"], "crm=? and view=?", [crm_id, view_id])
 		for i, field in enumerate(fields.split(",")):
 			if field.strip():
-				reg_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": view_id, "field": field.strip(), "rank": i})
+				row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": view_id, "field": field.strip(), "rank": i})
 	if a.input("sort") != None:
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"sort": sort})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"sort": sort})
 	if a.input("direction") != None and direction != "":
 		if direction not in ["asc", "desc"]:
 			a.error.label(400, "errors.invalid_direction")
 			return
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"direction": direction})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"direction": direction})
 	border = a.input("border")
 	if a.input("border") != None:
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"border": border})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"border": border})
 	# Update view classes if provided (comma-separated list of class IDs, empty string = all classes)
 	view_classes_input = a.input("classes")
 	if a.input("classes") != None:
 		# Delete existing view classes
-		reg_remove("view_classes", ["crm", "view", "class"], "crm=? and view=?", [crm_id, view_id])
+		row_remove("view_classes", ["crm", "view", "class"], "crm=? and view=?", [crm_id, view_id])
 		# Insert new view classes
 		if view_classes_input:
 			cls_ids = [c.strip() for c in view_classes_input.split(",") if c.strip()]
 			for cls_id in cls_ids:
-				reg_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": cls_id})
+				row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": cls_id})
 
 	# Read back updated view for broadcast
 	updated = mochi.db.row("select * from views where crm=? and id=?", crm_id, view_id)
@@ -3615,9 +3598,9 @@ def action_view_delete(a):
 		a.error.label(400, "errors.cannot_delete_the_last_view")
 		return
 
-	reg_remove("view_fields", ["crm", "view", "field"], "crm=? and view=?", [crm_id, view_id])
-	reg_remove("view_classes", ["crm", "view", "class"], "crm=? and view=?", [crm_id, view_id])
-	reg_remove("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id])
+	row_remove("view_fields", ["crm", "view", "field"], "crm=? and view=?", [crm_id, view_id])
+	row_remove("view_classes", ["crm", "view", "class"], "crm=? and view=?", [crm_id, view_id])
+	row_remove("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id])
 	broadcast_event(crm_id, "view/delete", {"crm": crm_id, "id": view_id})
 
 	return {"data": {"success": True}}
@@ -3649,7 +3632,7 @@ def action_view_reorder(a):
 
 	# Update rank for each view
 	for i, view_id in enumerate(order):
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"rank": i})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"rank": i})
 
 	broadcast_event(crm_id, "view/reorder", {"crm": crm_id, "order": order})
 
@@ -3711,13 +3694,13 @@ def action_class_create(a):
 	max_rank = mochi.db.row("select max(rank) as m from classes where crm=?", crm_id)
 	rank = (max_rank["m"] or 0) + 1 if max_rank else 0
 
-	reg_merge("classes", ["crm", "id"], {"crm": crm_id, "id": class_id, "name": name.strip(), "rank": rank, "title": "title"})
+	row_merge("classes", ["crm", "id"], {"crm": crm_id, "id": class_id, "name": name.strip(), "rank": rank, "title": "title"})
 
 	# Add default title field
-	reg_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": class_id, "id": "title", "name": "Title", "fieldtype": "text", "flags": "required,sort", "rank": 0})
+	row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": class_id, "id": "title", "name": "Title", "fieldtype": "text", "flags": "required,sort", "rank": 0})
 
 	# Set hierarchy to allow root by default
-	reg_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": class_id, "parent": ""})
+	row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": class_id, "parent": ""})
 
 	broadcast_event(crm_id, "class/create", {
 		"crm": crm_id, "id": class_id, "name": name.strip(), "rank": rank, "title": "title"
@@ -3763,10 +3746,10 @@ def action_class_update(a):
 
 	name = a.input("name")
 	if name:
-		reg_set("classes", ["crm", "id"], "crm=? and id=?", [crm_id, class_id], {"name": name.strip()})
+		row_set("classes", ["crm", "id"], "crm=? and id=?", [crm_id, class_id], {"name": name.strip()})
 	title_input = a.input("title")
 	if title_input:
-		reg_set("classes", ["crm", "id"], "crm=? and id=?", [crm_id, class_id], {"title": title_input})
+		row_set("classes", ["crm", "id"], "crm=? and id=?", [crm_id, class_id], {"title": title_input})
 	broadcast_event(crm_id, "class/update", {
 		"crm": crm_id, "id": class_id, "name": name or class_row["name"],
 		"title": title_input or class_row["title"]
@@ -3810,12 +3793,12 @@ def action_class_delete(a):
 	# classes(crm, id), so its rows MUST go before the class row or the delete
 	# fails with "FOREIGN KEY constraint failed". hierarchy rows where this
 	# class is a parent have no FK but would be left dangling, so clear them too.
-	reg_remove("options", ["crm", "class", "field", "id"], "crm=? and class=?", [crm_id, class_id])
-	reg_remove("fields", ["crm", "class", "id"], "crm=? and class=?", [crm_id, class_id])
-	reg_remove("view_classes", ["crm", "view", "class"], "crm=? and class=?", [crm_id, class_id])
-	reg_remove("hierarchy", ["crm", "class", "parent"], "crm=? and class=?", [crm_id, class_id])
-	reg_remove("hierarchy", ["crm", "class", "parent"], "crm=? and parent=?", [crm_id, class_id])
-	reg_remove("classes", ["crm", "id"], "crm=? and id=?", [crm_id, class_id])
+	row_remove("options", ["crm", "class", "field", "id"], "crm=? and class=?", [crm_id, class_id])
+	row_remove("fields", ["crm", "class", "id"], "crm=? and class=?", [crm_id, class_id])
+	row_remove("view_classes", ["crm", "view", "class"], "crm=? and class=?", [crm_id, class_id])
+	row_remove("hierarchy", ["crm", "class", "parent"], "crm=? and class=?", [crm_id, class_id])
+	row_remove("hierarchy", ["crm", "class", "parent"], "crm=? and parent=?", [crm_id, class_id])
+	row_remove("classes", ["crm", "id"], "crm=? and id=?", [crm_id, class_id])
 	broadcast_event(crm_id, "class/delete", {"crm": crm_id, "id": class_id})
 
 	return {"data": {"success": True}}
@@ -3885,7 +3868,7 @@ def action_hierarchy_set(a):
 		parents = [p.strip() for p in parents_str.split(",")]
 
 	# Delete existing hierarchy
-	reg_remove("hierarchy", ["crm", "class", "parent"], "crm=? and class=?", [crm_id, class_id])
+	row_remove("hierarchy", ["crm", "class", "parent"], "crm=? and class=?", [crm_id, class_id])
 	# Insert new hierarchy entries
 	for parent in parents:
 		# Verify parent class exists (unless it's empty string for root)
@@ -3893,7 +3876,7 @@ def action_hierarchy_set(a):
 			parent_exists = mochi.db.exists("select 1 from classes where crm=? and id=?", crm_id, parent)
 			if not parent_exists:
 				continue  # Skip invalid parents
-		reg_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": class_id, "parent": parent})
+		row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": class_id, "parent": parent})
 
 	broadcast_event(crm_id, "hierarchy/set", {
 		"crm": crm_id, "class": class_id, "parents": parents
@@ -3988,7 +3971,7 @@ def action_field_create(a):
 	card = 1 if a.input("card") != "0" and a.input("card") != "false" else 0
 	rows = safe_int(a.input("rows"), 1)
 
-	reg_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": class_id, "id": field_id, "name": name.strip(), "fieldtype": fieldtype, "flags": flags, "multi": multi, "rank": rank, "card": card, "rows": rows})
+	row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": class_id, "id": field_id, "name": name.strip(), "fieldtype": fieldtype, "flags": flags, "multi": multi, "rank": rank, "card": card, "rows": rows})
 
 	broadcast_event(crm_id, "field/create", {
 		"crm": crm_id, "class": class_id, "id": field_id,
@@ -4037,59 +4020,59 @@ def action_field_update(a):
 
 	if a.input("name") != None:
 		name = a.input("name").strip()
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"name": name})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"name": name})
 		update_data["name"] = name
 	if a.input("flags") != None:
 		flags = a.input("flags")
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"flags": flags})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"flags": flags})
 		update_data["flags"] = flags
 	if a.input("multi") != None:
 		multi_val = 1 if a.input("multi") in ("1", "true") else 0
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"multi": multi_val})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"multi": multi_val})
 		update_data["multi"] = multi_val
 	if a.input("card") != None:
 		card_val = 1 if a.input("card") in ("1", "true") else 0
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"card": card_val})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"card": card_val})
 		update_data["card"] = card_val
 	if a.input("min") != None:
 		min_val = a.input("min")
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"min": min_val})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"min": min_val})
 		update_data["min"] = min_val
 	if a.input("max") != None:
 		max_val = a.input("max")
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"max": max_val})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"max": max_val})
 		update_data["max"] = max_val
 	if a.input("pattern") != None:
 		pattern = a.input("pattern")
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"pattern": pattern})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"pattern": pattern})
 		update_data["pattern"] = pattern
 	if a.input("minlength") != None:
 		minlength = safe_int(a.input("minlength"))
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"minlength": minlength})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"minlength": minlength})
 		update_data["minlength"] = minlength
 	if a.input("maxlength") != None:
 		maxlength = safe_int(a.input("maxlength"))
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"maxlength": maxlength})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"maxlength": maxlength})
 		update_data["maxlength"] = maxlength
 	if a.input("prefix") != None:
 		prefix = a.input("prefix")
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"prefix": prefix})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"prefix": prefix})
 		update_data["prefix"] = prefix
 	if a.input("suffix") != None:
 		suffix = a.input("suffix")
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"suffix": suffix})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"suffix": suffix})
 		update_data["suffix"] = suffix
 	if a.input("format") != None:
 		format_str = a.input("format")
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"format": format_str})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"format": format_str})
 		update_data["format"] = format_str
 	if a.input("position") != None:
 		position = a.input("position")
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"position": position})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"position": position})
 		update_data["position"] = position
 	if a.input("rows") != None:
 		rows_val = safe_int(a.input("rows"), 1)
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"rows": rows_val})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"rows": rows_val})
 		update_data["rows"] = rows_val
 
 	# Rename field ID if requested
@@ -4145,9 +4128,9 @@ def action_field_delete(a):
 		return
 
 	# Delete options for this field
-	reg_remove("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=?", [crm_id, class_id, field_id])
+	row_remove("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=?", [crm_id, class_id, field_id])
 	# Delete field
-	reg_remove("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id])
+	row_remove("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id])
 	broadcast_event(crm_id, "field/delete", {"crm": crm_id, "class": class_id, "id": field_id})
 
 	return {"data": {"success": True}}
@@ -4185,7 +4168,7 @@ def action_field_reorder(a):
 
 	# Update rank for each field
 	for i, field_id in enumerate(order):
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"rank": i})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"rank": i})
 
 	broadcast_event(crm_id, "field/reorder", {"crm": crm_id, "class": class_id, "order": order})
 
@@ -4283,7 +4266,7 @@ def action_option_create(a):
 		a.error.label(400, "errors.icon_too_long")
 		return
 
-	reg_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": class_id, "field": field_id, "id": option_id, "name": name.strip(), "colour": colour, "icon": icon, "rank": rank})
+	row_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": class_id, "field": field_id, "id": option_id, "name": name.strip(), "colour": colour, "icon": icon, "rank": rank})
 
 	broadcast_event(crm_id, "option/create", {
 		"crm": crm_id, "class": class_id, "field": field_id,
@@ -4339,17 +4322,17 @@ def action_option_update(a):
 		if len(name) > 100:
 			a.error.label(400, "errors.name_too_long")
 			return
-		reg_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"name": name.strip()})
+		row_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"name": name.strip()})
 	if a.input("colour") != None:
 		if len(colour) > 20:
 			a.error.label(400, "errors.colour_too_long")
 			return
-		reg_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"colour": colour})
+		row_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"colour": colour})
 	if a.input("icon") != None:
 		if len(icon) > 100:
 			a.error.label(400, "errors.icon_too_long")
 			return
-		reg_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"icon": icon})
+		row_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"icon": icon})
 	update_data = {"crm": crm_id, "class": class_id, "field": field_id, "id": option_id}
 	if a.input("name") != None:
 		update_data["name"] = name.strip()
@@ -4390,7 +4373,7 @@ def action_option_delete(a):
 		a.error.label(400, "errors.option_id_required")
 		return
 
-	reg_remove("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id])
+	row_remove("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id])
 	broadcast_event(crm_id, "option/delete", {"crm": crm_id, "class": class_id, "field": field_id, "id": option_id})
 
 	return {"data": {"success": True}}
@@ -4429,7 +4412,7 @@ def action_option_reorder(a):
 
 	# Update sort order for each option
 	for i, option_id in enumerate(order):
-		reg_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"rank": i})
+		row_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"rank": i})
 
 	broadcast_event(crm_id, "option/reorder", {"crm": crm_id, "class": class_id, "field": field_id, "order": order})
 
@@ -4758,7 +4741,7 @@ def action_subscribe(a):
 	# below, but the bulk object data arrives asynchronously via the owner's
 	# sync/batch. The board shows a loading state until event_sync_batch flips
 	# this to 1.
-	reg_merge("crms", ["id"], {"id": crm_id, "name": crm_name, "description": crm_desc, "owner": 0, "server": server or "", "fingerprint": fp, "created": now, "updated": now, "populated": 0})
+	row_merge("crms", ["id"], {"id": crm_id, "name": crm_name, "description": crm_desc, "owner": 0, "server": server or "", "fingerprint": fp, "created": now, "updated": now, "populated": 0})
 
 	# Insert schema so the crm page has content immediately
 	if schema and not schema.get("error"):
@@ -4968,48 +4951,48 @@ def insert_schema(crm_id, schema):
 	# subscriber's row already matches.
 	crm_data = schema.get("crm")
 	if crm_data:
-		reg_set("crms", ["id"], "id=? and owner=0", [crm_id], {"name": crm_data.get("name", ""), "description": crm_data.get("description", "")})
+		row_set("crms", ["id"], "id=? and owner=0", [crm_id], {"name": crm_data.get("name", ""), "description": crm_data.get("description", "")})
 	for c in (schema.get("classes") or []):
-		reg_merge("classes", ["crm", "id"], {"id": c.get("id", ""), "crm": crm_id, "name": c.get("name", ""), "rank": c.get("rank", 0), "title": c.get("title", "")})
+		row_merge("classes", ["crm", "id"], {"id": c.get("id", ""), "crm": crm_id, "name": c.get("name", ""), "rank": c.get("rank", 0), "title": c.get("title", "")})
 	for f in (schema.get("fields") or []):
-		reg_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": f.get("class", ""), "id": f.get("id", ""), "name": f.get("name", ""), "fieldtype": f.get("fieldtype", "text"), "flags": f.get("flags", ""), "multi": f.get("multi", 0), "rank": f.get("rank", 0), "card": f.get("card", 1), "position": f.get("position", ""), "rows": f.get("rows", 1)})
+		row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": f.get("class", ""), "id": f.get("id", ""), "name": f.get("name", ""), "fieldtype": f.get("fieldtype", "text"), "flags": f.get("flags", ""), "multi": f.get("multi", 0), "rank": f.get("rank", 0), "card": f.get("card", 1), "position": f.get("position", ""), "rows": f.get("rows", 1)})
 	for o in (schema.get("options") or []):
-		reg_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": o.get("class", ""), "field": o.get("field", ""), "id": o.get("id", ""), "name": o.get("name", ""), "colour": o.get("colour", "#94a3b8"), "icon": o.get("icon", ""), "rank": o.get("rank", 0)})
+		row_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": o.get("class", ""), "field": o.get("field", ""), "id": o.get("id", ""), "name": o.get("name", ""), "colour": o.get("colour", "#94a3b8"), "icon": o.get("icon", ""), "rank": o.get("rank", 0)})
 	for h in (schema.get("hierarchy") or []):
 		for parent in (h.get("parents") or []):
 			# (crm, class, parent) is the full primary key; there is
 			# no editable payload to reconcile, so ignore is right.
-			reg_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": h.get("class", ""), "parent": parent})
+			row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": h.get("class", ""), "parent": parent})
 	for v in (schema.get("views") or []):
 		view_id = v.get("id", "")
-		reg_merge("views", ["crm", "id"], {"id": view_id, "crm": crm_id, "name": v.get("name", ""), "viewtype": v.get("viewtype", "board"), "filter": v.get("filter", ""), "columns": v.get("columns", ""), "rows": v.get("rows", ""), "sort": v.get("sort", ""), "direction": v.get("direction", "asc"), "rank": v.get("rank", 0), "border": v.get("border", "")})
+		row_merge("views", ["crm", "id"], {"id": view_id, "crm": crm_id, "name": v.get("name", ""), "viewtype": v.get("viewtype", "board"), "filter": v.get("filter", ""), "columns": v.get("columns", ""), "rows": v.get("rows", ""), "sort": v.get("sort", ""), "direction": v.get("direction", "asc"), "rank": v.get("rank", 0), "border": v.get("border", "")})
 		fields_csv = v.get("fields", "")
 		if fields_csv:
 			rank = 0
 			for field_id in fields_csv.split(","):
 				if field_id:
 					# view_fields has an editable rank; reconcile it.
-					reg_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": view_id, "field": field_id, "rank": rank})
+					row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": view_id, "field": field_id, "rank": rank})
 					rank += 1
 		classes_csv = v.get("classes", "")
 		if classes_csv:
 			for class_id in classes_csv.split(","):
 				if class_id:
 					# (crm, view, class) has no payload columns.
-					reg_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": class_id})
+					row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": class_id})
 	for obj in (schema.get("objects") or []):
 		if not mochi.db.exists("select 1 from objects where id=?", obj.get("id", "")):
-			reg_merge("objects", ["id"], {"id": obj.get("id", ""), "crm": crm_id, "class": obj.get("class", ""), "parent": obj.get("parent", ""), "rank": obj.get("rank", 0), "created": obj.get("created", 0), "updated": obj.get("updated", 0)})
+			row_merge("objects", ["id"], {"id": obj.get("id", ""), "crm": crm_id, "class": obj.get("class", ""), "parent": obj.get("parent", ""), "rank": obj.get("rank", 0), "created": obj.get("created", 0), "updated": obj.get("updated", 0)})
 		obj_atts = obj.get("attachments") or []
 		if obj_atts:
 			mochi.attachment.store(obj_atts, crm_id, obj.get("id", ""))
 		values = obj.get("values")
 		if values:
 			for field in values:
-				reg_merge("values", ["object", "field"], {"object": obj.get("id", ""), "field": field, "value": values[field]})
+				row_merge("values", ["object", "field"], {"object": obj.get("id", ""), "field": field, "value": values[field]})
 		for c in (obj.get("comments") or []):
 			if not mochi.db.exists("select 1 from comments where id=?", c.get("id", "")):
-				reg_merge("comments", ["id"], {"id": c.get("id", ""), "object": obj.get("id", ""), "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", ""), "edited": c.get("edited", 0)})
+				row_merge("comments", ["id"], {"id": c.get("id", ""), "object": obj.get("id", ""), "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", ""), "edited": c.get("edited", 0)})
 			c_atts = c.get("attachments") or []
 			if c_atts:
 				mochi.attachment.store(c_atts, crm_id, c.get("id", ""))
@@ -5025,7 +5008,7 @@ def insert_schema(crm_id, schema):
 	for l in (schema.get("links") or []):
 		# (crm, source, target, linktype) is the full key; links are
 		# created/deleted, never edited in place.
-		reg_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": l.get("source", ""), "target": l.get("target", ""), "linktype": l.get("linktype", ""), "created": 0})
+		row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": l.get("source", ""), "target": l.get("target", ""), "linktype": l.get("linktype", ""), "created": 0})
 
 # Send all existing crm data to a new subscriber
 def send_crm_data(crm_id, subscriber_id):
@@ -5152,10 +5135,10 @@ def event_subscribe(e):
 		return
 
 	now = mochi.time.now()
-	reg_merge("subscribers", ["crm", "id"], {"crm": crm_id, "id": subscriber_id, "name": name, "subscribed": now})
+	row_merge("subscribers", ["crm", "id"], {"crm": crm_id, "id": subscriber_id, "name": name, "subscribed": now})
 
 	# Update crm timestamp
-	reg_set("crms", ["id"], "id=?", [crm_id], {"updated": now})
+	row_set("crms", ["id"], "id=?", [crm_id], {"updated": now})
 	# Send websocket notification for real-time UI updates
 	fingerprint = mochi.entity.fingerprint(crm_id)
 	if fingerprint:
@@ -5175,14 +5158,14 @@ def event_unsubscribe(e):
 	subscriber_id = e.header("from")
 
 	# Clean up watchers created by this subscriber
-	reg_remove("watchers", ["object", "user"], "user=? and object in (select id from objects where crm=?)", [subscriber_id, crm_id])
+	row_remove("watchers", ["object", "user"], "user=? and object in (select id from objects where crm=?)", [subscriber_id, crm_id])
 	# Clean up activity records by this subscriber
 	mochi.db.execute("delete from activity where user=? and object in (select id from objects where crm=?)", subscriber_id, crm_id)
 
 	# Remove subscriber
-	reg_remove("subscribers", ["crm", "id"], "crm=? and id=?", [crm_id, subscriber_id])
+	row_remove("subscribers", ["crm", "id"], "crm=? and id=?", [crm_id, subscriber_id])
 	# Update crm timestamp
-	reg_set("crms", ["id"], "id=?", [crm_id], {"updated": mochi.time.now()})
+	row_set("crms", ["id"], "id=?", [crm_id], {"updated": mochi.time.now()})
 	# Send websocket notification
 	fingerprint = mochi.entity.fingerprint(crm_id)
 	if fingerprint:
@@ -5225,50 +5208,50 @@ def event_sync_batch(e):
 	# Process classes
 	classes = e.content("classes") or []
 	for t in classes:
-		reg_merge("classes", ["crm", "id"], {"crm": crm_id, "id": t["id"], "name": t["name"], "rank": t.get("rank", 0), "title": t.get("title", "title")})
+		row_merge("classes", ["crm", "id"], {"crm": crm_id, "id": t["id"], "name": t["name"], "rank": t.get("rank", 0), "title": t.get("title", "title")})
 		# Hierarchy
 		parents = t.get("parents")
 		if parents:
-			reg_remove("hierarchy", ["crm", "class", "parent"], "crm=? and class=?", [crm_id, t["id"]])
+			row_remove("hierarchy", ["crm", "class", "parent"], "crm=? and class=?", [crm_id, t["id"]])
 			for p in parents:
-				reg_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": t["id"], "parent": p})
+				row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": t["id"], "parent": p})
 		# Fields
 		for f in (t.get("fields") or []):
-			reg_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": t["id"], "id": f["id"], "name": f["name"], "fieldtype": f["fieldtype"], "flags": f.get("flags", ""), "multi": f.get("multi", 0), "rank": f.get("rank", 0), "card": f.get("card", ""), "position": f.get("position", ""), "rows": f.get("rows", 0)})
+			row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": t["id"], "id": f["id"], "name": f["name"], "fieldtype": f["fieldtype"], "flags": f.get("flags", ""), "multi": f.get("multi", 0), "rank": f.get("rank", 0), "card": f.get("card", ""), "position": f.get("position", ""), "rows": f.get("rows", 0)})
 			# Options
 			for o in (f.get("options") or []):
-				reg_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": t["id"], "field": f["id"], "id": o["id"], "name": o["name"], "colour": o.get("colour", "#94a3b8"), "icon": o.get("icon", ""), "rank": o.get("rank", 0)})
+				row_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": t["id"], "field": f["id"], "id": o["id"], "name": o["name"], "colour": o.get("colour", "#94a3b8"), "icon": o.get("icon", ""), "rank": o.get("rank", 0)})
 
 	# Process views
 	for v in (e.content("views") or []):
-		reg_merge("views", ["crm", "id"], {"crm": crm_id, "id": v["id"], "name": v["name"], "viewtype": v["viewtype"], "filter": v.get("filter", ""), "columns": v.get("columns", ""), "rows": v.get("rows", ""), "sort": v.get("sort", ""), "direction": v.get("direction", ""), "rank": v.get("rank", 0), "border": v.get("border", "")})
+		row_merge("views", ["crm", "id"], {"crm": crm_id, "id": v["id"], "name": v["name"], "viewtype": v["viewtype"], "filter": v.get("filter", ""), "columns": v.get("columns", ""), "rows": v.get("rows", ""), "sort": v.get("sort", ""), "direction": v.get("direction", ""), "rank": v.get("rank", 0), "border": v.get("border", "")})
 		# View fields
-		reg_remove("view_fields", ["crm", "view", "field"], "crm=? and view=?", [crm_id, v["id"]])
+		row_remove("view_fields", ["crm", "view", "field"], "crm=? and view=?", [crm_id, v["id"]])
 		fields_csv = v.get("fields", "")
 		if fields_csv:
 			for i, field_id in enumerate(fields_csv.split(",")):
 				if field_id:
-					reg_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": v["id"], "field": field_id, "rank": i})
+					row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": v["id"], "field": field_id, "rank": i})
 		# View classes
-		reg_remove("view_classes", ["crm", "view", "class"], "crm=? and view=?", [crm_id, v["id"]])
+		row_remove("view_classes", ["crm", "view", "class"], "crm=? and view=?", [crm_id, v["id"]])
 		classes_csv = v.get("classes", "")
 		if classes_csv:
 			for class_id in classes_csv.split(","):
 				if class_id:
-					reg_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": v["id"], "class": class_id})
+					row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": v["id"], "class": class_id})
 	# Process objects
 	for obj in (e.content("objects") or []):
 		if not mochi.db.exists("select 1 from objects where id=?", obj["id"]):
-			reg_merge("objects", ["id"], {"id": obj["id"], "crm": crm_id, "class": obj.get("class", ""), "parent": obj.get("parent", ""), "rank": obj.get("rank", 0), "created": obj.get("created", now), "updated": obj.get("updated", now)})
+			row_merge("objects", ["id"], {"id": obj["id"], "crm": crm_id, "class": obj.get("class", ""), "parent": obj.get("parent", ""), "rank": obj.get("rank", 0), "created": obj.get("created", now), "updated": obj.get("updated", now)})
 		# Values
 		values = obj.get("values")
 		if values:
 			for field, value in values.items():
-				reg_merge("values", ["object", "field"], {"object": obj["id"], "field": field, "value": value})
+				row_merge("values", ["object", "field"], {"object": obj["id"], "field": field, "value": value})
 		# Comments
 		for c in (obj.get("comments") or []):
 			if not mochi.db.exists("select 1 from comments where id=?", c["id"]):
-				reg_merge("comments", ["id"], {"id": c["id"], "object": obj["id"], "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", now), "edited": c.get("edited", 0)})
+				row_merge("comments", ["id"], {"id": c["id"], "object": obj["id"], "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", now), "edited": c.get("edited", 0)})
 		# Activity history
 		for act in (obj.get("activity") or []):
 			mochi.db.execute(
@@ -5280,11 +5263,11 @@ def event_sync_batch(e):
 
 	# Process links
 	for l in (e.content("links") or []):
-		reg_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": l["source"], "target": l["target"], "linktype": l.get("linktype", "relates"), "created": l.get("created", 0)})
+		row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": l["source"], "target": l["target"], "linktype": l.get("linktype", "relates"), "created": l.get("created", 0)})
 
 	# Mark the subscription's initial bulk content as arrived so the board stops
 	# showing its loading state and renders the now-complete data.
-	reg_set("crms", ["id"], "id=? and owner=0", [crm_id], {"populated": 1})
+	row_set("crms", ["id"], "id=? and owner=0", [crm_id], {"populated": 1})
 	# Notify UI
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
@@ -5326,10 +5309,10 @@ def event_crm_update(e):
 	name = e.content("name")
 	description = e.content("description")
 	if name != None:
-		reg_set("crms", ["id"], "id=?", [crm_id], {"name": name})
+		row_set("crms", ["id"], "id=?", [crm_id], {"name": name})
 	if description != None:
-		reg_set("crms", ["id"], "id=?", [crm_id], {"description": description})
-	reg_set("crms", ["id"], "id=?", [crm_id], {"updated": mochi.time.now()})
+		row_set("crms", ["id"], "id=?", [crm_id], {"description": description})
+	row_set("crms", ["id"], "id=?", [crm_id], {"updated": mochi.time.now()})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "crm/update", "crm": crm_id})
@@ -5348,11 +5331,11 @@ def event_object_create(e):
 		request_resync(crm_id)
 		return
 	if not mochi.db.exists("select 1 from objects where id=?", object_id):
-		reg_merge("objects", ["id"], {"id": object_id, "crm": crm_id, "class": class_id, "parent": e.content("parent") or "", "rank": e.content("rank") or 0, "created": e.content("created") or mochi.time.now(), "updated": e.content("updated") or mochi.time.now()})
+		row_merge("objects", ["id"], {"id": object_id, "crm": crm_id, "class": class_id, "parent": e.content("parent") or "", "rank": e.content("rank") or 0, "created": e.content("created") or mochi.time.now(), "updated": e.content("updated") or mochi.time.now()})
 	# Store field values included in the broadcast
 	values = e.content("values") or {}
 	for field, value in values.items():
-		reg_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": value})
+		row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": value})
 	user = e.content("user") or ""
 	# Activity history arrives separately via the activity/log broadcast,
 	# so we don't insert a local row here (it would have a different UID
@@ -5363,7 +5346,7 @@ def event_object_create(e):
 	# Auto-watch creator locally (safety net for when forward_to_owner response is lost)
 	local_id = e.header("to")
 	if user and user == local_id:
-		reg_merge("watchers", ["object", "user"], {"object": object_id, "user": local_id, "created": e.content("created") or mochi.time.now()})
+		row_merge("watchers", ["object", "user"], {"object": object_id, "user": local_id, "created": e.content("created") or mochi.time.now()})
 	# Notify local user about new object
 	if local_id and local_id != user:
 		crm = get_crm(crm_id)
@@ -5412,12 +5395,12 @@ def event_object_update(e):
 	parent = e.content("parent")
 	rank = e.content("rank")
 	if class_id:
-		reg_set("objects", ["id"], "id=? and crm=?", [object_id, crm_id], {"class": class_id})
+		row_set("objects", ["id"], "id=? and crm=?", [object_id, crm_id], {"class": class_id})
 	if parent != None:
-		reg_set("objects", ["id"], "id=? and crm=?", [object_id, crm_id], {"parent": parent})
+		row_set("objects", ["id"], "id=? and crm=?", [object_id, crm_id], {"parent": parent})
 	if rank != None:
-		reg_set("objects", ["id"], "id=? and crm=?", [object_id, crm_id], {"rank": rank})
-	reg_set("objects", ["id"], "id=? and crm=?", [object_id, crm_id], {"updated": incoming if incoming else now})
+		row_set("objects", ["id"], "id=? and crm=?", [object_id, crm_id], {"rank": rank})
+	row_set("objects", ["id"], "id=? and crm=?", [object_id, crm_id], {"updated": incoming if incoming else now})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "object/update", "crm": crm_id, "id": object_id})
@@ -5447,7 +5430,7 @@ def event_object_ranks(e):
 		obj_id = r.get("id")
 		rank = r.get("rank")
 		if obj_id and rank != None:
-			reg_set("objects", ["id"], "id=? and crm=?", [obj_id, crm_id], {"rank": rank, "updated": now})
+			row_set("objects", ["id"], "id=? and crm=?", [obj_id, crm_id], {"rank": rank, "updated": now})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "object/ranks", "crm": crm_id})
@@ -5465,12 +5448,12 @@ def event_object_delete(e):
 	local_id = e.header("to")
 	if local_id:
 		notify_watchers(object_id, crm_id, local_id, user, mochi.app.label("notifications.body.deleted"))
-	reg_remove("watchers", ["object", "user"], "object=?", [object_id])
+	row_remove("watchers", ["object", "user"], "object=?", [object_id])
 	mochi.db.execute("delete from activity where object=?", object_id)
 	delete_object_comments(object_id, crm_id)
-	reg_remove("values", ["object", "field"], "object=?", [object_id])
-	reg_remove("links", ["source", "target", "linktype"], "source=? or target=?", [object_id, object_id])
-	reg_remove("objects", ["id"], "id=? and crm=?", [object_id, crm_id])
+	row_remove("values", ["object", "field"], "object=?", [object_id])
+	row_remove("links", ["source", "target", "linktype"], "source=? or target=?", [object_id, object_id])
+	row_remove("objects", ["id"], "id=? and crm=?", [object_id, crm_id])
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "object/delete", "crm": crm_id, "id": object_id})
@@ -5494,8 +5477,8 @@ def event_values_update(e):
 		request_resync(crm_id)
 		return
 	for field in values:
-		reg_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": values[field]})
-	reg_set("objects", ["id"], "id=? and crm=?", [object_id, crm_id], {"updated": mochi.time.now()})
+		row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": values[field]})
+	row_set("objects", ["id"], "id=? and crm=?", [object_id, crm_id], {"updated": mochi.time.now()})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "values/update", "crm": crm_id, "id": object_id})
@@ -5524,7 +5507,7 @@ def event_values_update(e):
 									url = "/crm/" + fp2 + "/" + object_id if fp2 else "/crm"
 									notify("assignment", crm_id, title, mochi.app.label("notifications.body.assigned_to_you"), url, event_id="assignment:" + object_id + ":" + local_id)
 							# Auto-watch on assignment
-							reg_merge("watchers", ["object", "user"], {"object": object_id, "user": local_id, "created": mochi.time.now()})
+							row_merge("watchers", ["object", "user"], {"object": object_id, "user": local_id, "created": mochi.time.now()})
 			if not assigned:
 				notify_watchers(object_id, crm_id, local_id, user, mochi.app.label("notifications.body.updated"))
 
@@ -5581,14 +5564,14 @@ def event_comment_submit(e):
 		return
 	now = mochi.time.now()
 	if not mochi.db.exists("select 1 from comments where id=?", comment_id):
-		reg_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": sender, "name": name, "content": content.strip(), "created": now, "edited": 0})
+		row_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": sender, "name": name, "content": content.strip(), "created": now, "edited": 0})
 	# Store attachment metadata from the subscriber's event
 	attachments = e.content("attachments") or []
 	if attachments:
 		mochi.attachment.store(attachments, sender, comment_id)
-	reg_set("objects", ["id"], "id=?", [object_id], {"updated": now})
+	row_set("objects", ["id"], "id=?", [object_id], {"updated": now})
 	log_activity(object_id, sender, "commented")
-	reg_merge("watchers", ["object", "user"], {"object": object_id, "user": sender, "created": now})
+	row_merge("watchers", ["object", "user"], {"object": object_id, "user": sender, "created": now})
 	# Send WebSocket notification to owner for real-time UI updates
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
@@ -5622,7 +5605,7 @@ def event_attachment_submit(e):
 	if not mochi.db.row("select id from objects where id=? and crm=?", object_id, crm_id):
 		return
 	now = mochi.time.now()
-	reg_set("objects", ["id"], "id=?", [object_id], {"updated": now})
+	row_set("objects", ["id"], "id=?", [object_id], {"updated": now})
 	names = e.content("names") or []
 	for name in names:
 		log_activity(object_id, sender, "attached", "", "", name)
@@ -5679,7 +5662,7 @@ def event_comment_create(e):
 		request_resync(crm_id)
 		return
 	if not mochi.db.exists("select 1 from comments where id=?", comment_id):
-		reg_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": e.content("parent") or "", "author": e.content("author") or "", "name": e.content("name") or "", "content": e.content("content") or "", "created": e.content("created") or mochi.time.now(), "edited": 0})
+		row_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": e.content("parent") or "", "author": e.content("author") or "", "name": e.content("name") or "", "content": e.content("content") or "", "created": e.content("created") or mochi.time.now(), "edited": 0})
 	# Store attachment metadata from the event
 	attachments = e.content("attachments") or []
 	if attachments:
@@ -5695,7 +5678,7 @@ def event_comment_create(e):
 		if object_id and local_id:
 			# Auto-watch commenter locally (safety net for when forward_to_owner response is lost)
 			if user and user == local_id:
-				reg_merge("watchers", ["object", "user"], {"object": object_id, "user": local_id, "created": e.content("created") or mochi.time.now()})
+				row_merge("watchers", ["object", "user"], {"object": object_id, "user": local_id, "created": e.content("created") or mochi.time.now()})
 			name = e.content("name") or "Someone"
 			excerpt = (e.content("content") or "")[:80]
 			notify_watchers(object_id, crm_id, local_id, user, mochi.app.label("notifications.body.commented", name=name, excerpt=excerpt))
@@ -5716,7 +5699,7 @@ def event_comment_update(e):
 		return
 	content = e.content("content")
 	if content:
-		reg_set("comments", ["id"], "id=?", [comment_id], {"content": content, "edited": mochi.time.now()})
+		row_set("comments", ["id"], "id=?", [comment_id], {"content": content, "edited": mochi.time.now()})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "comment/update", "crm": crm_id, "id": comment_id})
@@ -5748,7 +5731,7 @@ def event_link_create(e):
 		not mochi.db.exists("select 1 from objects where id=? and crm=?", target, crm_id):
 		request_resync(crm_id)
 		return
-	reg_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": source, "target": target, "linktype": e.content("linktype") or "related", "created": e.content("created") or mochi.time.now()})
+	row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": source, "target": target, "linktype": e.content("linktype") or "related", "created": e.content("created") or mochi.time.now()})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "link/create", "crm": crm_id})
@@ -5765,7 +5748,7 @@ def event_link_delete(e):
 	crm_id = verify_subscription(e)
 	if not crm_id:
 		return
-	reg_remove("links", ["source", "target", "linktype"], "source=? and target=? and linktype=?", [e.content("source") or "", e.content("target") or "", e.content("linktype") or "related"])
+	row_remove("links", ["source", "target", "linktype"], "source=? and target=? and linktype=?", [e.content("source") or "", e.content("target") or "", e.content("linktype") or "related"])
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "link/delete", "crm": crm_id})
@@ -5778,21 +5761,21 @@ def event_view_create(e):
 	view_id = e.content("id")
 	if not view_id:
 		return
-	reg_merge("views", ["crm", "id"], {"id": view_id, "crm": crm_id, "name": e.content("name") or "", "viewtype": e.content("viewtype") or "board", "filter": e.content("filter") or "", "columns": e.content("columns") or "", "rows": e.content("rows") or "", "sort": e.content("sort") or "", "direction": e.content("direction") or "asc", "rank": e.content("rank") or 0, "border": e.content("border") or ""})
+	row_merge("views", ["crm", "id"], {"id": view_id, "crm": crm_id, "name": e.content("name") or "", "viewtype": e.content("viewtype") or "board", "filter": e.content("filter") or "", "columns": e.content("columns") or "", "rows": e.content("rows") or "", "sort": e.content("sort") or "", "direction": e.content("direction") or "asc", "rank": e.content("rank") or 0, "border": e.content("border") or ""})
 	# Sync view fields
 	fields_csv = e.content("fields") or ""
 	if fields_csv:
 		rank = 0
 		for field_id in fields_csv.split(","):
 			if field_id:
-				reg_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": view_id, "field": field_id, "rank": rank})
+				row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": view_id, "field": field_id, "rank": rank})
 				rank += 1
 	# Sync view classes
 	classes_csv = e.content("classes") or ""
 	if classes_csv:
 		for class_id in classes_csv.split(","):
 			if class_id:
-				reg_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": class_id})
+				row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": class_id})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "view/create", "crm": crm_id, "id": view_id})
@@ -5813,38 +5796,38 @@ def event_view_update(e):
 	sort = e.content("sort")
 	direction = e.content("direction")
 	if name:
-		reg_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"name": name})
+		row_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"name": name})
 	if viewtype:
-		reg_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"viewtype": viewtype})
+		row_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"viewtype": viewtype})
 	if filter_val != None:
-		reg_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"filter": filter_val})
+		row_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"filter": filter_val})
 	if columns != None:
-		reg_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"columns": columns})
+		row_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"columns": columns})
 	if rows != None:
-		reg_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"rows": rows})
+		row_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"rows": rows})
 	if sort != None:
-		reg_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"sort": sort})
+		row_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"sort": sort})
 	if direction != None:
-		reg_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"direction": direction})
+		row_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"direction": direction})
 	border = e.content("border")
 	if border != None:
-		reg_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"border": border})
+		row_set("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id], {"border": border})
 	# Sync view fields if provided
 	fields_csv = e.content("fields")
 	if fields_csv != None:
-		reg_remove("view_fields", ["crm", "view", "field"], "crm=? and view=?", [crm_id, view_id])
+		row_remove("view_fields", ["crm", "view", "field"], "crm=? and view=?", [crm_id, view_id])
 		rank = 0
 		for field_id in fields_csv.split(","):
 			if field_id:
-				reg_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": view_id, "field": field_id, "rank": rank})
+				row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": view_id, "field": field_id, "rank": rank})
 				rank += 1
 	# Sync view classes if provided
 	classes_csv = e.content("classes")
 	if classes_csv != None:
-		reg_remove("view_classes", ["crm", "view", "class"], "crm=? and view=?", [crm_id, view_id])
+		row_remove("view_classes", ["crm", "view", "class"], "crm=? and view=?", [crm_id, view_id])
 		for class_id in classes_csv.split(","):
 			if class_id:
-				reg_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": class_id})
+				row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": class_id})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "view/update", "crm": crm_id, "id": view_id})
@@ -5857,9 +5840,9 @@ def event_view_delete(e):
 	view_id = e.content("id")
 	if not view_id:
 		return
-	reg_remove("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id])
-	reg_remove("view_fields", ["crm", "view", "field"], "view=? and crm=?", [view_id, crm_id])
-	reg_remove("view_classes", ["crm", "view", "class"], "view=? and crm=?", [view_id, crm_id])
+	row_remove("views", ["crm", "id"], "id=? and crm=?", [view_id, crm_id])
+	row_remove("view_fields", ["crm", "view", "field"], "view=? and crm=?", [view_id, crm_id])
+	row_remove("view_classes", ["crm", "view", "class"], "view=? and crm=?", [view_id, crm_id])
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "view/delete", "crm": crm_id, "id": view_id})
@@ -5869,7 +5852,7 @@ def event_class_create(e):
 	crm_id = verify_subscription(e)
 	if not crm_id:
 		return
-	reg_merge("classes", ["crm", "id"], {"id": e.content("id"), "crm": crm_id, "name": e.content("name") or "", "rank": e.content("rank") or 0, "title": e.content("title") or ""})
+	row_merge("classes", ["crm", "id"], {"id": e.content("id"), "crm": crm_id, "name": e.content("name") or "", "rank": e.content("rank") or 0, "title": e.content("title") or ""})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "class/create", "crm": crm_id, "id": e.content("id")})
@@ -5884,10 +5867,10 @@ def event_class_update(e):
 		return
 	name = e.content("name")
 	if name != None:
-		reg_set("classes", ["crm", "id"], "id=? and crm=?", [class_id, crm_id], {"name": name})
+		row_set("classes", ["crm", "id"], "id=? and crm=?", [class_id, crm_id], {"name": name})
 	title = e.content("title")
 	if title != None:
-		reg_set("classes", ["crm", "id"], "id=? and crm=?", [class_id, crm_id], {"title": title})
+		row_set("classes", ["crm", "id"], "id=? and crm=?", [class_id, crm_id], {"title": title})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "class/update", "crm": crm_id, "id": class_id})
@@ -5900,12 +5883,12 @@ def event_class_delete(e):
 	class_id = e.content("id")
 	if not class_id:
 		return
-	reg_remove("options", ["crm", "class", "field", "id"], "crm=? and class=?", [crm_id, class_id])
-	reg_remove("fields", ["crm", "class", "id"], "crm=? and class=?", [crm_id, class_id])
-	reg_remove("view_classes", ["crm", "view", "class"], "crm=? and class=?", [crm_id, class_id])
-	reg_remove("hierarchy", ["crm", "class", "parent"], "crm=? and class=?", [crm_id, class_id])
-	reg_remove("hierarchy", ["crm", "class", "parent"], "crm=? and parent=?", [crm_id, class_id])
-	reg_remove("classes", ["crm", "id"], "id=? and crm=?", [class_id, crm_id])
+	row_remove("options", ["crm", "class", "field", "id"], "crm=? and class=?", [crm_id, class_id])
+	row_remove("fields", ["crm", "class", "id"], "crm=? and class=?", [crm_id, class_id])
+	row_remove("view_classes", ["crm", "view", "class"], "crm=? and class=?", [crm_id, class_id])
+	row_remove("hierarchy", ["crm", "class", "parent"], "crm=? and class=?", [crm_id, class_id])
+	row_remove("hierarchy", ["crm", "class", "parent"], "crm=? and parent=?", [crm_id, class_id])
+	row_remove("classes", ["crm", "id"], "id=? and crm=?", [class_id, crm_id])
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "class/delete", "crm": crm_id, "id": class_id})
@@ -5920,11 +5903,11 @@ def event_hierarchy_set(e):
 	if not class_id:
 		return
 	# Clear existing hierarchy for this class
-	reg_remove("hierarchy", ["crm", "class", "parent"], "crm=? and class=?", [crm_id, class_id])
+	row_remove("hierarchy", ["crm", "class", "parent"], "crm=? and class=?", [crm_id, class_id])
 	# Insert new parents
 	if parents:
 		for parent in parents:
-			reg_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": class_id, "parent": parent})
+			row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": class_id, "parent": parent})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "hierarchy/set", "crm": crm_id, "class": class_id})
@@ -5934,7 +5917,7 @@ def event_field_create(e):
 	crm_id = verify_subscription(e)
 	if not crm_id:
 		return
-	reg_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": e.content("class") or "", "id": e.content("id") or "", "name": e.content("name") or "", "fieldtype": e.content("fieldtype") or "text", "flags": e.content("flags") or "", "multi": e.content("multi") or 0, "rank": e.content("rank") or 0, "card": e.content("card") or 1, "position": e.content("position") or "", "rows": e.content("rows") or 1})
+	row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": e.content("class") or "", "id": e.content("id") or "", "name": e.content("name") or "", "fieldtype": e.content("fieldtype") or "text", "flags": e.content("flags") or "", "multi": e.content("multi") or 0, "rank": e.content("rank") or 0, "card": e.content("card") or 1, "position": e.content("position") or "", "rows": e.content("rows") or 1})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "field/create", "crm": crm_id, "class_id": e.content("class"), "id": e.content("id")})
@@ -5969,33 +5952,33 @@ def event_field_update(e):
 	position = e.content("position")
 	rows_val = e.content("rows")
 	if name != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"name": name})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"name": name})
 	if flags != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"flags": flags})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"flags": flags})
 	if multi != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"multi": multi})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"multi": multi})
 	if card != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"card": card})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"card": card})
 	if min_val != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"min": min_val})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"min": min_val})
 	if max_val != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"max": max_val})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"max": max_val})
 	if pattern != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"pattern": pattern})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"pattern": pattern})
 	if minlength != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"minlength": minlength})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"minlength": minlength})
 	if maxlength != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"maxlength": maxlength})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"maxlength": maxlength})
 	if prefix != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"prefix": prefix})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"prefix": prefix})
 	if suffix != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"suffix": suffix})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"suffix": suffix})
 	if format_str != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"format": format_str})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"format": format_str})
 	if position != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"position": position})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"position": position})
 	if rows_val != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"rows": rows_val})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, current_id], {"rows": rows_val})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "field/update", "crm": crm_id, "class_id": class_id, "id": field_id})
@@ -6009,8 +5992,8 @@ def event_field_delete(e):
 	field_id = e.content("id")
 	if not class_id or not field_id:
 		return
-	reg_remove("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=?", [crm_id, class_id, field_id])
-	reg_remove("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id])
+	row_remove("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=?", [crm_id, class_id, field_id])
+	row_remove("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id])
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "field/delete", "crm": crm_id, "class_id": class_id, "id": field_id})
@@ -6025,7 +6008,7 @@ def event_field_reorder(e):
 	if not class_id or not order:
 		return
 	for i, field_id in enumerate(order):
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"rank": i})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"rank": i})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "field/reorder", "crm": crm_id, "class_id": class_id})
@@ -6035,7 +6018,7 @@ def event_option_create(e):
 	crm_id = verify_subscription(e)
 	if not crm_id:
 		return
-	reg_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": e.content("class") or "", "field": e.content("field") or "", "id": e.content("id") or "", "name": e.content("name") or "", "colour": e.content("colour") or "#94a3b8", "icon": e.content("icon") or "", "rank": e.content("rank") or 0})
+	row_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": e.content("class") or "", "field": e.content("field") or "", "id": e.content("id") or "", "name": e.content("name") or "", "colour": e.content("colour") or "#94a3b8", "icon": e.content("icon") or "", "rank": e.content("rank") or 0})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "option/create", "crm": crm_id})
@@ -6054,11 +6037,11 @@ def event_option_update(e):
 	colour = e.content("colour")
 	icon = e.content("icon")
 	if name != None:
-		reg_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"name": name})
+		row_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"name": name})
 	if colour != None:
-		reg_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"colour": colour})
+		row_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"colour": colour})
 	if icon != None:
-		reg_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"icon": icon})
+		row_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"icon": icon})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "option/update", "crm": crm_id})
@@ -6073,7 +6056,7 @@ def event_option_delete(e):
 	option_id = e.content("id")
 	if not class_id or not field_id or not option_id:
 		return
-	reg_remove("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id])
+	row_remove("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id])
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "option/delete", "crm": crm_id})
@@ -6089,7 +6072,7 @@ def event_option_reorder(e):
 	if not class_id or not field_id or not order:
 		return
 	for i, option_id in enumerate(order):
-		reg_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"rank": i})
+		row_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"rank": i})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "option/reorder", "crm": crm_id})
@@ -6241,11 +6224,11 @@ def do_comment_create(crm_id, crm, params, user_id, user_name):
 	comment_id = params.get("id") or mochi.uid()
 	now = mochi.time.now()
 	if not mochi.db.exists("select 1 from comments where id=?", comment_id):
-		reg_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": user_id, "name": user_name, "content": content.strip(), "created": now, "edited": 0})
-	reg_set("objects", ["id"], "id=?", [object_id], {"updated": now})
+		row_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": user_id, "name": user_name, "content": content.strip(), "created": now, "edited": 0})
+	row_set("objects", ["id"], "id=?", [object_id], {"updated": now})
 	log_activity(object_id, user_id, "commented")
 	# Auto-watch commenter on owner's server
-	reg_merge("watchers", ["object", "user"], {"object": object_id, "user": user_id, "created": now})
+	row_merge("watchers", ["object", "user"], {"object": object_id, "user": user_id, "created": now})
 	# Include attachments in broadcast
 	comment_attachments = mochi.attachment.list(comment_id, crm_id) or []
 	comment_event = {
@@ -6279,7 +6262,7 @@ def do_comment_update(crm_id, crm, params, user_id):
 	if check_length(content, 50000):
 		return {"error": "errors.content_too_long", "code": 400}
 	now = mochi.time.now()
-	reg_set("comments", ["id"], "id=?", [comment_id], {"content": content.strip(), "edited": now})
+	row_set("comments", ["id"], "id=?", [comment_id], {"content": content.strip(), "edited": now})
 	broadcast_event(crm_id, "comment/update", {
 		"crm": crm_id, "object": object_id,
 		"id": comment_id, "content": content.strip(), "edited": now, "user": user_id
@@ -6311,7 +6294,7 @@ def do_watcher_add(crm_id, params, user_id):
 	if not row:
 		return {"error": "errors.object_not_found", "code": 404}
 	now = mochi.time.now()
-	reg_merge("watchers", ["object", "user"], {"object": object_id, "user": user_id, "created": now})
+	row_merge("watchers", ["object", "user"], {"object": object_id, "user": user_id, "created": now})
 	return {"success": True, "watching": True}
 
 def do_watcher_remove(crm_id, params, user_id):
@@ -6321,7 +6304,7 @@ def do_watcher_remove(crm_id, params, user_id):
 	row = mochi.db.row("select id from objects where id=? and crm=?", object_id, crm_id)
 	if not row:
 		return {"error": "errors.object_not_found", "code": 404}
-	reg_remove("watchers", ["object", "user"], "object=? and user=?", [object_id, user_id])
+	row_remove("watchers", ["object", "user"], "object=? and user=?", [object_id, user_id])
 	return {"success": True, "watching": False}
 
 # Object helpers
@@ -6353,13 +6336,13 @@ def do_object_create(crm_id, crm, params, user_id):
 	initial_rank = rank_after_all(crm_id, None)
 	object_id = mochi.uid()
 	now = mochi.time.now()
-	reg_merge("objects", ["id"], {"id": object_id, "crm": crm_id, "class": obj_class, "parent": parent, "rank": initial_rank, "created": now, "updated": now})
+	row_merge("objects", ["id"], {"id": object_id, "crm": crm_id, "class": obj_class, "parent": parent, "rank": initial_rank, "created": now, "updated": now})
 	values = {}
 	if title and title_field:
-		reg_merge("values", ["object", "field"], {"object": object_id, "field": title_field, "value": title})
+		row_merge("values", ["object", "field"], {"object": object_id, "field": title_field, "value": title})
 		values[title_field] = title
 	log_activity(object_id, user_id, "created")
-	reg_merge("watchers", ["object", "user"], {"object": object_id, "user": user_id, "created": now})
+	row_merge("watchers", ["object", "user"], {"object": object_id, "user": user_id, "created": now})
 	broadcast_event(crm_id, "object/create", {
 		"crm": crm_id, "id": object_id, "class": obj_class,
 		"parent": parent, "rank": initial_rank, "values": values,
@@ -6399,7 +6382,7 @@ def do_object_update(crm_id, crm, params, user_id):
 			allowed = mochi.db.exists("select 1 from hierarchy where crm=? and class=? and parent=?", crm_id, row["class"], parent_class)
 			if not allowed:
 				return {"error": "errors.parent_hierarchy_disallowed", "code": 400}
-			reg_set("objects", ["id"], "id=?", [object_id], {"parent": parent, "updated": now})
+			row_set("objects", ["id"], "id=?", [object_id], {"parent": parent, "updated": now})
 			log_activity(object_id, user_id, "moved", "parent", old_parent, parent)
 
 			# Sync child's column/row values to match new parent
@@ -6417,14 +6400,14 @@ def do_object_update(crm_id, crm, params, user_id):
 				for sync_id in all_ids:
 					for field_id in sync_fields:
 						parent_val = parent_val_map.get(field_id, "")
-						reg_merge("values", ["object", "field"], {"object": sync_id, "field": field_id, "value": parent_val})
+						row_merge("values", ["object", "field"], {"object": sync_id, "field": field_id, "value": parent_val})
 	new_class = params.get("class")
 	if new_class and new_class != row["class"]:
 		class_row = mochi.db.row("select id from classes where crm=? and id=?", crm_id, new_class)
 		if class_row:
-			reg_set("objects", ["id"], "id=?", [object_id], {"class": new_class, "updated": now})
+			row_set("objects", ["id"], "id=?", [object_id], {"class": new_class, "updated": now})
 			log_activity(object_id, user_id, "updated", "class", row["class"], new_class)
-	reg_set("objects", ["id"], "id=?", [object_id], {"updated": now})
+	row_set("objects", ["id"], "id=?", [object_id], {"updated": now})
 	broadcast_event(crm_id, "object/update", {
 		"crm": crm_id, "id": object_id,
 		"parent": parent if parent != None else row["parent"],
@@ -6474,20 +6457,20 @@ def do_object_move(crm_id, crm, params, user_id):
 	target_value = value if value else old_value
 	value_changed = old_value != target_value
 	if value_changed:
-		reg_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": target_value})
+		row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": target_value})
 		log_activity(object_id, user_id, "updated", field, old_value, target_value)
 	scope_parent = params.get("scope_parent", None)
 	if new_rank != None:
 		# Fractional key between the neighbours at the drop slot (#53): one write,
 		# converges under multi-master — no whole-scope renumber.
 		new_key = rank_move_key(crm_id, object_id, field, target_value, scope_parent, int(new_rank))
-		reg_set("objects", ["id"], "id=?", [object_id], {"rank": new_key})
+		row_set("objects", ["id"], "id=?", [object_id], {"rank": new_key})
 	elif value_changed:
 		# Moving to a new column without a specific rank — append to its end.
 		# Anchor on the crm-wide max for a globally-unique key (see rank_after_all);
 		# crm-max >= the column's last, so it still lands last.
 		new_key = rank_after_all(crm_id, object_id)
-		reg_set("objects", ["id"], "id=?", [object_id], {"rank": new_key})
+		row_set("objects", ["id"], "id=?", [object_id], {"rank": new_key})
 	row_field = params.get("row_field")
 	row_value = params.get("row_value")
 	if check_length(row_field, 100):
@@ -6499,7 +6482,7 @@ def do_object_move(crm_id, crm, params, user_id):
 		old_row_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, row_field)
 		old_row_value = old_row_row["value"] if old_row_row else ""
 		if old_row_value != row_value:
-			reg_merge("values", ["object", "field"], {"object": object_id, "field": row_field, "value": row_value})
+			row_merge("values", ["object", "field"], {"object": object_id, "field": row_field, "value": row_value})
 			log_activity(object_id, user_id, "updated", row_field, old_row_value, row_value)
 			row_changed = True
 
@@ -6509,20 +6492,20 @@ def do_object_move(crm_id, crm, params, user_id):
 		old_parent_row = mochi.db.row("select parent from objects where id=?", object_id)
 		old_parent = old_parent_row["parent"] if old_parent_row else ""
 		if old_parent:
-			reg_set("objects", ["id"], "id=?", [object_id], {"parent": '', "updated": mochi.time.now()})
+			row_set("objects", ["id"], "id=?", [object_id], {"parent": '', "updated": mochi.time.now()})
 			log_activity(object_id, user_id, "moved", "parent", old_parent, "")
 
-	reg_set("objects", ["id"], "id=?", [object_id], {"updated": mochi.time.now()})
+	row_set("objects", ["id"], "id=?", [object_id], {"updated": mochi.time.now()})
 	# Cascade status/row changes to all descendants
 	if value_changed or row_changed:
 		descendants = get_all_descendants(object_id)
 		now = mochi.time.now()
 		for desc_id in descendants:
 			if value_changed:
-				reg_merge("values", ["object", "field"], {"object": desc_id, "field": field, "value": target_value})
+				row_merge("values", ["object", "field"], {"object": desc_id, "field": field, "value": target_value})
 			if row_changed:
-				reg_merge("values", ["object", "field"], {"object": desc_id, "field": row_field, "value": row_value})
-			reg_set("objects", ["id"], "id=?", [desc_id], {"updated": now})
+				row_merge("values", ["object", "field"], {"object": desc_id, "field": row_field, "value": row_value})
+			row_set("objects", ["id"], "id=?", [desc_id], {"updated": now})
 	updated_values = {}
 	if value_changed:
 		updated_values[field] = target_value
@@ -6643,11 +6626,11 @@ def do_values_set(crm_id, crm, params, user_id):
 		old_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field_id)
 		old_value = old_row["value"] if old_row else ""
 		if str(new_value) != old_value:
-			reg_merge("values", ["object", "field"], {"object": object_id, "field": field_id, "value": str(new_value)})
+			row_merge("values", ["object", "field"], {"object": object_id, "field": field_id, "value": str(new_value)})
 			log_activity(object_id, user_id, "updated", field_id, old_value, str(new_value))
 			changes.append(field_id)
 	if changes:
-		reg_set("objects", ["id"], "id=?", [object_id], {"updated": now})
+		row_set("objects", ["id"], "id=?", [object_id], {"updated": now})
 		changed_values = {}
 		for fid in changes:
 			val = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, fid)
@@ -6664,7 +6647,7 @@ def do_values_set(crm_id, crm, params, user_id):
 			if field_types.get(fid) == "user":
 				assigned = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, fid)
 				if assigned and assigned["value"]:
-					reg_merge("watchers", ["object", "user"], {"object": object_id, "user": assigned["value"], "created": now})
+					row_merge("watchers", ["object", "user"], {"object": object_id, "user": assigned["value"], "created": now})
 	return {"success": True, "changed": changes}
 
 def do_value_set(crm_id, crm, params, user_id):
@@ -6689,9 +6672,9 @@ def do_value_set(crm_id, crm, params, user_id):
 	old_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field_id)
 	old_value = old_row["value"] if old_row else ""
 	if str(new_value) != old_value:
-		reg_merge("values", ["object", "field"], {"object": object_id, "field": field_id, "value": str(new_value)})
+		row_merge("values", ["object", "field"], {"object": object_id, "field": field_id, "value": str(new_value)})
 		now = mochi.time.now()
-		reg_set("objects", ["id"], "id=?", [object_id], {"updated": now})
+		row_set("objects", ["id"], "id=?", [object_id], {"updated": now})
 		log_activity(object_id, user_id, "updated", field_id, old_value, str(new_value))
 		broadcast_event(crm_id, "values/update", {
 			"crm": crm_id, "id": object_id,
@@ -6702,7 +6685,7 @@ def do_value_set(crm_id, crm, params, user_id):
 		notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.updated"))
 		# Auto-watch assigned user
 		if field_row["fieldtype"] == "user" and str(new_value):
-			reg_merge("watchers", ["object", "user"], {"object": object_id, "user": str(new_value), "created": now})
+			row_merge("watchers", ["object", "user"], {"object": object_id, "user": str(new_value), "created": now})
 	return {"success": True}
 
 # Link helpers
@@ -6724,7 +6707,7 @@ def do_link_create(crm_id, crm, params, user_id):
 	if existing:
 		return {"error": "errors.link_already_exists", "code": 400}
 	now = mochi.time.now()
-	reg_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": object_id, "target": target_id, "linktype": linktype, "created": now})
+	row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": object_id, "target": target_id, "linktype": linktype, "created": now})
 	log_activity(object_id, user_id, "linked", linktype, "", target_id)
 	broadcast_event(crm_id, "link/create", {
 		"crm": crm_id, "source": object_id,
@@ -6741,7 +6724,7 @@ def do_link_delete(crm_id, crm, params, user_id):
 	linktype = params.get("linktype")
 	if not object_id or not target_id or not linktype:
 		return {"error": "errors.object_target_and_linktype_are_required", "code": 400}
-	reg_remove("links", ["source", "target", "linktype"], "crm=? and source=? and target=? and linktype=?", [crm_id, object_id, target_id, linktype])
+	row_remove("links", ["source", "target", "linktype"], "crm=? and source=? and target=? and linktype=?", [crm_id, object_id, target_id, linktype])
 	broadcast_event(crm_id, "link/delete", {
 		"crm": crm_id, "source": object_id,
 		"target": target_id, "linktype": linktype, "user": user_id
@@ -6781,9 +6764,9 @@ def do_class_create(crm_id, crm, params):
 		return {"error": "errors.class_name_taken", "code": 400}
 	max_rank = mochi.db.row("select max(rank) as m from classes where crm=?", crm_id)
 	rank = (max_rank["m"] or 0) + 1 if max_rank else 0
-	reg_merge("classes", ["crm", "id"], {"crm": crm_id, "id": class_id, "name": name.strip(), "rank": rank, "title": "title"})
-	reg_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": class_id, "id": "title", "name": "Title", "fieldtype": "text", "flags": "required,sort", "rank": 0})
-	reg_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": class_id, "parent": ""})
+	row_merge("classes", ["crm", "id"], {"crm": crm_id, "id": class_id, "name": name.strip(), "rank": rank, "title": "title"})
+	row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": class_id, "id": "title", "name": "Title", "fieldtype": "text", "flags": "required,sort", "rank": 0})
+	row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": class_id, "parent": ""})
 	broadcast_event(crm_id, "class/create", {
 		"crm": crm_id, "id": class_id, "name": name.strip(), "rank": rank, "title": "title"
 	})
@@ -6803,9 +6786,9 @@ def do_class_update(crm_id, crm, params):
 	if check_length(title_input, 100):
 		return {"error": "errors.title_too_long", "code": 400}
 	if name:
-		reg_set("classes", ["crm", "id"], "crm=? and id=?", [crm_id, class_id], {"name": name.strip()})
+		row_set("classes", ["crm", "id"], "crm=? and id=?", [crm_id, class_id], {"name": name.strip()})
 	if title_input:
-		reg_set("classes", ["crm", "id"], "crm=? and id=?", [crm_id, class_id], {"title": title_input})
+		row_set("classes", ["crm", "id"], "crm=? and id=?", [crm_id, class_id], {"title": title_input})
 	broadcast_event(crm_id, "class/update", {
 		"crm": crm_id, "id": class_id, "name": name or class_row["name"],
 		"title": title_input or class_row["title"]
@@ -6822,12 +6805,12 @@ def do_class_delete(crm_id, crm, params):
 	# view_classes has a foreign key to classes(crm, id); delete its rows before
 	# the class row or the delete fails with "FOREIGN KEY constraint failed".
 	# Also clear hierarchy rows where this class is a parent.
-	reg_remove("options", ["crm", "class", "field", "id"], "crm=? and class=?", [crm_id, class_id])
-	reg_remove("fields", ["crm", "class", "id"], "crm=? and class=?", [crm_id, class_id])
-	reg_remove("view_classes", ["crm", "view", "class"], "crm=? and class=?", [crm_id, class_id])
-	reg_remove("hierarchy", ["crm", "class", "parent"], "crm=? and class=?", [crm_id, class_id])
-	reg_remove("hierarchy", ["crm", "class", "parent"], "crm=? and parent=?", [crm_id, class_id])
-	reg_remove("classes", ["crm", "id"], "crm=? and id=?", [crm_id, class_id])
+	row_remove("options", ["crm", "class", "field", "id"], "crm=? and class=?", [crm_id, class_id])
+	row_remove("fields", ["crm", "class", "id"], "crm=? and class=?", [crm_id, class_id])
+	row_remove("view_classes", ["crm", "view", "class"], "crm=? and class=?", [crm_id, class_id])
+	row_remove("hierarchy", ["crm", "class", "parent"], "crm=? and class=?", [crm_id, class_id])
+	row_remove("hierarchy", ["crm", "class", "parent"], "crm=? and parent=?", [crm_id, class_id])
+	row_remove("classes", ["crm", "id"], "crm=? and id=?", [crm_id, class_id])
 	broadcast_event(crm_id, "class/delete", {"crm": crm_id, "id": class_id})
 	return {"success": True}
 
@@ -6859,7 +6842,7 @@ def do_field_create(crm_id, crm, params):
 	multi = 1 if params.get("multi") == "1" or params.get("multi") == "true" else 0
 	card = 1 if params.get("card") != "0" and params.get("card") != "false" else 0
 	rows = safe_int(params.get("rows"), 1)
-	reg_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": class_id, "id": field_id, "name": name.strip(), "fieldtype": fieldtype, "flags": flags, "multi": multi, "rank": rank, "card": card, "rows": rows})
+	row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": class_id, "id": field_id, "name": name.strip(), "fieldtype": fieldtype, "flags": flags, "multi": multi, "rank": rank, "card": card, "rows": rows})
 	broadcast_event(crm_id, "field/create", {
 		"crm": crm_id, "class": class_id, "id": field_id,
 		"name": name.strip(), "fieldtype": fieldtype, "flags": flags,
@@ -6869,20 +6852,20 @@ def do_field_create(crm_id, crm, params):
 
 # Rename a field ID across all tables that reference it
 def rename_field_id(crm_id, class_id, old_id, new_id):
-	reg_rekey("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, old_id], {"id": new_id})
-	reg_rekey("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=?", [crm_id, class_id, old_id], {"field": new_id})
+	row_rekey("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, old_id], {"id": new_id})
+	row_rekey("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=?", [crm_id, class_id, old_id], {"field": new_id})
 	# Re-key field old_id -> new_id across this class's objects: re-merge each value under
 	# the new field id and tombstone the old (the merge upsert handles any new_id conflict).
 	for _v in mochi.db.rows("select object, value from \"values\" where field=? and object in (select id from objects where crm=? and class=?)", old_id, crm_id, class_id):
-		reg_merge("values", ["object", "field"], {"object": _v["object"], "field": new_id, "value": _v["value"]})
-		reg_remove("values", ["object", "field"], "object=? and field=?", [_v["object"], old_id])
-	reg_rekey("view_fields", ["crm", "view", "field"], "crm=? and field=?", [crm_id, old_id], {"field": new_id})
+		row_merge("values", ["object", "field"], {"object": _v["object"], "field": new_id, "value": _v["value"]})
+		row_remove("values", ["object", "field"], "object=? and field=?", [_v["object"], old_id])
+	row_rekey("view_fields", ["crm", "view", "field"], "crm=? and field=?", [crm_id, old_id], {"field": new_id})
 	mochi.db.execute("update activity set field=? where field=? and object in (select id from objects where crm=? and class=?)", new_id, old_id, crm_id, class_id)
-	reg_set("views", ["crm", "id"], "crm=? and columns=?", [crm_id, old_id], {"columns": new_id})
-	reg_set("views", ["crm", "id"], "crm=? and rows=?", [crm_id, old_id], {"rows": new_id})
-	reg_set("views", ["crm", "id"], "crm=? and sort=?", [crm_id, old_id], {"sort": new_id})
-	reg_set("views", ["crm", "id"], "crm=? and border=?", [crm_id, old_id], {"border": new_id})
-	reg_set("classes", ["crm", "id"], "crm=? and id=? and title=?", [crm_id, class_id, old_id], {"title": new_id})
+	row_set("views", ["crm", "id"], "crm=? and columns=?", [crm_id, old_id], {"columns": new_id})
+	row_set("views", ["crm", "id"], "crm=? and rows=?", [crm_id, old_id], {"rows": new_id})
+	row_set("views", ["crm", "id"], "crm=? and sort=?", [crm_id, old_id], {"sort": new_id})
+	row_set("views", ["crm", "id"], "crm=? and border=?", [crm_id, old_id], {"border": new_id})
+	row_set("classes", ["crm", "id"], "crm=? and id=? and title=?", [crm_id, class_id, old_id], {"title": new_id})
 def do_field_update(crm_id, crm, params):
 	class_id = params.get("class")
 	field_id = params.get("field")
@@ -6904,19 +6887,19 @@ def do_field_update(crm_id, crm, params):
 	position = params.get("position")
 	rows_val = params.get("rows")
 	if name != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"name": name.strip()})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"name": name.strip()})
 	if flags != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"flags": flags})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"flags": flags})
 	if multi != None:
 		multi_val = 1 if multi == "1" or multi == "true" else 0
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"multi": multi_val})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"multi": multi_val})
 	if card != None:
 		card_val = 1 if card == "1" or card == "true" else 0
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"card": card_val})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"card": card_val})
 	if position != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"position": position})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"position": position})
 	if rows_val != None:
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"rows": int(rows_val)})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"rows": int(rows_val)})
 	# Rename field ID if requested
 	new_id = params.get("id")
 	if new_id != None:
@@ -6951,8 +6934,8 @@ def do_field_delete(crm_id, crm, params):
 	field_id = params.get("field")
 	if not class_id or not field_id:
 		return {"error": "errors.type_and_field_id_required", "code": 400}
-	reg_remove("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=?", [crm_id, class_id, field_id])
-	reg_remove("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id])
+	row_remove("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=?", [crm_id, class_id, field_id])
+	row_remove("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id])
 	broadcast_event(crm_id, "field/delete", {"crm": crm_id, "class": class_id, "id": field_id})
 	return {"success": True}
 
@@ -6963,7 +6946,7 @@ def do_field_reorder(crm_id, crm, params):
 	order_str = params.get("order", "")
 	order = [f.strip() for f in order_str.split(",") if f.strip()]
 	for i, field_id in enumerate(order):
-		reg_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"rank": i})
+		row_set("fields", ["crm", "class", "id"], "crm=? and class=? and id=?", [crm_id, class_id, field_id], {"rank": i})
 	broadcast_event(crm_id, "field/reorder", {"crm": crm_id, "class": class_id, "order": order})
 	return {"success": True}
 
@@ -6995,7 +6978,7 @@ def do_option_create(crm_id, crm, params):
 	rank = (max_rank["m"] or 0) + 1 if max_rank else 0
 	colour = params.get("colour", "#94a3b8")
 	icon = params.get("icon", "")
-	reg_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": class_id, "field": field_id, "id": option_id, "name": name.strip(), "colour": colour, "icon": icon, "rank": rank})
+	row_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": class_id, "field": field_id, "id": option_id, "name": name.strip(), "colour": colour, "icon": icon, "rank": rank})
 	broadcast_event(crm_id, "option/create", {
 		"crm": crm_id, "class": class_id, "field": field_id,
 		"id": option_id, "name": name.strip(), "colour": colour, "icon": icon, "rank": rank
@@ -7021,11 +7004,11 @@ def do_option_update(crm_id, crm, params):
 	colour = params.get("colour")
 	icon = params.get("icon")
 	if name != None:
-		reg_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"name": name.strip()})
+		row_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"name": name.strip()})
 	if colour != None:
-		reg_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"colour": colour})
+		row_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"colour": colour})
 	if icon != None:
-		reg_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"icon": icon})
+		row_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"icon": icon})
 	update_data = {"crm": crm_id, "class": class_id, "field": field_id, "id": option_id}
 	if name != None:
 		update_data["name"] = name.strip()
@@ -7042,7 +7025,7 @@ def do_option_delete(crm_id, crm, params):
 	option_id = params.get("option")
 	if not class_id or not field_id or not option_id:
 		return {"error": "errors.option_id_required", "code": 400}
-	reg_remove("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id])
+	row_remove("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id])
 	broadcast_event(crm_id, "option/delete", {"crm": crm_id, "class": class_id, "field": field_id, "id": option_id})
 	return {"success": True}
 
@@ -7054,7 +7037,7 @@ def do_option_reorder(crm_id, crm, params):
 	order_str = params.get("order", "")
 	order = [o.strip() for o in order_str.split(",") if o.strip()]
 	for i, option_id in enumerate(order):
-		reg_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"rank": i})
+		row_set("options", ["crm", "class", "field", "id"], "crm=? and class=? and field=? and id=?", [crm_id, class_id, field_id, option_id], {"rank": i})
 	broadcast_event(crm_id, "option/reorder", {"crm": crm_id, "class": class_id, "field": field_id, "order": order})
 	return {"success": True}
 
@@ -7073,13 +7056,13 @@ def do_hierarchy_set(crm_id, crm, params):
 		parents = [""]
 	else:
 		parents = [p.strip() for p in parents_str.split(",")]
-	reg_remove("hierarchy", ["crm", "class", "parent"], "crm=? and class=?", [crm_id, class_id])
+	row_remove("hierarchy", ["crm", "class", "parent"], "crm=? and class=?", [crm_id, class_id])
 	for parent in parents:
 		if parent and parent != "":
 			parent_exists = mochi.db.exists("select 1 from classes where crm=? and id=?", crm_id, parent)
 			if not parent_exists:
 				continue
-		reg_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": class_id, "parent": parent})
+		row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": class_id, "parent": parent})
 	broadcast_event(crm_id, "hierarchy/set", {
 		"crm": crm_id, "class": class_id, "parents": parents
 	})
@@ -7113,14 +7096,14 @@ def do_view_create(crm_id, crm, params):
 	border = params.get("border", "")
 	next_rank = mochi.db.row("select coalesce(max(rank), -1) + 1 as r from views where crm=?", crm_id)
 	rank = next_rank["r"] if next_rank else 0
-	reg_merge("views", ["crm", "id"], {"crm": crm_id, "id": view_id, "name": name.strip(), "viewtype": viewtype, "filter": filter_str, "columns": columns, "rows": rows, "sort": sort, "direction": direction, "rank": rank, "border": border})
+	row_merge("views", ["crm", "id"], {"crm": crm_id, "id": view_id, "name": name.strip(), "viewtype": viewtype, "filter": filter_str, "columns": columns, "rows": rows, "sort": sort, "direction": direction, "rank": rank, "border": border})
 	for i, field in enumerate(fields.split(",")):
 		if field.strip():
-			reg_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": view_id, "field": field.strip(), "rank": i})
+			row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": view_id, "field": field.strip(), "rank": i})
 	view_classes = params.get("classes", "")
 	if view_classes:
 		for cls_id in [c.strip() for c in view_classes.split(",") if c.strip()]:
-			reg_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": cls_id})
+			row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": cls_id})
 	broadcast_event(crm_id, "view/create", {
 		"crm": crm_id, "id": view_id, "name": name.strip(),
 		"viewtype": viewtype, "filter": filter_str, "columns": columns,
@@ -7150,38 +7133,38 @@ def do_view_update(crm_id, crm, params):
 	sort = params.get("sort")
 	direction = params.get("direction")
 	if name != None and name.strip() != "":
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"name": name.strip()})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"name": name.strip()})
 	if viewtype != None and viewtype != "":
 		if viewtype not in ["board", "list"]:
 			return {"error": "errors.invalid_view_type", "code": 400}
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"viewtype": viewtype})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"viewtype": viewtype})
 	if filter_str != None:
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"filter": filter_str})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"filter": filter_str})
 	if columns != None:
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"columns": columns})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"columns": columns})
 	if rows != None:
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"rows": rows})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"rows": rows})
 	if fields != None:
-		reg_remove("view_fields", ["crm", "view", "field"], "crm=? and view=?", [crm_id, view_id])
+		row_remove("view_fields", ["crm", "view", "field"], "crm=? and view=?", [crm_id, view_id])
 		for i, field in enumerate(fields.split(",")):
 			if field.strip():
-				reg_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": view_id, "field": field.strip(), "rank": i})
+				row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": view_id, "field": field.strip(), "rank": i})
 	if sort != None:
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"sort": sort})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"sort": sort})
 	if direction != None and direction != "":
 		if direction not in ["asc", "desc"]:
 			return {"error": "errors.invalid_direction", "code": 400}
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"direction": direction})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"direction": direction})
 	border = params.get("border")
 	if border != None:
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"border": border})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"border": border})
 	view_classes_input = params.get("classes")
 	if view_classes_input != None:
-		reg_remove("view_classes", ["crm", "view", "class"], "crm=? and view=?", [crm_id, view_id])
+		row_remove("view_classes", ["crm", "view", "class"], "crm=? and view=?", [crm_id, view_id])
 		if view_classes_input:
 			cls_ids = [c.strip() for c in view_classes_input.split(",") if c.strip()]
 			for cls_id in cls_ids:
-				reg_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": cls_id})
+				row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": cls_id})
 	updated = mochi.db.row("select * from views where crm=? and id=?", crm_id, view_id)
 	if updated:
 		view_fields = mochi.db.rows("select field from view_fields where crm=? and view=? order by rank", crm_id, view_id) or []
@@ -7203,9 +7186,9 @@ def do_view_delete(crm_id, crm, params):
 	count = mochi.db.row("select count(*) as cnt from views where crm=?", crm_id)
 	if count and count["cnt"] <= 1:
 		return {"error": "errors.cannot_delete_the_last_view", "code": 400}
-	reg_remove("view_fields", ["crm", "view", "field"], "crm=? and view=?", [crm_id, view_id])
-	reg_remove("view_classes", ["crm", "view", "class"], "crm=? and view=?", [crm_id, view_id])
-	reg_remove("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id])
+	row_remove("view_fields", ["crm", "view", "field"], "crm=? and view=?", [crm_id, view_id])
+	row_remove("view_classes", ["crm", "view", "class"], "crm=? and view=?", [crm_id, view_id])
+	row_remove("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id])
 	broadcast_event(crm_id, "view/delete", {"crm": crm_id, "id": view_id})
 	return {"success": True}
 
@@ -7213,7 +7196,7 @@ def do_view_reorder(crm_id, crm, params):
 	order_str = params.get("order", "")
 	order = [v.strip() for v in order_str.split(",") if v.strip()]
 	for i, view_id in enumerate(order):
-		reg_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"rank": i})
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"rank": i})
 	broadcast_event(crm_id, "view/reorder", {"crm": crm_id, "order": order})
 	return {"success": True}
 
