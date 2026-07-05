@@ -1605,8 +1605,8 @@ def action_access_list(a):
 			if subject.startswith("@"):
 				# Look up group name
 				group_id = subject[1:]
-				group = mochi.db.row("select name from groups where id=?", group_id)
-				rule["name"] = group["name"] if group else subject
+				group = mochi.group.get(group_id)
+				rule["name"] = group.get("name", group_id) if group else subject
 			else:
 				# Look up entity name
 				name = mochi.entity.name(subject)
