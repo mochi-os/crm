@@ -32,8 +32,8 @@ msgid "{0} - Design"
 msgstr "{0} - Dîzayn"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
-#: src/routes/_authenticated/$crmId_.settings.tsx:223
+#: src/routes/_authenticated/$crmId_.settings.tsx:132
+#: src/routes/_authenticated/$crmId_.settings.tsx:235
 msgid "{0} settings"
 msgstr "Mîhengên {0}"
 
@@ -57,9 +57,13 @@ msgstr "24 saet"
 msgid "Absolute (date and time)"
 msgstr "Mutleq (dîrok û saet)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:84
+#: src/routes/_authenticated/$crmId_.settings.tsx:96
 msgid "Access"
 msgstr "Gihîştin"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr ""
 
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
@@ -69,19 +73,19 @@ msgstr "Gihîştin qedexe ye"
 msgid "Access level"
 msgstr "Asta gihîştinê"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:475
+#: src/routes/_authenticated/$crmId_.settings.tsx:675
 msgid "Access level updated"
 msgstr "Asta gihîştinê hat nûkirin"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:486
+#: src/routes/_authenticated/$crmId_.settings.tsx:686
 msgid "Access Management"
 msgstr "Birêvebirina gihîştinê"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:461
+#: src/routes/_authenticated/$crmId_.settings.tsx:661
 msgid "Access removed"
 msgstr "Gihîştin hat rakirin"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:450
+#: src/routes/_authenticated/$crmId_.settings.tsx:650
 msgid "Access set for {subjectName}"
 msgstr "Gihîştin ji bo {subjectName} hat danîn"
 
@@ -101,7 +105,7 @@ msgstr "Cureyê hesabê"
 msgid "Account verified"
 msgstr "Hesab hat piştrastkirin"
 
-#: src/features/objects/components/object-detail-panel.tsx:321
+#: src/features/objects/components/object-detail-panel.tsx:293
 msgid "Activity"
 msgstr "Çalakî"
 
@@ -177,7 +181,7 @@ msgstr "Hesabê nû zêde bike"
 msgid "Add option"
 msgstr "Vebijêrk zêde bike"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:493
+#: src/routes/_authenticated/$crmId_.settings.tsx:693
 msgid "Add rule"
 msgstr "Yasa zêde bike"
 
@@ -230,16 +234,20 @@ msgstr "Destûrê bide rêzkirinê li gor"
 msgid "An error occurred"
 msgstr "Çewtiyek çêbû"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:247
 msgid "An unexpected error occurred"
 msgstr "Çewtiyeke neçaverêkirî çêbû"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:233
+msgid "Another change was made at the same time. Please refresh to see the latest version."
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: src/features/objects/components/object-attachments.tsx:227
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Tu bawer î ku dixwazî \"{0}\" jê bibî?"
 
-#: src/features/objects/components/object-detail-panel.tsx:533
+#: src/features/objects/components/object-detail-panel.tsx:496
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Tu bawer î ku dixwazî \"{title}\" jê bibî? Ev kar nikare were vegerandin."
 
@@ -289,9 +297,9 @@ msgstr "Kurtebirên klavyeyê yên berdest"
 msgid "Back"
 msgstr "Vegere"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:170
-#: src/routes/_authenticated/$crmId_.settings.tsx:193
-#: src/routes/_authenticated/$crmId_.settings.tsx:225
+#: src/routes/_authenticated/$crmId_.settings.tsx:182
+#: src/routes/_authenticated/$crmId_.settings.tsx:205
+#: src/routes/_authenticated/$crmId_.settings.tsx:237
 #: src/routes/_authenticated/$crmId/design.tsx:134
 #: src/routes/_authenticated/$crmId/design.tsx:159
 msgid "Back to CRM"
@@ -347,6 +355,7 @@ msgstr "Dikare zarokê … be"
 #: src/features/crms/components/create-crm-dialog.tsx:149
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
+#: src/routes/_authenticated/$crmId_.settings.tsx:560
 #: src/routes/_authenticated/$crmId/design.tsx:304
 #: src/routes/_authenticated/$crmId/index.tsx:1002
 msgid "Cancel"
@@ -357,12 +366,12 @@ msgstr "Betal bike"
 msgid "Cancel reply"
 msgstr "Bersivê betal bike"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "Kategoriya vê agahdariyê"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "Kategoriya agahdariyê biguherîne"
 
@@ -502,12 +511,12 @@ msgstr "Zû tê!"
 msgid "Comment actions"
 msgstr "Kiryarên şîroveyê"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:388
+#: src/routes/_authenticated/$crmId_.settings.tsx:588
 msgid "Comment and view"
 msgstr "Şîrove û dîtin"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:320
+#: src/features/objects/components/object-detail-panel.tsx:292
 msgid "Comments ({0})"
 msgstr "Şîrove ({0})"
 
@@ -549,7 +558,7 @@ msgstr "Berdewam bike"
 msgid "Continue with {label}"
 msgstr "Bi {label} berdewam be"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:487
+#: src/routes/_authenticated/$crmId_.settings.tsx:687
 msgid "Control who can view and interact with this CRM"
 msgstr "Kontrol bike kê dikare vê CRMê bibîne û pê re têkilî daynî"
 
@@ -557,7 +566,7 @@ msgstr "Kontrol bike kê dikare vê CRMê bibîne û pê re têkilî daynî"
 msgid "Copy"
 msgstr "Kopî bike"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:295
+#: src/routes/_authenticated/$crmId_.settings.tsx:359
 msgid "Core information about this CRM"
 msgstr "Agahiyên bingehîn derbarê vê CRMê"
 
@@ -609,7 +618,7 @@ msgstr "Hêmana nû çêbike"
 msgid "Create object"
 msgstr "Obje çêbike"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:387
+#: src/routes/_authenticated/$crmId_.settings.tsx:587
 msgid "Create, edit, comment, and view"
 msgstr "Afirandin, sererastkirin, şîrovekirin û dîtin"
 
@@ -636,23 +645,23 @@ msgstr "Kiryarên CRM"
 msgid "CRM created"
 msgstr "CRM hat çêkirin"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:130
+#: src/routes/_authenticated/$crmId_.settings.tsx:142
 msgid "CRM deleted"
 msgstr "CRM hate jêbirin"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:208
+#: src/routes/_authenticated/$crmId_.settings.tsx:220
 msgid "CRM not found"
 msgstr "CRM nehat dîtin"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:132
 msgid "CRM settings"
 msgstr "Mîhengên CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:208
+#: src/routes/_authenticated/$crmId_.settings.tsx:220
 msgid "CRM unavailable"
 msgstr "CRM ne berdest e"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:164
 msgid "CRM updated"
 msgstr "CRM hate nûkirin"
 
@@ -680,6 +689,21 @@ msgstr "Tarî"
 msgid "Dark mode"
 msgstr "Awayê tarî"
 
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:232
+msgid "Data conflict"
+msgstr ""
+
+#. placeholder {0}: response.data?.objects ?? 0
+#. placeholder {1}: response.data?.comments ?? 0
+#. placeholder {2}: response.data?.links ?? 0
+#: src/routes/_authenticated/$crmId_.settings.tsx:344
+msgid "Data imported ({0} objects, {1} comments, {2} links)"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:419
+msgid "Data management"
+msgstr ""
+
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "Dîrok"
@@ -706,8 +730,8 @@ msgstr "Rêzkirina standard"
 #: src/features/objects/components/object-attachments.tsx:179
 #: src/features/objects/components/object-attachments.tsx:186
 #: src/features/objects/components/object-attachments.tsx:228
-#: src/features/objects/components/object-detail-panel.tsx:534
-#: src/routes/_authenticated/$crmId_.settings.tsx:348
+#: src/features/objects/components/object-detail-panel.tsx:497
+#: src/routes/_authenticated/$crmId_.settings.tsx:412
 msgid "Delete"
 msgstr "Jê bibe"
 
@@ -727,15 +751,15 @@ msgstr "Stûnê jê bibe"
 msgid "Delete comment"
 msgstr "Şîroveyê jê bibe"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:338
+#: src/routes/_authenticated/$crmId_.settings.tsx:402
 msgid "Delete crm"
 msgstr "CRMê jê bibe"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:359
+#: src/routes/_authenticated/$crmId_.settings.tsx:442
 msgid "Delete CRM"
 msgstr "CRM jê bibe"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:357
+#: src/routes/_authenticated/$crmId_.settings.tsx:440
 msgid "Delete CRM?"
 msgstr "CRM jê bibe?"
 
@@ -743,9 +767,9 @@ msgstr "CRM jê bibe?"
 msgid "Delete field"
 msgstr "Qadê jê bibe"
 
-#: src/features/objects/components/object-detail-panel.tsx:369
-#: src/features/objects/components/object-detail-panel.tsx:374
-#: src/features/objects/components/object-detail-panel.tsx:532
+#: src/features/objects/components/object-detail-panel.tsx:341
+#: src/features/objects/components/object-detail-panel.tsx:346
+#: src/features/objects/components/object-detail-panel.tsx:495
 msgid "Delete item"
 msgstr "Hêmanê jê bibe"
 
@@ -767,7 +791,7 @@ msgstr "Dîtinê jê bibe"
 msgid "Delete your account on the old server"
 msgstr "Hesabê xwe li ser serverê kevn jêbirin"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:129
+#: src/routes/_authenticated/$crmId_.settings.tsx:141
 msgid "Deleting CRM..."
 msgstr "CRM tê jêbirin..."
 
@@ -779,7 +803,7 @@ msgstr "Daketin"
 msgid "Descending"
 msgstr "Daketî"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:308
+#: src/routes/_authenticated/$crmId_.settings.tsx:372
 msgid "Description"
 msgstr "Şirove"
 
@@ -793,7 +817,7 @@ msgstr "Sêwiran"
 msgid "Design imported"
 msgstr "Sêwiran hat îthal kirin"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:386
+#: src/routes/_authenticated/$crmId_.settings.tsx:586
 msgid "Design, create, edit, comment, and view"
 msgstr "Sêwirandin, afirandin, sererastkirin, şîrovekirin û dîtin"
 
@@ -833,7 +857,7 @@ msgstr "Panela kêlekê ya mobîl nîşan dide."
 #: src/features/editor/components/edit-dialogs.tsx:524
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
-#: src/features/objects/components/object-detail-panel.tsx:383
+#: src/features/objects/components/object-detail-panel.tsx:355
 msgid "Done"
 msgstr "Qediya"
 
@@ -846,6 +870,7 @@ msgstr "Ji bo zêdekirina naverokê du caran li stûnekê bitikîne"
 msgid "Download"
 msgstr "Daxe"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:484
 #: src/routes/_authenticated/$crmId/design.tsx:226
 msgid "Download backup first"
 msgstr "Pêşî paşvekêşê daxe"
@@ -917,11 +942,11 @@ msgstr "Koda ji e-nameya xwe binivîse"
 msgid "Enter your authenticator code"
 msgstr "Koda authenticator-a xwe têkevê"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:315
+#: src/routes/_authenticated/$crmId_.settings.tsx:379
 msgid "Entity ID"
 msgstr "Nasnameya mîhengehê"
 
-#: src/features/objects/components/object-detail-panel.tsx:290
+#: src/features/objects/components/object-detail-panel.tsx:262
 msgid "Error"
 msgstr "Çewtî"
 
@@ -940,9 +965,17 @@ msgstr "Bargeyê fireh bike"
 msgid "Export CSV"
 msgstr "CSV derxe"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:425
+msgid "Export data"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId/design.tsx:174
 msgid "Export design"
 msgstr "Sêwiranê derxe"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:420
+msgid "Export or import the raw data content in this CRM."
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
@@ -984,7 +1017,7 @@ msgstr "Jêbirina pêvekê neserkeftî bû"
 msgid "Failed to delete comment"
 msgstr "Jêbirina şîroveyê neserkeftî bû"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:131
+#: src/routes/_authenticated/$crmId_.settings.tsx:143
 msgid "Failed to delete CRM"
 msgstr "Jêbirina CRM bi ser neket"
 
@@ -996,9 +1029,17 @@ msgstr "Jêbirina lînkê neserkeftî bû"
 msgid "Failed to delete view"
 msgstr "Jêbirina dîmenê neserkeftî bû"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:330
+msgid "Failed to export data"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId/design.tsx:93
 msgid "Failed to export design"
 msgstr "Derxistina sêwiranê neserkeftî bû"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:349
+msgid "Failed to import data"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/design.tsx:114
 msgid "Failed to import design"
@@ -1018,7 +1059,7 @@ msgstr "Barkirina sêwirana CRM neserkeftî bû"
 msgid "Failed to load CRMs"
 msgstr "Barkirina CRMan neserkeftî bû"
 
-#: src/features/objects/components/object-detail-panel.tsx:291
+#: src/features/objects/components/object-detail-panel.tsx:263
 msgid "Failed to load item"
 msgstr "Barkirina xalê neserkeftî bû"
 
@@ -1026,11 +1067,12 @@ msgstr "Barkirina xalê neserkeftî bû"
 msgid "Failed to post comment"
 msgstr "Şandina şîroveyê neserkeftî bû"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:522
 #: src/routes/_authenticated/$crmId/design.tsx:266
 msgid "Failed to read file"
 msgstr "Xwendina pelê neserkeftî bû"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:462
+#: src/routes/_authenticated/$crmId_.settings.tsx:662
 msgid "Failed to remove access"
 msgstr "Rakirina destûrê neserkeftî bû"
 
@@ -1050,7 +1092,7 @@ msgstr "Ji nû ve rêzkirina dîmenan neserkeftî bû"
 msgid "Failed to send verification code"
 msgstr "Şandina koda rastandinê neserkeftî bû"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:451
+#: src/routes/_authenticated/$crmId_.settings.tsx:651
 msgid "Failed to set access level"
 msgstr "Danîna asta gihiştinê neserkeftî bû"
 
@@ -1065,11 +1107,11 @@ msgstr "Abonebûn neserkeftî bû"
 msgid "Failed to unsubscribe"
 msgstr "Vekişandina abonetiyê neserkeftî bû"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:476
+#: src/routes/_authenticated/$crmId_.settings.tsx:676
 msgid "Failed to update access level"
 msgstr "Rojanekirina asta gihiştinê neserkeftî bû"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "Rojanekirina kategoriyê neserkeftî bû"
 
@@ -1077,7 +1119,7 @@ msgstr "Rojanekirina kategoriyê neserkeftî bû"
 msgid "Failed to update comment"
 msgstr "Rojanekirina şîroveyê neserkeftî bû"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:153
+#: src/routes/_authenticated/$crmId_.settings.tsx:165
 msgid "Failed to update crm"
 msgstr "Rojanekirina crm neserkeftî bû"
 
@@ -1104,7 +1146,7 @@ msgstr "Pelan"
 msgid "Find CRMs"
 msgstr "CRMan bibîne"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:320
+#: src/routes/_authenticated/$crmId_.settings.tsx:384
 msgid "Fingerprint"
 msgstr "Tilîya destan"
 
@@ -1202,7 +1244,7 @@ msgstr "Germ"
 msgid "ID"
 msgstr "Nasname"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:294
+#: src/routes/_authenticated/$crmId_.settings.tsx:358
 msgid "Identity"
 msgstr "Nasname"
 
@@ -1210,14 +1252,32 @@ msgstr "Nasname"
 msgid "Imperial"
 msgstr "Imperial"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:535
+msgid "Import a data configuration"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId/design.tsx:279
 msgid "Import a design configuration"
 msgstr "Veavakirina sêwiranê bîne"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:430
+#: src/routes/_authenticated/$crmId_.settings.tsx:476
+#: src/routes/_authenticated/$crmId_.settings.tsx:534
+msgid "Import data"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:462
+msgid "Import data?"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/design.tsx:178
 #: src/routes/_authenticated/$crmId/design.tsx:278
 msgid "Import design"
 msgstr "Sêwiranê bîne"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:473
+msgid "Importing..."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:252
 msgid "Inset"
@@ -1231,6 +1291,7 @@ msgstr "Balkêşî"
 msgid "Invalid date"
 msgstr "Tarîxa nederbasdar"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:518
 #: src/routes/_authenticated/$crmId/design.tsx:262
 msgid "Invalid JSON file"
 msgstr "Pelê JSON nederbasdar"
@@ -1239,7 +1300,7 @@ msgstr "Pelê JSON nederbasdar"
 msgid "Invalid verification code"
 msgstr "Koda rastandinê nederbasdar"
 
-#: src/features/objects/components/object-detail-panel.tsx:333
+#: src/features/objects/components/object-detail-panel.tsx:305
 msgid "Item details"
 msgstr "Hûrgiliyên xalê"
 
@@ -1287,11 +1348,11 @@ msgstr "Bêtir bar bike"
 msgid "Loading content…"
 msgstr "Naverok tê barkirin…"
 
-#: src/features/objects/components/object-detail-panel.tsx:274
+#: src/features/objects/components/object-detail-panel.tsx:246
 msgid "Loading item"
 msgstr "Xal tê barkirin"
 
-#: src/features/objects/components/object-detail-panel.tsx:275
+#: src/features/objects/components/object-detail-panel.tsx:247
 msgid "Loading item details"
 msgstr "Hûrgiliyên xalê tên barkirin"
 
@@ -1363,7 +1424,7 @@ msgstr "Duşem"
 #: src/features/editor/components/edit-dialogs.tsx:730
 #: src/features/editor/components/edit-dialogs.tsx:1032
 #: src/features/editor/components/option-dialog.tsx:112
-#: src/routes/_authenticated/$crmId_.settings.tsx:299
+#: src/routes/_authenticated/$crmId_.settings.tsx:363
 msgid "Name"
 msgstr "Nav"
 
@@ -1371,7 +1432,8 @@ msgstr "Nav"
 msgid "Name is required"
 msgstr "Nav pêwîst e"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:294
 msgid "Network error"
 msgstr "Çewtiya torê"
 
@@ -1396,7 +1458,7 @@ msgstr "Wêneya pêştir"
 msgid "No {parentClassNames} to add to"
 msgstr "Tu {parentClassNames} ji bo zêdekirinê tune"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:390
+#: src/routes/_authenticated/$crmId_.settings.tsx:590
 msgid "No access"
 msgstr "Bê destpêkirin"
 
@@ -1464,7 +1526,7 @@ msgstr "Tu rewş tune"
 msgid "No time zone found."
 msgstr "Tu herêma demê nehat dîtin."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "Hêj tu tomarê mijarê tune — piştî agahdariya pêştir dîsa biceribîne."
 
@@ -1491,16 +1553,20 @@ msgstr "Tu dîtin tune"
 #: src/features/objects/components/create-object-dialog.tsx:384
 #: src/features/objects/components/create-object-dialog.tsx:387
 #: src/features/objects/components/create-object-dialog.tsx:391
-#: src/features/objects/components/object-detail-panel.tsx:448
-#: src/features/objects/components/object-detail-panel.tsx:461
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:468
+#: src/features/objects/components/object-detail-panel.tsx:413
+#: src/features/objects/components/object-detail-panel.tsx:426
+#: src/features/objects/components/object-detail-panel.tsx:429
+#: src/features/objects/components/object-detail-panel.tsx:433
 msgid "None"
 msgstr "Tu"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:134
 msgid "Normal"
 msgstr "Asayî"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:146
 msgid "Not set"
@@ -1609,7 +1675,7 @@ msgid "Owner"
 msgstr "Xwedî"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
-#: src/features/objects/components/object-detail-panel.tsx:442
+#: src/features/objects/components/object-detail-panel.tsx:407
 #: src/routes/_authenticated/$crmId/index.tsx:824
 msgid "Parent"
 msgstr "Dêûbav"
@@ -1630,7 +1696,7 @@ msgstr "Passkey"
 msgid "Pattern (regex)"
 msgstr "Şablon (regex)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:339
+#: src/routes/_authenticated/$crmId_.settings.tsx:403
 msgid "Permanently delete this CRM and all its content."
 msgstr "Vê CRM û tevahiya naveroka wê her û her jêbibe."
 
@@ -1639,9 +1705,18 @@ msgstr "Vê CRM û tevahiya naveroka wê her û her jêbibe."
 msgid "Please add one or more classes to the CRM design."
 msgstr "Ji kerema xwe yek an çend çînan li dîzayna CRM ekle bike."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:295
 msgid "Please check your internet connection and try again."
 msgstr "Ji kerema xwe girêdana xwe ya înternetê kontrol bike û dîsa biceribîne."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr ""
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
@@ -1658,7 +1733,7 @@ msgstr "Nepenî"
 msgid "Profile"
 msgstr "Profîl"
 
-#: src/features/objects/components/object-detail-panel.tsx:319
+#: src/features/objects/components/object-detail-panel.tsx:291
 msgid "Properties"
 msgstr "Taybetmendî"
 
@@ -1678,8 +1753,8 @@ msgstr "Stûnan ji nû ve rêz bike"
 msgid "Re-register your passkeys on this server"
 msgstr "Mifteyên gihîştinê yên xwe li ser vî rajeyê ji nû ve qeyd bike"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:191
 msgid "Recommended"
 msgstr "Pêşniyarkirî"
 
@@ -1747,7 +1822,7 @@ msgstr "Balkêşiyê rake"
 msgid "Remove item"
 msgstr "Babetê rake"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:460
+#: src/routes/_authenticated/$crmId_.settings.tsx:660
 msgid "Removing access..."
 msgstr "Gihiştin tê rakirin..."
 
@@ -1840,7 +1915,7 @@ msgstr "Şemî"
 msgid "Save"
 msgstr "Tomar bike"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:151
+#: src/routes/_authenticated/$crmId_.settings.tsx:163
 msgid "Saving..."
 msgstr "Tê tomarkirin..."
 
@@ -1890,8 +1965,8 @@ msgstr "Bigere, temaşe bike, û vê dîtinê rêz bike."
 msgid "Search..."
 msgstr "Bigere..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:149
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Tê gerîn..."
@@ -1961,12 +2036,12 @@ msgstr "E-nameyê bişîne"
 msgid "Serif"
 msgstr "Serîf"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:329
+#: src/routes/_authenticated/$crmId_.settings.tsx:393
 msgid "Server"
 msgstr "Server"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:251
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:277
 msgid "Server error"
 msgstr "Çewtiya rajekarê"
 
@@ -1976,14 +2051,18 @@ msgid "Server rules"
 msgstr "Qaîdeyên server"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "Danişîn dawî bû"
+#~ msgid "Session expired"
+#~ msgstr "Danişîn dawî bû"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
+msgid "Session expired. Please log in again."
+msgstr ""
 
 #: ../../../lib/web/src/components/travelling-picker.tsx:147
 msgid "Set origin and destination"
 msgstr "Çavkanî û armanc diyar bike"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:449
+#: src/routes/_authenticated/$crmId_.settings.tsx:649
 msgid "Setting access..."
 msgstr "Gihiştin tê danîn..."
 
@@ -1992,9 +2071,9 @@ msgstr "Gihiştin tê danîn..."
 #: ../../../lib/web/src/components/layout/nav-user.tsx:84
 #: ../../../lib/web/src/components/layout/nav-user.tsx:148
 #: ../../../lib/web/src/components/layout/nav-user.tsx:198
-#: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:168
-#: src/routes/_authenticated/$crmId_.settings.tsx:191
+#: src/routes/_authenticated/$crmId_.settings.tsx:95
+#: src/routes/_authenticated/$crmId_.settings.tsx:180
+#: src/routes/_authenticated/$crmId_.settings.tsx:203
 #: src/routes/_authenticated/$crmId/index.tsx:969
 msgid "Settings"
 msgstr "Mîheng"
@@ -2064,8 +2143,8 @@ msgstr "Bi zêdekirina şîroveya yekem nîqaşê dest pê bike."
 msgid "Stay tuned though!"
 msgstr "Lê li bendê bimîne!"
 
-#: src/features/objects/components/object-detail-panel.tsx:350
-#: src/features/objects/components/object-detail-panel.tsx:359
+#: src/features/objects/components/object-detail-panel.tsx:322
+#: src/features/objects/components/object-detail-panel.tsx:331
 msgid "Stop watching"
 msgstr "Temaşekirinê rawestîne"
 
@@ -2144,6 +2223,10 @@ msgstr "Nivîs"
 msgid "That code is incorrect or has expired."
 msgstr "Ew kod çewt e an dema wê qediyaye."
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr ""
+
 #: ../../../lib/web/src/components/config-drawer.tsx:194
 msgid "Theme"
 msgstr "Tema"
@@ -2152,16 +2235,21 @@ msgstr "Tema"
 msgid "Theme Settings"
 msgstr "Mîhengên Temayê"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:211
+#: src/routes/_authenticated/$crmId_.settings.tsx:223
 msgid "This CRM could not be loaded right now."
 msgstr "Vê CRM-ê niha nayê barkirin."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:211
+#: src/routes/_authenticated/$crmId_.settings.tsx:223
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Dibe ku ev CRM hatibe jêbirin an gihîştina te jê re tune be."
 
+#. placeholder {0}: pendingDataImport?.label
+#: src/routes/_authenticated/$crmId_.settings.tsx:464
+msgid "This will import the data from <0>{0}</0>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file."
+msgstr ""
+
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:358
+#: src/routes/_authenticated/$crmId_.settings.tsx:441
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Ev dê \"{0}\" û hemû tiştên wê, şîrove û pêvekên wê herheyî jê bibe. Ev çalakî nayê vegerandin."
 
@@ -2227,6 +2315,10 @@ msgstr "Vebijarkên dîtinê biguherîne"
 msgid "Toggle watched filter"
 msgstr "Parzûna temaşekirî biguherîne"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "Jor"
@@ -2239,13 +2331,13 @@ msgstr "Asta jor"
 msgid "Travelling"
 msgstr "Rêwîtî"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:165
 msgid "Try adjusting your search terms"
 msgstr "Peyvên lêgerîna xwe eyar bike"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "Dîsa biceribîne"
@@ -2271,7 +2363,7 @@ msgstr "Ji bo lêgerîna bikarhêneran binivîse"
 msgid "Type to search..."
 msgstr "Ji bo lêgerînê binivîse..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:273
 msgid "Unable to connect to remote server"
 msgstr "Nikare bi rajekarê dûr ve girê bide"
 
@@ -2280,7 +2372,7 @@ msgstr "Nikare bi rajekarê dûr ve girê bide"
 msgid "Unable to redirect to login. Please try again."
 msgstr "Beralîkirina bo têketinê ne mumkin e. Ji kerema xwe dîsa biceribîne."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "Nehatiye diyarkirin"
 
@@ -2317,8 +2409,8 @@ msgstr "Abone yî nabe..."
 #: src/features/board/components/board-card.tsx:81
 #: src/features/board/components/board-card.tsx:82
 #: src/features/objects/components/create-object-dialog.tsx:163
-#: src/features/objects/components/object-detail-panel.tsx:311
-#: src/features/objects/components/object-detail-panel.tsx:315
+#: src/features/objects/components/object-detail-panel.tsx:283
+#: src/features/objects/components/object-detail-panel.tsx:287
 #: src/features/objects/components/object-links.tsx:71
 #: src/features/objects/components/object-links.tsx:153
 #: src/features/objects/components/object-links.tsx:165
@@ -2334,7 +2426,7 @@ msgstr "Nehatiye verast kirin"
 msgid "Updated"
 msgstr "Nûjen kirin"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:474
+#: src/routes/_authenticated/$crmId_.settings.tsx:674
 msgid "Updating access..."
 msgstr "Gihiştin tê nûkirin..."
 
@@ -2343,6 +2435,7 @@ msgstr "Gihiştin tê nûkirin..."
 msgid "Upload"
 msgstr "Bar bike"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:553
 #: src/routes/_authenticated/$crmId/design.tsx:297
 msgid "Upload .json file"
 msgstr "Pelê .json bar bike"
@@ -2397,7 +2490,7 @@ msgstr "Hemûyan bibîne"
 msgid "View all notifications"
 msgstr "Hemû agahdariyan bibîne"
 
-#: src/features/objects/components/object-detail-panel.tsx:334
+#: src/features/objects/components/object-detail-panel.tsx:306
 msgid "View and edit item details"
 msgstr "Hûragahên tiştî bibîne û sererast bike"
 
@@ -2405,7 +2498,7 @@ msgstr "Hûragahên tiştî bibîne û sererast bike"
 msgid "View controls"
 msgstr "Kontrolên dîtinê"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:389
+#: src/routes/_authenticated/$crmId_.settings.tsx:589
 msgid "View only"
 msgstr "Tenê dîtin"
 
@@ -2417,8 +2510,8 @@ msgstr "Vebijarkên dîtinê"
 msgid "Views"
 msgstr "Dîtin"
 
-#: src/features/objects/components/object-detail-panel.tsx:350
-#: src/features/objects/components/object-detail-panel.tsx:359
+#: src/features/objects/components/object-detail-panel.tsx:322
+#: src/features/objects/components/object-detail-panel.tsx:331
 msgid "Watch"
 msgstr "Temaşe bike"
 
@@ -2441,6 +2534,10 @@ msgstr "Malper di rewşa lêkirinê de ye!"
 #: ../../../lib/web/src/lib/preference-utils.ts:61
 msgid "Wednesday"
 msgstr "Çarşem"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/index.tsx:102
 msgid "You don't have access to this CRM."

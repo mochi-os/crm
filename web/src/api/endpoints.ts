@@ -90,6 +90,10 @@ const endpoints = {
     designExport: (crmId: string) => `${crmId}/-/design/export`,
     designImport: (crmId: string) => `${crmId}/-/design/import`,
 
+    // Data import/export endpoints
+    dataExport: (crmId: string) => `${crmId}/-/data/export`,
+    dataImport: (crmId: string) => `${crmId}/-/data/import`,
+
     // View endpoints
     views: (crmId: string) => `${crmId}/-/views`,
     viewCreate: (crmId: string) => `${crmId}/-/views/create`,

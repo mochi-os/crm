@@ -32,8 +32,8 @@ msgid "{0} - Design"
 msgstr "{0} - ډیزاین"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
-#: src/routes/_authenticated/$crmId_.settings.tsx:223
+#: src/routes/_authenticated/$crmId_.settings.tsx:132
+#: src/routes/_authenticated/$crmId_.settings.tsx:235
 msgid "{0} settings"
 msgstr "د {0} ترتیبات"
 
@@ -57,9 +57,13 @@ msgstr "24 ساعته"
 msgid "Absolute (date and time)"
 msgstr "مطلق (نېټه او وخت)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:84
+#: src/routes/_authenticated/$crmId_.settings.tsx:96
 msgid "Access"
 msgstr "لاسرسی"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr ""
 
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
@@ -69,19 +73,19 @@ msgstr "لاسرسی منع دی"
 msgid "Access level"
 msgstr "د لاسرسي کچه"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:475
+#: src/routes/_authenticated/$crmId_.settings.tsx:675
 msgid "Access level updated"
 msgstr "د لاسرسي کچه نوې شوه"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:486
+#: src/routes/_authenticated/$crmId_.settings.tsx:686
 msgid "Access Management"
 msgstr "د لاسرسي اداره"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:461
+#: src/routes/_authenticated/$crmId_.settings.tsx:661
 msgid "Access removed"
 msgstr "لاسرسی لرې شو"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:450
+#: src/routes/_authenticated/$crmId_.settings.tsx:650
 msgid "Access set for {subjectName}"
 msgstr "د {subjectName} لپاره لاسرسی ټاکل شو"
 
@@ -101,7 +105,7 @@ msgstr "د حساب ډول"
 msgid "Account verified"
 msgstr "حساب تایید شو"
 
-#: src/features/objects/components/object-detail-panel.tsx:321
+#: src/features/objects/components/object-detail-panel.tsx:293
 msgid "Activity"
 msgstr "فعالیت"
 
@@ -177,7 +181,7 @@ msgstr "نوی حساب اضافه کړئ"
 msgid "Add option"
 msgstr "اختیار اضافه کړئ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:493
+#: src/routes/_authenticated/$crmId_.settings.tsx:693
 msgid "Add rule"
 msgstr "قاعده اضافه کړئ"
 
@@ -230,16 +234,20 @@ msgstr "د ترتیب اجازه"
 msgid "An error occurred"
 msgstr "یوه تېروتنه رامنځته شوه"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:247
 msgid "An unexpected error occurred"
 msgstr "یوه ناڅاپي تېروتنه رامنځته شوه"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:233
+msgid "Another change was made at the same time. Please refresh to see the latest version."
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: src/features/objects/components/object-attachments.tsx:227
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "ایا تاسو ډاډه یاست چې غواړئ \"{0}\" ړنګ کړئ؟"
 
-#: src/features/objects/components/object-detail-panel.tsx:533
+#: src/features/objects/components/object-detail-panel.tsx:496
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "ایا تاسو ډاډه یاست چې غواړئ \"{title}\" ړنګ کړئ؟ دا کړنه نشي بیرته اخیستل کیدلی."
 
@@ -289,9 +297,9 @@ msgstr "د موجود کیبورد شارټ کټونه"
 msgid "Back"
 msgstr "شاته"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:170
-#: src/routes/_authenticated/$crmId_.settings.tsx:193
-#: src/routes/_authenticated/$crmId_.settings.tsx:225
+#: src/routes/_authenticated/$crmId_.settings.tsx:182
+#: src/routes/_authenticated/$crmId_.settings.tsx:205
+#: src/routes/_authenticated/$crmId_.settings.tsx:237
 #: src/routes/_authenticated/$crmId/design.tsx:134
 #: src/routes/_authenticated/$crmId/design.tsx:159
 msgid "Back to CRM"
@@ -347,6 +355,7 @@ msgstr "د دې اولاد کیدلی شي"
 #: src/features/crms/components/create-crm-dialog.tsx:149
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
+#: src/routes/_authenticated/$crmId_.settings.tsx:560
 #: src/routes/_authenticated/$crmId/design.tsx:304
 #: src/routes/_authenticated/$crmId/index.tsx:1002
 msgid "Cancel"
@@ -357,12 +366,12 @@ msgstr "لغوه کول"
 msgid "Cancel reply"
 msgstr "ځواب لغوه کړه"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "د دې خبرتیا لپاره کټګورۍ"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "د خبرتیا کټګورۍ بدله کړه"
 
@@ -502,12 +511,12 @@ msgstr "ډیر ژر راځي!"
 msgid "Comment actions"
 msgstr "د تبصرې کړنې"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:388
+#: src/routes/_authenticated/$crmId_.settings.tsx:588
 msgid "Comment and view"
 msgstr "تبصره او لیدنه"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:320
+#: src/features/objects/components/object-detail-panel.tsx:292
 msgid "Comments ({0})"
 msgstr "تبصرې ({0})"
 
@@ -549,7 +558,7 @@ msgstr "دوام ورکړئ"
 msgid "Continue with {label}"
 msgstr "د {label} سره دوام ورکړئ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:487
+#: src/routes/_authenticated/$crmId_.settings.tsx:687
 msgid "Control who can view and interact with this CRM"
 msgstr "وټاکئ څوک کولی شي دا CRM وګوري او ورسره تعامل وکړي"
 
@@ -557,7 +566,7 @@ msgstr "وټاکئ څوک کولی شي دا CRM وګوري او ورسره تع
 msgid "Copy"
 msgstr "کاپي کړئ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:295
+#: src/routes/_authenticated/$crmId_.settings.tsx:359
 msgid "Core information about this CRM"
 msgstr "د دې CRM په اړه اصلي معلومات"
 
@@ -609,7 +618,7 @@ msgstr "نوی توکی جوړ کړئ"
 msgid "Create object"
 msgstr "شی جوړ کړئ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:387
+#: src/routes/_authenticated/$crmId_.settings.tsx:587
 msgid "Create, edit, comment, and view"
 msgstr "جوړول، سمول، تبصره او لیدل"
 
@@ -636,23 +645,23 @@ msgstr "د CRM کړنې"
 msgid "CRM created"
 msgstr "CRM جوړ شو"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:130
+#: src/routes/_authenticated/$crmId_.settings.tsx:142
 msgid "CRM deleted"
 msgstr "CRM ړنګ شو"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:208
+#: src/routes/_authenticated/$crmId_.settings.tsx:220
 msgid "CRM not found"
 msgstr "CRM ونه موندل شو"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:132
 msgid "CRM settings"
 msgstr "د CRM امستنې"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:208
+#: src/routes/_authenticated/$crmId_.settings.tsx:220
 msgid "CRM unavailable"
 msgstr "CRM شتون نلري"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:164
 msgid "CRM updated"
 msgstr "CRM تازه شو"
 
@@ -680,6 +689,21 @@ msgstr "تیاره"
 msgid "Dark mode"
 msgstr "تیاره حالت"
 
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:232
+msgid "Data conflict"
+msgstr ""
+
+#. placeholder {0}: response.data?.objects ?? 0
+#. placeholder {1}: response.data?.comments ?? 0
+#. placeholder {2}: response.data?.links ?? 0
+#: src/routes/_authenticated/$crmId_.settings.tsx:344
+msgid "Data imported ({0} objects, {1} comments, {2} links)"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:419
+msgid "Data management"
+msgstr ""
+
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "نېټه"
@@ -706,8 +730,8 @@ msgstr "ډیفالټ ترتیب"
 #: src/features/objects/components/object-attachments.tsx:179
 #: src/features/objects/components/object-attachments.tsx:186
 #: src/features/objects/components/object-attachments.tsx:228
-#: src/features/objects/components/object-detail-panel.tsx:534
-#: src/routes/_authenticated/$crmId_.settings.tsx:348
+#: src/features/objects/components/object-detail-panel.tsx:497
+#: src/routes/_authenticated/$crmId_.settings.tsx:412
 msgid "Delete"
 msgstr "ړنګ کړئ"
 
@@ -727,15 +751,15 @@ msgstr "کالم ړنګ کړئ"
 msgid "Delete comment"
 msgstr "تبصره ړنګه کړئ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:338
+#: src/routes/_authenticated/$crmId_.settings.tsx:402
 msgid "Delete crm"
 msgstr "Crm ړنګ کړئ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:359
+#: src/routes/_authenticated/$crmId_.settings.tsx:442
 msgid "Delete CRM"
 msgstr "CRM ړنګ کړئ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:357
+#: src/routes/_authenticated/$crmId_.settings.tsx:440
 msgid "Delete CRM?"
 msgstr "CRM ړنګ کړئ؟"
 
@@ -743,9 +767,9 @@ msgstr "CRM ړنګ کړئ؟"
 msgid "Delete field"
 msgstr "ساحه ړنګه کړئ"
 
-#: src/features/objects/components/object-detail-panel.tsx:369
-#: src/features/objects/components/object-detail-panel.tsx:374
-#: src/features/objects/components/object-detail-panel.tsx:532
+#: src/features/objects/components/object-detail-panel.tsx:341
+#: src/features/objects/components/object-detail-panel.tsx:346
+#: src/features/objects/components/object-detail-panel.tsx:495
 msgid "Delete item"
 msgstr "توکی ړنګ کړئ"
 
@@ -767,7 +791,7 @@ msgstr "لید ړنګ کړئ"
 msgid "Delete your account on the old server"
 msgstr "د پخوانی سرور پر سر خپل حساب ړنګ کړئ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:129
+#: src/routes/_authenticated/$crmId_.settings.tsx:141
 msgid "Deleting CRM..."
 msgstr "د CRM ړنګول..."
 
@@ -779,7 +803,7 @@ msgstr "نزولي"
 msgid "Descending"
 msgstr "د ډېر څخه کم"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:308
+#: src/routes/_authenticated/$crmId_.settings.tsx:372
 msgid "Description"
 msgstr "تفصیل"
 
@@ -793,7 +817,7 @@ msgstr "ډیزاین"
 msgid "Design imported"
 msgstr "ډیزاین وارد شو"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:386
+#: src/routes/_authenticated/$crmId_.settings.tsx:586
 msgid "Design, create, edit, comment, and view"
 msgstr "ډیزاین، جوړول، سمول، تبصره او لیدل"
 
@@ -833,7 +857,7 @@ msgstr "موبایل څنګې پټۍ ښیي."
 #: src/features/editor/components/edit-dialogs.tsx:524
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
-#: src/features/objects/components/object-detail-panel.tsx:383
+#: src/features/objects/components/object-detail-panel.tsx:355
 msgid "Done"
 msgstr "ترسره شو"
 
@@ -846,6 +870,7 @@ msgstr "د منځپانګې اضافه کولو لپاره په کالم دوه 
 msgid "Download"
 msgstr "ډاونلوډ"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:484
 #: src/routes/_authenticated/$crmId/design.tsx:226
 msgid "Download backup first"
 msgstr "لومړی بیک اپ ډاونلوډ کړئ"
@@ -917,11 +942,11 @@ msgstr "هغه کوډ دننه کړئ چې ستاسو په برېښنالیک ک
 msgid "Enter your authenticator code"
 msgstr "د خپل تصدیق کوونکي کوډ دننه کړئ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:315
+#: src/routes/_authenticated/$crmId_.settings.tsx:379
 msgid "Entity ID"
 msgstr "د موجودیت ID"
 
-#: src/features/objects/components/object-detail-panel.tsx:290
+#: src/features/objects/components/object-detail-panel.tsx:262
 msgid "Error"
 msgstr "تېروتنه"
 
@@ -940,9 +965,17 @@ msgstr "څنګلوري لیست خلاص کړئ"
 msgid "Export CSV"
 msgstr "CSV صادر کړئ"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:425
+msgid "Export data"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId/design.tsx:174
 msgid "Export design"
 msgstr "ډیزاین صادر کړئ"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:420
+msgid "Export or import the raw data content in this CRM."
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
@@ -984,7 +1017,7 @@ msgstr "د ضمیمې حذف کولو پاتې راغلل"
 msgid "Failed to delete comment"
 msgstr "د تبصرې حذف کولو پاتې راغلل"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:131
+#: src/routes/_authenticated/$crmId_.settings.tsx:143
 msgid "Failed to delete CRM"
 msgstr "د CRM ړنګول ونه شول"
 
@@ -996,9 +1029,17 @@ msgstr "د لینک حذف کولو پاتې راغلل"
 msgid "Failed to delete view"
 msgstr "د لید حذف کولو پاتې راغلل"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:330
+msgid "Failed to export data"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId/design.tsx:93
 msgid "Failed to export design"
 msgstr "د ډیزاین صادرولو پاتې راغلل"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:349
+msgid "Failed to import data"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/design.tsx:114
 msgid "Failed to import design"
@@ -1018,7 +1059,7 @@ msgstr "د CRM ډیزاین د بار کولو پاتې راغلل"
 msgid "Failed to load CRMs"
 msgstr "د CRMs د بار کولو پاتې راغلل"
 
-#: src/features/objects/components/object-detail-panel.tsx:291
+#: src/features/objects/components/object-detail-panel.tsx:263
 msgid "Failed to load item"
 msgstr "د توکي د بار کولو پاتې راغلل"
 
@@ -1026,11 +1067,12 @@ msgstr "د توکي د بار کولو پاتې راغلل"
 msgid "Failed to post comment"
 msgstr "د تبصرې پوسټ کولو پاتې راغلل"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:522
 #: src/routes/_authenticated/$crmId/design.tsx:266
 msgid "Failed to read file"
 msgstr "د فایل لوستلو پاتې راغلل"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:462
+#: src/routes/_authenticated/$crmId_.settings.tsx:662
 msgid "Failed to remove access"
 msgstr "د لاسرسي لیرې کولو پاتې راغلل"
 
@@ -1050,7 +1092,7 @@ msgstr "د لیدونو د بیا ترتیب پاتې راغلل"
 msgid "Failed to send verification code"
 msgstr "د تصدیق کوډ لیږلو پاتې راغلل"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:451
+#: src/routes/_authenticated/$crmId_.settings.tsx:651
 msgid "Failed to set access level"
 msgstr "د لاسرسي د کچې ټاکلو پاتې راغلل"
 
@@ -1065,11 +1107,11 @@ msgstr "د ګډون پاتې راغلل"
 msgid "Failed to unsubscribe"
 msgstr "د ګډون لیرې کولو پاتې راغلل"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:476
+#: src/routes/_authenticated/$crmId_.settings.tsx:676
 msgid "Failed to update access level"
 msgstr "د لاسرسي د کچې تازه کولو پاتې راغلل"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "د کټګورۍ تازه کولو پاتې راغلل"
 
@@ -1077,7 +1119,7 @@ msgstr "د کټګورۍ تازه کولو پاتې راغلل"
 msgid "Failed to update comment"
 msgstr "د تبصرې تازه کولو پاتې راغلل"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:153
+#: src/routes/_authenticated/$crmId_.settings.tsx:165
 msgid "Failed to update crm"
 msgstr "د CRM تازه کولو پاتې راغلل"
 
@@ -1104,7 +1146,7 @@ msgstr "فایلونه"
 msgid "Find CRMs"
 msgstr "CRMs ومومئ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:320
+#: src/routes/_authenticated/$crmId_.settings.tsx:384
 msgid "Fingerprint"
 msgstr "Fingerprint"
 
@@ -1202,7 +1244,7 @@ msgstr "ګرم"
 msgid "ID"
 msgstr "ID"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:294
+#: src/routes/_authenticated/$crmId_.settings.tsx:358
 msgid "Identity"
 msgstr "هویت"
 
@@ -1210,14 +1252,32 @@ msgstr "هویت"
 msgid "Imperial"
 msgstr "Imperial"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:535
+msgid "Import a data configuration"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId/design.tsx:279
 msgid "Import a design configuration"
 msgstr "د ډیزاین تنظیمات وارد کړئ"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:430
+#: src/routes/_authenticated/$crmId_.settings.tsx:476
+#: src/routes/_authenticated/$crmId_.settings.tsx:534
+msgid "Import data"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:462
+msgid "Import data?"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/design.tsx:178
 #: src/routes/_authenticated/$crmId/design.tsx:278
 msgid "Import design"
 msgstr "ډیزاین وارد کړئ"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:473
+msgid "Importing..."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:252
 msgid "Inset"
@@ -1231,6 +1291,7 @@ msgstr "علاقې"
 msgid "Invalid date"
 msgstr "ناسمه نېټه"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:518
 #: src/routes/_authenticated/$crmId/design.tsx:262
 msgid "Invalid JSON file"
 msgstr "ناسم JSON فایل"
@@ -1239,7 +1300,7 @@ msgstr "ناسم JSON فایل"
 msgid "Invalid verification code"
 msgstr "د تصدیق ناسم کوډ"
 
-#: src/features/objects/components/object-detail-panel.tsx:333
+#: src/features/objects/components/object-detail-panel.tsx:305
 msgid "Item details"
 msgstr "د توکي جزئیات"
 
@@ -1287,11 +1348,11 @@ msgstr "نور بار کړئ"
 msgid "Loading content…"
 msgstr "منځپانګه بارېږي…"
 
-#: src/features/objects/components/object-detail-panel.tsx:274
+#: src/features/objects/components/object-detail-panel.tsx:246
 msgid "Loading item"
 msgstr "توکی بار کیږي"
 
-#: src/features/objects/components/object-detail-panel.tsx:275
+#: src/features/objects/components/object-detail-panel.tsx:247
 msgid "Loading item details"
 msgstr "د توکي جزئیات بار کیږي"
 
@@ -1363,7 +1424,7 @@ msgstr "دوشنبه"
 #: src/features/editor/components/edit-dialogs.tsx:730
 #: src/features/editor/components/edit-dialogs.tsx:1032
 #: src/features/editor/components/option-dialog.tsx:112
-#: src/routes/_authenticated/$crmId_.settings.tsx:299
+#: src/routes/_authenticated/$crmId_.settings.tsx:363
 msgid "Name"
 msgstr "نوم"
 
@@ -1371,7 +1432,8 @@ msgstr "نوم"
 msgid "Name is required"
 msgstr "نوم اړین دی"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:294
 msgid "Network error"
 msgstr "د شبکې تېروتنه"
 
@@ -1396,7 +1458,7 @@ msgstr "بله انځور"
 msgid "No {parentClassNames} to add to"
 msgstr "د اضافه کولو لپاره هیڅ {parentClassNames} نشته"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:390
+#: src/routes/_authenticated/$crmId_.settings.tsx:590
 msgid "No access"
 msgstr "د لاسرسي اجازه نشته"
 
@@ -1464,7 +1526,7 @@ msgstr "هیڅ حالت نشته"
 msgid "No time zone found."
 msgstr "هیڅ وخت زون ونه موندل شو."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "تر اوسه د موضوع هیڅ ریکارډ نشته — د راتلونکې خبرتیا وروسته بیا هڅه وکړئ."
 
@@ -1491,16 +1553,20 @@ msgstr "هیڅ کتنې نشته"
 #: src/features/objects/components/create-object-dialog.tsx:384
 #: src/features/objects/components/create-object-dialog.tsx:387
 #: src/features/objects/components/create-object-dialog.tsx:391
-#: src/features/objects/components/object-detail-panel.tsx:448
-#: src/features/objects/components/object-detail-panel.tsx:461
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:468
+#: src/features/objects/components/object-detail-panel.tsx:413
+#: src/features/objects/components/object-detail-panel.tsx:426
+#: src/features/objects/components/object-detail-panel.tsx:429
+#: src/features/objects/components/object-detail-panel.tsx:433
 msgid "None"
 msgstr "هیڅوک"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:134
 msgid "Normal"
 msgstr "عادي"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:146
 msgid "Not set"
@@ -1609,7 +1675,7 @@ msgid "Owner"
 msgstr "مالک"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
-#: src/features/objects/components/object-detail-panel.tsx:442
+#: src/features/objects/components/object-detail-panel.tsx:407
 #: src/routes/_authenticated/$crmId/index.tsx:824
 msgid "Parent"
 msgstr "مور"
@@ -1630,7 +1696,7 @@ msgstr "د لاسرسي کيلۍ"
 msgid "Pattern (regex)"
 msgstr "نمونه (regex)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:339
+#: src/routes/_authenticated/$crmId_.settings.tsx:403
 msgid "Permanently delete this CRM and all its content."
 msgstr "په همیشني ډول دا CRM او د هغه ټول مینځپانګه حذف کړئ."
 
@@ -1639,9 +1705,18 @@ msgstr "په همیشني ډول دا CRM او د هغه ټول مینځپانګ
 msgid "Please add one or more classes to the CRM design."
 msgstr "مهرباني وکړئ د CRM ډیزاین ته یو یا ډیر ټولګي اضافه کړئ."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:295
 msgid "Please check your internet connection and try again."
 msgstr "مهرباني وکړئ خپل د انټرنیټ اړیکه وګورئ او بیا هڅه وکړئ."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr ""
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
@@ -1658,7 +1733,7 @@ msgstr "محرمیت"
 msgid "Profile"
 msgstr "پروفایل"
 
-#: src/features/objects/components/object-detail-panel.tsx:319
+#: src/features/objects/components/object-detail-panel.tsx:291
 msgid "Properties"
 msgstr "ځانګړتیاوې"
 
@@ -1678,8 +1753,8 @@ msgstr "کالمونه بیا تنظیم کړئ"
 msgid "Re-register your passkeys on this server"
 msgstr "خپل د لاسرسي کيلۍ پدې سرور کې بیا ثبت کړئ"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:191
 msgid "Recommended"
 msgstr "سپارښتل شوی"
 
@@ -1747,7 +1822,7 @@ msgstr "علاقه لرې کړئ"
 msgid "Remove item"
 msgstr "توکی لرې کړئ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:460
+#: src/routes/_authenticated/$crmId_.settings.tsx:660
 msgid "Removing access..."
 msgstr "د لاسرسي لرې کول..."
 
@@ -1840,7 +1915,7 @@ msgstr "شنبه"
 msgid "Save"
 msgstr "خوندي کول"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:151
+#: src/routes/_authenticated/$crmId_.settings.tsx:163
 msgid "Saving..."
 msgstr "د خوندي کولو په حال کې..."
 
@@ -1890,8 +1965,8 @@ msgstr "دا لیدلوری وپلټئ، وګورئ او ترتیب کړئ."
 msgid "Search..."
 msgstr "لټون..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:149
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "د لټون په حال کې..."
@@ -1961,12 +2036,12 @@ msgstr "بریښنالیک ولېږئ"
 msgid "Serif"
 msgstr "سيريف"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:329
+#: src/routes/_authenticated/$crmId_.settings.tsx:393
 msgid "Server"
 msgstr "Server"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:251
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:277
 msgid "Server error"
 msgstr "د سرور تېروتنه"
 
@@ -1976,14 +2051,18 @@ msgid "Server rules"
 msgstr "د Server قواعد"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "ناسته پای ته ورسېده"
+#~ msgid "Session expired"
+#~ msgstr "ناسته پای ته ورسېده"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
+msgid "Session expired. Please log in again."
+msgstr ""
 
 #: ../../../lib/web/src/components/travelling-picker.tsx:147
 msgid "Set origin and destination"
 msgstr "سرچینه او منزل وټاکئ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:449
+#: src/routes/_authenticated/$crmId_.settings.tsx:649
 msgid "Setting access..."
 msgstr "د لاسرسي ټاکل..."
 
@@ -1992,9 +2071,9 @@ msgstr "د لاسرسي ټاکل..."
 #: ../../../lib/web/src/components/layout/nav-user.tsx:84
 #: ../../../lib/web/src/components/layout/nav-user.tsx:148
 #: ../../../lib/web/src/components/layout/nav-user.tsx:198
-#: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:168
-#: src/routes/_authenticated/$crmId_.settings.tsx:191
+#: src/routes/_authenticated/$crmId_.settings.tsx:95
+#: src/routes/_authenticated/$crmId_.settings.tsx:180
+#: src/routes/_authenticated/$crmId_.settings.tsx:203
 #: src/routes/_authenticated/$crmId/index.tsx:969
 msgid "Settings"
 msgstr "ترتیبات"
@@ -2064,8 +2143,8 @@ msgstr "د لومړۍ تبصرې اضافه کولو سره بحث پیل کړئ
 msgid "Stay tuned though!"
 msgstr "خو خبر اوسئ!"
 
-#: src/features/objects/components/object-detail-panel.tsx:350
-#: src/features/objects/components/object-detail-panel.tsx:359
+#: src/features/objects/components/object-detail-panel.tsx:322
+#: src/features/objects/components/object-detail-panel.tsx:331
 msgid "Stop watching"
 msgstr "کتل بند کړئ"
 
@@ -2144,6 +2223,10 @@ msgstr "متن"
 msgid "That code is incorrect or has expired."
 msgstr "هغه کوډ غلط دی یا یې موده تېره ده."
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr ""
+
 #: ../../../lib/web/src/components/config-drawer.tsx:194
 msgid "Theme"
 msgstr "ښکارندوی"
@@ -2152,16 +2235,21 @@ msgstr "ښکارندوی"
 msgid "Theme Settings"
 msgstr "د ښکارندوی ترتیبات"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:211
+#: src/routes/_authenticated/$crmId_.settings.tsx:223
 msgid "This CRM could not be loaded right now."
 msgstr "دا CRM دا اوس نشي پورته کیدلی."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:211
+#: src/routes/_authenticated/$crmId_.settings.tsx:223
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "ښایي دا CRM حذف شوی وي یا تاسو ورته لاسرسی نه لرئ."
 
+#. placeholder {0}: pendingDataImport?.label
+#: src/routes/_authenticated/$crmId_.settings.tsx:464
+msgid "This will import the data from <0>{0}</0>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file."
+msgstr ""
+
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:358
+#: src/routes/_authenticated/$crmId_.settings.tsx:441
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "دا به \"{0}\" او ټول یې اعتراضونه، تبصرې، او ضمیمې دایمي ډول حذف کړي. دا کړنه نشي بېرته راګرځیدلی."
 
@@ -2227,6 +2315,10 @@ msgstr "د لیدلو اختیارونه بدل کړئ"
 msgid "Toggle watched filter"
 msgstr "د کتل شوي فلټر بدل کړئ"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "بره"
@@ -2239,13 +2331,13 @@ msgstr "لومړۍ کچه"
 msgid "Travelling"
 msgstr "په سفر کې"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:165
 msgid "Try adjusting your search terms"
 msgstr "د خپل لټون اصطلاحات سمول هڅه وکړئ"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "بیا هڅه وکړئ"
@@ -2271,7 +2363,7 @@ msgstr "د کاروونکو لټون لپاره ولیکئ"
 msgid "Type to search..."
 msgstr "د لټون لپاره ولیکئ..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:273
 msgid "Unable to connect to remote server"
 msgstr "له لرې پرتي سرور سره نښلېدل ونشول"
 
@@ -2280,7 +2372,7 @@ msgstr "له لرې پرتي سرور سره نښلېدل ونشول"
 msgid "Unable to redirect to login. Please try again."
 msgstr "ننوتلو ته لارښوونه نشي کیدلی. مهرباني وکړئ بیا هڅه وکړئ."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "نه ګمارل شوی"
 
@@ -2317,8 +2409,8 @@ msgstr "ګډون لغوه کیږي..."
 #: src/features/board/components/board-card.tsx:81
 #: src/features/board/components/board-card.tsx:82
 #: src/features/objects/components/create-object-dialog.tsx:163
-#: src/features/objects/components/object-detail-panel.tsx:311
-#: src/features/objects/components/object-detail-panel.tsx:315
+#: src/features/objects/components/object-detail-panel.tsx:283
+#: src/features/objects/components/object-detail-panel.tsx:287
 #: src/features/objects/components/object-links.tsx:71
 #: src/features/objects/components/object-links.tsx:153
 #: src/features/objects/components/object-links.tsx:165
@@ -2334,7 +2426,7 @@ msgstr "تصدیق نه شوی"
 msgid "Updated"
 msgstr "نوی شو"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:474
+#: src/routes/_authenticated/$crmId_.settings.tsx:674
 msgid "Updating access..."
 msgstr "د لاسرسي تازه کول..."
 
@@ -2343,6 +2435,7 @@ msgstr "د لاسرسي تازه کول..."
 msgid "Upload"
 msgstr "اپلوډ"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:553
 #: src/routes/_authenticated/$crmId/design.tsx:297
 msgid "Upload .json file"
 msgstr "د .json فایل اپلوډ کړئ"
@@ -2397,7 +2490,7 @@ msgstr "ټول وګورئ"
 msgid "View all notifications"
 msgstr "ټولې خبرتیاوې وګورئ"
 
-#: src/features/objects/components/object-detail-panel.tsx:334
+#: src/features/objects/components/object-detail-panel.tsx:306
 msgid "View and edit item details"
 msgstr "د توکي تفصیلات وګورئ او سم کړئ"
 
@@ -2405,7 +2498,7 @@ msgstr "د توکي تفصیلات وګورئ او سم کړئ"
 msgid "View controls"
 msgstr "د کنټرول لیدل"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:389
+#: src/routes/_authenticated/$crmId_.settings.tsx:589
 msgid "View only"
 msgstr "یوازې لیدل"
 
@@ -2417,8 +2510,8 @@ msgstr "د لیدلو اختیارونه"
 msgid "Views"
 msgstr "لیدنې"
 
-#: src/features/objects/components/object-detail-panel.tsx:350
-#: src/features/objects/components/object-detail-panel.tsx:359
+#: src/features/objects/components/object-detail-panel.tsx:322
+#: src/features/objects/components/object-detail-panel.tsx:331
 msgid "Watch"
 msgstr "وګورئ"
 
@@ -2441,6 +2534,10 @@ msgstr "ویب پاڼه د خدمت په حال کې ده!"
 #: ../../../lib/web/src/lib/preference-utils.ts:61
 msgid "Wednesday"
 msgstr "چهارشنبه"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/index.tsx:102
 msgid "You don't have access to this CRM."

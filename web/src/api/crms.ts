@@ -599,6 +599,26 @@ const crmsApi = {
     );
   },
 
+  // ============= Data Import/Export Methods =============
+
+  // Export data as JSON
+  exportData: async (
+    crmId: string,
+  ): Promise<{ data: Record<string, unknown> }> => {
+    return crmsRequest.get(endpoints.crms.dataExport(crmId));
+  },
+
+  // Import data from JSON
+  importData: async (
+    crmId: string,
+    data: Record<string, unknown>,
+  ): Promise<{ data: { objects: number; comments: number; links: number } }> => {
+    return crmsRequest.post(
+      endpoints.crms.dataImport(crmId),
+      { data: JSON.stringify(data) },
+    );
+  },
+
   // ============= View Methods =============
 
   // List views

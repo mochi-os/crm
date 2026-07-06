@@ -32,8 +32,8 @@ msgid "{0} - Design"
 msgstr "{0} - Дизайн"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
-#: src/routes/_authenticated/$crmId_.settings.tsx:223
+#: src/routes/_authenticated/$crmId_.settings.tsx:132
+#: src/routes/_authenticated/$crmId_.settings.tsx:235
 msgid "{0} settings"
 msgstr "{0}-н тохиргоо"
 
@@ -57,9 +57,13 @@ msgstr "24 цаг"
 msgid "Absolute (date and time)"
 msgstr "Үнэмлэхүй (огноо ба цаг)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:84
+#: src/routes/_authenticated/$crmId_.settings.tsx:96
 msgid "Access"
 msgstr "Хандалт"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr ""
 
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
@@ -69,19 +73,19 @@ msgstr "Хандалт хориотой"
 msgid "Access level"
 msgstr "Хандалтын түвшин"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:475
+#: src/routes/_authenticated/$crmId_.settings.tsx:675
 msgid "Access level updated"
 msgstr "Хандалтын түвшин шинэчлэгдсэн"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:486
+#: src/routes/_authenticated/$crmId_.settings.tsx:686
 msgid "Access Management"
 msgstr "Хандалтын удирдлага"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:461
+#: src/routes/_authenticated/$crmId_.settings.tsx:661
 msgid "Access removed"
 msgstr "Хандалтыг хассан"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:450
+#: src/routes/_authenticated/$crmId_.settings.tsx:650
 msgid "Access set for {subjectName}"
 msgstr "{subjectName}-д хандалт тохируулсан"
 
@@ -101,7 +105,7 @@ msgstr "Бүртгэлийн төрөл"
 msgid "Account verified"
 msgstr "Бүртгэл баталгаажсан"
 
-#: src/features/objects/components/object-detail-panel.tsx:321
+#: src/features/objects/components/object-detail-panel.tsx:293
 msgid "Activity"
 msgstr "Үйл ажиллагаа"
 
@@ -177,7 +181,7 @@ msgstr "Шинэ бүртгэл нэмэх"
 msgid "Add option"
 msgstr "Сонголт нэмэх"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:493
+#: src/routes/_authenticated/$crmId_.settings.tsx:693
 msgid "Add rule"
 msgstr "Дүрэм нэмэх"
 
@@ -230,16 +234,20 @@ msgstr "Дараах байдлаар эрэмбэлэхийг зөвшөөрө�
 msgid "An error occurred"
 msgstr "Алдаа гарлаа"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:247
 msgid "An unexpected error occurred"
 msgstr "Гэнэтийн алдаа гарлаа"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:233
+msgid "Another change was made at the same time. Please refresh to see the latest version."
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: src/features/objects/components/object-attachments.tsx:227
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "\"{0}\"-г устгахдаа итгэлтэй байна уу?"
 
-#: src/features/objects/components/object-detail-panel.tsx:533
+#: src/features/objects/components/object-detail-panel.tsx:496
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "\"{title}\"-г устгахдаа итгэлтэй байна уу? Энэ үйлдлийг буцаах боломжгүй."
 
@@ -289,9 +297,9 @@ msgstr "Боломжит товчлуурын хослолууд"
 msgid "Back"
 msgstr "Буцах"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:170
-#: src/routes/_authenticated/$crmId_.settings.tsx:193
-#: src/routes/_authenticated/$crmId_.settings.tsx:225
+#: src/routes/_authenticated/$crmId_.settings.tsx:182
+#: src/routes/_authenticated/$crmId_.settings.tsx:205
+#: src/routes/_authenticated/$crmId_.settings.tsx:237
 #: src/routes/_authenticated/$crmId/design.tsx:134
 #: src/routes/_authenticated/$crmId/design.tsx:159
 msgid "Back to CRM"
@@ -347,6 +355,7 @@ msgstr "Хүүхэд байж болох"
 #: src/features/crms/components/create-crm-dialog.tsx:149
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
+#: src/routes/_authenticated/$crmId_.settings.tsx:560
 #: src/routes/_authenticated/$crmId/design.tsx:304
 #: src/routes/_authenticated/$crmId/index.tsx:1002
 msgid "Cancel"
@@ -357,12 +366,12 @@ msgstr "Цуцлах"
 msgid "Cancel reply"
 msgstr "Хариултыг цуцлах"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "Энэ мэдэгдлийн ангилал"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "Мэдэгдлийн ангиллыг солих"
 
@@ -502,12 +511,12 @@ msgstr "Удахгүй!"
 msgid "Comment actions"
 msgstr "Сэтгэгдлийн үйлдлүүд"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:388
+#: src/routes/_authenticated/$crmId_.settings.tsx:588
 msgid "Comment and view"
 msgstr "Сэтгэгдэл болон харах"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:320
+#: src/features/objects/components/object-detail-panel.tsx:292
 msgid "Comments ({0})"
 msgstr "Сэтгэгдэлүүд ({0})"
 
@@ -549,7 +558,7 @@ msgstr "Үргэлжлүүлэх"
 msgid "Continue with {label}"
 msgstr "{label}-р үргэлжлүүлэх"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:487
+#: src/routes/_authenticated/$crmId_.settings.tsx:687
 msgid "Control who can view and interact with this CRM"
 msgstr "Энэ CRM-ийг хэн харах, ашиглах боломжтойг хянах"
 
@@ -557,7 +566,7 @@ msgstr "Энэ CRM-ийг хэн харах, ашиглах боломжтойг
 msgid "Copy"
 msgstr "Хуулах"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:295
+#: src/routes/_authenticated/$crmId_.settings.tsx:359
 msgid "Core information about this CRM"
 msgstr "Энэ CRM-ийн үндсэн мэдээлэл"
 
@@ -609,7 +618,7 @@ msgstr "Шинэ зүйл үүсгэх"
 msgid "Create object"
 msgstr "Объект үүсгэх"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:387
+#: src/routes/_authenticated/$crmId_.settings.tsx:587
 msgid "Create, edit, comment, and view"
 msgstr "Үүсгэх, засварлах, сэтгэгдэл бичих, үзэх"
 
@@ -636,23 +645,23 @@ msgstr "CRM үйлдэл"
 msgid "CRM created"
 msgstr "CRM үүсгэсэн"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:130
+#: src/routes/_authenticated/$crmId_.settings.tsx:142
 msgid "CRM deleted"
 msgstr "CRM устгагдлаа"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:208
+#: src/routes/_authenticated/$crmId_.settings.tsx:220
 msgid "CRM not found"
 msgstr "CRM олдсонгүй"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:132
 msgid "CRM settings"
 msgstr "CRM тохиргоо"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:208
+#: src/routes/_authenticated/$crmId_.settings.tsx:220
 msgid "CRM unavailable"
 msgstr "CRM боломжгүй"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:164
 msgid "CRM updated"
 msgstr "CRM шинэчлэгдлээ"
 
@@ -680,6 +689,21 @@ msgstr "Харанхуй"
 msgid "Dark mode"
 msgstr "Харанхуй горим"
 
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:232
+msgid "Data conflict"
+msgstr ""
+
+#. placeholder {0}: response.data?.objects ?? 0
+#. placeholder {1}: response.data?.comments ?? 0
+#. placeholder {2}: response.data?.links ?? 0
+#: src/routes/_authenticated/$crmId_.settings.tsx:344
+msgid "Data imported ({0} objects, {1} comments, {2} links)"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:419
+msgid "Data management"
+msgstr ""
+
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "Огноо"
@@ -706,8 +730,8 @@ msgstr "Үндсэн эрэмбэлэлт"
 #: src/features/objects/components/object-attachments.tsx:179
 #: src/features/objects/components/object-attachments.tsx:186
 #: src/features/objects/components/object-attachments.tsx:228
-#: src/features/objects/components/object-detail-panel.tsx:534
-#: src/routes/_authenticated/$crmId_.settings.tsx:348
+#: src/features/objects/components/object-detail-panel.tsx:497
+#: src/routes/_authenticated/$crmId_.settings.tsx:412
 msgid "Delete"
 msgstr "Устгах"
 
@@ -727,15 +751,15 @@ msgstr "Багана устгах"
 msgid "Delete comment"
 msgstr "Сэтгэгдэл устгах"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:338
+#: src/routes/_authenticated/$crmId_.settings.tsx:402
 msgid "Delete crm"
 msgstr "CRM устгах"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:359
+#: src/routes/_authenticated/$crmId_.settings.tsx:442
 msgid "Delete CRM"
 msgstr "CRM устгах"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:357
+#: src/routes/_authenticated/$crmId_.settings.tsx:440
 msgid "Delete CRM?"
 msgstr "CRM устгах уу?"
 
@@ -743,9 +767,9 @@ msgstr "CRM устгах уу?"
 msgid "Delete field"
 msgstr "Талбар устгах"
 
-#: src/features/objects/components/object-detail-panel.tsx:369
-#: src/features/objects/components/object-detail-panel.tsx:374
-#: src/features/objects/components/object-detail-panel.tsx:532
+#: src/features/objects/components/object-detail-panel.tsx:341
+#: src/features/objects/components/object-detail-panel.tsx:346
+#: src/features/objects/components/object-detail-panel.tsx:495
 msgid "Delete item"
 msgstr "Зүйл устгах"
 
@@ -767,7 +791,7 @@ msgstr "Харагдац устгах"
 msgid "Delete your account on the old server"
 msgstr "Хуучин серверт байгаа бүртгэлээ устгана уу"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:129
+#: src/routes/_authenticated/$crmId_.settings.tsx:141
 msgid "Deleting CRM..."
 msgstr "CRM устгаж байна..."
 
@@ -779,7 +803,7 @@ msgstr "Буурах"
 msgid "Descending"
 msgstr "Буурахаар"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:308
+#: src/routes/_authenticated/$crmId_.settings.tsx:372
 msgid "Description"
 msgstr "Тайлбар"
 
@@ -793,7 +817,7 @@ msgstr "Дизайн"
 msgid "Design imported"
 msgstr "Дизайн оруулсан"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:386
+#: src/routes/_authenticated/$crmId_.settings.tsx:586
 msgid "Design, create, edit, comment, and view"
 msgstr "Загварчлах, үүсгэх, засварлах, сэтгэгдэл бичих, үзэх"
 
@@ -833,7 +857,7 @@ msgstr "Гар утасны хажуугийн самбарыг харуулна
 #: src/features/editor/components/edit-dialogs.tsx:524
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
-#: src/features/objects/components/object-detail-panel.tsx:383
+#: src/features/objects/components/object-detail-panel.tsx:355
 msgid "Done"
 msgstr "Дууссан"
 
@@ -846,6 +870,7 @@ msgstr "Агуулга нэмэхийн тулд баганан дээр дав�
 msgid "Download"
 msgstr "Татах"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:484
 #: src/routes/_authenticated/$crmId/design.tsx:226
 msgid "Download backup first"
 msgstr "Эхлээд нөөцлөлт татаж авах"
@@ -917,11 +942,11 @@ msgstr "Имэйлд ирсэн кодоо оруулна уу"
 msgid "Enter your authenticator code"
 msgstr "Баталгаажуулагчийн кодоо оруулна уу"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:315
+#: src/routes/_authenticated/$crmId_.settings.tsx:379
 msgid "Entity ID"
 msgstr "Entity ID"
 
-#: src/features/objects/components/object-detail-panel.tsx:290
+#: src/features/objects/components/object-detail-panel.tsx:262
 msgid "Error"
 msgstr "Алдаа"
 
@@ -940,9 +965,17 @@ msgstr "Хажуугийн самбарыг тэлэх"
 msgid "Export CSV"
 msgstr "CSV экспортлох"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:425
+msgid "Export data"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId/design.tsx:174
 msgid "Export design"
 msgstr "Дизайн экспортлох"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:420
+msgid "Export or import the raw data content in this CRM."
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
@@ -984,7 +1017,7 @@ msgstr "Хавсралт устгаж чадсангүй"
 msgid "Failed to delete comment"
 msgstr "Сэтгэгдэл устгаж чадсангүй"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:131
+#: src/routes/_authenticated/$crmId_.settings.tsx:143
 msgid "Failed to delete CRM"
 msgstr "CRM устгаж чадсангүй"
 
@@ -996,9 +1029,17 @@ msgstr "Холбоос устгаж чадсангүй"
 msgid "Failed to delete view"
 msgstr "Харагдац устгаж чадсангүй"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:330
+msgid "Failed to export data"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId/design.tsx:93
 msgid "Failed to export design"
 msgstr "Дизайн экспортлож чадсангүй"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:349
+msgid "Failed to import data"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/design.tsx:114
 msgid "Failed to import design"
@@ -1018,7 +1059,7 @@ msgstr "CRM дизайн ачаалж чадсангүй"
 msgid "Failed to load CRMs"
 msgstr "CRM-уудыг ачаалж чадсангүй"
 
-#: src/features/objects/components/object-detail-panel.tsx:291
+#: src/features/objects/components/object-detail-panel.tsx:263
 msgid "Failed to load item"
 msgstr "Зүйл ачаалж чадсангүй"
 
@@ -1026,11 +1067,12 @@ msgstr "Зүйл ачаалж чадсангүй"
 msgid "Failed to post comment"
 msgstr "Сэтгэгдэл нийтэлж чадсангүй"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:522
 #: src/routes/_authenticated/$crmId/design.tsx:266
 msgid "Failed to read file"
 msgstr "Файл уншиж чадсангүй"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:462
+#: src/routes/_authenticated/$crmId_.settings.tsx:662
 msgid "Failed to remove access"
 msgstr "Хандалтыг хасч чадсангүй"
 
@@ -1050,7 +1092,7 @@ msgstr "Харагдацыг дахин эрэмбэлж чадсангүй"
 msgid "Failed to send verification code"
 msgstr "Баталгаажуулах код илгээж чадсангүй"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:451
+#: src/routes/_authenticated/$crmId_.settings.tsx:651
 msgid "Failed to set access level"
 msgstr "Хандалтын түвшинг тохируулж чадсангүй"
 
@@ -1065,11 +1107,11 @@ msgstr "Захиалж чадсангүй"
 msgid "Failed to unsubscribe"
 msgstr "Захиалга цуцалж чадсангүй"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:476
+#: src/routes/_authenticated/$crmId_.settings.tsx:676
 msgid "Failed to update access level"
 msgstr "Хандалтын түвшинг шинэчилж чадсангүй"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "Ангилал шинэчилж чадсангүй"
 
@@ -1077,7 +1119,7 @@ msgstr "Ангилал шинэчилж чадсангүй"
 msgid "Failed to update comment"
 msgstr "Сэтгэгдэл шинэчилж чадсангүй"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:153
+#: src/routes/_authenticated/$crmId_.settings.tsx:165
 msgid "Failed to update crm"
 msgstr "CRM шинэчилж чадсангүй"
 
@@ -1104,7 +1146,7 @@ msgstr "Файлууд"
 msgid "Find CRMs"
 msgstr "CRM хайх"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:320
+#: src/routes/_authenticated/$crmId_.settings.tsx:384
 msgid "Fingerprint"
 msgstr "Fingerprint"
 
@@ -1202,7 +1244,7 @@ msgstr "Хот"
 msgid "ID"
 msgstr "ID"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:294
+#: src/routes/_authenticated/$crmId_.settings.tsx:358
 msgid "Identity"
 msgstr "Identity"
 
@@ -1210,14 +1252,32 @@ msgstr "Identity"
 msgid "Imperial"
 msgstr "Imperial"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:535
+msgid "Import a data configuration"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId/design.tsx:279
 msgid "Import a design configuration"
 msgstr "Дизайн тохиргоо импортлох"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:430
+#: src/routes/_authenticated/$crmId_.settings.tsx:476
+#: src/routes/_authenticated/$crmId_.settings.tsx:534
+msgid "Import data"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:462
+msgid "Import data?"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/design.tsx:178
 #: src/routes/_authenticated/$crmId/design.tsx:278
 msgid "Import design"
 msgstr "Дизайн импортлох"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:473
+msgid "Importing..."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:252
 msgid "Inset"
@@ -1231,6 +1291,7 @@ msgstr "Сонирхлууд"
 msgid "Invalid date"
 msgstr "Огноо хүчингүй"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:518
 #: src/routes/_authenticated/$crmId/design.tsx:262
 msgid "Invalid JSON file"
 msgstr "JSON файл хүчингүй"
@@ -1239,7 +1300,7 @@ msgstr "JSON файл хүчингүй"
 msgid "Invalid verification code"
 msgstr "Баталгаажуулах код хүчингүй"
 
-#: src/features/objects/components/object-detail-panel.tsx:333
+#: src/features/objects/components/object-detail-panel.tsx:305
 msgid "Item details"
 msgstr "Зүйлийн дэлгэрэнгүй"
 
@@ -1287,11 +1348,11 @@ msgstr "Илүү ачаалах"
 msgid "Loading content…"
 msgstr "Контент ачааллаж байна…"
 
-#: src/features/objects/components/object-detail-panel.tsx:274
+#: src/features/objects/components/object-detail-panel.tsx:246
 msgid "Loading item"
 msgstr "Зүйл ачаалж байна"
 
-#: src/features/objects/components/object-detail-panel.tsx:275
+#: src/features/objects/components/object-detail-panel.tsx:247
 msgid "Loading item details"
 msgstr "Зүйлийн дэлгэрэнгүй ачаалж байна"
 
@@ -1363,7 +1424,7 @@ msgstr "Даваа"
 #: src/features/editor/components/edit-dialogs.tsx:730
 #: src/features/editor/components/edit-dialogs.tsx:1032
 #: src/features/editor/components/option-dialog.tsx:112
-#: src/routes/_authenticated/$crmId_.settings.tsx:299
+#: src/routes/_authenticated/$crmId_.settings.tsx:363
 msgid "Name"
 msgstr "Нэр"
 
@@ -1371,7 +1432,8 @@ msgstr "Нэр"
 msgid "Name is required"
 msgstr "Нэр шаардлагатай"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:294
 msgid "Network error"
 msgstr "Сүлжээний алдаа"
 
@@ -1396,7 +1458,7 @@ msgstr "Дараагийн зураг"
 msgid "No {parentClassNames} to add to"
 msgstr "Нэмэх {parentClassNames} алга"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:390
+#: src/routes/_authenticated/$crmId_.settings.tsx:590
 msgid "No access"
 msgstr "Хандах эрх байхгүй"
 
@@ -1464,7 +1526,7 @@ msgstr "Төлөв алга"
 msgid "No time zone found."
 msgstr "Цагийн бүс олдсонгүй."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "Сэдвийн бичлэг алга — дараагийн мэдэгдлийн дараа дахин оролдоно уу."
 
@@ -1491,16 +1553,20 @@ msgstr "Үзэлт алга"
 #: src/features/objects/components/create-object-dialog.tsx:384
 #: src/features/objects/components/create-object-dialog.tsx:387
 #: src/features/objects/components/create-object-dialog.tsx:391
-#: src/features/objects/components/object-detail-panel.tsx:448
-#: src/features/objects/components/object-detail-panel.tsx:461
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:468
+#: src/features/objects/components/object-detail-panel.tsx:413
+#: src/features/objects/components/object-detail-panel.tsx:426
+#: src/features/objects/components/object-detail-panel.tsx:429
+#: src/features/objects/components/object-detail-panel.tsx:433
 msgid "None"
 msgstr "Алга"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:134
 msgid "Normal"
 msgstr "Энгийн"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:146
 msgid "Not set"
@@ -1609,7 +1675,7 @@ msgid "Owner"
 msgstr "Эзэмшигч"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
-#: src/features/objects/components/object-detail-panel.tsx:442
+#: src/features/objects/components/object-detail-panel.tsx:407
 #: src/routes/_authenticated/$crmId/index.tsx:824
 msgid "Parent"
 msgstr "Эх"
@@ -1630,7 +1696,7 @@ msgstr "Passkey-ууд"
 msgid "Pattern (regex)"
 msgstr "Загвар (regex)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:339
+#: src/routes/_authenticated/$crmId_.settings.tsx:403
 msgid "Permanently delete this CRM and all its content."
 msgstr "Энэ CRM-ийг түүний бүх агуулгатай нь бүр мөсөн устгах."
 
@@ -1639,9 +1705,18 @@ msgstr "Энэ CRM-ийг түүний бүх агуулгатай нь бүр �
 msgid "Please add one or more classes to the CRM design."
 msgstr "CRM-ийн загварт нэг буюу хэд хэдэн анги нэмнэ үү."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:295
 msgid "Please check your internet connection and try again."
 msgstr "Интернет холболтоо шалгаад дахин оролдоно уу."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr ""
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
@@ -1658,7 +1733,7 @@ msgstr "Нууцлал"
 msgid "Profile"
 msgstr "Профайл"
 
-#: src/features/objects/components/object-detail-panel.tsx:319
+#: src/features/objects/components/object-detail-panel.tsx:291
 msgid "Properties"
 msgstr "Шинж чанарууд"
 
@@ -1678,8 +1753,8 @@ msgstr "Баганыг дахин эрэмбэлэх"
 msgid "Re-register your passkeys on this server"
 msgstr "Энэ серверт нэвтрэх түлхүүрээ дахин бүртгүүлнэ үү"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:191
 msgid "Recommended"
 msgstr "Зөвлөмжтэй"
 
@@ -1747,7 +1822,7 @@ msgstr "Сонирхол хасах"
 msgid "Remove item"
 msgstr "Зүйл хасах"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:460
+#: src/routes/_authenticated/$crmId_.settings.tsx:660
 msgid "Removing access..."
 msgstr "Хандалтыг хасч байна..."
 
@@ -1840,7 +1915,7 @@ msgstr "Бямба"
 msgid "Save"
 msgstr "Хадгалах"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:151
+#: src/routes/_authenticated/$crmId_.settings.tsx:163
 msgid "Saving..."
 msgstr "Хадгалж байна..."
 
@@ -1890,8 +1965,8 @@ msgstr "Энэ үзэмжээр хайх, ажиглах, эрэмбэлэх."
 msgid "Search..."
 msgstr "Хайх..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:149
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Хайж байна..."
@@ -1961,12 +2036,12 @@ msgstr "Имэйл илгээх"
 msgid "Serif"
 msgstr "Сериф"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:329
+#: src/routes/_authenticated/$crmId_.settings.tsx:393
 msgid "Server"
 msgstr "Сервер"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:251
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:277
 msgid "Server error"
 msgstr "Серверийн алдаа"
 
@@ -1976,14 +2051,18 @@ msgid "Server rules"
 msgstr "Серверийн дүрэм"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "Сесс хугацаа дууссан"
+#~ msgid "Session expired"
+#~ msgstr "Сесс хугацаа дууссан"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
+msgid "Session expired. Please log in again."
+msgstr ""
 
 #: ../../../lib/web/src/components/travelling-picker.tsx:147
 msgid "Set origin and destination"
 msgstr "Эхлэл, очих газрыг тогтоох"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:449
+#: src/routes/_authenticated/$crmId_.settings.tsx:649
 msgid "Setting access..."
 msgstr "Хандалтыг тохируулж байна..."
 
@@ -1992,9 +2071,9 @@ msgstr "Хандалтыг тохируулж байна..."
 #: ../../../lib/web/src/components/layout/nav-user.tsx:84
 #: ../../../lib/web/src/components/layout/nav-user.tsx:148
 #: ../../../lib/web/src/components/layout/nav-user.tsx:198
-#: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:168
-#: src/routes/_authenticated/$crmId_.settings.tsx:191
+#: src/routes/_authenticated/$crmId_.settings.tsx:95
+#: src/routes/_authenticated/$crmId_.settings.tsx:180
+#: src/routes/_authenticated/$crmId_.settings.tsx:203
 #: src/routes/_authenticated/$crmId/index.tsx:969
 msgid "Settings"
 msgstr "Тохиргоо"
@@ -2064,8 +2143,8 @@ msgstr "Эхний сэтгэгдэл нэмж хэлэлцүүлэг эхлүү
 msgid "Stay tuned though!"
 msgstr "Гэхдээ хүлээж бай!"
 
-#: src/features/objects/components/object-detail-panel.tsx:350
-#: src/features/objects/components/object-detail-panel.tsx:359
+#: src/features/objects/components/object-detail-panel.tsx:322
+#: src/features/objects/components/object-detail-panel.tsx:331
 msgid "Stop watching"
 msgstr "Үзэхээ зогсоох"
 
@@ -2144,6 +2223,10 @@ msgstr "Текст"
 msgid "That code is incorrect or has expired."
 msgstr "Энэ код буруу эсвэл хугацаа нь дууссан байна."
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr ""
+
 #: ../../../lib/web/src/components/config-drawer.tsx:194
 msgid "Theme"
 msgstr "Загвар"
@@ -2152,16 +2235,21 @@ msgstr "Загвар"
 msgid "Theme Settings"
 msgstr "Загварын тохиргоо"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:211
+#: src/routes/_authenticated/$crmId_.settings.tsx:223
 msgid "This CRM could not be loaded right now."
 msgstr "Энэ CRM-г одоо ачаалах боломжгүй байна."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:211
+#: src/routes/_authenticated/$crmId_.settings.tsx:223
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Энэ CRM устгагдсан байж болно эсвэл та хандах эрхгүй байна."
 
+#. placeholder {0}: pendingDataImport?.label
+#: src/routes/_authenticated/$crmId_.settings.tsx:464
+msgid "This will import the data from <0>{0}</0>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file."
+msgstr ""
+
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:358
+#: src/routes/_authenticated/$crmId_.settings.tsx:441
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Энэ нь \"{0}\" болон бүх объектууд, сэтгэгдлүүд, хавсралтуудыг бүрмөсөн устгана. Үүнийг буцаах боломжгүй."
 
@@ -2227,6 +2315,10 @@ msgstr "Харагдах сонголтуудыг сэлгэх"
 msgid "Toggle watched filter"
 msgstr "Үзэх шүүлтүүрийг сэлгэх"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "Дээд"
@@ -2239,13 +2331,13 @@ msgstr "Дээд түвшин"
 msgid "Travelling"
 msgstr "Аялж байна"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:165
 msgid "Try adjusting your search terms"
 msgstr "Хайлтын үгсээ засахыг туршаад үз"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "Дахин оролдох"
@@ -2271,7 +2363,7 @@ msgstr "Хэрэглэгч хайхын тулд бичих"
 msgid "Type to search..."
 msgstr "Хайхын тулд бичих..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:273
 msgid "Unable to connect to remote server"
 msgstr "Алсын сервер рүү холбогдож чадсангүй"
 
@@ -2280,7 +2372,7 @@ msgstr "Алсын сервер рүү холбогдож чадсангүй"
 msgid "Unable to redirect to login. Please try again."
 msgstr "Нэвтрэлт рүү чиглүүлэх боломжгүй. Дахин оролдоно уу."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "Хариуцсан хүн оноогоогүй"
 
@@ -2317,8 +2409,8 @@ msgstr "Захиалгаас гарч байна..."
 #: src/features/board/components/board-card.tsx:81
 #: src/features/board/components/board-card.tsx:82
 #: src/features/objects/components/create-object-dialog.tsx:163
-#: src/features/objects/components/object-detail-panel.tsx:311
-#: src/features/objects/components/object-detail-panel.tsx:315
+#: src/features/objects/components/object-detail-panel.tsx:283
+#: src/features/objects/components/object-detail-panel.tsx:287
 #: src/features/objects/components/object-links.tsx:71
 #: src/features/objects/components/object-links.tsx:153
 #: src/features/objects/components/object-links.tsx:165
@@ -2334,7 +2426,7 @@ msgstr "Баталгаажаагүй"
 msgid "Updated"
 msgstr "Шинэчлэгдсэн"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:474
+#: src/routes/_authenticated/$crmId_.settings.tsx:674
 msgid "Updating access..."
 msgstr "Хандалтыг шинэчилж байна..."
 
@@ -2343,6 +2435,7 @@ msgstr "Хандалтыг шинэчилж байна..."
 msgid "Upload"
 msgstr "Байршуулах"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:553
 #: src/routes/_authenticated/$crmId/design.tsx:297
 msgid "Upload .json file"
 msgstr ".json файл байршуулах"
@@ -2397,7 +2490,7 @@ msgstr "Бүгдийг үзэх"
 msgid "View all notifications"
 msgstr "Бүх мэдэгдлүүдийг үзэх"
 
-#: src/features/objects/components/object-detail-panel.tsx:334
+#: src/features/objects/components/object-detail-panel.tsx:306
 msgid "View and edit item details"
 msgstr "Зүйлийн дэлгэрэнгүйг үзэх, засварлах"
 
@@ -2405,7 +2498,7 @@ msgstr "Зүйлийн дэлгэрэнгүйг үзэх, засварлах"
 msgid "View controls"
 msgstr "Хяналт үзэх"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:389
+#: src/routes/_authenticated/$crmId_.settings.tsx:589
 msgid "View only"
 msgstr "Зөвхөн үзэх"
 
@@ -2417,8 +2510,8 @@ msgstr "Харах сонголтууд"
 msgid "Views"
 msgstr "Үзлэгүүд"
 
-#: src/features/objects/components/object-detail-panel.tsx:350
-#: src/features/objects/components/object-detail-panel.tsx:359
+#: src/features/objects/components/object-detail-panel.tsx:322
+#: src/features/objects/components/object-detail-panel.tsx:331
 msgid "Watch"
 msgstr "Үзэх"
 
@@ -2441,6 +2534,10 @@ msgstr "Вэбсайт засвартай байна!"
 #: ../../../lib/web/src/lib/preference-utils.ts:61
 msgid "Wednesday"
 msgstr "Лхагва гараг"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/index.tsx:102
 msgid "You don't have access to this CRM."

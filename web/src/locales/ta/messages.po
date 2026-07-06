@@ -32,8 +32,8 @@ msgid "{0} - Design"
 msgstr "{0} - வடிவமைப்பு"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
-#: src/routes/_authenticated/$crmId_.settings.tsx:223
+#: src/routes/_authenticated/$crmId_.settings.tsx:132
+#: src/routes/_authenticated/$crmId_.settings.tsx:235
 msgid "{0} settings"
 msgstr "{0} அமைப்புகள்"
 
@@ -57,9 +57,13 @@ msgstr "24 மணிநேரம்"
 msgid "Absolute (date and time)"
 msgstr "முழுமையானது (தேதி மற்றும் நேரம்)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:84
+#: src/routes/_authenticated/$crmId_.settings.tsx:96
 msgid "Access"
 msgstr "அணுகல்"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr ""
 
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
@@ -69,19 +73,19 @@ msgstr "அணுகல் தடைசெய்யப்பட்டது"
 msgid "Access level"
 msgstr "அணுகல் நிலை"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:475
+#: src/routes/_authenticated/$crmId_.settings.tsx:675
 msgid "Access level updated"
 msgstr "அணுகல் நிலை புதுப்பிக்கப்பட்டது"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:486
+#: src/routes/_authenticated/$crmId_.settings.tsx:686
 msgid "Access Management"
 msgstr "அணுகல் மேலாண்மை"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:461
+#: src/routes/_authenticated/$crmId_.settings.tsx:661
 msgid "Access removed"
 msgstr "அணுகல் அகற்றப்பட்டது"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:450
+#: src/routes/_authenticated/$crmId_.settings.tsx:650
 msgid "Access set for {subjectName}"
 msgstr "{subjectName}-க்கு அணுகல் அமைக்கப்பட்டது"
 
@@ -101,7 +105,7 @@ msgstr "கணக்கு வகை"
 msgid "Account verified"
 msgstr "கணக்கு சரிபார்க்கப்பட்டது"
 
-#: src/features/objects/components/object-detail-panel.tsx:321
+#: src/features/objects/components/object-detail-panel.tsx:293
 msgid "Activity"
 msgstr "செயல்பாடு"
 
@@ -177,7 +181,7 @@ msgstr "புதிய கணக்கு சேர்"
 msgid "Add option"
 msgstr "விருப்பம் சேர்"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:493
+#: src/routes/_authenticated/$crmId_.settings.tsx:693
 msgid "Add rule"
 msgstr "விதியைச் சேர்"
 
@@ -230,16 +234,20 @@ msgstr "வரிசைப்படுத்துதலை அனுமதி"
 msgid "An error occurred"
 msgstr "பிழை ஏற்பட்டது"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:247
 msgid "An unexpected error occurred"
 msgstr "எதிர்பாராத பிழை ஏற்பட்டது"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:233
+msgid "Another change was made at the same time. Please refresh to see the latest version."
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: src/features/objects/components/object-attachments.tsx:227
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "\"{0}\"-ஐ நீக்க விரும்புகிறீர்களா?"
 
-#: src/features/objects/components/object-detail-panel.tsx:533
+#: src/features/objects/components/object-detail-panel.tsx:496
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "\"{title}\"-ஐ நீக்க விரும்புகிறீர்களா? இந்த செயலை மாற்ற முடியாது."
 
@@ -289,9 +297,9 @@ msgstr "கிடைக்கும் விசைப்பலகை குற�
 msgid "Back"
 msgstr "பின்"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:170
-#: src/routes/_authenticated/$crmId_.settings.tsx:193
-#: src/routes/_authenticated/$crmId_.settings.tsx:225
+#: src/routes/_authenticated/$crmId_.settings.tsx:182
+#: src/routes/_authenticated/$crmId_.settings.tsx:205
+#: src/routes/_authenticated/$crmId_.settings.tsx:237
 #: src/routes/_authenticated/$crmId/design.tsx:134
 #: src/routes/_authenticated/$crmId/design.tsx:159
 msgid "Back to CRM"
@@ -347,6 +355,7 @@ msgstr "ஒரு குழந்தையாக இருக்க முடி
 #: src/features/crms/components/create-crm-dialog.tsx:149
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
+#: src/routes/_authenticated/$crmId_.settings.tsx:560
 #: src/routes/_authenticated/$crmId/design.tsx:304
 #: src/routes/_authenticated/$crmId/index.tsx:1002
 msgid "Cancel"
@@ -357,12 +366,12 @@ msgstr "ரத்துசெய்"
 msgid "Cancel reply"
 msgstr "பதிலளிப்பை ரத்துசெய்"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "இந்த அறிவிப்புக்கான வகை"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "அறிவிப்பு வகையை மாற்று"
 
@@ -502,12 +511,12 @@ msgstr "விரைவில் வருகிறது!"
 msgid "Comment actions"
 msgstr "கருத்து செயல்கள்"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:388
+#: src/routes/_authenticated/$crmId_.settings.tsx:588
 msgid "Comment and view"
 msgstr "கருத்து தெரிவித்து பார்"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:320
+#: src/features/objects/components/object-detail-panel.tsx:292
 msgid "Comments ({0})"
 msgstr "கருத்துகள் ({0})"
 
@@ -549,7 +558,7 @@ msgstr "தொடர்"
 msgid "Continue with {label}"
 msgstr "{label} மூலம் தொடரவும்"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:487
+#: src/routes/_authenticated/$crmId_.settings.tsx:687
 msgid "Control who can view and interact with this CRM"
 msgstr "இந்த CRM-ஐ யார் பார்க்கலாம் மற்றும் தொடர்பு கொள்ளலாம் என்பதைக் கட்டுப்படுத்தவும்"
 
@@ -557,7 +566,7 @@ msgstr "இந்த CRM-ஐ யார் பார்க்கலாம் ம�
 msgid "Copy"
 msgstr "நகலெடு"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:295
+#: src/routes/_authenticated/$crmId_.settings.tsx:359
 msgid "Core information about this CRM"
 msgstr "இந்த CRM பற்றிய அடிப்படை தகவல்"
 
@@ -609,7 +618,7 @@ msgstr "புதிய உருப்படி உருவாக்கு"
 msgid "Create object"
 msgstr "பொருள் உருவாக்கு"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:387
+#: src/routes/_authenticated/$crmId_.settings.tsx:587
 msgid "Create, edit, comment, and view"
 msgstr "உருவாக்குதல், திருத்துதல், கருத்திடுதல் மற்றும் பார்வையிடுதல்"
 
@@ -636,23 +645,23 @@ msgstr "CRM செயல்கள்"
 msgid "CRM created"
 msgstr "CRM உருவாக்கப்பட்டது"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:130
+#: src/routes/_authenticated/$crmId_.settings.tsx:142
 msgid "CRM deleted"
 msgstr "CRM நீக்கப்பட்டது"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:208
+#: src/routes/_authenticated/$crmId_.settings.tsx:220
 msgid "CRM not found"
 msgstr "CRM கிடைக்கவில்லை"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:132
 msgid "CRM settings"
 msgstr "CRM அமைப்புகள்"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:208
+#: src/routes/_authenticated/$crmId_.settings.tsx:220
 msgid "CRM unavailable"
 msgstr "CRM கிடைக்கவில்லை"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:164
 msgid "CRM updated"
 msgstr "CRM புதுப்பிக்கப்பட்டது"
 
@@ -680,6 +689,21 @@ msgstr "இருள்"
 msgid "Dark mode"
 msgstr "இருள் முறை"
 
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:232
+msgid "Data conflict"
+msgstr ""
+
+#. placeholder {0}: response.data?.objects ?? 0
+#. placeholder {1}: response.data?.comments ?? 0
+#. placeholder {2}: response.data?.links ?? 0
+#: src/routes/_authenticated/$crmId_.settings.tsx:344
+msgid "Data imported ({0} objects, {1} comments, {2} links)"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:419
+msgid "Data management"
+msgstr ""
+
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "தேதி"
@@ -706,8 +730,8 @@ msgstr "இயல்புநிலை வரிசை"
 #: src/features/objects/components/object-attachments.tsx:179
 #: src/features/objects/components/object-attachments.tsx:186
 #: src/features/objects/components/object-attachments.tsx:228
-#: src/features/objects/components/object-detail-panel.tsx:534
-#: src/routes/_authenticated/$crmId_.settings.tsx:348
+#: src/features/objects/components/object-detail-panel.tsx:497
+#: src/routes/_authenticated/$crmId_.settings.tsx:412
 msgid "Delete"
 msgstr "நீக்கு"
 
@@ -727,15 +751,15 @@ msgstr "நெடுவரிசையை நீக்கு"
 msgid "Delete comment"
 msgstr "கருத்தை நீக்கு"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:338
+#: src/routes/_authenticated/$crmId_.settings.tsx:402
 msgid "Delete crm"
 msgstr "CRM-ஐ நீக்கு"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:359
+#: src/routes/_authenticated/$crmId_.settings.tsx:442
 msgid "Delete CRM"
 msgstr "CRM-ஐ நீக்கு"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:357
+#: src/routes/_authenticated/$crmId_.settings.tsx:440
 msgid "Delete CRM?"
 msgstr "CRM-ஐ நீக்கவா?"
 
@@ -743,9 +767,9 @@ msgstr "CRM-ஐ நீக்கவா?"
 msgid "Delete field"
 msgstr "புலத்தை நீக்கு"
 
-#: src/features/objects/components/object-detail-panel.tsx:369
-#: src/features/objects/components/object-detail-panel.tsx:374
-#: src/features/objects/components/object-detail-panel.tsx:532
+#: src/features/objects/components/object-detail-panel.tsx:341
+#: src/features/objects/components/object-detail-panel.tsx:346
+#: src/features/objects/components/object-detail-panel.tsx:495
 msgid "Delete item"
 msgstr "உருப்படியை நீக்கு"
 
@@ -767,7 +791,7 @@ msgstr "காட்சியை நீக்கு"
 msgid "Delete your account on the old server"
 msgstr "பழைய சேவையகத்தில் உங்கள் கணக்கை நீக்கவும்"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:129
+#: src/routes/_authenticated/$crmId_.settings.tsx:141
 msgid "Deleting CRM..."
 msgstr "CRM நீக்குகிறது..."
 
@@ -779,7 +803,7 @@ msgstr "இறங்கு"
 msgid "Descending"
 msgstr "இறங்குவரிசை"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:308
+#: src/routes/_authenticated/$crmId_.settings.tsx:372
 msgid "Description"
 msgstr "விளக்கம்"
 
@@ -793,7 +817,7 @@ msgstr "வடிவமைப்பு"
 msgid "Design imported"
 msgstr "வடிவமைப்பு இறக்குமதி செய்யப்பட்டது"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:386
+#: src/routes/_authenticated/$crmId_.settings.tsx:586
 msgid "Design, create, edit, comment, and view"
 msgstr "வடிவமைத்தல், உருவாக்குதல், திருத்துதல், கருத்திடுதல் மற்றும் பார்வையிடுதல்"
 
@@ -833,7 +857,7 @@ msgstr "மொபைல் பக்கப்பட்டியைக் கா�
 #: src/features/editor/components/edit-dialogs.tsx:524
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
-#: src/features/objects/components/object-detail-panel.tsx:383
+#: src/features/objects/components/object-detail-panel.tsx:355
 msgid "Done"
 msgstr "முடிந்தது"
 
@@ -846,6 +870,7 @@ msgstr "உள்ளடக்கத்தைச் சேர்க்க ஒர�
 msgid "Download"
 msgstr "பதிவிறக்கு"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:484
 #: src/routes/_authenticated/$crmId/design.tsx:226
 msgid "Download backup first"
 msgstr "முதலில் காப்புப்பிரதியைப் பதிவிறக்கவும்"
@@ -917,11 +942,11 @@ msgstr "உங்கள் மின்னஞ்சலில் உள்ள க
 msgid "Enter your authenticator code"
 msgstr "உங்கள் அங்கீகரிப்பான் குறியீட்டை உள்ளிடவும்"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:315
+#: src/routes/_authenticated/$crmId_.settings.tsx:379
 msgid "Entity ID"
 msgstr "எண்ட்டிட்டி ID"
 
-#: src/features/objects/components/object-detail-panel.tsx:290
+#: src/features/objects/components/object-detail-panel.tsx:262
 msgid "Error"
 msgstr "பிழை"
 
@@ -940,9 +965,17 @@ msgstr "பக்கப்பட்டியை விரிவாக்கு"
 msgid "Export CSV"
 msgstr "CSV ஏற்றுமதி"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:425
+msgid "Export data"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId/design.tsx:174
 msgid "Export design"
 msgstr "வடிவமைப்பை ஏற்றுமதி செய்"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:420
+msgid "Export or import the raw data content in this CRM."
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
@@ -984,7 +1017,7 @@ msgstr "இணைப்பை நீக்க முடியவில்லை"
 msgid "Failed to delete comment"
 msgstr "கருத்தை நீக்க முடியவில்லை"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:131
+#: src/routes/_authenticated/$crmId_.settings.tsx:143
 msgid "Failed to delete CRM"
 msgstr "CRM-ஐ நீக்க முடியவில்லை"
 
@@ -996,9 +1029,17 @@ msgstr "இணைப்பை நீக்க முடியவில்லை"
 msgid "Failed to delete view"
 msgstr "காட்சியை நீக்க முடியவில்லை"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:330
+msgid "Failed to export data"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId/design.tsx:93
 msgid "Failed to export design"
 msgstr "வடிவமைப்பை ஏற்றுமதி செய்ய முடியவில்லை"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:349
+msgid "Failed to import data"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/design.tsx:114
 msgid "Failed to import design"
@@ -1018,7 +1059,7 @@ msgstr "CRM வடிவமைப்பை ஏற்ற முடியவில
 msgid "Failed to load CRMs"
 msgstr "CRM களை ஏற்ற முடியவில்லை"
 
-#: src/features/objects/components/object-detail-panel.tsx:291
+#: src/features/objects/components/object-detail-panel.tsx:263
 msgid "Failed to load item"
 msgstr "உருப்படியை ஏற்ற முடியவில்லை"
 
@@ -1026,11 +1067,12 @@ msgstr "உருப்படியை ஏற்ற முடியவில்�
 msgid "Failed to post comment"
 msgstr "கருத்தைப் பதிவிட முடியவில்லை"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:522
 #: src/routes/_authenticated/$crmId/design.tsx:266
 msgid "Failed to read file"
 msgstr "கோப்பைப் படிக்க முடியவில்லை"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:462
+#: src/routes/_authenticated/$crmId_.settings.tsx:662
 msgid "Failed to remove access"
 msgstr "அணுகலை நீக்க முடியவில்லை"
 
@@ -1050,7 +1092,7 @@ msgstr "காட்சிகளை மறுவரிசைப்படுத�
 msgid "Failed to send verification code"
 msgstr "சரிபார்ப்பு குறியீட்டை அனுப்ப முடியவில்லை"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:451
+#: src/routes/_authenticated/$crmId_.settings.tsx:651
 msgid "Failed to set access level"
 msgstr "அணுகல் நிலையை அமைக்க முடியவில்லை"
 
@@ -1065,11 +1107,11 @@ msgstr "சந்தா செய்ய முடியவில்லை"
 msgid "Failed to unsubscribe"
 msgstr "சந்தாவை ரத்து செய்ய முடியவில்லை"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:476
+#: src/routes/_authenticated/$crmId_.settings.tsx:676
 msgid "Failed to update access level"
 msgstr "அணுகல் நிலையைப் புதுப்பிக்க முடியவில்லை"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "வகையைப் புதுப்பிக்க முடியவில்லை"
 
@@ -1077,7 +1119,7 @@ msgstr "வகையைப் புதுப்பிக்க முடிய�
 msgid "Failed to update comment"
 msgstr "கருத்தைப் புதுப்பிக்க முடியவில்லை"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:153
+#: src/routes/_authenticated/$crmId_.settings.tsx:165
 msgid "Failed to update crm"
 msgstr "CRM ஐப் புதுப்பிக்க முடியவில்லை"
 
@@ -1104,7 +1146,7 @@ msgstr "கோப்புகள்"
 msgid "Find CRMs"
 msgstr "CRM களைக் கண்டுபிடி"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:320
+#: src/routes/_authenticated/$crmId_.settings.tsx:384
 msgid "Fingerprint"
 msgstr "கைரேகை"
 
@@ -1202,7 +1244,7 @@ msgstr "பிரபலமான"
 msgid "ID"
 msgstr "ஐடி"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:294
+#: src/routes/_authenticated/$crmId_.settings.tsx:358
 msgid "Identity"
 msgstr "அடையாளம்"
 
@@ -1210,14 +1252,32 @@ msgstr "அடையாளம்"
 msgid "Imperial"
 msgstr "இம்பீரியல்"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:535
+msgid "Import a data configuration"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId/design.tsx:279
 msgid "Import a design configuration"
 msgstr "வடிவமைப்பு உள்ளமைவை இறக்குமதி செய்"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:430
+#: src/routes/_authenticated/$crmId_.settings.tsx:476
+#: src/routes/_authenticated/$crmId_.settings.tsx:534
+msgid "Import data"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:462
+msgid "Import data?"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/design.tsx:178
 #: src/routes/_authenticated/$crmId/design.tsx:278
 msgid "Import design"
 msgstr "வடிவமைப்பை இறக்குமதி செய்"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:473
+msgid "Importing..."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:252
 msgid "Inset"
@@ -1231,6 +1291,7 @@ msgstr "ஆர்வங்கள்"
 msgid "Invalid date"
 msgstr "தவறான தேதி"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:518
 #: src/routes/_authenticated/$crmId/design.tsx:262
 msgid "Invalid JSON file"
 msgstr "தவறான JSON கோப்பு"
@@ -1239,7 +1300,7 @@ msgstr "தவறான JSON கோப்பு"
 msgid "Invalid verification code"
 msgstr "தவறான சரிபார்ப்பு குறியீடு"
 
-#: src/features/objects/components/object-detail-panel.tsx:333
+#: src/features/objects/components/object-detail-panel.tsx:305
 msgid "Item details"
 msgstr "உருப்படி விவரங்கள்"
 
@@ -1287,11 +1348,11 @@ msgstr "மேலும் ஏற்று"
 msgid "Loading content…"
 msgstr "உள்ளடக்கம் ஏற்றப்படுகிறது…"
 
-#: src/features/objects/components/object-detail-panel.tsx:274
+#: src/features/objects/components/object-detail-panel.tsx:246
 msgid "Loading item"
 msgstr "உருப்படியை ஏற்றுகிறது"
 
-#: src/features/objects/components/object-detail-panel.tsx:275
+#: src/features/objects/components/object-detail-panel.tsx:247
 msgid "Loading item details"
 msgstr "உருப்படி விவரங்களை ஏற்றுகிறது"
 
@@ -1363,7 +1424,7 @@ msgstr "திங்கட்கிழமை"
 #: src/features/editor/components/edit-dialogs.tsx:730
 #: src/features/editor/components/edit-dialogs.tsx:1032
 #: src/features/editor/components/option-dialog.tsx:112
-#: src/routes/_authenticated/$crmId_.settings.tsx:299
+#: src/routes/_authenticated/$crmId_.settings.tsx:363
 msgid "Name"
 msgstr "பெயர்"
 
@@ -1371,7 +1432,8 @@ msgstr "பெயர்"
 msgid "Name is required"
 msgstr "பெயர் தேவை"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:294
 msgid "Network error"
 msgstr "பிணையப் பிழை"
 
@@ -1396,7 +1458,7 @@ msgstr "அடுத்த படம்"
 msgid "No {parentClassNames} to add to"
 msgstr "சேர்க்க {parentClassNames} இல்லை"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:390
+#: src/routes/_authenticated/$crmId_.settings.tsx:590
 msgid "No access"
 msgstr "அணுகல் இல்லை"
 
@@ -1464,7 +1526,7 @@ msgstr "நிலை இல்லை"
 msgid "No time zone found."
 msgstr "நேர மண்டலம் எதுவும் கிடைக்கவில்லை."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "தலைப்புப் பதிவு இன்னும் இல்லை — அடுத்த அறிவிப்புக்குப் பிறகு மீண்டும் முயற்சிக்கவும்."
 
@@ -1491,16 +1553,20 @@ msgstr "காட்சிகள் இல்லை"
 #: src/features/objects/components/create-object-dialog.tsx:384
 #: src/features/objects/components/create-object-dialog.tsx:387
 #: src/features/objects/components/create-object-dialog.tsx:391
-#: src/features/objects/components/object-detail-panel.tsx:448
-#: src/features/objects/components/object-detail-panel.tsx:461
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:468
+#: src/features/objects/components/object-detail-panel.tsx:413
+#: src/features/objects/components/object-detail-panel.tsx:426
+#: src/features/objects/components/object-detail-panel.tsx:429
+#: src/features/objects/components/object-detail-panel.tsx:433
 msgid "None"
 msgstr "ஒன்றுமில்லை"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:134
 msgid "Normal"
 msgstr "சாதாரணம்"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:146
 msgid "Not set"
@@ -1609,7 +1675,7 @@ msgid "Owner"
 msgstr "உரிமையாளர்"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
-#: src/features/objects/components/object-detail-panel.tsx:442
+#: src/features/objects/components/object-detail-panel.tsx:407
 #: src/routes/_authenticated/$crmId/index.tsx:824
 msgid "Parent"
 msgstr "பெற்றோர்"
@@ -1630,7 +1696,7 @@ msgstr "Passkeyக்கள்"
 msgid "Pattern (regex)"
 msgstr "வடிவம் (regex)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:339
+#: src/routes/_authenticated/$crmId_.settings.tsx:403
 msgid "Permanently delete this CRM and all its content."
 msgstr "இந்த CRM மற்றும் அதன் அனைத்து உள்ளடக்கத்தையும் நிரந்தரமாக நீக்கவும்."
 
@@ -1639,9 +1705,18 @@ msgstr "இந்த CRM மற்றும் அதன் அனைத்த�
 msgid "Please add one or more classes to the CRM design."
 msgstr "CRM டிசைனில் ஒன்று அல்லது அதற்கு மேற்பட்ட கிளாஸ்களைச் சேர்க்கவும்."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:295
 msgid "Please check your internet connection and try again."
 msgstr "உங்கள் இணைய இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr ""
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
@@ -1658,7 +1733,7 @@ msgstr "தனியுரிமை"
 msgid "Profile"
 msgstr "சுயவிவரம்"
 
-#: src/features/objects/components/object-detail-panel.tsx:319
+#: src/features/objects/components/object-detail-panel.tsx:291
 msgid "Properties"
 msgstr "பண்புகள்"
 
@@ -1678,8 +1753,8 @@ msgstr "நெடுவரிசைகளை மறுவரிசைப்ப�
 msgid "Re-register your passkeys on this server"
 msgstr "இந்த சேவையகத்தில் உங்கள் கடவுச்சாவிகளை மீண்டும் பதிவு செய்யவும்"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:191
 msgid "Recommended"
 msgstr "பரிந்துரைக்கப்பட்டது"
 
@@ -1747,7 +1822,7 @@ msgstr "ஆர்வத்தை அகற்று"
 msgid "Remove item"
 msgstr "உருப்படியை அகற்று"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:460
+#: src/routes/_authenticated/$crmId_.settings.tsx:660
 msgid "Removing access..."
 msgstr "அணுகலை அகற்றுகிறது..."
 
@@ -1840,7 +1915,7 @@ msgstr "சனிக்கிழமை"
 msgid "Save"
 msgstr "சேமி"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:151
+#: src/routes/_authenticated/$crmId_.settings.tsx:163
 msgid "Saving..."
 msgstr "சேமிக்கிறது..."
 
@@ -1890,8 +1965,8 @@ msgstr "இந்த காட்சியைத் தேடு, கவனி, 
 msgid "Search..."
 msgstr "தேடு..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:149
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "தேடுகிறது..."
@@ -1961,12 +2036,12 @@ msgstr "மின்னஞ்சல் அனுப்பு"
 msgid "Serif"
 msgstr "செரிஃப்"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:329
+#: src/routes/_authenticated/$crmId_.settings.tsx:393
 msgid "Server"
 msgstr "சர்வர்"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:251
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:277
 msgid "Server error"
 msgstr "சேவையகப் பிழை"
 
@@ -1976,14 +2051,18 @@ msgid "Server rules"
 msgstr "சேவையக விதிகள்"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "அமர்வு காலாவதியானது"
+#~ msgid "Session expired"
+#~ msgstr "அமர்வு காலாவதியானது"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
+msgid "Session expired. Please log in again."
+msgstr ""
 
 #: ../../../lib/web/src/components/travelling-picker.tsx:147
 msgid "Set origin and destination"
 msgstr "துவக்கம் மற்றும் சேருமிடத்தை அமை"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:449
+#: src/routes/_authenticated/$crmId_.settings.tsx:649
 msgid "Setting access..."
 msgstr "அணுகலை அமைக்கிறது..."
 
@@ -1992,9 +2071,9 @@ msgstr "அணுகலை அமைக்கிறது..."
 #: ../../../lib/web/src/components/layout/nav-user.tsx:84
 #: ../../../lib/web/src/components/layout/nav-user.tsx:148
 #: ../../../lib/web/src/components/layout/nav-user.tsx:198
-#: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:168
-#: src/routes/_authenticated/$crmId_.settings.tsx:191
+#: src/routes/_authenticated/$crmId_.settings.tsx:95
+#: src/routes/_authenticated/$crmId_.settings.tsx:180
+#: src/routes/_authenticated/$crmId_.settings.tsx:203
 #: src/routes/_authenticated/$crmId/index.tsx:969
 msgid "Settings"
 msgstr "அமைப்புகள்"
@@ -2064,8 +2143,8 @@ msgstr "முதல் கருத்தை சேர்த்து விவ
 msgid "Stay tuned though!"
 msgstr "எனினும் காத்திருங்கள்!"
 
-#: src/features/objects/components/object-detail-panel.tsx:350
-#: src/features/objects/components/object-detail-panel.tsx:359
+#: src/features/objects/components/object-detail-panel.tsx:322
+#: src/features/objects/components/object-detail-panel.tsx:331
 msgid "Stop watching"
 msgstr "பார்ப்பதை நிறுத்து"
 
@@ -2144,6 +2223,10 @@ msgstr "உரை"
 msgid "That code is incorrect or has expired."
 msgstr "அந்தக் குறியீடு தவறானது அல்லது காலாவதியாகிவிட்டது."
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr ""
+
 #: ../../../lib/web/src/components/config-drawer.tsx:194
 msgid "Theme"
 msgstr "தீம்"
@@ -2152,16 +2235,21 @@ msgstr "தீம்"
 msgid "Theme Settings"
 msgstr "தீம் அமைப்புகள்"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:211
+#: src/routes/_authenticated/$crmId_.settings.tsx:223
 msgid "This CRM could not be loaded right now."
 msgstr "இந்த CRM-ஐ இப்போது ஏற்ற முடியவில்லை."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:211
+#: src/routes/_authenticated/$crmId_.settings.tsx:223
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "இந்த CRM நீக்கப்பட்டிருக்கலாம் அல்லது உங்களுக்கு அதற்கான அணுகல் இல்லை."
 
+#. placeholder {0}: pendingDataImport?.label
+#: src/routes/_authenticated/$crmId_.settings.tsx:464
+msgid "This will import the data from <0>{0}</0>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file."
+msgstr ""
+
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:358
+#: src/routes/_authenticated/$crmId_.settings.tsx:441
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "இது \"{0}\" மற்றும் அதன் அனைத்து பொருள்கள், கருத்துகள் மற்றும் இணைப்புகளை நிரந்தரமாக நீக்கும். இந்த செயலை திரும்ப மாற்ற முடியாது."
 
@@ -2227,6 +2315,10 @@ msgstr "காட்சி விருப்பங்களை மாற்ற�
 msgid "Toggle watched filter"
 msgstr "கவனிக்கப்பட்ட வடிகட்டியை மாற்று"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "மேல்"
@@ -2239,13 +2331,13 @@ msgstr "உச்ச நிலை"
 msgid "Travelling"
 msgstr "பயணிக்கிறது"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:165
 msgid "Try adjusting your search terms"
 msgstr "உங்கள் தேடல் சொற்களை சரிசெய்ய முயற்சி செய்யுங்கள்"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "மீண்டும் முயற்சி செய்"
@@ -2271,7 +2363,7 @@ msgstr "பயனர்களை தேட தட்டச்சு செய்
 msgid "Type to search..."
 msgstr "தேட தட்டச்சு செய்..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:273
 msgid "Unable to connect to remote server"
 msgstr "தொலை சேவையகத்துடன் இணைக்க முடியவில்லை"
 
@@ -2280,7 +2372,7 @@ msgstr "தொலை சேவையகத்துடன் இணைக்க 
 msgid "Unable to redirect to login. Please try again."
 msgstr "உள்நுழைவுக்கு திருப்பி விட முடியவில்லை. தயவுசெய்து மீண்டும் முயற்சி செய்யுங்கள்."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "ஒதுக்கப்படாதது"
 
@@ -2317,8 +2409,8 @@ msgstr "சந்தா நீக்குகிறது..."
 #: src/features/board/components/board-card.tsx:81
 #: src/features/board/components/board-card.tsx:82
 #: src/features/objects/components/create-object-dialog.tsx:163
-#: src/features/objects/components/object-detail-panel.tsx:311
-#: src/features/objects/components/object-detail-panel.tsx:315
+#: src/features/objects/components/object-detail-panel.tsx:283
+#: src/features/objects/components/object-detail-panel.tsx:287
 #: src/features/objects/components/object-links.tsx:71
 #: src/features/objects/components/object-links.tsx:153
 #: src/features/objects/components/object-links.tsx:165
@@ -2334,7 +2426,7 @@ msgstr "சரிபார்க்கப்படாதது"
 msgid "Updated"
 msgstr "புதுப்பிக்கப்பட்டது"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:474
+#: src/routes/_authenticated/$crmId_.settings.tsx:674
 msgid "Updating access..."
 msgstr "அணுகலைப் புதுப்பிக்கிறது..."
 
@@ -2343,6 +2435,7 @@ msgstr "அணுகலைப் புதுப்பிக்கிறது..
 msgid "Upload"
 msgstr "பதிவேற்று"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:553
 #: src/routes/_authenticated/$crmId/design.tsx:297
 msgid "Upload .json file"
 msgstr ".json கோப்பை பதிவேற்று"
@@ -2397,7 +2490,7 @@ msgstr "அனைத்தையும் காட்டு"
 msgid "View all notifications"
 msgstr "அனைத்து அறிவிப்புகளையும் காட்டு"
 
-#: src/features/objects/components/object-detail-panel.tsx:334
+#: src/features/objects/components/object-detail-panel.tsx:306
 msgid "View and edit item details"
 msgstr "உருப்படி விவரங்களை பார்த்து திருத்து"
 
@@ -2405,7 +2498,7 @@ msgstr "உருப்படி விவரங்களை பார்த்�
 msgid "View controls"
 msgstr "காட்சி கட்டுப்பாடுகள்"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:389
+#: src/routes/_authenticated/$crmId_.settings.tsx:589
 msgid "View only"
 msgstr "காட்சி மட்டும்"
 
@@ -2417,8 +2510,8 @@ msgstr "காட்சி விருப்பங்கள்"
 msgid "Views"
 msgstr "காட்சிகள்"
 
-#: src/features/objects/components/object-detail-panel.tsx:350
-#: src/features/objects/components/object-detail-panel.tsx:359
+#: src/features/objects/components/object-detail-panel.tsx:322
+#: src/features/objects/components/object-detail-panel.tsx:331
 msgid "Watch"
 msgstr "பார்"
 
@@ -2441,6 +2534,10 @@ msgstr "இணையதளம் பராமரிப்பில் உள்�
 #: ../../../lib/web/src/lib/preference-utils.ts:61
 msgid "Wednesday"
 msgstr "புதன்கிழமை"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/index.tsx:102
 msgid "You don't have access to this CRM."

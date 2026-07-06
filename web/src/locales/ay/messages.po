@@ -32,8 +32,8 @@ msgid "{0} - Design"
 msgstr "{0} ukan {1}{2}, clic luram apaqañataki"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
-#: src/routes/_authenticated/$crmId_.settings.tsx:223
+#: src/routes/_authenticated/$crmId_.settings.tsx:132
+#: src/routes/_authenticated/$crmId_.settings.tsx:235
 msgid "{0} settings"
 msgstr "{0} {1}-na tagiyata"
 
@@ -57,9 +57,13 @@ msgstr "24 hora"
 msgid "Absolute (date and time)"
 msgstr "Absoluto (uru ukat hora)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:84
+#: src/routes/_authenticated/$crmId_.settings.tsx:96
 msgid "Access"
 msgstr "Mantaña"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr ""
 
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
@@ -69,19 +73,19 @@ msgstr "Mantañ Jark'ata"
 msgid "Access level"
 msgstr "Mantañ tama"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:475
+#: src/routes/_authenticated/$crmId_.settings.tsx:675
 msgid "Access level updated"
 msgstr "Mantañ tama machaqachata"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:486
+#: src/routes/_authenticated/$crmId_.settings.tsx:686
 msgid "Access Management"
 msgstr "Mantaña Apnaqaña"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:461
+#: src/routes/_authenticated/$crmId_.settings.tsx:661
 msgid "Access removed"
 msgstr "Mantañ apaqata"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:450
+#: src/routes/_authenticated/$crmId_.settings.tsx:650
 msgid "Access set for {subjectName}"
 msgstr "Mantañ uchata {subjectName} taqi"
 
@@ -101,7 +105,7 @@ msgstr "Cuenta kasta"
 msgid "Account verified"
 msgstr "Cuenta uñakipata"
 
-#: src/features/objects/components/object-detail-panel.tsx:321
+#: src/features/objects/components/object-detail-panel.tsx:293
 msgid "Activity"
 msgstr "Lurawi"
 
@@ -177,7 +181,7 @@ msgstr "Machaq cuenta yapxataña"
 msgid "Add option"
 msgstr "Opción yapxataña"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:493
+#: src/routes/_authenticated/$crmId_.settings.tsx:693
 msgid "Add rule"
 msgstr "Kamachi yapxata"
 
@@ -230,16 +234,20 @@ msgstr "Akhamat ch'ulluwiñ iyawsaña"
 msgid "An error occurred"
 msgstr "Mä juch'a utjawayi"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:247
 msgid "An unexpected error occurred"
 msgstr "Jan suyt'ata juch'a utjawayi"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:233
+msgid "Another change was made at the same time. Please refresh to see the latest version."
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: src/features/objects/components/object-attachments.tsx:227
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Chiqpach \"{0}\" chhaqtayaña munta?"
 
-#: src/features/objects/components/object-detail-panel.tsx:533
+#: src/features/objects/components/object-detail-panel.tsx:496
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Chiqpach \"{title}\" chhaqtayaña munta? Aka lurawix janiw kuttayaski."
 
@@ -289,9 +297,9 @@ msgstr "Utjir teclado shortcuts"
 msgid "Back"
 msgstr "Kutta"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:170
-#: src/routes/_authenticated/$crmId_.settings.tsx:193
-#: src/routes/_authenticated/$crmId_.settings.tsx:225
+#: src/routes/_authenticated/$crmId_.settings.tsx:182
+#: src/routes/_authenticated/$crmId_.settings.tsx:205
+#: src/routes/_authenticated/$crmId_.settings.tsx:237
 #: src/routes/_authenticated/$crmId/design.tsx:134
 #: src/routes/_authenticated/$crmId/design.tsx:159
 msgid "Back to CRM"
@@ -347,6 +355,7 @@ msgstr "Wawanjaspawa"
 #: src/features/crms/components/create-crm-dialog.tsx:149
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
+#: src/routes/_authenticated/$crmId_.settings.tsx:560
 #: src/routes/_authenticated/$crmId/design.tsx:304
 #: src/routes/_authenticated/$crmId/index.tsx:1002
 msgid "Cancel"
@@ -357,12 +366,12 @@ msgstr "Jaytaña"
 msgid "Cancel reply"
 msgstr "Jaysawi jaytaña"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "Aka yatiyäw kasta"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "Yatiyäw kasta mayjt'ayaña"
 
@@ -502,12 +511,12 @@ msgstr "Jichhakiwa!"
 msgid "Comment actions"
 msgstr "Arxata luräwinaka"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:388
+#: src/routes/_authenticated/$crmId_.settings.tsx:588
 msgid "Comment and view"
 msgstr "Comentaña ukat uñakipaña"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:320
+#: src/features/objects/components/object-detail-panel.tsx:292
 msgid "Comments ({0})"
 msgstr "Comentarionaka ({0})"
 
@@ -549,7 +558,7 @@ msgstr "Sarantaña"
 msgid "Continue with {label}"
 msgstr "{label} ukampi sarantañani"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:487
+#: src/routes/_authenticated/$crmId_.settings.tsx:687
 msgid "Control who can view and interact with this CRM"
 msgstr "Khitis aka CRM uñjañ ukat interactuañ atki uka apnaqaña"
 
@@ -557,7 +566,7 @@ msgstr "Khitis aka CRM uñjañ ukat interactuañ atki uka apnaqaña"
 msgid "Copy"
 msgstr "Copiaña"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:295
+#: src/routes/_authenticated/$crmId_.settings.tsx:359
 msgid "Core information about this CRM"
 msgstr "Aka CRM tuqit core yatiyäwi"
 
@@ -609,7 +618,7 @@ msgstr "Machaq itim luraña"
 msgid "Create object"
 msgstr "Objeto luraña"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:387
+#: src/routes/_authenticated/$crmId_.settings.tsx:587
 msgid "Create, edit, comment, and view"
 msgstr "Luraña, askichaña, arsuña, ukat uñjaña"
 
@@ -636,23 +645,23 @@ msgstr "CRM lurawinaka"
 msgid "CRM created"
 msgstr "CRM lurata"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:130
+#: src/routes/_authenticated/$crmId_.settings.tsx:142
 msgid "CRM deleted"
 msgstr "CRM pichjatawa"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:208
+#: src/routes/_authenticated/$crmId_.settings.tsx:220
 msgid "CRM not found"
 msgstr "CRM jan jikxatata"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:132
 msgid "CRM settings"
 msgstr "CRM wakichäwinaka"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:208
+#: src/routes/_authenticated/$crmId_.settings.tsx:220
 msgid "CRM unavailable"
 msgstr "CRM jan utjki"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:164
 msgid "CRM updated"
 msgstr "CRM machaqachatawa"
 
@@ -680,6 +689,21 @@ msgstr "Ch'amaka"
 msgid "Dark mode"
 msgstr "Ch'amaka modo"
 
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:232
+msgid "Data conflict"
+msgstr ""
+
+#. placeholder {0}: response.data?.objects ?? 0
+#. placeholder {1}: response.data?.comments ?? 0
+#. placeholder {2}: response.data?.links ?? 0
+#: src/routes/_authenticated/$crmId_.settings.tsx:344
+msgid "Data imported ({0} objects, {1} comments, {2} links)"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:419
+msgid "Data management"
+msgstr ""
+
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "Uru"
@@ -706,8 +730,8 @@ msgstr "Default ch'ulluwi"
 #: src/features/objects/components/object-attachments.tsx:179
 #: src/features/objects/components/object-attachments.tsx:186
 #: src/features/objects/components/object-attachments.tsx:228
-#: src/features/objects/components/object-detail-panel.tsx:534
-#: src/routes/_authenticated/$crmId_.settings.tsx:348
+#: src/features/objects/components/object-detail-panel.tsx:497
+#: src/routes/_authenticated/$crmId_.settings.tsx:412
 msgid "Delete"
 msgstr "Chhaqtayaña"
 
@@ -727,15 +751,15 @@ msgstr "Columna chhaqtayaña"
 msgid "Delete comment"
 msgstr "Comentario chhaqtayaña"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:338
+#: src/routes/_authenticated/$crmId_.settings.tsx:402
 msgid "Delete crm"
 msgstr "Crm chhaqtayaña"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:359
+#: src/routes/_authenticated/$crmId_.settings.tsx:442
 msgid "Delete CRM"
 msgstr "CRM chhaqtayaña"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:357
+#: src/routes/_authenticated/$crmId_.settings.tsx:440
 msgid "Delete CRM?"
 msgstr "CRM chhaqtayaña?"
 
@@ -743,9 +767,9 @@ msgstr "CRM chhaqtayaña?"
 msgid "Delete field"
 msgstr "Campo chhaqtayaña"
 
-#: src/features/objects/components/object-detail-panel.tsx:369
-#: src/features/objects/components/object-detail-panel.tsx:374
-#: src/features/objects/components/object-detail-panel.tsx:532
+#: src/features/objects/components/object-detail-panel.tsx:341
+#: src/features/objects/components/object-detail-panel.tsx:346
+#: src/features/objects/components/object-detail-panel.tsx:495
 msgid "Delete item"
 msgstr "Itim chhaqtayaña"
 
@@ -767,7 +791,7 @@ msgstr "Uñacht'awi chhaqtayaña"
 msgid "Delete your account on the old server"
 msgstr "Jilata servidor jach'a ukana cuenta juchut'aña"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:129
+#: src/routes/_authenticated/$crmId_.settings.tsx:141
 msgid "Deleting CRM..."
 msgstr "CRM pichsuskani..."
 
@@ -779,7 +803,7 @@ msgstr "Desc"
 msgid "Descending"
 msgstr "Aynacharu"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:308
+#: src/routes/_authenticated/$crmId_.settings.tsx:372
 msgid "Description"
 msgstr "Uñacht'awi"
 
@@ -793,7 +817,7 @@ msgstr "Diseño"
 msgid "Design imported"
 msgstr "Diseño apanitata"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:386
+#: src/routes/_authenticated/$crmId_.settings.tsx:586
 msgid "Design, create, edit, comment, and view"
 msgstr "Lurawi, luraña, askichaña, arsuña, ukat uñjaña"
 
@@ -833,7 +857,7 @@ msgstr "Móvil sidebar uñacht'ayi."
 #: src/features/editor/components/edit-dialogs.tsx:524
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
-#: src/features/objects/components/object-detail-panel.tsx:383
+#: src/features/objects/components/object-detail-panel.tsx:355
 msgid "Done"
 msgstr "Tukuyata"
 
@@ -846,6 +870,7 @@ msgstr "Mä columnaru paypach apnaqaña contenido yapxatañataki"
 msgid "Download"
 msgstr "Apaqaña"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:484
 #: src/routes/_authenticated/$crmId/design.tsx:226
 msgid "Download backup first"
 msgstr "Nayraqat backup apaqaña"
@@ -917,11 +942,11 @@ msgstr "Correo electrónico ukankir código uchma"
 msgid "Enter your authenticator code"
 msgstr "Autenticador codigoma uchma"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:315
+#: src/routes/_authenticated/$crmId_.settings.tsx:379
 msgid "Entity ID"
 msgstr "Entidad ID"
 
-#: src/features/objects/components/object-detail-panel.tsx:290
+#: src/features/objects/components/object-detail-panel.tsx:262
 msgid "Error"
 msgstr "Pantjata"
 
@@ -940,9 +965,17 @@ msgstr "Sidebar jach'achaña"
 msgid "Export CSV"
 msgstr "CSV mistuyaña"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:425
+msgid "Export data"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId/design.tsx:174
 msgid "Export design"
 msgstr "Diseño mistuyaña"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:420
+msgid "Export or import the raw data content in this CRM."
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
@@ -984,7 +1017,7 @@ msgstr "Janiw archivo apxata chhaqtayaña atinkti"
 msgid "Failed to delete comment"
 msgstr "Janiw comentario chhaqtayaña atinkti"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:131
+#: src/routes/_authenticated/$crmId_.settings.tsx:143
 msgid "Failed to delete CRM"
 msgstr "CRM pichsuña jan walt'kiti"
 
@@ -996,9 +1029,17 @@ msgstr "Janiw enlace chhaqtayaña atinkti"
 msgid "Failed to delete view"
 msgstr "Janiw uñjaña chhaqtayaña atinkti"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:330
+msgid "Failed to export data"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId/design.tsx:93
 msgid "Failed to export design"
 msgstr "Janiw diseño mistuyaña atinkti"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:349
+msgid "Failed to import data"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/design.tsx:114
 msgid "Failed to import design"
@@ -1018,7 +1059,7 @@ msgstr "Janiw CRM diseño apaqaña atinkti"
 msgid "Failed to load CRMs"
 msgstr "Janiw CRMnak apaqaña atinkti"
 
-#: src/features/objects/components/object-detail-panel.tsx:291
+#: src/features/objects/components/object-detail-panel.tsx:263
 msgid "Failed to load item"
 msgstr "Janiw item apaqaña atinkti"
 
@@ -1026,11 +1067,12 @@ msgstr "Janiw item apaqaña atinkti"
 msgid "Failed to post comment"
 msgstr "Janiw comentario apaña atinkti"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:522
 #: src/routes/_authenticated/$crmId/design.tsx:266
 msgid "Failed to read file"
 msgstr "Janiw archivo ullaña atinkti"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:462
+#: src/routes/_authenticated/$crmId_.settings.tsx:662
 msgid "Failed to remove access"
 msgstr "Janiw acceso apsuña atinkti"
 
@@ -1050,7 +1092,7 @@ msgstr "Janiw uñjaña wasitat aski uñstayaña atinkti"
 msgid "Failed to send verification code"
 msgstr "Janiw verificación código apayaña atinkti"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:451
+#: src/routes/_authenticated/$crmId_.settings.tsx:651
 msgid "Failed to set access level"
 msgstr "Janiw acceso patxa uchaña atinkti"
 
@@ -1065,11 +1107,11 @@ msgstr "Janiw suscribiña atinkti"
 msgid "Failed to unsubscribe"
 msgstr "Janiw suscripción jaytaña atinkti"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:476
+#: src/routes/_authenticated/$crmId_.settings.tsx:676
 msgid "Failed to update access level"
 msgstr "Janiw acceso patxa machaqachaña atinkti"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "Janiw categoría machaqachaña atinkti"
 
@@ -1077,7 +1119,7 @@ msgstr "Janiw categoría machaqachaña atinkti"
 msgid "Failed to update comment"
 msgstr "Janiw comentario machaqachaña atinkti"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:153
+#: src/routes/_authenticated/$crmId_.settings.tsx:165
 msgid "Failed to update crm"
 msgstr "Janiw crm machaqachaña atinkti"
 
@@ -1104,7 +1146,7 @@ msgstr "Archivonaka"
 msgid "Find CRMs"
 msgstr "CRMnak jikxataña"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:320
+#: src/routes/_authenticated/$crmId_.settings.tsx:384
 msgid "Fingerprint"
 msgstr "Fingerprint"
 
@@ -1202,7 +1244,7 @@ msgstr "Junt'u"
 msgid "ID"
 msgstr "ID"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:294
+#: src/routes/_authenticated/$crmId_.settings.tsx:358
 msgid "Identity"
 msgstr "Identidad"
 
@@ -1210,14 +1252,32 @@ msgstr "Identidad"
 msgid "Imperial"
 msgstr "Imperial"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:535
+msgid "Import a data configuration"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId/design.tsx:279
 msgid "Import a design configuration"
 msgstr "Mä diseño configuración mantayaña"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:430
+#: src/routes/_authenticated/$crmId_.settings.tsx:476
+#: src/routes/_authenticated/$crmId_.settings.tsx:534
+msgid "Import data"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:462
+msgid "Import data?"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/design.tsx:178
 #: src/routes/_authenticated/$crmId/design.tsx:278
 msgid "Import design"
 msgstr "Diseño mantayaña"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:473
+msgid "Importing..."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:252
 msgid "Inset"
@@ -1231,6 +1291,7 @@ msgstr "Interesanaka"
 msgid "Invalid date"
 msgstr "Jan wakisir fecha"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:518
 #: src/routes/_authenticated/$crmId/design.tsx:262
 msgid "Invalid JSON file"
 msgstr "Jan wakisir JSON archivo"
@@ -1239,7 +1300,7 @@ msgstr "Jan wakisir JSON archivo"
 msgid "Invalid verification code"
 msgstr "Jan wakisir verificación código"
 
-#: src/features/objects/components/object-detail-panel.tsx:333
+#: src/features/objects/components/object-detail-panel.tsx:305
 msgid "Item details"
 msgstr "Item detallenaka"
 
@@ -1287,11 +1348,11 @@ msgstr "Jukamp apaqaña"
 msgid "Loading content…"
 msgstr "Contenido aptañataki…"
 
-#: src/features/objects/components/object-detail-panel.tsx:274
+#: src/features/objects/components/object-detail-panel.tsx:246
 msgid "Loading item"
 msgstr "Item apaqaskiwa"
 
-#: src/features/objects/components/object-detail-panel.tsx:275
+#: src/features/objects/components/object-detail-panel.tsx:247
 msgid "Loading item details"
 msgstr "Item detallenak apaqaskiwa"
 
@@ -1363,7 +1424,7 @@ msgstr "Lunes"
 #: src/features/editor/components/edit-dialogs.tsx:730
 #: src/features/editor/components/edit-dialogs.tsx:1032
 #: src/features/editor/components/option-dialog.tsx:112
-#: src/routes/_authenticated/$crmId_.settings.tsx:299
+#: src/routes/_authenticated/$crmId_.settings.tsx:363
 msgid "Name"
 msgstr "Suti"
 
@@ -1371,7 +1432,8 @@ msgstr "Suti"
 msgid "Name is required"
 msgstr "Suti munaski"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:294
 msgid "Network error"
 msgstr "Red juch'a"
 
@@ -1396,7 +1458,7 @@ msgstr "Arkiri imagen"
 msgid "No {parentClassNames} to add to"
 msgstr "Jan {parentClassNames} yapxatañataki"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:390
+#: src/routes/_authenticated/$crmId_.settings.tsx:590
 msgid "No access"
 msgstr "Jan mantañ"
 
@@ -1464,7 +1526,7 @@ msgstr "Jan estado"
 msgid "No time zone found."
 msgstr "Tiempo zona jan jikxatasiti."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "Janira topic registro — arkiri yatiyawi qhipxaru sumat'asma."
 
@@ -1491,16 +1553,20 @@ msgstr "Jan uñjawinak"
 #: src/features/objects/components/create-object-dialog.tsx:384
 #: src/features/objects/components/create-object-dialog.tsx:387
 #: src/features/objects/components/create-object-dialog.tsx:391
-#: src/features/objects/components/object-detail-panel.tsx:448
-#: src/features/objects/components/object-detail-panel.tsx:461
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:468
+#: src/features/objects/components/object-detail-panel.tsx:413
+#: src/features/objects/components/object-detail-panel.tsx:426
+#: src/features/objects/components/object-detail-panel.tsx:429
+#: src/features/objects/components/object-detail-panel.tsx:433
 msgid "None"
 msgstr "Janiwa"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:134
 msgid "Normal"
 msgstr "Walja"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:146
 msgid "Not set"
@@ -1609,7 +1675,7 @@ msgid "Owner"
 msgstr "Dueño"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
-#: src/features/objects/components/object-detail-panel.tsx:442
+#: src/features/objects/components/object-detail-panel.tsx:407
 #: src/routes/_authenticated/$crmId/index.tsx:824
 msgid "Parent"
 msgstr "Awki"
@@ -1630,7 +1696,7 @@ msgstr "Passkeyanaka"
 msgid "Pattern (regex)"
 msgstr "Patrón (regex)"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:339
+#: src/routes/_authenticated/$crmId_.settings.tsx:403
 msgid "Permanently delete this CRM and all its content."
 msgstr "Aka CRM ukamp taqi contenidopa wiñayaru jiwayma."
 
@@ -1639,9 +1705,18 @@ msgstr "Aka CRM ukamp taqi contenidopa wiñayaru jiwayma."
 msgid "Please add one or more classes to the CRM design."
 msgstr "Mayni jan ukax juk'amp clase CRM diseño taypi yapxatma."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:295
 msgid "Please check your internet connection and try again."
 msgstr "Mira internet conexion ukat wasitat yant'asim."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr ""
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
@@ -1658,7 +1733,7 @@ msgstr "Imantawi"
 msgid "Profile"
 msgstr "Perfil"
 
-#: src/features/objects/components/object-detail-panel.tsx:319
+#: src/features/objects/components/object-detail-panel.tsx:291
 msgid "Properties"
 msgstr "Propiedadanaka"
 
@@ -1678,8 +1753,8 @@ msgstr "Columnanak machaqamp ordenma"
 msgid "Re-register your passkeys on this server"
 msgstr "Aka servidoran passkeysniykita wasitata qillqantañani"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:191
 msgid "Recommended"
 msgstr "Recomendata"
 
@@ -1747,7 +1822,7 @@ msgstr "Interés aparma"
 msgid "Remove item"
 msgstr "Item aparma"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:460
+#: src/routes/_authenticated/$crmId_.settings.tsx:660
 msgid "Removing access..."
 msgstr "Mantañ apsuskani..."
 
@@ -1840,7 +1915,7 @@ msgstr "Kharminthi"
 msgid "Save"
 msgstr "Imaña"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:151
+#: src/routes/_authenticated/$crmId_.settings.tsx:163
 msgid "Saving..."
 msgstr "Imaski..."
 
@@ -1890,8 +1965,8 @@ msgstr "Aka uñjawi thaqhama, uñjama, ordenma."
 msgid "Search..."
 msgstr "Thaqhama..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:149
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Thaqhaski..."
@@ -1961,12 +2036,12 @@ msgstr "Email apayaña"
 msgid "Serif"
 msgstr "Serif"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:329
+#: src/routes/_authenticated/$crmId_.settings.tsx:393
 msgid "Server"
 msgstr "Servidor"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:251
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:277
 msgid "Server error"
 msgstr "Servidor juch'a"
 
@@ -1976,14 +2051,18 @@ msgid "Server rules"
 msgstr "Servidor reglas"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "Sesión tukusi"
+#~ msgid "Session expired"
+#~ msgstr "Sesión tukusi"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
+msgid "Session expired. Please log in again."
+msgstr ""
 
 #: ../../../lib/web/src/components/travelling-picker.tsx:147
 msgid "Set origin and destination"
 msgstr "Origen ukat destino uñstayaña"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:449
+#: src/routes/_authenticated/$crmId_.settings.tsx:649
 msgid "Setting access..."
 msgstr "Mantaña uchaskani..."
 
@@ -1992,9 +2071,9 @@ msgstr "Mantaña uchaskani..."
 #: ../../../lib/web/src/components/layout/nav-user.tsx:84
 #: ../../../lib/web/src/components/layout/nav-user.tsx:148
 #: ../../../lib/web/src/components/layout/nav-user.tsx:198
-#: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:168
-#: src/routes/_authenticated/$crmId_.settings.tsx:191
+#: src/routes/_authenticated/$crmId_.settings.tsx:95
+#: src/routes/_authenticated/$crmId_.settings.tsx:180
+#: src/routes/_authenticated/$crmId_.settings.tsx:203
 #: src/routes/_authenticated/$crmId/index.tsx:969
 msgid "Settings"
 msgstr "Configuración"
@@ -2064,8 +2143,8 @@ msgstr "Discusión qalltam, nayrïr comentario yapxatata."
 msgid "Stay tuned though!"
 msgstr "Suyt'asipkakim!"
 
-#: src/features/objects/components/object-detail-panel.tsx:350
-#: src/features/objects/components/object-detail-panel.tsx:359
+#: src/features/objects/components/object-detail-panel.tsx:322
+#: src/features/objects/components/object-detail-panel.tsx:331
 msgid "Stop watching"
 msgstr "Uñch'ukiñ tukuyaña"
 
@@ -2144,6 +2223,10 @@ msgstr "Texto"
 msgid "That code is incorrect or has expired."
 msgstr "Uka codigox jan walikiti jan ukax tukutawa."
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr ""
+
 #: ../../../lib/web/src/components/config-drawer.tsx:194
 msgid "Theme"
 msgstr "Tema Configuración"
@@ -2152,16 +2235,21 @@ msgstr "Tema Configuración"
 msgid "Theme Settings"
 msgstr "Tema machaqachata"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:211
+#: src/routes/_authenticated/$crmId_.settings.tsx:223
 msgid "This CRM could not be loaded right now."
 msgstr "Aka CRM apaqatat sasinx mayniru sapt'asiwayi, jan ukax janiw mantawimäkiti."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:211
+#: src/routes/_authenticated/$crmId_.settings.tsx:223
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Akax janiw kut'ayatakit. Wiñayatak wiki taqpach contenidopampi apaqatani."
 
+#. placeholder {0}: pendingDataImport?.label
+#: src/routes/_authenticated/$crmId_.settings.tsx:464
+msgid "This will import the data from <0>{0}</0>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file."
+msgstr ""
+
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:358
+#: src/routes/_authenticated/$crmId_.settings.tsx:441
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Akax wiñayatak \"{0}\" taqpach postnakapampi ukat comentarionakapampi apaqatani. Aka acción janiw kut'ayatakiti."
 
@@ -2227,6 +2315,10 @@ msgstr "Uñjat filtro cambiaña"
 msgid "Toggle watched filter"
 msgstr "Token clipboard ukar copyata"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "Patxa nivel"
@@ -2239,13 +2331,13 @@ msgstr "Temas"
 msgid "Travelling"
 msgstr "Yaqha thaqhañ término yant'am"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:165
 msgid "Try adjusting your search terms"
 msgstr "Mayamp yant'am"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "Yaqha thaqhañ términonak yant'am."
@@ -2271,7 +2363,7 @@ msgstr "Thaqhañatak qillqam..."
 msgid "Type to search..."
 msgstr "Mensajemam qillqam…"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:273
 msgid "Unable to connect to remote server"
 msgstr "Jan jaya servidorar mayachasiñjamäkiti"
 
@@ -2280,7 +2372,7 @@ msgstr "Jan jaya servidorar mayachasiñjamäkiti"
 msgid "Unable to redirect to login. Please try again."
 msgstr "Feeds servicio ukamp sync lurañ janiw atkiti. Cacheata datos uñstayata."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "Janiw permitidakit"
 
@@ -2317,8 +2409,8 @@ msgstr "Suscripción jaytasa…"
 #: src/features/board/components/board-card.tsx:81
 #: src/features/board/components/board-card.tsx:82
 #: src/features/objects/components/create-object-dialog.tsx:163
-#: src/features/objects/components/object-detail-panel.tsx:311
-#: src/features/objects/components/object-detail-panel.tsx:315
+#: src/features/objects/components/object-detail-panel.tsx:283
+#: src/features/objects/components/object-detail-panel.tsx:287
 #: src/features/objects/components/object-links.tsx:71
 #: src/features/objects/components/object-links.tsx:153
 #: src/features/objects/components/object-links.tsx:165
@@ -2334,7 +2426,7 @@ msgstr "Machaqachaña"
 msgid "Updated"
 msgstr "{0}-na machaqachata"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:474
+#: src/routes/_authenticated/$crmId_.settings.tsx:674
 msgid "Updating access..."
 msgstr "Mantaña machaqachaskani..."
 
@@ -2343,6 +2435,7 @@ msgstr "Mantaña machaqachaskani..."
 msgid "Upload"
 msgstr ".json archivo apayaña"
 
+#: src/routes/_authenticated/$crmId_.settings.tsx:553
 #: src/routes/_authenticated/$crmId/design.tsx:297
 msgid "Upload .json file"
 msgstr "Machaq Versión Apayaña"
@@ -2397,7 +2490,7 @@ msgstr "Taqi yatiyawinaka uñjaña"
 msgid "View all notifications"
 msgstr "Taqi posts uñjaña"
 
-#: src/features/objects/components/object-detail-panel.tsx:334
+#: src/features/objects/components/object-detail-panel.tsx:306
 msgid "View and edit item details"
 msgstr "Aka apnaqirin activa sesionanak uñjaña ukat jaytaña."
 
@@ -2405,7 +2498,7 @@ msgstr "Aka apnaqirin activa sesionanak uñjaña ukat jaytaña."
 msgid "View controls"
 msgstr "Uñjañaki"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:389
+#: src/routes/_authenticated/$crmId_.settings.tsx:589
 msgid "View only"
 msgstr "Uñjañ opcionanaka"
 
@@ -2417,8 +2510,8 @@ msgstr "{0} foto uñjaña"
 msgid "Views"
 msgstr "Nuwasiña"
 
-#: src/features/objects/components/object-detail-panel.tsx:350
-#: src/features/objects/components/object-detail-panel.tsx:359
+#: src/features/objects/components/object-detail-panel.tsx:322
+#: src/features/objects/components/object-detail-panel.tsx:331
 msgid "Watch"
 msgstr "Uñch'ukita"
 
@@ -2441,6 +2534,10 @@ msgstr "Miércoles"
 #: ../../../lib/web/src/lib/preference-utils.ts:61
 msgid "Wednesday"
 msgstr "Semanax aka uru qalltani"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/index.tsx:102
 msgid "You don't have access to this CRM."
