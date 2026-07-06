@@ -4572,6 +4572,32 @@ def action_probe(a):
 		a.error.label(400, "errors.no_url_provided")
 		return
 
+	# mochi://<peer>/<entity> - a share link pins the owner's peer directly,
+	# so a private CRM (never directory-listed) resolves without a hostname.
+	if url.startswith("mochi://"):
+		rest = url[len("mochi://"):]
+		if "/" not in rest:
+			a.error.label(400, "errors.invalid_data")
+			return
+		link_peer, path = rest.split("/", 1)
+		link_crm = path.split("/")[0]
+		if not link_peer or not mochi.text.valid(link_crm, "entity"):
+			a.error.label(400, "errors.invalid_data")
+			return
+		response = mochi.remote.request(link_crm, "crm", "info", {"crm": link_crm}, link_peer)
+		if response.get("error"):
+			a.error(response.get("code", 404), response["error"])
+			return
+		return {"data": {
+			"id": link_crm,
+			"name": response.get("name", ""),
+			"description": response.get("description", ""),
+			"fingerprint": response.get("fingerprint", ""),
+			"class": "crm",
+			"peer": link_peer,  # subscribe pins the same peer for its initial sync
+			"remote": True
+		}}
+
 	# Parse URL to extract server and crm ID
 	# Expected formats:
 	#   https://example.com/crm/ENTITY_ID
@@ -4682,11 +4708,29 @@ def action_templates(a):
 	return {"data": {"templates": templates.values()}}
 
 # Subscribe to a remote crm
+# Produce a mochi://<server-peer>/<crm> share link for a CRM the caller owns.
+# The link conveys location only - the subscriber still needs an explicit view
+# grant (event_subscribe checks check_crm_access) (#209).
+def action_share(a): # crm_share
+	if not a.user:
+		a.error.label(401, "errors.not_logged_in")
+		return
+	crm_id = a.input("crm")
+	if not mochi.text.valid(crm_id, "entity"):
+		a.error.label(400, "errors.invalid_data")
+		return
+	if not mochi.db.exists("select id from crms where id=? and owner=1", crm_id):
+		a.error.label(403, "errors.access_denied")
+		return
+	peer = mochi.server.id()
+	return {"data": {"link": "mochi://" + peer + "/" + crm_id, "peer": peer, "crm": crm_id}}
+
 def action_subscribe(a):
 	user_id = a.user.identity.id
 
 	crm_id = a.input("crm")
 	server = a.input("server")
+	peer = a.input("peer")  # from a mochi://<peer>/<crm> share link
 	if not mochi.text.valid(crm_id, "entity"):
 		a.error.label(400, "errors.invalid_crm_id")
 		return
@@ -4702,8 +4746,9 @@ def action_subscribe(a):
 
 	# Get crm info from remote or directory
 	schema = None
-	if server:
-		peer = mochi.remote.peer(server)
+	if peer or server:
+		if not peer:
+			peer = mochi.remote.peer(server)
 		if not peer:
 			a.error.label(502, "errors.unable_to_connect_to_server")
 			return
@@ -4747,8 +4792,12 @@ def action_subscribe(a):
 	if schema and not schema.get("error"):
 		insert_schema(crm_id, schema)
 
-	# Send P2P subscribe message to crm owner
-	mochi.message.send(p2p_headers(user_id, crm_id, "subscribe"), {"name": a.user.identity.name})
+	# Send P2P subscribe message to crm owner. A private CRM is not in the
+	# directory, so when the subscription came via a share link, pin that peer.
+	if peer:
+		mochi.message.send.peer(peer, p2p_headers(user_id, crm_id, "subscribe"), {"name": a.user.identity.name})
+	else:
+		mochi.message.send(p2p_headers(user_id, crm_id, "subscribe"), {"name": a.user.identity.name})
 	mochi.broadcast.touch(crm_id)
 
 	return {"data": {"fingerprint": fp}}

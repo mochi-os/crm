@@ -13,6 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. js-lingui-explicit-id
+#: ../../../lib/web/src/lib/error-normalizer.ts:204
+msgid "Please check your internet connection and try again."
+msgstr ""
+
 #: src/features/objects/components/create-object-dialog.tsx:179
 msgid " or "
 msgstr " אָדער "
@@ -105,7 +110,7 @@ msgstr "קאָנטע סאָרט"
 msgid "Account verified"
 msgstr "קאָנטע באַשטעטיקט"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: src/features/objects/components/object-detail-panel.tsx:321
 msgid "Activity"
 msgstr "אַקטיוויטעט"
 
@@ -150,8 +155,8 @@ msgstr "צולייגן טשעקליסטע פּונקט"
 msgid "Add class"
 msgstr "צולייגן קלאַס"
 
-#: src/routes/_authenticated/$crmId/index.tsx:940
-#: src/routes/_authenticated/$crmId/index.tsx:1123
+#: src/routes/_authenticated/$crmId/index.tsx:972
+#: src/routes/_authenticated/$crmId/index.tsx:1161
 msgid "Add column"
 msgstr "צולייגן זײַל"
 
@@ -234,12 +239,16 @@ msgstr "דערלויבן סאָרטירן לויט"
 msgid "An error occurred"
 msgstr "אַ פֿעלער איז פֿאָרגעקומען"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:247
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "אַן אומדערוואַרטעטער פֿעלער איז פֿאָרגעקומען"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:233
-msgid "Another change was made at the same time. Please refresh to see the latest version."
+#~ msgid "Another change was made at the same time. Please refresh to see the latest version."
+#~ msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx:1168
+msgid "Anyone you give access to can subscribe with this link."
 msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
@@ -247,7 +256,7 @@ msgstr ""
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "זענט איר זיכער איר ווילט אויסמעקן \"{0}\"?"
 
-#: src/features/objects/components/object-detail-panel.tsx:496
+#: src/features/objects/components/object-detail-panel.tsx:533
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "זענט איר זיכער איר ווילט אויסמעקן \"{title}\"? די אַקציע קען נישט ווערן אומגעקערט."
 
@@ -306,7 +315,7 @@ msgid "Back to CRM"
 msgstr "צוריק צו CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:116
+#: src/routes/_authenticated/$crmId/index.tsx:123
 msgid "Back to CRMs"
 msgstr "צוריק צו CRMs"
 
@@ -357,7 +366,7 @@ msgstr "קען זײַן קינד פֿון"
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId_.settings.tsx:560
 #: src/routes/_authenticated/$crmId/design.tsx:304
-#: src/routes/_authenticated/$crmId/index.tsx:1002
+#: src/routes/_authenticated/$crmId/index.tsx:1040
 msgid "Cancel"
 msgstr "אָפּזאָגן"
 
@@ -404,7 +413,7 @@ msgstr "קלײַבט צווישן סיסטעם פּרעפֿערענץ, ליכט�
 msgid "Choose language"
 msgstr "קלײַבט שפּראַך"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Class"
 msgstr "קלאַס"
 
@@ -516,7 +525,7 @@ msgid "Comment and view"
 msgstr "קאָמענטירן און זען"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:292
+#: src/features/objects/components/object-detail-panel.tsx:320
 msgid "Comments ({0})"
 msgstr "קאָמענטאַרן ({0})"
 
@@ -649,6 +658,10 @@ msgstr "CRM באַשאַפֿן"
 msgid "CRM deleted"
 msgstr "CRM אויסגעמעקט"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1166
+msgid "CRM link"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:220
 msgid "CRM not found"
 msgstr "CRM נישט געפֿונען"
@@ -689,7 +702,7 @@ msgstr "טונקל"
 msgid "Dark mode"
 msgstr "טונקלע מאָדע"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:232
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
 msgid "Data conflict"
 msgstr ""
 
@@ -730,7 +743,7 @@ msgstr "פֿאַרשטאַנדלעך סאָרט"
 #: src/features/objects/components/object-attachments.tsx:179
 #: src/features/objects/components/object-attachments.tsx:186
 #: src/features/objects/components/object-attachments.tsx:228
-#: src/features/objects/components/object-detail-panel.tsx:497
+#: src/features/objects/components/object-detail-panel.tsx:534
 #: src/routes/_authenticated/$crmId_.settings.tsx:412
 msgid "Delete"
 msgstr "אויסמעקן"
@@ -767,9 +780,9 @@ msgstr "אויסמעקן CRM?"
 msgid "Delete field"
 msgstr "אויסמעקן פֿעלד"
 
-#: src/features/objects/components/object-detail-panel.tsx:341
-#: src/features/objects/components/object-detail-panel.tsx:346
-#: src/features/objects/components/object-detail-panel.tsx:495
+#: src/features/objects/components/object-detail-panel.tsx:369
+#: src/features/objects/components/object-detail-panel.tsx:374
+#: src/features/objects/components/object-detail-panel.tsx:532
 msgid "Delete item"
 msgstr "אויסמעקן פּונקט"
 
@@ -809,7 +822,7 @@ msgstr "באַשרײַבונג"
 
 #: src/routes/_authenticated/$crmId/design.tsx:64
 #: src/routes/_authenticated/$crmId/design.tsx:132
-#: src/routes/_authenticated/$crmId/index.tsx:955
+#: src/routes/_authenticated/$crmId/index.tsx:987
 msgid "Design"
 msgstr "אויסזען"
 
@@ -845,8 +858,8 @@ msgstr "ריכטונג"
 msgid "Dismiss"
 msgstr "אַראָפּזאָגן"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1031
-#: src/routes/_authenticated/$crmId/index.tsx:1036
+#: src/routes/_authenticated/$crmId/index.tsx:1069
+#: src/routes/_authenticated/$crmId/index.tsx:1074
 msgid "Dismiss board hint"
 msgstr "אַראָפּזאָגן ברעט הינט"
 
@@ -857,11 +870,12 @@ msgstr "ווײַזט די מאָבילע סײַדבאַר."
 #: src/features/editor/components/edit-dialogs.tsx:524
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
-#: src/features/objects/components/object-detail-panel.tsx:355
+#: src/features/objects/components/object-detail-panel.tsx:383
+#: src/routes/_authenticated/$crmId/index.tsx:1178
 msgid "Done"
 msgstr "געטאָן"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1022
+#: src/routes/_authenticated/$crmId/index.tsx:1060
 msgid "Double click on a column to add content"
 msgstr "טאָפּלקליק אויף אַ זײַל צו צוגעבן אינהאַלט"
 
@@ -879,7 +893,7 @@ msgstr "לאָדט אַראָפּ זיכערונג צוערשט"
 msgid "Download failed"
 msgstr "אַראָפּלאָדן דורכגעפֿאַלן"
 
-#: src/routes/_authenticated/$crmId/index.tsx:998
+#: src/routes/_authenticated/$crmId/index.tsx:1036
 msgid "Drag columns to re-order them"
 msgstr "שלעפּט זײַלן צו רעאָרדענירן זיי"
 
@@ -946,7 +960,7 @@ msgstr "גיט אַרײַן אײַער אויטענטיפֿיקאַטאָר־ק�
 msgid "Entity ID"
 msgstr "ענטיטעט־ID"
 
-#: src/features/objects/components/object-detail-panel.tsx:262
+#: src/features/objects/components/object-detail-panel.tsx:290
 msgid "Error"
 msgstr "טעות"
 
@@ -961,7 +975,7 @@ msgstr "אויסשפּרייטן"
 msgid "Expand sidebar"
 msgstr "פֿאַרברייטערן זײַטלאַסט"
 
-#: src/routes/_authenticated/$crmId/index.tsx:961
+#: src/routes/_authenticated/$crmId/index.tsx:993
 msgid "Export CSV"
 msgstr "עקספּאָרטירן CSV"
 
@@ -998,6 +1012,7 @@ msgid "Failed to create field"
 msgstr "ניט געלונגען צו שאַפֿן פֿעלד"
 
 #: src/features/objects/components/object-links.tsx:103
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "Failed to create link"
 msgstr "ניט געלונגען צו שאַפֿן לינק"
 
@@ -1047,7 +1062,7 @@ msgstr "ניט געלונגען צו אימפּאָרטירן דיזײַן"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:43
 #: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:87
 msgid "Failed to load CRM"
 msgstr "ניט געלונגען צו לאָדן CRM"
 
@@ -1059,7 +1074,7 @@ msgstr "ניט געלונגען צו לאָדן CRM־דיזײַן"
 msgid "Failed to load CRMs"
 msgstr "ניט געלונגען צו לאָדן CRMs"
 
-#: src/features/objects/components/object-detail-panel.tsx:263
+#: src/features/objects/components/object-detail-panel.tsx:291
 msgid "Failed to load item"
 msgstr "ניט געלונגען צו לאָדן פּונקט"
 
@@ -1098,12 +1113,12 @@ msgstr "ניט געלונגען צו שטעלן צוטריט־ניוואָ"
 
 #: src/features/crms/components/inline-crm-search.tsx:102
 #: src/features/crms/components/recommended-crms.tsx:65
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:59
 msgid "Failed to subscribe"
 msgstr "ניט געלונגען צו אַבאָנירן"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:582
+#: src/routes/_authenticated/$crmId/index.tsx:614
 msgid "Failed to unsubscribe"
 msgstr "ניט געלונגען צו דעאַבאָנירן"
 
@@ -1142,7 +1157,7 @@ msgid "Files"
 msgstr "פֿײַלן"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:78
+#: src/routes/_authenticated/find.tsx:89
 msgid "Find CRMs"
 msgstr "געפֿינען CRMs"
 
@@ -1240,7 +1255,7 @@ msgstr "היים"
 msgid "Hot"
 msgstr "הייס"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "ID"
 msgstr "ID"
 
@@ -1300,7 +1315,7 @@ msgstr "ניט גילטיקע JSON־פֿײַל"
 msgid "Invalid verification code"
 msgstr "ניט גילטיקער פֿאַרזיכערונג־קאָד"
 
-#: src/features/objects/components/object-detail-panel.tsx:305
+#: src/features/objects/components/object-detail-panel.tsx:333
 msgid "Item details"
 msgstr "פּונקט־דעטאַלן"
 
@@ -1332,6 +1347,10 @@ msgstr "פֿון לינקס צו רעכטס"
 msgid "Light"
 msgstr "ליכטיק"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1007
+msgid "Link"
+msgstr ""
+
 #: src/features/objects/components/object-links.tsx:225
 msgid "Links"
 msgstr "לינקס"
@@ -1348,11 +1367,11 @@ msgstr "לאָדן מער"
 msgid "Loading content…"
 msgstr "לאָדט אינהאַלט…"
 
-#: src/features/objects/components/object-detail-panel.tsx:246
+#: src/features/objects/components/object-detail-panel.tsx:274
 msgid "Loading item"
 msgstr "לאָדט פּונקט"
 
-#: src/features/objects/components/object-detail-panel.tsx:247
+#: src/features/objects/components/object-detail-panel.tsx:275
 msgid "Loading item details"
 msgstr "לאָדט פּונקט־דעטאַלן"
 
@@ -1433,19 +1452,19 @@ msgid "Name is required"
 msgstr "נאָמען איז נייטיק"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:53
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:294
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "נעץ פֿעלער"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/features/objects/components/create-object-dialog.tsx:328
-#: src/routes/_authenticated/$crmId/index.tsx:895
-#: src/routes/_authenticated/$crmId/index.tsx:912
+#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:944
 msgid "New"
 msgstr "נײַ"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:893
+#: src/routes/_authenticated/$crmId/index.tsx:925
 msgid "New {0}"
 msgstr "נײַ {0}"
 
@@ -1479,7 +1498,7 @@ msgid "No connected accounts"
 msgstr "קיין פֿאַרבונדענע קאָנטעס"
 
 #: src/features/crms/components/inline-crm-search.tsx:150
-#: src/routes/_authenticated/find.tsx:80
+#: src/routes/_authenticated/find.tsx:91
 msgid "No CRMs found"
 msgstr "קיין CRMס ניט געפֿונען"
 
@@ -1495,7 +1514,7 @@ msgstr "קיין עלעמענט טיפּן קענען נאָך ניט זײַן �
 msgid "No matching objects"
 msgstr "קיין שטימענדיקע אָביעקטן"
 
-#: src/routes/_authenticated/$crmId/index.tsx:809
+#: src/routes/_authenticated/$crmId/index.tsx:841
 msgid "No objects to export."
 msgstr "קיין אָביעקטן צו עקספּאָרטירן."
 
@@ -1553,10 +1572,10 @@ msgstr "קיין קוקן"
 #: src/features/objects/components/create-object-dialog.tsx:384
 #: src/features/objects/components/create-object-dialog.tsx:387
 #: src/features/objects/components/create-object-dialog.tsx:391
-#: src/features/objects/components/object-detail-panel.tsx:413
-#: src/features/objects/components/object-detail-panel.tsx:426
-#: src/features/objects/components/object-detail-panel.tsx:429
-#: src/features/objects/components/object-detail-panel.tsx:433
+#: src/features/objects/components/object-detail-panel.tsx:448
+#: src/features/objects/components/object-detail-panel.tsx:461
+#: src/features/objects/components/object-detail-panel.tsx:464
+#: src/features/objects/components/object-detail-panel.tsx:468
 msgid "None"
 msgstr "קיינס"
 
@@ -1633,7 +1652,7 @@ msgstr "עפֿן נאַוויגאַציע מעניו"
 msgid "Open option actions"
 msgstr "עפֿן אָפּציע אַקציעס"
 
-#: src/routes/_authenticated/$crmId/index.tsx:920
+#: src/routes/_authenticated/$crmId/index.tsx:952
 msgid "Open page actions"
 msgstr "עפֿן זײַטל אַקציעס"
 
@@ -1675,8 +1694,8 @@ msgid "Owner"
 msgstr "אייגנטימער"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
-#: src/features/objects/components/object-detail-panel.tsx:407
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/features/objects/components/object-detail-panel.tsx:442
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Parent"
 msgstr "עלטער"
 
@@ -1700,13 +1719,13 @@ msgstr "מוסטער (regex)"
 msgid "Permanently delete this CRM and all its content."
 msgstr "אויסמעקן שטענדיק דעם CRM און אַלע זײַן אינהאַלט."
 
-#: src/routes/_authenticated/$crmId/index.tsx:690
-#: src/routes/_authenticated/$crmId/index.tsx:724
+#: src/routes/_authenticated/$crmId/index.tsx:722
+#: src/routes/_authenticated/$crmId/index.tsx:756
 msgid "Please add one or more classes to the CRM design."
 msgstr "זײַ אַזוי גוט און צולייג איין אָדער מער קלאַסן צו דעם CRM פּלאַן."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:295
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "זײַט אַזוי גוט קאָנטראָלירט אײַער אינטערנעץ פֿאַרבינדונג און פּרוּווט נאָך אַ מאָל."
 
@@ -1733,7 +1752,7 @@ msgstr "פּריוואַטקײַט"
 msgid "Profile"
 msgstr "פּראָפֿיל"
 
-#: src/features/objects/components/object-detail-panel.tsx:291
+#: src/features/objects/components/object-detail-panel.tsx:319
 msgid "Properties"
 msgstr "אייגנשאַפֿטן"
 
@@ -1745,7 +1764,7 @@ msgstr "אויפֿגעהויבן"
 msgid "Re-link your accounts on this server"
 msgstr "פארבינד ווידער דיינע קאנטעס אויף דעם סערווער"
 
-#: src/routes/_authenticated/$crmId/index.tsx:944
+#: src/routes/_authenticated/$crmId/index.tsx:976
 msgid "Re-order columns"
 msgstr "איבער-סדר זײַלן"
 
@@ -1754,7 +1773,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "רעגיסטרירט איבער אייערע צוטריט שליסלען אויף דעם סערווער"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:191
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "רעקאָמענדירט"
 
@@ -1911,7 +1930,7 @@ msgstr "שבת"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
 #: src/features/objects/components/comment-thread.tsx:199
-#: src/routes/_authenticated/$crmId/index.tsx:1014
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Save"
 msgstr "היט אויף"
 
@@ -1923,7 +1942,7 @@ msgstr "היטן..."
 msgid "Search"
 msgstr "זוך"
 
-#: src/routes/_authenticated/find.tsx:79
+#: src/routes/_authenticated/find.tsx:90
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "זוך לויט נאָמען, ID, פֿינגערפּרינט, אָדער URL..."
 
@@ -1966,7 +1985,7 @@ msgid "Search..."
 msgstr "זוך..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:149
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "זוכן..."
@@ -2040,8 +2059,8 @@ msgstr "סעריף"
 msgid "Server"
 msgstr "סערווער"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:251
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:277
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "סערווער פֿעלער"
 
@@ -2054,7 +2073,7 @@ msgstr "סערווער־כּללים"
 #~ msgid "Session expired"
 #~ msgstr "סעסיע אויסגעגאַנגען"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
 msgid "Session expired. Please log in again."
 msgstr ""
 
@@ -2074,7 +2093,7 @@ msgstr "באַשטעטיקן צוטריט..."
 #: src/routes/_authenticated/$crmId_.settings.tsx:95
 #: src/routes/_authenticated/$crmId_.settings.tsx:180
 #: src/routes/_authenticated/$crmId_.settings.tsx:203
-#: src/routes/_authenticated/$crmId/index.tsx:969
+#: src/routes/_authenticated/$crmId/index.tsx:1001
 msgid "Settings"
 msgstr "אײַנשטעלונגען"
 
@@ -2143,8 +2162,8 @@ msgstr "הייב אָן די דיסקוסיע מיטן צולייגן דעם ע�
 msgid "Stay tuned though!"
 msgstr "אָבער בלײַב צוגעבונדן!"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
-#: src/features/objects/components/object-detail-panel.tsx:331
+#: src/features/objects/components/object-detail-panel.tsx:350
+#: src/features/objects/components/object-detail-panel.tsx:359
 msgid "Stop watching"
 msgstr "הער אויף נאָכקוקן"
 
@@ -2168,7 +2187,7 @@ msgid "Subscribe"
 msgstr "אַבאָנירן"
 
 #: src/features/crms/components/inline-crm-search.tsx:101
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:58
 msgid "Subscribed"
 msgstr "אַבאָנירט"
 
@@ -2179,7 +2198,7 @@ msgstr "אַבאָנירט צו {0}"
 
 #: src/features/crms/components/inline-crm-search.tsx:100
 #: src/features/crms/components/recommended-crms.tsx:63
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:57
 msgid "Subscribing..."
 msgstr "אַבאָנירן..."
 
@@ -2254,7 +2273,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "דאָס וועט אויף שטענדיק אויסמעקן „{0}\" און אַלע זײַנע אָביעקטן, קאָמענטאַרן, און בייגלייגונגען. די אַקציע קאָן נישט ווערן צוריקגעקערט."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1130
+#: src/routes/_authenticated/$crmId/index.tsx:1188
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "דאָס וועט אַראָפּנעמען „{0}\" פֿון אײַער זײַטנשטאַנג און אויפֿהערן באַנײַונגען פֿאַר דעם CRM."
 
@@ -2332,7 +2351,7 @@ msgid "Travelling"
 msgstr "רײַזנדיק"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:165
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "פּרוּווט באַאַרבעטן אײַערע זוך־אויסדרוקן"
 
@@ -2363,7 +2382,7 @@ msgstr "טיפּט צו זוכן באַניצערס"
 msgid "Type to search..."
 msgstr "טיפּט צו זוכן..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:273
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "ניט געקענט פֿאַרבינדן צום ווײַטן סערווער"
 
@@ -2387,30 +2406,30 @@ msgstr "פֿאַראייניקטע שטאַטן"
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:975
-#: src/routes/_authenticated/$crmId/index.tsx:1131
+#: src/routes/_authenticated/$crmId/index.tsx:1013
+#: src/routes/_authenticated/$crmId/index.tsx:1189
 msgid "Unsubscribe"
 msgstr "אַבאַבאָנירן"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1129
+#: src/routes/_authenticated/$crmId/index.tsx:1187
 msgid "Unsubscribe from CRM?"
 msgstr "אַבאַבאָנירן פֿון CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:581
+#: src/routes/_authenticated/$crmId/index.tsx:613
 msgid "Unsubscribed"
 msgstr "אַבאַבאָנירט"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:580
+#: src/routes/_authenticated/$crmId/index.tsx:612
 msgid "Unsubscribing..."
 msgstr "אַבאַבאָנירן..."
 
 #: src/features/board/components/board-card.tsx:81
 #: src/features/board/components/board-card.tsx:82
 #: src/features/objects/components/create-object-dialog.tsx:163
-#: src/features/objects/components/object-detail-panel.tsx:283
-#: src/features/objects/components/object-detail-panel.tsx:287
+#: src/features/objects/components/object-detail-panel.tsx:311
+#: src/features/objects/components/object-detail-panel.tsx:315
 #: src/features/objects/components/object-links.tsx:71
 #: src/features/objects/components/object-links.tsx:153
 #: src/features/objects/components/object-links.tsx:165
@@ -2490,7 +2509,7 @@ msgstr "זע אַלץ"
 msgid "View all notifications"
 msgstr "זע אַלע נאָטיפֿיקאַציעס"
 
-#: src/features/objects/components/object-detail-panel.tsx:306
+#: src/features/objects/components/object-detail-panel.tsx:334
 msgid "View and edit item details"
 msgstr "זע און רעדאַקטיר אַרטיקל־פּרטים"
 
@@ -2502,7 +2521,7 @@ msgstr "בליק־קאָנטראָלן"
 msgid "View only"
 msgstr "בלויז זען"
 
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:961
 msgid "View options"
 msgstr "בליק־אָפּציעס"
 
@@ -2510,8 +2529,8 @@ msgstr "בליק־אָפּציעס"
 msgid "Views"
 msgstr "בליקן"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
-#: src/features/objects/components/object-detail-panel.tsx:331
+#: src/features/objects/components/object-detail-panel.tsx:350
+#: src/features/objects/components/object-detail-panel.tsx:359
 msgid "Watch"
 msgstr "נאָכקוק"
 
@@ -2539,7 +2558,7 @@ msgstr "מיטוואָך"
 msgid "You do not have access to this section."
 msgstr ""
 
-#: src/routes/_authenticated/$crmId/index.tsx:102
+#: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
 msgstr "איר האָט ניט קיין צוטריט צו דעם CRM."
 

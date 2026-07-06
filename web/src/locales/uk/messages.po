@@ -13,6 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. js-lingui-explicit-id
+#: ../../../lib/web/src/lib/error-normalizer.ts:204
+msgid "Please check your internet connection and try again."
+msgstr ""
+
 #: src/features/objects/components/create-object-dialog.tsx:179
 msgid " or "
 msgstr " або "
@@ -105,7 +110,7 @@ msgstr "Тип облікового запису"
 msgid "Account verified"
 msgstr "Обліковий запис підтверджено"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: src/features/objects/components/object-detail-panel.tsx:321
 msgid "Activity"
 msgstr "Активність"
 
@@ -150,8 +155,8 @@ msgstr "Додати пункт списку"
 msgid "Add class"
 msgstr "Додати клас"
 
-#: src/routes/_authenticated/$crmId/index.tsx:940
-#: src/routes/_authenticated/$crmId/index.tsx:1123
+#: src/routes/_authenticated/$crmId/index.tsx:972
+#: src/routes/_authenticated/$crmId/index.tsx:1161
 msgid "Add column"
 msgstr "Додати стовпець"
 
@@ -234,12 +239,16 @@ msgstr "Дозволити сортування за"
 msgid "An error occurred"
 msgstr "Сталася помилка"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:247
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "Сталася неочікувана помилка"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:233
-msgid "Another change was made at the same time. Please refresh to see the latest version."
+#~ msgid "Another change was made at the same time. Please refresh to see the latest version."
+#~ msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx:1168
+msgid "Anyone you give access to can subscribe with this link."
 msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
@@ -247,7 +256,7 @@ msgstr ""
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Ви впевнені, що хочете видалити \"{0}\"?"
 
-#: src/features/objects/components/object-detail-panel.tsx:496
+#: src/features/objects/components/object-detail-panel.tsx:533
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Ви впевнені, що хочете видалити \"{title}\"? Цю дію не можна скасувати."
 
@@ -306,7 +315,7 @@ msgid "Back to CRM"
 msgstr "Назад до CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:116
+#: src/routes/_authenticated/$crmId/index.tsx:123
 msgid "Back to CRMs"
 msgstr "Назад до CRM"
 
@@ -357,7 +366,7 @@ msgstr "Може бути дочірнім для"
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId_.settings.tsx:560
 #: src/routes/_authenticated/$crmId/design.tsx:304
-#: src/routes/_authenticated/$crmId/index.tsx:1002
+#: src/routes/_authenticated/$crmId/index.tsx:1040
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -404,7 +413,7 @@ msgstr "Виберіть між системними налаштуванням�
 msgid "Choose language"
 msgstr "Виберіть мову"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Class"
 msgstr "Клас"
 
@@ -516,7 +525,7 @@ msgid "Comment and view"
 msgstr "Коментувати й переглядати"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:292
+#: src/features/objects/components/object-detail-panel.tsx:320
 msgid "Comments ({0})"
 msgstr "Коментарі ({0})"
 
@@ -649,6 +658,10 @@ msgstr "CRM створено"
 msgid "CRM deleted"
 msgstr "CRM видалено"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1166
+msgid "CRM link"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:220
 msgid "CRM not found"
 msgstr "CRM не знайдено"
@@ -689,7 +702,7 @@ msgstr "Темна"
 msgid "Dark mode"
 msgstr "Темний режим"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:232
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
 msgid "Data conflict"
 msgstr ""
 
@@ -730,7 +743,7 @@ msgstr "Сортування за замовчуванням"
 #: src/features/objects/components/object-attachments.tsx:179
 #: src/features/objects/components/object-attachments.tsx:186
 #: src/features/objects/components/object-attachments.tsx:228
-#: src/features/objects/components/object-detail-panel.tsx:497
+#: src/features/objects/components/object-detail-panel.tsx:534
 #: src/routes/_authenticated/$crmId_.settings.tsx:412
 msgid "Delete"
 msgstr "Видалити"
@@ -767,9 +780,9 @@ msgstr "Видалити CRM?"
 msgid "Delete field"
 msgstr "Видалити поле"
 
-#: src/features/objects/components/object-detail-panel.tsx:341
-#: src/features/objects/components/object-detail-panel.tsx:346
-#: src/features/objects/components/object-detail-panel.tsx:495
+#: src/features/objects/components/object-detail-panel.tsx:369
+#: src/features/objects/components/object-detail-panel.tsx:374
+#: src/features/objects/components/object-detail-panel.tsx:532
 msgid "Delete item"
 msgstr "Видалити елемент"
 
@@ -809,7 +822,7 @@ msgstr "Опис"
 
 #: src/routes/_authenticated/$crmId/design.tsx:64
 #: src/routes/_authenticated/$crmId/design.tsx:132
-#: src/routes/_authenticated/$crmId/index.tsx:955
+#: src/routes/_authenticated/$crmId/index.tsx:987
 msgid "Design"
 msgstr "Дизайн"
 
@@ -845,8 +858,8 @@ msgstr "Напрямок"
 msgid "Dismiss"
 msgstr "Закрити"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1031
-#: src/routes/_authenticated/$crmId/index.tsx:1036
+#: src/routes/_authenticated/$crmId/index.tsx:1069
+#: src/routes/_authenticated/$crmId/index.tsx:1074
 msgid "Dismiss board hint"
 msgstr "Закрити підказку дошки"
 
@@ -857,11 +870,12 @@ msgstr "Відображає мобільну бічну панель."
 #: src/features/editor/components/edit-dialogs.tsx:524
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
-#: src/features/objects/components/object-detail-panel.tsx:355
+#: src/features/objects/components/object-detail-panel.tsx:383
+#: src/routes/_authenticated/$crmId/index.tsx:1178
 msgid "Done"
 msgstr "Готово"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1022
+#: src/routes/_authenticated/$crmId/index.tsx:1060
 msgid "Double click on a column to add content"
 msgstr "Двічі клацніть на колонці, щоб додати вміст"
 
@@ -879,7 +893,7 @@ msgstr "Спочатку завантажте резервну копію"
 msgid "Download failed"
 msgstr "Не вдалося завантажити"
 
-#: src/routes/_authenticated/$crmId/index.tsx:998
+#: src/routes/_authenticated/$crmId/index.tsx:1036
 msgid "Drag columns to re-order them"
 msgstr "Перетягніть колонки, щоб змінити їх порядок"
 
@@ -946,7 +960,7 @@ msgstr "Введіть код з програми автентифікації"
 msgid "Entity ID"
 msgstr "ID сутності"
 
-#: src/features/objects/components/object-detail-panel.tsx:262
+#: src/features/objects/components/object-detail-panel.tsx:290
 msgid "Error"
 msgstr "Помилка"
 
@@ -961,7 +975,7 @@ msgstr "Розгорнути"
 msgid "Expand sidebar"
 msgstr "Розгорнути бічну панель"
 
-#: src/routes/_authenticated/$crmId/index.tsx:961
+#: src/routes/_authenticated/$crmId/index.tsx:993
 msgid "Export CSV"
 msgstr "Експортувати CSV"
 
@@ -998,6 +1012,7 @@ msgid "Failed to create field"
 msgstr "Не вдалося створити поле"
 
 #: src/features/objects/components/object-links.tsx:103
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "Failed to create link"
 msgstr "Не вдалося створити посилання"
 
@@ -1047,7 +1062,7 @@ msgstr "Не вдалося імпортувати дизайн"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:43
 #: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:87
 msgid "Failed to load CRM"
 msgstr "Не вдалося завантажити CRM"
 
@@ -1059,7 +1074,7 @@ msgstr "Не вдалося завантажити дизайн CRM"
 msgid "Failed to load CRMs"
 msgstr "Не вдалося завантажити CRM"
 
-#: src/features/objects/components/object-detail-panel.tsx:263
+#: src/features/objects/components/object-detail-panel.tsx:291
 msgid "Failed to load item"
 msgstr "Не вдалося завантажити елемент"
 
@@ -1098,12 +1113,12 @@ msgstr "Не вдалося встановити рівень доступу"
 
 #: src/features/crms/components/inline-crm-search.tsx:102
 #: src/features/crms/components/recommended-crms.tsx:65
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:59
 msgid "Failed to subscribe"
 msgstr "Не вдалося підписатися"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:582
+#: src/routes/_authenticated/$crmId/index.tsx:614
 msgid "Failed to unsubscribe"
 msgstr "Не вдалося відписатися"
 
@@ -1142,7 +1157,7 @@ msgid "Files"
 msgstr "Файли"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:78
+#: src/routes/_authenticated/find.tsx:89
 msgid "Find CRMs"
 msgstr "Знайти CRM"
 
@@ -1240,7 +1255,7 @@ msgstr "Головна"
 msgid "Hot"
 msgstr "Популярне"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "ID"
 msgstr "Ідентифікатор"
 
@@ -1300,7 +1315,7 @@ msgstr "Недійсний JSON-файл"
 msgid "Invalid verification code"
 msgstr "Недійсний код підтвердження"
 
-#: src/features/objects/components/object-detail-panel.tsx:305
+#: src/features/objects/components/object-detail-panel.tsx:333
 msgid "Item details"
 msgstr "Деталі елемента"
 
@@ -1332,6 +1347,10 @@ msgstr "Зліва направо"
 msgid "Light"
 msgstr "Світла"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1007
+msgid "Link"
+msgstr ""
+
 #: src/features/objects/components/object-links.tsx:225
 msgid "Links"
 msgstr "Посилання"
@@ -1348,11 +1367,11 @@ msgstr "Завантажити більше"
 msgid "Loading content…"
 msgstr "Завантаження вмісту…"
 
-#: src/features/objects/components/object-detail-panel.tsx:246
+#: src/features/objects/components/object-detail-panel.tsx:274
 msgid "Loading item"
 msgstr "Завантаження елемента"
 
-#: src/features/objects/components/object-detail-panel.tsx:247
+#: src/features/objects/components/object-detail-panel.tsx:275
 msgid "Loading item details"
 msgstr "Завантаження деталей елемента"
 
@@ -1433,19 +1452,19 @@ msgid "Name is required"
 msgstr "Ім'я обов'язкове"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:53
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:294
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "Помилка мережі"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/features/objects/components/create-object-dialog.tsx:328
-#: src/routes/_authenticated/$crmId/index.tsx:895
-#: src/routes/_authenticated/$crmId/index.tsx:912
+#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:944
 msgid "New"
 msgstr "Нове"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:893
+#: src/routes/_authenticated/$crmId/index.tsx:925
 msgid "New {0}"
 msgstr "Новий {0}"
 
@@ -1479,7 +1498,7 @@ msgid "No connected accounts"
 msgstr "Немає підключених облікових записів"
 
 #: src/features/crms/components/inline-crm-search.tsx:150
-#: src/routes/_authenticated/find.tsx:80
+#: src/routes/_authenticated/find.tsx:91
 msgid "No CRMs found"
 msgstr "CRM не знайдено"
 
@@ -1495,7 +1514,7 @@ msgstr "Жоден тип елемента ще не можна створити
 msgid "No matching objects"
 msgstr "Немає відповідних об'єктів"
 
-#: src/routes/_authenticated/$crmId/index.tsx:809
+#: src/routes/_authenticated/$crmId/index.tsx:841
 msgid "No objects to export."
 msgstr "Немає об'єктів для експорту."
 
@@ -1553,10 +1572,10 @@ msgstr "Немає переглядів"
 #: src/features/objects/components/create-object-dialog.tsx:384
 #: src/features/objects/components/create-object-dialog.tsx:387
 #: src/features/objects/components/create-object-dialog.tsx:391
-#: src/features/objects/components/object-detail-panel.tsx:413
-#: src/features/objects/components/object-detail-panel.tsx:426
-#: src/features/objects/components/object-detail-panel.tsx:429
-#: src/features/objects/components/object-detail-panel.tsx:433
+#: src/features/objects/components/object-detail-panel.tsx:448
+#: src/features/objects/components/object-detail-panel.tsx:461
+#: src/features/objects/components/object-detail-panel.tsx:464
+#: src/features/objects/components/object-detail-panel.tsx:468
 msgid "None"
 msgstr "Немає"
 
@@ -1633,7 +1652,7 @@ msgstr "Відкрити меню навігації"
 msgid "Open option actions"
 msgstr "Відкрити дії параметра"
 
-#: src/routes/_authenticated/$crmId/index.tsx:920
+#: src/routes/_authenticated/$crmId/index.tsx:952
 msgid "Open page actions"
 msgstr "Відкрити дії сторінки"
 
@@ -1675,8 +1694,8 @@ msgid "Owner"
 msgstr "Власник"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
-#: src/features/objects/components/object-detail-panel.tsx:407
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/features/objects/components/object-detail-panel.tsx:442
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Parent"
 msgstr "Батьківський"
 
@@ -1700,13 +1719,13 @@ msgstr "Шаблон (regex)"
 msgid "Permanently delete this CRM and all its content."
 msgstr "Остаточно видалити цей CRM та весь його вміст."
 
-#: src/routes/_authenticated/$crmId/index.tsx:690
-#: src/routes/_authenticated/$crmId/index.tsx:724
+#: src/routes/_authenticated/$crmId/index.tsx:722
+#: src/routes/_authenticated/$crmId/index.tsx:756
 msgid "Please add one or more classes to the CRM design."
 msgstr "Будь ласка, додайте один або кілька класів до дизайну CRM."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:295
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "Будь ласка, перевірте підключення до Інтернету та спробуйте ще раз."
 
@@ -1733,7 +1752,7 @@ msgstr "Приватність"
 msgid "Profile"
 msgstr "Профіль"
 
-#: src/features/objects/components/object-detail-panel.tsx:291
+#: src/features/objects/components/object-detail-panel.tsx:319
 msgid "Properties"
 msgstr "Властивості"
 
@@ -1745,7 +1764,7 @@ msgstr "Піднятий"
 msgid "Re-link your accounts on this server"
 msgstr "Повторно прив'яжіть облікові записи на цьому сервері"
 
-#: src/routes/_authenticated/$crmId/index.tsx:944
+#: src/routes/_authenticated/$crmId/index.tsx:976
 msgid "Re-order columns"
 msgstr "Змінити порядок стовпців"
 
@@ -1754,7 +1773,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "Зареєструйте свої ключі доступу на цьому сервері знову"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:191
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "Рекомендоване"
 
@@ -1911,7 +1930,7 @@ msgstr "Субота"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
 #: src/features/objects/components/comment-thread.tsx:199
-#: src/routes/_authenticated/$crmId/index.tsx:1014
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Save"
 msgstr "Зберегти"
 
@@ -1923,7 +1942,7 @@ msgstr "Збереження..."
 msgid "Search"
 msgstr "Пошук"
 
-#: src/routes/_authenticated/find.tsx:79
+#: src/routes/_authenticated/find.tsx:90
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Пошук за назвою, ID, відбитком або URL..."
 
@@ -1966,7 +1985,7 @@ msgid "Search..."
 msgstr "Пошук..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:149
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Пошук..."
@@ -2040,8 +2059,8 @@ msgstr "Із засічками"
 msgid "Server"
 msgstr "Сервер"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:251
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:277
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "Помилка сервера"
 
@@ -2054,7 +2073,7 @@ msgstr "Правила сервера"
 #~ msgid "Session expired"
 #~ msgstr "Термін сесії минув"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
 msgid "Session expired. Please log in again."
 msgstr ""
 
@@ -2074,7 +2093,7 @@ msgstr "Налаштування доступу..."
 #: src/routes/_authenticated/$crmId_.settings.tsx:95
 #: src/routes/_authenticated/$crmId_.settings.tsx:180
 #: src/routes/_authenticated/$crmId_.settings.tsx:203
-#: src/routes/_authenticated/$crmId/index.tsx:969
+#: src/routes/_authenticated/$crmId/index.tsx:1001
 msgid "Settings"
 msgstr "Налаштування"
 
@@ -2143,8 +2162,8 @@ msgstr "Почніть обговорення, додавши перший ко�
 msgid "Stay tuned though!"
 msgstr "Слідкуйте за оновленнями!"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
-#: src/features/objects/components/object-detail-panel.tsx:331
+#: src/features/objects/components/object-detail-panel.tsx:350
+#: src/features/objects/components/object-detail-panel.tsx:359
 msgid "Stop watching"
 msgstr "Припинити стеження"
 
@@ -2168,7 +2187,7 @@ msgid "Subscribe"
 msgstr "Підписатися"
 
 #: src/features/crms/components/inline-crm-search.tsx:101
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:58
 msgid "Subscribed"
 msgstr "Підписано"
 
@@ -2179,7 +2198,7 @@ msgstr "Підписано на {0}"
 
 #: src/features/crms/components/inline-crm-search.tsx:100
 #: src/features/crms/components/recommended-crms.tsx:63
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:57
 msgid "Subscribing..."
 msgstr "Підписка..."
 
@@ -2254,7 +2273,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "Це остаточно видалить «{0}» та всі його обʼєкти, коментарі й вкладення. Цю дію не можна скасувати."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1130
+#: src/routes/_authenticated/$crmId/index.tsx:1188
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Це видалить «{0}» з вашої бічної панелі та припинить оновлення цієї CRM."
 
@@ -2332,7 +2351,7 @@ msgid "Travelling"
 msgstr "Подорож"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:165
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "Спробуйте змінити пошукові терміни"
 
@@ -2363,7 +2382,7 @@ msgstr "Введіть для пошуку користувачів"
 msgid "Type to search..."
 msgstr "Введіть для пошуку..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:273
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "Не вдалося підключитися до віддаленого сервера"
 
@@ -2387,30 +2406,30 @@ msgstr "Сполучені Штати"
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:975
-#: src/routes/_authenticated/$crmId/index.tsx:1131
+#: src/routes/_authenticated/$crmId/index.tsx:1013
+#: src/routes/_authenticated/$crmId/index.tsx:1189
 msgid "Unsubscribe"
 msgstr "Відписатися"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1129
+#: src/routes/_authenticated/$crmId/index.tsx:1187
 msgid "Unsubscribe from CRM?"
 msgstr "Відписатися від CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:581
+#: src/routes/_authenticated/$crmId/index.tsx:613
 msgid "Unsubscribed"
 msgstr "Відписано"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:580
+#: src/routes/_authenticated/$crmId/index.tsx:612
 msgid "Unsubscribing..."
 msgstr "Відписування..."
 
 #: src/features/board/components/board-card.tsx:81
 #: src/features/board/components/board-card.tsx:82
 #: src/features/objects/components/create-object-dialog.tsx:163
-#: src/features/objects/components/object-detail-panel.tsx:283
-#: src/features/objects/components/object-detail-panel.tsx:287
+#: src/features/objects/components/object-detail-panel.tsx:311
+#: src/features/objects/components/object-detail-panel.tsx:315
 #: src/features/objects/components/object-links.tsx:71
 #: src/features/objects/components/object-links.tsx:153
 #: src/features/objects/components/object-links.tsx:165
@@ -2490,7 +2509,7 @@ msgstr "Переглянути всі"
 msgid "View all notifications"
 msgstr "Переглянути всі сповіщення"
 
-#: src/features/objects/components/object-detail-panel.tsx:306
+#: src/features/objects/components/object-detail-panel.tsx:334
 msgid "View and edit item details"
 msgstr "Переглянути та змінити деталі елемента"
 
@@ -2502,7 +2521,7 @@ msgstr "Елементи керування виглядом"
 msgid "View only"
 msgstr "Лише перегляд"
 
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:961
 msgid "View options"
 msgstr "Параметри перегляду"
 
@@ -2510,8 +2529,8 @@ msgstr "Параметри перегляду"
 msgid "Views"
 msgstr "Перегляди"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
-#: src/features/objects/components/object-detail-panel.tsx:331
+#: src/features/objects/components/object-detail-panel.tsx:350
+#: src/features/objects/components/object-detail-panel.tsx:359
 msgid "Watch"
 msgstr "Стежити"
 
@@ -2539,7 +2558,7 @@ msgstr "Середа"
 msgid "You do not have access to this section."
 msgstr ""
 
-#: src/routes/_authenticated/$crmId/index.tsx:102
+#: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
 msgstr "У вас немає доступу до цієї CRM."
 

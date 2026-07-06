@@ -9,6 +9,7 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import { Users } from 'lucide-react'
 import { FindEntityPage, toastAction, getErrorMessage } from '@mochi/web'
+import type { MochiEntityUri } from '@mochi/web'
 import { useCrmsStore } from '@/stores/crms-store'
 import { APP_ROUTES } from '@/config/routes'
 import endpoints from '@/api/endpoints'
@@ -50,9 +51,9 @@ function FindCrmsPage() {
   )
 
   const handleSubscribe = useCallback(
-    async (crmId: string, entity: { fingerprint?: string; server?: string }) => {
+    async (crmId: string, entity: { fingerprint?: string; location?: string; peer?: string }) => {
       try {
-        await toastAction(crmsApi.subscribe(crmId, entity.server), {
+        await toastAction(crmsApi.subscribe(crmId, entity.location, entity.peer), {
           loading: t`Subscribing...`,
           success: t`Subscribed`,
           error: (e) => getErrorMessage(e, t`Failed to subscribe`),
@@ -67,8 +68,18 @@ function FindCrmsPage() {
     [navigate, refresh, t],
   )
 
+  // Resolve a pasted mochi:// share link to the CRM's name via probe, so the
+  // card shows the real CRM rather than a raw entity id.
+  const resolveUri = useCallback(async (uri: MochiEntityUri) => {
+    if (!uri.peer) return null
+    const response = await crmsApi.probe(`mochi://${uri.peer}/${uri.entity}`)
+    const data = response.data ?? response
+    return { ...data, peer: data.peer || uri.peer }
+  }, [])
+
   return (
     <FindEntityPage
+      resolveUri={resolveUri}
       onSubscribe={handleSubscribe}
       subscribedIds={accessibleCrmIds}
       entityClass="crm"

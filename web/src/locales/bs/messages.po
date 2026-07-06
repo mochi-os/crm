@@ -13,6 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. js-lingui-explicit-id
+#: ../../../lib/web/src/lib/error-normalizer.ts:204
+msgid "Please check your internet connection and try again."
+msgstr ""
+
 #: src/features/objects/components/create-object-dialog.tsx:179
 msgid " or "
 msgstr " ili "
@@ -105,7 +110,7 @@ msgstr "Vrsta računa"
 msgid "Account verified"
 msgstr "Račun verifikovan"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: src/features/objects/components/object-detail-panel.tsx:321
 msgid "Activity"
 msgstr "Aktivnost"
 
@@ -150,8 +155,8 @@ msgstr "Dodaj stavku liste"
 msgid "Add class"
 msgstr "Dodaj klasu"
 
-#: src/routes/_authenticated/$crmId/index.tsx:940
-#: src/routes/_authenticated/$crmId/index.tsx:1123
+#: src/routes/_authenticated/$crmId/index.tsx:972
+#: src/routes/_authenticated/$crmId/index.tsx:1161
 msgid "Add column"
 msgstr "Dodaj kolonu"
 
@@ -234,12 +239,16 @@ msgstr "Dozvoli sortiranje po"
 msgid "An error occurred"
 msgstr "Došlo je do greške"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:247
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "Došlo je do neočekivane greške"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:233
-msgid "Another change was made at the same time. Please refresh to see the latest version."
+#~ msgid "Another change was made at the same time. Please refresh to see the latest version."
+#~ msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx:1168
+msgid "Anyone you give access to can subscribe with this link."
 msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
@@ -247,7 +256,7 @@ msgstr ""
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Jeste li sigurni da želite obrisati \"{0}\"?"
 
-#: src/features/objects/components/object-detail-panel.tsx:496
+#: src/features/objects/components/object-detail-panel.tsx:533
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Jeste li sigurni da želite obrisati \"{title}\"? Ova radnja se ne može poništiti."
 
@@ -306,7 +315,7 @@ msgid "Back to CRM"
 msgstr "Nazad na CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:116
+#: src/routes/_authenticated/$crmId/index.tsx:123
 msgid "Back to CRMs"
 msgstr "Nazad na CRM-ove"
 
@@ -357,7 +366,7 @@ msgstr "Može biti dijete od"
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId_.settings.tsx:560
 #: src/routes/_authenticated/$crmId/design.tsx:304
-#: src/routes/_authenticated/$crmId/index.tsx:1002
+#: src/routes/_authenticated/$crmId/index.tsx:1040
 msgid "Cancel"
 msgstr "Otkaži"
 
@@ -404,7 +413,7 @@ msgstr "Birajte između sistemskih postavki, svijetlog ili tamnog načina"
 msgid "Choose language"
 msgstr "Odaberite jezik"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Class"
 msgstr "Klasa"
 
@@ -516,7 +525,7 @@ msgid "Comment and view"
 msgstr "Komentariši i pregledaj"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:292
+#: src/features/objects/components/object-detail-panel.tsx:320
 msgid "Comments ({0})"
 msgstr "Komentari ({0})"
 
@@ -649,6 +658,10 @@ msgstr "CRM kreiran"
 msgid "CRM deleted"
 msgstr "CRM obrisan"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1166
+msgid "CRM link"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:220
 msgid "CRM not found"
 msgstr "CRM nije pronađen"
@@ -689,7 +702,7 @@ msgstr "Tamno"
 msgid "Dark mode"
 msgstr "Tamni način"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:232
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
 msgid "Data conflict"
 msgstr ""
 
@@ -730,7 +743,7 @@ msgstr "Podrazumijevano sortiranje"
 #: src/features/objects/components/object-attachments.tsx:179
 #: src/features/objects/components/object-attachments.tsx:186
 #: src/features/objects/components/object-attachments.tsx:228
-#: src/features/objects/components/object-detail-panel.tsx:497
+#: src/features/objects/components/object-detail-panel.tsx:534
 #: src/routes/_authenticated/$crmId_.settings.tsx:412
 msgid "Delete"
 msgstr "Obriši"
@@ -767,9 +780,9 @@ msgstr "Obrisati CRM?"
 msgid "Delete field"
 msgstr "Obriši polje"
 
-#: src/features/objects/components/object-detail-panel.tsx:341
-#: src/features/objects/components/object-detail-panel.tsx:346
-#: src/features/objects/components/object-detail-panel.tsx:495
+#: src/features/objects/components/object-detail-panel.tsx:369
+#: src/features/objects/components/object-detail-panel.tsx:374
+#: src/features/objects/components/object-detail-panel.tsx:532
 msgid "Delete item"
 msgstr "Obriši stavku"
 
@@ -809,7 +822,7 @@ msgstr "Opis"
 
 #: src/routes/_authenticated/$crmId/design.tsx:64
 #: src/routes/_authenticated/$crmId/design.tsx:132
-#: src/routes/_authenticated/$crmId/index.tsx:955
+#: src/routes/_authenticated/$crmId/index.tsx:987
 msgid "Design"
 msgstr "Dizajn"
 
@@ -845,8 +858,8 @@ msgstr "Smjer"
 msgid "Dismiss"
 msgstr "Odbaci"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1031
-#: src/routes/_authenticated/$crmId/index.tsx:1036
+#: src/routes/_authenticated/$crmId/index.tsx:1069
+#: src/routes/_authenticated/$crmId/index.tsx:1074
 msgid "Dismiss board hint"
 msgstr "Odbaci nagovještaj table"
 
@@ -857,11 +870,12 @@ msgstr "Prikazuje mobilnu bočnu traku."
 #: src/features/editor/components/edit-dialogs.tsx:524
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
-#: src/features/objects/components/object-detail-panel.tsx:355
+#: src/features/objects/components/object-detail-panel.tsx:383
+#: src/routes/_authenticated/$crmId/index.tsx:1178
 msgid "Done"
 msgstr "Gotovo"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1022
+#: src/routes/_authenticated/$crmId/index.tsx:1060
 msgid "Double click on a column to add content"
 msgstr "Dvaput kliknite na kolonu da dodate sadržaj"
 
@@ -879,7 +893,7 @@ msgstr "Prvo preuzmite rezervnu kopiju"
 msgid "Download failed"
 msgstr "Preuzimanje nije uspjelo"
 
-#: src/routes/_authenticated/$crmId/index.tsx:998
+#: src/routes/_authenticated/$crmId/index.tsx:1036
 msgid "Drag columns to re-order them"
 msgstr "Prevucite kolone da promijenite redoslijed"
 
@@ -946,7 +960,7 @@ msgstr "Unesite kod iz aplikacije za autentifikaciju"
 msgid "Entity ID"
 msgstr "ID entiteta"
 
-#: src/features/objects/components/object-detail-panel.tsx:262
+#: src/features/objects/components/object-detail-panel.tsx:290
 msgid "Error"
 msgstr "Greška"
 
@@ -961,7 +975,7 @@ msgstr "Proširi"
 msgid "Expand sidebar"
 msgstr "Proširi bočnu traku"
 
-#: src/routes/_authenticated/$crmId/index.tsx:961
+#: src/routes/_authenticated/$crmId/index.tsx:993
 msgid "Export CSV"
 msgstr "Izvezi CSV"
 
@@ -998,6 +1012,7 @@ msgid "Failed to create field"
 msgstr "Kreiranje polja nije uspjelo"
 
 #: src/features/objects/components/object-links.tsx:103
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "Failed to create link"
 msgstr "Kreiranje veze nije uspjelo"
 
@@ -1047,7 +1062,7 @@ msgstr "Uvoz dizajna nije uspio"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:43
 #: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:87
 msgid "Failed to load CRM"
 msgstr "Učitavanje CRM-a nije uspjelo"
 
@@ -1059,7 +1074,7 @@ msgstr "Učitavanje CRM dizajna nije uspjelo"
 msgid "Failed to load CRMs"
 msgstr "Učitavanje CRM-ova nije uspjelo"
 
-#: src/features/objects/components/object-detail-panel.tsx:263
+#: src/features/objects/components/object-detail-panel.tsx:291
 msgid "Failed to load item"
 msgstr "Učitavanje stavke nije uspjelo"
 
@@ -1098,12 +1113,12 @@ msgstr "Postavljanje nivoa pristupa nije uspjelo"
 
 #: src/features/crms/components/inline-crm-search.tsx:102
 #: src/features/crms/components/recommended-crms.tsx:65
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:59
 msgid "Failed to subscribe"
 msgstr "Pretplata nije uspjela"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:582
+#: src/routes/_authenticated/$crmId/index.tsx:614
 msgid "Failed to unsubscribe"
 msgstr "Otkazivanje pretplate nije uspjelo"
 
@@ -1142,7 +1157,7 @@ msgid "Files"
 msgstr "Datoteke"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:78
+#: src/routes/_authenticated/find.tsx:89
 msgid "Find CRMs"
 msgstr "Pronađi CRM-ove"
 
@@ -1240,7 +1255,7 @@ msgstr "Početna"
 msgid "Hot"
 msgstr "Vruće"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "ID"
 msgstr "ID"
 
@@ -1300,7 +1315,7 @@ msgstr "Nevažeća JSON datoteka"
 msgid "Invalid verification code"
 msgstr "Nevažeći verifikacioni kod"
 
-#: src/features/objects/components/object-detail-panel.tsx:305
+#: src/features/objects/components/object-detail-panel.tsx:333
 msgid "Item details"
 msgstr "Detalji stavke"
 
@@ -1332,6 +1347,10 @@ msgstr "Slijeva nadesno"
 msgid "Light"
 msgstr "Svijetla"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1007
+msgid "Link"
+msgstr ""
+
 #: src/features/objects/components/object-links.tsx:225
 msgid "Links"
 msgstr "Veze"
@@ -1348,11 +1367,11 @@ msgstr "Učitaj više"
 msgid "Loading content…"
 msgstr "Učitavanje sadržaja…"
 
-#: src/features/objects/components/object-detail-panel.tsx:246
+#: src/features/objects/components/object-detail-panel.tsx:274
 msgid "Loading item"
 msgstr "Učitavanje stavke"
 
-#: src/features/objects/components/object-detail-panel.tsx:247
+#: src/features/objects/components/object-detail-panel.tsx:275
 msgid "Loading item details"
 msgstr "Učitavanje detalja stavke"
 
@@ -1433,19 +1452,19 @@ msgid "Name is required"
 msgstr "Ime je obavezno"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:53
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:294
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "Greška mreže"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/features/objects/components/create-object-dialog.tsx:328
-#: src/routes/_authenticated/$crmId/index.tsx:895
-#: src/routes/_authenticated/$crmId/index.tsx:912
+#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:944
 msgid "New"
 msgstr "Novo"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:893
+#: src/routes/_authenticated/$crmId/index.tsx:925
 msgid "New {0}"
 msgstr "Novo {0}"
 
@@ -1479,7 +1498,7 @@ msgid "No connected accounts"
 msgstr "Nema povezanih naloga"
 
 #: src/features/crms/components/inline-crm-search.tsx:150
-#: src/routes/_authenticated/find.tsx:80
+#: src/routes/_authenticated/find.tsx:91
 msgid "No CRMs found"
 msgstr "Nema pronađenih CRM-ova"
 
@@ -1495,7 +1514,7 @@ msgstr "Nijedan tip stavke se još ne može kreirati. Prvo kreirajte potrebne na
 msgid "No matching objects"
 msgstr "Nema odgovarajućih objekata"
 
-#: src/routes/_authenticated/$crmId/index.tsx:809
+#: src/routes/_authenticated/$crmId/index.tsx:841
 msgid "No objects to export."
 msgstr "Nema objekata za izvoz."
 
@@ -1553,10 +1572,10 @@ msgstr "Nema pregleda"
 #: src/features/objects/components/create-object-dialog.tsx:384
 #: src/features/objects/components/create-object-dialog.tsx:387
 #: src/features/objects/components/create-object-dialog.tsx:391
-#: src/features/objects/components/object-detail-panel.tsx:413
-#: src/features/objects/components/object-detail-panel.tsx:426
-#: src/features/objects/components/object-detail-panel.tsx:429
-#: src/features/objects/components/object-detail-panel.tsx:433
+#: src/features/objects/components/object-detail-panel.tsx:448
+#: src/features/objects/components/object-detail-panel.tsx:461
+#: src/features/objects/components/object-detail-panel.tsx:464
+#: src/features/objects/components/object-detail-panel.tsx:468
 msgid "None"
 msgstr "Ništa"
 
@@ -1633,7 +1652,7 @@ msgstr "Otvori navigacijski meni"
 msgid "Open option actions"
 msgstr "Otvori akcije opcije"
 
-#: src/routes/_authenticated/$crmId/index.tsx:920
+#: src/routes/_authenticated/$crmId/index.tsx:952
 msgid "Open page actions"
 msgstr "Otvori akcije stranice"
 
@@ -1675,8 +1694,8 @@ msgid "Owner"
 msgstr "Vlasnik"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
-#: src/features/objects/components/object-detail-panel.tsx:407
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/features/objects/components/object-detail-panel.tsx:442
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Parent"
 msgstr "Nadređeni"
 
@@ -1700,13 +1719,13 @@ msgstr "Obrazac (regex)"
 msgid "Permanently delete this CRM and all its content."
 msgstr "Trajno obriši ovaj CRM i sav njegov sadržaj."
 
-#: src/routes/_authenticated/$crmId/index.tsx:690
-#: src/routes/_authenticated/$crmId/index.tsx:724
+#: src/routes/_authenticated/$crmId/index.tsx:722
+#: src/routes/_authenticated/$crmId/index.tsx:756
 msgid "Please add one or more classes to the CRM design."
 msgstr "Molimo dodajte jednu ili više klasa u dizajn CRM-a."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:295
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "Provjerite svoju internetsku vezu i pokušajte ponovo."
 
@@ -1733,7 +1752,7 @@ msgstr "Privatnost"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/objects/components/object-detail-panel.tsx:291
+#: src/features/objects/components/object-detail-panel.tsx:319
 msgid "Properties"
 msgstr "Svojstva"
 
@@ -1745,7 +1764,7 @@ msgstr "Izdignut"
 msgid "Re-link your accounts on this server"
 msgstr "Povežite ponovo svoje račune na ovom serveru"
 
-#: src/routes/_authenticated/$crmId/index.tsx:944
+#: src/routes/_authenticated/$crmId/index.tsx:976
 msgid "Re-order columns"
 msgstr "Promijeni redoslijed kolona"
 
@@ -1754,7 +1773,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "Ponovo registrujte svoje pristupne ključeve na ovom serveru"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:191
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "Preporučeno"
 
@@ -1911,7 +1930,7 @@ msgstr "Subota"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
 #: src/features/objects/components/comment-thread.tsx:199
-#: src/routes/_authenticated/$crmId/index.tsx:1014
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Save"
 msgstr "Sačuvaj"
 
@@ -1923,7 +1942,7 @@ msgstr "Čuvanje..."
 msgid "Search"
 msgstr "Pretraži"
 
-#: src/routes/_authenticated/find.tsx:79
+#: src/routes/_authenticated/find.tsx:90
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Pretraži po imenu, ID-u, otisku ili URL-u..."
 
@@ -1966,7 +1985,7 @@ msgid "Search..."
 msgstr "Pretraži..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:149
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Pretraživanje..."
@@ -2040,8 +2059,8 @@ msgstr "Serifno"
 msgid "Server"
 msgstr "Server"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:251
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:277
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "Greška servera"
 
@@ -2054,7 +2073,7 @@ msgstr "Pravila servera"
 #~ msgid "Session expired"
 #~ msgstr "Sesija je istekla"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
 msgid "Session expired. Please log in again."
 msgstr ""
 
@@ -2074,7 +2093,7 @@ msgstr "Postavljanje pristupa..."
 #: src/routes/_authenticated/$crmId_.settings.tsx:95
 #: src/routes/_authenticated/$crmId_.settings.tsx:180
 #: src/routes/_authenticated/$crmId_.settings.tsx:203
-#: src/routes/_authenticated/$crmId/index.tsx:969
+#: src/routes/_authenticated/$crmId/index.tsx:1001
 msgid "Settings"
 msgstr "Postavke"
 
@@ -2143,8 +2162,8 @@ msgstr "Započni diskusiju dodavanjem prvog komentara."
 msgid "Stay tuned though!"
 msgstr "Ali ostanite na vezi!"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
-#: src/features/objects/components/object-detail-panel.tsx:331
+#: src/features/objects/components/object-detail-panel.tsx:350
+#: src/features/objects/components/object-detail-panel.tsx:359
 msgid "Stop watching"
 msgstr "Prestani pratiti"
 
@@ -2168,7 +2187,7 @@ msgid "Subscribe"
 msgstr "Pretplati se"
 
 #: src/features/crms/components/inline-crm-search.tsx:101
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:58
 msgid "Subscribed"
 msgstr "Pretplaćeno"
 
@@ -2179,7 +2198,7 @@ msgstr "Pretplaćen na {0}"
 
 #: src/features/crms/components/inline-crm-search.tsx:100
 #: src/features/crms/components/recommended-crms.tsx:63
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:57
 msgid "Subscribing..."
 msgstr "Pretplaćivanje..."
 
@@ -2254,7 +2273,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "Ovo će trajno obrisati \"{0}\" i sve njegove objekte, komentare i priloge. Ova akcija se ne može poništiti."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1130
+#: src/routes/_authenticated/$crmId/index.tsx:1188
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Ovo će ukloniti \"{0}\" s vaše bočne trake i zaustaviti ažuriranja za ovaj CRM."
 
@@ -2332,7 +2351,7 @@ msgid "Travelling"
 msgstr "Putovanje"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:165
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "Pokušaj prilagoditi termine pretrage"
 
@@ -2363,7 +2382,7 @@ msgstr "Otkucaj za pretragu korisnika"
 msgid "Type to search..."
 msgstr "Otkucaj za pretragu..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:273
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "Nije moguće povezati se s udaljenim serverom"
 
@@ -2387,30 +2406,30 @@ msgstr "Sjedinjene Države"
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:975
-#: src/routes/_authenticated/$crmId/index.tsx:1131
+#: src/routes/_authenticated/$crmId/index.tsx:1013
+#: src/routes/_authenticated/$crmId/index.tsx:1189
 msgid "Unsubscribe"
 msgstr "Otkaži pretplatu"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1129
+#: src/routes/_authenticated/$crmId/index.tsx:1187
 msgid "Unsubscribe from CRM?"
 msgstr "Otkazati pretplatu na CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:581
+#: src/routes/_authenticated/$crmId/index.tsx:613
 msgid "Unsubscribed"
 msgstr "Pretplata otkazana"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:580
+#: src/routes/_authenticated/$crmId/index.tsx:612
 msgid "Unsubscribing..."
 msgstr "Otkazujem pretplatu..."
 
 #: src/features/board/components/board-card.tsx:81
 #: src/features/board/components/board-card.tsx:82
 #: src/features/objects/components/create-object-dialog.tsx:163
-#: src/features/objects/components/object-detail-panel.tsx:283
-#: src/features/objects/components/object-detail-panel.tsx:287
+#: src/features/objects/components/object-detail-panel.tsx:311
+#: src/features/objects/components/object-detail-panel.tsx:315
 #: src/features/objects/components/object-links.tsx:71
 #: src/features/objects/components/object-links.tsx:153
 #: src/features/objects/components/object-links.tsx:165
@@ -2490,7 +2509,7 @@ msgstr "Pregledaj sve"
 msgid "View all notifications"
 msgstr "Pregledaj sve obavijesti"
 
-#: src/features/objects/components/object-detail-panel.tsx:306
+#: src/features/objects/components/object-detail-panel.tsx:334
 msgid "View and edit item details"
 msgstr "Pregledaj i uredi detalje stavke"
 
@@ -2502,7 +2521,7 @@ msgstr "Kontrole pregleda"
 msgid "View only"
 msgstr "Samo pregled"
 
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:961
 msgid "View options"
 msgstr "Opcije pregleda"
 
@@ -2510,8 +2529,8 @@ msgstr "Opcije pregleda"
 msgid "Views"
 msgstr "Pregledi"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
-#: src/features/objects/components/object-detail-panel.tsx:331
+#: src/features/objects/components/object-detail-panel.tsx:350
+#: src/features/objects/components/object-detail-panel.tsx:359
 msgid "Watch"
 msgstr "Prati"
 
@@ -2539,7 +2558,7 @@ msgstr "Srijeda"
 msgid "You do not have access to this section."
 msgstr ""
 
-#: src/routes/_authenticated/$crmId/index.tsx:102
+#: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
 msgstr "Nemate pristup ovom CRM-u."
 

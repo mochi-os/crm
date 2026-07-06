@@ -13,6 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. js-lingui-explicit-id
+#: ../../../lib/web/src/lib/error-normalizer.ts:204
+msgid "Please check your internet connection and try again."
+msgstr ""
+
 #: src/features/objects/components/create-object-dialog.tsx:179
 msgid " or "
 msgstr "或"
@@ -105,7 +110,7 @@ msgstr "帳戶類型"
 msgid "Account verified"
 msgstr "帳戶已驗證"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: src/features/objects/components/object-detail-panel.tsx:321
 msgid "Activity"
 msgstr "動態"
 
@@ -150,8 +155,8 @@ msgstr "新增檢查清單項目"
 msgid "Add class"
 msgstr "新增類別"
 
-#: src/routes/_authenticated/$crmId/index.tsx:940
-#: src/routes/_authenticated/$crmId/index.tsx:1123
+#: src/routes/_authenticated/$crmId/index.tsx:972
+#: src/routes/_authenticated/$crmId/index.tsx:1161
 msgid "Add column"
 msgstr "新增欄位"
 
@@ -234,12 +239,16 @@ msgstr "允許排序依據"
 msgid "An error occurred"
 msgstr "發生錯誤"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:247
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "發生未預期的錯誤"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:233
-msgid "Another change was made at the same time. Please refresh to see the latest version."
+#~ msgid "Another change was made at the same time. Please refresh to see the latest version."
+#~ msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx:1168
+msgid "Anyone you give access to can subscribe with this link."
 msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
@@ -247,7 +256,7 @@ msgstr ""
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "您確定要刪除「{0}」嗎?"
 
-#: src/features/objects/components/object-detail-panel.tsx:496
+#: src/features/objects/components/object-detail-panel.tsx:533
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "您確定要刪除「{title}」嗎?此操作無法復原。"
 
@@ -306,7 +315,7 @@ msgid "Back to CRM"
 msgstr "返回 CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:116
+#: src/routes/_authenticated/$crmId/index.tsx:123
 msgid "Back to CRMs"
 msgstr "返回 CRM 列表"
 
@@ -357,7 +366,7 @@ msgstr "可作為子項"
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId_.settings.tsx:560
 #: src/routes/_authenticated/$crmId/design.tsx:304
-#: src/routes/_authenticated/$crmId/index.tsx:1002
+#: src/routes/_authenticated/$crmId/index.tsx:1040
 msgid "Cancel"
 msgstr "取消"
 
@@ -404,7 +413,7 @@ msgstr "在系統偏好、淺色模式、或深色模式之間選擇"
 msgid "Choose language"
 msgstr "選擇語言"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Class"
 msgstr "類別"
 
@@ -516,7 +525,7 @@ msgid "Comment and view"
 msgstr "留言與檢視"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:292
+#: src/features/objects/components/object-detail-panel.tsx:320
 msgid "Comments ({0})"
 msgstr "留言 ({0})"
 
@@ -649,6 +658,10 @@ msgstr "CRM 已建立"
 msgid "CRM deleted"
 msgstr "已刪除 CRM"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1166
+msgid "CRM link"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:220
 msgid "CRM not found"
 msgstr "找不到 CRM"
@@ -689,7 +702,7 @@ msgstr "深色"
 msgid "Dark mode"
 msgstr "深色模式"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:232
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
 msgid "Data conflict"
 msgstr ""
 
@@ -730,7 +743,7 @@ msgstr "預設排序"
 #: src/features/objects/components/object-attachments.tsx:179
 #: src/features/objects/components/object-attachments.tsx:186
 #: src/features/objects/components/object-attachments.tsx:228
-#: src/features/objects/components/object-detail-panel.tsx:497
+#: src/features/objects/components/object-detail-panel.tsx:534
 #: src/routes/_authenticated/$crmId_.settings.tsx:412
 msgid "Delete"
 msgstr "刪除"
@@ -767,9 +780,9 @@ msgstr "刪除 CRM?"
 msgid "Delete field"
 msgstr "刪除欄位"
 
-#: src/features/objects/components/object-detail-panel.tsx:341
-#: src/features/objects/components/object-detail-panel.tsx:346
-#: src/features/objects/components/object-detail-panel.tsx:495
+#: src/features/objects/components/object-detail-panel.tsx:369
+#: src/features/objects/components/object-detail-panel.tsx:374
+#: src/features/objects/components/object-detail-panel.tsx:532
 msgid "Delete item"
 msgstr "刪除項目"
 
@@ -809,7 +822,7 @@ msgstr "說明"
 
 #: src/routes/_authenticated/$crmId/design.tsx:64
 #: src/routes/_authenticated/$crmId/design.tsx:132
-#: src/routes/_authenticated/$crmId/index.tsx:955
+#: src/routes/_authenticated/$crmId/index.tsx:987
 msgid "Design"
 msgstr "設計"
 
@@ -845,8 +858,8 @@ msgstr "方向"
 msgid "Dismiss"
 msgstr "關閉"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1031
-#: src/routes/_authenticated/$crmId/index.tsx:1036
+#: src/routes/_authenticated/$crmId/index.tsx:1069
+#: src/routes/_authenticated/$crmId/index.tsx:1074
 msgid "Dismiss board hint"
 msgstr "關閉看板提示"
 
@@ -857,11 +870,12 @@ msgstr "顯示行動裝置側邊欄。"
 #: src/features/editor/components/edit-dialogs.tsx:524
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
-#: src/features/objects/components/object-detail-panel.tsx:355
+#: src/features/objects/components/object-detail-panel.tsx:383
+#: src/routes/_authenticated/$crmId/index.tsx:1178
 msgid "Done"
 msgstr "完成"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1022
+#: src/routes/_authenticated/$crmId/index.tsx:1060
 msgid "Double click on a column to add content"
 msgstr "雙擊欄位以新增內容"
 
@@ -879,7 +893,7 @@ msgstr "請先下載備份"
 msgid "Download failed"
 msgstr "下載失敗"
 
-#: src/routes/_authenticated/$crmId/index.tsx:998
+#: src/routes/_authenticated/$crmId/index.tsx:1036
 msgid "Drag columns to re-order them"
 msgstr "拖曳欄位以重新排序"
 
@@ -946,7 +960,7 @@ msgstr "請輸入您的驗證器代碼"
 msgid "Entity ID"
 msgstr "實體 ID"
 
-#: src/features/objects/components/object-detail-panel.tsx:262
+#: src/features/objects/components/object-detail-panel.tsx:290
 msgid "Error"
 msgstr "錯誤"
 
@@ -961,7 +975,7 @@ msgstr "展開"
 msgid "Expand sidebar"
 msgstr "展開側邊欄"
 
-#: src/routes/_authenticated/$crmId/index.tsx:961
+#: src/routes/_authenticated/$crmId/index.tsx:993
 msgid "Export CSV"
 msgstr "匯出 CSV"
 
@@ -998,6 +1012,7 @@ msgid "Failed to create field"
 msgstr "建立欄位失敗"
 
 #: src/features/objects/components/object-links.tsx:103
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "Failed to create link"
 msgstr "建立連結失敗"
 
@@ -1047,7 +1062,7 @@ msgstr "匯入設計失敗"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:43
 #: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:87
 msgid "Failed to load CRM"
 msgstr "載入 CRM 失敗"
 
@@ -1059,7 +1074,7 @@ msgstr "載入 CRM 設計失敗"
 msgid "Failed to load CRMs"
 msgstr "載入 CRM 失敗"
 
-#: src/features/objects/components/object-detail-panel.tsx:263
+#: src/features/objects/components/object-detail-panel.tsx:291
 msgid "Failed to load item"
 msgstr "載入項目失敗"
 
@@ -1098,12 +1113,12 @@ msgstr "設定存取層級失敗"
 
 #: src/features/crms/components/inline-crm-search.tsx:102
 #: src/features/crms/components/recommended-crms.tsx:65
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:59
 msgid "Failed to subscribe"
 msgstr "訂閱失敗"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:582
+#: src/routes/_authenticated/$crmId/index.tsx:614
 msgid "Failed to unsubscribe"
 msgstr "取消訂閱失敗"
 
@@ -1142,7 +1157,7 @@ msgid "Files"
 msgstr "檔案"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:78
+#: src/routes/_authenticated/find.tsx:89
 msgid "Find CRMs"
 msgstr "尋找 CRM"
 
@@ -1240,7 +1255,7 @@ msgstr "首頁"
 msgid "Hot"
 msgstr "熱門"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "ID"
 msgstr "ID"
 
@@ -1300,7 +1315,7 @@ msgstr "無效的 JSON 檔案"
 msgid "Invalid verification code"
 msgstr "無效的驗證碼"
 
-#: src/features/objects/components/object-detail-panel.tsx:305
+#: src/features/objects/components/object-detail-panel.tsx:333
 msgid "Item details"
 msgstr "項目詳情"
 
@@ -1332,6 +1347,10 @@ msgstr "由左至右"
 msgid "Light"
 msgstr "淺色"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1007
+msgid "Link"
+msgstr ""
+
 #: src/features/objects/components/object-links.tsx:225
 msgid "Links"
 msgstr "連結"
@@ -1348,11 +1367,11 @@ msgstr "載入更多"
 msgid "Loading content…"
 msgstr "正在載入內容…"
 
-#: src/features/objects/components/object-detail-panel.tsx:246
+#: src/features/objects/components/object-detail-panel.tsx:274
 msgid "Loading item"
 msgstr "載入項目中"
 
-#: src/features/objects/components/object-detail-panel.tsx:247
+#: src/features/objects/components/object-detail-panel.tsx:275
 msgid "Loading item details"
 msgstr "載入項目詳情中"
 
@@ -1433,19 +1452,19 @@ msgid "Name is required"
 msgstr "需要名稱"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:53
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:294
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "網路錯誤"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/features/objects/components/create-object-dialog.tsx:328
-#: src/routes/_authenticated/$crmId/index.tsx:895
-#: src/routes/_authenticated/$crmId/index.tsx:912
+#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:944
 msgid "New"
 msgstr "新增"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:893
+#: src/routes/_authenticated/$crmId/index.tsx:925
 msgid "New {0}"
 msgstr "新增{0}"
 
@@ -1479,7 +1498,7 @@ msgid "No connected accounts"
 msgstr "無已連接的帳戶"
 
 #: src/features/crms/components/inline-crm-search.tsx:150
-#: src/routes/_authenticated/find.tsx:80
+#: src/routes/_authenticated/find.tsx:91
 msgid "No CRMs found"
 msgstr "找不到 CRM"
 
@@ -1495,7 +1514,7 @@ msgstr "尚無法建立任何項目類型。請先建立所需的父項目。"
 msgid "No matching objects"
 msgstr "無相符的物件"
 
-#: src/routes/_authenticated/$crmId/index.tsx:809
+#: src/routes/_authenticated/$crmId/index.tsx:841
 msgid "No objects to export."
 msgstr "無可匯出的物件。"
 
@@ -1553,10 +1572,10 @@ msgstr "無檢視"
 #: src/features/objects/components/create-object-dialog.tsx:384
 #: src/features/objects/components/create-object-dialog.tsx:387
 #: src/features/objects/components/create-object-dialog.tsx:391
-#: src/features/objects/components/object-detail-panel.tsx:413
-#: src/features/objects/components/object-detail-panel.tsx:426
-#: src/features/objects/components/object-detail-panel.tsx:429
-#: src/features/objects/components/object-detail-panel.tsx:433
+#: src/features/objects/components/object-detail-panel.tsx:448
+#: src/features/objects/components/object-detail-panel.tsx:461
+#: src/features/objects/components/object-detail-panel.tsx:464
+#: src/features/objects/components/object-detail-panel.tsx:468
 msgid "None"
 msgstr "無"
 
@@ -1633,7 +1652,7 @@ msgstr "開啟導覽選單"
 msgid "Open option actions"
 msgstr "開啟選項動作"
 
-#: src/routes/_authenticated/$crmId/index.tsx:920
+#: src/routes/_authenticated/$crmId/index.tsx:952
 msgid "Open page actions"
 msgstr "開啟頁面動作"
 
@@ -1675,8 +1694,8 @@ msgid "Owner"
 msgstr "擁有者"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
-#: src/features/objects/components/object-detail-panel.tsx:407
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/features/objects/components/object-detail-panel.tsx:442
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Parent"
 msgstr "父項"
 
@@ -1700,13 +1719,13 @@ msgstr "格式(正規表示式)"
 msgid "Permanently delete this CRM and all its content."
 msgstr "永久刪除此 CRM 及其所有內容。"
 
-#: src/routes/_authenticated/$crmId/index.tsx:690
-#: src/routes/_authenticated/$crmId/index.tsx:724
+#: src/routes/_authenticated/$crmId/index.tsx:722
+#: src/routes/_authenticated/$crmId/index.tsx:756
 msgid "Please add one or more classes to the CRM design."
 msgstr "請新增一個或多個類別至 CRM 設計。"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:295
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "請檢查您的網際網路連線後再試一次。"
 
@@ -1733,7 +1752,7 @@ msgstr "隱私"
 msgid "Profile"
 msgstr "個人檔案"
 
-#: src/features/objects/components/object-detail-panel.tsx:291
+#: src/features/objects/components/object-detail-panel.tsx:319
 msgid "Properties"
 msgstr "屬性"
 
@@ -1745,7 +1764,7 @@ msgstr "凸起"
 msgid "Re-link your accounts on this server"
 msgstr "在此伺服器上重新連結您的帳號"
 
-#: src/routes/_authenticated/$crmId/index.tsx:944
+#: src/routes/_authenticated/$crmId/index.tsx:976
 msgid "Re-order columns"
 msgstr "重新排序欄位"
 
@@ -1754,7 +1773,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "在此伺服器上重新註冊您的通行密鑰"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:191
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "推薦"
 
@@ -1911,7 +1930,7 @@ msgstr "星期六"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
 #: src/features/objects/components/comment-thread.tsx:199
-#: src/routes/_authenticated/$crmId/index.tsx:1014
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Save"
 msgstr "儲存"
 
@@ -1923,7 +1942,7 @@ msgstr "儲存中..."
 msgid "Search"
 msgstr "搜尋"
 
-#: src/routes/_authenticated/find.tsx:79
+#: src/routes/_authenticated/find.tsx:90
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "依名稱、ID、指紋或網址搜尋..."
 
@@ -1966,7 +1985,7 @@ msgid "Search..."
 msgstr "搜尋..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:149
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "搜尋中..."
@@ -2040,8 +2059,8 @@ msgstr "襯線體"
 msgid "Server"
 msgstr "伺服器"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:251
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:277
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "伺服器錯誤"
 
@@ -2054,7 +2073,7 @@ msgstr "伺服器規則"
 #~ msgid "Session expired"
 #~ msgstr "工作階段已過期"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
 msgid "Session expired. Please log in again."
 msgstr ""
 
@@ -2074,7 +2093,7 @@ msgstr "正在設定存取權..."
 #: src/routes/_authenticated/$crmId_.settings.tsx:95
 #: src/routes/_authenticated/$crmId_.settings.tsx:180
 #: src/routes/_authenticated/$crmId_.settings.tsx:203
-#: src/routes/_authenticated/$crmId/index.tsx:969
+#: src/routes/_authenticated/$crmId/index.tsx:1001
 msgid "Settings"
 msgstr "設定"
 
@@ -2143,8 +2162,8 @@ msgstr "新增第一則留言以開啟討論。"
 msgid "Stay tuned though!"
 msgstr "敬請期待!"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
-#: src/features/objects/components/object-detail-panel.tsx:331
+#: src/features/objects/components/object-detail-panel.tsx:350
+#: src/features/objects/components/object-detail-panel.tsx:359
 msgid "Stop watching"
 msgstr "停止關注"
 
@@ -2168,7 +2187,7 @@ msgid "Subscribe"
 msgstr "訂閱"
 
 #: src/features/crms/components/inline-crm-search.tsx:101
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:58
 msgid "Subscribed"
 msgstr "已訂閱"
 
@@ -2179,7 +2198,7 @@ msgstr "已訂閱 {0}"
 
 #: src/features/crms/components/inline-crm-search.tsx:100
 #: src/features/crms/components/recommended-crms.tsx:63
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:57
 msgid "Subscribing..."
 msgstr "訂閱中..."
 
@@ -2254,7 +2273,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "這將永久刪除「{0}」及其所有物件、留言與附件。此動作無法復原。"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1130
+#: src/routes/_authenticated/$crmId/index.tsx:1188
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "這將從您的側邊欄移除「{0}」並停止此 CRM 的更新。"
 
@@ -2332,7 +2351,7 @@ msgid "Travelling"
 msgstr "行進中"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:165
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "請嘗試調整您的搜尋字詞"
 
@@ -2363,7 +2382,7 @@ msgstr "輸入以搜尋使用者"
 msgid "Type to search..."
 msgstr "輸入以搜尋..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:273
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "無法連線至遠端伺服器"
 
@@ -2387,30 +2406,30 @@ msgstr "美國"
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:975
-#: src/routes/_authenticated/$crmId/index.tsx:1131
+#: src/routes/_authenticated/$crmId/index.tsx:1013
+#: src/routes/_authenticated/$crmId/index.tsx:1189
 msgid "Unsubscribe"
 msgstr "取消訂閱"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1129
+#: src/routes/_authenticated/$crmId/index.tsx:1187
 msgid "Unsubscribe from CRM?"
 msgstr "取消訂閱 CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:581
+#: src/routes/_authenticated/$crmId/index.tsx:613
 msgid "Unsubscribed"
 msgstr "已取消訂閱"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:580
+#: src/routes/_authenticated/$crmId/index.tsx:612
 msgid "Unsubscribing..."
 msgstr "取消訂閱中..."
 
 #: src/features/board/components/board-card.tsx:81
 #: src/features/board/components/board-card.tsx:82
 #: src/features/objects/components/create-object-dialog.tsx:163
-#: src/features/objects/components/object-detail-panel.tsx:283
-#: src/features/objects/components/object-detail-panel.tsx:287
+#: src/features/objects/components/object-detail-panel.tsx:311
+#: src/features/objects/components/object-detail-panel.tsx:315
 #: src/features/objects/components/object-links.tsx:71
 #: src/features/objects/components/object-links.tsx:153
 #: src/features/objects/components/object-links.tsx:165
@@ -2490,7 +2509,7 @@ msgstr "檢視全部"
 msgid "View all notifications"
 msgstr "檢視所有通知"
 
-#: src/features/objects/components/object-detail-panel.tsx:306
+#: src/features/objects/components/object-detail-panel.tsx:334
 msgid "View and edit item details"
 msgstr "檢視與編輯項目詳細資料"
 
@@ -2502,7 +2521,7 @@ msgstr "檢視控制項"
 msgid "View only"
 msgstr "僅檢視"
 
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:961
 msgid "View options"
 msgstr "檢視選項"
 
@@ -2510,8 +2529,8 @@ msgstr "檢視選項"
 msgid "Views"
 msgstr "檢視次數"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
-#: src/features/objects/components/object-detail-panel.tsx:331
+#: src/features/objects/components/object-detail-panel.tsx:350
+#: src/features/objects/components/object-detail-panel.tsx:359
 msgid "Watch"
 msgstr "關注"
 
@@ -2539,7 +2558,7 @@ msgstr "星期三"
 msgid "You do not have access to this section."
 msgstr ""
 
-#: src/routes/_authenticated/$crmId/index.tsx:102
+#: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
 msgstr "您無權存取此 CRM。"
 

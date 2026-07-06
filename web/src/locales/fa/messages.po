@@ -13,6 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. js-lingui-explicit-id
+#: ../../../lib/web/src/lib/error-normalizer.ts:204
+msgid "Please check your internet connection and try again."
+msgstr ""
+
 #: src/features/objects/components/create-object-dialog.tsx:179
 msgid " or "
 msgstr " یا "
@@ -105,7 +110,7 @@ msgstr "نوع حساب"
 msgid "Account verified"
 msgstr "حساب تأیید شد"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: src/features/objects/components/object-detail-panel.tsx:321
 msgid "Activity"
 msgstr "فعالیت"
 
@@ -150,8 +155,8 @@ msgstr "افزودن مورد چک‌لیست"
 msgid "Add class"
 msgstr "افزودن کلاس"
 
-#: src/routes/_authenticated/$crmId/index.tsx:940
-#: src/routes/_authenticated/$crmId/index.tsx:1123
+#: src/routes/_authenticated/$crmId/index.tsx:972
+#: src/routes/_authenticated/$crmId/index.tsx:1161
 msgid "Add column"
 msgstr "افزودن ستون"
 
@@ -234,12 +239,16 @@ msgstr "اجازهٔ مرتب‌سازی بر اساس"
 msgid "An error occurred"
 msgstr "خطایی رخ داد"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:247
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "خطای غیرمنتظره‌ای رخ داد"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:233
-msgid "Another change was made at the same time. Please refresh to see the latest version."
+#~ msgid "Another change was made at the same time. Please refresh to see the latest version."
+#~ msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx:1168
+msgid "Anyone you give access to can subscribe with this link."
 msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
@@ -247,7 +256,7 @@ msgstr ""
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "آیا از حذف «{0}» مطمئن هستید؟"
 
-#: src/features/objects/components/object-detail-panel.tsx:496
+#: src/features/objects/components/object-detail-panel.tsx:533
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "آیا از حذف «{title}» مطمئن هستید؟ این عمل قابل بازگشت نیست."
 
@@ -306,7 +315,7 @@ msgid "Back to CRM"
 msgstr "بازگشت به CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:116
+#: src/routes/_authenticated/$crmId/index.tsx:123
 msgid "Back to CRMs"
 msgstr "بازگشت به CRMها"
 
@@ -357,7 +366,7 @@ msgstr "می‌تواند فرزند باشد از"
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId_.settings.tsx:560
 #: src/routes/_authenticated/$crmId/design.tsx:304
-#: src/routes/_authenticated/$crmId/index.tsx:1002
+#: src/routes/_authenticated/$crmId/index.tsx:1040
 msgid "Cancel"
 msgstr "لغو"
 
@@ -404,7 +413,7 @@ msgstr "بین ترجیح سیستم، حالت روشن یا حالت تیره 
 msgid "Choose language"
 msgstr "انتخاب زبان"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Class"
 msgstr "کلاس"
 
@@ -516,7 +525,7 @@ msgid "Comment and view"
 msgstr "نظر دادن و دیدن"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:292
+#: src/features/objects/components/object-detail-panel.tsx:320
 msgid "Comments ({0})"
 msgstr "نظرها ({0})"
 
@@ -649,6 +658,10 @@ msgstr "CRM ساخته شد"
 msgid "CRM deleted"
 msgstr "CRM حذف شد"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1166
+msgid "CRM link"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:220
 msgid "CRM not found"
 msgstr "CRM پیدا نشد"
@@ -689,7 +702,7 @@ msgstr "تیره"
 msgid "Dark mode"
 msgstr "حالت تیره"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:232
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
 msgid "Data conflict"
 msgstr ""
 
@@ -730,7 +743,7 @@ msgstr "مرتب‌سازی پیش‌فرض"
 #: src/features/objects/components/object-attachments.tsx:179
 #: src/features/objects/components/object-attachments.tsx:186
 #: src/features/objects/components/object-attachments.tsx:228
-#: src/features/objects/components/object-detail-panel.tsx:497
+#: src/features/objects/components/object-detail-panel.tsx:534
 #: src/routes/_authenticated/$crmId_.settings.tsx:412
 msgid "Delete"
 msgstr "حذف"
@@ -767,9 +780,9 @@ msgstr "حذف CRM؟"
 msgid "Delete field"
 msgstr "حذف فیلد"
 
-#: src/features/objects/components/object-detail-panel.tsx:341
-#: src/features/objects/components/object-detail-panel.tsx:346
-#: src/features/objects/components/object-detail-panel.tsx:495
+#: src/features/objects/components/object-detail-panel.tsx:369
+#: src/features/objects/components/object-detail-panel.tsx:374
+#: src/features/objects/components/object-detail-panel.tsx:532
 msgid "Delete item"
 msgstr "حذف مورد"
 
@@ -809,7 +822,7 @@ msgstr "توضیحات"
 
 #: src/routes/_authenticated/$crmId/design.tsx:64
 #: src/routes/_authenticated/$crmId/design.tsx:132
-#: src/routes/_authenticated/$crmId/index.tsx:955
+#: src/routes/_authenticated/$crmId/index.tsx:987
 msgid "Design"
 msgstr "طراحی"
 
@@ -845,8 +858,8 @@ msgstr "جهت"
 msgid "Dismiss"
 msgstr "بستن"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1031
-#: src/routes/_authenticated/$crmId/index.tsx:1036
+#: src/routes/_authenticated/$crmId/index.tsx:1069
+#: src/routes/_authenticated/$crmId/index.tsx:1074
 msgid "Dismiss board hint"
 msgstr "بستن راهنمای تخته"
 
@@ -857,11 +870,12 @@ msgstr "نوار کناری موبایل را نمایش می‌دهد."
 #: src/features/editor/components/edit-dialogs.tsx:524
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
-#: src/features/objects/components/object-detail-panel.tsx:355
+#: src/features/objects/components/object-detail-panel.tsx:383
+#: src/routes/_authenticated/$crmId/index.tsx:1178
 msgid "Done"
 msgstr "انجام شد"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1022
+#: src/routes/_authenticated/$crmId/index.tsx:1060
 msgid "Double click on a column to add content"
 msgstr "برای افزودن محتوا روی ستون دوبار کلیک کنید"
 
@@ -879,7 +893,7 @@ msgstr "ابتدا از پشتیبان دانلود کنید"
 msgid "Download failed"
 msgstr "دانلود ناموفق بود"
 
-#: src/routes/_authenticated/$crmId/index.tsx:998
+#: src/routes/_authenticated/$crmId/index.tsx:1036
 msgid "Drag columns to re-order them"
 msgstr "برای مرتب‌سازی مجدد، ستون‌ها را بکشید"
 
@@ -946,7 +960,7 @@ msgstr "کد برنامه احرازکننده هویت خود را وارد ک�
 msgid "Entity ID"
 msgstr "شناسه موجودیت"
 
-#: src/features/objects/components/object-detail-panel.tsx:262
+#: src/features/objects/components/object-detail-panel.tsx:290
 msgid "Error"
 msgstr "خطا"
 
@@ -961,7 +975,7 @@ msgstr "گسترش"
 msgid "Expand sidebar"
 msgstr "گسترش نوار کناری"
 
-#: src/routes/_authenticated/$crmId/index.tsx:961
+#: src/routes/_authenticated/$crmId/index.tsx:993
 msgid "Export CSV"
 msgstr "خروجی CSV"
 
@@ -998,6 +1012,7 @@ msgid "Failed to create field"
 msgstr "ایجاد فیلد ناموفق بود"
 
 #: src/features/objects/components/object-links.tsx:103
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "Failed to create link"
 msgstr "ایجاد لینک ناموفق بود"
 
@@ -1047,7 +1062,7 @@ msgstr "وارد کردن طراحی ناموفق بود"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:43
 #: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:87
 msgid "Failed to load CRM"
 msgstr "بارگذاری CRM ناموفق بود"
 
@@ -1059,7 +1074,7 @@ msgstr "بارگذاری طراحی CRM ناموفق بود"
 msgid "Failed to load CRMs"
 msgstr "بارگذاری CRMها ناموفق بود"
 
-#: src/features/objects/components/object-detail-panel.tsx:263
+#: src/features/objects/components/object-detail-panel.tsx:291
 msgid "Failed to load item"
 msgstr "بارگذاری مورد ناموفق بود"
 
@@ -1098,12 +1113,12 @@ msgstr "تنظیم سطح دسترسی ناموفق بود"
 
 #: src/features/crms/components/inline-crm-search.tsx:102
 #: src/features/crms/components/recommended-crms.tsx:65
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:59
 msgid "Failed to subscribe"
 msgstr "اشتراک ناموفق بود"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:582
+#: src/routes/_authenticated/$crmId/index.tsx:614
 msgid "Failed to unsubscribe"
 msgstr "لغو اشتراک ناموفق بود"
 
@@ -1142,7 +1157,7 @@ msgid "Files"
 msgstr "فایل‌ها"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:78
+#: src/routes/_authenticated/find.tsx:89
 msgid "Find CRMs"
 msgstr "یافتن CRMها"
 
@@ -1240,7 +1255,7 @@ msgstr "خانه"
 msgid "Hot"
 msgstr "داغ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "ID"
 msgstr "شناسه"
 
@@ -1300,7 +1315,7 @@ msgstr "فایل JSON نامعتبر"
 msgid "Invalid verification code"
 msgstr "کد تأیید نامعتبر"
 
-#: src/features/objects/components/object-detail-panel.tsx:305
+#: src/features/objects/components/object-detail-panel.tsx:333
 msgid "Item details"
 msgstr "جزئیات مورد"
 
@@ -1332,6 +1347,10 @@ msgstr "چپ به راست"
 msgid "Light"
 msgstr "روشن"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1007
+msgid "Link"
+msgstr ""
+
 #: src/features/objects/components/object-links.tsx:225
 msgid "Links"
 msgstr "لینک‌ها"
@@ -1348,11 +1367,11 @@ msgstr "بارگذاری بیشتر"
 msgid "Loading content…"
 msgstr "در حال بارگذاری محتوا…"
 
-#: src/features/objects/components/object-detail-panel.tsx:246
+#: src/features/objects/components/object-detail-panel.tsx:274
 msgid "Loading item"
 msgstr "در حال بارگذاری مورد"
 
-#: src/features/objects/components/object-detail-panel.tsx:247
+#: src/features/objects/components/object-detail-panel.tsx:275
 msgid "Loading item details"
 msgstr "در حال بارگذاری جزئیات مورد"
 
@@ -1433,19 +1452,19 @@ msgid "Name is required"
 msgstr "نام الزامی است"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:53
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:294
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "خطای شبکه"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/features/objects/components/create-object-dialog.tsx:328
-#: src/routes/_authenticated/$crmId/index.tsx:895
-#: src/routes/_authenticated/$crmId/index.tsx:912
+#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:944
 msgid "New"
 msgstr "جدید"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:893
+#: src/routes/_authenticated/$crmId/index.tsx:925
 msgid "New {0}"
 msgstr "{0} جدید"
 
@@ -1479,7 +1498,7 @@ msgid "No connected accounts"
 msgstr "هیچ حساب متصلی وجود ندارد"
 
 #: src/features/crms/components/inline-crm-search.tsx:150
-#: src/routes/_authenticated/find.tsx:80
+#: src/routes/_authenticated/find.tsx:91
 msgid "No CRMs found"
 msgstr "هیچ CRMی یافت نشد"
 
@@ -1495,7 +1514,7 @@ msgstr "هیچ نوع آیتمی هنوز قابل ایجاد نیست. ابتد
 msgid "No matching objects"
 msgstr "شیء مطابقی وجود ندارد"
 
-#: src/routes/_authenticated/$crmId/index.tsx:809
+#: src/routes/_authenticated/$crmId/index.tsx:841
 msgid "No objects to export."
 msgstr "شیئی برای خروجی گرفتن وجود ندارد."
 
@@ -1553,10 +1572,10 @@ msgstr "بدون بازدید"
 #: src/features/objects/components/create-object-dialog.tsx:384
 #: src/features/objects/components/create-object-dialog.tsx:387
 #: src/features/objects/components/create-object-dialog.tsx:391
-#: src/features/objects/components/object-detail-panel.tsx:413
-#: src/features/objects/components/object-detail-panel.tsx:426
-#: src/features/objects/components/object-detail-panel.tsx:429
-#: src/features/objects/components/object-detail-panel.tsx:433
+#: src/features/objects/components/object-detail-panel.tsx:448
+#: src/features/objects/components/object-detail-panel.tsx:461
+#: src/features/objects/components/object-detail-panel.tsx:464
+#: src/features/objects/components/object-detail-panel.tsx:468
 msgid "None"
 msgstr "هیچ‌کدام"
 
@@ -1633,7 +1652,7 @@ msgstr "باز کردن منوی ناوبری"
 msgid "Open option actions"
 msgstr "باز کردن اقدامات گزینه"
 
-#: src/routes/_authenticated/$crmId/index.tsx:920
+#: src/routes/_authenticated/$crmId/index.tsx:952
 msgid "Open page actions"
 msgstr "باز کردن اقدامات صفحه"
 
@@ -1675,8 +1694,8 @@ msgid "Owner"
 msgstr "مالک"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
-#: src/features/objects/components/object-detail-panel.tsx:407
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/features/objects/components/object-detail-panel.tsx:442
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Parent"
 msgstr "والد"
 
@@ -1700,13 +1719,13 @@ msgstr "الگو (regex)"
 msgid "Permanently delete this CRM and all its content."
 msgstr "این CRM و تمام محتوای آن را به طور دائم حذف کنید."
 
-#: src/routes/_authenticated/$crmId/index.tsx:690
-#: src/routes/_authenticated/$crmId/index.tsx:724
+#: src/routes/_authenticated/$crmId/index.tsx:722
+#: src/routes/_authenticated/$crmId/index.tsx:756
 msgid "Please add one or more classes to the CRM design."
 msgstr "لطفاً یک یا چند کلاس به طراحی CRM اضافه کنید."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:295
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "لطفاً اتصال اینترنت خود را بررسی کرده و دوباره تلاش کنید."
 
@@ -1733,7 +1752,7 @@ msgstr "حریم خصوصی"
 msgid "Profile"
 msgstr "پروفایل"
 
-#: src/features/objects/components/object-detail-panel.tsx:291
+#: src/features/objects/components/object-detail-panel.tsx:319
 msgid "Properties"
 msgstr "ویژگی‌ها"
 
@@ -1745,7 +1764,7 @@ msgstr "برجسته"
 msgid "Re-link your accounts on this server"
 msgstr "حساب‌های خود را در این سرور مجدداً پیوند دهید"
 
-#: src/routes/_authenticated/$crmId/index.tsx:944
+#: src/routes/_authenticated/$crmId/index.tsx:976
 msgid "Re-order columns"
 msgstr "مرتب‌سازی مجدد ستون‌ها"
 
@@ -1754,7 +1773,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "کلیدهای عبور خود را دوباره در این سرور ثبت کنید"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:191
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "توصیه‌شده"
 
@@ -1911,7 +1930,7 @@ msgstr "شنبه"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
 #: src/features/objects/components/comment-thread.tsx:199
-#: src/routes/_authenticated/$crmId/index.tsx:1014
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Save"
 msgstr "ذخیره"
 
@@ -1923,7 +1942,7 @@ msgstr "در حال ذخیره..."
 msgid "Search"
 msgstr "جست‌وجو"
 
-#: src/routes/_authenticated/find.tsx:79
+#: src/routes/_authenticated/find.tsx:90
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "جست‌وجو بر اساس نام، شناسه، اثرانگشت یا URL..."
 
@@ -1966,7 +1985,7 @@ msgid "Search..."
 msgstr "جست‌وجو..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:149
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "در حال جست‌وجو..."
@@ -2040,8 +2059,8 @@ msgstr "سریف"
 msgid "Server"
 msgstr "سرور"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:251
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:277
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "خطای سرور"
 
@@ -2054,7 +2073,7 @@ msgstr "قوانین سرور"
 #~ msgid "Session expired"
 #~ msgstr "نشست منقضی شد"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
 msgid "Session expired. Please log in again."
 msgstr ""
 
@@ -2074,7 +2093,7 @@ msgstr "در حال تنظیم دسترسی..."
 #: src/routes/_authenticated/$crmId_.settings.tsx:95
 #: src/routes/_authenticated/$crmId_.settings.tsx:180
 #: src/routes/_authenticated/$crmId_.settings.tsx:203
-#: src/routes/_authenticated/$crmId/index.tsx:969
+#: src/routes/_authenticated/$crmId/index.tsx:1001
 msgid "Settings"
 msgstr "تنظیمات"
 
@@ -2143,8 +2162,8 @@ msgstr "با افزودن اولین نظر، گفت‌وگو را آغاز کن
 msgid "Stay tuned though!"
 msgstr "اما با ما همراه بمانید!"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
-#: src/features/objects/components/object-detail-panel.tsx:331
+#: src/features/objects/components/object-detail-panel.tsx:350
+#: src/features/objects/components/object-detail-panel.tsx:359
 msgid "Stop watching"
 msgstr "توقف تماشا"
 
@@ -2168,7 +2187,7 @@ msgid "Subscribe"
 msgstr "اشتراک"
 
 #: src/features/crms/components/inline-crm-search.tsx:101
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:58
 msgid "Subscribed"
 msgstr "مشترک شد"
 
@@ -2179,7 +2198,7 @@ msgstr "در {0} مشترک شدید"
 
 #: src/features/crms/components/inline-crm-search.tsx:100
 #: src/features/crms/components/recommended-crms.tsx:63
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:57
 msgid "Subscribing..."
 msgstr "در حال اشتراک..."
 
@@ -2254,7 +2273,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "این کار «{0}» و تمام اشیاء، نظرات و پیوست‌های آن را به‌طور دائمی حذف می‌کند. این عمل قابل بازگشت نیست."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1130
+#: src/routes/_authenticated/$crmId/index.tsx:1188
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "این کار «{0}» را از نوار کناری شما حذف می‌کند و به‌روزرسانی‌های این CRM را متوقف می‌کند."
 
@@ -2332,7 +2351,7 @@ msgid "Travelling"
 msgstr "در حال سفر"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:165
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "عبارات جست‌وجوی خود را تنظیم کنید"
 
@@ -2363,7 +2382,7 @@ msgstr "برای جست‌وجوی کاربران تایپ کنید"
 msgid "Type to search..."
 msgstr "برای جست‌وجو تایپ کنید..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:273
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "اتصال به سرور راه دور ممکن نیست"
 
@@ -2387,30 +2406,30 @@ msgstr "ایالات متحده"
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:975
-#: src/routes/_authenticated/$crmId/index.tsx:1131
+#: src/routes/_authenticated/$crmId/index.tsx:1013
+#: src/routes/_authenticated/$crmId/index.tsx:1189
 msgid "Unsubscribe"
 msgstr "لغو اشتراک"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1129
+#: src/routes/_authenticated/$crmId/index.tsx:1187
 msgid "Unsubscribe from CRM?"
 msgstr "لغو اشتراک از CRM؟"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:581
+#: src/routes/_authenticated/$crmId/index.tsx:613
 msgid "Unsubscribed"
 msgstr "لغو اشتراک شد"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:580
+#: src/routes/_authenticated/$crmId/index.tsx:612
 msgid "Unsubscribing..."
 msgstr "در حال لغو اشتراک..."
 
 #: src/features/board/components/board-card.tsx:81
 #: src/features/board/components/board-card.tsx:82
 #: src/features/objects/components/create-object-dialog.tsx:163
-#: src/features/objects/components/object-detail-panel.tsx:283
-#: src/features/objects/components/object-detail-panel.tsx:287
+#: src/features/objects/components/object-detail-panel.tsx:311
+#: src/features/objects/components/object-detail-panel.tsx:315
 #: src/features/objects/components/object-links.tsx:71
 #: src/features/objects/components/object-links.tsx:153
 #: src/features/objects/components/object-links.tsx:165
@@ -2490,7 +2509,7 @@ msgstr "نمایش همه"
 msgid "View all notifications"
 msgstr "نمایش همه اعلان‌ها"
 
-#: src/features/objects/components/object-detail-panel.tsx:306
+#: src/features/objects/components/object-detail-panel.tsx:334
 msgid "View and edit item details"
 msgstr "نمایش و ویرایش جزئیات مورد"
 
@@ -2502,7 +2521,7 @@ msgstr "کنترل‌های نمایش"
 msgid "View only"
 msgstr "فقط نمایش"
 
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:961
 msgid "View options"
 msgstr "گزینه‌های نمایش"
 
@@ -2510,8 +2529,8 @@ msgstr "گزینه‌های نمایش"
 msgid "Views"
 msgstr "نماها"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
-#: src/features/objects/components/object-detail-panel.tsx:331
+#: src/features/objects/components/object-detail-panel.tsx:350
+#: src/features/objects/components/object-detail-panel.tsx:359
 msgid "Watch"
 msgstr "تماشا"
 
@@ -2539,7 +2558,7 @@ msgstr "چهارشنبه"
 msgid "You do not have access to this section."
 msgstr ""
 
-#: src/routes/_authenticated/$crmId/index.tsx:102
+#: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
 msgstr "شما به این CRM دسترسی ندارید."
 

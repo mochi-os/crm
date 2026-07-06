@@ -28,6 +28,13 @@ import {
   useShellStorage,
   toast,
   toastAction,
+  shellClipboardWrite,
+  ResponsiveDialog,
+  ResponsiveDialogContent,
+  ResponsiveDialogDescription,
+  ResponsiveDialogFooter,
+  ResponsiveDialogHeader,
+  ResponsiveDialogTitle,
   getAppPath,
   Tooltip,
   TooltipContent,
@@ -35,7 +42,7 @@ import {
   LoadingContent,
   arraysEqual,
 } from "@mochi/web";
-import { Check, Columns3, Download, Ellipsis, Users, GripVertical, LogOut, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
+import { Check, Columns3, Copy, Download, Ellipsis, Users, GripVertical, Link as LinkIcon, LogOut, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
 import crmsApi from "@/api/crms";
 import type { CrmDetails, CrmField, CrmObject, SortState } from "@/types";
 import { canDesign, canCreate, canWrite } from "@/lib/access";
@@ -152,6 +159,31 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
   const isOwner = crm.crm.owner === 1;
   const refreshSidebar = useCrmsStore((state) => state.refresh);
   const [unsubscribeOpen, setUnsubscribeOpen] = useState(false);
+  const [linkOpen, setLinkOpen] = useState(false);
+  const [shareLink, setShareLink] = useState("");
+  const [linkCopied, setLinkCopied] = useState(false);
+
+  const openLinkDialog = useCallback(async () => {
+    setShareLink("");
+    setLinkCopied(false);
+    setLinkOpen(true);
+    try {
+      const response = await crmsApi.share(crm.crm.id);
+      setShareLink(response.data.link);
+    } catch (error) {
+      setLinkOpen(false);
+      toast.error(getErrorMessage(error, t`Failed to create link`));
+    }
+  }, [crm.crm.id]);
+
+  const copyShareLink = useCallback(async () => {
+    if (!shareLink) return;
+    const ok = await shellClipboardWrite(shareLink);
+    if (ok) {
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 2000);
+    }
+  }, [shareLink]);
 
   usePageTitle(crm.crm.name);
   // onSync re-runs the route loader (where the crm, schema, and `populated` flag
@@ -969,6 +1001,12 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                   <Trans>Settings</Trans>
                 </Link>
               </DropdownMenuItem>
+              {isOwner && (
+                <DropdownMenuItem onClick={() => void openLinkDialog()}>
+                  <LinkIcon className="size-4 me-2" />
+                  <Trans>Link</Trans>
+                </DropdownMenuItem>
+              )}
               {!isOwner && (
                 <DropdownMenuItem onClick={() => setUnsubscribeOpen(true)}>
                   <LogOut className="size-4 me-2" />
@@ -1122,6 +1160,26 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         onAdd={handleAddColumn}
         title={t`Add column`}
       />
+      <ResponsiveDialog open={linkOpen} onOpenChange={setLinkOpen}>
+        <ResponsiveDialogContent>
+          <ResponsiveDialogHeader>
+            <ResponsiveDialogTitle><Trans>CRM link</Trans></ResponsiveDialogTitle>
+            <ResponsiveDialogDescription>
+              <Trans>Anyone you give access to can subscribe with this link.</Trans>
+            </ResponsiveDialogDescription>
+          </ResponsiveDialogHeader>
+          <div className="bg-muted flex items-center gap-2 rounded-md p-3 font-mono text-sm">
+            <code className="flex-1 break-all">{shareLink || '…'}</code>
+            <Button variant="ghost" size="sm" onClick={() => void copyShareLink()} disabled={!shareLink} className="shrink-0">
+              {linkCopied ? <Check className="size-4" /> : <Copy className="size-4" />}
+            </Button>
+          </div>
+          <ResponsiveDialogFooter>
+            <Button variant="outline" onClick={() => setLinkOpen(false)}><Trans>Done</Trans></Button>
+          </ResponsiveDialogFooter>
+        </ResponsiveDialogContent>
+      </ResponsiveDialog>
+
 
       <ConfirmDialog
         open={unsubscribeOpen}
