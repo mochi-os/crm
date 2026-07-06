@@ -146,8 +146,8 @@ msgstr "Ongeza kipengee cha orodha"
 msgid "Add class"
 msgstr "Ongeza darasa"
 
-#: src/routes/_authenticated/$crmId/index.tsx:940
-#: src/routes/_authenticated/$crmId/index.tsx:1123
+#: src/routes/_authenticated/$crmId/index.tsx:972
+#: src/routes/_authenticated/$crmId/index.tsx:1161
 msgid "Add column"
 msgstr "Ongeza safu"
 
@@ -234,6 +234,10 @@ msgstr "Hitilafu imetokea"
 msgid "An unexpected error occurred"
 msgstr "Hitilafu isiyotarajiwa imetokea"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1168
+msgid "Anyone you give access to can subscribe with this link."
+msgstr "Mtu yeyote unayempa ufikiaji anaweza kujiandikisha kwa kiungo hiki."
+
 #. placeholder {0}: deleteTarget?.name
 #: src/features/objects/components/object-attachments.tsx:227
 msgid "Are you sure you want to delete \"{0}\"?"
@@ -298,7 +302,7 @@ msgid "Back to CRM"
 msgstr "Rudi kwa CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:116
+#: src/routes/_authenticated/$crmId/index.tsx:123
 msgid "Back to CRMs"
 msgstr "Rudi kwa CRM"
 
@@ -348,7 +352,7 @@ msgstr "Inaweza kuwa mtoto wa"
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
-#: src/routes/_authenticated/$crmId/index.tsx:1002
+#: src/routes/_authenticated/$crmId/index.tsx:1040
 msgid "Cancel"
 msgstr "Ghairi"
 
@@ -395,7 +399,7 @@ msgstr "Chagua kati ya mapendeleo ya mfumo, hali ya mwanga, au hali ya giza"
 msgid "Choose language"
 msgstr "Chagua lugha"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Class"
 msgstr "Darasa"
 
@@ -640,6 +644,10 @@ msgstr "CRM imeundwa"
 msgid "CRM deleted"
 msgstr "CRM imefutwa"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1166
+msgid "CRM link"
+msgstr "CRM kiungo"
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:208
 msgid "CRM not found"
 msgstr "CRM haijapatikana"
@@ -785,7 +793,7 @@ msgstr "Maelezo"
 
 #: src/routes/_authenticated/$crmId/design.tsx:64
 #: src/routes/_authenticated/$crmId/design.tsx:132
-#: src/routes/_authenticated/$crmId/index.tsx:955
+#: src/routes/_authenticated/$crmId/index.tsx:987
 msgid "Design"
 msgstr "Muundo"
 
@@ -821,8 +829,8 @@ msgstr "Mwelekeo"
 msgid "Dismiss"
 msgstr "Ondoa"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1031
-#: src/routes/_authenticated/$crmId/index.tsx:1036
+#: src/routes/_authenticated/$crmId/index.tsx:1069
+#: src/routes/_authenticated/$crmId/index.tsx:1074
 msgid "Dismiss board hint"
 msgstr "Ondoa kidokezo cha ubao"
 
@@ -834,10 +842,11 @@ msgstr "Huonyesha utepe wa simu."
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
 #: src/features/objects/components/object-detail-panel.tsx:383
+#: src/routes/_authenticated/$crmId/index.tsx:1178
 msgid "Done"
 msgstr "Imekamilika"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1022
+#: src/routes/_authenticated/$crmId/index.tsx:1060
 msgid "Double click on a column to add content"
 msgstr "Bofya mara mbili kwenye safuwima kuongeza maudhui"
 
@@ -854,7 +863,7 @@ msgstr "Pakua nakala rudufu kwanza"
 msgid "Download failed"
 msgstr "Upakuaji umeshindwa"
 
-#: src/routes/_authenticated/$crmId/index.tsx:998
+#: src/routes/_authenticated/$crmId/index.tsx:1036
 msgid "Drag columns to re-order them"
 msgstr "Buruta safuwima kuzipanga upya"
 
@@ -936,7 +945,7 @@ msgstr "Panua"
 msgid "Expand sidebar"
 msgstr "Panua utepe"
 
-#: src/routes/_authenticated/$crmId/index.tsx:961
+#: src/routes/_authenticated/$crmId/index.tsx:993
 msgid "Export CSV"
 msgstr "Hamisha CSV"
 
@@ -965,6 +974,7 @@ msgid "Failed to create field"
 msgstr "Imeshindwa kuunda uga"
 
 #: src/features/objects/components/object-links.tsx:103
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "Failed to create link"
 msgstr "Imeshindwa kuunda kiungo"
 
@@ -1006,7 +1016,7 @@ msgstr "Imeshindwa kuingiza muundo"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:43
 #: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:87
 msgid "Failed to load CRM"
 msgstr "Imeshindwa kupakia CRM"
 
@@ -1056,12 +1066,12 @@ msgstr "Imeshindwa kuweka kiwango cha ufikiaji"
 
 #: src/features/crms/components/inline-crm-search.tsx:102
 #: src/features/crms/components/recommended-crms.tsx:65
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:59
 msgid "Failed to subscribe"
 msgstr "Imeshindwa kujisajili"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:582
+#: src/routes/_authenticated/$crmId/index.tsx:614
 msgid "Failed to unsubscribe"
 msgstr "Imeshindwa kujiondoa"
 
@@ -1100,7 +1110,7 @@ msgid "Files"
 msgstr "Faili"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:78
+#: src/routes/_authenticated/find.tsx:89
 msgid "Find CRMs"
 msgstr "Tafuta CRMs"
 
@@ -1198,7 +1208,7 @@ msgstr "Nyumbani"
 msgid "Hot"
 msgstr "Moto"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "ID"
 msgstr "Kitambulisho"
 
@@ -1270,6 +1280,10 @@ msgstr "Kushoto kwenda Kulia"
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Mwepesi"
+
+#: src/routes/_authenticated/$crmId/index.tsx:1007
+msgid "Link"
+msgstr "Kiungo"
 
 #: src/features/objects/components/object-links.tsx:225
 msgid "Links"
@@ -1377,13 +1391,13 @@ msgstr "Hitilafu ya mtandao"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/features/objects/components/create-object-dialog.tsx:328
-#: src/routes/_authenticated/$crmId/index.tsx:895
-#: src/routes/_authenticated/$crmId/index.tsx:912
+#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:944
 msgid "New"
 msgstr "Mpya"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:893
+#: src/routes/_authenticated/$crmId/index.tsx:925
 msgid "New {0}"
 msgstr "{0} mpya"
 
@@ -1417,7 +1431,7 @@ msgid "No connected accounts"
 msgstr "Hakuna akaunti zilizounganishwa"
 
 #: src/features/crms/components/inline-crm-search.tsx:150
-#: src/routes/_authenticated/find.tsx:80
+#: src/routes/_authenticated/find.tsx:91
 msgid "No CRMs found"
 msgstr "Hakuna CRM zilizopatikana"
 
@@ -1433,7 +1447,7 @@ msgstr "Hakuna aina za vipengele zinazoweza kuundwa bado. Unda vipengele vya mza
 msgid "No matching objects"
 msgstr "Hakuna vitu vinavyoendana"
 
-#: src/routes/_authenticated/$crmId/index.tsx:809
+#: src/routes/_authenticated/$crmId/index.tsx:841
 msgid "No objects to export."
 msgstr "Hakuna vitu vya kuhamisha."
 
@@ -1567,7 +1581,7 @@ msgstr "Fungua menyu ya urambazaji"
 msgid "Open option actions"
 msgstr "Fungua vitendo vya chaguo"
 
-#: src/routes/_authenticated/$crmId/index.tsx:920
+#: src/routes/_authenticated/$crmId/index.tsx:952
 msgid "Open page actions"
 msgstr "Fungua vitendo vya ukurasa"
 
@@ -1610,7 +1624,7 @@ msgstr "Mmiliki"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
 #: src/features/objects/components/object-detail-panel.tsx:442
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Parent"
 msgstr "Mzazi"
 
@@ -1634,8 +1648,8 @@ msgstr "Muundo (regex)"
 msgid "Permanently delete this CRM and all its content."
 msgstr "Futa kabisa CRM hii na maudhui yake yote."
 
-#: src/routes/_authenticated/$crmId/index.tsx:690
-#: src/routes/_authenticated/$crmId/index.tsx:724
+#: src/routes/_authenticated/$crmId/index.tsx:722
+#: src/routes/_authenticated/$crmId/index.tsx:756
 msgid "Please add one or more classes to the CRM design."
 msgstr "Tafadhali ongeza darasa moja au zaidi kwa muundo wa CRM."
 
@@ -1670,7 +1684,7 @@ msgstr "Iliyoinuliwa"
 msgid "Re-link your accounts on this server"
 msgstr "Unganisha tena akaunti zako kwenye seva hii"
 
-#: src/routes/_authenticated/$crmId/index.tsx:944
+#: src/routes/_authenticated/$crmId/index.tsx:976
 msgid "Re-order columns"
 msgstr "Panga upya safuwima"
 
@@ -1679,7 +1693,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "Sajili upya funguo zako za ufikiaji kwenye seva hii"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-page.tsx:243
 msgid "Recommended"
 msgstr "Inapendekezwa"
 
@@ -1836,7 +1850,7 @@ msgstr "Jumamosi"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
 #: src/features/objects/components/comment-thread.tsx:199
-#: src/routes/_authenticated/$crmId/index.tsx:1014
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Save"
 msgstr "Hifadhi"
 
@@ -1848,7 +1862,7 @@ msgstr "Inahifadhi..."
 msgid "Search"
 msgstr "Tafuta"
 
-#: src/routes/_authenticated/find.tsx:79
+#: src/routes/_authenticated/find.tsx:90
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Tafuta kwa jina, ID, alama ya kidole, au URL..."
 
@@ -1891,7 +1905,7 @@ msgid "Search..."
 msgstr "Tafuta..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-page.tsx:201
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Inatafuta..."
@@ -1995,7 +2009,7 @@ msgstr "Inaweka ufikiaji..."
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:168
 #: src/routes/_authenticated/$crmId_.settings.tsx:191
-#: src/routes/_authenticated/$crmId/index.tsx:969
+#: src/routes/_authenticated/$crmId/index.tsx:1001
 msgid "Settings"
 msgstr "Mipangilio"
 
@@ -2089,7 +2103,7 @@ msgid "Subscribe"
 msgstr "Jiunge"
 
 #: src/features/crms/components/inline-crm-search.tsx:101
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:58
 msgid "Subscribed"
 msgstr "Umejiunga"
 
@@ -2100,7 +2114,7 @@ msgstr "Umejiunga na {0}"
 
 #: src/features/crms/components/inline-crm-search.tsx:100
 #: src/features/crms/components/recommended-crms.tsx:63
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:57
 msgid "Subscribing..."
 msgstr "Inajiunga..."
 
@@ -2166,7 +2180,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "Hii itafuta \"{0}\" kabisa na vitu vyake vyote, maoni, na viambatisho. Kitendo hiki hakiwezi kutenduliwa."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1130
+#: src/routes/_authenticated/$crmId/index.tsx:1188
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Hii itaondoa \"{0}\" kutoka upau wako wa kando na kusimamisha masasisho ya CRM hii."
 
@@ -2240,7 +2254,7 @@ msgid "Travelling"
 msgstr "Kusafiri"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-page.tsx:217
 msgid "Try adjusting your search terms"
 msgstr "Jaribu kurekebisha maneno yako ya utafutaji"
 
@@ -2295,22 +2309,22 @@ msgstr "Marekani"
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:975
-#: src/routes/_authenticated/$crmId/index.tsx:1131
+#: src/routes/_authenticated/$crmId/index.tsx:1013
+#: src/routes/_authenticated/$crmId/index.tsx:1189
 msgid "Unsubscribe"
 msgstr "Jiondoe"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1129
+#: src/routes/_authenticated/$crmId/index.tsx:1187
 msgid "Unsubscribe from CRM?"
 msgstr "Jiondoe kutoka CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:581
+#: src/routes/_authenticated/$crmId/index.tsx:613
 msgid "Unsubscribed"
 msgstr "Umejiondoa"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:580
+#: src/routes/_authenticated/$crmId/index.tsx:612
 msgid "Unsubscribing..."
 msgstr "Inajiondoa..."
 
@@ -2409,7 +2423,7 @@ msgstr "Tazama udhibiti"
 msgid "View only"
 msgstr "Tazama tu"
 
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:961
 msgid "View options"
 msgstr "Tazama chaguo"
 
@@ -2442,7 +2456,7 @@ msgstr "Tovuti iko chini ya matengenezo!"
 msgid "Wednesday"
 msgstr "Jumatano"
 
-#: src/routes/_authenticated/$crmId/index.tsx:102
+#: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
 msgstr "Huna ufikiaji wa CRM hii."
 

@@ -867,7 +867,9 @@ const crmsApi = {
       prefix: string;
       fingerprint: string;
       class: string;
-      server: string;
+      server?: string;
+      /** owner's peer from a mochi:// share-link probe; subscribe pins the same peer. */
+      peer?: string;
       remote: boolean;
     };
   }> => {
@@ -893,11 +895,20 @@ const crmsApi = {
   subscribe: async (
     crmId: string,
     server?: string,
+    peer?: string,
   ): Promise<{ data: { fingerprint: string } }> => {
     return crmsRequest.post(endpoints.crms.subscribe, {
       crm: crmId,
       server,
+      peer,
     });
+  },
+
+  // Produce a mochi://<peer>/<crm> share link for a CRM the caller owns.
+  share: async (
+    crmId: string,
+  ): Promise<{ data: { link: string; peer: string; crm: string } }> => {
+    return crmsRequest.post(endpoints.crms.share(crmId), {});
   },
 
   // Unsubscribe from a remote crm

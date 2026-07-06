@@ -146,8 +146,8 @@ msgstr "Afegeix un element a la llista"
 msgid "Add class"
 msgstr "Afegeix una classe"
 
-#: src/routes/_authenticated/$crmId/index.tsx:940
-#: src/routes/_authenticated/$crmId/index.tsx:1123
+#: src/routes/_authenticated/$crmId/index.tsx:972
+#: src/routes/_authenticated/$crmId/index.tsx:1161
 msgid "Add column"
 msgstr "Afegeix una columna"
 
@@ -234,6 +234,10 @@ msgstr "S'ha produït un error"
 msgid "An unexpected error occurred"
 msgstr "S'ha produït un error inesperat"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1168
+msgid "Anyone you give access to can subscribe with this link."
+msgstr "Qualsevol persona a qui doneu accés pot subscriure's amb aquest enllaç."
+
 #. placeholder {0}: deleteTarget?.name
 #: src/features/objects/components/object-attachments.tsx:227
 msgid "Are you sure you want to delete \"{0}\"?"
@@ -298,7 +302,7 @@ msgid "Back to CRM"
 msgstr "Torna al CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:116
+#: src/routes/_authenticated/$crmId/index.tsx:123
 msgid "Back to CRMs"
 msgstr "Torna als CRM"
 
@@ -348,7 +352,7 @@ msgstr "Pot ser fill de"
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
-#: src/routes/_authenticated/$crmId/index.tsx:1002
+#: src/routes/_authenticated/$crmId/index.tsx:1040
 msgid "Cancel"
 msgstr "Cancel·la"
 
@@ -395,7 +399,7 @@ msgstr "Tria entre la preferència del sistema, mode clar o mode fosc"
 msgid "Choose language"
 msgstr "Tria l'idioma"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Class"
 msgstr "Classe"
 
@@ -640,6 +644,10 @@ msgstr "CRM creat"
 msgid "CRM deleted"
 msgstr "S'ha suprimit el CRM"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1166
+msgid "CRM link"
+msgstr "Enllaç CRM"
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:208
 msgid "CRM not found"
 msgstr "CRM no trobat"
@@ -785,7 +793,7 @@ msgstr "Descripció"
 
 #: src/routes/_authenticated/$crmId/design.tsx:64
 #: src/routes/_authenticated/$crmId/design.tsx:132
-#: src/routes/_authenticated/$crmId/index.tsx:955
+#: src/routes/_authenticated/$crmId/index.tsx:987
 msgid "Design"
 msgstr "Disseny"
 
@@ -821,8 +829,8 @@ msgstr "Direcció"
 msgid "Dismiss"
 msgstr "Descarta"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1031
-#: src/routes/_authenticated/$crmId/index.tsx:1036
+#: src/routes/_authenticated/$crmId/index.tsx:1069
+#: src/routes/_authenticated/$crmId/index.tsx:1074
 msgid "Dismiss board hint"
 msgstr "Descarta el suggeriment del tauler"
 
@@ -834,10 +842,11 @@ msgstr "Mostra la barra lateral mòbil."
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
 #: src/features/objects/components/object-detail-panel.tsx:383
+#: src/routes/_authenticated/$crmId/index.tsx:1178
 msgid "Done"
 msgstr "Fet"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1022
+#: src/routes/_authenticated/$crmId/index.tsx:1060
 msgid "Double click on a column to add content"
 msgstr "Fes doble clic en una columna per afegir contingut"
 
@@ -854,7 +863,7 @@ msgstr "Descarrega primer la còpia de seguretat"
 msgid "Download failed"
 msgstr "Ha fallat la baixada"
 
-#: src/routes/_authenticated/$crmId/index.tsx:998
+#: src/routes/_authenticated/$crmId/index.tsx:1036
 msgid "Drag columns to re-order them"
 msgstr "Arrossega les columnes per reordenar-les"
 
@@ -936,7 +945,7 @@ msgstr "Desplega"
 msgid "Expand sidebar"
 msgstr "Expandeix la barra lateral"
 
-#: src/routes/_authenticated/$crmId/index.tsx:961
+#: src/routes/_authenticated/$crmId/index.tsx:993
 msgid "Export CSV"
 msgstr "Exporta CSV"
 
@@ -965,6 +974,7 @@ msgid "Failed to create field"
 msgstr "No s'ha pogut crear el camp"
 
 #: src/features/objects/components/object-links.tsx:103
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "Failed to create link"
 msgstr "No s'ha pogut crear l'enllaç"
 
@@ -1006,7 +1016,7 @@ msgstr "No s'ha pogut importar el disseny"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:43
 #: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:87
 msgid "Failed to load CRM"
 msgstr "No s'ha pogut carregar el CRM"
 
@@ -1056,12 +1066,12 @@ msgstr "No s'ha pogut establir el nivell d'accés"
 
 #: src/features/crms/components/inline-crm-search.tsx:102
 #: src/features/crms/components/recommended-crms.tsx:65
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:59
 msgid "Failed to subscribe"
 msgstr "No s'ha pogut subscriure"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:582
+#: src/routes/_authenticated/$crmId/index.tsx:614
 msgid "Failed to unsubscribe"
 msgstr "No s'ha pogut cancel·lar la subscripció"
 
@@ -1100,7 +1110,7 @@ msgid "Files"
 msgstr "Fitxers"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:78
+#: src/routes/_authenticated/find.tsx:89
 msgid "Find CRMs"
 msgstr "Cerca CRM"
 
@@ -1198,7 +1208,7 @@ msgstr "Inici"
 msgid "Hot"
 msgstr "Popular"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "ID"
 msgstr "ID"
 
@@ -1270,6 +1280,10 @@ msgstr "D'esquerra a dreta"
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Clar"
+
+#: src/routes/_authenticated/$crmId/index.tsx:1007
+msgid "Link"
+msgstr "Enllaç"
 
 #: src/features/objects/components/object-links.tsx:225
 msgid "Links"
@@ -1377,13 +1391,13 @@ msgstr "Error de xarxa"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/features/objects/components/create-object-dialog.tsx:328
-#: src/routes/_authenticated/$crmId/index.tsx:895
-#: src/routes/_authenticated/$crmId/index.tsx:912
+#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:944
 msgid "New"
 msgstr "Nou"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:893
+#: src/routes/_authenticated/$crmId/index.tsx:925
 msgid "New {0}"
 msgstr "Nou {0}"
 
@@ -1417,7 +1431,7 @@ msgid "No connected accounts"
 msgstr "Cap compte connectat"
 
 #: src/features/crms/components/inline-crm-search.tsx:150
-#: src/routes/_authenticated/find.tsx:80
+#: src/routes/_authenticated/find.tsx:91
 msgid "No CRMs found"
 msgstr "No s'ha trobat cap CRM"
 
@@ -1433,7 +1447,7 @@ msgstr "Encara no es pot crear cap tipus d'element. Crea primer els elements par
 msgid "No matching objects"
 msgstr "No hi ha objectes coincidents"
 
-#: src/routes/_authenticated/$crmId/index.tsx:809
+#: src/routes/_authenticated/$crmId/index.tsx:841
 msgid "No objects to export."
 msgstr "No hi ha objectes per exportar."
 
@@ -1567,7 +1581,7 @@ msgstr "Obre el menú de navegació"
 msgid "Open option actions"
 msgstr "Obre les accions de l'opció"
 
-#: src/routes/_authenticated/$crmId/index.tsx:920
+#: src/routes/_authenticated/$crmId/index.tsx:952
 msgid "Open page actions"
 msgstr "Obre les accions de la pàgina"
 
@@ -1610,7 +1624,7 @@ msgstr "Propietari"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
 #: src/features/objects/components/object-detail-panel.tsx:442
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Parent"
 msgstr "Pare"
 
@@ -1634,8 +1648,8 @@ msgstr "Patró (regex)"
 msgid "Permanently delete this CRM and all its content."
 msgstr "Suprimeix permanentment aquest CRM i tot el seu contingut."
 
-#: src/routes/_authenticated/$crmId/index.tsx:690
-#: src/routes/_authenticated/$crmId/index.tsx:724
+#: src/routes/_authenticated/$crmId/index.tsx:722
+#: src/routes/_authenticated/$crmId/index.tsx:756
 msgid "Please add one or more classes to the CRM design."
 msgstr "Afegeix una o més classes al disseny del CRM."
 
@@ -1670,7 +1684,7 @@ msgstr "Elevat"
 msgid "Re-link your accounts on this server"
 msgstr "Torneu a vincular els comptes en aquest servidor"
 
-#: src/routes/_authenticated/$crmId/index.tsx:944
+#: src/routes/_authenticated/$crmId/index.tsx:976
 msgid "Re-order columns"
 msgstr "Reordena les columnes"
 
@@ -1679,7 +1693,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "Torna a registrar les teves claus d'accés en aquest servidor"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-page.tsx:243
 msgid "Recommended"
 msgstr "Recomanat"
 
@@ -1836,7 +1850,7 @@ msgstr "Dissabte"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
 #: src/features/objects/components/comment-thread.tsx:199
-#: src/routes/_authenticated/$crmId/index.tsx:1014
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Save"
 msgstr "Desa"
 
@@ -1848,7 +1862,7 @@ msgstr "Desant..."
 msgid "Search"
 msgstr "Cerca"
 
-#: src/routes/_authenticated/find.tsx:79
+#: src/routes/_authenticated/find.tsx:90
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Cerca per nom, ID, empremta o URL..."
 
@@ -1891,7 +1905,7 @@ msgid "Search..."
 msgstr "Cerca..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-page.tsx:201
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Cercant..."
@@ -1995,7 +2009,7 @@ msgstr "Establint l'accés..."
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:168
 #: src/routes/_authenticated/$crmId_.settings.tsx:191
-#: src/routes/_authenticated/$crmId/index.tsx:969
+#: src/routes/_authenticated/$crmId/index.tsx:1001
 msgid "Settings"
 msgstr "Configuració"
 
@@ -2089,7 +2103,7 @@ msgid "Subscribe"
 msgstr "Subscriu-te"
 
 #: src/features/crms/components/inline-crm-search.tsx:101
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:58
 msgid "Subscribed"
 msgstr "Subscrit"
 
@@ -2100,7 +2114,7 @@ msgstr "Subscrit a {0}"
 
 #: src/features/crms/components/inline-crm-search.tsx:100
 #: src/features/crms/components/recommended-crms.tsx:63
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:57
 msgid "Subscribing..."
 msgstr "Subscrivint..."
 
@@ -2166,7 +2180,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "Això eliminarà permanentment \"{0}\" i tots els seus objectes, comentaris i adjunts. Aquesta acció no es pot desfer."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1130
+#: src/routes/_authenticated/$crmId/index.tsx:1188
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Això eliminarà \"{0}\" de la teva barra lateral i aturarà les actualitzacions d'aquest CRM."
 
@@ -2240,7 +2254,7 @@ msgid "Travelling"
 msgstr "Viatjant"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-page.tsx:217
 msgid "Try adjusting your search terms"
 msgstr "Prova d'ajustar els termes de cerca"
 
@@ -2295,22 +2309,22 @@ msgstr "Estats Units"
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:975
-#: src/routes/_authenticated/$crmId/index.tsx:1131
+#: src/routes/_authenticated/$crmId/index.tsx:1013
+#: src/routes/_authenticated/$crmId/index.tsx:1189
 msgid "Unsubscribe"
 msgstr "Cancel·la la subscripció"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1129
+#: src/routes/_authenticated/$crmId/index.tsx:1187
 msgid "Unsubscribe from CRM?"
 msgstr "Cancel·lar la subscripció al CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:581
+#: src/routes/_authenticated/$crmId/index.tsx:613
 msgid "Unsubscribed"
 msgstr "Subscripció cancel·lada"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:580
+#: src/routes/_authenticated/$crmId/index.tsx:612
 msgid "Unsubscribing..."
 msgstr "Cancel·lant la subscripció..."
 
@@ -2409,7 +2423,7 @@ msgstr "Controls de visualització"
 msgid "View only"
 msgstr "Només visualització"
 
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:961
 msgid "View options"
 msgstr "Opcions de visualització"
 
@@ -2442,7 +2456,7 @@ msgstr "El lloc web està en manteniment!"
 msgid "Wednesday"
 msgstr "Dimecres"
 
-#: src/routes/_authenticated/$crmId/index.tsx:102
+#: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
 msgstr "No tens accés a aquest CRM."
 

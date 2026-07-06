@@ -146,8 +146,8 @@ msgstr "زیادکردنی بڕگەی لیستی پشکنین"
 msgid "Add class"
 msgstr "زیادکردنی پۆل"
 
-#: src/routes/_authenticated/$crmId/index.tsx:940
-#: src/routes/_authenticated/$crmId/index.tsx:1123
+#: src/routes/_authenticated/$crmId/index.tsx:972
+#: src/routes/_authenticated/$crmId/index.tsx:1161
 msgid "Add column"
 msgstr "زیادکردنی ستوون"
 
@@ -234,6 +234,10 @@ msgstr "هەڵەیەک ڕوویدا"
 msgid "An unexpected error occurred"
 msgstr "هەڵەیەکی چاوەڕواننەکراو ڕوویدا"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1168
+msgid "Anyone you give access to can subscribe with this link."
+msgstr "هەر کەسێک دەستپێگەیشتنی پێبدەیت دەتوانێت بەم بەستەرە بەشداربێت."
+
 #. placeholder {0}: deleteTarget?.name
 #: src/features/objects/components/object-attachments.tsx:227
 msgid "Are you sure you want to delete \"{0}\"?"
@@ -298,7 +302,7 @@ msgid "Back to CRM"
 msgstr "گەڕانەوە بۆ CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:116
+#: src/routes/_authenticated/$crmId/index.tsx:123
 msgid "Back to CRMs"
 msgstr "گەڕانەوە بۆ CRMـەکان"
 
@@ -348,7 +352,7 @@ msgstr "دەتوانێت منداڵ بێت بۆ"
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
-#: src/routes/_authenticated/$crmId/index.tsx:1002
+#: src/routes/_authenticated/$crmId/index.tsx:1040
 msgid "Cancel"
 msgstr "هەڵوەشاندنەوە"
 
@@ -395,7 +399,7 @@ msgstr "هەڵبژێرە لەنێوان پێشنیاری سیستەم، دۆخی
 msgid "Choose language"
 msgstr "زمان هەڵبژێرە"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Class"
 msgstr "پۆل"
 
@@ -640,6 +644,10 @@ msgstr "CRM دروستکرا"
 msgid "CRM deleted"
 msgstr "CRM سڕایەوە"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1166
+msgid "CRM link"
+msgstr "CRM بەستەر"
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:208
 msgid "CRM not found"
 msgstr "CRM نەدۆزرایەوە"
@@ -785,7 +793,7 @@ msgstr "وەسف"
 
 #: src/routes/_authenticated/$crmId/design.tsx:64
 #: src/routes/_authenticated/$crmId/design.tsx:132
-#: src/routes/_authenticated/$crmId/index.tsx:955
+#: src/routes/_authenticated/$crmId/index.tsx:987
 msgid "Design"
 msgstr "دیزاین"
 
@@ -821,8 +829,8 @@ msgstr "ئاراستە"
 msgid "Dismiss"
 msgstr "لابردن"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1031
-#: src/routes/_authenticated/$crmId/index.tsx:1036
+#: src/routes/_authenticated/$crmId/index.tsx:1069
+#: src/routes/_authenticated/$crmId/index.tsx:1074
 msgid "Dismiss board hint"
 msgstr "لابردنی هاندانی تەختە"
 
@@ -834,10 +842,11 @@ msgstr "لاتەنیشتی مۆبایل پیشان دەدات."
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
 #: src/features/objects/components/object-detail-panel.tsx:383
+#: src/routes/_authenticated/$crmId/index.tsx:1178
 msgid "Done"
 msgstr "تەواوبوو"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1022
+#: src/routes/_authenticated/$crmId/index.tsx:1060
 msgid "Double click on a column to add content"
 msgstr "بۆ زیادکردنی ناوەڕۆک دوو جار کلیک لەسەر ستوونێک بکە"
 
@@ -854,7 +863,7 @@ msgstr "یەکەم جار باکئەپ داگرە"
 msgid "Download failed"
 msgstr "داگرتن سەرکەوتوو نەبوو"
 
-#: src/routes/_authenticated/$crmId/index.tsx:998
+#: src/routes/_authenticated/$crmId/index.tsx:1036
 msgid "Drag columns to re-order them"
 msgstr "ستوونەکان ڕابکێشە بۆ ڕێکخستنەوەیان"
 
@@ -936,7 +945,7 @@ msgstr "فراوانکردن"
 msgid "Expand sidebar"
 msgstr "فراوانکردنی لاتەنیشت"
 
-#: src/routes/_authenticated/$crmId/index.tsx:961
+#: src/routes/_authenticated/$crmId/index.tsx:993
 msgid "Export CSV"
 msgstr "هەناردەکردنی CSV"
 
@@ -965,6 +974,7 @@ msgid "Failed to create field"
 msgstr "دروستکردنی خانە سەرکەوتوو نەبوو"
 
 #: src/features/objects/components/object-links.tsx:103
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "Failed to create link"
 msgstr "دروستکردنی بەستەر سەرکەوتوو نەبوو"
 
@@ -1006,7 +1016,7 @@ msgstr "هاوردەکردنی دیزاین سەرکەوتوو نەبوو"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:43
 #: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:87
 msgid "Failed to load CRM"
 msgstr "بارکردنی CRM سەرکەوتوو نەبوو"
 
@@ -1056,12 +1066,12 @@ msgstr "دانانی ئاستی گەیشتن سەرکەوتوو نەبوو"
 
 #: src/features/crms/components/inline-crm-search.tsx:102
 #: src/features/crms/components/recommended-crms.tsx:65
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:59
 msgid "Failed to subscribe"
 msgstr "بەشداریبوون سەرکەوتوو نەبوو"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:582
+#: src/routes/_authenticated/$crmId/index.tsx:614
 msgid "Failed to unsubscribe"
 msgstr "وازهێنان لە بەشداریبوون سەرکەوتوو نەبوو"
 
@@ -1100,7 +1110,7 @@ msgid "Files"
 msgstr "فایلەکان"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:78
+#: src/routes/_authenticated/find.tsx:89
 msgid "Find CRMs"
 msgstr "دۆزینەوەی CRMەکان"
 
@@ -1198,7 +1208,7 @@ msgstr "ماڵەوە"
 msgid "Hot"
 msgstr "گەرم"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "ID"
 msgstr "ID"
 
@@ -1270,6 +1280,10 @@ msgstr "لە چەپەوە بۆ ڕاست"
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "ڕووناک"
+
+#: src/routes/_authenticated/$crmId/index.tsx:1007
+msgid "Link"
+msgstr "بەستەر"
 
 #: src/features/objects/components/object-links.tsx:225
 msgid "Links"
@@ -1377,13 +1391,13 @@ msgstr "هەڵەی تۆڕ"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/features/objects/components/create-object-dialog.tsx:328
-#: src/routes/_authenticated/$crmId/index.tsx:895
-#: src/routes/_authenticated/$crmId/index.tsx:912
+#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:944
 msgid "New"
 msgstr "نوێ"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:893
+#: src/routes/_authenticated/$crmId/index.tsx:925
 msgid "New {0}"
 msgstr "{0}ی نوێ"
 
@@ -1417,7 +1431,7 @@ msgid "No connected accounts"
 msgstr "هیچ هەژمارێکی پەیوەندیدراو نییە"
 
 #: src/features/crms/components/inline-crm-search.tsx:150
-#: src/routes/_authenticated/find.tsx:80
+#: src/routes/_authenticated/find.tsx:91
 msgid "No CRMs found"
 msgstr "هیچ CRMێک نەدۆزرایەوە"
 
@@ -1433,7 +1447,7 @@ msgstr "هێشتا هیچ جۆرە بڕگەیەک ناتوانرێت دروست 
 msgid "No matching objects"
 msgstr "هیچ تەنێکی هاوسەنگ نییە"
 
-#: src/routes/_authenticated/$crmId/index.tsx:809
+#: src/routes/_authenticated/$crmId/index.tsx:841
 msgid "No objects to export."
 msgstr "هیچ تەنێک نییە بۆ هەناردەکردن."
 
@@ -1567,7 +1581,7 @@ msgstr "کردنەوەی لیستی ڕێدۆزی"
 msgid "Open option actions"
 msgstr "کردنەوەی کردارەکانی هەڵبژاردە"
 
-#: src/routes/_authenticated/$crmId/index.tsx:920
+#: src/routes/_authenticated/$crmId/index.tsx:952
 msgid "Open page actions"
 msgstr "کردنەوەی کردارەکانی پەڕە"
 
@@ -1610,7 +1624,7 @@ msgstr "خاوەن"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
 #: src/features/objects/components/object-detail-panel.tsx:442
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Parent"
 msgstr "باوان"
 
@@ -1634,8 +1648,8 @@ msgstr "نموونە (regex)"
 msgid "Permanently delete this CRM and all its content."
 msgstr "ئەم CRMە و هەموو ناوەڕۆکەکانی بە یەکجاری بسڕەوە."
 
-#: src/routes/_authenticated/$crmId/index.tsx:690
-#: src/routes/_authenticated/$crmId/index.tsx:724
+#: src/routes/_authenticated/$crmId/index.tsx:722
+#: src/routes/_authenticated/$crmId/index.tsx:756
 msgid "Please add one or more classes to the CRM design."
 msgstr "تکایە یەک یان زیاتر پۆل زیاد بکە بۆ دیزاینی CRM."
 
@@ -1670,7 +1684,7 @@ msgstr "بەرز"
 msgid "Re-link your accounts on this server"
 msgstr "هەژمارەکانت لەم سێرڤەرەدا دووبارە بەستەوە"
 
-#: src/routes/_authenticated/$crmId/index.tsx:944
+#: src/routes/_authenticated/$crmId/index.tsx:976
 msgid "Re-order columns"
 msgstr "ڕیزکردنەوەی ستوونەکان"
 
@@ -1679,7 +1693,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "پاسکیەکانت لەسەر ئەم ڕاژەیە دووبارە تۆمار بکە"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-page.tsx:243
 msgid "Recommended"
 msgstr "پێشنیازکراو"
 
@@ -1836,7 +1850,7 @@ msgstr "شەممە"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
 #: src/features/objects/components/comment-thread.tsx:199
-#: src/routes/_authenticated/$crmId/index.tsx:1014
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Save"
 msgstr "پاشەکەوتکردن"
 
@@ -1848,7 +1862,7 @@ msgstr "پاشەکەوتکردن..."
 msgid "Search"
 msgstr "گەڕان"
 
-#: src/routes/_authenticated/find.tsx:79
+#: src/routes/_authenticated/find.tsx:90
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "گەڕان بە ناو، ناسنامە، پەنجەمۆر، یان URL..."
 
@@ -1891,7 +1905,7 @@ msgid "Search..."
 msgstr "گەڕان..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-page.tsx:201
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "گەڕان..."
@@ -1995,7 +2009,7 @@ msgstr "دانانی دەستپێگەیشتن..."
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:168
 #: src/routes/_authenticated/$crmId_.settings.tsx:191
-#: src/routes/_authenticated/$crmId/index.tsx:969
+#: src/routes/_authenticated/$crmId/index.tsx:1001
 msgid "Settings"
 msgstr "ڕێکخستنەکان"
 
@@ -2089,7 +2103,7 @@ msgid "Subscribe"
 msgstr "بەشداربە"
 
 #: src/features/crms/components/inline-crm-search.tsx:101
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:58
 msgid "Subscribed"
 msgstr "بەشداربوو"
 
@@ -2100,7 +2114,7 @@ msgstr "بەشداربوو لە {0}"
 
 #: src/features/crms/components/inline-crm-search.tsx:100
 #: src/features/crms/components/recommended-crms.tsx:63
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:57
 msgid "Subscribing..."
 msgstr "بەشداربوون..."
 
@@ -2166,7 +2180,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "ئەمە \"{0}\" و هەموو بابەتەکان، لێدوانەکان، و هاوپێچەکانی بە هەمیشەیی دەسڕێتەوە. ئەم کردارە ناتوانرێت بگەڕێنرێتەوە."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1130
+#: src/routes/_authenticated/$crmId/index.tsx:1188
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "ئەمە \"{0}\" لە لاتەنیشتەکەت لادەبات و نوێکارییەکانی ئەم CRM-ە ڕادەگرێت."
 
@@ -2240,7 +2254,7 @@ msgid "Travelling"
 msgstr "گەشتکردن"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-page.tsx:217
 msgid "Try adjusting your search terms"
 msgstr "هەوڵبدە وشەکانی گەڕانت ڕێکبخەیت"
 
@@ -2295,22 +2309,22 @@ msgstr "ویلایەتە یەکگرتووەکان"
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:975
-#: src/routes/_authenticated/$crmId/index.tsx:1131
+#: src/routes/_authenticated/$crmId/index.tsx:1013
+#: src/routes/_authenticated/$crmId/index.tsx:1189
 msgid "Unsubscribe"
 msgstr "بەشداری هەڵبوەشێنەوە"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1129
+#: src/routes/_authenticated/$crmId/index.tsx:1187
 msgid "Unsubscribe from CRM?"
 msgstr "بەشداری لە CRM هەڵبوەشێنەوە؟"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:581
+#: src/routes/_authenticated/$crmId/index.tsx:613
 msgid "Unsubscribed"
 msgstr "بەشداری هەڵوەشایەوە"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:580
+#: src/routes/_authenticated/$crmId/index.tsx:612
 msgid "Unsubscribing..."
 msgstr "هەڵوەشاندنەوەی بەشداری..."
 
@@ -2409,7 +2423,7 @@ msgstr "کۆنترۆڵەکانی بینین"
 msgid "View only"
 msgstr "تەنها بینین"
 
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:961
 msgid "View options"
 msgstr "بژاردەکانی بینین"
 
@@ -2442,7 +2456,7 @@ msgstr "ماڵپەڕ لە ژێر چاکسازییە!"
 msgid "Wednesday"
 msgstr "چوارشەممە"
 
-#: src/routes/_authenticated/$crmId/index.tsx:102
+#: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
 msgstr "دەستڕاگەیشتنت بەم CRM ـە نییە."
 

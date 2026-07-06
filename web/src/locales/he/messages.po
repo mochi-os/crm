@@ -146,8 +146,8 @@ msgstr "הוסף פריט לרשימת משימות"
 msgid "Add class"
 msgstr "הוסף מחלקה"
 
-#: src/routes/_authenticated/$crmId/index.tsx:940
-#: src/routes/_authenticated/$crmId/index.tsx:1123
+#: src/routes/_authenticated/$crmId/index.tsx:972
+#: src/routes/_authenticated/$crmId/index.tsx:1161
 msgid "Add column"
 msgstr "הוסף עמודה"
 
@@ -234,6 +234,10 @@ msgstr "אירעה שגיאה"
 msgid "An unexpected error occurred"
 msgstr "אירעה שגיאה בלתי צפויה"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1168
+msgid "Anyone you give access to can subscribe with this link."
+msgstr "כל מי שתעניק לו גישה יכול להירשם באמצעות קישור זה."
+
 #. placeholder {0}: deleteTarget?.name
 #: src/features/objects/components/object-attachments.tsx:227
 msgid "Are you sure you want to delete \"{0}\"?"
@@ -298,7 +302,7 @@ msgid "Back to CRM"
 msgstr "חזור ל-CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:116
+#: src/routes/_authenticated/$crmId/index.tsx:123
 msgid "Back to CRMs"
 msgstr "חזור ל-CRMs"
 
@@ -348,7 +352,7 @@ msgstr "יכול להיות צאצא של"
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
-#: src/routes/_authenticated/$crmId/index.tsx:1002
+#: src/routes/_authenticated/$crmId/index.tsx:1040
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -395,7 +399,7 @@ msgstr "בחר בין העדפת מערכת, מצב בהיר, או מצב כהה
 msgid "Choose language"
 msgstr "בחר שפה"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Class"
 msgstr "מחלקה"
 
@@ -640,6 +644,10 @@ msgstr "ה-CRM נוצר"
 msgid "CRM deleted"
 msgstr "CRM נמחק"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1166
+msgid "CRM link"
+msgstr "קישור CRM"
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:208
 msgid "CRM not found"
 msgstr "ה-CRM לא נמצא"
@@ -785,7 +793,7 @@ msgstr "תיאור"
 
 #: src/routes/_authenticated/$crmId/design.tsx:64
 #: src/routes/_authenticated/$crmId/design.tsx:132
-#: src/routes/_authenticated/$crmId/index.tsx:955
+#: src/routes/_authenticated/$crmId/index.tsx:987
 msgid "Design"
 msgstr "עיצוב"
 
@@ -821,8 +829,8 @@ msgstr "כיוון"
 msgid "Dismiss"
 msgstr "סגור"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1031
-#: src/routes/_authenticated/$crmId/index.tsx:1036
+#: src/routes/_authenticated/$crmId/index.tsx:1069
+#: src/routes/_authenticated/$crmId/index.tsx:1074
 msgid "Dismiss board hint"
 msgstr "סגור רמז לוח"
 
@@ -834,10 +842,11 @@ msgstr "מציג את סרגל הצד למובייל."
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
 #: src/features/objects/components/object-detail-panel.tsx:383
+#: src/routes/_authenticated/$crmId/index.tsx:1178
 msgid "Done"
 msgstr "בוצע"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1022
+#: src/routes/_authenticated/$crmId/index.tsx:1060
 msgid "Double click on a column to add content"
 msgstr "לחץ פעמיים על עמודה כדי להוסיף תוכן"
 
@@ -854,7 +863,7 @@ msgstr "הורד גיבוי תחילה"
 msgid "Download failed"
 msgstr "ההורדה נכשלה"
 
-#: src/routes/_authenticated/$crmId/index.tsx:998
+#: src/routes/_authenticated/$crmId/index.tsx:1036
 msgid "Drag columns to re-order them"
 msgstr "גרור עמודות כדי לשנות את סדרן"
 
@@ -936,7 +945,7 @@ msgstr "הרחבה"
 msgid "Expand sidebar"
 msgstr "הרחב סרגל צד"
 
-#: src/routes/_authenticated/$crmId/index.tsx:961
+#: src/routes/_authenticated/$crmId/index.tsx:993
 msgid "Export CSV"
 msgstr "ייצוא CSV"
 
@@ -965,6 +974,7 @@ msgid "Failed to create field"
 msgstr "יצירת השדה נכשלה"
 
 #: src/features/objects/components/object-links.tsx:103
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "Failed to create link"
 msgstr "יצירת הקישור נכשלה"
 
@@ -1006,7 +1016,7 @@ msgstr "ייבוא העיצוב נכשל"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:43
 #: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:87
 msgid "Failed to load CRM"
 msgstr "טעינת ה-CRM נכשלה"
 
@@ -1056,12 +1066,12 @@ msgstr "הגדרת רמת הגישה נכשלה"
 
 #: src/features/crms/components/inline-crm-search.tsx:102
 #: src/features/crms/components/recommended-crms.tsx:65
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:59
 msgid "Failed to subscribe"
 msgstr "ההרשמה נכשלה"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:582
+#: src/routes/_authenticated/$crmId/index.tsx:614
 msgid "Failed to unsubscribe"
 msgstr "ביטול ההרשמה נכשל"
 
@@ -1100,7 +1110,7 @@ msgid "Files"
 msgstr "קבצים"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:78
+#: src/routes/_authenticated/find.tsx:89
 msgid "Find CRMs"
 msgstr "חפש CRMים"
 
@@ -1198,7 +1208,7 @@ msgstr "בית"
 msgid "Hot"
 msgstr "חם"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "ID"
 msgstr "מזהה"
 
@@ -1270,6 +1280,10 @@ msgstr "משמאל לימין"
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "בהיר"
+
+#: src/routes/_authenticated/$crmId/index.tsx:1007
+msgid "Link"
+msgstr "קישור"
 
 #: src/features/objects/components/object-links.tsx:225
 msgid "Links"
@@ -1377,13 +1391,13 @@ msgstr "שגיאת רשת"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/features/objects/components/create-object-dialog.tsx:328
-#: src/routes/_authenticated/$crmId/index.tsx:895
-#: src/routes/_authenticated/$crmId/index.tsx:912
+#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:944
 msgid "New"
 msgstr "חדש"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:893
+#: src/routes/_authenticated/$crmId/index.tsx:925
 msgid "New {0}"
 msgstr "{0} חדש"
 
@@ -1417,7 +1431,7 @@ msgid "No connected accounts"
 msgstr "אין חשבונות מקושרים"
 
 #: src/features/crms/components/inline-crm-search.tsx:150
-#: src/routes/_authenticated/find.tsx:80
+#: src/routes/_authenticated/find.tsx:91
 msgid "No CRMs found"
 msgstr "לא נמצאו מערכות CRM"
 
@@ -1433,7 +1447,7 @@ msgstr "עדיין לא ניתן ליצור סוגי פריטים. צור תחי
 msgid "No matching objects"
 msgstr "אין אובייקטים תואמים"
 
-#: src/routes/_authenticated/$crmId/index.tsx:809
+#: src/routes/_authenticated/$crmId/index.tsx:841
 msgid "No objects to export."
 msgstr "אין אובייקטים לייצוא."
 
@@ -1567,7 +1581,7 @@ msgstr "פתח תפריט ניווט"
 msgid "Open option actions"
 msgstr "פתח פעולות אפשרות"
 
-#: src/routes/_authenticated/$crmId/index.tsx:920
+#: src/routes/_authenticated/$crmId/index.tsx:952
 msgid "Open page actions"
 msgstr "פתח פעולות דף"
 
@@ -1610,7 +1624,7 @@ msgstr "בעלים"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
 #: src/features/objects/components/object-detail-panel.tsx:442
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Parent"
 msgstr "אב"
 
@@ -1634,8 +1648,8 @@ msgstr "תבנית (ביטוי רגולרי)"
 msgid "Permanently delete this CRM and all its content."
 msgstr "מחק לצמיתות את ה-CRM הזה וכל התוכן שלו."
 
-#: src/routes/_authenticated/$crmId/index.tsx:690
-#: src/routes/_authenticated/$crmId/index.tsx:724
+#: src/routes/_authenticated/$crmId/index.tsx:722
+#: src/routes/_authenticated/$crmId/index.tsx:756
 msgid "Please add one or more classes to the CRM design."
 msgstr "הוסף מחלקה אחת או יותר לעיצוב ה-CRM."
 
@@ -1670,7 +1684,7 @@ msgstr "מורם"
 msgid "Re-link your accounts on this server"
 msgstr "קשר מחדש את חשבונותיך בשרת זה"
 
-#: src/routes/_authenticated/$crmId/index.tsx:944
+#: src/routes/_authenticated/$crmId/index.tsx:976
 msgid "Re-order columns"
 msgstr "סדר מחדש עמודות"
 
@@ -1679,7 +1693,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "רשמו מחדש את מפתחות הגישה שלכם בשרת הזה"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-page.tsx:243
 msgid "Recommended"
 msgstr "מומלץ"
 
@@ -1836,7 +1850,7 @@ msgstr "שבת"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
 #: src/features/objects/components/comment-thread.tsx:199
-#: src/routes/_authenticated/$crmId/index.tsx:1014
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Save"
 msgstr "שמור"
 
@@ -1848,7 +1862,7 @@ msgstr "שומר..."
 msgid "Search"
 msgstr "חיפוש"
 
-#: src/routes/_authenticated/find.tsx:79
+#: src/routes/_authenticated/find.tsx:90
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "חפש לפי שם, מזהה, טביעת אצבע או כתובת URL..."
 
@@ -1891,7 +1905,7 @@ msgid "Search..."
 msgstr "חיפוש..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-page.tsx:201
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "מחפש..."
@@ -1995,7 +2009,7 @@ msgstr "מגדיר גישה..."
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:168
 #: src/routes/_authenticated/$crmId_.settings.tsx:191
-#: src/routes/_authenticated/$crmId/index.tsx:969
+#: src/routes/_authenticated/$crmId/index.tsx:1001
 msgid "Settings"
 msgstr "הגדרות"
 
@@ -2089,7 +2103,7 @@ msgid "Subscribe"
 msgstr "הירשם"
 
 #: src/features/crms/components/inline-crm-search.tsx:101
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:58
 msgid "Subscribed"
 msgstr "רשום"
 
@@ -2100,7 +2114,7 @@ msgstr "רשום ל-{0}"
 
 #: src/features/crms/components/inline-crm-search.tsx:100
 #: src/features/crms/components/recommended-crms.tsx:63
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:57
 msgid "Subscribing..."
 msgstr "נרשם..."
 
@@ -2166,7 +2180,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "פעולה זו תמחק לצמיתות את \"{0}\" ואת כל הפריטים, התגובות והקבצים המצורפים שלו. לא ניתן לבטל פעולה זו."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1130
+#: src/routes/_authenticated/$crmId/index.tsx:1188
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "פעולה זו תסיר את \"{0}\" מסרגל הצד שלך ותעצור עדכונים עבור CRM זה."
 
@@ -2240,7 +2254,7 @@ msgid "Travelling"
 msgstr "בנסיעה"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-page.tsx:217
 msgid "Try adjusting your search terms"
 msgstr "נסה להתאים את מונחי החיפוש שלך"
 
@@ -2295,22 +2309,22 @@ msgstr "ארצות הברית"
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:975
-#: src/routes/_authenticated/$crmId/index.tsx:1131
+#: src/routes/_authenticated/$crmId/index.tsx:1013
+#: src/routes/_authenticated/$crmId/index.tsx:1189
 msgid "Unsubscribe"
 msgstr "בטל הרשמה"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1129
+#: src/routes/_authenticated/$crmId/index.tsx:1187
 msgid "Unsubscribe from CRM?"
 msgstr "לבטל הרשמה מ-CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:581
+#: src/routes/_authenticated/$crmId/index.tsx:613
 msgid "Unsubscribed"
 msgstr "ההרשמה בוטלה"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:580
+#: src/routes/_authenticated/$crmId/index.tsx:612
 msgid "Unsubscribing..."
 msgstr "מבטל הרשמה..."
 
@@ -2409,7 +2423,7 @@ msgstr "פקדי תצוגה"
 msgid "View only"
 msgstr "תצוגה בלבד"
 
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:961
 msgid "View options"
 msgstr "אפשרויות תצוגה"
 
@@ -2442,7 +2456,7 @@ msgstr "האתר בתחזוקה!"
 msgid "Wednesday"
 msgstr "יום רביעי"
 
-#: src/routes/_authenticated/$crmId/index.tsx:102
+#: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
 msgstr "אין לכם גישה ל-CRM הזה."
 

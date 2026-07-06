@@ -146,8 +146,8 @@ msgstr "បន្ថែមធាតុបញ្ជី"
 msgid "Add class"
 msgstr "បន្ថែមថ្នាក់"
 
-#: src/routes/_authenticated/$crmId/index.tsx:940
-#: src/routes/_authenticated/$crmId/index.tsx:1123
+#: src/routes/_authenticated/$crmId/index.tsx:972
+#: src/routes/_authenticated/$crmId/index.tsx:1161
 msgid "Add column"
 msgstr "បន្ថែមជួរឈរ"
 
@@ -234,6 +234,10 @@ msgstr "មានកំហុសកើតឡើង"
 msgid "An unexpected error occurred"
 msgstr "មានកំហុសដែលមិនបានរំពឹងទុកកើតឡើង"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1168
+msgid "Anyone you give access to can subscribe with this link."
+msgstr "អ្នកណាដែលអ្នកផ្តល់សិទ្ធិចូលប្រើ អាចជាវតាមរយៈតំណនេះបាន។"
+
 #. placeholder {0}: deleteTarget?.name
 #: src/features/objects/components/object-attachments.tsx:227
 msgid "Are you sure you want to delete \"{0}\"?"
@@ -298,7 +302,7 @@ msgid "Back to CRM"
 msgstr "ត្រឡប់ទៅ CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:116
+#: src/routes/_authenticated/$crmId/index.tsx:123
 msgid "Back to CRMs"
 msgstr "ត្រឡប់ទៅ CRMs"
 
@@ -348,7 +352,7 @@ msgstr "អាចជាកូននៃ"
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
-#: src/routes/_authenticated/$crmId/index.tsx:1002
+#: src/routes/_authenticated/$crmId/index.tsx:1040
 msgid "Cancel"
 msgstr "បោះបង់"
 
@@ -395,7 +399,7 @@ msgstr "ជ្រើសរើសរវាងចំណូលចិត្តប្
 msgid "Choose language"
 msgstr "ជ្រើសរើសភាសា"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Class"
 msgstr "ថ្នាក់"
 
@@ -640,6 +644,10 @@ msgstr "បានបង្កើត CRM"
 msgid "CRM deleted"
 msgstr "បានលុប CRM"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1166
+msgid "CRM link"
+msgstr "តំណ CRM"
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:208
 msgid "CRM not found"
 msgstr "រកមិនឃើញ CRM"
@@ -785,7 +793,7 @@ msgstr "ការពិពណ៌នា"
 
 #: src/routes/_authenticated/$crmId/design.tsx:64
 #: src/routes/_authenticated/$crmId/design.tsx:132
-#: src/routes/_authenticated/$crmId/index.tsx:955
+#: src/routes/_authenticated/$crmId/index.tsx:987
 msgid "Design"
 msgstr "រចនា"
 
@@ -821,8 +829,8 @@ msgstr "ទិស"
 msgid "Dismiss"
 msgstr "បិទ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1031
-#: src/routes/_authenticated/$crmId/index.tsx:1036
+#: src/routes/_authenticated/$crmId/index.tsx:1069
+#: src/routes/_authenticated/$crmId/index.tsx:1074
 msgid "Dismiss board hint"
 msgstr "បិទគន្លឹះក្តារ"
 
@@ -834,10 +842,11 @@ msgstr "បង្ហាញរបារចំហៀងទូរស័ព្ទ។
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
 #: src/features/objects/components/object-detail-panel.tsx:383
+#: src/routes/_authenticated/$crmId/index.tsx:1178
 msgid "Done"
 msgstr "រួចរាល់"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1022
+#: src/routes/_authenticated/$crmId/index.tsx:1060
 msgid "Double click on a column to add content"
 msgstr "ចុចពីរដងលើជួរឈរដើម្បីបន្ថែមមាតិកា"
 
@@ -854,7 +863,7 @@ msgstr "ទាញយកការបម្រុងទុកជាមុនសិ
 msgid "Download failed"
 msgstr "ការទាញយកបានបរាជ័យ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:998
+#: src/routes/_authenticated/$crmId/index.tsx:1036
 msgid "Drag columns to re-order them"
 msgstr "អូសជួរឈរដើម្បីរៀបលំដាប់ឡើងវិញ"
 
@@ -936,7 +945,7 @@ msgstr "ពង្រីក"
 msgid "Expand sidebar"
 msgstr "ពង្រីករបារចំហៀង"
 
-#: src/routes/_authenticated/$crmId/index.tsx:961
+#: src/routes/_authenticated/$crmId/index.tsx:993
 msgid "Export CSV"
 msgstr "នាំចេញ CSV"
 
@@ -965,6 +974,7 @@ msgid "Failed to create field"
 msgstr "បរាជ័យក្នុងការបង្កើតវាល"
 
 #: src/features/objects/components/object-links.tsx:103
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "Failed to create link"
 msgstr "បរាជ័យក្នុងការបង្កើតតំណ"
 
@@ -1006,7 +1016,7 @@ msgstr "បរាជ័យក្នុងការនាំចូលការរ
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:43
 #: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:87
 msgid "Failed to load CRM"
 msgstr "បរាជ័យក្នុងការផ្ទុក CRM"
 
@@ -1056,12 +1066,12 @@ msgstr "បរាជ័យក្នុងការកំណត់កម្រិ
 
 #: src/features/crms/components/inline-crm-search.tsx:102
 #: src/features/crms/components/recommended-crms.tsx:65
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:59
 msgid "Failed to subscribe"
 msgstr "បរាជ័យក្នុងការជាវ"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:582
+#: src/routes/_authenticated/$crmId/index.tsx:614
 msgid "Failed to unsubscribe"
 msgstr "បរាជ័យក្នុងការបោះបង់ការជាវ"
 
@@ -1100,7 +1110,7 @@ msgid "Files"
 msgstr "ឯកសារ"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:78
+#: src/routes/_authenticated/find.tsx:89
 msgid "Find CRMs"
 msgstr "ស្វែងរក CRMs"
 
@@ -1198,7 +1208,7 @@ msgstr "ដើម"
 msgid "Hot"
 msgstr "ក្ដៅ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "ID"
 msgstr "លេខសម្គាល់"
 
@@ -1270,6 +1280,10 @@ msgstr "ឆ្វេងទៅស្ដាំ"
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "ភ្លឺ"
+
+#: src/routes/_authenticated/$crmId/index.tsx:1007
+msgid "Link"
+msgstr "តំណ"
 
 #: src/features/objects/components/object-links.tsx:225
 msgid "Links"
@@ -1377,13 +1391,13 @@ msgstr "កំហុសបណ្តាញ"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/features/objects/components/create-object-dialog.tsx:328
-#: src/routes/_authenticated/$crmId/index.tsx:895
-#: src/routes/_authenticated/$crmId/index.tsx:912
+#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:944
 msgid "New"
 msgstr "ថ្មី"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:893
+#: src/routes/_authenticated/$crmId/index.tsx:925
 msgid "New {0}"
 msgstr "{0} ថ្មី"
 
@@ -1417,7 +1431,7 @@ msgid "No connected accounts"
 msgstr "មិនមានគណនីភ្ជាប់"
 
 #: src/features/crms/components/inline-crm-search.tsx:150
-#: src/routes/_authenticated/find.tsx:80
+#: src/routes/_authenticated/find.tsx:91
 msgid "No CRMs found"
 msgstr "រកមិនឃើញ CRM"
 
@@ -1433,7 +1447,7 @@ msgstr "មិនអាចបង្កើតប្រភេទធាតុបា
 msgid "No matching objects"
 msgstr "មិនមានវត្ថុដែលត្រូវនឹង"
 
-#: src/routes/_authenticated/$crmId/index.tsx:809
+#: src/routes/_authenticated/$crmId/index.tsx:841
 msgid "No objects to export."
 msgstr "មិនមានវត្ថុដើម្បីនាំចេញ។"
 
@@ -1567,7 +1581,7 @@ msgstr "បើកម៉ឺនុយរុករក"
 msgid "Open option actions"
 msgstr "បើកសកម្មភាពជម្រើស"
 
-#: src/routes/_authenticated/$crmId/index.tsx:920
+#: src/routes/_authenticated/$crmId/index.tsx:952
 msgid "Open page actions"
 msgstr "បើកសកម្មភាពទំព័រ"
 
@@ -1610,7 +1624,7 @@ msgstr "ម្ចាស់"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
 #: src/features/objects/components/object-detail-panel.tsx:442
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Parent"
 msgstr "មេ"
 
@@ -1634,8 +1648,8 @@ msgstr "លំនាំ (regex)"
 msgid "Permanently delete this CRM and all its content."
 msgstr "លុប CRM នេះ និងមាតិការបស់វាជាអចិន្ត្រៃយ៍។"
 
-#: src/routes/_authenticated/$crmId/index.tsx:690
-#: src/routes/_authenticated/$crmId/index.tsx:724
+#: src/routes/_authenticated/$crmId/index.tsx:722
+#: src/routes/_authenticated/$crmId/index.tsx:756
 msgid "Please add one or more classes to the CRM design."
 msgstr "សូមបន្ថែមថ្នាក់មួយ ឬច្រើនទៅការរចនា CRM។"
 
@@ -1670,7 +1684,7 @@ msgstr "លើកឡើង"
 msgid "Re-link your accounts on this server"
 msgstr "ភ្ជាប់គណនីរបស់អ្នកឡើងវិញនៅម៉ាស៊ីនមេនេះ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:944
+#: src/routes/_authenticated/$crmId/index.tsx:976
 msgid "Re-order columns"
 msgstr "តម្រៀបជួរឈរឡើងវិញ"
 
@@ -1679,7 +1693,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "ចុះឈ្មោះកូនសោចូលរបស់អ្នកឡើងវិញនៅលើម៉ាស៊ីនមេនេះ"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-page.tsx:243
 msgid "Recommended"
 msgstr "បានណែនាំ"
 
@@ -1836,7 +1850,7 @@ msgstr "ថ្ងៃសៅរ៍"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
 #: src/features/objects/components/comment-thread.tsx:199
-#: src/routes/_authenticated/$crmId/index.tsx:1014
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Save"
 msgstr "រក្សាទុក"
 
@@ -1848,7 +1862,7 @@ msgstr "កំពុងរក្សាទុក..."
 msgid "Search"
 msgstr "ស្វែងរក"
 
-#: src/routes/_authenticated/find.tsx:79
+#: src/routes/_authenticated/find.tsx:90
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "ស្វែងរកតាមឈ្មោះ ID ស្នាមម្រាមដៃ ឬ URL..."
 
@@ -1891,7 +1905,7 @@ msgid "Search..."
 msgstr "ស្វែងរក..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-page.tsx:201
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "កំពុងស្វែងរក..."
@@ -1995,7 +2009,7 @@ msgstr "កំពុងកំណត់ការចូលប្រើ..."
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:168
 #: src/routes/_authenticated/$crmId_.settings.tsx:191
-#: src/routes/_authenticated/$crmId/index.tsx:969
+#: src/routes/_authenticated/$crmId/index.tsx:1001
 msgid "Settings"
 msgstr "ការកំណត់"
 
@@ -2089,7 +2103,7 @@ msgid "Subscribe"
 msgstr "ជាវ"
 
 #: src/features/crms/components/inline-crm-search.tsx:101
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:58
 msgid "Subscribed"
 msgstr "បានជាវ"
 
@@ -2100,7 +2114,7 @@ msgstr "បានជាវ {0}"
 
 #: src/features/crms/components/inline-crm-search.tsx:100
 #: src/features/crms/components/recommended-crms.tsx:63
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:57
 msgid "Subscribing..."
 msgstr "កំពុងជាវ..."
 
@@ -2166,7 +2180,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "នេះនឹងលុប \"{0}\" និងវត្ថុ មតិយោបល់ និងឯកសារភ្ជាប់ទាំងអស់របស់វាជាអចិន្ត្រៃយ៍។ សកម្មភាពនេះមិនអាចមិនធ្វើវិញបានទេ។"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1130
+#: src/routes/_authenticated/$crmId/index.tsx:1188
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "នេះនឹងដក \"{0}\" ចេញពីរបារចំហៀងរបស់អ្នក ហើយឈប់ការធ្វើបច្ចុប្បន្នភាពសម្រាប់ CRM នេះ។"
 
@@ -2240,7 +2254,7 @@ msgid "Travelling"
 msgstr "កំពុងធ្វើដំណើរ"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-page.tsx:217
 msgid "Try adjusting your search terms"
 msgstr "សាកល្បងកែតម្រូវពាក្យស្វែងរករបស់អ្នក"
 
@@ -2295,22 +2309,22 @@ msgstr "សហរដ្ឋអាមេរិក"
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:975
-#: src/routes/_authenticated/$crmId/index.tsx:1131
+#: src/routes/_authenticated/$crmId/index.tsx:1013
+#: src/routes/_authenticated/$crmId/index.tsx:1189
 msgid "Unsubscribe"
 msgstr "ឈប់ជាវ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1129
+#: src/routes/_authenticated/$crmId/index.tsx:1187
 msgid "Unsubscribe from CRM?"
 msgstr "ឈប់ជាវពី CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:581
+#: src/routes/_authenticated/$crmId/index.tsx:613
 msgid "Unsubscribed"
 msgstr "បានឈប់ជាវ"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:580
+#: src/routes/_authenticated/$crmId/index.tsx:612
 msgid "Unsubscribing..."
 msgstr "កំពុងឈប់ជាវ..."
 
@@ -2409,7 +2423,7 @@ msgstr "ការគ្រប់គ្រងទិដ្ឋភាព"
 msgid "View only"
 msgstr "មើលតែប៉ុណ្ណោះ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:961
 msgid "View options"
 msgstr "ជម្រើសទិដ្ឋភាព"
 
@@ -2442,7 +2456,7 @@ msgstr "គេហទំព័រកំពុងស្ថិតក្រោមក
 msgid "Wednesday"
 msgstr "ថ្ងៃពុធ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:102
+#: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
 msgstr "អ្នកមិនមានសិទ្ធិចូលប្រើ CRM នេះទេ។"
 

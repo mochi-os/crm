@@ -146,8 +146,8 @@ msgstr "เพิ่มรายการเช็คลิสต์"
 msgid "Add class"
 msgstr "เพิ่มคลาส"
 
-#: src/routes/_authenticated/$crmId/index.tsx:940
-#: src/routes/_authenticated/$crmId/index.tsx:1123
+#: src/routes/_authenticated/$crmId/index.tsx:972
+#: src/routes/_authenticated/$crmId/index.tsx:1161
 msgid "Add column"
 msgstr "เพิ่มคอลัมน์"
 
@@ -234,6 +234,10 @@ msgstr "เกิดข้อผิดพลาด"
 msgid "An unexpected error occurred"
 msgstr "เกิดข้อผิดพลาดที่ไม่คาดคิด"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1168
+msgid "Anyone you give access to can subscribe with this link."
+msgstr "ทุกคนที่คุณให้สิทธิ์เข้าถึงสามารถติดตามด้วยลิงก์นี้ได้"
+
 #. placeholder {0}: deleteTarget?.name
 #: src/features/objects/components/object-attachments.tsx:227
 msgid "Are you sure you want to delete \"{0}\"?"
@@ -298,7 +302,7 @@ msgid "Back to CRM"
 msgstr "กลับไปยัง CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:116
+#: src/routes/_authenticated/$crmId/index.tsx:123
 msgid "Back to CRMs"
 msgstr "กลับไปยัง CRM ทั้งหมด"
 
@@ -348,7 +352,7 @@ msgstr "สามารถเป็นลูกของ"
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
-#: src/routes/_authenticated/$crmId/index.tsx:1002
+#: src/routes/_authenticated/$crmId/index.tsx:1040
 msgid "Cancel"
 msgstr "ยกเลิก"
 
@@ -395,7 +399,7 @@ msgstr "เลือกระหว่างการตั้งค่าระ
 msgid "Choose language"
 msgstr "เลือกภาษา"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Class"
 msgstr "คลาส"
 
@@ -640,6 +644,10 @@ msgstr "สร้าง CRM แล้ว"
 msgid "CRM deleted"
 msgstr "ลบ CRM แล้ว"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1166
+msgid "CRM link"
+msgstr "ลิงก์ CRM"
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:208
 msgid "CRM not found"
 msgstr "ไม่พบ CRM"
@@ -785,7 +793,7 @@ msgstr "คำอธิบาย"
 
 #: src/routes/_authenticated/$crmId/design.tsx:64
 #: src/routes/_authenticated/$crmId/design.tsx:132
-#: src/routes/_authenticated/$crmId/index.tsx:955
+#: src/routes/_authenticated/$crmId/index.tsx:987
 msgid "Design"
 msgstr "ออกแบบ"
 
@@ -821,8 +829,8 @@ msgstr "ทิศทาง"
 msgid "Dismiss"
 msgstr "ปิด"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1031
-#: src/routes/_authenticated/$crmId/index.tsx:1036
+#: src/routes/_authenticated/$crmId/index.tsx:1069
+#: src/routes/_authenticated/$crmId/index.tsx:1074
 msgid "Dismiss board hint"
 msgstr "ปิดคำแนะนำกระดาน"
 
@@ -834,10 +842,11 @@ msgstr "แสดงแถบด้านข้างบนมือถือ"
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
 #: src/features/objects/components/object-detail-panel.tsx:383
+#: src/routes/_authenticated/$crmId/index.tsx:1178
 msgid "Done"
 msgstr "เสร็จสิ้น"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1022
+#: src/routes/_authenticated/$crmId/index.tsx:1060
 msgid "Double click on a column to add content"
 msgstr "ดับเบิลคลิกบนคอลัมน์เพื่อเพิ่มเนื้อหา"
 
@@ -854,7 +863,7 @@ msgstr "ดาวน์โหลดสำรองข้อมูลก่อน
 msgid "Download failed"
 msgstr "ดาวน์โหลดไม่สำเร็จ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:998
+#: src/routes/_authenticated/$crmId/index.tsx:1036
 msgid "Drag columns to re-order them"
 msgstr "ลากคอลัมน์เพื่อเรียงลำดับใหม่"
 
@@ -936,7 +945,7 @@ msgstr "ขยาย"
 msgid "Expand sidebar"
 msgstr "ขยายแถบด้านข้าง"
 
-#: src/routes/_authenticated/$crmId/index.tsx:961
+#: src/routes/_authenticated/$crmId/index.tsx:993
 msgid "Export CSV"
 msgstr "ส่งออก CSV"
 
@@ -965,6 +974,7 @@ msgid "Failed to create field"
 msgstr "ไม่สามารถสร้างฟิลด์ได้"
 
 #: src/features/objects/components/object-links.tsx:103
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "Failed to create link"
 msgstr "ไม่สามารถสร้างลิงก์ได้"
 
@@ -1006,7 +1016,7 @@ msgstr "ไม่สามารถนำเข้าการออกแบบ
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:43
 #: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:87
 msgid "Failed to load CRM"
 msgstr "ไม่สามารถโหลด CRM ได้"
 
@@ -1056,12 +1066,12 @@ msgstr "ไม่สามารถตั้งระดับการเข้
 
 #: src/features/crms/components/inline-crm-search.tsx:102
 #: src/features/crms/components/recommended-crms.tsx:65
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:59
 msgid "Failed to subscribe"
 msgstr "ไม่สามารถสมัครติดตามได้"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:582
+#: src/routes/_authenticated/$crmId/index.tsx:614
 msgid "Failed to unsubscribe"
 msgstr "ไม่สามารถยกเลิกการติดตามได้"
 
@@ -1100,7 +1110,7 @@ msgid "Files"
 msgstr "ไฟล์"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:78
+#: src/routes/_authenticated/find.tsx:89
 msgid "Find CRMs"
 msgstr "ค้นหา CRM"
 
@@ -1198,7 +1208,7 @@ msgstr "หน้าหลัก"
 msgid "Hot"
 msgstr "ยอดนิยม"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "ID"
 msgstr "รหัส"
 
@@ -1270,6 +1280,10 @@ msgstr "ซ้ายไปขวา"
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "สว่าง"
+
+#: src/routes/_authenticated/$crmId/index.tsx:1007
+msgid "Link"
+msgstr "ลิงก์"
 
 #: src/features/objects/components/object-links.tsx:225
 msgid "Links"
@@ -1377,13 +1391,13 @@ msgstr "ข้อผิดพลาดของเครือข่าย"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/features/objects/components/create-object-dialog.tsx:328
-#: src/routes/_authenticated/$crmId/index.tsx:895
-#: src/routes/_authenticated/$crmId/index.tsx:912
+#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:944
 msgid "New"
 msgstr "ใหม่"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:893
+#: src/routes/_authenticated/$crmId/index.tsx:925
 msgid "New {0}"
 msgstr "{0} ใหม่"
 
@@ -1417,7 +1431,7 @@ msgid "No connected accounts"
 msgstr "ไม่มีบัญชีที่เชื่อมต่อ"
 
 #: src/features/crms/components/inline-crm-search.tsx:150
-#: src/routes/_authenticated/find.tsx:80
+#: src/routes/_authenticated/find.tsx:91
 msgid "No CRMs found"
 msgstr "ไม่พบ CRM"
 
@@ -1433,7 +1447,7 @@ msgstr "ยังไม่สามารถสร้างประเภทร
 msgid "No matching objects"
 msgstr "ไม่มีออบเจกต์ที่ตรงกัน"
 
-#: src/routes/_authenticated/$crmId/index.tsx:809
+#: src/routes/_authenticated/$crmId/index.tsx:841
 msgid "No objects to export."
 msgstr "ไม่มีออบเจกต์ให้ส่งออก"
 
@@ -1567,7 +1581,7 @@ msgstr "เปิดเมนูการนำทาง"
 msgid "Open option actions"
 msgstr "เปิดการดำเนินการของตัวเลือก"
 
-#: src/routes/_authenticated/$crmId/index.tsx:920
+#: src/routes/_authenticated/$crmId/index.tsx:952
 msgid "Open page actions"
 msgstr "เปิดการดำเนินการของหน้า"
 
@@ -1610,7 +1624,7 @@ msgstr "เจ้าของ"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
 #: src/features/objects/components/object-detail-panel.tsx:442
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Parent"
 msgstr "แม่"
 
@@ -1634,8 +1648,8 @@ msgstr "รูปแบบ (regex)"
 msgid "Permanently delete this CRM and all its content."
 msgstr "ลบ CRM นี้และเนื้อหาทั้งหมดอย่างถาวร"
 
-#: src/routes/_authenticated/$crmId/index.tsx:690
-#: src/routes/_authenticated/$crmId/index.tsx:724
+#: src/routes/_authenticated/$crmId/index.tsx:722
+#: src/routes/_authenticated/$crmId/index.tsx:756
 msgid "Please add one or more classes to the CRM design."
 msgstr "กรุณาเพิ่มคลาสอย่างน้อยหนึ่งคลาสในดีไซน์ CRM"
 
@@ -1670,7 +1684,7 @@ msgstr "ยกขึ้น"
 msgid "Re-link your accounts on this server"
 msgstr "เชื่อมโยงบัญชีของคุณใหม่บนเซิร์ฟเวอร์นี้"
 
-#: src/routes/_authenticated/$crmId/index.tsx:944
+#: src/routes/_authenticated/$crmId/index.tsx:976
 msgid "Re-order columns"
 msgstr "จัดลำดับคอลัมน์ใหม่"
 
@@ -1679,7 +1693,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "ลงทะเบียนพาสคีย์ของคุณใหม่บนเซิร์ฟเวอร์นี้"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-page.tsx:243
 msgid "Recommended"
 msgstr "แนะนำ"
 
@@ -1836,7 +1850,7 @@ msgstr "วันเสาร์"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
 #: src/features/objects/components/comment-thread.tsx:199
-#: src/routes/_authenticated/$crmId/index.tsx:1014
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Save"
 msgstr "บันทึก"
 
@@ -1848,7 +1862,7 @@ msgstr "กำลังบันทึก..."
 msgid "Search"
 msgstr "ค้นหา"
 
-#: src/routes/_authenticated/find.tsx:79
+#: src/routes/_authenticated/find.tsx:90
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "ค้นหาตามชื่อ ID ลายนิ้วมือ หรือ URL..."
 
@@ -1891,7 +1905,7 @@ msgid "Search..."
 msgstr "ค้นหา..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-page.tsx:201
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "กำลังค้นหา..."
@@ -1995,7 +2009,7 @@ msgstr "กำลังตั้งค่าสิทธิ์การเข้
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:168
 #: src/routes/_authenticated/$crmId_.settings.tsx:191
-#: src/routes/_authenticated/$crmId/index.tsx:969
+#: src/routes/_authenticated/$crmId/index.tsx:1001
 msgid "Settings"
 msgstr "การตั้งค่า"
 
@@ -2089,7 +2103,7 @@ msgid "Subscribe"
 msgstr "ติดตาม"
 
 #: src/features/crms/components/inline-crm-search.tsx:101
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:58
 msgid "Subscribed"
 msgstr "ติดตามแล้ว"
 
@@ -2100,7 +2114,7 @@ msgstr "ติดตาม {0} แล้ว"
 
 #: src/features/crms/components/inline-crm-search.tsx:100
 #: src/features/crms/components/recommended-crms.tsx:63
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:57
 msgid "Subscribing..."
 msgstr "กำลังติดตาม..."
 
@@ -2166,7 +2180,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "การกระทำนี้จะลบ \"{0}\" และออบเจ็กต์ ความคิดเห็น และไฟล์แนบทั้งหมดอย่างถาวร ไม่สามารถย้อนกลับได้"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1130
+#: src/routes/_authenticated/$crmId/index.tsx:1188
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "การกระทำนี้จะลบ \"{0}\" ออกจากแถบด้านข้างของคุณและหยุดการอัปเดตของ CRM นี้"
 
@@ -2240,7 +2254,7 @@ msgid "Travelling"
 msgstr "กำลังเดินทาง"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-page.tsx:217
 msgid "Try adjusting your search terms"
 msgstr "ลองปรับคำค้นหาของคุณ"
 
@@ -2295,22 +2309,22 @@ msgstr "สหรัฐอเมริกา"
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:975
-#: src/routes/_authenticated/$crmId/index.tsx:1131
+#: src/routes/_authenticated/$crmId/index.tsx:1013
+#: src/routes/_authenticated/$crmId/index.tsx:1189
 msgid "Unsubscribe"
 msgstr "ยกเลิกการติดตาม"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1129
+#: src/routes/_authenticated/$crmId/index.tsx:1187
 msgid "Unsubscribe from CRM?"
 msgstr "ยกเลิกการติดตาม CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:581
+#: src/routes/_authenticated/$crmId/index.tsx:613
 msgid "Unsubscribed"
 msgstr "ยกเลิกการติดตามแล้ว"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:580
+#: src/routes/_authenticated/$crmId/index.tsx:612
 msgid "Unsubscribing..."
 msgstr "กำลังยกเลิกการติดตาม..."
 
@@ -2409,7 +2423,7 @@ msgstr "ตัวควบคุมมุมมอง"
 msgid "View only"
 msgstr "ดูอย่างเดียว"
 
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:961
 msgid "View options"
 msgstr "ตัวเลือกการดู"
 
@@ -2442,7 +2456,7 @@ msgstr "เว็บไซต์อยู่ระหว่างการบำ
 msgid "Wednesday"
 msgstr "วันพุธ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:102
+#: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
 msgstr "คุณไม่มีสิทธิ์เข้าถึง CRM นี้"
 

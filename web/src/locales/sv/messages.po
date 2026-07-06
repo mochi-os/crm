@@ -146,8 +146,8 @@ msgstr "Lägg till checklistpunkt"
 msgid "Add class"
 msgstr "Lägg till klass"
 
-#: src/routes/_authenticated/$crmId/index.tsx:940
-#: src/routes/_authenticated/$crmId/index.tsx:1123
+#: src/routes/_authenticated/$crmId/index.tsx:972
+#: src/routes/_authenticated/$crmId/index.tsx:1161
 msgid "Add column"
 msgstr "Lägg till kolumn"
 
@@ -234,6 +234,10 @@ msgstr "Ett fel uppstod"
 msgid "An unexpected error occurred"
 msgstr "Ett oväntat fel uppstod"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1168
+msgid "Anyone you give access to can subscribe with this link."
+msgstr "Alla du ger åtkomst kan prenumerera med den här länken."
+
 #. placeholder {0}: deleteTarget?.name
 #: src/features/objects/components/object-attachments.tsx:227
 msgid "Are you sure you want to delete \"{0}\"?"
@@ -298,7 +302,7 @@ msgid "Back to CRM"
 msgstr "Tillbaka till CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:116
+#: src/routes/_authenticated/$crmId/index.tsx:123
 msgid "Back to CRMs"
 msgstr "Tillbaka till CRM:er"
 
@@ -348,7 +352,7 @@ msgstr "Kan vara underordnad till"
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
-#: src/routes/_authenticated/$crmId/index.tsx:1002
+#: src/routes/_authenticated/$crmId/index.tsx:1040
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -395,7 +399,7 @@ msgstr "Välj mellan systeminställning, ljust läge eller mörkt läge"
 msgid "Choose language"
 msgstr "Välj språk"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Class"
 msgstr "Klass"
 
@@ -640,6 +644,10 @@ msgstr "CRM skapad"
 msgid "CRM deleted"
 msgstr "CRM raderad"
 
+#: src/routes/_authenticated/$crmId/index.tsx:1166
+msgid "CRM link"
+msgstr "CRM-länk"
+
 #: src/routes/_authenticated/$crmId_.settings.tsx:208
 msgid "CRM not found"
 msgstr "CRM hittades inte"
@@ -785,7 +793,7 @@ msgstr "Beskrivning"
 
 #: src/routes/_authenticated/$crmId/design.tsx:64
 #: src/routes/_authenticated/$crmId/design.tsx:132
-#: src/routes/_authenticated/$crmId/index.tsx:955
+#: src/routes/_authenticated/$crmId/index.tsx:987
 msgid "Design"
 msgstr "Design"
 
@@ -821,8 +829,8 @@ msgstr "Riktning"
 msgid "Dismiss"
 msgstr "Avfärda"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1031
-#: src/routes/_authenticated/$crmId/index.tsx:1036
+#: src/routes/_authenticated/$crmId/index.tsx:1069
+#: src/routes/_authenticated/$crmId/index.tsx:1074
 msgid "Dismiss board hint"
 msgstr "Avfärda bräd-tips"
 
@@ -834,10 +842,11 @@ msgstr "Visar mobil-sidofältet."
 #: src/features/editor/components/edit-dialogs.tsx:889
 #: src/features/editor/components/edit-dialogs.tsx:1195
 #: src/features/objects/components/object-detail-panel.tsx:383
+#: src/routes/_authenticated/$crmId/index.tsx:1178
 msgid "Done"
 msgstr "Klar"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1022
+#: src/routes/_authenticated/$crmId/index.tsx:1060
 msgid "Double click on a column to add content"
 msgstr "Dubbelklicka på en kolumn för att lägga till innehåll"
 
@@ -854,7 +863,7 @@ msgstr "Ladda ner säkerhetskopia först"
 msgid "Download failed"
 msgstr "Nedladdningen misslyckades"
 
-#: src/routes/_authenticated/$crmId/index.tsx:998
+#: src/routes/_authenticated/$crmId/index.tsx:1036
 msgid "Drag columns to re-order them"
 msgstr "Dra kolumner för att ändra ordning"
 
@@ -936,7 +945,7 @@ msgstr "Expandera"
 msgid "Expand sidebar"
 msgstr "Expandera sidofält"
 
-#: src/routes/_authenticated/$crmId/index.tsx:961
+#: src/routes/_authenticated/$crmId/index.tsx:993
 msgid "Export CSV"
 msgstr "Exportera CSV"
 
@@ -965,6 +974,7 @@ msgid "Failed to create field"
 msgstr "Kunde inte skapa fält"
 
 #: src/features/objects/components/object-links.tsx:103
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "Failed to create link"
 msgstr "Kunde inte skapa länk"
 
@@ -1006,7 +1016,7 @@ msgstr "Kunde inte importera design"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:43
 #: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:87
 msgid "Failed to load CRM"
 msgstr "Kunde inte läsa in CRM"
 
@@ -1056,12 +1066,12 @@ msgstr "Kunde inte ange åtkomstnivå"
 
 #: src/features/crms/components/inline-crm-search.tsx:102
 #: src/features/crms/components/recommended-crms.tsx:65
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:59
 msgid "Failed to subscribe"
 msgstr "Kunde inte prenumerera"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:582
+#: src/routes/_authenticated/$crmId/index.tsx:614
 msgid "Failed to unsubscribe"
 msgstr "Kunde inte avsluta prenumeration"
 
@@ -1100,7 +1110,7 @@ msgid "Files"
 msgstr "Filer"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:78
+#: src/routes/_authenticated/find.tsx:89
 msgid "Find CRMs"
 msgstr "Hitta CRM:er"
 
@@ -1198,7 +1208,7 @@ msgstr "Hem"
 msgid "Hot"
 msgstr "Het"
 
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "ID"
 msgstr "ID"
 
@@ -1270,6 +1280,10 @@ msgstr "Vänster till höger"
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Ljust"
+
+#: src/routes/_authenticated/$crmId/index.tsx:1007
+msgid "Link"
+msgstr "Länk"
 
 #: src/features/objects/components/object-links.tsx:225
 msgid "Links"
@@ -1377,13 +1391,13 @@ msgstr "Nätverksfel"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/features/objects/components/create-object-dialog.tsx:328
-#: src/routes/_authenticated/$crmId/index.tsx:895
-#: src/routes/_authenticated/$crmId/index.tsx:912
+#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:944
 msgid "New"
 msgstr "Ny"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:893
+#: src/routes/_authenticated/$crmId/index.tsx:925
 msgid "New {0}"
 msgstr "Ny {0}"
 
@@ -1417,7 +1431,7 @@ msgid "No connected accounts"
 msgstr "Inga anslutna konton"
 
 #: src/features/crms/components/inline-crm-search.tsx:150
-#: src/routes/_authenticated/find.tsx:80
+#: src/routes/_authenticated/find.tsx:91
 msgid "No CRMs found"
 msgstr "Inga CRM-system hittades"
 
@@ -1433,7 +1447,7 @@ msgstr "Inga objekttyper kan skapas ännu. Skapa de obligatoriska överordnade o
 msgid "No matching objects"
 msgstr "Inga matchande objekt"
 
-#: src/routes/_authenticated/$crmId/index.tsx:809
+#: src/routes/_authenticated/$crmId/index.tsx:841
 msgid "No objects to export."
 msgstr "Inga objekt att exportera."
 
@@ -1567,7 +1581,7 @@ msgstr "Öppna navigeringsmeny"
 msgid "Open option actions"
 msgstr "Öppna alternativåtgärder"
 
-#: src/routes/_authenticated/$crmId/index.tsx:920
+#: src/routes/_authenticated/$crmId/index.tsx:952
 msgid "Open page actions"
 msgstr "Öppna sidåtgärder"
 
@@ -1610,7 +1624,7 @@ msgstr "Ägare"
 
 #: src/features/objects/components/create-object-dialog.tsx:376
 #: src/features/objects/components/object-detail-panel.tsx:442
-#: src/routes/_authenticated/$crmId/index.tsx:824
+#: src/routes/_authenticated/$crmId/index.tsx:856
 msgid "Parent"
 msgstr "Överordnad"
 
@@ -1634,8 +1648,8 @@ msgstr "Mönster (regex)"
 msgid "Permanently delete this CRM and all its content."
 msgstr "Ta permanent bort detta CRM och allt dess innehåll."
 
-#: src/routes/_authenticated/$crmId/index.tsx:690
-#: src/routes/_authenticated/$crmId/index.tsx:724
+#: src/routes/_authenticated/$crmId/index.tsx:722
+#: src/routes/_authenticated/$crmId/index.tsx:756
 msgid "Please add one or more classes to the CRM design."
 msgstr "Lägg till en eller flera klasser i CRM-designen."
 
@@ -1670,7 +1684,7 @@ msgstr "Upphöjd"
 msgid "Re-link your accounts on this server"
 msgstr "Återlänka dina konton på den här servern"
 
-#: src/routes/_authenticated/$crmId/index.tsx:944
+#: src/routes/_authenticated/$crmId/index.tsx:976
 msgid "Re-order columns"
 msgstr "Ordna om kolumner"
 
@@ -1679,7 +1693,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "Registrera dina nycklar på nytt på den här servern"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-page.tsx:243
 msgid "Recommended"
 msgstr "Rekommenderad"
 
@@ -1836,7 +1850,7 @@ msgstr "Lördag"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
 #: src/features/objects/components/comment-thread.tsx:199
-#: src/routes/_authenticated/$crmId/index.tsx:1014
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Save"
 msgstr "Spara"
 
@@ -1848,7 +1862,7 @@ msgstr "Sparar..."
 msgid "Search"
 msgstr "Sök"
 
-#: src/routes/_authenticated/find.tsx:79
+#: src/routes/_authenticated/find.tsx:90
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Sök efter namn, ID, fingeravtryck eller URL..."
 
@@ -1891,7 +1905,7 @@ msgid "Search..."
 msgstr "Sök..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-page.tsx:201
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Söker..."
@@ -1995,7 +2009,7 @@ msgstr "Ställer in åtkomst..."
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:168
 #: src/routes/_authenticated/$crmId_.settings.tsx:191
-#: src/routes/_authenticated/$crmId/index.tsx:969
+#: src/routes/_authenticated/$crmId/index.tsx:1001
 msgid "Settings"
 msgstr "Inställningar"
 
@@ -2089,7 +2103,7 @@ msgid "Subscribe"
 msgstr "Prenumerera"
 
 #: src/features/crms/components/inline-crm-search.tsx:101
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:58
 msgid "Subscribed"
 msgstr "Prenumererad"
 
@@ -2100,7 +2114,7 @@ msgstr "Prenumererar på {0}"
 
 #: src/features/crms/components/inline-crm-search.tsx:100
 #: src/features/crms/components/recommended-crms.tsx:63
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:57
 msgid "Subscribing..."
 msgstr "Prenumererar..."
 
@@ -2166,7 +2180,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "Detta tar permanent bort \"{0}\" och alla dess objekt, kommentarer och bilagor. Den här åtgärden kan inte ångras."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1130
+#: src/routes/_authenticated/$crmId/index.tsx:1188
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Detta tar bort \"{0}\" från ditt sidofält och stoppar uppdateringar för detta CRM."
 
@@ -2240,7 +2254,7 @@ msgid "Travelling"
 msgstr "Reser"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-page.tsx:217
 msgid "Try adjusting your search terms"
 msgstr "Försök justera dina sökord"
 
@@ -2295,22 +2309,22 @@ msgstr "USA"
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:975
-#: src/routes/_authenticated/$crmId/index.tsx:1131
+#: src/routes/_authenticated/$crmId/index.tsx:1013
+#: src/routes/_authenticated/$crmId/index.tsx:1189
 msgid "Unsubscribe"
 msgstr "Avsluta prenumeration"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1129
+#: src/routes/_authenticated/$crmId/index.tsx:1187
 msgid "Unsubscribe from CRM?"
 msgstr "Avsluta prenumeration på CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:581
+#: src/routes/_authenticated/$crmId/index.tsx:613
 msgid "Unsubscribed"
 msgstr "Prenumeration avslutad"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:580
+#: src/routes/_authenticated/$crmId/index.tsx:612
 msgid "Unsubscribing..."
 msgstr "Avslutar prenumeration..."
 
@@ -2409,7 +2423,7 @@ msgstr "Visningskontroller"
 msgid "View only"
 msgstr "Endast visning"
 
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:961
 msgid "View options"
 msgstr "Visningsalternativ"
 
@@ -2442,7 +2456,7 @@ msgstr "Webbplatsen underhålls!"
 msgid "Wednesday"
 msgstr "Onsdag"
 
-#: src/routes/_authenticated/$crmId/index.tsx:102
+#: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
 msgstr "Du har inte åtkomst till detta CRM."
 

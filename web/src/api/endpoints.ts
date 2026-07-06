@@ -12,6 +12,7 @@ const endpoints = {
     search: "-/directory/search",
     probe: "-/probe",
     recommendations: "-/recommendations",
+    share: (crmId: string) => `${crmId}/-/share`,
     subscribe: "-/subscribe",
     unsubscribe: "-/unsubscribe",
 

@@ -5,7 +5,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 {
-	"version": "2.67",
+	"version": "2.68",
 	"label": "app.name",
 	"classes": ["crm"],
 	"paths": ["crm"],
@@ -46,6 +46,7 @@
 		":crm/design": {"file": "web/dist/index.html"},
 		":crm/settings": {"file": "web/dist/index.html"},
 		":crm/:object": {"file": "web/dist/index.html"},
+		":crm/-/share": {"function": "action_share"},
 		":crm/-/info": {"function": "action_crm_get"},
 		":crm/-/update": {"function": "action_crm_update"},
 		":crm/-/delete": {"function": "action_crm_delete"},
