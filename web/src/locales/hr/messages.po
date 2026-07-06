@@ -61,6 +61,10 @@ msgstr "Apsolutno (datum i vrijeme)"
 msgid "Access"
 msgstr "Pristup"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr "Pristup odbijen"
+
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
 msgstr "Pristup zabranjen"
@@ -230,7 +234,7 @@ msgstr "Dopusti sortiranje po"
 msgid "An error occurred"
 msgstr "Došlo je do pogreške"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "Došlo je do neočekivane pogreške"
 
@@ -361,12 +365,12 @@ msgstr "Odustani"
 msgid "Cancel reply"
 msgstr "Odustani od odgovora"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "Kategorija za ovu obavijest"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "Promijeni kategoriju obavijesti"
 
@@ -687,6 +691,10 @@ msgstr "Tamno"
 #: ../../../lib/web/src/components/profile-dropdown.tsx:123
 msgid "Dark mode"
 msgstr "Tamni način rada"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
+msgid "Data conflict"
+msgstr "Sukob podataka"
 
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
@@ -1079,7 +1087,7 @@ msgstr "Otkazivanje pretplate nije uspjelo"
 msgid "Failed to update access level"
 msgstr "Ažuriranje razine pristupa nije uspjelo"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "Ažuriranje kategorije nije uspjelo"
 
@@ -1385,7 +1393,8 @@ msgstr "Naziv"
 msgid "Name is required"
 msgstr "Naziv je obavezan"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "Pogreška mreže"
 
@@ -1478,7 +1487,7 @@ msgstr "Nema statusa"
 msgid "No time zone found."
 msgstr "Nije pronađena nijedna vremenska zona."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "Još nema zapisa o temi — pokušajte ponovno nakon sljedeće obavijesti."
 
@@ -1515,6 +1524,10 @@ msgstr "Ništa"
 #: ../../../lib/web/src/lib/preference-utils.ts:134
 msgid "Normal"
 msgstr "Normalno"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr "Nije pronađeno"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:146
 msgid "Not set"
@@ -1653,9 +1666,19 @@ msgstr "Trajno izbriši ovaj CRM i sav njegov sadržaj."
 msgid "Please add one or more classes to the CRM design."
 msgstr "Dodajte jednu ili više klasa u dizajn CRM-a."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
+#: ../../../lib/web/src/lib/error-normalizer.ts:201
 msgid "Please check your internet connection and try again."
 msgstr "Provjerite internetsku vezu i pokušajte ponovno."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr "Pokušajte ponovno."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr "Pričekajte trenutak i pokušajte ponovno."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
@@ -1692,8 +1715,8 @@ msgstr "Promijeni redoslijed stupaca"
 msgid "Re-register your passkeys on this server"
 msgstr "Ponovno registrirajte svoje pristupne ključeve na ovom poslužitelju"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:243
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "Preporučeno"
 
@@ -1904,8 +1927,8 @@ msgstr "Pretražite, gledajte i sortirajte ovaj pogled."
 msgid "Search..."
 msgstr "Pretraži..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:201
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Pretraživanje..."
@@ -1979,8 +2002,8 @@ msgstr "Serifno"
 msgid "Server"
 msgstr "Poslužitelj"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "Pogreška poslužitelja"
 
@@ -1989,9 +2012,9 @@ msgstr "Pogreška poslužitelja"
 msgid "Server rules"
 msgstr "Pravila poslužitelja"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "Sesija je istekla"
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
+msgid "Session expired. Please log in again."
+msgstr "Sesija je istekla. Ponovno se prijavite."
 
 #: ../../../lib/web/src/components/travelling-picker.tsx:147
 msgid "Set origin and destination"
@@ -2158,6 +2181,10 @@ msgstr "Tekst"
 msgid "That code is incorrect or has expired."
 msgstr "Taj kôd nije ispravan ili je istekao."
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr "Traženi sadržaj nije moguće pronaći."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:194
 msgid "Theme"
 msgstr "Tema"
@@ -2241,6 +2268,10 @@ msgstr "Prebaci opcije prikaza"
 msgid "Toggle watched filter"
 msgstr "Prebaci filter praćenih"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr "Previše zahtjeva"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "Vrh"
@@ -2253,13 +2284,13 @@ msgstr "Najviša razina"
 msgid "Travelling"
 msgstr "Putovanje"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:217
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "Pokušajte prilagoditi pojmove pretrage"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "Pokušaj ponovno"
@@ -2285,7 +2316,7 @@ msgstr "Tipkajte za pretragu korisnika"
 msgid "Type to search..."
 msgstr "Tipkajte za pretragu..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "Nije moguće povezati se s udaljenim poslužiteljem"
 
@@ -2294,7 +2325,7 @@ msgstr "Nije moguće povezati se s udaljenim poslužiteljem"
 msgid "Unable to redirect to login. Please try again."
 msgstr "Nije moguće preusmjeriti na prijavu. Pokušajte ponovno."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "Nedodijeljeno"
 
@@ -2455,6 +2486,10 @@ msgstr "Web stranica je u održavanju!"
 #: ../../../lib/web/src/lib/preference-utils.ts:61
 msgid "Wednesday"
 msgstr "Srijeda"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr "Nemate pristup ovom odjeljku."
 
 #: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
