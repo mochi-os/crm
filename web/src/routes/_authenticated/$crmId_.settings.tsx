@@ -6,6 +6,7 @@
 
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Trans, useLingui } from '@lingui/react/macro'
+import { plural } from '@lingui/core/macro'
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -341,7 +342,7 @@ function GeneralTab({
         pendingDataImport.data,
       );
       queryClient.invalidateQueries({ queryKey: ["crm", crmId] });
-      toast.success(t`Data imported (${response.data?.objects ?? 0} objects, ${response.data?.comments ?? 0} comments, ${response.data?.links ?? 0} links)`);
+      toast.success(t`Data imported (${plural(response.data?.objects ?? 0, { one: '# object', other: '# objects' })}, ${plural(response.data?.comments ?? 0, { one: '# comment', other: '# comments' })}, ${plural(response.data?.links ?? 0, { one: '# link', other: '# links' })})`);
       setDataConfirmOpen(false);
       setDataImportOpen(false);
       setPendingDataImport(null);
