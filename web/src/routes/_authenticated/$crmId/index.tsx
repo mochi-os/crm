@@ -23,6 +23,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
   Switch,
   useSearch,
   useShellStorage,
@@ -42,7 +43,7 @@ import {
   LoadingContent,
   arraysEqual,
 } from "@mochi/web";
-import { Check, Columns3, Copy, Download, Ellipsis, Users, GripVertical, Link as LinkIcon, LogOut, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
+import { Check, Columns3, Copy, Download, Ellipsis, FileDown, Users, GripVertical, Link as LinkIcon, LogOut, Plus, Settings, Settings2, SlidersHorizontal, X } from "lucide-react";
 import crmsApi from "@/api/crms";
 import type { CrmDetails, CrmField, CrmObject, SortState } from "@/types";
 import { canDesign, canCreate, canWrite } from "@/lib/access";
@@ -184,6 +185,26 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
       setTimeout(() => setLinkCopied(false), 2000);
     }
   }, [shareLink]);
+
+  const handleDataExport = useCallback(async () => {
+    try {
+      const response = await crmsApi.exportData(crm.crm.id);
+      const json = JSON.stringify(response.data, null, 2);
+      const blob = new Blob([json], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      const today = new Date().toISOString().split("T")[0];
+      const slug = crm.crm.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      a.download = `${slug}-crm-backup-${today}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      toast.error(getErrorMessage(err, t`Failed to export data`));
+    }
+  }, [crm.crm.id, crm.crm.name, t]);
 
   usePageTitle(crm.crm.name);
   // onSync re-runs the route loader (where the crm, schema, and `populated` flag
@@ -977,6 +998,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                   </DropdownMenuItem>
                 </>
               )}
+              <DropdownMenuSeparator />
               {canDesign(access) && (
                 <DropdownMenuItem asChild>
                   <Link
@@ -988,10 +1010,6 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                   </Link>
                 </DropdownMenuItem>
               )}
-              <DropdownMenuItem onClick={handleExportCSV}>
-                <Download className="size-4 me-2" />
-                <Trans>Export CSV</Trans>
-              </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link
                   to="/$crmId/settings"
@@ -1001,17 +1019,29 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                   <Trans>Settings</Trans>
                 </Link>
               </DropdownMenuItem>
+              <DropdownMenuSeparator />
               {isOwner && (
                 <DropdownMenuItem onClick={() => void openLinkDialog()}>
                   <LinkIcon className="size-4 me-2" />
                   <Trans>Link</Trans>
                 </DropdownMenuItem>
               )}
+              <DropdownMenuItem onClick={handleExportCSV}>
+                <Download className="size-4 me-2" />
+                <Trans>Export CSV</Trans>
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={handleDataExport}>
+                <FileDown className="size-4 me-2" />
+                <Trans>Export data</Trans>
+              </DropdownMenuItem>
               {!isOwner && (
-                <DropdownMenuItem onClick={() => setUnsubscribeOpen(true)}>
-                  <LogOut className="size-4 me-2" />
-                  <Trans>Unsubscribe</Trans>
-                </DropdownMenuItem>
+                <>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => setUnsubscribeOpen(true)}>
+                    <LogOut className="size-4 me-2" />
+                    <Trans>Unsubscribe</Trans>
+                  </DropdownMenuItem>
+                </>
               )}
             </DropdownMenuContent>
           </DropdownMenu>

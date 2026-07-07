@@ -3,7 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Trans, useLingui } from '@lingui/react/macro'
 import { useNavigate } from "@tanstack/react-router";
 import {
@@ -21,8 +21,16 @@ import {
   toast,
   toastAction,
   getErrorMessage,
+  Attachment,
+  AttachmentMedia,
+  AttachmentContent,
+  AttachmentTitle,
+  AttachmentAction,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@mochi/web";
-import { Plus, Users } from "lucide-react";
+import { Plus, Upload, Users, X } from "lucide-react";
 import crmsApi from "@/api/crms";
 import { useCrmsStore } from "@/stores/crms-store";
 
@@ -41,6 +49,9 @@ export function CreateCrmDialog({
   const [isPending, setIsPending] = useState(false);
   const [name, setName] = useState("");
   const [allowSearch, setAllowSearch] = useState(true);
+  const [importData, setImportData] = useState<Record<string, unknown> | null>(null);
+  const [importFileName, setImportFileName] = useState("");
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
   const refreshCrms = useCrmsStore((state) => state.refresh);
 
@@ -49,6 +60,8 @@ export function CreateCrmDialog({
     if (!open) {
       setName("");
       setAllowSearch(true);
+      setImportData(null);
+      setImportFileName("");
     }
   }, [open]);
 
@@ -75,6 +88,15 @@ export function CreateCrmDialog({
       );
 
       const fingerprint = response.data?.fingerprint;
+
+      if (fingerprint && importData) {
+        await toastAction(crmsApi.importData(fingerprint, importData), {
+          loading: t`Importing data...`,
+          success: t`Data imported`,
+          error: (e) => getErrorMessage(e, t`Failed to import data`),
+        });
+      }
+
       await refreshCrms();
 
       onOpenChange?.(false);
@@ -92,6 +114,31 @@ export function CreateCrmDialog({
     } finally {
       setIsPending(false);
     }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result as string);
+        setImportData(data);
+        setImportFileName(file.name);
+      } catch {
+        toast.error(t`Invalid JSON file`);
+        setImportData(null);
+        setImportFileName("");
+      }
+    };
+    reader.onerror = () => {
+      toast.error(t`Failed to read file`);
+      setImportData(null);
+      setImportFileName("");
+    };
+    reader.readAsText(file);
+    e.target.value = "";
   };
 
   return (
@@ -137,6 +184,57 @@ export function CreateCrmDialog({
                 checked={allowSearch}
                 onCheckedChange={setAllowSearch}
               />
+            </div>
+
+            <div className="space-y-2">
+              <Label><Trans>Import from backup (optional)</Trans></Label>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept=".json"
+                onChange={handleFileChange}
+                className="hidden"
+              />
+              <div className="flex gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="flex-1"
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  <Upload className="size-4 me-1.5" />
+                  <Trans>Upload .json file</Trans>
+                </Button>
+              </div>
+              {importFileName && (
+                <div className="mt-2">
+                  <Attachment orientation="horizontal">
+                    <AttachmentMedia>
+                      <Upload className="size-4" />
+                    </AttachmentMedia>
+                    <AttachmentContent>
+                      <AttachmentTitle>{importFileName}</AttachmentTitle>
+                    </AttachmentContent>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <AttachmentAction
+                          variant="ghost"
+                          onClick={() => {
+                            setImportData(null);
+                            setImportFileName("");
+                            if (fileInputRef.current) {
+                              fileInputRef.current.value = "";
+                            }
+                          }}
+                        >
+                          <X className="size-4" />
+                        </AttachmentAction>
+                      </TooltipTrigger>
+                      <TooltipContent><Trans>Remove</Trans></TooltipContent>
+                    </Tooltip>
+                  </Attachment>
+                </div>
+              )}
             </div>
           </div>
 
