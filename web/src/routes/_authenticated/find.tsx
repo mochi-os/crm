@@ -9,7 +9,6 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import { Users } from 'lucide-react'
 import { FindEntityPage, toastAction, getErrorMessage } from '@mochi/web'
-import type { MochiEntityUri } from '@mochi/web'
 import { useCrmsStore } from '@/stores/crms-store'
 import { APP_ROUTES } from '@/config/routes'
 import endpoints from '@/api/endpoints'
@@ -70,11 +69,11 @@ function FindCrmsPage() {
 
   // Resolve a pasted mochi:// share link to the CRM's name via probe, so the
   // card shows the real CRM rather than a raw entity id.
-  const resolveUri = useCallback(async (uri: MochiEntityUri) => {
-    if (!uri.peer) return null
-    const response = await crmsApi.probe(`mochi://${uri.peer}/${uri.entity}`)
+  const resolveUri = useCallback(async (url: string) => {
+    const response = await crmsApi.probe(url)
     const data = response.data ?? response
-    return { ...data, peer: data.peer || uri.peer }
+    if (!data?.id) return null
+    return { ...data, location: data.server ?? '', peer: data.peer }
   }, [])
 
   return (

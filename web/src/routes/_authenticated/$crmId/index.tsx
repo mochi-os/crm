@@ -31,7 +31,6 @@ import {
   shellClipboardWrite,
   ResponsiveDialog,
   ResponsiveDialogContent,
-  ResponsiveDialogFooter,
   ResponsiveDialogHeader,
   ResponsiveDialogTitle,
   getAppPath,
@@ -976,6 +975,17 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                   </DropdownMenuItem>
                 </>
               )}
+              <DropdownMenuItem onClick={handleExportCSV}>
+                <Download className="size-4 me-2" />
+                <Trans>Export CSV</Trans>
+              </DropdownMenuItem>
+              {/* Canonical menu tail: Link, Design, Settings, Unsubscribe. */}
+              {isOwner && (
+                <DropdownMenuItem onClick={() => void openLinkDialog()}>
+                  <LinkIcon className="size-4 me-2" />
+                  <Trans>Link</Trans>
+                </DropdownMenuItem>
+              )}
               {canDesign(access) && (
                 <DropdownMenuItem asChild>
                   <Link
@@ -987,10 +997,6 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                   </Link>
                 </DropdownMenuItem>
               )}
-              <DropdownMenuItem onClick={handleExportCSV}>
-                <Download className="size-4 me-2" />
-                <Trans>Export CSV</Trans>
-              </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link
                   to="/$crmId/settings"
@@ -1000,12 +1006,6 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
                   <Trans>Settings</Trans>
                 </Link>
               </DropdownMenuItem>
-              {isOwner && (
-                <DropdownMenuItem onClick={() => void openLinkDialog()}>
-                  <LinkIcon className="size-4 me-2" />
-                  <Trans>Link</Trans>
-                </DropdownMenuItem>
-              )}
               {!isOwner && (
                 <DropdownMenuItem onClick={() => setUnsubscribeOpen(true)}>
                   <LogOut className="size-4 me-2" />
@@ -1170,9 +1170,6 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
               {linkCopied ? <Check className="size-4" /> : <Copy className="size-4" />}
             </Button>
           </div>
-          <ResponsiveDialogFooter>
-            <Button variant="outline" onClick={() => setLinkOpen(false)}><Trans>Done</Trans></Button>
-          </ResponsiveDialogFooter>
         </ResponsiveDialogContent>
       </ResponsiveDialog>
 

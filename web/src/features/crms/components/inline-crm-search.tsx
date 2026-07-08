@@ -16,6 +16,8 @@ interface DirectoryEntry {
   name: string;
   fingerprint: string;
   location?: string;
+  /** owner's peer from a mochi:// share-link probe; subscribe pins the same peer. */
+  peer?: string;
 }
 
 interface InlineCrmSearchProps {
@@ -49,6 +51,18 @@ export function InlineCrmSearch({
     setIsLoading(true);
     setSearchError(null);
     try {
+      // A pasted link (mochi://<peer>/<id> or a web URL) resolves via probe -
+      // a directory search can't find a private/unlisted crm or match a URL.
+      if (/^(mochi:|https?:\/\/)/i.test(query)) {
+        const probe = await crmsApi.probe(query).catch(() => null);
+        if (requestSeq !== requestSeqRef.current) return;
+        const data = probe?.data;
+        setResults(data?.id
+          ? [{ id: data.id, name: data.name ?? '', fingerprint: data.fingerprint ?? '',
+               location: data.server ?? '', peer: data.peer }]
+          : []);
+        return;
+      }
       const response = await crmsApi.search({
         search: query,
       });
@@ -96,7 +110,7 @@ export function InlineCrmSearch({
   const handleSubscribe = async (crm: DirectoryEntry) => {
     setPendingCrmId(crm.id);
     try {
-      await toastAction(crmsApi.subscribe(crm.id, crm.location || undefined), {
+      await toastAction(crmsApi.subscribe(crm.id, crm.location || undefined, crm.peer), {
         loading: t`Subscribing...`,
         success: t`Subscribed`,
         error: (e) => getErrorMessage(e, t`Failed to subscribe`),
