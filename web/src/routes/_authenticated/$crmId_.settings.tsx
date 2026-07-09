@@ -6,18 +6,11 @@
 
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Trans, useLingui } from '@lingui/react/macro'
-import { plural } from '@lingui/core/macro'
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   Button,
   ConfirmDialog,
-  ResponsiveDialog,
-  ResponsiveDialogContent,
-  ResponsiveDialogHeader,
-  ResponsiveDialogTitle,
-  ResponsiveDialogDescription,
-  ResponsiveDialogFooter,
   PageHeader,
   Main,
   Tabs,
@@ -36,7 +29,6 @@ import {
   AccessDialog,
   AccessList,
   GeneralError,
-  toast,
   type AccessRule,
   type AccessLevel,
 } from "@mochi/web";
@@ -46,14 +38,9 @@ import {
   Shield,
   Trash2,
   Plus,
-  FileDown,
-  FileUp,
-  Upload,
-  Loader2,
 } from "lucide-react";
 import crmsApi from "@/api/crms";
 import type { CrmDetails } from "@/types";
-import { canDesign } from "@/lib/access";
 import { useCrmsStore } from "@/stores/crms-store";
 
 // Characters disallowed in CRM names (matches backend validation)
@@ -301,57 +288,6 @@ function GeneralTab({
   onUpdate,
 }: GeneralTabProps) {
   const { t } = useLingui();
-  const queryClient = useQueryClient();
-  const crmId = crm.crm.id;
-
-  // Data import dialog state
-  const [dataImportOpen, setDataImportOpen] = useState(false);
-  const [dataConfirmOpen, setDataConfirmOpen] = useState(false);
-  const [dataImporting, setDataImporting] = useState(false);
-  const [pendingDataImport, setPendingDataImport] = useState<{
-    data: Record<string, unknown>;
-    label: string;
-  } | null>(null);
-
-  // Data Export handler
-  const handleDataExport = useCallback(async () => {
-    try {
-      const response = await crmsApi.exportData(crmId);
-      const json = JSON.stringify(response.data, null, 2);
-      const blob = new Blob([json], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `${crm.crm.name.toLowerCase().replace(/\s+/g, "-")}-data.json`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to export data`));
-    }
-  }, [crmId, crm, t]);
-
-  // Data Import confirmation handler
-  const handleConfirmDataImport = useCallback(async () => {
-    if (!pendingDataImport) return;
-    setDataImporting(true);
-    try {
-      const response = await crmsApi.importData(
-        crmId,
-        pendingDataImport.data,
-      );
-      queryClient.invalidateQueries({ queryKey: ["crm", crmId] });
-      toast.success(t`Data imported (${plural(response.data?.objects ?? 0, { one: '# object', other: '# objects' })}, ${plural(response.data?.comments ?? 0, { one: '# comment', other: '# comments' })}, ${plural(response.data?.links ?? 0, { one: '# link', other: '# links' })})`);
-      setDataConfirmOpen(false);
-      setDataImportOpen(false);
-      setPendingDataImport(null);
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to import data`));
-    } finally {
-      setDataImporting(false);
-    }
-  }, [crmId, pendingDataImport, queryClient, t]);
 
   return (
     <div className="space-y-6">
@@ -416,25 +352,6 @@ function GeneralTab({
         />
       )}
 
-      <Section
-        title={t`Data management`}
-        description={t`Export or import the raw data content in this CRM.`}
-        action={
-          <div className="flex gap-2">
-            <Button variant="outline" onClick={handleDataExport}>
-              <FileDown className="size-4 me-1.5" />
-              <Trans>Export data</Trans>
-            </Button>
-            {canDesign(crm.crm.access) && (
-              <Button variant="outline" onClick={() => setDataImportOpen(true)}>
-                <FileUp className="size-4 me-1.5" />
-                <Trans>Import data</Trans>
-              </Button>
-            )}
-          </div>
-        }
-      />
-
       <ConfirmDialog
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
@@ -445,124 +362,7 @@ function GeneralTab({
         handleConfirm={onDelete}
         isLoading={isDeleting}
       />
-
-      {/* Data Import dialog */}
-      <DataImportDialog
-        open={dataImportOpen}
-        onOpenChange={setDataImportOpen}
-        onSelect={(data: Record<string, unknown>, label: string) => {
-          setPendingDataImport({ data, label });
-          setDataConfirmOpen(true);
-        }}
-      />
-
-      {/* Confirm data import dialog */}
-      <ConfirmDialog
-        open={dataConfirmOpen}
-        onOpenChange={setDataConfirmOpen}
-        title={t`Import data?`}
-        desc={
-          <Trans>
-            This will import the data from{" "}
-            <strong>{pendingDataImport?.label}</strong>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file.
-          </Trans>
-        }
-        confirmText={
-          dataImporting ? (
-            <>
-              <Loader2 className="size-4 me-1.5 animate-spin" />
-              <Trans>Importing...</Trans>
-            </>
-          ) : (
-            t`Import data`
-          )
-        }
-        handleConfirm={handleConfirmDataImport}
-        isLoading={dataImporting}
-      >
-        <Button variant="outline" className="w-full" onClick={handleDataExport} disabled={dataImporting}>
-          <FileDown className="size-4 me-1.5" />
-          <Trans>Download backup first</Trans>
-        </Button>
-      </ConfirmDialog>
     </div>
-  );
-}
-
-// Data Import dialog: upload JSON file
-function DataImportDialog({
-  open,
-  onOpenChange,
-  onSelect,
-}: {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  onSelect: (
-    data: Record<string, unknown>,
-    label: string,
-  ) => void;
-}) {
-  const { t } = useLingui()
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // Handle file upload
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      try {
-        const data = JSON.parse(reader.result as string);
-        onSelect(data, file.name);
-      } catch {
-        toast.error(t`Invalid JSON file`);
-      }
-    };
-    reader.onerror = () => {
-      toast.error(t`Failed to read file`);
-    };
-    reader.readAsText(file);
-
-    // Reset input so the same file can be selected again
-    e.target.value = "";
-  };
-
-  return (
-    <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
-      <ResponsiveDialogContent>
-        <ResponsiveDialogHeader>
-          <ResponsiveDialogTitle><Trans>Import data</Trans></ResponsiveDialogTitle>
-          <ResponsiveDialogDescription className="sr-only"><Trans>Import a data configuration</Trans></ResponsiveDialogDescription>
-        </ResponsiveDialogHeader>
-
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept=".json"
-              onChange={handleFileChange}
-              className="hidden"
-            />
-            <Button
-              variant="outline"
-              className="w-full"
-              onClick={() => fileInputRef.current?.click()}
-            >
-              <Upload className="size-4 me-1.5" />
-              <Trans>Upload .json file</Trans>
-            </Button>
-          </div>
-        </div>
-
-        <ResponsiveDialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)}>
-            <Trans>Cancel</Trans>
-          </Button>
-        </ResponsiveDialogFooter>
-      </ResponsiveDialogContent>
-    </ResponsiveDialog>
   );
 }
 
