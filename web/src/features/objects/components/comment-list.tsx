@@ -21,6 +21,15 @@ import {
   TooltipTrigger,
   textUnchanged,
   findCommentTextInTree,
+  Attachment,
+  AttachmentGroup,
+  AttachmentMedia,
+  AttachmentContent,
+  AttachmentTitle,
+  AttachmentDescription,
+  AttachmentActions,
+  AttachmentAction,
+  useFormat,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import { CommentThread } from "./comment-thread";
@@ -44,6 +53,7 @@ export function CommentList({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const queryClient = useQueryClient();
   const currentUserId = useAuthStore((s) => s.identity);
+  const { formatFileSize } = useFormat();
 
   const { data, isLoading } = useQuery({
     queryKey: ["comments", crmId, objectId],
@@ -210,39 +220,34 @@ export function CommentList({
             people={people}
           />
           {newFiles.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {newFiles.map((file, i) => (
-                <div
-                  key={i}
-                  className="bg-muted relative flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs"
-                >
-                  {file.type.startsWith("image/") && (
-                    <img
-                      src={URL.createObjectURL(file)}
-                      alt={file.name}
-                      className="h-8 w-8 rounded object-cover"
-                    />
-                  )}
-                  <Paperclip className="text-muted-foreground size-3 shrink-0" />
-                  <span className="max-w-40 truncate">{file.name}</span>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <button
-                        type="button"
-                        aria-label={t`Remove`}
+            <AttachmentGroup>
+              {newFiles.map((file, i) => {
+                const isImage = file.type.startsWith("image/");
+                return (
+                  <Attachment key={i} state="uploading" size="sm">
+                    <AttachmentMedia variant={isImage ? "image" : "icon"}>
+                      <Paperclip />
+                    </AttachmentMedia>
+                    <AttachmentContent>
+                      <AttachmentTitle>{file.name}</AttachmentTitle>
+                      <AttachmentDescription>
+                        {formatFileSize(file.size)}
+                      </AttachmentDescription>
+                    </AttachmentContent>
+                    <AttachmentActions>
+                      <AttachmentAction
                         onClick={() =>
                           setNewFiles((prev) => prev.filter((_, idx) => idx !== i))
                         }
-                        className="text-muted-foreground hover:text-foreground ms-0.5"
+                        aria-label={t`Remove`}
                       >
-                        <X className="size-3.5" />
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent>{t`Remove`}</TooltipContent>
-                  </Tooltip>
-                </div>
-              ))}
-            </div>
+                        <X className="size-4" />
+                      </AttachmentAction>
+                    </AttachmentActions>
+                  </Attachment>
+                );
+              })}
+            </AttachmentGroup>
           )}
           <div className="flex items-center justify-end gap-2">
             <input

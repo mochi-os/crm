@@ -4,7 +4,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useCallback, useState } from "react";
+import { useCallback, useState, useRef } from "react";
 import { Trans } from '@lingui/react/macro'
 import { t } from '@lingui/core/macro'
 import { Check, Loader2, MoreHorizontal, Pencil, Reply, Send, Trash2, X, Paperclip } from "lucide-react";
@@ -26,6 +26,14 @@ import {
   TooltipContent,
   TooltipTrigger,
   textUnchanged,
+  Attachment,
+  AttachmentGroup,
+  AttachmentMedia,
+  AttachmentContent,
+  AttachmentTitle,
+  AttachmentDescription,
+  AttachmentActions,
+  AttachmentAction,
 } from "@mochi/web";
 import type { Comment } from "@/types";
 import { CommentAttachments } from "./comment-attachments";
@@ -68,7 +76,6 @@ export function CommentThread({
   people = [],
   depth = 0,
 }: CommentThreadProps) {
-  const { formatTimestamp } = useFormat();
   const [collapsed, setCollapsed] = useState(false);
   const [editing, setEditing] = useState(false);
   const [editBody, setEditBody] = useState("");
@@ -76,7 +83,8 @@ export function CommentThread({
   const [replyFiles, setReplyFiles] = useState<File[]>([]);
   const [isSubmittingReply, setIsSubmittingReply] = useState(false);
   const replyPreviewUrls = useImageObjectUrls(replyFiles);
-  const replyFileRef = { current: null as HTMLInputElement | null };
+  const replyFileRef = useRef<HTMLInputElement>(null);
+  const { formatFileSize, formatTimestamp } = useFormat();
 
   const handleSubmitReply = useCallback(async () => {
     if (isSubmittingReply) return;
@@ -316,45 +324,46 @@ export function CommentThread({
             people={people}
           />
           {replyFiles.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {replyFiles.map((file, i) => (
-                <div
-                  key={i}
-                  className="bg-muted relative flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs"
-                >
-                  {file.type.startsWith("image/") && (
-                    <img
-                      src={replyPreviewUrls[i] ?? undefined}
-                      alt={file.name}
-                      className="h-8 w-8 rounded object-cover"
-                    />
-                  )}
-                  <Paperclip className="text-muted-foreground size-3 shrink-0" />
-                  <span className="max-w-40 truncate">{file.name}</span>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <button
-                        type="button"
-                        aria-label={t`Remove`}
+            <AttachmentGroup>
+              {replyFiles.map((file, i) => {
+                const isImage = file.type.startsWith("image/");
+                return (
+                  <Attachment key={i} state="uploading" size="sm">
+                    <AttachmentMedia variant={isImage ? "image" : "icon"}>
+                      {isImage && replyPreviewUrls[i] ? (
+                        <img
+                          src={replyPreviewUrls[i] ?? undefined}
+                          alt={file.name}
+                          draggable={false}
+                        />
+                      ) : (
+                        <Paperclip />
+                      )}
+                    </AttachmentMedia>
+                    <AttachmentContent>
+                      <AttachmentTitle>{file.name}</AttachmentTitle>
+                      <AttachmentDescription>
+                        {formatFileSize(file.size)}
+                      </AttachmentDescription>
+                    </AttachmentContent>
+                    <AttachmentActions>
+                      <AttachmentAction
                         onClick={() =>
                           setReplyFiles((prev) => prev.filter((_, idx) => idx !== i))
                         }
-                        className="text-muted-foreground hover:text-foreground ms-0.5"
+                        aria-label={t`Remove`}
                       >
-                        <X className="size-3.5" />
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent>{t`Remove`}</TooltipContent>
-                  </Tooltip>
-                </div>
-              ))}
-            </div>
+                        <X className="size-4" />
+                      </AttachmentAction>
+                    </AttachmentActions>
+                  </Attachment>
+                );
+              })}
+            </AttachmentGroup>
           )}
           <div className="flex items-center justify-end gap-2">
             <input
-              ref={(el) => {
-                replyFileRef.current = el;
-              }}
+              ref={replyFileRef}
               type="file"
               multiple
               onChange={(e) => {
