@@ -90,11 +90,19 @@ export function CreateCrmDialog({
       const fingerprint = response.data?.fingerprint;
 
       if (fingerprint && importData) {
-        await toastAction(crmsApi.importData(fingerprint, importData), {
-          loading: t`Importing data...`,
-          success: t`Data imported`,
-          error: (e) => getErrorMessage(e, t`Failed to import data`),
-        });
+        try {
+          await toastAction(crmsApi.importData(fingerprint, importData), {
+            loading: t`Importing data...`,
+            success: () => {
+              const count = Array.isArray((importData as any).objects) ? (importData as any).objects.length : 0;
+              return t`Imported ${count} objects`;
+            },
+            error: (e) => getErrorMessage(e, t`Failed to import data`),
+          });
+        } catch (e) {
+          await crmsApi.delete(fingerprint).catch(() => {});
+          throw e;
+        }
       }
 
       await refreshCrms();
