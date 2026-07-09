@@ -24,6 +24,18 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
+  useImageObjectUrls,
+  useFormat,
+  Attachment,
+  AttachmentGroup,
+  AttachmentMedia,
+  AttachmentContent,
+  AttachmentTitle,
+  AttachmentDescription,
+  AttachmentActions,
+  AttachmentAction,
+  pendingFileKey,
+  removePendingFile,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import type { CrmDetails } from "@/types";
@@ -51,11 +63,13 @@ export function CreateObjectDialog({
   onCreated,
 }: CreateObjectDialogProps) {
   const { t } = useLingui();
+  const { formatFileSize } = useFormat();
   const [error, setError] = useState<string | null>(null);
   const [selectedClass, setSelectedType] = useState(crm.classes[0]?.id || "");
   const [fieldValues, setFieldValues] = useState<Record<string, string>>({});
   const [parent, setParent] = useState("");
   const [pendingFiles, setPendingFiles] = useState<File[]>([]);
+  const pendingFilePreviewUrls = useImageObjectUrls(pendingFiles);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const queryClient = useQueryClient();
 
@@ -435,26 +449,42 @@ export function CreateObjectDialog({
                 </label>
                 <div className="space-y-2 pt-1">
                   {pendingFiles.length > 0 && (
-                    <div className="space-y-1">
-                      {pendingFiles.map((file, i) => (
-                        <div key={`${file.name}-${i}`} className="flex items-center gap-1.5 text-xs">
-                          <span className="truncate">{file.name}</span>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <button
-                                type="button"
+                    <AttachmentGroup>
+                      {pendingFiles.map((file, i) => {
+                        const isImage = file.type.startsWith("image/");
+                        return (
+                          <Attachment key={pendingFileKey(file)} state="uploading" size="sm">
+                            <AttachmentMedia variant={isImage ? "image" : "icon"}>
+                              {isImage && pendingFilePreviewUrls[i] ? (
+                                <img
+                                  src={pendingFilePreviewUrls[i]}
+                                  alt={file.name}
+                                  draggable={false}
+                                />
+                              ) : (
+                                <Paperclip />
+                              )}
+                            </AttachmentMedia>
+                            <AttachmentContent>
+                              <AttachmentTitle>{file.name}</AttachmentTitle>
+                              <AttachmentDescription>
+                                {formatFileSize(file.size)}
+                              </AttachmentDescription>
+                            </AttachmentContent>
+                            <AttachmentActions>
+                              <AttachmentAction
+                                onClick={() =>
+                                  setPendingFiles((prev) => removePendingFile(prev, file))
+                                }
                                 aria-label={t`Remove`}
-                                className="text-muted-foreground hover:text-destructive shrink-0"
-                                onClick={() => setPendingFiles((prev) => prev.filter((_, j) => j !== i))}
                               >
-                                <X className="size-3" />
-                              </button>
-                            </TooltipTrigger>
-                            <TooltipContent>{t`Remove`}</TooltipContent>
-                          </Tooltip>
-                        </div>
-                      ))}
-                    </div>
+                                <X className="size-4" />
+                              </AttachmentAction>
+                            </AttachmentActions>
+                          </Attachment>
+                        );
+                      })}
+                    </AttachmentGroup>
                   )}
                   <input
                     ref={fileInputRef}

@@ -30,6 +30,8 @@ import {
   AttachmentActions,
   AttachmentAction,
   useFormat,
+  pendingFileKey,
+  removePendingFile,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import { CommentThread } from "./comment-thread";
@@ -221,10 +223,10 @@ export function CommentList({
           />
           {newFiles.length > 0 && (
             <AttachmentGroup>
-              {newFiles.map((file, i) => {
+              {newFiles.map((file) => {
                 const isImage = file.type.startsWith("image/");
                 return (
-                  <Attachment key={i} state="uploading" size="sm">
+                  <Attachment key={pendingFileKey(file)} state="uploading" size="sm">
                     <AttachmentMedia variant={isImage ? "image" : "icon"}>
                       <Paperclip />
                     </AttachmentMedia>
@@ -237,7 +239,7 @@ export function CommentList({
                     <AttachmentActions>
                       <AttachmentAction
                         onClick={() =>
-                          setNewFiles((prev) => prev.filter((_, idx) => idx !== i))
+                          setNewFiles((prev) => removePendingFile(prev, file))
                         }
                         aria-label={t`Remove`}
                       >
