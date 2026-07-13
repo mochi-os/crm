@@ -227,7 +227,7 @@ msgstr "Kaikki"
 msgid "All CRMs"
 msgstr "Kaikki CRM:t"
 
-#: src/features/crms/components/create-crm-dialog.tsx:188
+#: src/features/crms/components/create-crm-dialog.tsx:186
 msgid "Allow anyone to search for CRM"
 msgstr "Salli kenen tahansa etsiä CRM:ää"
 
@@ -353,7 +353,7 @@ msgstr "Voi olla alikohde kohteelle"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
 #: src/features/board/components/board-column.tsx:603
-#: src/features/crms/components/create-crm-dialog.tsx:255
+#: src/features/crms/components/create-crm-dialog.tsx:253
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
@@ -594,7 +594,7 @@ msgstr "Vahvistaminen tällä tilillä ei onnistunut. Yritä uudelleen."
 msgid "Create"
 msgstr "Luo"
 
-#: src/features/crms/components/create-crm-dialog.tsx:170
+#: src/features/crms/components/create-crm-dialog.tsx:168
 #: src/features/crms/pages/crms-list-page.tsx:103
 msgid "Create a new CRM"
 msgstr "Luo uusi CRM"
@@ -604,9 +604,9 @@ msgid "Create a new CRM object."
 msgstr "Luo uusi CRM-objekti."
 
 #: src/components/layout/crms-layout.tsx:59
-#: src/features/crms/components/create-crm-dialog.tsx:158
-#: src/features/crms/components/create-crm-dialog.tsx:168
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:156
+#: src/features/crms/components/create-crm-dialog.tsx:166
+#: src/features/crms/components/create-crm-dialog.tsx:256
 msgid "Create CRM"
 msgstr "Luo CRM"
 
@@ -627,11 +627,11 @@ msgstr "Luo, muokkaa, kommentoi ja katsele"
 msgid "Created"
 msgstr "Luotu"
 
-#: src/features/crms/components/create-crm-dialog.tsx:84
+#: src/features/crms/components/create-crm-dialog.tsx:85
 msgid "Creating CRM..."
 msgstr "Luodaan CRM:ää..."
 
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/objects/components/create-object-dialog.tsx:497
 msgid "Creating..."
 msgstr "Luodaan..."
@@ -641,7 +641,7 @@ msgstr "Luodaan..."
 msgid "CRM actions"
 msgstr "CRM-toiminnot"
 
-#: src/features/crms/components/create-crm-dialog.tsx:85
+#: src/features/crms/components/create-crm-dialog.tsx:86
 msgid "CRM created"
 msgstr "CRM luotu"
 
@@ -697,13 +697,12 @@ msgstr "Tumma tila"
 msgid "Data conflict"
 msgstr "Tietoristiriita"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:345
-#~ msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
-#~ msgstr "Tiedot tuotu ({0, plural, one {# kohde} other {# kohdetta}}, {1, plural, one {# kommentti} other {# kommenttia}}, {2, plural, one {# linkki} other {# linkkiä}})"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:420
-#~ msgid "Data management"
-#~ msgstr "Tietojen hallinta"
+#. placeholder {0}: imported.data?.objects ?? 0
+#. placeholder {1}: imported.data?.comments ?? 0
+#. placeholder {2}: imported.data?.links ?? 0
+#: src/features/crms/components/create-crm-dialog.tsx:97
+msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
+msgstr "Tiedot tuotu ({0, plural, one {# kohde} other {# kohdetta}}, {1, plural, one {# kommentti} other {# kommenttia}}, {2, plural, one {# linkki} other {# linkkiä}})"
 
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
@@ -973,10 +972,6 @@ msgstr "Vie tiedot"
 msgid "Export design"
 msgstr "Vie rakenne"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:421
-#~ msgid "Export or import the raw data content in this CRM."
-#~ msgstr "Vie tai tuo tämän CRM:n raakadatasisältö."
-
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
 msgstr "Erittäin suuri"
@@ -989,7 +984,7 @@ msgstr "Tilin lisääminen epäonnistui"
 msgid "Failed to create class"
 msgstr "Luokan luominen epäonnistui"
 
-#: src/features/crms/components/create-crm-dialog.tsx:86
+#: src/features/crms/components/create-crm-dialog.tsx:87
 msgid "Failed to create CRM"
 msgstr "CRM:n luominen epäonnistui"
 
@@ -1038,7 +1033,7 @@ msgstr "Tietojen vienti epäonnistui"
 msgid "Failed to export design"
 msgstr "Rakenteen vienti epäonnistui"
 
-#: src/features/crms/components/create-crm-dialog.tsx:100
+#: src/features/crms/components/create-crm-dialog.tsx:98
 msgid "Failed to import data"
 msgstr "Tietojen tuonti epäonnistui"
 
@@ -1068,7 +1063,7 @@ msgstr "Kohteen lataus epäonnistui"
 msgid "Failed to post comment"
 msgstr "Kommentin lähettäminen epäonnistui"
 
-#: src/features/crms/components/create-crm-dialog.tsx:144
+#: src/features/crms/components/create-crm-dialog.tsx:142
 #: src/routes/_authenticated/$crmId/design.tsx:266
 msgid "Failed to read file"
 msgstr "Tiedoston lukeminen epäonnistui"
@@ -1143,7 +1138,7 @@ msgid "Files"
 msgstr "Tiedostot"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:88
+#: src/routes/_authenticated/find.tsx:92
 msgid "Find CRMs"
 msgstr "Etsi CRM:iä"
 
@@ -1253,44 +1248,22 @@ msgstr "Identiteetti"
 msgid "Imperial"
 msgstr "Brittiläinen"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:536
-#~ msgid "Import a data configuration"
-#~ msgstr "Tuo tietojen määritykset"
-
 #: src/routes/_authenticated/$crmId/design.tsx:279
 msgid "Import a design configuration"
 msgstr "Tuo rakenteen määritykset"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:431
-#: src/routes/_authenticated/$crmId_.settings.tsx:477
-#: src/routes/_authenticated/$crmId_.settings.tsx:535
-#~ msgid "Import data"
-#~ msgstr "Tuo tiedot"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:463
-#~ msgid "Import data?"
-#~ msgstr "Tuodaanko tiedot?"
 
 #: src/routes/_authenticated/$crmId/design.tsx:178
 #: src/routes/_authenticated/$crmId/design.tsx:278
 msgid "Import design"
 msgstr "Tuo rakenne"
 
-#: src/features/crms/components/create-crm-dialog.tsx:198
+#: src/features/crms/components/create-crm-dialog.tsx:196
 msgid "Import from backup (optional)"
-msgstr ""
+msgstr "Tuo varmuuskopiosta (valinnainen)"
 
-#: src/features/crms/components/create-crm-dialog.tsx:98
-msgid "Imported {count} objects"
-msgstr ""
-
-#: src/features/crms/components/create-crm-dialog.tsx:95
+#: src/features/crms/components/create-crm-dialog.tsx:96
 msgid "Importing data..."
-msgstr ""
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:474
-#~ msgid "Importing..."
-#~ msgstr "Tuodaan..."
+msgstr "Tuodaan tietoja..."
 
 #: ../../../lib/web/src/components/config-drawer.tsx:252
 msgid "Inset"
@@ -1304,7 +1277,7 @@ msgstr "Kiinnostuksen kohteet"
 msgid "Invalid date"
 msgstr "Virheellinen päivämäärä"
 
-#: src/features/crms/components/create-crm-dialog.tsx:138
+#: src/features/crms/components/create-crm-dialog.tsx:136
 #: src/routes/_authenticated/$crmId/design.tsx:262
 msgid "Invalid JSON file"
 msgstr "Virheellinen JSON-tiedosto"
@@ -1435,7 +1408,7 @@ msgid "Monday"
 msgstr "Maanantai"
 
 #: src/features/board/components/board-column.tsx:589
-#: src/features/crms/components/create-crm-dialog.tsx:176
+#: src/features/crms/components/create-crm-dialog.tsx:174
 #: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
@@ -1445,7 +1418,7 @@ msgstr "Maanantai"
 msgid "Name"
 msgstr "Nimi"
 
-#: src/features/crms/components/create-crm-dialog.tsx:72
+#: src/features/crms/components/create-crm-dialog.tsx:73
 msgid "Name is required"
 msgstr "Nimi vaaditaan"
 
@@ -1496,7 +1469,7 @@ msgid "No connected accounts"
 msgstr "Ei yhdistettyjä tilejä"
 
 #: src/features/crms/components/inline-crm-search.tsx:164
-#: src/routes/_authenticated/find.tsx:90
+#: src/routes/_authenticated/find.tsx:94
 msgid "No CRMs found"
 msgstr "CRM-järjestelmiä ei löytynyt"
 
@@ -1771,7 +1744,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "Rekisteröi pääsyavaimesi uudelleen tällä palvelimella"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:240
+#: ../../../lib/web/src/components/search-entity-page.tsx:242
 msgid "Recommended"
 msgstr "Suositeltu"
 
@@ -1803,7 +1776,7 @@ msgstr "Suhteellinen 24 tunnin sisällä, muuten absoluuttinen"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:265
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:241
+#: src/features/crms/components/create-crm-dialog.tsx:239
 #: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/comment-list.tsx:232
 #: src/features/objects/components/comment-list.tsx:241
@@ -1917,7 +1890,7 @@ msgstr "Rivien ryhmittely"
 msgid "Rows per page"
 msgstr "Rivejä sivulla"
 
-#: src/features/crms/components/create-crm-dialog.tsx:181
+#: src/features/crms/components/create-crm-dialog.tsx:179
 msgid "Sales CRM"
 msgstr "Myynnin CRM"
 
@@ -1941,7 +1914,7 @@ msgstr "Tallennetaan..."
 msgid "Search"
 msgstr "Haku"
 
-#: src/routes/_authenticated/find.tsx:89
+#: src/routes/_authenticated/find.tsx:93
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Hae nimellä, tunnuksella, sormenjäljellä tai URL-osoitteella..."
 
@@ -1984,7 +1957,7 @@ msgid "Search..."
 msgstr "Hae..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:198
+#: ../../../lib/web/src/components/search-entity-page.tsx:200
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Haetaan..."
@@ -2257,10 +2230,6 @@ msgstr "Tätä CRM-järjestelmää ei voi ladata juuri nyt."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Tämä CRM-järjestelmä on saatettu poistaa tai sinulla ei ole pääsyä siihen."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:465
-#~ msgid "This will import the data from <0>{0}</0>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file."
-#~ msgstr "Tämä tuo tiedot tiedostosta <0>{0}</0>. Kohteet lisätään olemassa oleviin tietueisiin. Varmista, että nykyinen rakenne vastaa tiedostossa viitattuja luokkia ja kenttiä."
-
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:359
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
@@ -2345,7 +2314,7 @@ msgid "Travelling"
 msgstr "Matkustetaan"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:214
+#: ../../../lib/web/src/components/search-entity-page.tsx:216
 msgid "Try adjusting your search terms"
 msgstr "Kokeile muuttaa hakuehtoja"
 
@@ -2448,7 +2417,7 @@ msgstr "Päivitetään käyttöoikeutta..."
 msgid "Upload"
 msgstr "Lähetä"
 
-#: src/features/crms/components/create-crm-dialog.tsx:214
+#: src/features/crms/components/create-crm-dialog.tsx:212
 #: src/routes/_authenticated/$crmId/design.tsx:297
 msgid "Upload .json file"
 msgstr "Lähetä .json-tiedosto"
@@ -2484,7 +2453,7 @@ msgstr "Vahvista"
 msgid "Verify email address"
 msgstr "Vahvista sähköpostiosoite"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:75
+#: ../../../lib/web/src/components/attachment-gallery.tsx:74
 msgid "Video thumbnail"
 msgstr "Videon pikkukuva"
 

@@ -227,7 +227,7 @@ msgstr "سڀ"
 msgid "All CRMs"
 msgstr "سڀ CRMs"
 
-#: src/features/crms/components/create-crm-dialog.tsx:188
+#: src/features/crms/components/create-crm-dialog.tsx:186
 msgid "Allow anyone to search for CRM"
 msgstr "ڪنهن کي به CRM ڳولڻ جي اجازت ڏيو"
 
@@ -353,7 +353,7 @@ msgstr "جي اولاد ٿي سگهي ٿو"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
 #: src/features/board/components/board-column.tsx:603
-#: src/features/crms/components/create-crm-dialog.tsx:255
+#: src/features/crms/components/create-crm-dialog.tsx:253
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
@@ -594,7 +594,7 @@ msgstr "ان اڪائونٽ سان تصديق نه ٿي سگهي. مهرباني
 msgid "Create"
 msgstr "ٺاهيو"
 
-#: src/features/crms/components/create-crm-dialog.tsx:170
+#: src/features/crms/components/create-crm-dialog.tsx:168
 #: src/features/crms/pages/crms-list-page.tsx:103
 msgid "Create a new CRM"
 msgstr "نئون CRM ٺاهيو"
@@ -604,9 +604,9 @@ msgid "Create a new CRM object."
 msgstr "نئون CRM آبجيڪٽ ٺاهيو."
 
 #: src/components/layout/crms-layout.tsx:59
-#: src/features/crms/components/create-crm-dialog.tsx:158
-#: src/features/crms/components/create-crm-dialog.tsx:168
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:156
+#: src/features/crms/components/create-crm-dialog.tsx:166
+#: src/features/crms/components/create-crm-dialog.tsx:256
 msgid "Create CRM"
 msgstr "CRM ٺاهيو"
 
@@ -627,11 +627,11 @@ msgstr "تخليق، ترميم، تبصرو ۽ ڏسڻ"
 msgid "Created"
 msgstr "ٺاهيو ويو"
 
-#: src/features/crms/components/create-crm-dialog.tsx:84
+#: src/features/crms/components/create-crm-dialog.tsx:85
 msgid "Creating CRM..."
 msgstr "CRM ٺهي رهيو آهي..."
 
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/objects/components/create-object-dialog.tsx:497
 msgid "Creating..."
 msgstr "ٺاهي رهيو آهي..."
@@ -641,7 +641,7 @@ msgstr "ٺاهي رهيو آهي..."
 msgid "CRM actions"
 msgstr "CRM عمل"
 
-#: src/features/crms/components/create-crm-dialog.tsx:85
+#: src/features/crms/components/create-crm-dialog.tsx:86
 msgid "CRM created"
 msgstr "CRM ٺاهيو ويو"
 
@@ -697,13 +697,12 @@ msgstr "اونداهو موڊ"
 msgid "Data conflict"
 msgstr "ڊيٽا جو ٽڪراءُ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:345
-#~ msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
-#~ msgstr "ڊيٽا درآمد ٿي وئي ({0, plural, one {# شئي} other {# شيون}}، {1, plural, one {# تبصرو} other {# تبصرا}}، {2, plural, one {# لنڪ} other {# لنڪون}})"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:420
-#~ msgid "Data management"
-#~ msgstr "ڊيٽا جو انتظام"
+#. placeholder {0}: imported.data?.objects ?? 0
+#. placeholder {1}: imported.data?.comments ?? 0
+#. placeholder {2}: imported.data?.links ?? 0
+#: src/features/crms/components/create-crm-dialog.tsx:97
+msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
+msgstr "ڊيٽا درآمد ٿي وئي ({0, plural, one {# شئي} other {# شيون}}، {1, plural, one {# تبصرو} other {# تبصرا}}، {2, plural, one {# لنڪ} other {# لنڪون}})"
 
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
@@ -973,10 +972,6 @@ msgstr "ڊيٽا برآمد ڪريو"
 msgid "Export design"
 msgstr "ڊيزائن ايڪسپورٽ ڪريو"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:421
-#~ msgid "Export or import the raw data content in this CRM."
-#~ msgstr "هن CRM ۾ خام ڊيٽا برآمد يا درآمد ڪريو."
-
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
 msgstr "تمام وڏو"
@@ -989,7 +984,7 @@ msgstr "اڪائونٽ شامل ڪرڻ ۾ ناڪام"
 msgid "Failed to create class"
 msgstr "ڪلاس ٺاهڻ ۾ ناڪام"
 
-#: src/features/crms/components/create-crm-dialog.tsx:86
+#: src/features/crms/components/create-crm-dialog.tsx:87
 msgid "Failed to create CRM"
 msgstr "CRM ٺاهڻ ۾ ناڪام"
 
@@ -1038,7 +1033,7 @@ msgstr "ڊيٽا برآمد نه ٿي سگهي"
 msgid "Failed to export design"
 msgstr "ڊيزائن ايڪسپورٽ ڪرڻ ۾ ناڪام"
 
-#: src/features/crms/components/create-crm-dialog.tsx:100
+#: src/features/crms/components/create-crm-dialog.tsx:98
 msgid "Failed to import data"
 msgstr "ڊيٽا درآمد نه ٿي سگهي"
 
@@ -1068,7 +1063,7 @@ msgstr "شيءِ لوڊ ڪرڻ ۾ ناڪام"
 msgid "Failed to post comment"
 msgstr "تبصرو پوسٽ ڪرڻ ۾ ناڪام"
 
-#: src/features/crms/components/create-crm-dialog.tsx:144
+#: src/features/crms/components/create-crm-dialog.tsx:142
 #: src/routes/_authenticated/$crmId/design.tsx:266
 msgid "Failed to read file"
 msgstr "فائل پڙهڻ ۾ ناڪام"
@@ -1143,7 +1138,7 @@ msgid "Files"
 msgstr "فائلون"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:88
+#: src/routes/_authenticated/find.tsx:92
 msgid "Find CRMs"
 msgstr "CRMs ڳوليو"
 
@@ -1253,44 +1248,22 @@ msgstr "سڃاڻپ"
 msgid "Imperial"
 msgstr "امپيريل"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:536
-#~ msgid "Import a data configuration"
-#~ msgstr "ڊيٽا جي ترتيب درآمد ڪريو"
-
 #: src/routes/_authenticated/$crmId/design.tsx:279
 msgid "Import a design configuration"
 msgstr "هڪ ڊيزائن ترتيب درآمد ڪريو"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:431
-#: src/routes/_authenticated/$crmId_.settings.tsx:477
-#: src/routes/_authenticated/$crmId_.settings.tsx:535
-#~ msgid "Import data"
-#~ msgstr "ڊيٽا درآمد ڪريو"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:463
-#~ msgid "Import data?"
-#~ msgstr "ڊيٽا درآمد ڪجي؟"
 
 #: src/routes/_authenticated/$crmId/design.tsx:178
 #: src/routes/_authenticated/$crmId/design.tsx:278
 msgid "Import design"
 msgstr "ڊيزائن درآمد ڪريو"
 
-#: src/features/crms/components/create-crm-dialog.tsx:198
+#: src/features/crms/components/create-crm-dialog.tsx:196
 msgid "Import from backup (optional)"
-msgstr ""
+msgstr "بيڪ اپ مان درآمد ڪريو (اختياري)"
 
-#: src/features/crms/components/create-crm-dialog.tsx:98
-msgid "Imported {count} objects"
-msgstr ""
-
-#: src/features/crms/components/create-crm-dialog.tsx:95
+#: src/features/crms/components/create-crm-dialog.tsx:96
 msgid "Importing data..."
-msgstr ""
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:474
-#~ msgid "Importing..."
-#~ msgstr "درآمد ٿي رهي آهي..."
+msgstr "ڊيٽا درآمد ٿي رهي آهي..."
 
 #: ../../../lib/web/src/components/config-drawer.tsx:252
 msgid "Inset"
@@ -1304,7 +1277,7 @@ msgstr "دلچسپيون"
 msgid "Invalid date"
 msgstr "غلط تاريخ"
 
-#: src/features/crms/components/create-crm-dialog.tsx:138
+#: src/features/crms/components/create-crm-dialog.tsx:136
 #: src/routes/_authenticated/$crmId/design.tsx:262
 msgid "Invalid JSON file"
 msgstr "غلط JSON فائل"
@@ -1435,7 +1408,7 @@ msgid "Monday"
 msgstr "سومر"
 
 #: src/features/board/components/board-column.tsx:589
-#: src/features/crms/components/create-crm-dialog.tsx:176
+#: src/features/crms/components/create-crm-dialog.tsx:174
 #: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
@@ -1445,7 +1418,7 @@ msgstr "سومر"
 msgid "Name"
 msgstr "نالو"
 
-#: src/features/crms/components/create-crm-dialog.tsx:72
+#: src/features/crms/components/create-crm-dialog.tsx:73
 msgid "Name is required"
 msgstr "نالو گهربل آهي"
 
@@ -1496,7 +1469,7 @@ msgid "No connected accounts"
 msgstr "ڪو ڳنڍيل اڪائونٽ نه آهي"
 
 #: src/features/crms/components/inline-crm-search.tsx:164
-#: src/routes/_authenticated/find.tsx:90
+#: src/routes/_authenticated/find.tsx:94
 msgid "No CRMs found"
 msgstr "ڪا به CRM نه ملي"
 
@@ -1771,7 +1744,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "هن سرور تي پنهنجون پاسي ڪيز ٻيهر رجسٽر ڪريو"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:240
+#: ../../../lib/web/src/components/search-entity-page.tsx:242
 msgid "Recommended"
 msgstr "تجويز ڪيل"
 
@@ -1803,7 +1776,7 @@ msgstr "24 ڪلاڪن اندر نسبتي، ٻي صورت ۾ مطلق"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:265
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:241
+#: src/features/crms/components/create-crm-dialog.tsx:239
 #: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/comment-list.tsx:232
 #: src/features/objects/components/comment-list.tsx:241
@@ -1917,7 +1890,7 @@ msgstr "قطارن جو گروپ"
 msgid "Rows per page"
 msgstr "هر صفحي تي قطارون"
 
-#: src/features/crms/components/create-crm-dialog.tsx:181
+#: src/features/crms/components/create-crm-dialog.tsx:179
 msgid "Sales CRM"
 msgstr "وڪرو CRM"
 
@@ -1941,7 +1914,7 @@ msgstr "محفوظ ٿي رهيو آهي..."
 msgid "Search"
 msgstr "ڳوليو"
 
-#: src/routes/_authenticated/find.tsx:89
+#: src/routes/_authenticated/find.tsx:93
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "نالو، ID، fingerprint، يا URL سان ڳوليو..."
 
@@ -1984,7 +1957,7 @@ msgid "Search..."
 msgstr "ڳوليو..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:198
+#: ../../../lib/web/src/components/search-entity-page.tsx:200
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "ڳولي رهيو آهي..."
@@ -2257,10 +2230,6 @@ msgstr "ھي CRM ھاڻي لوڊ نه ٿي سگھيو."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "ھي CRM ھٽايو ويو ھوندو يا توھان وٽ ان جي رسائي نه آھي."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:465
-#~ msgid "This will import the data from <0>{0}</0>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file."
-#~ msgstr "هي <0>{0}</0> مان ڊيٽا درآمد ڪندو. شيون موجوده رڪارڊن ۾ شامل ڪيون وينديون. پڪ ڪريو ته موجوده ڊيزائن فائل ۾ ڄاڻايل ڪلاسن ۽ فيلڊن سان ٺهڪي ٿي."
-
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:359
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
@@ -2345,7 +2314,7 @@ msgid "Travelling"
 msgstr "سفر ڪرڻ"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:214
+#: ../../../lib/web/src/components/search-entity-page.tsx:216
 msgid "Try adjusting your search terms"
 msgstr "پنھنجي ڳولا جي اصطلاحن کي ترتيب ڏيڻ جي ڪوشش ڪريو"
 
@@ -2448,7 +2417,7 @@ msgstr "رسائي اپڊيٽ ٿي رهي آهي..."
 msgid "Upload"
 msgstr "اپ لوڊ ڪريو"
 
-#: src/features/crms/components/create-crm-dialog.tsx:214
+#: src/features/crms/components/create-crm-dialog.tsx:212
 #: src/routes/_authenticated/$crmId/design.tsx:297
 msgid "Upload .json file"
 msgstr ".json فائل اپ لوڊ ڪريو"
@@ -2484,7 +2453,7 @@ msgstr "تصديق ڪريو"
 msgid "Verify email address"
 msgstr "اي ميل ايڊريس جي تصديق ڪريو"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:75
+#: ../../../lib/web/src/components/attachment-gallery.tsx:74
 msgid "Video thumbnail"
 msgstr "وڊيو ٿمب نيل"
 

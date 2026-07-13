@@ -227,7 +227,7 @@ msgstr "Усі"
 msgid "All CRMs"
 msgstr "Усі CRM"
 
-#: src/features/crms/components/create-crm-dialog.tsx:188
+#: src/features/crms/components/create-crm-dialog.tsx:186
 msgid "Allow anyone to search for CRM"
 msgstr "Дозволити всім шукати CRM"
 
@@ -353,7 +353,7 @@ msgstr "Може бути дочірнім для"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
 #: src/features/board/components/board-column.tsx:603
-#: src/features/crms/components/create-crm-dialog.tsx:255
+#: src/features/crms/components/create-crm-dialog.tsx:253
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
@@ -594,7 +594,7 @@ msgstr "Не вдалося підтвердити за допомогою ць�
 msgid "Create"
 msgstr "Створити"
 
-#: src/features/crms/components/create-crm-dialog.tsx:170
+#: src/features/crms/components/create-crm-dialog.tsx:168
 #: src/features/crms/pages/crms-list-page.tsx:103
 msgid "Create a new CRM"
 msgstr "Створити нову CRM"
@@ -604,9 +604,9 @@ msgid "Create a new CRM object."
 msgstr "Створити новий об'єкт CRM."
 
 #: src/components/layout/crms-layout.tsx:59
-#: src/features/crms/components/create-crm-dialog.tsx:158
-#: src/features/crms/components/create-crm-dialog.tsx:168
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:156
+#: src/features/crms/components/create-crm-dialog.tsx:166
+#: src/features/crms/components/create-crm-dialog.tsx:256
 msgid "Create CRM"
 msgstr "Створити CRM"
 
@@ -627,11 +627,11 @@ msgstr "Створення, редагування, коментування т�
 msgid "Created"
 msgstr "Створено"
 
-#: src/features/crms/components/create-crm-dialog.tsx:84
+#: src/features/crms/components/create-crm-dialog.tsx:85
 msgid "Creating CRM..."
 msgstr "Створення CRM..."
 
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/objects/components/create-object-dialog.tsx:497
 msgid "Creating..."
 msgstr "Створення..."
@@ -641,7 +641,7 @@ msgstr "Створення..."
 msgid "CRM actions"
 msgstr "Дії CRM"
 
-#: src/features/crms/components/create-crm-dialog.tsx:85
+#: src/features/crms/components/create-crm-dialog.tsx:86
 msgid "CRM created"
 msgstr "CRM створено"
 
@@ -697,13 +697,12 @@ msgstr "Темний режим"
 msgid "Data conflict"
 msgstr "Конфлікт даних"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:345
-#~ msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
-#~ msgstr "Дані імпортовано ({0, plural, one {# об'єкт} few {# об'єкти} many {# об'єктів} other {# об'єкта}}, {1, plural, one {# коментар} few {# коментарі} many {# коментарів} other {# коментаря}}, {2, plural, one {# посилання} few {# посилання} many {# посилань} other {# посилання}})"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:420
-#~ msgid "Data management"
-#~ msgstr "Керування даними"
+#. placeholder {0}: imported.data?.objects ?? 0
+#. placeholder {1}: imported.data?.comments ?? 0
+#. placeholder {2}: imported.data?.links ?? 0
+#: src/features/crms/components/create-crm-dialog.tsx:97
+msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
+msgstr "Дані імпортовано ({0, plural, one {# об'єкт} few {# об'єкти} many {# об'єктів} other {# об'єкта}}, {1, plural, one {# коментар} few {# коментарі} many {# коментарів} other {# коментаря}}, {2, plural, one {# посилання} few {# посилання} many {# посилань} other {# посилання}})"
 
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
@@ -973,10 +972,6 @@ msgstr "Експортувати дані"
 msgid "Export design"
 msgstr "Експортувати дизайн"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:421
-#~ msgid "Export or import the raw data content in this CRM."
-#~ msgstr "Експортуйте або імпортуйте вміст необроблених даних у цій CRM."
-
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
 msgstr "Дуже великий"
@@ -989,7 +984,7 @@ msgstr "Не вдалося додати обліковий запис"
 msgid "Failed to create class"
 msgstr "Не вдалося створити клас"
 
-#: src/features/crms/components/create-crm-dialog.tsx:86
+#: src/features/crms/components/create-crm-dialog.tsx:87
 msgid "Failed to create CRM"
 msgstr "Не вдалося створити CRM"
 
@@ -1038,7 +1033,7 @@ msgstr "Не вдалося експортувати дані"
 msgid "Failed to export design"
 msgstr "Не вдалося експортувати дизайн"
 
-#: src/features/crms/components/create-crm-dialog.tsx:100
+#: src/features/crms/components/create-crm-dialog.tsx:98
 msgid "Failed to import data"
 msgstr "Не вдалося імпортувати дані"
 
@@ -1068,7 +1063,7 @@ msgstr "Не вдалося завантажити елемент"
 msgid "Failed to post comment"
 msgstr "Не вдалося опублікувати коментар"
 
-#: src/features/crms/components/create-crm-dialog.tsx:144
+#: src/features/crms/components/create-crm-dialog.tsx:142
 #: src/routes/_authenticated/$crmId/design.tsx:266
 msgid "Failed to read file"
 msgstr "Не вдалося прочитати файл"
@@ -1143,7 +1138,7 @@ msgid "Files"
 msgstr "Файли"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:88
+#: src/routes/_authenticated/find.tsx:92
 msgid "Find CRMs"
 msgstr "Знайти CRM"
 
@@ -1253,44 +1248,22 @@ msgstr "Ідентичність"
 msgid "Imperial"
 msgstr "Імперські"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:536
-#~ msgid "Import a data configuration"
-#~ msgstr "Імпорт конфігурації даних"
-
 #: src/routes/_authenticated/$crmId/design.tsx:279
 msgid "Import a design configuration"
 msgstr "Імпортувати конфігурацію дизайну"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:431
-#: src/routes/_authenticated/$crmId_.settings.tsx:477
-#: src/routes/_authenticated/$crmId_.settings.tsx:535
-#~ msgid "Import data"
-#~ msgstr "Імпортувати дані"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:463
-#~ msgid "Import data?"
-#~ msgstr "Імпортувати дані?"
 
 #: src/routes/_authenticated/$crmId/design.tsx:178
 #: src/routes/_authenticated/$crmId/design.tsx:278
 msgid "Import design"
 msgstr "Імпортувати дизайн"
 
-#: src/features/crms/components/create-crm-dialog.tsx:198
+#: src/features/crms/components/create-crm-dialog.tsx:196
 msgid "Import from backup (optional)"
-msgstr ""
+msgstr "Імпорт із резервної копії (необов'язково)"
 
-#: src/features/crms/components/create-crm-dialog.tsx:98
-msgid "Imported {count} objects"
-msgstr ""
-
-#: src/features/crms/components/create-crm-dialog.tsx:95
+#: src/features/crms/components/create-crm-dialog.tsx:96
 msgid "Importing data..."
-msgstr ""
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:474
-#~ msgid "Importing..."
-#~ msgstr "Імпортування..."
+msgstr "Імпорт даних..."
 
 #: ../../../lib/web/src/components/config-drawer.tsx:252
 msgid "Inset"
@@ -1304,7 +1277,7 @@ msgstr "Інтереси"
 msgid "Invalid date"
 msgstr "Недійсна дата"
 
-#: src/features/crms/components/create-crm-dialog.tsx:138
+#: src/features/crms/components/create-crm-dialog.tsx:136
 #: src/routes/_authenticated/$crmId/design.tsx:262
 msgid "Invalid JSON file"
 msgstr "Недійсний JSON-файл"
@@ -1435,7 +1408,7 @@ msgid "Monday"
 msgstr "Понеділок"
 
 #: src/features/board/components/board-column.tsx:589
-#: src/features/crms/components/create-crm-dialog.tsx:176
+#: src/features/crms/components/create-crm-dialog.tsx:174
 #: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
@@ -1445,7 +1418,7 @@ msgstr "Понеділок"
 msgid "Name"
 msgstr "Ім'я"
 
-#: src/features/crms/components/create-crm-dialog.tsx:72
+#: src/features/crms/components/create-crm-dialog.tsx:73
 msgid "Name is required"
 msgstr "Ім'я обов'язкове"
 
@@ -1496,7 +1469,7 @@ msgid "No connected accounts"
 msgstr "Немає підключених облікових записів"
 
 #: src/features/crms/components/inline-crm-search.tsx:164
-#: src/routes/_authenticated/find.tsx:90
+#: src/routes/_authenticated/find.tsx:94
 msgid "No CRMs found"
 msgstr "CRM не знайдено"
 
@@ -1771,7 +1744,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "Зареєструйте свої ключі доступу на цьому сервері знову"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:240
+#: ../../../lib/web/src/components/search-entity-page.tsx:242
 msgid "Recommended"
 msgstr "Рекомендоване"
 
@@ -1803,7 +1776,7 @@ msgstr "Відносний протягом 24 годин, інакше абсо
 
 #: ../../../lib/web/src/features/access/access-list.tsx:265
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:241
+#: src/features/crms/components/create-crm-dialog.tsx:239
 #: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/comment-list.tsx:232
 #: src/features/objects/components/comment-list.tsx:241
@@ -1917,7 +1890,7 @@ msgstr "Рядки згруповані за"
 msgid "Rows per page"
 msgstr "Рядків на сторінку"
 
-#: src/features/crms/components/create-crm-dialog.tsx:181
+#: src/features/crms/components/create-crm-dialog.tsx:179
 msgid "Sales CRM"
 msgstr "CRM продажів"
 
@@ -1941,7 +1914,7 @@ msgstr "Збереження..."
 msgid "Search"
 msgstr "Пошук"
 
-#: src/routes/_authenticated/find.tsx:89
+#: src/routes/_authenticated/find.tsx:93
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Пошук за назвою, ID, відбитком або URL..."
 
@@ -1984,7 +1957,7 @@ msgid "Search..."
 msgstr "Пошук..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:198
+#: ../../../lib/web/src/components/search-entity-page.tsx:200
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Пошук..."
@@ -2257,10 +2230,6 @@ msgstr "Цю CRM зараз не вдалося завантажити."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Цю CRM могли видалити, або у вас немає до неї доступу."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:465
-#~ msgid "This will import the data from <0>{0}</0>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file."
-#~ msgstr "Це імпортує дані з <0>{0}</0>. Об'єкти буде додано до наявних записів. Переконайтеся, що поточна структура відповідає класам і полям, зазначеним у файлі."
-
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:359
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
@@ -2345,7 +2314,7 @@ msgid "Travelling"
 msgstr "Подорож"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:214
+#: ../../../lib/web/src/components/search-entity-page.tsx:216
 msgid "Try adjusting your search terms"
 msgstr "Спробуйте змінити пошукові терміни"
 
@@ -2448,7 +2417,7 @@ msgstr "Оновлення доступу..."
 msgid "Upload"
 msgstr "Завантажити"
 
-#: src/features/crms/components/create-crm-dialog.tsx:214
+#: src/features/crms/components/create-crm-dialog.tsx:212
 #: src/routes/_authenticated/$crmId/design.tsx:297
 msgid "Upload .json file"
 msgstr "Завантажити файл .json"
@@ -2484,7 +2453,7 @@ msgstr "Перевірити"
 msgid "Verify email address"
 msgstr "Підтвердити електронну адресу"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:75
+#: ../../../lib/web/src/components/attachment-gallery.tsx:74
 msgid "Video thumbnail"
 msgstr "Мініатюра відео"
 

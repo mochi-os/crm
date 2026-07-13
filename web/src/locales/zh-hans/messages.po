@@ -227,7 +227,7 @@ msgstr "全部"
 msgid "All CRMs"
 msgstr "所有 CRM"
 
-#: src/features/crms/components/create-crm-dialog.tsx:188
+#: src/features/crms/components/create-crm-dialog.tsx:186
 msgid "Allow anyone to search for CRM"
 msgstr "允许任何人搜索 CRM"
 
@@ -353,7 +353,7 @@ msgstr "可作为子项的父级"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
 #: src/features/board/components/board-column.tsx:603
-#: src/features/crms/components/create-crm-dialog.tsx:255
+#: src/features/crms/components/create-crm-dialog.tsx:253
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
@@ -594,7 +594,7 @@ msgstr "无法使用该账户进行验证。请重试。"
 msgid "Create"
 msgstr "创建"
 
-#: src/features/crms/components/create-crm-dialog.tsx:170
+#: src/features/crms/components/create-crm-dialog.tsx:168
 #: src/features/crms/pages/crms-list-page.tsx:103
 msgid "Create a new CRM"
 msgstr "创建新的 CRM"
@@ -604,9 +604,9 @@ msgid "Create a new CRM object."
 msgstr "创建新的 CRM 对象。"
 
 #: src/components/layout/crms-layout.tsx:59
-#: src/features/crms/components/create-crm-dialog.tsx:158
-#: src/features/crms/components/create-crm-dialog.tsx:168
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:156
+#: src/features/crms/components/create-crm-dialog.tsx:166
+#: src/features/crms/components/create-crm-dialog.tsx:256
 msgid "Create CRM"
 msgstr "创建 CRM"
 
@@ -627,11 +627,11 @@ msgstr "创建、编辑、评论和查看"
 msgid "Created"
 msgstr "已创建"
 
-#: src/features/crms/components/create-crm-dialog.tsx:84
+#: src/features/crms/components/create-crm-dialog.tsx:85
 msgid "Creating CRM..."
 msgstr "正在创建 CRM..."
 
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/objects/components/create-object-dialog.tsx:497
 msgid "Creating..."
 msgstr "创建中..."
@@ -641,7 +641,7 @@ msgstr "创建中..."
 msgid "CRM actions"
 msgstr "CRM 操作"
 
-#: src/features/crms/components/create-crm-dialog.tsx:85
+#: src/features/crms/components/create-crm-dialog.tsx:86
 msgid "CRM created"
 msgstr "CRM 已创建"
 
@@ -697,13 +697,12 @@ msgstr "深色模式"
 msgid "Data conflict"
 msgstr "数据冲突"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:345
-#~ msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
-#~ msgstr "数据已导入（{0, plural, other {# 个对象}}、{1, plural, other {# 条评论}}、{2, plural, other {# 个链接}}）"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:420
-#~ msgid "Data management"
-#~ msgstr "数据管理"
+#. placeholder {0}: imported.data?.objects ?? 0
+#. placeholder {1}: imported.data?.comments ?? 0
+#. placeholder {2}: imported.data?.links ?? 0
+#: src/features/crms/components/create-crm-dialog.tsx:97
+msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
+msgstr "数据已导入（{0, plural, other {# 个对象}}、{1, plural, other {# 条评论}}、{2, plural, other {# 个链接}}）"
 
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
@@ -973,10 +972,6 @@ msgstr "导出数据"
 msgid "Export design"
 msgstr "导出设计"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:421
-#~ msgid "Export or import the raw data content in this CRM."
-#~ msgstr "导出或导入此 CRM 中的原始数据内容。"
-
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
 msgstr "特大"
@@ -989,7 +984,7 @@ msgstr "添加账户失败"
 msgid "Failed to create class"
 msgstr "创建类别失败"
 
-#: src/features/crms/components/create-crm-dialog.tsx:86
+#: src/features/crms/components/create-crm-dialog.tsx:87
 msgid "Failed to create CRM"
 msgstr "创建 CRM 失败"
 
@@ -1038,7 +1033,7 @@ msgstr "导出数据失败"
 msgid "Failed to export design"
 msgstr "导出设计失败"
 
-#: src/features/crms/components/create-crm-dialog.tsx:100
+#: src/features/crms/components/create-crm-dialog.tsx:98
 msgid "Failed to import data"
 msgstr "导入数据失败"
 
@@ -1068,7 +1063,7 @@ msgstr "加载条目失败"
 msgid "Failed to post comment"
 msgstr "发布评论失败"
 
-#: src/features/crms/components/create-crm-dialog.tsx:144
+#: src/features/crms/components/create-crm-dialog.tsx:142
 #: src/routes/_authenticated/$crmId/design.tsx:266
 msgid "Failed to read file"
 msgstr "读取文件失败"
@@ -1143,7 +1138,7 @@ msgid "Files"
 msgstr "文件"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:88
+#: src/routes/_authenticated/find.tsx:92
 msgid "Find CRMs"
 msgstr "查找 CRM"
 
@@ -1253,44 +1248,22 @@ msgstr "身份"
 msgid "Imperial"
 msgstr "英制"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:536
-#~ msgid "Import a data configuration"
-#~ msgstr "导入数据配置"
-
 #: src/routes/_authenticated/$crmId/design.tsx:279
 msgid "Import a design configuration"
 msgstr "导入设计配置"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:431
-#: src/routes/_authenticated/$crmId_.settings.tsx:477
-#: src/routes/_authenticated/$crmId_.settings.tsx:535
-#~ msgid "Import data"
-#~ msgstr "导入数据"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:463
-#~ msgid "Import data?"
-#~ msgstr "要导入数据吗？"
 
 #: src/routes/_authenticated/$crmId/design.tsx:178
 #: src/routes/_authenticated/$crmId/design.tsx:278
 msgid "Import design"
 msgstr "导入设计"
 
-#: src/features/crms/components/create-crm-dialog.tsx:198
+#: src/features/crms/components/create-crm-dialog.tsx:196
 msgid "Import from backup (optional)"
-msgstr ""
+msgstr "从备份导入（可选）"
 
-#: src/features/crms/components/create-crm-dialog.tsx:98
-msgid "Imported {count} objects"
-msgstr ""
-
-#: src/features/crms/components/create-crm-dialog.tsx:95
+#: src/features/crms/components/create-crm-dialog.tsx:96
 msgid "Importing data..."
-msgstr ""
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:474
-#~ msgid "Importing..."
-#~ msgstr "正在导入…"
+msgstr "正在导入数据..."
 
 #: ../../../lib/web/src/components/config-drawer.tsx:252
 msgid "Inset"
@@ -1304,7 +1277,7 @@ msgstr "兴趣"
 msgid "Invalid date"
 msgstr "日期无效"
 
-#: src/features/crms/components/create-crm-dialog.tsx:138
+#: src/features/crms/components/create-crm-dialog.tsx:136
 #: src/routes/_authenticated/$crmId/design.tsx:262
 msgid "Invalid JSON file"
 msgstr "无效的 JSON 文件"
@@ -1435,7 +1408,7 @@ msgid "Monday"
 msgstr "星期一"
 
 #: src/features/board/components/board-column.tsx:589
-#: src/features/crms/components/create-crm-dialog.tsx:176
+#: src/features/crms/components/create-crm-dialog.tsx:174
 #: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
@@ -1445,7 +1418,7 @@ msgstr "星期一"
 msgid "Name"
 msgstr "名称"
 
-#: src/features/crms/components/create-crm-dialog.tsx:72
+#: src/features/crms/components/create-crm-dialog.tsx:73
 msgid "Name is required"
 msgstr "名称为必填项"
 
@@ -1496,7 +1469,7 @@ msgid "No connected accounts"
 msgstr "无已连接的账户"
 
 #: src/features/crms/components/inline-crm-search.tsx:164
-#: src/routes/_authenticated/find.tsx:90
+#: src/routes/_authenticated/find.tsx:94
 msgid "No CRMs found"
 msgstr "未找到 CRM"
 
@@ -1771,7 +1744,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "在此服务器上重新注册您的通行密钥"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:240
+#: ../../../lib/web/src/components/search-entity-page.tsx:242
 msgid "Recommended"
 msgstr "推荐"
 
@@ -1803,7 +1776,7 @@ msgstr "24 小时内显示相对时间,否则显示绝对时间"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:265
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:241
+#: src/features/crms/components/create-crm-dialog.tsx:239
 #: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/comment-list.tsx:232
 #: src/features/objects/components/comment-list.tsx:241
@@ -1917,7 +1890,7 @@ msgstr "行分组依据"
 msgid "Rows per page"
 msgstr "每页行数"
 
-#: src/features/crms/components/create-crm-dialog.tsx:181
+#: src/features/crms/components/create-crm-dialog.tsx:179
 msgid "Sales CRM"
 msgstr "销售 CRM"
 
@@ -1941,7 +1914,7 @@ msgstr "正在保存..."
 msgid "Search"
 msgstr "搜索"
 
-#: src/routes/_authenticated/find.tsx:89
+#: src/routes/_authenticated/find.tsx:93
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "按名称、ID、指纹或 URL 搜索..."
 
@@ -1984,7 +1957,7 @@ msgid "Search..."
 msgstr "搜索..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:198
+#: ../../../lib/web/src/components/search-entity-page.tsx:200
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "正在搜索..."
@@ -2257,10 +2230,6 @@ msgstr "目前无法加载此 CRM。"
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "此 CRM 可能已被删除,或您没有访问权限。"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:465
-#~ msgid "This will import the data from <0>{0}</0>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file."
-#~ msgstr "这将从 <0>{0}</0> 导入数据。对象将追加到现有记录中。请确保当前设计与文件中引用的类和字段相匹配。"
-
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:359
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
@@ -2345,7 +2314,7 @@ msgid "Travelling"
 msgstr "行进中"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:214
+#: ../../../lib/web/src/components/search-entity-page.tsx:216
 msgid "Try adjusting your search terms"
 msgstr "尝试调整您的搜索词"
 
@@ -2448,7 +2417,7 @@ msgstr "正在更新访问权限..."
 msgid "Upload"
 msgstr "上传"
 
-#: src/features/crms/components/create-crm-dialog.tsx:214
+#: src/features/crms/components/create-crm-dialog.tsx:212
 #: src/routes/_authenticated/$crmId/design.tsx:297
 msgid "Upload .json file"
 msgstr "上传 .json 文件"
@@ -2484,7 +2453,7 @@ msgstr "验证"
 msgid "Verify email address"
 msgstr "验证邮箱地址"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:75
+#: ../../../lib/web/src/components/attachment-gallery.tsx:74
 msgid "Video thumbnail"
 msgstr "视频缩略图"
 

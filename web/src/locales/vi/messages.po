@@ -227,7 +227,7 @@ msgstr "Tất cả"
 msgid "All CRMs"
 msgstr "Tất cả CRM"
 
-#: src/features/crms/components/create-crm-dialog.tsx:188
+#: src/features/crms/components/create-crm-dialog.tsx:186
 msgid "Allow anyone to search for CRM"
 msgstr "Cho phép mọi người tìm kiếm CRM"
 
@@ -353,7 +353,7 @@ msgstr "Có thể là con của"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
 #: src/features/board/components/board-column.tsx:603
-#: src/features/crms/components/create-crm-dialog.tsx:255
+#: src/features/crms/components/create-crm-dialog.tsx:253
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
@@ -594,7 +594,7 @@ msgstr "Không thể xác minh bằng tài khoản đó. Vui lòng thử lại."
 msgid "Create"
 msgstr "Tạo"
 
-#: src/features/crms/components/create-crm-dialog.tsx:170
+#: src/features/crms/components/create-crm-dialog.tsx:168
 #: src/features/crms/pages/crms-list-page.tsx:103
 msgid "Create a new CRM"
 msgstr "Tạo CRM mới"
@@ -604,9 +604,9 @@ msgid "Create a new CRM object."
 msgstr "Tạo đối tượng CRM mới."
 
 #: src/components/layout/crms-layout.tsx:59
-#: src/features/crms/components/create-crm-dialog.tsx:158
-#: src/features/crms/components/create-crm-dialog.tsx:168
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:156
+#: src/features/crms/components/create-crm-dialog.tsx:166
+#: src/features/crms/components/create-crm-dialog.tsx:256
 msgid "Create CRM"
 msgstr "Tạo CRM"
 
@@ -627,11 +627,11 @@ msgstr "Tạo, chỉnh sửa, bình luận và xem"
 msgid "Created"
 msgstr "Đã tạo"
 
-#: src/features/crms/components/create-crm-dialog.tsx:84
+#: src/features/crms/components/create-crm-dialog.tsx:85
 msgid "Creating CRM..."
 msgstr "Đang tạo CRM..."
 
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/objects/components/create-object-dialog.tsx:497
 msgid "Creating..."
 msgstr "Đang tạo..."
@@ -641,7 +641,7 @@ msgstr "Đang tạo..."
 msgid "CRM actions"
 msgstr "Thao tác CRM"
 
-#: src/features/crms/components/create-crm-dialog.tsx:85
+#: src/features/crms/components/create-crm-dialog.tsx:86
 msgid "CRM created"
 msgstr "Đã tạo CRM"
 
@@ -697,13 +697,12 @@ msgstr "Chế độ tối"
 msgid "Data conflict"
 msgstr "Xung đột dữ liệu"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:345
-#~ msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
-#~ msgstr "Đã nhập dữ liệu ({0, plural, other {# đối tượng}}, {1, plural, other {# bình luận}}, {2, plural, other {# liên kết}})"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:420
-#~ msgid "Data management"
-#~ msgstr "Quản lý dữ liệu"
+#. placeholder {0}: imported.data?.objects ?? 0
+#. placeholder {1}: imported.data?.comments ?? 0
+#. placeholder {2}: imported.data?.links ?? 0
+#: src/features/crms/components/create-crm-dialog.tsx:97
+msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
+msgstr "Đã nhập dữ liệu ({0, plural, other {# đối tượng}}, {1, plural, other {# bình luận}}, {2, plural, other {# liên kết}})"
 
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
@@ -973,10 +972,6 @@ msgstr "Xuất dữ liệu"
 msgid "Export design"
 msgstr "Xuất thiết kế"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:421
-#~ msgid "Export or import the raw data content in this CRM."
-#~ msgstr "Xuất hoặc nhập nội dung dữ liệu thô trong CRM này."
-
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
 msgstr "Rất lớn"
@@ -989,7 +984,7 @@ msgstr "Không thêm tài khoản được"
 msgid "Failed to create class"
 msgstr "Không tạo lớp được"
 
-#: src/features/crms/components/create-crm-dialog.tsx:86
+#: src/features/crms/components/create-crm-dialog.tsx:87
 msgid "Failed to create CRM"
 msgstr "Không tạo CRM được"
 
@@ -1038,7 +1033,7 @@ msgstr "Không thể xuất dữ liệu"
 msgid "Failed to export design"
 msgstr "Không xuất thiết kế được"
 
-#: src/features/crms/components/create-crm-dialog.tsx:100
+#: src/features/crms/components/create-crm-dialog.tsx:98
 msgid "Failed to import data"
 msgstr "Không thể nhập dữ liệu"
 
@@ -1068,7 +1063,7 @@ msgstr "Không tải mục được"
 msgid "Failed to post comment"
 msgstr "Không đăng bình luận được"
 
-#: src/features/crms/components/create-crm-dialog.tsx:144
+#: src/features/crms/components/create-crm-dialog.tsx:142
 #: src/routes/_authenticated/$crmId/design.tsx:266
 msgid "Failed to read file"
 msgstr "Không đọc tệp được"
@@ -1143,7 +1138,7 @@ msgid "Files"
 msgstr "Tệp"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:88
+#: src/routes/_authenticated/find.tsx:92
 msgid "Find CRMs"
 msgstr "Tìm CRM"
 
@@ -1253,44 +1248,22 @@ msgstr "Danh tính"
 msgid "Imperial"
 msgstr "Hệ Anh"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:536
-#~ msgid "Import a data configuration"
-#~ msgstr "Nhập cấu hình dữ liệu"
-
 #: src/routes/_authenticated/$crmId/design.tsx:279
 msgid "Import a design configuration"
 msgstr "Nhập cấu hình thiết kế"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:431
-#: src/routes/_authenticated/$crmId_.settings.tsx:477
-#: src/routes/_authenticated/$crmId_.settings.tsx:535
-#~ msgid "Import data"
-#~ msgstr "Nhập dữ liệu"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:463
-#~ msgid "Import data?"
-#~ msgstr "Nhập dữ liệu?"
 
 #: src/routes/_authenticated/$crmId/design.tsx:178
 #: src/routes/_authenticated/$crmId/design.tsx:278
 msgid "Import design"
 msgstr "Nhập thiết kế"
 
-#: src/features/crms/components/create-crm-dialog.tsx:198
+#: src/features/crms/components/create-crm-dialog.tsx:196
 msgid "Import from backup (optional)"
-msgstr ""
+msgstr "Nhập từ bản sao lưu (tùy chọn)"
 
-#: src/features/crms/components/create-crm-dialog.tsx:98
-msgid "Imported {count} objects"
-msgstr ""
-
-#: src/features/crms/components/create-crm-dialog.tsx:95
+#: src/features/crms/components/create-crm-dialog.tsx:96
 msgid "Importing data..."
-msgstr ""
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:474
-#~ msgid "Importing..."
-#~ msgstr "Đang nhập..."
+msgstr "Đang nhập dữ liệu..."
 
 #: ../../../lib/web/src/components/config-drawer.tsx:252
 msgid "Inset"
@@ -1304,7 +1277,7 @@ msgstr "Sở thích"
 msgid "Invalid date"
 msgstr "Ngày không hợp lệ"
 
-#: src/features/crms/components/create-crm-dialog.tsx:138
+#: src/features/crms/components/create-crm-dialog.tsx:136
 #: src/routes/_authenticated/$crmId/design.tsx:262
 msgid "Invalid JSON file"
 msgstr "Tệp JSON không hợp lệ"
@@ -1435,7 +1408,7 @@ msgid "Monday"
 msgstr "Thứ Hai"
 
 #: src/features/board/components/board-column.tsx:589
-#: src/features/crms/components/create-crm-dialog.tsx:176
+#: src/features/crms/components/create-crm-dialog.tsx:174
 #: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
@@ -1445,7 +1418,7 @@ msgstr "Thứ Hai"
 msgid "Name"
 msgstr "Tên"
 
-#: src/features/crms/components/create-crm-dialog.tsx:72
+#: src/features/crms/components/create-crm-dialog.tsx:73
 msgid "Name is required"
 msgstr "Tên là bắt buộc"
 
@@ -1496,7 +1469,7 @@ msgid "No connected accounts"
 msgstr "Không có tài khoản đã kết nối"
 
 #: src/features/crms/components/inline-crm-search.tsx:164
-#: src/routes/_authenticated/find.tsx:90
+#: src/routes/_authenticated/find.tsx:94
 msgid "No CRMs found"
 msgstr "Không tìm thấy CRM nào"
 
@@ -1771,7 +1744,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "Đăng ký lại mã khóa của bạn trên máy chủ này"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:240
+#: ../../../lib/web/src/components/search-entity-page.tsx:242
 msgid "Recommended"
 msgstr "Được đề xuất"
 
@@ -1803,7 +1776,7 @@ msgstr "Tương đối trong vòng 24 giờ, ngoài ra dùng tuyệt đối"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:265
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:241
+#: src/features/crms/components/create-crm-dialog.tsx:239
 #: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/comment-list.tsx:232
 #: src/features/objects/components/comment-list.tsx:241
@@ -1917,7 +1890,7 @@ msgstr "Nhóm hàng theo"
 msgid "Rows per page"
 msgstr "Số hàng mỗi trang"
 
-#: src/features/crms/components/create-crm-dialog.tsx:181
+#: src/features/crms/components/create-crm-dialog.tsx:179
 msgid "Sales CRM"
 msgstr "CRM bán hàng"
 
@@ -1941,7 +1914,7 @@ msgstr "Đang lưu..."
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: src/routes/_authenticated/find.tsx:89
+#: src/routes/_authenticated/find.tsx:93
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Tìm kiếm theo tên, ID, dấu vân tay hoặc URL..."
 
@@ -1984,7 +1957,7 @@ msgid "Search..."
 msgstr "Tìm kiếm..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:198
+#: ../../../lib/web/src/components/search-entity-page.tsx:200
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Đang tìm kiếm..."
@@ -2257,10 +2230,6 @@ msgstr "Không thể tải CRM này lúc này."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "CRM này có thể đã bị xóa hoặc bạn không có quyền truy cập."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:465
-#~ msgid "This will import the data from <0>{0}</0>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file."
-#~ msgstr "Thao tác này sẽ nhập dữ liệu từ <0>{0}</0>. Các đối tượng sẽ được thêm vào các bản ghi hiện có. Hãy đảm bảo thiết kế hiện tại khớp với các lớp và trường được tham chiếu trong tệp."
-
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:359
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
@@ -2345,7 +2314,7 @@ msgid "Travelling"
 msgstr "Đang di chuyển"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:214
+#: ../../../lib/web/src/components/search-entity-page.tsx:216
 msgid "Try adjusting your search terms"
 msgstr "Hãy thử điều chỉnh từ khóa tìm kiếm"
 
@@ -2448,7 +2417,7 @@ msgstr "Đang cập nhật quyền truy cập..."
 msgid "Upload"
 msgstr "Tải lên"
 
-#: src/features/crms/components/create-crm-dialog.tsx:214
+#: src/features/crms/components/create-crm-dialog.tsx:212
 #: src/routes/_authenticated/$crmId/design.tsx:297
 msgid "Upload .json file"
 msgstr "Tải lên tệp .json"
@@ -2484,7 +2453,7 @@ msgstr "Xác minh"
 msgid "Verify email address"
 msgstr "Xác minh địa chỉ email"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:75
+#: ../../../lib/web/src/components/attachment-gallery.tsx:74
 msgid "Video thumbnail"
 msgstr "Hình thu nhỏ video"
 

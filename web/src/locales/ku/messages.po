@@ -227,7 +227,7 @@ msgstr "Hemû"
 msgid "All CRMs"
 msgstr "Hemû CRM"
 
-#: src/features/crms/components/create-crm-dialog.tsx:188
+#: src/features/crms/components/create-crm-dialog.tsx:186
 msgid "Allow anyone to search for CRM"
 msgstr "Destûr bide her kesî ku li CRM bigere"
 
@@ -353,7 +353,7 @@ msgstr "Dikare zarokê … be"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
 #: src/features/board/components/board-column.tsx:603
-#: src/features/crms/components/create-crm-dialog.tsx:255
+#: src/features/crms/components/create-crm-dialog.tsx:253
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
@@ -594,7 +594,7 @@ msgstr "Bi wê hesabê re piştrastkirin pêk nehat. Ji kerema xwe dîsa bicerib
 msgid "Create"
 msgstr "Çêbike"
 
-#: src/features/crms/components/create-crm-dialog.tsx:170
+#: src/features/crms/components/create-crm-dialog.tsx:168
 #: src/features/crms/pages/crms-list-page.tsx:103
 msgid "Create a new CRM"
 msgstr "CRMeke nû çêbike"
@@ -604,9 +604,9 @@ msgid "Create a new CRM object."
 msgstr "Objeyeke nû ya CRMê çêbike."
 
 #: src/components/layout/crms-layout.tsx:59
-#: src/features/crms/components/create-crm-dialog.tsx:158
-#: src/features/crms/components/create-crm-dialog.tsx:168
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:156
+#: src/features/crms/components/create-crm-dialog.tsx:166
+#: src/features/crms/components/create-crm-dialog.tsx:256
 msgid "Create CRM"
 msgstr "CRM çêbike"
 
@@ -627,11 +627,11 @@ msgstr "Afirandin, sererastkirin, şîrovekirin û dîtin"
 msgid "Created"
 msgstr "Hat çêkirin"
 
-#: src/features/crms/components/create-crm-dialog.tsx:84
+#: src/features/crms/components/create-crm-dialog.tsx:85
 msgid "Creating CRM..."
 msgstr "CRM tê çêkirin..."
 
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/objects/components/create-object-dialog.tsx:497
 msgid "Creating..."
 msgstr "Tê çêkirin..."
@@ -641,7 +641,7 @@ msgstr "Tê çêkirin..."
 msgid "CRM actions"
 msgstr "Kiryarên CRM"
 
-#: src/features/crms/components/create-crm-dialog.tsx:85
+#: src/features/crms/components/create-crm-dialog.tsx:86
 msgid "CRM created"
 msgstr "CRM hat çêkirin"
 
@@ -697,13 +697,12 @@ msgstr "Awayê tarî"
 msgid "Data conflict"
 msgstr "Nakokiya daneyan"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:345
-#~ msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
-#~ msgstr "Dane hatin împortkirin ({0, plural, one {# obje} other {# obje}}, {1, plural, one {# şîrove} other {# şîrove}}, {2, plural, one {# girêdan} other {# girêdan}})"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:420
-#~ msgid "Data management"
-#~ msgstr "Rêveberiya daneyan"
+#. placeholder {0}: imported.data?.objects ?? 0
+#. placeholder {1}: imported.data?.comments ?? 0
+#. placeholder {2}: imported.data?.links ?? 0
+#: src/features/crms/components/create-crm-dialog.tsx:97
+msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
+msgstr "Dane hatin împortkirin ({0, plural, one {# obje} other {# obje}}, {1, plural, one {# şîrove} other {# şîrove}}, {2, plural, one {# girêdan} other {# girêdan}})"
 
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
@@ -973,10 +972,6 @@ msgstr "Daneyan eksport bike"
 msgid "Export design"
 msgstr "Sêwiranê derxe"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:421
-#~ msgid "Export or import the raw data content in this CRM."
-#~ msgstr "Naveroka daneyên xam ên vê CRM'ê eksport an împort bike."
-
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
 msgstr "Pir mezin"
@@ -989,7 +984,7 @@ msgstr "Zêdekirina hesabê neserkeftî bû"
 msgid "Failed to create class"
 msgstr "Çêkirina polê neserkeftî bû"
 
-#: src/features/crms/components/create-crm-dialog.tsx:86
+#: src/features/crms/components/create-crm-dialog.tsx:87
 msgid "Failed to create CRM"
 msgstr "Çêkirina CRM neserkeftî bû"
 
@@ -1038,7 +1033,7 @@ msgstr "Eksportkirina daneyan bi ser neket"
 msgid "Failed to export design"
 msgstr "Derxistina sêwiranê neserkeftî bû"
 
-#: src/features/crms/components/create-crm-dialog.tsx:100
+#: src/features/crms/components/create-crm-dialog.tsx:98
 msgid "Failed to import data"
 msgstr "Împortkirina daneyan bi ser neket"
 
@@ -1068,7 +1063,7 @@ msgstr "Barkirina xalê neserkeftî bû"
 msgid "Failed to post comment"
 msgstr "Şandina şîroveyê neserkeftî bû"
 
-#: src/features/crms/components/create-crm-dialog.tsx:144
+#: src/features/crms/components/create-crm-dialog.tsx:142
 #: src/routes/_authenticated/$crmId/design.tsx:266
 msgid "Failed to read file"
 msgstr "Xwendina pelê neserkeftî bû"
@@ -1143,7 +1138,7 @@ msgid "Files"
 msgstr "Pelan"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:88
+#: src/routes/_authenticated/find.tsx:92
 msgid "Find CRMs"
 msgstr "CRMan bibîne"
 
@@ -1253,44 +1248,22 @@ msgstr "Nasname"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:536
-#~ msgid "Import a data configuration"
-#~ msgstr "Konfîgurasyoneke daneyan împort bike"
-
 #: src/routes/_authenticated/$crmId/design.tsx:279
 msgid "Import a design configuration"
 msgstr "Veavakirina sêwiranê bîne"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:431
-#: src/routes/_authenticated/$crmId_.settings.tsx:477
-#: src/routes/_authenticated/$crmId_.settings.tsx:535
-#~ msgid "Import data"
-#~ msgstr "Daneyan împort bike"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:463
-#~ msgid "Import data?"
-#~ msgstr "Dane bên împortkirin?"
 
 #: src/routes/_authenticated/$crmId/design.tsx:178
 #: src/routes/_authenticated/$crmId/design.tsx:278
 msgid "Import design"
 msgstr "Sêwiranê bîne"
 
-#: src/features/crms/components/create-crm-dialog.tsx:198
+#: src/features/crms/components/create-crm-dialog.tsx:196
 msgid "Import from backup (optional)"
-msgstr ""
+msgstr "Ji paşvekêşê împort bike (vebijarkî)"
 
-#: src/features/crms/components/create-crm-dialog.tsx:98
-msgid "Imported {count} objects"
-msgstr ""
-
-#: src/features/crms/components/create-crm-dialog.tsx:95
+#: src/features/crms/components/create-crm-dialog.tsx:96
 msgid "Importing data..."
-msgstr ""
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:474
-#~ msgid "Importing..."
-#~ msgstr "Tê împortkirin..."
+msgstr "Dane tên împortkirin..."
 
 #: ../../../lib/web/src/components/config-drawer.tsx:252
 msgid "Inset"
@@ -1304,7 +1277,7 @@ msgstr "Balkêşî"
 msgid "Invalid date"
 msgstr "Tarîxa nederbasdar"
 
-#: src/features/crms/components/create-crm-dialog.tsx:138
+#: src/features/crms/components/create-crm-dialog.tsx:136
 #: src/routes/_authenticated/$crmId/design.tsx:262
 msgid "Invalid JSON file"
 msgstr "Pelê JSON nederbasdar"
@@ -1435,7 +1408,7 @@ msgid "Monday"
 msgstr "Duşem"
 
 #: src/features/board/components/board-column.tsx:589
-#: src/features/crms/components/create-crm-dialog.tsx:176
+#: src/features/crms/components/create-crm-dialog.tsx:174
 #: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
@@ -1445,7 +1418,7 @@ msgstr "Duşem"
 msgid "Name"
 msgstr "Nav"
 
-#: src/features/crms/components/create-crm-dialog.tsx:72
+#: src/features/crms/components/create-crm-dialog.tsx:73
 msgid "Name is required"
 msgstr "Nav pêwîst e"
 
@@ -1496,7 +1469,7 @@ msgid "No connected accounts"
 msgstr "Tu hesabên girêdayî tune"
 
 #: src/features/crms/components/inline-crm-search.tsx:164
-#: src/routes/_authenticated/find.tsx:90
+#: src/routes/_authenticated/find.tsx:94
 msgid "No CRMs found"
 msgstr "Tu CRM nehatin dîtin"
 
@@ -1771,7 +1744,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "Mifteyên gihîştinê yên xwe li ser vî rajeyê ji nû ve qeyd bike"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:240
+#: ../../../lib/web/src/components/search-entity-page.tsx:242
 msgid "Recommended"
 msgstr "Pêşniyarkirî"
 
@@ -1803,7 +1776,7 @@ msgstr "Goreyî di nav 24 saetan de, ne wisa be mutleq"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:265
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:241
+#: src/features/crms/components/create-crm-dialog.tsx:239
 #: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/comment-list.tsx:232
 #: src/features/objects/components/comment-list.tsx:241
@@ -1917,7 +1890,7 @@ msgstr "Rêz bi vê komê re bibe"
 msgid "Rows per page"
 msgstr "Rêz li ser her rûpel"
 
-#: src/features/crms/components/create-crm-dialog.tsx:181
+#: src/features/crms/components/create-crm-dialog.tsx:179
 msgid "Sales CRM"
 msgstr "CRM ya Firotinê"
 
@@ -1941,7 +1914,7 @@ msgstr "Tê tomarkirin..."
 msgid "Search"
 msgstr "Lêger"
 
-#: src/routes/_authenticated/find.tsx:89
+#: src/routes/_authenticated/find.tsx:93
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Li gor nav, ID, fingerprint an URL bigere..."
 
@@ -1984,7 +1957,7 @@ msgid "Search..."
 msgstr "Bigere..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:198
+#: ../../../lib/web/src/components/search-entity-page.tsx:200
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Tê gerîn..."
@@ -2257,10 +2230,6 @@ msgstr "Vê CRM-ê niha nayê barkirin."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Dibe ku ev CRM hatibe jêbirin an gihîştina te jê re tune be."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:465
-#~ msgid "This will import the data from <0>{0}</0>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file."
-#~ msgstr "Ev ê daneyan ji <0>{0}</0> împort bike. Obje dê li tomarên heyî bên zêdekirin. Piştrast bike ku sêwirana heyî bi çîn û qadên ku di dosyayê de hatine binavkirin re li hev tê."
-
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:359
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
@@ -2345,7 +2314,7 @@ msgid "Travelling"
 msgstr "Rêwîtî"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:214
+#: ../../../lib/web/src/components/search-entity-page.tsx:216
 msgid "Try adjusting your search terms"
 msgstr "Peyvên lêgerîna xwe eyar bike"
 
@@ -2448,7 +2417,7 @@ msgstr "Gihiştin tê nûkirin..."
 msgid "Upload"
 msgstr "Bar bike"
 
-#: src/features/crms/components/create-crm-dialog.tsx:214
+#: src/features/crms/components/create-crm-dialog.tsx:212
 #: src/routes/_authenticated/$crmId/design.tsx:297
 msgid "Upload .json file"
 msgstr "Pelê .json bar bike"
@@ -2484,7 +2453,7 @@ msgstr "Verifîke bike"
 msgid "Verify email address"
 msgstr "Navnîşana e-nameyê verifîke bike"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:75
+#: ../../../lib/web/src/components/attachment-gallery.tsx:74
 msgid "Video thumbnail"
 msgstr "Wêneya pêşgir a vîdeoyê"
 

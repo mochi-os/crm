@@ -5,6 +5,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Trans, useLingui } from '@lingui/react/macro'
+import { plural } from '@lingui/core/macro'
 import { useNavigate } from "@tanstack/react-router";
 import {
   Button,
@@ -93,10 +94,7 @@ export function CreateCrmDialog({
         try {
           await toastAction(crmsApi.importData(fingerprint, importData), {
             loading: t`Importing data...`,
-            success: () => {
-              const count = Array.isArray((importData as any).objects) ? (importData as any).objects.length : 0;
-              return t`Imported ${count} objects`;
-            },
+            success: (imported) => t`Data imported (${plural(imported.data?.objects ?? 0, { one: '# object', other: '# objects' })}, ${plural(imported.data?.comments ?? 0, { one: '# comment', other: '# comments' })}, ${plural(imported.data?.links ?? 0, { one: '# link', other: '# links' })})`,
             error: (e) => getErrorMessage(e, t`Failed to import data`),
           });
         } catch (e) {

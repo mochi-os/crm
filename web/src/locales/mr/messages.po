@@ -227,7 +227,7 @@ msgstr "सर्व"
 msgid "All CRMs"
 msgstr "सर्व CRM"
 
-#: src/features/crms/components/create-crm-dialog.tsx:188
+#: src/features/crms/components/create-crm-dialog.tsx:186
 msgid "Allow anyone to search for CRM"
 msgstr "कोणालाही CRM शोधण्याची परवानगी द्या"
 
@@ -353,7 +353,7 @@ msgstr "याचे चिल्ड असू शकते"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
 #: src/features/board/components/board-column.tsx:603
-#: src/features/crms/components/create-crm-dialog.tsx:255
+#: src/features/crms/components/create-crm-dialog.tsx:253
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
@@ -594,7 +594,7 @@ msgstr "त्या खात्याने पडताळणी करता
 msgid "Create"
 msgstr "तयार करा"
 
-#: src/features/crms/components/create-crm-dialog.tsx:170
+#: src/features/crms/components/create-crm-dialog.tsx:168
 #: src/features/crms/pages/crms-list-page.tsx:103
 msgid "Create a new CRM"
 msgstr "नवीन CRM तयार करा"
@@ -604,9 +604,9 @@ msgid "Create a new CRM object."
 msgstr "नवीन CRM ऑब्जेक्ट तयार करा."
 
 #: src/components/layout/crms-layout.tsx:59
-#: src/features/crms/components/create-crm-dialog.tsx:158
-#: src/features/crms/components/create-crm-dialog.tsx:168
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:156
+#: src/features/crms/components/create-crm-dialog.tsx:166
+#: src/features/crms/components/create-crm-dialog.tsx:256
 msgid "Create CRM"
 msgstr "CRM तयार करा"
 
@@ -627,11 +627,11 @@ msgstr "तयार करा, संपादित करा, टिप्प
 msgid "Created"
 msgstr "तयार केले"
 
-#: src/features/crms/components/create-crm-dialog.tsx:84
+#: src/features/crms/components/create-crm-dialog.tsx:85
 msgid "Creating CRM..."
 msgstr "CRM तयार करत आहे..."
 
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/objects/components/create-object-dialog.tsx:497
 msgid "Creating..."
 msgstr "तयार करत आहे..."
@@ -641,7 +641,7 @@ msgstr "तयार करत आहे..."
 msgid "CRM actions"
 msgstr "CRM क्रिया"
 
-#: src/features/crms/components/create-crm-dialog.tsx:85
+#: src/features/crms/components/create-crm-dialog.tsx:86
 msgid "CRM created"
 msgstr "CRM तयार केले"
 
@@ -697,13 +697,12 @@ msgstr "डार्क मोड"
 msgid "Data conflict"
 msgstr "डेटा विरोध"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:345
-#~ msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
-#~ msgstr "डेटा आयात केला ({0, plural, one {# ऑब्जेक्ट} other {# ऑब्जेक्ट्स}}, {1, plural, one {# टिप्पणी} other {# टिप्पण्या}}, {2, plural, one {# लिंक} other {# लिंक्स}})"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:420
-#~ msgid "Data management"
-#~ msgstr "डेटा व्यवस्थापन"
+#. placeholder {0}: imported.data?.objects ?? 0
+#. placeholder {1}: imported.data?.comments ?? 0
+#. placeholder {2}: imported.data?.links ?? 0
+#: src/features/crms/components/create-crm-dialog.tsx:97
+msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
+msgstr "डेटा आयात केला ({0, plural, one {# ऑब्जेक्ट} other {# ऑब्जेक्ट्स}}, {1, plural, one {# टिप्पणी} other {# टिप्पण्या}}, {2, plural, one {# लिंक} other {# लिंक्स}})"
 
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
@@ -973,10 +972,6 @@ msgstr "डेटा निर्यात करा"
 msgid "Export design"
 msgstr "डिझाइन एक्सपोर्ट करा"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:421
-#~ msgid "Export or import the raw data content in this CRM."
-#~ msgstr "या CRM मधील कच्चा डेटा आशय निर्यात किंवा आयात करा."
-
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
 msgstr "अतिरिक्त मोठे"
@@ -989,7 +984,7 @@ msgstr "खाते जोडण्यात अयशस्वी"
 msgid "Failed to create class"
 msgstr "क्लास तयार करण्यात अयशस्वी"
 
-#: src/features/crms/components/create-crm-dialog.tsx:86
+#: src/features/crms/components/create-crm-dialog.tsx:87
 msgid "Failed to create CRM"
 msgstr "CRM तयार करण्यात अयशस्वी"
 
@@ -1038,7 +1033,7 @@ msgstr "डेटा निर्यात करता आला नाही"
 msgid "Failed to export design"
 msgstr "डिझाइन एक्सपोर्ट करण्यात अयशस्वी"
 
-#: src/features/crms/components/create-crm-dialog.tsx:100
+#: src/features/crms/components/create-crm-dialog.tsx:98
 msgid "Failed to import data"
 msgstr "डेटा आयात करता आला नाही"
 
@@ -1068,7 +1063,7 @@ msgstr "आयटम लोड करण्यात अयशस्वी"
 msgid "Failed to post comment"
 msgstr "टिप्पणी पोस्ट करण्यात अयशस्वी"
 
-#: src/features/crms/components/create-crm-dialog.tsx:144
+#: src/features/crms/components/create-crm-dialog.tsx:142
 #: src/routes/_authenticated/$crmId/design.tsx:266
 msgid "Failed to read file"
 msgstr "फाइल वाचण्यात अयशस्वी"
@@ -1143,7 +1138,7 @@ msgid "Files"
 msgstr "फायली"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:88
+#: src/routes/_authenticated/find.tsx:92
 msgid "Find CRMs"
 msgstr "CRMs शोधा"
 
@@ -1253,44 +1248,22 @@ msgstr "ओळख"
 msgid "Imperial"
 msgstr "इम्पीरियल"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:536
-#~ msgid "Import a data configuration"
-#~ msgstr "डेटा कॉन्फिगरेशन आयात करा"
-
 #: src/routes/_authenticated/$crmId/design.tsx:279
 msgid "Import a design configuration"
 msgstr "डिझाइन कॉन्फिगरेशन इम्पोर्ट करा"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:431
-#: src/routes/_authenticated/$crmId_.settings.tsx:477
-#: src/routes/_authenticated/$crmId_.settings.tsx:535
-#~ msgid "Import data"
-#~ msgstr "डेटा आयात करा"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:463
-#~ msgid "Import data?"
-#~ msgstr "डेटा आयात करायचा?"
 
 #: src/routes/_authenticated/$crmId/design.tsx:178
 #: src/routes/_authenticated/$crmId/design.tsx:278
 msgid "Import design"
 msgstr "डिझाइन इम्पोर्ट करा"
 
-#: src/features/crms/components/create-crm-dialog.tsx:198
+#: src/features/crms/components/create-crm-dialog.tsx:196
 msgid "Import from backup (optional)"
-msgstr ""
+msgstr "बॅकअपमधून आयात करा (पर्यायी)"
 
-#: src/features/crms/components/create-crm-dialog.tsx:98
-msgid "Imported {count} objects"
-msgstr ""
-
-#: src/features/crms/components/create-crm-dialog.tsx:95
+#: src/features/crms/components/create-crm-dialog.tsx:96
 msgid "Importing data..."
-msgstr ""
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:474
-#~ msgid "Importing..."
-#~ msgstr "आयात करत आहे..."
+msgstr "डेटा आयात करत आहे..."
 
 #: ../../../lib/web/src/components/config-drawer.tsx:252
 msgid "Inset"
@@ -1304,7 +1277,7 @@ msgstr "इंटरेस्ट्स"
 msgid "Invalid date"
 msgstr "अवैध तारीख"
 
-#: src/features/crms/components/create-crm-dialog.tsx:138
+#: src/features/crms/components/create-crm-dialog.tsx:136
 #: src/routes/_authenticated/$crmId/design.tsx:262
 msgid "Invalid JSON file"
 msgstr "अवैध JSON फाइल"
@@ -1435,7 +1408,7 @@ msgid "Monday"
 msgstr "सोमवार"
 
 #: src/features/board/components/board-column.tsx:589
-#: src/features/crms/components/create-crm-dialog.tsx:176
+#: src/features/crms/components/create-crm-dialog.tsx:174
 #: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
@@ -1445,7 +1418,7 @@ msgstr "सोमवार"
 msgid "Name"
 msgstr "नाव"
 
-#: src/features/crms/components/create-crm-dialog.tsx:72
+#: src/features/crms/components/create-crm-dialog.tsx:73
 msgid "Name is required"
 msgstr "नाव आवश्यक आहे"
 
@@ -1496,7 +1469,7 @@ msgid "No connected accounts"
 msgstr "कनेक्ट केलेले अकाउंट्स नाहीत"
 
 #: src/features/crms/components/inline-crm-search.tsx:164
-#: src/routes/_authenticated/find.tsx:90
+#: src/routes/_authenticated/find.tsx:94
 msgid "No CRMs found"
 msgstr "CRMs सापडले नाहीत"
 
@@ -1771,7 +1744,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "या सर्व्हरवर तुमच्या पासकी पुन्हा नोंदवा"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:240
+#: ../../../lib/web/src/components/search-entity-page.tsx:242
 msgid "Recommended"
 msgstr "शिफारस केलेले"
 
@@ -1803,7 +1776,7 @@ msgstr "24 तासांच्या आत सापेक्ष, अन्�
 
 #: ../../../lib/web/src/features/access/access-list.tsx:265
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:241
+#: src/features/crms/components/create-crm-dialog.tsx:239
 #: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/comment-list.tsx:232
 #: src/features/objects/components/comment-list.tsx:241
@@ -1917,7 +1890,7 @@ msgstr "पंक्ती गटबद्ध करा"
 msgid "Rows per page"
 msgstr "प्रति पृष्ठ पंक्ती"
 
-#: src/features/crms/components/create-crm-dialog.tsx:181
+#: src/features/crms/components/create-crm-dialog.tsx:179
 msgid "Sales CRM"
 msgstr "Sales CRM"
 
@@ -1941,7 +1914,7 @@ msgstr "जतन करत आहे..."
 msgid "Search"
 msgstr "शोधा"
 
-#: src/routes/_authenticated/find.tsx:89
+#: src/routes/_authenticated/find.tsx:93
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "नाव, ID, फिंगरप्रिंट, किंवा URL ने शोधा..."
 
@@ -1984,7 +1957,7 @@ msgid "Search..."
 msgstr "शोधा..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:198
+#: ../../../lib/web/src/components/search-entity-page.tsx:200
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "शोधत आहे..."
@@ -2257,10 +2230,6 @@ msgstr "हा CRM आत्ता लोड करता आला नाही
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "हा CRM कदाचित हटवला गेला असेल किंवा तुम्हाला त्याचा अॅक्सेस नसेल."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:465
-#~ msgid "This will import the data from <0>{0}</0>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file."
-#~ msgstr "हे <0>{0}</0> मधून डेटा आयात करेल. ऑब्जेक्ट्स विद्यमान रेकॉर्डमध्ये जोडले जातील. सध्याची रचना फाइलमध्ये संदर्भित क्लासेस आणि फील्डशी जुळते याची खात्री करा."
-
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:359
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
@@ -2345,7 +2314,7 @@ msgid "Travelling"
 msgstr "प्रवास करत आहे"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:214
+#: ../../../lib/web/src/components/search-entity-page.tsx:216
 msgid "Try adjusting your search terms"
 msgstr "तुमच्या शोध शब्दांना समायोजित करून पहा"
 
@@ -2448,7 +2417,7 @@ msgstr "प्रवेश अद्यतनित करत आहे..."
 msgid "Upload"
 msgstr "अपलोड करा"
 
-#: src/features/crms/components/create-crm-dialog.tsx:214
+#: src/features/crms/components/create-crm-dialog.tsx:212
 #: src/routes/_authenticated/$crmId/design.tsx:297
 msgid "Upload .json file"
 msgstr ".json फाइल अपलोड करा"
@@ -2484,7 +2453,7 @@ msgstr "पडताळा"
 msgid "Verify email address"
 msgstr "ईमेल पत्ता पडताळा"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:75
+#: ../../../lib/web/src/components/attachment-gallery.tsx:74
 msgid "Video thumbnail"
 msgstr "व्हिडिओ थंबनेल"
 

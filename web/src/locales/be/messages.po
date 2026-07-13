@@ -227,7 +227,7 @@ msgstr "Усе"
 msgid "All CRMs"
 msgstr "Усе CRM"
 
-#: src/features/crms/components/create-crm-dialog.tsx:188
+#: src/features/crms/components/create-crm-dialog.tsx:186
 msgid "Allow anyone to search for CRM"
 msgstr "Дазволіць усім шукаць CRM"
 
@@ -353,7 +353,7 @@ msgstr "Можа быць даччыным для"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
 #: src/features/board/components/board-column.tsx:603
-#: src/features/crms/components/create-crm-dialog.tsx:255
+#: src/features/crms/components/create-crm-dialog.tsx:253
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
@@ -594,7 +594,7 @@ msgstr "Не ўдалося пацвердзіць з гэтым уліковы�
 msgid "Create"
 msgstr "Стварыць"
 
-#: src/features/crms/components/create-crm-dialog.tsx:170
+#: src/features/crms/components/create-crm-dialog.tsx:168
 #: src/features/crms/pages/crms-list-page.tsx:103
 msgid "Create a new CRM"
 msgstr "Стварыць новую CRM"
@@ -604,9 +604,9 @@ msgid "Create a new CRM object."
 msgstr "Стварыць новы аб'ект CRM."
 
 #: src/components/layout/crms-layout.tsx:59
-#: src/features/crms/components/create-crm-dialog.tsx:158
-#: src/features/crms/components/create-crm-dialog.tsx:168
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:156
+#: src/features/crms/components/create-crm-dialog.tsx:166
+#: src/features/crms/components/create-crm-dialog.tsx:256
 msgid "Create CRM"
 msgstr "Стварыць CRM"
 
@@ -627,11 +627,11 @@ msgstr "Стварэнне, рэдагаванне, каментаванне і 
 msgid "Created"
 msgstr "Створана"
 
-#: src/features/crms/components/create-crm-dialog.tsx:84
+#: src/features/crms/components/create-crm-dialog.tsx:85
 msgid "Creating CRM..."
 msgstr "Стварэнне CRM..."
 
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/objects/components/create-object-dialog.tsx:497
 msgid "Creating..."
 msgstr "Стварэнне..."
@@ -641,7 +641,7 @@ msgstr "Стварэнне..."
 msgid "CRM actions"
 msgstr "Дзеянні CRM"
 
-#: src/features/crms/components/create-crm-dialog.tsx:85
+#: src/features/crms/components/create-crm-dialog.tsx:86
 msgid "CRM created"
 msgstr "CRM створана"
 
@@ -697,13 +697,12 @@ msgstr "Цёмны рэжым"
 msgid "Data conflict"
 msgstr "Канфлікт даных"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:345
-#~ msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
-#~ msgstr "Даныя імпартаваны ({0, plural, one {# аб'ект} few {# аб'екты} many {# аб'ектаў} other {# аб'екта}}, {1, plural, one {# каментар} few {# каментары} many {# каментароў} other {# каментарыя}}, {2, plural, one {# спасылка} few {# спасылкі} many {# спасылак} other {# спасылкі}})"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:420
-#~ msgid "Data management"
-#~ msgstr "Кіраванне данымі"
+#. placeholder {0}: imported.data?.objects ?? 0
+#. placeholder {1}: imported.data?.comments ?? 0
+#. placeholder {2}: imported.data?.links ?? 0
+#: src/features/crms/components/create-crm-dialog.tsx:97
+msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
+msgstr "Даныя імпартаваны ({0, plural, one {# аб'ект} few {# аб'екты} many {# аб'ектаў} other {# аб'екта}}, {1, plural, one {# каментар} few {# каментары} many {# каментароў} other {# каментарыя}}, {2, plural, one {# спасылка} few {# спасылкі} many {# спасылак} other {# спасылкі}})"
 
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
@@ -973,10 +972,6 @@ msgstr "Экспартаваць даныя"
 msgid "Export design"
 msgstr "Экспартаваць дызайн"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:421
-#~ msgid "Export or import the raw data content in this CRM."
-#~ msgstr "Экспартуйце або імпартуйце неапрацаваныя даныя гэтай CRM."
-
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
 msgstr "Вельмі вялікі"
@@ -989,7 +984,7 @@ msgstr "Не ўдалося дадаць акаўнт"
 msgid "Failed to create class"
 msgstr "Не ўдалося стварыць клас"
 
-#: src/features/crms/components/create-crm-dialog.tsx:86
+#: src/features/crms/components/create-crm-dialog.tsx:87
 msgid "Failed to create CRM"
 msgstr "Не ўдалося стварыць CRM"
 
@@ -1038,7 +1033,7 @@ msgstr "Не ўдалося экспартаваць даныя"
 msgid "Failed to export design"
 msgstr "Не ўдалося экспартаваць дызайн"
 
-#: src/features/crms/components/create-crm-dialog.tsx:100
+#: src/features/crms/components/create-crm-dialog.tsx:98
 msgid "Failed to import data"
 msgstr "Не ўдалося імпартаваць даныя"
 
@@ -1068,7 +1063,7 @@ msgstr "Не ўдалося загрузіць элемент"
 msgid "Failed to post comment"
 msgstr "Не ўдалося апублікаваць каментарый"
 
-#: src/features/crms/components/create-crm-dialog.tsx:144
+#: src/features/crms/components/create-crm-dialog.tsx:142
 #: src/routes/_authenticated/$crmId/design.tsx:266
 msgid "Failed to read file"
 msgstr "Не ўдалося прачытаць файл"
@@ -1143,7 +1138,7 @@ msgid "Files"
 msgstr "Файлы"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:88
+#: src/routes/_authenticated/find.tsx:92
 msgid "Find CRMs"
 msgstr "Знайсці CRM"
 
@@ -1253,44 +1248,22 @@ msgstr "Асоба"
 msgid "Imperial"
 msgstr "Імперская"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:536
-#~ msgid "Import a data configuration"
-#~ msgstr "Імпарт канфігурацыі даных"
-
 #: src/routes/_authenticated/$crmId/design.tsx:279
 msgid "Import a design configuration"
 msgstr "Імпартаваць канфігурацыю дызайну"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:431
-#: src/routes/_authenticated/$crmId_.settings.tsx:477
-#: src/routes/_authenticated/$crmId_.settings.tsx:535
-#~ msgid "Import data"
-#~ msgstr "Імпартаваць даныя"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:463
-#~ msgid "Import data?"
-#~ msgstr "Імпартаваць даныя?"
 
 #: src/routes/_authenticated/$crmId/design.tsx:178
 #: src/routes/_authenticated/$crmId/design.tsx:278
 msgid "Import design"
 msgstr "Імпартаваць дызайн"
 
-#: src/features/crms/components/create-crm-dialog.tsx:198
+#: src/features/crms/components/create-crm-dialog.tsx:196
 msgid "Import from backup (optional)"
-msgstr ""
+msgstr "Імпарт з рэзервовай копіі (неабавязкова)"
 
-#: src/features/crms/components/create-crm-dialog.tsx:98
-msgid "Imported {count} objects"
-msgstr ""
-
-#: src/features/crms/components/create-crm-dialog.tsx:95
+#: src/features/crms/components/create-crm-dialog.tsx:96
 msgid "Importing data..."
-msgstr ""
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:474
-#~ msgid "Importing..."
-#~ msgstr "Імпартаванне..."
+msgstr "Імпартаванне даных..."
 
 #: ../../../lib/web/src/components/config-drawer.tsx:252
 msgid "Inset"
@@ -1304,7 +1277,7 @@ msgstr "Інтарэсы"
 msgid "Invalid date"
 msgstr "Няправільная дата"
 
-#: src/features/crms/components/create-crm-dialog.tsx:138
+#: src/features/crms/components/create-crm-dialog.tsx:136
 #: src/routes/_authenticated/$crmId/design.tsx:262
 msgid "Invalid JSON file"
 msgstr "Няправільны JSON-файл"
@@ -1435,7 +1408,7 @@ msgid "Monday"
 msgstr "Панядзелак"
 
 #: src/features/board/components/board-column.tsx:589
-#: src/features/crms/components/create-crm-dialog.tsx:176
+#: src/features/crms/components/create-crm-dialog.tsx:174
 #: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
@@ -1445,7 +1418,7 @@ msgstr "Панядзелак"
 msgid "Name"
 msgstr "Назва"
 
-#: src/features/crms/components/create-crm-dialog.tsx:72
+#: src/features/crms/components/create-crm-dialog.tsx:73
 msgid "Name is required"
 msgstr "Назва абавязковая"
 
@@ -1496,7 +1469,7 @@ msgid "No connected accounts"
 msgstr "Няма падключаных акаўнтаў"
 
 #: src/features/crms/components/inline-crm-search.tsx:164
-#: src/routes/_authenticated/find.tsx:90
+#: src/routes/_authenticated/find.tsx:94
 msgid "No CRMs found"
 msgstr "CRM не знойдзены"
 
@@ -1771,7 +1744,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "Зарэгіструйце ключы доступу на гэтым серверы зноў"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:240
+#: ../../../lib/web/src/components/search-entity-page.tsx:242
 msgid "Recommended"
 msgstr "Рэкамендуецца"
 
@@ -1803,7 +1776,7 @@ msgstr "Адносна ў межах 24 гадзін, інакш абсалют�
 
 #: ../../../lib/web/src/features/access/access-list.tsx:265
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:241
+#: src/features/crms/components/create-crm-dialog.tsx:239
 #: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/comment-list.tsx:232
 #: src/features/objects/components/comment-list.tsx:241
@@ -1917,7 +1890,7 @@ msgstr "Групаваць радкі па"
 msgid "Rows per page"
 msgstr "Радкоў на старонцы"
 
-#: src/features/crms/components/create-crm-dialog.tsx:181
+#: src/features/crms/components/create-crm-dialog.tsx:179
 msgid "Sales CRM"
 msgstr "Sales CRM"
 
@@ -1941,7 +1914,7 @@ msgstr "Захаванне..."
 msgid "Search"
 msgstr "Пошук"
 
-#: src/routes/_authenticated/find.tsx:89
+#: src/routes/_authenticated/find.tsx:93
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Пошук па імені, ID, адбітку або URL..."
 
@@ -1984,7 +1957,7 @@ msgid "Search..."
 msgstr "Пошук..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:198
+#: ../../../lib/web/src/components/search-entity-page.tsx:200
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Пошук..."
@@ -2257,10 +2230,6 @@ msgstr "Гэты CRM зараз не ўдалося загрузіць."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Гэты CRM мог быць выдалены, або ў вас няма доступу да яго."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:465
-#~ msgid "This will import the data from <0>{0}</0>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file."
-#~ msgstr "Гэта імпартуе даныя з <0>{0}</0>. Аб'екты будуць дададзены да наяўных запісаў. Пераканайцеся, што бягучая структура адпавядае класам і палям, згаданым у файле."
-
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:359
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
@@ -2345,7 +2314,7 @@ msgid "Travelling"
 msgstr "У дарозе"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:214
+#: ../../../lib/web/src/components/search-entity-page.tsx:216
 msgid "Try adjusting your search terms"
 msgstr "Паспрабуйце наладзіць пошукавыя запыты"
 
@@ -2448,7 +2417,7 @@ msgstr "Абнаўленне доступу..."
 msgid "Upload"
 msgstr "Загрузіць"
 
-#: src/features/crms/components/create-crm-dialog.tsx:214
+#: src/features/crms/components/create-crm-dialog.tsx:212
 #: src/routes/_authenticated/$crmId/design.tsx:297
 msgid "Upload .json file"
 msgstr "Загрузіць .json-файл"
@@ -2484,7 +2453,7 @@ msgstr "Праверыць"
 msgid "Verify email address"
 msgstr "Пацвердзіць email-адрас"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:75
+#: ../../../lib/web/src/components/attachment-gallery.tsx:74
 msgid "Video thumbnail"
 msgstr "Мініяцюра відэа"
 
