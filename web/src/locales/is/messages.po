@@ -227,7 +227,7 @@ msgstr "Allt"
 msgid "All CRMs"
 msgstr "Öll CRM"
 
-#: src/features/crms/components/create-crm-dialog.tsx:188
+#: src/features/crms/components/create-crm-dialog.tsx:186
 msgid "Allow anyone to search for CRM"
 msgstr "Leyfa öllum að leita að CRM"
 
@@ -353,7 +353,7 @@ msgstr "Getur verið barn af"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
 #: src/features/board/components/board-column.tsx:603
-#: src/features/crms/components/create-crm-dialog.tsx:255
+#: src/features/crms/components/create-crm-dialog.tsx:253
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
@@ -594,7 +594,7 @@ msgstr "Ekki tókst að staðfesta með þeim reikningi. Reyndu aftur."
 msgid "Create"
 msgstr "Búa til"
 
-#: src/features/crms/components/create-crm-dialog.tsx:170
+#: src/features/crms/components/create-crm-dialog.tsx:168
 #: src/features/crms/pages/crms-list-page.tsx:103
 msgid "Create a new CRM"
 msgstr "Búa til nýtt CRM"
@@ -604,9 +604,9 @@ msgid "Create a new CRM object."
 msgstr "Búa til nýjan CRM-hlut."
 
 #: src/components/layout/crms-layout.tsx:59
-#: src/features/crms/components/create-crm-dialog.tsx:158
-#: src/features/crms/components/create-crm-dialog.tsx:168
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:156
+#: src/features/crms/components/create-crm-dialog.tsx:166
+#: src/features/crms/components/create-crm-dialog.tsx:256
 msgid "Create CRM"
 msgstr "Búa til CRM"
 
@@ -627,11 +627,11 @@ msgstr "Búa til, breyta, gera athugasemdir og skoða"
 msgid "Created"
 msgstr "Búið til"
 
-#: src/features/crms/components/create-crm-dialog.tsx:84
+#: src/features/crms/components/create-crm-dialog.tsx:85
 msgid "Creating CRM..."
 msgstr "Bý til CRM..."
 
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/objects/components/create-object-dialog.tsx:497
 msgid "Creating..."
 msgstr "Bý til..."
@@ -641,7 +641,7 @@ msgstr "Bý til..."
 msgid "CRM actions"
 msgstr "CRM-aðgerðir"
 
-#: src/features/crms/components/create-crm-dialog.tsx:85
+#: src/features/crms/components/create-crm-dialog.tsx:86
 msgid "CRM created"
 msgstr "CRM búið til"
 
@@ -697,13 +697,12 @@ msgstr "Dökkur hamur"
 msgid "Data conflict"
 msgstr "Gagnaárekstur"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:345
-#~ msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
-#~ msgstr "Gögn flutt inn ({0, plural, one {# hlutur} other {# hlutir}}, {1, plural, one {# athugasemd} other {# athugasemdir}}, {2, plural, one {# tengill} other {# tenglar}})"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:420
-#~ msgid "Data management"
-#~ msgstr "Gagnastjórnun"
+#. placeholder {0}: imported.data?.objects ?? 0
+#. placeholder {1}: imported.data?.comments ?? 0
+#. placeholder {2}: imported.data?.links ?? 0
+#: src/features/crms/components/create-crm-dialog.tsx:97
+msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
+msgstr "Gögn flutt inn ({0, plural, one {# hlutur} other {# hlutir}}, {1, plural, one {# athugasemd} other {# athugasemdir}}, {2, plural, one {# tengill} other {# tenglar}})"
 
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
@@ -973,10 +972,6 @@ msgstr "Flytja út gögn"
 msgid "Export design"
 msgstr "Flytja út hönnun"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:421
-#~ msgid "Export or import the raw data content in this CRM."
-#~ msgstr "Flyttu út eða flyttu inn hrá gögn í þessu CRM."
-
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
 msgstr "Mjög stórt"
@@ -989,7 +984,7 @@ msgstr "Tókst ekki að bæta við reikningi"
 msgid "Failed to create class"
 msgstr "Tókst ekki að búa til flokk"
 
-#: src/features/crms/components/create-crm-dialog.tsx:86
+#: src/features/crms/components/create-crm-dialog.tsx:87
 msgid "Failed to create CRM"
 msgstr "Tókst ekki að búa til CRM"
 
@@ -1038,7 +1033,7 @@ msgstr "Ekki tókst að flytja út gögn"
 msgid "Failed to export design"
 msgstr "Tókst ekki að flytja út hönnun"
 
-#: src/features/crms/components/create-crm-dialog.tsx:100
+#: src/features/crms/components/create-crm-dialog.tsx:98
 msgid "Failed to import data"
 msgstr "Ekki tókst að flytja inn gögn"
 
@@ -1068,7 +1063,7 @@ msgstr "Tókst ekki að hlaða atriði"
 msgid "Failed to post comment"
 msgstr "Tókst ekki að senda athugasemd"
 
-#: src/features/crms/components/create-crm-dialog.tsx:144
+#: src/features/crms/components/create-crm-dialog.tsx:142
 #: src/routes/_authenticated/$crmId/design.tsx:266
 msgid "Failed to read file"
 msgstr "Tókst ekki að lesa skrá"
@@ -1143,7 +1138,7 @@ msgid "Files"
 msgstr "Skrár"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:88
+#: src/routes/_authenticated/find.tsx:92
 msgid "Find CRMs"
 msgstr "Finna CRM"
 
@@ -1253,44 +1248,22 @@ msgstr "Auðkenni"
 msgid "Imperial"
 msgstr "Bresk mælieining"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:536
-#~ msgid "Import a data configuration"
-#~ msgstr "Flytja inn gagnauppsetningu"
-
 #: src/routes/_authenticated/$crmId/design.tsx:279
 msgid "Import a design configuration"
 msgstr "Flytja inn hönnunarstillingar"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:431
-#: src/routes/_authenticated/$crmId_.settings.tsx:477
-#: src/routes/_authenticated/$crmId_.settings.tsx:535
-#~ msgid "Import data"
-#~ msgstr "Flytja inn gögn"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:463
-#~ msgid "Import data?"
-#~ msgstr "Flytja inn gögn?"
 
 #: src/routes/_authenticated/$crmId/design.tsx:178
 #: src/routes/_authenticated/$crmId/design.tsx:278
 msgid "Import design"
 msgstr "Flytja inn hönnun"
 
-#: src/features/crms/components/create-crm-dialog.tsx:198
+#: src/features/crms/components/create-crm-dialog.tsx:196
 msgid "Import from backup (optional)"
-msgstr ""
+msgstr "Flytja inn úr öryggisafriti (valfrjálst)"
 
-#: src/features/crms/components/create-crm-dialog.tsx:98
-msgid "Imported {count} objects"
-msgstr ""
-
-#: src/features/crms/components/create-crm-dialog.tsx:95
+#: src/features/crms/components/create-crm-dialog.tsx:96
 msgid "Importing data..."
-msgstr ""
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:474
-#~ msgid "Importing..."
-#~ msgstr "Flyt inn..."
+msgstr "Flyt inn gögn..."
 
 #: ../../../lib/web/src/components/config-drawer.tsx:252
 msgid "Inset"
@@ -1304,7 +1277,7 @@ msgstr "Áhugaefni"
 msgid "Invalid date"
 msgstr "Ógild dagsetning"
 
-#: src/features/crms/components/create-crm-dialog.tsx:138
+#: src/features/crms/components/create-crm-dialog.tsx:136
 #: src/routes/_authenticated/$crmId/design.tsx:262
 msgid "Invalid JSON file"
 msgstr "Ógild JSON-skrá"
@@ -1435,7 +1408,7 @@ msgid "Monday"
 msgstr "Mánudagur"
 
 #: src/features/board/components/board-column.tsx:589
-#: src/features/crms/components/create-crm-dialog.tsx:176
+#: src/features/crms/components/create-crm-dialog.tsx:174
 #: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
@@ -1445,7 +1418,7 @@ msgstr "Mánudagur"
 msgid "Name"
 msgstr "Nafn"
 
-#: src/features/crms/components/create-crm-dialog.tsx:72
+#: src/features/crms/components/create-crm-dialog.tsx:73
 msgid "Name is required"
 msgstr "Nafn er nauðsynlegt"
 
@@ -1496,7 +1469,7 @@ msgid "No connected accounts"
 msgstr "Engir tengdir reikningar"
 
 #: src/features/crms/components/inline-crm-search.tsx:164
-#: src/routes/_authenticated/find.tsx:90
+#: src/routes/_authenticated/find.tsx:94
 msgid "No CRMs found"
 msgstr "Engin CRM fundust"
 
@@ -1771,7 +1744,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "Skráðu aðgangslyklana þína aftur á þessum netþjóni"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:240
+#: ../../../lib/web/src/components/search-entity-page.tsx:242
 msgid "Recommended"
 msgstr "Mælt með"
 
@@ -1803,7 +1776,7 @@ msgstr "Afstætt innan 24 klst, annars algjört"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:265
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:241
+#: src/features/crms/components/create-crm-dialog.tsx:239
 #: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/comment-list.tsx:232
 #: src/features/objects/components/comment-list.tsx:241
@@ -1917,7 +1890,7 @@ msgstr "Raðir flokkaðar eftir"
 msgid "Rows per page"
 msgstr "Raðir á síðu"
 
-#: src/features/crms/components/create-crm-dialog.tsx:181
+#: src/features/crms/components/create-crm-dialog.tsx:179
 msgid "Sales CRM"
 msgstr "Sölu-CRM"
 
@@ -1941,7 +1914,7 @@ msgstr "Vista..."
 msgid "Search"
 msgstr "Leita"
 
-#: src/routes/_authenticated/find.tsx:89
+#: src/routes/_authenticated/find.tsx:93
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Leita eftir nafni, auðkenni, fingrafari eða slóð..."
 
@@ -1984,7 +1957,7 @@ msgid "Search..."
 msgstr "Leita..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:198
+#: ../../../lib/web/src/components/search-entity-page.tsx:200
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Leita..."
@@ -2257,10 +2230,6 @@ msgstr "Ekki var hægt að hlaða þessu CRM núna."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Þetta CRM kann að hafa verið eytt eða þú hefur ekki aðgang að því."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:465
-#~ msgid "This will import the data from <0>{0}</0>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file."
-#~ msgstr "Þetta flytur inn gögnin úr <0>{0}</0>. Hlutum verður bætt við núverandi færslur. Gakktu úr skugga um að núverandi hönnun samsvari þeim klösum og reitum sem vísað er til í skránni."
-
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:359
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
@@ -2345,7 +2314,7 @@ msgid "Travelling"
 msgstr "Á ferðalagi"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:214
+#: ../../../lib/web/src/components/search-entity-page.tsx:216
 msgid "Try adjusting your search terms"
 msgstr "Reyndu að breyta leitarskilyrðum þínum"
 
@@ -2448,7 +2417,7 @@ msgstr "Uppfæri aðgang..."
 msgid "Upload"
 msgstr "Hlaða upp"
 
-#: src/features/crms/components/create-crm-dialog.tsx:214
+#: src/features/crms/components/create-crm-dialog.tsx:212
 #: src/routes/_authenticated/$crmId/design.tsx:297
 msgid "Upload .json file"
 msgstr "Hlaða upp .json-skrá"
@@ -2484,7 +2453,7 @@ msgstr "Sannprófa"
 msgid "Verify email address"
 msgstr "Sannprófa netfang"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:75
+#: ../../../lib/web/src/components/attachment-gallery.tsx:74
 msgid "Video thumbnail"
 msgstr "Smámynd myndbands"
 

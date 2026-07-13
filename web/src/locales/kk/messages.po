@@ -227,7 +227,7 @@ msgstr "Барлығы"
 msgid "All CRMs"
 msgstr "Барлық CRM"
 
-#: src/features/crms/components/create-crm-dialog.tsx:188
+#: src/features/crms/components/create-crm-dialog.tsx:186
 msgid "Allow anyone to search for CRM"
 msgstr "Кез келгенге CRM іздеуге рұқсат ету"
 
@@ -353,7 +353,7 @@ msgstr "Бала бола алады:"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
 #: src/features/board/components/board-column.tsx:603
-#: src/features/crms/components/create-crm-dialog.tsx:255
+#: src/features/crms/components/create-crm-dialog.tsx:253
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:179
 #: src/routes/_authenticated/$crmId/design.tsx:304
@@ -594,7 +594,7 @@ msgstr "Бұл тіркелгі арқылы тексеру мүмкін бол�
 msgid "Create"
 msgstr "Құру"
 
-#: src/features/crms/components/create-crm-dialog.tsx:170
+#: src/features/crms/components/create-crm-dialog.tsx:168
 #: src/features/crms/pages/crms-list-page.tsx:103
 msgid "Create a new CRM"
 msgstr "Жаңа CRM құру"
@@ -604,9 +604,9 @@ msgid "Create a new CRM object."
 msgstr "Жаңа CRM тармағын құру."
 
 #: src/components/layout/crms-layout.tsx:59
-#: src/features/crms/components/create-crm-dialog.tsx:158
-#: src/features/crms/components/create-crm-dialog.tsx:168
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:156
+#: src/features/crms/components/create-crm-dialog.tsx:166
+#: src/features/crms/components/create-crm-dialog.tsx:256
 msgid "Create CRM"
 msgstr "CRM құру"
 
@@ -627,11 +627,11 @@ msgstr "Жасау, өңдеу, пікір қалдыру және қарау"
 msgid "Created"
 msgstr "Құрылды"
 
-#: src/features/crms/components/create-crm-dialog.tsx:84
+#: src/features/crms/components/create-crm-dialog.tsx:85
 msgid "Creating CRM..."
 msgstr "CRM құрылуда..."
 
-#: src/features/crms/components/create-crm-dialog.tsx:258
+#: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/objects/components/create-object-dialog.tsx:497
 msgid "Creating..."
 msgstr "Құрылуда..."
@@ -641,7 +641,7 @@ msgstr "Құрылуда..."
 msgid "CRM actions"
 msgstr "CRM әрекеттері"
 
-#: src/features/crms/components/create-crm-dialog.tsx:85
+#: src/features/crms/components/create-crm-dialog.tsx:86
 msgid "CRM created"
 msgstr "CRM құрылды"
 
@@ -697,13 +697,12 @@ msgstr "Қараңғы режим"
 msgid "Data conflict"
 msgstr "Деректер қайшылығы"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:345
-#~ msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
-#~ msgstr "Деректер импортталды ({0, plural, one {# нысан} other {# нысан}}, {1, plural, one {# пікір} other {# пікір}}, {2, plural, one {# сілтеме} other {# сілтеме}})"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:420
-#~ msgid "Data management"
-#~ msgstr "Деректерді басқару"
+#. placeholder {0}: imported.data?.objects ?? 0
+#. placeholder {1}: imported.data?.comments ?? 0
+#. placeholder {2}: imported.data?.links ?? 0
+#: src/features/crms/components/create-crm-dialog.tsx:97
+msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
+msgstr "Деректер импортталды ({0, plural, one {# нысан} other {# нысан}}, {1, plural, one {# пікір} other {# пікір}}, {2, plural, one {# сілтеме} other {# сілтеме}})"
 
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
@@ -973,10 +972,6 @@ msgstr "Деректерді экспорттау"
 msgid "Export design"
 msgstr "Дизайнды экспорттау"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:421
-#~ msgid "Export or import the raw data content in this CRM."
-#~ msgstr "Осы CRM-дегі өңделмеген деректер мазмұнын экспорттаңыз немесе импорттаңыз."
-
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
 msgstr "Өте үлкен"
@@ -989,7 +984,7 @@ msgstr "Тіркелгіні қосу сәтсіз аяқталды"
 msgid "Failed to create class"
 msgstr "Класс жасау сәтсіз аяқталды"
 
-#: src/features/crms/components/create-crm-dialog.tsx:86
+#: src/features/crms/components/create-crm-dialog.tsx:87
 msgid "Failed to create CRM"
 msgstr "CRM жасау сәтсіз аяқталды"
 
@@ -1038,7 +1033,7 @@ msgstr "Деректерді экспорттау сәтсіз аяқталды"
 msgid "Failed to export design"
 msgstr "Дизайнды экспорттау сәтсіз аяқталды"
 
-#: src/features/crms/components/create-crm-dialog.tsx:100
+#: src/features/crms/components/create-crm-dialog.tsx:98
 msgid "Failed to import data"
 msgstr "Деректерді импорттау сәтсіз аяқталды"
 
@@ -1068,7 +1063,7 @@ msgstr "Элементті жүктеу сәтсіз аяқталды"
 msgid "Failed to post comment"
 msgstr "Пікір қосу сәтсіз аяқталды"
 
-#: src/features/crms/components/create-crm-dialog.tsx:144
+#: src/features/crms/components/create-crm-dialog.tsx:142
 #: src/routes/_authenticated/$crmId/design.tsx:266
 msgid "Failed to read file"
 msgstr "Файлды оқу сәтсіз аяқталды"
@@ -1143,7 +1138,7 @@ msgid "Files"
 msgstr "Файлдар"
 
 #: src/components/layout/crms-layout.tsx:58
-#: src/routes/_authenticated/find.tsx:88
+#: src/routes/_authenticated/find.tsx:92
 msgid "Find CRMs"
 msgstr "CRM табу"
 
@@ -1253,44 +1248,22 @@ msgstr "Жеке басы"
 msgid "Imperial"
 msgstr "Империялық"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:536
-#~ msgid "Import a data configuration"
-#~ msgstr "Деректер конфигурациясын импорттау"
-
 #: src/routes/_authenticated/$crmId/design.tsx:279
 msgid "Import a design configuration"
 msgstr "Дизайн конфигурациясын импорттау"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:431
-#: src/routes/_authenticated/$crmId_.settings.tsx:477
-#: src/routes/_authenticated/$crmId_.settings.tsx:535
-#~ msgid "Import data"
-#~ msgstr "Деректерді импорттау"
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:463
-#~ msgid "Import data?"
-#~ msgstr "Деректер импортталсын ба?"
 
 #: src/routes/_authenticated/$crmId/design.tsx:178
 #: src/routes/_authenticated/$crmId/design.tsx:278
 msgid "Import design"
 msgstr "Дизайнды импорттау"
 
-#: src/features/crms/components/create-crm-dialog.tsx:198
+#: src/features/crms/components/create-crm-dialog.tsx:196
 msgid "Import from backup (optional)"
-msgstr ""
+msgstr "Сақтық көшірмеден импорттау (міндетті емес)"
 
-#: src/features/crms/components/create-crm-dialog.tsx:98
-msgid "Imported {count} objects"
-msgstr ""
-
-#: src/features/crms/components/create-crm-dialog.tsx:95
+#: src/features/crms/components/create-crm-dialog.tsx:96
 msgid "Importing data..."
-msgstr ""
-
-#: src/routes/_authenticated/$crmId_.settings.tsx:474
-#~ msgid "Importing..."
-#~ msgstr "Импортталуда..."
+msgstr "Деректер импортталуда..."
 
 #: ../../../lib/web/src/components/config-drawer.tsx:252
 msgid "Inset"
@@ -1304,7 +1277,7 @@ msgstr "Қызығушылықтар"
 msgid "Invalid date"
 msgstr "Жарамсыз күн"
 
-#: src/features/crms/components/create-crm-dialog.tsx:138
+#: src/features/crms/components/create-crm-dialog.tsx:136
 #: src/routes/_authenticated/$crmId/design.tsx:262
 msgid "Invalid JSON file"
 msgstr "Жарамсыз JSON файлы"
@@ -1435,7 +1408,7 @@ msgid "Monday"
 msgstr "Дүйсенбі"
 
 #: src/features/board/components/board-column.tsx:589
-#: src/features/crms/components/create-crm-dialog.tsx:176
+#: src/features/crms/components/create-crm-dialog.tsx:174
 #: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
@@ -1445,7 +1418,7 @@ msgstr "Дүйсенбі"
 msgid "Name"
 msgstr "Аты"
 
-#: src/features/crms/components/create-crm-dialog.tsx:72
+#: src/features/crms/components/create-crm-dialog.tsx:73
 msgid "Name is required"
 msgstr "Аты міндетті"
 
@@ -1496,7 +1469,7 @@ msgid "No connected accounts"
 msgstr "Байланысқан тіркелгілер жоқ"
 
 #: src/features/crms/components/inline-crm-search.tsx:164
-#: src/routes/_authenticated/find.tsx:90
+#: src/routes/_authenticated/find.tsx:94
 msgid "No CRMs found"
 msgstr "CRM табылмады"
 
@@ -1771,7 +1744,7 @@ msgid "Re-register your passkeys on this server"
 msgstr "Бұл серверде кіру кілттерін қайта тіркеңіз"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:240
+#: ../../../lib/web/src/components/search-entity-page.tsx:242
 msgid "Recommended"
 msgstr "Ұсынылған"
 
@@ -1803,7 +1776,7 @@ msgstr "24 сағат ішінде салыстырмалы, әйтпесе аб
 
 #: ../../../lib/web/src/features/access/access-list.tsx:265
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:241
+#: src/features/crms/components/create-crm-dialog.tsx:239
 #: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/comment-list.tsx:232
 #: src/features/objects/components/comment-list.tsx:241
@@ -1917,7 +1890,7 @@ msgstr "Жолдарды топтастыру"
 msgid "Rows per page"
 msgstr "Бетке жолдар"
 
-#: src/features/crms/components/create-crm-dialog.tsx:181
+#: src/features/crms/components/create-crm-dialog.tsx:179
 msgid "Sales CRM"
 msgstr "Сатылым CRM"
 
@@ -1941,7 +1914,7 @@ msgstr "Сақталуда..."
 msgid "Search"
 msgstr "Іздеу"
 
-#: src/routes/_authenticated/find.tsx:89
+#: src/routes/_authenticated/find.tsx:93
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Аты, ID, fingerprint немесе URL бойынша іздеу..."
 
@@ -1984,7 +1957,7 @@ msgid "Search..."
 msgstr "Іздеу..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:198
+#: ../../../lib/web/src/components/search-entity-page.tsx:200
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Іздеуде..."
@@ -2257,10 +2230,6 @@ msgstr "Бұл CRM қазір жүктелмейді."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Бұл CRM жойылған болуы мүмкін немесе сізде оған қолжетімділік жоқ."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:465
-#~ msgid "This will import the data from <0>{0}</0>. Objects will be appended to the existing records. Ensure the current design matches the classes and fields referenced in the file."
-#~ msgstr "Бұл <0>{0}</0> файлынан деректерді импорттайды. Нысандар бар жазбаларға қосылады. Ағымдағы құрылым файлда көрсетілген кластар мен өрістерге сәйкес келетініне көз жеткізіңіз."
-
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:359
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
@@ -2345,7 +2314,7 @@ msgid "Travelling"
 msgstr "Сапар"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:214
+#: ../../../lib/web/src/components/search-entity-page.tsx:216
 msgid "Try adjusting your search terms"
 msgstr "Іздеу терминдерін реттеуді көріңіз"
 
@@ -2448,7 +2417,7 @@ msgstr "Қол жеткізу жаңартылуда..."
 msgid "Upload"
 msgstr "Жүктеп салу"
 
-#: src/features/crms/components/create-crm-dialog.tsx:214
+#: src/features/crms/components/create-crm-dialog.tsx:212
 #: src/routes/_authenticated/$crmId/design.tsx:297
 msgid "Upload .json file"
 msgstr ".json файлын жүктеп салу"
@@ -2484,7 +2453,7 @@ msgstr "Тексеру"
 msgid "Verify email address"
 msgstr "Электрондық пошта мекенжайын тексеру"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:75
+#: ../../../lib/web/src/components/attachment-gallery.tsx:74
 msgid "Video thumbnail"
 msgstr "Бейне нобайы"
 
