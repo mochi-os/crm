@@ -296,6 +296,14 @@ def rank_resequence_migration(crm_id):
 	for row in ids:
 		previous = rank_between(previous, None)
 		mochi.db.execute("update objects set rank=? where id=?", previous, row["id"])
+def database_upgrade(version):
+	if version == 2:
+		# Drop the pre-2026-07 broadcast tables left in the app data DB when
+		# broadcast state moved to the per-app system DB - inert, but stale
+		# sequence/log copies mislead diagnosis.
+		for table in ["sequence", "log", "acknowledged", "received"]:
+			mochi.db.execute("drop table if exists " + table)
+
 # Create database with all 17 tables
 def database_create():
 	# 1. crms - the container, a Mochi entity
