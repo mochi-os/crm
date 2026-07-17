@@ -708,30 +708,13 @@ def apply_template(crm_id, data=None, lang="en", template_id="crm"):
 			if field.strip():
 				row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": v["id"], "field": field.strip(), "rank": j})
 
-# Export the current crm design as template JSON. The exported JSON contains
-# literal strings (whatever the CRM DB currently holds) rather than
-# {labels.X} placeholders — the export is a snapshot of the user's live CRM,
-# not a Mochi-shipped multi-language template. Re-importing this JSON will
-# apply those literal names verbatim.
-def action_design_export(a):
-
-	crm_id = resolve_crm(a)
-	if not crm_id:
-		a.error.label(400, "errors.crm_id_required")
-		return
-
-	crm = get_crm(crm_id)
-	if not crm:
-		a.error.label(404, "errors.crm_not_found")
-		return
-
-	if crm["owner"] != 1:
-		a.error.label(400, "errors.cannot_export_remote_crm_design")
-		return
-
-	if not check_crm_access(a.user.identity.id, crm_id, "design"):
-		a.error.label(403, "errors.access_denied")
-		return
+# Snapshot the crm design - classes, fields, options, hierarchy, and views -
+# as template JSON. The snapshot contains literal strings (whatever the CRM
+# DB currently holds) rather than {labels.X} placeholders — it is a copy of
+# the user's live CRM, not a Mochi-shipped multi-language template. Applying
+# it via design/import writes those literal names verbatim. Shared by
+# design/export and data/export.
+def design_export(crm_id):
 
 	# Read classes
 	classes = []
@@ -849,7 +832,7 @@ def action_design_export(a):
 			view["classes"] = [vc["class"] for vc in view_classes]
 		views.append(view)
 
-	result = {
+	return {
 		"classes": classes,
 		"fields": fields,
 		"options": options,
@@ -857,7 +840,28 @@ def action_design_export(a):
 		"views": views,
 	}
 
-	return {"data": result}
+# Export the current crm design as template JSON
+def action_design_export(a):
+
+	crm_id = resolve_crm(a)
+	if not crm_id:
+		a.error.label(400, "errors.crm_id_required")
+		return
+
+	crm = get_crm(crm_id)
+	if not crm:
+		a.error.label(404, "errors.crm_not_found")
+		return
+
+	if crm["owner"] != 1:
+		a.error.label(400, "errors.cannot_export_remote_crm_design")
+		return
+
+	if not check_crm_access(a.user.identity.id, crm_id, "design"):
+		a.error.label(403, "errors.access_denied")
+		return
+
+	return {"data": design_export(crm_id)}
 
 # Import a design from template JSON, replacing the current design
 def action_design_import(a):
@@ -929,10 +933,11 @@ def action_design_import(a):
 	return {"data": {"success": True}}
 
 # Export the crm's data - objects with field values and comments, plus links -
-# as JSON. The design is exported separately via design/export; the two
-# snapshots together fully reproduce a crm. Watchers, activity, and
-# attachments are not included. Objects are ordered by rank so an import
-# preserves their order.
+# as JSON, together with a design snapshot so the file alone fully reproduces
+# the crm on any instance (the source design may be customized or from a
+# different template version than the destination's built-in templates).
+# Watchers, activity, and attachments are not included. Objects are ordered
+# by rank so an import preserves their order.
 def action_data_export(a):
 
 	crm_id = resolve_crm(a)
@@ -996,7 +1001,7 @@ def action_data_export(a):
 			"created": l["created"],
 		})
 
-	result = {"objects": objects}
+	result = {"design": design_export(crm_id), "objects": objects}
 	if links:
 		result["links"] = links
 	return {"data": result}
@@ -1006,8 +1011,10 @@ def action_data_export(a):
 # (parents, links, comment threads) are remapped to the new ids, so importing
 # the same snapshot twice creates two copies. Objects are appended below
 # existing objects in file order. The crm's design must already contain every
-# class and field id the snapshot references - import the design first via
-# design/import. Everything is validated before anything is written.
+# class and field id the snapshot references - apply the snapshot's embedded
+# design (or the matching design/export) first via design/import; any
+# "design" key in the snapshot itself is ignored here. Everything is
+# validated before anything is written.
 def action_data_import(a):
 
 	crm_id = resolve_crm(a)

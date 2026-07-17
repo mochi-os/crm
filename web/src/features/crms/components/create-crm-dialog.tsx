@@ -3,7 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Trans, useLingui } from '@lingui/react/macro'
 import { plural } from '@lingui/core/macro'
 import { useNavigate } from "@tanstack/react-router";
@@ -91,15 +91,36 @@ export function CreateCrmDialog({
       const fingerprint = response.data?.fingerprint;
 
       if (fingerprint && importData) {
-        try {
-          await toastAction(crmsApi.importData(fingerprint, importData), {
-            loading: t`Importing data...`,
-            success: (imported) => t`Data imported (${plural(imported.data?.objects ?? 0, { one: '# object', other: '# objects' })}, ${plural(imported.data?.comments ?? 0, { one: '# comment', other: '# comments' })}, ${plural(imported.data?.links ?? 0, { one: '# link', other: '# links' })})`,
-            error: (e) => getErrorMessage(e, t`Failed to import data`),
-          });
-        } catch (e) {
-          await crmsApi.delete(fingerprint).catch(() => {});
-          throw e;
+        const importObjects: Record<string, unknown> = { ...importData };
+        delete importObjects.design;
+        // A design-only backup (an empty CRM) has nothing for data/import,
+        // which rejects an empty payload — skip the call rather than fail
+        // and roll the new CRM back.
+        const importHasData =
+          (Array.isArray(importObjects.objects) && importObjects.objects.length > 0) ||
+          (Array.isArray(importObjects.links) && importObjects.links.length > 0);
+        if (importDesign || importHasData) {
+          try {
+            await toastAction(
+              (async () => {
+                if (importDesign) {
+                  await crmsApi.importDesign(fingerprint, importDesign);
+                }
+                return importHasData ? crmsApi.importData(fingerprint, importObjects) : null;
+              })(),
+              {
+                loading: t`Importing data...`,
+                success: (imported) =>
+                  imported
+                    ? t`Data imported (${plural(imported.data?.objects ?? 0, { one: '# object', other: '# objects' })}, ${plural(imported.data?.comments ?? 0, { one: '# comment', other: '# comments' })}, ${plural(imported.data?.links ?? 0, { one: '# link', other: '# links' })})`
+                    : t`Design imported`,
+                error: (e) => getErrorMessage(e, t`Failed to import data`),
+              }
+            );
+          } catch (e) {
+            await crmsApi.delete(fingerprint).catch(() => {});
+            throw e;
+          }
         }
       }
 
@@ -121,6 +142,18 @@ export function CreateCrmDialog({
       setIsPending(false);
     }
   };
+
+  // Design snapshot embedded in the backup (newer exports). When present, it
+  // replaces the new CRM's default design via design/import before the data
+  // import — restoring from the default design breaks on any customized or
+  // drifted source design (added classes, extra fields, changed options).
+  const importDesign = useMemo(() => {
+    if (!importData) return null;
+    const design = importData.design;
+    return design && typeof design === "object" && !Array.isArray(design)
+      ? (design as Record<string, unknown>)
+      : null;
+  }, [importData]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
