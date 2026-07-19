@@ -146,17 +146,13 @@ function CrmSettingsPage() {
     }) => {
       if (!crm || !isOwner) return;
 
-      try {
-        await toastAction(crmsApi.update(crm.crm.id, updates), {
-          loading: t`Saving...`,
-          success: t`CRM updated`,
-          error: (e) => getErrorMessage(e, t`Failed to update crm`),
-        });
-        void refreshSidebar();
-        queryClient.invalidateQueries({ queryKey: ["crm", crmId] });
-      } catch (err) {
-        throw err;
-      }
+      await toastAction(crmsApi.update(crm.crm.id, updates), {
+        loading: t`Saving...`,
+        success: t`CRM updated`,
+        error: (e) => getErrorMessage(e, t`Failed to update CRM`),
+      });
+      void refreshSidebar();
+      queryClient.invalidateQueries({ queryKey: ["crm", crmId] });
     },
     [crm, isOwner, refreshSidebar, queryClient, crmId, t]
   );
@@ -293,7 +289,6 @@ function GeneralTab({
     <div className="space-y-6">
       <Section
         title={t`Identity`}
-        description={t`Core information about this CRM`}
       >
         <div className="divide-y-0">
           <EditableFieldRow
@@ -336,8 +331,7 @@ function GeneralTab({
 
       {isOwner && (
         <Section
-          title={t`Delete crm`}
-          description={t`Permanently delete this CRM and all its content.`}
+          title={t`Delete CRM`}
           action={
             <Button
               variant="outline"
@@ -484,8 +478,7 @@ function AccessTab({ crmId }: AccessTabProps) {
 
   return (
     <Section
-      title={t`Access Management`}
-      description={t`Control who can view and interact with this CRM`}
+      title={t`Access management`}
     >
       <div className="space-y-4">
         <div className="flex justify-end">
