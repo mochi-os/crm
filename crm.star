@@ -3116,6 +3116,41 @@ def action_comment_delete(a):
 # Attachment Actions
 # ============================================================================
 
+# HTTP handlers serving a CRM's attachments (and thumbnails). Auth-only routes.
+# Core's a.write.attachment serves the bytes with no access check of its own, so
+# this handler is the gate: require_crm enforces CRM view access (for CRMs we
+# own), and the attachment must belong to an object or comment in THIS CRM, so
+# one CRM's attachment can't be fetched via another CRM's route.
+def action_attachment(a):
+	serve_attachment(a, False)
+
+def action_attachment_thumbnail(a):
+	serve_attachment(a, True)
+
+def serve_attachment(a, thumbnail):
+	crm_id, crm = require_crm(a, "view")
+	if not crm_id:
+		return
+	attachment = a.input("id")
+	if crm["owner"] == 1:
+		# We own this CRM: require_crm enforced view access. Bind the attachment
+		# to an object or a comment (comment -> object -> crm) in this CRM.
+		att = mochi.attachment.get(attachment)
+		if not att:
+			a.error.label(404, "errors.attachment_not_found")
+			return
+		obj = att.get("object")
+		in_crm = mochi.db.exists("select 1 from objects where id=? and crm=?", obj, crm_id)
+		if not in_crm:
+			in_crm = mochi.db.exists("select 1 from comments c join objects o on o.id=c.object where c.id=? and o.crm=?", obj, crm_id)
+		if not in_crm:
+			a.error.label(404, "errors.attachment_not_found")
+			return
+	# Remote CRM (owner != 1): the owning server enforces access and the binding
+	# when a.write.attachment fetches over P2P; per-user databases isolate one
+	# subscriber from another.
+	a.write.attachment(attachment, thumbnail=thumbnail)
+
 def action_attachment_list(a):
 
 	crm_id, crm = require_crm(a)

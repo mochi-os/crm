@@ -82,8 +82,8 @@
 		":crm/-/objects/:object/attachments/create": {"function": "action_attachment_create"},
 		":crm/-/objects/:object/attachments/:attachment/delete": {"function": "action_attachment_delete"},
 
-		":crm/-/attachments/:id": {"feature": "attachment"},
-		":crm/-/attachments/:id/thumbnail": {"feature": "attachment/thumbnail"},
+		":crm/-/attachments/:id": {"function": "action_attachment"},
+		":crm/-/attachments/:id/thumbnail": {"function": "action_attachment_thumbnail"},
 
 		":crm/-/objects/:object/activity": {"function": "action_activity_list"},
 
