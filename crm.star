@@ -939,12 +939,59 @@ def action_design_import(a):
 
 	return {"data": {"success": True}}
 
-# Export the crm's data - objects with field values and comments, plus links -
-# as JSON, together with a design snapshot so the file alone fully reproduces
-# the crm on any instance (the source design may be customized or from a
-# different template version than the destination's built-in templates).
-# Watchers, activity, and attachments are not included. Objects are ordered
-# by rank so an import preserves their order.
+# Collect an object's (or comment's) attachments with base64-encoded file
+# bytes for a data export. mochi.attachment.data fetches remote bytes over
+# P2P for subscribed crms. An attachment whose bytes cannot be read (deleted
+# file, unreachable owner) is skipped rather than failing the whole export.
+def export_attachments(object_id, crm_id):
+	result = []
+	for att in mochi.attachment.list(object_id, crm_id) or []:
+		data = mochi.attachment.data(att["id"])
+		if data == None:
+			continue
+		result.append({
+			"name": att["name"],
+			"content_type": att.get("content_type", ""),
+			"caption": att.get("caption", ""),
+			"description": att.get("description", ""),
+			"data": mochi.encode.base64(data),
+		})
+	return result
+
+# Pre-fetch attachment bytes for a data export. A remote crm fetches each
+# attachment's bytes over P2P on first use, and a large crm cannot fetch
+# them all inside one action's time budget - so this action warms the local
+# cache for up to a minute and reports how many attachments remain. Callers
+# loop until remaining is zero, then run data/export.
+def action_data_export_warm(a):
+
+	crm_id, crm = require_crm(a, "view")
+	if not crm_id:
+		return
+
+	identifiers = []
+	for row in mochi.db.rows("select id from objects where crm=? order by rank, id", crm_id) or []:
+		for att in mochi.attachment.list(row["id"], crm_id) or []:
+			identifiers.append(att["id"])
+		for c in mochi.db.rows("select id from comments where object=?", row["id"]) or []:
+			for att in mochi.attachment.list(c["id"], crm_id) or []:
+				identifiers.append(att["id"])
+
+	start = mochi.time.now()
+	for i, identifier in enumerate(identifiers):
+		if mochi.time.now() - start > 60:
+			return {"data": {"attachments": len(identifiers), "remaining": len(identifiers) - i}}
+		mochi.attachment.data(identifier)
+
+	return {"data": {"attachments": len(identifiers), "remaining": 0}}
+
+# Export the crm's data as JSON (format 2), together with a design snapshot
+# so the file alone fully reproduces the crm on any instance (the source
+# design may be customized or from a different template version than the
+# destination's built-in templates). Includes the crm metadata, objects with
+# field values, comments, attachments (base64 file bytes), and activity
+# history, plus links. Watchers are per-user notification state and are not
+# included. Objects are ordered by rank so an import preserves their order.
 def action_data_export(a):
 
 	# Remote crms export from the subscriber's replica - the same tables the
@@ -952,6 +999,15 @@ def action_data_export(a):
 	crm_id, crm = require_crm(a, "view")
 	if not crm_id:
 		return
+
+	# Values are filtered against the design snapshot: a field removed from
+	# the design can leave orphan value rows, which the app never renders -
+	# exporting them would make the file fail its own import.
+	design = design_export(crm_id)
+	declared = {}
+	for class_id, class_fields in design["fields"].items():
+		for f in class_fields:
+			declared[class_id + "/" + f["id"]] = True
 
 	objects = []
 	for row in mochi.db.rows("select id, class, parent, created, updated from objects where crm=? order by rank, id", crm_id) or []:
@@ -965,7 +1021,7 @@ def action_data_export(a):
 			object["parent"] = row["parent"]
 		values = {}
 		for v in mochi.db.rows("select field, value from \"values\" where object=?", row["id"]) or []:
-			if v["value"] != "":
+			if v["value"] != "" and (row["class"] + "/" + v["field"]) in declared:
 				values[v["field"]] = v["value"]
 		if values:
 			object["values"] = values
@@ -982,9 +1038,27 @@ def action_data_export(a):
 				comment["parent"] = c["parent"]
 			if c["edited"]:
 				comment["edited"] = c["edited"]
+			attachments = export_attachments(c["id"], crm_id)
+			if attachments:
+				comment["attachments"] = attachments
 			comments.append(comment)
 		if comments:
 			object["comments"] = comments
+		attachments = export_attachments(row["id"], crm_id)
+		if attachments:
+			object["attachments"] = attachments
+		activity = []
+		for act in mochi.db.rows("select user, action, field, oldvalue, newvalue, created from activity where object=? order by created, id", row["id"]) or []:
+			activity.append({
+				"user": act["user"],
+				"action": act["action"],
+				"field": act["field"],
+				"oldvalue": act["oldvalue"],
+				"newvalue": act["newvalue"],
+				"created": act["created"],
+			})
+		if activity:
+			object["activity"] = activity
 		objects.append(object)
 
 	links = []
@@ -996,20 +1070,44 @@ def action_data_export(a):
 			"created": l["created"],
 		})
 
-	result = {"design": design_export(crm_id), "objects": objects}
+	result = {
+		"format": 2,
+		"crm": {"name": crm["name"], "description": crm["description"]},
+		"design": design,
+		"objects": objects,
+	}
 	if links:
 		result["links"] = links
 	return {"data": result}
 
-# Import data - objects with field values and comments, plus links - from a
-# data/export snapshot. Objects and comments get fresh ids; in-file references
+# Validate and decode a container's attachment list in place for an import:
+# each entry must be a dict with a name and base64 data, and "data" is
+# replaced with the decoded bytes so the write phase never re-decodes.
+# Returns False on any invalid entry.
+def import_attachments_decode(container):
+	attachments = container.get("attachments") or []
+	if type(attachments) != "list":
+		return False
+	for att in attachments:
+		if type(att) != "dict" or not att.get("name") or type(att.get("data")) != "string":
+			return False
+		data = mochi.decode.base64(att["data"])
+		if data == None:
+			return False
+		att["data"] = data
+	return True
+
+# Import data from a data/export snapshot: objects with field values,
+# comments, attachments (format 2, base64 file bytes), and activity history,
+# plus links. Objects and comments get fresh ids; in-file references
 # (parents, links, comment threads) are remapped to the new ids, so importing
 # the same snapshot twice creates two copies. Objects are appended below
 # existing objects in file order. The crm's design must already contain every
 # class and field id the snapshot references - apply the snapshot's embedded
 # design (or the matching design/export) first via design/import; any
-# "design" key in the snapshot itself is ignored here. Everything is
-# validated before anything is written.
+# "design" key in the snapshot itself is ignored here. Format 1 files (no
+# attachments or activity) import unchanged. Everything is validated before
+# anything is written.
 def action_data_import(a):
 
 	crm_id = resolve_crm(a)
@@ -1032,9 +1130,18 @@ def action_data_import(a):
 
 	data_string = a.input("data")
 	if not data_string:
+		# Large imports upload the export as a multipart file part: form
+		# fields cap out at a few megabytes at the HTTP layer, while file
+		# parts spool to disk.
+		upload = a.file("file")
+		if upload:
+			data_string = str(upload["data"])
+	if not data_string:
 		a.error.label(400, "errors.data_is_required")
 		return
-	if len(data_string) > 10000000:
+	# 1GB, matching the per-attachment cap: attachment file bytes travel
+	# base64-encoded inside the JSON
+	if len(data_string) > 1000000000:
 		a.error.label(400, "errors.data_too_large")
 		return
 	data = json.decode(data_string, None)
@@ -1093,16 +1200,26 @@ def action_data_import(a):
 		if type(values) != "dict":
 			a.error.label(400, "errors.invalid_data")
 			return
-		for field in values:
-			if (o["class"] + "/" + field) not in fields:
-				a.error.label(400, "errors.unknown_field", name=field)
-				return
 		comments = o.get("comments") or []
 		if type(comments) != "list":
 			a.error.label(400, "errors.invalid_data")
 			return
 		for c in comments:
 			if type(c) != "dict" or not c.get("content"):
+				a.error.label(400, "errors.invalid_data")
+				return
+			if not import_attachments_decode(c):
+				a.error.label(400, "errors.invalid_data")
+				return
+		if not import_attachments_decode(o):
+			a.error.label(400, "errors.invalid_data")
+			return
+		activity = o.get("activity") or []
+		if type(activity) != "list":
+			a.error.label(400, "errors.invalid_data")
+			return
+		for act in activity:
+			if type(act) != "dict" or not act.get("action"):
 				a.error.label(400, "errors.invalid_data")
 				return
 	for l in links:
@@ -1128,6 +1245,7 @@ def action_data_import(a):
 	previous = row["r"] if (row and row["r"]) else None
 
 	comment_count = 0
+	attachment_count = 0
 	for o in objects:
 		object_id = remap[o["id"]]
 		parent = o.get("parent") or ""
@@ -1136,8 +1254,11 @@ def action_data_import(a):
 		created = safe_int(o.get("created")) or now
 		updated = safe_int(o.get("updated")) or now
 		row_merge("objects", ["id"], {"id": object_id, "crm": crm_id, "class": o["class"], "parent": parent, "rank": previous, "created": created, "updated": updated})
+		# Values for fields the design doesn't declare are skipped, not
+		# rejected: older exports can carry orphan values from fields that
+		# were later removed from the design, and the app never renders them.
 		for field, value in (o.get("values") or {}).items():
-			if value != "":
+			if value != "" and (o["class"] + "/" + field) in fields:
 				row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": str(value)})
 		file_comments = o.get("comments") or []
 		comment_ids = []
@@ -1151,10 +1272,24 @@ def action_data_import(a):
 			comment_parent = comment_remap.get(c.get("parent") or "", "")
 			row_merge("comments", ["id"], {"id": comment_ids[i], "object": object_id, "parent": comment_parent, "author": c.get("author") or user, "name": c.get("name") or a.user.identity.name, "content": str(c["content"]), "created": safe_int(c.get("created")) or now, "edited": safe_int(c.get("edited"))})
 			comment_count += 1
-		mochi.db.execute(
-			"insert into activity (id, object, user, action, field, oldvalue, newvalue, created) values (?, ?, ?, 'created', '', '', '', ?)",
-			mochi.uid(), object_id, user, now
-		)
+			for att in (c.get("attachments") or []):
+				mochi.attachment.create(comment_ids[i], att["name"], att["data"], att.get("content_type") or "", att.get("caption") or "", att.get("description") or "")
+				attachment_count += 1
+		for att in (o.get("attachments") or []):
+			mochi.attachment.create(object_id, att["name"], att["data"], att.get("content_type") or "", att.get("caption") or "", att.get("description") or "")
+			attachment_count += 1
+		file_activity = o.get("activity") or []
+		if file_activity:
+			for act in file_activity:
+				mochi.db.execute(
+					"insert into activity (id, object, user, action, field, oldvalue, newvalue, created) values (?, ?, ?, ?, ?, ?, ?, ?)",
+					mochi.uid(), object_id, act.get("user") or user, str(act["action"]), str(act.get("field") or ""), str(act.get("oldvalue") or ""), str(act.get("newvalue") or ""), safe_int(act.get("created")) or now
+				)
+		else:
+			mochi.db.execute(
+				"insert into activity (id, object, user, action, field, oldvalue, newvalue, created) values (?, ?, ?, 'created', '', '', '', ?)",
+				mochi.uid(), object_id, user, now
+			)
 
 	for l in links:
 		source = remap.get(l["source"], l["source"])
@@ -1168,7 +1303,7 @@ def action_data_import(a):
 	for s in mochi.db.rows("select id from subscribers where crm=?", crm_id) or []:
 		send_crm_data(crm_id, s["id"])
 
-	return {"data": {"objects": len(objects), "comments": comment_count, "links": len(links)}}
+	return {"data": {"objects": len(objects), "comments": comment_count, "attachments": attachment_count, "links": len(links)}}
 
 # ============================================================================
 # CRM Actions

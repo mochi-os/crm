@@ -609,14 +609,25 @@ const crmsApi = {
   },
 
   // Import data from JSON
+  // Pre-fetch attachment bytes on the server before an export. Remote crms
+  // fetch bytes over P2P in bounded rounds; loop until remaining is zero,
+  // then call exportData.
+  warmExport: async (
+    crmId: string,
+  ): Promise<{ data: { attachments: number; remaining: number } }> => {
+    return crmsRequest.post(endpoints.crms.dataExportWarm(crmId), {});
+  },
+
+  // Import data from an export file. Uploaded as a multipart file part:
+  // form fields cap out at a few megabytes at the HTTP layer, while file
+  // parts spool to disk.
   importData: async (
     crmId: string,
-    data: Record<string, unknown>,
-  ): Promise<{ data: { objects: number; comments: number; links: number } }> => {
-    return crmsRequest.post(
-      endpoints.crms.dataImport(crmId),
-      { data: JSON.stringify(data) },
-    );
+    file: Blob,
+  ): Promise<{ data: { objects: number; comments: number; attachments: number; links: number } }> => {
+    const form = new FormData();
+    form.append("file", file, "import.json");
+    return crmsRequest.post(endpoints.crms.dataImport(crmId), form);
   },
 
   // ============= View Methods =============

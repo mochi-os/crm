@@ -51,6 +51,7 @@ export function CreateCrmDialog({
   const [name, setName] = useState("");
   const [allowSearch, setAllowSearch] = useState(true);
   const [importData, setImportData] = useState<Record<string, unknown> | null>(null);
+  const [importFile, setImportFile] = useState<File | null>(null);
   const [importFileName, setImportFileName] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
@@ -62,6 +63,7 @@ export function CreateCrmDialog({
       setName("");
       setAllowSearch(true);
       setImportData(null);
+      setImportFile(null);
       setImportFileName("");
     }
   }, [open]);
@@ -90,15 +92,13 @@ export function CreateCrmDialog({
 
       const fingerprint = response.data?.fingerprint;
 
-      if (fingerprint && importData) {
-        const importObjects: Record<string, unknown> = { ...importData };
-        delete importObjects.design;
+      if (fingerprint && importData && importFile) {
         // A design-only backup (an empty CRM) has nothing for data/import,
         // which rejects an empty payload — skip the call rather than fail
         // and roll the new CRM back.
         const importHasData =
-          (Array.isArray(importObjects.objects) && importObjects.objects.length > 0) ||
-          (Array.isArray(importObjects.links) && importObjects.links.length > 0);
+          (Array.isArray(importData.objects) && importData.objects.length > 0) ||
+          (Array.isArray(importData.links) && importData.links.length > 0);
         if (importDesign || importHasData) {
           try {
             await toastAction(
@@ -106,7 +106,7 @@ export function CreateCrmDialog({
                 if (importDesign) {
                   await crmsApi.importDesign(fingerprint, importDesign);
                 }
-                return importHasData ? crmsApi.importData(fingerprint, importObjects) : null;
+                return importHasData ? crmsApi.importData(fingerprint, importFile) : null;
               })(),
               {
                 loading: t`Importing data...`,
@@ -164,16 +164,26 @@ export function CreateCrmDialog({
       try {
         const data = JSON.parse(reader.result as string);
         setImportData(data);
+        setImportFile(file);
         setImportFileName(file.name);
+        // Format 2 backups carry the source crm's metadata — prefill an
+        // untouched name field so recreating keeps the original name.
+        const metadata = data && typeof data === "object" && !Array.isArray(data) ? (data as Record<string, unknown>).crm : null;
+        if (metadata && typeof metadata === "object" && !Array.isArray(metadata)) {
+          const m = metadata as Record<string, unknown>;
+          if (typeof m.name === "string" && m.name && !name.trim()) setName(m.name);
+        }
       } catch {
         toast.error(t`Invalid JSON file`);
         setImportData(null);
+        setImportFile(null);
         setImportFileName("");
       }
     };
     reader.onerror = () => {
       toast.error(t`Failed to read file`);
       setImportData(null);
+      setImportFile(null);
       setImportFileName("");
     };
     reader.readAsText(file);

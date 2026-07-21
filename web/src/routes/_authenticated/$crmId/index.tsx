@@ -30,6 +30,7 @@ import {
   toast,
   toastAction,
   shellClipboardWrite,
+  shellSaveBlob,
   ResponsiveDialog,
   ResponsiveDialogContent,
   ResponsiveDialogHeader,
@@ -185,22 +186,32 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
   }, [shareLink]);
 
   const handleDataExport = useCallback(async () => {
+    // Remote crms fetch attachment bytes over P2P in bounded server-side
+    // rounds; warm until nothing remains so a large crm's export doesn't
+    // time out. Each round covers up to a minute of fetching.
+    const warming = toast.loading(t`Loading…`);
     try {
+      for (let round = 0; round < 120; round++) {
+        const warm = await crmsApi.warmExport(crm.crm.id);
+        if (!warm.data || warm.data.remaining === 0) break;
+      }
       const response = await crmsApi.exportData(crm.crm.id);
       const json = JSON.stringify(response.data, null, 2);
       const blob = new Blob([json], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
       const today = new Date().toISOString().split("T")[0];
       const slug = crm.crm.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-      a.download = `${slug}-crm-backup-${today}.json`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      const filename = `${slug}-crm-backup-${today}.json`;
+      // A bare anchor-click save silently no-ops in the shell's sandboxed
+      // iframe; shellSaveBlob hands the blob to the parent shell to save.
+      if (await shellSaveBlob(blob, filename)) {
+        toast.success(t`Downloaded ${filename}`);
+      } else {
+        toast.error(t`Failed to export data`);
+      }
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to export data`));
+    } finally {
+      toast.dismiss(warming);
     }
   }, [crm.crm.id, crm.crm.name, t]);
 
@@ -891,12 +902,16 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
 
     const csv = [headers.map((h) => `"${h}"`).join(","), ...rows].join("\n");
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${crm.crm.name}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
+    const filename = `${crm.crm.name}.csv`;
+    // A bare anchor-click save silently no-ops in the shell's sandboxed
+    // iframe; shellSaveBlob hands the blob to the parent shell to save.
+    void shellSaveBlob(blob, filename).then((ok) => {
+      if (ok) {
+        toast.success(t`Downloaded ${filename}`);
+      } else {
+        toast.error(t`Failed to export data`);
+      }
+    });
   }, [filteredObjects, allFields, crm, peopleMap, t]);
 
   const handleViewChange = (viewId: string) => {

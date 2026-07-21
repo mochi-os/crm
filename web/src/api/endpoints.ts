@@ -93,6 +93,7 @@ const endpoints = {
 
     // Data import/export endpoints
     dataExport: (crmId: string) => `${crmId}/-/data/export`,
+    dataExportWarm: (crmId: string) => `${crmId}/-/data/export/warm`,
     dataImport: (crmId: string) => `${crmId}/-/data/import`,
 
     // View endpoints
