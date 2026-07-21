@@ -861,22 +861,11 @@ def design_export(crm_id):
 # Export the current crm design as template JSON
 def action_design_export(a):
 
-	crm_id = resolve_crm(a)
+	# Remote crms are exportable too: the subscriber's replica holds the full
+	# design, and require_crm applies the standard remote semantics (owner
+	# enforces access at sync time; per-user databases isolate subscribers).
+	crm_id, crm = require_crm(a, "design")
 	if not crm_id:
-		a.error.label(400, "errors.crm_id_required")
-		return
-
-	crm = get_crm(crm_id)
-	if not crm:
-		a.error.label(404, "errors.crm_not_found")
-		return
-
-	if crm["owner"] != 1:
-		a.error.label(400, "errors.cannot_export_remote_crm_design")
-		return
-
-	if not check_crm_access(a.user.identity.id, crm_id, "design"):
-		a.error.label(403, "errors.access_denied")
 		return
 
 	return {"data": design_export(crm_id)}
@@ -958,22 +947,10 @@ def action_design_import(a):
 # by rank so an import preserves their order.
 def action_data_export(a):
 
-	crm_id = resolve_crm(a)
+	# Remote crms export from the subscriber's replica - the same tables the
+	# board reads - so the file matches what the user sees.
+	crm_id, crm = require_crm(a, "view")
 	if not crm_id:
-		a.error.label(400, "errors.crm_id_required")
-		return
-
-	crm = get_crm(crm_id)
-	if not crm:
-		a.error.label(404, "errors.crm_not_found")
-		return
-
-	if crm["owner"] != 1:
-		a.error.label(400, "errors.cannot_export_remote_crm_data")
-		return
-
-	if not check_crm_access(a.user.identity.id, crm_id, "view"):
-		a.error.label(403, "errors.access_denied")
 		return
 
 	objects = []
