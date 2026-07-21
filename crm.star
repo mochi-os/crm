@@ -3245,12 +3245,15 @@ def action_comment_delete(a):
 # own), and the attachment must belong to an object or comment in THIS CRM, so
 # one CRM's attachment can't be fetched via another CRM's route.
 def action_attachment(a):
-	serve_attachment(a, False)
+	serve_attachment(a, "")
 
 def action_attachment_thumbnail(a):
-	serve_attachment(a, True)
+	serve_attachment(a, "thumbnail")
 
-def serve_attachment(a, thumbnail):
+def action_attachment_preview(a):
+	serve_attachment(a, "preview")
+
+def serve_attachment(a, variant):
 	crm_id, crm = require_crm(a, "view")
 	if not crm_id:
 		return
@@ -3272,7 +3275,7 @@ def serve_attachment(a, thumbnail):
 	# Remote CRM (owner != 1): the owning server enforces access and the binding
 	# when a.write.attachment fetches over P2P; per-user databases isolate one
 	# subscriber from another.
-	a.write.attachment(attachment, thumbnail=thumbnail)
+	a.write.attachment(attachment, variant=variant)
 
 def action_attachment_list(a):
 
