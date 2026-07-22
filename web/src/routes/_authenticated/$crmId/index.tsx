@@ -402,9 +402,8 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         promote: promote ? "true" : undefined,
       });
     },
-    onMutate: ({ objectId, field, value, rank, rowField: rf, rowValue, scopeParent, promote }) => {
-      // Optimistically update the UI
-      queryClient.cancelQueries({
+    onMutate: async ({ objectId, field, value, rank, rowField: rf, rowValue, scopeParent, promote }) => {
+      await queryClient.cancelQueries({
         queryKey: ["objects", params.crmId],
       });
 

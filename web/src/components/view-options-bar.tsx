@@ -38,7 +38,6 @@ function useBuiltInSortOptions() {
   return useMemo(
     () => [
       { id: "rank", label: t`Manual` },
-      { id: "number", label: t`Number` },
       { id: "created", label: t`Created` },
       { id: "updated", label: t`Updated` },
     ],

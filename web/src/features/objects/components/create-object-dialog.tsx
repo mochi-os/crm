@@ -38,7 +38,8 @@ import {
   removePendingFile,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
-import type { CrmDetails } from "@/types";
+import type { CrmDetails, CrmObject } from "@/types";
+import { rankBetween, rankCompare } from "@/lib/rank";
 import { FieldEditor } from "./field-editor";
 
 interface CreateObjectDialogProps {
@@ -102,9 +103,11 @@ export function CreateObjectDialog({
     });
   }, [availableClasses, crm.hierarchy, objectsData]);
 
-  // Reset state when dialog opens/closes or type changes
+  const resetRef = useRef({ creatableClasses, defaultFields, defaultParent, crm });
+  resetRef.current = { creatableClasses, defaultFields, defaultParent, crm };
   useEffect(() => {
     if (open) {
+      const { creatableClasses, defaultFields, defaultParent, crm } = resetRef.current;
       const initialType = creatableClasses[0]?.id || "";
       setSelectedType(initialType);
       setParent(defaultParent || "");
@@ -130,7 +133,14 @@ export function CreateObjectDialog({
       }
       setFieldValues(initialValues);
     }
-  }, [open, creatableClasses, defaultFields, defaultParent, crm.fields, crm.options]);
+  }, [open]);
+
+  useEffect(() => {
+    if (!open || creatableClasses.length === 0) return;
+    if (!creatableClasses.some((c) => c.id === selectedClass)) {
+      setSelectedType(creatableClasses[0].id);
+    }
+  }, [open, creatableClasses, selectedClass]);
 
   // Update default field values when type changes (if fields exist in new type)
   useEffect(() => {
@@ -244,19 +254,23 @@ export function CreateObjectDialog({
     },
     onSuccess: (data) => {
       // Add new object to cache immediately for instant UI update
-      const newObject = {
-        id: data.id,
-        crm: crm.crm.id,
-        class: selectedClass,
-        parent: data.parent || "",
-        rank: 999999,
-        created: Math.floor(Date.now() / 1000),
-        updated: Math.floor(Date.now() / 1000),
-        values: { ...fieldValues },
-      };
       queryClient.setQueryData(
         ["objects", crmId],
-        (old: { objects: Array<{ id: string; values: Record<string, string> }>; watched?: string[] } | undefined) => {
+        (old: { objects: CrmObject[]; watched?: string[] } | undefined) => {
+          const maxRank = old?.objects.reduce(
+            (max, o) => (max === null || rankCompare(o.rank, max) > 0 ? o.rank : max),
+            null as string | null,
+          ) ?? null;
+          const newObject: CrmObject = {
+            id: data.id,
+            crm: crm.crm.id,
+            class: selectedClass,
+            parent: data.parent || "",
+            rank: rankBetween(maxRank, null),
+            created: Math.floor(Date.now() / 1000),
+            updated: Math.floor(Date.now() / 1000),
+            values: { ...fieldValues },
+          };
           if (!old) return { objects: [newObject], watched: [] };
           return { ...old, objects: [...old.objects, newObject] };
         },
