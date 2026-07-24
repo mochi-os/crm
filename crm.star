@@ -2932,6 +2932,11 @@ def object_comments(crm_id, object_id, parent_id, depth):
 
 # Recursively delete a comment and all its children and attachments
 def delete_comment_tree(comment_id, crm_id):
+	# Only ever touch a comment whose object is in this crm - guards every caller
+	# (event_comment_delete, do_comment_delete) against a cross-crm comment id or
+	# a cross-crm parent pointer dragging another crm's comments into the delete.
+	if not mochi.db.exists("select 1 from comments c join objects o on c.object=o.id where c.id=? and o.crm=?", comment_id, crm_id):
+		return
 	children = mochi.db.rows("select id from comments where parent=?", comment_id) or []
 	for child in children:
 		delete_comment_tree(child["id"], crm_id)
@@ -2987,7 +2992,9 @@ def action_comment_asset(a):
 	if asset not in _PERSON_ASSETS:
 		a.error.label(404, "errors.unknown_asset")
 		return
-	row = mochi.db.row("select author from comments where id=?", a.input("comment"))
+	# Bind the comment to the route crm (via its object) so this can't resolve a
+	# comment author in a crm the URL doesn't name.
+	row = mochi.db.row("select c.author from comments c join objects o on c.object=o.id where c.id=? and o.crm=?", a.input("comment"), a.input("crm"))
 	return stream_asset(a, row["author"] if row else "", "people", asset)
 
 def action_activity_asset(a):
@@ -2995,7 +3002,8 @@ def action_activity_asset(a):
 	if asset not in _PERSON_ASSETS:
 		a.error.label(404, "errors.unknown_asset")
 		return
-	row = mochi.db.row("select user from activity where id=?", a.input("activity"))
+	# Bind the activity to the route crm (via its object).
+	row = mochi.db.row("select a2.user from activity a2 join objects o on a2.object=o.id where a2.id=? and o.crm=?", a.input("activity"), a.input("crm"))
 	return stream_asset(a, row["user"] if row else "", "people", asset)
 
 def action_user_asset(a):
@@ -5699,6 +5707,11 @@ def event_object_delete(e):
 	object_id = e.content("id")
 	if not object_id:
 		return
+	# The object must belong to this CRM before we cascade-delete its children;
+	# otherwise a subscribed CRM's owner could wipe another CRM's watchers/
+	# activity/comments/values/links by naming a foreign object id.
+	if not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
+		return
 	# Notify local user before deleting watchers
 	user = e.content("user") or ""
 	local_id = e.header("to")
@@ -5887,7 +5900,8 @@ def event_attachment_add(e):
 		return
 	object_id = e.content("object")
 	attachments = e.content("attachments") or []
-	if attachments and object_id:
+	# Only attach to an object that belongs to this crm.
+	if attachments and object_id and mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
 		mochi.attachment.store(attachments, e.header("from"), object_id)
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
@@ -5900,7 +5914,16 @@ def event_attachment_remove(e):
 		return
 	attachment_id = e.content("attachment")
 	if attachment_id:
-		mochi.attachment.delete(attachment_id)
+		# Bind the attachment to an object/comment in this crm before deleting
+		# (mirrors serve_attachment) so a colliding id can't reach another crm's.
+		att = mochi.attachment.get(attachment_id)
+		if att:
+			obj = att.get("object")
+			in_crm = mochi.db.exists("select 1 from objects where id=? and crm=?", obj, crm_id)
+			if not in_crm:
+				in_crm = mochi.db.exists("select 1 from comments c join objects o on o.id=c.object where c.id=? and o.crm=?", obj, crm_id)
+			if in_crm:
+				mochi.attachment.delete(attachment_id)
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "attachment/delete", "crm": crm_id, "attachment": attachment_id})
@@ -5947,10 +5970,10 @@ def event_comment_update(e):
 	comment_id = e.content("id")
 	if not comment_id:
 		return
-	# Skip when the comment isn't local yet — the UPDATE would silently
-	# no-op, leaving us with an out-of-date row until something else
-	# triggers a sync.
-	if not mochi.db.exists("select 1 from comments where id=?", comment_id):
+	# Skip unless the comment's object belongs to THIS crm — without the object
+	# join a subscribed crm's owner could overwrite any comment in any crm by id.
+	# (Also skips when not local yet; request_resync fills it in.)
+	if not mochi.db.exists("select 1 from comments c join objects o on c.object=o.id where c.id=? and o.crm=?", comment_id, crm_id):
 		request_resync(crm_id)
 		return
 	content = e.content("content")
@@ -6004,7 +6027,7 @@ def event_link_delete(e):
 	crm_id = verify_subscription(e)
 	if not crm_id:
 		return
-	row_remove("links", ["source", "target", "linktype"], "source=? and target=? and linktype=?", [e.content("source") or "", e.content("target") or "", e.content("linktype") or "related"])
+	row_remove("links", ["source", "target", "linktype"], "crm=? and source=? and target=? and linktype=?", [crm_id, e.content("source") or "", e.content("target") or "", e.content("linktype") or "related"])
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "link/delete", "crm": crm_id})
