@@ -244,7 +244,9 @@ export function FieldEditor({
           <Input
             type="number"
             value={localValue}
-            onChange={(e) => setLocalValue(e.target.value)}
+            onChange={(e) => {if (e.target.validity?.badInput) return;
+              handleTextChange(e.target.value);
+            }}
             onFocus={handleFocus}
             onBlur={handleBlur}
             disabled={disabled}
@@ -301,7 +303,7 @@ export function FieldEditor({
         return (
           <Input
             value={localValue}
-            onChange={(e) => setLocalValue(e.target.value)}
+            onChange={(e) => handleTextChange(e.target.value)}
             onFocus={handleFocus}
             onBlur={handleBlur}
             disabled={disabled}

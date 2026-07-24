@@ -403,7 +403,6 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
       });
     },
     onMutate: ({ objectId, field, value, rank, rowField: rf, rowValue, scopeParent, promote }) => {
-      // Optimistically update the UI
       queryClient.cancelQueries({
         queryKey: ["objects", params.crmId],
       });
