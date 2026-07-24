@@ -327,29 +327,6 @@ def rank_after_all(crm_id, exclude_id):
 		row = mochi.db.row("select max(rank) as r from objects where crm=?", crm_id)
 	return rank_between(row["r"] if (row and row["r"]) else None, None)
 
-def rank_resequence(crm_id):
-	# Assign fresh, globally-unique sequential keys to every object in the crm,
-	# preserving the current (rank, id) order (id breaks ties between duplicate
-	# keys). Deterministic and convergent across replicas; used by the #53
-	# backfill/repair migrations.
-	ids = mochi.db.rows("select id from objects where crm=? order by rank, id", crm_id) or []
-	previous = None
-	for row in ids:
-		previous = rank_between(previous, None)
-		row_set("objects", ["id"], "id=?", [row["id"]], {"rank": previous})
-
-def rank_resequence_migration(crm_id):
-	# Frozen copy of rank_resequence AS IT MUST RUN inside the v4/v5 migrations
-	# (#191). Those run BEFORE v7 renames objects -> objects_all, so it writes the
-	# base `objects` table directly instead of via reg_set (which the v7 register
-	# conversion later pointed at objects_all, a table that does not exist yet at
-	# v4/v5). Same deterministic keys as rank_resequence; keep this frozen even if
-	# the live helper evolves further.
-	ids = mochi.db.rows("select id from objects where crm=? order by rank, id", crm_id) or []
-	previous = None
-	for row in ids:
-		previous = rank_between(previous, None)
-		mochi.db.execute("update objects set rank=? where id=?", previous, row["id"])
 def database_upgrade(version):
 	if version == 2:
 		# Drop the pre-2026-07 broadcast tables left in the app data DB when
@@ -1189,6 +1166,12 @@ def import_attachments_decode(container):
 # "design" key in the snapshot itself is ignored here. Format 1 files (no
 # attachments or activity) import unchanged. Everything is validated before
 # anything is written.
+#
+# Comment/activity attribution (author, user, name) is taken from the file so
+# a genuine export round-trips its history intact. This is not an access
+# grant: import requires design access on a CRM the caller owns, the fields
+# are display-only, and the writes are confined to that one CRM - so a
+# hand-forged attribution only mislabels rows in the forger's own data.
 def action_data_import(a):
 
 	crm_id = resolve_crm(a)
@@ -1470,8 +1453,6 @@ def action_crm_get(a):
 	if not crm_id:
 		a.error.label(400, "errors.crm_id_required")
 		return
-
-	# Reclaim old register tombstones on CRM open (a low-frequency path).
 
 	row = mochi.db.row("select id, name, description, owner, server, template, template_version, created, updated, populated from crms where id=?", crm_id)
 	if not row:
@@ -2072,12 +2053,17 @@ def would_create_cycle(object_id, new_parent_id):
 	if not new_parent_id:
 		return False
 	current = new_parent_id
-	while current:
+	# Cap the walk like get_all_descendants: write-time guards keep the tree
+	# acyclic, but a pre-existing cycle among unrelated ancestors would
+	# otherwise spin to the 90s Starlark timeout. Treat exhaustion as a cycle.
+	for _ in range(100):
 		if current == object_id:
 			return True
+		if not current:
+			return False
 		parent_row = mochi.db.row("select parent from objects where id=?", current)
 		current = parent_row["parent"] if parent_row else ""
-	return False
+	return True
 
 def get_all_descendants(object_id, depth=0):
 	"""Get all descendant object IDs recursively."""
@@ -2303,8 +2289,6 @@ def action_object_get(a):
 		a.error.label(404, "errors.object_not_found")
 		return
 
-	crm = get_crm(crm_id)
-
 	# Get values
 	values = {}
 	value_rows = mochi.db.rows("select field, value from \"values\" where object=?", object_id) or []
@@ -2504,6 +2488,12 @@ def action_object_move(a):
 	crm = get_crm(crm_id)
 	if not crm:
 		a.error.label(404, "errors.crm_not_found")
+		return
+
+	# int() on a non-integer aborts the handler with a 500, so validate the
+	# rank up front for both the owner and forwarding branches below.
+	if a.input("rank") != None and not mochi.text.valid(str(a.input("rank")), "integer"):
+		a.error.label(400, "errors.invalid_value")
 		return
 
 	object_id = a.input("object")
@@ -3706,6 +3696,13 @@ def action_view_create(a):
 		a.error.label(400, "errors.name_too_long")
 		return
 
+	# Cap the view-config strings, matching do_view_create's P2P path so the
+	# owner-side entry point can't store unbounded values either.
+	for vf in ["filter", "columns", "rows", "fields", "sort", "border"]:
+		if check_length(a.input(vf), 10000):
+			a.error.label(400, "errors.value_too_long")
+			return
+
 	viewtype = a.input("viewtype") or "board"
 	if viewtype not in ["board", "list"]:
 		a.error.label(400, "errors.invalid_view_type")
@@ -3793,6 +3790,13 @@ def action_view_update(a):
 	if not view:
 		a.error.label(404, "errors.view_not_found")
 		return
+
+	# Cap the view-config strings, matching do_view_update's P2P path so the
+	# owner-side entry point can't store unbounded values either.
+	for vf in ["filter", "columns", "rows", "fields", "sort", "border"]:
+		if check_length(a.input(vf), 10000):
+			a.error.label(400, "errors.value_too_long")
+			return
 
 	# Update fields if provided
 	name = a.input("name")
@@ -3992,7 +3996,7 @@ def action_class_create(a):
 	row_merge("classes", ["crm", "id"], {"crm": crm_id, "id": class_id, "name": name.strip(), "rank": rank, "title": "title"})
 
 	# Add default title field
-	row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": class_id, "id": "title", "name": "Title", "fieldtype": "text", "flags": "required,sort", "rank": 0})
+	row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": class_id, "id": "title", "name": mochi.app.label("field.title"), "fieldtype": "text", "flags": "required,sort", "rank": 0})
 
 	# Set hierarchy to allow root by default
 	row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": class_id, "parent": ""})
@@ -4755,7 +4759,7 @@ def action_search(a):
 			crm_path = parts[1]
 			# Handle query parameter format: ?crm=ENTITY_ID
 			if crm_path.startswith("?crm="):
-				crm_id = crm_path[9:]
+				crm_id = crm_path[5:]
 				if "&" in crm_id:
 					crm_id = crm_id.split("&")[0]
 				if "#" in crm_id:
@@ -5710,6 +5714,12 @@ def event_sync_batch(e):
 					row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": v["id"], "class": class_id})
 	# Process objects
 	for obj in (e.content("objects") or []):
+		# Never adopt/reassign an object that already belongs to another CRM -
+		# a hijacking owner's batch could otherwise write values, comments and
+		# activity onto our other CRMs' rows via a colliding id (mirrors
+		# insert_schema's foreign_object guard).
+		if foreign_object(obj["id"], crm_id):
+			continue
 		if not mochi.db.exists("select 1 from objects where id=?", obj["id"]):
 			row_merge("objects", ["id"], {"id": obj["id"], "crm": crm_id, "class": obj.get("class", ""), "parent": obj.get("parent", ""), "rank": obj.get("rank", 0), "created": obj.get("created", now), "updated": obj.get("updated", now)})
 		# Values
@@ -5719,6 +5729,9 @@ def event_sync_batch(e):
 				row_merge("values", ["object", "field"], {"object": obj["id"], "field": field, "value": value})
 		# Comments
 		for c in (obj.get("comments") or []):
+			# Skip a comment id already owned by another CRM's object.
+			if foreign_comment(c["id"], crm_id):
+				continue
 			if not mochi.db.exists("select 1 from comments where id=?", c["id"]):
 				row_merge("comments", ["id"], {"id": c["id"], "object": obj["id"], "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", now), "edited": c.get("edited", 0)})
 		# Activity history
@@ -5792,6 +5805,12 @@ def event_object_create(e):
 	if not crm_id:
 		return
 	object_id = e.content("id")
+	# A colliding global id that already belongs to another CRM is a hijack
+	# attempt by the sending owner - never let its payload (values, watcher,
+	# notification) touch our other CRMs' rows. Mirrors insert_schema's
+	# foreign_object guard.
+	if foreign_object(object_id, crm_id):
+		return
 	class_id = e.content("class") or ""
 	# Skip when the class isn't local yet — objects(crm,class) FK would
 	# otherwise abort the handler. Resync pulls the canonical schema so
@@ -6934,6 +6953,10 @@ def do_object_move(crm_id, crm, params, user_id):
 		return {"error": "errors.field_not_found", "code": 400}
 	value = params.get("value")
 	new_rank = params.get("rank")
+	# Reachable over P2P from any subscriber with write access: int() on a
+	# non-integer would abort the owner-side handler, so answer a clean 400.
+	if new_rank != None and not mochi.text.valid(str(new_rank), "integer"):
+		return {"error": "errors.invalid_value", "code": 400}
 	old_value_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field)
 	old_value = old_value_row["value"] if old_value_row else ""
 	target_value = value if value else old_value
@@ -7247,7 +7270,7 @@ def do_class_create(crm_id, crm, params):
 	max_rank = mochi.db.row("select max(rank) as m from classes where crm=?", crm_id)
 	rank = (max_rank["m"] or 0) + 1 if max_rank else 0
 	row_merge("classes", ["crm", "id"], {"crm": crm_id, "id": class_id, "name": name.strip(), "rank": rank, "title": "title"})
-	row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": class_id, "id": "title", "name": "Title", "fieldtype": "text", "flags": "required,sort", "rank": 0})
+	row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": class_id, "id": "title", "name": mochi.app.label("field.title"), "fieldtype": "text", "flags": "required,sort", "rank": 0})
 	row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": class_id, "parent": ""})
 	broadcast_event(crm_id, "class/create", {
 		"crm": crm_id, "id": class_id, "name": name.strip(), "rank": rank, "title": "title"
