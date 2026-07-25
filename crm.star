@@ -4965,7 +4965,7 @@ def action_recommendations(a):
 		existing_ids.add(row["id"])
 
 	# Connect to recommendations service
-	s = mochi.remote.stream("1JYmMpQU7fxvTrwHpNpiwKCgUg3odWqX7s9t1cLswSMAro5M2P", "recommendations", "list", {"type": "crm", "language": "en"})
+	s = mochi.remote.stream("1JYmMpQU7fxvTrwHpNpiwKCgUg3odWqX7s9t1cLswSMAro5M2P", "recommendations", "list", {"type": "crm", "language": user_language(a)})
 	if not s:
 		return {"data": {"crms": []}}
 
