@@ -3360,23 +3360,27 @@ def serve_attachment(a, variant):
 	if not crm_id:
 		return
 	attachment = a.input("id")
-	if crm["owner"] == 1:
-		# We own this CRM: require_crm enforced view access. Bind the attachment
-		# to an object or a comment (comment -> object -> crm) in this CRM.
-		att = mochi.attachment.get(attachment)
-		if not att:
-			a.error.label(404, "errors.attachment_not_found")
-			return
-		obj = att.get("object")
-		in_crm = mochi.db.exists("select 1 from objects where id=? and crm=?", obj, crm_id)
-		if not in_crm:
-			in_crm = mochi.db.exists("select 1 from comments c join objects o on o.id=c.object where c.id=? and o.crm=?", obj, crm_id)
-		if not in_crm:
-			a.error.label(404, "errors.attachment_not_found")
-			return
-	# Remote CRM (owner != 1): the owning server enforces access and the binding
-	# when a.write.attachment fetches over P2P; per-user databases isolate one
-	# subscriber from another.
+
+	# require_crm enforced view access on the ROUTE CRM. Bind the attachment to
+	# an object or a comment (comment -> object -> crm) in that same CRM, for
+	# CRMs we own AND for subscribed ones. Never defer to "the owning server
+	# enforces the binding when a.write.attachment fetches over P2P": that holds
+	# only until the bytes are cached locally, after which core serves them from
+	# disk and the owner is never consulted again - so without this an
+	# attachment belonging to a subscribed CRM whose access was later revoked
+	# stays reachable through a CRM the caller can still see.
+	att = mochi.attachment.get(attachment)
+	if not att:
+		a.error.label(404, "errors.attachment_not_found")
+		return
+	obj = att.get("object")
+	in_crm = mochi.db.exists("select 1 from objects where id=? and crm=?", obj, crm_id)
+	if not in_crm:
+		in_crm = mochi.db.exists("select 1 from comments c join objects o on o.id=c.object where c.id=? and o.crm=?", obj, crm_id)
+	if not in_crm:
+		a.error.label(404, "errors.attachment_not_found")
+		return
+
 	a.write.attachment(attachment, variant=variant)
 
 def action_attachment_list(a):
