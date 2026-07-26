@@ -2099,11 +2099,26 @@ def delete_object_cascade(crm_id, object_id, user=""):
 # broadcast, no notifications, no recursion (callers name each object).
 # Shared by the subscriber-path delete event and the resync deletion
 # reconciliation in insert_schema.
-def delete_object_local(crm_id, object_id):
-	mochi.attachment.clear(object_id)
+# Delete an object's attachments. `preserve` keeps rows whose bytes live here
+# (entity == ""): resync drift repair may drop references to files hosted
+# elsewhere, but must never destroy this replica's own uploads - the owner may
+# already have dropped its copy, leaving ours the only one. Explicit deletes
+# pass preserve=False and clear everything, as before.
+def prune_attachments(object_id, crm_id, preserve):
+	kept = 0
+	for att in (mochi.attachment.list(object_id, crm_id) or []):
+		if preserve and not att["entity"]:
+			kept += 1
+			continue
+		mochi.attachment.delete(att["id"])
+	if kept:
+		mochi.log.debug("prune_attachments: kept " + str(kept) + " locally-stored attachment(s) for " + str(object_id))
+
+def delete_object_local(crm_id, object_id, preserve=False):
+	prune_attachments(object_id, crm_id, preserve)
 	row_remove("watchers", ["object", "user"], "object=?", [object_id])
 	mochi.db.execute("delete from activity where object=?", object_id)
-	delete_object_comments(object_id, crm_id)
+	delete_object_comments(object_id, crm_id, preserve)
 	row_remove("values", ["object", "field"], "object=?", [object_id])
 	row_remove("links", ["source", "target", "linktype"], "source=? or target=?", [object_id, object_id])
 	row_remove("objects", ["id"], "id=? and crm=?", [object_id, crm_id])
@@ -3015,11 +3030,10 @@ def delete_comment_tree(comment_id, crm_id):
 		mochi.attachment.delete(att["id"])
 	row_remove("comments", ["id"], "id=?", [comment_id])
 # Delete all comments and their attachments for an object
-def delete_object_comments(object_id, crm_id):
+def delete_object_comments(object_id, crm_id, preserve=False):
 	comments = mochi.db.rows("select id from comments where object=?", object_id) or []
 	for c in comments:
-		for att in (mochi.attachment.list(c["id"], crm_id) or []):
-			mochi.attachment.delete(att["id"])
+		prune_attachments(c["id"], crm_id, preserve)
 	row_remove("comments", ["id"], "object=?", [object_id])
 # Delete all comment attachments for all objects in a crm
 def delete_crm_comment_attachments(crm_id):
@@ -5420,11 +5434,10 @@ def insert_schema(crm_id, schema):
 			comment_survivors[c.get("id", "")] = True
 	for row in (mochi.db.rows("select id from objects where crm=?", crm_id) or []):
 		if row["id"] not in object_survivors:
-			delete_object_local(crm_id, row["id"])
+			delete_object_local(crm_id, row["id"], True)
 	for row in (mochi.db.rows("select c.id from comments c join objects o on c.object=o.id where o.crm=?", crm_id) or []):
 		if row["id"] not in comment_survivors:
-			for att in (mochi.attachment.list(row["id"], crm_id) or []):
-				mochi.attachment.delete(att["id"])
+			prune_attachments(row["id"], crm_id, True)
 			row_remove("comments", ["id"], "id=?", [row["id"]])
 	for obj in (schema.get("objects") or []):
 		identifier = obj.get("id", "")
@@ -5440,7 +5453,9 @@ def insert_schema(crm_id, schema):
 		for att in (obj.get("attachments") or []):
 			remaining[att.get("id", "")] = True
 		for att in (mochi.attachment.list(identifier, crm_id) or []):
-			if att["id"] not in remaining:
+			# Only drop references to files hosted elsewhere; never this
+			# replica's own uploads (see prune_attachments).
+			if att["id"] not in remaining and att["entity"]:
 				mochi.attachment.delete(att["id"])
 		for c in (obj.get("comments") or []):
 			comment_id = c.get("id", "")
@@ -5450,7 +5465,7 @@ def insert_schema(crm_id, schema):
 			for att in (c.get("attachments") or []):
 				remaining[att.get("id", "")] = True
 			for att in (mochi.attachment.list(comment_id, crm_id) or []):
-				if att["id"] not in remaining:
+				if att["id"] not in remaining and att["entity"]:
 					mochi.attachment.delete(att["id"])
 	class_survivors = {}
 	for c in (schema.get("classes") or []):
