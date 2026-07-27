@@ -5,7 +5,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Trans } from '@lingui/react/macro'
+import { Plural, Trans } from '@lingui/react/macro'
 import { t } from '@lingui/core/macro'
 import {
   cn,
@@ -516,7 +516,7 @@ export function BoardColumn({
               <TooltipTrigger asChild>
                 <span className="font-medium text-sm">{name}</span>
               </TooltipTrigger>
-              <TooltipContent>{totalCount} {totalCount === 1 ? "item" : "items"}</TooltipContent>
+              <TooltipContent><Plural value={totalCount} one="# item" other="# items" /></TooltipContent>
             </Tooltip>
           </TooltipProvider>
         </div>

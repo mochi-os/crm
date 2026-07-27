@@ -1848,7 +1848,7 @@ def action_access_set(a):
 	level = a.input("level")
 
 	if not subject:
-		a.error.label(400, "errors.subject_is_required")
+		a.error.label(400, "errors.user_or_group_required")
 		return
 	if len(subject) > 255:
 		a.error.label(400, "errors.subject_too_long")
@@ -1908,7 +1908,7 @@ def action_access_revoke(a):
 	subject = a.input("subject")
 
 	if not subject:
-		a.error.label(400, "errors.subject_is_required")
+		a.error.label(400, "errors.user_or_group_required")
 		return
 	if len(subject) > 255:
 		a.error.label(400, "errors.subject_too_long")

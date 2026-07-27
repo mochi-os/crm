@@ -189,7 +189,7 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
     // Remote crms fetch attachment bytes over P2P in bounded server-side
     // rounds; warm until nothing remains so a large crm's export doesn't
     // time out. Each round covers up to a minute of fetching.
-    const warming = toast.loading(t`Loading…`);
+    const warming = toast.loading(t`Loading...`);
     try {
       for (let round = 0; round < 120; round++) {
         const warm = await crmsApi.warmExport(crm.crm.id);
