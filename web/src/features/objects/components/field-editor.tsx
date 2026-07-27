@@ -260,6 +260,7 @@ export function FieldEditor({
             value={value}
             onChange={onChange}
             disabled={disabled}
+            immediate={immediate}
             onErrorChange={(hasError) => onValidationError?.(hasError)}
           />
         );
@@ -330,45 +331,128 @@ interface DateEditorProps {
   value: string;
   onChange: (value: string) => void;
   disabled?: boolean;
+  immediate?: boolean;
   onErrorChange: (error: boolean) => void;
 }
 
-function DateEditor({ value, onChange, disabled, onErrorChange }: DateEditorProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
+// Settle time before a typed date is saved. Long enough to type the remaining
+// segments, short enough that a native picker selection (which never blurs)
+// still lands promptly.
+const DATE_COMMIT_DELAY = 600;
+
+function DateEditor({ value, onChange, disabled, immediate, onErrorChange }: DateEditorProps) {
+  const [localValue, setLocalValue] = useState(value);
   const [showError, setShowError] = useState(false);
+  const focusedRef = useRef(false);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const localValueRef = useRef(value);
+  // Read through refs so the debounced commit sees the current props, and so
+  // the resync effect below doesn't re-run on the parent's inline callbacks.
+  const valueRef = useRef(value);
+  valueRef.current = value;
+  const onChangeRef = useRef(onChange);
+  onChangeRef.current = onChange;
+  const onErrorChangeRef = useRef(onErrorChange);
+  onErrorChangeRef.current = onErrorChange;
+
+  // Follow the record when it changes underneath us — the detail panel swapping
+  // to another object, or someone else's edit arriving. An uncontrolled input
+  // could not do this: once the user has typed into a date input the browser
+  // sets its dirty-value flag and ignores every later defaultValue, so the
+  // previous object's date stayed on screen. Skip while focused so an update
+  // landing mid-edit doesn't yank the date out from under whoever is typing
+  // (same rule the text fields above use).
+  useEffect(() => {
+    if (focusedRef.current) return;
+    setLocalValue(value);
+    localValueRef.current = value;
+    setShowError(false);
+    onErrorChangeRef.current(false);
+  }, [value]);
+
+  useEffect(() => {
+    return () => {
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current);
+        if (localValueRef.current !== valueRef.current) {
+          onChangeRef.current(localValueRef.current);
+        }
+      }
+    };
+  }, []);
+
+  const commit = (next: string) => {
+    if (next !== valueRef.current) onChangeRef.current(next);
+  };
+
+  const clearPending = () => {
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+      debounceRef.current = null;
+    }
+  };
+
+  const handleFocus = () => {
+    focusedRef.current = true;
+    // Drop a stale message from the previous edit. Clearing the last segment of
+    // a date takes its value from "" to "", which fires no change event, so an
+    // error raised while it was half-cleared would otherwise sit there.
+    if (showError) {
+      setShowError(false);
+      onErrorChange(false);
+    }
+  };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    focusedRef.current = false;
+    clearPending();
     if (e.target.validity.badInput) {
       setShowError(true);
       onErrorChange(true);
-    } else {
-      setShowError(false);
-      onErrorChange(false);
-      if (e.target.value !== value) {
-        onChange(e.target.value);
-      }
+      return;
     }
+    setShowError(false);
+    onErrorChange(false);
+    commit(e.target.value);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const badInput = e.target.validity.badInput;
-    // Track bad input so parent can prevent close
+    const next = e.target.value;
+    setLocalValue(next);
+    localValueRef.current = next;
+    // Surface bad input to the parent (via onValidationError, if it listens)
     onErrorChange(badInput);
     // Clear visible error when user starts editing again
-    if (showError) setShowError(false);
-    // Save immediately when value changes and is valid (native date picker
-    // fires onChange but may not trigger blur)
-    if (!badInput && e.target.value !== value) {
-      onChange(e.target.value);
+    if (showError && !badInput) setShowError(false);
+    if (badInput) {
+      clearPending();
+      return;
     }
+    // The create dialog holds the value in local form state, so waiting there
+    // would lose a date picked right before Create is pressed.
+    if (immediate) {
+      commit(next);
+      return;
+    }
+    // Typing a date fires a change per segment, so an intermediate combination
+    // — the old month with the new day — is briefly a valid date and used to be
+    // saved as one. Wait for the entry to settle. Blur commits straight away;
+    // this timer only covers the native picker, which sets a value without ever
+    // firing blur.
+    clearPending();
+    debounceRef.current = setTimeout(() => {
+      debounceRef.current = null;
+      commit(localValueRef.current);
+    }, DATE_COMMIT_DELAY);
   };
 
   return (
     <div className="space-y-1">
       <Input
-        ref={inputRef}
         type="date"
-        defaultValue={value}
+        value={localValue}
+        onFocus={handleFocus}
         onBlur={handleBlur}
         onChange={handleChange}
         disabled={disabled}

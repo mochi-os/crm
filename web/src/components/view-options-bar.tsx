@@ -72,10 +72,22 @@ export function ViewOptionsBar({
   const builtInSortOptions = useBuiltInSortOptions();
   const hasSearchValue = filters.search.trim().length > 0;
 
-  // Build sort options: built-in + fields with 'sort' flag
-  const sortFieldOptions = (fields || [])
-    .filter((f) => f.flags?.split(",").includes("sort"))
-    .map((f) => ({ id: `field:${f.id}`, label: f.name }));
+  // Build sort options: built-in + fields with 'sort' flag.
+  // A view's designed default sort can name any field (the design editor lists
+  // them all), not just the flagged ones — so keep whatever is currently active
+  // in the list, or the dropdown renders blank next to a correctly sorted board.
+  const activeSortId = sort?.field || "rank";
+  const sortFieldOptions = useMemo(() => {
+    const options = (fields || [])
+      .filter((f) => f.flags?.split(",").includes("sort"))
+      .map((f) => ({ id: `field:${f.id}`, label: f.name }));
+    if (activeSortId.startsWith("field:") && !options.some((o) => o.id === activeSortId)) {
+      const fieldId = activeSortId.slice("field:".length);
+      const field = (fields || []).find((f) => f.id === fieldId);
+      options.push({ id: activeSortId, label: field?.name || fieldId });
+    }
+    return options;
+  }, [fields, activeSortId]);
 
   const updateSearch = (search: string) => {
     onFilterChange({ ...filters, search });
