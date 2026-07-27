@@ -345,6 +345,7 @@ function DateEditor({ value, onChange, disabled, immediate, onErrorChange }: Dat
   const [showError, setShowError] = useState(false);
   const focusedRef = useRef(false);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const localValueRef = useRef(value);
   // Read through refs so the debounced commit sees the current props, and so
   // the resync effect below doesn't re-run on the parent's inline callbacks.
@@ -370,17 +371,6 @@ function DateEditor({ value, onChange, disabled, immediate, onErrorChange }: Dat
     onErrorChangeRef.current(false);
   }, [value]);
 
-  useEffect(() => {
-    return () => {
-      if (debounceRef.current) {
-        clearTimeout(debounceRef.current);
-        if (localValueRef.current !== valueRef.current) {
-          onChangeRef.current(localValueRef.current);
-        }
-      }
-    };
-  }, []);
-
   const commit = (next: string) => {
     if (next !== valueRef.current) onChangeRef.current(next);
   };
@@ -391,6 +381,39 @@ function DateEditor({ value, onChange, disabled, immediate, onErrorChange }: Dat
       debounceRef.current = null;
     }
   };
+
+  useEffect(() => {
+    return () => {
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current);
+        // Flush the date the debounce was still holding, for the rare case of a
+        // typed (not picked) edit that unmounts before it settles.
+        if (localValueRef.current !== valueRef.current) {
+          onChangeRef.current(localValueRef.current);
+        }
+      }
+    };
+  }, []);
+
+  // A native "change" event — distinct from React's onChange below, which
+  // rides the "input" event and fires on every keystroke — only fires once a
+  // value is *committed*: picking a full date from the calendar popup, or
+  // clearing the field with its "x" button. Typing a segment never fires it.
+  // Commit on it straight away: it is never a partial value, so there is no
+  // debounce to race against, and no window for a same-keystroke Escape (which
+  // reverts an uncommitted native edit) to undo it before it lands.
+  useEffect(() => {
+    const el = inputRef.current;
+    if (!el) return;
+    const handleNativeChange = () => {
+      clearPending();
+      setLocalValue(el.value);
+      localValueRef.current = el.value;
+      commit(el.value);
+    };
+    el.addEventListener("change", handleNativeChange);
+    return () => el.removeEventListener("change", handleNativeChange);
+  }, []);
 
   const handleFocus = () => {
     focusedRef.current = true;
@@ -435,11 +458,11 @@ function DateEditor({ value, onChange, disabled, immediate, onErrorChange }: Dat
       commit(next);
       return;
     }
-    // Typing a date fires a change per segment, so an intermediate combination
+    // Typing a date fires "input" per segment, so an intermediate combination
     // — the old month with the new day — is briefly a valid date and used to be
-    // saved as one. Wait for the entry to settle. Blur commits straight away;
-    // this timer only covers the native picker, which sets a value without ever
-    // firing blur.
+    // saved as one. Wait for the entry to settle. Blur, and a full commit from
+    // the picker or keyboard (handled above and via the native "change"
+    // listener below), both still land immediately.
     clearPending();
     debounceRef.current = setTimeout(() => {
       debounceRef.current = null;
@@ -450,6 +473,7 @@ function DateEditor({ value, onChange, disabled, immediate, onErrorChange }: Dat
   return (
     <div className="space-y-1">
       <Input
+        ref={inputRef}
         type="date"
         value={localValue}
         onFocus={handleFocus}
