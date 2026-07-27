@@ -22,6 +22,14 @@ msgstr "Comproveu la connexió a Internet i torneu-ho a provar."
 msgid " or "
 msgstr " o "
 
+#: src/features/objects/components/comment-thread.tsx:169
+msgid "(edited)"
+msgstr "(editat)"
+
+#: src/features/objects/components/comment-thread.tsx:153
+msgid "(expand)"
+msgstr "(expandeix)"
+
 #: src/features/editor/components/edit-dialogs.tsx:798
 msgid "(itself)"
 msgstr "(ell mateix)"
@@ -29,6 +37,11 @@ msgstr "(ell mateix)"
 #: src/features/board/components/board-container.tsx:790
 msgid "[not set]"
 msgstr "[no definit]"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# seleccionat} other {# seleccionats}}"
 
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId/design.tsx:65
@@ -42,9 +55,34 @@ msgstr "{0} - Disseny"
 msgid "{0} settings"
 msgstr "Configuració de {0}"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "Nom de {entityLabel}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, one {{entityName} seleccionat} other {{manyName} seleccionats}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, one {# {entityName} seleccionat. La barra d'accions massives està disponible.} other {# {manyName} seleccionats. La barra d'accions massives està disponible.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, one {# seleccionats} other {# seleccionats}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, one {Accions massives per a # {entityName} seleccionat} other {Accions massives per a # {manyName} seleccionats}}"
+
 #: src/features/board/components/board-column.tsx:519
 msgid "{totalCount, plural, one {# item} other {# items}}"
-msgstr ""
+msgstr "{totalCount, plural, one {# element} other {# elements}}"
+
+#. placeholder {0}: countDeepChildren(object.id)
+#: src/features/board/components/board-card.tsx:353
+msgid "+{0} nested"
+msgstr "+{0} imbricats"
 
 #: src/features/objects/components/comment-thread.tsx:150
 msgid "+{totalDescendants} more replies"
@@ -315,9 +353,9 @@ msgstr "Torna al CRM"
 msgid "Back to CRMs"
 msgstr "Torna als CRM"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Torna a l’inici"
 
@@ -355,7 +393,7 @@ msgstr "Pot ser fill de"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:296
 #: src/features/editor/components/option-dialog.tsx:146
@@ -429,22 +467,23 @@ msgstr "Esborra"
 msgid "Clear all"
 msgstr "Esborra-ho tot"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 msgid "Clear filters"
 msgstr "Esborra els filtres"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "Esborra la selecció"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "Esborra la selecció (Escapada)"
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 #: src/features/objects/components/create-object-dialog.tsx:381
 #: src/features/objects/components/create-object-dialog.tsx:386
@@ -460,8 +499,8 @@ msgstr "Tanca"
 msgid "Close dialog"
 msgstr "Tanca el diàleg"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "Tanca la navegació"
 
@@ -677,6 +716,7 @@ msgid "Custom"
 msgstr "Personalitzat"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "Fosc"
@@ -858,8 +898,8 @@ msgstr "Fet"
 msgid "Double click on a column to add content"
 msgstr "Fes doble clic en una columna per afegir contingut"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/features/objects/components/object-attachments.tsx:192
 msgid "Download"
 msgstr "Descarrega"
@@ -1058,9 +1098,17 @@ msgstr "No s'ha pogut carregar el disseny del CRM"
 msgid "Failed to load CRMs"
 msgstr "No s'han pogut carregar els CRM"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "No s'ha pogut carregar la imatge"
+
 #: src/features/objects/components/object-detail-panel.tsx:291
 msgid "Failed to load item"
 msgstr "No s'ha pogut carregar l'element"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "No s'ha pogut carregar el vídeo"
 
 #: src/features/objects/components/comment-list.tsx:105
 msgid "Failed to post comment"
@@ -1186,29 +1234,29 @@ msgstr "Del tema"
 msgid "Full layout"
 msgstr "Disposició completa"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Torna enrere"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "Vés a la primera pàgina"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "Vés a l'última pàgina"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "Vés a la pàgina següent"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "Vés a la pàgina {pageNumber}"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "Vés a la pàgina anterior"
 
@@ -1239,6 +1287,8 @@ msgstr "Inici"
 msgid "Hot"
 msgstr "Popular"
 
+#: src/features/editor/components/edit-dialogs.tsx:744
+#: src/features/editor/components/edit-dialogs.tsx:1042
 #: src/routes/_authenticated/$crmId/index.tsx:885
 msgid "ID"
 msgstr "ID"
@@ -1246,6 +1296,11 @@ msgstr "ID"
 #: src/routes/_authenticated/$crmId_.settings.tsx:291
 msgid "Identity"
 msgstr "Identitat"
+
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "Visor d'imatges: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
@@ -1289,6 +1344,10 @@ msgstr "Fitxer JSON no vàlid"
 msgid "Invalid verification code"
 msgstr "Codi de verificació no vàlid"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Sembla que la pàgina que cerqueu <0/>no existeix o s'ha eliminat."
+
 #: src/features/objects/components/object-detail-panel.tsx:333
 msgid "Item details"
 msgstr "Detalls de l'element"
@@ -1317,6 +1376,7 @@ msgid "Left to Right"
 msgstr "D'esquerra a dreta"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Clar"
@@ -1381,8 +1441,8 @@ msgstr "S'està tancant la sessió…"
 msgid "Manual"
 msgstr "Manual"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Marca-ho tot com a llegit"
@@ -1443,8 +1503,8 @@ msgstr "Nou"
 msgid "New {0}"
 msgstr "Nou {0}"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "Imatge següent"
 
@@ -1506,7 +1566,7 @@ msgid "No profile"
 msgstr "Sense perfil"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "No s'ha trobat cap resultat."
 
@@ -1577,6 +1637,11 @@ msgstr "No s'ha trobat res"
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:261
 msgid "Notifications"
 msgstr "Notificacions"
+
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "Notificacions: {0}"
 
 #: src/features/editor/components/add-dialogs.tsx:138
 #: src/features/editor/components/edit-dialogs.tsx:499
@@ -1667,6 +1732,11 @@ msgstr "Altres"
 msgid "Owner"
 msgstr "Propietari"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Pàgina {currentPage} de {totalPages}"
+
 #: src/features/objects/components/create-object-dialog.tsx:404
 #: src/features/objects/components/object-detail-panel.tsx:442
 #: src/routes/_authenticated/$crmId/index.tsx:885
@@ -1699,6 +1769,10 @@ msgstr "Afegeix una o més classes al disseny del CRM."
 msgid "Please check your internet connection and try again."
 msgstr "Comproveu la connexió a Internet i torneu-ho a provar."
 
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "Inicieu la sessió amb les credencials adequades <0/> per accedir a aquest recurs."
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
 msgstr "Torna-ho a provar."
@@ -1707,8 +1781,8 @@ msgstr "Torna-ho a provar."
 msgid "Please wait a moment and try again."
 msgstr "Espereu un moment i torneu-ho a provar."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "Imatge anterior"
 
@@ -1789,6 +1863,11 @@ msgstr "Elimina"
 #: ../../../lib/web/src/features/access/access-list.tsx:253
 msgid "Remove access rule"
 msgstr "Elimina la regla d'accés"
+
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Voleu eliminar la regla d'accés per a «{0}»?"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
@@ -1882,7 +1961,7 @@ msgstr "Files"
 msgid "Rows group by"
 msgstr "Agrupa les files per"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "Files per pàgina"
 
@@ -2011,7 +2090,16 @@ msgstr "Selecciona la preferència de tema"
 msgid "Select..."
 msgstr "Selecciona..."
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "seleccionats"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "Seleccionat: <0>{0}</0>"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "Torna a enviar"
 
@@ -2175,6 +2263,7 @@ msgid "Switch to view 1-9"
 msgstr "Canvia a la vista 1-9"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 msgid "System"
@@ -2210,6 +2299,10 @@ msgstr "Aquest codi és incorrecte o ha caducat."
 msgid "The requested content could not be found."
 msgstr "No s'ha pogut trobar el contingut sol·licitat."
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "El lloc no està disponible en aquest moment."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:194
 msgid "Theme"
 msgstr "Tema"
@@ -2225,6 +2318,10 @@ msgstr "No s'ha pogut carregar aquest CRM ara mateix."
 #: src/routes/_authenticated/$crmId_.settings.tsx:207
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "És possible que aquest CRM s'hagi eliminat o que no hi tinguis accés."
+
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "Aquesta pàgina encara no s'ha creat."
 
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:353
@@ -2252,6 +2349,10 @@ msgstr "Títol"
 #: src/features/editor/components/edit-dialogs.tsx:753
 msgid "Title field"
 msgstr "Camp de títol"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "A"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -2427,7 +2528,7 @@ msgstr "Utilitzeu la vostra clau d'accés"
 msgid "User"
 msgstr "Usuari"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "Codi de verificació"
 
@@ -2441,7 +2542,7 @@ msgstr "La verificació ha fallat"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Verifica"
 
@@ -2453,6 +2554,11 @@ msgstr "Verifica l'adreça de correu electrònic"
 msgid "Video thumbnail"
 msgstr "Miniatura del vídeo"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "Visor de vídeos: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "Visualitza"
@@ -2461,8 +2567,8 @@ msgstr "Visualitza"
 msgid "View all"
 msgstr "Mostra-ho tot"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "Mostra totes les notificacions"
 
@@ -2499,6 +2605,11 @@ msgstr "Seguit"
 msgid "Watched only"
 msgstr "Només els seguits"
 
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Hem enviat un codi de verificació a <0>{0}</0>. Introduïu el codi a continuació per verificar la vostra adreça electrònica."
+
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:16
 msgid "We'll be back online shortly."
 msgstr "Tornarem a estar en línia aviat."
@@ -2518,6 +2629,10 @@ msgstr "No teniu accés a aquesta secció."
 #: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
 msgstr "No tens accés a aquest CRM."
+
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "No teniu el permís necessari <0/>per veure aquest recurs."
 
 #: src/features/crms/pages/crms-list-page.tsx:98
 msgid "You have no CRMs yet."

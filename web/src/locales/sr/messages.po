@@ -22,6 +22,14 @@ msgstr "Проверите интернет везу и покушајте по�
 msgid " or "
 msgstr " или "
 
+#: src/features/objects/components/comment-thread.tsx:169
+msgid "(edited)"
+msgstr "(измењено)"
+
+#: src/features/objects/components/comment-thread.tsx:153
+msgid "(expand)"
+msgstr "(прошири)"
+
 #: src/features/editor/components/edit-dialogs.tsx:798
 msgid "(itself)"
 msgstr "(сам)"
@@ -29,6 +37,11 @@ msgstr "(сам)"
 #: src/features/board/components/board-container.tsx:790
 msgid "[not set]"
 msgstr "[није постављено]"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# изабрано} few {# изабрана} other {# изабраних}}"
 
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId/design.tsx:65
@@ -42,9 +55,34 @@ msgstr "{0} - Дизајн"
 msgid "{0} settings"
 msgstr "{0} поставке"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "Назив {entityLabel}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, one {{entityName} изабран} few {{manyName} изабрана} other {{manyName} изабраних}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, one {# {entityName} изабран. Трака групних радњи је доступна.} few {# {manyName} изабрана. Трака групних радњи је доступна.} other {# {manyName} изабраних. Трака групних радњи је доступна.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, one {# изабрано} few {# изабрано} other {# изабрано}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, one {Групне радње за # изабрани {entityName}} few {Групне радње за # изабрана {manyName}} other {Групне радње за # изабраних {manyName}}}"
+
 #: src/features/board/components/board-column.tsx:519
 msgid "{totalCount, plural, one {# item} other {# items}}"
-msgstr ""
+msgstr "{totalCount, plural, one {# ставка} few {# ставке} other {# ставки}}"
+
+#. placeholder {0}: countDeepChildren(object.id)
+#: src/features/board/components/board-card.tsx:353
+msgid "+{0} nested"
+msgstr "+{0} угнежђених"
 
 #: src/features/objects/components/comment-thread.tsx:150
 msgid "+{totalDescendants} more replies"
@@ -315,9 +353,9 @@ msgstr "Назад на CRM"
 msgid "Back to CRMs"
 msgstr "Назад на CRM-ове"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Назад на почетну"
 
@@ -355,7 +393,7 @@ msgstr "Може бити подређен"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:296
 #: src/features/editor/components/option-dialog.tsx:146
@@ -429,22 +467,23 @@ msgstr "Очисти"
 msgid "Clear all"
 msgstr "Очисти све"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 msgid "Clear filters"
 msgstr "Очисти филтере"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "Очисти избор"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "Очисти избор (Escape)"
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 #: src/features/objects/components/create-object-dialog.tsx:381
 #: src/features/objects/components/create-object-dialog.tsx:386
@@ -460,8 +499,8 @@ msgstr "Затвори"
 msgid "Close dialog"
 msgstr "Затвори дијалог"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "Затвори навигацију"
 
@@ -677,6 +716,7 @@ msgid "Custom"
 msgstr "Прилагођено"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "Тамно"
@@ -858,8 +898,8 @@ msgstr "Готово"
 msgid "Double click on a column to add content"
 msgstr "Двапут кликните на колону да додате садржај"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/features/objects/components/object-attachments.tsx:192
 msgid "Download"
 msgstr "Преузми"
@@ -1058,9 +1098,17 @@ msgstr "Учитавање CRM дизајна није успело"
 msgid "Failed to load CRMs"
 msgstr "Учитавање CRM-ова није успело"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "Слика није могла да се учита"
+
 #: src/features/objects/components/object-detail-panel.tsx:291
 msgid "Failed to load item"
 msgstr "Учитавање ставке није успело"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "Видео није могао да се учита"
 
 #: src/features/objects/components/comment-list.tsx:105
 msgid "Failed to post comment"
@@ -1186,29 +1234,29 @@ msgstr "Из теме"
 msgid "Full layout"
 msgstr "Пуни распоред"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Назад"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "Иди на прву страницу"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "Иди на последњу страницу"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "Иди на следећу страницу"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "Иди на страницу {pageNumber}"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "Иди на претходну страницу"
 
@@ -1239,6 +1287,8 @@ msgstr "Почетна"
 msgid "Hot"
 msgstr "Популарно"
 
+#: src/features/editor/components/edit-dialogs.tsx:744
+#: src/features/editor/components/edit-dialogs.tsx:1042
 #: src/routes/_authenticated/$crmId/index.tsx:885
 msgid "ID"
 msgstr "ID"
@@ -1246,6 +1296,11 @@ msgstr "ID"
 #: src/routes/_authenticated/$crmId_.settings.tsx:291
 msgid "Identity"
 msgstr "Идентитет"
+
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "Прегледач слика: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
@@ -1289,6 +1344,10 @@ msgstr "Неважећа JSON датотека"
 msgid "Invalid verification code"
 msgstr "Неважећи код за верификацију"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Изгледа да страница коју тражите <0/>не постоји или је уклоњена."
+
 #: src/features/objects/components/object-detail-panel.tsx:333
 msgid "Item details"
 msgstr "Детаљи ставке"
@@ -1317,6 +1376,7 @@ msgid "Left to Right"
 msgstr "Слева надесно"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Светло"
@@ -1381,8 +1441,8 @@ msgstr "Одјављивање…"
 msgid "Manual"
 msgstr "Ручно"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Означи све као прочитано"
@@ -1443,8 +1503,8 @@ msgstr "Ново"
 msgid "New {0}"
 msgstr "Ново {0}"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "Следећа слика"
 
@@ -1506,7 +1566,7 @@ msgid "No profile"
 msgstr "Нема профила"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "Нема пронађених резултата."
 
@@ -1577,6 +1637,11 @@ msgstr "Ништа није пронађено"
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:261
 msgid "Notifications"
 msgstr "Обавештења"
+
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "Обавештења: {0}"
 
 #: src/features/editor/components/add-dialogs.tsx:138
 #: src/features/editor/components/edit-dialogs.tsx:499
@@ -1667,6 +1732,11 @@ msgstr "Друго"
 msgid "Owner"
 msgstr "Власник"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Страница {currentPage} од {totalPages}"
+
 #: src/features/objects/components/create-object-dialog.tsx:404
 #: src/features/objects/components/object-detail-panel.tsx:442
 #: src/routes/_authenticated/$crmId/index.tsx:885
@@ -1699,6 +1769,10 @@ msgstr "Молимо додајте једну или више класа у CRM
 msgid "Please check your internet connection and try again."
 msgstr "Проверите интернет везу и покушајте поново."
 
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "Пријавите се са одговарајућим акредитивима <0/> да бисте приступили овом ресурсу."
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
 msgstr "Покушајте поново."
@@ -1707,8 +1781,8 @@ msgstr "Покушајте поново."
 msgid "Please wait a moment and try again."
 msgstr "Сачекајте тренутак и покушајте поново."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "Претходна слика"
 
@@ -1789,6 +1863,11 @@ msgstr "Уклони"
 #: ../../../lib/web/src/features/access/access-list.tsx:253
 msgid "Remove access rule"
 msgstr "Уклони правило приступа"
+
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Уклонити правило приступа за „{0}“?"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
@@ -1882,7 +1961,7 @@ msgstr "Редови"
 msgid "Rows group by"
 msgstr "Групиши редове по"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "Редова по страници"
 
@@ -2011,7 +2090,16 @@ msgstr "Изабери поставке теме"
 msgid "Select..."
 msgstr "Изабери..."
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "изабрано"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "Изабрано: <0>{0}</0>"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "Пошаљи поново"
 
@@ -2175,6 +2263,7 @@ msgid "Switch to view 1-9"
 msgstr "Пребаци на приказ 1-9"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 msgid "System"
@@ -2210,6 +2299,10 @@ msgstr "Тај код је нетачан или је истекао."
 msgid "The requested content could not be found."
 msgstr "Тражени садржај није пронађен."
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "Сајт тренутно није доступан."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:194
 msgid "Theme"
 msgstr "Тема"
@@ -2225,6 +2318,10 @@ msgstr "Овај CRM тренутно не може бити учитан."
 #: src/routes/_authenticated/$crmId_.settings.tsx:207
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Овај CRM је можда обрисан или немаш приступ."
+
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "Ова страница још није направљена."
 
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:353
@@ -2252,6 +2349,10 @@ msgstr "Наслов"
 #: src/features/editor/components/edit-dialogs.tsx:753
 msgid "Title field"
 msgstr "Поље наслова"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "До"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -2427,7 +2528,7 @@ msgstr "Користите свој приступни кључ"
 msgid "User"
 msgstr "Корисник"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "Верификациони код"
 
@@ -2441,7 +2542,7 @@ msgstr "Верификација није успела"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Верификуј"
 
@@ -2453,6 +2554,11 @@ msgstr "Верификуј адресу е-поште"
 msgid "Video thumbnail"
 msgstr "Сличица видеа"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "Прегледач видеа: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "Прикажи"
@@ -2461,8 +2567,8 @@ msgstr "Прикажи"
 msgid "View all"
 msgstr "Прикажи све"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "Прикажи сва обавештења"
 
@@ -2499,6 +2605,11 @@ msgstr "Праћено"
 msgid "Watched only"
 msgstr "Само праћено"
 
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Послали смо кôд за потврду на <0>{0}</0>. Унесите кôд испод да бисте потврдили своју адресу е-поште."
+
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:16
 msgid "We'll be back online shortly."
 msgstr "Бићемо поново на мрежи ускоро."
@@ -2518,6 +2629,10 @@ msgstr "Немате приступ овом одељку."
 #: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
 msgstr "Немате приступ овом CRM-у."
+
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "Немате потребну дозволу <0/>за приказ овог ресурса."
 
 #: src/features/crms/pages/crms-list-page.tsx:98
 msgid "You have no CRMs yet."

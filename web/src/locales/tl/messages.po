@@ -22,6 +22,14 @@ msgstr "Pakitingnan ang iyong koneksyon sa internet at subukang muli."
 msgid " or "
 msgstr " o "
 
+#: src/features/objects/components/comment-thread.tsx:169
+msgid "(edited)"
+msgstr "(in-edit)"
+
+#: src/features/objects/components/comment-thread.tsx:153
+msgid "(expand)"
+msgstr "(palawakin)"
+
 #: src/features/editor/components/edit-dialogs.tsx:798
 msgid "(itself)"
 msgstr "(mismo)"
@@ -29,6 +37,11 @@ msgstr "(mismo)"
 #: src/features/board/components/board-container.tsx:790
 msgid "[not set]"
 msgstr "[hindi naitakda]"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# napili} other {# napili}}"
 
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId/design.tsx:65
@@ -42,9 +55,34 @@ msgstr "{0} - Disenyo"
 msgid "{0} settings"
 msgstr "Mga setting ng {0}"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "Pangalan ng {entityLabel}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, one {{entityName} ang napili} other {{manyName} ang napili}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, one {# {entityName} ang napili. Available ang bulk actions toolbar.} other {# {manyName} ang napili. Available ang bulk actions toolbar.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, one {# napili} other {# napili}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, one {Mga bulk action para sa # napiling {entityName}} other {Mga bulk action para sa # napiling {manyName}}}"
+
 #: src/features/board/components/board-column.tsx:519
 msgid "{totalCount, plural, one {# item} other {# items}}"
-msgstr ""
+msgstr "{totalCount, plural, one {# item} other {# na item}}"
+
+#. placeholder {0}: countDeepChildren(object.id)
+#: src/features/board/components/board-card.tsx:353
+msgid "+{0} nested"
+msgstr "+{0} naka-nest"
 
 #: src/features/objects/components/comment-thread.tsx:150
 msgid "+{totalDescendants} more replies"
@@ -315,9 +353,9 @@ msgstr "Bumalik sa CRM"
 msgid "Back to CRMs"
 msgstr "Bumalik sa mga CRM"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Bumalik sa home"
 
@@ -355,7 +393,7 @@ msgstr "Maaaring maging child ng"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:296
 #: src/features/editor/components/option-dialog.tsx:146
@@ -429,22 +467,23 @@ msgstr "Burahin"
 msgid "Clear all"
 msgstr "Burahin lahat"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 msgid "Clear filters"
 msgstr "Burahin ang mga filter"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "Burahin ang piniling"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "Burahin ang piniling (Escape)"
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 #: src/features/objects/components/create-object-dialog.tsx:381
 #: src/features/objects/components/create-object-dialog.tsx:386
@@ -460,8 +499,8 @@ msgstr "Isara"
 msgid "Close dialog"
 msgstr "Isara ang dialog"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "Isara ang navigation"
 
@@ -677,6 +716,7 @@ msgid "Custom"
 msgstr "Pasadya"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "Madilim"
@@ -858,8 +898,8 @@ msgstr "Tapos na"
 msgid "Double click on a column to add content"
 msgstr "I-double click ang isang column para magdagdag ng content"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/features/objects/components/object-attachments.tsx:192
 msgid "Download"
 msgstr "I-download"
@@ -1058,9 +1098,17 @@ msgstr "Nabigong i-load ang CRM design"
 msgid "Failed to load CRMs"
 msgstr "Nabigong i-load ang mga CRM"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "Nabigong i-load ang larawan"
+
 #: src/features/objects/components/object-detail-panel.tsx:291
 msgid "Failed to load item"
 msgstr "Nabigong i-load ang item"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "Nabigong i-load ang video"
 
 #: src/features/objects/components/comment-list.tsx:105
 msgid "Failed to post comment"
@@ -1186,29 +1234,29 @@ msgstr "Mula sa tema"
 msgid "Full layout"
 msgstr "Full layout"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Bumalik"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "Pumunta sa unang page"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "Pumunta sa huling page"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "Pumunta sa next page"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "Pumunta sa pahina {pageNumber}"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "Pumunta sa previous page"
 
@@ -1239,6 +1287,8 @@ msgstr "Home"
 msgid "Hot"
 msgstr "Hot"
 
+#: src/features/editor/components/edit-dialogs.tsx:744
+#: src/features/editor/components/edit-dialogs.tsx:1042
 #: src/routes/_authenticated/$crmId/index.tsx:885
 msgid "ID"
 msgstr "ID"
@@ -1246,6 +1296,11 @@ msgstr "ID"
 #: src/routes/_authenticated/$crmId_.settings.tsx:291
 msgid "Identity"
 msgstr "Identity"
+
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "Image viewer: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
@@ -1289,6 +1344,10 @@ msgstr "Invalid na JSON file"
 msgid "Invalid verification code"
 msgstr "Invalid na verification code"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Mukhang ang pahinang hinahanap mo <0/>ay wala o maaaring inalis na."
+
 #: src/features/objects/components/object-detail-panel.tsx:333
 msgid "Item details"
 msgstr "Detalye ng item"
@@ -1317,6 +1376,7 @@ msgid "Left to Right"
 msgstr "Kaliwa pakanan"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Light"
@@ -1381,8 +1441,8 @@ msgstr "Nagla-log out…"
 msgid "Manual"
 msgstr "Manwal"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Markahan lahat bilang nabasa"
@@ -1443,8 +1503,8 @@ msgstr "Bago"
 msgid "New {0}"
 msgstr "Bagong {0}"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "Susunod na imahe"
 
@@ -1506,7 +1566,7 @@ msgid "No profile"
 msgstr "Walang profile"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "Walang nakitang resulta."
 
@@ -1577,6 +1637,11 @@ msgstr "Walang nakita"
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:261
 msgid "Notifications"
 msgstr "Mga Notification"
+
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "Mga notification: {0}"
 
 #: src/features/editor/components/add-dialogs.tsx:138
 #: src/features/editor/components/edit-dialogs.tsx:499
@@ -1667,6 +1732,11 @@ msgstr "Iba pa"
 msgid "Owner"
 msgstr "May-ari"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Pahina {currentPage} ng {totalPages}"
+
 #: src/features/objects/components/create-object-dialog.tsx:404
 #: src/features/objects/components/object-detail-panel.tsx:442
 #: src/routes/_authenticated/$crmId/index.tsx:885
@@ -1699,6 +1769,10 @@ msgstr "Mangyaring magdagdag ng isa o higit pang class sa CRM design."
 msgid "Please check your internet connection and try again."
 msgstr "Pakitingnan ang iyong koneksyon sa internet at subukang muli."
 
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "Mag-log in gamit ang naaangkop na mga kredensyal <0/> upang ma-access ang mapagkukunang ito."
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
 msgstr "Pakisubukan muli."
@@ -1707,8 +1781,8 @@ msgstr "Pakisubukan muli."
 msgid "Please wait a moment and try again."
 msgstr "Mangyaring maghintay sandali at subukang muli."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "Nakaraang imahe"
 
@@ -1789,6 +1863,11 @@ msgstr "Alisin"
 #: ../../../lib/web/src/features/access/access-list.tsx:253
 msgid "Remove access rule"
 msgstr "Alisin ang access rule"
+
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Alisin ang panuntunan sa access para sa \"{0}\"?"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
@@ -1882,7 +1961,7 @@ msgstr "Mga row"
 msgid "Rows group by"
 msgstr "Igrupo ang mga row ayon sa"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "Mga row bawat page"
 
@@ -2011,7 +2090,16 @@ msgstr "Pumili ng theme preference"
 msgid "Select..."
 msgstr "Pumili..."
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "napili"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "Napili: <0>{0}</0>"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "Ipadala muli"
 
@@ -2175,6 +2263,7 @@ msgid "Switch to view 1-9"
 msgstr "Lumipat sa view 1-9"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 msgid "System"
@@ -2210,6 +2299,10 @@ msgstr "Mali ang code na iyon o nag-expire na."
 msgid "The requested content could not be found."
 msgstr "Hindi mahanap ang hiniling na content."
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "Hindi available ang site sa ngayon."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:194
 msgid "Theme"
 msgstr "Theme"
@@ -2225,6 +2318,10 @@ msgstr "Hindi ma-load ang CRM na ito sa ngayon."
 #: src/routes/_authenticated/$crmId_.settings.tsx:207
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Maaaring natanggal ang CRM na ito o wala kang access dito."
+
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "Hindi pa nagagawa ang pahinang ito."
 
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:353
@@ -2252,6 +2349,10 @@ msgstr "Pamagat"
 #: src/features/editor/components/edit-dialogs.tsx:753
 msgid "Title field"
 msgstr "Field ng pamagat"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "Papunta"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -2427,7 +2528,7 @@ msgstr "Gamitin ang iyong passkey"
 msgid "User"
 msgstr "User"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "Verification code"
 
@@ -2441,7 +2542,7 @@ msgstr "Nabigo ang beripikasyon"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Beripikahin"
 
@@ -2453,6 +2554,11 @@ msgstr "Beripikahin ang email address"
 msgid "Video thumbnail"
 msgstr "Thumbnail ng video"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "Video viewer: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "Tingnan"
@@ -2461,8 +2567,8 @@ msgstr "Tingnan"
 msgid "View all"
 msgstr "Tingnan lahat"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "Tingnan lahat ng notification"
 
@@ -2499,6 +2605,11 @@ msgstr "Binabantayan"
 msgid "Watched only"
 msgstr "Binabantayan lamang"
 
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Nagpadala kami ng verification code sa <0>{0}</0>. Ilagay ang code sa ibaba upang i-verify ang iyong email address."
+
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:16
 msgid "We'll be back online shortly."
 msgstr "Babalik kami online sa lalong madaling panahon."
@@ -2518,6 +2629,10 @@ msgstr "Wala kang access sa seksyong ito."
 #: src/routes/_authenticated/$crmId/index.tsx:109
 msgid "You don't have access to this CRM."
 msgstr "Wala kang access sa CRM na ito."
+
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "Wala kang kinakailangang pahintulot <0/>upang tingnan ang mapagkukunang ito."
 
 #: src/features/crms/pages/crms-list-page.tsx:98
 msgid "You have no CRMs yet."

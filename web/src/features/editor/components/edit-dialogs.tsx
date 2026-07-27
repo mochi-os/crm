@@ -741,7 +741,7 @@ export function ClassSheet({
 
           {mode === "edit" && cls && (
             <div className="space-y-2">
-              <Label htmlFor="class-id">ID</Label>
+              <Label htmlFor="class-id"><Trans>ID</Trans></Label>
               <div className="ps-4">
                 <Input id="class-id" value={cls.id} readOnly className="text-muted-foreground" />
               </div>
@@ -1039,7 +1039,7 @@ export function EditFieldDialog({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="field-id">ID</Label>
+            <Label htmlFor="field-id"><Trans>ID</Trans></Label>
             <Input
               id="field-id"
               value={fieldId}

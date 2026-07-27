@@ -22,6 +22,14 @@ msgstr ""
 msgid " or "
 msgstr " eller "
 
+#: src/features/objects/components/comment-thread.tsx:169
+msgid "(edited)"
+msgstr "(redigert)"
+
+#: src/features/objects/components/comment-thread.tsx:153
+msgid "(expand)"
+msgstr "(utvid)"
+
 #: src/features/editor/components/edit-dialogs.tsx:798
 msgid "(itself)"
 msgstr "(seg sjølv)"
@@ -29,6 +37,11 @@ msgstr "(seg sjølv)"
 #: src/features/board/components/board-container.tsx:790
 msgid "[not set]"
 msgstr "[ikkje sett]"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# vald} other {# valde}}"
 
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId/design.tsx:65
@@ -42,9 +55,34 @@ msgstr "{0} - Utforming"
 msgid "{0} settings"
 msgstr "{0}-innstillingar"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "{entityLabel}-namn"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, one {{entityName} vald} other {{manyName} valde}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, one {# {entityName} vald. Verktøylinja for massehandlingar er tilgjengeleg.} other {# {manyName} valde. Verktøylinja for massehandlingar er tilgjengeleg.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, one {# valde} other {# valde}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, one {Massehandlingar for # vald {entityName}} other {Massehandlingar for # valde {manyName}}}"
+
 #: src/features/board/components/board-column.tsx:519
 msgid "{totalCount, plural, one {# item} other {# items}}"
-msgstr ""
+msgstr "{totalCount, plural, one {# element} other {# element}}"
+
+#. placeholder {0}: countDeepChildren(object.id)
+#: src/features/board/components/board-card.tsx:353
+msgid "+{0} nested"
+msgstr "+{0} nesta"
 
 #: src/features/objects/components/comment-thread.tsx:150
 msgid "+{totalDescendants} more replies"
@@ -72,7 +110,7 @@ msgstr "Tilgang"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:60
 msgid "Access denied"
-msgstr ""
+msgstr "Tilgang nekta"
 
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
@@ -292,7 +330,7 @@ msgstr "Legg ved svarfiler"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:315
 msgid "Authenticator code"
-msgstr ""
+msgstr "Autentiseringskode"
 
 #: src/components/keyboard-shortcuts-help.tsx:50
 msgid "Available keyboard shortcuts"
@@ -315,9 +353,9 @@ msgstr "Tilbake til CRM"
 msgid "Back to CRMs"
 msgstr "Tilbake til CRM-ar"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr ""
 
@@ -355,7 +393,7 @@ msgstr "Kan vere underordna"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:296
 #: src/features/editor/components/option-dialog.tsx:146
@@ -429,22 +467,23 @@ msgstr "Tøm"
 msgid "Clear all"
 msgstr "Tøm alle"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 msgid "Clear filters"
 msgstr "Tøm filter"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "Tøm utval"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "Tøm utval (Escape)"
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 #: src/features/objects/components/create-object-dialog.tsx:381
 #: src/features/objects/components/create-object-dialog.tsx:386
@@ -460,8 +499,8 @@ msgstr "Lat att"
 msgid "Close dialog"
 msgstr "Lat att dialogen"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "Lat att navigeringa"
 
@@ -504,7 +543,7 @@ msgstr "Kolonnar grupperer etter"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:96
 msgid "Comfortable"
-msgstr ""
+msgstr "Romsleg"
 
 #: ../../../lib/web/src/components/coming-soon.tsx:12
 msgid "Coming Soon!"
@@ -568,7 +607,7 @@ msgstr "Kopier"
 
 #: ../../../lib/web/src/features/document/document-page.tsx:84
 msgid "Could not load this document. Please try again later."
-msgstr ""
+msgstr "Kunne ikkje lasta dette dokumentet. Prøv igjen seinare."
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:184
 msgid "Couldn't send the code. Please try again."
@@ -674,9 +713,10 @@ msgstr "CRM-ar"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:260
 msgid "Custom"
-msgstr ""
+msgstr "Tilpassa"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "Mørk"
@@ -781,7 +821,7 @@ msgstr "Slett visning"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:99
 msgid "Delete your account on the old server"
-msgstr ""
+msgstr "Slett kontoen din på den gamle tenaren"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:129
 msgid "Deleting CRM..."
@@ -836,7 +876,7 @@ msgstr "Retning"
 #: ../../../lib/web/src/components/restore-banner.tsx:79
 #: ../../../lib/web/src/components/restore-banner.tsx:85
 msgid "Dismiss"
-msgstr ""
+msgstr "Avvis"
 
 #: src/routes/_authenticated/$crmId/index.tsx:1111
 #: src/routes/_authenticated/$crmId/index.tsx:1116
@@ -858,8 +898,8 @@ msgstr "Ferdig"
 msgid "Double click on a column to add content"
 msgstr "Dobbeltklikk på ei kolonne for å leggja til innhald"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/features/objects/components/object-attachments.tsx:192
 msgid "Download"
 msgstr "Last ned"
@@ -876,7 +916,7 @@ msgstr ""
 #: src/routes/_authenticated/$crmId/index.tsx:207
 #: src/routes/_authenticated/$crmId/index.tsx:909
 msgid "Downloaded {filename}"
-msgstr ""
+msgstr "Lasta ned {filename}"
 
 #: src/routes/_authenticated/$crmId/index.tsx:1078
 msgid "Drag columns to re-order them"
@@ -888,7 +928,7 @@ msgstr "Duplikat"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:146
 msgid "Dyslexia-friendly"
-msgstr ""
+msgstr "Dyslektikarvenleg"
 
 #: src/features/objects/components/comment-thread.tsx:247
 #: src/features/objects/components/comment-thread.tsx:292
@@ -931,7 +971,7 @@ msgstr "Rediger vising"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:289
 msgid "Email code"
-msgstr ""
+msgstr "E-postkode"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:299
 msgid "Enter the code from your email"
@@ -974,7 +1014,7 @@ msgstr "Eksporter design"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
-msgstr ""
+msgstr "Ekstra stor"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:225
 msgid "Failed to add account"
@@ -1058,9 +1098,17 @@ msgstr "Klarte ikkje lasta CRM-design"
 msgid "Failed to load CRMs"
 msgstr "Klarte ikkje lasta CRM-ar"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "Kunne ikkje lasta biletet"
+
 #: src/features/objects/components/object-detail-panel.tsx:291
 msgid "Failed to load item"
 msgstr "Klarte ikkje lasta element"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "Kunne ikkje lasta videoen"
 
 #: src/features/objects/components/comment-list.tsx:105
 msgid "Failed to post comment"
@@ -1151,7 +1199,7 @@ msgstr "Fingeravtrykk"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:88
 msgid "Finish moving your account"
-msgstr ""
+msgstr "Fullfør flyttinga av kontoen din"
 
 #: src/features/editor/components/edit-dialogs.tsx:1111
 msgid "Flags"
@@ -1180,35 +1228,35 @@ msgstr "Frå"
 #: ../../../lib/web/src/lib/preference-utils.ts:132
 #: ../../../lib/web/src/lib/preference-utils.ts:143
 msgid "From theme"
-msgstr ""
+msgstr "Frå tema"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:320
 msgid "Full layout"
 msgstr "Full layout"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr ""
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "Gå til første side"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "Gå til siste side"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "Gå til neste side"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr ""
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "Gå til førre side"
 
@@ -1239,6 +1287,8 @@ msgstr "Heim"
 msgid "Hot"
 msgstr "Het"
 
+#: src/features/editor/components/edit-dialogs.tsx:744
+#: src/features/editor/components/edit-dialogs.tsx:1042
 #: src/routes/_authenticated/$crmId/index.tsx:885
 msgid "ID"
 msgstr "ID"
@@ -1246,6 +1296,11 @@ msgstr "ID"
 #: src/routes/_authenticated/$crmId_.settings.tsx:291
 msgid "Identity"
 msgstr "Identitet"
+
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "Biletvisar: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
@@ -1289,6 +1344,10 @@ msgstr "Ugyldig JSON-fil"
 msgid "Invalid verification code"
 msgstr "Ugyldig stadfestingskode"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Det ser ut til at sida du leitar etter <0/>ikkje finst eller er fjerna."
+
 #: src/features/objects/components/object-detail-panel.tsx:333
 msgid "Item details"
 msgstr "Detaljar om element"
@@ -1300,7 +1359,7 @@ msgstr "Snøggtastar"
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
 msgid "Large"
-msgstr ""
+msgstr "Stor"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:286
 #: src/features/editor/components/edit-dialogs.tsx:322
@@ -1317,13 +1376,14 @@ msgid "Left to Right"
 msgstr "Venstre til høgre"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Lyst"
 
 #: src/routes/_authenticated/$crmId/index.tsx:1026
 msgid "Link"
-msgstr ""
+msgstr "Lenkje"
 
 #: src/features/objects/components/object-links.tsx:225
 msgid "Links"
@@ -1353,7 +1413,7 @@ msgstr "Lastar elementdetaljar"
 #: ../../../lib/web/src/features/document/document-page.tsx:90
 #: src/routes/_authenticated/$crmId/index.tsx:192
 msgid "Loading..."
-msgstr ""
+msgstr "Lastar..."
 
 #: ../../../lib/web/src/components/layout/nav-user.tsx:101
 #: ../../../lib/web/src/components/layout/nav-user.tsx:167
@@ -1381,8 +1441,8 @@ msgstr "Loggar ut…"
 msgid "Manual"
 msgstr "Manuell"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Merk alle som lesne"
@@ -1443,8 +1503,8 @@ msgstr "Ny"
 msgid "New {0}"
 msgstr "Ny {0}"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "Neste bilete"
 
@@ -1506,7 +1566,7 @@ msgid "No profile"
 msgstr "Inga profil"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "Ingen treff funne."
 
@@ -1578,6 +1638,11 @@ msgstr "Ingenting funne"
 msgid "Notifications"
 msgstr "Varsel"
 
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "Varsel: {0}"
+
 #: src/features/editor/components/add-dialogs.tsx:138
 #: src/features/editor/components/edit-dialogs.tsx:499
 msgid "Number"
@@ -1590,7 +1655,7 @@ msgstr "Ups! Side ikkje funne!"
 #. placeholder {0}: crm.name
 #: src/features/crms/pages/crms-list-page.tsx:125
 msgid "Open {0}"
-msgstr ""
+msgstr "Opna {0}"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:156
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:166
@@ -1667,6 +1732,11 @@ msgstr "Anna"
 msgid "Owner"
 msgstr "Eigar"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Side {currentPage} av {totalPages}"
+
 #: src/features/objects/components/create-object-dialog.tsx:404
 #: src/features/objects/components/object-detail-panel.tsx:442
 #: src/routes/_authenticated/$crmId/index.tsx:885
@@ -1675,7 +1745,7 @@ msgstr "Forelder"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:334
 msgid "Passkey"
-msgstr ""
+msgstr "Nykel"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:209
 msgid "Passkey verification failed. Please try again."
@@ -1683,7 +1753,7 @@ msgstr ""
 
 #: ../../../lib/web/src/components/restore-banner.tsx:135
 msgid "Passkeys"
-msgstr ""
+msgstr "Tilgangsnøklar"
 
 #: src/features/editor/components/edit-dialogs.tsx:1099
 msgid "Pattern (regex)"
@@ -1699,6 +1769,10 @@ msgstr "Legg til ein eller fleire klassar i CRM-designet."
 msgid "Please check your internet connection and try again."
 msgstr ""
 
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "Logg inn med rett legitimasjon <0/> for å få tilgang til denne ressursen."
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
 msgstr ""
@@ -1707,8 +1781,8 @@ msgstr ""
 msgid "Please wait a moment and try again."
 msgstr ""
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "Førre bilete"
 
@@ -1732,7 +1806,7 @@ msgstr ""
 
 #: ../../../lib/web/src/components/restore-banner.tsx:107
 msgid "Re-link your accounts on this server"
-msgstr ""
+msgstr "Kople kontoane dine til denne tenaren på nytt"
 
 #: src/routes/_authenticated/$crmId/index.tsx:1009
 msgid "Re-order columns"
@@ -1740,7 +1814,7 @@ msgstr "Endra rekkjefølgje på kolonner"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:129
 msgid "Re-register your passkeys on this server"
-msgstr ""
+msgstr "Registrer tilgangsnøklane dine på nytt på denne tenaren"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
 #: ../../../lib/web/src/components/search-entity-page.tsx:242
@@ -1789,6 +1863,11 @@ msgstr "Fjern"
 #: ../../../lib/web/src/features/access/access-list.tsx:253
 msgid "Remove access rule"
 msgstr "Fjern tilgangsregel"
+
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Fjerne tilgangsregel for «{0}»?"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
@@ -1882,7 +1961,7 @@ msgstr "Rader"
 msgid "Rows group by"
 msgstr "Rader gruppert etter"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "Rader per side"
 
@@ -1904,7 +1983,7 @@ msgstr "Lagre"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:150
 msgid "Saving..."
-msgstr ""
+msgstr "Lagrar..."
 
 #: src/components/view-options-bar.tsx:130
 msgid "Search"
@@ -2011,7 +2090,16 @@ msgstr "Vel temapreferanse"
 msgid "Select..."
 msgstr "Vel..."
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "valde"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "Vald: <0>{0}</0>"
+
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr ""
 
@@ -2035,7 +2123,7 @@ msgstr ""
 #: ../../../lib/web/src/components/server-documents-footer.tsx:19
 #: ../../../lib/web/src/features/document/document-page.tsx:40
 msgid "Server rules"
-msgstr ""
+msgstr "Tenarreglar"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:210
 msgid "Session expired. Please log in again."
@@ -2108,7 +2196,7 @@ msgstr "Hopp til hovudinnhald"
 #: ../../../lib/web/src/lib/preference-utils.ts:106
 #: ../../../lib/web/src/lib/preference-utils.ts:133
 msgid "Small"
-msgstr ""
+msgstr "Liten"
 
 #: src/components/view-options-bar.tsx:152
 msgid "Sort"
@@ -2116,7 +2204,7 @@ msgstr "Sorter"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
-msgstr ""
+msgstr "Romsleg"
 
 #: src/features/objects/components/comment-list.tsx:300
 msgid "Start the discussion by adding the first comment."
@@ -2153,7 +2241,7 @@ msgstr "Abonner"
 #: src/features/crms/components/inline-crm-search.tsx:115
 #: src/routes/_authenticated/find.tsx:57
 msgid "Subscribed"
-msgstr ""
+msgstr "Abonnerer"
 
 #. placeholder {0}: crm.name
 #: src/features/crms/components/recommended-crms.tsx:64
@@ -2164,7 +2252,7 @@ msgstr "Abonnerer på {0}"
 #: src/features/crms/components/recommended-crms.tsx:63
 #: src/routes/_authenticated/find.tsx:56
 msgid "Subscribing..."
-msgstr ""
+msgstr "Abonnerer..."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:65
 msgid "Sunday"
@@ -2175,6 +2263,7 @@ msgid "Switch to view 1-9"
 msgstr "Byt til vising 1-9"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 msgid "System"
@@ -2187,7 +2276,7 @@ msgstr "Etikett"
 #: ../../../lib/web/src/components/post-tags.tsx:101
 #: ../../../lib/web/src/components/post-tags.tsx:115
 msgid "Tags"
-msgstr ""
+msgstr "Etikettar"
 
 #: ../../../lib/web/src/components/layout/team-switcher.tsx:63
 msgid "Teams/Apps"
@@ -2196,7 +2285,7 @@ msgstr "Lag/Appar"
 #: ../../../lib/web/src/components/server-documents-footer.tsx:23
 #: ../../../lib/web/src/features/document/document-page.tsx:42
 msgid "Terms and conditions"
-msgstr ""
+msgstr "Vilkår"
 
 #: src/features/editor/components/add-dialogs.tsx:140
 msgid "Text"
@@ -2209,6 +2298,10 @@ msgstr ""
 #: ../../../lib/web/src/features/errors/general-error.tsx:68
 msgid "The requested content could not be found."
 msgstr ""
+
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "Nettstaden er ikkje tilgjengeleg for augeblinken."
 
 #: ../../../lib/web/src/components/config-drawer.tsx:194
 msgid "Theme"
@@ -2225,6 +2318,10 @@ msgstr "Denne CRM-en kunne ikkje lastast no."
 #: src/routes/_authenticated/$crmId_.settings.tsx:207
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Denne CRM-en kan vera sletta, eller du har ikkje tilgang til han."
+
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "Denne sida er ikkje oppretta enno."
 
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:353
@@ -2252,6 +2349,10 @@ msgstr "Tittel"
 #: src/features/editor/components/edit-dialogs.tsx:753
 msgid "Title field"
 msgstr "Tittelfelt"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "Til"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -2382,7 +2483,7 @@ msgstr "Abonnement opphevd"
 #: src/features/crms/pages/crms-list-page.tsx:175
 #: src/routes/_authenticated/$crmId/index.tsx:641
 msgid "Unsubscribing..."
-msgstr ""
+msgstr "Seier opp abonnement..."
 
 #: src/features/board/components/board-card.tsx:81
 #: src/features/board/components/board-card.tsx:82
@@ -2427,7 +2528,7 @@ msgstr ""
 msgid "User"
 msgstr "Brukar"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "Stadfestingskode"
 
@@ -2441,7 +2542,7 @@ msgstr "Stadfesting mislukkast"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Stadfest"
 
@@ -2451,7 +2552,12 @@ msgstr "Stadfest e-postadresse"
 
 #: ../../../lib/web/src/components/attachment-gallery.tsx:79
 msgid "Video thumbnail"
-msgstr ""
+msgstr "Videominiatyrbilete"
+
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "Videovisar: {0}"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
@@ -2461,8 +2567,8 @@ msgstr "Vis"
 msgid "View all"
 msgstr "Vis alle"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "Vis alle varsel"
 
@@ -2499,6 +2605,11 @@ msgstr "Følgd"
 msgid "Watched only"
 msgstr "Berre følgde"
 
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Vi sende ein stadfestingskode til <0>{0}</0>. Skriv inn koden nedanfor for å stadfeste e-postadressa di."
+
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:16
 msgid "We'll be back online shortly."
 msgstr "Me er snart tilbake."
@@ -2519,10 +2630,14 @@ msgstr ""
 msgid "You don't have access to this CRM."
 msgstr ""
 
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "Du har ikkje nødvendig løyve <0/>til å sjå denne ressursen."
+
 #: src/features/crms/pages/crms-list-page.tsx:98
 msgid "You have no CRMs yet."
 msgstr "Du har ingen CRM-ar enno."
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
-msgstr ""
+msgstr "Kontoen din vart flytta hit frå {source}. Inntil du slettar han der, kan meldingar og varsel nå begge tenarane, noko av innhaldet ditt blir framleis servert frå den gamle tenaren, og følgjarar kan ta nokre minutt å finne deg her."
