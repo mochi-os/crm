@@ -395,18 +395,16 @@ function DateEditor({ value, onChange, disabled, immediate, onErrorChange }: Dat
     };
   }, []);
 
-  // A native "change" event — distinct from React's onChange below, which
-  // rides the "input" event and fires on every keystroke — only fires once a
-  // value is *committed*: picking a full date from the calendar popup, or
-  // clearing the field with its "x" button. Typing a segment never fires it.
-  // Commit on it straight away: it is never a partial value, so there is no
-  // debounce to race against, and no window for a same-keystroke Escape (which
-  // reverts an uncommitted native edit) to undo it before it lands.
   useEffect(() => {
     const el = inputRef.current;
     if (!el) return;
     const handleNativeChange = () => {
       clearPending();
+      if (el.validity.badInput) {
+        setShowError(true);
+        onErrorChange(true);
+        return;
+      }
       setLocalValue(el.value);
       localValueRef.current = el.value;
       commit(el.value);
