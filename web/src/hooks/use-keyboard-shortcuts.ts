@@ -6,6 +6,13 @@
 
 import { useEffect, useCallback } from "react";
 
+// Controls that handle Enter themselves. Calling preventDefault on Enter while
+// one of these has focus swallows its activation, so a keyboard-only user could
+// tab to a button or link and never fire it.
+// eslint-disable-next-line lingui/no-unlocalized-strings
+const ACTIVATES_ON_ENTER =
+  "button, a[href], select, summary, [role='button'], [role='link'], [role='menuitem'], [role='option'], [role='tab'], [role='switch'], [role='checkbox']";
+
 interface KeyboardShortcutsOptions {
   onCreateNew?: () => void;
   onFocusSearch?: () => void;
@@ -80,6 +87,9 @@ export function useKeyboardShortcuts({
           onSelectPrevious?.();
           break;
         case "Enter":
+          // Leave Enter to the focused control; only claim it when the page
+          // itself has focus.
+          if (target.closest?.(ACTIVATES_ON_ENTER)) return;
           e.preventDefault();
           onOpenSelected?.();
           break;

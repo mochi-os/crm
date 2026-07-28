@@ -68,28 +68,15 @@ export function ObjectDetailPanel({
   // a stable skeleton until the slide settles; the body can't be read mid-slide
   // anyway, so on a warm cache this is imperceptible.
   const [slideSettled, setSlideSettled] = useState(false);
-  const [validationErrors, setValidationErrors] = useState<Set<string>>(new Set());
   const queryClient = useQueryClient();
 
-  // Track validation errors from fields
-  const handleValidationError = (fieldId: string, hasError: boolean) => {
-    setValidationErrors((prev) => {
-      const next = new Set(prev);
-      if (hasError) {
-        next.add(fieldId);
-      } else {
-        next.delete(fieldId);
-      }
-      return next;
-    });
-  };
-
-  // Try to close, but prevent if there are validation errors
+  // Closing is always allowed. An unparseable date is never committed — the
+  // field keeps the last saved value — so there is nothing to protect here, and
+  // blocking produced dead ends instead: an emptied date input goes from "" to
+  // "" and fires no change event, so a guard latched while the date was
+  // half-cleared could never be released and the panel refused to close at all.
+  // The field still shows its own inline "Invalid date" message.
   const handleClose = () => {
-    if (validationErrors.size > 0) {
-      // Don't close - there are validation errors
-      return;
-    }
     onClose();
   };
 
@@ -430,7 +417,6 @@ export function ObjectDetailPanel({
                     readOnly={!canWrite(access)}
                     hideLabel
                     localPeople={peopleData}
-                    onValidationError={(hasError) => handleValidationError(titleField.id, hasError)}
                   />
                 </div>
               )}
@@ -492,7 +478,6 @@ export function ObjectDetailPanel({
                       readOnly={!canWrite(access)}
                       hideLabel
                       localPeople={peopleData}
-                      onValidationError={(hasError) => handleValidationError(field.id, hasError)}
                     />
                   </div>
                 ))}

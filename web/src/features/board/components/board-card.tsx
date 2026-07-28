@@ -38,6 +38,13 @@ interface BoardCardProps {
 
 const MAX_NESTING_DEPTH = 3;
 
+// The field editor stores a ticked checkbox as "1" (and reads back "1" or
+// "true"); the server accepts "0"/"1"/"true"/"false". Testing only for "true"
+// here meant a box ticked in the detail panel never appeared on the card.
+function isChecked(value: string): boolean {
+  return value === "1" || value === "true";
+}
+
 function truncate(text: string, maxLength: number): string {
   if (text.length <= maxLength) return text;
   return text.slice(0, maxLength - 1) + "…";
@@ -187,7 +194,7 @@ export function BoardCard({
       }
 
       case "checkbox":
-        if (value !== "true") return null;
+        if (!isChecked(value)) return null;
         return (
           <span
             key={field.id}
@@ -219,7 +226,7 @@ export function BoardCard({
   const hasBodyFields = !isNested && cardFields.some((f) => {
     const value = object.values[f.id];
     if (!value) return false;
-    if (f.fieldtype === "checkbox" && value !== "true") return false;
+    if (f.fieldtype === "checkbox" && !isChecked(value)) return false;
     return true;
   });
 
