@@ -402,7 +402,9 @@ function DateEditor({ value, onChange, disabled, immediate, onErrorChange }: Dat
       clearPending();
       if (el.validity.badInput) {
         setShowError(true);
-        onErrorChange(true);
+        // Through the ref: this listener is installed once, so a direct call
+        // would freeze the first render's callback.
+        onErrorChangeRef.current(true);
         return;
       }
       setLocalValue(el.value);
