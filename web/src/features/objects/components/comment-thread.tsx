@@ -159,7 +159,7 @@ export function CommentThread({
               : t`+${totalDescendants} more replies`}
           </span>
         ) : (
-          <span className="text-muted-foreground italic">(expand)</span>
+          <span className="text-muted-foreground italic"><Trans>(expand)</Trans></span>
         )}
       </button>
     </div>
@@ -175,7 +175,7 @@ export function CommentThread({
           <span className="text-muted-foreground">&middot;</span>
           <span className="text-muted-foreground">{timestamp}</span>
           {comment.edited > 0 && (
-            <span className="text-muted-foreground italic">(edited)</span>
+            <span className="text-muted-foreground italic"><Trans>(edited)</Trans></span>
           )}
         </div>
 

@@ -5,7 +5,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 import { useRef } from "react";
-import { useLingui } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Card, EntityAvatar, Skeleton, cn, useFormat, getAppPath } from "@mochi/web";
 import { Check, CheckSquare } from "lucide-react";
 import type { DragPreview } from "./board-container";
@@ -357,7 +357,7 @@ export function BoardCard({
         <div className="space-y-1.5 border-t pt-1.5">
           {atDepthCap ? (
             <span className="text-[10px] text-muted-foreground">
-              +{countDeepChildren(object.id)} nested
+              <Trans>+{countDeepChildren(object.id)} nested</Trans>
             </span>
           ) : (
             renderChildrenWithGap()
