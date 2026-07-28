@@ -49,15 +49,24 @@ msgstr "{0, plural, one {# вибрано} few {# вибрано} many {# виб
 msgid "{0} - Design"
 msgstr "{0} — Структура"
 
+#. placeholder {0}: item.label
+#: ../../../lib/web/src/components/config-drawer.tsx:160
+msgid "{0} option preview"
+msgstr ""
+
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:120
 #: src/routes/_authenticated/$crmId_.settings.tsx:219
 msgid "{0} settings"
 msgstr "Налаштування {0}"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:174
 msgid "{entityLabel} name"
 msgstr "Назва {entityLabel}"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:99
+msgid "{entityLabel} name is required"
+msgstr ""
 
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
@@ -78,6 +87,10 @@ msgstr "{selectedCount, plural, one {Масові дії для # вибрано
 #: src/features/board/components/board-column.tsx:519
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# елемент} few {# елементи} many {# елементів} other {# елемента}}"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
+msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
+msgstr ""
 
 #. placeholder {0}: countDeepChildren(object.id)
 #: src/features/board/components/board-card.tsx:360
@@ -116,7 +129,7 @@ msgstr "Доступ заборонено"
 msgid "Access Forbidden"
 msgstr "Доступ заборонено"
 
-#: ../../../lib/web/src/features/access/access-list.tsx:192
+#: ../../../lib/web/src/features/access/access-list.tsx:197
 msgid "Access level"
 msgstr "Рівень доступу"
 
@@ -156,6 +169,7 @@ msgstr "Обліковий запис підтверджено"
 msgid "Activity"
 msgstr "Активність"
 
+#: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:196
 #: src/features/objects/components/field-editor.tsx:655
 msgid "Add"
@@ -216,7 +230,7 @@ msgstr "Додати елемент..."
 msgid "Add link"
 msgstr "Додати посилання"
 
-#: ../../../lib/web/src/features/accounts/account-picker.tsx:101
+#: ../../../lib/web/src/features/accounts/account-picker.tsx:102
 msgid "Add new account"
 msgstr "Додати новий обліковий запис"
 
@@ -233,6 +247,7 @@ msgid "Add rule"
 msgstr "Додати правило"
 
 #: ../../../lib/web/src/components/post-tags.tsx:137
+#: ../../../lib/web/src/components/tag-input.tsx:40
 msgid "Add tag..."
 msgstr "Додати тег..."
 
@@ -253,7 +268,11 @@ msgstr "Додати до наявних сповіщень"
 msgid "Add view"
 msgstr "Додати подання"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:71
+#: ../../../lib/web/src/features/access/access-dialog.tsx:332
+msgid "Adding..."
+msgstr "Додавання..."
+
+#: ../../../lib/web/src/components/config-drawer.tsx:72
 msgid "Adjust the appearance and layout to suit your preferences."
 msgstr "Налаштуйте вигляд і компонування за своїми вподобаннями."
 
@@ -268,6 +287,11 @@ msgstr "Усі"
 #: src/components/layout/crms-layout.tsx:51
 msgid "All CRMs"
 msgstr "Усі CRM"
+
+#. placeholder {0}: entityLabel.toLowerCase()
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
+msgid "Allow anyone to search for {0}"
+msgstr ""
 
 #: src/features/crms/components/create-crm-dialog.tsx:229
 msgid "Allow anyone to search for CRM"
@@ -284,6 +308,19 @@ msgstr "Сталася помилка"
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "Сталася неочікувана помилка"
+
+#: ../../../lib/web/src/features/accounts/types.ts:16
+msgid "Android push"
+msgstr ""
+
+#: ../../../lib/web/src/features/access/access-list.tsx:45
+#: ../../../lib/web/src/features/access/types.ts:42
+msgid "Anyone"
+msgstr "Будь-хто"
+
+#: ../../../lib/web/src/features/access/types.ts:41
+msgid "Anyone who is logged in"
+msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: src/features/objects/components/object-attachments.tsx:248
@@ -328,6 +365,11 @@ msgstr "Додати файли коментаря"
 msgid "Attach reply files"
 msgstr "Додати файли відповіді"
 
+#: ../../../lib/web/src/features/access/access-list.tsx:46
+#: ../../../lib/web/src/features/access/types.ts:41
+msgid "Authenticated users"
+msgstr "Автентифіковані користувачі"
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:315
 msgid "Authenticator code"
 msgstr "Код автентифікатора"
@@ -336,7 +378,15 @@ msgstr "Код автентифікатора"
 msgid "Available keyboard shortcuts"
 msgstr "Доступні комбінації клавіш"
 
-#: ../../../lib/web/src/components/place-picker.tsx:155
+#: ../../../lib/web/src/components/entity-avatar.tsx:99
+msgid "Avatar"
+msgstr "Аватар"
+
+#: ../../../lib/web/src/components/entity-avatar.tsx:99
+msgid "Avatar for {name}"
+msgstr ""
+
+#: ../../../lib/web/src/components/place-picker.tsx:156
 msgid "Back"
 msgstr "Назад"
 
@@ -358,6 +408,10 @@ msgstr "Назад до CRM"
 #: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "На головну"
+
+#: ../../../lib/web/src/components/entity-banner.tsx:17
+msgid "Banner"
+msgstr "Банер"
 
 #: src/features/objects/components/object-links.tsx:48
 #: src/features/objects/components/object-links.tsx:164
@@ -381,6 +435,10 @@ msgstr "Підвищити інтерес"
 msgid "Border colour"
 msgstr "Колір рамки"
 
+#: ../../../lib/web/src/features/accounts/types.ts:13
+msgid "Browser notifications"
+msgstr "Сповіщення браузера"
+
 #: src/features/editor/components/edit-dialogs.tsx:780
 msgid "Can be child of"
 msgstr "Може бути дочірнім для"
@@ -388,10 +446,10 @@ msgstr "Може бути дочірнім для"
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
 #: ../../../lib/web/src/components/step-up-dialog.tsx:363
 #: ../../../lib/web/src/components/travelling-picker.tsx:308
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:248
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:249
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:132
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
-#: ../../../lib/web/src/features/access/access-list.tsx:263
+#: ../../../lib/web/src/features/access/access-list.tsx:268
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/board/components/board-column.tsx:603
@@ -417,6 +475,10 @@ msgstr "Категорія цього сповіщення"
 msgid "Change notification category"
 msgstr "Змінити категорію сповіщення"
 
+#: ../../../lib/web/src/components/notifications-dropdown.tsx:198
+msgid "Check \"All\" to see your past notifications."
+msgstr "Виберіть «Усі», щоб побачити попередні сповіщення."
+
 #: src/features/editor/components/add-dialogs.tsx:135
 msgid "Checkbox"
 msgstr "Прапорець"
@@ -425,19 +487,19 @@ msgstr "Прапорець"
 msgid "Checklist"
 msgstr "Контрольний список"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:328
+#: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
 msgstr "Виберіть між стандартним розгорнутим, компактним лише з піктограмами або повним режимом компонування"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:270
+#: ../../../lib/web/src/components/config-drawer.tsx:271
 msgid "Choose between inset, floating, or standard sidebar layout"
 msgstr "Виберіть між врізаним, плаваючим або стандартним компонуванням бічної панелі"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:371
+#: ../../../lib/web/src/components/config-drawer.tsx:372
 msgid "Choose between left-to-right or right-to-left site direction"
 msgstr "Виберіть напрямок сайту: зліва направо чи справа наліво"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:226
+#: ../../../lib/web/src/components/config-drawer.tsx:227
 msgid "Choose between system preference, light mode, or dark mode"
 msgstr "Виберіть між системними налаштуваннями, світлим або темним режимом"
 
@@ -454,8 +516,8 @@ msgstr "Клас"
 msgid "Classes"
 msgstr "Класи"
 
-#: ../../../lib/web/src/components/colour-picker.tsx:269
-#: ../../../lib/web/src/components/colour-picker.tsx:350
+#: ../../../lib/web/src/components/colour-picker.tsx:270
+#: ../../../lib/web/src/components/colour-picker.tsx:351
 #: ../../../lib/web/src/components/travelling-picker.tsx:164
 #: ../../../lib/web/src/components/travelling-picker.tsx:170
 #: ../../../lib/web/src/components/travelling-picker.tsx:231
@@ -463,13 +525,17 @@ msgstr "Класи"
 msgid "Clear"
 msgstr "Очистити"
 
-#: ../../../lib/web/src/components/filter-bar.tsx:73
+#: ../../../lib/web/src/components/filter-bar.tsx:74
 msgid "Clear all"
 msgstr "Очистити все"
 
 #: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 msgid "Clear filters"
 msgstr "Очистити фільтри"
+
+#: ../../../lib/web/src/components/search-input.tsx:26
+msgid "Clear search"
+msgstr "Очистити пошук"
 
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
@@ -549,6 +615,10 @@ msgstr "Зручний"
 msgid "Coming Soon!"
 msgstr "Скоро!"
 
+#: ../../../lib/web/src/components/ui/command.tsx:34
+msgid "Command Palette"
+msgstr ""
+
 #: src/features/objects/components/comment-thread.tsx:270
 #: src/features/objects/components/comment-thread.tsx:277
 msgid "Comment actions"
@@ -563,7 +633,7 @@ msgstr "Коментувати й переглядати"
 msgid "Comments ({0})"
 msgstr "Коментарі ({0})"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:315
+#: ../../../lib/web/src/components/config-drawer.tsx:316
 #: ../../../lib/web/src/lib/preference-utils.ts:95
 msgid "Compact"
 msgstr "Компактний"
@@ -580,10 +650,26 @@ msgstr "Налаштувати параметри варіанта"
 msgid "Configure view settings"
 msgstr "Налаштувати параметри подання"
 
-#: ../../../lib/web/src/components/place-picker.tsx:159
+#: ../../../lib/web/src/components/place-picker.tsx:160
 #: ../../../lib/web/src/components/travelling-picker.tsx:316
 msgid "Confirm"
 msgstr "Підтвердити"
+
+#: ../../../lib/web/src/lib/chat-ui.ts:18
+msgid "Connected"
+msgstr "Підключено"
+
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:191
+msgid "Connected accounts"
+msgstr "Підключені облікові записи"
+
+#: ../../../lib/web/src/lib/chat-ui.ts:21
+msgid "Connecting..."
+msgstr "З'єднання..."
+
+#: ../../../lib/web/src/lib/handle-server-error.ts:18
+msgid "Content not found."
+msgstr "Вміст не знайдено."
 
 #: ../../../lib/web/src/lib/query-client.ts:81
 msgid "Content not modified"
@@ -601,7 +687,15 @@ msgstr "Продовжити"
 msgid "Continue with {label}"
 msgstr "Продовжити з {label}"
 
-#: ../../../lib/web/src/components/ui/copy-button.tsx:63
+#: ../../../lib/web/src/lib/toast-utils.ts:42
+msgid "Copied"
+msgstr "Скопійовано"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx:25
+msgid "Copied to clipboard"
+msgstr "Скопійовано в буфер обміну"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx:64
 msgid "Copy"
 msgstr "Копіювати"
 
@@ -628,6 +722,11 @@ msgstr "Не вдалося підтвердити за допомогою ць�
 #: src/features/tree/components/tree-view.tsx:687
 msgid "Create"
 msgstr "Створити"
+
+#. placeholder {0}: entityLabel.toLowerCase()
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:144
+msgid "Create {0}"
+msgstr ""
 
 #: src/features/crms/components/create-crm-dialog.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:103
@@ -666,6 +765,7 @@ msgstr "Створено"
 msgid "Creating CRM..."
 msgstr "Створення CRM..."
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
 #: src/features/crms/components/create-crm-dialog.tsx:299
 #: src/features/objects/components/create-object-dialog.tsx:541
 msgid "Creating..."
@@ -711,11 +811,15 @@ msgstr "CRM оновлено"
 msgid "CRMs"
 msgstr "CRM"
 
-#: ../../../lib/web/src/components/colour-picker.tsx:260
+#: ../../../lib/web/src/components/map-view.tsx:208
+msgid "Current location"
+msgstr "Поточне місце"
+
+#: ../../../lib/web/src/components/colour-picker.tsx:261
 msgid "Custom"
 msgstr "Користувацький"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/config-drawer.tsx:219
 #: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
@@ -744,7 +848,7 @@ msgstr "Дані імпортовано ({0, plural, one {# об'єкт} few {# 
 msgid "Date"
 msgstr "Дата"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:310
+#: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
 msgstr "За замовчуванням"
 
@@ -835,6 +939,7 @@ msgstr "За спад."
 msgid "Descending"
 msgstr "За спаданням"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:304
 msgid "Description"
 msgstr "Опис"
@@ -869,9 +974,18 @@ msgstr "Панель деталей"
 msgid "Detect from web browser"
 msgstr "Визначати з веббраузера"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:340
+#: ../../../lib/web/src/components/config-drawer.tsx:341
 msgid "Direction"
 msgstr "Напрямок"
+
+#: ../../../lib/web/src/components/person-picker.tsx:214
+msgid "Directory"
+msgstr "Каталог"
+
+#: ../../../lib/web/src/lib/chat-ui.ts:25
+#: ../../../lib/web/src/lib/chat-ui.ts:29
+msgid "Disconnected"
+msgstr "Відключено"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:79
 #: ../../../lib/web/src/components/restore-banner.tsx:85
@@ -969,6 +1083,10 @@ msgstr "Редагувати вибрану картку"
 msgid "Edit view"
 msgstr "Редагувати вигляд"
 
+#: ../../../lib/web/src/features/accounts/types.ts:15
+msgid "Email"
+msgstr "Електронна пошта"
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:289
 msgid "Email code"
 msgstr "Код електронної пошти"
@@ -1012,6 +1130,10 @@ msgstr "Експортувати дані"
 msgid "Export design"
 msgstr "Експортувати дизайн"
 
+#: ../../../lib/web/src/features/accounts/types.ts:22
+msgid "External URL"
+msgstr "Зовнішній URL"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
 msgstr "Дуже великий"
@@ -1019,6 +1141,15 @@ msgstr "Дуже великий"
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:225
 msgid "Failed to add account"
 msgstr "Не вдалося додати обліковий запис"
+
+#: ../../../lib/web/src/components/tag-input.tsx:39
+msgid "Failed to add tag"
+msgstr "Не вдалося додати тег"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx:26
+#: ../../../lib/web/src/lib/toast-utils.ts:44
+msgid "Failed to copy"
+msgstr "Не вдалося скопіювати"
 
 #: src/features/editor/components/design-editor.tsx:113
 msgid "Failed to create class"
@@ -1083,6 +1214,10 @@ msgstr "Не вдалося імпортувати дані"
 #: src/routes/_authenticated/$crmId/design.tsx:115
 msgid "Failed to import design"
 msgstr "Не вдалося імпортувати дизайн"
+
+#: ../../../lib/web/src/hooks/use-load-more.ts:74
+msgid "Failed to load"
+msgstr "Не вдалося завантажити"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:43
 #: src/routes/_authenticated/$crmId/$objectId.tsx:71
@@ -1188,6 +1323,10 @@ msgstr "Поля"
 msgid "Files"
 msgstr "Файли"
 
+#: ../../../lib/web/src/components/data-table/toolbar.tsx:30
+msgid "Filter..."
+msgstr "Фільтр..."
+
 #: src/components/layout/crms-layout.tsx:58
 #: src/routes/_authenticated/find.tsx:88
 msgid "Find CRMs"
@@ -1209,13 +1348,17 @@ msgstr "Прапорці"
 msgid "Flat"
 msgstr "Плаский"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:257
+#: ../../../lib/web/src/components/config-drawer.tsx:258
 msgid "Floating"
 msgstr "Плаваючий"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:63
 msgid "Friday"
 msgstr "П'ятниця"
+
+#: ../../../lib/web/src/components/person-picker.tsx:207
+msgid "Friends"
+msgstr "Друзі"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx:153
 msgid "From"
@@ -1230,7 +1373,7 @@ msgstr "Від"
 msgid "From theme"
 msgstr "З теми"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:320
+#: ../../../lib/web/src/components/config-drawer.tsx:321
 msgid "Full layout"
 msgstr "Повний макет"
 
@@ -1267,6 +1410,11 @@ msgstr "Група"
 #: src/features/editor/components/edit-dialogs.tsx:363
 msgid "Group by"
 msgstr "Групувати за"
+
+#. placeholder {0}: name || subject.slice(1)
+#: ../../../lib/web/src/features/access/access-list.tsx:68
+msgid "Group: {0}"
+msgstr "Група: {0}"
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:70
 msgid "Hide"
@@ -1323,7 +1471,19 @@ msgstr "Імпорт із резервної копії (необов'язков
 msgid "Importing data..."
 msgstr "Імпорт даних..."
 
-#: ../../../lib/web/src/components/config-drawer.tsx:252
+#: ../../../lib/web/src/features/access/types.ts:42
+msgid "Including anonymous users"
+msgstr ""
+
+#: ../../../lib/web/src/components/faceless-avatar.tsx:69
+msgid "Initials avatar"
+msgstr ""
+
+#: ../../../lib/web/src/components/faceless-avatar.tsx:69
+msgid "Initials avatar for {name}"
+msgstr ""
+
+#: ../../../lib/web/src/components/config-drawer.tsx:253
 msgid "Inset"
 msgstr "Вставлений"
 
@@ -1340,6 +1500,10 @@ msgstr "Недійсна дата"
 msgid "Invalid JSON file"
 msgstr "Недійсний JSON-файл"
 
+#: ../../../lib/web/src/components/tag-input.tsx:38
+msgid "Invalid tag: letters, numbers, spaces, hyphens, and slashes only (max 50 chars)"
+msgstr ""
+
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:245
 msgid "Invalid verification code"
 msgstr "Недійсний код підтвердження"
@@ -1352,6 +1516,10 @@ msgstr "Схоже, сторінка, яку ви шукаєте, <0/>не іс�
 msgid "Item details"
 msgstr "Деталі елемента"
 
+#: ../../../lib/web/src/lib/locale-format.ts:62
+msgid "Just now"
+msgstr "Щойно"
+
 #: src/components/keyboard-shortcuts-help.tsx:49
 msgid "Keyboard shortcuts"
 msgstr "Комбінації клавіш"
@@ -1361,7 +1529,7 @@ msgstr "Комбінації клавіш"
 msgid "Large"
 msgstr "Великий"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:286
+#: ../../../lib/web/src/components/config-drawer.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:322
 msgid "Layout"
 msgstr "Макет"
@@ -1371,11 +1539,15 @@ msgstr "Макет"
 msgid "Learn more"
 msgstr "Дізнатися більше"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:354
+#: ../../../lib/web/src/components/config-drawer.tsx:355
 msgid "Left to Right"
 msgstr "Зліва направо"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/post-tags.tsx:72
+msgid "Letters, numbers, spaces, and hyphens only"
+msgstr "Лише літери, цифри, пробіли та дефіси"
+
+#: ../../../lib/web/src/components/config-drawer.tsx:214
 #: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
@@ -1437,6 +1609,10 @@ msgstr "Вихід виконано успішно"
 msgid "Logging out…"
 msgstr "Виконується вихід…"
 
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:192
+msgid "Manage your connected accounts for notifications and services."
+msgstr ""
+
 #: src/components/view-options-bar.tsx:40
 msgid "Manual"
 msgstr "Вручну"
@@ -1450,6 +1626,10 @@ msgstr "Позначити все як прочитане"
 #: src/features/editor/components/edit-dialogs.tsx:1088
 msgid "Maximum length"
 msgstr "Максимальна довжина"
+
+#: ../../../lib/web/src/features/accounts/types.ts:17
+msgid "MCP server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:107
 msgid "Medium"
@@ -1467,6 +1647,10 @@ msgstr "Метричні"
 msgid "Minimum length"
 msgstr "Мінімальна довжина"
 
+#: ../../../lib/web/src/features/accounts/types.ts:23
+msgid "Mochi web"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:59
 msgid "Monday"
 msgstr "Понеділок"
@@ -1482,9 +1666,17 @@ msgstr "Понеділок"
 msgid "Name"
 msgstr "Ім'я"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
+msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
+msgstr ""
+
 #: src/features/crms/components/create-crm-dialog.tsx:75
 msgid "Name is required"
 msgstr "Ім'я обов'язкове"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
+msgid "Name must be 1000 characters or less"
+msgstr "Ім'я має містити 1000 символів або менше"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:53
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:303
@@ -1516,7 +1708,7 @@ msgstr "Немає {parentClassNames} для додавання"
 msgid "No access"
 msgstr "Немає доступу"
 
-#: ../../../lib/web/src/features/access/access-list.tsx:160
+#: ../../../lib/web/src/features/access/access-list.tsx:165
 msgid "No access rules configured. Add rules to control who can access this resource."
 msgstr "Правила доступу не налаштовано. Додайте правила, щоб керувати, хто може мати доступ до цього ресурсу."
 
@@ -1549,21 +1741,31 @@ msgstr "Жоден тип елемента ще не можна створити
 msgid "No matching objects"
 msgstr "Немає відповідних об'єктів"
 
+#: ../../../lib/web/src/components/notifications-dropdown.tsx:193
+msgid "No notifications yet"
+msgstr "Сповіщень поки немає"
+
 #: src/routes/_authenticated/$crmId/index.tsx:888
 msgid "No objects to export."
 msgstr "Немає об'єктів для експорту."
 
+#: ../../../lib/web/src/components/person-picker.tsx:84
 #: src/features/objects/components/field-editor.tsx:279
 msgid "No people found"
 msgstr "Людей не знайдено"
 
-#: ../../../lib/web/src/components/place-picker.tsx:132
+#: ../../../lib/web/src/components/place-picker.tsx:133
 msgid "No places found"
 msgstr "Місць не знайдено"
 
 #: ../../../lib/web/src/components/profile-dropdown.tsx:58
 msgid "No profile"
 msgstr "Немає профілю"
+
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:82
+#: ../../../lib/web/src/components/search-entity-page.tsx:73
+msgid "No results found"
+msgstr "Результатів не знайдено"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
 #: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
@@ -1592,6 +1794,7 @@ msgstr "Користувачів не знайдено"
 msgid "No views"
 msgstr "Немає переглядів"
 
+#: ../../../lib/web/src/components/colour-picker.tsx:345
 #: ../../../lib/web/src/components/person-picker.tsx:350
 #: ../../../lib/web/src/lib/preference-utils.ts:105
 #: ../../../lib/web/src/lib/preference-utils.ts:125
@@ -1648,6 +1851,10 @@ msgstr "Сповіщення: {0}"
 msgid "Number"
 msgstr "Число"
 
+#: ../../../lib/web/src/components/filter-bar.tsx:35
+msgid "On"
+msgstr "Увімк."
+
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:16
 msgid "Oops! Page Not Found!"
 msgstr "Ой! Сторінку не знайдено!"
@@ -1676,6 +1883,10 @@ msgstr "Відкрити дії класу"
 msgid "Open design actions"
 msgstr "Відкрити дії дизайну"
 
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:133
+msgid "Open menu"
+msgstr "Відкрити меню"
+
 #: ../../../lib/web/src/components/layout/top-bar.tsx:63
 #: ../../../lib/web/src/components/layout/top-bar.tsx:68
 msgid "Open navigation"
@@ -1699,8 +1910,8 @@ msgstr "Відкрити дії сторінки"
 msgid "Open selected card"
 msgstr "Відкрити вибрану картку"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:57
-#: ../../../lib/web/src/components/config-drawer.tsx:65
+#: ../../../lib/web/src/components/config-drawer.tsx:58
+#: ../../../lib/web/src/components/config-drawer.tsx:66
 msgid "Open theme settings"
 msgstr "Відкрити налаштування теми"
 
@@ -1728,7 +1939,7 @@ msgstr "Параметри"
 msgid "Other"
 msgstr "Інше"
 
-#: ../../../lib/web/src/features/access/access-list.tsx:217
+#: ../../../lib/web/src/features/access/access-list.tsx:222
 msgid "Owner"
 msgstr "Власник"
 
@@ -1758,6 +1969,10 @@ msgstr "Ключі доступу"
 #: src/features/editor/components/edit-dialogs.tsx:1099
 msgid "Pattern (regex)"
 msgstr "Шаблон (regex)"
+
+#: ../../../lib/web/src/components/date-picker.tsx:20
+msgid "Pick a date"
+msgstr "Виберіть дату"
 
 #: src/routes/_authenticated/$crmId/index.tsx:769
 #: src/routes/_authenticated/$crmId/index.tsx:803
@@ -1796,9 +2011,17 @@ msgstr "Приватність"
 msgid "Profile"
 msgstr "Профіль"
 
+#: ../../../lib/web/src/components/person-picker.tsx:200
+msgid "Project members"
+msgstr "Учасники проєкту"
+
 #: src/features/objects/components/object-detail-panel.tsx:306
 msgid "Properties"
 msgstr "Властивості"
+
+#: ../../../lib/web/src/features/accounts/types.ts:21
+msgid "Push notification"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:117
 msgid "Raised"
@@ -1816,8 +2039,8 @@ msgstr "Змінити порядок стовпців"
 msgid "Re-register your passkeys on this server"
 msgstr "Зареєструйте свої ключі доступу на цьому сервері знову"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:242
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:217
+#: ../../../lib/web/src/components/search-entity-page.tsx:243
 msgid "Recommended"
 msgstr "Рекомендоване"
 
@@ -1825,6 +2048,10 @@ msgstr "Рекомендоване"
 #: src/features/crms/components/recommended-crms.tsx:133
 msgid "Recommended CRMs"
 msgstr "Рекомендовані CRM"
+
+#: ../../../lib/web/src/lib/chat-ui.ts:21
+msgid "Reconnecting ({retries})..."
+msgstr ""
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:133
 msgid "Redirecting to login."
@@ -1847,7 +2074,7 @@ msgstr "Відносний (5хв, 3год, 2д)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Відносний протягом 24 годин, інакше абсолютний"
 
-#: ../../../lib/web/src/features/access/access-list.tsx:265
+#: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 #: src/features/crms/components/create-crm-dialog.tsx:282
 #: src/features/editor/components/add-dialogs.tsx:188
@@ -1859,17 +2086,23 @@ msgstr "Відносний протягом 24 годин, інакше абсо
 msgid "Remove"
 msgstr "Видалити"
 
-#: ../../../lib/web/src/features/access/access-list.tsx:247
-#: ../../../lib/web/src/features/access/access-list.tsx:253
+#. placeholder {0}: filter.label
+#: ../../../lib/web/src/components/filter-bar.tsx:56
+#: ../../../lib/web/src/components/filter-bar.tsx:62
+msgid "Remove {0} filter"
+msgstr "Видалити фільтр {0}"
+
+#: ../../../lib/web/src/features/access/access-list.tsx:252
+#: ../../../lib/web/src/features/access/access-list.tsx:258
 msgid "Remove access rule"
 msgstr "Видалити правило доступу"
 
 #. placeholder {0}: formatSubject(subject, data.name)
-#: ../../../lib/web/src/features/access/access-list.tsx:259
+#: ../../../lib/web/src/features/access/access-list.tsx:264
 msgid "Remove access rule for \"{0}\"?"
 msgstr "Вилучити правило доступу для «{0}»?"
 
-#: ../../../lib/web/src/features/access/access-list.tsx:257
+#: ../../../lib/web/src/features/access/access-list.tsx:262
 msgid "Remove access?"
 msgstr "Видалити доступ?"
 
@@ -1935,12 +2168,17 @@ msgstr "Обов'язково"
 msgid "Resend email"
 msgstr "Надіслати лист повторно"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:86
-#: ../../../lib/web/src/components/data-table/toolbar.tsx:81
+#: ../../../lib/web/src/components/config-drawer.tsx:87
+#: ../../../lib/web/src/components/data-table/toolbar.tsx:82
 msgid "Reset"
 msgstr "Скинути"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:84
+#: ../../../lib/web/src/components/config-drawer.tsx:122
+#: ../../../lib/web/src/components/config-drawer.tsx:127
+msgid "Reset {title}"
+msgstr ""
+
+#: ../../../lib/web/src/components/config-drawer.tsx:85
 msgid "Reset all settings to default values"
 msgstr "Скинути всі налаштування до значень за замовчуванням"
 
@@ -1948,7 +2186,7 @@ msgstr "Скинути всі налаштування до значень за 
 msgid "Retry CRMs load"
 msgstr "Повторити завантаження CRM"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:361
+#: ../../../lib/web/src/components/config-drawer.tsx:362
 msgid "Right to Left"
 msgstr "Справа наліво"
 
@@ -1985,6 +2223,9 @@ msgstr "Зберегти"
 msgid "Saving..."
 msgstr "Збереження..."
 
+#: ../../../lib/web/src/components/filter-bar.tsx:32
+#: ../../../lib/web/src/components/header-search.tsx:22
+#: ../../../lib/web/src/components/search.tsx:18
 #: src/components/view-options-bar.tsx:142
 msgid "Search"
 msgstr "Пошук"
@@ -1993,9 +2234,17 @@ msgstr "Пошук"
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Пошук за назвою, ID, відбитком або URL..."
 
-#: ../../../lib/web/src/components/place-picker.tsx:85
+#: ../../../lib/web/src/components/ui/command.tsx:35
+msgid "Search for a command to run..."
+msgstr ""
+
+#: ../../../lib/web/src/components/place-picker.tsx:86
 msgid "Search for a place"
 msgstr "Пошук місця"
+
+#: ../../../lib/web/src/components/place-picker.tsx:50
+msgid "Search for a place..."
+msgstr ""
 
 #: src/features/crms/components/inline-crm-search.tsx:138
 msgid "Search for CRMs..."
@@ -2026,13 +2275,15 @@ msgid "Search, watch, and sort this view."
 msgstr "Шукайте, відстежуйте та сортуйте цей вигляд."
 
 #: ../../../lib/web/src/components/person-picker.tsx:324
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:81
+#: ../../../lib/web/src/components/search-entity-page.tsx:72
 #: src/components/view-options-bar.tsx:146
 #: src/components/view-options-bar.tsx:228
 msgid "Search..."
 msgstr "Пошук..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:200
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:175
+#: ../../../lib/web/src/components/search-entity-page.tsx:201
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Пошук..."
@@ -2040,6 +2291,11 @@ msgstr "Пошук..."
 #: src/features/editor/components/add-dialogs.tsx:139
 msgid "Select"
 msgstr "Вибрати"
+
+#. placeholder {0}: item.label.toLowerCase()
+#: ../../../lib/web/src/components/config-drawer.tsx:149
+msgid "Select {0}"
+msgstr ""
 
 #: src/features/editor/components/edit-dialogs.tsx:372
 msgid "Select a field"
@@ -2053,6 +2309,10 @@ msgstr "Виберіть користувача, групу або інше пр
 msgid "Select access rule"
 msgstr "Виберіть правило доступу"
 
+#: ../../../lib/web/src/features/accounts/account-picker.tsx:34
+msgid "Select account"
+msgstr ""
+
 #: ../../../lib/web/src/features/accounts/account-add.tsx:129
 msgid "Select account type"
 msgstr "Виберіть тип облікового запису"
@@ -2061,27 +2321,35 @@ msgstr "Виберіть тип облікового запису"
 msgid "Select group"
 msgstr "Виберіть групу"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:304
+#: ../../../lib/web/src/components/config-drawer.tsx:305
 msgid "Select layout style"
 msgstr "Виберіть стиль розкладки"
+
+#: ../../../lib/web/src/components/place-picker.tsx:49
+msgid "Select location"
+msgstr "Вибрати місцезнаходження"
 
 #: src/components/keyboard-shortcuts-help.tsx:30
 msgid "Select next card"
 msgstr "Вибрати наступну картку"
 
+#: ../../../lib/web/src/components/person-picker.tsx:83
+msgid "Select person..."
+msgstr ""
+
 #: src/components/keyboard-shortcuts-help.tsx:31
 msgid "Select previous card"
 msgstr "Вибрати попередню картку"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:246
+#: ../../../lib/web/src/components/config-drawer.tsx:247
 msgid "Select sidebar style"
 msgstr "Виберіть стиль бічної панелі"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:348
+#: ../../../lib/web/src/components/config-drawer.tsx:349
 msgid "Select site direction"
 msgstr "Виберіть напрямок сайту"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:202
+#: ../../../lib/web/src/components/config-drawer.tsx:203
 msgid "Select theme preference"
 msgstr "Виберіть тему"
 
@@ -2169,8 +2437,8 @@ msgstr "Показати цю довідку"
 msgid "Showing {totalShown} of {total}"
 msgstr "Показано {totalShown} з {total}"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:238
-#: ../../../lib/web/src/components/config-drawer.tsx:262
+#: ../../../lib/web/src/components/config-drawer.tsx:239
+#: ../../../lib/web/src/components/config-drawer.tsx:263
 #: ../../../lib/web/src/components/ui/sidebar.tsx:237
 msgid "Sidebar"
 msgstr "Бічна панель"
@@ -2219,7 +2487,7 @@ msgstr "Слідкуйте за оновленнями!"
 msgid "Stop watching"
 msgstr "Припинити стеження"
 
-#: ../../../lib/web/src/features/access/access-list.tsx:191
+#: ../../../lib/web/src/features/access/access-list.tsx:196
 msgid "Subject"
 msgstr "Тема"
 
@@ -2233,6 +2501,8 @@ msgstr "Надіслати коментар"
 msgid "Submit reply"
 msgstr "Надіслати відповідь"
 
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:83
+#: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/crms/components/inline-crm-search.tsx:207
 #: src/features/crms/components/recommended-crms.tsx:167
 msgid "Subscribe"
@@ -2262,16 +2532,24 @@ msgstr "Неділя"
 msgid "Switch to view 1-9"
 msgstr "Перейти до вигляду 1-9"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/config-drawer.tsx:209
 #: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 msgid "System"
 msgstr "Система"
 
-#: ../../../lib/web/src/components/tag-input.tsx:94
+#: ../../../lib/web/src/components/tag-input.tsx:95
 msgid "Tag"
 msgstr "Тег"
+
+#: ../../../lib/web/src/components/post-tags.tsx:76
+msgid "Tag already exists"
+msgstr "Тег уже існує"
+
+#: ../../../lib/web/src/components/post-tags.tsx:68
+msgid "Tag must be 50 characters or less"
+msgstr "Тег має бути не довшим за 50 символів"
 
 #: ../../../lib/web/src/components/post-tags.tsx:101
 #: ../../../lib/web/src/components/post-tags.tsx:115
@@ -2303,11 +2581,11 @@ msgstr "Запитаний вміст не знайдено."
 msgid "The site is not available at the moment."
 msgstr "Сайт наразі недоступний."
 
-#: ../../../lib/web/src/components/config-drawer.tsx:194
+#: ../../../lib/web/src/components/config-drawer.tsx:195
 msgid "Theme"
 msgstr "Тема"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:69
+#: ../../../lib/web/src/components/config-drawer.tsx:70
 msgid "Theme Settings"
 msgstr "Налаштування теми"
 
@@ -2410,8 +2688,8 @@ msgstr "Верхній рівень"
 msgid "Travelling"
 msgstr "Подорож"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:216
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:191
+#: ../../../lib/web/src/components/search-entity-page.tsx:217
 msgid "Try adjusting your search terms"
 msgstr "Спробуйте змінити пошукові терміни"
 
@@ -2459,9 +2737,18 @@ msgstr "Не призначено"
 msgid "Unauthorized Access"
 msgstr "Неавторизований доступ"
 
+#: ../../../lib/web/src/lib/request.ts:133
+#: ../../../lib/web/src/lib/request.ts:206
+msgid "Unexpected API error"
+msgstr "Неочікувана помилка API"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:87
 msgid "United States"
 msgstr "Сполучені Штати"
+
+#: ../../../lib/web/src/features/accounts/types.ts:29
+msgid "Unknown"
+msgstr "Невідомо"
 
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
@@ -2523,6 +2810,7 @@ msgstr "Завантажити файл .json"
 msgid "Use your passkey"
 msgstr "Скористайтеся ключем доступу"
 
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:86
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
 #: src/features/editor/components/add-dialogs.tsx:141
 msgid "User"
@@ -2597,6 +2885,7 @@ msgstr "Перегляди"
 msgid "Watch"
 msgstr "Стежити"
 
+#: ../../../lib/web/src/components/filter-bar.tsx:35
 #: src/components/view-options-bar.tsx:243
 msgid "Watched"
 msgstr "Відстежується"
@@ -2613,6 +2902,10 @@ msgstr "Ми надіслали код підтвердження на <0>{0}</0
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:16
 msgid "We'll be back online shortly."
 msgstr "Ми скоро повернемося онлайн."
+
+#: ../../../lib/web/src/components/notifications-dropdown.tsx:197
+msgid "We'll notify you when something important happens."
+msgstr "Ми повідомимо вас, коли станеться щось важливе."
 
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:13
 msgid "Website is under maintenance!"
@@ -2637,6 +2930,14 @@ msgstr "У вас немає потрібного дозволу, <0/>щоб п�
 #: src/features/crms/pages/crms-list-page.tsx:98
 msgid "You have no CRMs yet."
 msgstr "У вас поки немає CRM."
+
+#: ../../../lib/web/src/lib/show-submitted-data.tsx:9
+msgid "You submitted the following values:"
+msgstr ""
+
+#: ../../../lib/web/src/components/notifications-dropdown.tsx:193
+msgid "You're all caught up!"
+msgstr "Ви все переглянули!"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
