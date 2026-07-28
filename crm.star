@@ -4,6 +4,18 @@
 # This file is part of Mochi, licensed under the GNU AGPL v3 with the
 # Mochi Application Interface Exception - see license.txt and license-exception.md.
 
+# decimal(value) -> bool: whether value is a non-empty ASCII decimal string.
+# This is what .isdigit() was reached for, but isdigit() also accepts Unicode
+# digit forms (Arabic-Indic "٣", Devanagari "३") that int() rejects,
+# which aborts the action as a 500 instead of taking the guard's else branch.
+def decimal(value):
+    if not value:
+        return False
+    for c in value.elems():
+        if c not in "0123456789":
+            return False
+    return True
+
 # remote_error surfaces a failed mochi.remote.request: core-authored
 # transport failures (marked "transport") become a translated generic
 # error with the detail kept in the server log; far-end app answers
@@ -591,8 +603,8 @@ def safe_int(value, default=0):
 	if not s:
 		return default
 	if s[0] == "-":
-		return int(s) if s[1:].isdigit() else default
-	return int(s) if s.isdigit() else default
+		return int(s) if decimal(s[1:]) else default
+	return int(s) if decimal(s) else default
 
 def check_length(value, max_len):
 	"""Return True if value is a string exceeding max_len."""
