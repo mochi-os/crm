@@ -4,7 +4,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useLingui } from '@lingui/react/macro'
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { MessageSquare, Paperclip, Send, X } from "lucide-react";
@@ -30,6 +30,7 @@ import {
   AttachmentActions,
   AttachmentAction,
   useFormat,
+  useImageObjectUrls,
   pendingFileKey,
   removePendingFile,
 } from "@mochi/web";
@@ -53,6 +54,14 @@ export function CommentList({
   const [replyingTo, setReplyingTo] = useState<string | null>(null);
   const [replyDraft, setReplyDraft] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const newFileImageUrls = useImageObjectUrls(newFiles);
+
+  useEffect(() => {
+    setNewComment("");
+    setNewFiles([]);
+    setReplyingTo(null);
+    setReplyDraft("");
+  }, [objectId]);
   const queryClient = useQueryClient();
   const currentUserId = useAuthStore((s) => s.identity);
   const { formatFileSize } = useFormat();
@@ -223,12 +232,20 @@ export function CommentList({
           />
           {newFiles.length > 0 && (
             <AttachmentGroup>
-              {newFiles.map((file) => {
+              {newFiles.map((file, i) => {
                 const isImage = file.type.startsWith("image/");
                 return (
                   <Attachment key={pendingFileKey(file)} state="uploading" size="sm">
                     <AttachmentMedia variant={isImage ? "image" : "icon"}>
-                      <Paperclip />
+                      {isImage && newFileImageUrls[i] ? (
+                        <img
+                          src={newFileImageUrls[i] ?? undefined}
+                          alt={file.name}
+                          draggable={false}
+                        />
+                      ) : (
+                        <Paperclip />
+                      )}
                     </AttachmentMedia>
                     <AttachmentContent>
                       <AttachmentTitle>{file.name}</AttachmentTitle>

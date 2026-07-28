@@ -4,7 +4,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useCallback, useState, useRef } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { Trans } from '@lingui/react/macro'
 import { t } from '@lingui/core/macro'
 import { Check, Loader2, MoreHorizontal, Pencil, Reply, Send, Trash2, X, Paperclip } from "lucide-react";
@@ -103,6 +103,15 @@ export function CommentThread({
   }, [isSubmittingReply, onSubmitReply, comment.id, replyFiles]);
 
   const isReplying = replyingTo === comment.id;
+
+  // Discard staged files whenever this comment's reply form closes (cancel,
+  // Escape, or switching to another comment) so they can't be silently
+  // re-sent with the next reply. A failed submit keeps the form open, so the
+  // files stay for retry.
+  useEffect(() => {
+    if (!isReplying && replyFiles.length > 0) setReplyFiles([]);
+  }, [isReplying, replyFiles.length]);
+
   const hasChildren = comment.children && comment.children.length > 0;
   const canEdit = currentUserId === comment.author && !readOnly;
   const canDelete = currentUserId === comment.author && !readOnly;
@@ -308,7 +317,14 @@ export function CommentThread({
       </div>
 
       {isReplying && (
-        <div className="mt-2 space-y-2 border-t pt-2">
+        <div
+          className="mt-2 space-y-2 border-t pt-2"
+          // Close on Escape from anywhere in the form — after picking a file,
+          // focus sits on a button, so the textarea's Escape never fires.
+          onKeyDown={(e) => {
+            if (e.key === "Escape") onCancelReply();
+          }}
+        >
           <MentionTextarea
             placeholder={t`Reply to ${comment.name || comment.author}...`}
             value={replyDraft}
