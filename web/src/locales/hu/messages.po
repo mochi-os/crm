@@ -22,11 +22,11 @@ msgstr "Ellenőrizze az internetkapcsolatát, és próbálja újra."
 msgid " or "
 msgstr " vagy "
 
-#: src/features/objects/components/comment-thread.tsx:203
+#: src/features/objects/components/comment-thread.tsx:222
 msgid "(edited)"
 msgstr "(szerkesztve)"
 
-#: src/features/objects/components/comment-thread.tsx:187
+#: src/features/objects/components/comment-thread.tsx:206
 msgid "(expand)"
 msgstr "(kibontás)"
 
@@ -54,6 +54,10 @@ msgstr "{0} - Tervezés"
 msgid "{0} option preview"
 msgstr ""
 
+#: ../../../lib/web/src/components/config-drawer.tsx:160
+#~ msgid "{0} option preview<<<<<<< HEAD"
+#~ msgstr "{0} beállítás előnézete>>>>>>> main"
+
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:120
 #: src/routes/_authenticated/$crmId_.settings.tsx:219
@@ -67,6 +71,10 @@ msgstr "{entityLabel} neve"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:99
 msgid "{entityLabel} name is required"
 msgstr ""
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:99
+#~ msgid "{entityLabel} name is required<<<<<<< HEAD"
+#~ msgstr "A(z) {entityLabel} neve kötelező>>>>>>> main"
 
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
@@ -92,16 +100,20 @@ msgstr "{totalCount, plural, one {# elem} other {# elem}}"
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr ""
 
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
+#~ msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}<<<<<<< HEAD"
+#~ msgstr "{unreadCount, plural, one {Menü megnyitása (# olvasatlan értesítés)} other {Menü megnyitása (# olvasatlan értesítés)}}>>>>>>> main"
+
 #. placeholder {0}: countDeepChildren(object.id)
 #: src/features/board/components/board-card.tsx:360
 msgid "+{0} nested"
 msgstr "+{0} beágyazott"
 
-#: src/features/objects/components/comment-thread.tsx:184
+#: src/features/objects/components/comment-thread.tsx:203
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} további válasz"
 
-#: src/features/objects/components/comment-thread.tsx:183
+#: src/features/objects/components/comment-thread.tsx:202
 msgid "1 reply"
 msgstr "1 válasz"
 
@@ -175,7 +187,7 @@ msgstr "Tevékenység"
 msgid "Add"
 msgstr "Hozzáadás"
 
-#: src/features/objects/components/comment-list.tsx:267
+#: src/features/objects/components/comment-list.tsx:325
 msgid "Add a comment..."
 msgstr "Megjegyzés hozzáadása..."
 
@@ -272,6 +284,10 @@ msgstr "Nézet hozzáadása"
 msgid "Adding..."
 msgstr ""
 
+#: ../../../lib/web/src/features/access/access-dialog.tsx:332
+#~ msgid "Adding...<<<<<<< HEAD"
+#~ msgstr "Hozzáadás...>>>>>>> main"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:72
 msgid "Adjust the appearance and layout to suit your preferences."
 msgstr "Igazítsa a megjelenést és az elrendezést a saját igényei szerint."
@@ -293,6 +309,10 @@ msgstr "Összes CRM"
 msgid "Allow anyone to search for {0}"
 msgstr ""
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
+#~ msgid "Allow anyone to search for {0}<<<<<<< HEAD"
+#~ msgstr "Bárki kereshessen {0} elemre>>>>>>> main"
+
 #: src/features/crms/components/create-crm-dialog.tsx:229
 msgid "Allow anyone to search for CRM"
 msgstr "Bárki kereshet a CRM-re"
@@ -313,6 +333,10 @@ msgstr "Váratlan hiba történt"
 msgid "Android push"
 msgstr ""
 
+#: ../../../lib/web/src/features/accounts/types.ts:16
+#~ msgid "Android push<<<<<<< HEAD"
+#~ msgstr "Android push>>>>>>> main"
+
 #: ../../../lib/web/src/features/access/access-list.tsx:45
 #: ../../../lib/web/src/features/access/types.ts:42
 msgid "Anyone"
@@ -320,7 +344,12 @@ msgstr ""
 
 #: ../../../lib/web/src/features/access/types.ts:41
 msgid "Anyone who is logged in"
-msgstr ""
+msgstr "Bárki, aki be van jelentkezve>>>>>>> main"
+
+#: ../../../lib/web/src/features/access/access-list.tsx:45
+#: ../../../lib/web/src/features/access/types.ts:42
+#~ msgid "Anyone<<<<<<< HEAD"
+#~ msgstr ""
 
 #. placeholder {0}: deleteTarget?.name
 #: src/features/objects/components/object-attachments.tsx:248
@@ -335,7 +364,7 @@ msgstr "Biztosan törli a következőt: „{title}”? Ez a művelet nem vonhat�
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Biztosan törli a(z) „{name}” oszlopot? Ez nem vonható vissza."
 
-#: src/features/objects/components/comment-thread.tsx:456
+#: src/features/objects/components/comment-thread.tsx:478
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "Biztosan törli ezt a megjegyzést? Ez az összes választ is törli."
 
@@ -355,13 +384,13 @@ msgstr "Növekvő"
 msgid "Ascending"
 msgstr "Növekvő"
 
-#: src/features/objects/components/comment-list.tsx:301
-#: src/features/objects/components/comment-list.tsx:306
+#: src/features/objects/components/comment-list.tsx:362
+#: src/features/objects/components/comment-list.tsx:367
 msgid "Attach comment files"
 msgstr "Megjegyzésfájlok csatolása"
 
-#: src/features/objects/components/comment-thread.tsx:410
-#: src/features/objects/components/comment-thread.tsx:415
+#: src/features/objects/components/comment-thread.tsx:432
+#: src/features/objects/components/comment-thread.tsx:437
 msgid "Attach reply files"
 msgstr "Válaszfájlok csatolása"
 
@@ -369,6 +398,11 @@ msgstr "Válaszfájlok csatolása"
 #: ../../../lib/web/src/features/access/types.ts:41
 msgid "Authenticated users"
 msgstr ""
+
+#: ../../../lib/web/src/features/access/access-list.tsx:46
+#: ../../../lib/web/src/features/access/types.ts:41
+#~ msgid "Authenticated users<<<<<<< HEAD"
+#~ msgstr "Bejelentkezett felhasználók>>>>>>> main"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:315
 msgid "Authenticator code"
@@ -384,7 +418,11 @@ msgstr ""
 
 #: ../../../lib/web/src/components/entity-avatar.tsx:99
 msgid "Avatar for {name}"
-msgstr ""
+msgstr "{name} profilképe>>>>>>> main"
+
+#: ../../../lib/web/src/components/entity-avatar.tsx:99
+#~ msgid "Avatar<<<<<<< HEAD"
+#~ msgstr ""
 
 #: ../../../lib/web/src/components/place-picker.tsx:156
 msgid "Back"
@@ -413,6 +451,10 @@ msgstr "Vissza a kezdőlapra"
 msgid "Banner"
 msgstr ""
 
+#: ../../../lib/web/src/components/entity-banner.tsx:17
+#~ msgid "Banner<<<<<<< HEAD"
+#~ msgstr "Fejléckép>>>>>>> main"
+
 #: src/features/objects/components/object-links.tsx:48
 #: src/features/objects/components/object-links.tsx:164
 msgid "Blocked by"
@@ -439,6 +481,10 @@ msgstr "Szegélyszín"
 msgid "Browser notifications"
 msgstr ""
 
+#: ../../../lib/web/src/features/accounts/types.ts:13
+#~ msgid "Browser notifications<<<<<<< HEAD"
+#~ msgstr "Böngészőértesítések>>>>>>> main"
+
 #: src/features/editor/components/edit-dialogs.tsx:780
 msgid "Can be child of"
 msgstr "Lehet gyermeke ennek"
@@ -455,19 +501,19 @@ msgstr "Lehet gyermeke ennek"
 #: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:296
 #: src/features/editor/components/option-dialog.tsx:146
-#: src/features/objects/components/comment-thread.tsx:224
+#: src/features/objects/components/comment-thread.tsx:243
 #: src/routes/_authenticated/$crmId/design.tsx:305
 #: src/routes/_authenticated/$crmId/index.tsx:1100
 msgid "Cancel"
 msgstr "Mégse"
 
-#: src/features/objects/components/comment-list.tsx:318
-#: src/features/objects/components/comment-list.tsx:323
+#: src/features/objects/components/comment-list.tsx:379
+#: src/features/objects/components/comment-list.tsx:384
 msgid "Cancel comment"
 msgstr ""
 
-#: src/features/objects/components/comment-thread.tsx:426
-#: src/features/objects/components/comment-thread.tsx:431
+#: src/features/objects/components/comment-thread.tsx:448
+#: src/features/objects/components/comment-thread.tsx:453
 msgid "Cancel reply"
 msgstr "Válasz elvetése"
 
@@ -483,6 +529,10 @@ msgstr "Értesítési kategória módosítása"
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:198
 msgid "Check \"All\" to see your past notifications."
 msgstr ""
+
+#: ../../../lib/web/src/components/notifications-dropdown.tsx:198
+#~ msgid "Check \"All\" to see your past notifications.<<<<<<< HEAD"
+#~ msgstr "Jelölje be az „Összes” lehetőséget a korábbi értesítésekhez.>>>>>>> main"
 
 #: src/features/editor/components/add-dialogs.tsx:135
 msgid "Checkbox"
@@ -541,6 +591,10 @@ msgstr "Szűrők törlése"
 #: ../../../lib/web/src/components/search-input.tsx:26
 msgid "Clear search"
 msgstr ""
+
+#: ../../../lib/web/src/components/search-input.tsx:26
+#~ msgid "Clear search<<<<<<< HEAD"
+#~ msgstr "Keresés törlése>>>>>>> main"
 
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
@@ -624,8 +678,12 @@ msgstr "Hamarosan!"
 msgid "Command Palette"
 msgstr ""
 
-#: src/features/objects/components/comment-thread.tsx:305
-#: src/features/objects/components/comment-thread.tsx:312
+#: ../../../lib/web/src/components/ui/command.tsx:34
+#~ msgid "Command Palette<<<<<<< HEAD"
+#~ msgstr ""
+
+#: src/features/objects/components/comment-thread.tsx:324
+#: src/features/objects/components/comment-thread.tsx:331
 msgid "Comment actions"
 msgstr "Megjegyzésműveletek"
 
@@ -666,15 +724,19 @@ msgstr ""
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:191
 msgid "Connected accounts"
-msgstr ""
+msgstr "Csatlakoztatott fiókok"
+
+#: ../../../lib/web/src/lib/chat-ui.ts:18
+#~ msgid "Connected<<<<<<< HEAD"
+#~ msgstr ""
 
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Connecting..."
-msgstr ""
+msgstr "Csatlakozás…"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts:18
 msgid "Content not found."
-msgstr ""
+msgstr "A tartalom nem található.>>>>>>> main"
 
 #: ../../../lib/web/src/lib/query-client.ts:81
 msgid "Content not modified"
@@ -698,7 +760,11 @@ msgstr ""
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx:25
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "A vágólapra másolva>>>>>>> main"
+
+#: ../../../lib/web/src/lib/toast-utils.ts:42
+#~ msgid "Copied<<<<<<< HEAD"
+#~ msgstr ""
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx:64
 msgid "Copy"
@@ -732,6 +798,10 @@ msgstr "Létrehozás"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:144
 msgid "Create {0}"
 msgstr ""
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:144
+#~ msgid "Create {0}<<<<<<< HEAD"
+#~ msgstr "{0} létrehozása>>>>>>> main"
 
 #: src/features/crms/components/create-crm-dialog.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:103
@@ -820,6 +890,10 @@ msgstr "CRM-ek"
 msgid "Current location"
 msgstr ""
 
+#: ../../../lib/web/src/components/map-view.tsx:208
+#~ msgid "Current location<<<<<<< HEAD"
+#~ msgstr "Jelenlegi hely>>>>>>> main"
+
 #: ../../../lib/web/src/components/colour-picker.tsx:261
 msgid "Custom"
 msgstr "Egyéni"
@@ -867,9 +941,9 @@ msgstr "Alapértelmezett rendezés"
 
 #: src/features/board/components/board-column.tsx:558
 #: src/features/board/components/board-column.tsx:619
-#: src/features/objects/components/comment-thread.tsx:293
-#: src/features/objects/components/comment-thread.tsx:336
-#: src/features/objects/components/comment-thread.tsx:457
+#: src/features/objects/components/comment-thread.tsx:312
+#: src/features/objects/components/comment-thread.tsx:355
+#: src/features/objects/components/comment-thread.tsx:479
 #: src/features/objects/components/object-attachments.tsx:146
 #: src/features/objects/components/object-attachments.tsx:156
 #: src/features/objects/components/object-attachments.tsx:205
@@ -891,7 +965,7 @@ msgstr "Osztály törlése"
 msgid "Delete column"
 msgstr "Oszlop törlése"
 
-#: src/features/objects/components/comment-thread.tsx:455
+#: src/features/objects/components/comment-thread.tsx:477
 msgid "Delete comment"
 msgstr "Megjegyzés törlése"
 
@@ -987,18 +1061,27 @@ msgstr "Irány"
 msgid "Directory"
 msgstr ""
 
+#: ../../../lib/web/src/components/person-picker.tsx:214
+#~ msgid "Directory<<<<<<< HEAD"
+#~ msgstr ""
+
 #: ../../../lib/web/src/components/comment-composer.tsx:300
 msgid "Discard"
 msgstr ""
 
 #: ../../../lib/web/src/components/comment-composer.tsx:298
 msgid "Discard draft?"
-msgstr ""
+msgstr "Címtár>>>>>>> main"
 
 #: ../../../lib/web/src/lib/chat-ui.ts:25
 #: ../../../lib/web/src/lib/chat-ui.ts:29
 msgid "Disconnected"
 msgstr ""
+
+#: ../../../lib/web/src/lib/chat-ui.ts:25
+#: ../../../lib/web/src/lib/chat-ui.ts:29
+#~ msgid "Disconnected<<<<<<< HEAD"
+#~ msgstr "Leválasztva>>>>>>> main"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:79
 #: ../../../lib/web/src/components/restore-banner.tsx:85
@@ -1057,8 +1140,8 @@ msgstr "Duplikálja"
 msgid "Dyslexia-friendly"
 msgstr "Diszlexiabarát"
 
-#: src/features/objects/components/comment-thread.tsx:282
-#: src/features/objects/components/comment-thread.tsx:327
+#: src/features/objects/components/comment-thread.tsx:301
+#: src/features/objects/components/comment-thread.tsx:346
 msgid "Edit"
 msgstr "Szerkesztés"
 
@@ -1104,6 +1187,10 @@ msgstr ""
 msgid "Email code"
 msgstr "E-mail kód"
 
+#: ../../../lib/web/src/features/accounts/types.ts:15
+#~ msgid "Email<<<<<<< HEAD"
+#~ msgstr "E-mail>>>>>>> main"
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:299
 msgid "Enter the code from your email"
 msgstr "Adja meg az e-mailben kapott kódot"
@@ -1147,6 +1234,10 @@ msgstr "Terv exportálása"
 msgid "External URL"
 msgstr ""
 
+#: ../../../lib/web/src/features/accounts/types.ts:22
+#~ msgid "External URL<<<<<<< HEAD"
+#~ msgstr "Külső URL>>>>>>> main"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
 msgstr "Extra nagy"
@@ -1159,10 +1250,19 @@ msgstr "Nem sikerült hozzáadni a fiókot"
 msgid "Failed to add tag"
 msgstr ""
 
+#: ../../../lib/web/src/components/tag-input.tsx:39
+#~ msgid "Failed to add tag<<<<<<< HEAD"
+#~ msgstr "Nem sikerült hozzáadni a címkét>>>>>>> main"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx:26
 #: ../../../lib/web/src/lib/toast-utils.ts:44
 msgid "Failed to copy"
 msgstr ""
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx:26
+#: ../../../lib/web/src/lib/toast-utils.ts:44
+#~ msgid "Failed to copy<<<<<<< HEAD"
+#~ msgstr "Nem sikerült másolni>>>>>>> main"
 
 #: src/features/editor/components/design-editor.tsx:113
 msgid "Failed to create class"
@@ -1193,7 +1293,7 @@ msgstr "Nem sikerült létrehozni a nézetet"
 msgid "Failed to delete attachment"
 msgstr "Nem sikerült törölni a mellékletet"
 
-#: src/features/objects/components/comment-list.tsx:160
+#: src/features/objects/components/comment-list.tsx:172
 msgid "Failed to delete comment"
 msgstr "Nem sikerült törölni a hozzászólást"
 
@@ -1258,7 +1358,11 @@ msgstr "Nem sikerült betölteni az elemet"
 msgid "Failed to load video"
 msgstr "A videó betöltése sikertelen"
 
-#: src/features/objects/components/comment-list.tsx:118
+#: ../../../lib/web/src/hooks/use-load-more.ts:74
+#~ msgid "Failed to load<<<<<<< HEAD"
+#~ msgstr "Nem sikerült betölteni>>>>>>> main"
+
+#: src/features/objects/components/comment-list.tsx:130
 msgid "Failed to post comment"
 msgstr "Nem sikerült közzétenni a hozzászólást"
 
@@ -1310,7 +1414,7 @@ msgstr "Nem sikerült frissíteni a hozzáférési szintet"
 msgid "Failed to update category"
 msgstr "Nem sikerült frissíteni a kategóriát"
 
-#: src/features/objects/components/comment-list.tsx:143
+#: src/features/objects/components/comment-list.tsx:155
 msgid "Failed to update comment"
 msgstr "Nem sikerült frissíteni a hozzászólást"
 
@@ -1339,6 +1443,10 @@ msgstr "Fájlok"
 #: ../../../lib/web/src/components/data-table/toolbar.tsx:30
 msgid "Filter..."
 msgstr ""
+
+#: ../../../lib/web/src/components/data-table/toolbar.tsx:30
+#~ msgid "Filter...<<<<<<< HEAD"
+#~ msgstr "Szűrés…>>>>>>> main"
 
 #: src/components/layout/crms-layout.tsx:58
 #: src/routes/_authenticated/find.tsx:88
@@ -1372,6 +1480,10 @@ msgstr "Péntek"
 #: ../../../lib/web/src/components/person-picker.tsx:207
 msgid "Friends"
 msgstr ""
+
+#: ../../../lib/web/src/components/person-picker.tsx:207
+#~ msgid "Friends<<<<<<< HEAD"
+#~ msgstr "Barátok>>>>>>> main"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx:153
 msgid "From"
@@ -1428,6 +1540,10 @@ msgstr "Csoportosítás"
 #: ../../../lib/web/src/features/access/access-list.tsx:68
 msgid "Group: {0}"
 msgstr ""
+
+#: ../../../lib/web/src/features/access/access-list.tsx:68
+#~ msgid "Group: {0}<<<<<<< HEAD"
+#~ msgstr "Csoport: {0}>>>>>>> main"
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:70
 msgid "Hide"
@@ -1488,13 +1604,17 @@ msgstr "Adatok importálása..."
 msgid "Including anonymous users"
 msgstr ""
 
+#: ../../../lib/web/src/features/access/types.ts:42
+#~ msgid "Including anonymous users<<<<<<< HEAD"
+#~ msgstr ""
+
 #: ../../../lib/web/src/components/faceless-avatar.tsx:69
 msgid "Initials avatar"
-msgstr ""
+msgstr "Monogramos profilkép"
 
 #: ../../../lib/web/src/components/faceless-avatar.tsx:69
 msgid "Initials avatar for {name}"
-msgstr ""
+msgstr "{name} monogramos profilképe>>>>>>> main"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:253
 msgid "Inset"
@@ -1517,6 +1637,10 @@ msgstr "Érvénytelen JSON fájl"
 msgid "Invalid tag: letters, numbers, spaces, hyphens, and slashes only (max 50 chars)"
 msgstr ""
 
+#: ../../../lib/web/src/components/tag-input.tsx:38
+#~ msgid "Invalid tag: letters, numbers, spaces, hyphens, and slashes only (max 50 chars)<<<<<<< HEAD"
+#~ msgstr "Érvénytelen címke: csak betűk, számok, szóközök, kötőjelek és perjelek (legfeljebb 50 karakter)>>>>>>> main"
+
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:245
 msgid "Invalid verification code"
 msgstr "Érvénytelen ellenőrző kód"
@@ -1532,6 +1656,10 @@ msgstr "Elem részletei"
 #: ../../../lib/web/src/lib/locale-format.ts:62
 msgid "Just now"
 msgstr ""
+
+#: ../../../lib/web/src/lib/locale-format.ts:62
+#~ msgid "Just now<<<<<<< HEAD"
+#~ msgstr "Épp most>>>>>>> main"
 
 #: src/components/keyboard-shortcuts-help.tsx:49
 msgid "Keyboard shortcuts"
@@ -1559,6 +1687,10 @@ msgstr "Balról jobbra"
 #: ../../../lib/web/src/components/post-tags.tsx:72
 msgid "Letters, numbers, spaces, and hyphens only"
 msgstr ""
+
+#: ../../../lib/web/src/components/post-tags.tsx:72
+#~ msgid "Letters, numbers, spaces, and hyphens only<<<<<<< HEAD"
+#~ msgstr "Csak betűk, számok, szóközök és kötőjelek>>>>>>> main"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:214
 #: ../../../lib/web/src/components/theme-switch.tsx:45
@@ -1626,6 +1758,10 @@ msgstr "Kijelentkezés…"
 msgid "Manage your connected accounts for notifications and services."
 msgstr ""
 
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:192
+#~ msgid "Manage your connected accounts for notifications and services.<<<<<<< HEAD"
+#~ msgstr "Kezelje csatlakoztatott fiókjait az értesítésekhez és szolgáltatásokhoz.>>>>>>> main"
+
 #: src/components/view-options-bar.tsx:40
 msgid "Manual"
 msgstr "Kézikönyv"
@@ -1643,6 +1779,10 @@ msgstr "Maximális hossz"
 #: ../../../lib/web/src/features/accounts/types.ts:17
 msgid "MCP server"
 msgstr ""
+
+#: ../../../lib/web/src/features/accounts/types.ts:17
+#~ msgid "MCP server<<<<<<< HEAD"
+#~ msgstr "MCP-kiszolgáló>>>>>>> main"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:107
 msgid "Medium"
@@ -1664,6 +1804,10 @@ msgstr "Minimális hossz"
 msgid "Mochi web"
 msgstr ""
 
+#: ../../../lib/web/src/features/accounts/types.ts:23
+#~ msgid "Mochi web<<<<<<< HEAD"
+#~ msgstr "Mochi web>>>>>>> main"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:59
 msgid "Monday"
 msgstr "Hétfő"
@@ -1683,6 +1827,10 @@ msgstr "Név"
 msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
 msgstr ""
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
+#~ msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks<<<<<<< HEAD"
+#~ msgstr "A név nem tartalmazhat szögletes zárójelet, fordított perjelet, pontosvesszőt, idézőjelet vagy visszafelé dőlő aposztrófot>>>>>>> main"
+
 #: src/features/crms/components/create-crm-dialog.tsx:75
 msgid "Name is required"
 msgstr "A név kötelező"
@@ -1690,6 +1838,10 @@ msgstr "A név kötelező"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
 msgid "Name must be 1000 characters or less"
 msgstr ""
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
+#~ msgid "Name must be 1000 characters or less<<<<<<< HEAD"
+#~ msgstr "A név legfeljebb 1000 karakter lehet>>>>>>> main"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:53
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:303
@@ -1729,7 +1881,7 @@ msgstr "Nincsenek konfigurált hozzáférési szabályok. Adjon hozzá szabályo
 msgid "No activity yet"
 msgstr "Még nincs tevékenység"
 
-#: src/features/objects/components/comment-list.tsx:353
+#: src/features/objects/components/comment-list.tsx:414
 msgid "No comments yet"
 msgstr "Még nincsenek hozzászólások"
 
@@ -1758,6 +1910,10 @@ msgstr "Nincs egyező objektum"
 msgid "No notifications yet"
 msgstr ""
 
+#: ../../../lib/web/src/components/notifications-dropdown.tsx:193
+#~ msgid "No notifications yet<<<<<<< HEAD"
+#~ msgstr "Még nincsenek értesítések>>>>>>> main"
+
 #: src/routes/_authenticated/$crmId/index.tsx:888
 msgid "No objects to export."
 msgstr "Nincs exportálható objektum."
@@ -1784,6 +1940,11 @@ msgstr ""
 #: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "Nincs találat."
+
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:82
+#: ../../../lib/web/src/components/search-entity-page.tsx:73
+#~ msgid "No results found<<<<<<< HEAD"
+#~ msgstr "Nincs találat>>>>>>> main"
 
 #: src/features/board/components/board-container.tsx:861
 #: src/features/board/components/board-container.tsx:905
@@ -1868,6 +2029,10 @@ msgstr "Szám"
 msgid "On"
 msgstr ""
 
+#: ../../../lib/web/src/components/filter-bar.tsx:35
+#~ msgid "On<<<<<<< HEAD"
+#~ msgstr "Be>>>>>>> main"
+
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:16
 msgid "Oops! Page Not Found!"
 msgstr "Hopp! Az oldal nem található!"
@@ -1899,6 +2064,10 @@ msgstr "Tervezési műveletek megnyitása"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:133
 msgid "Open menu"
 msgstr ""
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:133
+#~ msgid "Open menu<<<<<<< HEAD"
+#~ msgstr "Menü megnyitása>>>>>>> main"
 
 #: ../../../lib/web/src/components/layout/top-bar.tsx:63
 #: ../../../lib/web/src/components/layout/top-bar.tsx:68
@@ -1987,6 +2156,10 @@ msgstr "Minta (regex)"
 msgid "Pick a date"
 msgstr ""
 
+#: ../../../lib/web/src/components/date-picker.tsx:20
+#~ msgid "Pick a date<<<<<<< HEAD"
+#~ msgstr "Válasszon dátumot>>>>>>> main"
+
 #: src/routes/_authenticated/$crmId/index.tsx:769
 #: src/routes/_authenticated/$crmId/index.tsx:803
 msgid "Please add one or more classes to the CRM design."
@@ -2029,6 +2202,10 @@ msgstr "Profil"
 msgid "Project members"
 msgstr ""
 
+#: ../../../lib/web/src/components/person-picker.tsx:200
+#~ msgid "Project members<<<<<<< HEAD"
+#~ msgstr "Projekttagok>>>>>>> main"
+
 #: src/features/objects/components/object-detail-panel.tsx:306
 msgid "Properties"
 msgstr "Tulajdonságok"
@@ -2036,6 +2213,10 @@ msgstr "Tulajdonságok"
 #: ../../../lib/web/src/features/accounts/types.ts:21
 msgid "Push notification"
 msgstr ""
+
+#: ../../../lib/web/src/features/accounts/types.ts:21
+#~ msgid "Push notification<<<<<<< HEAD"
+#~ msgstr "Push értesítés>>>>>>> main"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:117
 msgid "Raised"
@@ -2067,6 +2248,10 @@ msgstr "Ajánlott CRM-ek"
 msgid "Reconnecting ({retries})..."
 msgstr ""
 
+#: ../../../lib/web/src/lib/chat-ui.ts:21
+#~ msgid "Reconnecting ({retries})...<<<<<<< HEAD"
+#~ msgstr "Újracsatlakozás ({retries})…>>>>>>> main"
+
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:133
 msgid "Redirecting to login."
 msgstr "Átirányítás a bejelentkezéshez."
@@ -2086,7 +2271,7 @@ msgstr "Relatív (5p, 3ó, 2n)"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:49
 msgid "Relative within 24 hours, else absolute"
-msgstr "24 órán belül relatív, egyébként abszolút"
+msgstr "24 órán belül relatív, egyébként abszolút<<<<<<< HEAD"
 
 #: ../../../lib/web/src/components/comment-composer.tsx:232
 #: ../../../lib/web/src/features/access/access-list.tsx:270
@@ -2104,6 +2289,11 @@ msgstr "Eltávolítás"
 #: ../../../lib/web/src/components/filter-bar.tsx:62
 msgid "Remove {0} filter"
 msgstr ""
+
+#: ../../../lib/web/src/components/filter-bar.tsx:56
+#: ../../../lib/web/src/components/filter-bar.tsx:62
+#~ msgid "Remove {0} filter<<<<<<< HEAD"
+#~ msgstr "{0} szűrő eltávolítása>>>>>>> main"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:252
 #: ../../../lib/web/src/features/access/access-list.tsx:258
@@ -2163,13 +2353,13 @@ msgstr "Lecseréli a tervet?"
 msgid "Replacing..."
 msgstr "Csere..."
 
-#: src/features/objects/components/comment-thread.tsx:269
-#: src/features/objects/components/comment-thread.tsx:317
+#: src/features/objects/components/comment-thread.tsx:288
+#: src/features/objects/components/comment-thread.tsx:336
 msgid "Reply"
 msgstr "Válasz"
 
 #. placeholder {0}: comment.name || comment.author
-#: src/features/objects/components/comment-thread.tsx:360
+#: src/features/objects/components/comment-thread.tsx:379
 msgid "Reply to {0}..."
 msgstr "Válasz {0} számára..."
 
@@ -2190,6 +2380,11 @@ msgstr "Visszaállítás"
 #: ../../../lib/web/src/components/config-drawer.tsx:127
 msgid "Reset {title}"
 msgstr ""
+
+#: ../../../lib/web/src/components/config-drawer.tsx:122
+#: ../../../lib/web/src/components/config-drawer.tsx:127
+#~ msgid "Reset {title}<<<<<<< HEAD"
+#~ msgstr "{title} visszaállítása>>>>>>> main"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:85
 msgid "Reset all settings to default values"
@@ -2231,7 +2426,7 @@ msgstr "Szombat"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
-#: src/features/objects/components/comment-thread.tsx:244
+#: src/features/objects/components/comment-thread.tsx:263
 #: src/routes/_authenticated/$crmId/index.tsx:1112
 msgid "Save"
 msgstr "Mentés"
@@ -2255,6 +2450,10 @@ msgstr "Keresés név, azonosító, ujjlenyomat vagy URL alapján..."
 msgid "Search for a command to run..."
 msgstr ""
 
+#: ../../../lib/web/src/components/ui/command.tsx:35
+#~ msgid "Search for a command to run...<<<<<<< HEAD"
+#~ msgstr "Keressen futtatandó parancsot…>>>>>>> main"
+
 #: ../../../lib/web/src/components/place-picker.tsx:86
 msgid "Search for a place"
 msgstr "Hely keresése"
@@ -2262,6 +2461,10 @@ msgstr "Hely keresése"
 #: ../../../lib/web/src/components/place-picker.tsx:50
 msgid "Search for a place..."
 msgstr ""
+
+#: ../../../lib/web/src/components/place-picker.tsx:50
+#~ msgid "Search for a place...<<<<<<< HEAD"
+#~ msgstr "Hely keresése…>>>>>>> main"
 
 #: src/features/crms/components/inline-crm-search.tsx:138
 msgid "Search for CRMs..."
@@ -2314,6 +2517,10 @@ msgstr "Kiválasztás"
 msgid "Select {0}"
 msgstr ""
 
+#: ../../../lib/web/src/components/config-drawer.tsx:149
+#~ msgid "Select {0}<<<<<<< HEAD"
+#~ msgstr "{0} kiválasztása>>>>>>> main"
+
 #: src/features/editor/components/edit-dialogs.tsx:372
 msgid "Select a field"
 msgstr "Mező kiválasztása"
@@ -2334,6 +2541,10 @@ msgstr ""
 msgid "Select account type"
 msgstr "Fióktípus kiválasztása"
 
+#: ../../../lib/web/src/features/accounts/account-picker.tsx:34
+#~ msgid "Select account<<<<<<< HEAD"
+#~ msgstr "Válasszon fiókot>>>>>>> main"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:231
 msgid "Select group"
 msgstr "Csoport kiválasztása"
@@ -2346,6 +2557,10 @@ msgstr "Elrendezési stílus kiválasztása"
 msgid "Select location"
 msgstr ""
 
+#: ../../../lib/web/src/components/place-picker.tsx:49
+#~ msgid "Select location<<<<<<< HEAD"
+#~ msgstr "Hely kiválasztása>>>>>>> main"
+
 #: src/components/keyboard-shortcuts-help.tsx:30
 msgid "Select next card"
 msgstr "Következő kártya kijelölése"
@@ -2353,6 +2568,10 @@ msgstr "Következő kártya kijelölése"
 #: ../../../lib/web/src/components/person-picker.tsx:83
 msgid "Select person..."
 msgstr ""
+
+#: ../../../lib/web/src/components/person-picker.tsx:83
+#~ msgid "Select person...<<<<<<< HEAD"
+#~ msgstr "Válasszon személyt…>>>>>>> main"
 
 #: src/components/keyboard-shortcuts-help.tsx:31
 msgid "Select previous card"
@@ -2491,7 +2710,7 @@ msgstr "Rendezés"
 msgid "Spacious"
 msgstr "Tágas"
 
-#: src/features/objects/components/comment-list.tsx:354
+#: src/features/objects/components/comment-list.tsx:415
 msgid "Start the discussion by adding the first comment."
 msgstr "Indítsa el a beszélgetést az első hozzászólás hozzáadásával."
 
@@ -2508,13 +2727,13 @@ msgstr "Figyelés leállítása"
 msgid "Subject"
 msgstr "Tárgy"
 
-#: src/features/objects/components/comment-list.tsx:334
-#: src/features/objects/components/comment-list.tsx:343
+#: src/features/objects/components/comment-list.tsx:395
+#: src/features/objects/components/comment-list.tsx:404
 msgid "Submit comment"
 msgstr "Hozzászólás beküldése"
 
-#: src/features/objects/components/comment-thread.tsx:441
-#: src/features/objects/components/comment-thread.tsx:446
+#: src/features/objects/components/comment-thread.tsx:463
+#: src/features/objects/components/comment-thread.tsx:468
 msgid "Submit reply"
 msgstr "Válasz beküldése"
 
@@ -2564,9 +2783,13 @@ msgstr "Címke"
 msgid "Tag already exists"
 msgstr ""
 
+#: ../../../lib/web/src/components/post-tags.tsx:76
+#~ msgid "Tag already exists<<<<<<< HEAD"
+#~ msgstr ""
+
 #: ../../../lib/web/src/components/post-tags.tsx:68
 msgid "Tag must be 50 characters or less"
-msgstr ""
+msgstr "A címke legfeljebb 50 karakter lehet>>>>>>> main"
 
 #: ../../../lib/web/src/components/post-tags.tsx:101
 #: ../../../lib/web/src/components/post-tags.tsx:115
@@ -2759,6 +2982,11 @@ msgstr "Engedély nélküli hozzáférés"
 msgid "Unexpected API error"
 msgstr ""
 
+#: ../../../lib/web/src/lib/request.ts:133
+#: ../../../lib/web/src/lib/request.ts:206
+#~ msgid "Unexpected API error<<<<<<< HEAD"
+#~ msgstr "Váratlan API-hiba>>>>>>> main"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:87
 msgid "United States"
 msgstr "Egyesült Államok"
@@ -2766,6 +2994,10 @@ msgstr "Egyesült Államok"
 #: ../../../lib/web/src/features/accounts/types.ts:29
 msgid "Unknown"
 msgstr ""
+
+#: ../../../lib/web/src/features/accounts/types.ts:29
+#~ msgid "Unknown<<<<<<< HEAD"
+#~ msgstr "Ismeretlen>>>>>>> main"
 
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
@@ -2924,6 +3156,10 @@ msgstr "Hamarosan újra elérhetők leszünk."
 msgid "We'll notify you when something important happens."
 msgstr ""
 
+#: ../../../lib/web/src/components/notifications-dropdown.tsx:197
+#~ msgid "We'll notify you when something important happens.<<<<<<< HEAD"
+#~ msgstr "Értesítjük, ha valami fontos történik.>>>>>>> main"
+
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:13
 msgid "Website is under maintenance!"
 msgstr "A webhely karbantartás alatt áll!"
@@ -2952,9 +3188,13 @@ msgstr "Még nincsenek CRM-jei."
 msgid "You submitted the following values:"
 msgstr ""
 
+#: ../../../lib/web/src/lib/show-submitted-data.tsx:9
+#~ msgid "You submitted the following values:<<<<<<< HEAD"
+#~ msgstr ""
+
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:193
 msgid "You're all caught up!"
-msgstr ""
+msgstr "Mindent elolvasott!>>>>>>> main"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
