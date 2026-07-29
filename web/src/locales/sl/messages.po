@@ -22,11 +22,11 @@ msgstr "Preverite internetno povezavo in poskusite znova."
 msgid " or "
 msgstr " ali "
 
-#: src/features/objects/components/comment-thread.tsx:222
+#: src/features/objects/components/comment-thread.tsx:169
 msgid "(edited)"
 msgstr "(urejeno)"
 
-#: src/features/objects/components/comment-thread.tsx:206
+#: src/features/objects/components/comment-thread.tsx:153
 msgid "(expand)"
 msgstr "(razširi)"
 
@@ -52,11 +52,7 @@ msgstr "{0} - Zasnova"
 #. placeholder {0}: item.label
 #: ../../../lib/web/src/components/config-drawer.tsx:160
 msgid "{0} option preview"
-msgstr ""
-
-#: ../../../lib/web/src/components/config-drawer.tsx:160
-#~ msgid "{0} option preview<<<<<<< HEAD"
-#~ msgstr "Predogled možnosti {0}>>>>>>> main"
+msgstr "Predogled možnosti {0}"
 
 #. placeholder {0}: crm.crm.name
 #: src/routes/_authenticated/$crmId_.settings.tsx:120
@@ -70,11 +66,7 @@ msgstr "Ime {entityLabel}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:99
 msgid "{entityLabel} name is required"
-msgstr ""
-
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:99
-#~ msgid "{entityLabel} name is required<<<<<<< HEAD"
-#~ msgstr "Ime {entityLabel} je obvezno>>>>>>> main"
+msgstr "Ime {entityLabel} je obvezno"
 
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
@@ -98,22 +90,18 @@ msgstr "{totalCount, plural, one {# element} two {# elementa} few {# elementi} o
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
-msgstr ""
-
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
-#~ msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}<<<<<<< HEAD"
-#~ msgstr "{unreadCount, plural, one {Odpri meni (# neprebrano obvestilo)} two {Odpri meni (# neprebrani obvestili)} few {Odpri meni (# neprebrana obvestila)} other {Odpri meni (# neprebranih obvestil)}}>>>>>>> main"
+msgstr "{unreadCount, plural, one {Odpri meni (# neprebrano obvestilo)} two {Odpri meni (# neprebrani obvestili)} few {Odpri meni (# neprebrana obvestila)} other {Odpri meni (# neprebranih obvestil)}}"
 
 #. placeholder {0}: countDeepChildren(object.id)
 #: src/features/board/components/board-card.tsx:360
 msgid "+{0} nested"
 msgstr "+{0} gnezdenih"
 
-#: src/features/objects/components/comment-thread.tsx:203
+#: src/features/objects/components/comment-thread.tsx:150
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} več odgovorov"
 
-#: src/features/objects/components/comment-thread.tsx:202
+#: src/features/objects/components/comment-thread.tsx:149
 msgid "1 reply"
 msgstr "1 odgovor"
 
@@ -187,7 +175,7 @@ msgstr "Aktivnost"
 msgid "Add"
 msgstr "Dodaj"
 
-#: src/features/objects/components/comment-list.tsx:325
+#: src/features/objects/components/comment-list.tsx:220
 msgid "Add a comment..."
 msgstr "Dodaj komentar ..."
 
@@ -282,11 +270,7 @@ msgstr "Dodaj pogled"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 msgid "Adding..."
-msgstr ""
-
-#: ../../../lib/web/src/features/access/access-dialog.tsx:332
-#~ msgid "Adding...<<<<<<< HEAD"
-#~ msgstr "Dodajanje ...>>>>>>> main"
+msgstr "Dodajanje ..."
 
 #: ../../../lib/web/src/components/config-drawer.tsx:72
 msgid "Adjust the appearance and layout to suit your preferences."
@@ -307,11 +291,7 @@ msgstr "Vsi CRM-ji"
 #. placeholder {0}: entityLabel.toLowerCase()
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
 msgid "Allow anyone to search for {0}"
-msgstr ""
-
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#~ msgid "Allow anyone to search for {0}<<<<<<< HEAD"
-#~ msgstr "Dovoli komur koli iskanje {0}>>>>>>> main"
+msgstr "Dovoli komur koli iskanje {0}"
 
 #: src/features/crms/components/create-crm-dialog.tsx:229
 msgid "Allow anyone to search for CRM"
@@ -331,25 +311,16 @@ msgstr "Prišlo je do nepričakovane napake"
 
 #: ../../../lib/web/src/features/accounts/types.ts:16
 msgid "Android push"
-msgstr ""
-
-#: ../../../lib/web/src/features/accounts/types.ts:16
-#~ msgid "Android push<<<<<<< HEAD"
-#~ msgstr "Android push>>>>>>> main"
+msgstr "Android push"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:45
 #: ../../../lib/web/src/features/access/types.ts:42
 msgid "Anyone"
-msgstr ""
+msgstr "Kdorkoli"
 
 #: ../../../lib/web/src/features/access/types.ts:41
 msgid "Anyone who is logged in"
-msgstr "Kdor koli, ki je prijavljen>>>>>>> main"
-
-#: ../../../lib/web/src/features/access/access-list.tsx:45
-#: ../../../lib/web/src/features/access/types.ts:42
-#~ msgid "Anyone<<<<<<< HEAD"
-#~ msgstr ""
+msgstr "Kdor koli, ki je prijavljen"
 
 #. placeholder {0}: deleteTarget?.name
 #: src/features/objects/components/object-attachments.tsx:248
@@ -364,7 +335,7 @@ msgstr "Ali ste prepričani, da želite izbrisati \"{title}\"? Tega dejanja ni m
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Ali ste prepričani, da želite izbrisati stolpec \"{name}\"? Tega ni mogoče razveljaviti."
 
-#: src/features/objects/components/comment-thread.tsx:478
+#: src/features/objects/components/comment-thread.tsx:435
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "Ali ste prepričani, da želite izbrisati ta komentar? S tem bodo izbrisani tudi vsi odgovori."
 
@@ -384,25 +355,20 @@ msgstr "Naraščajoče"
 msgid "Ascending"
 msgstr "Naraščajoče"
 
-#: src/features/objects/components/comment-list.tsx:362
-#: src/features/objects/components/comment-list.tsx:367
+#: src/features/objects/components/comment-list.tsx:270
+#: src/features/objects/components/comment-list.tsx:275
 msgid "Attach comment files"
 msgstr "Priloži datoteke komentarja"
 
-#: src/features/objects/components/comment-thread.tsx:432
-#: src/features/objects/components/comment-thread.tsx:437
+#: src/features/objects/components/comment-thread.tsx:389
+#: src/features/objects/components/comment-thread.tsx:394
 msgid "Attach reply files"
 msgstr "Priloži datoteke odgovora"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:46
 #: ../../../lib/web/src/features/access/types.ts:41
 msgid "Authenticated users"
-msgstr ""
-
-#: ../../../lib/web/src/features/access/access-list.tsx:46
-#: ../../../lib/web/src/features/access/types.ts:41
-#~ msgid "Authenticated users<<<<<<< HEAD"
-#~ msgstr "Overjeni uporabniki>>>>>>> main"
+msgstr "Overjeni uporabniki"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:315
 msgid "Authenticator code"
@@ -414,15 +380,11 @@ msgstr "Razpoložljive bližnjice na tipkovnici"
 
 #: ../../../lib/web/src/components/entity-avatar.tsx:99
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 #: ../../../lib/web/src/components/entity-avatar.tsx:99
 msgid "Avatar for {name}"
-msgstr "Avatar za {name}>>>>>>> main"
-
-#: ../../../lib/web/src/components/entity-avatar.tsx:99
-#~ msgid "Avatar<<<<<<< HEAD"
-#~ msgstr ""
+msgstr "Avatar za {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx:156
 msgid "Back"
@@ -449,11 +411,7 @@ msgstr "Nazaj na začetek"
 
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
-msgstr ""
-
-#: ../../../lib/web/src/components/entity-banner.tsx:17
-#~ msgid "Banner<<<<<<< HEAD"
-#~ msgstr "Pasica>>>>>>> main"
+msgstr "Pasica"
 
 #: src/features/objects/components/object-links.tsx:48
 #: src/features/objects/components/object-links.tsx:164
@@ -479,11 +437,7 @@ msgstr "Barva obrobe"
 
 #: ../../../lib/web/src/features/accounts/types.ts:13
 msgid "Browser notifications"
-msgstr ""
-
-#: ../../../lib/web/src/features/accounts/types.ts:13
-#~ msgid "Browser notifications<<<<<<< HEAD"
-#~ msgstr "Obvestila brskalnika>>>>>>> main"
+msgstr "Obvestila brskalnika"
 
 #: src/features/editor/components/edit-dialogs.tsx:780
 msgid "Can be child of"
@@ -501,38 +455,29 @@ msgstr "Je lahko podrejen"
 #: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:296
 #: src/features/editor/components/option-dialog.tsx:146
-#: src/features/objects/components/comment-thread.tsx:243
+#: src/features/objects/components/comment-thread.tsx:189
 #: src/routes/_authenticated/$crmId/design.tsx:305
 #: src/routes/_authenticated/$crmId/index.tsx:1100
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/features/objects/components/comment-list.tsx:379
-#: src/features/objects/components/comment-list.tsx:384
-msgid "Cancel comment"
-msgstr ""
-
-#: src/features/objects/components/comment-thread.tsx:448
-#: src/features/objects/components/comment-thread.tsx:453
+#: src/features/objects/components/comment-thread.tsx:405
+#: src/features/objects/components/comment-thread.tsx:410
 msgid "Cancel reply"
 msgstr "Prekliči odgovor"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:146
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "Kategorija za to obvestilo"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:127
-#: ../../../lib/web/src/components/notification-category-button.tsx:138
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "Spremeni kategorijo obvestil"
 
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:198
 msgid "Check \"All\" to see your past notifications."
-msgstr ""
-
-#: ../../../lib/web/src/components/notifications-dropdown.tsx:198
-#~ msgid "Check \"All\" to see your past notifications.<<<<<<< HEAD"
-#~ msgstr "Označite »Vse«, da vidite pretekla obvestila.>>>>>>> main"
+msgstr "Označite »Vse«, da vidite pretekla obvestila."
 
 #: src/features/editor/components/add-dialogs.tsx:135
 msgid "Checkbox"
@@ -590,11 +535,7 @@ msgstr "Počisti filtre"
 
 #: ../../../lib/web/src/components/search-input.tsx:26
 msgid "Clear search"
-msgstr ""
-
-#: ../../../lib/web/src/components/search-input.tsx:26
-#~ msgid "Clear search<<<<<<< HEAD"
-#~ msgstr "Počisti iskanje>>>>>>> main"
+msgstr "Počisti iskanje"
 
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
@@ -676,14 +617,10 @@ msgstr "Kmalu!"
 
 #: ../../../lib/web/src/components/ui/command.tsx:34
 msgid "Command Palette"
-msgstr ""
+msgstr "Paleta ukazov"
 
-#: ../../../lib/web/src/components/ui/command.tsx:34
-#~ msgid "Command Palette<<<<<<< HEAD"
-#~ msgstr ""
-
-#: src/features/objects/components/comment-thread.tsx:324
-#: src/features/objects/components/comment-thread.tsx:331
+#: src/features/objects/components/comment-thread.tsx:270
+#: src/features/objects/components/comment-thread.tsx:277
 msgid "Comment actions"
 msgstr "Dejanja komentarja"
 
@@ -720,15 +657,11 @@ msgstr "Potrdi"
 
 #: ../../../lib/web/src/lib/chat-ui.ts:18
 msgid "Connected"
-msgstr ""
+msgstr "Povezano"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:191
 msgid "Connected accounts"
 msgstr "Povezani računi"
-
-#: ../../../lib/web/src/lib/chat-ui.ts:18
-#~ msgid "Connected<<<<<<< HEAD"
-#~ msgstr ""
 
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Connecting..."
@@ -736,7 +669,7 @@ msgstr "Povezovanje..."
 
 #: ../../../lib/web/src/lib/handle-server-error.ts:18
 msgid "Content not found."
-msgstr "Vsebine ni bilo mogoče najti.>>>>>>> main"
+msgstr "Vsebine ni bilo mogoče najti."
 
 #: ../../../lib/web/src/lib/query-client.ts:81
 msgid "Content not modified"
@@ -756,15 +689,11 @@ msgstr "Nadaljuj z {label}"
 
 #: ../../../lib/web/src/lib/toast-utils.ts:42
 msgid "Copied"
-msgstr ""
+msgstr "Kopirano"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx:25
 msgid "Copied to clipboard"
-msgstr "Kopirano v odložišče>>>>>>> main"
-
-#: ../../../lib/web/src/lib/toast-utils.ts:42
-#~ msgid "Copied<<<<<<< HEAD"
-#~ msgstr ""
+msgstr "Kopirano v odložišče"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx:64
 msgid "Copy"
@@ -797,11 +726,7 @@ msgstr "Ustvari"
 #. placeholder {0}: entityLabel.toLowerCase()
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:144
 msgid "Create {0}"
-msgstr ""
-
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:144
-#~ msgid "Create {0}<<<<<<< HEAD"
-#~ msgstr "Ustvari {0}>>>>>>> main"
+msgstr "Ustvari {0}"
 
 #: src/features/crms/components/create-crm-dialog.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:103
@@ -888,11 +813,7 @@ msgstr "CRM-ji"
 
 #: ../../../lib/web/src/components/map-view.tsx:208
 msgid "Current location"
-msgstr ""
-
-#: ../../../lib/web/src/components/map-view.tsx:208
-#~ msgid "Current location<<<<<<< HEAD"
-#~ msgstr "Trenutna lokacija>>>>>>> main"
+msgstr "Trenutna lokacija"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:261
 msgid "Custom"
@@ -941,9 +862,9 @@ msgstr "Privzeto razvrščanje"
 
 #: src/features/board/components/board-column.tsx:558
 #: src/features/board/components/board-column.tsx:619
-#: src/features/objects/components/comment-thread.tsx:312
-#: src/features/objects/components/comment-thread.tsx:355
-#: src/features/objects/components/comment-thread.tsx:479
+#: src/features/objects/components/comment-thread.tsx:258
+#: src/features/objects/components/comment-thread.tsx:301
+#: src/features/objects/components/comment-thread.tsx:436
 #: src/features/objects/components/object-attachments.tsx:146
 #: src/features/objects/components/object-attachments.tsx:156
 #: src/features/objects/components/object-attachments.tsx:205
@@ -965,7 +886,7 @@ msgstr "Izbriši razred"
 msgid "Delete column"
 msgstr "Izbriši stolpec"
 
-#: src/features/objects/components/comment-thread.tsx:477
+#: src/features/objects/components/comment-thread.tsx:434
 msgid "Delete comment"
 msgstr "Izbriši komentar"
 
@@ -1059,29 +980,12 @@ msgstr "Smer"
 
 #: ../../../lib/web/src/components/person-picker.tsx:214
 msgid "Directory"
-msgstr ""
-
-#: ../../../lib/web/src/components/person-picker.tsx:214
-#~ msgid "Directory<<<<<<< HEAD"
-#~ msgstr ""
-
-#: ../../../lib/web/src/components/comment-composer.tsx:300
-msgid "Discard"
-msgstr ""
-
-#: ../../../lib/web/src/components/comment-composer.tsx:298
-msgid "Discard draft?"
-msgstr "Imenik>>>>>>> main"
+msgstr "Imenik"
 
 #: ../../../lib/web/src/lib/chat-ui.ts:25
 #: ../../../lib/web/src/lib/chat-ui.ts:29
 msgid "Disconnected"
-msgstr ""
-
-#: ../../../lib/web/src/lib/chat-ui.ts:25
-#: ../../../lib/web/src/lib/chat-ui.ts:29
-#~ msgid "Disconnected<<<<<<< HEAD"
-#~ msgstr "Prekinjena povezava>>>>>>> main"
+msgstr "Prekinjena povezava"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:79
 #: ../../../lib/web/src/components/restore-banner.tsx:85
@@ -1140,8 +1044,8 @@ msgstr "Dvojniki"
 msgid "Dyslexia-friendly"
 msgstr "Prilagojeno disleksiji"
 
-#: src/features/objects/components/comment-thread.tsx:301
-#: src/features/objects/components/comment-thread.tsx:346
+#: src/features/objects/components/comment-thread.tsx:247
+#: src/features/objects/components/comment-thread.tsx:292
 msgid "Edit"
 msgstr "Uredi"
 
@@ -1181,15 +1085,11 @@ msgstr "Uredi pogled"
 
 #: ../../../lib/web/src/features/accounts/types.ts:15
 msgid "Email"
-msgstr ""
+msgstr "E-pošta"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:289
 msgid "Email code"
 msgstr "E-poštna koda"
-
-#: ../../../lib/web/src/features/accounts/types.ts:15
-#~ msgid "Email<<<<<<< HEAD"
-#~ msgstr "E-pošta>>>>>>> main"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:299
 msgid "Enter the code from your email"
@@ -1232,11 +1132,7 @@ msgstr "Izvozi obliko"
 
 #: ../../../lib/web/src/features/accounts/types.ts:22
 msgid "External URL"
-msgstr ""
-
-#: ../../../lib/web/src/features/accounts/types.ts:22
-#~ msgid "External URL<<<<<<< HEAD"
-#~ msgstr "Zunanji URL>>>>>>> main"
+msgstr "Zunanji URL"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
@@ -1248,21 +1144,12 @@ msgstr "Neuspešno dodajanje računa"
 
 #: ../../../lib/web/src/components/tag-input.tsx:39
 msgid "Failed to add tag"
-msgstr ""
-
-#: ../../../lib/web/src/components/tag-input.tsx:39
-#~ msgid "Failed to add tag<<<<<<< HEAD"
-#~ msgstr "Neuspešno dodajanje oznake>>>>>>> main"
+msgstr "Neuspešno dodajanje oznake"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx:26
 #: ../../../lib/web/src/lib/toast-utils.ts:44
 msgid "Failed to copy"
-msgstr ""
-
-#: ../../../lib/web/src/components/ui/copy-button.tsx:26
-#: ../../../lib/web/src/lib/toast-utils.ts:44
-#~ msgid "Failed to copy<<<<<<< HEAD"
-#~ msgstr "Kopiranje ni uspelo>>>>>>> main"
+msgstr "Kopiranje ni uspelo"
 
 #: src/features/editor/components/design-editor.tsx:113
 msgid "Failed to create class"
@@ -1293,7 +1180,7 @@ msgstr "Neuspešno ustvarjanje pogleda"
 msgid "Failed to delete attachment"
 msgstr "Neuspešno brisanje priponke"
 
-#: src/features/objects/components/comment-list.tsx:172
+#: src/features/objects/components/comment-list.tsx:147
 msgid "Failed to delete comment"
 msgstr "Neuspešno brisanje komentarja"
 
@@ -1330,7 +1217,7 @@ msgstr "Neuspešen uvoz oblike"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts:74
 msgid "Failed to load"
-msgstr ""
+msgstr "Nalaganje ni uspelo"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:43
 #: src/routes/_authenticated/$crmId/$objectId.tsx:71
@@ -1358,11 +1245,7 @@ msgstr "Neuspešno nalaganje elementa"
 msgid "Failed to load video"
 msgstr "Videa ni bilo mogoče naložiti"
 
-#: ../../../lib/web/src/hooks/use-load-more.ts:74
-#~ msgid "Failed to load<<<<<<< HEAD"
-#~ msgstr "Nalaganje ni uspelo>>>>>>> main"
-
-#: src/features/objects/components/comment-list.tsx:130
+#: src/features/objects/components/comment-list.tsx:105
 msgid "Failed to post comment"
 msgstr "Neuspešna objava komentarja"
 
@@ -1410,11 +1293,11 @@ msgstr "Neuspešna odjava"
 msgid "Failed to update access level"
 msgstr "Neuspešna posodobitev ravni dostopa"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:114
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "Neuspešna posodobitev kategorije"
 
-#: src/features/objects/components/comment-list.tsx:155
+#: src/features/objects/components/comment-list.tsx:130
 msgid "Failed to update comment"
 msgstr "Neuspešna posodobitev komentarja"
 
@@ -1442,11 +1325,7 @@ msgstr "Datoteke"
 
 #: ../../../lib/web/src/components/data-table/toolbar.tsx:30
 msgid "Filter..."
-msgstr ""
-
-#: ../../../lib/web/src/components/data-table/toolbar.tsx:30
-#~ msgid "Filter...<<<<<<< HEAD"
-#~ msgstr "Filtriraj...>>>>>>> main"
+msgstr "Filtriraj..."
 
 #: src/components/layout/crms-layout.tsx:58
 #: src/routes/_authenticated/find.tsx:88
@@ -1479,11 +1358,7 @@ msgstr "Petek"
 
 #: ../../../lib/web/src/components/person-picker.tsx:207
 msgid "Friends"
-msgstr ""
-
-#: ../../../lib/web/src/components/person-picker.tsx:207
-#~ msgid "Friends<<<<<<< HEAD"
-#~ msgstr "Prijatelji>>>>>>> main"
+msgstr "Prijatelji"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx:153
 msgid "From"
@@ -1539,11 +1414,7 @@ msgstr "Združi po"
 #. placeholder {0}: name || subject.slice(1)
 #: ../../../lib/web/src/features/access/access-list.tsx:68
 msgid "Group: {0}"
-msgstr ""
-
-#: ../../../lib/web/src/features/access/access-list.tsx:68
-#~ msgid "Group: {0}<<<<<<< HEAD"
-#~ msgstr "Skupina: {0}>>>>>>> main"
+msgstr "Skupina: {0}"
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:70
 msgid "Hide"
@@ -1602,11 +1473,7 @@ msgstr "Uvažanje podatkov..."
 
 #: ../../../lib/web/src/features/access/types.ts:42
 msgid "Including anonymous users"
-msgstr ""
-
-#: ../../../lib/web/src/features/access/types.ts:42
-#~ msgid "Including anonymous users<<<<<<< HEAD"
-#~ msgstr ""
+msgstr "Vključno z anonimnimi uporabniki"
 
 #: ../../../lib/web/src/components/faceless-avatar.tsx:69
 msgid "Initials avatar"
@@ -1614,7 +1481,7 @@ msgstr "Avatar z začetnicami"
 
 #: ../../../lib/web/src/components/faceless-avatar.tsx:69
 msgid "Initials avatar for {name}"
-msgstr "Avatar z začetnicami za {name}>>>>>>> main"
+msgstr "Avatar z začetnicami za {name}"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:253
 msgid "Inset"
@@ -1635,11 +1502,7 @@ msgstr "Neveljavna datoteka JSON"
 
 #: ../../../lib/web/src/components/tag-input.tsx:38
 msgid "Invalid tag: letters, numbers, spaces, hyphens, and slashes only (max 50 chars)"
-msgstr ""
-
-#: ../../../lib/web/src/components/tag-input.tsx:38
-#~ msgid "Invalid tag: letters, numbers, spaces, hyphens, and slashes only (max 50 chars)<<<<<<< HEAD"
-#~ msgstr "Neveljavna oznaka: samo črke, številke, presledki, vezaji in poševnice (največ 50 znakov)>>>>>>> main"
+msgstr "Neveljavna oznaka: samo črke, številke, presledki, vezaji in poševnice (največ 50 znakov)"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:245
 msgid "Invalid verification code"
@@ -1655,11 +1518,7 @@ msgstr "Podrobnosti elementa"
 
 #: ../../../lib/web/src/lib/locale-format.ts:62
 msgid "Just now"
-msgstr ""
-
-#: ../../../lib/web/src/lib/locale-format.ts:62
-#~ msgid "Just now<<<<<<< HEAD"
-#~ msgstr "Pravkar>>>>>>> main"
+msgstr "Pravkar"
 
 #: src/components/keyboard-shortcuts-help.tsx:49
 msgid "Keyboard shortcuts"
@@ -1686,11 +1545,7 @@ msgstr "Z leve proti desni"
 
 #: ../../../lib/web/src/components/post-tags.tsx:72
 msgid "Letters, numbers, spaces, and hyphens only"
-msgstr ""
-
-#: ../../../lib/web/src/components/post-tags.tsx:72
-#~ msgid "Letters, numbers, spaces, and hyphens only<<<<<<< HEAD"
-#~ msgstr "Samo črke, številke, presledki in vezaji>>>>>>> main"
+msgstr "Samo črke, številke, presledki in vezaji"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:214
 #: ../../../lib/web/src/components/theme-switch.tsx:45
@@ -1756,11 +1611,7 @@ msgstr "Odjavljanje…"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:192
 msgid "Manage your connected accounts for notifications and services."
-msgstr ""
-
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:192
-#~ msgid "Manage your connected accounts for notifications and services.<<<<<<< HEAD"
-#~ msgstr "Upravljajte povezane račune za obvestila in storitve.>>>>>>> main"
+msgstr "Upravljajte povezane račune za obvestila in storitve."
 
 #: src/components/view-options-bar.tsx:40
 msgid "Manual"
@@ -1778,11 +1629,7 @@ msgstr "Največja dolžina"
 
 #: ../../../lib/web/src/features/accounts/types.ts:17
 msgid "MCP server"
-msgstr ""
-
-#: ../../../lib/web/src/features/accounts/types.ts:17
-#~ msgid "MCP server<<<<<<< HEAD"
-#~ msgstr "Strežnik MCP>>>>>>> main"
+msgstr "Strežnik MCP"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:107
 msgid "Medium"
@@ -1802,11 +1649,7 @@ msgstr "Najmanjša dolžina"
 
 #: ../../../lib/web/src/features/accounts/types.ts:23
 msgid "Mochi web"
-msgstr ""
-
-#: ../../../lib/web/src/features/accounts/types.ts:23
-#~ msgid "Mochi web<<<<<<< HEAD"
-#~ msgstr "Mochi splet>>>>>>> main"
+msgstr "Mochi splet"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:59
 msgid "Monday"
@@ -1825,11 +1668,7 @@ msgstr "Ime"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
 msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
-msgstr ""
-
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
-#~ msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks<<<<<<< HEAD"
-#~ msgstr "Ime ne sme vsebovati lomljenih oklepajev, poševnice nazaj, podpičja, narekovajev ali krativcev>>>>>>> main"
+msgstr "Ime ne sme vsebovati lomljenih oklepajev, poševnice nazaj, podpičja, narekovajev ali krativcev"
 
 #: src/features/crms/components/create-crm-dialog.tsx:75
 msgid "Name is required"
@@ -1837,11 +1676,7 @@ msgstr "Ime je obvezno"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
 msgid "Name must be 1000 characters or less"
-msgstr ""
-
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
-#~ msgid "Name must be 1000 characters or less<<<<<<< HEAD"
-#~ msgstr "Ime mora imeti največ 1000 znakov>>>>>>> main"
+msgstr "Ime mora imeti največ 1000 znakov"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:53
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:303
@@ -1881,7 +1716,7 @@ msgstr "Pravila dostopa niso nastavljena. Dodajte pravila za nadzor dostopa do t
 msgid "No activity yet"
 msgstr "Še ni dejavnosti"
 
-#: src/features/objects/components/comment-list.tsx:414
+#: src/features/objects/components/comment-list.tsx:299
 msgid "No comments yet"
 msgstr "Še ni komentarjev"
 
@@ -1908,11 +1743,7 @@ msgstr "Ni ujemajočih objektov"
 
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:193
 msgid "No notifications yet"
-msgstr ""
-
-#: ../../../lib/web/src/components/notifications-dropdown.tsx:193
-#~ msgid "No notifications yet<<<<<<< HEAD"
-#~ msgstr "Še ni obvestil>>>>>>> main"
+msgstr "Še ni obvestil"
 
 #: src/routes/_authenticated/$crmId/index.tsx:888
 msgid "No objects to export."
@@ -1934,17 +1765,12 @@ msgstr "Brez profila"
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:82
 #: ../../../lib/web/src/components/search-entity-page.tsx:73
 msgid "No results found"
-msgstr ""
+msgstr "Ni najdenih rezultatov"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
 #: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "Ni najdenih rezultatov."
-
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:82
-#: ../../../lib/web/src/components/search-entity-page.tsx:73
-#~ msgid "No results found<<<<<<< HEAD"
-#~ msgstr "Ni najdenih rezultatov>>>>>>> main"
 
 #: src/features/board/components/board-container.tsx:861
 #: src/features/board/components/board-container.tsx:905
@@ -1956,7 +1782,7 @@ msgstr "Brez stanja"
 msgid "No time zone found."
 msgstr "Časovnega pasu ni mogoče najti."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:150
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "Še ni zapisa o temi — poskusite znova po naslednjem obvestilu."
 
@@ -2027,11 +1853,7 @@ msgstr "Številka"
 
 #: ../../../lib/web/src/components/filter-bar.tsx:35
 msgid "On"
-msgstr ""
-
-#: ../../../lib/web/src/components/filter-bar.tsx:35
-#~ msgid "On<<<<<<< HEAD"
-#~ msgstr "Vklopljeno>>>>>>> main"
+msgstr "Vklopljeno"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:16
 msgid "Oops! Page Not Found!"
@@ -2063,11 +1885,7 @@ msgstr "Odpri dejanja oblikovanja"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:133
 msgid "Open menu"
-msgstr ""
-
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:133
-#~ msgid "Open menu<<<<<<< HEAD"
-#~ msgstr "Odpri meni>>>>>>> main"
+msgstr "Odpri meni"
 
 #: ../../../lib/web/src/components/layout/top-bar.tsx:63
 #: ../../../lib/web/src/components/layout/top-bar.tsx:68
@@ -2154,18 +1972,13 @@ msgstr "Vzorec (regex)"
 
 #: ../../../lib/web/src/components/date-picker.tsx:20
 msgid "Pick a date"
-msgstr ""
-
-#: ../../../lib/web/src/components/date-picker.tsx:20
-#~ msgid "Pick a date<<<<<<< HEAD"
-#~ msgstr "Izberite datum>>>>>>> main"
+msgstr "Izberite datum"
 
 #: src/routes/_authenticated/$crmId/index.tsx:769
 #: src/routes/_authenticated/$crmId/index.tsx:803
 msgid "Please add one or more classes to the CRM design."
 msgstr "Dodajte enega ali več razredov v zasnovo CRM-ja."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:95
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
@@ -2200,11 +2013,7 @@ msgstr "Profil"
 
 #: ../../../lib/web/src/components/person-picker.tsx:200
 msgid "Project members"
-msgstr ""
-
-#: ../../../lib/web/src/components/person-picker.tsx:200
-#~ msgid "Project members<<<<<<< HEAD"
-#~ msgstr "Člani projekta>>>>>>> main"
+msgstr "Člani projekta"
 
 #: src/features/objects/components/object-detail-panel.tsx:306
 msgid "Properties"
@@ -2212,11 +2021,7 @@ msgstr "Lastnosti"
 
 #: ../../../lib/web/src/features/accounts/types.ts:21
 msgid "Push notification"
-msgstr ""
-
-#: ../../../lib/web/src/features/accounts/types.ts:21
-#~ msgid "Push notification<<<<<<< HEAD"
-#~ msgstr "Push obvestilo>>>>>>> main"
+msgstr "Push obvestilo"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:117
 msgid "Raised"
@@ -2246,11 +2051,7 @@ msgstr "Priporočeni CRM-ji"
 
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
-msgstr ""
-
-#: ../../../lib/web/src/lib/chat-ui.ts:21
-#~ msgid "Reconnecting ({retries})...<<<<<<< HEAD"
-#~ msgstr "Ponovno povezovanje ({retries})...>>>>>>> main"
+msgstr "Ponovno povezovanje ({retries})..."
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:133
 msgid "Redirecting to login."
@@ -2271,13 +2072,14 @@ msgstr "Relativno (5m, 3h, 2d)"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:49
 msgid "Relative within 24 hours, else absolute"
-msgstr "Relativno v 24 urah, sicer absolutno<<<<<<< HEAD"
+msgstr "Relativno v 24 urah, sicer absolutno"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:232
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 #: src/features/crms/components/create-crm-dialog.tsx:282
 #: src/features/editor/components/add-dialogs.tsx:188
+#: src/features/objects/components/comment-list.tsx:244
+#: src/features/objects/components/comment-thread.tsx:356
 #: src/features/objects/components/create-object-dialog.tsx:493
 #: src/features/objects/components/object-links.tsx:245
 #: src/features/objects/components/object-links.tsx:258
@@ -2288,12 +2090,7 @@ msgstr "Odstrani"
 #: ../../../lib/web/src/components/filter-bar.tsx:56
 #: ../../../lib/web/src/components/filter-bar.tsx:62
 msgid "Remove {0} filter"
-msgstr ""
-
-#: ../../../lib/web/src/components/filter-bar.tsx:56
-#: ../../../lib/web/src/components/filter-bar.tsx:62
-#~ msgid "Remove {0} filter<<<<<<< HEAD"
-#~ msgstr "Odstrani filter {0}>>>>>>> main"
+msgstr "Odstrani filter {0}"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:252
 #: ../../../lib/web/src/features/access/access-list.tsx:258
@@ -2353,13 +2150,13 @@ msgstr "Zamenjaj zasnovo?"
 msgid "Replacing..."
 msgstr "Zamenjevanje..."
 
-#: src/features/objects/components/comment-thread.tsx:288
-#: src/features/objects/components/comment-thread.tsx:336
+#: src/features/objects/components/comment-thread.tsx:234
+#: src/features/objects/components/comment-thread.tsx:282
 msgid "Reply"
 msgstr "Odgovori"
 
 #. placeholder {0}: comment.name || comment.author
-#: src/features/objects/components/comment-thread.tsx:379
+#: src/features/objects/components/comment-thread.tsx:313
 msgid "Reply to {0}..."
 msgstr "Odgovori uporabniku {0}..."
 
@@ -2379,20 +2176,11 @@ msgstr "Ponastavi"
 #: ../../../lib/web/src/components/config-drawer.tsx:122
 #: ../../../lib/web/src/components/config-drawer.tsx:127
 msgid "Reset {title}"
-msgstr ""
-
-#: ../../../lib/web/src/components/config-drawer.tsx:122
-#: ../../../lib/web/src/components/config-drawer.tsx:127
-#~ msgid "Reset {title}<<<<<<< HEAD"
-#~ msgstr "Ponastavi {title}>>>>>>> main"
+msgstr "Ponastavi {title}"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:85
 msgid "Reset all settings to default values"
 msgstr "Ponastavi vse nastavitve na privzete vrednosti"
-
-#: ../../../lib/web/src/components/comment-composer.tsx:249
-msgid "Retry"
-msgstr ""
 
 #: src/components/layout/crms-layout.tsx:71
 msgid "Retry CRMs load"
@@ -2426,7 +2214,7 @@ msgstr "Sobota"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
-#: src/features/objects/components/comment-thread.tsx:263
+#: src/features/objects/components/comment-thread.tsx:209
 #: src/routes/_authenticated/$crmId/index.tsx:1112
 msgid "Save"
 msgstr "Shrani"
@@ -2448,11 +2236,7 @@ msgstr "Iskanje po imenu, ID-ju, prstnem odtisu ali URL-ju..."
 
 #: ../../../lib/web/src/components/ui/command.tsx:35
 msgid "Search for a command to run..."
-msgstr ""
-
-#: ../../../lib/web/src/components/ui/command.tsx:35
-#~ msgid "Search for a command to run...<<<<<<< HEAD"
-#~ msgstr "Iskanje ukaza za zagon...>>>>>>> main"
+msgstr "Iskanje ukaza za zagon..."
 
 #: ../../../lib/web/src/components/place-picker.tsx:86
 msgid "Search for a place"
@@ -2460,11 +2244,7 @@ msgstr "Iskanje kraja"
 
 #: ../../../lib/web/src/components/place-picker.tsx:50
 msgid "Search for a place..."
-msgstr ""
-
-#: ../../../lib/web/src/components/place-picker.tsx:50
-#~ msgid "Search for a place...<<<<<<< HEAD"
-#~ msgstr "Iskanje kraja...>>>>>>> main"
+msgstr "Iskanje kraja..."
 
 #: src/features/crms/components/inline-crm-search.tsx:138
 msgid "Search for CRMs..."
@@ -2515,11 +2295,7 @@ msgstr "Izberi"
 #. placeholder {0}: item.label.toLowerCase()
 #: ../../../lib/web/src/components/config-drawer.tsx:149
 msgid "Select {0}"
-msgstr ""
-
-#: ../../../lib/web/src/components/config-drawer.tsx:149
-#~ msgid "Select {0}<<<<<<< HEAD"
-#~ msgstr "Izberi {0}>>>>>>> main"
+msgstr "Izberi {0}"
 
 #: src/features/editor/components/edit-dialogs.tsx:372
 msgid "Select a field"
@@ -2535,15 +2311,11 @@ msgstr "Izberite pravilo dostopa"
 
 #: ../../../lib/web/src/features/accounts/account-picker.tsx:34
 msgid "Select account"
-msgstr ""
+msgstr "Izberite račun"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx:129
 msgid "Select account type"
 msgstr "Izberite vrsto računa"
-
-#: ../../../lib/web/src/features/accounts/account-picker.tsx:34
-#~ msgid "Select account<<<<<<< HEAD"
-#~ msgstr "Izberite račun>>>>>>> main"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:231
 msgid "Select group"
@@ -2555,11 +2327,7 @@ msgstr "Izberi slog postavitve"
 
 #: ../../../lib/web/src/components/place-picker.tsx:49
 msgid "Select location"
-msgstr ""
-
-#: ../../../lib/web/src/components/place-picker.tsx:49
-#~ msgid "Select location<<<<<<< HEAD"
-#~ msgstr "Izberi lokacijo>>>>>>> main"
+msgstr "Izberi lokacijo"
 
 #: src/components/keyboard-shortcuts-help.tsx:30
 msgid "Select next card"
@@ -2567,11 +2335,7 @@ msgstr "Izberi naslednjo kartico"
 
 #: ../../../lib/web/src/components/person-picker.tsx:83
 msgid "Select person..."
-msgstr ""
-
-#: ../../../lib/web/src/components/person-picker.tsx:83
-#~ msgid "Select person...<<<<<<< HEAD"
-#~ msgstr "Izberite osebo...>>>>>>> main"
+msgstr "Izberite osebo..."
 
 #: src/components/keyboard-shortcuts-help.tsx:31
 msgid "Select previous card"
@@ -2710,7 +2474,7 @@ msgstr "Razvrsti"
 msgid "Spacious"
 msgstr "Prostorno"
 
-#: src/features/objects/components/comment-list.tsx:415
+#: src/features/objects/components/comment-list.tsx:300
 msgid "Start the discussion by adding the first comment."
 msgstr "Začni razpravo z dodajanjem prvega komentarja."
 
@@ -2727,13 +2491,13 @@ msgstr "Prenehaj spremljati"
 msgid "Subject"
 msgstr "Zadeva"
 
-#: src/features/objects/components/comment-list.tsx:395
-#: src/features/objects/components/comment-list.tsx:404
+#: src/features/objects/components/comment-list.tsx:285
+#: src/features/objects/components/comment-list.tsx:290
 msgid "Submit comment"
 msgstr "Pošlji komentar"
 
-#: src/features/objects/components/comment-thread.tsx:463
-#: src/features/objects/components/comment-thread.tsx:468
+#: src/features/objects/components/comment-thread.tsx:420
+#: src/features/objects/components/comment-thread.tsx:425
 msgid "Submit reply"
 msgstr "Pošlji odgovor"
 
@@ -2781,15 +2545,11 @@ msgstr "Oznaka"
 
 #: ../../../lib/web/src/components/post-tags.tsx:76
 msgid "Tag already exists"
-msgstr ""
-
-#: ../../../lib/web/src/components/post-tags.tsx:76
-#~ msgid "Tag already exists<<<<<<< HEAD"
-#~ msgstr ""
+msgstr "Oznaka že obstaja"
 
 #: ../../../lib/web/src/components/post-tags.tsx:68
 msgid "Tag must be 50 characters or less"
-msgstr "Oznaka sme imeti največ 50 znakov>>>>>>> main"
+msgstr "Oznaka sme imeti največ 50 znakov"
 
 #: ../../../lib/web/src/components/post-tags.tsx:101
 #: ../../../lib/web/src/components/post-tags.tsx:115
@@ -2969,7 +2729,7 @@ msgstr "Povezava z oddaljenim strežnikom ni mogoča"
 msgid "Unable to redirect to login. Please try again."
 msgstr "Preusmeritev na prijavo ni mogoča. Poskusi znova."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:158
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "Nedodeljeno"
 
@@ -2980,12 +2740,7 @@ msgstr "Nepooblaščen dostop"
 #: ../../../lib/web/src/lib/request.ts:133
 #: ../../../lib/web/src/lib/request.ts:206
 msgid "Unexpected API error"
-msgstr ""
-
-#: ../../../lib/web/src/lib/request.ts:133
-#: ../../../lib/web/src/lib/request.ts:206
-#~ msgid "Unexpected API error<<<<<<< HEAD"
-#~ msgstr "Nepričakovana napaka API>>>>>>> main"
+msgstr "Nepričakovana napaka API"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:87
 msgid "United States"
@@ -2993,11 +2748,7 @@ msgstr "Združene države"
 
 #: ../../../lib/web/src/features/accounts/types.ts:29
 msgid "Unknown"
-msgstr ""
-
-#: ../../../lib/web/src/features/accounts/types.ts:29
-#~ msgid "Unknown<<<<<<< HEAD"
-#~ msgstr "Neznano>>>>>>> main"
+msgstr "Neznano"
 
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
@@ -3154,11 +2905,7 @@ msgstr "Kmalu bomo spet na voljo."
 
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:197
 msgid "We'll notify you when something important happens."
-msgstr ""
-
-#: ../../../lib/web/src/components/notifications-dropdown.tsx:197
-#~ msgid "We'll notify you when something important happens.<<<<<<< HEAD"
-#~ msgstr "Obvestili vas bomo, ko se zgodi kaj pomembnega.>>>>>>> main"
+msgstr "Obvestili vas bomo, ko se zgodi kaj pomembnega."
 
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:13
 msgid "Website is under maintenance!"
@@ -3186,28 +2933,12 @@ msgstr "Še nimaš nobenih CRM-jev."
 
 #: ../../../lib/web/src/lib/show-submitted-data.tsx:9
 msgid "You submitted the following values:"
-msgstr ""
-
-#: ../../../lib/web/src/lib/show-submitted-data.tsx:9
-#~ msgid "You submitted the following values:<<<<<<< HEAD"
-#~ msgstr ""
+msgstr "Poslali ste naslednje vrednosti:"
 
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:193
 msgid "You're all caught up!"
-msgstr "Vse ste prebrali!>>>>>>> main"
+msgstr "Vse ste prebrali!"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Vaš račun je bil preseljen sem iz {source}. Dokler ga tam ne izbrišete, sporočila in obvestila morda dosežejo oba strežnika, del vaše vsebine se še naprej streže s starega strežnika in sledilci bodo morda potrebovali nekaj minut, da vas najdejo tukaj."
-
-#: ../../../lib/web/src/components/comment-composer.tsx:291
-msgid "Your attachments will be lost."
-msgstr ""
-
-#: ../../../lib/web/src/components/comment-composer.tsx:289
-msgid "Your text and attachments will be lost."
-msgstr ""
-
-#: ../../../lib/web/src/components/comment-composer.tsx:292
-msgid "Your text will be lost."
-msgstr ""
