@@ -22,11 +22,11 @@ msgstr "Vui lòng kiểm tra kết nối internet và thử lại."
 msgid " or "
 msgstr " hoặc "
 
-#: src/features/objects/components/comment-thread.tsx:169
+#: src/features/objects/components/comment-thread.tsx:205
 msgid "(edited)"
 msgstr "(đã chỉnh sửa)"
 
-#: src/features/objects/components/comment-thread.tsx:153
+#: src/features/objects/components/comment-thread.tsx:189
 msgid "(expand)"
 msgstr "(mở rộng)"
 
@@ -84,11 +84,11 @@ msgstr "{totalCount, plural, one {# mục} other {# mục}}"
 msgid "+{0} nested"
 msgstr "+{0} lồng nhau"
 
-#: src/features/objects/components/comment-thread.tsx:150
+#: src/features/objects/components/comment-thread.tsx:186
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} phản hồi khác"
 
-#: src/features/objects/components/comment-thread.tsx:149
+#: src/features/objects/components/comment-thread.tsx:185
 msgid "1 reply"
 msgstr "1 phản hồi"
 
@@ -161,7 +161,7 @@ msgstr "Hoạt động"
 msgid "Add"
 msgstr "Thêm"
 
-#: src/features/objects/components/comment-list.tsx:220
+#: src/features/objects/components/comment-list.tsx:249
 msgid "Add a comment..."
 msgstr "Thêm bình luận..."
 
@@ -298,7 +298,7 @@ msgstr "Bạn có chắc muốn xóa \"{title}\"? Hành động này không th�
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Bạn có chắc muốn xóa cột \"{name}\"? Không thể hoàn tác."
 
-#: src/features/objects/components/comment-thread.tsx:435
+#: src/features/objects/components/comment-thread.tsx:458
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "Bạn có chắc muốn xóa bình luận này? Tất cả phản hồi cũng sẽ bị xóa."
 
@@ -318,13 +318,13 @@ msgstr "Tăng dần"
 msgid "Ascending"
 msgstr "Tăng dần"
 
-#: src/features/objects/components/comment-list.tsx:270
-#: src/features/objects/components/comment-list.tsx:275
+#: src/features/objects/components/comment-list.tsx:283
+#: src/features/objects/components/comment-list.tsx:288
 msgid "Attach comment files"
 msgstr "Đính kèm tệp bình luận"
 
-#: src/features/objects/components/comment-thread.tsx:389
-#: src/features/objects/components/comment-thread.tsx:394
+#: src/features/objects/components/comment-thread.tsx:412
+#: src/features/objects/components/comment-thread.tsx:417
 msgid "Attach reply files"
 msgstr "Đính kèm tệp phản hồi"
 
@@ -397,14 +397,14 @@ msgstr "Có thể là con của"
 #: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:296
 #: src/features/editor/components/option-dialog.tsx:146
-#: src/features/objects/components/comment-thread.tsx:189
+#: src/features/objects/components/comment-thread.tsx:226
 #: src/routes/_authenticated/$crmId/design.tsx:305
 #: src/routes/_authenticated/$crmId/index.tsx:1100
 msgid "Cancel"
 msgstr "Hủy"
 
-#: src/features/objects/components/comment-thread.tsx:405
-#: src/features/objects/components/comment-thread.tsx:410
+#: src/features/objects/components/comment-thread.tsx:428
+#: src/features/objects/components/comment-thread.tsx:433
 msgid "Cancel reply"
 msgstr "Hủy phản hồi"
 
@@ -549,8 +549,8 @@ msgstr "Thoải mái"
 msgid "Coming Soon!"
 msgstr "Sắp ra mắt!"
 
-#: src/features/objects/components/comment-thread.tsx:270
-#: src/features/objects/components/comment-thread.tsx:277
+#: src/features/objects/components/comment-thread.tsx:307
+#: src/features/objects/components/comment-thread.tsx:314
 msgid "Comment actions"
 msgstr "Thao tác bình luận"
 
@@ -758,9 +758,9 @@ msgstr "Sắp xếp mặc định"
 
 #: src/features/board/components/board-column.tsx:558
 #: src/features/board/components/board-column.tsx:619
-#: src/features/objects/components/comment-thread.tsx:258
-#: src/features/objects/components/comment-thread.tsx:301
-#: src/features/objects/components/comment-thread.tsx:436
+#: src/features/objects/components/comment-thread.tsx:295
+#: src/features/objects/components/comment-thread.tsx:338
+#: src/features/objects/components/comment-thread.tsx:459
 #: src/features/objects/components/object-attachments.tsx:146
 #: src/features/objects/components/object-attachments.tsx:156
 #: src/features/objects/components/object-attachments.tsx:205
@@ -782,7 +782,7 @@ msgstr "Xóa class"
 msgid "Delete column"
 msgstr "Xóa cột"
 
-#: src/features/objects/components/comment-thread.tsx:434
+#: src/features/objects/components/comment-thread.tsx:457
 msgid "Delete comment"
 msgstr "Xóa bình luận"
 
@@ -873,6 +873,14 @@ msgstr "Phát hiện từ trình duyệt web"
 msgid "Direction"
 msgstr "Hướng"
 
+#: src/components/comment-composer.tsx:269
+msgid "Discard"
+msgstr ""
+
+#: src/components/comment-composer.tsx:267
+msgid "Discard draft?"
+msgstr ""
+
 #: ../../../lib/web/src/components/restore-banner.tsx:79
 #: ../../../lib/web/src/components/restore-banner.tsx:85
 msgid "Dismiss"
@@ -930,8 +938,8 @@ msgstr "Trùng lặp"
 msgid "Dyslexia-friendly"
 msgstr "Thân thiện với chứng khó đọc"
 
-#: src/features/objects/components/comment-thread.tsx:247
-#: src/features/objects/components/comment-thread.tsx:292
+#: src/features/objects/components/comment-thread.tsx:284
+#: src/features/objects/components/comment-thread.tsx:329
 msgid "Edit"
 msgstr "Sửa"
 
@@ -1049,7 +1057,7 @@ msgstr "Không tạo chế độ xem được"
 msgid "Failed to delete attachment"
 msgstr "Không xoá tệp đính kèm được"
 
-#: src/features/objects/components/comment-list.tsx:147
+#: src/features/objects/components/comment-list.tsx:161
 msgid "Failed to delete comment"
 msgstr "Không xoá bình luận được"
 
@@ -1110,7 +1118,7 @@ msgstr "Không tải mục được"
 msgid "Failed to load video"
 msgstr "Không tải được video"
 
-#: src/features/objects/components/comment-list.tsx:105
+#: src/features/objects/components/comment-list.tsx:119
 msgid "Failed to post comment"
 msgstr "Không đăng bình luận được"
 
@@ -1162,7 +1170,7 @@ msgstr "Không cập nhật mức truy cập được"
 msgid "Failed to update category"
 msgstr "Không cập nhật danh mục được"
 
-#: src/features/objects/components/comment-list.tsx:130
+#: src/features/objects/components/comment-list.tsx:144
 msgid "Failed to update comment"
 msgstr "Không cập nhật bình luận được"
 
@@ -1524,7 +1532,7 @@ msgstr "Chưa cấu hình quy tắc truy cập. Thêm quy tắc để kiểm so�
 msgid "No activity yet"
 msgstr "Chưa có hoạt động"
 
-#: src/features/objects/components/comment-list.tsx:299
+#: src/features/objects/components/comment-list.tsx:316
 msgid "No comments yet"
 msgstr "Chưa có bình luận"
 
@@ -1766,6 +1774,7 @@ msgstr "Vui lòng thêm một hoặc nhiều lớp vào thiết kế CRM."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
+#: src/components/comment-composer.tsx:69
 msgid "Please check your internet connection and try again."
 msgstr "Vui lòng kiểm tra kết nối internet và thử lại."
 
@@ -1849,10 +1858,9 @@ msgstr "Tương đối trong vòng 24 giờ, ngoài ra dùng tuyệt đối"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:265
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
+#: src/components/comment-composer.tsx:201
 #: src/features/crms/components/create-crm-dialog.tsx:282
 #: src/features/editor/components/add-dialogs.tsx:188
-#: src/features/objects/components/comment-list.tsx:244
-#: src/features/objects/components/comment-thread.tsx:356
 #: src/features/objects/components/create-object-dialog.tsx:493
 #: src/features/objects/components/object-links.tsx:245
 #: src/features/objects/components/object-links.tsx:258
@@ -1917,13 +1925,13 @@ msgstr "Thay thế thiết kế?"
 msgid "Replacing..."
 msgstr "Đang thay thế..."
 
-#: src/features/objects/components/comment-thread.tsx:234
-#: src/features/objects/components/comment-thread.tsx:282
+#: src/features/objects/components/comment-thread.tsx:271
+#: src/features/objects/components/comment-thread.tsx:319
 msgid "Reply"
 msgstr "Trả lời"
 
 #. placeholder {0}: comment.name || comment.author
-#: src/features/objects/components/comment-thread.tsx:313
+#: src/features/objects/components/comment-thread.tsx:362
 msgid "Reply to {0}..."
 msgstr "Trả lời {0}..."
 
@@ -1943,6 +1951,10 @@ msgstr "Đặt lại"
 #: ../../../lib/web/src/components/config-drawer.tsx:84
 msgid "Reset all settings to default values"
 msgstr "Đặt lại tất cả cài đặt về giá trị mặc định"
+
+#: src/components/comment-composer.tsx:218
+msgid "Retry"
+msgstr ""
 
 #: src/components/layout/crms-layout.tsx:71
 msgid "Retry CRMs load"
@@ -1976,7 +1988,7 @@ msgstr "Thứ bảy"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
-#: src/features/objects/components/comment-thread.tsx:209
+#: src/features/objects/components/comment-thread.tsx:246
 #: src/routes/_authenticated/$crmId/index.tsx:1112
 msgid "Save"
 msgstr "Lưu"
@@ -2206,7 +2218,7 @@ msgstr "Sắp xếp"
 msgid "Spacious"
 msgstr "Rộng rãi"
 
-#: src/features/objects/components/comment-list.tsx:300
+#: src/features/objects/components/comment-list.tsx:317
 msgid "Start the discussion by adding the first comment."
 msgstr "Bắt đầu thảo luận bằng cách thêm bình luận đầu tiên."
 
@@ -2223,13 +2235,13 @@ msgstr "Ngừng theo dõi"
 msgid "Subject"
 msgstr "Tiêu đề"
 
-#: src/features/objects/components/comment-list.tsx:285
-#: src/features/objects/components/comment-list.tsx:290
+#: src/features/objects/components/comment-list.tsx:298
+#: src/features/objects/components/comment-list.tsx:307
 msgid "Submit comment"
 msgstr "Gửi bình luận"
 
-#: src/features/objects/components/comment-thread.tsx:420
-#: src/features/objects/components/comment-thread.tsx:425
+#: src/features/objects/components/comment-thread.tsx:443
+#: src/features/objects/components/comment-thread.tsx:448
 msgid "Submit reply"
 msgstr "Gửi trả lời"
 
@@ -2641,3 +2653,15 @@ msgstr "Bạn chưa có CRM nào."
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Tài khoản của bạn đã được chuyển đến đây từ {source}. Cho đến khi bạn xóa nó ở đó, tin nhắn và thông báo có thể đến cả hai máy chủ, một số nội dung của bạn vẫn được phục vụ từ máy chủ cũ và người theo dõi có thể mất vài phút để tìm thấy bạn ở đây."
+
+#: src/components/comment-composer.tsx:260
+msgid "Your attachments will be lost."
+msgstr ""
+
+#: src/components/comment-composer.tsx:258
+msgid "Your text and attachments will be lost."
+msgstr ""
+
+#: src/components/comment-composer.tsx:261
+msgid "Your text will be lost."
+msgstr ""

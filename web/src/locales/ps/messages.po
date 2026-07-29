@@ -22,11 +22,11 @@ msgstr "مهرباني وکړئ خپل د انټرنیټ اړیکه وګورئ �
 msgid " or "
 msgstr " یا "
 
-#: src/features/objects/components/comment-thread.tsx:169
+#: src/features/objects/components/comment-thread.tsx:205
 msgid "(edited)"
 msgstr "(سمول شوی)"
 
-#: src/features/objects/components/comment-thread.tsx:153
+#: src/features/objects/components/comment-thread.tsx:189
 msgid "(expand)"
 msgstr "(پراخول)"
 
@@ -84,11 +84,11 @@ msgstr "{totalCount, plural, one {# توکی} other {# توکي}}"
 msgid "+{0} nested"
 msgstr "+{0} ځالې شوي"
 
-#: src/features/objects/components/comment-thread.tsx:150
+#: src/features/objects/components/comment-thread.tsx:186
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} نور ځوابونه"
 
-#: src/features/objects/components/comment-thread.tsx:149
+#: src/features/objects/components/comment-thread.tsx:185
 msgid "1 reply"
 msgstr "1 ځواب"
 
@@ -161,7 +161,7 @@ msgstr "فعالیت"
 msgid "Add"
 msgstr "اضافه کړئ"
 
-#: src/features/objects/components/comment-list.tsx:220
+#: src/features/objects/components/comment-list.tsx:249
 msgid "Add a comment..."
 msgstr "تبصره اضافه کړئ..."
 
@@ -298,7 +298,7 @@ msgstr "ایا تاسو ډاډه یاست چې غواړئ \"{title}\" ړنګ ک�
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "ایا تاسو ډاډه یاست چې غواړئ \"{name}\" کالم ړنګ کړئ؟ دا نشي بیرته اخیستل کیدلی."
 
-#: src/features/objects/components/comment-thread.tsx:435
+#: src/features/objects/components/comment-thread.tsx:458
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "ایا تاسو ډاډه یاست چې غواړئ دا تبصره ړنګه کړئ؟ دا به ټول ځوابونه هم ړنګ کړي."
 
@@ -318,13 +318,13 @@ msgstr "صعودي"
 msgid "Ascending"
 msgstr "د کم څخه ډېر"
 
-#: src/features/objects/components/comment-list.tsx:270
-#: src/features/objects/components/comment-list.tsx:275
+#: src/features/objects/components/comment-list.tsx:283
+#: src/features/objects/components/comment-list.tsx:288
 msgid "Attach comment files"
 msgstr "د تبصرې فایلونه ضمیمه کړئ"
 
-#: src/features/objects/components/comment-thread.tsx:389
-#: src/features/objects/components/comment-thread.tsx:394
+#: src/features/objects/components/comment-thread.tsx:412
+#: src/features/objects/components/comment-thread.tsx:417
 msgid "Attach reply files"
 msgstr "د ځواب فایلونه ضمیمه کړئ"
 
@@ -397,14 +397,14 @@ msgstr "د دې اولاد کیدلی شي"
 #: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:296
 #: src/features/editor/components/option-dialog.tsx:146
-#: src/features/objects/components/comment-thread.tsx:189
+#: src/features/objects/components/comment-thread.tsx:226
 #: src/routes/_authenticated/$crmId/design.tsx:305
 #: src/routes/_authenticated/$crmId/index.tsx:1100
 msgid "Cancel"
 msgstr "لغوه کول"
 
-#: src/features/objects/components/comment-thread.tsx:405
-#: src/features/objects/components/comment-thread.tsx:410
+#: src/features/objects/components/comment-thread.tsx:428
+#: src/features/objects/components/comment-thread.tsx:433
 msgid "Cancel reply"
 msgstr "ځواب لغوه کړه"
 
@@ -549,8 +549,8 @@ msgstr "آرام"
 msgid "Coming Soon!"
 msgstr "ډیر ژر راځي!"
 
-#: src/features/objects/components/comment-thread.tsx:270
-#: src/features/objects/components/comment-thread.tsx:277
+#: src/features/objects/components/comment-thread.tsx:307
+#: src/features/objects/components/comment-thread.tsx:314
 msgid "Comment actions"
 msgstr "د تبصرې کړنې"
 
@@ -758,9 +758,9 @@ msgstr "ډیفالټ ترتیب"
 
 #: src/features/board/components/board-column.tsx:558
 #: src/features/board/components/board-column.tsx:619
-#: src/features/objects/components/comment-thread.tsx:258
-#: src/features/objects/components/comment-thread.tsx:301
-#: src/features/objects/components/comment-thread.tsx:436
+#: src/features/objects/components/comment-thread.tsx:295
+#: src/features/objects/components/comment-thread.tsx:338
+#: src/features/objects/components/comment-thread.tsx:459
 #: src/features/objects/components/object-attachments.tsx:146
 #: src/features/objects/components/object-attachments.tsx:156
 #: src/features/objects/components/object-attachments.tsx:205
@@ -782,7 +782,7 @@ msgstr "ټولګی ړنګ کړئ"
 msgid "Delete column"
 msgstr "کالم ړنګ کړئ"
 
-#: src/features/objects/components/comment-thread.tsx:434
+#: src/features/objects/components/comment-thread.tsx:457
 msgid "Delete comment"
 msgstr "تبصره ړنګه کړئ"
 
@@ -873,6 +873,14 @@ msgstr "د ویب براوزر څخه ومومئ"
 msgid "Direction"
 msgstr "لوری"
 
+#: src/components/comment-composer.tsx:269
+msgid "Discard"
+msgstr ""
+
+#: src/components/comment-composer.tsx:267
+msgid "Discard draft?"
+msgstr ""
+
 #: ../../../lib/web/src/components/restore-banner.tsx:79
 #: ../../../lib/web/src/components/restore-banner.tsx:85
 msgid "Dismiss"
@@ -930,8 +938,8 @@ msgstr "نقلونه"
 msgid "Dyslexia-friendly"
 msgstr "د لوستلو ستونزې سره مطابقت لري"
 
-#: src/features/objects/components/comment-thread.tsx:247
-#: src/features/objects/components/comment-thread.tsx:292
+#: src/features/objects/components/comment-thread.tsx:284
+#: src/features/objects/components/comment-thread.tsx:329
 msgid "Edit"
 msgstr "سمول"
 
@@ -1049,7 +1057,7 @@ msgstr "د لید جوړولو پاتې راغلل"
 msgid "Failed to delete attachment"
 msgstr "د ضمیمې حذف کولو پاتې راغلل"
 
-#: src/features/objects/components/comment-list.tsx:147
+#: src/features/objects/components/comment-list.tsx:161
 msgid "Failed to delete comment"
 msgstr "د تبصرې حذف کولو پاتې راغلل"
 
@@ -1110,7 +1118,7 @@ msgstr "د توکي د بار کولو پاتې راغلل"
 msgid "Failed to load video"
 msgstr "ویډیو بار نه شو"
 
-#: src/features/objects/components/comment-list.tsx:105
+#: src/features/objects/components/comment-list.tsx:119
 msgid "Failed to post comment"
 msgstr "د تبصرې پوسټ کولو پاتې راغلل"
 
@@ -1162,7 +1170,7 @@ msgstr "د لاسرسي د کچې تازه کولو پاتې راغلل"
 msgid "Failed to update category"
 msgstr "د کټګورۍ تازه کولو پاتې راغلل"
 
-#: src/features/objects/components/comment-list.tsx:130
+#: src/features/objects/components/comment-list.tsx:144
 msgid "Failed to update comment"
 msgstr "د تبصرې تازه کولو پاتې راغلل"
 
@@ -1524,7 +1532,7 @@ msgstr "د لاسرسي قاعدې نه دي تنظیم شوې. د دې سرچی
 msgid "No activity yet"
 msgstr "تر اوسه هیڅ فعالیت نشته"
 
-#: src/features/objects/components/comment-list.tsx:299
+#: src/features/objects/components/comment-list.tsx:316
 msgid "No comments yet"
 msgstr "تر اوسه هیڅ تبصرې نشته"
 
@@ -1766,6 +1774,7 @@ msgstr "مهرباني وکړئ د CRM ډیزاین ته یو یا ډیر ټول
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
+#: src/components/comment-composer.tsx:69
 msgid "Please check your internet connection and try again."
 msgstr "مهرباني وکړئ خپل د انټرنیټ اړیکه وګورئ او بیا هڅه وکړئ."
 
@@ -1849,10 +1858,9 @@ msgstr "په 24 ساعتونو کې نسبي، که نه نو مطلق"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:265
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
+#: src/components/comment-composer.tsx:201
 #: src/features/crms/components/create-crm-dialog.tsx:282
 #: src/features/editor/components/add-dialogs.tsx:188
-#: src/features/objects/components/comment-list.tsx:244
-#: src/features/objects/components/comment-thread.tsx:356
 #: src/features/objects/components/create-object-dialog.tsx:493
 #: src/features/objects/components/object-links.tsx:245
 #: src/features/objects/components/object-links.tsx:258
@@ -1917,13 +1925,13 @@ msgstr "ډیزاین بدل کړو؟"
 msgid "Replacing..."
 msgstr "د ځایناستي په حال کې..."
 
-#: src/features/objects/components/comment-thread.tsx:234
-#: src/features/objects/components/comment-thread.tsx:282
+#: src/features/objects/components/comment-thread.tsx:271
+#: src/features/objects/components/comment-thread.tsx:319
 msgid "Reply"
 msgstr "ځواب"
 
 #. placeholder {0}: comment.name || comment.author
-#: src/features/objects/components/comment-thread.tsx:313
+#: src/features/objects/components/comment-thread.tsx:362
 msgid "Reply to {0}..."
 msgstr "{0} ته ځواب ووایاست..."
 
@@ -1943,6 +1951,10 @@ msgstr "بیا تنظیم"
 #: ../../../lib/web/src/components/config-drawer.tsx:84
 msgid "Reset all settings to default values"
 msgstr "ټول تنظیمات د ډیفالټ ارزښتونو ته بیرته تنظیم کړئ"
+
+#: src/components/comment-composer.tsx:218
+msgid "Retry"
+msgstr ""
 
 #: src/components/layout/crms-layout.tsx:71
 msgid "Retry CRMs load"
@@ -1976,7 +1988,7 @@ msgstr "شنبه"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
-#: src/features/objects/components/comment-thread.tsx:209
+#: src/features/objects/components/comment-thread.tsx:246
 #: src/routes/_authenticated/$crmId/index.tsx:1112
 msgid "Save"
 msgstr "خوندي کول"
@@ -2206,7 +2218,7 @@ msgstr "ترتیب"
 msgid "Spacious"
 msgstr "پراخه"
 
-#: src/features/objects/components/comment-list.tsx:300
+#: src/features/objects/components/comment-list.tsx:317
 msgid "Start the discussion by adding the first comment."
 msgstr "د لومړۍ تبصرې اضافه کولو سره بحث پیل کړئ."
 
@@ -2223,13 +2235,13 @@ msgstr "کتل بند کړئ"
 msgid "Subject"
 msgstr "موضوع"
 
-#: src/features/objects/components/comment-list.tsx:285
-#: src/features/objects/components/comment-list.tsx:290
+#: src/features/objects/components/comment-list.tsx:298
+#: src/features/objects/components/comment-list.tsx:307
 msgid "Submit comment"
 msgstr "تبصره وسپارئ"
 
-#: src/features/objects/components/comment-thread.tsx:420
-#: src/features/objects/components/comment-thread.tsx:425
+#: src/features/objects/components/comment-thread.tsx:443
+#: src/features/objects/components/comment-thread.tsx:448
 msgid "Submit reply"
 msgstr "ځواب وسپارئ"
 
@@ -2641,3 +2653,15 @@ msgstr "تاسو لا تر اوسه هیڅ CRM نه لرئ."
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "ستاسو حساب له {source} دلته لیږدول شوی. تر هغه چې تاسو هلته یې ړنګ نه کړئ، پیغامونه او خبرتیاوې ممکن دواړه سرورونو ته ورسیږي، ستاسو د مینځپانګې یوه برخه لاهم له پخوانی سرور نه چمتو کیږي، او تعقیبونکي ممکن دلته ستاسو موندلو لپاره یو شیبه وخت ولري."
+
+#: src/components/comment-composer.tsx:260
+msgid "Your attachments will be lost."
+msgstr ""
+
+#: src/components/comment-composer.tsx:258
+msgid "Your text and attachments will be lost."
+msgstr ""
+
+#: src/components/comment-composer.tsx:261
+msgid "Your text will be lost."
+msgstr ""

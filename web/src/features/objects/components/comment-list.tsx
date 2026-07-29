@@ -4,10 +4,10 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useEffect, useState, useRef } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { useLingui } from '@lingui/react/macro'
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { MessageSquare, Paperclip, Send, X } from "lucide-react";
+import { Loader2, MessageSquare, Paperclip, Send } from "lucide-react";
 import {
   Button,
   EmptyState,
@@ -21,21 +21,19 @@ import {
   TooltipTrigger,
   textUnchanged,
   findCommentTextInTree,
-  Attachment,
-  AttachmentGroup,
-  AttachmentMedia,
-  AttachmentContent,
-  AttachmentTitle,
-  AttachmentDescription,
-  AttachmentActions,
-  AttachmentAction,
-  useFormat,
+  cn,
   useImageObjectUrls,
-  pendingFileKey,
   removePendingFile,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import { CommentThread } from "./comment-thread";
+import {
+  ComposerAttachments,
+  SendShortcutHint,
+  dropActiveClass,
+  offlineBlocked,
+  useComposerDrop,
+} from "@/components/comment-composer";
 
 interface CommentListProps {
   crmId: string;
@@ -54,17 +52,24 @@ export function CommentList({
   const [replyingTo, setReplyingTo] = useState<string | null>(null);
   const [replyDraft, setReplyDraft] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [createFailed, setCreateFailed] = useState(false);
+  const [isSendingComment, setIsSendingComment] = useState(false);
+
+  const addNewFiles = useCallback((incoming: File[]) => {
+    setCreateFailed(false);
+    setNewFiles((prev) => [...prev, ...incoming]);
+  }, []);
   const newFileImageUrls = useImageObjectUrls(newFiles);
 
   useEffect(() => {
     setNewComment("");
     setNewFiles([]);
+    setCreateFailed(false);
     setReplyingTo(null);
     setReplyDraft("");
   }, [objectId]);
   const queryClient = useQueryClient();
   const currentUserId = useAuthStore((s) => s.identity);
-  const { formatFileSize } = useFormat();
 
   const { data, isLoading } = useQuery({
     queryKey: ["comments", crmId, objectId],
@@ -157,18 +162,25 @@ export function CommentList({
     },
   });
 
-  const handleCreate = () => {
+  const handleCreate = async () => {
     const trimmed = newComment.trim();
-    if (!trimmed) return;
-    createMutation.mutate(
-      { content: trimmed, files: newFiles.length > 0 ? newFiles : undefined },
-      {
-        onSuccess: () => {
-          setNewComment("");
-          setNewFiles([]);
-        },
-      },
-    );
+    if (!trimmed || isSendingComment || offlineBlocked()) return;
+    setCreateFailed(false);
+    setIsSendingComment(true);
+    try {
+      await createMutation.mutateAsync({
+        content: trimmed,
+        files: newFiles.length > 0 ? newFiles : undefined,
+      });
+      setNewComment("");
+      setNewFiles([]);
+    } catch {
+      // The mutation already reported it; keep the draft and its attachments
+      // staged so Retry sends the same comment again.
+      setCreateFailed(true);
+    } finally {
+      setIsSendingComment(false);
+    }
   };
 
   const handleReply = async (parentId: string, files?: File[]) => {
@@ -199,11 +211,15 @@ export function CommentList({
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      const selected = Array.from(e.target.files);
-      setNewFiles((prev) => [...prev, ...selected]);
+      addNewFiles(Array.from(e.target.files));
     }
     e.target.value = "";
   };
+
+  const { isDragActive, dropzoneProps } = useComposerDrop({
+    onFiles: addNewFiles,
+    disabled: isSendingComment,
+  });
 
   if (isLoading) {
     return (
@@ -216,59 +232,38 @@ export function CommentList({
   return (
     <div className="space-y-4">
       {!readOnly && (
-        <div className="space-y-2">
+        <div
+          className={cn("space-y-2", isDragActive && dropActiveClass)}
+          {...dropzoneProps}
+        >
           <MentionTextarea
+            className="placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
             value={newComment}
             onValueChange={setNewComment}
             onKeyDown={(e) => {
               if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
                 e.preventDefault();
-                handleCreate();
+                void handleCreate();
               }
             }}
             placeholder={t`Add a comment...`}
             rows={3}
+            disabled={isSendingComment}
             people={people}
           />
-          {newFiles.length > 0 && (
-            <AttachmentGroup>
-              {newFiles.map((file, i) => {
-                const isImage = file.type.startsWith("image/");
-                return (
-                  <Attachment key={pendingFileKey(file)} state="uploading" size="sm">
-                    <AttachmentMedia variant={isImage ? "image" : "icon"}>
-                      {isImage && newFileImageUrls[i] ? (
-                        <img
-                          src={newFileImageUrls[i] ?? undefined}
-                          alt={file.name}
-                          draggable={false}
-                        />
-                      ) : (
-                        <Paperclip />
-                      )}
-                    </AttachmentMedia>
-                    <AttachmentContent>
-                      <AttachmentTitle>{file.name}</AttachmentTitle>
-                      <AttachmentDescription>
-                        {formatFileSize(file.size)}
-                      </AttachmentDescription>
-                    </AttachmentContent>
-                    <AttachmentActions>
-                      <AttachmentAction
-                        onClick={() =>
-                          setNewFiles((prev) => removePendingFile(prev, file))
-                        }
-                        aria-label={t`Remove`}
-                      >
-                        <X className="size-4" />
-                      </AttachmentAction>
-                    </AttachmentActions>
-                  </Attachment>
-                );
-              })}
-            </AttachmentGroup>
-          )}
+          <ComposerAttachments
+            files={newFiles}
+            previewUrls={newFileImageUrls}
+            state={
+              isSendingComment ? "uploading" : createFailed ? "error" : "idle"
+            }
+            onRemove={(file) =>
+              setNewFiles((prev) => removePendingFile(prev, file))
+            }
+            onRetry={() => void handleCreate()}
+          />
           <div className="flex items-center justify-end gap-2">
+            <SendShortcutHint />
             <input
               ref={fileInputRef}
               type="file"
@@ -284,6 +279,7 @@ export function CommentList({
                   size="icon"
                   className="size-8"
                   onClick={() => fileInputRef.current?.click()}
+                  disabled={isSendingComment}
                   aria-label={t`Attach comment files`}
                 >
                   <Paperclip className="size-4" />
@@ -297,11 +293,15 @@ export function CommentList({
                   type="button"
                   size="icon"
                   className="size-8"
-                  disabled={!newComment.trim() || createMutation.isPending}
-                  onClick={handleCreate}
+                  disabled={!newComment.trim() || isSendingComment}
+                  onClick={() => void handleCreate()}
                   aria-label={t`Submit comment`}
                 >
-                  <Send className="size-4" />
+                  {isSendingComment ? (
+                    <Loader2 className="size-4 animate-spin" />
+                  ) : (
+                    <Send className="size-4" />
+                  )}
                 </Button>
               </TooltipTrigger>
               <TooltipContent>{t`Submit comment`}</TooltipContent>

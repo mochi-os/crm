@@ -22,11 +22,11 @@ msgstr "تکایە پەیوەندی ئینتەرنێتەکەت بپشکنە و �
 msgid " or "
 msgstr " یان "
 
-#: src/features/objects/components/comment-thread.tsx:169
+#: src/features/objects/components/comment-thread.tsx:205
 msgid "(edited)"
 msgstr "(دەستکاریکراو)"
 
-#: src/features/objects/components/comment-thread.tsx:153
+#: src/features/objects/components/comment-thread.tsx:189
 msgid "(expand)"
 msgstr "(فراوانکردن)"
 
@@ -84,11 +84,11 @@ msgstr "{totalCount, plural, one {# بڕگە} other {# بڕگە}}"
 msgid "+{0} nested"
 msgstr "+{0} ناوەکی"
 
-#: src/features/objects/components/comment-thread.tsx:150
+#: src/features/objects/components/comment-thread.tsx:186
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} وەڵامی زیاتر"
 
-#: src/features/objects/components/comment-thread.tsx:149
+#: src/features/objects/components/comment-thread.tsx:185
 msgid "1 reply"
 msgstr "١ وەڵام"
 
@@ -161,7 +161,7 @@ msgstr "چالاکی"
 msgid "Add"
 msgstr "زیادکردن"
 
-#: src/features/objects/components/comment-list.tsx:220
+#: src/features/objects/components/comment-list.tsx:249
 msgid "Add a comment..."
 msgstr "لێدوانێک زیاد بکە..."
 
@@ -298,7 +298,7 @@ msgstr "ئایا دڵنیایت لە سڕینەوەی \"{title}\"؟ ئەم کر�
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "ئایا دڵنیایت لە سڕینەوەی ستوونی \"{name}\"؟ ئەمە ناگەڕێتەوە."
 
-#: src/features/objects/components/comment-thread.tsx:435
+#: src/features/objects/components/comment-thread.tsx:458
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "ئایا دڵنیایت لە سڕینەوەی ئەم لێدوانە؟ ئەمە هەروەها هەموو وەڵامەکانیش دەسڕێتەوە."
 
@@ -318,13 +318,13 @@ msgstr "سەرەوە"
 msgid "Ascending"
 msgstr "سەرکەوتوو"
 
-#: src/features/objects/components/comment-list.tsx:270
-#: src/features/objects/components/comment-list.tsx:275
+#: src/features/objects/components/comment-list.tsx:283
+#: src/features/objects/components/comment-list.tsx:288
 msgid "Attach comment files"
 msgstr "هاوپێچکردنی پەڕگەی لێدوان"
 
-#: src/features/objects/components/comment-thread.tsx:389
-#: src/features/objects/components/comment-thread.tsx:394
+#: src/features/objects/components/comment-thread.tsx:412
+#: src/features/objects/components/comment-thread.tsx:417
 msgid "Attach reply files"
 msgstr "هاوپێچکردنی پەڕگەی وەڵام"
 
@@ -397,14 +397,14 @@ msgstr "دەتوانێت منداڵ بێت بۆ"
 #: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:296
 #: src/features/editor/components/option-dialog.tsx:146
-#: src/features/objects/components/comment-thread.tsx:189
+#: src/features/objects/components/comment-thread.tsx:226
 #: src/routes/_authenticated/$crmId/design.tsx:305
 #: src/routes/_authenticated/$crmId/index.tsx:1100
 msgid "Cancel"
 msgstr "هەڵوەشاندنەوە"
 
-#: src/features/objects/components/comment-thread.tsx:405
-#: src/features/objects/components/comment-thread.tsx:410
+#: src/features/objects/components/comment-thread.tsx:428
+#: src/features/objects/components/comment-thread.tsx:433
 msgid "Cancel reply"
 msgstr "هەڵوەشاندنەوەی وەڵام"
 
@@ -549,8 +549,8 @@ msgstr "ئاسوودە"
 msgid "Coming Soon!"
 msgstr "بەم زووانە!"
 
-#: src/features/objects/components/comment-thread.tsx:270
-#: src/features/objects/components/comment-thread.tsx:277
+#: src/features/objects/components/comment-thread.tsx:307
+#: src/features/objects/components/comment-thread.tsx:314
 msgid "Comment actions"
 msgstr "کردارەکانی سەرنج"
 
@@ -758,9 +758,9 @@ msgstr "ڕیزکردنی بنەڕەت"
 
 #: src/features/board/components/board-column.tsx:558
 #: src/features/board/components/board-column.tsx:619
-#: src/features/objects/components/comment-thread.tsx:258
-#: src/features/objects/components/comment-thread.tsx:301
-#: src/features/objects/components/comment-thread.tsx:436
+#: src/features/objects/components/comment-thread.tsx:295
+#: src/features/objects/components/comment-thread.tsx:338
+#: src/features/objects/components/comment-thread.tsx:459
 #: src/features/objects/components/object-attachments.tsx:146
 #: src/features/objects/components/object-attachments.tsx:156
 #: src/features/objects/components/object-attachments.tsx:205
@@ -782,7 +782,7 @@ msgstr "سڕینەوەی پۆل"
 msgid "Delete column"
 msgstr "سڕینەوەی ستوون"
 
-#: src/features/objects/components/comment-thread.tsx:434
+#: src/features/objects/components/comment-thread.tsx:457
 msgid "Delete comment"
 msgstr "سڕینەوەی لێدوان"
 
@@ -873,6 +873,14 @@ msgstr "دۆزینەوە لە وێبگەڕ"
 msgid "Direction"
 msgstr "ئاراستە"
 
+#: src/components/comment-composer.tsx:269
+msgid "Discard"
+msgstr ""
+
+#: src/components/comment-composer.tsx:267
+msgid "Discard draft?"
+msgstr ""
+
 #: ../../../lib/web/src/components/restore-banner.tsx:79
 #: ../../../lib/web/src/components/restore-banner.tsx:85
 msgid "Dismiss"
@@ -930,8 +938,8 @@ msgstr "دووبارەکان"
 msgid "Dyslexia-friendly"
 msgstr "لەگەڵ دیسلێکسیا گونجاو"
 
-#: src/features/objects/components/comment-thread.tsx:247
-#: src/features/objects/components/comment-thread.tsx:292
+#: src/features/objects/components/comment-thread.tsx:284
+#: src/features/objects/components/comment-thread.tsx:329
 msgid "Edit"
 msgstr "دەستکاری"
 
@@ -1049,7 +1057,7 @@ msgstr "دروستکردنی بینین سەرکەوتوو نەبوو"
 msgid "Failed to delete attachment"
 msgstr "سڕینەوەی هاوپێچ سەرکەوتوو نەبوو"
 
-#: src/features/objects/components/comment-list.tsx:147
+#: src/features/objects/components/comment-list.tsx:161
 msgid "Failed to delete comment"
 msgstr "سڕینەوەی بۆچوون سەرکەوتوو نەبوو"
 
@@ -1110,7 +1118,7 @@ msgstr "بارکردنی بڕگە سەرکەوتوو نەبوو"
 msgid "Failed to load video"
 msgstr "ڤیدیۆکە بار نەکرا"
 
-#: src/features/objects/components/comment-list.tsx:105
+#: src/features/objects/components/comment-list.tsx:119
 msgid "Failed to post comment"
 msgstr "ناردنی بۆچوون سەرکەوتوو نەبوو"
 
@@ -1162,7 +1170,7 @@ msgstr "نوێکردنەوەی ئاستی گەیشتن سەرکەوتوو نەب
 msgid "Failed to update category"
 msgstr "نوێکردنەوەی بەش سەرکەوتوو نەبوو"
 
-#: src/features/objects/components/comment-list.tsx:130
+#: src/features/objects/components/comment-list.tsx:144
 msgid "Failed to update comment"
 msgstr "نوێکردنەوەی بۆچوون سەرکەوتوو نەبوو"
 
@@ -1524,7 +1532,7 @@ msgstr "هیچ ڕێسایەکی دەستڕاگەیشتن ڕێکنەخراوە. �
 msgid "No activity yet"
 msgstr "هێشتا هیچ چالاکییەک نییە"
 
-#: src/features/objects/components/comment-list.tsx:299
+#: src/features/objects/components/comment-list.tsx:316
 msgid "No comments yet"
 msgstr "هێشتا هیچ بۆچوونێک نییە"
 
@@ -1766,6 +1774,7 @@ msgstr "تکایە یەک یان زیاتر پۆل زیاد بکە بۆ دیزا
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
+#: src/components/comment-composer.tsx:69
 msgid "Please check your internet connection and try again."
 msgstr "تکایە پەیوەندی ئینتەرنێتەکەت بپشکنە و دووبارە هەوڵ بدەرەوە."
 
@@ -1849,10 +1858,9 @@ msgstr "ڕێژەیی لە ماوەی ٢٤ کاتژمێر، ئەگەرنا تەو
 
 #: ../../../lib/web/src/features/access/access-list.tsx:265
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
+#: src/components/comment-composer.tsx:201
 #: src/features/crms/components/create-crm-dialog.tsx:282
 #: src/features/editor/components/add-dialogs.tsx:188
-#: src/features/objects/components/comment-list.tsx:244
-#: src/features/objects/components/comment-thread.tsx:356
 #: src/features/objects/components/create-object-dialog.tsx:493
 #: src/features/objects/components/object-links.tsx:245
 #: src/features/objects/components/object-links.tsx:258
@@ -1917,13 +1925,13 @@ msgstr "دیزاین بگۆڕیت؟"
 msgid "Replacing..."
 msgstr "گۆڕین..."
 
-#: src/features/objects/components/comment-thread.tsx:234
-#: src/features/objects/components/comment-thread.tsx:282
+#: src/features/objects/components/comment-thread.tsx:271
+#: src/features/objects/components/comment-thread.tsx:319
 msgid "Reply"
 msgstr "وەڵام"
 
 #. placeholder {0}: comment.name || comment.author
-#: src/features/objects/components/comment-thread.tsx:313
+#: src/features/objects/components/comment-thread.tsx:362
 msgid "Reply to {0}..."
 msgstr "وەڵامدانەوەی {0}..."
 
@@ -1943,6 +1951,10 @@ msgstr "ڕێکخستنەوە"
 #: ../../../lib/web/src/components/config-drawer.tsx:84
 msgid "Reset all settings to default values"
 msgstr "هەموو ڕێکخستنەکان بۆ بەهای بنەڕەت بگەڕێنەوە"
+
+#: src/components/comment-composer.tsx:218
+msgid "Retry"
+msgstr ""
 
 #: src/components/layout/crms-layout.tsx:71
 msgid "Retry CRMs load"
@@ -1976,7 +1988,7 @@ msgstr "شەممە"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
-#: src/features/objects/components/comment-thread.tsx:209
+#: src/features/objects/components/comment-thread.tsx:246
 #: src/routes/_authenticated/$crmId/index.tsx:1112
 msgid "Save"
 msgstr "پاشەکەوتکردن"
@@ -2206,7 +2218,7 @@ msgstr "ڕیزکردن"
 msgid "Spacious"
 msgstr "فراوان"
 
-#: src/features/objects/components/comment-list.tsx:300
+#: src/features/objects/components/comment-list.tsx:317
 msgid "Start the discussion by adding the first comment."
 msgstr "بە زیادکردنی یەکەم لێدوان گفتوگۆ دەستپێبکە."
 
@@ -2223,13 +2235,13 @@ msgstr "وازبهێنە لە چاودێری"
 msgid "Subject"
 msgstr "بابەت"
 
-#: src/features/objects/components/comment-list.tsx:285
-#: src/features/objects/components/comment-list.tsx:290
+#: src/features/objects/components/comment-list.tsx:298
+#: src/features/objects/components/comment-list.tsx:307
 msgid "Submit comment"
 msgstr "لێدوان بنێرە"
 
-#: src/features/objects/components/comment-thread.tsx:420
-#: src/features/objects/components/comment-thread.tsx:425
+#: src/features/objects/components/comment-thread.tsx:443
+#: src/features/objects/components/comment-thread.tsx:448
 msgid "Submit reply"
 msgstr "وەڵام بنێرە"
 
@@ -2641,3 +2653,15 @@ msgstr "هێشتا هیچ CRM-ێکت نییە."
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "هەژمارەکەت لە {source} بۆ ئێرە گواستراوەتەوە. تا کاتێک ئەوێ بیسڕیتەوە، پەیام و ئاگادارکردنەوەکان دەتوانن بگەنە هەردوو سێرڤەرەکە، بەشێک لە ناوەڕۆکەکەت لە سێرڤەری کۆنەکەوە دەمێنێتەوە، و بەدواداچووەکانت دەتوانن چەند خولەکێک بخایەن تا بیتدۆزنەوە."
+
+#: src/components/comment-composer.tsx:260
+msgid "Your attachments will be lost."
+msgstr ""
+
+#: src/components/comment-composer.tsx:258
+msgid "Your text and attachments will be lost."
+msgstr ""
+
+#: src/components/comment-composer.tsx:261
+msgid "Your text will be lost."
+msgstr ""
