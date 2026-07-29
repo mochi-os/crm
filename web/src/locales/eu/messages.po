@@ -22,11 +22,11 @@ msgstr "Egiaztatu zure interneteko konexioa eta saiatu berriro."
 msgid " or "
 msgstr " edo "
 
-#: src/features/objects/components/comment-thread.tsx:169
+#: src/features/objects/components/comment-thread.tsx:222
 msgid "(edited)"
 msgstr "(editatua)"
 
-#: src/features/objects/components/comment-thread.tsx:153
+#: src/features/objects/components/comment-thread.tsx:206
 msgid "(expand)"
 msgstr "(zabaldu)"
 
@@ -97,11 +97,11 @@ msgstr "{unreadCount, plural, one {Ireki menua (irakurri gabeko # jakinarazpen)}
 msgid "+{0} nested"
 msgstr "+{0} kabiratuta"
 
-#: src/features/objects/components/comment-thread.tsx:150
+#: src/features/objects/components/comment-thread.tsx:203
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} erantzun gehiago"
 
-#: src/features/objects/components/comment-thread.tsx:149
+#: src/features/objects/components/comment-thread.tsx:202
 msgid "1 reply"
 msgstr "Erantzun 1"
 
@@ -175,7 +175,7 @@ msgstr "Jarduera"
 msgid "Add"
 msgstr "Gehitu"
 
-#: src/features/objects/components/comment-list.tsx:220
+#: src/features/objects/components/comment-list.tsx:325
 msgid "Add a comment..."
 msgstr "Gehitu iruzkin bat..."
 
@@ -335,7 +335,7 @@ msgstr "Ziur al zaude \"{title}\" ezabatu nahi duzula? Ekintza hau ezin da deseg
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Ziur al zaude \"{name}\" zutabea ezabatu nahi duzula? Hau ezin da desegin."
 
-#: src/features/objects/components/comment-thread.tsx:435
+#: src/features/objects/components/comment-thread.tsx:478
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "Ziur al zaude iruzkin hau ezabatu nahi duzula? Honek erantzun guztiak ere ezabatuko ditu."
 
@@ -355,13 +355,13 @@ msgstr "Goranzkoa"
 msgid "Ascending"
 msgstr "Gorakorra"
 
-#: src/features/objects/components/comment-list.tsx:270
-#: src/features/objects/components/comment-list.tsx:275
+#: src/features/objects/components/comment-list.tsx:362
+#: src/features/objects/components/comment-list.tsx:367
 msgid "Attach comment files"
 msgstr "Erantsi iruzkin fitxategiak"
 
-#: src/features/objects/components/comment-thread.tsx:389
-#: src/features/objects/components/comment-thread.tsx:394
+#: src/features/objects/components/comment-thread.tsx:432
+#: src/features/objects/components/comment-thread.tsx:437
 msgid "Attach reply files"
 msgstr "Erantsi erantzun fitxategiak"
 
@@ -455,23 +455,28 @@ msgstr "Honen seme-alaba izan daiteke"
 #: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:296
 #: src/features/editor/components/option-dialog.tsx:146
-#: src/features/objects/components/comment-thread.tsx:189
+#: src/features/objects/components/comment-thread.tsx:243
 #: src/routes/_authenticated/$crmId/design.tsx:305
 #: src/routes/_authenticated/$crmId/index.tsx:1100
 msgid "Cancel"
 msgstr "Utzi"
 
-#: src/features/objects/components/comment-thread.tsx:405
-#: src/features/objects/components/comment-thread.tsx:410
+#: src/features/objects/components/comment-list.tsx:379
+#: src/features/objects/components/comment-list.tsx:384
+msgid "Cancel comment"
+msgstr "Utzi iruzkina"
+
+#: src/features/objects/components/comment-thread.tsx:448
+#: src/features/objects/components/comment-thread.tsx:453
 msgid "Cancel reply"
 msgstr "Utzi erantzuna"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:143
+#: ../../../lib/web/src/components/notification-category-button.tsx:146
 msgid "Category for this notification"
 msgstr "Jakinarazpen honentzako kategoria"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:124
-#: ../../../lib/web/src/components/notification-category-button.tsx:135
+#: ../../../lib/web/src/components/notification-category-button.tsx:127
+#: ../../../lib/web/src/components/notification-category-button.tsx:138
 msgid "Change notification category"
 msgstr "Aldatu jakinarazpen kategoria"
 
@@ -619,8 +624,8 @@ msgstr "Laster dator!"
 msgid "Command Palette"
 msgstr "Komando-paleta"
 
-#: src/features/objects/components/comment-thread.tsx:270
-#: src/features/objects/components/comment-thread.tsx:277
+#: src/features/objects/components/comment-thread.tsx:324
+#: src/features/objects/components/comment-thread.tsx:331
 msgid "Comment actions"
 msgstr "Iruzkinaren ekintzak"
 
@@ -862,9 +867,9 @@ msgstr "Lehenetsitako ordena"
 
 #: src/features/board/components/board-column.tsx:558
 #: src/features/board/components/board-column.tsx:619
-#: src/features/objects/components/comment-thread.tsx:258
-#: src/features/objects/components/comment-thread.tsx:301
-#: src/features/objects/components/comment-thread.tsx:436
+#: src/features/objects/components/comment-thread.tsx:312
+#: src/features/objects/components/comment-thread.tsx:355
+#: src/features/objects/components/comment-thread.tsx:479
 #: src/features/objects/components/object-attachments.tsx:146
 #: src/features/objects/components/object-attachments.tsx:156
 #: src/features/objects/components/object-attachments.tsx:205
@@ -886,7 +891,7 @@ msgstr "Ezabatu klasea"
 msgid "Delete column"
 msgstr "Ezabatu zutabea"
 
-#: src/features/objects/components/comment-thread.tsx:434
+#: src/features/objects/components/comment-thread.tsx:477
 msgid "Delete comment"
 msgstr "Ezabatu iruzkina"
 
@@ -982,6 +987,14 @@ msgstr "Norabidea"
 msgid "Directory"
 msgstr "Direktorioa"
 
+#: ../../../lib/web/src/components/comment-composer.tsx:300
+msgid "Discard"
+msgstr "Baztertu"
+
+#: ../../../lib/web/src/components/comment-composer.tsx:298
+msgid "Discard draft?"
+msgstr "Zirriborroa baztertu?"
+
 #: ../../../lib/web/src/lib/chat-ui.ts:25
 #: ../../../lib/web/src/lib/chat-ui.ts:29
 msgid "Disconnected"
@@ -1044,8 +1057,8 @@ msgstr "Bikoiztuak"
 msgid "Dyslexia-friendly"
 msgstr "Dislexiarako egokia"
 
-#: src/features/objects/components/comment-thread.tsx:247
-#: src/features/objects/components/comment-thread.tsx:292
+#: src/features/objects/components/comment-thread.tsx:301
+#: src/features/objects/components/comment-thread.tsx:346
 msgid "Edit"
 msgstr "Editatu"
 
@@ -1180,7 +1193,7 @@ msgstr "Ezin izan da ikuspegia sortu"
 msgid "Failed to delete attachment"
 msgstr "Ezin izan da eranskina ezabatu"
 
-#: src/features/objects/components/comment-list.tsx:147
+#: src/features/objects/components/comment-list.tsx:172
 msgid "Failed to delete comment"
 msgstr "Ezin izan da iruzkina ezabatu"
 
@@ -1245,7 +1258,7 @@ msgstr "Ezin izan da elementua kargatu"
 msgid "Failed to load video"
 msgstr "Ezin izan da bideoa kargatu"
 
-#: src/features/objects/components/comment-list.tsx:105
+#: src/features/objects/components/comment-list.tsx:130
 msgid "Failed to post comment"
 msgstr "Ezin izan da iruzkina argitaratu"
 
@@ -1293,11 +1306,11 @@ msgstr "Ezin izan da harpidetza utzi"
 msgid "Failed to update access level"
 msgstr "Ezin izan da sarbide-maila eguneratu"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:111
+#: ../../../lib/web/src/components/notification-category-button.tsx:114
 msgid "Failed to update category"
 msgstr "Ezin izan da kategoria eguneratu"
 
-#: src/features/objects/components/comment-list.tsx:130
+#: src/features/objects/components/comment-list.tsx:155
 msgid "Failed to update comment"
 msgstr "Ezin izan da iruzkina eguneratu"
 
@@ -1716,7 +1729,7 @@ msgstr "Ez da sarbide-araurik konfiguratu. Gehitu arauak baliabide honetara nork
 msgid "No activity yet"
 msgstr "Oraindik jardueririk ez"
 
-#: src/features/objects/components/comment-list.tsx:299
+#: src/features/objects/components/comment-list.tsx:414
 msgid "No comments yet"
 msgstr "Oraindik iruzkinik ez"
 
@@ -1782,7 +1795,7 @@ msgstr "Egoerarik ez"
 msgid "No time zone found."
 msgstr "Ez da ordu-zonarik aurkitu."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:147
+#: ../../../lib/web/src/components/notification-category-button.tsx:150
 msgid "No topic record yet — try again after the next notification."
 msgstr "Oraindik gairik ez — saiatu berriro hurrengo jakinarazpenaren ondoren."
 
@@ -1979,6 +1992,7 @@ msgstr "Hautatu data bat"
 msgid "Please add one or more classes to the CRM design."
 msgstr "Mesedez gehitu klase bat edo gehiago CRMaren diseinura."
 
+#: ../../../lib/web/src/components/comment-composer.tsx:95
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
@@ -2074,12 +2088,11 @@ msgstr "Erlatiboa (5m, 3o, 2e)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Erlatiboa 24 ordu barruan, bestela absolutua"
 
+#: ../../../lib/web/src/components/comment-composer.tsx:232
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 #: src/features/crms/components/create-crm-dialog.tsx:282
 #: src/features/editor/components/add-dialogs.tsx:188
-#: src/features/objects/components/comment-list.tsx:244
-#: src/features/objects/components/comment-thread.tsx:356
 #: src/features/objects/components/create-object-dialog.tsx:493
 #: src/features/objects/components/object-links.tsx:245
 #: src/features/objects/components/object-links.tsx:258
@@ -2150,13 +2163,13 @@ msgstr "Diseinua ordeztu?"
 msgid "Replacing..."
 msgstr "Ordezten..."
 
-#: src/features/objects/components/comment-thread.tsx:234
-#: src/features/objects/components/comment-thread.tsx:282
+#: src/features/objects/components/comment-thread.tsx:288
+#: src/features/objects/components/comment-thread.tsx:336
 msgid "Reply"
 msgstr "Erantzun"
 
 #. placeholder {0}: comment.name || comment.author
-#: src/features/objects/components/comment-thread.tsx:313
+#: src/features/objects/components/comment-thread.tsx:379
 msgid "Reply to {0}..."
 msgstr "Erantzun {0}-(r)i..."
 
@@ -2181,6 +2194,10 @@ msgstr "Berrezarri {title}"
 #: ../../../lib/web/src/components/config-drawer.tsx:85
 msgid "Reset all settings to default values"
 msgstr "Berrezarri ezarpen guztiak balio lehenetsietara"
+
+#: ../../../lib/web/src/components/comment-composer.tsx:249
+msgid "Retry"
+msgstr "Saiatu berriro"
 
 #: src/components/layout/crms-layout.tsx:71
 msgid "Retry CRMs load"
@@ -2214,7 +2231,7 @@ msgstr "Larunbata"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
-#: src/features/objects/components/comment-thread.tsx:209
+#: src/features/objects/components/comment-thread.tsx:263
 #: src/routes/_authenticated/$crmId/index.tsx:1112
 msgid "Save"
 msgstr "Gorde"
@@ -2474,7 +2491,7 @@ msgstr "Ordenatu"
 msgid "Spacious"
 msgstr "Lasaia"
 
-#: src/features/objects/components/comment-list.tsx:300
+#: src/features/objects/components/comment-list.tsx:415
 msgid "Start the discussion by adding the first comment."
 msgstr "Hasi eztabaida lehen iruzkina gehituz."
 
@@ -2491,13 +2508,13 @@ msgstr "Utzi ikusten"
 msgid "Subject"
 msgstr "Gaia"
 
-#: src/features/objects/components/comment-list.tsx:285
-#: src/features/objects/components/comment-list.tsx:290
+#: src/features/objects/components/comment-list.tsx:395
+#: src/features/objects/components/comment-list.tsx:404
 msgid "Submit comment"
 msgstr "Bidali iruzkina"
 
-#: src/features/objects/components/comment-thread.tsx:420
-#: src/features/objects/components/comment-thread.tsx:425
+#: src/features/objects/components/comment-thread.tsx:463
+#: src/features/objects/components/comment-thread.tsx:468
 msgid "Submit reply"
 msgstr "Bidali erantzuna"
 
@@ -2729,7 +2746,7 @@ msgstr "Ezin izan da urruneko zerbitzarira konektatu"
 msgid "Unable to redirect to login. Please try again."
 msgstr "Ezin da saio-hasierara birbideratu. Saiatu berriro."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:155
+#: ../../../lib/web/src/components/notification-category-button.tsx:158
 msgid "Unassigned"
 msgstr "Esleitu gabe"
 
@@ -2942,3 +2959,15 @@ msgstr "Dena irakurri duzu!"
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Zure kontua {source}-etik hona mugitu da. Han ezabatu arte, mezuak eta jakinarazpenak bi zerbitzarietara irits daitezke, zure edukiaren zati bat zerbitzari zaharretik ematen jarraitzen du, eta jarraitzaileek minutu batzuk behar izan ditzakete zu hemen aurkitzeko."
+
+#: ../../../lib/web/src/components/comment-composer.tsx:291
+msgid "Your attachments will be lost."
+msgstr "Zure eranskinak galduko dira."
+
+#: ../../../lib/web/src/components/comment-composer.tsx:289
+msgid "Your text and attachments will be lost."
+msgstr "Zure testua eta eranskinak galduko dira."
+
+#: ../../../lib/web/src/components/comment-composer.tsx:292
+msgid "Your text will be lost."
+msgstr "Zure testua galduko da."

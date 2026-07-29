@@ -22,11 +22,11 @@ msgstr "בדקו את חיבור האינטרנט ונסו שוב."
 msgid " or "
 msgstr " או "
 
-#: src/features/objects/components/comment-thread.tsx:169
+#: src/features/objects/components/comment-thread.tsx:222
 msgid "(edited)"
 msgstr "(נערך)"
 
-#: src/features/objects/components/comment-thread.tsx:153
+#: src/features/objects/components/comment-thread.tsx:206
 msgid "(expand)"
 msgstr "(הרחב)"
 
@@ -97,11 +97,11 @@ msgstr "{unreadCount, plural, one {פתיחת התפריט (התראה אחת ש
 msgid "+{0} nested"
 msgstr "+{0} מקוננים"
 
-#: src/features/objects/components/comment-thread.tsx:150
+#: src/features/objects/components/comment-thread.tsx:203
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} תגובות נוספות"
 
-#: src/features/objects/components/comment-thread.tsx:149
+#: src/features/objects/components/comment-thread.tsx:202
 msgid "1 reply"
 msgstr "תגובה אחת"
 
@@ -175,7 +175,7 @@ msgstr "פעילות"
 msgid "Add"
 msgstr "הוספה"
 
-#: src/features/objects/components/comment-list.tsx:220
+#: src/features/objects/components/comment-list.tsx:325
 msgid "Add a comment..."
 msgstr "הוסף תגובה..."
 
@@ -335,7 +335,7 @@ msgstr "האם אתה בטוח שברצונך למחוק את \"{title}\"? לא 
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "האם אתה בטוח שברצונך למחוק את העמודה \"{name}\"? לא ניתן לבטל פעולה זו."
 
-#: src/features/objects/components/comment-thread.tsx:435
+#: src/features/objects/components/comment-thread.tsx:478
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "האם אתה בטוח שברצונך למחוק תגובה זו? פעולה זו תמחק גם את כל התשובות."
 
@@ -355,13 +355,13 @@ msgstr "עולה"
 msgid "Ascending"
 msgstr "סדר עולה"
 
-#: src/features/objects/components/comment-list.tsx:270
-#: src/features/objects/components/comment-list.tsx:275
+#: src/features/objects/components/comment-list.tsx:362
+#: src/features/objects/components/comment-list.tsx:367
 msgid "Attach comment files"
 msgstr "צרף קובצי תגובה"
 
-#: src/features/objects/components/comment-thread.tsx:389
-#: src/features/objects/components/comment-thread.tsx:394
+#: src/features/objects/components/comment-thread.tsx:432
+#: src/features/objects/components/comment-thread.tsx:437
 msgid "Attach reply files"
 msgstr "צרף קובצי תשובה"
 
@@ -455,23 +455,28 @@ msgstr "יכול להיות צאצא של"
 #: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:296
 #: src/features/editor/components/option-dialog.tsx:146
-#: src/features/objects/components/comment-thread.tsx:189
+#: src/features/objects/components/comment-thread.tsx:243
 #: src/routes/_authenticated/$crmId/design.tsx:305
 #: src/routes/_authenticated/$crmId/index.tsx:1100
 msgid "Cancel"
 msgstr "ביטול"
 
-#: src/features/objects/components/comment-thread.tsx:405
-#: src/features/objects/components/comment-thread.tsx:410
+#: src/features/objects/components/comment-list.tsx:379
+#: src/features/objects/components/comment-list.tsx:384
+msgid "Cancel comment"
+msgstr "בטל תגובה"
+
+#: src/features/objects/components/comment-thread.tsx:448
+#: src/features/objects/components/comment-thread.tsx:453
 msgid "Cancel reply"
 msgstr "בטל תשובה"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:143
+#: ../../../lib/web/src/components/notification-category-button.tsx:146
 msgid "Category for this notification"
 msgstr "קטגוריה עבור התראה זו"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:124
-#: ../../../lib/web/src/components/notification-category-button.tsx:135
+#: ../../../lib/web/src/components/notification-category-button.tsx:127
+#: ../../../lib/web/src/components/notification-category-button.tsx:138
 msgid "Change notification category"
 msgstr "שנה קטגוריית התראה"
 
@@ -619,8 +624,8 @@ msgstr "בקרוב!"
 msgid "Command Palette"
 msgstr "לוח פקודות"
 
-#: src/features/objects/components/comment-thread.tsx:270
-#: src/features/objects/components/comment-thread.tsx:277
+#: src/features/objects/components/comment-thread.tsx:324
+#: src/features/objects/components/comment-thread.tsx:331
 msgid "Comment actions"
 msgstr "פעולות תגובה"
 
@@ -862,9 +867,9 @@ msgstr "מיון ברירת מחדל"
 
 #: src/features/board/components/board-column.tsx:558
 #: src/features/board/components/board-column.tsx:619
-#: src/features/objects/components/comment-thread.tsx:258
-#: src/features/objects/components/comment-thread.tsx:301
-#: src/features/objects/components/comment-thread.tsx:436
+#: src/features/objects/components/comment-thread.tsx:312
+#: src/features/objects/components/comment-thread.tsx:355
+#: src/features/objects/components/comment-thread.tsx:479
 #: src/features/objects/components/object-attachments.tsx:146
 #: src/features/objects/components/object-attachments.tsx:156
 #: src/features/objects/components/object-attachments.tsx:205
@@ -886,7 +891,7 @@ msgstr "מחק מחלקה"
 msgid "Delete column"
 msgstr "מחק עמודה"
 
-#: src/features/objects/components/comment-thread.tsx:434
+#: src/features/objects/components/comment-thread.tsx:477
 msgid "Delete comment"
 msgstr "מחק תגובה"
 
@@ -982,6 +987,14 @@ msgstr "כיוון"
 msgid "Directory"
 msgstr "מדריך"
 
+#: ../../../lib/web/src/components/comment-composer.tsx:300
+msgid "Discard"
+msgstr "מחיקה"
+
+#: ../../../lib/web/src/components/comment-composer.tsx:298
+msgid "Discard draft?"
+msgstr "למחוק את הטיוטה?"
+
 #: ../../../lib/web/src/lib/chat-ui.ts:25
 #: ../../../lib/web/src/lib/chat-ui.ts:29
 msgid "Disconnected"
@@ -1044,8 +1057,8 @@ msgstr "משכפל"
 msgid "Dyslexia-friendly"
 msgstr "ידידותי לדיסלקציה"
 
-#: src/features/objects/components/comment-thread.tsx:247
-#: src/features/objects/components/comment-thread.tsx:292
+#: src/features/objects/components/comment-thread.tsx:301
+#: src/features/objects/components/comment-thread.tsx:346
 msgid "Edit"
 msgstr "עריכה"
 
@@ -1180,7 +1193,7 @@ msgstr "יצירת התצוגה נכשלה"
 msgid "Failed to delete attachment"
 msgstr "מחיקת הקובץ המצורף נכשלה"
 
-#: src/features/objects/components/comment-list.tsx:147
+#: src/features/objects/components/comment-list.tsx:172
 msgid "Failed to delete comment"
 msgstr "מחיקת התגובה נכשלה"
 
@@ -1245,7 +1258,7 @@ msgstr "טעינת הפריט נכשלה"
 msgid "Failed to load video"
 msgstr "טעינת הווידאו נכשלה"
 
-#: src/features/objects/components/comment-list.tsx:105
+#: src/features/objects/components/comment-list.tsx:130
 msgid "Failed to post comment"
 msgstr "פרסום התגובה נכשל"
 
@@ -1293,11 +1306,11 @@ msgstr "ביטול ההרשמה נכשל"
 msgid "Failed to update access level"
 msgstr "עדכון רמת הגישה נכשל"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:111
+#: ../../../lib/web/src/components/notification-category-button.tsx:114
 msgid "Failed to update category"
 msgstr "עדכון הקטגוריה נכשל"
 
-#: src/features/objects/components/comment-list.tsx:130
+#: src/features/objects/components/comment-list.tsx:155
 msgid "Failed to update comment"
 msgstr "עדכון התגובה נכשל"
 
@@ -1716,7 +1729,7 @@ msgstr "לא הוגדרו כללי גישה. הוסף כללים כדי לשלו
 msgid "No activity yet"
 msgstr "עדיין אין פעילות"
 
-#: src/features/objects/components/comment-list.tsx:299
+#: src/features/objects/components/comment-list.tsx:414
 msgid "No comments yet"
 msgstr "עדיין אין תגובות"
 
@@ -1782,7 +1795,7 @@ msgstr "ללא סטטוס"
 msgid "No time zone found."
 msgstr "לא נמצא אזור זמן."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:147
+#: ../../../lib/web/src/components/notification-category-button.tsx:150
 msgid "No topic record yet — try again after the next notification."
 msgstr "עדיין אין רשומת נושא — נסה שוב לאחר ההתראה הבאה."
 
@@ -1979,6 +1992,7 @@ msgstr "בחר תאריך"
 msgid "Please add one or more classes to the CRM design."
 msgstr "הוסף מחלקה אחת או יותר לעיצוב ה-CRM."
 
+#: ../../../lib/web/src/components/comment-composer.tsx:95
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
@@ -2074,12 +2088,11 @@ msgstr "יחסי (5 דקות, 3 שעות, 2 ימים)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "יחסי בתוך 24 שעות, אחרת מוחלט"
 
+#: ../../../lib/web/src/components/comment-composer.tsx:232
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 #: src/features/crms/components/create-crm-dialog.tsx:282
 #: src/features/editor/components/add-dialogs.tsx:188
-#: src/features/objects/components/comment-list.tsx:244
-#: src/features/objects/components/comment-thread.tsx:356
 #: src/features/objects/components/create-object-dialog.tsx:493
 #: src/features/objects/components/object-links.tsx:245
 #: src/features/objects/components/object-links.tsx:258
@@ -2150,13 +2163,13 @@ msgstr "להחליף עיצוב?"
 msgid "Replacing..."
 msgstr "מחליף..."
 
-#: src/features/objects/components/comment-thread.tsx:234
-#: src/features/objects/components/comment-thread.tsx:282
+#: src/features/objects/components/comment-thread.tsx:288
+#: src/features/objects/components/comment-thread.tsx:336
 msgid "Reply"
 msgstr "השב"
 
 #. placeholder {0}: comment.name || comment.author
-#: src/features/objects/components/comment-thread.tsx:313
+#: src/features/objects/components/comment-thread.tsx:379
 msgid "Reply to {0}..."
 msgstr "הגב ל-{0}..."
 
@@ -2181,6 +2194,10 @@ msgstr "אפס {title}"
 #: ../../../lib/web/src/components/config-drawer.tsx:85
 msgid "Reset all settings to default values"
 msgstr "אפס את כל ההגדרות לערכי ברירת המחדל"
+
+#: ../../../lib/web/src/components/comment-composer.tsx:249
+msgid "Retry"
+msgstr "נסה שוב"
 
 #: src/components/layout/crms-layout.tsx:71
 msgid "Retry CRMs load"
@@ -2214,7 +2231,7 @@ msgstr "שבת"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
-#: src/features/objects/components/comment-thread.tsx:209
+#: src/features/objects/components/comment-thread.tsx:263
 #: src/routes/_authenticated/$crmId/index.tsx:1112
 msgid "Save"
 msgstr "שמור"
@@ -2474,7 +2491,7 @@ msgstr "מיין"
 msgid "Spacious"
 msgstr "מרווח"
 
-#: src/features/objects/components/comment-list.tsx:300
+#: src/features/objects/components/comment-list.tsx:415
 msgid "Start the discussion by adding the first comment."
 msgstr "התחל את הדיון על ידי הוספת התגובה הראשונה."
 
@@ -2491,13 +2508,13 @@ msgstr "הפסק לעקוב"
 msgid "Subject"
 msgstr "נושא"
 
-#: src/features/objects/components/comment-list.tsx:285
-#: src/features/objects/components/comment-list.tsx:290
+#: src/features/objects/components/comment-list.tsx:395
+#: src/features/objects/components/comment-list.tsx:404
 msgid "Submit comment"
 msgstr "שלח תגובה"
 
-#: src/features/objects/components/comment-thread.tsx:420
-#: src/features/objects/components/comment-thread.tsx:425
+#: src/features/objects/components/comment-thread.tsx:463
+#: src/features/objects/components/comment-thread.tsx:468
 msgid "Submit reply"
 msgstr "שלח תשובה"
 
@@ -2729,7 +2746,7 @@ msgstr "לא ניתן להתחבר לשרת המרוחק"
 msgid "Unable to redirect to login. Please try again."
 msgstr "לא ניתן להפנות להתחברות. נסה שוב."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:155
+#: ../../../lib/web/src/components/notification-category-button.tsx:158
 msgid "Unassigned"
 msgstr "לא משויך"
 
@@ -2942,3 +2959,15 @@ msgstr "ראית הכול!"
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "חשבונך הועבר לכאן מ-{source}. עד שתמחק אותו שם, הודעות והתראות עשויות להגיע לשני השרתים, חלק מהתוכן שלך ממשיך להיות מוגש מהשרת הישן, ועוקבים עשויים לקחת מספר דקות למצוא אותך כאן."
+
+#: ../../../lib/web/src/components/comment-composer.tsx:291
+msgid "Your attachments will be lost."
+msgstr "הקבצים המצורפים שלך יאבדו."
+
+#: ../../../lib/web/src/components/comment-composer.tsx:289
+msgid "Your text and attachments will be lost."
+msgstr "הטקסט והקבצים המצורפים שלך יאבדו."
+
+#: ../../../lib/web/src/components/comment-composer.tsx:292
+msgid "Your text will be lost."
+msgstr "הטקסט שלכם יאבד."

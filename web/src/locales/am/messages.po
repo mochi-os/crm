@@ -22,11 +22,11 @@ msgstr "እባክዎ የበይነመረብ ግንኙነትዎን አረጋግጠ
 msgid " or "
 msgstr " ወይም "
 
-#: src/features/objects/components/comment-thread.tsx:169
+#: src/features/objects/components/comment-thread.tsx:222
 msgid "(edited)"
 msgstr "(ተሻሽሏል)"
 
-#: src/features/objects/components/comment-thread.tsx:153
+#: src/features/objects/components/comment-thread.tsx:206
 msgid "(expand)"
 msgstr "(አስፋ)"
 
@@ -97,11 +97,11 @@ msgstr "{unreadCount, plural, one {ምናሌን ክፈት (# ያልተነበበ 
 msgid "+{0} nested"
 msgstr "+{0} የተነባበሩ"
 
-#: src/features/objects/components/comment-thread.tsx:150
+#: src/features/objects/components/comment-thread.tsx:203
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} ተጨማሪ ምላሾች"
 
-#: src/features/objects/components/comment-thread.tsx:149
+#: src/features/objects/components/comment-thread.tsx:202
 msgid "1 reply"
 msgstr "1 ምላሽ"
 
@@ -175,7 +175,7 @@ msgstr "እንቅስቃሴ"
 msgid "Add"
 msgstr "ጨምር"
 
-#: src/features/objects/components/comment-list.tsx:220
+#: src/features/objects/components/comment-list.tsx:325
 msgid "Add a comment..."
 msgstr "አስተያየት ጨምር..."
 
@@ -335,7 +335,7 @@ msgstr "\"{title}\"ን መሰረዝ እንደምትፈልግ እርግጠኛ ነ
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "\"{name}\" ዓምድን መሰረዝ እንደምትፈልግ እርግጠኛ ነህ? ይህ ሊቀለበስ አይችልም።"
 
-#: src/features/objects/components/comment-thread.tsx:435
+#: src/features/objects/components/comment-thread.tsx:478
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "ይህን አስተያየት መሰረዝ እንደምትፈልግ እርግጠኛ ነህ? ይህ ሁሉንም ምላሾችም ይሰርዛል።"
 
@@ -355,13 +355,13 @@ msgstr "ዕርገት"
 msgid "Ascending"
 msgstr "ከታች ወደ ላይ"
 
-#: src/features/objects/components/comment-list.tsx:270
-#: src/features/objects/components/comment-list.tsx:275
+#: src/features/objects/components/comment-list.tsx:362
+#: src/features/objects/components/comment-list.tsx:367
 msgid "Attach comment files"
 msgstr "የአስተያየት ፋይሎችን አያይዝ"
 
-#: src/features/objects/components/comment-thread.tsx:389
-#: src/features/objects/components/comment-thread.tsx:394
+#: src/features/objects/components/comment-thread.tsx:432
+#: src/features/objects/components/comment-thread.tsx:437
 msgid "Attach reply files"
 msgstr "የምላሽ ፋይሎችን አያይዝ"
 
@@ -455,23 +455,28 @@ msgstr "የሚከተለው ልጅ ሊሆን ይችላል"
 #: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:296
 #: src/features/editor/components/option-dialog.tsx:146
-#: src/features/objects/components/comment-thread.tsx:189
+#: src/features/objects/components/comment-thread.tsx:243
 #: src/routes/_authenticated/$crmId/design.tsx:305
 #: src/routes/_authenticated/$crmId/index.tsx:1100
 msgid "Cancel"
 msgstr "ይቅር"
 
-#: src/features/objects/components/comment-thread.tsx:405
-#: src/features/objects/components/comment-thread.tsx:410
+#: src/features/objects/components/comment-list.tsx:379
+#: src/features/objects/components/comment-list.tsx:384
+msgid "Cancel comment"
+msgstr "አስተያየት ሰርዝ"
+
+#: src/features/objects/components/comment-thread.tsx:448
+#: src/features/objects/components/comment-thread.tsx:453
 msgid "Cancel reply"
 msgstr "ምላሽ ሰርዝ"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:143
+#: ../../../lib/web/src/components/notification-category-button.tsx:146
 msgid "Category for this notification"
 msgstr "ለዚህ ማሳወቂያ ምድብ"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:124
-#: ../../../lib/web/src/components/notification-category-button.tsx:135
+#: ../../../lib/web/src/components/notification-category-button.tsx:127
+#: ../../../lib/web/src/components/notification-category-button.tsx:138
 msgid "Change notification category"
 msgstr "የማሳወቂያ ምድብ ለውጥ"
 
@@ -619,8 +624,8 @@ msgstr "በቅርብ ይመጣል!"
 msgid "Command Palette"
 msgstr "የትዕዛዝ ፓሌት"
 
-#: src/features/objects/components/comment-thread.tsx:270
-#: src/features/objects/components/comment-thread.tsx:277
+#: src/features/objects/components/comment-thread.tsx:324
+#: src/features/objects/components/comment-thread.tsx:331
 msgid "Comment actions"
 msgstr "የአስተያየት እርምጃዎች"
 
@@ -862,9 +867,9 @@ msgstr "ነባሪ ቅደም ተከተል"
 
 #: src/features/board/components/board-column.tsx:558
 #: src/features/board/components/board-column.tsx:619
-#: src/features/objects/components/comment-thread.tsx:258
-#: src/features/objects/components/comment-thread.tsx:301
-#: src/features/objects/components/comment-thread.tsx:436
+#: src/features/objects/components/comment-thread.tsx:312
+#: src/features/objects/components/comment-thread.tsx:355
+#: src/features/objects/components/comment-thread.tsx:479
 #: src/features/objects/components/object-attachments.tsx:146
 #: src/features/objects/components/object-attachments.tsx:156
 #: src/features/objects/components/object-attachments.tsx:205
@@ -886,7 +891,7 @@ msgstr "ክፍል ሰርዝ"
 msgid "Delete column"
 msgstr "ዓምድ ሰርዝ"
 
-#: src/features/objects/components/comment-thread.tsx:434
+#: src/features/objects/components/comment-thread.tsx:477
 msgid "Delete comment"
 msgstr "አስተያየት ሰርዝ"
 
@@ -982,6 +987,14 @@ msgstr "አቅጣጫ"
 msgid "Directory"
 msgstr "ማውጫ"
 
+#: ../../../lib/web/src/components/comment-composer.tsx:300
+msgid "Discard"
+msgstr "ጣል"
+
+#: ../../../lib/web/src/components/comment-composer.tsx:298
+msgid "Discard draft?"
+msgstr "ረቂቁን ይጣል?"
+
 #: ../../../lib/web/src/lib/chat-ui.ts:25
 #: ../../../lib/web/src/lib/chat-ui.ts:29
 msgid "Disconnected"
@@ -1044,8 +1057,8 @@ msgstr "ይባዛል"
 msgid "Dyslexia-friendly"
 msgstr "ለዲስሌክሲያ ምቹ"
 
-#: src/features/objects/components/comment-thread.tsx:247
-#: src/features/objects/components/comment-thread.tsx:292
+#: src/features/objects/components/comment-thread.tsx:301
+#: src/features/objects/components/comment-thread.tsx:346
 msgid "Edit"
 msgstr "አስተካክል"
 
@@ -1180,7 +1193,7 @@ msgstr "እይታ መፍጠር አልተሳካም"
 msgid "Failed to delete attachment"
 msgstr "አባሪ መሰረዝ አልተሳካም"
 
-#: src/features/objects/components/comment-list.tsx:147
+#: src/features/objects/components/comment-list.tsx:172
 msgid "Failed to delete comment"
 msgstr "አስተያየት መሰረዝ አልተሳካም"
 
@@ -1245,7 +1258,7 @@ msgstr "ንጥልን መጫን አልተሳካም"
 msgid "Failed to load video"
 msgstr "ቪዲዮውን መጫን አልተሳካም"
 
-#: src/features/objects/components/comment-list.tsx:105
+#: src/features/objects/components/comment-list.tsx:130
 msgid "Failed to post comment"
 msgstr "አስተያየት መለጠፍ አልተሳካም"
 
@@ -1293,11 +1306,11 @@ msgstr "ምዝገባን መሰረዝ አልተሳካም"
 msgid "Failed to update access level"
 msgstr "የመዳረሻ ደረጃን ማዘመን አልተሳካም"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:111
+#: ../../../lib/web/src/components/notification-category-button.tsx:114
 msgid "Failed to update category"
 msgstr "ምድብን ማዘመን አልተሳካም"
 
-#: src/features/objects/components/comment-list.tsx:130
+#: src/features/objects/components/comment-list.tsx:155
 msgid "Failed to update comment"
 msgstr "አስተያየትን ማዘመን አልተሳካም"
 
@@ -1716,7 +1729,7 @@ msgstr "ምንም የድረሳ ህጎች አልተዋቀሩም። ይህን ሀ�
 msgid "No activity yet"
 msgstr "እስካሁን ምንም እንቅስቃሴ የለም"
 
-#: src/features/objects/components/comment-list.tsx:299
+#: src/features/objects/components/comment-list.tsx:414
 msgid "No comments yet"
 msgstr "እስካሁን አስተያየቶች የሉም"
 
@@ -1782,7 +1795,7 @@ msgstr "ሁኔታ የለም"
 msgid "No time zone found."
 msgstr "ምንም የሰዓት ሰቅ አልተገኘም።"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:147
+#: ../../../lib/web/src/components/notification-category-button.tsx:150
 msgid "No topic record yet — try again after the next notification."
 msgstr "እስካሁን የርዕስ መዝገብ የለም — ከቀጣዩ ማሳወቂያ በኋላ እንደገና ይሞክሩ።"
 
@@ -1979,6 +1992,7 @@ msgstr "ቀን ይምረጡ"
 msgid "Please add one or more classes to the CRM design."
 msgstr "እባክዎን ለCRM ንድፉ አንድ ወይም ብዙ ክፍሎችን ያክሉ።"
 
+#: ../../../lib/web/src/components/comment-composer.tsx:95
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
@@ -2074,12 +2088,11 @@ msgstr "አንፃራዊ (5m, 3h, 2d)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "በ24 ሰዓታት ውስጥ አንፃራዊ፣ ካልሆነ ፍጹም"
 
+#: ../../../lib/web/src/components/comment-composer.tsx:232
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 #: src/features/crms/components/create-crm-dialog.tsx:282
 #: src/features/editor/components/add-dialogs.tsx:188
-#: src/features/objects/components/comment-list.tsx:244
-#: src/features/objects/components/comment-thread.tsx:356
 #: src/features/objects/components/create-object-dialog.tsx:493
 #: src/features/objects/components/object-links.tsx:245
 #: src/features/objects/components/object-links.tsx:258
@@ -2150,13 +2163,13 @@ msgstr "ንድፍ ይተካ?"
 msgid "Replacing..."
 msgstr "በመተካት ላይ..."
 
-#: src/features/objects/components/comment-thread.tsx:234
-#: src/features/objects/components/comment-thread.tsx:282
+#: src/features/objects/components/comment-thread.tsx:288
+#: src/features/objects/components/comment-thread.tsx:336
 msgid "Reply"
 msgstr "ምላሽ ስጥ"
 
 #. placeholder {0}: comment.name || comment.author
-#: src/features/objects/components/comment-thread.tsx:313
+#: src/features/objects/components/comment-thread.tsx:379
 msgid "Reply to {0}..."
 msgstr "ለ {0} መልስ..."
 
@@ -2181,6 +2194,10 @@ msgstr "{title} ዳግም አስጀምር"
 #: ../../../lib/web/src/components/config-drawer.tsx:85
 msgid "Reset all settings to default values"
 msgstr "ሁሉንም ቅንብሮች ወደ ነባሪ እሴቶች ዳግም አስጀምር"
+
+#: ../../../lib/web/src/components/comment-composer.tsx:249
+msgid "Retry"
+msgstr "እንደገና ሞክር"
 
 #: src/components/layout/crms-layout.tsx:71
 msgid "Retry CRMs load"
@@ -2214,7 +2231,7 @@ msgstr "ቅዳሜ"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
-#: src/features/objects/components/comment-thread.tsx:209
+#: src/features/objects/components/comment-thread.tsx:263
 #: src/routes/_authenticated/$crmId/index.tsx:1112
 msgid "Save"
 msgstr "ያስቀምጡ"
@@ -2474,7 +2491,7 @@ msgstr "ይደርድሩ"
 msgid "Spacious"
 msgstr "ሰፊ"
 
-#: src/features/objects/components/comment-list.tsx:300
+#: src/features/objects/components/comment-list.tsx:415
 msgid "Start the discussion by adding the first comment."
 msgstr "የመጀመሪያውን አስተያየት በማከል ውይይቱን ይጀምሩ።"
 
@@ -2491,13 +2508,13 @@ msgstr "መከታተል አቁም"
 msgid "Subject"
 msgstr "ርዕሰ ጉዳይ"
 
-#: src/features/objects/components/comment-list.tsx:285
-#: src/features/objects/components/comment-list.tsx:290
+#: src/features/objects/components/comment-list.tsx:395
+#: src/features/objects/components/comment-list.tsx:404
 msgid "Submit comment"
 msgstr "አስተያየት ያቅርቡ"
 
-#: src/features/objects/components/comment-thread.tsx:420
-#: src/features/objects/components/comment-thread.tsx:425
+#: src/features/objects/components/comment-thread.tsx:463
+#: src/features/objects/components/comment-thread.tsx:468
 msgid "Submit reply"
 msgstr "ምላሽ ያቅርቡ"
 
@@ -2729,7 +2746,7 @@ msgstr "ከርቀት አገልጋይ ጋር መገናኘት አልተቻለም"
 msgid "Unable to redirect to login. Please try again."
 msgstr "ወደ መግቢያ መዞር አልተቻለም። እባክዎ እንደገና ይሞክሩ።"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:155
+#: ../../../lib/web/src/components/notification-category-button.tsx:158
 msgid "Unassigned"
 msgstr "ያልተመደበ"
 
@@ -2942,3 +2959,15 @@ msgstr "ሁሉንም አይተዋል!"
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "መለያህ ከ{source} ወደዚህ ተዛውሯል። እዚያ እስኪሰርዝ ድረስ፣ መልዕክቶችና ማሳወቂያዎች ሁለቱ ሰርቨሮች ሊደርሱ ይችላሉ፣ አንዳንድ ይዘቶችህ ከድሮ ሰርቨር ሲቀርቡ ይቀጥላሉ፣ ተከታዮችህ ወደዚህ ለማግኘት ጥቂት ደቂቃዎች ሊወስድ ይችላል።"
+
+#: ../../../lib/web/src/components/comment-composer.tsx:291
+msgid "Your attachments will be lost."
+msgstr "አባሪዎችህ ይጠፋሉ።"
+
+#: ../../../lib/web/src/components/comment-composer.tsx:289
+msgid "Your text and attachments will be lost."
+msgstr "ጽሑፍህ እና አባሪዎችህ ይጠፋሉ።"
+
+#: ../../../lib/web/src/components/comment-composer.tsx:292
+msgid "Your text will be lost."
+msgstr "ጽሑፍዎ ይጠፋል።"

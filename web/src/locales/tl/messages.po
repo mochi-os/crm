@@ -22,11 +22,11 @@ msgstr "Pakitingnan ang iyong koneksyon sa internet at subukang muli."
 msgid " or "
 msgstr " o "
 
-#: src/features/objects/components/comment-thread.tsx:169
+#: src/features/objects/components/comment-thread.tsx:222
 msgid "(edited)"
 msgstr "(in-edit)"
 
-#: src/features/objects/components/comment-thread.tsx:153
+#: src/features/objects/components/comment-thread.tsx:206
 msgid "(expand)"
 msgstr "(palawakin)"
 
@@ -97,11 +97,11 @@ msgstr "{unreadCount, plural, one {Buksan ang menu (# hindi pa nababasang notifi
 msgid "+{0} nested"
 msgstr "+{0} naka-nest"
 
-#: src/features/objects/components/comment-thread.tsx:150
+#: src/features/objects/components/comment-thread.tsx:203
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} pang sagot"
 
-#: src/features/objects/components/comment-thread.tsx:149
+#: src/features/objects/components/comment-thread.tsx:202
 msgid "1 reply"
 msgstr "1 sagot"
 
@@ -175,7 +175,7 @@ msgstr "Aktibidad"
 msgid "Add"
 msgstr "Idagdag"
 
-#: src/features/objects/components/comment-list.tsx:220
+#: src/features/objects/components/comment-list.tsx:325
 msgid "Add a comment..."
 msgstr "Magdagdag ng komento..."
 
@@ -335,7 +335,7 @@ msgstr "Sigurado ka bang gusto mong i-delete ang \"{title}\"? Hindi na ito maiba
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Sigurado ka bang gusto mong i-delete ang column na \"{name}\"? Hindi na ito maibabalik."
 
-#: src/features/objects/components/comment-thread.tsx:435
+#: src/features/objects/components/comment-thread.tsx:478
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "Sigurado ka bang gusto mong i-delete ang komentong ito? Made-delete din lahat ng sagot."
 
@@ -355,13 +355,13 @@ msgstr "Asc"
 msgid "Ascending"
 msgstr "Pataas"
 
-#: src/features/objects/components/comment-list.tsx:270
-#: src/features/objects/components/comment-list.tsx:275
+#: src/features/objects/components/comment-list.tsx:362
+#: src/features/objects/components/comment-list.tsx:367
 msgid "Attach comment files"
 msgstr "I-attach ang mga file ng komento"
 
-#: src/features/objects/components/comment-thread.tsx:389
-#: src/features/objects/components/comment-thread.tsx:394
+#: src/features/objects/components/comment-thread.tsx:432
+#: src/features/objects/components/comment-thread.tsx:437
 msgid "Attach reply files"
 msgstr "I-attach ang mga file ng sagot"
 
@@ -455,23 +455,28 @@ msgstr "Maaaring maging child ng"
 #: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:296
 #: src/features/editor/components/option-dialog.tsx:146
-#: src/features/objects/components/comment-thread.tsx:189
+#: src/features/objects/components/comment-thread.tsx:243
 #: src/routes/_authenticated/$crmId/design.tsx:305
 #: src/routes/_authenticated/$crmId/index.tsx:1100
 msgid "Cancel"
 msgstr "Kanselahin"
 
-#: src/features/objects/components/comment-thread.tsx:405
-#: src/features/objects/components/comment-thread.tsx:410
+#: src/features/objects/components/comment-list.tsx:379
+#: src/features/objects/components/comment-list.tsx:384
+msgid "Cancel comment"
+msgstr "Kanselahin ang komento"
+
+#: src/features/objects/components/comment-thread.tsx:448
+#: src/features/objects/components/comment-thread.tsx:453
 msgid "Cancel reply"
 msgstr "Kanselahin ang sagot"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:143
+#: ../../../lib/web/src/components/notification-category-button.tsx:146
 msgid "Category for this notification"
 msgstr "Category para sa notification na ito"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:124
-#: ../../../lib/web/src/components/notification-category-button.tsx:135
+#: ../../../lib/web/src/components/notification-category-button.tsx:127
+#: ../../../lib/web/src/components/notification-category-button.tsx:138
 msgid "Change notification category"
 msgstr "Baguhin ang category ng notification"
 
@@ -619,8 +624,8 @@ msgstr "Malapit nang dumating!"
 msgid "Command Palette"
 msgstr "Command palette"
 
-#: src/features/objects/components/comment-thread.tsx:270
-#: src/features/objects/components/comment-thread.tsx:277
+#: src/features/objects/components/comment-thread.tsx:324
+#: src/features/objects/components/comment-thread.tsx:331
 msgid "Comment actions"
 msgstr "Mga aksyon sa komento"
 
@@ -862,9 +867,9 @@ msgstr "Default na sort"
 
 #: src/features/board/components/board-column.tsx:558
 #: src/features/board/components/board-column.tsx:619
-#: src/features/objects/components/comment-thread.tsx:258
-#: src/features/objects/components/comment-thread.tsx:301
-#: src/features/objects/components/comment-thread.tsx:436
+#: src/features/objects/components/comment-thread.tsx:312
+#: src/features/objects/components/comment-thread.tsx:355
+#: src/features/objects/components/comment-thread.tsx:479
 #: src/features/objects/components/object-attachments.tsx:146
 #: src/features/objects/components/object-attachments.tsx:156
 #: src/features/objects/components/object-attachments.tsx:205
@@ -886,7 +891,7 @@ msgstr "I-delete ang class"
 msgid "Delete column"
 msgstr "I-delete ang column"
 
-#: src/features/objects/components/comment-thread.tsx:434
+#: src/features/objects/components/comment-thread.tsx:477
 msgid "Delete comment"
 msgstr "I-delete ang komento"
 
@@ -982,6 +987,14 @@ msgstr "Direksyon"
 msgid "Directory"
 msgstr "Direktoryo"
 
+#: ../../../lib/web/src/components/comment-composer.tsx:300
+msgid "Discard"
+msgstr "Itapon"
+
+#: ../../../lib/web/src/components/comment-composer.tsx:298
+msgid "Discard draft?"
+msgstr "Itapon ang draft?"
+
 #: ../../../lib/web/src/lib/chat-ui.ts:25
 #: ../../../lib/web/src/lib/chat-ui.ts:29
 msgid "Disconnected"
@@ -1044,8 +1057,8 @@ msgstr "Duplicate"
 msgid "Dyslexia-friendly"
 msgstr "Angkop sa dyslexia"
 
-#: src/features/objects/components/comment-thread.tsx:247
-#: src/features/objects/components/comment-thread.tsx:292
+#: src/features/objects/components/comment-thread.tsx:301
+#: src/features/objects/components/comment-thread.tsx:346
 msgid "Edit"
 msgstr "I-edit"
 
@@ -1180,7 +1193,7 @@ msgstr "Nabigong gumawa ng view"
 msgid "Failed to delete attachment"
 msgstr "Nabigong magdelete ng attachment"
 
-#: src/features/objects/components/comment-list.tsx:147
+#: src/features/objects/components/comment-list.tsx:172
 msgid "Failed to delete comment"
 msgstr "Nabigong magdelete ng comment"
 
@@ -1245,7 +1258,7 @@ msgstr "Nabigong i-load ang item"
 msgid "Failed to load video"
 msgstr "Nabigong i-load ang video"
 
-#: src/features/objects/components/comment-list.tsx:105
+#: src/features/objects/components/comment-list.tsx:130
 msgid "Failed to post comment"
 msgstr "Nabigong mag-post ng comment"
 
@@ -1293,11 +1306,11 @@ msgstr "Nabigong mag-unsubscribe"
 msgid "Failed to update access level"
 msgstr "Nabigong i-update ang access level"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:111
+#: ../../../lib/web/src/components/notification-category-button.tsx:114
 msgid "Failed to update category"
 msgstr "Nabigong i-update ang category"
 
-#: src/features/objects/components/comment-list.tsx:130
+#: src/features/objects/components/comment-list.tsx:155
 msgid "Failed to update comment"
 msgstr "Nabigong i-update ang comment"
 
@@ -1716,7 +1729,7 @@ msgstr "Walang naka-configure na access rule. Magdagdag ng mga rule upang kontro
 msgid "No activity yet"
 msgstr "Wala pang aktibidad"
 
-#: src/features/objects/components/comment-list.tsx:299
+#: src/features/objects/components/comment-list.tsx:414
 msgid "No comments yet"
 msgstr "Wala pang komento"
 
@@ -1782,7 +1795,7 @@ msgstr "Walang status"
 msgid "No time zone found."
 msgstr "Walang nakitang time zone."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:147
+#: ../../../lib/web/src/components/notification-category-button.tsx:150
 msgid "No topic record yet — try again after the next notification."
 msgstr "Wala pang topic record — subukan muli pagkatapos ng susunod na notification."
 
@@ -1979,6 +1992,7 @@ msgstr "Pumili ng petsa"
 msgid "Please add one or more classes to the CRM design."
 msgstr "Mangyaring magdagdag ng isa o higit pang class sa CRM design."
 
+#: ../../../lib/web/src/components/comment-composer.tsx:95
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
@@ -2074,12 +2088,11 @@ msgstr "Relatibo (5m, 3h, 2d)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Relatibo sa loob ng 24 na oras, kung hindi ay absolute"
 
+#: ../../../lib/web/src/components/comment-composer.tsx:232
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 #: src/features/crms/components/create-crm-dialog.tsx:282
 #: src/features/editor/components/add-dialogs.tsx:188
-#: src/features/objects/components/comment-list.tsx:244
-#: src/features/objects/components/comment-thread.tsx:356
 #: src/features/objects/components/create-object-dialog.tsx:493
 #: src/features/objects/components/object-links.tsx:245
 #: src/features/objects/components/object-links.tsx:258
@@ -2150,13 +2163,13 @@ msgstr "Palitan ang design?"
 msgid "Replacing..."
 msgstr "Pinapalitan..."
 
-#: src/features/objects/components/comment-thread.tsx:234
-#: src/features/objects/components/comment-thread.tsx:282
+#: src/features/objects/components/comment-thread.tsx:288
+#: src/features/objects/components/comment-thread.tsx:336
 msgid "Reply"
 msgstr "Tumugon"
 
 #. placeholder {0}: comment.name || comment.author
-#: src/features/objects/components/comment-thread.tsx:313
+#: src/features/objects/components/comment-thread.tsx:379
 msgid "Reply to {0}..."
 msgstr "Sagutin si {0}..."
 
@@ -2181,6 +2194,10 @@ msgstr "I-reset ang {title}"
 #: ../../../lib/web/src/components/config-drawer.tsx:85
 msgid "Reset all settings to default values"
 msgstr "I-reset ang lahat ng setting sa mga default na halaga"
+
+#: ../../../lib/web/src/components/comment-composer.tsx:249
+msgid "Retry"
+msgstr "Subukang muli"
 
 #: src/components/layout/crms-layout.tsx:71
 msgid "Retry CRMs load"
@@ -2214,7 +2231,7 @@ msgstr "Sabado"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
-#: src/features/objects/components/comment-thread.tsx:209
+#: src/features/objects/components/comment-thread.tsx:263
 #: src/routes/_authenticated/$crmId/index.tsx:1112
 msgid "Save"
 msgstr "I-save"
@@ -2474,7 +2491,7 @@ msgstr "Ayusin"
 msgid "Spacious"
 msgstr "Maluwag"
 
-#: src/features/objects/components/comment-list.tsx:300
+#: src/features/objects/components/comment-list.tsx:415
 msgid "Start the discussion by adding the first comment."
 msgstr "Simulan ang diskusyon sa pamamagitan ng pagdagdag ng unang komento."
 
@@ -2491,13 +2508,13 @@ msgstr "Itigil ang pagmamasid"
 msgid "Subject"
 msgstr "Paksa"
 
-#: src/features/objects/components/comment-list.tsx:285
-#: src/features/objects/components/comment-list.tsx:290
+#: src/features/objects/components/comment-list.tsx:395
+#: src/features/objects/components/comment-list.tsx:404
 msgid "Submit comment"
 msgstr "Ipasa ang komento"
 
-#: src/features/objects/components/comment-thread.tsx:420
-#: src/features/objects/components/comment-thread.tsx:425
+#: src/features/objects/components/comment-thread.tsx:463
+#: src/features/objects/components/comment-thread.tsx:468
 msgid "Submit reply"
 msgstr "Ipasa ang sagot"
 
@@ -2729,7 +2746,7 @@ msgstr "Hindi makakonekta sa malayong server"
 msgid "Unable to redirect to login. Please try again."
 msgstr "Hindi maka-redirect sa login. Pakisubukang muli."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:155
+#: ../../../lib/web/src/components/notification-category-button.tsx:158
 msgid "Unassigned"
 msgstr "Walang nakatalaga"
 
@@ -2942,3 +2959,15 @@ msgstr "Nakita mo na lahat!"
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Ang iyong account ay inilipat dito mula sa {source}. Hanggang hindi mo ito binubura doon, ang mga mensahe at abiso ay maaaring maabot ang parehong mga server, ang ilan sa iyong nilalaman ay patuloy na pinaglilingkuran mula sa lumang server, at ang mga tagasunod ay maaaring maglaan ng ilang minuto upang mahanap ka dito."
+
+#: ../../../lib/web/src/components/comment-composer.tsx:291
+msgid "Your attachments will be lost."
+msgstr "Mawawala ang iyong mga attachment."
+
+#: ../../../lib/web/src/components/comment-composer.tsx:289
+msgid "Your text and attachments will be lost."
+msgstr "Mawawala ang iyong teksto at mga attachment."
+
+#: ../../../lib/web/src/components/comment-composer.tsx:292
+msgid "Your text will be lost."
+msgstr "Mawawala ang iyong teksto."
