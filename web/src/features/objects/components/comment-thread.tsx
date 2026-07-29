@@ -37,6 +37,7 @@ import {
 } from "@mochi/web";
 import type { Comment } from "@/types";
 import { CommentAttachments } from "./comment-attachments";
+import { mergePendingFiles } from "./composer-files";
 
 interface Person {
   id: string;
@@ -53,6 +54,9 @@ interface CommentThreadProps {
   onStartReply: (commentId: string) => void;
   onCancelReply: () => void;
   onReplyDraftChange: (value: string) => void;
+  /** Reports how many files this comment has staged while it is the one being
+   * replied to, so the list can warn before a switch throws them away. */
+  onReplyFilesChange?: (count: number) => void;
   onSubmitReply: (commentId: string, files?: File[]) => void | Promise<void>;
   onEdit: (commentId: string, content: string) => void;
   onDelete: (commentId: string) => void;
@@ -70,6 +74,7 @@ export function CommentThread({
   onStartReply,
   onCancelReply,
   onReplyDraftChange,
+  onReplyFilesChange,
   onSubmitReply,
   onEdit,
   onDelete,
@@ -108,10 +113,24 @@ export function CommentThread({
 
   const addReplyFiles = useCallback((incoming: File[]) => {
     setReplyFailed(false);
-    setReplyFiles((prev) => [...prev, ...incoming]);
+    setReplyFiles((prev) => mergePendingFiles(prev, incoming));
   }, []);
 
+  // Editing the draft after a failure means the red attachments and the Retry
+  // button no longer describe what is in the box.
+  const handleReplyDraftChange = useCallback(
+    (value: string) => {
+      setReplyFailed(false);
+      onReplyDraftChange(value);
+    },
+    [onReplyDraftChange],
+  );
+
   const isReplying = replyingTo === comment.id;
+
+  useEffect(() => {
+    if (isReplying) onReplyFilesChange?.(replyFiles.length);
+  }, [isReplying, replyFiles.length, onReplyFilesChange]);
 
   // Discard staged files whenever this comment's reply form closes (cancel,
   // Escape, or switching to another comment) so they can't be silently
@@ -359,7 +378,7 @@ export function CommentThread({
             className="placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
             placeholder={t`Reply to ${comment.name || comment.author}...`}
             value={replyDraft}
-            onValueChange={onReplyDraftChange}
+            onValueChange={handleReplyDraftChange}
             onKeyDown={(e) => {
               if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
                 e.preventDefault();
@@ -382,7 +401,10 @@ export function CommentThread({
             onRemove={(file) =>
               setReplyFiles((prev) => removePendingFile(prev, file))
             }
-            onRetry={() => void handleSubmitReply()}
+            // Retry sends the draft, so it is only offered while there is one.
+            onRetry={
+              replyDraft.trim() ? () => void handleSubmitReply() : undefined
+            }
           />
           <div className="flex items-center justify-end gap-2">
             <SendShortcutHint />
@@ -479,6 +501,7 @@ export function CommentThread({
           onStartReply={onStartReply}
           onCancelReply={onCancelReply}
           onReplyDraftChange={onReplyDraftChange}
+          onReplyFilesChange={onReplyFilesChange}
           onSubmitReply={onSubmitReply}
           onEdit={onEdit}
           onDelete={onDelete}

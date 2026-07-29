@@ -33,6 +33,7 @@ import {
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import { CommentThread } from "./comment-thread";
+import { mergePendingFiles } from "./composer-files";
 
 interface CommentListProps {
   crmId: string;
@@ -54,11 +55,21 @@ export function CommentList({
   const [createFailed, setCreateFailed] = useState(false);
   const [isSendingComment, setIsSendingComment] = useState(false);
 
+  const [replyFileCount, setReplyFileCount] = useState(0);
+  const pendingReplyTarget = useRef<string | null>(null);
+
   const addNewFiles = useCallback((incoming: File[]) => {
     setCreateFailed(false);
-    setNewFiles((prev) => [...prev, ...incoming]);
+    setNewFiles((prev) => mergePendingFiles(prev, incoming));
   }, []);
   const newFileImageUrls = useImageObjectUrls(newFiles);
+
+  // Editing the draft after a failure means the red attachments and the Retry
+  // button no longer describe what is in the box.
+  const handleNewCommentChange = useCallback((value: string) => {
+    setNewComment(value);
+    setCreateFailed(false);
+  }, []);
 
   useEffect(() => {
     setNewComment("");
@@ -66,6 +77,7 @@ export function CommentList({
     setCreateFailed(false);
     setReplyingTo(null);
     setReplyDraft("");
+    setReplyFileCount(0);
   }, [objectId]);
   const queryClient = useQueryClient();
   const currentUserId = useAuthStore((s) => s.identity);
@@ -237,6 +249,52 @@ export function CommentList({
     locked: isSendingComment,
   });
 
+  const startReply = useCallback((commentId: string) => {
+    setReplyingTo(commentId);
+    setReplyFileCount(0);
+    const selected = window.getSelection()?.toString().trim();
+    if (selected) {
+      const quoted = selected.split("\n").map((line) => `> ${line}`).join("\n") + "\n\n";
+      setReplyDraft(quoted);
+    } else {
+      setReplyDraft("");
+    }
+  }, []);
+
+  const cancelReply = useCallback(() => {
+    setReplyingTo(null);
+    setReplyDraft("");
+    setReplyFileCount(0);
+  }, []);
+
+  // Opening another comment's reply box throws the current draft away, so it
+  // asks first, exactly like closing the box does. The guard lives here rather
+  // than in the thread because the comment being replied to is not the one
+  // whose Reply button was clicked.
+  const { requestClose: requestReplySwitch, discardDialog: replySwitchDialog } =
+    useDiscardGuard({
+      hasText: replyDraft.trim().length > 0,
+      hasFiles: replyFileCount > 0,
+      onDiscard: () => {
+        const next = pendingReplyTarget.current;
+        pendingReplyTarget.current = null;
+        if (next) startReply(next);
+        else cancelReply();
+      },
+    });
+
+  const handleStartReply = useCallback(
+    (commentId: string) => {
+      if (replyingTo && replyingTo !== commentId) {
+        pendingReplyTarget.current = commentId;
+        requestReplySwitch();
+        return;
+      }
+      startReply(commentId);
+    },
+    [replyingTo, requestReplySwitch, startReply],
+  );
+
   if (isLoading) {
     return (
       <ListSkeleton count={3} variant="simple" height="h-12" />
@@ -255,7 +313,7 @@ export function CommentList({
           <MentionTextarea
             className="placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
             value={newComment}
-            onValueChange={setNewComment}
+            onValueChange={handleNewCommentChange}
             onKeyDown={(e) => {
               if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
                 e.preventDefault();
@@ -278,7 +336,10 @@ export function CommentList({
             onRemove={(file) =>
               setNewFiles((prev) => removePendingFile(prev, file))
             }
-            onRetry={() => void handleCreate()}
+            // Retry sends the draft, so it is only offered while there is one.
+            onRetry={
+              newComment.trim() ? () => void handleCreate() : undefined
+            }
           />
           <div className="flex items-center justify-end gap-2">
             <SendShortcutHint />
@@ -366,21 +427,10 @@ export function CommentList({
               readOnly={!!readOnly}
               replyingTo={replyingTo}
               replyDraft={replyDraft}
-              onStartReply={(id) => {
-                setReplyingTo(id);
-                const selected = window.getSelection()?.toString().trim();
-                if (selected) {
-                  const quoted = selected.split("\n").map((line) => `> ${line}`).join("\n") + "\n\n";
-                  setReplyDraft(quoted);
-                } else {
-                  setReplyDraft("");
-                }
-              }}
-              onCancelReply={() => {
-                setReplyingTo(null);
-                setReplyDraft("");
-              }}
+              onStartReply={handleStartReply}
+              onCancelReply={cancelReply}
               onReplyDraftChange={setReplyDraft}
+              onReplyFilesChange={setReplyFileCount}
               onSubmitReply={handleReply}
               onEdit={handleEdit}
               onDelete={handleDelete}
@@ -388,6 +438,7 @@ export function CommentList({
           ))}
         </div>
       )}
+      {replySwitchDialog}
     </div>
   );
 }
