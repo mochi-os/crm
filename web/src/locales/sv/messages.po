@@ -68,6 +68,10 @@ msgstr "{entityLabel}-namn"
 msgid "{entityLabel} name is required"
 msgstr "{entityLabel}-namn krävs"
 
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
+msgid "{opponentName} offered a draw"
+msgstr ""
+
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
 msgstr "{selectedCount, plural, one {{entityName} vald} other {{manyName} valda}}"
@@ -93,7 +97,7 @@ msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open
 msgstr "{unreadCount, plural, one {Öppna meny (# oläst avisering)} other {Öppna meny (# olästa aviseringar)}}"
 
 #. placeholder {0}: countDeepChildren(object.id)
-#: src/features/board/components/board-card.tsx:360
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
 msgid "+{0} nested"
 msgstr "+{0} nästlade"
 
@@ -116,6 +120,10 @@ msgstr "24 timmar"
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "Absolute (date and time)"
 msgstr "Absolut (datum och tid)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
+msgid "Accept"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:84
 msgid "Access"
@@ -169,9 +177,9 @@ msgstr "Konto verifierat"
 msgid "Activity"
 msgstr "Aktivitet"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:717
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:196
-#: src/features/objects/components/field-editor.tsx:655
 msgid "Add"
 msgstr "Lägg till"
 
@@ -200,7 +208,7 @@ msgstr "Lägg till konto"
 msgid "Add an account to receive notifications and use services."
 msgstr "Lägg till ett konto för att ta emot aviseringar och använda tjänster."
 
-#: src/features/objects/components/field-editor.tsx:625
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
 msgstr "Lägg till checklistpunkt"
 
@@ -222,7 +230,7 @@ msgstr "Lägg till kolumn"
 msgid "Add field"
 msgstr "Lägg till fält"
 
-#: src/features/objects/components/field-editor.tsx:643
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:705
 msgid "Add item..."
 msgstr "Lägg till objekt..."
 
@@ -491,6 +499,10 @@ msgstr "Kryssruta"
 #: src/features/editor/components/add-dialogs.tsx:136
 msgid "Checklist"
 msgstr "Checklista"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:30
+msgid "Choose a game from the sidebar or start a new one."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -852,6 +864,10 @@ msgstr "Data har importerats ({0, plural, one {# objekt} other {# objekt}}, {1, 
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "Datum"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:41
+msgid "Decline"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
@@ -1504,7 +1520,7 @@ msgstr "Indrag"
 msgid "Interests"
 msgstr "Intressen"
 
-#: src/features/objects/components/field-editor.tsx:486
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
 msgid "Invalid date"
 msgstr "Ogiltigt datum"
 
@@ -1652,6 +1668,10 @@ msgstr "Mellan"
 msgid "Menu"
 msgstr "Meny"
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:35
+msgid "Message"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:85
 msgid "Metric"
 msgstr "Metrisk"
@@ -1708,6 +1728,11 @@ msgstr "Ny"
 msgid "New {0}"
 msgstr "Ny {0}"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:34
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:46
+msgid "New game"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
@@ -1742,6 +1767,10 @@ msgstr "Inga anslutna konton"
 msgid "No CRMs found"
 msgstr "Inga CRM-system hittades"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:43
+msgid "No games yet"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:241
 msgid "No groups available"
 msgstr "Inga grupper tillgängliga"
@@ -1762,8 +1791,8 @@ msgstr "Inga aviseringar än"
 msgid "No objects to export."
 msgstr "Inga objekt att exportera."
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:336
 #: ../../../lib/web/src/components/person-picker.tsx:84
-#: src/features/objects/components/field-editor.tsx:279
 msgid "No people found"
 msgstr "Inga personer hittades"
 
@@ -2130,7 +2159,7 @@ msgstr "Ta bort fältet {0}"
 msgid "Remove interest"
 msgstr "Ta bort intresse"
 
-#: src/features/objects/components/field-editor.tsx:609
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:671
 msgid "Remove item"
 msgstr "Ta bort objekt"
 
@@ -2318,6 +2347,10 @@ msgstr "Välj {0}"
 msgid "Select a field"
 msgstr "Välj ett fält"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:29
+msgid "Select a game"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
 msgstr "Välj en användare, grupp eller annan regel för att bevilja åtkomst."
@@ -2370,8 +2403,8 @@ msgstr "Välj webbplatsriktning"
 msgid "Select theme preference"
 msgstr "Välj temainställning"
 
-#: src/features/objects/components/field-editor.tsx:196
-#: src/features/objects/components/field-editor.tsx:278
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:252
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:335
 msgid "Select..."
 msgstr "Välj..."
 
@@ -2391,6 +2424,11 @@ msgstr "Skicka igen"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:307
 msgid "Send email"
 msgstr "Skicka e-post"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:52
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:61
+msgid "Send message"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:145
 msgid "Serif"
@@ -2729,6 +2767,10 @@ msgstr "Typ"
 msgid "Type a command or search..."
 msgstr "Skriv ett kommando eller sök..."
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:39
+msgid "Type a message..."
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:191
 msgid "Type to search users"
 msgstr "Skriv för att söka användare"
@@ -2789,8 +2831,7 @@ msgstr "Prenumeration avslutad"
 msgid "Unsubscribing..."
 msgstr "Avslutar prenumeration..."
 
-#: src/features/board/components/board-card.tsx:88
-#: src/features/board/components/board-card.tsx:89
+#: src/features/board/components/board-card.tsx:22
 #: src/features/objects/components/create-object-dialog.tsx:187
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302

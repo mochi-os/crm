@@ -68,6 +68,10 @@ msgstr "{entityLabel} nosaukums"
 msgid "{entityLabel} name is required"
 msgstr "{entityLabel} nosaukums ir obligāts"
 
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
+msgid "{opponentName} offered a draw"
+msgstr ""
+
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
 msgstr "{selectedCount, plural, zero {Atlasīti {manyName}} one {Atlasīts {entityName}} other {Atlasīti {manyName}}}"
@@ -93,7 +97,7 @@ msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open
 msgstr "{unreadCount, plural, zero {Atvērt izvēlni (# neizlasītu paziņojumu)} one {Atvērt izvēlni (# neizlasīts paziņojums)} other {Atvērt izvēlni (# neizlasīti paziņojumi)}}"
 
 #. placeholder {0}: countDeepChildren(object.id)
-#: src/features/board/components/board-card.tsx:360
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
 msgid "+{0} nested"
 msgstr "+{0} ligzdoti"
 
@@ -116,6 +120,10 @@ msgstr "24 stundas"
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "Absolute (date and time)"
 msgstr "Absolūts (datums un laiks)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
+msgid "Accept"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:84
 msgid "Access"
@@ -169,9 +177,9 @@ msgstr "Konts verificēts"
 msgid "Activity"
 msgstr "Aktivitāte"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:717
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:196
-#: src/features/objects/components/field-editor.tsx:655
 msgid "Add"
 msgstr "Pievienot"
 
@@ -200,7 +208,7 @@ msgstr "Pievienot kontu"
 msgid "Add an account to receive notifications and use services."
 msgstr "Pievieno kontu, lai saņemtu paziņojumus un izmantotu pakalpojumus."
 
-#: src/features/objects/components/field-editor.tsx:625
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
 msgstr "Pievienot kontrolsaraksta vienumu"
 
@@ -222,7 +230,7 @@ msgstr "Pievienot kolonnu"
 msgid "Add field"
 msgstr "Pievienot lauku"
 
-#: src/features/objects/components/field-editor.tsx:643
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:705
 msgid "Add item..."
 msgstr "Pievienot vienumu..."
 
@@ -491,6 +499,10 @@ msgstr "Izvēles rūtiņa"
 #: src/features/editor/components/add-dialogs.tsx:136
 msgid "Checklist"
 msgstr "Kontrolsaraksts"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:30
+msgid "Choose a game from the sidebar or start a new one."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -852,6 +864,10 @@ msgstr "Dati importēti ({0, plural, zero {# objektu} one {# objekts} other {# o
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "Datums"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:41
+msgid "Decline"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
@@ -1504,7 +1520,7 @@ msgstr "Iebūvēts"
 msgid "Interests"
 msgstr "Intereses"
 
-#: src/features/objects/components/field-editor.tsx:486
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
 msgid "Invalid date"
 msgstr "Nederīgs datums"
 
@@ -1652,6 +1668,10 @@ msgstr "Vidējs"
 msgid "Menu"
 msgstr "Izvēlne"
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:35
+msgid "Message"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:85
 msgid "Metric"
 msgstr "Metrisks"
@@ -1708,6 +1728,11 @@ msgstr "Jauns"
 msgid "New {0}"
 msgstr "Jauns {0}"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:34
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:46
+msgid "New game"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
@@ -1742,6 +1767,10 @@ msgstr "Nav saistītu kontu"
 msgid "No CRMs found"
 msgstr "CRM nav atrasti"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:43
+msgid "No games yet"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:241
 msgid "No groups available"
 msgstr "Nav pieejamu grupu"
@@ -1762,8 +1791,8 @@ msgstr "Vēl nav paziņojumu"
 msgid "No objects to export."
 msgstr "Nav objektu, ko eksportēt."
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:336
 #: ../../../lib/web/src/components/person-picker.tsx:84
-#: src/features/objects/components/field-editor.tsx:279
 msgid "No people found"
 msgstr "Cilvēki nav atrasti"
 
@@ -2130,7 +2159,7 @@ msgstr "Noņemt lauku {0}"
 msgid "Remove interest"
 msgstr "Noņemt interesi"
 
-#: src/features/objects/components/field-editor.tsx:609
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:671
 msgid "Remove item"
 msgstr "Noņemt vienumu"
 
@@ -2318,6 +2347,10 @@ msgstr "Atlasīt {0}"
 msgid "Select a field"
 msgstr "Atlasīt lauku"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:29
+msgid "Select a game"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
 msgstr "Atlasiet lietotāju, grupu vai citu noteikumu, lai piešķirtu piekļuvi."
@@ -2370,8 +2403,8 @@ msgstr "Izvēlieties vietnes virzienu"
 msgid "Select theme preference"
 msgstr "Izvēlieties motīva preferenci"
 
-#: src/features/objects/components/field-editor.tsx:196
-#: src/features/objects/components/field-editor.tsx:278
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:252
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:335
 msgid "Select..."
 msgstr "Izvēlieties..."
 
@@ -2391,6 +2424,11 @@ msgstr "Sūtīt vēlreiz"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:307
 msgid "Send email"
 msgstr "Sūtīt e-pastu"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:52
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:61
+msgid "Send message"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:145
 msgid "Serif"
@@ -2729,6 +2767,10 @@ msgstr "Tips"
 msgid "Type a command or search..."
 msgstr "Ierakstiet komandu vai meklējiet..."
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:39
+msgid "Type a message..."
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:191
 msgid "Type to search users"
 msgstr "Ierakstiet, lai meklētu lietotājus"
@@ -2789,8 +2831,7 @@ msgstr "Atrakstīts"
 msgid "Unsubscribing..."
 msgstr "Notiek atrakstīšanās..."
 
-#: src/features/board/components/board-card.tsx:88
-#: src/features/board/components/board-card.tsx:89
+#: src/features/board/components/board-card.tsx:22
 #: src/features/objects/components/create-object-dialog.tsx:187
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302

@@ -68,6 +68,10 @@ msgstr "Nome de {entityLabel}"
 msgid "{entityLabel} name is required"
 msgstr "O nome de {entityLabel} é obrigatorio"
 
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
+msgid "{opponentName} offered a draw"
+msgstr ""
+
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
 msgstr "{selectedCount, plural, one {{entityName} seleccionado} other {{manyName} seleccionados}}"
@@ -93,7 +97,7 @@ msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open
 msgstr "{unreadCount, plural, one {Abrir menú (# notificación sen ler)} other {Abrir menú (# notificacións sen ler)}}"
 
 #. placeholder {0}: countDeepChildren(object.id)
-#: src/features/board/components/board-card.tsx:360
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
 msgid "+{0} nested"
 msgstr "+{0} aniñados"
 
@@ -116,6 +120,10 @@ msgstr "24 horas"
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "Absolute (date and time)"
 msgstr "Absoluto (data e hora)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
+msgid "Accept"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:84
 msgid "Access"
@@ -169,9 +177,9 @@ msgstr "Conta verificada"
 msgid "Activity"
 msgstr "Actividade"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:717
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:196
-#: src/features/objects/components/field-editor.tsx:655
 msgid "Add"
 msgstr "Engadir"
 
@@ -200,7 +208,7 @@ msgstr "Engadir conta"
 msgid "Add an account to receive notifications and use services."
 msgstr "Engade unha conta para recibir notificacións e usar servizos."
 
-#: src/features/objects/components/field-editor.tsx:625
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
 msgstr "Engadir elemento da lista"
 
@@ -222,7 +230,7 @@ msgstr "Engadir columna"
 msgid "Add field"
 msgstr "Engadir campo"
 
-#: src/features/objects/components/field-editor.tsx:643
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:705
 msgid "Add item..."
 msgstr "Engadir elemento..."
 
@@ -491,6 +499,10 @@ msgstr "Caixa de verificación"
 #: src/features/editor/components/add-dialogs.tsx:136
 msgid "Checklist"
 msgstr "Lista de comprobación"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:30
+msgid "Choose a game from the sidebar or start a new one."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -852,6 +864,10 @@ msgstr "Datos importados ({0, plural, one {# obxecto} other {# obxectos}}, {1, p
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "Data"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:41
+msgid "Decline"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
@@ -1504,7 +1520,7 @@ msgstr "Encaixado"
 msgid "Interests"
 msgstr "Intereses"
 
-#: src/features/objects/components/field-editor.tsx:486
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
 msgid "Invalid date"
 msgstr "Data non válida"
 
@@ -1652,6 +1668,10 @@ msgstr "Mediano"
 msgid "Menu"
 msgstr "Menú"
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:35
+msgid "Message"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:85
 msgid "Metric"
 msgstr "Métrico"
@@ -1708,6 +1728,11 @@ msgstr "Novo"
 msgid "New {0}"
 msgstr "Novo {0}"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:34
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:46
+msgid "New game"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
@@ -1742,6 +1767,10 @@ msgstr "Non hai contas conectadas"
 msgid "No CRMs found"
 msgstr "Non se atoparon CRMs"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:43
+msgid "No games yet"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:241
 msgid "No groups available"
 msgstr "Non hai grupos dispoñibles"
@@ -1762,8 +1791,8 @@ msgstr "Aínda non hai notificacións"
 msgid "No objects to export."
 msgstr "Non hai obxectos para exportar."
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:336
 #: ../../../lib/web/src/components/person-picker.tsx:84
-#: src/features/objects/components/field-editor.tsx:279
 msgid "No people found"
 msgstr "Non se atoparon persoas"
 
@@ -2130,7 +2159,7 @@ msgstr "Eliminar campo {0}"
 msgid "Remove interest"
 msgstr "Eliminar interese"
 
-#: src/features/objects/components/field-editor.tsx:609
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:671
 msgid "Remove item"
 msgstr "Eliminar elemento"
 
@@ -2318,6 +2347,10 @@ msgstr "Selecciona {0}"
 msgid "Select a field"
 msgstr "Selecciona un campo"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:29
+msgid "Select a game"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
 msgstr "Selecciona un usuario, grupo ou outra regra para conceder acceso."
@@ -2370,8 +2403,8 @@ msgstr "Seleccionar dirección do sitio"
 msgid "Select theme preference"
 msgstr "Seleccionar preferencia de tema"
 
-#: src/features/objects/components/field-editor.tsx:196
-#: src/features/objects/components/field-editor.tsx:278
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:252
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:335
 msgid "Select..."
 msgstr "Seleccionar..."
 
@@ -2391,6 +2424,11 @@ msgstr "Enviar de novo"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:307
 msgid "Send email"
 msgstr "Enviar correo"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:52
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:61
+msgid "Send message"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:145
 msgid "Serif"
@@ -2729,6 +2767,10 @@ msgstr "Tipo"
 msgid "Type a command or search..."
 msgstr "Escribe un comando ou busca..."
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:39
+msgid "Type a message..."
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:191
 msgid "Type to search users"
 msgstr "Escribe para buscar usuarios"
@@ -2789,8 +2831,7 @@ msgstr "Subscrición cancelada"
 msgid "Unsubscribing..."
 msgstr "Cancelando subscrición..."
 
-#: src/features/board/components/board-card.tsx:88
-#: src/features/board/components/board-card.tsx:89
+#: src/features/board/components/board-card.tsx:22
 #: src/features/objects/components/create-object-dialog.tsx:187
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302

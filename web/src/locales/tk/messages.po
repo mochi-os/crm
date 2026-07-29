@@ -68,6 +68,10 @@ msgstr "{entityLabel} ady"
 msgid "{entityLabel} name is required"
 msgstr "{entityLabel} ady gerek"
 
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
+msgid "{opponentName} offered a draw"
+msgstr ""
+
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
 msgstr "{selectedCount, plural, one {{entityName} saýlandy} other {{manyName} saýlandy}}"
@@ -93,7 +97,7 @@ msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open
 msgstr "{unreadCount, plural, one {Menýuny aç (# okalmadyk bildiriş)} other {Menýuny aç (# okalmadyk bildiriş)}}"
 
 #. placeholder {0}: countDeepChildren(object.id)
-#: src/features/board/components/board-card.tsx:360
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
 msgid "+{0} nested"
 msgstr "+{0} içki"
 
@@ -116,6 +120,10 @@ msgstr "24 sagat"
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "Absolute (date and time)"
 msgstr "Mutlak (sene we wagt)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
+msgid "Accept"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:84
 msgid "Access"
@@ -169,9 +177,9 @@ msgstr "Hasap tassyklandy"
 msgid "Activity"
 msgstr "Hereketlilik"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:717
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:196
-#: src/features/objects/components/field-editor.tsx:655
 msgid "Add"
 msgstr "Goşmak"
 
@@ -200,7 +208,7 @@ msgstr "Hasap goşmak"
 msgid "Add an account to receive notifications and use services."
 msgstr "Bildirişleri almak we hyzmatlary ulanmak üçin hasap goşuň."
 
-#: src/features/objects/components/field-editor.tsx:625
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
 msgstr "Kontrol sanawynyň elementi goşmak"
 
@@ -222,7 +230,7 @@ msgstr "Sütün goşmak"
 msgid "Add field"
 msgstr "Meýdan goşmak"
 
-#: src/features/objects/components/field-editor.tsx:643
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:705
 msgid "Add item..."
 msgstr "Element goşuň..."
 
@@ -491,6 +499,10 @@ msgstr "Bellik gutusy"
 #: src/features/editor/components/add-dialogs.tsx:136
 msgid "Checklist"
 msgstr "Kontrol sanawy"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:30
+msgid "Choose a game from the sidebar or start a new one."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -852,6 +864,10 @@ msgstr "Maglumatlar import edildi ({0, plural, one {# obýekt} other {# obýekt}
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "Sene"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:41
+msgid "Decline"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
@@ -1504,7 +1520,7 @@ msgstr "Içki"
 msgid "Interests"
 msgstr "Gyzyklanmalar"
 
-#: src/features/objects/components/field-editor.tsx:486
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
 msgid "Invalid date"
 msgstr "Nädogry sene"
 
@@ -1652,6 +1668,10 @@ msgstr "Orta"
 msgid "Menu"
 msgstr "Menýu"
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:35
+msgid "Message"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:85
 msgid "Metric"
 msgstr "Metrik"
@@ -1708,6 +1728,11 @@ msgstr "Täze"
 msgid "New {0}"
 msgstr "Täze {0}"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:34
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:46
+msgid "New game"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
@@ -1742,6 +1767,10 @@ msgstr "Baglanan hasaplar ýok"
 msgid "No CRMs found"
 msgstr "CRM tapylmady"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:43
+msgid "No games yet"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:241
 msgid "No groups available"
 msgstr "Elýeterli toparlar ýok"
@@ -1762,8 +1791,8 @@ msgstr "Entek bildiriş ýok"
 msgid "No objects to export."
 msgstr "Eksport etmek üçin obýektler ýok."
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:336
 #: ../../../lib/web/src/components/person-picker.tsx:84
-#: src/features/objects/components/field-editor.tsx:279
 msgid "No people found"
 msgstr "Adamlar tapylmady"
 
@@ -2130,7 +2159,7 @@ msgstr "{0} meýdanyny aýyr"
 msgid "Remove interest"
 msgstr "Gyzyklanmany aýyr"
 
-#: src/features/objects/components/field-editor.tsx:609
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:671
 msgid "Remove item"
 msgstr "Elementi aýyr"
 
@@ -2318,6 +2347,10 @@ msgstr "{0} saýlaň"
 msgid "Select a field"
 msgstr "Meýdan saýla"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:29
+msgid "Select a game"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
 msgstr "Giriş bermek üçin ulanyjy, topar ýa-da başga düzgün saýla."
@@ -2370,8 +2403,8 @@ msgstr "Saýtyň ugruny saýla"
 msgid "Select theme preference"
 msgstr "Tema saýlawyňy saýla"
 
-#: src/features/objects/components/field-editor.tsx:196
-#: src/features/objects/components/field-editor.tsx:278
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:252
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:335
 msgid "Select..."
 msgstr "Saýla..."
 
@@ -2391,6 +2424,11 @@ msgstr "Täzeden iber"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:307
 msgid "Send email"
 msgstr "E-poçt iber"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:52
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:61
+msgid "Send message"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:145
 msgid "Serif"
@@ -2729,6 +2767,10 @@ msgstr "Görnüş"
 msgid "Type a command or search..."
 msgstr "Buýruk ýa-da gözleg ýaz..."
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:39
+msgid "Type a message..."
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:191
 msgid "Type to search users"
 msgstr "Ulanyjylary gözlemek üçin ýaz"
@@ -2789,8 +2831,7 @@ msgstr "Abuna ýazylyşygy ýatyryldy"
 msgid "Unsubscribing..."
 msgstr "Abuna ýazylyşygy ýatyrylýar..."
 
-#: src/features/board/components/board-card.tsx:88
-#: src/features/board/components/board-card.tsx:89
+#: src/features/board/components/board-card.tsx:22
 #: src/features/objects/components/create-object-dialog.tsx:187
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302

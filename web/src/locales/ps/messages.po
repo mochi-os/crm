@@ -68,6 +68,10 @@ msgstr "د {entityLabel} نوم"
 msgid "{entityLabel} name is required"
 msgstr "د {entityLabel} نوم اړین دی"
 
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
+msgid "{opponentName} offered a draw"
+msgstr ""
+
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
 msgstr "{selectedCount, plural, one {{entityName} غوره شو} other {{manyName} غوره شول}}"
@@ -93,7 +97,7 @@ msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open
 msgstr "{unreadCount, plural, one {مینو خلاص کړئ (# نالوستې خبرتیا)} other {مینو خلاص کړئ (# نالوستې خبرتیاوې)}}"
 
 #. placeholder {0}: countDeepChildren(object.id)
-#: src/features/board/components/board-card.tsx:360
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
 msgid "+{0} nested"
 msgstr "+{0} ځالې شوي"
 
@@ -116,6 +120,10 @@ msgstr "24 ساعته"
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "Absolute (date and time)"
 msgstr "مطلق (نېټه او وخت)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
+msgid "Accept"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:84
 msgid "Access"
@@ -169,9 +177,9 @@ msgstr "حساب تایید شو"
 msgid "Activity"
 msgstr "فعالیت"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:717
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:196
-#: src/features/objects/components/field-editor.tsx:655
 msgid "Add"
 msgstr "اضافه کړئ"
 
@@ -200,7 +208,7 @@ msgstr "حساب اضافه کړئ"
 msgid "Add an account to receive notifications and use services."
 msgstr "د خبرتیاوو ترلاسه کولو او خدماتو کارولو لپاره حساب اضافه کړئ."
 
-#: src/features/objects/components/field-editor.tsx:625
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
 msgstr "د چک لیست توکی اضافه کړئ"
 
@@ -222,7 +230,7 @@ msgstr "کالم اضافه کړئ"
 msgid "Add field"
 msgstr "ساحه اضافه کړئ"
 
-#: src/features/objects/components/field-editor.tsx:643
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:705
 msgid "Add item..."
 msgstr "توکی اضافه کړئ..."
 
@@ -491,6 +499,10 @@ msgstr "چک بکس"
 #: src/features/editor/components/add-dialogs.tsx:136
 msgid "Checklist"
 msgstr "چک لیست"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:30
+msgid "Choose a game from the sidebar or start a new one."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -852,6 +864,10 @@ msgstr "ډاټا وارده شوه ({0, plural, one {# توکی} other {# توک
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "نېټه"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:41
+msgid "Decline"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
@@ -1504,7 +1520,7 @@ msgstr "Inset"
 msgid "Interests"
 msgstr "علاقې"
 
-#: src/features/objects/components/field-editor.tsx:486
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
 msgid "Invalid date"
 msgstr "ناسمه نېټه"
 
@@ -1652,6 +1668,10 @@ msgstr "منځنی"
 msgid "Menu"
 msgstr "مینو"
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:35
+msgid "Message"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:85
 msgid "Metric"
 msgstr "میټریک"
@@ -1708,6 +1728,11 @@ msgstr "نوی"
 msgid "New {0}"
 msgstr "نوی {0}"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:34
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:46
+msgid "New game"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
@@ -1742,6 +1767,10 @@ msgstr "هیڅ نښلول شوي حسابونه نشته"
 msgid "No CRMs found"
 msgstr "هیڅ CRM ونه موندل شو"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:43
+msgid "No games yet"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:241
 msgid "No groups available"
 msgstr "هیڅ ډلې شتون نلري"
@@ -1762,8 +1791,8 @@ msgstr "تر اوسه خبرتیا نشته"
 msgid "No objects to export."
 msgstr "د صادرولو لپاره هیڅ شیان نشته."
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:336
 #: ../../../lib/web/src/components/person-picker.tsx:84
-#: src/features/objects/components/field-editor.tsx:279
 msgid "No people found"
 msgstr "هیڅ خلک ونه موندل شول"
 
@@ -2130,7 +2159,7 @@ msgstr "ساحه {0} لرې کړئ"
 msgid "Remove interest"
 msgstr "علاقه لرې کړئ"
 
-#: src/features/objects/components/field-editor.tsx:609
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:671
 msgid "Remove item"
 msgstr "توکی لرې کړئ"
 
@@ -2318,6 +2347,10 @@ msgstr "{0} وټاکئ"
 msgid "Select a field"
 msgstr "یوه ساحه وټاکئ"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:29
+msgid "Select a game"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
 msgstr "د لاسرسي د ورکولو لپاره یو کارن، ډله، یا بله قاعده وټاکئ."
@@ -2370,8 +2403,8 @@ msgstr "د سایټ لوری وټاکئ"
 msgid "Select theme preference"
 msgstr "د ښکارندوی غوره توب وټاکئ"
 
-#: src/features/objects/components/field-editor.tsx:196
-#: src/features/objects/components/field-editor.tsx:278
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:252
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:335
 msgid "Select..."
 msgstr "وټاکئ..."
 
@@ -2391,6 +2424,11 @@ msgstr "بیا ولیږئ"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:307
 msgid "Send email"
 msgstr "بریښنالیک ولېږئ"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:52
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:61
+msgid "Send message"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:145
 msgid "Serif"
@@ -2729,6 +2767,10 @@ msgstr "ډول"
 msgid "Type a command or search..."
 msgstr "د کمانډ یا لټون لپاره ولیکئ..."
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:39
+msgid "Type a message..."
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:191
 msgid "Type to search users"
 msgstr "د کاروونکو لټون لپاره ولیکئ"
@@ -2789,8 +2831,7 @@ msgstr "ګډون لغوه شو"
 msgid "Unsubscribing..."
 msgstr "ګډون لغوه کیږي..."
 
-#: src/features/board/components/board-card.tsx:88
-#: src/features/board/components/board-card.tsx:89
+#: src/features/board/components/board-card.tsx:22
 #: src/features/objects/components/create-object-dialog.tsx:187
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302

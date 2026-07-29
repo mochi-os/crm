@@ -68,6 +68,10 @@ msgstr "{entityLabel} нэр"
 msgid "{entityLabel} name is required"
 msgstr "{entityLabel}-ийн нэр шаардлагатай"
 
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
+msgid "{opponentName} offered a draw"
+msgstr ""
+
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
 msgstr "{selectedCount, plural, one {{entityName} сонгогдсон} other {{manyName} сонгогдсон}}"
@@ -93,7 +97,7 @@ msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open
 msgstr "{unreadCount, plural, one {Цэс нээх (# уншаагүй мэдэгдэл)} other {Цэс нээх (# уншаагүй мэдэгдэл)}}"
 
 #. placeholder {0}: countDeepChildren(object.id)
-#: src/features/board/components/board-card.tsx:360
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
 msgid "+{0} nested"
 msgstr "+{0} үүрлэсэн"
 
@@ -116,6 +120,10 @@ msgstr "24 цаг"
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "Absolute (date and time)"
 msgstr "Үнэмлэхүй (огноо ба цаг)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
+msgid "Accept"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:84
 msgid "Access"
@@ -169,9 +177,9 @@ msgstr "Бүртгэл баталгаажсан"
 msgid "Activity"
 msgstr "Үйл ажиллагаа"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:717
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:196
-#: src/features/objects/components/field-editor.tsx:655
 msgid "Add"
 msgstr "Нэмэх"
 
@@ -200,7 +208,7 @@ msgstr "Бүртгэл нэмэх"
 msgid "Add an account to receive notifications and use services."
 msgstr "Мэдэгдэл хүлээн авах болон үйлчилгээ ашиглахын тулд бүртгэл нэмнэ."
 
-#: src/features/objects/components/field-editor.tsx:625
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
 msgstr "Жагсаалтын зүйл нэмэх"
 
@@ -222,7 +230,7 @@ msgstr "Багана нэмэх"
 msgid "Add field"
 msgstr "Талбар нэмэх"
 
-#: src/features/objects/components/field-editor.tsx:643
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:705
 msgid "Add item..."
 msgstr "Зүйл нэмэх..."
 
@@ -491,6 +499,10 @@ msgstr "Чекбокс"
 #: src/features/editor/components/add-dialogs.tsx:136
 msgid "Checklist"
 msgstr "Жагсаалт"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:30
+msgid "Choose a game from the sidebar or start a new one."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -852,6 +864,10 @@ msgstr "Өгөгдөл импортлогдлоо ({0, plural, one {# объек
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "Огноо"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:41
+msgid "Decline"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
@@ -1504,7 +1520,7 @@ msgstr "Дотогшоо"
 msgid "Interests"
 msgstr "Сонирхлууд"
 
-#: src/features/objects/components/field-editor.tsx:486
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
 msgid "Invalid date"
 msgstr "Огноо хүчингүй"
 
@@ -1652,6 +1668,10 @@ msgstr "Дунд"
 msgid "Menu"
 msgstr "Цэс"
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:35
+msgid "Message"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:85
 msgid "Metric"
 msgstr "Метрик"
@@ -1708,6 +1728,11 @@ msgstr "Шинэ"
 msgid "New {0}"
 msgstr "Шинэ {0}"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:34
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:46
+msgid "New game"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
@@ -1742,6 +1767,10 @@ msgstr "Холбогдсон бүртгэл байхгүй"
 msgid "No CRMs found"
 msgstr "CRM олдсонгүй"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:43
+msgid "No games yet"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:241
 msgid "No groups available"
 msgstr "Боломжит групп байхгүй"
@@ -1762,8 +1791,8 @@ msgstr "Одоогоор мэдэгдэл алга"
 msgid "No objects to export."
 msgstr "Экспортлох обьект алга."
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:336
 #: ../../../lib/web/src/components/person-picker.tsx:84
-#: src/features/objects/components/field-editor.tsx:279
 msgid "No people found"
 msgstr "Хүн олдсонгүй"
 
@@ -2130,7 +2159,7 @@ msgstr "{0} талбар хасах"
 msgid "Remove interest"
 msgstr "Сонирхол хасах"
 
-#: src/features/objects/components/field-editor.tsx:609
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:671
 msgid "Remove item"
 msgstr "Зүйл хасах"
 
@@ -2318,6 +2347,10 @@ msgstr "{0} сонгох"
 msgid "Select a field"
 msgstr "Талбар сонгох"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:29
+msgid "Select a game"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
 msgstr "Хандалтын эрх олгох хэрэглэгч, групп, эсвэл бусад дүрэм сонгоно уу."
@@ -2370,8 +2403,8 @@ msgstr "Сайтын чиглэл сонгох"
 msgid "Select theme preference"
 msgstr "Загварын тохируулга сонгох"
 
-#: src/features/objects/components/field-editor.tsx:196
-#: src/features/objects/components/field-editor.tsx:278
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:252
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:335
 msgid "Select..."
 msgstr "Сонгох..."
 
@@ -2391,6 +2424,11 @@ msgstr "Дахин илгээх"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:307
 msgid "Send email"
 msgstr "Имэйл илгээх"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:52
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:61
+msgid "Send message"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:145
 msgid "Serif"
@@ -2729,6 +2767,10 @@ msgstr "Төрөл"
 msgid "Type a command or search..."
 msgstr "Команд бичих эсвэл хайх..."
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:39
+msgid "Type a message..."
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:191
 msgid "Type to search users"
 msgstr "Хэрэглэгч хайхын тулд бичих"
@@ -2789,8 +2831,7 @@ msgstr "Захиалгаас гарсан"
 msgid "Unsubscribing..."
 msgstr "Захиалгаас гарч байна..."
 
-#: src/features/board/components/board-card.tsx:88
-#: src/features/board/components/board-card.tsx:89
+#: src/features/board/components/board-card.tsx:22
 #: src/features/objects/components/create-object-dialog.tsx:187
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302

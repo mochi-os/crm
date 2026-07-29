@@ -68,6 +68,10 @@ msgstr "{entityLabel} nomi"
 msgid "{entityLabel} name is required"
 msgstr "{entityLabel} nomi talab qilinadi"
 
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
+msgid "{opponentName} offered a draw"
+msgstr ""
+
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
 msgstr "{selectedCount, plural, one {{entityName} tanlandi} other {{manyName} tanlandi}}"
@@ -93,7 +97,7 @@ msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open
 msgstr "{unreadCount, plural, one {Menyuni ochish (# o'qilmagan bildirishnoma)} other {Menyuni ochish (# o'qilmagan bildirishnoma)}}"
 
 #. placeholder {0}: countDeepChildren(object.id)
-#: src/features/board/components/board-card.tsx:360
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
 msgid "+{0} nested"
 msgstr "+{0} ichki"
 
@@ -116,6 +120,10 @@ msgstr "24 soat"
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "Absolute (date and time)"
 msgstr "Aniq (sana va vaqt)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
+msgid "Accept"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:84
 msgid "Access"
@@ -169,9 +177,9 @@ msgstr "Hisob tasdiqlandi"
 msgid "Activity"
 msgstr "Faollik"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:717
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:196
-#: src/features/objects/components/field-editor.tsx:655
 msgid "Add"
 msgstr "Qoʻshish"
 
@@ -200,7 +208,7 @@ msgstr "Hisob qoʻshish"
 msgid "Add an account to receive notifications and use services."
 msgstr "Bildirishnomalar olish va xizmatlardan foydalanish uchun hisob qoʻshing."
 
-#: src/features/objects/components/field-editor.tsx:625
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
 msgstr "Roʻyxat elementi qoʻshish"
 
@@ -222,7 +230,7 @@ msgstr "Ustun qoʻshish"
 msgid "Add field"
 msgstr "Maydon qoʻshish"
 
-#: src/features/objects/components/field-editor.tsx:643
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:705
 msgid "Add item..."
 msgstr "Element qoʻshish..."
 
@@ -491,6 +499,10 @@ msgstr "Belgilash katakchasi"
 #: src/features/editor/components/add-dialogs.tsx:136
 msgid "Checklist"
 msgstr "Roʻyxat"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:30
+msgid "Choose a game from the sidebar or start a new one."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -852,6 +864,10 @@ msgstr "Maʼlumotlar import qilindi ({0, plural, one {# obyekt} other {# obyekt}
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "Sana"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:41
+msgid "Decline"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
@@ -1504,7 +1520,7 @@ msgstr "Ichkari"
 msgid "Interests"
 msgstr "Qiziqishlar"
 
-#: src/features/objects/components/field-editor.tsx:486
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
 msgid "Invalid date"
 msgstr "Notoʻgʻri sana"
 
@@ -1652,6 +1668,10 @@ msgstr "Oʻrta"
 msgid "Menu"
 msgstr "Menyu"
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:35
+msgid "Message"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:85
 msgid "Metric"
 msgstr "Metrik"
@@ -1708,6 +1728,11 @@ msgstr "Yangi"
 msgid "New {0}"
 msgstr "Yangi {0}"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:34
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:46
+msgid "New game"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
@@ -1742,6 +1767,10 @@ msgstr "Bogʻlangan hisoblar yoʻq"
 msgid "No CRMs found"
 msgstr "CRM topilmadi"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:43
+msgid "No games yet"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:241
 msgid "No groups available"
 msgstr "Mavjud guruhlar yoʻq"
@@ -1762,8 +1791,8 @@ msgstr "Hozircha bildirishnoma yo'q"
 msgid "No objects to export."
 msgstr "Eksport qilinadigan obyektlar yoʻq."
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:336
 #: ../../../lib/web/src/components/person-picker.tsx:84
-#: src/features/objects/components/field-editor.tsx:279
 msgid "No people found"
 msgstr "Odamlar topilmadi"
 
@@ -2130,7 +2159,7 @@ msgstr "{0} maydonini olib tashlash"
 msgid "Remove interest"
 msgstr "Qiziqishni olib tashlash"
 
-#: src/features/objects/components/field-editor.tsx:609
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:671
 msgid "Remove item"
 msgstr "Elementni olib tashlash"
 
@@ -2318,6 +2347,10 @@ msgstr "{0} tanlash"
 msgid "Select a field"
 msgstr "Maydon tanlang"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:29
+msgid "Select a game"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
 msgstr "Kirish berish uchun foydalanuvchi, guruh yoki boshqa qoidani tanlang."
@@ -2370,8 +2403,8 @@ msgstr "Sayt yoʻnalishini tanlang"
 msgid "Select theme preference"
 msgstr "Mavzu sozlamasini tanlang"
 
-#: src/features/objects/components/field-editor.tsx:196
-#: src/features/objects/components/field-editor.tsx:278
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:252
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:335
 msgid "Select..."
 msgstr "Tanlang..."
 
@@ -2391,6 +2424,11 @@ msgstr "Qayta yuborish"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:307
 msgid "Send email"
 msgstr "Email yuborish"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:52
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:61
+msgid "Send message"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:145
 msgid "Serif"
@@ -2729,6 +2767,10 @@ msgstr "Tur"
 msgid "Type a command or search..."
 msgstr "Buyruq yoki qidiruv yozing..."
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:39
+msgid "Type a message..."
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:191
 msgid "Type to search users"
 msgstr "Foydalanuvchilarni qidirish uchun yozing"
@@ -2789,8 +2831,7 @@ msgstr "Obunadan chiqildi"
 msgid "Unsubscribing..."
 msgstr "Obunadan chiqilmoqda..."
 
-#: src/features/board/components/board-card.tsx:88
-#: src/features/board/components/board-card.tsx:89
+#: src/features/board/components/board-card.tsx:22
 #: src/features/objects/components/create-object-dialog.tsx:187
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302
