@@ -28,17 +28,15 @@ import {
   textUnchanged,
   cn,
   removePendingFile,
-} from "@mochi/web";
-import type { Comment } from "@/types";
-import { CommentAttachments } from "./comment-attachments";
-import {
   ComposerAttachments,
   SendShortcutHint,
   dropActiveClass,
   offlineBlocked,
   useComposerDrop,
   useDiscardGuard,
-} from "@/components/comment-composer";
+} from "@mochi/web";
+import type { Comment } from "@/types";
+import { CommentAttachments } from "./comment-attachments";
 
 interface Person {
   id: string;
