@@ -30,6 +30,8 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
+  useUploadProgress,
+  UploadProgress,
 } from "@mochi/web";
 import { Plus, Upload, Users, X } from "lucide-react";
 import crmsApi from "@/api/crms";
@@ -56,6 +58,7 @@ export function CreateCrmDialog({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
   const refreshCrms = useCrmsStore((state) => state.refresh);
+  const { progress: importProgress, upload } = useUploadProgress();
 
   // Reset state when dialog closes
   useEffect(() => {
@@ -106,7 +109,11 @@ export function CreateCrmDialog({
                 if (importDesign) {
                   await crmsApi.importDesign(fingerprint, importDesign);
                 }
-                return importHasData ? crmsApi.importData(fingerprint, importFile) : null;
+                return importHasData
+                  ? upload((onProgress) =>
+                      crmsApi.importData(fingerprint, importFile, onProgress),
+                    )
+                  : null;
               })(),
               {
                 loading: t`Importing data...`,
@@ -287,6 +294,7 @@ export function CreateCrmDialog({
             </div>
           </div>
 
+          <UploadProgress progress={importProgress} className="mt-4" />
           <ResponsiveDialogFooter className="mt-6">
             <Button
               type="button"
