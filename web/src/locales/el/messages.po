@@ -68,6 +68,10 @@ msgstr "Όνομα {entityLabel}"
 msgid "{entityLabel} name is required"
 msgstr "Το όνομα {entityLabel} είναι υποχρεωτικό"
 
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
+msgid "{opponentName} offered a draw"
+msgstr ""
+
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
 msgstr "{selectedCount, plural, one {{entityName} επιλέχθηκε} other {{manyName} επιλέχθηκαν}}"
@@ -97,7 +101,7 @@ msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open
 msgstr "{unreadCount, plural, one {Άνοιγμα μενού (# μη αναγνωσμένη ειδοποίηση)} other {Άνοιγμα μενού (# μη αναγνωσμένες ειδοποιήσεις)}}"
 
 #. placeholder {0}: countDeepChildren(object.id)
-#: src/features/board/components/board-card.tsx:360
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
 msgid "+{0} nested"
 msgstr "+{0} ένθετα"
 
@@ -120,6 +124,10 @@ msgstr "24 ώρες"
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "Absolute (date and time)"
 msgstr "Απόλυτη (ημερομηνία και ώρα)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
+msgid "Accept"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:84
 msgid "Access"
@@ -173,9 +181,9 @@ msgstr "Ο λογαριασμός επαληθεύτηκε"
 msgid "Activity"
 msgstr "Δραστηριότητα"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:717
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:196
-#: src/features/objects/components/field-editor.tsx:655
 msgid "Add"
 msgstr "Προσθήκη"
 
@@ -204,7 +212,7 @@ msgstr "Προσθήκη λογαριασμού"
 msgid "Add an account to receive notifications and use services."
 msgstr "Προσθέστε έναν λογαριασμό για να λαμβάνετε ειδοποιήσεις και να χρησιμοποιείτε υπηρεσίες."
 
-#: src/features/objects/components/field-editor.tsx:625
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
 msgstr "Προσθήκη στοιχείου λίστας ελέγχου"
 
@@ -226,7 +234,7 @@ msgstr "Προσθήκη στήλης"
 msgid "Add field"
 msgstr "Προσθήκη πεδίου"
 
-#: src/features/objects/components/field-editor.tsx:643
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:705
 msgid "Add item..."
 msgstr "Προσθήκη στοιχείου..."
 
@@ -495,6 +503,10 @@ msgstr "Πλαίσιο ελέγχου"
 #: src/features/editor/components/add-dialogs.tsx:136
 msgid "Checklist"
 msgstr "Λίστα ελέγχου"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:38
+msgid "Choose a game from the sidebar or start a new one."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -856,6 +868,10 @@ msgstr "Τα δεδομένα εισήχθησαν ({0, plural, one {# αντι�
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "Ημερομηνία"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:41
+msgid "Decline"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
@@ -1508,7 +1524,7 @@ msgstr "Εσωτερικό"
 msgid "Interests"
 msgstr "Ενδιαφέροντα"
 
-#: src/features/objects/components/field-editor.tsx:486
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
 msgid "Invalid date"
 msgstr "Μη έγκυρη ημερομηνία"
 
@@ -1656,6 +1672,10 @@ msgstr "Μεσαίο"
 msgid "Menu"
 msgstr "Μενού"
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:35
+msgid "Message"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:85
 msgid "Metric"
 msgstr "Μετρικό"
@@ -1712,6 +1732,11 @@ msgstr "Νέο"
 msgid "New {0}"
 msgstr "Νέο {0}"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:42
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:54
+msgid "New game"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
@@ -1746,6 +1771,10 @@ msgstr "Δεν υπάρχουν συνδεδεμένοι λογαριασμοί"
 msgid "No CRMs found"
 msgstr "Δεν βρέθηκαν CRM"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:51
+msgid "No games yet"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:241
 msgid "No groups available"
 msgstr "Δεν υπάρχουν διαθέσιμες ομάδες"
@@ -1766,8 +1795,8 @@ msgstr "Καμία ειδοποίηση ακόμη"
 msgid "No objects to export."
 msgstr "Δεν υπάρχουν αντικείμενα προς εξαγωγή."
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:336
 #: ../../../lib/web/src/components/person-picker.tsx:84
-#: src/features/objects/components/field-editor.tsx:279
 msgid "No people found"
 msgstr "Δεν βρέθηκαν άτομα"
 
@@ -2138,7 +2167,7 @@ msgstr "Αφαίρεση πεδίου {0}"
 msgid "Remove interest"
 msgstr "Αφαίρεση ενδιαφέροντος"
 
-#: src/features/objects/components/field-editor.tsx:609
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:671
 msgid "Remove item"
 msgstr "Αφαίρεση στοιχείου"
 
@@ -2326,6 +2355,10 @@ msgstr "Επιλογή {0}"
 msgid "Select a field"
 msgstr "Επιλέξτε ένα πεδίο"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:37
+msgid "Select a game"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
 msgstr "Επιλέξτε έναν χρήστη, ομάδα ή άλλον κανόνα για να παραχωρήσετε πρόσβαση."
@@ -2378,8 +2411,8 @@ msgstr "Επιλέξτε κατεύθυνση ιστότοπου"
 msgid "Select theme preference"
 msgstr "Επιλέξτε προτίμηση θέματος"
 
-#: src/features/objects/components/field-editor.tsx:196
-#: src/features/objects/components/field-editor.tsx:278
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:252
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:335
 msgid "Select..."
 msgstr "Επιλογή..."
 
@@ -2399,6 +2432,11 @@ msgstr "Αποστολή ξανά"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:307
 msgid "Send email"
 msgstr "Αποστολή email"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:52
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:61
+msgid "Send message"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:145
 msgid "Serif"
@@ -2737,6 +2775,10 @@ msgstr "Τύπος"
 msgid "Type a command or search..."
 msgstr "Πληκτρολογήστε μια εντολή ή αναζητήστε..."
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:39
+msgid "Type a message…"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:191
 msgid "Type to search users"
 msgstr "Πληκτρολογήστε για αναζήτηση χρηστών"
@@ -2797,8 +2839,7 @@ msgstr "Διαγραφή εγγραφής ολοκληρώθηκε"
 msgid "Unsubscribing..."
 msgstr "Διαγραφή εγγραφής..."
 
-#: src/features/board/components/board-card.tsx:88
-#: src/features/board/components/board-card.tsx:89
+#: src/features/board/components/board-card.tsx:22
 #: src/features/objects/components/create-object-dialog.tsx:187
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302

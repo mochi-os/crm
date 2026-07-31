@@ -68,6 +68,10 @@ msgstr "{entityLabel} പേര്"
 msgid "{entityLabel} name is required"
 msgstr "{entityLabel} പേര് ആവശ്യമാണ്"
 
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
+msgid "{opponentName} offered a draw"
+msgstr ""
+
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
 msgstr "{selectedCount, plural, one {{entityName} തിരഞ്ഞെടുത്തു} other {{manyName} തിരഞ്ഞെടുത്തു}}"
@@ -97,7 +101,7 @@ msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open
 msgstr "{unreadCount, plural, one {മെനു തുറക്കുക (# വായിക്കാത്ത അറിയിപ്പ്)} other {മെനു തുറക്കുക (# വായിക്കാത്ത അറിയിപ്പുകൾ)}}"
 
 #. placeholder {0}: countDeepChildren(object.id)
-#: src/features/board/components/board-card.tsx:360
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
 msgid "+{0} nested"
 msgstr "+{0} നെസ്റ്റഡ്"
 
@@ -120,6 +124,10 @@ msgstr "24 മണിക്കൂർ"
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "Absolute (date and time)"
 msgstr "സമ്പൂർണ്ണം (തീയതിയും സമയവും)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
+msgid "Accept"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:84
 msgid "Access"
@@ -173,9 +181,9 @@ msgstr "അക്കൗണ്ട് പരിശോധിച്ചുറപ്�
 msgid "Activity"
 msgstr "പ്രവർത്തനം"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:717
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:196
-#: src/features/objects/components/field-editor.tsx:655
 msgid "Add"
 msgstr "ചേർക്കുക"
 
@@ -204,7 +212,7 @@ msgstr "അക്കൗണ്ട് ചേർക്കുക"
 msgid "Add an account to receive notifications and use services."
 msgstr "അറിയിപ്പുകൾ സ്വീകരിക്കാനും സേവനങ്ങൾ ഉപയോഗിക്കാനും ഒരു അക്കൗണ്ട് ചേർക്കുക."
 
-#: src/features/objects/components/field-editor.tsx:625
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
 msgstr "ചെക്ക്‌ലിസ്റ്റ് ഇനം ചേർക്കുക"
 
@@ -226,7 +234,7 @@ msgstr "കോളം ചേർക്കുക"
 msgid "Add field"
 msgstr "ഫീൽഡ് ചേർക്കുക"
 
-#: src/features/objects/components/field-editor.tsx:643
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:705
 msgid "Add item..."
 msgstr "ഇനം ചേർക്കുക..."
 
@@ -495,6 +503,10 @@ msgstr "ചെക്ക്ബോക്സ്"
 #: src/features/editor/components/add-dialogs.tsx:136
 msgid "Checklist"
 msgstr "ചെക്ക്‌ലിസ്റ്റ്"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:38
+msgid "Choose a game from the sidebar or start a new one."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -856,6 +868,10 @@ msgstr "ഡാറ്റ ഇംപോർട്ട് ചെയ്തു ({0, plur
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "തീയതി"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:41
+msgid "Decline"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
@@ -1508,7 +1524,7 @@ msgstr "ഇൻസെറ്റ്"
 msgid "Interests"
 msgstr "താൽപ്പര്യങ്ങൾ"
 
-#: src/features/objects/components/field-editor.tsx:486
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
 msgid "Invalid date"
 msgstr "അസാധുവായ തീയതി"
 
@@ -1656,6 +1672,10 @@ msgstr "ഇടത്തരം"
 msgid "Menu"
 msgstr "മെനു"
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:35
+msgid "Message"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:85
 msgid "Metric"
 msgstr "മെട്രിക്"
@@ -1712,6 +1732,11 @@ msgstr "പുതിയത്"
 msgid "New {0}"
 msgstr "പുതിയ {0}"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:42
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:54
+msgid "New game"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
@@ -1746,6 +1771,10 @@ msgstr "ബന്ധിപ്പിച്ച അക്കൗണ്ടുകള�
 msgid "No CRMs found"
 msgstr "CRM-കളൊന്നും കണ്ടെത്തിയില്ല"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:51
+msgid "No games yet"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:241
 msgid "No groups available"
 msgstr "ഗ്രൂപ്പുകളൊന്നും ലഭ്യമല്ല"
@@ -1766,8 +1795,8 @@ msgstr "ഇതുവരെ അറിയിപ്പുകളൊന്നുമ�
 msgid "No objects to export."
 msgstr "എക്സ്പോർട്ട് ചെയ്യാൻ ഒബ്ജക്ടുകളൊന്നുമില്ല."
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:336
 #: ../../../lib/web/src/components/person-picker.tsx:84
-#: src/features/objects/components/field-editor.tsx:279
 msgid "No people found"
 msgstr "ആളുകളെ കണ്ടെത്തിയില്ല"
 
@@ -2138,7 +2167,7 @@ msgstr "{0} ഫീൽഡ് നീക്കംചെയ്യുക"
 msgid "Remove interest"
 msgstr "item നീക്കം ചെയ്യുക"
 
-#: src/features/objects/components/field-editor.tsx:609
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:671
 msgid "Remove item"
 msgstr "ലിസ്റ്റിങ് നീക്കം ചെയ്യുക"
 
@@ -2326,6 +2355,10 @@ msgstr "{0} തിരഞ്ഞെടുക്കുക"
 msgid "Select a field"
 msgstr "ഒരു ഫീൽഡ് തിരഞ്ഞെടുക്കുക"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:37
+msgid "Select a game"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
 msgstr "ആക്സസ് നൽകാൻ ഒരു ഉപയോക്താവിനെ, ഗ്രൂപ്പിനെ അല്ലെങ്കിൽ മറ്റൊരു റൂൾ തിരഞ്ഞെടുക്കുക."
@@ -2378,8 +2411,8 @@ msgstr "സൈറ്റ് ദിശ തിരഞ്ഞെടുക്കുക"
 msgid "Select theme preference"
 msgstr "തീം മുൻഗണന തിരഞ്ഞെടുക്കുക"
 
-#: src/features/objects/components/field-editor.tsx:196
-#: src/features/objects/components/field-editor.tsx:278
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:252
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:335
 msgid "Select..."
 msgstr "തിരഞ്ഞെടുക്കുക..."
 
@@ -2399,6 +2432,11 @@ msgstr "വീണ്ടും അയയ്ക്കുക"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:307
 msgid "Send email"
 msgstr "ഇമെയിൽ അയയ്ക്കുക"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:52
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:61
+msgid "Send message"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:145
 msgid "Serif"
@@ -2737,6 +2775,10 @@ msgstr "തരം"
 msgid "Type a command or search..."
 msgstr "ഒരു കമാൻഡ് ടൈപ്പ് ചെയ്യുക അല്ലെങ്കിൽ തിരയുക..."
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:39
+msgid "Type a message…"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:191
 msgid "Type to search users"
 msgstr "ഉപയോക്താക്കളെ തിരയാൻ ടൈപ്പ് ചെയ്യുക"
@@ -2797,8 +2839,7 @@ msgstr "അൺസബ്സ്ക്രൈബ് ചെയ്തു"
 msgid "Unsubscribing..."
 msgstr "അൺസബ്സ്ക്രൈബ് ചെയ്യുന്നു..."
 
-#: src/features/board/components/board-card.tsx:88
-#: src/features/board/components/board-card.tsx:89
+#: src/features/board/components/board-card.tsx:22
 #: src/features/objects/components/create-object-dialog.tsx:187
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302

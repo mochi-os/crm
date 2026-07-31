@@ -68,6 +68,10 @@ msgstr "ឈ្មោះ {entityLabel}"
 msgid "{entityLabel} name is required"
 msgstr "ត្រូវការឈ្មោះ {entityLabel}"
 
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
+msgid "{opponentName} offered a draw"
+msgstr ""
+
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
 msgstr "{selectedCount, plural, other {បានជ្រើសរើស {manyName}}}"
@@ -97,7 +101,7 @@ msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open
 msgstr "{unreadCount, plural, other {បើកម៉ឺនុយ (ការជូនដំណឹងមិនទាន់អាន # )}}"
 
 #. placeholder {0}: countDeepChildren(object.id)
-#: src/features/board/components/board-card.tsx:360
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
 msgid "+{0} nested"
 msgstr "+{0} ជាន់គ្នា"
 
@@ -120,6 +124,10 @@ msgstr "២៤ ម៉ោង"
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "Absolute (date and time)"
 msgstr "ដាច់ខាត (កាលបរិច្ឆេទ និងពេលវេលា)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
+msgid "Accept"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:84
 msgid "Access"
@@ -173,9 +181,9 @@ msgstr "គណនីត្រូវបានផ្ទៀងផ្ទាត់"
 msgid "Activity"
 msgstr "សកម្មភាព"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:717
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:196
-#: src/features/objects/components/field-editor.tsx:655
 msgid "Add"
 msgstr "បន្ថែម"
 
@@ -204,7 +212,7 @@ msgstr "បន្ថែមគណនី"
 msgid "Add an account to receive notifications and use services."
 msgstr "បន្ថែមគណនីដើម្បីទទួលបានការជូនដំណឹង និងប្រើប្រាស់សេវាកម្ម។"
 
-#: src/features/objects/components/field-editor.tsx:625
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
 msgstr "បន្ថែមធាតុបញ្ជី"
 
@@ -226,7 +234,7 @@ msgstr "បន្ថែមជួរឈរ"
 msgid "Add field"
 msgstr "បន្ថែមប្រអប់"
 
-#: src/features/objects/components/field-editor.tsx:643
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:705
 msgid "Add item..."
 msgstr "បន្ថែមធាតុ..."
 
@@ -495,6 +503,10 @@ msgstr "ប្រអប់ធីក"
 #: src/features/editor/components/add-dialogs.tsx:136
 msgid "Checklist"
 msgstr "បញ្ជីពិនិត្យ"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:38
+msgid "Choose a game from the sidebar or start a new one."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -856,6 +868,10 @@ msgstr "បាននាំចូលទិន្នន័យ ({0, plural, other {
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "កាលបរិច្ឆេទ"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:41
+msgid "Decline"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
@@ -1508,7 +1524,7 @@ msgstr "ខាងក្នុង"
 msgid "Interests"
 msgstr "ចំណាប់អារម្មណ៍"
 
-#: src/features/objects/components/field-editor.tsx:486
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
 msgid "Invalid date"
 msgstr "កាលបរិច្ឆេទមិនត្រឹមត្រូវ"
 
@@ -1656,6 +1672,10 @@ msgstr "មធ្យម"
 msgid "Menu"
 msgstr "ម៉ឺនុយ"
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:35
+msgid "Message"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:85
 msgid "Metric"
 msgstr "ម៉ែត្រ"
@@ -1712,6 +1732,11 @@ msgstr "ថ្មី"
 msgid "New {0}"
 msgstr "{0} ថ្មី"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:42
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:54
+msgid "New game"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
@@ -1746,6 +1771,10 @@ msgstr "មិនមានគណនីភ្ជាប់"
 msgid "No CRMs found"
 msgstr "រកមិនឃើញ CRM"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:51
+msgid "No games yet"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:241
 msgid "No groups available"
 msgstr "មិនមានក្រុម"
@@ -1766,8 +1795,8 @@ msgstr "មិនទាន់មានការជូនដំណឹងទេ"
 msgid "No objects to export."
 msgstr "មិនមានវត្ថុដើម្បីនាំចេញ។"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:336
 #: ../../../lib/web/src/components/person-picker.tsx:84
-#: src/features/objects/components/field-editor.tsx:279
 msgid "No people found"
 msgstr "រកមិនឃើញមនុស្ស"
 
@@ -2138,7 +2167,7 @@ msgstr "យកវាល {0} ចេញ"
 msgid "Remove interest"
 msgstr "យកចំណាប់អារម្មណ៍ចេញ"
 
-#: src/features/objects/components/field-editor.tsx:609
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:671
 msgid "Remove item"
 msgstr "យកធាតុចេញ"
 
@@ -2326,6 +2355,10 @@ msgstr "ជ្រើស {0}"
 msgid "Select a field"
 msgstr "ជ្រើសរើសវាល"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:37
+msgid "Select a game"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
 msgstr "ជ្រើសរើសអ្នកប្រើ ក្រុម ឬច្បាប់ផ្សេងទៀតដើម្បីផ្តល់សិទ្ធិចូលប្រើ។"
@@ -2378,8 +2411,8 @@ msgstr "ជ្រើសរើសទិសដៅគេហទំព័រ"
 msgid "Select theme preference"
 msgstr "ជ្រើសរើសចំណូលចិត្តរូបរាង"
 
-#: src/features/objects/components/field-editor.tsx:196
-#: src/features/objects/components/field-editor.tsx:278
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:252
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:335
 msgid "Select..."
 msgstr "ជ្រើសរើស..."
 
@@ -2399,6 +2432,11 @@ msgstr "ផ្ញើម្តងទៀត"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:307
 msgid "Send email"
 msgstr "ផ្ញើអ៊ីមែល"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:52
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:61
+msgid "Send message"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:145
 msgid "Serif"
@@ -2737,6 +2775,10 @@ msgstr "ប្រភេទ"
 msgid "Type a command or search..."
 msgstr "វាយពាក្យបញ្ជា ឬស្វែងរក..."
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:39
+msgid "Type a message…"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:191
 msgid "Type to search users"
 msgstr "វាយដើម្បីស្វែងរកអ្នកប្រើប្រាស់"
@@ -2797,8 +2839,7 @@ msgstr "បានឈប់ជាវ"
 msgid "Unsubscribing..."
 msgstr "កំពុងឈប់ជាវ..."
 
-#: src/features/board/components/board-card.tsx:88
-#: src/features/board/components/board-card.tsx:89
+#: src/features/board/components/board-card.tsx:22
 #: src/features/objects/components/create-object-dialog.tsx:187
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302

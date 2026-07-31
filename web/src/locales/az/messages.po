@@ -68,6 +68,10 @@ msgstr "{entityLabel} adı"
 msgid "{entityLabel} name is required"
 msgstr "{entityLabel} adı tələb olunur"
 
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
+msgid "{opponentName} offered a draw"
+msgstr ""
+
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
 msgstr "{selectedCount, plural, one {{entityName} seçildi} other {{manyName} seçildi}}"
@@ -97,7 +101,7 @@ msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open
 msgstr "{unreadCount, plural, one {Menyunu aç (# oxunmamış bildiriş)} other {Menyunu aç (# oxunmamış bildiriş)}}"
 
 #. placeholder {0}: countDeepChildren(object.id)
-#: src/features/board/components/board-card.tsx:360
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
 msgid "+{0} nested"
 msgstr "+{0} daxili"
 
@@ -120,6 +124,10 @@ msgstr "24 saat"
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "Absolute (date and time)"
 msgstr "Mütləq (tarix və saat)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
+msgid "Accept"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:84
 msgid "Access"
@@ -173,9 +181,9 @@ msgstr "Hesab təsdiqləndi"
 msgid "Activity"
 msgstr "Fəaliyyət"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:717
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:196
-#: src/features/objects/components/field-editor.tsx:655
 msgid "Add"
 msgstr "Əlavə et"
 
@@ -204,7 +212,7 @@ msgstr "Hesab əlavə et"
 msgid "Add an account to receive notifications and use services."
 msgstr "Bildiriş almaq və xidmətlərdən istifadə etmək üçün hesab əlavə edin."
 
-#: src/features/objects/components/field-editor.tsx:625
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
 msgstr "Yoxlama elementi əlavə et"
 
@@ -226,7 +234,7 @@ msgstr "Sütun əlavə et"
 msgid "Add field"
 msgstr "Sahə əlavə et"
 
-#: src/features/objects/components/field-editor.tsx:643
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:705
 msgid "Add item..."
 msgstr "Element əlavə et..."
 
@@ -495,6 +503,10 @@ msgstr "İşarələmə qutusu"
 #: src/features/editor/components/add-dialogs.tsx:136
 msgid "Checklist"
 msgstr "Yoxlama siyahısı"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:38
+msgid "Choose a game from the sidebar or start a new one."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -856,6 +868,10 @@ msgstr "Məlumatlar idxal edildi ({0, plural, one {# obyekt} other {# obyekt}}, 
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "Tarix"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:41
+msgid "Decline"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
@@ -1508,7 +1524,7 @@ msgstr "İçəri"
 msgid "Interests"
 msgstr "Maraqlar"
 
-#: src/features/objects/components/field-editor.tsx:486
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
 msgid "Invalid date"
 msgstr "Etibarsız tarix"
 
@@ -1656,6 +1672,10 @@ msgstr "Orta"
 msgid "Menu"
 msgstr "Menyu"
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:35
+msgid "Message"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:85
 msgid "Metric"
 msgstr "Metrik"
@@ -1712,6 +1732,11 @@ msgstr "Yeni"
 msgid "New {0}"
 msgstr "Yeni {0}"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:42
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:54
+msgid "New game"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
@@ -1746,6 +1771,10 @@ msgstr "Bağlı hesab yoxdur"
 msgid "No CRMs found"
 msgstr "CRM tapılmadı"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:51
+msgid "No games yet"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:241
 msgid "No groups available"
 msgstr "Mövcud qrup yoxdur"
@@ -1766,8 +1795,8 @@ msgstr "Hələ bildiriş yoxdur"
 msgid "No objects to export."
 msgstr "Eksport ediləcək obyekt yoxdur."
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:336
 #: ../../../lib/web/src/components/person-picker.tsx:84
-#: src/features/objects/components/field-editor.tsx:279
 msgid "No people found"
 msgstr "İnsan tapılmadı"
 
@@ -2138,7 +2167,7 @@ msgstr "{0} sahəsini sil"
 msgid "Remove interest"
 msgstr "Marağı sil"
 
-#: src/features/objects/components/field-editor.tsx:609
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:671
 msgid "Remove item"
 msgstr "Elementi sil"
 
@@ -2326,6 +2355,10 @@ msgstr "{0} seçin"
 msgid "Select a field"
 msgstr "Sahə seç"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:37
+msgid "Select a game"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
 msgstr "Giriş vermək üçün istifadəçi, qrup və ya başqa qayda seçin."
@@ -2378,8 +2411,8 @@ msgstr "Sayt istiqamətini seçin"
 msgid "Select theme preference"
 msgstr "Mövzu seçimini seçin"
 
-#: src/features/objects/components/field-editor.tsx:196
-#: src/features/objects/components/field-editor.tsx:278
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:252
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:335
 msgid "Select..."
 msgstr "Seçin..."
 
@@ -2399,6 +2432,11 @@ msgstr "Yenidən göndər"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:307
 msgid "Send email"
 msgstr "E-poçt göndər"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:52
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:61
+msgid "Send message"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:145
 msgid "Serif"
@@ -2737,6 +2775,10 @@ msgstr "Mesaj yazın..."
 msgid "Type a command or search..."
 msgstr "Mesaj yazın…"
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:39
+msgid "Type a message…"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:191
 msgid "Type to search users"
 msgstr "Mesajınızı yazın…"
@@ -2797,8 +2839,7 @@ msgstr "Abunəlik ləğv edildi"
 msgid "Unsubscribing..."
 msgstr "Dayandırmanı götür"
 
-#: src/features/board/components/board-card.tsx:88
-#: src/features/board/components/board-card.tsx:89
+#: src/features/board/components/board-card.tsx:22
 #: src/features/objects/components/create-object-dialog.tsx:187
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302

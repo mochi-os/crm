@@ -68,6 +68,10 @@ msgstr "{entityLabel} נאָמען"
 msgid "{entityLabel} name is required"
 msgstr "{entityLabel}־נאָמען איז נײטיק"
 
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
+msgid "{opponentName} offered a draw"
+msgstr ""
+
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
 msgstr "{selectedCount, plural, one {{entityName} אויסגעקליבן} other {{manyName} אויסגעקליבן}}"
@@ -97,7 +101,7 @@ msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open
 msgstr "{unreadCount, plural, one {עפֿנט מעניו (# אומגעלײענטע מעלדונג)} other {עפֿנט מעניו (# אומגעלײענטע מעלדונגען)}}"
 
 #. placeholder {0}: countDeepChildren(object.id)
-#: src/features/board/components/board-card.tsx:360
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
 msgid "+{0} nested"
 msgstr "+{0} אײַנגענעסטלט"
 
@@ -120,6 +124,10 @@ msgstr "24 שעה"
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "Absolute (date and time)"
 msgstr "אַבסאָלוט (דאַטע און צײַט)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
+msgid "Accept"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:84
 msgid "Access"
@@ -173,9 +181,9 @@ msgstr "קאָנטע באַשטעטיקט"
 msgid "Activity"
 msgstr "אַקטיוויטעט"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:717
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:196
-#: src/features/objects/components/field-editor.tsx:655
 msgid "Add"
 msgstr "צולייגן"
 
@@ -204,7 +212,7 @@ msgstr "צולייגן קאָנטע"
 msgid "Add an account to receive notifications and use services."
 msgstr "צולייגן אַ קאָנטע צו באַקומען נאָטיפֿיקאַציעס און נוצן סערוויסעס."
 
-#: src/features/objects/components/field-editor.tsx:625
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
 msgstr "צולייגן טשעקליסטע פּונקט"
 
@@ -226,7 +234,7 @@ msgstr "צולייגן זײַל"
 msgid "Add field"
 msgstr "צולייגן פֿעלד"
 
-#: src/features/objects/components/field-editor.tsx:643
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:705
 msgid "Add item..."
 msgstr "צולייגן פּונקט..."
 
@@ -495,6 +503,10 @@ msgstr "טשעקבאָקס"
 #: src/features/editor/components/add-dialogs.tsx:136
 msgid "Checklist"
 msgstr "טשעקליסטע"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:38
+msgid "Choose a game from the sidebar or start a new one."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -856,6 +868,10 @@ msgstr "דאַטן אימפּאָרטירט ({0, plural, one {# אָביעקט} 
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "דאַטע"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:41
+msgid "Decline"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
@@ -1508,7 +1524,7 @@ msgstr "אַרײַנגעשטעלט"
 msgid "Interests"
 msgstr "אינטערעסן"
 
-#: src/features/objects/components/field-editor.tsx:486
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
 msgid "Invalid date"
 msgstr "ניט גילטיקע דאַטע"
 
@@ -1656,6 +1672,10 @@ msgstr "מיטל"
 msgid "Menu"
 msgstr "מעניו"
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:35
+msgid "Message"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:85
 msgid "Metric"
 msgstr "מעטריש"
@@ -1712,6 +1732,11 @@ msgstr "נײַ"
 msgid "New {0}"
 msgstr "נײַ {0}"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:42
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:54
+msgid "New game"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
@@ -1746,6 +1771,10 @@ msgstr "קיין פֿאַרבונדענע קאָנטעס"
 msgid "No CRMs found"
 msgstr "קיין CRMס ניט געפֿונען"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:51
+msgid "No games yet"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:241
 msgid "No groups available"
 msgstr "קיין גרופּעס פֿאַראַן"
@@ -1766,8 +1795,8 @@ msgstr "נאָך קײן מעלדונגען"
 msgid "No objects to export."
 msgstr "קיין אָביעקטן צו עקספּאָרטירן."
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:336
 #: ../../../lib/web/src/components/person-picker.tsx:84
-#: src/features/objects/components/field-editor.tsx:279
 msgid "No people found"
 msgstr "קיין מענטשן ניט געפֿונען"
 
@@ -2138,7 +2167,7 @@ msgstr "אַראָפּנעמען פֿעלד {0}"
 msgid "Remove interest"
 msgstr "אַראָפּנעמען אינטערעס"
 
-#: src/features/objects/components/field-editor.tsx:609
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:671
 msgid "Remove item"
 msgstr "אַראָפּנעמען עלעמענט"
 
@@ -2326,6 +2355,10 @@ msgstr "קלײַבט אױס {0}"
 msgid "Select a field"
 msgstr "קלײַב אַ פֿעלד"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:37
+msgid "Select a game"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
 msgstr "קלײַב אַ באַניצער, גרופּע, אָדער אַנדער כּלל צו געבן צוטריט."
@@ -2378,8 +2411,8 @@ msgstr "קלײַב זײַטל־ריכטונג"
 msgid "Select theme preference"
 msgstr "קלײַב טעמע־פּרעפֿערענץ"
 
-#: src/features/objects/components/field-editor.tsx:196
-#: src/features/objects/components/field-editor.tsx:278
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:252
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:335
 msgid "Select..."
 msgstr "קלײַב..."
 
@@ -2399,6 +2432,11 @@ msgstr "שיקן ווידער"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:307
 msgid "Send email"
 msgstr "שיק בליצפּאָסט"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:52
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:61
+msgid "Send message"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:145
 msgid "Serif"
@@ -2737,6 +2775,10 @@ msgstr "טיפּ"
 msgid "Type a command or search..."
 msgstr "טיפּט אַ באַפֿעל אָדער זוכט..."
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:39
+msgid "Type a message…"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:191
 msgid "Type to search users"
 msgstr "טיפּט צו זוכן באַניצערס"
@@ -2797,8 +2839,7 @@ msgstr "אַבאַבאָנירט"
 msgid "Unsubscribing..."
 msgstr "אַבאַבאָנירן..."
 
-#: src/features/board/components/board-card.tsx:88
-#: src/features/board/components/board-card.tsx:89
+#: src/features/board/components/board-card.tsx:22
 #: src/features/objects/components/create-object-dialog.tsx:187
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302

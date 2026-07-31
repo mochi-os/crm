@@ -68,6 +68,10 @@ msgstr "{entityLabel} பெயர்"
 msgid "{entityLabel} name is required"
 msgstr "{entityLabel} பெயர் தேவை"
 
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
+msgid "{opponentName} offered a draw"
+msgstr ""
+
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
 msgstr "{selectedCount, plural, one {{entityName} தேர்ந்தெடுக்கப்பட்டது} other {{manyName} தேர்ந்தெடுக்கப்பட்டன}}"
@@ -97,7 +101,7 @@ msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open
 msgstr "{unreadCount, plural, one {மெனுவைத் திற (# படிக்காத அறிவிப்பு)} other {மெனுவைத் திற (# படிக்காத அறிவிப்புகள்)}}"
 
 #. placeholder {0}: countDeepChildren(object.id)
-#: src/features/board/components/board-card.tsx:360
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
 msgid "+{0} nested"
 msgstr "+{0} உள்ளடங்கியவை"
 
@@ -120,6 +124,10 @@ msgstr "24 மணிநேரம்"
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "Absolute (date and time)"
 msgstr "முழுமையானது (தேதி மற்றும் நேரம்)"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
+msgid "Accept"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:84
 msgid "Access"
@@ -173,9 +181,9 @@ msgstr "கணக்கு சரிபார்க்கப்பட்டத�
 msgid "Activity"
 msgstr "செயல்பாடு"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:717
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:196
-#: src/features/objects/components/field-editor.tsx:655
 msgid "Add"
 msgstr "சேர்"
 
@@ -204,7 +212,7 @@ msgstr "கணக்கு சேர்"
 msgid "Add an account to receive notifications and use services."
 msgstr "அறிவிப்புகளைப் பெறவும் சேவைகளைப் பயன்படுத்தவும் கணக்கைச் சேர்க்கவும்."
 
-#: src/features/objects/components/field-editor.tsx:625
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
 msgstr "சரிபார்ப்பு பட்டியல் உருப்படி சேர்"
 
@@ -226,7 +234,7 @@ msgstr "நெடுவரிசை சேர்"
 msgid "Add field"
 msgstr "புலம் சேர்"
 
-#: src/features/objects/components/field-editor.tsx:643
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:705
 msgid "Add item..."
 msgstr "உருப்படி சேர்..."
 
@@ -495,6 +503,10 @@ msgstr "தேர்வுப் பெட்டி"
 #: src/features/editor/components/add-dialogs.tsx:136
 msgid "Checklist"
 msgstr "சரிபார்ப்பு பட்டியல்"
+
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:38
+msgid "Choose a game from the sidebar or start a new one."
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -856,6 +868,10 @@ msgstr "தரவு இறக்குமதி செய்யப்பட்�
 #: src/features/editor/components/add-dialogs.tsx:137
 msgid "Date"
 msgstr "தேதி"
+
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:41
+msgid "Decline"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
@@ -1508,7 +1524,7 @@ msgstr "உள்ளமைக்கப்பட்ட"
 msgid "Interests"
 msgstr "ஆர்வங்கள்"
 
-#: src/features/objects/components/field-editor.tsx:486
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
 msgid "Invalid date"
 msgstr "தவறான தேதி"
 
@@ -1656,6 +1672,10 @@ msgstr "நடுத்தரம்"
 msgid "Menu"
 msgstr "மெனு"
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:35
+msgid "Message"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:85
 msgid "Metric"
 msgstr "மெட்ரிக்"
@@ -1712,6 +1732,11 @@ msgstr "புதியது"
 msgid "New {0}"
 msgstr "புதிய {0}"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:42
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:54
+msgid "New game"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
@@ -1746,6 +1771,10 @@ msgstr "இணைக்கப்பட்ட கணக்குகள் இல�
 msgid "No CRMs found"
 msgstr "CRMகள் எதுவும் கிடைக்கவில்லை"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:51
+msgid "No games yet"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:241
 msgid "No groups available"
 msgstr "குழுக்கள் கிடைக்கவில்லை"
@@ -1766,8 +1795,8 @@ msgstr "இதுவரை அறிவிப்புகள் இல்லை"
 msgid "No objects to export."
 msgstr "ஏற்றுமதி செய்ய ஆப்ஜெக்ட்கள் எதுவும் இல்லை."
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:336
 #: ../../../lib/web/src/components/person-picker.tsx:84
-#: src/features/objects/components/field-editor.tsx:279
 msgid "No people found"
 msgstr "நபர்கள் எதுவும் கிடைக்கவில்லை"
 
@@ -2138,7 +2167,7 @@ msgstr "புலம் {0}-ஐ அகற்று"
 msgid "Remove interest"
 msgstr "ஆர்வத்தை அகற்று"
 
-#: src/features/objects/components/field-editor.tsx:609
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:671
 msgid "Remove item"
 msgstr "உருப்படியை அகற்று"
 
@@ -2326,6 +2355,10 @@ msgstr "{0} தேர்ந்தெடுக்கவும்"
 msgid "Select a field"
 msgstr "ஒரு புலத்தை தேர்ந்தெடு"
 
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:37
+msgid "Select a game"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
 msgstr "அணுகலை வழங்க ஒரு பயனர், குழு அல்லது மற்ற விதியை தேர்ந்தெடு."
@@ -2378,8 +2411,8 @@ msgstr "தள திசையை தேர்ந்தெடு"
 msgid "Select theme preference"
 msgstr "தீம் விருப்பத்தை தேர்ந்தெடு"
 
-#: src/features/objects/components/field-editor.tsx:196
-#: src/features/objects/components/field-editor.tsx:278
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:252
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:335
 msgid "Select..."
 msgstr "தேர்ந்தெடு..."
 
@@ -2399,6 +2432,11 @@ msgstr "மீண்டும் அனுப்பு"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:307
 msgid "Send email"
 msgstr "மின்னஞ்சல் அனுப்பு"
+
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:52
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:61
+msgid "Send message"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:145
 msgid "Serif"
@@ -2737,6 +2775,10 @@ msgstr "வகை"
 msgid "Type a command or search..."
 msgstr "ஒரு கட்டளை அல்லது தேடலை தட்டச்சு செய்..."
 
+#: ../../../lib/web/src/components/game/game-chat-input.tsx:39
+msgid "Type a message…"
+msgstr ""
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:191
 msgid "Type to search users"
 msgstr "பயனர்களை தேட தட்டச்சு செய்"
@@ -2797,8 +2839,7 @@ msgstr "சந்தா நீக்கப்பட்டது"
 msgid "Unsubscribing..."
 msgstr "சந்தா நீக்குகிறது..."
 
-#: src/features/board/components/board-card.tsx:88
-#: src/features/board/components/board-card.tsx:89
+#: src/features/board/components/board-card.tsx:22
 #: src/features/objects/components/create-object-dialog.tsx:187
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302
