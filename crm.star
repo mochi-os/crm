@@ -1038,7 +1038,7 @@ def action_data_export_warm(a):
 	for i, identifier in enumerate(identifiers):
 		if mochi.time.now() - start > 60:
 			return {"data": {"attachments": len(identifiers), "remaining": len(identifiers) - i}}
-		attachment_data(identifier, a.user.identity.id)
+		attachment_fetch(identifier, a.user.identity.id)
 
 	return {"data": {"attachments": len(identifiers), "remaining": 0}}
 
