@@ -347,7 +347,7 @@ def database_upgrade(version):
 		# sequence/log copies mislead diagnosis.
 		for table in ["sequence", "log", "acknowledged", "received"]:
 			mochi.db.execute("drop table if exists " + table)
-	if version == 3:
+	if version == 3 or version == 4:
 		# Attachments move into this database, owned by the shared library.
 		# Create the table and copy existing rows across the transition bridge;
 		# the migrate helper aborts without advancing the version if the bridge
