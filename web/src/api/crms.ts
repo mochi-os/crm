@@ -3,6 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
+import type { AxiosProgressEvent } from "axios";
 import endpoints from "./endpoints";
 import { crmsRequest } from "./request";
 import type { AccessRule } from "@mochi/web";
@@ -448,6 +449,7 @@ const crmsApi = {
     content: string,
     parent?: string,
     files?: File[],
+    onProgress?: (event: AxiosProgressEvent) => void,
   ): Promise<{ data: Comment }> => {
     const formData = new FormData();
     formData.append("content", content);
@@ -458,6 +460,7 @@ const crmsApi = {
     return crmsRequest.post<{ data: Comment }>(
       endpoints.crms.commentCreate(crmId, objectId),
       formData,
+      { timeout: 0, onUploadProgress: onProgress },
     );
   },
 
@@ -504,6 +507,7 @@ const crmsApi = {
     crmId: string,
     objectId: string,
     files: File[],
+    onProgress?: (event: AxiosProgressEvent) => void,
   ): Promise<AttachmentListResponse> => {
     const formData = new FormData();
     for (const file of files) {
@@ -512,6 +516,7 @@ const crmsApi = {
     return crmsRequest.post(
       endpoints.crms.attachmentCreate(crmId, objectId),
       formData,
+      { timeout: 0, onUploadProgress: onProgress },
     );
   },
 
@@ -624,10 +629,14 @@ const crmsApi = {
   importData: async (
     crmId: string,
     file: Blob,
+    onProgress?: (event: AxiosProgressEvent) => void,
   ): Promise<{ data: { objects: number; comments: number; attachments: number; links: number } }> => {
     const form = new FormData();
     form.append("file", file, "import.json");
-    return crmsRequest.post(endpoints.crms.dataImport(crmId), form);
+    return crmsRequest.post(endpoints.crms.dataImport(crmId), form, {
+      timeout: 0,
+      onUploadProgress: onProgress,
+    });
   },
 
   // ============= View Methods =============

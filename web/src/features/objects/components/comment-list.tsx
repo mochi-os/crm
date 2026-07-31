@@ -30,6 +30,8 @@ import {
   offlineBlocked,
   useComposerDrop,
   useDiscardGuard,
+  useUploadProgress,
+  UploadProgress,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import { CommentThread } from "./comment-thread";
@@ -100,6 +102,8 @@ export function CommentList({
   });
   const people = peopleData ?? [];
 
+  const { progress: commentProgress, upload } = useUploadProgress();
+
   const createMutation = useMutation({
     mutationFn: async ({
       content,
@@ -110,6 +114,18 @@ export function CommentList({
       parent?: string;
       files?: File[];
     }) => {
+      if (files?.length) {
+        return upload((onProgress) =>
+          crmsApi.createComment(
+            crmId,
+            objectId,
+            content,
+            parent,
+            files,
+            onProgress,
+          ),
+        );
+      }
       return crmsApi.createComment(
         crmId,
         objectId,
@@ -341,6 +357,7 @@ export function CommentList({
               newComment.trim() ? () => void handleCreate() : undefined
             }
           />
+          {isSendingComment && <UploadProgress progress={commentProgress} />}
           <div className="flex items-center justify-end gap-2">
             <SendShortcutHint />
             <input
@@ -432,6 +449,7 @@ export function CommentList({
               onReplyDraftChange={setReplyDraft}
               onReplyFilesChange={setReplyFileCount}
               onSubmitReply={handleReply}
+              progress={commentProgress}
               onEdit={handleEdit}
               onDelete={handleDelete}
             />

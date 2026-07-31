@@ -31,6 +31,8 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
+  useUploadProgress,
+  UploadProgress,
 } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import type { Attachment as AttachmentData } from "@/types";
@@ -60,9 +62,13 @@ export function ObjectAttachments({
     },
   });
 
+  const { progress: uploadProgress, upload } = useUploadProgress();
+
   const uploadMutation = useMutation({
     mutationFn: async (files: File[]) => {
-      return crmsApi.uploadAttachments(crmId, objectId, files);
+      return upload((onProgress) =>
+        crmsApi.uploadAttachments(crmId, objectId, files, onProgress),
+      );
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -235,6 +241,9 @@ export function ObjectAttachments({
               )}
               <Trans>Upload</Trans>
             </Button>
+            {uploadMutation.isPending && (
+              <UploadProgress progress={uploadProgress} />
+            )}
           </>
         )}
       </div>

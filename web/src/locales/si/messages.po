@@ -18,15 +18,15 @@ msgstr ""
 msgid "Please check your internet connection and try again."
 msgstr "කරුණාකර ඔබගේ අන්තර්ජාල සම්බන්ධතාවය පරීක්ෂා කර නැවත උත්සාහ කරන්න."
 
-#: src/features/objects/components/create-object-dialog.tsx:203
+#: src/features/objects/components/create-object-dialog.tsx:206
 msgid " or "
 msgstr " හෝ "
 
-#: src/features/objects/components/comment-thread.tsx:222
+#: src/features/objects/components/comment-thread.tsx:227
 msgid "(edited)"
 msgstr "(සංස්කරණය කළා)"
 
-#: src/features/objects/components/comment-thread.tsx:206
+#: src/features/objects/components/comment-thread.tsx:211
 msgid "(expand)"
 msgstr "(පුළුල් කරන්න)"
 
@@ -70,7 +70,7 @@ msgstr "{entityLabel} නම අවශ්‍යයි"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
 msgid "{opponentName} offered a draw"
-msgstr ""
+msgstr "{opponentName} ජය පරාජය ඉදිරිපත් කළා"
 
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
@@ -88,6 +88,10 @@ msgstr "{selectedCount, plural, one {# තෝරාගත්} other {# තෝර
 msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
 msgstr "{selectedCount, plural, one {තෝරාගත් {entityName} # ක් සඳහා තොග ක්‍රියා} other {තෝරාගත් {manyName} # ක් සඳහා තොග ක්‍රියා}}"
 
+#: ../../../lib/web/src/components/ui/upload-progress.tsx:52
+msgid "{sentLabel} of {totalLabel}"
+msgstr "{totalLabel}න් {sentLabel}"
+
 #: src/features/board/components/board-column.tsx:519
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {අයිතම #} other {අයිතම #}}"
@@ -101,11 +105,11 @@ msgstr "{unreadCount, plural, one {මෙනුව විවෘත කරන්�
 msgid "+{0} nested"
 msgstr "+{0} කැදලි"
 
-#: src/features/objects/components/comment-thread.tsx:203
+#: src/features/objects/components/comment-thread.tsx:208
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} තවත් පිළිතුරු"
 
-#: src/features/objects/components/comment-thread.tsx:202
+#: src/features/objects/components/comment-thread.tsx:207
 msgid "1 reply"
 msgstr "පිළිතුරු 1"
 
@@ -123,7 +127,7 @@ msgstr "නිරපේක්ෂ (දිනය සහ වේලාව)"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
 msgid "Accept"
-msgstr ""
+msgstr "පිළිගන්න"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:84
 msgid "Access"
@@ -183,7 +187,7 @@ msgstr "ක්‍රියාකාරකම"
 msgid "Add"
 msgstr "එක් කරන්න"
 
-#: src/features/objects/components/comment-list.tsx:325
+#: src/features/objects/components/comment-list.tsx:341
 msgid "Add a comment..."
 msgstr "අදහසක් එක් කරන්න..."
 
@@ -301,7 +305,7 @@ msgstr "සියලු CRM"
 msgid "Allow anyone to search for {0}"
 msgstr "ඕනෑම කෙනෙකුට {0} සෙවීමට ඉඩ දෙන්න"
 
-#: src/features/crms/components/create-crm-dialog.tsx:229
+#: src/features/crms/components/create-crm-dialog.tsx:236
 msgid "Allow anyone to search for CRM"
 msgstr "CRM සොයා ගැනීමට ඕනෑම කෙනෙකුට අවසර දෙන්න"
 
@@ -331,7 +335,7 @@ msgid "Anyone who is logged in"
 msgstr "පිවිසී සිටින ඕනෑම කෙනෙක්"
 
 #. placeholder {0}: deleteTarget?.name
-#: src/features/objects/components/object-attachments.tsx:248
+#: src/features/objects/components/object-attachments.tsx:257
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "ඔබට \"{0}\" මැකීමට අවශ්‍ය බව විශ්වාසද?"
 
@@ -343,7 +347,7 @@ msgstr "ඔබට \"{title}\" මැකීමට අවශ්‍ය බව ව�
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "ඔබට \"{name}\" තීරුව මැකීමට අවශ්‍ය බව විශ්වාසද? මෙය අහෝසි කළ නොහැක."
 
-#: src/features/objects/components/comment-thread.tsx:478
+#: src/features/objects/components/comment-thread.tsx:484
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "ඔබට මෙම අදහස මැකීමට අවශ්‍ය බව විශ්වාසද? මෙය සියලු පිළිතුරු ද මකා දමයි."
 
@@ -363,13 +367,13 @@ msgstr "ආරෝහණ"
 msgid "Ascending"
 msgstr "ආරෝහණ"
 
-#: src/features/objects/components/comment-list.tsx:362
-#: src/features/objects/components/comment-list.tsx:367
+#: src/features/objects/components/comment-list.tsx:379
+#: src/features/objects/components/comment-list.tsx:384
 msgid "Attach comment files"
 msgstr "අදහස්වල ගොනු අමුණන්න"
 
-#: src/features/objects/components/comment-thread.tsx:432
-#: src/features/objects/components/comment-thread.tsx:437
+#: src/features/objects/components/comment-thread.tsx:438
+#: src/features/objects/components/comment-thread.tsx:443
 msgid "Attach reply files"
 msgstr "පිළිතුරු ගොනු අමුණන්න"
 
@@ -461,21 +465,21 @@ msgstr "මෙහි දරුවෙකු විය හැක"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/board/components/board-column.tsx:603
-#: src/features/crms/components/create-crm-dialog.tsx:296
+#: src/features/crms/components/create-crm-dialog.tsx:304
 #: src/features/editor/components/option-dialog.tsx:146
-#: src/features/objects/components/comment-thread.tsx:243
+#: src/features/objects/components/comment-thread.tsx:248
 #: src/routes/_authenticated/$crmId/design.tsx:305
 #: src/routes/_authenticated/$crmId/index.tsx:1100
 msgid "Cancel"
 msgstr "අවලංගු කරන්න"
 
-#: src/features/objects/components/comment-list.tsx:379
-#: src/features/objects/components/comment-list.tsx:384
+#: src/features/objects/components/comment-list.tsx:396
+#: src/features/objects/components/comment-list.tsx:401
 msgid "Cancel comment"
 msgstr "අදහස අවලංගු කරන්න"
 
-#: src/features/objects/components/comment-thread.tsx:448
-#: src/features/objects/components/comment-thread.tsx:453
+#: src/features/objects/components/comment-thread.tsx:454
+#: src/features/objects/components/comment-thread.tsx:459
 msgid "Cancel reply"
 msgstr "පිළිතුර අවලංගු කරන්න"
 
@@ -502,7 +506,7 @@ msgstr "පරීක්ෂා ලැයිස්තුව"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx:38
 msgid "Choose a game from the sidebar or start a new one."
-msgstr ""
+msgstr "පැති තීරුවෙන් ක්‍රීඩාවක් තෝරන්න හෝ නව එකක් ආරම්භ කරන්න."
 
 #: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -568,8 +572,8 @@ msgstr "තේරීම හිස් කරන්න (Escape)"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
-#: src/features/objects/components/create-object-dialog.tsx:381
 #: src/features/objects/components/create-object-dialog.tsx:386
+#: src/features/objects/components/create-object-dialog.tsx:391
 msgid "Close"
 msgstr "වසන්න"
 
@@ -636,8 +640,8 @@ msgstr "ළඟදීම පැමිණේ!"
 msgid "Command Palette"
 msgstr "විධාන පැලට්ටුව"
 
-#: src/features/objects/components/comment-thread.tsx:324
-#: src/features/objects/components/comment-thread.tsx:331
+#: src/features/objects/components/comment-thread.tsx:329
+#: src/features/objects/components/comment-thread.tsx:336
 msgid "Comment actions"
 msgstr "අදහස් ක්‍රියා"
 
@@ -734,8 +738,8 @@ msgstr "එම ගිණුම සමඟ සත්‍යාපනය කළ න�
 
 #: src/features/board/components/board-column.tsx:539
 #: src/features/board/components/board-column.tsx:678
-#: src/features/objects/components/create-object-dialog.tsx:371
-#: src/features/objects/components/create-object-dialog.tsx:541
+#: src/features/objects/components/create-object-dialog.tsx:376
+#: src/features/objects/components/create-object-dialog.tsx:547
 #: src/features/tree/components/tree-view.tsx:687
 msgid "Create"
 msgstr "නිර්මාණය කරන්න"
@@ -745,19 +749,19 @@ msgstr "නිර්මාණය කරන්න"
 msgid "Create {0}"
 msgstr "{0} සාදන්න"
 
-#: src/features/crms/components/create-crm-dialog.tsx:211
+#: src/features/crms/components/create-crm-dialog.tsx:218
 #: src/features/crms/pages/crms-list-page.tsx:103
 msgid "Create a new CRM"
 msgstr "නව CRM එකක් නිර්මාණය කරන්න"
 
-#: src/features/objects/components/create-object-dialog.tsx:350
+#: src/features/objects/components/create-object-dialog.tsx:355
 msgid "Create a new CRM object."
 msgstr "නව CRM වස්තුවක් නිර්මාණය කරන්න."
 
 #: src/components/layout/crms-layout.tsx:59
-#: src/features/crms/components/create-crm-dialog.tsx:199
-#: src/features/crms/components/create-crm-dialog.tsx:209
-#: src/features/crms/components/create-crm-dialog.tsx:299
+#: src/features/crms/components/create-crm-dialog.tsx:206
+#: src/features/crms/components/create-crm-dialog.tsx:216
+#: src/features/crms/components/create-crm-dialog.tsx:307
 msgid "Create CRM"
 msgstr "CRM නිර්මාණය කරන්න"
 
@@ -765,7 +769,7 @@ msgstr "CRM නිර්මාණය කරන්න"
 msgid "Create new item"
 msgstr "නව අයිතමයක් නිර්මාණය කරන්න"
 
-#: src/features/objects/components/create-object-dialog.tsx:349
+#: src/features/objects/components/create-object-dialog.tsx:354
 msgid "Create object"
 msgstr "වස්තුවක් නිර්මාණය කරන්න"
 
@@ -778,13 +782,13 @@ msgstr "සෑදීම, සංස්කරණය, අදහස් දැක්�
 msgid "Created"
 msgstr "නිර්මාණය කරන ලදී"
 
-#: src/features/crms/components/create-crm-dialog.tsx:87
+#: src/features/crms/components/create-crm-dialog.tsx:90
 msgid "Creating CRM..."
 msgstr "CRM සාදමින්..."
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
-#: src/features/crms/components/create-crm-dialog.tsx:299
-#: src/features/objects/components/create-object-dialog.tsx:541
+#: src/features/crms/components/create-crm-dialog.tsx:307
+#: src/features/objects/components/create-object-dialog.tsx:547
 msgid "Creating..."
 msgstr "නිර්මාණය කරමින්..."
 
@@ -793,7 +797,7 @@ msgstr "නිර්මාණය කරමින්..."
 msgid "CRM actions"
 msgstr "CRM ක්‍රියා"
 
-#: src/features/crms/components/create-crm-dialog.tsx:88
+#: src/features/crms/components/create-crm-dialog.tsx:91
 msgid "CRM created"
 msgstr "CRM නිර්මාණය කරන ලදී"
 
@@ -857,7 +861,7 @@ msgstr "දත්ත ගැටුමක්"
 #. placeholder {0}: imported.data?.objects ?? 0
 #. placeholder {1}: imported.data?.comments ?? 0
 #. placeholder {2}: imported.data?.links ?? 0
-#: src/features/crms/components/create-crm-dialog.tsx:115
+#: src/features/crms/components/create-crm-dialog.tsx:122
 msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
 msgstr "දත්ත ආයාත කරන ලදී ({0, plural, one {වස්තු #ක්} other {වස්තු #ක්}}, {1, plural, one {අදහස් #ක්} other {අදහස් #ක්}}, {2, plural, one {සබැඳි #ක්} other {සබැඳි #ක්}})"
 
@@ -867,7 +871,7 @@ msgstr "දිනය"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:41
 msgid "Decline"
-msgstr ""
+msgstr "ප්‍රතික්ෂේප කරන්න"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
@@ -883,19 +887,19 @@ msgstr "පෙරනිමි වර්ග කිරීම"
 
 #: src/features/board/components/board-column.tsx:558
 #: src/features/board/components/board-column.tsx:619
-#: src/features/objects/components/comment-thread.tsx:312
-#: src/features/objects/components/comment-thread.tsx:355
-#: src/features/objects/components/comment-thread.tsx:479
-#: src/features/objects/components/object-attachments.tsx:146
-#: src/features/objects/components/object-attachments.tsx:156
-#: src/features/objects/components/object-attachments.tsx:205
-#: src/features/objects/components/object-attachments.tsx:249
+#: src/features/objects/components/comment-thread.tsx:317
+#: src/features/objects/components/comment-thread.tsx:360
+#: src/features/objects/components/comment-thread.tsx:485
+#: src/features/objects/components/object-attachments.tsx:152
+#: src/features/objects/components/object-attachments.tsx:162
+#: src/features/objects/components/object-attachments.tsx:211
+#: src/features/objects/components/object-attachments.tsx:258
 #: src/features/objects/components/object-detail-panel.tsx:519
 #: src/routes/_authenticated/$crmId_.settings.tsx:343
 msgid "Delete"
 msgstr "මකන්න"
 
-#: src/features/objects/components/object-attachments.tsx:247
+#: src/features/objects/components/object-attachments.tsx:256
 msgid "Delete attachment"
 msgstr "ඇමුණුම මකන්න"
 
@@ -907,7 +911,7 @@ msgstr "පන්තිය මකන්න"
 msgid "Delete column"
 msgstr "තීරුව මකන්න"
 
-#: src/features/objects/components/comment-thread.tsx:477
+#: src/features/objects/components/comment-thread.tsx:483
 msgid "Delete comment"
 msgstr "අදහස මකන්න"
 
@@ -944,7 +948,7 @@ msgstr "විකල්පය {0} මකන්න"
 msgid "Delete view"
 msgstr "දැක්ම මකන්න"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:99
+#: ../../../lib/web/src/components/restore-banner.tsx:115
 msgid "Delete your account on the old server"
 msgstr "පැරණි සේවාදායකයේ ඔබේ ගිණුම මකන්න"
 
@@ -971,7 +975,7 @@ msgstr "විස්තරය"
 msgid "Design"
 msgstr "Design"
 
-#: src/features/crms/components/create-crm-dialog.tsx:116
+#: src/features/crms/components/create-crm-dialog.tsx:123
 #: src/routes/_authenticated/$crmId/design.tsx:110
 msgid "Design imported"
 msgstr "Design ආයාත කරන ලදී"
@@ -1016,8 +1020,8 @@ msgstr "කෙටුම්පත ඉවත ලන්නද?"
 msgid "Disconnected"
 msgstr "විසන්ධියි"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:79
-#: ../../../lib/web/src/components/restore-banner.tsx:85
+#: ../../../lib/web/src/components/restore-banner.tsx:94
+#: ../../../lib/web/src/components/restore-banner.tsx:100
 msgid "Dismiss"
 msgstr "ඉවත ලන්න"
 
@@ -1043,7 +1047,7 @@ msgstr "අන්තර්ගතය එක් කිරීමට තීරුව
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
-#: src/features/objects/components/object-attachments.tsx:192
+#: src/features/objects/components/object-attachments.tsx:198
 msgid "Download"
 msgstr "බාගත කරන්න"
 
@@ -1073,8 +1077,8 @@ msgstr "අනුපිටපත්"
 msgid "Dyslexia-friendly"
 msgstr "ඩිස්ලෙක්සියාවට මිත්‍ර"
 
-#: src/features/objects/components/comment-thread.tsx:301
-#: src/features/objects/components/comment-thread.tsx:346
+#: src/features/objects/components/comment-thread.tsx:306
+#: src/features/objects/components/comment-thread.tsx:351
 msgid "Edit"
 msgstr "සංස්කරණය කරන්න"
 
@@ -1184,7 +1188,7 @@ msgstr "පිටපත් කිරීමට අසමත් විය"
 msgid "Failed to create class"
 msgstr "පන්තියක් සෑදීමට අසමත් විය"
 
-#: src/features/crms/components/create-crm-dialog.tsx:89
+#: src/features/crms/components/create-crm-dialog.tsx:92
 msgid "Failed to create CRM"
 msgstr "CRM එකක් සෑදීමට අසමත් විය"
 
@@ -1205,11 +1209,11 @@ msgstr "විකල්පයක් සෑදීමට අසමත් විය
 msgid "Failed to create view"
 msgstr "දසුනක් සෑදීමට අසමත් විය"
 
-#: src/features/objects/components/object-attachments.tsx:88
+#: src/features/objects/components/object-attachments.tsx:94
 msgid "Failed to delete attachment"
 msgstr "ඇමුණුම මැකීමට අසමත් විය"
 
-#: src/features/objects/components/comment-list.tsx:172
+#: src/features/objects/components/comment-list.tsx:188
 msgid "Failed to delete comment"
 msgstr "අදහස මැකීමට අසමත් විය"
 
@@ -1236,7 +1240,7 @@ msgstr "දත්ත නිර්යාත කිරීමට අසමත් �
 msgid "Failed to export design"
 msgstr "සැලසුම අපනයනය කිරීමට අසමත් විය"
 
-#: src/features/crms/components/create-crm-dialog.tsx:117
+#: src/features/crms/components/create-crm-dialog.tsx:124
 msgid "Failed to import data"
 msgstr "දත්ත ආයාත කිරීමට අසමත් විය"
 
@@ -1274,11 +1278,11 @@ msgstr "අයිතමය පූරණය කිරීමට අසමත් �
 msgid "Failed to load video"
 msgstr "වීඩියෝව පූරණය කිරීමට අසමත් විය"
 
-#: src/features/objects/components/comment-list.tsx:130
+#: src/features/objects/components/comment-list.tsx:146
 msgid "Failed to post comment"
 msgstr "අදහස පළ කිරීමට අසමත් විය"
 
-#: src/features/crms/components/create-crm-dialog.tsx:184
+#: src/features/crms/components/create-crm-dialog.tsx:191
 #: src/routes/_authenticated/$crmId/design.tsx:267
 msgid "Failed to read file"
 msgstr "ගොනුව කියවීමට අසමත් විය"
@@ -1326,7 +1330,7 @@ msgstr "ප්‍රවේශ මට්ටම යාවත්කාලීන ක
 msgid "Failed to update category"
 msgstr "කාණ්ඩය යාවත්කාලීන කිරීමට අසමත් විය"
 
-#: src/features/objects/components/comment-list.tsx:155
+#: src/features/objects/components/comment-list.tsx:171
 msgid "Failed to update comment"
 msgstr "අදහස යාවත්කාලීන කිරීමට අසමත් විය"
 
@@ -1338,7 +1342,7 @@ msgstr "crm යාවත්කාලීන කිරීමට අසමත් �
 msgid "Failed to update field"
 msgstr "ක්ෂේත්‍රය යාවත්කාලීන කිරීමට අසමත් විය"
 
-#: src/features/objects/components/object-attachments.tsx:73
+#: src/features/objects/components/object-attachments.tsx:79
 msgid "Failed to upload attachment"
 msgstr "ඇමුණුම උඩුගත කිරීමට අසමත් විය"
 
@@ -1346,9 +1350,9 @@ msgstr "ඇමුණුම උඩුගත කිරීමට අසමත් �
 msgid "Fields"
 msgstr "ක්ෂේත්‍ර"
 
-#: src/features/objects/components/create-object-dialog.tsx:462
-#: src/features/objects/components/object-attachments.tsx:111
-#: src/features/objects/components/object-attachments.tsx:128
+#: src/features/objects/components/create-object-dialog.tsx:467
+#: src/features/objects/components/object-attachments.tsx:117
+#: src/features/objects/components/object-attachments.tsx:134
 msgid "Files"
 msgstr "ගොනු"
 
@@ -1365,7 +1369,7 @@ msgstr "CRMs සොයන්න"
 msgid "Fingerprint"
 msgstr "ඇඟිලි සලකුණ"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:88
+#: ../../../lib/web/src/components/restore-banner.tsx:103
 msgid "Finish moving your account"
 msgstr "ඔබේ ගිණුම ගෙන යාම අවසන් කරන්න"
 
@@ -1492,11 +1496,11 @@ msgstr "සැලසුම් වින්‍යාසයක් ආයාත ක
 msgid "Import design"
 msgstr "සැලසුම ආයාත කරන්න"
 
-#: src/features/crms/components/create-crm-dialog.tsx:239
+#: src/features/crms/components/create-crm-dialog.tsx:246
 msgid "Import from backup (optional)"
 msgstr "උපස්ථයෙන් ආයාත කරන්න (විකල්ප)"
 
-#: src/features/crms/components/create-crm-dialog.tsx:112
+#: src/features/crms/components/create-crm-dialog.tsx:119
 msgid "Importing data..."
 msgstr "දත්ත ආයාත වෙමින්..."
 
@@ -1524,7 +1528,7 @@ msgstr "උනන්දු"
 msgid "Invalid date"
 msgstr "අවලංගු දිනය"
 
-#: src/features/crms/components/create-crm-dialog.tsx:177
+#: src/features/crms/components/create-crm-dialog.tsx:184
 #: src/routes/_authenticated/$crmId/design.tsx:263
 msgid "Invalid JSON file"
 msgstr "අවලංගු JSON ගොනුව"
@@ -1670,7 +1674,7 @@ msgstr "මෙනුව"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:35
 msgid "Message"
-msgstr ""
+msgstr "පණිවිඩය"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:85
 msgid "Metric"
@@ -1689,7 +1693,7 @@ msgid "Monday"
 msgstr "සඳුදා"
 
 #: src/features/board/components/board-column.tsx:589
-#: src/features/crms/components/create-crm-dialog.tsx:217
+#: src/features/crms/components/create-crm-dialog.tsx:224
 #: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
@@ -1703,7 +1707,7 @@ msgstr "නම"
 msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
 msgstr "නමෙහි කෝණ වරහන්, පසුපස ඇල ඉරි, තිත් කොමා, උද්ධෘත ලකුණු හෝ පසුපස ලකුණු තිබිය නොහැක"
 
-#: src/features/crms/components/create-crm-dialog.tsx:75
+#: src/features/crms/components/create-crm-dialog.tsx:78
 msgid "Name is required"
 msgstr "නම අවශ්‍යයි"
 
@@ -1717,7 +1721,7 @@ msgid "Network error"
 msgstr "ජාල දෝෂය"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/features/objects/components/create-object-dialog.tsx:356
+#: src/features/objects/components/create-object-dialog.tsx:361
 #: src/routes/_authenticated/$crmId/index.tsx:978
 #: src/routes/_authenticated/$crmId/index.tsx:995
 msgid "New"
@@ -1731,14 +1735,14 @@ msgstr "නව {0}"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx:42
 #: ../../../lib/web/src/components/game/game-empty-state.tsx:54
 msgid "New game"
-msgstr ""
+msgstr "නව ක්‍රීඩාවක්"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "ඊළඟ පින්තූරය"
 
-#: src/features/objects/components/create-object-dialog.tsx:429
+#: src/features/objects/components/create-object-dialog.tsx:434
 msgid "No {parentClassNames} to add to"
 msgstr "එක් කිරීමට {parentClassNames} නොමැත"
 
@@ -1754,7 +1758,7 @@ msgstr "ප්‍රවේශ නියමයන් කිසිවක් සැ
 msgid "No activity yet"
 msgstr "තවම ක්‍රියාකාරකම් නැත"
 
-#: src/features/objects/components/comment-list.tsx:414
+#: src/features/objects/components/comment-list.tsx:431
 msgid "No comments yet"
 msgstr "තවම අදහස් නැත"
 
@@ -1769,13 +1773,13 @@ msgstr "CRMs කිසිවක් හමු නොවීය"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx:51
 msgid "No games yet"
-msgstr ""
+msgstr "තවම ක්‍රීඩා නැත"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:241
 msgid "No groups available"
 msgstr "කණ්ඩායම් ලබා ගත නොහැක"
 
-#: src/features/objects/components/create-object-dialog.tsx:396
+#: src/features/objects/components/create-object-dialog.tsx:401
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "තවම අයිතම වර්ග සෑදිය නොහැක. අවශ්‍ය මූලික අයිතම පළමුව සාදන්න."
 
@@ -1849,9 +1853,9 @@ msgstr "බැලීම් නැත"
 #: src/features/editor/components/edit-dialogs.tsx:497
 #: src/features/editor/components/edit-dialogs.tsx:764
 #: src/features/editor/components/edit-dialogs.tsx:767
-#: src/features/objects/components/create-object-dialog.tsx:412
-#: src/features/objects/components/create-object-dialog.tsx:415
-#: src/features/objects/components/create-object-dialog.tsx:419
+#: src/features/objects/components/create-object-dialog.tsx:417
+#: src/features/objects/components/create-object-dialog.tsx:420
+#: src/features/objects/components/create-object-dialog.tsx:424
 #: src/features/objects/components/object-detail-panel.tsx:434
 #: src/features/objects/components/object-detail-panel.tsx:447
 #: src/features/objects/components/object-detail-panel.tsx:450
@@ -1990,7 +1994,7 @@ msgstr "හිමිකරු"
 msgid "Page {currentPage} of {totalPages}"
 msgstr "පිටුව {currentPage} / {totalPages}"
 
-#: src/features/objects/components/create-object-dialog.tsx:404
+#: src/features/objects/components/create-object-dialog.tsx:409
 #: src/features/objects/components/object-detail-panel.tsx:428
 #: src/routes/_authenticated/$crmId/index.tsx:903
 msgid "Parent"
@@ -2004,7 +2008,7 @@ msgstr "ප්‍රවේශ යතුර"
 msgid "Passkey verification failed. Please try again."
 msgstr "මුරයතුර සත්‍යාපනය අසාර්ථක විය. නැවත උත්සාහ කරන්න."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:135
+#: ../../../lib/web/src/components/restore-banner.tsx:152
 msgid "Passkeys"
 msgstr "මුරයතුරු"
 
@@ -2049,6 +2053,10 @@ msgstr "පෙර පින්තූරය"
 msgid "Privacy"
 msgstr "පෞද්ගලිකත්වය"
 
+#: ../../../lib/web/src/components/ui/upload-progress.tsx:50
+msgid "Processing…"
+msgstr "සකසමින්…"
+
 #: ../../../lib/web/src/components/layout/nav-user.tsx:137
 #: ../../../lib/web/src/components/profile-dropdown.tsx:114
 msgid "Profile"
@@ -2070,7 +2078,7 @@ msgstr "තල්ලු දැනුම්දීම"
 msgid "Raised"
 msgstr "උස්කළ"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:107
+#: ../../../lib/web/src/components/restore-banner.tsx:124
 msgid "Re-link your accounts on this server"
 msgstr "මෙම සේවාදායකයේ ඔබේ ගිණුම් නැවත සම්බන්ධ කරන්න"
 
@@ -2078,7 +2086,7 @@ msgstr "මෙම සේවාදායකයේ ඔබේ ගිණුම් �
 msgid "Re-order columns"
 msgstr "තීරු නැවත අනුපිළිවෙළට සැකසීම"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:129
+#: ../../../lib/web/src/components/restore-banner.tsx:146
 msgid "Re-register your passkeys on this server"
 msgstr "මෙම සේවාදායකයේ ඔබගේ මුරයතුරු නැවත ලියාපදිංචි කරන්න"
 
@@ -2120,9 +2128,9 @@ msgstr "පැය 24 තුළ සාපේක්ෂ, නැතහොත් න�
 #: ../../../lib/web/src/components/comment-composer.tsx:232
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:282
+#: src/features/crms/components/create-crm-dialog.tsx:289
 #: src/features/editor/components/add-dialogs.tsx:188
-#: src/features/objects/components/create-object-dialog.tsx:493
+#: src/features/objects/components/create-object-dialog.tsx:498
 #: src/features/objects/components/object-links.tsx:245
 #: src/features/objects/components/object-links.tsx:258
 msgid "Remove"
@@ -2192,13 +2200,13 @@ msgstr "design ප්‍රතිස්ථාපනය කරන්නද?"
 msgid "Replacing..."
 msgstr "ප්‍රතිස්ථාපනය කරමින්..."
 
-#: src/features/objects/components/comment-thread.tsx:288
-#: src/features/objects/components/comment-thread.tsx:336
+#: src/features/objects/components/comment-thread.tsx:293
+#: src/features/objects/components/comment-thread.tsx:341
 msgid "Reply"
 msgstr "පිළිතුර"
 
 #. placeholder {0}: comment.name || comment.author
-#: src/features/objects/components/comment-thread.tsx:379
+#: src/features/objects/components/comment-thread.tsx:384
 msgid "Reply to {0}..."
 msgstr "{0} ට පිළිතුරු දෙන්න..."
 
@@ -2249,7 +2257,7 @@ msgstr "පේළි කාණ්ඩගත කරන්නේ"
 msgid "Rows per page"
 msgstr "පිටුවකට පේළි"
 
-#: src/features/crms/components/create-crm-dialog.tsx:222
+#: src/features/crms/components/create-crm-dialog.tsx:229
 msgid "Sales CRM"
 msgstr "විකුණුම් CRM"
 
@@ -2260,7 +2268,7 @@ msgstr "සෙනසුරාදා"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
-#: src/features/objects/components/comment-thread.tsx:263
+#: src/features/objects/components/comment-thread.tsx:268
 #: src/routes/_authenticated/$crmId/index.tsx:1112
 msgid "Save"
 msgstr "සුරකින්න"
@@ -2349,7 +2357,7 @@ msgstr "ක්ෂේත්‍රයක් තෝරන්න"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx:37
 msgid "Select a game"
-msgstr ""
+msgstr "ක්‍රීඩාවක් තෝරන්න"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
@@ -2428,7 +2436,7 @@ msgstr "ඊමේල් යවන්න"
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:52
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:61
 msgid "Send message"
-msgstr ""
+msgstr "පණිවිඩය යවන්න"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:145
 msgid "Serif"
@@ -2529,7 +2537,7 @@ msgstr "වර්ග කරන්න"
 msgid "Spacious"
 msgstr "විශාල"
 
-#: src/features/objects/components/comment-list.tsx:415
+#: src/features/objects/components/comment-list.tsx:432
 msgid "Start the discussion by adding the first comment."
 msgstr "පළමු අදහස එක් කිරීමෙන් සාකච්ඡාව ආරම්භ කරන්න."
 
@@ -2546,13 +2554,13 @@ msgstr "නැරඹීම නවත්වන්න"
 msgid "Subject"
 msgstr "විෂය"
 
-#: src/features/objects/components/comment-list.tsx:395
-#: src/features/objects/components/comment-list.tsx:404
+#: src/features/objects/components/comment-list.tsx:412
+#: src/features/objects/components/comment-list.tsx:421
 msgid "Submit comment"
 msgstr "අදහස ඉදිරිපත් කරන්න"
 
-#: src/features/objects/components/comment-thread.tsx:463
-#: src/features/objects/components/comment-thread.tsx:468
+#: src/features/objects/components/comment-thread.tsx:469
+#: src/features/objects/components/comment-thread.tsx:474
 msgid "Submit reply"
 msgstr "පිළිතුර ඉදිරිපත් කරන්න"
 
@@ -2769,7 +2777,7 @@ msgstr "විධානයක් ටයිප් කරන්න හෝ සො�
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:39
 msgid "Type a message…"
-msgstr ""
+msgstr "පණිවිඩයක් ටයිප් කරන්න…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:191
 msgid "Type to search users"
@@ -2832,7 +2840,7 @@ msgid "Unsubscribing..."
 msgstr "දායකත්වය ඉවත් කරමින්..."
 
 #: src/features/board/components/board-card.tsx:22
-#: src/features/objects/components/create-object-dialog.tsx:187
+#: src/features/objects/components/create-object-dialog.tsx:190
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302
 #: src/features/objects/components/object-links.tsx:71
@@ -2854,15 +2862,19 @@ msgstr "යාවත්කාලීන කරන ලදී"
 msgid "Updating access..."
 msgstr "ප්‍රවේශය යාවත්කාලීන කරමින්..."
 
-#: src/features/objects/components/create-object-dialog.tsx:525
-#: src/features/objects/components/object-attachments.tsx:236
+#: src/features/objects/components/create-object-dialog.tsx:530
+#: src/features/objects/components/object-attachments.tsx:242
 msgid "Upload"
 msgstr "උඩුගත කරන්න"
 
-#: src/features/crms/components/create-crm-dialog.tsx:255
+#: src/features/crms/components/create-crm-dialog.tsx:262
 #: src/routes/_authenticated/$crmId/design.tsx:298
 msgid "Upload .json file"
 msgstr ".json ගොනුව උඩුගත කරන්න"
+
+#: ../../../lib/web/src/components/ui/upload-progress.tsx:34
+msgid "Upload progress"
+msgstr "උඩුගත කිරීමේ ප්‍රගතිය"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:338
 msgid "Use your passkey"
@@ -2997,7 +3009,7 @@ msgstr "ඔබ පහත අගයන් ඉදිරිපත් කළා:"
 msgid "You're all caught up!"
 msgstr "ඔබ සියල්ල බැලුවා!"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:91
+#: ../../../lib/web/src/components/restore-banner.tsx:106
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "ඔබේ ගිණුම {source} සිට මෙහි ගෙන ආවා. එතන ඉවත් කරන තෙක්, පණිවිඩ සහ දැනුම්දීම් සේවාදායකයන් දෙකටම ළඟා විය හැකිය, ඔබේ සමහර අන්තර්ගතය පැරණි සේවාදායකයෙන් ලබාදීම ඉදිරියටත් සිදු වේ, සහ අනුගාමිකයින්ට ඔබව මෙහිදී සොයා ගැනීමට මිනිත්තු කිහිපයක් ගත වනු ඇත."
 

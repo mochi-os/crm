@@ -18,15 +18,15 @@ msgstr ""
 msgid "Please check your internet connection and try again."
 msgstr "Праверце падключэнне да інтэрнэту і паспрабуйце зноў."
 
-#: src/features/objects/components/create-object-dialog.tsx:203
+#: src/features/objects/components/create-object-dialog.tsx:206
 msgid " or "
 msgstr " або "
 
-#: src/features/objects/components/comment-thread.tsx:222
+#: src/features/objects/components/comment-thread.tsx:227
 msgid "(edited)"
 msgstr "(зменена)"
 
-#: src/features/objects/components/comment-thread.tsx:206
+#: src/features/objects/components/comment-thread.tsx:211
 msgid "(expand)"
 msgstr "(разгарнуць)"
 
@@ -70,7 +70,7 @@ msgstr "Патрабуецца назва {entityLabel}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
 msgid "{opponentName} offered a draw"
-msgstr ""
+msgstr "{opponentName} прапанаваў нічыю"
 
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
@@ -88,6 +88,10 @@ msgstr "{selectedCount, plural, one {# выбрана} few {# выбрана} ma
 msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
 msgstr "{selectedCount, plural, one {Масавыя дзеянні для # выбранага {entityName}} few {Масавыя дзеянні для # выбраных {manyName}} many {Масавыя дзеянні для # выбраных {manyName}} other {Масавыя дзеянні для # выбранага {manyName}}}"
 
+#: ../../../lib/web/src/components/ui/upload-progress.tsx:52
+msgid "{sentLabel} of {totalLabel}"
+msgstr "{sentLabel} з {totalLabel}"
+
 #: src/features/board/components/board-column.tsx:519
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# элемент} few {# элементы} many {# элементаў} other {# элемента}}"
@@ -101,11 +105,11 @@ msgstr "{unreadCount, plural, one {Адкрыць меню (# непрачыта
 msgid "+{0} nested"
 msgstr "+{0} укладзеных"
 
-#: src/features/objects/components/comment-thread.tsx:203
+#: src/features/objects/components/comment-thread.tsx:208
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} яшчэ адказаў"
 
-#: src/features/objects/components/comment-thread.tsx:202
+#: src/features/objects/components/comment-thread.tsx:207
 msgid "1 reply"
 msgstr "1 адказ"
 
@@ -123,7 +127,7 @@ msgstr "Абсалютны (дата і час)"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
 msgid "Accept"
-msgstr ""
+msgstr "Прыняць"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:84
 msgid "Access"
@@ -183,7 +187,7 @@ msgstr "Актыўнасць"
 msgid "Add"
 msgstr "Дадаць"
 
-#: src/features/objects/components/comment-list.tsx:325
+#: src/features/objects/components/comment-list.tsx:341
 msgid "Add a comment..."
 msgstr "Дадаць каментарый..."
 
@@ -301,7 +305,7 @@ msgstr "Усе CRM"
 msgid "Allow anyone to search for {0}"
 msgstr "Дазволіць усім шукаць {0}"
 
-#: src/features/crms/components/create-crm-dialog.tsx:229
+#: src/features/crms/components/create-crm-dialog.tsx:236
 msgid "Allow anyone to search for CRM"
 msgstr "Дазволіць усім шукаць CRM"
 
@@ -331,7 +335,7 @@ msgid "Anyone who is logged in"
 msgstr "Кожны, хто ўвайшоў"
 
 #. placeholder {0}: deleteTarget?.name
-#: src/features/objects/components/object-attachments.tsx:248
+#: src/features/objects/components/object-attachments.tsx:257
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Вы ўпэўнены, што хочаце выдаліць \"{0}\"?"
 
@@ -343,7 +347,7 @@ msgstr "Вы ўпэўнены, што хочаце выдаліць \"{title}\"?
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Вы ўпэўнены, што хочаце выдаліць слупок \"{name}\"? Гэта нельга адмяніць."
 
-#: src/features/objects/components/comment-thread.tsx:478
+#: src/features/objects/components/comment-thread.tsx:484
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "Вы ўпэўнены, што хочаце выдаліць гэты каментарый? Усе адказы таксама будуць выдалены."
 
@@ -363,13 +367,13 @@ msgstr "Узрастанне"
 msgid "Ascending"
 msgstr "Па ўзрастанні"
 
-#: src/features/objects/components/comment-list.tsx:362
-#: src/features/objects/components/comment-list.tsx:367
+#: src/features/objects/components/comment-list.tsx:379
+#: src/features/objects/components/comment-list.tsx:384
 msgid "Attach comment files"
 msgstr "Прымацаваць файлы каментарыя"
 
-#: src/features/objects/components/comment-thread.tsx:432
-#: src/features/objects/components/comment-thread.tsx:437
+#: src/features/objects/components/comment-thread.tsx:438
+#: src/features/objects/components/comment-thread.tsx:443
 msgid "Attach reply files"
 msgstr "Прымацаваць файлы адказу"
 
@@ -461,21 +465,21 @@ msgstr "Можа быць даччыным для"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/board/components/board-column.tsx:603
-#: src/features/crms/components/create-crm-dialog.tsx:296
+#: src/features/crms/components/create-crm-dialog.tsx:304
 #: src/features/editor/components/option-dialog.tsx:146
-#: src/features/objects/components/comment-thread.tsx:243
+#: src/features/objects/components/comment-thread.tsx:248
 #: src/routes/_authenticated/$crmId/design.tsx:305
 #: src/routes/_authenticated/$crmId/index.tsx:1100
 msgid "Cancel"
 msgstr "Адмена"
 
-#: src/features/objects/components/comment-list.tsx:379
-#: src/features/objects/components/comment-list.tsx:384
+#: src/features/objects/components/comment-list.tsx:396
+#: src/features/objects/components/comment-list.tsx:401
 msgid "Cancel comment"
 msgstr "Адмяніць каментарый"
 
-#: src/features/objects/components/comment-thread.tsx:448
-#: src/features/objects/components/comment-thread.tsx:453
+#: src/features/objects/components/comment-thread.tsx:454
+#: src/features/objects/components/comment-thread.tsx:459
 msgid "Cancel reply"
 msgstr "Адмяніць адказ"
 
@@ -502,7 +506,7 @@ msgstr "Спіс задач"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx:38
 msgid "Choose a game from the sidebar or start a new one."
-msgstr ""
+msgstr "Выберыце гульню з бакавой панэлі або пачніце новую."
 
 #: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -568,8 +572,8 @@ msgstr "Ачысціць выбар (Escape)"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
-#: src/features/objects/components/create-object-dialog.tsx:381
 #: src/features/objects/components/create-object-dialog.tsx:386
+#: src/features/objects/components/create-object-dialog.tsx:391
 msgid "Close"
 msgstr "Закрыць"
 
@@ -636,8 +640,8 @@ msgstr "Хутка!"
 msgid "Command Palette"
 msgstr "Палітра каманд"
 
-#: src/features/objects/components/comment-thread.tsx:324
-#: src/features/objects/components/comment-thread.tsx:331
+#: src/features/objects/components/comment-thread.tsx:329
+#: src/features/objects/components/comment-thread.tsx:336
 msgid "Comment actions"
 msgstr "Дзеянні з каментарыем"
 
@@ -734,8 +738,8 @@ msgstr "Не ўдалося пацвердзіць з гэтым уліковы�
 
 #: src/features/board/components/board-column.tsx:539
 #: src/features/board/components/board-column.tsx:678
-#: src/features/objects/components/create-object-dialog.tsx:371
-#: src/features/objects/components/create-object-dialog.tsx:541
+#: src/features/objects/components/create-object-dialog.tsx:376
+#: src/features/objects/components/create-object-dialog.tsx:547
 #: src/features/tree/components/tree-view.tsx:687
 msgid "Create"
 msgstr "Стварыць"
@@ -745,19 +749,19 @@ msgstr "Стварыць"
 msgid "Create {0}"
 msgstr "Стварыць {0}"
 
-#: src/features/crms/components/create-crm-dialog.tsx:211
+#: src/features/crms/components/create-crm-dialog.tsx:218
 #: src/features/crms/pages/crms-list-page.tsx:103
 msgid "Create a new CRM"
 msgstr "Стварыць новую CRM"
 
-#: src/features/objects/components/create-object-dialog.tsx:350
+#: src/features/objects/components/create-object-dialog.tsx:355
 msgid "Create a new CRM object."
 msgstr "Стварыць новы аб'ект CRM."
 
 #: src/components/layout/crms-layout.tsx:59
-#: src/features/crms/components/create-crm-dialog.tsx:199
-#: src/features/crms/components/create-crm-dialog.tsx:209
-#: src/features/crms/components/create-crm-dialog.tsx:299
+#: src/features/crms/components/create-crm-dialog.tsx:206
+#: src/features/crms/components/create-crm-dialog.tsx:216
+#: src/features/crms/components/create-crm-dialog.tsx:307
 msgid "Create CRM"
 msgstr "Стварыць CRM"
 
@@ -765,7 +769,7 @@ msgstr "Стварыць CRM"
 msgid "Create new item"
 msgstr "Стварыць новы элемент"
 
-#: src/features/objects/components/create-object-dialog.tsx:349
+#: src/features/objects/components/create-object-dialog.tsx:354
 msgid "Create object"
 msgstr "Стварыць аб'ект"
 
@@ -778,13 +782,13 @@ msgstr "Стварэнне, рэдагаванне, каментаванне і 
 msgid "Created"
 msgstr "Створана"
 
-#: src/features/crms/components/create-crm-dialog.tsx:87
+#: src/features/crms/components/create-crm-dialog.tsx:90
 msgid "Creating CRM..."
 msgstr "Стварэнне CRM..."
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
-#: src/features/crms/components/create-crm-dialog.tsx:299
-#: src/features/objects/components/create-object-dialog.tsx:541
+#: src/features/crms/components/create-crm-dialog.tsx:307
+#: src/features/objects/components/create-object-dialog.tsx:547
 msgid "Creating..."
 msgstr "Стварэнне..."
 
@@ -793,7 +797,7 @@ msgstr "Стварэнне..."
 msgid "CRM actions"
 msgstr "Дзеянні CRM"
 
-#: src/features/crms/components/create-crm-dialog.tsx:88
+#: src/features/crms/components/create-crm-dialog.tsx:91
 msgid "CRM created"
 msgstr "CRM створана"
 
@@ -857,7 +861,7 @@ msgstr "Канфлікт даных"
 #. placeholder {0}: imported.data?.objects ?? 0
 #. placeholder {1}: imported.data?.comments ?? 0
 #. placeholder {2}: imported.data?.links ?? 0
-#: src/features/crms/components/create-crm-dialog.tsx:115
+#: src/features/crms/components/create-crm-dialog.tsx:122
 msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
 msgstr "Даныя імпартаваны ({0, plural, one {# аб'ект} few {# аб'екты} many {# аб'ектаў} other {# аб'екта}}, {1, plural, one {# каментар} few {# каментары} many {# каментароў} other {# каментарыя}}, {2, plural, one {# спасылка} few {# спасылкі} many {# спасылак} other {# спасылкі}})"
 
@@ -867,7 +871,7 @@ msgstr "Дата"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:41
 msgid "Decline"
-msgstr ""
+msgstr "Адхіліць"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
@@ -883,19 +887,19 @@ msgstr "Сартаванне па змаўчанні"
 
 #: src/features/board/components/board-column.tsx:558
 #: src/features/board/components/board-column.tsx:619
-#: src/features/objects/components/comment-thread.tsx:312
-#: src/features/objects/components/comment-thread.tsx:355
-#: src/features/objects/components/comment-thread.tsx:479
-#: src/features/objects/components/object-attachments.tsx:146
-#: src/features/objects/components/object-attachments.tsx:156
-#: src/features/objects/components/object-attachments.tsx:205
-#: src/features/objects/components/object-attachments.tsx:249
+#: src/features/objects/components/comment-thread.tsx:317
+#: src/features/objects/components/comment-thread.tsx:360
+#: src/features/objects/components/comment-thread.tsx:485
+#: src/features/objects/components/object-attachments.tsx:152
+#: src/features/objects/components/object-attachments.tsx:162
+#: src/features/objects/components/object-attachments.tsx:211
+#: src/features/objects/components/object-attachments.tsx:258
 #: src/features/objects/components/object-detail-panel.tsx:519
 #: src/routes/_authenticated/$crmId_.settings.tsx:343
 msgid "Delete"
 msgstr "Выдаліць"
 
-#: src/features/objects/components/object-attachments.tsx:247
+#: src/features/objects/components/object-attachments.tsx:256
 msgid "Delete attachment"
 msgstr "Выдаліць укладанне"
 
@@ -907,7 +911,7 @@ msgstr "Выдаліць клас"
 msgid "Delete column"
 msgstr "Выдаліць слупок"
 
-#: src/features/objects/components/comment-thread.tsx:477
+#: src/features/objects/components/comment-thread.tsx:483
 msgid "Delete comment"
 msgstr "Выдаліць каментарый"
 
@@ -944,7 +948,7 @@ msgstr "Выдаліць опцыю {0}"
 msgid "Delete view"
 msgstr "Выдаліць выгляд"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:99
+#: ../../../lib/web/src/components/restore-banner.tsx:115
 msgid "Delete your account on the old server"
 msgstr "Выдаліце свой акаўнт на старым серверы"
 
@@ -971,7 +975,7 @@ msgstr "Апісанне"
 msgid "Design"
 msgstr "Дызайн"
 
-#: src/features/crms/components/create-crm-dialog.tsx:116
+#: src/features/crms/components/create-crm-dialog.tsx:123
 #: src/routes/_authenticated/$crmId/design.tsx:110
 msgid "Design imported"
 msgstr "Дызайн імпартаваны"
@@ -1016,8 +1020,8 @@ msgstr "Адхіліць чарнавік?"
 msgid "Disconnected"
 msgstr "Адключана"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:79
-#: ../../../lib/web/src/components/restore-banner.tsx:85
+#: ../../../lib/web/src/components/restore-banner.tsx:94
+#: ../../../lib/web/src/components/restore-banner.tsx:100
 msgid "Dismiss"
 msgstr "Адхіліць"
 
@@ -1043,7 +1047,7 @@ msgstr "Двойчы націсніце на калонку, каб дадаць
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
-#: src/features/objects/components/object-attachments.tsx:192
+#: src/features/objects/components/object-attachments.tsx:198
 msgid "Download"
 msgstr "Спампаваць"
 
@@ -1073,8 +1077,8 @@ msgstr "Дублікаты"
 msgid "Dyslexia-friendly"
 msgstr "Сябар дыслексіі"
 
-#: src/features/objects/components/comment-thread.tsx:301
-#: src/features/objects/components/comment-thread.tsx:346
+#: src/features/objects/components/comment-thread.tsx:306
+#: src/features/objects/components/comment-thread.tsx:351
 msgid "Edit"
 msgstr "Рэдагаваць"
 
@@ -1184,7 +1188,7 @@ msgstr "Не ўдалося скапіяваць"
 msgid "Failed to create class"
 msgstr "Не ўдалося стварыць клас"
 
-#: src/features/crms/components/create-crm-dialog.tsx:89
+#: src/features/crms/components/create-crm-dialog.tsx:92
 msgid "Failed to create CRM"
 msgstr "Не ўдалося стварыць CRM"
 
@@ -1205,11 +1209,11 @@ msgstr "Не ўдалося стварыць опцыю"
 msgid "Failed to create view"
 msgstr "Не ўдалося стварыць выгляд"
 
-#: src/features/objects/components/object-attachments.tsx:88
+#: src/features/objects/components/object-attachments.tsx:94
 msgid "Failed to delete attachment"
 msgstr "Не ўдалося выдаліць укладанне"
 
-#: src/features/objects/components/comment-list.tsx:172
+#: src/features/objects/components/comment-list.tsx:188
 msgid "Failed to delete comment"
 msgstr "Не ўдалося выдаліць каментарый"
 
@@ -1236,7 +1240,7 @@ msgstr "Не ўдалося экспартаваць даныя"
 msgid "Failed to export design"
 msgstr "Не ўдалося экспартаваць дызайн"
 
-#: src/features/crms/components/create-crm-dialog.tsx:117
+#: src/features/crms/components/create-crm-dialog.tsx:124
 msgid "Failed to import data"
 msgstr "Не ўдалося імпартаваць даныя"
 
@@ -1274,11 +1278,11 @@ msgstr "Не ўдалося загрузіць элемент"
 msgid "Failed to load video"
 msgstr "Не ўдалося загрузіць відэа"
 
-#: src/features/objects/components/comment-list.tsx:130
+#: src/features/objects/components/comment-list.tsx:146
 msgid "Failed to post comment"
 msgstr "Не ўдалося апублікаваць каментарый"
 
-#: src/features/crms/components/create-crm-dialog.tsx:184
+#: src/features/crms/components/create-crm-dialog.tsx:191
 #: src/routes/_authenticated/$crmId/design.tsx:267
 msgid "Failed to read file"
 msgstr "Не ўдалося прачытаць файл"
@@ -1326,7 +1330,7 @@ msgstr "Не ўдалося абнавіць узровень доступу"
 msgid "Failed to update category"
 msgstr "Не ўдалося абнавіць катэгорыю"
 
-#: src/features/objects/components/comment-list.tsx:155
+#: src/features/objects/components/comment-list.tsx:171
 msgid "Failed to update comment"
 msgstr "Не ўдалося абнавіць каментарый"
 
@@ -1338,7 +1342,7 @@ msgstr "Не ўдалося абнавіць crm"
 msgid "Failed to update field"
 msgstr "Не ўдалося абнавіць поле"
 
-#: src/features/objects/components/object-attachments.tsx:73
+#: src/features/objects/components/object-attachments.tsx:79
 msgid "Failed to upload attachment"
 msgstr "Не ўдалося загрузіць укладанне"
 
@@ -1346,9 +1350,9 @@ msgstr "Не ўдалося загрузіць укладанне"
 msgid "Fields"
 msgstr "Палі"
 
-#: src/features/objects/components/create-object-dialog.tsx:462
-#: src/features/objects/components/object-attachments.tsx:111
-#: src/features/objects/components/object-attachments.tsx:128
+#: src/features/objects/components/create-object-dialog.tsx:467
+#: src/features/objects/components/object-attachments.tsx:117
+#: src/features/objects/components/object-attachments.tsx:134
 msgid "Files"
 msgstr "Файлы"
 
@@ -1365,7 +1369,7 @@ msgstr "Знайсці CRM"
 msgid "Fingerprint"
 msgstr "Адбітак пальца"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:88
+#: ../../../lib/web/src/components/restore-banner.tsx:103
 msgid "Finish moving your account"
 msgstr "Завяршыце перанос акаўнта"
 
@@ -1492,11 +1496,11 @@ msgstr "Імпартаваць канфігурацыю дызайну"
 msgid "Import design"
 msgstr "Імпартаваць дызайн"
 
-#: src/features/crms/components/create-crm-dialog.tsx:239
+#: src/features/crms/components/create-crm-dialog.tsx:246
 msgid "Import from backup (optional)"
 msgstr "Імпарт з рэзервовай копіі (неабавязкова)"
 
-#: src/features/crms/components/create-crm-dialog.tsx:112
+#: src/features/crms/components/create-crm-dialog.tsx:119
 msgid "Importing data..."
 msgstr "Імпартаванне даных..."
 
@@ -1524,7 +1528,7 @@ msgstr "Інтарэсы"
 msgid "Invalid date"
 msgstr "Няправільная дата"
 
-#: src/features/crms/components/create-crm-dialog.tsx:177
+#: src/features/crms/components/create-crm-dialog.tsx:184
 #: src/routes/_authenticated/$crmId/design.tsx:263
 msgid "Invalid JSON file"
 msgstr "Няправільны JSON-файл"
@@ -1670,7 +1674,7 @@ msgstr "Меню"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:35
 msgid "Message"
-msgstr ""
+msgstr "Паведамленне"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:85
 msgid "Metric"
@@ -1689,7 +1693,7 @@ msgid "Monday"
 msgstr "Панядзелак"
 
 #: src/features/board/components/board-column.tsx:589
-#: src/features/crms/components/create-crm-dialog.tsx:217
+#: src/features/crms/components/create-crm-dialog.tsx:224
 #: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
@@ -1703,7 +1707,7 @@ msgstr "Назва"
 msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
 msgstr "Назва не можа змяшчаць вуглавыя дужкі, зваротны слэш, кропку з коскай, двукоссі ці зваротныя апострафы"
 
-#: src/features/crms/components/create-crm-dialog.tsx:75
+#: src/features/crms/components/create-crm-dialog.tsx:78
 msgid "Name is required"
 msgstr "Назва абавязковая"
 
@@ -1717,7 +1721,7 @@ msgid "Network error"
 msgstr "Памылка сеткі"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/features/objects/components/create-object-dialog.tsx:356
+#: src/features/objects/components/create-object-dialog.tsx:361
 #: src/routes/_authenticated/$crmId/index.tsx:978
 #: src/routes/_authenticated/$crmId/index.tsx:995
 msgid "New"
@@ -1731,14 +1735,14 @@ msgstr "Новы {0}"
 #: ../../../lib/web/src/components/game/game-empty-state.tsx:42
 #: ../../../lib/web/src/components/game/game-empty-state.tsx:54
 msgid "New game"
-msgstr ""
+msgstr "Новая гульня"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "Наступная выява"
 
-#: src/features/objects/components/create-object-dialog.tsx:429
+#: src/features/objects/components/create-object-dialog.tsx:434
 msgid "No {parentClassNames} to add to"
 msgstr "Няма {parentClassNames} для дадання"
 
@@ -1754,7 +1758,7 @@ msgstr "Правілы доступу не настроены. Дадайце п
 msgid "No activity yet"
 msgstr "Пакуль няма актыўнасці"
 
-#: src/features/objects/components/comment-list.tsx:414
+#: src/features/objects/components/comment-list.tsx:431
 msgid "No comments yet"
 msgstr "Пакуль няма каментароў"
 
@@ -1769,13 +1773,13 @@ msgstr "CRM не знойдзены"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx:51
 msgid "No games yet"
-msgstr ""
+msgstr "Пакуль няма гульняў"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:241
 msgid "No groups available"
 msgstr "Групы недаступны"
 
-#: src/features/objects/components/create-object-dialog.tsx:396
+#: src/features/objects/components/create-object-dialog.tsx:401
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Пакуль нельга стварыць тыпы элементаў. Спачатку стварыце патрэбныя бацькоўскія элементы."
 
@@ -1849,9 +1853,9 @@ msgstr "Праглядаў няма"
 #: src/features/editor/components/edit-dialogs.tsx:497
 #: src/features/editor/components/edit-dialogs.tsx:764
 #: src/features/editor/components/edit-dialogs.tsx:767
-#: src/features/objects/components/create-object-dialog.tsx:412
-#: src/features/objects/components/create-object-dialog.tsx:415
-#: src/features/objects/components/create-object-dialog.tsx:419
+#: src/features/objects/components/create-object-dialog.tsx:417
+#: src/features/objects/components/create-object-dialog.tsx:420
+#: src/features/objects/components/create-object-dialog.tsx:424
 #: src/features/objects/components/object-detail-panel.tsx:434
 #: src/features/objects/components/object-detail-panel.tsx:447
 #: src/features/objects/components/object-detail-panel.tsx:450
@@ -1990,7 +1994,7 @@ msgstr "Уладальнік"
 msgid "Page {currentPage} of {totalPages}"
 msgstr "Старонка {currentPage} з {totalPages}"
 
-#: src/features/objects/components/create-object-dialog.tsx:404
+#: src/features/objects/components/create-object-dialog.tsx:409
 #: src/features/objects/components/object-detail-panel.tsx:428
 #: src/routes/_authenticated/$crmId/index.tsx:903
 msgid "Parent"
@@ -2004,7 +2008,7 @@ msgstr "Ключ доступу"
 msgid "Passkey verification failed. Please try again."
 msgstr "Не ўдалося праверыць ключ доступу. Калі ласка, паспрабуйце яшчэ раз."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:135
+#: ../../../lib/web/src/components/restore-banner.tsx:152
 msgid "Passkeys"
 msgstr "Ключы доступу"
 
@@ -2049,6 +2053,10 @@ msgstr "Папярэдняя выява"
 msgid "Privacy"
 msgstr "Канфідэнцыяльнасць"
 
+#: ../../../lib/web/src/components/ui/upload-progress.tsx:50
+msgid "Processing…"
+msgstr "Апрацоўка…"
+
 #: ../../../lib/web/src/components/layout/nav-user.tsx:137
 #: ../../../lib/web/src/components/profile-dropdown.tsx:114
 msgid "Profile"
@@ -2070,7 +2078,7 @@ msgstr "Push-апавяшчэнне"
 msgid "Raised"
 msgstr "Узняты"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:107
+#: ../../../lib/web/src/components/restore-banner.tsx:124
 msgid "Re-link your accounts on this server"
 msgstr "Паўторна прывяжыце свае акаўнты на гэтым серверы"
 
@@ -2078,7 +2086,7 @@ msgstr "Паўторна прывяжыце свае акаўнты на гэт�
 msgid "Re-order columns"
 msgstr "Перапарадкаваць слупкі"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:129
+#: ../../../lib/web/src/components/restore-banner.tsx:146
 msgid "Re-register your passkeys on this server"
 msgstr "Зарэгіструйце ключы доступу на гэтым серверы зноў"
 
@@ -2120,9 +2128,9 @@ msgstr "Адносна ў межах 24 гадзін, інакш абсалют�
 #: ../../../lib/web/src/components/comment-composer.tsx:232
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:282
+#: src/features/crms/components/create-crm-dialog.tsx:289
 #: src/features/editor/components/add-dialogs.tsx:188
-#: src/features/objects/components/create-object-dialog.tsx:493
+#: src/features/objects/components/create-object-dialog.tsx:498
 #: src/features/objects/components/object-links.tsx:245
 #: src/features/objects/components/object-links.tsx:258
 msgid "Remove"
@@ -2192,13 +2200,13 @@ msgstr "Замяніць дызайн?"
 msgid "Replacing..."
 msgstr "Замена..."
 
-#: src/features/objects/components/comment-thread.tsx:288
-#: src/features/objects/components/comment-thread.tsx:336
+#: src/features/objects/components/comment-thread.tsx:293
+#: src/features/objects/components/comment-thread.tsx:341
 msgid "Reply"
 msgstr "Адказаць"
 
 #. placeholder {0}: comment.name || comment.author
-#: src/features/objects/components/comment-thread.tsx:379
+#: src/features/objects/components/comment-thread.tsx:384
 msgid "Reply to {0}..."
 msgstr "Адказаць {0}..."
 
@@ -2249,7 +2257,7 @@ msgstr "Групаваць радкі па"
 msgid "Rows per page"
 msgstr "Радкоў на старонцы"
 
-#: src/features/crms/components/create-crm-dialog.tsx:222
+#: src/features/crms/components/create-crm-dialog.tsx:229
 msgid "Sales CRM"
 msgstr "Sales CRM"
 
@@ -2260,7 +2268,7 @@ msgstr "Субота"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
-#: src/features/objects/components/comment-thread.tsx:263
+#: src/features/objects/components/comment-thread.tsx:268
 #: src/routes/_authenticated/$crmId/index.tsx:1112
 msgid "Save"
 msgstr "Захаваць"
@@ -2349,7 +2357,7 @@ msgstr "Абярыце поле"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx:37
 msgid "Select a game"
-msgstr ""
+msgstr "Абярыце гульню"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
@@ -2428,7 +2436,7 @@ msgstr "Адправіць эл. пошту"
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:52
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:61
 msgid "Send message"
-msgstr ""
+msgstr "Адправіць паведамленне"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:145
 msgid "Serif"
@@ -2529,7 +2537,7 @@ msgstr "Сартаваць"
 msgid "Spacious"
 msgstr "Прасторны"
 
-#: src/features/objects/components/comment-list.tsx:415
+#: src/features/objects/components/comment-list.tsx:432
 msgid "Start the discussion by adding the first comment."
 msgstr "Пачніце абмеркаванне, дадаўшы першы каментарый."
 
@@ -2546,13 +2554,13 @@ msgstr "Спыніць сачэнне"
 msgid "Subject"
 msgstr "Тэма"
 
-#: src/features/objects/components/comment-list.tsx:395
-#: src/features/objects/components/comment-list.tsx:404
+#: src/features/objects/components/comment-list.tsx:412
+#: src/features/objects/components/comment-list.tsx:421
 msgid "Submit comment"
 msgstr "Адправіць каментарый"
 
-#: src/features/objects/components/comment-thread.tsx:463
-#: src/features/objects/components/comment-thread.tsx:468
+#: src/features/objects/components/comment-thread.tsx:469
+#: src/features/objects/components/comment-thread.tsx:474
 msgid "Submit reply"
 msgstr "Адправіць адказ"
 
@@ -2769,7 +2777,7 @@ msgstr "Увядзіце каманду або пошук..."
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:39
 msgid "Type a message…"
-msgstr ""
+msgstr "Увядзіце паведамленне…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:191
 msgid "Type to search users"
@@ -2832,7 +2840,7 @@ msgid "Unsubscribing..."
 msgstr "Адпіска..."
 
 #: src/features/board/components/board-card.tsx:22
-#: src/features/objects/components/create-object-dialog.tsx:187
+#: src/features/objects/components/create-object-dialog.tsx:190
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302
 #: src/features/objects/components/object-links.tsx:71
@@ -2854,15 +2862,19 @@ msgstr "Абноўлена"
 msgid "Updating access..."
 msgstr "Абнаўленне доступу..."
 
-#: src/features/objects/components/create-object-dialog.tsx:525
-#: src/features/objects/components/object-attachments.tsx:236
+#: src/features/objects/components/create-object-dialog.tsx:530
+#: src/features/objects/components/object-attachments.tsx:242
 msgid "Upload"
 msgstr "Загрузіць"
 
-#: src/features/crms/components/create-crm-dialog.tsx:255
+#: src/features/crms/components/create-crm-dialog.tsx:262
 #: src/routes/_authenticated/$crmId/design.tsx:298
 msgid "Upload .json file"
 msgstr "Загрузіць .json-файл"
+
+#: ../../../lib/web/src/components/ui/upload-progress.tsx:34
+msgid "Upload progress"
+msgstr "Ход запампоўкі"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:338
 msgid "Use your passkey"
@@ -2997,7 +3009,7 @@ msgstr "Вы адправілі наступныя значэнні:"
 msgid "You're all caught up!"
 msgstr "Вы ўсё прагледзелі!"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:91
+#: ../../../lib/web/src/components/restore-banner.tsx:106
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Ваш акаўнт быў перанесены сюды з {source}. Пакуль вы не выдаліце яго там, паведамленні і апавяшчэнні могуць паступаць на абодва серверы, частка вашага кантэнту па-ранейшаму будзе аддавацца са старога сервера, а падпісчыкам можа спатрэбіцца некалькі хвілін, каб знайсці вас тут."
 
