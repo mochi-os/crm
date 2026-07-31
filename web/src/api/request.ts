@@ -3,69 +3,18 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-// CRM app request helpers
-// Uses getAppPath() + '/' as baseURL
+// CRM app request helpers.
+//
+// This used to hand-roll the request interceptor. It now defers to the shared
+// client, which resolves the same class-context baseURL and carries the
+// same-origin token gate, the FormData Content-Type handling and the
+// sandboxed-iframe cookie rule. Keeping a private copy is how this app came to
+// be missing the token gate in the first place.
+//
+// Two differences from the old copy, both deliberate: the shared client honours
+// a caller-supplied baseURL (no call site passes one) and handles domain-entity
+// routing, which this app previously did not.
 
-import axios, { type AxiosRequestConfig } from "axios";
-import {
-  getAppPath,
-  useAuthStore,
-  isInShell,
-  isSameOriginRequest,
-} from "@mochi/web";
+import { createAppClient } from "@mochi/web";
 
-// Create a CRM-specific axios instance that uses app path as baseURL
-const crmsClient = axios.create({
-  timeout: 30000,
-  withCredentials: true,
-  headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  },
-});
-
-crmsClient.interceptors.request.use((config) => {
-  // Always use app path as baseURL (class context)
-  config.baseURL = getAppPath() + "/";
-
-  // Remove Content-Type for FormData so axios can set the multipart boundary
-  if (config.data instanceof FormData) {
-    delete config.headers["Content-Type"];
-  }
-
-  // In sandboxed iframe, cookies are unavailable — always use Bearer auth only
-  if (isInShell()) {
-    config.withCredentials = false;
-  }
-
-  // Add auth token
-  const token = useAuthStore.getState().token;
-
-  if (token && isSameOriginRequest(config.baseURL, config.url)) {
-    config.headers.Authorization = token.startsWith("Bearer ")
-      ? token
-      // eslint-disable-next-line lingui/no-unlocalized-strings
-      : `Bearer ${token}`;
-  }
-
-  return config;
-});
-
-export const crmsRequest = {
-  get: async <TResponse>(
-    url: string,
-    config?: Omit<AxiosRequestConfig, "url" | "method">,
-  ): Promise<TResponse> => {
-    const response = await crmsClient.get<TResponse>(url, config);
-    return response.data;
-  },
-
-  post: async <TResponse, TBody = unknown>(
-    url: string,
-    data?: TBody,
-    config?: Omit<AxiosRequestConfig<TBody>, "url" | "method" | "data">,
-  ): Promise<TResponse> => {
-    const response = await crmsClient.post<TResponse>(url, data, config);
-    return response.data;
-  },
-};
+export const crmsRequest = createAppClient({ appName: "crm" });
