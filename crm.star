@@ -3527,7 +3527,7 @@ def serve_attachment(a, variant):
 			return True
 		return mochi.db.exists("select 1 from comments c join objects o on o.id=c.object where c.id=? and o.crm=?", obj, crm_id)
 
-	attachment_serve(a, attachment, crm_id, lambda container: True, variant=variant, member=in_crm)
+	attachment_serve(a, attachment, crm_id, variant=variant, member=in_crm)
 
 # P2P byte-pull responder. A subscriber stores an object's attachment metadata
 # (entity = the CRM), then pulls the bytes from the owner here on demand. The
