@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: ../../../lib/web/src/lib/error-normalizer.ts:204
+#: ../../../lib/web/src/lib/error-normalizer.ts:236
 msgid "Please check your internet connection and try again."
 msgstr "Internet tinkiyniykita qhaway, kutiykachimuy."
 
@@ -96,7 +96,7 @@ msgstr "{sentLabel} / {totalLabel}"
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# ima} other {# imakuna}}"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:148
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Menuta kichay (# mana ñawinchasqa willakuy)} other {Menuta kichay (# mana ñawinchasqa willakuykuna)}}"
 
@@ -313,11 +313,11 @@ msgstr "Pillapas maskhayta atichun CRM-ta"
 msgid "Allow sort by"
 msgstr "Sort-ta saqiy"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:178
 msgid "An error occurred"
 msgstr "Huk pantay rikurirqan"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:275
 msgid "An unexpected error occurred"
 msgstr "Mana suyasqa pantay rikurirqan"
 
@@ -429,6 +429,11 @@ msgstr "Banner"
 #: src/features/objects/components/object-links.tsx:164
 msgid "Blocked by"
 msgstr "Hark'aq"
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:156
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:166
+msgid "Blocked navigation to untrusted link"
+msgstr "Mana iñikuq link-man yaykuy hark'asqa"
 
 #: src/features/objects/components/object-links.tsx:46
 msgid "Blocks"
@@ -854,7 +859,7 @@ msgstr "Tutayaq"
 msgid "Dark mode"
 msgstr "Tutayaq layapi"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:259
 msgid "Data conflict"
 msgstr "Datukunap awqanakuynin"
 
@@ -1458,7 +1463,7 @@ msgid "Hide password"
 msgstr "Yaykuna rimayta pakay"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:90
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:158
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:175
 #: ../../../lib/web/src/components/layout/top-bar.tsx:71
 #: ../../../lib/web/src/components/layout/top-bar.tsx:100
 msgid "Home"
@@ -1650,8 +1655,8 @@ msgstr "Willakuykunapaq ruwaykunapaqpas t'inkisqa cuentaykikunata kamachiy."
 msgid "Manual"
 msgstr "Maki ruway"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:118
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:125
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Llapanta ñawinchasqaman churay"
@@ -1668,7 +1673,7 @@ msgstr "MCP servidor"
 msgid "Medium"
 msgstr "Chawpi"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:173
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:190
 msgid "Menu"
 msgstr "Menu"
 
@@ -1716,7 +1721,7 @@ msgid "Name must be 1000 characters or less"
 msgstr "Sutinmi 1000 letrayoq utaq pisi kanan"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:53
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:322
 msgid "Network error"
 msgstr "Redpi pantay"
 
@@ -1888,7 +1893,7 @@ msgid "Notifications"
 msgstr "Notificacionkuna"
 
 #. placeholder {0}: unread.length
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:111
 msgid "Notifications: {0}"
 msgstr "Willakuykuna: {0}"
 
@@ -1929,7 +1934,7 @@ msgstr "Clase ruwaykunata kichay"
 msgid "Open design actions"
 msgstr "Diseño ruwaykunata kichay"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:133
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:149
 msgid "Open menu"
 msgstr "Menúta kichay"
 
@@ -2027,7 +2032,7 @@ msgstr "Ama hina, CRM diseñoman huk utaq aswan clasekunata yapay."
 
 #: ../../../lib/web/src/components/comment-composer.tsx:95
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:323
 msgid "Please check your internet connection and try again."
 msgstr "Internet tinkiyniykita qhaway, kutiykachimuy."
 
@@ -2446,8 +2451,8 @@ msgstr "Serif"
 msgid "Server"
 msgstr "Server"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:279
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:305
 msgid "Server error"
 msgstr "Servidorpi pantay"
 
@@ -2456,7 +2461,7 @@ msgstr "Servidorpi pantay"
 msgid "Server rules"
 msgstr "Server kamachiykuna"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:229
 msgid "Session expired. Please log in again."
 msgstr "Sesionqa tukukunña. Ama hina kaspa, watiqmanta yaykuy."
 
@@ -2468,8 +2473,8 @@ msgstr "Pukyu chayanata churay"
 msgid "Setting access..."
 msgstr "Yaykunata churachkan..."
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:93
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:99
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:109
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:115
 #: ../../../lib/web/src/components/layout/nav-user.tsx:84
 #: ../../../lib/web/src/components/layout/nav-user.tsx:148
 #: ../../../lib/web/src/components/layout/nav-user.tsx:198
@@ -2506,8 +2511,8 @@ msgstr "{total}manta {totalShown} rikuchichkan"
 msgid "Sidebar"
 msgstr "Sidebar"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:105
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:111
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:121
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:127
 msgid "Sign out"
 msgstr "Lluqsiy"
 
@@ -2639,6 +2644,14 @@ msgstr "Chay codigoqa mana allinchu utaq pisipasqañam."
 #: ../../../lib/web/src/features/errors/general-error.tsx:68
 msgid "The requested content could not be found."
 msgstr "Mañakusqa willaykuna mana tarikunchu."
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:152
+#~ msgid "The server returned a web page instead of data, which usually means the address was wrong."
+#~ msgstr ""
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:152
+msgid "The server returned a web page instead of data."
+msgstr "Servidorqa mana willakuykunatachu kutichirqan, huk web p'anqatam."
 
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
 msgid "The site is not available at the moment."
@@ -2787,7 +2800,7 @@ msgstr "Apaykachaqkunata maskanapaq qillqay"
 msgid "Type to search..."
 msgstr "Maskanapaq qillqay..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:301
 msgid "Unable to connect to remote server"
 msgstr "Karu servidorman mana tinkiy atikunchu"
 
@@ -2880,7 +2893,7 @@ msgstr "Cargasqa puririynin"
 msgid "Use your passkey"
 msgstr "Yaykuna llaveykita llamk'achiy"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:86
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:102
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
 #: src/features/editor/components/add-dialogs.tsx:141
 msgid "User"
@@ -2925,8 +2938,8 @@ msgstr "Qhaway"
 msgid "View all"
 msgstr "Llapanta qhaway"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:131
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:139
 msgid "View all notifications"
 msgstr "Llapan willakuykunata qhaway"
 

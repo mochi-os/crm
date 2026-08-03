@@ -347,7 +347,7 @@ def database_upgrade(version):
 		# sequence/log copies mislead diagnosis.
 		for table in ["sequence", "log", "acknowledged", "received"]:
 			mochi.db.execute("drop table if exists " + table)
-	if version == 3:
+	if version == 3 or version == 4:
 		# Attachments move into this database, owned by the shared library.
 		# Create the table and copy existing rows across the transition bridge;
 		# the migrate helper aborts without advancing the version if the bridge
@@ -928,6 +928,21 @@ def action_design_export(a):
 	return {"data": design_export(crm_id)}
 
 # Import a design from template JSON, replacing the current design
+# Replace a crm's design with data. The deletes run in foreign-key order.
+# template_id is passed through so {labels.X} placeholders in Mochi-shipped
+# templates resolve; user-exported designs with literal names pass through
+# unchanged because substitute_labels short-circuits when no placeholder is
+# present.
+def design_replace(crm_id, data, lang, template_id):
+	row_remove("view_fields", ["crm", "view", "field"], "crm=?", [crm_id])
+	row_remove("view_classes", ["crm", "view", "class"], "crm=?", [crm_id])
+	row_remove("views", ["crm", "id"], "crm=?", [crm_id])
+	row_remove("options", ["crm", "class", "field", "id"], "crm=?", [crm_id])
+	row_remove("fields", ["crm", "class", "id"], "crm=?", [crm_id])
+	row_remove("hierarchy", ["crm", "class", "parent"], "crm=?", [crm_id])
+	row_remove("classes", ["crm", "id"], "crm=?", [crm_id])
+	apply_template(crm_id, data, lang, template_id)
+
 def action_design_import(a):
 
 	crm_id = resolve_crm(a)
@@ -977,19 +992,7 @@ def action_design_import(a):
 		a.error.label(400, "errors.design_data_or_template_is_required")
 		return
 
-	# Delete existing design in correct order (foreign key dependencies)
-	row_remove("view_fields", ["crm", "view", "field"], "crm=?", [crm_id])
-	row_remove("view_classes", ["crm", "view", "class"], "crm=?", [crm_id])
-	row_remove("views", ["crm", "id"], "crm=?", [crm_id])
-	row_remove("options", ["crm", "class", "field", "id"], "crm=?", [crm_id])
-	row_remove("fields", ["crm", "class", "id"], "crm=?", [crm_id])
-	row_remove("hierarchy", ["crm", "class", "parent"], "crm=?", [crm_id])
-	row_remove("classes", ["crm", "id"], "crm=?", [crm_id])
-	# Apply the new design. template_id is passed so {labels.X} placeholders in
-	# Mochi-shipped templates resolve; user-exported templates with literal
-	# names pass through unchanged because substitute_labels short-circuits
-	# when no placeholder is present.
-	apply_template(crm_id, data, lang, template_id)
+	design_replace(crm_id, data, lang, template_id)
 
 	# Update template tracking
 	row_set("crms", ["id"], "id=?", [crm_id], {"template": template_id, "template_version": template_version})
@@ -1000,18 +1003,20 @@ def action_design_import(a):
 # bytes for a data export. mochi.attachment.data fetches remote bytes over
 # P2P for subscribed crms. An attachment whose bytes cannot be read (deleted
 # file, unreachable owner) is skipped rather than failing the whole export.
-def export_attachments(object_id, crm_id, frm):
+def export_attachments(object_id, crm_id, frm, entries):
 	result = []
 	for att in attachment_list(object_id, crm_id) or []:
-		data = attachment_data(att["id"], frm)
-		if data == None:
+		name = "files/" + att["id"]
+		entry = attachment_entry(att["id"], name, frm)
+		if entry == None:
 			continue
+		entries.append(entry)
 		result.append({
 			"name": att["name"],
 			"content_type": att.get("content_type", ""),
 			"caption": att.get("caption", ""),
 			"description": att.get("description", ""),
-			"data": mochi.encode.base64(data),
+			"entry": name,
 		})
 	return result
 
@@ -1038,7 +1043,7 @@ def action_data_export_warm(a):
 	for i, identifier in enumerate(identifiers):
 		if mochi.time.now() - start > 60:
 			return {"data": {"attachments": len(identifiers), "remaining": len(identifiers) - i}}
-		attachment_data(identifier, a.user.identity.id)
+		attachment_fetch(identifier, a.user.identity.id)
 
 	return {"data": {"attachments": len(identifiers), "remaining": 0}}
 
@@ -1063,6 +1068,12 @@ def action_data_export(a):
 	# Values are filtered against the design snapshot: a field removed from
 	# the design can leave orphan value rows, which the app never renders -
 	# exporting them would make the file fail its own import.
+	# Attachment bytes travel as archive entries rather than inside the
+	# manifest: embedding them meant holding every attachment, base64-expanded
+	# by a third, in memory at once, and an attachment may be as large as the
+	# uploader's remaining quota.
+	entries = []
+
 	design = design_export(crm_id)
 	declared = {}
 	for class_id, class_fields in design["fields"].items():
@@ -1117,13 +1128,13 @@ def action_data_export(a):
 				comment["parent"] = c["parent"]
 			if c["edited"]:
 				comment["edited"] = c["edited"]
-			attachments = export_attachments(c["id"], crm_id, a.user.identity.id)
+			attachments = export_attachments(c["id"], crm_id, a.user.identity.id, entries)
 			if attachments:
 				comment["attachments"] = attachments
 			comments.append(comment)
 		if comments:
 			object["comments"] = comments
-		attachments = export_attachments(row["id"], crm_id, a.user.identity.id)
+		attachments = export_attachments(row["id"], crm_id, a.user.identity.id, entries)
 		if attachments:
 			object["attachments"] = attachments
 		activity = []
@@ -1152,14 +1163,26 @@ def action_data_export(a):
 		})
 
 	result = {
-		"format": 2,
+		"format": 3,
 		"crm": {"name": crm["name"], "description": crm["description"]},
 		"design": design,
 		"objects": objects,
 	}
 	if links:
 		result["links"] = links
-	return {"data": result}
+
+	# The archive is built under a name of our own and served straight back, so
+	# neither the manifest nor any attachment is held as a response value. It is
+	# removed once written: an export is a download, not stored state.
+	# Built in cache: an export is re-obtainable and transient, and cache is
+	# resolved for the requesting user where file storage is read as the entity
+	# owner - so a subscriber exporting someone else's container writes and
+	# reads the same place.
+	archive = "exports/" + mochi.uid() + ".zip"
+	entries.append({"name": "manifest.json", "data": json.encode(result)})
+	mochi.archive.write(archive, entries, cache=True)
+	a.write.cache(archive, content_type="application/zip")
+	mochi.cache.delete(archive)
 
 # Validate and decode a container's attachment list in place for an import:
 # each entry must be a dict with a name and base64 data, and "data" is
@@ -1170,13 +1193,51 @@ def import_attachments_decode(container):
 	if type(attachments) != "list":
 		return False
 	for att in attachments:
-		if type(att) != "dict" or not att.get("name") or type(att.get("data")) != "string":
+		if type(att) != "dict" or not att.get("name"):
+			return False
+		# Format 3 names an entry in the archive; the bytes go straight from
+		# there to their resting place and are never a value here. Format 2
+		# carried them base64-encoded inline, and still imports.
+		if type(att.get("entry")) == "string":
+			continue
+		if type(att.get("data")) != "string":
 			return False
 		data = mochi.decode.base64(att["data"])
 		if data == None:
 			return False
 		att["data"] = data
 	return True
+
+# Remove staged import archives an earlier import abandoned. An import has many
+# validation exits and Starlark has no finally, so rather than a delete at each
+# one, a later import collects what an earlier one left. The hour matches the
+# attachment sweep: no handler outlives the Starlark time limit, so anything
+# older has no writer.
+def import_staging_sweep():
+	if not mochi.file.exists("imports"):
+		return
+	for entry in mochi.file.list("imports") or []:
+		name = entry.get("name", "") if type(entry) == "dict" else entry
+		if not name:
+			continue
+		age = mochi.file.age("imports/" + name)
+		if age != None and age > 3600:
+			mochi.file.delete("imports/" + name)
+
+# Store one imported attachment against object_id, reporting whether it landed.
+# A format 3 entry streams out of the archive; a format 2 one is the decoded
+# bytes already in hand. An entry the archive does not hold - a file deleted
+# between the manifest being built and the archive being written - stores
+# nothing, and the caller must not count it.
+def import_attachment_store(archive, object_id, att):
+	if archive and type(att.get("entry")) == "string":
+		return attachment_extract(archive, att["entry"], object_id, att["name"],
+			att.get("content_type") or "", att.get("caption") or "", att.get("description") or "") != None
+	if att.get("data") != None:
+		attachment_create(object_id, att["name"], att["data"], att.get("content_type") or "",
+			att.get("caption") or "", att.get("description") or "")
+		return True
+	return False
 
 # Import data from a data/export snapshot: objects with field values,
 # comments, attachments (format 2, base64 file bytes), and activity history,
@@ -1215,26 +1276,42 @@ def action_data_import(a):
 		a.error.label(403, "errors.access_denied")
 		return
 
+	# An upload streams to disk rather than becoming a value: a format 3
+	# archive carries the attachment bytes, and reading those into memory to
+	# find the manifest would undo what the container is for. A format 2 file
+	# is JSON all through and is read as before.
+	archive = ""
 	data_string = a.input("data")
-	if not data_string:
-		# Large imports upload the export as a multipart file part: form
-		# fields cap out at a few megabytes at the HTTP layer, while file
-		# parts spool to disk.
-		upload = a.file("file")
-		if upload:
-			data_string = str(upload["data"])
+	if not data_string and a.files("file"):
+		import_staging_sweep()
+		staged = "imports/" + mochi.uid()
+		a.upload("file", staged)
+		if mochi.archive.list(staged) != None:
+			archive = staged
+			data_string = str(mochi.archive.read(staged, "manifest.json") or "")
+		else:
+			data_string = str(mochi.file.read(staged) or "")
+			mochi.file.delete(staged)
 	if not data_string:
 		a.error.label(400, "errors.data_is_required")
 		return
-	# 1GB, matching the per-attachment cap: attachment file bytes travel
-	# base64-encoded inside the JSON
 	if len(data_string) > 1000000000:
 		a.error.label(400, "errors.data_too_large")
 		return
 	data = json.decode(data_string, None)
 	if type(data) != "dict":
+		if archive:
+			mochi.file.delete(archive)
 		a.error.label(400, "errors.invalid_data")
 		return
+
+	# A container is self-contained: its manifest carries the design its objects
+	# were validated against. Applying it here on request restores a backup in
+	# one upload, where the client used to sequence design then data by parsing
+	# the file itself - which it cannot do once the attachments are archive
+	# entries rather than JSON.
+	if a.input("design") and type(data.get("design")) == "dict":
+		design_replace(crm_id, data["design"], user_language(a), "")
 
 	objects = data.get("objects") or []
 	links = data.get("links") or []
@@ -1360,11 +1437,11 @@ def action_data_import(a):
 			row_merge("comments", ["id"], {"id": comment_ids[i], "object": object_id, "parent": comment_parent, "author": c.get("author") or user, "name": c.get("name") or a.user.identity.name, "content": str(c["content"]), "created": safe_int(c.get("created")) or now, "edited": safe_int(c.get("edited"))})
 			comment_count += 1
 			for att in (c.get("attachments") or []):
-				attachment_create(comment_ids[i], att["name"], att["data"], att.get("content_type") or "", att.get("caption") or "", att.get("description") or "")
-				attachment_count += 1
+				if import_attachment_store(archive, comment_ids[i], att):
+					attachment_count += 1
 		for att in (o.get("attachments") or []):
-			attachment_create(object_id, att["name"], att["data"], att.get("content_type") or "", att.get("caption") or "", att.get("description") or "")
-			attachment_count += 1
+			if import_attachment_store(archive, object_id, att):
+				attachment_count += 1
 		file_activity = o.get("activity") or []
 		if file_activity:
 			for act in file_activity:
@@ -1382,6 +1459,9 @@ def action_data_import(a):
 		source = remap.get(l["source"], l["source"])
 		target = remap.get(l["target"], l["target"])
 		row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": source, "target": target, "linktype": str(l["linktype"]), "created": safe_int(l.get("created")) or now})
+
+	if archive:
+		mochi.file.delete(archive)
 
 	row_set("crms", ["id"], "id=?", [crm_id], {"updated": now})
 

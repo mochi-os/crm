@@ -210,12 +210,10 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         const warm = await crmsApi.warmExport(crm.crm.id);
         if (!warm.data || warm.data.remaining === 0) break;
       }
-      const response = await crmsApi.exportData(crm.crm.id);
-      const json = JSON.stringify(response.data, null, 2);
-      const blob = new Blob([json], { type: "application/json" });
+      const blob = await crmsApi.exportData(crm.crm.id);
       const today = new Date().toISOString().split("T")[0];
       const slug = crm.crm.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-      const filename = `${slug}-crm-backup-${today}.json`;
+      const filename = `${slug}-crm-backup-${today}.zip`;
       // A bare anchor-click save silently no-ops in the shell's sandboxed
       // iframe; shellSaveBlob hands the blob to the parent shell to save.
       if (await shellSaveBlob(blob, filename)) {
