@@ -96,7 +96,7 @@ msgstr "{sentLabel} / {totalLabel}"
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# 件} other {# 件}}"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:148
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:165
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {メニューを開く（未読の通知 # 件）} other {メニューを開く（未読の通知 # 件）}}"
 
@@ -223,8 +223,8 @@ msgstr "項目を追加"
 msgid "Add class"
 msgstr "クラスを追加"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1023
-#: src/routes/_authenticated/$crmId/index.tsx:1221
+#: src/routes/_authenticated/$crmId/index.tsx:1021
+#: src/routes/_authenticated/$crmId/index.tsx:1219
 msgid "Add column"
 msgstr "列を追加"
 
@@ -305,7 +305,7 @@ msgstr "すべての CRM"
 msgid "Allow anyone to search for {0}"
 msgstr "誰でも{0}を検索できるようにする"
 
-#: src/features/crms/components/create-crm-dialog.tsx:236
+#: src/features/crms/components/create-crm-dialog.tsx:268
 msgid "Allow anyone to search for CRM"
 msgstr "誰でも CRM を検索できるようにする"
 
@@ -430,8 +430,8 @@ msgstr "バナー"
 msgid "Blocked by"
 msgstr "ブロック元"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:156
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:166
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:237
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:247
 msgid "Blocked navigation to untrusted link"
 msgstr "信頼できないリンクへの遷移をブロックしました"
 
@@ -470,11 +470,11 @@ msgstr "親にできるもの"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/board/components/board-column.tsx:603
-#: src/features/crms/components/create-crm-dialog.tsx:304
+#: src/features/crms/components/create-crm-dialog.tsx:336
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:248
 #: src/routes/_authenticated/$crmId/design.tsx:305
-#: src/routes/_authenticated/$crmId/index.tsx:1100
+#: src/routes/_authenticated/$crmId/index.tsx:1098
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -488,12 +488,12 @@ msgstr "コメントをキャンセル"
 msgid "Cancel reply"
 msgstr "返信をキャンセル"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:146
+#: ../../../lib/web/src/components/notification-category-button.tsx:102
 msgid "Category for this notification"
 msgstr "この通知のカテゴリ"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:127
-#: ../../../lib/web/src/components/notification-category-button.tsx:138
+#: ../../../lib/web/src/components/notification-category-button.tsx:83
+#: ../../../lib/web/src/components/notification-category-button.tsx:94
 msgid "Change notification category"
 msgstr "通知カテゴリを変更"
 
@@ -509,7 +509,7 @@ msgstr "チェックボックス"
 msgid "Checklist"
 msgstr "チェックリスト"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:38
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:37
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "サイドバーからゲームを選ぶか、新しいゲームを始めてください。"
 
@@ -534,7 +534,7 @@ msgstr "システム設定、ライトモード、ダークモードから選択
 msgid "Choose language"
 msgstr "言語を選択"
 
-#: src/routes/_authenticated/$crmId/index.tsx:903
+#: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "Class"
 msgstr "クラス"
 
@@ -729,6 +729,10 @@ msgstr "コピー"
 msgid "Could not load this document. Please try again later."
 msgstr "このドキュメントを読み込めませんでした。後ほどもう一度お試しください。"
 
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:121
+msgid "Couldn't load notifications"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:184
 msgid "Couldn't send the code. Please try again."
 msgstr "コードを送信できませんでした。もう一度お試しください。"
@@ -754,7 +758,7 @@ msgstr "作成"
 msgid "Create {0}"
 msgstr "{0}を作成"
 
-#: src/features/crms/components/create-crm-dialog.tsx:218
+#: src/features/crms/components/create-crm-dialog.tsx:250
 #: src/features/crms/pages/crms-list-page.tsx:103
 msgid "Create a new CRM"
 msgstr "新しい CRM を作成"
@@ -764,9 +768,9 @@ msgid "Create a new CRM object."
 msgstr "新しい CRM オブジェクトを作成します。"
 
 #: src/components/layout/crms-layout.tsx:59
-#: src/features/crms/components/create-crm-dialog.tsx:206
-#: src/features/crms/components/create-crm-dialog.tsx:216
-#: src/features/crms/components/create-crm-dialog.tsx:307
+#: src/features/crms/components/create-crm-dialog.tsx:238
+#: src/features/crms/components/create-crm-dialog.tsx:248
+#: src/features/crms/components/create-crm-dialog.tsx:339
 msgid "Create CRM"
 msgstr "CRM を作成"
 
@@ -787,12 +791,12 @@ msgstr "作成、編集、コメント、閲覧"
 msgid "Created"
 msgstr "作成日"
 
-#: src/features/crms/components/create-crm-dialog.tsx:90
+#: src/features/crms/components/create-crm-dialog.tsx:91
 msgid "Creating CRM..."
 msgstr "CRM を作成しています..."
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
-#: src/features/crms/components/create-crm-dialog.tsx:307
+#: src/features/crms/components/create-crm-dialog.tsx:339
 #: src/features/objects/components/create-object-dialog.tsx:547
 msgid "Creating..."
 msgstr "作成中..."
@@ -802,7 +806,7 @@ msgstr "作成中..."
 msgid "CRM actions"
 msgstr "CRM の操作"
 
-#: src/features/crms/components/create-crm-dialog.tsx:91
+#: src/features/crms/components/create-crm-dialog.tsx:92
 msgid "CRM created"
 msgstr "CRM を作成しました"
 
@@ -810,7 +814,7 @@ msgstr "CRM を作成しました"
 msgid "CRM deleted"
 msgstr "CRM を削除しました"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1226
+#: src/routes/_authenticated/$crmId/index.tsx:1224
 msgid "CRM link"
 msgstr "CRMリンク"
 
@@ -837,7 +841,7 @@ msgstr "CRM を更新しました"
 msgid "CRMs"
 msgstr "CRM"
 
-#: ../../../lib/web/src/components/map-view.tsx:208
+#: ../../../lib/web/src/components/map-view.tsx:217
 msgid "Current location"
 msgstr "現在地"
 
@@ -851,9 +855,6 @@ msgstr "カスタム"
 msgid "Dark"
 msgstr "ダーク"
 
-#: ../../../lib/web/src/components/layout/nav-user.tsx:91
-#: ../../../lib/web/src/components/layout/nav-user.tsx:154
-#: ../../../lib/web/src/components/layout/nav-user.tsx:205
 #: ../../../lib/web/src/components/profile-dropdown.tsx:87
 #: ../../../lib/web/src/components/profile-dropdown.tsx:123
 msgid "Dark mode"
@@ -866,7 +867,8 @@ msgstr "データの競合"
 #. placeholder {0}: imported.data?.objects ?? 0
 #. placeholder {1}: imported.data?.comments ?? 0
 #. placeholder {2}: imported.data?.links ?? 0
-#: src/features/crms/components/create-crm-dialog.tsx:122
+#: src/features/crms/components/create-crm-dialog.tsx:110
+#: src/features/crms/components/create-crm-dialog.tsx:142
 msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
 msgstr "データをインポートしました（{0, plural, other {# 件のオブジェクト}}、{1, plural, other {# 件のコメント}}、{2, plural, other {# 件のリンク}}）"
 
@@ -976,11 +978,11 @@ msgstr "説明"
 
 #: src/routes/_authenticated/$crmId/design.tsx:65
 #: src/routes/_authenticated/$crmId/design.tsx:133
-#: src/routes/_authenticated/$crmId/index.tsx:1054
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Design"
 msgstr "デザイン"
 
-#: src/features/crms/components/create-crm-dialog.tsx:123
+#: src/features/crms/components/create-crm-dialog.tsx:143
 #: src/routes/_authenticated/$crmId/design.tsx:110
 msgid "Design imported"
 msgstr "デザインをインポートしました"
@@ -1012,11 +1014,11 @@ msgstr "方向"
 msgid "Directory"
 msgstr "ディレクトリ"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:300
+#: ../../../lib/web/src/components/comment-composer.tsx:304
 msgid "Discard"
 msgstr "破棄"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:298
+#: ../../../lib/web/src/components/comment-composer.tsx:302
 msgid "Discard draft?"
 msgstr "下書きを破棄しますか？"
 
@@ -1030,8 +1032,8 @@ msgstr "切断済み"
 msgid "Dismiss"
 msgstr "閉じる"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1129
-#: src/routes/_authenticated/$crmId/index.tsx:1134
+#: src/routes/_authenticated/$crmId/index.tsx:1127
+#: src/routes/_authenticated/$crmId/index.tsx:1132
 msgid "Dismiss board hint"
 msgstr "ボードのヒントを閉じる"
 
@@ -1046,7 +1048,7 @@ msgstr "モバイルサイドバーを表示します。"
 msgid "Done"
 msgstr "完了"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1120
+#: src/routes/_authenticated/$crmId/index.tsx:1118
 msgid "Double click on a column to add content"
 msgstr "列をダブルクリックして内容を追加"
 
@@ -1065,12 +1067,12 @@ msgid "Download failed"
 msgstr "ダウンロードに失敗しました"
 
 #: src/routes/_authenticated/$crmId/design.tsx:89
-#: src/routes/_authenticated/$crmId/index.tsx:222
-#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:220
+#: src/routes/_authenticated/$crmId/index.tsx:925
 msgid "Downloaded {filename}"
 msgstr "{filename} をダウンロードしました"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1096
+#: src/routes/_authenticated/$crmId/index.tsx:1094
 msgid "Drag columns to re-order them"
 msgstr "列をドラッグして並べ替えます"
 
@@ -1156,11 +1158,11 @@ msgstr "展開する"
 msgid "Expand sidebar"
 msgstr "サイドバーを展開"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1034
+#: src/routes/_authenticated/$crmId/index.tsx:1032
 msgid "Export CSV"
 msgstr "CSV をエクスポート"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1038
+#: src/routes/_authenticated/$crmId/index.tsx:1036
 msgid "Export data"
 msgstr "データをエクスポート"
 
@@ -1193,7 +1195,7 @@ msgstr "コピーに失敗しました"
 msgid "Failed to create class"
 msgstr "クラスの作成に失敗しました"
 
-#: src/features/crms/components/create-crm-dialog.tsx:92
+#: src/features/crms/components/create-crm-dialog.tsx:93
 msgid "Failed to create CRM"
 msgstr "CRM の作成に失敗しました"
 
@@ -1201,6 +1203,7 @@ msgstr "CRM の作成に失敗しました"
 msgid "Failed to create field"
 msgstr "フィールドの作成に失敗しました"
 
+#: ../../../lib/web/src/components/options-menu.tsx:99
 #: src/features/objects/components/object-links.tsx:103
 #: src/routes/_authenticated/$crmId/index.tsx:190
 msgid "Failed to create link"
@@ -1234,9 +1237,9 @@ msgstr "リンクの削除に失敗しました"
 msgid "Failed to delete view"
 msgstr "ビューの削除に失敗しました"
 
-#: src/routes/_authenticated/$crmId/index.tsx:224
-#: src/routes/_authenticated/$crmId/index.tsx:227
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:222
+#: src/routes/_authenticated/$crmId/index.tsx:225
+#: src/routes/_authenticated/$crmId/index.tsx:927
 msgid "Failed to export data"
 msgstr "データのエクスポートに失敗しました"
 
@@ -1245,7 +1248,12 @@ msgstr "データのエクスポートに失敗しました"
 msgid "Failed to export design"
 msgstr "デザインのエクスポートに失敗しました"
 
-#: src/features/crms/components/create-crm-dialog.tsx:124
+#: ../../../lib/web/src/components/options-menu.tsx:123
+msgid "Failed to get RSS token"
+msgstr ""
+
+#: src/features/crms/components/create-crm-dialog.tsx:111
+#: src/features/crms/components/create-crm-dialog.tsx:144
 msgid "Failed to import data"
 msgstr "データのインポートに失敗しました"
 
@@ -1271,6 +1279,10 @@ msgstr "CRM デザインの読み込みに失敗しました"
 msgid "Failed to load CRMs"
 msgstr "CRMの読み込みに失敗しました"
 
+#: ../../../lib/web/src/components/audit-timeline.tsx:72
+msgid "Failed to load history"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
 msgid "Failed to load image"
 msgstr "画像を読み込めませんでした"
@@ -1287,7 +1299,7 @@ msgstr "動画を読み込めませんでした"
 msgid "Failed to post comment"
 msgstr "コメントの投稿に失敗しました"
 
-#: src/features/crms/components/create-crm-dialog.tsx:191
+#: src/features/crms/components/create-crm-dialog.tsx:223
 #: src/routes/_authenticated/$crmId/design.tsx:267
 msgid "Failed to read file"
 msgstr "ファイルの読み取りに失敗しました"
@@ -1308,6 +1320,10 @@ msgstr "フィールドの並べ替えに失敗しました"
 msgid "Failed to reorder views"
 msgstr "ビューの並べ替えに失敗しました"
 
+#: ../../../lib/web/src/components/options-menu.tsx:133
+msgid "Failed to revoke RSS access"
+msgstr ""
+
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:257
 msgid "Failed to send verification code"
 msgstr "確認コードの送信に失敗しました"
@@ -1323,17 +1339,13 @@ msgid "Failed to subscribe"
 msgstr "購読に失敗しました"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:661
+#: src/routes/_authenticated/$crmId/index.tsx:659
 msgid "Failed to unsubscribe"
 msgstr "購読解除に失敗しました"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:471
 msgid "Failed to update access level"
 msgstr "アクセスレベルの更新に失敗しました"
-
-#: ../../../lib/web/src/components/notification-category-button.tsx:114
-msgid "Failed to update category"
-msgstr "カテゴリの更新に失敗しました"
 
 #: src/features/objects/components/comment-list.tsx:171
 msgid "Failed to update comment"
@@ -1462,8 +1474,12 @@ msgstr "非表示"
 msgid "Hide password"
 msgstr "パスワードを非表示"
 
+#: ../../../lib/web/src/components/audit-timeline.tsx:64
+msgid "History"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:90
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:175
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:192
 #: ../../../lib/web/src/components/layout/top-bar.tsx:71
 #: ../../../lib/web/src/components/layout/top-bar.tsx:100
 msgid "Home"
@@ -1475,7 +1491,7 @@ msgstr "人気"
 
 #: src/features/editor/components/edit-dialogs.tsx:744
 #: src/features/editor/components/edit-dialogs.tsx:1042
-#: src/routes/_authenticated/$crmId/index.tsx:903
+#: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "ID"
 msgstr "ID"
 
@@ -1501,11 +1517,12 @@ msgstr "デザイン設定をインポート"
 msgid "Import design"
 msgstr "デザインをインポート"
 
-#: src/features/crms/components/create-crm-dialog.tsx:246
+#: src/features/crms/components/create-crm-dialog.tsx:278
 msgid "Import from backup (optional)"
 msgstr "バックアップからインポート（任意）"
 
-#: src/features/crms/components/create-crm-dialog.tsx:119
+#: src/features/crms/components/create-crm-dialog.tsx:108
+#: src/features/crms/components/create-crm-dialog.tsx:139
 msgid "Importing data..."
 msgstr "データをインポート中..."
 
@@ -1533,7 +1550,7 @@ msgstr "興味"
 msgid "Invalid date"
 msgstr "無効な日付"
 
-#: src/features/crms/components/create-crm-dialog.tsx:184
+#: src/features/crms/components/create-crm-dialog.tsx:216
 #: src/routes/_authenticated/$crmId/design.tsx:263
 msgid "Invalid JSON file"
 msgstr "無効な JSON ファイル"
@@ -1591,7 +1608,8 @@ msgstr "文字、数字、スペース、ハイフンのみ"
 msgid "Light"
 msgstr "ライト"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1044
+#: ../../../lib/web/src/components/options-menu.tsx:190
+#: src/routes/_authenticated/$crmId/index.tsx:1042
 msgid "Link"
 msgstr "リンク"
 
@@ -1625,9 +1643,6 @@ msgstr "項目の詳細を読み込み中"
 msgid "Loading..."
 msgstr "読み込み中..."
 
-#: ../../../lib/web/src/components/layout/nav-user.tsx:101
-#: ../../../lib/web/src/components/layout/nav-user.tsx:167
-#: ../../../lib/web/src/components/layout/nav-user.tsx:215
 #: ../../../lib/web/src/components/profile-dropdown.tsx:69
 #: ../../../lib/web/src/components/profile-dropdown.tsx:98
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:26
@@ -1655,8 +1670,8 @@ msgstr "通知とサービス用に接続済みアカウントを管理します
 msgid "Manual"
 msgstr "手動"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:118
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:125
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:202
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:209
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "すべて既読にする"
@@ -1673,7 +1688,7 @@ msgstr "MCP サーバー"
 msgid "Medium"
 msgstr "中"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:190
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:207
 msgid "Menu"
 msgstr "メニュー"
 
@@ -1693,12 +1708,21 @@ msgstr "最小長"
 msgid "Mochi web"
 msgstr "Mochiウェブ"
 
+#: ../../../lib/web/src/components/options-menu.tsx:164
+msgid "Moderation"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:59
 msgid "Monday"
 msgstr "月曜日"
 
+#: ../../../lib/web/src/components/options-menu.tsx:145
+#: ../../../lib/web/src/components/options-menu.tsx:152
+msgid "More options"
+msgstr ""
+
 #: src/features/board/components/board-column.tsx:589
-#: src/features/crms/components/create-crm-dialog.tsx:224
+#: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
@@ -1712,7 +1736,7 @@ msgstr "名前"
 msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
 msgstr "名前に山かっこ、バックスラッシュ、セミコロン、引用符、バッククォートは使用できません"
 
-#: src/features/crms/components/create-crm-dialog.tsx:78
+#: src/features/crms/components/create-crm-dialog.tsx:79
 msgid "Name is required"
 msgstr "名前が必要です"
 
@@ -1727,18 +1751,18 @@ msgstr "ネットワークエラー"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/features/objects/components/create-object-dialog.tsx:361
-#: src/routes/_authenticated/$crmId/index.tsx:978
-#: src/routes/_authenticated/$crmId/index.tsx:995
+#: src/routes/_authenticated/$crmId/index.tsx:976
+#: src/routes/_authenticated/$crmId/index.tsx:993
 msgid "New"
 msgstr "新規"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:976
+#: src/routes/_authenticated/$crmId/index.tsx:974
 msgid "New {0}"
 msgstr "新しい {0}"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:42
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:54
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:41
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:53
 msgid "New game"
 msgstr "新しいゲーム"
 
@@ -1776,7 +1800,7 @@ msgstr "接続されたアカウントがありません"
 msgid "No CRMs found"
 msgstr "CRM が見つかりません"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:51
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:50
 msgid "No games yet"
 msgstr "まだゲームがありません"
 
@@ -1796,7 +1820,7 @@ msgstr "一致するオブジェクトがありません"
 msgid "No notifications yet"
 msgstr "通知はまだありません"
 
-#: src/routes/_authenticated/$crmId/index.tsx:888
+#: src/routes/_authenticated/$crmId/index.tsx:886
 msgid "No objects to export."
 msgstr "エクスポートする項目がありません。"
 
@@ -1833,9 +1857,13 @@ msgstr "ステータスなし"
 msgid "No time zone found."
 msgstr "タイムゾーンが見つかりません。"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:150
+#: ../../../lib/web/src/components/notification-category-button.tsx:106
 msgid "No topic record yet — try again after the next notification."
 msgstr "まだトピック記録がありません — 次の通知後にもう一度お試しください。"
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:132
+msgid "No unread notifications"
+msgstr ""
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:206
 msgid "No users found"
@@ -1893,7 +1921,7 @@ msgid "Notifications"
 msgstr "通知"
 
 #. placeholder {0}: unread.length
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:111
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:195
 msgid "Notifications: {0}"
 msgstr "通知: {0}"
 
@@ -1934,7 +1962,7 @@ msgstr "クラスのアクションを開く"
 msgid "Open design actions"
 msgstr "デザイン操作を開く"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:149
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:166
 msgid "Open menu"
 msgstr "メニューを開く"
 
@@ -1953,7 +1981,7 @@ msgstr "ナビゲーションメニューを開く"
 msgid "Open option actions"
 msgstr "オプションのアクションを開く"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1003
+#: src/routes/_authenticated/$crmId/index.tsx:1001
 msgid "Open page actions"
 msgstr "ページのアクションを開く"
 
@@ -2001,7 +2029,7 @@ msgstr "{totalPages} ページ中 {currentPage} ページ"
 
 #: src/features/objects/components/create-object-dialog.tsx:409
 #: src/features/objects/components/object-detail-panel.tsx:428
-#: src/routes/_authenticated/$crmId/index.tsx:903
+#: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "Parent"
 msgstr "親"
 
@@ -2025,12 +2053,12 @@ msgstr "パターン (正規表現)"
 msgid "Pick a date"
 msgstr "日付を選択"
 
-#: src/routes/_authenticated/$crmId/index.tsx:769
-#: src/routes/_authenticated/$crmId/index.tsx:803
+#: src/routes/_authenticated/$crmId/index.tsx:767
+#: src/routes/_authenticated/$crmId/index.tsx:801
 msgid "Please add one or more classes to the CRM design."
 msgstr "まずCRMの設計に1つ以上のクラスを追加してください。"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:95
+#: ../../../lib/web/src/components/comment-composer.tsx:99
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:323
 msgid "Please check your internet connection and try again."
@@ -2048,6 +2076,14 @@ msgstr "もう一度お試しください。"
 msgid "Please wait a moment and try again."
 msgstr "しばらくしてからもう一度お試しください。"
 
+#: ../../../lib/web/src/components/options-menu.tsx:175
+msgid "Posts"
+msgstr ""
+
+#: ../../../lib/web/src/components/options-menu.tsx:178
+msgid "Posts and comments"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
@@ -2062,7 +2098,6 @@ msgstr "プライバシー"
 msgid "Processing…"
 msgstr "処理中…"
 
-#: ../../../lib/web/src/components/layout/nav-user.tsx:137
 #: ../../../lib/web/src/components/profile-dropdown.tsx:114
 msgid "Profile"
 msgstr "プロフィール"
@@ -2087,7 +2122,7 @@ msgstr "浮き出し"
 msgid "Re-link your accounts on this server"
 msgstr "このサーバーでアカウントを再リンクする"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1027
+#: src/routes/_authenticated/$crmId/index.tsx:1025
 msgid "Re-order columns"
 msgstr "列を並べ替え"
 
@@ -2109,7 +2144,7 @@ msgstr "おすすめの CRM"
 msgid "Reconnecting ({retries})..."
 msgstr "再接続中 ({retries})..."
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:133
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:136
 msgid "Redirecting to login."
 msgstr "ログイン画面にリダイレクトしています。"
 
@@ -2130,10 +2165,10 @@ msgstr "相対 (5分、3時間、2日)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "24時間以内は相対、それ以外は絶対"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:232
+#: ../../../lib/web/src/components/comment-composer.tsx:236
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:289
+#: src/features/crms/components/create-crm-dialog.tsx:321
 #: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/create-object-dialog.tsx:498
 #: src/features/objects/components/object-links.tsx:245
@@ -2237,13 +2272,17 @@ msgstr "{title}をリセット"
 msgid "Reset all settings to default values"
 msgstr "すべての設定をデフォルト値にリセット"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:249
+#: ../../../lib/web/src/components/comment-composer.tsx:253
 msgid "Retry"
 msgstr "再試行"
 
 #: src/components/layout/crms-layout.tsx:71
 msgid "Retry CRMs load"
 msgstr "CRM の再読み込み"
+
+#: ../../../lib/web/src/components/options-menu.tsx:181
+msgid "Revoke access"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:362
 msgid "Right to Left"
@@ -2262,7 +2301,19 @@ msgstr "行のグループ化"
 msgid "Rows per page"
 msgstr "ページあたりの行数"
 
-#: src/features/crms/components/create-crm-dialog.tsx:229
+#: ../../../lib/web/src/components/options-menu.tsx:131
+msgid "RSS access revoked"
+msgstr ""
+
+#: ../../../lib/web/src/components/options-menu.tsx:171
+msgid "RSS feed"
+msgstr ""
+
+#: ../../../lib/web/src/components/options-menu.tsx:121
+msgid "RSS URL copied to clipboard"
+msgstr ""
+
+#: src/features/crms/components/create-crm-dialog.tsx:261
 msgid "Sales CRM"
 msgstr "セールスCRM"
 
@@ -2274,7 +2325,7 @@ msgstr "土曜日"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
 #: src/features/objects/components/comment-thread.tsx:268
-#: src/routes/_authenticated/$crmId/index.tsx:1112
+#: src/routes/_authenticated/$crmId/index.tsx:1110
 msgid "Save"
 msgstr "保存"
 
@@ -2360,7 +2411,7 @@ msgstr "{0}を選択"
 msgid "Select a field"
 msgstr "フィールドを選択"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:37
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:36
 msgid "Select a game"
 msgstr "ゲームを選択"
 
@@ -2473,15 +2524,13 @@ msgstr "出発地と目的地を設定"
 msgid "Setting access..."
 msgstr "アクセスを設定しています..."
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:109
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:115
-#: ../../../lib/web/src/components/layout/nav-user.tsx:84
-#: ../../../lib/web/src/components/layout/nav-user.tsx:148
-#: ../../../lib/web/src/components/layout/nav-user.tsx:198
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:126
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
+#: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:164
 #: src/routes/_authenticated/$crmId_.settings.tsx:187
-#: src/routes/_authenticated/$crmId/index.tsx:1064
+#: src/routes/_authenticated/$crmId/index.tsx:1062
 msgid "Settings"
 msgstr "設定"
 
@@ -2511,12 +2560,12 @@ msgstr "{total}件中{totalShown}件を表示"
 msgid "Sidebar"
 msgstr "サイドバー"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:121
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:127
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:138
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:144
 msgid "Sign out"
 msgstr "ログアウト"
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:131
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:134
 msgid "Signing out..."
 msgstr "サインアウト中..."
 
@@ -2537,6 +2586,10 @@ msgstr "小"
 #: src/components/view-options-bar.tsx:164
 msgid "Sort"
 msgstr "並べ替え"
+
+#: ../../../lib/web/src/components/options-menu.tsx:158
+msgid "Sources"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
@@ -2600,6 +2653,7 @@ msgstr "日曜日"
 msgid "Switch to view 1-9"
 msgstr "ビュー 1〜9 に切り替え"
 
+#: ../../../lib/web/src/components/audit-timeline.tsx:111
 #: ../../../lib/web/src/components/config-drawer.tsx:209
 #: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
@@ -2646,10 +2700,6 @@ msgid "The requested content could not be found."
 msgstr "リクエストされたコンテンツが見つかりませんでした。"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
-#~ msgid "The server returned a web page instead of data, which usually means the address was wrong."
-#~ msgstr ""
-
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "サーバーがデータではなくウェブページを返しました。"
 
@@ -2683,7 +2733,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "「{0}」とそのすべての項目、コメント、添付ファイルが完全に削除されます。この操作は取り消せません。"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1242
+#: src/routes/_authenticated/$crmId/index.tsx:1240
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "「{0}」がサイドバーから削除され、このCRMの更新通知が停止されます。"
 
@@ -2804,12 +2854,12 @@ msgstr "入力して検索…"
 msgid "Unable to connect to remote server"
 msgstr "リモートサーバーに接続できません"
 
-#: ../../../lib/web/src/lib/auth-manager.ts:85
-#: ../../../lib/web/src/lib/auth-manager.ts:97
+#: ../../../lib/web/src/lib/auth-manager.ts:92
+#: ../../../lib/web/src/lib/auth-manager.ts:104
 msgid "Unable to redirect to login. Please try again."
 msgstr "ログインページにリダイレクトできません。再試行してください。"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:158
+#: ../../../lib/web/src/components/notification-category-button.tsx:114
 msgid "Unassigned"
 msgstr "未割り当て"
 
@@ -2830,25 +2880,26 @@ msgstr "アメリカ合衆国"
 msgid "Unknown"
 msgstr "不明"
 
+#: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:1072
-#: src/routes/_authenticated/$crmId/index.tsx:1243
+#: src/routes/_authenticated/$crmId/index.tsx:1070
+#: src/routes/_authenticated/$crmId/index.tsx:1241
 msgid "Unsubscribe"
 msgstr "購読解除"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1241
+#: src/routes/_authenticated/$crmId/index.tsx:1239
 msgid "Unsubscribe from CRM?"
 msgstr "CRMの購読を解除しますか？"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:660
+#: src/routes/_authenticated/$crmId/index.tsx:658
 msgid "Unsubscribed"
 msgstr "購読を解除しました"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:659
+#: src/routes/_authenticated/$crmId/index.tsx:657
 msgid "Unsubscribing..."
 msgstr "購読解除中..."
 
@@ -2880,7 +2931,7 @@ msgstr "アクセスを更新しています..."
 msgid "Upload"
 msgstr "アップロード"
 
-#: src/features/crms/components/create-crm-dialog.tsx:262
+#: src/features/crms/components/create-crm-dialog.tsx:294
 #: src/routes/_authenticated/$crmId/design.tsx:298
 msgid "Upload .json file"
 msgstr ".json ファイルをアップロード"
@@ -2893,7 +2944,7 @@ msgstr "アップロードの進行状況"
 msgid "Use your passkey"
 msgstr "パスキーを使用"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:102
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:119
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
 #: src/features/editor/components/add-dialogs.tsx:141
 msgid "User"
@@ -2938,8 +2989,8 @@ msgstr "ビュー"
 msgid "View all"
 msgstr "すべて表示"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:131
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:139
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:215
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:223
 msgid "View all notifications"
 msgstr "すべての通知を表示"
 
@@ -2955,7 +3006,7 @@ msgstr "ビューコントロール"
 msgid "View only"
 msgstr "閲覧のみ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1012
+#: src/routes/_authenticated/$crmId/index.tsx:1010
 msgid "View options"
 msgstr "表示オプション"
 
@@ -3014,10 +3065,6 @@ msgstr "このリソースを表示するために <0/>必要な権限があり�
 msgid "You have no CRMs yet."
 msgstr "まだ CRM がありません。"
 
-#: ../../../lib/web/src/lib/show-submitted-data.tsx:9
-msgid "You submitted the following values:"
-msgstr "次の値を送信しました:"
-
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:193
 msgid "You're all caught up!"
 msgstr "すべて確認済みです。"
@@ -3026,14 +3073,14 @@ msgstr "すべて確認済みです。"
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "アカウントが{source}からここに移行されました。そちらで削除するまで、メッセージや通知が両方のサーバーに届く場合があり、一部のコンテンツは旧サーバーから引き続き提供され、フォロワーがここであなたを見つけるまで数分かかる場合があります。"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:291
+#: ../../../lib/web/src/components/comment-composer.tsx:295
 msgid "Your attachments will be lost."
 msgstr "添付ファイルは失われます。"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:289
+#: ../../../lib/web/src/components/comment-composer.tsx:293
 msgid "Your text and attachments will be lost."
 msgstr "入力したテキストと添付ファイルは失われます。"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:292
+#: ../../../lib/web/src/components/comment-composer.tsx:296
 msgid "Your text will be lost."
 msgstr "入力したテキストは失われます。"
