@@ -30,11 +30,11 @@ msgstr "(සංස්කරණය කළා)"
 msgid "(expand)"
 msgstr "(පුළුල් කරන්න)"
 
-#: src/features/editor/components/edit-dialogs.tsx:798
+#: src/features/editor/components/edit-dialogs.tsx:320
 msgid "(itself)"
 msgstr "(එයම)"
 
-#: src/features/board/components/board-container.tsx:790
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:818
 msgid "[not set]"
 msgstr "[සකසා නැත]"
 
@@ -218,8 +218,8 @@ msgstr "පරීක්ෂා ලැයිස්තු අයිතමයක් 
 
 #: src/features/editor/components/design-editor.tsx:518
 #: src/features/editor/components/design-editor.tsx:523
-#: src/features/editor/components/edit-dialogs.tsx:695
-#: src/features/editor/components/edit-dialogs.tsx:884
+#: src/features/editor/components/edit-dialogs.tsx:217
+#: src/features/editor/components/edit-dialogs.tsx:406
 msgid "Add class"
 msgstr "පන්තියක් එක් කරන්න"
 
@@ -230,7 +230,7 @@ msgstr "තීරුවක් එක් කරන්න"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
-#: src/features/editor/components/edit-dialogs.tsx:879
+#: src/features/editor/components/edit-dialogs.tsx:401
 msgid "Add field"
 msgstr "ක්ෂේත්‍රයක් එක් කරන්න"
 
@@ -248,9 +248,9 @@ msgstr "නව ගිණුමක් එක් කරන්න"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:292
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:94
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
-#: src/features/editor/components/edit-dialogs.tsx:1181
 msgid "Add option"
 msgstr "විකල්පයක් එක් කරන්න"
 
@@ -271,12 +271,12 @@ msgstr "කණ්ඩායමක්/app එකක් එක් කරන්න"
 msgid "Add to existing notifications"
 msgstr "පවතින දැනුම්දීම් වෙත එක් කරන්න"
 
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:264
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:519
 #: ../../../lib/web/src/components/view-tabs.tsx:87
 #: ../../../lib/web/src/components/view-tabs.tsx:93
 #: src/features/editor/components/design-editor.tsx:464
 #: src/features/editor/components/design-editor.tsx:469
-#: src/features/editor/components/edit-dialogs.tsx:274
-#: src/features/editor/components/edit-dialogs.tsx:519
 msgid "Add view"
 msgstr "දැක්මක් එක් කරන්න"
 
@@ -309,7 +309,7 @@ msgstr "ඕනෑම කෙනෙකුට {0} සෙවීමට ඉඩ දෙ�
 msgid "Allow anyone to search for CRM"
 msgstr "CRM සොයා ගැනීමට ඕනෑම කෙනෙකුට අවසර දෙන්න"
 
-#: src/features/editor/components/edit-dialogs.tsx:1115
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:226
 msgid "Allow sort by"
 msgstr "මෙයින් වර්ග කිරීමට අවසර දෙන්න"
 
@@ -439,7 +439,7 @@ msgstr "විශ්වාස නොකළ සබැඳියකට සංචා
 msgid "Blocks"
 msgstr "අවහිර කරයි"
 
-#: src/features/editor/components/edit-dialogs.tsx:328
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:318
 msgid "Board"
 msgstr "පුවරුව"
 
@@ -448,7 +448,7 @@ msgstr "පුවරුව"
 msgid "Boost interest"
 msgstr "කැමැත්ත වැඩි කරන්න"
 
-#: src/features/editor/components/edit-dialogs.tsx:410
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:405
 msgid "Border colour"
 msgstr "මායිම් වර්ණය"
 
@@ -456,7 +456,7 @@ msgstr "මායිම් වර්ණය"
 msgid "Browser notifications"
 msgstr "බ්‍රවුසර දැනුම්දීම්"
 
-#: src/features/editor/components/edit-dialogs.tsx:780
+#: src/features/editor/components/edit-dialogs.tsx:302
 msgid "Can be child of"
 msgstr "මෙහි දරුවෙකු විය හැක"
 
@@ -584,10 +584,10 @@ msgstr "වසන්න"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
-#: src/features/editor/components/edit-dialogs.tsx:279
-#: src/features/editor/components/edit-dialogs.tsx:283
-#: src/features/editor/components/edit-dialogs.tsx:700
-#: src/features/editor/components/edit-dialogs.tsx:704
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:269
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:273
+#: src/features/editor/components/edit-dialogs.tsx:222
+#: src/features/editor/components/edit-dialogs.tsx:226
 msgid "Close dialog"
 msgstr "සංවාදය වසන්න"
 
@@ -629,7 +629,7 @@ msgstr "වර්ණය"
 msgid "Column actions"
 msgstr "තීරු ක්‍රියා"
 
-#: src/features/editor/components/edit-dialogs.tsx:363
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:353
 msgid "Columns group by"
 msgstr "තීරු කාණ්ඩගත කරන්නේ මෙයින්"
 
@@ -664,7 +664,7 @@ msgstr "අදහස් ({0})"
 msgid "Compact"
 msgstr "සංයුක්ත"
 
-#: src/features/editor/components/edit-dialogs.tsx:696
+#: src/features/editor/components/edit-dialogs.tsx:218
 msgid "Configure class settings"
 msgstr "පන්ති සැකසීම් වින්‍යාස කරන්න"
 
@@ -672,7 +672,7 @@ msgstr "පන්ති සැකසීම් වින්‍යාස කරන
 msgid "Configure option settings"
 msgstr "විකල්ප සැකසීම් වින්‍යාස කරන්න"
 
-#: src/features/editor/components/edit-dialogs.tsx:275
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:265
 msgid "Configure view settings"
 msgstr "දැක්ම් සැකසීම් වින්‍යාස කරන්න"
 
@@ -786,8 +786,8 @@ msgstr "වස්තුවක් නිර්මාණය කරන්න"
 msgid "Create, edit, comment, and view"
 msgstr "සෑදීම, සංස්කරණය, අදහස් දැක්වීම සහ බැලීම"
 
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:498
 #: src/components/view-options-bar.tsx:41
-#: src/features/editor/components/edit-dialogs.tsx:498
 msgid "Created"
 msgstr "නිර්මාණය කරන ලදී"
 
@@ -888,7 +888,7 @@ msgstr "පෙරනිමි"
 msgid "Default AI account"
 msgstr "පෙරනිමි AI ගිණුම"
 
-#: src/features/editor/components/edit-dialogs.tsx:490
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:485
 msgid "Default sort"
 msgstr "පෙරනිමි වර්ග කිරීම"
 
@@ -910,7 +910,7 @@ msgstr "මකන්න"
 msgid "Delete attachment"
 msgstr "ඇමුණුම මකන්න"
 
-#: src/features/editor/components/edit-dialogs.tsx:721
+#: src/features/editor/components/edit-dialogs.tsx:243
 msgid "Delete class"
 msgstr "පන්තිය මකන්න"
 
@@ -931,7 +931,7 @@ msgstr "CRM මකන්න"
 msgid "Delete CRM?"
 msgstr "CRM මකන්නද?"
 
-#: src/features/editor/components/edit-dialogs.tsx:1190
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:301
 msgid "Delete field"
 msgstr "ක්ෂේත්‍රය මකන්න"
 
@@ -946,12 +946,12 @@ msgid "Delete option"
 msgstr "විකල්පය මකන්න"
 
 #. placeholder {0}: opt.name
-#: src/features/editor/components/edit-dialogs.tsx:1168
-#: src/features/editor/components/edit-dialogs.tsx:1173
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:279
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:284
 msgid "Delete option {0}"
 msgstr "විකල්පය {0} මකන්න"
 
-#: src/features/editor/components/edit-dialogs.tsx:300
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:290
 msgid "Delete view"
 msgstr "දැක්ම මකන්න"
 
@@ -1041,9 +1041,9 @@ msgstr "පුවරු ඉඟිය ඉවත ලන්න"
 msgid "Displays the mobile sidebar."
 msgstr "ජංගම පැති තීරුව සංදර්ශනය කරයි."
 
-#: src/features/editor/components/edit-dialogs.tsx:524
-#: src/features/editor/components/edit-dialogs.tsx:889
-#: src/features/editor/components/edit-dialogs.tsx:1195
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:306
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:524
+#: src/features/editor/components/edit-dialogs.tsx:411
 #: src/features/objects/components/object-detail-panel.tsx:370
 msgid "Done"
 msgstr "නිමයි"
@@ -1093,15 +1093,15 @@ msgstr "සංස්කරණය කරන්න"
 msgid "Edit {label}"
 msgstr "{label} සංස්කරණය කරන්න"
 
-#: src/features/editor/components/edit-dialogs.tsx:695
+#: src/features/editor/components/edit-dialogs.tsx:217
 msgid "Edit class"
 msgstr "පන්තිය සංස්කරණය කරන්න"
 
-#: src/features/editor/components/edit-dialogs.tsx:1027
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:138
 msgid "Edit field"
 msgstr "ක්ෂේත්‍රය සංස්කරණය කරන්න"
 
-#: src/features/editor/components/edit-dialogs.tsx:1028
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:139
 msgid "Edit field settings"
 msgstr "ක්ෂේත්‍ර සැකසුම් සංස්කරණය කරන්න"
 
@@ -1110,8 +1110,8 @@ msgid "Edit option"
 msgstr "විකල්පය සංස්කරණය කරන්න"
 
 #. placeholder {0}: opt.name
-#: src/features/editor/components/edit-dialogs.tsx:1153
-#: src/features/editor/components/edit-dialogs.tsx:1158
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:264
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:269
 msgid "Edit option {0}"
 msgstr "විකල්පය {0} සංස්කරණය කරන්න"
 
@@ -1119,7 +1119,7 @@ msgstr "විකල්පය {0} සංස්කරණය කරන්න"
 msgid "Edit selected card"
 msgstr "තේරූ කාඩ්පත සංස්කරණය කරන්න"
 
-#: src/features/editor/components/edit-dialogs.tsx:274
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:264
 msgid "Edit view"
 msgstr "දසුන සංස්කරණය කරන්න"
 
@@ -1363,7 +1363,7 @@ msgstr "ක්ෂේත්‍රය යාවත්කාලීන කිරී�
 msgid "Failed to upload attachment"
 msgstr "ඇමුණුම උඩුගත කිරීමට අසමත් විය"
 
-#: src/features/editor/components/edit-dialogs.tsx:805
+#: src/features/editor/components/edit-dialogs.tsx:327
 msgid "Fields"
 msgstr "ක්ෂේත්‍ර"
 
@@ -1390,7 +1390,7 @@ msgstr "ඇඟිලි සලකුණ"
 msgid "Finish moving your account"
 msgstr "ඔබේ ගිණුම ගෙන යාම අවසන් කරන්න"
 
-#: src/features/editor/components/edit-dialogs.tsx:1111
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:222
 msgid "Flags"
 msgstr "කොඩි"
 
@@ -1457,7 +1457,7 @@ msgstr "පෙර පිටුවට යන්න"
 msgid "Group"
 msgstr "කණ්ඩායම"
 
-#: src/features/editor/components/edit-dialogs.tsx:363
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:353
 msgid "Group by"
 msgstr "අනුව කාණ්ඩ කරන්න"
 
@@ -1489,8 +1489,8 @@ msgstr "මුල් පිටුව"
 msgid "Hot"
 msgstr "උණුසුම්"
 
-#: src/features/editor/components/edit-dialogs.tsx:744
-#: src/features/editor/components/edit-dialogs.tsx:1042
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:153
+#: src/features/editor/components/edit-dialogs.tsx:266
 #: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "ID"
 msgstr "හැඳුනුම්පත"
@@ -1585,7 +1585,7 @@ msgid "Large"
 msgstr "විශාල"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:287
-#: src/features/editor/components/edit-dialogs.tsx:322
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:312
 msgid "Layout"
 msgstr "පිරිසැලසුම"
 
@@ -1617,7 +1617,7 @@ msgstr "සබැඳිය"
 msgid "Links"
 msgstr "සබැඳි"
 
-#: src/features/editor/components/edit-dialogs.tsx:334
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:324
 msgid "List"
 msgstr "ලැයිස්තුව"
 
@@ -1676,7 +1676,7 @@ msgstr "අතින්"
 msgid "Mark all as read"
 msgstr "සියල්ල කියවූ ලෙස සලකුණු කරන්න"
 
-#: src/features/editor/components/edit-dialogs.tsx:1088
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:199
 msgid "Maximum length"
 msgstr "උපරිම දිග"
 
@@ -1700,7 +1700,7 @@ msgstr "පණිවිඩය"
 msgid "Metric"
 msgstr "මිනුම"
 
-#: src/features/editor/components/edit-dialogs.tsx:1077
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:188
 msgid "Minimum length"
 msgstr "අවම දිග"
 
@@ -1723,11 +1723,11 @@ msgstr ""
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:143
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:128
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:299
 #: src/features/crms/components/create-crm-dialog.tsx:256
-#: src/features/editor/components/edit-dialogs.tsx:309
-#: src/features/editor/components/edit-dialogs.tsx:730
-#: src/features/editor/components/edit-dialogs.tsx:1032
+#: src/features/editor/components/edit-dialogs.tsx:252
 #: src/routes/_authenticated/$crmId_.settings.tsx:295
 msgid "Name"
 msgstr "නම"
@@ -1847,8 +1847,8 @@ msgstr "ප්‍රතිඵල හමු නොවීය"
 msgid "No results found."
 msgstr "ප්‍රතිඵල හමු නොවීය."
 
-#: src/features/board/components/board-container.tsx:861
-#: src/features/board/components/board-container.tsx:905
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:889
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:934
 #: src/features/tree/components/tree-view.tsx:355
 msgid "No status"
 msgstr "තත්වයක් නැත"
@@ -1874,18 +1874,18 @@ msgid "No views"
 msgstr "බැලීම් නැත"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:345
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:365
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:391
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:421
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:497
 #: ../../../lib/web/src/components/person-picker.tsx:350
 #: ../../../lib/web/src/lib/preference-utils.ts:105
 #: ../../../lib/web/src/lib/preference-utils.ts:125
-#: src/features/editor/components/edit-dialogs.tsx:375
-#: src/features/editor/components/edit-dialogs.tsx:393
-#: src/features/editor/components/edit-dialogs.tsx:396
-#: src/features/editor/components/edit-dialogs.tsx:423
-#: src/features/editor/components/edit-dialogs.tsx:426
-#: src/features/editor/components/edit-dialogs.tsx:494
-#: src/features/editor/components/edit-dialogs.tsx:497
-#: src/features/editor/components/edit-dialogs.tsx:764
-#: src/features/editor/components/edit-dialogs.tsx:767
+#: src/features/editor/components/edit-dialogs.tsx:286
+#: src/features/editor/components/edit-dialogs.tsx:289
 #: src/features/objects/components/create-object-dialog.tsx:417
 #: src/features/objects/components/create-object-dialog.tsx:420
 #: src/features/objects/components/create-object-dialog.tsx:424
@@ -1926,7 +1926,7 @@ msgid "Notifications: {0}"
 msgstr "දැනුම්දීම්: {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:140
-#: src/features/editor/components/edit-dialogs.tsx:499
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:499
 msgid "Number"
 msgstr "අංකය"
 
@@ -1953,8 +1953,8 @@ msgstr "ගිණුම් ක්‍රියා විවෘත කරන්න
 msgid "Open actions"
 msgstr "ක්‍රියා විවෘත කරන්න"
 
-#: src/features/editor/components/edit-dialogs.tsx:711
-#: src/features/editor/components/edit-dialogs.tsx:716
+#: src/features/editor/components/edit-dialogs.tsx:233
+#: src/features/editor/components/edit-dialogs.tsx:238
 msgid "Open class actions"
 msgstr "class ක්‍රියා විවෘත කරන්න"
 
@@ -1994,8 +1994,8 @@ msgstr "තේරූ කාඩ්පත විවෘත කරන්න"
 msgid "Open theme settings"
 msgstr "theme සැකසුම් විවෘත කරන්න"
 
-#: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/editor/components/edit-dialogs.tsx:295
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:280
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:285
 msgid "Open view actions"
 msgstr "view ක්‍රියා විවෘත කරන්න"
 
@@ -2010,7 +2010,7 @@ msgid "Option name"
 msgstr "විකල්ප නම"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:168
-#: src/features/editor/components/edit-dialogs.tsx:1130
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:241
 msgid "Options"
 msgstr "විකල්ප"
 
@@ -2045,7 +2045,7 @@ msgstr "මුරයතුර සත්‍යාපනය අසාර්ථක 
 msgid "Passkeys"
 msgstr "මුරයතුරු"
 
-#: src/features/editor/components/edit-dialogs.tsx:1099
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:210
 msgid "Pattern (regex)"
 msgstr "රටාව (regex)"
 
@@ -2197,8 +2197,8 @@ msgid "Remove access?"
 msgstr "ප්‍රවේශය ඉවත් කරන්නද?"
 
 #. placeholder {0}: field.name || field.id
-#: src/features/editor/components/edit-dialogs.tsx:847
-#: src/features/editor/components/edit-dialogs.tsx:852
+#: src/features/editor/components/edit-dialogs.tsx:369
+#: src/features/editor/components/edit-dialogs.tsx:374
 msgid "Remove field {0}"
 msgstr "{0} ක්ෂේත්‍රය ඉවත් කරන්න"
 
@@ -2250,7 +2250,7 @@ msgstr "පිළිතුර"
 msgid "Reply to {0}..."
 msgstr "{0} ට පිළිතුරු දෙන්න..."
 
-#: src/features/editor/components/edit-dialogs.tsx:1114
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:225
 msgid "Required"
 msgstr "අවශ්‍යයි"
 
@@ -2289,11 +2289,11 @@ msgid "Right to Left"
 msgstr "දකුණේ සිට වමට"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
-#: src/features/editor/components/edit-dialogs.tsx:1058
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:169
 msgid "Rows"
 msgstr "පේළි"
 
-#: src/features/editor/components/edit-dialogs.tsx:389
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:379
 msgid "Rows group by"
 msgstr "පේළි කාණ්ඩගත කරන්නේ"
 
@@ -2407,7 +2407,7 @@ msgstr "තෝරන්න"
 msgid "Select {0}"
 msgstr "{0} තෝරන්න"
 
-#: src/features/editor/components/edit-dialogs.tsx:372
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 msgid "Select a field"
 msgstr "ක්ෂේත්‍රයක් තෝරන්න"
 
@@ -2534,11 +2534,11 @@ msgstr "ප්‍රවේශය සකසමින්..."
 msgid "Settings"
 msgstr "සැකසුම්"
 
-#: src/features/editor/components/edit-dialogs.tsx:343
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:333
 msgid "Show classes"
 msgstr "classes පෙන්වන්න"
 
-#: src/features/editor/components/edit-dialogs.tsx:439
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:434
 msgid "Show fields"
 msgstr "ක්ෂේත්‍ර පෙන්වන්න"
 
@@ -2570,7 +2570,7 @@ msgid "Signing out..."
 msgstr "පිට වෙමින්..."
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:161
-#: src/features/editor/components/edit-dialogs.tsx:1069
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:180
 msgid "Single line of text only"
 msgstr "පෙළ එක් පේළියක් පමණි"
 
@@ -2746,11 +2746,11 @@ msgstr "මෙය වත්මන් මෝස්තරය <0>{0}</0> සමඟ 
 msgid "Thursday"
 msgstr "බ්‍රහස්පතින්දා"
 
-#: src/features/editor/components/edit-dialogs.tsx:584
+#: src/features/editor/components/edit-dialogs.tsx:106
 msgid "Title"
 msgstr "මාතෘකාව"
 
-#: src/features/editor/components/edit-dialogs.tsx:753
+#: src/features/editor/components/edit-dialogs.tsx:275
 msgid "Title field"
 msgstr "මාතෘකා ක්ෂේත්‍රය"
 
@@ -2806,7 +2806,7 @@ msgstr "ඉල්ලීම් ඕනෑවට වඩා වැඩියි"
 msgid "Top"
 msgstr "ඉහළ"
 
-#: src/features/editor/components/edit-dialogs.tsx:787
+#: src/features/editor/components/edit-dialogs.tsx:309
 msgid "Top level"
 msgstr "ඉහළ මට්ටම"
 
@@ -2830,7 +2830,7 @@ msgid "Tuesday"
 msgstr "අඟහරුවාදා"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:130
-#: src/features/editor/components/edit-dialogs.tsx:1052
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:163
 msgid "Type"
 msgstr "වර්ගය"
 
@@ -2905,6 +2905,7 @@ msgstr "දායකත්වය ඉවත් කරමින්..."
 
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-column.tsx:28
+#: src/features/board/components/board-container.tsx:29
 #: src/features/objects/components/create-object-dialog.tsx:190
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302
@@ -2918,8 +2919,8 @@ msgstr "මාතෘකා රහිත"
 msgid "Unverified"
 msgstr "සත්‍යාපනය නොකළ"
 
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:500
 #: src/components/view-options-bar.tsx:42
-#: src/features/editor/components/edit-dialogs.tsx:500
 msgid "Updated"
 msgstr "යාවත්කාලීන කරන ලදී"
 

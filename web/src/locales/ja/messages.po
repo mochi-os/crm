@@ -30,11 +30,11 @@ msgstr "(編集済み)"
 msgid "(expand)"
 msgstr "(展開)"
 
-#: src/features/editor/components/edit-dialogs.tsx:798
+#: src/features/editor/components/edit-dialogs.tsx:320
 msgid "(itself)"
 msgstr "(自身)"
 
-#: src/features/board/components/board-container.tsx:790
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:818
 msgid "[not set]"
 msgstr "[未設定]"
 
@@ -218,8 +218,8 @@ msgstr "項目を追加"
 
 #: src/features/editor/components/design-editor.tsx:518
 #: src/features/editor/components/design-editor.tsx:523
-#: src/features/editor/components/edit-dialogs.tsx:695
-#: src/features/editor/components/edit-dialogs.tsx:884
+#: src/features/editor/components/edit-dialogs.tsx:217
+#: src/features/editor/components/edit-dialogs.tsx:406
 msgid "Add class"
 msgstr "クラスを追加"
 
@@ -230,7 +230,7 @@ msgstr "列を追加"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
-#: src/features/editor/components/edit-dialogs.tsx:879
+#: src/features/editor/components/edit-dialogs.tsx:401
 msgid "Add field"
 msgstr "フィールドを追加"
 
@@ -248,9 +248,9 @@ msgstr "新しいアカウントを追加"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:292
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:94
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
-#: src/features/editor/components/edit-dialogs.tsx:1181
 msgid "Add option"
 msgstr "オプションを追加"
 
@@ -271,12 +271,12 @@ msgstr "チーム/アプリを追加"
 msgid "Add to existing notifications"
 msgstr "既存の通知に追加"
 
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:264
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:519
 #: ../../../lib/web/src/components/view-tabs.tsx:87
 #: ../../../lib/web/src/components/view-tabs.tsx:93
 #: src/features/editor/components/design-editor.tsx:464
 #: src/features/editor/components/design-editor.tsx:469
-#: src/features/editor/components/edit-dialogs.tsx:274
-#: src/features/editor/components/edit-dialogs.tsx:519
 msgid "Add view"
 msgstr "ビューを追加"
 
@@ -309,7 +309,7 @@ msgstr "誰でも{0}を検索できるようにする"
 msgid "Allow anyone to search for CRM"
 msgstr "誰でも CRM を検索できるようにする"
 
-#: src/features/editor/components/edit-dialogs.tsx:1115
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:226
 msgid "Allow sort by"
 msgstr "並べ替えを許可"
 
@@ -439,7 +439,7 @@ msgstr "信頼できないリンクへの遷移をブロックしました"
 msgid "Blocks"
 msgstr "ブロック"
 
-#: src/features/editor/components/edit-dialogs.tsx:328
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:318
 msgid "Board"
 msgstr "ボード"
 
@@ -448,7 +448,7 @@ msgstr "ボード"
 msgid "Boost interest"
 msgstr "関心を高める"
 
-#: src/features/editor/components/edit-dialogs.tsx:410
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:405
 msgid "Border colour"
 msgstr "枠線の色"
 
@@ -456,7 +456,7 @@ msgstr "枠線の色"
 msgid "Browser notifications"
 msgstr "ブラウザ通知"
 
-#: src/features/editor/components/edit-dialogs.tsx:780
+#: src/features/editor/components/edit-dialogs.tsx:302
 msgid "Can be child of"
 msgstr "親にできるもの"
 
@@ -584,10 +584,10 @@ msgstr "閉じる"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
-#: src/features/editor/components/edit-dialogs.tsx:279
-#: src/features/editor/components/edit-dialogs.tsx:283
-#: src/features/editor/components/edit-dialogs.tsx:700
-#: src/features/editor/components/edit-dialogs.tsx:704
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:269
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:273
+#: src/features/editor/components/edit-dialogs.tsx:222
+#: src/features/editor/components/edit-dialogs.tsx:226
 msgid "Close dialog"
 msgstr "ダイアログを閉じる"
 
@@ -629,7 +629,7 @@ msgstr "色"
 msgid "Column actions"
 msgstr "列の操作"
 
-#: src/features/editor/components/edit-dialogs.tsx:363
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:353
 msgid "Columns group by"
 msgstr "列のグループ化"
 
@@ -664,7 +664,7 @@ msgstr "コメント ({0})"
 msgid "Compact"
 msgstr "コンパクト"
 
-#: src/features/editor/components/edit-dialogs.tsx:696
+#: src/features/editor/components/edit-dialogs.tsx:218
 msgid "Configure class settings"
 msgstr "クラスの設定"
 
@@ -672,7 +672,7 @@ msgstr "クラスの設定"
 msgid "Configure option settings"
 msgstr "オプションの設定"
 
-#: src/features/editor/components/edit-dialogs.tsx:275
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:265
 msgid "Configure view settings"
 msgstr "ビューの設定"
 
@@ -786,8 +786,8 @@ msgstr "オブジェクトを作成"
 msgid "Create, edit, comment, and view"
 msgstr "作成、編集、コメント、閲覧"
 
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:498
 #: src/components/view-options-bar.tsx:41
-#: src/features/editor/components/edit-dialogs.tsx:498
 msgid "Created"
 msgstr "作成日"
 
@@ -888,7 +888,7 @@ msgstr "デフォルト"
 msgid "Default AI account"
 msgstr "デフォルト AI アカウント"
 
-#: src/features/editor/components/edit-dialogs.tsx:490
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:485
 msgid "Default sort"
 msgstr "デフォルトの並び順"
 
@@ -910,7 +910,7 @@ msgstr "削除"
 msgid "Delete attachment"
 msgstr "添付を削除"
 
-#: src/features/editor/components/edit-dialogs.tsx:721
+#: src/features/editor/components/edit-dialogs.tsx:243
 msgid "Delete class"
 msgstr "クラスを削除"
 
@@ -931,7 +931,7 @@ msgstr "CRMを削除"
 msgid "Delete CRM?"
 msgstr "CRMを削除しますか？"
 
-#: src/features/editor/components/edit-dialogs.tsx:1190
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:301
 msgid "Delete field"
 msgstr "フィールドを削除"
 
@@ -946,12 +946,12 @@ msgid "Delete option"
 msgstr "オプションを削除"
 
 #. placeholder {0}: opt.name
-#: src/features/editor/components/edit-dialogs.tsx:1168
-#: src/features/editor/components/edit-dialogs.tsx:1173
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:279
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:284
 msgid "Delete option {0}"
 msgstr "オプション「{0}」を削除"
 
-#: src/features/editor/components/edit-dialogs.tsx:300
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:290
 msgid "Delete view"
 msgstr "ビューを削除"
 
@@ -1041,9 +1041,9 @@ msgstr "ボードのヒントを閉じる"
 msgid "Displays the mobile sidebar."
 msgstr "モバイルサイドバーを表示します。"
 
-#: src/features/editor/components/edit-dialogs.tsx:524
-#: src/features/editor/components/edit-dialogs.tsx:889
-#: src/features/editor/components/edit-dialogs.tsx:1195
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:306
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:524
+#: src/features/editor/components/edit-dialogs.tsx:411
 #: src/features/objects/components/object-detail-panel.tsx:370
 msgid "Done"
 msgstr "完了"
@@ -1093,15 +1093,15 @@ msgstr "編集"
 msgid "Edit {label}"
 msgstr "{label} を編集"
 
-#: src/features/editor/components/edit-dialogs.tsx:695
+#: src/features/editor/components/edit-dialogs.tsx:217
 msgid "Edit class"
 msgstr "クラスを編集"
 
-#: src/features/editor/components/edit-dialogs.tsx:1027
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:138
 msgid "Edit field"
 msgstr "フィールドを編集"
 
-#: src/features/editor/components/edit-dialogs.tsx:1028
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:139
 msgid "Edit field settings"
 msgstr "フィールド設定を編集"
 
@@ -1110,8 +1110,8 @@ msgid "Edit option"
 msgstr "オプションを編集"
 
 #. placeholder {0}: opt.name
-#: src/features/editor/components/edit-dialogs.tsx:1153
-#: src/features/editor/components/edit-dialogs.tsx:1158
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:264
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:269
 msgid "Edit option {0}"
 msgstr "オプション「{0}」を編集"
 
@@ -1119,7 +1119,7 @@ msgstr "オプション「{0}」を編集"
 msgid "Edit selected card"
 msgstr "選択中のカードを編集"
 
-#: src/features/editor/components/edit-dialogs.tsx:274
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:264
 msgid "Edit view"
 msgstr "ビューを編集"
 
@@ -1363,7 +1363,7 @@ msgstr "フィールドの更新に失敗しました"
 msgid "Failed to upload attachment"
 msgstr "添付ファイルのアップロードに失敗しました"
 
-#: src/features/editor/components/edit-dialogs.tsx:805
+#: src/features/editor/components/edit-dialogs.tsx:327
 msgid "Fields"
 msgstr "フィールド"
 
@@ -1390,7 +1390,7 @@ msgstr "フィンガープリント"
 msgid "Finish moving your account"
 msgstr "アカウントの移行を完了する"
 
-#: src/features/editor/components/edit-dialogs.tsx:1111
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:222
 msgid "Flags"
 msgstr "フラグ"
 
@@ -1457,7 +1457,7 @@ msgstr "前のページへ"
 msgid "Group"
 msgstr "グループ"
 
-#: src/features/editor/components/edit-dialogs.tsx:363
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:353
 msgid "Group by"
 msgstr "グループ化"
 
@@ -1489,8 +1489,8 @@ msgstr "ホーム"
 msgid "Hot"
 msgstr "人気"
 
-#: src/features/editor/components/edit-dialogs.tsx:744
-#: src/features/editor/components/edit-dialogs.tsx:1042
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:153
+#: src/features/editor/components/edit-dialogs.tsx:266
 #: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "ID"
 msgstr "ID"
@@ -1585,7 +1585,7 @@ msgid "Large"
 msgstr "大"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:287
-#: src/features/editor/components/edit-dialogs.tsx:322
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:312
 msgid "Layout"
 msgstr "レイアウト"
 
@@ -1617,7 +1617,7 @@ msgstr "リンク"
 msgid "Links"
 msgstr "リンク"
 
-#: src/features/editor/components/edit-dialogs.tsx:334
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:324
 msgid "List"
 msgstr "リスト"
 
@@ -1676,7 +1676,7 @@ msgstr "手動"
 msgid "Mark all as read"
 msgstr "すべて既読にする"
 
-#: src/features/editor/components/edit-dialogs.tsx:1088
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:199
 msgid "Maximum length"
 msgstr "最大長"
 
@@ -1700,7 +1700,7 @@ msgstr "メッセージ"
 msgid "Metric"
 msgstr "メートル法"
 
-#: src/features/editor/components/edit-dialogs.tsx:1077
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:188
 msgid "Minimum length"
 msgstr "最小長"
 
@@ -1723,11 +1723,11 @@ msgstr ""
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:143
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:128
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:299
 #: src/features/crms/components/create-crm-dialog.tsx:256
-#: src/features/editor/components/edit-dialogs.tsx:309
-#: src/features/editor/components/edit-dialogs.tsx:730
-#: src/features/editor/components/edit-dialogs.tsx:1032
+#: src/features/editor/components/edit-dialogs.tsx:252
 #: src/routes/_authenticated/$crmId_.settings.tsx:295
 msgid "Name"
 msgstr "名前"
@@ -1847,8 +1847,8 @@ msgstr "結果が見つかりません"
 msgid "No results found."
 msgstr "結果が見つかりません。"
 
-#: src/features/board/components/board-container.tsx:861
-#: src/features/board/components/board-container.tsx:905
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:889
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:934
 #: src/features/tree/components/tree-view.tsx:355
 msgid "No status"
 msgstr "ステータスなし"
@@ -1874,18 +1874,18 @@ msgid "No views"
 msgstr "ビューがありません"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:345
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:365
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:391
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:421
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:497
 #: ../../../lib/web/src/components/person-picker.tsx:350
 #: ../../../lib/web/src/lib/preference-utils.ts:105
 #: ../../../lib/web/src/lib/preference-utils.ts:125
-#: src/features/editor/components/edit-dialogs.tsx:375
-#: src/features/editor/components/edit-dialogs.tsx:393
-#: src/features/editor/components/edit-dialogs.tsx:396
-#: src/features/editor/components/edit-dialogs.tsx:423
-#: src/features/editor/components/edit-dialogs.tsx:426
-#: src/features/editor/components/edit-dialogs.tsx:494
-#: src/features/editor/components/edit-dialogs.tsx:497
-#: src/features/editor/components/edit-dialogs.tsx:764
-#: src/features/editor/components/edit-dialogs.tsx:767
+#: src/features/editor/components/edit-dialogs.tsx:286
+#: src/features/editor/components/edit-dialogs.tsx:289
 #: src/features/objects/components/create-object-dialog.tsx:417
 #: src/features/objects/components/create-object-dialog.tsx:420
 #: src/features/objects/components/create-object-dialog.tsx:424
@@ -1926,7 +1926,7 @@ msgid "Notifications: {0}"
 msgstr "通知: {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:140
-#: src/features/editor/components/edit-dialogs.tsx:499
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:499
 msgid "Number"
 msgstr "数値"
 
@@ -1953,8 +1953,8 @@ msgstr "アカウントのアクションを開く"
 msgid "Open actions"
 msgstr "操作メニューを開く"
 
-#: src/features/editor/components/edit-dialogs.tsx:711
-#: src/features/editor/components/edit-dialogs.tsx:716
+#: src/features/editor/components/edit-dialogs.tsx:233
+#: src/features/editor/components/edit-dialogs.tsx:238
 msgid "Open class actions"
 msgstr "クラスのアクションを開く"
 
@@ -1994,8 +1994,8 @@ msgstr "選択中のカードを開く"
 msgid "Open theme settings"
 msgstr "テーマ設定を開く"
 
-#: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/editor/components/edit-dialogs.tsx:295
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:280
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:285
 msgid "Open view actions"
 msgstr "ビューのアクションを開く"
 
@@ -2010,7 +2010,7 @@ msgid "Option name"
 msgstr "オプション名"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:168
-#: src/features/editor/components/edit-dialogs.tsx:1130
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:241
 msgid "Options"
 msgstr "オプション"
 
@@ -2045,7 +2045,7 @@ msgstr "パスキーの認証に失敗しました。もう一度お試しくだ
 msgid "Passkeys"
 msgstr "パスキー"
 
-#: src/features/editor/components/edit-dialogs.tsx:1099
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:210
 msgid "Pattern (regex)"
 msgstr "パターン (正規表現)"
 
@@ -2197,8 +2197,8 @@ msgid "Remove access?"
 msgstr "アクセスを削除しますか?"
 
 #. placeholder {0}: field.name || field.id
-#: src/features/editor/components/edit-dialogs.tsx:847
-#: src/features/editor/components/edit-dialogs.tsx:852
+#: src/features/editor/components/edit-dialogs.tsx:369
+#: src/features/editor/components/edit-dialogs.tsx:374
 msgid "Remove field {0}"
 msgstr "フィールド「{0}」を削除"
 
@@ -2250,7 +2250,7 @@ msgstr "返信"
 msgid "Reply to {0}..."
 msgstr "{0}に返信..."
 
-#: src/features/editor/components/edit-dialogs.tsx:1114
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:225
 msgid "Required"
 msgstr "必須"
 
@@ -2289,11 +2289,11 @@ msgid "Right to Left"
 msgstr "右から左"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
-#: src/features/editor/components/edit-dialogs.tsx:1058
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:169
 msgid "Rows"
 msgstr "行"
 
-#: src/features/editor/components/edit-dialogs.tsx:389
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:379
 msgid "Rows group by"
 msgstr "行のグループ化"
 
@@ -2407,7 +2407,7 @@ msgstr "セレクト"
 msgid "Select {0}"
 msgstr "{0}を選択"
 
-#: src/features/editor/components/edit-dialogs.tsx:372
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 msgid "Select a field"
 msgstr "フィールドを選択"
 
@@ -2534,11 +2534,11 @@ msgstr "アクセスを設定しています..."
 msgid "Settings"
 msgstr "設定"
 
-#: src/features/editor/components/edit-dialogs.tsx:343
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:333
 msgid "Show classes"
 msgstr "クラスを表示"
 
-#: src/features/editor/components/edit-dialogs.tsx:439
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:434
 msgid "Show fields"
 msgstr "フィールドを表示"
 
@@ -2570,7 +2570,7 @@ msgid "Signing out..."
 msgstr "サインアウト中..."
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:161
-#: src/features/editor/components/edit-dialogs.tsx:1069
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:180
 msgid "Single line of text only"
 msgstr "1 行のテキストのみ"
 
@@ -2746,11 +2746,11 @@ msgstr "現在のデザインを <0>{0}</0> に置き換えます。既存のす
 msgid "Thursday"
 msgstr "木曜日"
 
-#: src/features/editor/components/edit-dialogs.tsx:584
+#: src/features/editor/components/edit-dialogs.tsx:106
 msgid "Title"
 msgstr "タイトル"
 
-#: src/features/editor/components/edit-dialogs.tsx:753
+#: src/features/editor/components/edit-dialogs.tsx:275
 msgid "Title field"
 msgstr "タイトルフィールド"
 
@@ -2806,7 +2806,7 @@ msgstr "リクエストが多すぎます"
 msgid "Top"
 msgstr "トップ"
 
-#: src/features/editor/components/edit-dialogs.tsx:787
+#: src/features/editor/components/edit-dialogs.tsx:309
 msgid "Top level"
 msgstr "最上位"
 
@@ -2830,7 +2830,7 @@ msgid "Tuesday"
 msgstr "火曜日"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:130
-#: src/features/editor/components/edit-dialogs.tsx:1052
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:163
 msgid "Type"
 msgstr "タイプ"
 
@@ -2905,6 +2905,7 @@ msgstr "購読解除中..."
 
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-column.tsx:28
+#: src/features/board/components/board-container.tsx:29
 #: src/features/objects/components/create-object-dialog.tsx:190
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302
@@ -2918,8 +2919,8 @@ msgstr "無題"
 msgid "Unverified"
 msgstr "未認証"
 
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:500
 #: src/components/view-options-bar.tsx:42
-#: src/features/editor/components/edit-dialogs.tsx:500
 msgid "Updated"
 msgstr "更新日"
 

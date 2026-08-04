@@ -30,11 +30,11 @@ msgstr "(সম্পাদিত)"
 msgid "(expand)"
 msgstr "(সম্প্রসারণ)"
 
-#: src/features/editor/components/edit-dialogs.tsx:798
+#: src/features/editor/components/edit-dialogs.tsx:320
 msgid "(itself)"
 msgstr "(নিজে)"
 
-#: src/features/board/components/board-container.tsx:790
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:818
 msgid "[not set]"
 msgstr "[সেট নয়]"
 
@@ -218,8 +218,8 @@ msgstr "চেকলিস্ট আইটেম যোগ করুন"
 
 #: src/features/editor/components/design-editor.tsx:518
 #: src/features/editor/components/design-editor.tsx:523
-#: src/features/editor/components/edit-dialogs.tsx:695
-#: src/features/editor/components/edit-dialogs.tsx:884
+#: src/features/editor/components/edit-dialogs.tsx:217
+#: src/features/editor/components/edit-dialogs.tsx:406
 msgid "Add class"
 msgstr "ক্লাস যোগ করুন"
 
@@ -230,7 +230,7 @@ msgstr "কলাম যোগ করুন"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
-#: src/features/editor/components/edit-dialogs.tsx:879
+#: src/features/editor/components/edit-dialogs.tsx:401
 msgid "Add field"
 msgstr "ফিল্ড যোগ করুন"
 
@@ -248,9 +248,9 @@ msgstr "নতুন অ্যাকাউন্ট যোগ করুন"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:292
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:94
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
-#: src/features/editor/components/edit-dialogs.tsx:1181
 msgid "Add option"
 msgstr "অপশন যোগ করুন"
 
@@ -271,12 +271,12 @@ msgstr "টিম/অ্যাপ যোগ করুন"
 msgid "Add to existing notifications"
 msgstr "বিদ্যমান নোটিফিকেশনে যোগ করুন"
 
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:264
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:519
 #: ../../../lib/web/src/components/view-tabs.tsx:87
 #: ../../../lib/web/src/components/view-tabs.tsx:93
 #: src/features/editor/components/design-editor.tsx:464
 #: src/features/editor/components/design-editor.tsx:469
-#: src/features/editor/components/edit-dialogs.tsx:274
-#: src/features/editor/components/edit-dialogs.tsx:519
 msgid "Add view"
 msgstr "ভিউ যোগ করুন"
 
@@ -309,7 +309,7 @@ msgstr "যে কাউকে {0} খুঁজতে দিন"
 msgid "Allow anyone to search for CRM"
 msgstr "যেকেউ CRM খুঁজতে অনুমতি দিন"
 
-#: src/features/editor/components/edit-dialogs.tsx:1115
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:226
 msgid "Allow sort by"
 msgstr "অনুসারে সাজানো অনুমতি দিন"
 
@@ -439,7 +439,7 @@ msgstr "অবিশ্বস্ত লিঙ্কে নেভিগেশন 
 msgid "Blocks"
 msgstr "ব্লক করে"
 
-#: src/features/editor/components/edit-dialogs.tsx:328
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:318
 msgid "Board"
 msgstr "বোর্ড"
 
@@ -448,7 +448,7 @@ msgstr "বোর্ড"
 msgid "Boost interest"
 msgstr "আগ্রহ বৃদ্ধি করুন"
 
-#: src/features/editor/components/edit-dialogs.tsx:410
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:405
 msgid "Border colour"
 msgstr "বর্ডারের রঙ"
 
@@ -456,7 +456,7 @@ msgstr "বর্ডারের রঙ"
 msgid "Browser notifications"
 msgstr "ব্রাউজার নোটিফিকেশন"
 
-#: src/features/editor/components/edit-dialogs.tsx:780
+#: src/features/editor/components/edit-dialogs.tsx:302
 msgid "Can be child of"
 msgstr "এর চাইল্ড হতে পারে"
 
@@ -584,10 +584,10 @@ msgstr "বন্ধ করুন"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
-#: src/features/editor/components/edit-dialogs.tsx:279
-#: src/features/editor/components/edit-dialogs.tsx:283
-#: src/features/editor/components/edit-dialogs.tsx:700
-#: src/features/editor/components/edit-dialogs.tsx:704
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:269
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:273
+#: src/features/editor/components/edit-dialogs.tsx:222
+#: src/features/editor/components/edit-dialogs.tsx:226
 msgid "Close dialog"
 msgstr "ডায়ালগ বন্ধ করুন"
 
@@ -629,7 +629,7 @@ msgstr "রঙ"
 msgid "Column actions"
 msgstr "কলামের ক্রিয়া"
 
-#: src/features/editor/components/edit-dialogs.tsx:363
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:353
 msgid "Columns group by"
 msgstr "কলাম গ্রুপ করুন"
 
@@ -664,7 +664,7 @@ msgstr "মন্তব্য ({0})"
 msgid "Compact"
 msgstr "কম্প্যাক্ট"
 
-#: src/features/editor/components/edit-dialogs.tsx:696
+#: src/features/editor/components/edit-dialogs.tsx:218
 msgid "Configure class settings"
 msgstr "ক্লাস সেটিংস কনফিগার করুন"
 
@@ -672,7 +672,7 @@ msgstr "ক্লাস সেটিংস কনফিগার করুন"
 msgid "Configure option settings"
 msgstr "অপশন সেটিংস কনফিগার করুন"
 
-#: src/features/editor/components/edit-dialogs.tsx:275
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:265
 msgid "Configure view settings"
 msgstr "ভিউ সেটিংস কনফিগার করুন"
 
@@ -786,8 +786,8 @@ msgstr "অবজেক্ট তৈরি করুন"
 msgid "Create, edit, comment, and view"
 msgstr "তৈরি, সম্পাদনা, মন্তব্য এবং দেখুন"
 
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:498
 #: src/components/view-options-bar.tsx:41
-#: src/features/editor/components/edit-dialogs.tsx:498
 msgid "Created"
 msgstr "তৈরি হয়েছে"
 
@@ -888,7 +888,7 @@ msgstr "ডিফল্ট"
 msgid "Default AI account"
 msgstr "ডিফল্ট AI অ্যাকাউন্ট"
 
-#: src/features/editor/components/edit-dialogs.tsx:490
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:485
 msgid "Default sort"
 msgstr "ডিফল্ট সাজানো"
 
@@ -910,7 +910,7 @@ msgstr "মুছুন"
 msgid "Delete attachment"
 msgstr "অ্যাটাচমেন্ট মুছুন"
 
-#: src/features/editor/components/edit-dialogs.tsx:721
+#: src/features/editor/components/edit-dialogs.tsx:243
 msgid "Delete class"
 msgstr "ক্লাস মুছুন"
 
@@ -931,7 +931,7 @@ msgstr "CRM মুছুন"
 msgid "Delete CRM?"
 msgstr "CRM মুছবেন?"
 
-#: src/features/editor/components/edit-dialogs.tsx:1190
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:301
 msgid "Delete field"
 msgstr "ফিল্ড মুছুন"
 
@@ -946,12 +946,12 @@ msgid "Delete option"
 msgstr "অপশন মুছুন"
 
 #. placeholder {0}: opt.name
-#: src/features/editor/components/edit-dialogs.tsx:1168
-#: src/features/editor/components/edit-dialogs.tsx:1173
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:279
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:284
 msgid "Delete option {0}"
 msgstr "অপশন {0} মুছুন"
 
-#: src/features/editor/components/edit-dialogs.tsx:300
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:290
 msgid "Delete view"
 msgstr "ভিউ মুছুন"
 
@@ -1041,9 +1041,9 @@ msgstr "বোর্ড ইঙ্গিত বাতিল করুন"
 msgid "Displays the mobile sidebar."
 msgstr "মোবাইল সাইডবার প্রদর্শন করে।"
 
-#: src/features/editor/components/edit-dialogs.tsx:524
-#: src/features/editor/components/edit-dialogs.tsx:889
-#: src/features/editor/components/edit-dialogs.tsx:1195
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:306
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:524
+#: src/features/editor/components/edit-dialogs.tsx:411
 #: src/features/objects/components/object-detail-panel.tsx:370
 msgid "Done"
 msgstr "সম্পন্ন"
@@ -1093,15 +1093,15 @@ msgstr "সম্পাদনা"
 msgid "Edit {label}"
 msgstr "{label} সম্পাদনা করুন"
 
-#: src/features/editor/components/edit-dialogs.tsx:695
+#: src/features/editor/components/edit-dialogs.tsx:217
 msgid "Edit class"
 msgstr "ক্লাস সম্পাদনা করুন"
 
-#: src/features/editor/components/edit-dialogs.tsx:1027
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:138
 msgid "Edit field"
 msgstr "ফিল্ড সম্পাদনা করুন"
 
-#: src/features/editor/components/edit-dialogs.tsx:1028
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:139
 msgid "Edit field settings"
 msgstr "ফিল্ড সেটিংস সম্পাদনা করুন"
 
@@ -1110,8 +1110,8 @@ msgid "Edit option"
 msgstr "বিকল্প সম্পাদনা"
 
 #. placeholder {0}: opt.name
-#: src/features/editor/components/edit-dialogs.tsx:1153
-#: src/features/editor/components/edit-dialogs.tsx:1158
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:264
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:269
 msgid "Edit option {0}"
 msgstr "অপশন {0} সম্পাদনা করুন"
 
@@ -1119,7 +1119,7 @@ msgstr "অপশন {0} সম্পাদনা করুন"
 msgid "Edit selected card"
 msgstr "নির্বাচিত কার্ড সম্পাদনা"
 
-#: src/features/editor/components/edit-dialogs.tsx:274
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:264
 msgid "Edit view"
 msgstr "ভিউ সম্পাদনা করুন"
 
@@ -1363,7 +1363,7 @@ msgstr "ফিল্ড আপডেট করতে ব্যর্থ"
 msgid "Failed to upload attachment"
 msgstr "সংযুক্তি আপলোড করতে ব্যর্থ"
 
-#: src/features/editor/components/edit-dialogs.tsx:805
+#: src/features/editor/components/edit-dialogs.tsx:327
 msgid "Fields"
 msgstr "ফিল্ডসমূহ"
 
@@ -1390,7 +1390,7 @@ msgstr "ফিঙ্গারপ্রিন্ট"
 msgid "Finish moving your account"
 msgstr "আপনার অ্যাকাউন্ট স্থানান্তর সম্পন্ন করুন"
 
-#: src/features/editor/components/edit-dialogs.tsx:1111
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:222
 msgid "Flags"
 msgstr "ফ্ল্যাগসমূহ"
 
@@ -1457,7 +1457,7 @@ msgstr "পূর্ববর্তী পেজে যান"
 msgid "Group"
 msgstr "গ্রুপ"
 
-#: src/features/editor/components/edit-dialogs.tsx:363
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:353
 msgid "Group by"
 msgstr "গ্রুপ অনুসারে"
 
@@ -1489,8 +1489,8 @@ msgstr "হোম"
 msgid "Hot"
 msgstr "জনপ্রিয়"
 
-#: src/features/editor/components/edit-dialogs.tsx:744
-#: src/features/editor/components/edit-dialogs.tsx:1042
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:153
+#: src/features/editor/components/edit-dialogs.tsx:266
 #: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "ID"
 msgstr "আইডি"
@@ -1585,7 +1585,7 @@ msgid "Large"
 msgstr "বড়"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:287
-#: src/features/editor/components/edit-dialogs.tsx:322
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:312
 msgid "Layout"
 msgstr "লেআউট"
 
@@ -1617,7 +1617,7 @@ msgstr "লিঙ্ক"
 msgid "Links"
 msgstr "লিঙ্কসমূহ"
 
-#: src/features/editor/components/edit-dialogs.tsx:334
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:324
 msgid "List"
 msgstr "তালিকা"
 
@@ -1676,7 +1676,7 @@ msgstr "ম্যানুয়াল"
 msgid "Mark all as read"
 msgstr "সবগুলি পঠিত হিসেবে চিহ্নিত করুন"
 
-#: src/features/editor/components/edit-dialogs.tsx:1088
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:199
 msgid "Maximum length"
 msgstr "সর্বোচ্চ দৈর্ঘ্য"
 
@@ -1700,7 +1700,7 @@ msgstr "বার্তা"
 msgid "Metric"
 msgstr "মেট্রিক"
 
-#: src/features/editor/components/edit-dialogs.tsx:1077
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:188
 msgid "Minimum length"
 msgstr "ন্যূনতম দৈর্ঘ্য"
 
@@ -1723,11 +1723,11 @@ msgstr ""
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:143
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:128
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:299
 #: src/features/crms/components/create-crm-dialog.tsx:256
-#: src/features/editor/components/edit-dialogs.tsx:309
-#: src/features/editor/components/edit-dialogs.tsx:730
-#: src/features/editor/components/edit-dialogs.tsx:1032
+#: src/features/editor/components/edit-dialogs.tsx:252
 #: src/routes/_authenticated/$crmId_.settings.tsx:295
 msgid "Name"
 msgstr "নাম"
@@ -1847,8 +1847,8 @@ msgstr "কোনও ফলাফল পাওয়া যায়নি"
 msgid "No results found."
 msgstr "কোনো ফলাফল পাওয়া যায়নি।"
 
-#: src/features/board/components/board-container.tsx:861
-#: src/features/board/components/board-container.tsx:905
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:889
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:934
 #: src/features/tree/components/tree-view.tsx:355
 msgid "No status"
 msgstr "কোনো স্ট্যাটাস নেই"
@@ -1874,18 +1874,18 @@ msgid "No views"
 msgstr "কোনো ভিউ নেই"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:345
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:365
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:391
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:421
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:497
 #: ../../../lib/web/src/components/person-picker.tsx:350
 #: ../../../lib/web/src/lib/preference-utils.ts:105
 #: ../../../lib/web/src/lib/preference-utils.ts:125
-#: src/features/editor/components/edit-dialogs.tsx:375
-#: src/features/editor/components/edit-dialogs.tsx:393
-#: src/features/editor/components/edit-dialogs.tsx:396
-#: src/features/editor/components/edit-dialogs.tsx:423
-#: src/features/editor/components/edit-dialogs.tsx:426
-#: src/features/editor/components/edit-dialogs.tsx:494
-#: src/features/editor/components/edit-dialogs.tsx:497
-#: src/features/editor/components/edit-dialogs.tsx:764
-#: src/features/editor/components/edit-dialogs.tsx:767
+#: src/features/editor/components/edit-dialogs.tsx:286
+#: src/features/editor/components/edit-dialogs.tsx:289
 #: src/features/objects/components/create-object-dialog.tsx:417
 #: src/features/objects/components/create-object-dialog.tsx:420
 #: src/features/objects/components/create-object-dialog.tsx:424
@@ -1926,7 +1926,7 @@ msgid "Notifications: {0}"
 msgstr "বিজ্ঞপ্তি: {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:140
-#: src/features/editor/components/edit-dialogs.tsx:499
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:499
 msgid "Number"
 msgstr "সংখ্যা"
 
@@ -1953,8 +1953,8 @@ msgstr "অ্যাকাউন্ট অ্যাকশন খুলুন"
 msgid "Open actions"
 msgstr "অ্যাকশন খুলুন"
 
-#: src/features/editor/components/edit-dialogs.tsx:711
-#: src/features/editor/components/edit-dialogs.tsx:716
+#: src/features/editor/components/edit-dialogs.tsx:233
+#: src/features/editor/components/edit-dialogs.tsx:238
 msgid "Open class actions"
 msgstr "ক্লাস অ্যাকশন খুলুন"
 
@@ -1994,8 +1994,8 @@ msgstr "নির্বাচিত কার্ড খুলুন"
 msgid "Open theme settings"
 msgstr "থিম সেটিংস খুলুন"
 
-#: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/editor/components/edit-dialogs.tsx:295
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:280
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:285
 msgid "Open view actions"
 msgstr "ভিউ অ্যাকশন খুলুন"
 
@@ -2010,7 +2010,7 @@ msgid "Option name"
 msgstr "অপশনের নাম"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:168
-#: src/features/editor/components/edit-dialogs.tsx:1130
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:241
 msgid "Options"
 msgstr "অপশন"
 
@@ -2045,7 +2045,7 @@ msgstr "পাসকি যাচাই ব্যর্থ হয়েছে।
 msgid "Passkeys"
 msgstr "পাসকি"
 
-#: src/features/editor/components/edit-dialogs.tsx:1099
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:210
 msgid "Pattern (regex)"
 msgstr "প্যাটার্ন (রেজেক্স)"
 
@@ -2197,8 +2197,8 @@ msgid "Remove access?"
 msgstr "অ্যাক্সেস সরাবেন?"
 
 #. placeholder {0}: field.name || field.id
-#: src/features/editor/components/edit-dialogs.tsx:847
-#: src/features/editor/components/edit-dialogs.tsx:852
+#: src/features/editor/components/edit-dialogs.tsx:369
+#: src/features/editor/components/edit-dialogs.tsx:374
 msgid "Remove field {0}"
 msgstr "{0} ফিল্ড সরান"
 
@@ -2250,7 +2250,7 @@ msgstr "উত্তর দিন"
 msgid "Reply to {0}..."
 msgstr "{0} কে উত্তর দিন..."
 
-#: src/features/editor/components/edit-dialogs.tsx:1114
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:225
 msgid "Required"
 msgstr "প্রয়োজনীয়"
 
@@ -2289,11 +2289,11 @@ msgid "Right to Left"
 msgstr "ডান থেকে বাম"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
-#: src/features/editor/components/edit-dialogs.tsx:1058
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:169
 msgid "Rows"
 msgstr "সারি"
 
-#: src/features/editor/components/edit-dialogs.tsx:389
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:379
 msgid "Rows group by"
 msgstr "সারি গ্রুপ করুন"
 
@@ -2407,7 +2407,7 @@ msgstr "নির্বাচন করুন"
 msgid "Select {0}"
 msgstr "{0} নির্বাচন করুন"
 
-#: src/features/editor/components/edit-dialogs.tsx:372
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 msgid "Select a field"
 msgstr "একটি ফিল্ড নির্বাচন করুন"
 
@@ -2534,11 +2534,11 @@ msgstr "অ্যাক্সেস সেট করা হচ্ছে..."
 msgid "Settings"
 msgstr "সেটিংস"
 
-#: src/features/editor/components/edit-dialogs.tsx:343
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:333
 msgid "Show classes"
 msgstr "ক্লাস দেখান"
 
-#: src/features/editor/components/edit-dialogs.tsx:439
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:434
 msgid "Show fields"
 msgstr "ফিল্ড দেখান"
 
@@ -2570,7 +2570,7 @@ msgid "Signing out..."
 msgstr "সাইন আউট করা হচ্ছে..."
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:161
-#: src/features/editor/components/edit-dialogs.tsx:1069
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:180
 msgid "Single line of text only"
 msgstr "শুধুমাত্র একক লাইনের টেক্সট"
 
@@ -2746,11 +2746,11 @@ msgstr "এটি বর্তমান ডিজাইনকে <0>{0}</0> দ�
 msgid "Thursday"
 msgstr "বৃহস্পতিবার"
 
-#: src/features/editor/components/edit-dialogs.tsx:584
+#: src/features/editor/components/edit-dialogs.tsx:106
 msgid "Title"
 msgstr "শিরোনাম"
 
-#: src/features/editor/components/edit-dialogs.tsx:753
+#: src/features/editor/components/edit-dialogs.tsx:275
 msgid "Title field"
 msgstr "শিরোনাম ফিল্ড"
 
@@ -2806,7 +2806,7 @@ msgstr "অনেক বেশি অনুরোধ"
 msgid "Top"
 msgstr "উপরে"
 
-#: src/features/editor/components/edit-dialogs.tsx:787
+#: src/features/editor/components/edit-dialogs.tsx:309
 msgid "Top level"
 msgstr "শীর্ষ স্তর"
 
@@ -2830,7 +2830,7 @@ msgid "Tuesday"
 msgstr "মঙ্গলবার"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:130
-#: src/features/editor/components/edit-dialogs.tsx:1052
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:163
 msgid "Type"
 msgstr "ধরন"
 
@@ -2905,6 +2905,7 @@ msgstr "আনসাবস্ক্রাইব করা হচ্ছে..."
 
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-column.tsx:28
+#: src/features/board/components/board-container.tsx:29
 #: src/features/objects/components/create-object-dialog.tsx:190
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302
@@ -2918,8 +2919,8 @@ msgstr "শিরোনামহীন"
 msgid "Unverified"
 msgstr "যাচাই করা হয়নি"
 
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:500
 #: src/components/view-options-bar.tsx:42
-#: src/features/editor/components/edit-dialogs.tsx:500
 msgid "Updated"
 msgstr "আপডেট হয়েছে"
 

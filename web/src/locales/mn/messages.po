@@ -30,11 +30,11 @@ msgstr "(засварласан)"
 msgid "(expand)"
 msgstr "(дэлгэх)"
 
-#: src/features/editor/components/edit-dialogs.tsx:798
+#: src/features/editor/components/edit-dialogs.tsx:320
 msgid "(itself)"
 msgstr "(өөрөө)"
 
-#: src/features/board/components/board-container.tsx:790
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:818
 msgid "[not set]"
 msgstr "[тогтоогоогүй]"
 
@@ -218,8 +218,8 @@ msgstr "Жагсаалтын зүйл нэмэх"
 
 #: src/features/editor/components/design-editor.tsx:518
 #: src/features/editor/components/design-editor.tsx:523
-#: src/features/editor/components/edit-dialogs.tsx:695
-#: src/features/editor/components/edit-dialogs.tsx:884
+#: src/features/editor/components/edit-dialogs.tsx:217
+#: src/features/editor/components/edit-dialogs.tsx:406
 msgid "Add class"
 msgstr "Анги нэмэх"
 
@@ -230,7 +230,7 @@ msgstr "Багана нэмэх"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
-#: src/features/editor/components/edit-dialogs.tsx:879
+#: src/features/editor/components/edit-dialogs.tsx:401
 msgid "Add field"
 msgstr "Талбар нэмэх"
 
@@ -248,9 +248,9 @@ msgstr "Шинэ бүртгэл нэмэх"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:292
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:94
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
-#: src/features/editor/components/edit-dialogs.tsx:1181
 msgid "Add option"
 msgstr "Сонголт нэмэх"
 
@@ -271,12 +271,12 @@ msgstr "Баг/апп нэмэх"
 msgid "Add to existing notifications"
 msgstr "Одоогийн мэдэгдэлд нэмэх"
 
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:264
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:519
 #: ../../../lib/web/src/components/view-tabs.tsx:87
 #: ../../../lib/web/src/components/view-tabs.tsx:93
 #: src/features/editor/components/design-editor.tsx:464
 #: src/features/editor/components/design-editor.tsx:469
-#: src/features/editor/components/edit-dialogs.tsx:274
-#: src/features/editor/components/edit-dialogs.tsx:519
 msgid "Add view"
 msgstr "Харагдац нэмэх"
 
@@ -309,7 +309,7 @@ msgstr "Хэн ч {0} хайхыг зөвшөөрөх"
 msgid "Allow anyone to search for CRM"
 msgstr "Хэн ч CRM-ийг хайх боломжтой"
 
-#: src/features/editor/components/edit-dialogs.tsx:1115
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:226
 msgid "Allow sort by"
 msgstr "Дараах байдлаар эрэмбэлэхийг зөвшөөрөх"
 
@@ -439,7 +439,7 @@ msgstr "Найдвартай биш холбоос руу шилжихийг б�
 msgid "Blocks"
 msgstr "Блокууд"
 
-#: src/features/editor/components/edit-dialogs.tsx:328
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:318
 msgid "Board"
 msgstr "Самбар"
 
@@ -448,7 +448,7 @@ msgstr "Самбар"
 msgid "Boost interest"
 msgstr "Сонирхлыг идэвхжүүлэх"
 
-#: src/features/editor/components/edit-dialogs.tsx:410
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:405
 msgid "Border colour"
 msgstr "Хүрээний өнгө"
 
@@ -456,7 +456,7 @@ msgstr "Хүрээний өнгө"
 msgid "Browser notifications"
 msgstr "Хөтчийн мэдэгдэл"
 
-#: src/features/editor/components/edit-dialogs.tsx:780
+#: src/features/editor/components/edit-dialogs.tsx:302
 msgid "Can be child of"
 msgstr "Хүүхэд байж болох"
 
@@ -584,10 +584,10 @@ msgstr "Хаах"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
-#: src/features/editor/components/edit-dialogs.tsx:279
-#: src/features/editor/components/edit-dialogs.tsx:283
-#: src/features/editor/components/edit-dialogs.tsx:700
-#: src/features/editor/components/edit-dialogs.tsx:704
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:269
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:273
+#: src/features/editor/components/edit-dialogs.tsx:222
+#: src/features/editor/components/edit-dialogs.tsx:226
 msgid "Close dialog"
 msgstr "Цонхыг хаах"
 
@@ -629,7 +629,7 @@ msgstr "Өнгө"
 msgid "Column actions"
 msgstr "Баганын үйлдлүүд"
 
-#: src/features/editor/components/edit-dialogs.tsx:363
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:353
 msgid "Columns group by"
 msgstr "Багануудыг бүлэглэх"
 
@@ -664,7 +664,7 @@ msgstr "Сэтгэгдэлүүд ({0})"
 msgid "Compact"
 msgstr "Хумисан"
 
-#: src/features/editor/components/edit-dialogs.tsx:696
+#: src/features/editor/components/edit-dialogs.tsx:218
 msgid "Configure class settings"
 msgstr "Ангийн тохиргоог тохируулах"
 
@@ -672,7 +672,7 @@ msgstr "Ангийн тохиргоог тохируулах"
 msgid "Configure option settings"
 msgstr "Сонголтын тохиргоог тохируулах"
 
-#: src/features/editor/components/edit-dialogs.tsx:275
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:265
 msgid "Configure view settings"
 msgstr "Харагдацын тохиргоог тохируулах"
 
@@ -786,8 +786,8 @@ msgstr "Объект үүсгэх"
 msgid "Create, edit, comment, and view"
 msgstr "Үүсгэх, засварлах, сэтгэгдэл бичих, үзэх"
 
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:498
 #: src/components/view-options-bar.tsx:41
-#: src/features/editor/components/edit-dialogs.tsx:498
 msgid "Created"
 msgstr "Үүсгэгдсэн"
 
@@ -888,7 +888,7 @@ msgstr "Үндсэн"
 msgid "Default AI account"
 msgstr "Үндсэн AI бүртгэл"
 
-#: src/features/editor/components/edit-dialogs.tsx:490
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:485
 msgid "Default sort"
 msgstr "Үндсэн эрэмбэлэлт"
 
@@ -910,7 +910,7 @@ msgstr "Устгах"
 msgid "Delete attachment"
 msgstr "Хавсралт устгах"
 
-#: src/features/editor/components/edit-dialogs.tsx:721
+#: src/features/editor/components/edit-dialogs.tsx:243
 msgid "Delete class"
 msgstr "Анги устгах"
 
@@ -931,7 +931,7 @@ msgstr "CRM устгах"
 msgid "Delete CRM?"
 msgstr "CRM устгах уу?"
 
-#: src/features/editor/components/edit-dialogs.tsx:1190
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:301
 msgid "Delete field"
 msgstr "Талбар устгах"
 
@@ -946,12 +946,12 @@ msgid "Delete option"
 msgstr "Сонголтыг устгах"
 
 #. placeholder {0}: opt.name
-#: src/features/editor/components/edit-dialogs.tsx:1168
-#: src/features/editor/components/edit-dialogs.tsx:1173
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:279
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:284
 msgid "Delete option {0}"
 msgstr "{0} сонголтыг устгах"
 
-#: src/features/editor/components/edit-dialogs.tsx:300
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:290
 msgid "Delete view"
 msgstr "Харагдац устгах"
 
@@ -1041,9 +1041,9 @@ msgstr "Самбарын зөвлөмжийг хаах"
 msgid "Displays the mobile sidebar."
 msgstr "Гар утасны хажуугийн самбарыг харуулна."
 
-#: src/features/editor/components/edit-dialogs.tsx:524
-#: src/features/editor/components/edit-dialogs.tsx:889
-#: src/features/editor/components/edit-dialogs.tsx:1195
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:306
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:524
+#: src/features/editor/components/edit-dialogs.tsx:411
 #: src/features/objects/components/object-detail-panel.tsx:370
 msgid "Done"
 msgstr "Дууссан"
@@ -1093,15 +1093,15 @@ msgstr "Засах"
 msgid "Edit {label}"
 msgstr "{label} засах"
 
-#: src/features/editor/components/edit-dialogs.tsx:695
+#: src/features/editor/components/edit-dialogs.tsx:217
 msgid "Edit class"
 msgstr "Анги засах"
 
-#: src/features/editor/components/edit-dialogs.tsx:1027
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:138
 msgid "Edit field"
 msgstr "Талбар засах"
 
-#: src/features/editor/components/edit-dialogs.tsx:1028
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:139
 msgid "Edit field settings"
 msgstr "Талбарын тохиргоо засах"
 
@@ -1110,8 +1110,8 @@ msgid "Edit option"
 msgstr "Сонголт засах"
 
 #. placeholder {0}: opt.name
-#: src/features/editor/components/edit-dialogs.tsx:1153
-#: src/features/editor/components/edit-dialogs.tsx:1158
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:264
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:269
 msgid "Edit option {0}"
 msgstr "Сонголт {0} засах"
 
@@ -1119,7 +1119,7 @@ msgstr "Сонголт {0} засах"
 msgid "Edit selected card"
 msgstr "Сонгосон карт засах"
 
-#: src/features/editor/components/edit-dialogs.tsx:274
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:264
 msgid "Edit view"
 msgstr "Харагдац засах"
 
@@ -1363,7 +1363,7 @@ msgstr "Талбар шинэчилж чадсангүй"
 msgid "Failed to upload attachment"
 msgstr "Хавсралт байршуулж чадсангүй"
 
-#: src/features/editor/components/edit-dialogs.tsx:805
+#: src/features/editor/components/edit-dialogs.tsx:327
 msgid "Fields"
 msgstr "Талбарууд"
 
@@ -1390,7 +1390,7 @@ msgstr "Fingerprint"
 msgid "Finish moving your account"
 msgstr "Бүртгэлээ шилжүүлэхийг дуусгана уу"
 
-#: src/features/editor/components/edit-dialogs.tsx:1111
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:222
 msgid "Flags"
 msgstr "Тэмдэгт"
 
@@ -1457,7 +1457,7 @@ msgstr "Өмнөх хуудас руу очих"
 msgid "Group"
 msgstr "Бүлэг"
 
-#: src/features/editor/components/edit-dialogs.tsx:363
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:353
 msgid "Group by"
 msgstr "Бүлэглэх"
 
@@ -1489,8 +1489,8 @@ msgstr "Нүүр"
 msgid "Hot"
 msgstr "Хот"
 
-#: src/features/editor/components/edit-dialogs.tsx:744
-#: src/features/editor/components/edit-dialogs.tsx:1042
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:153
+#: src/features/editor/components/edit-dialogs.tsx:266
 #: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "ID"
 msgstr "ID"
@@ -1585,7 +1585,7 @@ msgid "Large"
 msgstr "Том"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:287
-#: src/features/editor/components/edit-dialogs.tsx:322
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:312
 msgid "Layout"
 msgstr "Зохион байгуулалт"
 
@@ -1617,7 +1617,7 @@ msgstr "Холбоос"
 msgid "Links"
 msgstr "Холбоосууд"
 
-#: src/features/editor/components/edit-dialogs.tsx:334
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:324
 msgid "List"
 msgstr "Жагсаалт"
 
@@ -1676,7 +1676,7 @@ msgstr "Гар аргаар"
 msgid "Mark all as read"
 msgstr "Бүгдийг уншсан гэж тэмдэглэх"
 
-#: src/features/editor/components/edit-dialogs.tsx:1088
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:199
 msgid "Maximum length"
 msgstr "Хамгийн их урт"
 
@@ -1700,7 +1700,7 @@ msgstr "Мессеж"
 msgid "Metric"
 msgstr "Метрик"
 
-#: src/features/editor/components/edit-dialogs.tsx:1077
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:188
 msgid "Minimum length"
 msgstr "Хамгийн бага урт"
 
@@ -1723,11 +1723,11 @@ msgstr ""
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:143
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:128
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:299
 #: src/features/crms/components/create-crm-dialog.tsx:256
-#: src/features/editor/components/edit-dialogs.tsx:309
-#: src/features/editor/components/edit-dialogs.tsx:730
-#: src/features/editor/components/edit-dialogs.tsx:1032
+#: src/features/editor/components/edit-dialogs.tsx:252
 #: src/routes/_authenticated/$crmId_.settings.tsx:295
 msgid "Name"
 msgstr "Нэр"
@@ -1847,8 +1847,8 @@ msgstr "Үр дүн олдсонгүй"
 msgid "No results found."
 msgstr "Үр дүн олдсонгүй."
 
-#: src/features/board/components/board-container.tsx:861
-#: src/features/board/components/board-container.tsx:905
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:889
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:934
 #: src/features/tree/components/tree-view.tsx:355
 msgid "No status"
 msgstr "Төлөв алга"
@@ -1874,18 +1874,18 @@ msgid "No views"
 msgstr "Үзэлт алга"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:345
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:365
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:391
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:421
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:497
 #: ../../../lib/web/src/components/person-picker.tsx:350
 #: ../../../lib/web/src/lib/preference-utils.ts:105
 #: ../../../lib/web/src/lib/preference-utils.ts:125
-#: src/features/editor/components/edit-dialogs.tsx:375
-#: src/features/editor/components/edit-dialogs.tsx:393
-#: src/features/editor/components/edit-dialogs.tsx:396
-#: src/features/editor/components/edit-dialogs.tsx:423
-#: src/features/editor/components/edit-dialogs.tsx:426
-#: src/features/editor/components/edit-dialogs.tsx:494
-#: src/features/editor/components/edit-dialogs.tsx:497
-#: src/features/editor/components/edit-dialogs.tsx:764
-#: src/features/editor/components/edit-dialogs.tsx:767
+#: src/features/editor/components/edit-dialogs.tsx:286
+#: src/features/editor/components/edit-dialogs.tsx:289
 #: src/features/objects/components/create-object-dialog.tsx:417
 #: src/features/objects/components/create-object-dialog.tsx:420
 #: src/features/objects/components/create-object-dialog.tsx:424
@@ -1926,7 +1926,7 @@ msgid "Notifications: {0}"
 msgstr "Мэдэгдэл: {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:140
-#: src/features/editor/components/edit-dialogs.tsx:499
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:499
 msgid "Number"
 msgstr "Тоо"
 
@@ -1953,8 +1953,8 @@ msgstr "Бүртгэлийн үйлдлүүдийг нээх"
 msgid "Open actions"
 msgstr "Үйлдлүүдийг нээх"
 
-#: src/features/editor/components/edit-dialogs.tsx:711
-#: src/features/editor/components/edit-dialogs.tsx:716
+#: src/features/editor/components/edit-dialogs.tsx:233
+#: src/features/editor/components/edit-dialogs.tsx:238
 msgid "Open class actions"
 msgstr "Ангийн үйлдлүүдийг нээх"
 
@@ -1994,8 +1994,8 @@ msgstr "Сонгосон картыг нээх"
 msgid "Open theme settings"
 msgstr "Сэдвийн тохиргоо нээх"
 
-#: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/editor/components/edit-dialogs.tsx:295
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:280
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:285
 msgid "Open view actions"
 msgstr "Үзэх үйлдлүүдийг нээх"
 
@@ -2010,7 +2010,7 @@ msgid "Option name"
 msgstr "Сонголтын нэр"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:168
-#: src/features/editor/components/edit-dialogs.tsx:1130
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:241
 msgid "Options"
 msgstr "Сонголтууд"
 
@@ -2045,7 +2045,7 @@ msgstr "Нэвтрэх түлхүүрийн баталгаажуулалт ам�
 msgid "Passkeys"
 msgstr "Passkey-ууд"
 
-#: src/features/editor/components/edit-dialogs.tsx:1099
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:210
 msgid "Pattern (regex)"
 msgstr "Загвар (regex)"
 
@@ -2197,8 +2197,8 @@ msgid "Remove access?"
 msgstr "Хандалтыг хасах уу?"
 
 #. placeholder {0}: field.name || field.id
-#: src/features/editor/components/edit-dialogs.tsx:847
-#: src/features/editor/components/edit-dialogs.tsx:852
+#: src/features/editor/components/edit-dialogs.tsx:369
+#: src/features/editor/components/edit-dialogs.tsx:374
 msgid "Remove field {0}"
 msgstr "{0} талбар хасах"
 
@@ -2250,7 +2250,7 @@ msgstr "Хариу"
 msgid "Reply to {0}..."
 msgstr "{0}-д хариу..."
 
-#: src/features/editor/components/edit-dialogs.tsx:1114
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:225
 msgid "Required"
 msgstr "Шаардлагатай"
 
@@ -2289,11 +2289,11 @@ msgid "Right to Left"
 msgstr "Баруунаас зүүн"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
-#: src/features/editor/components/edit-dialogs.tsx:1058
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:169
 msgid "Rows"
 msgstr "Мөрүүд"
 
-#: src/features/editor/components/edit-dialogs.tsx:389
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:379
 msgid "Rows group by"
 msgstr "Мөрүүдийг группд хуваах"
 
@@ -2407,7 +2407,7 @@ msgstr "Сонгох"
 msgid "Select {0}"
 msgstr "{0} сонгох"
 
-#: src/features/editor/components/edit-dialogs.tsx:372
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 msgid "Select a field"
 msgstr "Талбар сонгох"
 
@@ -2534,11 +2534,11 @@ msgstr "Хандалтыг тохируулж байна..."
 msgid "Settings"
 msgstr "Тохиргоо"
 
-#: src/features/editor/components/edit-dialogs.tsx:343
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:333
 msgid "Show classes"
 msgstr "Ангиллуудыг харуулах"
 
-#: src/features/editor/components/edit-dialogs.tsx:439
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:434
 msgid "Show fields"
 msgstr "Талбаруудыг харуулах"
 
@@ -2570,7 +2570,7 @@ msgid "Signing out..."
 msgstr "Гарч байна..."
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:161
-#: src/features/editor/components/edit-dialogs.tsx:1069
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:180
 msgid "Single line of text only"
 msgstr "Зөвхөн нэг мөр текст"
 
@@ -2746,11 +2746,11 @@ msgstr "Энэ нь одоогийн загварыг <0>{0}</0>-аар соли
 msgid "Thursday"
 msgstr "Пүрэв гараг"
 
-#: src/features/editor/components/edit-dialogs.tsx:584
+#: src/features/editor/components/edit-dialogs.tsx:106
 msgid "Title"
 msgstr "Гарчиг"
 
-#: src/features/editor/components/edit-dialogs.tsx:753
+#: src/features/editor/components/edit-dialogs.tsx:275
 msgid "Title field"
 msgstr "Гарчгийн талбар"
 
@@ -2806,7 +2806,7 @@ msgstr "Хэт олон хүсэлт"
 msgid "Top"
 msgstr "Дээд"
 
-#: src/features/editor/components/edit-dialogs.tsx:787
+#: src/features/editor/components/edit-dialogs.tsx:309
 msgid "Top level"
 msgstr "Дээд түвшин"
 
@@ -2830,7 +2830,7 @@ msgid "Tuesday"
 msgstr "Мягмар гараг"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:130
-#: src/features/editor/components/edit-dialogs.tsx:1052
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:163
 msgid "Type"
 msgstr "Төрөл"
 
@@ -2905,6 +2905,7 @@ msgstr "Захиалгаас гарч байна..."
 
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-column.tsx:28
+#: src/features/board/components/board-container.tsx:29
 #: src/features/objects/components/create-object-dialog.tsx:190
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302
@@ -2918,8 +2919,8 @@ msgstr "Гарчиггүй"
 msgid "Unverified"
 msgstr "Баталгаажаагүй"
 
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:500
 #: src/components/view-options-bar.tsx:42
-#: src/features/editor/components/edit-dialogs.tsx:500
 msgid "Updated"
 msgstr "Шинэчлэгдсэн"
 

@@ -30,11 +30,11 @@ msgstr "(ተሻሽሏል)"
 msgid "(expand)"
 msgstr "(አስፋ)"
 
-#: src/features/editor/components/edit-dialogs.tsx:798
+#: src/features/editor/components/edit-dialogs.tsx:320
 msgid "(itself)"
 msgstr "(ራሱ)"
 
-#: src/features/board/components/board-container.tsx:790
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:818
 msgid "[not set]"
 msgstr "[አልተዘጋጀም]"
 
@@ -218,8 +218,8 @@ msgstr "የዝርዝር ንጥል ጨምር"
 
 #: src/features/editor/components/design-editor.tsx:518
 #: src/features/editor/components/design-editor.tsx:523
-#: src/features/editor/components/edit-dialogs.tsx:695
-#: src/features/editor/components/edit-dialogs.tsx:884
+#: src/features/editor/components/edit-dialogs.tsx:217
+#: src/features/editor/components/edit-dialogs.tsx:406
 msgid "Add class"
 msgstr "ክፍል ጨምር"
 
@@ -230,7 +230,7 @@ msgstr "ዓምድ ጨምር"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
-#: src/features/editor/components/edit-dialogs.tsx:879
+#: src/features/editor/components/edit-dialogs.tsx:401
 msgid "Add field"
 msgstr "መስክ ጨምር"
 
@@ -248,9 +248,9 @@ msgstr "አዲስ መለያ ጨምር"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:292
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:94
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
-#: src/features/editor/components/edit-dialogs.tsx:1181
 msgid "Add option"
 msgstr "አማራጭ ጨምር"
 
@@ -271,12 +271,12 @@ msgstr "ቡድን/መተግበሪያ ጨምር"
 msgid "Add to existing notifications"
 msgstr "ወደ ነባር ማሳወቂያዎች ጨምር"
 
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:264
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:519
 #: ../../../lib/web/src/components/view-tabs.tsx:87
 #: ../../../lib/web/src/components/view-tabs.tsx:93
 #: src/features/editor/components/design-editor.tsx:464
 #: src/features/editor/components/design-editor.tsx:469
-#: src/features/editor/components/edit-dialogs.tsx:274
-#: src/features/editor/components/edit-dialogs.tsx:519
 msgid "Add view"
 msgstr "እይታ ጨምር"
 
@@ -309,7 +309,7 @@ msgstr "ማንኛውም ሰው {0} እንዲፈልግ ፍቀድ"
 msgid "Allow anyone to search for CRM"
 msgstr "ማንኛውም ሰው CRM እንዲፈልግ ፍቀድ"
 
-#: src/features/editor/components/edit-dialogs.tsx:1115
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:226
 msgid "Allow sort by"
 msgstr "ደርድር በ ፍቀድ"
 
@@ -439,7 +439,7 @@ msgstr "ወደማይታመን አገናኝ ማሰስ ተከልክሏል"
 msgid "Blocks"
 msgstr "ይገድባል"
 
-#: src/features/editor/components/edit-dialogs.tsx:328
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:318
 msgid "Board"
 msgstr "ሰሌዳ"
 
@@ -448,7 +448,7 @@ msgstr "ሰሌዳ"
 msgid "Boost interest"
 msgstr "ፍላጎትን አሳድግ"
 
-#: src/features/editor/components/edit-dialogs.tsx:410
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:405
 msgid "Border colour"
 msgstr "የጠርዝ ቀለም"
 
@@ -456,7 +456,7 @@ msgstr "የጠርዝ ቀለም"
 msgid "Browser notifications"
 msgstr "የአሳሽ ማሳወቂያዎች"
 
-#: src/features/editor/components/edit-dialogs.tsx:780
+#: src/features/editor/components/edit-dialogs.tsx:302
 msgid "Can be child of"
 msgstr "የሚከተለው ልጅ ሊሆን ይችላል"
 
@@ -584,10 +584,10 @@ msgstr "ዝጋ"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
-#: src/features/editor/components/edit-dialogs.tsx:279
-#: src/features/editor/components/edit-dialogs.tsx:283
-#: src/features/editor/components/edit-dialogs.tsx:700
-#: src/features/editor/components/edit-dialogs.tsx:704
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:269
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:273
+#: src/features/editor/components/edit-dialogs.tsx:222
+#: src/features/editor/components/edit-dialogs.tsx:226
 msgid "Close dialog"
 msgstr "መገናኛ ዝጋ"
 
@@ -629,7 +629,7 @@ msgstr "ቀለም"
 msgid "Column actions"
 msgstr "የአምድ እርምጃዎች"
 
-#: src/features/editor/components/edit-dialogs.tsx:363
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:353
 msgid "Columns group by"
 msgstr "ዓምዶች በ ቧደን"
 
@@ -664,7 +664,7 @@ msgstr "አስተያየቶች ({0})"
 msgid "Compact"
 msgstr "የታመቀ"
 
-#: src/features/editor/components/edit-dialogs.tsx:696
+#: src/features/editor/components/edit-dialogs.tsx:218
 msgid "Configure class settings"
 msgstr "የክፍል ቅንብሮችን አዋቅር"
 
@@ -672,7 +672,7 @@ msgstr "የክፍል ቅንብሮችን አዋቅር"
 msgid "Configure option settings"
 msgstr "የአማራጭ ቅንብሮችን አዋቅር"
 
-#: src/features/editor/components/edit-dialogs.tsx:275
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:265
 msgid "Configure view settings"
 msgstr "የእይታ ቅንብሮችን አዋቅር"
 
@@ -786,8 +786,8 @@ msgstr "ነገር ፍጠር"
 msgid "Create, edit, comment, and view"
 msgstr "ይፍጠሩ፣ ያርትዑ፣ አስተያየት ይስጡ እና ይመልከቱ"
 
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:498
 #: src/components/view-options-bar.tsx:41
-#: src/features/editor/components/edit-dialogs.tsx:498
 msgid "Created"
 msgstr "ተፈጥሯል"
 
@@ -888,7 +888,7 @@ msgstr "ነባሪ"
 msgid "Default AI account"
 msgstr "ነባሪ የAI መለያ"
 
-#: src/features/editor/components/edit-dialogs.tsx:490
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:485
 msgid "Default sort"
 msgstr "ነባሪ ቅደም ተከተል"
 
@@ -910,7 +910,7 @@ msgstr "ሰርዝ"
 msgid "Delete attachment"
 msgstr "አባሪ ሰርዝ"
 
-#: src/features/editor/components/edit-dialogs.tsx:721
+#: src/features/editor/components/edit-dialogs.tsx:243
 msgid "Delete class"
 msgstr "ክፍል ሰርዝ"
 
@@ -931,7 +931,7 @@ msgstr "CRM ሰርዝ"
 msgid "Delete CRM?"
 msgstr "CRM ይሰረዝ?"
 
-#: src/features/editor/components/edit-dialogs.tsx:1190
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:301
 msgid "Delete field"
 msgstr "መስክ ሰርዝ"
 
@@ -946,12 +946,12 @@ msgid "Delete option"
 msgstr "አማራጭ ሰርዝ"
 
 #. placeholder {0}: opt.name
-#: src/features/editor/components/edit-dialogs.tsx:1168
-#: src/features/editor/components/edit-dialogs.tsx:1173
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:279
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:284
 msgid "Delete option {0}"
 msgstr "አማራጭ {0} ሰርዝ"
 
-#: src/features/editor/components/edit-dialogs.tsx:300
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:290
 msgid "Delete view"
 msgstr "እይታ ሰርዝ"
 
@@ -1041,9 +1041,9 @@ msgstr "የቦርድ ፍንጭን አጥፋ"
 msgid "Displays the mobile sidebar."
 msgstr "የሞባይል ጎንደርን ያሳያል።"
 
-#: src/features/editor/components/edit-dialogs.tsx:524
-#: src/features/editor/components/edit-dialogs.tsx:889
-#: src/features/editor/components/edit-dialogs.tsx:1195
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:306
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:524
+#: src/features/editor/components/edit-dialogs.tsx:411
 #: src/features/objects/components/object-detail-panel.tsx:370
 msgid "Done"
 msgstr "ተጠናቅቋል"
@@ -1093,15 +1093,15 @@ msgstr "አስተካክል"
 msgid "Edit {label}"
 msgstr "{label}ን አርትዕ"
 
-#: src/features/editor/components/edit-dialogs.tsx:695
+#: src/features/editor/components/edit-dialogs.tsx:217
 msgid "Edit class"
 msgstr "ክፍል አስተካክል"
 
-#: src/features/editor/components/edit-dialogs.tsx:1027
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:138
 msgid "Edit field"
 msgstr "መስክ አስተካክል"
 
-#: src/features/editor/components/edit-dialogs.tsx:1028
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:139
 msgid "Edit field settings"
 msgstr "የመስክ ቅንብሮችን አስተካክል"
 
@@ -1110,8 +1110,8 @@ msgid "Edit option"
 msgstr "አማራጭን አርትዕ"
 
 #. placeholder {0}: opt.name
-#: src/features/editor/components/edit-dialogs.tsx:1153
-#: src/features/editor/components/edit-dialogs.tsx:1158
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:264
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:269
 msgid "Edit option {0}"
 msgstr "አማራጭ {0} አስተካክል"
 
@@ -1119,7 +1119,7 @@ msgstr "አማራጭ {0} አስተካክል"
 msgid "Edit selected card"
 msgstr "የተመረጠውን ካርድ አርትዕ"
 
-#: src/features/editor/components/edit-dialogs.tsx:274
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:264
 msgid "Edit view"
 msgstr "እይታ አስተካክል"
 
@@ -1363,7 +1363,7 @@ msgstr "መስክን ማዘመን አልተሳካም"
 msgid "Failed to upload attachment"
 msgstr "አባሪ መስቀል አልተሳካም"
 
-#: src/features/editor/components/edit-dialogs.tsx:805
+#: src/features/editor/components/edit-dialogs.tsx:327
 msgid "Fields"
 msgstr "መስኮች"
 
@@ -1390,7 +1390,7 @@ msgstr "ጣት አሻራ"
 msgid "Finish moving your account"
 msgstr "የመለያ ዝውውርን አጠናቅ"
 
-#: src/features/editor/components/edit-dialogs.tsx:1111
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:222
 msgid "Flags"
 msgstr "ባንዲራዎች"
 
@@ -1457,7 +1457,7 @@ msgstr "ወደ ቀዳሚ ገጽ ሂድ"
 msgid "Group"
 msgstr "ቡድን"
 
-#: src/features/editor/components/edit-dialogs.tsx:363
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:353
 msgid "Group by"
 msgstr "በቡድን ይመድቡ"
 
@@ -1489,8 +1489,8 @@ msgstr "መነሻ"
 msgid "Hot"
 msgstr "ሞቅ ያለ"
 
-#: src/features/editor/components/edit-dialogs.tsx:744
-#: src/features/editor/components/edit-dialogs.tsx:1042
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:153
+#: src/features/editor/components/edit-dialogs.tsx:266
 #: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "ID"
 msgstr "መታወቂያ"
@@ -1585,7 +1585,7 @@ msgid "Large"
 msgstr "ትልቅ"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:287
-#: src/features/editor/components/edit-dialogs.tsx:322
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:312
 msgid "Layout"
 msgstr "አቀማመጥ"
 
@@ -1617,7 +1617,7 @@ msgstr "አገናኝ"
 msgid "Links"
 msgstr "አገናኞች"
 
-#: src/features/editor/components/edit-dialogs.tsx:334
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:324
 msgid "List"
 msgstr "ዝርዝር"
 
@@ -1676,7 +1676,7 @@ msgstr "በእጅ"
 msgid "Mark all as read"
 msgstr "ሁሉንም እንደተነበበ ምልክት አድርግ"
 
-#: src/features/editor/components/edit-dialogs.tsx:1088
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:199
 msgid "Maximum length"
 msgstr "ከፍተኛ ርዝመት"
 
@@ -1700,7 +1700,7 @@ msgstr "መልዕክት"
 msgid "Metric"
 msgstr "ሜትሪክ"
 
-#: src/features/editor/components/edit-dialogs.tsx:1077
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:188
 msgid "Minimum length"
 msgstr "ዝቅተኛ ርዝመት"
 
@@ -1723,11 +1723,11 @@ msgstr ""
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:143
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:128
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:299
 #: src/features/crms/components/create-crm-dialog.tsx:256
-#: src/features/editor/components/edit-dialogs.tsx:309
-#: src/features/editor/components/edit-dialogs.tsx:730
-#: src/features/editor/components/edit-dialogs.tsx:1032
+#: src/features/editor/components/edit-dialogs.tsx:252
 #: src/routes/_authenticated/$crmId_.settings.tsx:295
 msgid "Name"
 msgstr "ስም"
@@ -1847,8 +1847,8 @@ msgstr "ምንም ውጤት አልተገኘም"
 msgid "No results found."
 msgstr "ምንም ውጤቶች አልተገኙም።"
 
-#: src/features/board/components/board-container.tsx:861
-#: src/features/board/components/board-container.tsx:905
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:889
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:934
 #: src/features/tree/components/tree-view.tsx:355
 msgid "No status"
 msgstr "ሁኔታ የለም"
@@ -1874,18 +1874,18 @@ msgid "No views"
 msgstr "ምንም እይታዎች የሉም"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:345
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:365
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:391
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:421
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:497
 #: ../../../lib/web/src/components/person-picker.tsx:350
 #: ../../../lib/web/src/lib/preference-utils.ts:105
 #: ../../../lib/web/src/lib/preference-utils.ts:125
-#: src/features/editor/components/edit-dialogs.tsx:375
-#: src/features/editor/components/edit-dialogs.tsx:393
-#: src/features/editor/components/edit-dialogs.tsx:396
-#: src/features/editor/components/edit-dialogs.tsx:423
-#: src/features/editor/components/edit-dialogs.tsx:426
-#: src/features/editor/components/edit-dialogs.tsx:494
-#: src/features/editor/components/edit-dialogs.tsx:497
-#: src/features/editor/components/edit-dialogs.tsx:764
-#: src/features/editor/components/edit-dialogs.tsx:767
+#: src/features/editor/components/edit-dialogs.tsx:286
+#: src/features/editor/components/edit-dialogs.tsx:289
 #: src/features/objects/components/create-object-dialog.tsx:417
 #: src/features/objects/components/create-object-dialog.tsx:420
 #: src/features/objects/components/create-object-dialog.tsx:424
@@ -1926,7 +1926,7 @@ msgid "Notifications: {0}"
 msgstr "ማሳወቂያዎች፦ {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:140
-#: src/features/editor/components/edit-dialogs.tsx:499
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:499
 msgid "Number"
 msgstr "ቁጥር"
 
@@ -1953,8 +1953,8 @@ msgstr "የመለያ ድርጊቶችን ክፈት"
 msgid "Open actions"
 msgstr "እርምጃዎችን ክፈት"
 
-#: src/features/editor/components/edit-dialogs.tsx:711
-#: src/features/editor/components/edit-dialogs.tsx:716
+#: src/features/editor/components/edit-dialogs.tsx:233
+#: src/features/editor/components/edit-dialogs.tsx:238
 msgid "Open class actions"
 msgstr "የክፍል ድርጊቶችን ክፈት"
 
@@ -1994,8 +1994,8 @@ msgstr "የተመረጠውን ካርድ ክፈት"
 msgid "Open theme settings"
 msgstr "የገጽታ ቅንብሮችን ክፈት"
 
-#: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/editor/components/edit-dialogs.tsx:295
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:280
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:285
 msgid "Open view actions"
 msgstr "የእይታ ድርጊቶችን ክፈት"
 
@@ -2010,7 +2010,7 @@ msgid "Option name"
 msgstr "የአማራጭ ስም"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:168
-#: src/features/editor/components/edit-dialogs.tsx:1130
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:241
 msgid "Options"
 msgstr "አማራጮች"
 
@@ -2045,7 +2045,7 @@ msgstr "የይለፍ ቁልፍ ማረጋገጫ አልተሳካም። እባክ�
 msgid "Passkeys"
 msgstr "ፓስኪዎች"
 
-#: src/features/editor/components/edit-dialogs.tsx:1099
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:210
 msgid "Pattern (regex)"
 msgstr "ስርዓተ-ጥለት (regex)"
 
@@ -2197,8 +2197,8 @@ msgid "Remove access?"
 msgstr "ድረሳ ይወገድ?"
 
 #. placeholder {0}: field.name || field.id
-#: src/features/editor/components/edit-dialogs.tsx:847
-#: src/features/editor/components/edit-dialogs.tsx:852
+#: src/features/editor/components/edit-dialogs.tsx:369
+#: src/features/editor/components/edit-dialogs.tsx:374
 msgid "Remove field {0}"
 msgstr "መስክ {0} አስወግድ"
 
@@ -2250,7 +2250,7 @@ msgstr "ምላሽ ስጥ"
 msgid "Reply to {0}..."
 msgstr "ለ {0} መልስ..."
 
-#: src/features/editor/components/edit-dialogs.tsx:1114
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:225
 msgid "Required"
 msgstr "ያስፈልጋል"
 
@@ -2289,11 +2289,11 @@ msgid "Right to Left"
 msgstr "ከቀኝ ወደ ግራ"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
-#: src/features/editor/components/edit-dialogs.tsx:1058
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:169
 msgid "Rows"
 msgstr "ረድፎች"
 
-#: src/features/editor/components/edit-dialogs.tsx:389
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:379
 msgid "Rows group by"
 msgstr "ረድፎች በ"
 
@@ -2407,7 +2407,7 @@ msgstr "ይምረጡ"
 msgid "Select {0}"
 msgstr "{0} ይምረጡ"
 
-#: src/features/editor/components/edit-dialogs.tsx:372
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 msgid "Select a field"
 msgstr "መስክ ይምረጡ"
 
@@ -2534,11 +2534,11 @@ msgstr "መዳረሻ በማቀናበር ላይ..."
 msgid "Settings"
 msgstr "ቅንብሮች"
 
-#: src/features/editor/components/edit-dialogs.tsx:343
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:333
 msgid "Show classes"
 msgstr "ክፍሎችን አሳይ"
 
-#: src/features/editor/components/edit-dialogs.tsx:439
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:434
 msgid "Show fields"
 msgstr "መስኮችን አሳይ"
 
@@ -2570,7 +2570,7 @@ msgid "Signing out..."
 msgstr "በመውጣት ላይ..."
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:161
-#: src/features/editor/components/edit-dialogs.tsx:1069
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:180
 msgid "Single line of text only"
 msgstr "የአንድ መስመር ጽሁፍ ብቻ"
 
@@ -2746,11 +2746,11 @@ msgstr "ይህ የአሁኑን ንድፍ በ<0>{0}</0> ይተካዋል። ሁሉ
 msgid "Thursday"
 msgstr "ሐሙስ"
 
-#: src/features/editor/components/edit-dialogs.tsx:584
+#: src/features/editor/components/edit-dialogs.tsx:106
 msgid "Title"
 msgstr "ርዕስ"
 
-#: src/features/editor/components/edit-dialogs.tsx:753
+#: src/features/editor/components/edit-dialogs.tsx:275
 msgid "Title field"
 msgstr "የርዕስ መስክ"
 
@@ -2806,7 +2806,7 @@ msgstr "በጣም ብዙ ጥያቄዎች"
 msgid "Top"
 msgstr "ላይ"
 
-#: src/features/editor/components/edit-dialogs.tsx:787
+#: src/features/editor/components/edit-dialogs.tsx:309
 msgid "Top level"
 msgstr "ላይኛው ደረጃ"
 
@@ -2830,7 +2830,7 @@ msgid "Tuesday"
 msgstr "ማክሰኞ"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:130
-#: src/features/editor/components/edit-dialogs.tsx:1052
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:163
 msgid "Type"
 msgstr "አይነት"
 
@@ -2905,6 +2905,7 @@ msgstr "ምዝገባ በማቋረጥ ላይ..."
 
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-column.tsx:28
+#: src/features/board/components/board-container.tsx:29
 #: src/features/objects/components/create-object-dialog.tsx:190
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302
@@ -2918,8 +2919,8 @@ msgstr "ርዕስ የለሽ"
 msgid "Unverified"
 msgstr "ያልተረጋገጠ"
 
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:500
 #: src/components/view-options-bar.tsx:42
-#: src/features/editor/components/edit-dialogs.tsx:500
 msgid "Updated"
 msgstr "ተዘምኗል"
 
