@@ -338,9 +338,13 @@ describe("crmsApi", () => {
 
       await crmsApi.createComment("proj123", "obj1", "New comment");
 
+      // timeout 0 is asserted rather than accepted as any object: the client's
+      // 30-second default is what aborted large uploads mid-flight, so a
+      // loose matcher here would pass just as happily if it came back.
       expect(crmsRequest.post).toHaveBeenCalledWith(
         "proj123/-/objects/obj1/comments/create",
         expect.any(FormData),
+        expect.objectContaining({ timeout: 0 }),
       );
     });
 
@@ -353,6 +357,66 @@ describe("crmsApi", () => {
       expect(crmsRequest.post).toHaveBeenCalledWith(
         "proj123/-/objects/obj1/comments/create",
         expect.any(FormData),
+        expect.objectContaining({ timeout: 0 }),
+      );
+    });
+
+    it("should report upload progress to the caller", async () => {
+      vi.mocked(crmsRequest.post).mockResolvedValue({ data: { id: "c3" } });
+      const onProgress = vi.fn();
+
+      await crmsApi.createComment(
+        "proj123",
+        "obj1",
+        "With a file",
+        undefined,
+        [new File(["x"], "a.txt")],
+        onProgress,
+      );
+
+      expect(crmsRequest.post).toHaveBeenCalledWith(
+        "proj123/-/objects/obj1/comments/create",
+        expect.any(FormData),
+        expect.objectContaining({ timeout: 0, onUploadProgress: onProgress }),
+      );
+    });
+  });
+
+  // The commit that lifted the client's 30-second timeout applied it to three
+  // upload paths and left two of them untested, including the one whose bug it
+  // names: a large import aborting mid-flight. Covered here so the value is
+  // pinned everywhere it was set, not only where a test happened to exist.
+  describe("upload timeouts", () => {
+    it("should lift the timeout when uploading attachments", async () => {
+      vi.mocked(crmsRequest.post).mockResolvedValue({ data: { attachments: [] } });
+      const onProgress = vi.fn();
+
+      await crmsApi.uploadAttachments(
+        "proj123",
+        "obj1",
+        [new File(["x"], "a.txt")],
+        onProgress,
+      );
+
+      expect(crmsRequest.post).toHaveBeenCalledWith(
+        "proj123/-/objects/obj1/attachments/create",
+        expect.any(FormData),
+        expect.objectContaining({ timeout: 0, onUploadProgress: onProgress }),
+      );
+    });
+
+    it("should lift the timeout when importing data", async () => {
+      vi.mocked(crmsRequest.post).mockResolvedValue({
+        data: { objects: 1, comments: 0, attachments: 0, links: 0 },
+      });
+      const onProgress = vi.fn();
+
+      await crmsApi.importData("proj123", new Blob(["x"]), onProgress);
+
+      expect(crmsRequest.post).toHaveBeenCalledWith(
+        "proj123/-/data/import",
+        expect.any(FormData),
+        expect.objectContaining({ timeout: 0, onUploadProgress: onProgress }),
       );
     });
   });

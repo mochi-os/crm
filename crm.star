@@ -347,7 +347,12 @@ def database_upgrade(version):
 		# sequence/log copies mislead diagnosis.
 		for table in ["sequence", "log", "acknowledged", "received"]:
 			mochi.db.execute("drop table if exists " + table)
-	if version == 3 or version == 4:
+	if version == 3 or version == 4 or version == 5:
+		# The last number re-issues the step: a server that installed the
+		# first library version ahead of its core update paid both earlier
+		# numbers for a raise inside the bridge call and was left at full
+		# schema with no attachments table. The step is idempotent, so a
+		# healthy database re-running it changes nothing.
 		# Attachments move into this database, owned by the shared library.
 		# Create the table and copy existing rows across the transition bridge;
 		# the migrate helper aborts without advancing the version if the bridge
@@ -3527,7 +3532,7 @@ def serve_attachment(a, variant):
 			return True
 		return mochi.db.exists("select 1 from comments c join objects o on o.id=c.object where c.id=? and o.crm=?", obj, crm_id)
 
-	attachment_serve(a, attachment, crm_id, lambda container: True, variant=variant, member=in_crm)
+	attachment_serve(a, attachment, crm_id, variant=variant, member=in_crm)
 
 # P2P byte-pull responder. A subscriber stores an object's attachment metadata
 # (entity = the CRM), then pulls the bytes from the owner here on demand. The
