@@ -96,7 +96,7 @@ msgstr "{sentLabel} dari {totalLabel}"
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# item} other {# item}}"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:148
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:165
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Buka menu (# notifikasi belum dibaca)} other {Buka menu (# notifikasi belum dibaca)}}"
 
@@ -223,8 +223,8 @@ msgstr "Tambah item checklist"
 msgid "Add class"
 msgstr "Tambah kelas"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1023
-#: src/routes/_authenticated/$crmId/index.tsx:1221
+#: src/routes/_authenticated/$crmId/index.tsx:1021
+#: src/routes/_authenticated/$crmId/index.tsx:1219
 msgid "Add column"
 msgstr "Tambah kolom"
 
@@ -305,7 +305,7 @@ msgstr "Semua CRM"
 msgid "Allow anyone to search for {0}"
 msgstr "Izinkan siapa pun mencari {0}"
 
-#: src/features/crms/components/create-crm-dialog.tsx:236
+#: src/features/crms/components/create-crm-dialog.tsx:268
 msgid "Allow anyone to search for CRM"
 msgstr "Izinkan siapa saja mencari CRM"
 
@@ -386,7 +386,7 @@ msgstr "Pengguna terautentikasi"
 msgid "Authenticator code"
 msgstr "Kode authenticator"
 
-#: src/components/keyboard-shortcuts-help.tsx:50
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:51
 msgid "Available keyboard shortcuts"
 msgstr "Pintasan keyboard yang tersedia"
 
@@ -430,8 +430,8 @@ msgstr "Spanduk"
 msgid "Blocked by"
 msgstr "Diblokir oleh"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:156
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:166
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:237
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:247
 msgid "Blocked navigation to untrusted link"
 msgstr "Navigasi ke tautan tidak tepercaya diblokir"
 
@@ -470,11 +470,11 @@ msgstr "Bisa menjadi anak dari"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/board/components/board-column.tsx:603
-#: src/features/crms/components/create-crm-dialog.tsx:304
+#: src/features/crms/components/create-crm-dialog.tsx:336
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:248
 #: src/routes/_authenticated/$crmId/design.tsx:305
-#: src/routes/_authenticated/$crmId/index.tsx:1100
+#: src/routes/_authenticated/$crmId/index.tsx:1098
 msgid "Cancel"
 msgstr "Batal"
 
@@ -488,12 +488,12 @@ msgstr "Batalkan komentar"
 msgid "Cancel reply"
 msgstr "Batalkan balasan"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:146
+#: ../../../lib/web/src/components/notification-category-button.tsx:102
 msgid "Category for this notification"
 msgstr "Kategori untuk notifikasi ini"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:127
-#: ../../../lib/web/src/components/notification-category-button.tsx:138
+#: ../../../lib/web/src/components/notification-category-button.tsx:83
+#: ../../../lib/web/src/components/notification-category-button.tsx:94
 msgid "Change notification category"
 msgstr "Ubah kategori notifikasi"
 
@@ -509,7 +509,7 @@ msgstr "Kotak centang"
 msgid "Checklist"
 msgstr "Checklist"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:38
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:37
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Pilih permainan dari sidebar atau mulai yang baru."
 
@@ -534,7 +534,7 @@ msgstr "Pilih antara preferensi sistem, mode terang, atau mode gelap"
 msgid "Choose language"
 msgstr "Pilih bahasa"
 
-#: src/routes/_authenticated/$crmId/index.tsx:903
+#: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "Class"
 msgstr "Kelas"
 
@@ -601,7 +601,7 @@ msgstr "Tutup navigasi"
 msgid "Close panel"
 msgstr "Tutup panel"
 
-#: src/components/keyboard-shortcuts-help.tsx:34
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:32
 msgid "Close panel / cancel"
 msgstr "Tutup panel / batalkan"
 
@@ -729,6 +729,10 @@ msgstr "Salin"
 msgid "Could not load this document. Please try again later."
 msgstr "Tidak dapat memuat dokumen ini. Silakan coba lagi nanti."
 
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:121
+msgid "Couldn't load notifications"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:184
 msgid "Couldn't send the code. Please try again."
 msgstr "Tidak dapat mengirim kode. Silakan coba lagi."
@@ -754,7 +758,7 @@ msgstr "Buat"
 msgid "Create {0}"
 msgstr "Buat {0}"
 
-#: src/features/crms/components/create-crm-dialog.tsx:218
+#: src/features/crms/components/create-crm-dialog.tsx:250
 #: src/features/crms/pages/crms-list-page.tsx:103
 msgid "Create a new CRM"
 msgstr "Buat CRM baru"
@@ -764,13 +768,13 @@ msgid "Create a new CRM object."
 msgstr "Buat objek CRM baru."
 
 #: src/components/layout/crms-layout.tsx:59
-#: src/features/crms/components/create-crm-dialog.tsx:206
-#: src/features/crms/components/create-crm-dialog.tsx:216
-#: src/features/crms/components/create-crm-dialog.tsx:307
+#: src/features/crms/components/create-crm-dialog.tsx:238
+#: src/features/crms/components/create-crm-dialog.tsx:248
+#: src/features/crms/components/create-crm-dialog.tsx:339
 msgid "Create CRM"
 msgstr "Buat CRM"
 
-#: src/components/keyboard-shortcuts-help.tsx:27
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:25
 msgid "Create new item"
 msgstr "Buat item baru"
 
@@ -787,12 +791,12 @@ msgstr "Membuat, mengedit, mengomentari, dan melihat"
 msgid "Created"
 msgstr "Dibuat"
 
-#: src/features/crms/components/create-crm-dialog.tsx:90
+#: src/features/crms/components/create-crm-dialog.tsx:91
 msgid "Creating CRM..."
 msgstr "Membuat CRM..."
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
-#: src/features/crms/components/create-crm-dialog.tsx:307
+#: src/features/crms/components/create-crm-dialog.tsx:339
 #: src/features/objects/components/create-object-dialog.tsx:547
 msgid "Creating..."
 msgstr "Membuat..."
@@ -802,7 +806,7 @@ msgstr "Membuat..."
 msgid "CRM actions"
 msgstr "Tindakan CRM"
 
-#: src/features/crms/components/create-crm-dialog.tsx:91
+#: src/features/crms/components/create-crm-dialog.tsx:92
 msgid "CRM created"
 msgstr "CRM dibuat"
 
@@ -810,7 +814,7 @@ msgstr "CRM dibuat"
 msgid "CRM deleted"
 msgstr "CRM dihapus"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1226
+#: src/routes/_authenticated/$crmId/index.tsx:1224
 msgid "CRM link"
 msgstr "Tautan CRM"
 
@@ -837,7 +841,7 @@ msgstr "CRM diperbarui"
 msgid "CRMs"
 msgstr "CRM"
 
-#: ../../../lib/web/src/components/map-view.tsx:208
+#: ../../../lib/web/src/components/map-view.tsx:217
 msgid "Current location"
 msgstr "Lokasi saat ini"
 
@@ -851,9 +855,6 @@ msgstr "Kustom"
 msgid "Dark"
 msgstr "Gelap"
 
-#: ../../../lib/web/src/components/layout/nav-user.tsx:91
-#: ../../../lib/web/src/components/layout/nav-user.tsx:154
-#: ../../../lib/web/src/components/layout/nav-user.tsx:205
 #: ../../../lib/web/src/components/profile-dropdown.tsx:87
 #: ../../../lib/web/src/components/profile-dropdown.tsx:123
 msgid "Dark mode"
@@ -866,7 +867,8 @@ msgstr "Konflik data"
 #. placeholder {0}: imported.data?.objects ?? 0
 #. placeholder {1}: imported.data?.comments ?? 0
 #. placeholder {2}: imported.data?.links ?? 0
-#: src/features/crms/components/create-crm-dialog.tsx:122
+#: src/features/crms/components/create-crm-dialog.tsx:110
+#: src/features/crms/components/create-crm-dialog.tsx:142
 msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
 msgstr "Data diimpor ({0, plural, other {# objek}}, {1, plural, other {# komentar}}, {2, plural, other {# tautan}})"
 
@@ -976,11 +978,11 @@ msgstr "Deskripsi"
 
 #: src/routes/_authenticated/$crmId/design.tsx:65
 #: src/routes/_authenticated/$crmId/design.tsx:133
-#: src/routes/_authenticated/$crmId/index.tsx:1054
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Design"
 msgstr "Desain"
 
-#: src/features/crms/components/create-crm-dialog.tsx:123
+#: src/features/crms/components/create-crm-dialog.tsx:143
 #: src/routes/_authenticated/$crmId/design.tsx:110
 msgid "Design imported"
 msgstr "Desain diimpor"
@@ -1012,11 +1014,11 @@ msgstr "Arah"
 msgid "Directory"
 msgstr "Direktori"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:300
+#: ../../../lib/web/src/components/comment-composer.tsx:304
 msgid "Discard"
 msgstr "Buang"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:298
+#: ../../../lib/web/src/components/comment-composer.tsx:302
 msgid "Discard draft?"
 msgstr "Buang draf?"
 
@@ -1030,8 +1032,8 @@ msgstr "Terputus"
 msgid "Dismiss"
 msgstr "Tutup"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1129
-#: src/routes/_authenticated/$crmId/index.tsx:1134
+#: src/routes/_authenticated/$crmId/index.tsx:1127
+#: src/routes/_authenticated/$crmId/index.tsx:1132
 msgid "Dismiss board hint"
 msgstr "Tutup petunjuk papan"
 
@@ -1046,7 +1048,7 @@ msgstr "Menampilkan sidebar seluler."
 msgid "Done"
 msgstr "Selesai"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1120
+#: src/routes/_authenticated/$crmId/index.tsx:1118
 msgid "Double click on a column to add content"
 msgstr "Klik dua kali pada kolom untuk menambahkan konten"
 
@@ -1065,12 +1067,12 @@ msgid "Download failed"
 msgstr "Unduhan gagal"
 
 #: src/routes/_authenticated/$crmId/design.tsx:89
-#: src/routes/_authenticated/$crmId/index.tsx:222
-#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:220
+#: src/routes/_authenticated/$crmId/index.tsx:925
 msgid "Downloaded {filename}"
 msgstr "{filename} diunduh"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1096
+#: src/routes/_authenticated/$crmId/index.tsx:1094
 msgid "Drag columns to re-order them"
 msgstr "Seret kolom untuk mengatur ulang urutannya"
 
@@ -1113,7 +1115,7 @@ msgstr "Edit opsi"
 msgid "Edit option {0}"
 msgstr "Edit opsi {0}"
 
-#: src/components/keyboard-shortcuts-help.tsx:33
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:31
 msgid "Edit selected card"
 msgstr "Edit kartu terpilih"
 
@@ -1156,11 +1158,11 @@ msgstr "Bentangkan"
 msgid "Expand sidebar"
 msgstr "Perluas sidebar"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1034
+#: src/routes/_authenticated/$crmId/index.tsx:1032
 msgid "Export CSV"
 msgstr "Ekspor CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1038
+#: src/routes/_authenticated/$crmId/index.tsx:1036
 msgid "Export data"
 msgstr "Ekspor data"
 
@@ -1193,7 +1195,7 @@ msgstr "Gagal menyalin"
 msgid "Failed to create class"
 msgstr "Gagal membuat kelas"
 
-#: src/features/crms/components/create-crm-dialog.tsx:92
+#: src/features/crms/components/create-crm-dialog.tsx:93
 msgid "Failed to create CRM"
 msgstr "Gagal membuat CRM"
 
@@ -1201,6 +1203,7 @@ msgstr "Gagal membuat CRM"
 msgid "Failed to create field"
 msgstr "Gagal membuat bidang"
 
+#: ../../../lib/web/src/components/options-menu.tsx:99
 #: src/features/objects/components/object-links.tsx:103
 #: src/routes/_authenticated/$crmId/index.tsx:190
 msgid "Failed to create link"
@@ -1234,9 +1237,9 @@ msgstr "Gagal menghapus tautan"
 msgid "Failed to delete view"
 msgstr "Gagal menghapus tampilan"
 
-#: src/routes/_authenticated/$crmId/index.tsx:224
-#: src/routes/_authenticated/$crmId/index.tsx:227
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:222
+#: src/routes/_authenticated/$crmId/index.tsx:225
+#: src/routes/_authenticated/$crmId/index.tsx:927
 msgid "Failed to export data"
 msgstr "Gagal mengekspor data"
 
@@ -1245,7 +1248,12 @@ msgstr "Gagal mengekspor data"
 msgid "Failed to export design"
 msgstr "Gagal mengekspor desain"
 
-#: src/features/crms/components/create-crm-dialog.tsx:124
+#: ../../../lib/web/src/components/options-menu.tsx:123
+msgid "Failed to get RSS token"
+msgstr ""
+
+#: src/features/crms/components/create-crm-dialog.tsx:111
+#: src/features/crms/components/create-crm-dialog.tsx:144
 msgid "Failed to import data"
 msgstr "Gagal mengimpor data"
 
@@ -1271,6 +1279,10 @@ msgstr "Gagal memuat desain CRM"
 msgid "Failed to load CRMs"
 msgstr "Gagal memuat CRM"
 
+#: ../../../lib/web/src/components/audit-timeline.tsx:72
+msgid "Failed to load history"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
 msgid "Failed to load image"
 msgstr "Gagal memuat gambar"
@@ -1287,7 +1299,7 @@ msgstr "Gagal memuat video"
 msgid "Failed to post comment"
 msgstr "Gagal mengirim komentar"
 
-#: src/features/crms/components/create-crm-dialog.tsx:191
+#: src/features/crms/components/create-crm-dialog.tsx:223
 #: src/routes/_authenticated/$crmId/design.tsx:267
 msgid "Failed to read file"
 msgstr "Gagal membaca berkas"
@@ -1308,6 +1320,10 @@ msgstr "Gagal mengurutkan ulang bidang"
 msgid "Failed to reorder views"
 msgstr "Gagal mengurutkan ulang tampilan"
 
+#: ../../../lib/web/src/components/options-menu.tsx:133
+msgid "Failed to revoke RSS access"
+msgstr ""
+
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:257
 msgid "Failed to send verification code"
 msgstr "Gagal mengirim kode verifikasi"
@@ -1323,17 +1339,13 @@ msgid "Failed to subscribe"
 msgstr "Gagal berlangganan"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:661
+#: src/routes/_authenticated/$crmId/index.tsx:659
 msgid "Failed to unsubscribe"
 msgstr "Gagal berhenti berlangganan"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:471
 msgid "Failed to update access level"
 msgstr "Gagal memperbarui tingkat akses"
-
-#: ../../../lib/web/src/components/notification-category-button.tsx:114
-msgid "Failed to update category"
-msgstr "Gagal memperbarui kategori"
 
 #: src/features/objects/components/comment-list.tsx:171
 msgid "Failed to update comment"
@@ -1462,8 +1474,12 @@ msgstr "Sembunyikan"
 msgid "Hide password"
 msgstr "Sembunyikan kata sandi"
 
+#: ../../../lib/web/src/components/audit-timeline.tsx:64
+msgid "History"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:90
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:175
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:192
 #: ../../../lib/web/src/components/layout/top-bar.tsx:71
 #: ../../../lib/web/src/components/layout/top-bar.tsx:100
 msgid "Home"
@@ -1475,7 +1491,7 @@ msgstr "Populer"
 
 #: src/features/editor/components/edit-dialogs.tsx:744
 #: src/features/editor/components/edit-dialogs.tsx:1042
-#: src/routes/_authenticated/$crmId/index.tsx:903
+#: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "ID"
 msgstr "ID"
 
@@ -1501,11 +1517,12 @@ msgstr "Impor konfigurasi desain"
 msgid "Import design"
 msgstr "Impor desain"
 
-#: src/features/crms/components/create-crm-dialog.tsx:246
+#: src/features/crms/components/create-crm-dialog.tsx:278
 msgid "Import from backup (optional)"
 msgstr "Impor dari cadangan (opsional)"
 
-#: src/features/crms/components/create-crm-dialog.tsx:119
+#: src/features/crms/components/create-crm-dialog.tsx:108
+#: src/features/crms/components/create-crm-dialog.tsx:139
 msgid "Importing data..."
 msgstr "Mengimpor data..."
 
@@ -1533,7 +1550,7 @@ msgstr "Minat"
 msgid "Invalid date"
 msgstr "Tanggal tidak valid"
 
-#: src/features/crms/components/create-crm-dialog.tsx:184
+#: src/features/crms/components/create-crm-dialog.tsx:216
 #: src/routes/_authenticated/$crmId/design.tsx:263
 msgid "Invalid JSON file"
 msgstr "Berkas JSON tidak valid"
@@ -1558,7 +1575,7 @@ msgstr "Detail item"
 msgid "Just now"
 msgstr "Baru saja"
 
-#: src/components/keyboard-shortcuts-help.tsx:49
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:48
 msgid "Keyboard shortcuts"
 msgstr "Pintasan keyboard"
 
@@ -1591,7 +1608,8 @@ msgstr "Hanya huruf, angka, spasi, dan tanda hubung"
 msgid "Light"
 msgstr "Terang"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1044
+#: ../../../lib/web/src/components/options-menu.tsx:190
+#: src/routes/_authenticated/$crmId/index.tsx:1042
 msgid "Link"
 msgstr "Tautan"
 
@@ -1625,9 +1643,6 @@ msgstr "Memuat detail item"
 msgid "Loading..."
 msgstr "Memuat..."
 
-#: ../../../lib/web/src/components/layout/nav-user.tsx:101
-#: ../../../lib/web/src/components/layout/nav-user.tsx:167
-#: ../../../lib/web/src/components/layout/nav-user.tsx:215
 #: ../../../lib/web/src/components/profile-dropdown.tsx:69
 #: ../../../lib/web/src/components/profile-dropdown.tsx:98
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:26
@@ -1655,8 +1670,8 @@ msgstr "Kelola akun terhubung Anda untuk notifikasi dan layanan."
 msgid "Manual"
 msgstr "Manual"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:118
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:125
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:202
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:209
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Tandai semua sebagai sudah dibaca"
@@ -1673,7 +1688,7 @@ msgstr "Server MCP"
 msgid "Medium"
 msgstr "Sedang"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:190
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:207
 msgid "Menu"
 msgstr "Menu"
 
@@ -1693,12 +1708,21 @@ msgstr "Panjang minimum"
 msgid "Mochi web"
 msgstr "Mochi web"
 
+#: ../../../lib/web/src/components/options-menu.tsx:164
+msgid "Moderation"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:59
 msgid "Monday"
 msgstr "Senin"
 
+#: ../../../lib/web/src/components/options-menu.tsx:145
+#: ../../../lib/web/src/components/options-menu.tsx:152
+msgid "More options"
+msgstr ""
+
 #: src/features/board/components/board-column.tsx:589
-#: src/features/crms/components/create-crm-dialog.tsx:224
+#: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
@@ -1712,7 +1736,7 @@ msgstr "Nama"
 msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
 msgstr "Nama tidak boleh berisi tanda kurung sudut, garis miring terbalik, titik koma, tanda kutip, atau backtick"
 
-#: src/features/crms/components/create-crm-dialog.tsx:78
+#: src/features/crms/components/create-crm-dialog.tsx:79
 msgid "Name is required"
 msgstr "Nama wajib diisi"
 
@@ -1727,18 +1751,18 @@ msgstr "Kesalahan jaringan"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/features/objects/components/create-object-dialog.tsx:361
-#: src/routes/_authenticated/$crmId/index.tsx:978
-#: src/routes/_authenticated/$crmId/index.tsx:995
+#: src/routes/_authenticated/$crmId/index.tsx:976
+#: src/routes/_authenticated/$crmId/index.tsx:993
 msgid "New"
 msgstr "Baru"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:976
+#: src/routes/_authenticated/$crmId/index.tsx:974
 msgid "New {0}"
 msgstr "{0} baru"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:42
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:54
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:41
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:53
 msgid "New game"
 msgstr "Permainan baru"
 
@@ -1776,7 +1800,7 @@ msgstr "Tidak ada akun yang terhubung"
 msgid "No CRMs found"
 msgstr "Tidak ada CRM yang ditemukan"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:51
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:50
 msgid "No games yet"
 msgstr "Belum ada permainan"
 
@@ -1796,7 +1820,7 @@ msgstr "Tidak ada objek yang cocok"
 msgid "No notifications yet"
 msgstr "Belum ada notifikasi"
 
-#: src/routes/_authenticated/$crmId/index.tsx:888
+#: src/routes/_authenticated/$crmId/index.tsx:886
 msgid "No objects to export."
 msgstr "Tidak ada objek untuk diekspor."
 
@@ -1833,9 +1857,13 @@ msgstr "Tanpa status"
 msgid "No time zone found."
 msgstr "Tidak ada zona waktu yang ditemukan."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:150
+#: ../../../lib/web/src/components/notification-category-button.tsx:106
 msgid "No topic record yet — try again after the next notification."
 msgstr "Belum ada catatan topik — coba lagi setelah notifikasi berikutnya."
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:132
+msgid "No unread notifications"
+msgstr ""
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:206
 msgid "No users found"
@@ -1893,7 +1921,7 @@ msgid "Notifications"
 msgstr "Notifikasi"
 
 #. placeholder {0}: unread.length
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:111
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:195
 msgid "Notifications: {0}"
 msgstr "Notifikasi: {0}"
 
@@ -1934,7 +1962,7 @@ msgstr "Buka tindakan class"
 msgid "Open design actions"
 msgstr "Buka tindakan desain"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:149
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:166
 msgid "Open menu"
 msgstr "Buka menu"
 
@@ -1953,11 +1981,11 @@ msgstr "Buka menu navigasi"
 msgid "Open option actions"
 msgstr "Buka tindakan opsi"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1003
+#: src/routes/_authenticated/$crmId/index.tsx:1001
 msgid "Open page actions"
 msgstr "Buka tindakan halaman"
 
-#: src/components/keyboard-shortcuts-help.tsx:32
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:30
 msgid "Open selected card"
 msgstr "Buka kartu terpilih"
 
@@ -2001,7 +2029,7 @@ msgstr "Halaman {currentPage} dari {totalPages}"
 
 #: src/features/objects/components/create-object-dialog.tsx:409
 #: src/features/objects/components/object-detail-panel.tsx:428
-#: src/routes/_authenticated/$crmId/index.tsx:903
+#: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "Parent"
 msgstr "Induk"
 
@@ -2025,12 +2053,12 @@ msgstr "Pola (regex)"
 msgid "Pick a date"
 msgstr "Pilih tanggal"
 
-#: src/routes/_authenticated/$crmId/index.tsx:769
-#: src/routes/_authenticated/$crmId/index.tsx:803
+#: src/routes/_authenticated/$crmId/index.tsx:767
+#: src/routes/_authenticated/$crmId/index.tsx:801
 msgid "Please add one or more classes to the CRM design."
 msgstr "Harap tambahkan satu atau lebih class ke desain CRM."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:95
+#: ../../../lib/web/src/components/comment-composer.tsx:99
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:323
 msgid "Please check your internet connection and try again."
@@ -2048,6 +2076,14 @@ msgstr "Silakan coba lagi."
 msgid "Please wait a moment and try again."
 msgstr "Harap tunggu sebentar, lalu coba lagi."
 
+#: ../../../lib/web/src/components/options-menu.tsx:175
+msgid "Posts"
+msgstr ""
+
+#: ../../../lib/web/src/components/options-menu.tsx:178
+msgid "Posts and comments"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
@@ -2062,7 +2098,6 @@ msgstr "Privasi"
 msgid "Processing…"
 msgstr "Memproses…"
 
-#: ../../../lib/web/src/components/layout/nav-user.tsx:137
 #: ../../../lib/web/src/components/profile-dropdown.tsx:114
 msgid "Profile"
 msgstr "Profil"
@@ -2087,7 +2122,7 @@ msgstr "Terangkat"
 msgid "Re-link your accounts on this server"
 msgstr "Tautkan ulang akun Anda di server ini"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1027
+#: src/routes/_authenticated/$crmId/index.tsx:1025
 msgid "Re-order columns"
 msgstr "Susun ulang kolom"
 
@@ -2109,7 +2144,7 @@ msgstr "CRM yang direkomendasikan"
 msgid "Reconnecting ({retries})..."
 msgstr "Menghubungkan kembali ({retries})..."
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:133
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:136
 msgid "Redirecting to login."
 msgstr "Mengalihkan ke login."
 
@@ -2130,10 +2165,10 @@ msgstr "Relatif (5m, 3h, 2d)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Relatif dalam 24 jam, selainnya absolut"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:232
+#: ../../../lib/web/src/components/comment-composer.tsx:236
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:289
+#: src/features/crms/components/create-crm-dialog.tsx:321
 #: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/create-object-dialog.tsx:498
 #: src/features/objects/components/object-links.tsx:245
@@ -2237,13 +2272,17 @@ msgstr "Setel ulang {title}"
 msgid "Reset all settings to default values"
 msgstr "Reset semua pengaturan ke nilai default"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:249
+#: ../../../lib/web/src/components/comment-composer.tsx:253
 msgid "Retry"
 msgstr "Coba lagi"
 
 #: src/components/layout/crms-layout.tsx:71
 msgid "Retry CRMs load"
 msgstr "Coba lagi muat CRM"
+
+#: ../../../lib/web/src/components/options-menu.tsx:181
+msgid "Revoke access"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:362
 msgid "Right to Left"
@@ -2262,7 +2301,19 @@ msgstr "Kelompokkan baris berdasarkan"
 msgid "Rows per page"
 msgstr "Baris per halaman"
 
-#: src/features/crms/components/create-crm-dialog.tsx:229
+#: ../../../lib/web/src/components/options-menu.tsx:131
+msgid "RSS access revoked"
+msgstr ""
+
+#: ../../../lib/web/src/components/options-menu.tsx:171
+msgid "RSS feed"
+msgstr ""
+
+#: ../../../lib/web/src/components/options-menu.tsx:121
+msgid "RSS URL copied to clipboard"
+msgstr ""
+
+#: src/features/crms/components/create-crm-dialog.tsx:261
 msgid "Sales CRM"
 msgstr "CRM Penjualan"
 
@@ -2274,7 +2325,7 @@ msgstr "Sabtu"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
 #: src/features/objects/components/comment-thread.tsx:268
-#: src/routes/_authenticated/$crmId/index.tsx:1112
+#: src/routes/_authenticated/$crmId/index.tsx:1110
 msgid "Save"
 msgstr "Simpan"
 
@@ -2360,7 +2411,7 @@ msgstr "Pilih {0}"
 msgid "Select a field"
 msgstr "Pilih bidang"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:37
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:36
 msgid "Select a game"
 msgstr "Pilih permainan"
 
@@ -2392,7 +2443,7 @@ msgstr "Pilih gaya tata letak"
 msgid "Select location"
 msgstr "Pilih lokasi"
 
-#: src/components/keyboard-shortcuts-help.tsx:30
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:28
 msgid "Select next card"
 msgstr "Pilih kartu berikutnya"
 
@@ -2400,7 +2451,7 @@ msgstr "Pilih kartu berikutnya"
 msgid "Select person..."
 msgstr "Pilih orang..."
 
-#: src/components/keyboard-shortcuts-help.tsx:31
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:29
 msgid "Select previous card"
 msgstr "Pilih kartu sebelumnya"
 
@@ -2473,15 +2524,13 @@ msgstr "Tetapkan asal dan tujuan"
 msgid "Setting access..."
 msgstr "Menetapkan akses..."
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:109
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:115
-#: ../../../lib/web/src/components/layout/nav-user.tsx:84
-#: ../../../lib/web/src/components/layout/nav-user.tsx:148
-#: ../../../lib/web/src/components/layout/nav-user.tsx:198
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:126
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
+#: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:164
 #: src/routes/_authenticated/$crmId_.settings.tsx:187
-#: src/routes/_authenticated/$crmId/index.tsx:1064
+#: src/routes/_authenticated/$crmId/index.tsx:1062
 msgid "Settings"
 msgstr "Pengaturan"
 
@@ -2497,7 +2546,7 @@ msgstr "Tampilkan bidang"
 msgid "Show password"
 msgstr "Tampilkan kata sandi"
 
-#: src/components/keyboard-shortcuts-help.tsx:35
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:33
 msgid "Show this help"
 msgstr "Tampilkan bantuan ini"
 
@@ -2511,12 +2560,12 @@ msgstr "Menampilkan {totalShown} dari {total}"
 msgid "Sidebar"
 msgstr "Bilah samping"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:121
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:127
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:138
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:144
 msgid "Sign out"
 msgstr "Keluar"
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:131
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:134
 msgid "Signing out..."
 msgstr "Keluar..."
 
@@ -2537,6 +2586,10 @@ msgstr "Kecil"
 #: src/components/view-options-bar.tsx:164
 msgid "Sort"
 msgstr "Urutkan"
+
+#: ../../../lib/web/src/components/options-menu.tsx:158
+msgid "Sources"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
@@ -2596,10 +2649,11 @@ msgstr "Berlangganan..."
 msgid "Sunday"
 msgstr "Minggu"
 
-#: src/components/keyboard-shortcuts-help.tsx:29
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:27
 msgid "Switch to view 1-9"
 msgstr "Beralih ke tampilan 1-9"
 
+#: ../../../lib/web/src/components/audit-timeline.tsx:111
 #: ../../../lib/web/src/components/config-drawer.tsx:209
 #: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
@@ -2646,10 +2700,6 @@ msgid "The requested content could not be found."
 msgstr "Konten yang diminta tidak dapat ditemukan."
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
-#~ msgid "The server returned a web page instead of data, which usually means the address was wrong."
-#~ msgstr ""
-
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "Server mengembalikan halaman web alih-alih data."
 
@@ -2683,7 +2733,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "Ini akan menghapus \"{0}\" secara permanen beserta semua objek, komentar, dan lampirannya. Tindakan ini tidak dapat dibatalkan."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1242
+#: src/routes/_authenticated/$crmId/index.tsx:1240
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Ini akan menghapus \"{0}\" dari bilah samping Anda dan menghentikan pembaruan untuk CRM ini."
 
@@ -2739,7 +2789,7 @@ msgstr "Alihkan Bilah Samping"
 msgid "Toggle theme"
 msgstr "Alihkan tema"
 
-#: src/components/keyboard-shortcuts-help.tsx:28
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:26
 msgid "Toggle view options"
 msgstr "Alihkan opsi tampilan"
 
@@ -2804,12 +2854,12 @@ msgstr "Ketik untuk mencari..."
 msgid "Unable to connect to remote server"
 msgstr "Tidak dapat terhubung ke server jarak jauh"
 
-#: ../../../lib/web/src/lib/auth-manager.ts:85
-#: ../../../lib/web/src/lib/auth-manager.ts:97
+#: ../../../lib/web/src/lib/auth-manager.ts:92
+#: ../../../lib/web/src/lib/auth-manager.ts:104
 msgid "Unable to redirect to login. Please try again."
 msgstr "Tidak dapat mengalihkan ke halaman masuk. Silakan coba lagi."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:158
+#: ../../../lib/web/src/components/notification-category-button.tsx:114
 msgid "Unassigned"
 msgstr "Tidak ditugaskan"
 
@@ -2830,25 +2880,26 @@ msgstr "Amerika Serikat"
 msgid "Unknown"
 msgstr "Tidak diketahui"
 
+#: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:1072
-#: src/routes/_authenticated/$crmId/index.tsx:1243
+#: src/routes/_authenticated/$crmId/index.tsx:1070
+#: src/routes/_authenticated/$crmId/index.tsx:1241
 msgid "Unsubscribe"
 msgstr "Berhenti berlangganan"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1241
+#: src/routes/_authenticated/$crmId/index.tsx:1239
 msgid "Unsubscribe from CRM?"
 msgstr "Berhenti berlangganan CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:660
+#: src/routes/_authenticated/$crmId/index.tsx:658
 msgid "Unsubscribed"
 msgstr "Berhenti berlangganan"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:659
+#: src/routes/_authenticated/$crmId/index.tsx:657
 msgid "Unsubscribing..."
 msgstr "Berhenti berlangganan..."
 
@@ -2880,7 +2931,7 @@ msgstr "Memperbarui akses..."
 msgid "Upload"
 msgstr "Unggah"
 
-#: src/features/crms/components/create-crm-dialog.tsx:262
+#: src/features/crms/components/create-crm-dialog.tsx:294
 #: src/routes/_authenticated/$crmId/design.tsx:298
 msgid "Upload .json file"
 msgstr "Unggah berkas .json"
@@ -2893,7 +2944,7 @@ msgstr "Progres unggahan"
 msgid "Use your passkey"
 msgstr "Gunakan kunci sandi Anda"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:102
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:119
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
 #: src/features/editor/components/add-dialogs.tsx:141
 msgid "User"
@@ -2938,8 +2989,8 @@ msgstr "Lihat"
 msgid "View all"
 msgstr "Lihat semua"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:131
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:139
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:215
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:223
 msgid "View all notifications"
 msgstr "Lihat semua notifikasi"
 
@@ -2955,7 +3006,7 @@ msgstr "Kontrol tampilan"
 msgid "View only"
 msgstr "Hanya lihat"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1012
+#: src/routes/_authenticated/$crmId/index.tsx:1010
 msgid "View options"
 msgstr "Opsi tampilan"
 
@@ -3014,10 +3065,6 @@ msgstr "Anda tidak memiliki izin yang diperlukan <0/>untuk melihat sumber daya i
 msgid "You have no CRMs yet."
 msgstr "Anda belum memiliki CRM."
 
-#: ../../../lib/web/src/lib/show-submitted-data.tsx:9
-msgid "You submitted the following values:"
-msgstr "Anda mengirimkan nilai berikut:"
-
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:193
 msgid "You're all caught up!"
 msgstr "Semua sudah dibaca!"
@@ -3026,14 +3073,14 @@ msgstr "Semua sudah dibaca!"
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Akun Anda telah dipindahkan ke sini dari {source}. Sampai Anda menghapusnya di sana, pesan dan notifikasi mungkin menjangkau kedua server, sebagian konten Anda tetap disajikan dari server lama, dan pengikut mungkin membutuhkan beberapa menit untuk menemukan Anda di sini."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:291
+#: ../../../lib/web/src/components/comment-composer.tsx:295
 msgid "Your attachments will be lost."
 msgstr "Lampiran Anda akan hilang."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:289
+#: ../../../lib/web/src/components/comment-composer.tsx:293
 msgid "Your text and attachments will be lost."
 msgstr "Teks dan lampiran Anda akan hilang."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:292
+#: ../../../lib/web/src/components/comment-composer.tsx:296
 msgid "Your text will be lost."
 msgstr "Teksmu akan hilang."

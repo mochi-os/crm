@@ -96,7 +96,7 @@ msgstr "{sentLabel} z {totalLabel}"
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# element} few {# elementy} many {# elementów} other {# elementu}}"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:148
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:165
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Otwórz menu (# nieprzeczytane powiadomienie)} few {Otwórz menu (# nieprzeczytane powiadomienia)} many {Otwórz menu (# nieprzeczytanych powiadomień)} other {Otwórz menu (# nieprzeczytanego powiadomienia)}}"
 
@@ -223,8 +223,8 @@ msgstr "Dodaj element listy"
 msgid "Add class"
 msgstr "Dodaj klasę"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1023
-#: src/routes/_authenticated/$crmId/index.tsx:1221
+#: src/routes/_authenticated/$crmId/index.tsx:1021
+#: src/routes/_authenticated/$crmId/index.tsx:1219
 msgid "Add column"
 msgstr "Dodaj kolumnę"
 
@@ -305,7 +305,7 @@ msgstr "Wszystkie CRM"
 msgid "Allow anyone to search for {0}"
 msgstr "Zezwól każdemu na wyszukiwanie {0}"
 
-#: src/features/crms/components/create-crm-dialog.tsx:236
+#: src/features/crms/components/create-crm-dialog.tsx:268
 msgid "Allow anyone to search for CRM"
 msgstr "Zezwól każdemu na wyszukiwanie CRM"
 
@@ -386,7 +386,7 @@ msgstr "Uwierzytelnieni użytkownicy"
 msgid "Authenticator code"
 msgstr "Kod uwierzytelniający"
 
-#: src/components/keyboard-shortcuts-help.tsx:50
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:51
 msgid "Available keyboard shortcuts"
 msgstr "Dostępne skróty klawiaturowe"
 
@@ -430,8 +430,8 @@ msgstr "Baner"
 msgid "Blocked by"
 msgstr "Zablokowane przez"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:156
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:166
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:237
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:247
 msgid "Blocked navigation to untrusted link"
 msgstr "Zablokowano nawigację do niezaufanego linku"
 
@@ -470,11 +470,11 @@ msgstr "Może być dzieckiem"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/board/components/board-column.tsx:603
-#: src/features/crms/components/create-crm-dialog.tsx:304
+#: src/features/crms/components/create-crm-dialog.tsx:336
 #: src/features/editor/components/option-dialog.tsx:146
 #: src/features/objects/components/comment-thread.tsx:248
 #: src/routes/_authenticated/$crmId/design.tsx:305
-#: src/routes/_authenticated/$crmId/index.tsx:1100
+#: src/routes/_authenticated/$crmId/index.tsx:1098
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -488,12 +488,12 @@ msgstr "Anuluj komentarz"
 msgid "Cancel reply"
 msgstr "Anuluj odpowiedź"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:146
+#: ../../../lib/web/src/components/notification-category-button.tsx:102
 msgid "Category for this notification"
 msgstr "Kategoria tego powiadomienia"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:127
-#: ../../../lib/web/src/components/notification-category-button.tsx:138
+#: ../../../lib/web/src/components/notification-category-button.tsx:83
+#: ../../../lib/web/src/components/notification-category-button.tsx:94
 msgid "Change notification category"
 msgstr "Zmień kategorię powiadomienia"
 
@@ -509,7 +509,7 @@ msgstr "Pole wyboru"
 msgid "Checklist"
 msgstr "Lista kontrolna"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:38
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:37
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Wybierz grę z paska bocznego lub rozpocznij nową."
 
@@ -534,7 +534,7 @@ msgstr "Wybierz między preferencją systemu, trybem jasnym lub ciemnym"
 msgid "Choose language"
 msgstr "Wybierz język"
 
-#: src/routes/_authenticated/$crmId/index.tsx:903
+#: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "Class"
 msgstr "Klasa"
 
@@ -601,7 +601,7 @@ msgstr "Zamknij nawigację"
 msgid "Close panel"
 msgstr "Zamknij panel"
 
-#: src/components/keyboard-shortcuts-help.tsx:34
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:32
 msgid "Close panel / cancel"
 msgstr "Zamknij panel / anuluj"
 
@@ -729,6 +729,10 @@ msgstr "Kopiuj"
 msgid "Could not load this document. Please try again later."
 msgstr "Nie można wczytać tego dokumentu. Spróbuj ponownie później."
 
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:121
+msgid "Couldn't load notifications"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:184
 msgid "Couldn't send the code. Please try again."
 msgstr "Nie udało się wysłać kodu. Spróbuj ponownie."
@@ -754,7 +758,7 @@ msgstr "Utwórz"
 msgid "Create {0}"
 msgstr "Utwórz {0}"
 
-#: src/features/crms/components/create-crm-dialog.tsx:218
+#: src/features/crms/components/create-crm-dialog.tsx:250
 #: src/features/crms/pages/crms-list-page.tsx:103
 msgid "Create a new CRM"
 msgstr "Utwórz nowe CRM"
@@ -764,13 +768,13 @@ msgid "Create a new CRM object."
 msgstr "Utwórz nowy obiekt CRM."
 
 #: src/components/layout/crms-layout.tsx:59
-#: src/features/crms/components/create-crm-dialog.tsx:206
-#: src/features/crms/components/create-crm-dialog.tsx:216
-#: src/features/crms/components/create-crm-dialog.tsx:307
+#: src/features/crms/components/create-crm-dialog.tsx:238
+#: src/features/crms/components/create-crm-dialog.tsx:248
+#: src/features/crms/components/create-crm-dialog.tsx:339
 msgid "Create CRM"
 msgstr "Utwórz CRM"
 
-#: src/components/keyboard-shortcuts-help.tsx:27
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:25
 msgid "Create new item"
 msgstr "Utwórz nowy element"
 
@@ -787,12 +791,12 @@ msgstr "Tworzenie, edycja, komentowanie i przeglądanie"
 msgid "Created"
 msgstr "Utworzone"
 
-#: src/features/crms/components/create-crm-dialog.tsx:90
+#: src/features/crms/components/create-crm-dialog.tsx:91
 msgid "Creating CRM..."
 msgstr "Tworzenie CRM..."
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
-#: src/features/crms/components/create-crm-dialog.tsx:307
+#: src/features/crms/components/create-crm-dialog.tsx:339
 #: src/features/objects/components/create-object-dialog.tsx:547
 msgid "Creating..."
 msgstr "Tworzenie..."
@@ -802,7 +806,7 @@ msgstr "Tworzenie..."
 msgid "CRM actions"
 msgstr "Akcje CRM"
 
-#: src/features/crms/components/create-crm-dialog.tsx:91
+#: src/features/crms/components/create-crm-dialog.tsx:92
 msgid "CRM created"
 msgstr "CRM utworzone"
 
@@ -810,7 +814,7 @@ msgstr "CRM utworzone"
 msgid "CRM deleted"
 msgstr "Usunięto CRM"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1226
+#: src/routes/_authenticated/$crmId/index.tsx:1224
 msgid "CRM link"
 msgstr "Link do CRM"
 
@@ -837,7 +841,7 @@ msgstr "Zaktualizowano CRM"
 msgid "CRMs"
 msgstr "CRM"
 
-#: ../../../lib/web/src/components/map-view.tsx:208
+#: ../../../lib/web/src/components/map-view.tsx:217
 msgid "Current location"
 msgstr "Bieżąca lokalizacja"
 
@@ -851,9 +855,6 @@ msgstr "Niestandardowy"
 msgid "Dark"
 msgstr "Ciemny"
 
-#: ../../../lib/web/src/components/layout/nav-user.tsx:91
-#: ../../../lib/web/src/components/layout/nav-user.tsx:154
-#: ../../../lib/web/src/components/layout/nav-user.tsx:205
 #: ../../../lib/web/src/components/profile-dropdown.tsx:87
 #: ../../../lib/web/src/components/profile-dropdown.tsx:123
 msgid "Dark mode"
@@ -866,7 +867,8 @@ msgstr "Konflikt danych"
 #. placeholder {0}: imported.data?.objects ?? 0
 #. placeholder {1}: imported.data?.comments ?? 0
 #. placeholder {2}: imported.data?.links ?? 0
-#: src/features/crms/components/create-crm-dialog.tsx:122
+#: src/features/crms/components/create-crm-dialog.tsx:110
+#: src/features/crms/components/create-crm-dialog.tsx:142
 msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
 msgstr "Dane zaimportowane ({0, plural, one {# obiekt} few {# obiekty} many {# obiektów} other {# obiektu}}, {1, plural, one {# komentarz} few {# komentarze} many {# komentarzy} other {# komentarza}}, {2, plural, one {# link} few {# linki} many {# linków} other {# linku}})"
 
@@ -976,11 +978,11 @@ msgstr "Opis"
 
 #: src/routes/_authenticated/$crmId/design.tsx:65
 #: src/routes/_authenticated/$crmId/design.tsx:133
-#: src/routes/_authenticated/$crmId/index.tsx:1054
+#: src/routes/_authenticated/$crmId/index.tsx:1052
 msgid "Design"
 msgstr "Projekt"
 
-#: src/features/crms/components/create-crm-dialog.tsx:123
+#: src/features/crms/components/create-crm-dialog.tsx:143
 #: src/routes/_authenticated/$crmId/design.tsx:110
 msgid "Design imported"
 msgstr "Projekt zaimportowany"
@@ -1012,11 +1014,11 @@ msgstr "Kierunek"
 msgid "Directory"
 msgstr "Katalog"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:300
+#: ../../../lib/web/src/components/comment-composer.tsx:304
 msgid "Discard"
 msgstr "Odrzuć"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:298
+#: ../../../lib/web/src/components/comment-composer.tsx:302
 msgid "Discard draft?"
 msgstr "Odrzucić wersję roboczą?"
 
@@ -1030,8 +1032,8 @@ msgstr "Rozłączono"
 msgid "Dismiss"
 msgstr "Odrzuć"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1129
-#: src/routes/_authenticated/$crmId/index.tsx:1134
+#: src/routes/_authenticated/$crmId/index.tsx:1127
+#: src/routes/_authenticated/$crmId/index.tsx:1132
 msgid "Dismiss board hint"
 msgstr "Odrzuć podpowiedź planszy"
 
@@ -1046,7 +1048,7 @@ msgstr "Wyświetla pasek boczny mobilny."
 msgid "Done"
 msgstr "Gotowe"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1120
+#: src/routes/_authenticated/$crmId/index.tsx:1118
 msgid "Double click on a column to add content"
 msgstr "Kliknij dwukrotnie kolumnę, aby dodać treść"
 
@@ -1065,12 +1067,12 @@ msgid "Download failed"
 msgstr "Pobieranie nie powiodło się"
 
 #: src/routes/_authenticated/$crmId/design.tsx:89
-#: src/routes/_authenticated/$crmId/index.tsx:222
-#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:220
+#: src/routes/_authenticated/$crmId/index.tsx:925
 msgid "Downloaded {filename}"
 msgstr "Pobrano {filename}"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1096
+#: src/routes/_authenticated/$crmId/index.tsx:1094
 msgid "Drag columns to re-order them"
 msgstr "Przeciągnij kolumny, aby zmienić ich kolejność"
 
@@ -1113,7 +1115,7 @@ msgstr "Edytuj opcję"
 msgid "Edit option {0}"
 msgstr "Edytuj opcję {0}"
 
-#: src/components/keyboard-shortcuts-help.tsx:33
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:31
 msgid "Edit selected card"
 msgstr "Edytuj wybraną kartę"
 
@@ -1156,11 +1158,11 @@ msgstr "Rozwiń"
 msgid "Expand sidebar"
 msgstr "Rozwiń pasek boczny"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1034
+#: src/routes/_authenticated/$crmId/index.tsx:1032
 msgid "Export CSV"
 msgstr "Eksportuj CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1038
+#: src/routes/_authenticated/$crmId/index.tsx:1036
 msgid "Export data"
 msgstr "Eksportuj dane"
 
@@ -1193,7 +1195,7 @@ msgstr "Nie udało się skopiować"
 msgid "Failed to create class"
 msgstr "Nie udało się utworzyć klasy"
 
-#: src/features/crms/components/create-crm-dialog.tsx:92
+#: src/features/crms/components/create-crm-dialog.tsx:93
 msgid "Failed to create CRM"
 msgstr "Nie udało się utworzyć CRM"
 
@@ -1201,6 +1203,7 @@ msgstr "Nie udało się utworzyć CRM"
 msgid "Failed to create field"
 msgstr "Nie udało się utworzyć pola"
 
+#: ../../../lib/web/src/components/options-menu.tsx:99
 #: src/features/objects/components/object-links.tsx:103
 #: src/routes/_authenticated/$crmId/index.tsx:190
 msgid "Failed to create link"
@@ -1234,9 +1237,9 @@ msgstr "Nie udało się usunąć linku"
 msgid "Failed to delete view"
 msgstr "Nie udało się usunąć widoku"
 
-#: src/routes/_authenticated/$crmId/index.tsx:224
-#: src/routes/_authenticated/$crmId/index.tsx:227
-#: src/routes/_authenticated/$crmId/index.tsx:929
+#: src/routes/_authenticated/$crmId/index.tsx:222
+#: src/routes/_authenticated/$crmId/index.tsx:225
+#: src/routes/_authenticated/$crmId/index.tsx:927
 msgid "Failed to export data"
 msgstr "Nie udało się wyeksportować danych"
 
@@ -1245,7 +1248,12 @@ msgstr "Nie udało się wyeksportować danych"
 msgid "Failed to export design"
 msgstr "Nie udało się wyeksportować projektu"
 
-#: src/features/crms/components/create-crm-dialog.tsx:124
+#: ../../../lib/web/src/components/options-menu.tsx:123
+msgid "Failed to get RSS token"
+msgstr ""
+
+#: src/features/crms/components/create-crm-dialog.tsx:111
+#: src/features/crms/components/create-crm-dialog.tsx:144
 msgid "Failed to import data"
 msgstr "Nie udało się zaimportować danych"
 
@@ -1271,6 +1279,10 @@ msgstr "Nie udało się załadować projektu CRM"
 msgid "Failed to load CRMs"
 msgstr "Nie udało się załadować CRM-ów"
 
+#: ../../../lib/web/src/components/audit-timeline.tsx:72
+msgid "Failed to load history"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
 msgid "Failed to load image"
 msgstr "Nie udało się wczytać obrazu"
@@ -1287,7 +1299,7 @@ msgstr "Nie udało się wczytać wideo"
 msgid "Failed to post comment"
 msgstr "Nie udało się opublikować komentarza"
 
-#: src/features/crms/components/create-crm-dialog.tsx:191
+#: src/features/crms/components/create-crm-dialog.tsx:223
 #: src/routes/_authenticated/$crmId/design.tsx:267
 msgid "Failed to read file"
 msgstr "Nie udało się odczytać pliku"
@@ -1308,6 +1320,10 @@ msgstr "Nie udało się zmienić kolejności pól"
 msgid "Failed to reorder views"
 msgstr "Nie udało się zmienić kolejności widoków"
 
+#: ../../../lib/web/src/components/options-menu.tsx:133
+msgid "Failed to revoke RSS access"
+msgstr ""
+
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:257
 msgid "Failed to send verification code"
 msgstr "Nie udało się wysłać kodu weryfikacyjnego"
@@ -1323,17 +1339,13 @@ msgid "Failed to subscribe"
 msgstr "Nie udało się zasubskrybować"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:661
+#: src/routes/_authenticated/$crmId/index.tsx:659
 msgid "Failed to unsubscribe"
 msgstr "Nie udało się anulować subskrypcji"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:471
 msgid "Failed to update access level"
 msgstr "Nie udało się zaktualizować poziomu dostępu"
-
-#: ../../../lib/web/src/components/notification-category-button.tsx:114
-msgid "Failed to update category"
-msgstr "Nie udało się zaktualizować kategorii"
 
 #: src/features/objects/components/comment-list.tsx:171
 msgid "Failed to update comment"
@@ -1462,8 +1474,12 @@ msgstr "Ukryj"
 msgid "Hide password"
 msgstr "Ukryj hasło"
 
+#: ../../../lib/web/src/components/audit-timeline.tsx:64
+msgid "History"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:90
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:175
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:192
 #: ../../../lib/web/src/components/layout/top-bar.tsx:71
 #: ../../../lib/web/src/components/layout/top-bar.tsx:100
 msgid "Home"
@@ -1475,7 +1491,7 @@ msgstr "Popularne"
 
 #: src/features/editor/components/edit-dialogs.tsx:744
 #: src/features/editor/components/edit-dialogs.tsx:1042
-#: src/routes/_authenticated/$crmId/index.tsx:903
+#: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "ID"
 msgstr "ID"
 
@@ -1501,11 +1517,12 @@ msgstr "Zaimportuj konfigurację projektu"
 msgid "Import design"
 msgstr "Importuj projekt"
 
-#: src/features/crms/components/create-crm-dialog.tsx:246
+#: src/features/crms/components/create-crm-dialog.tsx:278
 msgid "Import from backup (optional)"
 msgstr "Importuj z kopii zapasowej (opcjonalnie)"
 
-#: src/features/crms/components/create-crm-dialog.tsx:119
+#: src/features/crms/components/create-crm-dialog.tsx:108
+#: src/features/crms/components/create-crm-dialog.tsx:139
 msgid "Importing data..."
 msgstr "Importowanie danych..."
 
@@ -1533,7 +1550,7 @@ msgstr "Zainteresowania"
 msgid "Invalid date"
 msgstr "Nieprawidłowa data"
 
-#: src/features/crms/components/create-crm-dialog.tsx:184
+#: src/features/crms/components/create-crm-dialog.tsx:216
 #: src/routes/_authenticated/$crmId/design.tsx:263
 msgid "Invalid JSON file"
 msgstr "Nieprawidłowy plik JSON"
@@ -1558,7 +1575,7 @@ msgstr "Szczegóły elementu"
 msgid "Just now"
 msgstr "Przed chwilą"
 
-#: src/components/keyboard-shortcuts-help.tsx:49
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:48
 msgid "Keyboard shortcuts"
 msgstr "Skróty klawiszowe"
 
@@ -1591,7 +1608,8 @@ msgstr "Tylko litery, cyfry, spacje i myślniki"
 msgid "Light"
 msgstr "Jasny"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1044
+#: ../../../lib/web/src/components/options-menu.tsx:190
+#: src/routes/_authenticated/$crmId/index.tsx:1042
 msgid "Link"
 msgstr "Link"
 
@@ -1625,9 +1643,6 @@ msgstr "Ładowanie szczegółów elementu"
 msgid "Loading..."
 msgstr "Ładowanie..."
 
-#: ../../../lib/web/src/components/layout/nav-user.tsx:101
-#: ../../../lib/web/src/components/layout/nav-user.tsx:167
-#: ../../../lib/web/src/components/layout/nav-user.tsx:215
 #: ../../../lib/web/src/components/profile-dropdown.tsx:69
 #: ../../../lib/web/src/components/profile-dropdown.tsx:98
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:26
@@ -1655,8 +1670,8 @@ msgstr "Zarządzaj połączonymi kontami dla powiadomień i usług."
 msgid "Manual"
 msgstr "Ręczny"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:118
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:125
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:202
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:209
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Oznacz wszystkie jako przeczytane"
@@ -1673,7 +1688,7 @@ msgstr "Serwer MCP"
 msgid "Medium"
 msgstr "Średni"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:190
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:207
 msgid "Menu"
 msgstr "Menu"
 
@@ -1693,12 +1708,21 @@ msgstr "Minimalna długość"
 msgid "Mochi web"
 msgstr "Mochi web"
 
+#: ../../../lib/web/src/components/options-menu.tsx:164
+msgid "Moderation"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:59
 msgid "Monday"
 msgstr "Poniedziałek"
 
+#: ../../../lib/web/src/components/options-menu.tsx:145
+#: ../../../lib/web/src/components/options-menu.tsx:152
+msgid "More options"
+msgstr ""
+
 #: src/features/board/components/board-column.tsx:589
-#: src/features/crms/components/create-crm-dialog.tsx:224
+#: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
@@ -1712,7 +1736,7 @@ msgstr "Nazwa"
 msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
 msgstr "Nazwa nie może zawierać nawiasów kątowych, ukośnika wstecznego, średnika, cudzysłowów ani odwróconych apostrofów"
 
-#: src/features/crms/components/create-crm-dialog.tsx:78
+#: src/features/crms/components/create-crm-dialog.tsx:79
 msgid "Name is required"
 msgstr "Nazwa jest wymagana"
 
@@ -1727,18 +1751,18 @@ msgstr "Błąd sieci"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/features/objects/components/create-object-dialog.tsx:361
-#: src/routes/_authenticated/$crmId/index.tsx:978
-#: src/routes/_authenticated/$crmId/index.tsx:995
+#: src/routes/_authenticated/$crmId/index.tsx:976
+#: src/routes/_authenticated/$crmId/index.tsx:993
 msgid "New"
 msgstr "Nowy"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:976
+#: src/routes/_authenticated/$crmId/index.tsx:974
 msgid "New {0}"
 msgstr "Nowy {0}"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:42
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:54
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:41
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:53
 msgid "New game"
 msgstr "Nowa gra"
 
@@ -1776,7 +1800,7 @@ msgstr "Brak połączonych kont"
 msgid "No CRMs found"
 msgstr "Nie znaleziono żadnych CRM"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:51
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:50
 msgid "No games yet"
 msgstr "Brak gier"
 
@@ -1796,7 +1820,7 @@ msgstr "Brak pasujących obiektów"
 msgid "No notifications yet"
 msgstr "Brak powiadomień"
 
-#: src/routes/_authenticated/$crmId/index.tsx:888
+#: src/routes/_authenticated/$crmId/index.tsx:886
 msgid "No objects to export."
 msgstr "Brak obiektów do eksportu."
 
@@ -1833,9 +1857,13 @@ msgstr "Brak statusu"
 msgid "No time zone found."
 msgstr "Nie znaleziono strefy czasowej."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:150
+#: ../../../lib/web/src/components/notification-category-button.tsx:106
 msgid "No topic record yet — try again after the next notification."
 msgstr "Brak jeszcze rekordu tematu — spróbuj ponownie po następnym powiadomieniu."
+
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:132
+msgid "No unread notifications"
+msgstr ""
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:206
 msgid "No users found"
@@ -1893,7 +1921,7 @@ msgid "Notifications"
 msgstr "Powiadomienia"
 
 #. placeholder {0}: unread.length
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:111
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:195
 msgid "Notifications: {0}"
 msgstr "Powiadomienia: {0}"
 
@@ -1934,7 +1962,7 @@ msgstr "Otwórz akcje klasy"
 msgid "Open design actions"
 msgstr "Otwórz akcje projektu"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:149
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:166
 msgid "Open menu"
 msgstr "Otwórz menu"
 
@@ -1953,11 +1981,11 @@ msgstr "Otwórz menu nawigacji"
 msgid "Open option actions"
 msgstr "Otwórz akcje opcji"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1003
+#: src/routes/_authenticated/$crmId/index.tsx:1001
 msgid "Open page actions"
 msgstr "Otwórz akcje strony"
 
-#: src/components/keyboard-shortcuts-help.tsx:32
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:30
 msgid "Open selected card"
 msgstr "Otwórz wybraną kartę"
 
@@ -2001,7 +2029,7 @@ msgstr "Strona {currentPage} z {totalPages}"
 
 #: src/features/objects/components/create-object-dialog.tsx:409
 #: src/features/objects/components/object-detail-panel.tsx:428
-#: src/routes/_authenticated/$crmId/index.tsx:903
+#: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "Parent"
 msgstr "Rodzic"
 
@@ -2025,12 +2053,12 @@ msgstr "Wzorzec (wyrażenie regularne)"
 msgid "Pick a date"
 msgstr "Wybierz datę"
 
-#: src/routes/_authenticated/$crmId/index.tsx:769
-#: src/routes/_authenticated/$crmId/index.tsx:803
+#: src/routes/_authenticated/$crmId/index.tsx:767
+#: src/routes/_authenticated/$crmId/index.tsx:801
 msgid "Please add one or more classes to the CRM design."
 msgstr "Dodaj co najmniej jedną klasę do projektu CRM."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:95
+#: ../../../lib/web/src/components/comment-composer.tsx:99
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:323
 msgid "Please check your internet connection and try again."
@@ -2048,6 +2076,14 @@ msgstr "Spróbuj ponownie."
 msgid "Please wait a moment and try again."
 msgstr "Poczekaj chwilę i spróbuj ponownie."
 
+#: ../../../lib/web/src/components/options-menu.tsx:175
+msgid "Posts"
+msgstr ""
+
+#: ../../../lib/web/src/components/options-menu.tsx:178
+msgid "Posts and comments"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
@@ -2062,7 +2098,6 @@ msgstr "Prywatność"
 msgid "Processing…"
 msgstr "Przetwarzanie…"
 
-#: ../../../lib/web/src/components/layout/nav-user.tsx:137
 #: ../../../lib/web/src/components/profile-dropdown.tsx:114
 msgid "Profile"
 msgstr "Profil"
@@ -2087,7 +2122,7 @@ msgstr "Uniesiony"
 msgid "Re-link your accounts on this server"
 msgstr "Ponownie powiąż swoje konta na tym serwerze"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1027
+#: src/routes/_authenticated/$crmId/index.tsx:1025
 msgid "Re-order columns"
 msgstr "Zmień kolejność kolumn"
 
@@ -2109,7 +2144,7 @@ msgstr "Polecane CRM-y"
 msgid "Reconnecting ({retries})..."
 msgstr "Ponowne łączenie ({retries})..."
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:133
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:136
 msgid "Redirecting to login."
 msgstr "Przekierowywanie do logowania."
 
@@ -2130,10 +2165,10 @@ msgstr "Względny (5m, 3h, 2d)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Względny w ciągu 24 godzin, w przeciwnym razie bezwzględny"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:232
+#: ../../../lib/web/src/components/comment-composer.tsx:236
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:289
+#: src/features/crms/components/create-crm-dialog.tsx:321
 #: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/create-object-dialog.tsx:498
 #: src/features/objects/components/object-links.tsx:245
@@ -2237,13 +2272,17 @@ msgstr "Zresetuj {title}"
 msgid "Reset all settings to default values"
 msgstr "Zresetuj wszystkie ustawienia do wartości domyślnych"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:249
+#: ../../../lib/web/src/components/comment-composer.tsx:253
 msgid "Retry"
 msgstr "Ponów próbę"
 
 #: src/components/layout/crms-layout.tsx:71
 msgid "Retry CRMs load"
 msgstr "Ponów ładowanie CRM-ów"
+
+#: ../../../lib/web/src/components/options-menu.tsx:181
+msgid "Revoke access"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:362
 msgid "Right to Left"
@@ -2262,7 +2301,19 @@ msgstr "Grupuj wiersze według"
 msgid "Rows per page"
 msgstr "Wierszy na stronę"
 
-#: src/features/crms/components/create-crm-dialog.tsx:229
+#: ../../../lib/web/src/components/options-menu.tsx:131
+msgid "RSS access revoked"
+msgstr ""
+
+#: ../../../lib/web/src/components/options-menu.tsx:171
+msgid "RSS feed"
+msgstr ""
+
+#: ../../../lib/web/src/components/options-menu.tsx:121
+msgid "RSS URL copied to clipboard"
+msgstr ""
+
+#: src/features/crms/components/create-crm-dialog.tsx:261
 msgid "Sales CRM"
 msgstr "CRM sprzedaży"
 
@@ -2274,7 +2325,7 @@ msgstr "Sobota"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
 #: src/features/editor/components/option-dialog.tsx:150
 #: src/features/objects/components/comment-thread.tsx:268
-#: src/routes/_authenticated/$crmId/index.tsx:1112
+#: src/routes/_authenticated/$crmId/index.tsx:1110
 msgid "Save"
 msgstr "Zapisz"
 
@@ -2360,7 +2411,7 @@ msgstr "Wybierz {0}"
 msgid "Select a field"
 msgstr "Wybierz pole"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:37
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:36
 msgid "Select a game"
 msgstr "Wybierz grę"
 
@@ -2392,7 +2443,7 @@ msgstr "Wybierz styl układu"
 msgid "Select location"
 msgstr "Wybierz lokalizację"
 
-#: src/components/keyboard-shortcuts-help.tsx:30
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:28
 msgid "Select next card"
 msgstr "Wybierz następną kartę"
 
@@ -2400,7 +2451,7 @@ msgstr "Wybierz następną kartę"
 msgid "Select person..."
 msgstr "Wybierz osobę..."
 
-#: src/components/keyboard-shortcuts-help.tsx:31
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:29
 msgid "Select previous card"
 msgstr "Wybierz poprzednią kartę"
 
@@ -2473,15 +2524,13 @@ msgstr "Ustaw źródło i cel"
 msgid "Setting access..."
 msgstr "Ustawianie dostępu..."
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:109
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:115
-#: ../../../lib/web/src/components/layout/nav-user.tsx:84
-#: ../../../lib/web/src/components/layout/nav-user.tsx:148
-#: ../../../lib/web/src/components/layout/nav-user.tsx:198
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:126
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
+#: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:164
 #: src/routes/_authenticated/$crmId_.settings.tsx:187
-#: src/routes/_authenticated/$crmId/index.tsx:1064
+#: src/routes/_authenticated/$crmId/index.tsx:1062
 msgid "Settings"
 msgstr "Ustawienia"
 
@@ -2497,7 +2546,7 @@ msgstr "Pokaż pola"
 msgid "Show password"
 msgstr "Pokaż hasło"
 
-#: src/components/keyboard-shortcuts-help.tsx:35
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:33
 msgid "Show this help"
 msgstr "Pokaż tę pomoc"
 
@@ -2511,12 +2560,12 @@ msgstr "Wyświetlanie {totalShown} z {total}"
 msgid "Sidebar"
 msgstr "Pasek boczny"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:121
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:127
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:138
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:144
 msgid "Sign out"
 msgstr "Wyloguj się"
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:131
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:134
 msgid "Signing out..."
 msgstr "Wylogowywanie..."
 
@@ -2537,6 +2586,10 @@ msgstr "Mały"
 #: src/components/view-options-bar.tsx:164
 msgid "Sort"
 msgstr "Sortuj"
+
+#: ../../../lib/web/src/components/options-menu.tsx:158
+msgid "Sources"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
@@ -2596,10 +2649,11 @@ msgstr "Subskrybowanie..."
 msgid "Sunday"
 msgstr "Niedziela"
 
-#: src/components/keyboard-shortcuts-help.tsx:29
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:27
 msgid "Switch to view 1-9"
 msgstr "Przełącz na widok 1-9"
 
+#: ../../../lib/web/src/components/audit-timeline.tsx:111
 #: ../../../lib/web/src/components/config-drawer.tsx:209
 #: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
@@ -2646,10 +2700,6 @@ msgid "The requested content could not be found."
 msgstr "Nie można znaleźć żądanej treści."
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
-#~ msgid "The server returned a web page instead of data, which usually means the address was wrong."
-#~ msgstr ""
-
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "Serwer zwrócił stronę internetową zamiast danych."
 
@@ -2683,7 +2733,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "Spowoduje to trwałe usunięcie „{0}” i wszystkich jego obiektów, komentarzy i załączników. Tego działania nie można cofnąć."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1242
+#: src/routes/_authenticated/$crmId/index.tsx:1240
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Spowoduje to usunięcie „{0}” z paska bocznego i zatrzymanie aktualizacji dla tego CRM."
 
@@ -2739,7 +2789,7 @@ msgstr "Przełącz pasek boczny"
 msgid "Toggle theme"
 msgstr "Przełącz motyw"
 
-#: src/components/keyboard-shortcuts-help.tsx:28
+#: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:26
 msgid "Toggle view options"
 msgstr "Przełącz opcje widoku"
 
@@ -2804,12 +2854,12 @@ msgstr "Wpisz, aby szukać..."
 msgid "Unable to connect to remote server"
 msgstr "Nie można połączyć się ze zdalnym serwerem"
 
-#: ../../../lib/web/src/lib/auth-manager.ts:85
-#: ../../../lib/web/src/lib/auth-manager.ts:97
+#: ../../../lib/web/src/lib/auth-manager.ts:92
+#: ../../../lib/web/src/lib/auth-manager.ts:104
 msgid "Unable to redirect to login. Please try again."
 msgstr "Nie można przekierować do logowania. Spróbuj ponownie."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:158
+#: ../../../lib/web/src/components/notification-category-button.tsx:114
 msgid "Unassigned"
 msgstr "Nieprzypisane"
 
@@ -2830,25 +2880,26 @@ msgstr "Stany Zjednoczone"
 msgid "Unknown"
 msgstr "Nieznany"
 
+#: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:1072
-#: src/routes/_authenticated/$crmId/index.tsx:1243
+#: src/routes/_authenticated/$crmId/index.tsx:1070
+#: src/routes/_authenticated/$crmId/index.tsx:1241
 msgid "Unsubscribe"
 msgstr "Anuluj subskrypcję"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1241
+#: src/routes/_authenticated/$crmId/index.tsx:1239
 msgid "Unsubscribe from CRM?"
 msgstr "Anulować subskrypcję CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:660
+#: src/routes/_authenticated/$crmId/index.tsx:658
 msgid "Unsubscribed"
 msgstr "Anulowano subskrypcję"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:659
+#: src/routes/_authenticated/$crmId/index.tsx:657
 msgid "Unsubscribing..."
 msgstr "Anulowanie subskrypcji..."
 
@@ -2880,7 +2931,7 @@ msgstr "Aktualizowanie dostępu..."
 msgid "Upload"
 msgstr "Prześlij"
 
-#: src/features/crms/components/create-crm-dialog.tsx:262
+#: src/features/crms/components/create-crm-dialog.tsx:294
 #: src/routes/_authenticated/$crmId/design.tsx:298
 msgid "Upload .json file"
 msgstr "Prześlij plik .json"
@@ -2893,7 +2944,7 @@ msgstr "Postęp przesyłania"
 msgid "Use your passkey"
 msgstr "Użyj klucza dostępu"
 
-#: ../../../lib/web/src/components/layout/mochi-menu.tsx:102
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:119
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
 #: src/features/editor/components/add-dialogs.tsx:141
 msgid "User"
@@ -2938,8 +2989,8 @@ msgstr "Zobacz"
 msgid "View all"
 msgstr "Zobacz wszystko"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:131
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:139
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:215
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:223
 msgid "View all notifications"
 msgstr "Zobacz wszystkie powiadomienia"
 
@@ -2955,7 +3006,7 @@ msgstr "Zobacz elementy sterujące"
 msgid "View only"
 msgstr "Tylko podgląd"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1012
+#: src/routes/_authenticated/$crmId/index.tsx:1010
 msgid "View options"
 msgstr "Zobacz opcje"
 
@@ -3014,10 +3065,6 @@ msgstr "Nie masz wymaganych uprawnień, <0/>aby wyświetlić ten zasób."
 msgid "You have no CRMs yet."
 msgstr "Nie masz jeszcze żadnych CRM-ów."
 
-#: ../../../lib/web/src/lib/show-submitted-data.tsx:9
-msgid "You submitted the following values:"
-msgstr "Przesłano następujące wartości:"
-
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:193
 msgid "You're all caught up!"
 msgstr "Wszystko przeczytane!"
@@ -3026,14 +3073,14 @@ msgstr "Wszystko przeczytane!"
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Twoje konto zostało przeniesione tutaj z {source}. Dopóki go tam nie usuniesz, wiadomości i powiadomienia mogą docierać do obu serwerów, część twoich treści nadal jest serwowana ze starego serwera, a obserwujący mogą potrzebować kilku minut, aby cię tu znaleźć."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:291
+#: ../../../lib/web/src/components/comment-composer.tsx:295
 msgid "Your attachments will be lost."
 msgstr "Twoje załączniki zostaną utracone."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:289
+#: ../../../lib/web/src/components/comment-composer.tsx:293
 msgid "Your text and attachments will be lost."
 msgstr "Twój tekst i załączniki zostaną utracone."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:292
+#: ../../../lib/web/src/components/comment-composer.tsx:296
 msgid "Your text will be lost."
 msgstr "Twój tekst zostanie utracony."
