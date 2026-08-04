@@ -7,7 +7,12 @@
 import { EntityViewOptionsBar, type EntityViewOptionsBarProps } from "@mochi/web";
 import type { CrmDetails } from "@/types";
 
-type ViewOptionsBarProps = Omit<EntityViewOptionsBarProps, "views"> & {
+// CRMs issue no object numbers, so `numbered` is left off and the built-in
+// Number sort stays out of the dropdown.
+type ViewOptionsBarProps = Omit<
+  EntityViewOptionsBarProps,
+  "views" | "numbered"
+> & {
   crm: CrmDetails;
 };
 
