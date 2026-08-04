@@ -4,11 +4,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import {
-  AttachmentGallery,
-  getAppPath,
-  authenticatedUrl,
-} from "@mochi/web";
+import { EntityCommentAttachments } from "@mochi/web";
 import type { CommentAttachment } from "@/types";
 
 interface CommentAttachmentsProps {
@@ -16,23 +12,8 @@ interface CommentAttachmentsProps {
   crmId: string;
 }
 
-export function CommentAttachments({
-  attachments,
-  crmId,
-}: CommentAttachmentsProps) {
-  if (!attachments || attachments.length === 0) return null;
-
-  const basePath = `${getAppPath()}/${crmId}/-/attachments/`;
-  const attUrl = (id: string, suffix = "") => authenticatedUrl(`${basePath}${id}${suffix}`);
-
+export function CommentAttachments({ attachments, crmId }: CommentAttachmentsProps) {
   return (
-    <div className="mt-1">
-      <AttachmentGallery
-        attachments={attachments}
-        getUrl={(att) => attUrl(att.id)}
-        getThumbnailUrl={(att) => attUrl(att.id, "/thumbnail")}
-        rowHeight={80}
-      />
-    </div>
+    <EntityCommentAttachments attachments={attachments} containerId={crmId} />
   );
 }
