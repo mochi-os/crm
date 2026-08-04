@@ -92,7 +92,7 @@ msgstr "{selectedCount, plural, one {# منتخب {entityName} کے لیے بل�
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel} میں سے {sentLabel}"
 
-#: src/features/board/components/board-column.tsx:519
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:544
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# آئٹم} other {# آئٹمز}}"
 
@@ -195,7 +195,7 @@ msgstr "تبصرہ شامل کریں..."
 msgid "Add a new account"
 msgstr "نیا اکاؤنٹ شامل کریں"
 
-#: src/features/editor/components/add-dialogs.tsx:104
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:106
 msgid "Add a new field to this class"
 msgstr "اس کلاس میں نیا فیلڈ شامل کریں"
 
@@ -228,8 +228,8 @@ msgstr "کلاس شامل کریں"
 msgid "Add column"
 msgstr "کالم شامل کریں"
 
-#: src/features/editor/components/add-dialogs.tsx:103
-#: src/features/editor/components/add-dialogs.tsx:231
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
 #: src/features/editor/components/edit-dialogs.tsx:879
 msgid "Add field"
 msgstr "فیلڈ شامل کریں"
@@ -246,10 +246,10 @@ msgstr "لنک شامل کریں"
 msgid "Add new account"
 msgstr "نیا اکاؤنٹ شامل کریں"
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:94
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
-#: src/features/editor/components/add-dialogs.tsx:213
-#: src/features/editor/components/add-dialogs.tsx:218
 #: src/features/editor/components/edit-dialogs.tsx:1181
 msgid "Add option"
 msgstr "آپشن شامل کریں"
@@ -343,7 +343,7 @@ msgstr "کیا آپ واقعی \"{0}\" کو حذف کرنا چاہتے ہیں؟"
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "کیا آپ واقعی \"{title}\" کو حذف کرنا چاہتے ہیں؟ یہ عمل واپس نہیں لیا جا سکتا۔"
 
-#: src/features/board/components/board-column.tsx:618
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:643
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "کیا آپ واقعی \"{name}\" کالم کو حذف کرنا چاہتے ہیں؟ یہ واپس نہیں لیا جا سکتا۔"
 
@@ -460,6 +460,7 @@ msgstr "براؤزر نوٹیفکیشنز"
 msgid "Can be child of"
 msgstr "کا بچہ ہو سکتا ہے"
 
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:169
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
 #: ../../../lib/web/src/components/step-up-dialog.tsx:363
@@ -470,7 +471,6 @@ msgstr "کا بچہ ہو سکتا ہے"
 #: ../../../lib/web/src/features/access/access-list.tsx:268
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
-#: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:336
 #: src/features/objects/components/comment-thread.tsx:248
 #: src/routes/_authenticated/$crmId/design.tsx:305
@@ -501,11 +501,11 @@ msgstr "نوٹیفکیشن کا زمرہ تبدیل کریں"
 msgid "Check \"All\" to see your past notifications."
 msgstr "اپنی پچھلی اطلاعات دیکھنے کے لیے \"سب\" منتخب کریں۔"
 
-#: src/features/editor/components/add-dialogs.tsx:135
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:137
 msgid "Checkbox"
 msgstr "چیک باکس"
 
-#: src/features/editor/components/add-dialogs.tsx:136
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:138
 msgid "Checklist"
 msgstr "چیک لسٹ"
 
@@ -582,8 +582,8 @@ msgstr "انتخاب صاف کریں (Escape)"
 msgid "Close"
 msgstr "بند کریں"
 
-#: src/features/editor/components/add-dialogs.tsx:107
-#: src/features/editor/components/add-dialogs.tsx:111
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
 #: src/features/editor/components/edit-dialogs.tsx:279
 #: src/features/editor/components/edit-dialogs.tsx:283
 #: src/features/editor/components/edit-dialogs.tsx:700
@@ -624,8 +624,8 @@ msgstr "سائڈ بار سکیڑیں"
 msgid "Colour"
 msgstr "رنگ"
 
-#: src/features/board/components/board-column.tsx:528
-#: src/features/board/components/board-column.tsx:533
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:553
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:558
 msgid "Column actions"
 msgstr "کالم کے اعمال"
 
@@ -745,8 +745,8 @@ msgstr "دوبارہ تصدیق شروع نہیں کی جا سکی۔ براہ ک
 msgid "Couldn't verify with that account. Please try again."
 msgstr "اس اکاؤنٹ سے تصدیق نہیں ہو سکی۔ براہ کرم دوبارہ کوشش کریں۔"
 
-#: src/features/board/components/board-column.tsx:539
-#: src/features/board/components/board-column.tsx:678
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:564
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:703
 #: src/features/objects/components/create-object-dialog.tsx:376
 #: src/features/objects/components/create-object-dialog.tsx:547
 #: src/features/tree/components/tree-view.tsx:687
@@ -872,7 +872,7 @@ msgstr "ڈیٹا کا تصادم"
 msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
 msgstr "ڈیٹا درآمد ہو گیا ({0, plural, one {# آبجیکٹ} other {# آبجیکٹس}}, {1, plural, one {# تبصرہ} other {# تبصرے}}, {2, plural, one {# لنک} other {# لنکس}})"
 
-#: src/features/editor/components/add-dialogs.tsx:137
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:139
 msgid "Date"
 msgstr "تاریخ"
 
@@ -892,8 +892,8 @@ msgstr "ڈیفالٹ AI اکاؤنٹ"
 msgid "Default sort"
 msgstr "ڈیفالٹ ترتیب"
 
-#: src/features/board/components/board-column.tsx:558
-#: src/features/board/components/board-column.tsx:619
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:583
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:644
 #: src/features/objects/components/comment-thread.tsx:317
 #: src/features/objects/components/comment-thread.tsx:360
 #: src/features/objects/components/comment-thread.tsx:485
@@ -914,7 +914,7 @@ msgstr "اٹیچمنٹ حذف کریں"
 msgid "Delete class"
 msgstr "کلاس حذف کریں"
 
-#: src/features/board/components/board-column.tsx:617
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:642
 msgid "Delete column"
 msgstr "کالم حذف کریں"
 
@@ -1721,10 +1721,10 @@ msgstr "پیر"
 msgid "More options"
 msgstr ""
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:128
-#: src/features/board/components/board-column.tsx:589
 #: src/features/crms/components/create-crm-dialog.tsx:256
-#: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
 #: src/features/editor/components/edit-dialogs.tsx:1032
@@ -1925,7 +1925,7 @@ msgstr "notifications"
 msgid "Notifications: {0}"
 msgstr "اطلاعات: {0}"
 
-#: src/features/editor/components/add-dialogs.tsx:138
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:140
 #: src/features/editor/components/edit-dialogs.tsx:499
 msgid "Number"
 msgstr "نمبر"
@@ -2004,12 +2004,12 @@ msgstr "view actions کھولیں"
 msgid "Open view controls"
 msgstr "view کنٹرولز کھولیں"
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:200
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:158
-#: src/features/editor/components/add-dialogs.tsx:198
 msgid "Option name"
 msgstr "option کا نام"
 
-#: src/features/editor/components/add-dialogs.tsx:166
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:168
 #: src/features/editor/components/edit-dialogs.tsx:1130
 msgid "Options"
 msgstr "اختیارات"
@@ -2166,10 +2166,10 @@ msgid "Relative within 24 hours, else absolute"
 msgstr "24 گھنٹوں کے اندر نسبتی، ورنہ مطلق"
 
 #: ../../../lib/web/src/components/comment-composer.tsx:236
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 #: src/features/crms/components/create-crm-dialog.tsx:321
-#: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/create-object-dialog.tsx:498
 #: src/features/objects/components/object-links.tsx:245
 #: src/features/objects/components/object-links.tsx:258
@@ -2215,16 +2215,16 @@ msgstr "item ہٹائیں"
 msgid "Removing access..."
 msgstr "رسائی ہٹائی جا رہی ہے..."
 
-#: src/features/board/components/board-column.tsx:550
-#: src/features/board/components/board-column.tsx:607
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:575
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:632
 msgid "Rename"
 msgstr "نام تبدیل کریں"
 
-#: src/features/board/components/board-column.tsx:585
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:610
 msgid "Rename column"
 msgstr "کالم کا نام تبدیل کریں"
 
-#: src/features/board/components/board-column.tsx:586
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:611
 msgid "Rename this board column"
 msgstr "اس board کالم کا نام تبدیل کریں"
 
@@ -2288,7 +2288,7 @@ msgstr ""
 msgid "Right to Left"
 msgstr "دائیں سے بائیں"
 
-#: src/features/editor/components/add-dialogs.tsx:148
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
 #: src/features/editor/components/edit-dialogs.tsx:1058
 msgid "Rows"
 msgstr "قطاریں"
@@ -2398,7 +2398,7 @@ msgstr "تلاش کریں..."
 msgid "Searching..."
 msgstr "تلاش کیا جا رہا ہے..."
 
-#: src/features/editor/components/add-dialogs.tsx:139
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:141
 msgid "Select"
 msgstr "منتخب کریں"
 
@@ -2569,7 +2569,7 @@ msgstr "سائن آؤٹ کریں"
 msgid "Signing out..."
 msgstr "سائن آؤٹ کیا جا رہا ہے..."
 
-#: src/features/editor/components/add-dialogs.tsx:159
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:161
 #: src/features/editor/components/edit-dialogs.tsx:1069
 msgid "Single line of text only"
 msgstr "صرف ایک سطر پر مشتمل متن"
@@ -2687,7 +2687,7 @@ msgstr "ٹیمز/ایپس"
 msgid "Terms and conditions"
 msgstr "شرائط و ضوابط"
 
-#: src/features/editor/components/add-dialogs.tsx:140
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:142
 msgid "Text"
 msgstr "متن"
 
@@ -2829,7 +2829,7 @@ msgstr "دوبارہ کوشش کریں"
 msgid "Tuesday"
 msgstr "منگل"
 
-#: src/features/editor/components/add-dialogs.tsx:128
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:130
 #: src/features/editor/components/edit-dialogs.tsx:1052
 msgid "Type"
 msgstr "قسم"
@@ -2904,6 +2904,7 @@ msgid "Unsubscribing..."
 msgstr "ان سبسکرائب کیا جا رہا ہے..."
 
 #: src/features/board/components/board-card.tsx:22
+#: src/features/board/components/board-column.tsx:28
 #: src/features/objects/components/create-object-dialog.tsx:190
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302
@@ -2944,9 +2945,9 @@ msgstr "اپ لوڈ کی پیش رفت"
 msgid "Use your passkey"
 msgstr "اپنی پاس کی استعمال کریں"
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:143
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:119
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
-#: src/features/editor/components/add-dialogs.tsx:141
 msgid "User"
 msgstr "صارف"
 

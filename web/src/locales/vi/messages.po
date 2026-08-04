@@ -92,7 +92,7 @@ msgstr "{selectedCount, plural, one {Thao tác hàng loạt cho # {entityName} �
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} trên {totalLabel}"
 
-#: src/features/board/components/board-column.tsx:519
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:544
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# mục} other {# mục}}"
 
@@ -195,7 +195,7 @@ msgstr "Thêm bình luận..."
 msgid "Add a new account"
 msgstr "Thêm tài khoản mới"
 
-#: src/features/editor/components/add-dialogs.tsx:104
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:106
 msgid "Add a new field to this class"
 msgstr "Thêm trường mới vào class này"
 
@@ -228,8 +228,8 @@ msgstr "Thêm class"
 msgid "Add column"
 msgstr "Thêm cột"
 
-#: src/features/editor/components/add-dialogs.tsx:103
-#: src/features/editor/components/add-dialogs.tsx:231
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
 #: src/features/editor/components/edit-dialogs.tsx:879
 msgid "Add field"
 msgstr "Thêm trường"
@@ -246,10 +246,10 @@ msgstr "Thêm liên kết"
 msgid "Add new account"
 msgstr "Thêm tài khoản mới"
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:94
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
-#: src/features/editor/components/add-dialogs.tsx:213
-#: src/features/editor/components/add-dialogs.tsx:218
 #: src/features/editor/components/edit-dialogs.tsx:1181
 msgid "Add option"
 msgstr "Thêm tùy chọn"
@@ -343,7 +343,7 @@ msgstr "Bạn có chắc muốn xóa \"{0}\"?"
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Bạn có chắc muốn xóa \"{title}\"? Hành động này không thể hoàn tác."
 
-#: src/features/board/components/board-column.tsx:618
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:643
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Bạn có chắc muốn xóa cột \"{name}\"? Không thể hoàn tác."
 
@@ -460,6 +460,7 @@ msgstr "Thông báo trình duyệt"
 msgid "Can be child of"
 msgstr "Có thể là con của"
 
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:169
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
 #: ../../../lib/web/src/components/step-up-dialog.tsx:363
@@ -470,7 +471,6 @@ msgstr "Có thể là con của"
 #: ../../../lib/web/src/features/access/access-list.tsx:268
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
-#: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:336
 #: src/features/objects/components/comment-thread.tsx:248
 #: src/routes/_authenticated/$crmId/design.tsx:305
@@ -501,11 +501,11 @@ msgstr "Đổi danh mục thông báo"
 msgid "Check \"All\" to see your past notifications."
 msgstr "Chọn \"Tất cả\" để xem thông báo trước đây."
 
-#: src/features/editor/components/add-dialogs.tsx:135
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:137
 msgid "Checkbox"
 msgstr "Hộp kiểm"
 
-#: src/features/editor/components/add-dialogs.tsx:136
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:138
 msgid "Checklist"
 msgstr "Danh sách kiểm tra"
 
@@ -582,8 +582,8 @@ msgstr "Bỏ chọn (Escape)"
 msgid "Close"
 msgstr "Đóng"
 
-#: src/features/editor/components/add-dialogs.tsx:107
-#: src/features/editor/components/add-dialogs.tsx:111
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
 #: src/features/editor/components/edit-dialogs.tsx:279
 #: src/features/editor/components/edit-dialogs.tsx:283
 #: src/features/editor/components/edit-dialogs.tsx:700
@@ -624,8 +624,8 @@ msgstr "Thu gọn thanh bên"
 msgid "Colour"
 msgstr "Màu"
 
-#: src/features/board/components/board-column.tsx:528
-#: src/features/board/components/board-column.tsx:533
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:553
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:558
 msgid "Column actions"
 msgstr "Thao tác cột"
 
@@ -745,8 +745,8 @@ msgstr "Không thể bắt đầu xác thực lại. Vui lòng thử lại."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Không thể xác minh bằng tài khoản đó. Vui lòng thử lại."
 
-#: src/features/board/components/board-column.tsx:539
-#: src/features/board/components/board-column.tsx:678
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:564
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:703
 #: src/features/objects/components/create-object-dialog.tsx:376
 #: src/features/objects/components/create-object-dialog.tsx:547
 #: src/features/tree/components/tree-view.tsx:687
@@ -872,7 +872,7 @@ msgstr "Xung đột dữ liệu"
 msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
 msgstr "Đã nhập dữ liệu ({0, plural, other {# đối tượng}}, {1, plural, other {# bình luận}}, {2, plural, other {# liên kết}})"
 
-#: src/features/editor/components/add-dialogs.tsx:137
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:139
 msgid "Date"
 msgstr "Ngày"
 
@@ -892,8 +892,8 @@ msgstr "Tài khoản AI mặc định"
 msgid "Default sort"
 msgstr "Sắp xếp mặc định"
 
-#: src/features/board/components/board-column.tsx:558
-#: src/features/board/components/board-column.tsx:619
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:583
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:644
 #: src/features/objects/components/comment-thread.tsx:317
 #: src/features/objects/components/comment-thread.tsx:360
 #: src/features/objects/components/comment-thread.tsx:485
@@ -914,7 +914,7 @@ msgstr "Xóa tệp đính kèm"
 msgid "Delete class"
 msgstr "Xóa class"
 
-#: src/features/board/components/board-column.tsx:617
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:642
 msgid "Delete column"
 msgstr "Xóa cột"
 
@@ -1721,10 +1721,10 @@ msgstr "Thứ Hai"
 msgid "More options"
 msgstr ""
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:128
-#: src/features/board/components/board-column.tsx:589
 #: src/features/crms/components/create-crm-dialog.tsx:256
-#: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
 #: src/features/editor/components/edit-dialogs.tsx:1032
@@ -1925,7 +1925,7 @@ msgstr "Thông báo"
 msgid "Notifications: {0}"
 msgstr "Thông báo: {0}"
 
-#: src/features/editor/components/add-dialogs.tsx:138
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:140
 #: src/features/editor/components/edit-dialogs.tsx:499
 msgid "Number"
 msgstr "Số"
@@ -2004,12 +2004,12 @@ msgstr "Mở thao tác chế độ xem"
 msgid "Open view controls"
 msgstr "Mở điều khiển chế độ xem"
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:200
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:158
-#: src/features/editor/components/add-dialogs.tsx:198
 msgid "Option name"
 msgstr "Tên tuỳ chọn"
 
-#: src/features/editor/components/add-dialogs.tsx:166
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:168
 #: src/features/editor/components/edit-dialogs.tsx:1130
 msgid "Options"
 msgstr "Tuỳ chọn"
@@ -2166,10 +2166,10 @@ msgid "Relative within 24 hours, else absolute"
 msgstr "Tương đối trong vòng 24 giờ, ngoài ra dùng tuyệt đối"
 
 #: ../../../lib/web/src/components/comment-composer.tsx:236
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 #: src/features/crms/components/create-crm-dialog.tsx:321
-#: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/create-object-dialog.tsx:498
 #: src/features/objects/components/object-links.tsx:245
 #: src/features/objects/components/object-links.tsx:258
@@ -2215,16 +2215,16 @@ msgstr "Xoá mục"
 msgid "Removing access..."
 msgstr "Đang xóa quyền truy cập..."
 
-#: src/features/board/components/board-column.tsx:550
-#: src/features/board/components/board-column.tsx:607
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:575
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:632
 msgid "Rename"
 msgstr "Đổi tên"
 
-#: src/features/board/components/board-column.tsx:585
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:610
 msgid "Rename column"
 msgstr "Đổi tên cột"
 
-#: src/features/board/components/board-column.tsx:586
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:611
 msgid "Rename this board column"
 msgstr "Đổi tên cột bảng này"
 
@@ -2288,7 +2288,7 @@ msgstr ""
 msgid "Right to Left"
 msgstr "Phải sang trái"
 
-#: src/features/editor/components/add-dialogs.tsx:148
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
 #: src/features/editor/components/edit-dialogs.tsx:1058
 msgid "Rows"
 msgstr "Hàng"
@@ -2398,7 +2398,7 @@ msgstr "Tìm kiếm..."
 msgid "Searching..."
 msgstr "Đang tìm kiếm..."
 
-#: src/features/editor/components/add-dialogs.tsx:139
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:141
 msgid "Select"
 msgstr "Chọn"
 
@@ -2569,7 +2569,7 @@ msgstr "Đăng xuất"
 msgid "Signing out..."
 msgstr "Đang đăng xuất..."
 
-#: src/features/editor/components/add-dialogs.tsx:159
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:161
 #: src/features/editor/components/edit-dialogs.tsx:1069
 msgid "Single line of text only"
 msgstr "Chỉ một dòng văn bản"
@@ -2687,7 +2687,7 @@ msgstr "Đội/Ứng dụng"
 msgid "Terms and conditions"
 msgstr "Điều khoản và điều kiện"
 
-#: src/features/editor/components/add-dialogs.tsx:140
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:142
 msgid "Text"
 msgstr "Văn bản"
 
@@ -2829,7 +2829,7 @@ msgstr "Thử lại"
 msgid "Tuesday"
 msgstr "Thứ ba"
 
-#: src/features/editor/components/add-dialogs.tsx:128
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:130
 #: src/features/editor/components/edit-dialogs.tsx:1052
 msgid "Type"
 msgstr "Loại"
@@ -2904,6 +2904,7 @@ msgid "Unsubscribing..."
 msgstr "Đang hủy đăng ký..."
 
 #: src/features/board/components/board-card.tsx:22
+#: src/features/board/components/board-column.tsx:28
 #: src/features/objects/components/create-object-dialog.tsx:190
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302
@@ -2944,9 +2945,9 @@ msgstr "Tiến trình tải lên"
 msgid "Use your passkey"
 msgstr "Dùng mã khóa của bạn"
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:143
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:119
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
-#: src/features/editor/components/add-dialogs.tsx:141
 msgid "User"
 msgstr "Người dùng"
 

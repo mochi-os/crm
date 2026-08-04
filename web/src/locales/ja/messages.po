@@ -92,7 +92,7 @@ msgstr "{selectedCount, plural, one {選択中の {entityName} # 件の一括操
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} / {totalLabel}"
 
-#: src/features/board/components/board-column.tsx:519
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:544
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# 件} other {# 件}}"
 
@@ -195,7 +195,7 @@ msgstr "コメントを追加…"
 msgid "Add a new account"
 msgstr "新しいアカウントを追加"
 
-#: src/features/editor/components/add-dialogs.tsx:104
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:106
 msgid "Add a new field to this class"
 msgstr "このクラスに新しいフィールドを追加"
 
@@ -228,8 +228,8 @@ msgstr "クラスを追加"
 msgid "Add column"
 msgstr "列を追加"
 
-#: src/features/editor/components/add-dialogs.tsx:103
-#: src/features/editor/components/add-dialogs.tsx:231
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
 #: src/features/editor/components/edit-dialogs.tsx:879
 msgid "Add field"
 msgstr "フィールドを追加"
@@ -246,10 +246,10 @@ msgstr "リンクを追加"
 msgid "Add new account"
 msgstr "新しいアカウントを追加"
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:94
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
-#: src/features/editor/components/add-dialogs.tsx:213
-#: src/features/editor/components/add-dialogs.tsx:218
 #: src/features/editor/components/edit-dialogs.tsx:1181
 msgid "Add option"
 msgstr "オプションを追加"
@@ -343,7 +343,7 @@ msgstr "「{0}」を削除しますか？"
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "「{title}」を削除しますか？この操作は取り消せません。"
 
-#: src/features/board/components/board-column.tsx:618
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:643
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "「{name}」カラムを削除しますか？この操作は取り消せません。"
 
@@ -460,6 +460,7 @@ msgstr "ブラウザ通知"
 msgid "Can be child of"
 msgstr "親にできるもの"
 
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:169
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
 #: ../../../lib/web/src/components/step-up-dialog.tsx:363
@@ -470,7 +471,6 @@ msgstr "親にできるもの"
 #: ../../../lib/web/src/features/access/access-list.tsx:268
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
-#: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:336
 #: src/features/objects/components/comment-thread.tsx:248
 #: src/routes/_authenticated/$crmId/design.tsx:305
@@ -501,11 +501,11 @@ msgstr "通知カテゴリを変更"
 msgid "Check \"All\" to see your past notifications."
 msgstr "過去の通知を見るには「すべて」を選択してください。"
 
-#: src/features/editor/components/add-dialogs.tsx:135
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:137
 msgid "Checkbox"
 msgstr "チェックボックス"
 
-#: src/features/editor/components/add-dialogs.tsx:136
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:138
 msgid "Checklist"
 msgstr "チェックリスト"
 
@@ -582,8 +582,8 @@ msgstr "選択をクリア（Esc）"
 msgid "Close"
 msgstr "閉じる"
 
-#: src/features/editor/components/add-dialogs.tsx:107
-#: src/features/editor/components/add-dialogs.tsx:111
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
 #: src/features/editor/components/edit-dialogs.tsx:279
 #: src/features/editor/components/edit-dialogs.tsx:283
 #: src/features/editor/components/edit-dialogs.tsx:700
@@ -624,8 +624,8 @@ msgstr "サイドバーを折りたたむ"
 msgid "Colour"
 msgstr "色"
 
-#: src/features/board/components/board-column.tsx:528
-#: src/features/board/components/board-column.tsx:533
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:553
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:558
 msgid "Column actions"
 msgstr "列の操作"
 
@@ -745,8 +745,8 @@ msgstr "再認証を開始できませんでした。もう一度お試しくだ
 msgid "Couldn't verify with that account. Please try again."
 msgstr "そのアカウントで確認できませんでした。もう一度お試しください。"
 
-#: src/features/board/components/board-column.tsx:539
-#: src/features/board/components/board-column.tsx:678
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:564
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:703
 #: src/features/objects/components/create-object-dialog.tsx:376
 #: src/features/objects/components/create-object-dialog.tsx:547
 #: src/features/tree/components/tree-view.tsx:687
@@ -872,7 +872,7 @@ msgstr "データの競合"
 msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
 msgstr "データをインポートしました（{0, plural, other {# 件のオブジェクト}}、{1, plural, other {# 件のコメント}}、{2, plural, other {# 件のリンク}}）"
 
-#: src/features/editor/components/add-dialogs.tsx:137
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:139
 msgid "Date"
 msgstr "日付"
 
@@ -892,8 +892,8 @@ msgstr "デフォルト AI アカウント"
 msgid "Default sort"
 msgstr "デフォルトの並び順"
 
-#: src/features/board/components/board-column.tsx:558
-#: src/features/board/components/board-column.tsx:619
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:583
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:644
 #: src/features/objects/components/comment-thread.tsx:317
 #: src/features/objects/components/comment-thread.tsx:360
 #: src/features/objects/components/comment-thread.tsx:485
@@ -914,7 +914,7 @@ msgstr "添付を削除"
 msgid "Delete class"
 msgstr "クラスを削除"
 
-#: src/features/board/components/board-column.tsx:617
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:642
 msgid "Delete column"
 msgstr "カラムを削除"
 
@@ -1721,10 +1721,10 @@ msgstr "月曜日"
 msgid "More options"
 msgstr ""
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:128
-#: src/features/board/components/board-column.tsx:589
 #: src/features/crms/components/create-crm-dialog.tsx:256
-#: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
 #: src/features/editor/components/edit-dialogs.tsx:1032
@@ -1925,7 +1925,7 @@ msgstr "通知"
 msgid "Notifications: {0}"
 msgstr "通知: {0}"
 
-#: src/features/editor/components/add-dialogs.tsx:138
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:140
 #: src/features/editor/components/edit-dialogs.tsx:499
 msgid "Number"
 msgstr "数値"
@@ -2004,12 +2004,12 @@ msgstr "ビューのアクションを開く"
 msgid "Open view controls"
 msgstr "ビューのコントロールを開く"
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:200
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:158
-#: src/features/editor/components/add-dialogs.tsx:198
 msgid "Option name"
 msgstr "オプション名"
 
-#: src/features/editor/components/add-dialogs.tsx:166
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:168
 #: src/features/editor/components/edit-dialogs.tsx:1130
 msgid "Options"
 msgstr "オプション"
@@ -2166,10 +2166,10 @@ msgid "Relative within 24 hours, else absolute"
 msgstr "24時間以内は相対、それ以外は絶対"
 
 #: ../../../lib/web/src/components/comment-composer.tsx:236
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 #: src/features/crms/components/create-crm-dialog.tsx:321
-#: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/create-object-dialog.tsx:498
 #: src/features/objects/components/object-links.tsx:245
 #: src/features/objects/components/object-links.tsx:258
@@ -2215,16 +2215,16 @@ msgstr "項目を削除"
 msgid "Removing access..."
 msgstr "アクセスを削除しています..."
 
-#: src/features/board/components/board-column.tsx:550
-#: src/features/board/components/board-column.tsx:607
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:575
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:632
 msgid "Rename"
 msgstr "名前を変更"
 
-#: src/features/board/components/board-column.tsx:585
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:610
 msgid "Rename column"
 msgstr "列の名前を変更"
 
-#: src/features/board/components/board-column.tsx:586
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:611
 msgid "Rename this board column"
 msgstr "このボード列の名前を変更"
 
@@ -2288,7 +2288,7 @@ msgstr ""
 msgid "Right to Left"
 msgstr "右から左"
 
-#: src/features/editor/components/add-dialogs.tsx:148
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
 #: src/features/editor/components/edit-dialogs.tsx:1058
 msgid "Rows"
 msgstr "行"
@@ -2398,7 +2398,7 @@ msgstr "検索…"
 msgid "Searching..."
 msgstr "検索中..."
 
-#: src/features/editor/components/add-dialogs.tsx:139
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:141
 msgid "Select"
 msgstr "セレクト"
 
@@ -2569,7 +2569,7 @@ msgstr "ログアウト"
 msgid "Signing out..."
 msgstr "サインアウト中..."
 
-#: src/features/editor/components/add-dialogs.tsx:159
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:161
 #: src/features/editor/components/edit-dialogs.tsx:1069
 msgid "Single line of text only"
 msgstr "1 行のテキストのみ"
@@ -2687,7 +2687,7 @@ msgstr "チーム/アプリ"
 msgid "Terms and conditions"
 msgstr "利用規約"
 
-#: src/features/editor/components/add-dialogs.tsx:140
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:142
 msgid "Text"
 msgstr "テキスト"
 
@@ -2829,7 +2829,7 @@ msgstr "再試行"
 msgid "Tuesday"
 msgstr "火曜日"
 
-#: src/features/editor/components/add-dialogs.tsx:128
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:130
 #: src/features/editor/components/edit-dialogs.tsx:1052
 msgid "Type"
 msgstr "タイプ"
@@ -2904,6 +2904,7 @@ msgid "Unsubscribing..."
 msgstr "購読解除中..."
 
 #: src/features/board/components/board-card.tsx:22
+#: src/features/board/components/board-column.tsx:28
 #: src/features/objects/components/create-object-dialog.tsx:190
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302
@@ -2944,9 +2945,9 @@ msgstr "アップロードの進行状況"
 msgid "Use your passkey"
 msgstr "パスキーを使用"
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:143
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:119
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
-#: src/features/editor/components/add-dialogs.tsx:141
 msgid "User"
 msgstr "ユーザー"
 

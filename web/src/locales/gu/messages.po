@@ -92,7 +92,7 @@ msgstr "{selectedCount, plural, one {# પસંદ કરેલ {entityName} �
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel}માંથી {sentLabel}"
 
-#: src/features/board/components/board-column.tsx:519
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:544
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# વસ્તુ} other {# વસ્તુઓ}}"
 
@@ -195,7 +195,7 @@ msgstr "ટિપ્પણી ઉમેરો..."
 msgid "Add a new account"
 msgstr "નવું ખાતું ઉમેરો"
 
-#: src/features/editor/components/add-dialogs.tsx:104
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:106
 msgid "Add a new field to this class"
 msgstr "આ ક્લાસમાં નવું ફીલ્ડ ઉમેરો"
 
@@ -228,8 +228,8 @@ msgstr "ક્લાસ ઉમેરો"
 msgid "Add column"
 msgstr "કૉલમ ઉમેરો"
 
-#: src/features/editor/components/add-dialogs.tsx:103
-#: src/features/editor/components/add-dialogs.tsx:231
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
 #: src/features/editor/components/edit-dialogs.tsx:879
 msgid "Add field"
 msgstr "ફીલ્ડ ઉમેરો"
@@ -246,10 +246,10 @@ msgstr "લિંક ઉમેરો"
 msgid "Add new account"
 msgstr "નવું ખાતું ઉમેરો"
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:94
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
-#: src/features/editor/components/add-dialogs.tsx:213
-#: src/features/editor/components/add-dialogs.tsx:218
 #: src/features/editor/components/edit-dialogs.tsx:1181
 msgid "Add option"
 msgstr "વિકલ્પ ઉમેરો"
@@ -343,7 +343,7 @@ msgstr "શું તમે ખરેખર \"{0}\" કાઢી નાખવા
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "શું તમે ખરેખર \"{title}\" કાઢી નાખવા માંગો છો? આ ક્રિયા પૂર્વવત્ કરી શકાતી નથી."
 
-#: src/features/board/components/board-column.tsx:618
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:643
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "શું તમે ખરેખર \"{name}\" કૉલમ કાઢી નાખવા માંગો છો? આ પૂર્વવત્ કરી શકાતું નથી."
 
@@ -460,6 +460,7 @@ msgstr "બ્રાઉઝર સૂચનાઓ"
 msgid "Can be child of"
 msgstr "આનું સંતાન બની શકે"
 
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:169
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
 #: ../../../lib/web/src/components/step-up-dialog.tsx:363
@@ -470,7 +471,6 @@ msgstr "આનું સંતાન બની શકે"
 #: ../../../lib/web/src/features/access/access-list.tsx:268
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
-#: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:336
 #: src/features/objects/components/comment-thread.tsx:248
 #: src/routes/_authenticated/$crmId/design.tsx:305
@@ -501,11 +501,11 @@ msgstr "સૂચના શ્રેણી બદલો"
 msgid "Check \"All\" to see your past notifications."
 msgstr "તમારી અગાઉની સૂચનાઓ જોવા માટે \"બધું\" પસંદ કરો."
 
-#: src/features/editor/components/add-dialogs.tsx:135
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:137
 msgid "Checkbox"
 msgstr "ચેકબૉક્સ"
 
-#: src/features/editor/components/add-dialogs.tsx:136
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:138
 msgid "Checklist"
 msgstr "ચેકલિસ્ટ"
 
@@ -582,8 +582,8 @@ msgstr "પસંદગી સાફ કરો (Escape)"
 msgid "Close"
 msgstr "બંધ કરો"
 
-#: src/features/editor/components/add-dialogs.tsx:107
-#: src/features/editor/components/add-dialogs.tsx:111
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
 #: src/features/editor/components/edit-dialogs.tsx:279
 #: src/features/editor/components/edit-dialogs.tsx:283
 #: src/features/editor/components/edit-dialogs.tsx:700
@@ -624,8 +624,8 @@ msgstr "સાઇડબાર સંકુચિત કરો"
 msgid "Colour"
 msgstr "રંગ"
 
-#: src/features/board/components/board-column.tsx:528
-#: src/features/board/components/board-column.tsx:533
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:553
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:558
 msgid "Column actions"
 msgstr "કૉલમ ક્રિયાઓ"
 
@@ -745,8 +745,8 @@ msgstr "પુનઃપ્રમાણીકરણ શરૂ કરી શકા
 msgid "Couldn't verify with that account. Please try again."
 msgstr "તે ખાતા વડે ચકાસણી કરી શકાઈ નહીં. કૃપા કરીને ફરી પ્રયાસ કરો."
 
-#: src/features/board/components/board-column.tsx:539
-#: src/features/board/components/board-column.tsx:678
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:564
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:703
 #: src/features/objects/components/create-object-dialog.tsx:376
 #: src/features/objects/components/create-object-dialog.tsx:547
 #: src/features/tree/components/tree-view.tsx:687
@@ -872,7 +872,7 @@ msgstr "ડેટા સંઘર્ષ"
 msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
 msgstr "ડેટા ઇમ્પોર્ટ થયો ({0, plural, one {# ઑબ્જેક્ટ} other {# ઑબ્જેક્ટ્સ}}, {1, plural, one {# ટિપ્પણી} other {# ટિપ્પણીઓ}}, {2, plural, one {# લિંક} other {# લિંક}})"
 
-#: src/features/editor/components/add-dialogs.tsx:137
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:139
 msgid "Date"
 msgstr "તારીખ"
 
@@ -892,8 +892,8 @@ msgstr "ડિફૉલ્ટ AI ખાતું"
 msgid "Default sort"
 msgstr "ડિફૉલ્ટ સૉર્ટ"
 
-#: src/features/board/components/board-column.tsx:558
-#: src/features/board/components/board-column.tsx:619
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:583
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:644
 #: src/features/objects/components/comment-thread.tsx:317
 #: src/features/objects/components/comment-thread.tsx:360
 #: src/features/objects/components/comment-thread.tsx:485
@@ -914,7 +914,7 @@ msgstr "જોડાણ કાઢી નાખો"
 msgid "Delete class"
 msgstr "ક્લાસ કાઢી નાખો"
 
-#: src/features/board/components/board-column.tsx:617
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:642
 msgid "Delete column"
 msgstr "કૉલમ કાઢી નાખો"
 
@@ -1721,10 +1721,10 @@ msgstr "સોમવાર"
 msgid "More options"
 msgstr ""
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:128
-#: src/features/board/components/board-column.tsx:589
 #: src/features/crms/components/create-crm-dialog.tsx:256
-#: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
 #: src/features/editor/components/edit-dialogs.tsx:1032
@@ -1925,7 +1925,7 @@ msgstr "સૂચનાઓ"
 msgid "Notifications: {0}"
 msgstr "સૂચનાઓ: {0}"
 
-#: src/features/editor/components/add-dialogs.tsx:138
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:140
 #: src/features/editor/components/edit-dialogs.tsx:499
 msgid "Number"
 msgstr "સંખ્યા"
@@ -2004,12 +2004,12 @@ msgstr "વ્યૂ ક્રિયાઓ ખોલો"
 msgid "Open view controls"
 msgstr "વ્યૂ કન્ટ્રોલ્સ ખોલો"
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:200
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:158
-#: src/features/editor/components/add-dialogs.tsx:198
 msgid "Option name"
 msgstr "વિકલ્પ નામ"
 
-#: src/features/editor/components/add-dialogs.tsx:166
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:168
 #: src/features/editor/components/edit-dialogs.tsx:1130
 msgid "Options"
 msgstr "વિકલ્પો"
@@ -2166,10 +2166,10 @@ msgid "Relative within 24 hours, else absolute"
 msgstr "24 કલાકની અંદર સાપેક્ષ, અન્યથા સંપૂર્ણ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx:236
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 #: src/features/crms/components/create-crm-dialog.tsx:321
-#: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/create-object-dialog.tsx:498
 #: src/features/objects/components/object-links.tsx:245
 #: src/features/objects/components/object-links.tsx:258
@@ -2215,16 +2215,16 @@ msgstr "આઇટમ દૂર કરો"
 msgid "Removing access..."
 msgstr "ઍક્સેસ દૂર કરી રહ્યું છે..."
 
-#: src/features/board/components/board-column.tsx:550
-#: src/features/board/components/board-column.tsx:607
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:575
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:632
 msgid "Rename"
 msgstr "નામ બદલો"
 
-#: src/features/board/components/board-column.tsx:585
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:610
 msgid "Rename column"
 msgstr "કૉલમનું નામ બદલો"
 
-#: src/features/board/components/board-column.tsx:586
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:611
 msgid "Rename this board column"
 msgstr "આ બોર્ડ કૉલમનું નામ બદલો"
 
@@ -2288,7 +2288,7 @@ msgstr ""
 msgid "Right to Left"
 msgstr "જમણે થી ડાબે"
 
-#: src/features/editor/components/add-dialogs.tsx:148
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
 #: src/features/editor/components/edit-dialogs.tsx:1058
 msgid "Rows"
 msgstr "પંક્તિઓ"
@@ -2398,7 +2398,7 @@ msgstr "શોધો..."
 msgid "Searching..."
 msgstr "શોધી રહ્યું છે..."
 
-#: src/features/editor/components/add-dialogs.tsx:139
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:141
 msgid "Select"
 msgstr "પસંદ કરો"
 
@@ -2569,7 +2569,7 @@ msgstr "સાઇન આઉટ કરો"
 msgid "Signing out..."
 msgstr "સાઇન આઉટ થઈ રહ્યું છે..."
 
-#: src/features/editor/components/add-dialogs.tsx:159
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:161
 #: src/features/editor/components/edit-dialogs.tsx:1069
 msgid "Single line of text only"
 msgstr "ફક્ત ટેક્સ્ટની એક જ લાઇન"
@@ -2687,7 +2687,7 @@ msgstr "ટીમો/એપ્સ"
 msgid "Terms and conditions"
 msgstr "નિયમો અને શરતો"
 
-#: src/features/editor/components/add-dialogs.tsx:140
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:142
 msgid "Text"
 msgstr "ટેક્સ્ટ"
 
@@ -2829,7 +2829,7 @@ msgstr "ફરી પ્રયાસ કરો"
 msgid "Tuesday"
 msgstr "મંગળવાર"
 
-#: src/features/editor/components/add-dialogs.tsx:128
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:130
 #: src/features/editor/components/edit-dialogs.tsx:1052
 msgid "Type"
 msgstr "પ્રકાર"
@@ -2904,6 +2904,7 @@ msgid "Unsubscribing..."
 msgstr "અનસબ્સ્ક્રાઇબ કરી રહ્યું છે..."
 
 #: src/features/board/components/board-card.tsx:22
+#: src/features/board/components/board-column.tsx:28
 #: src/features/objects/components/create-object-dialog.tsx:190
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302
@@ -2944,9 +2945,9 @@ msgstr "અપલોડ પ્રગતિ"
 msgid "Use your passkey"
 msgstr "તમારી પાસકીનો ઉપયોગ કરો"
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:143
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:119
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
-#: src/features/editor/components/add-dialogs.tsx:141
 msgid "User"
 msgstr "વપરાશકર્તા"
 

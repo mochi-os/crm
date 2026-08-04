@@ -92,7 +92,7 @@ msgstr "{selectedCount, plural, other {ການດຳເນີນການເ�
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} ຈາກ {totalLabel}"
 
-#: src/features/board/components/board-column.tsx:519
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:544
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, other {# ລາຍການ}}"
 
@@ -195,7 +195,7 @@ msgstr "ເພີ່ມຄຳເຫັນ..."
 msgid "Add a new account"
 msgstr "ເພີ່ມບັນຊີໃໝ່"
 
-#: src/features/editor/components/add-dialogs.tsx:104
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:106
 msgid "Add a new field to this class"
 msgstr "ເພີ່ມຊ່ອງຂໍ້ມູນໃໝ່ໃຫ້ກັບຄລາສນີ້"
 
@@ -228,8 +228,8 @@ msgstr "ເພີ່ມຄລາສ"
 msgid "Add column"
 msgstr "ເພີ່ມຖັນ"
 
-#: src/features/editor/components/add-dialogs.tsx:103
-#: src/features/editor/components/add-dialogs.tsx:231
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
 #: src/features/editor/components/edit-dialogs.tsx:879
 msgid "Add field"
 msgstr "ເພີ່ມຊ່ອງຂໍ້ມູນ"
@@ -246,10 +246,10 @@ msgstr "ເພີ່ມລິ້ງ"
 msgid "Add new account"
 msgstr "ເພີ່ມບັນຊີໃໝ່"
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:94
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
-#: src/features/editor/components/add-dialogs.tsx:213
-#: src/features/editor/components/add-dialogs.tsx:218
 #: src/features/editor/components/edit-dialogs.tsx:1181
 msgid "Add option"
 msgstr "ເພີ່ມຕົວເລືອກ"
@@ -343,7 +343,7 @@ msgstr "ທ່ານແນ່ໃຈບໍວ່າຕ້ອງການລົບ
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "ທ່ານແນ່ໃຈບໍວ່າຕ້ອງການລົບ \"{title}\"? ການກະທຳນີ້ບໍ່ສາມາດຍົກເລີກໄດ້."
 
-#: src/features/board/components/board-column.tsx:618
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:643
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "ທ່ານແນ່ໃຈບໍວ່າຕ້ອງການລົບຖັນ \"{name}\"? ນີ້ບໍ່ສາມາດຍົກເລີກໄດ້."
 
@@ -460,6 +460,7 @@ msgstr "ການແຈ້ງເຕືອນຕົວທ່ອງເວັບ"
 msgid "Can be child of"
 msgstr "ສາມາດເປັນລູກຂອງ"
 
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:169
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
 #: ../../../lib/web/src/components/step-up-dialog.tsx:363
@@ -470,7 +471,6 @@ msgstr "ສາມາດເປັນລູກຂອງ"
 #: ../../../lib/web/src/features/access/access-list.tsx:268
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
-#: src/features/board/components/board-column.tsx:603
 #: src/features/crms/components/create-crm-dialog.tsx:336
 #: src/features/objects/components/comment-thread.tsx:248
 #: src/routes/_authenticated/$crmId/design.tsx:305
@@ -501,11 +501,11 @@ msgstr "ປ່ຽນໝວດໝູ່ການແຈ້ງເຕືອນ"
 msgid "Check \"All\" to see your past notifications."
 msgstr "ເລືອກ \"ທັງໝົດ\" ເພື່ອເບິ່ງການແຈ້ງເຕືອນທີ່ຜ່ານມາ."
 
-#: src/features/editor/components/add-dialogs.tsx:135
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:137
 msgid "Checkbox"
 msgstr "ກ່ອງໝາຍ"
 
-#: src/features/editor/components/add-dialogs.tsx:136
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:138
 msgid "Checklist"
 msgstr "ລາຍການກວດສອບ"
 
@@ -582,8 +582,8 @@ msgstr "ລ້າງການເລືອກ (Escape)"
 msgid "Close"
 msgstr "ປິດ"
 
-#: src/features/editor/components/add-dialogs.tsx:107
-#: src/features/editor/components/add-dialogs.tsx:111
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
 #: src/features/editor/components/edit-dialogs.tsx:279
 #: src/features/editor/components/edit-dialogs.tsx:283
 #: src/features/editor/components/edit-dialogs.tsx:700
@@ -624,8 +624,8 @@ msgstr "ຫຍໍ້ແຖບຂ້າງ"
 msgid "Colour"
 msgstr "ສີ"
 
-#: src/features/board/components/board-column.tsx:528
-#: src/features/board/components/board-column.tsx:533
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:553
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:558
 msgid "Column actions"
 msgstr "ການກະທຳຖັນ"
 
@@ -745,8 +745,8 @@ msgstr "ບໍ່ສາມາດເລີ່ມການຢືນຢັນຕົ
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ບໍ່ສາມາດຢືນຢັນດ້ວຍບັນຊີນັ້ນໄດ້. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ."
 
-#: src/features/board/components/board-column.tsx:539
-#: src/features/board/components/board-column.tsx:678
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:564
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:703
 #: src/features/objects/components/create-object-dialog.tsx:376
 #: src/features/objects/components/create-object-dialog.tsx:547
 #: src/features/tree/components/tree-view.tsx:687
@@ -872,7 +872,7 @@ msgstr "ຂໍ້ມູນຂັດແຍ່ງກັນ"
 msgid "Data imported ({0, plural, one {# object} other {# objects}}, {1, plural, one {# comment} other {# comments}}, {2, plural, one {# link} other {# links}})"
 msgstr "ນຳເຂົ້າຂໍ້ມູນແລ້ວ ({0, plural, other {# ອອບເຈັກ}}, {1, plural, other {# ຄຳເຫັນ}}, {2, plural, other {# ລິ້ງ}})"
 
-#: src/features/editor/components/add-dialogs.tsx:137
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:139
 msgid "Date"
 msgstr "ວັນທີ"
 
@@ -892,8 +892,8 @@ msgstr "ບັນຊີ AI ເລີ່ມຕົ້ນ"
 msgid "Default sort"
 msgstr "ການຈັດລຽງເລີ່ມຕົ້ນ"
 
-#: src/features/board/components/board-column.tsx:558
-#: src/features/board/components/board-column.tsx:619
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:583
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:644
 #: src/features/objects/components/comment-thread.tsx:317
 #: src/features/objects/components/comment-thread.tsx:360
 #: src/features/objects/components/comment-thread.tsx:485
@@ -914,7 +914,7 @@ msgstr "ລົບໄຟລ໌ແນບ"
 msgid "Delete class"
 msgstr "ລົບຄລາສ"
 
-#: src/features/board/components/board-column.tsx:617
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:642
 msgid "Delete column"
 msgstr "ລົບຖັນ"
 
@@ -1721,10 +1721,10 @@ msgstr "ວັນຈັນ"
 msgid "More options"
 msgstr ""
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:128
-#: src/features/board/components/board-column.tsx:589
 #: src/features/crms/components/create-crm-dialog.tsx:256
-#: src/features/editor/components/add-dialogs.tsx:116
 #: src/features/editor/components/edit-dialogs.tsx:309
 #: src/features/editor/components/edit-dialogs.tsx:730
 #: src/features/editor/components/edit-dialogs.tsx:1032
@@ -1925,7 +1925,7 @@ msgstr "ການແຈ້ງເຕືອນ"
 msgid "Notifications: {0}"
 msgstr "ການແຈ້ງເຕືອນ: {0}"
 
-#: src/features/editor/components/add-dialogs.tsx:138
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:140
 #: src/features/editor/components/edit-dialogs.tsx:499
 msgid "Number"
 msgstr "ຕົວເລກ"
@@ -2004,12 +2004,12 @@ msgstr "ເປີດການກະທຳມຸມມອງ"
 msgid "Open view controls"
 msgstr "ເປີດການຄວບຄຸມມຸມມອງ"
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:200
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:158
-#: src/features/editor/components/add-dialogs.tsx:198
 msgid "Option name"
 msgstr "ຊື່ຕົວເລືອກ"
 
-#: src/features/editor/components/add-dialogs.tsx:166
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:168
 #: src/features/editor/components/edit-dialogs.tsx:1130
 msgid "Options"
 msgstr "ຕົວເລືອກ"
@@ -2166,10 +2166,10 @@ msgid "Relative within 24 hours, else absolute"
 msgstr "ສຳພັດພາຍໃນ 24 ຊົ່ວໂມງ, ຖ້າບໍ່ດັ່ງນັ້ນສົມບູນ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx:236
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 #: src/features/crms/components/create-crm-dialog.tsx:321
-#: src/features/editor/components/add-dialogs.tsx:188
 #: src/features/objects/components/create-object-dialog.tsx:498
 #: src/features/objects/components/object-links.tsx:245
 #: src/features/objects/components/object-links.tsx:258
@@ -2215,16 +2215,16 @@ msgstr "ລຶບລາຍການ"
 msgid "Removing access..."
 msgstr "ກຳລັງລຶບການເຂົ້າເຖິງ..."
 
-#: src/features/board/components/board-column.tsx:550
-#: src/features/board/components/board-column.tsx:607
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:575
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:632
 msgid "Rename"
 msgstr "ປ່ຽນຊື່"
 
-#: src/features/board/components/board-column.tsx:585
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:610
 msgid "Rename column"
 msgstr "ປ່ຽນຊື່ຄໍລຳ"
 
-#: src/features/board/components/board-column.tsx:586
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:611
 msgid "Rename this board column"
 msgstr "ປ່ຽນຊື່ຄໍລຳກະດານນີ້"
 
@@ -2288,7 +2288,7 @@ msgstr ""
 msgid "Right to Left"
 msgstr "ຂວາໄປຊ້າຍ"
 
-#: src/features/editor/components/add-dialogs.tsx:148
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
 #: src/features/editor/components/edit-dialogs.tsx:1058
 msgid "Rows"
 msgstr "ແຖວ"
@@ -2398,7 +2398,7 @@ msgstr "ຄົ້ນຫາ..."
 msgid "Searching..."
 msgstr "ກຳລັງຄົ້ນຫາ..."
 
-#: src/features/editor/components/add-dialogs.tsx:139
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:141
 msgid "Select"
 msgstr "ເລືອກ"
 
@@ -2569,7 +2569,7 @@ msgstr "ອອກຈາກລະບົບ"
 msgid "Signing out..."
 msgstr "ກຳລັງອອກຈາກລະບົບ..."
 
-#: src/features/editor/components/add-dialogs.tsx:159
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:161
 #: src/features/editor/components/edit-dialogs.tsx:1069
 msgid "Single line of text only"
 msgstr "ບັນທັດດຽວຂອງຂໍ້ຄວາມເທົ່ານັ້ນ"
@@ -2687,7 +2687,7 @@ msgstr "ທີມ/ແອັບ"
 msgid "Terms and conditions"
 msgstr "ຂໍ້ກຳນົດແລະເງື່ອນໄຂ"
 
-#: src/features/editor/components/add-dialogs.tsx:140
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:142
 msgid "Text"
 msgstr "ຂໍ້ຄວາມ"
 
@@ -2829,7 +2829,7 @@ msgstr "ລອງອີກຄັ້ງ"
 msgid "Tuesday"
 msgstr "ວັນອັງຄານ"
 
-#: src/features/editor/components/add-dialogs.tsx:128
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:130
 #: src/features/editor/components/edit-dialogs.tsx:1052
 msgid "Type"
 msgstr "ປະເພດ"
@@ -2904,6 +2904,7 @@ msgid "Unsubscribing..."
 msgstr "ກຳລັງຍົກເລີກການສະໝັກສະມາຊິກ..."
 
 #: src/features/board/components/board-card.tsx:22
+#: src/features/board/components/board-column.tsx:28
 #: src/features/objects/components/create-object-dialog.tsx:190
 #: src/features/objects/components/object-detail-panel.tsx:298
 #: src/features/objects/components/object-detail-panel.tsx:302
@@ -2944,9 +2945,9 @@ msgstr "ຄວາມຄືບໜ້າການອັບໂຫລດ"
 msgid "Use your passkey"
 msgstr "ໃຊ້ passkey ຂອງທ່ານ"
 
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:143
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:119
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
-#: src/features/editor/components/add-dialogs.tsx:141
 msgid "User"
 msgstr "ຜູ້ໃຊ້"
 
