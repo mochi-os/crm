@@ -5,7 +5,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 {
-	"version": "2.90",
+	"version": "2.92",
 	"label": "app.name",
 	"classes": ["crm"],
 	"paths": ["crm"],
@@ -13,7 +13,7 @@
 
 	"architecture": {"engine": "starlark", "version": 4},
 	"execute": ["lib/attachments.star", "crm.star"],
-	"require": {"version": {"minimum": "0.4.230"}},
+	"require": {"version": {"minimum": "0.4.231"}},
 
 	"database": {
 		"schema": 5,
@@ -154,6 +154,7 @@
 		"values/update": {"function": "event_values_update"},
 		"activity/log": {"function": "event_activity_log"},
 		"attachment/fetch": {"function": "event_attachment_fetch"},
+		"attachment/push": {"function": "event_attachment_push"},
 		"attachment/submit": {"function": "event_attachment_submit"},
 		"attachment/add": {"function": "event_attachment_add"},
 		"attachment/remove": {"function": "event_attachment_remove"},
