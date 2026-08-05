@@ -5,5 +5,4 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 export { BoardCard } from "./board-card";
-export { BoardColumn } from "./board-column";
 export { BoardContainer } from "./board-container";

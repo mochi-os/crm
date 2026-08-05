@@ -732,7 +732,6 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
             });
           }
         }}
-        onReorderOptions={() => {}}
       />
 
       <OptionDialog
