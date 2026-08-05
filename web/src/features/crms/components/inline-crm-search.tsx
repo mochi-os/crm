@@ -3,17 +3,19 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Trans, useLingui } from '@lingui/react/macro'
+import { useLingui } from "@lingui/react/macro";
 import { useNavigate } from "@tanstack/react-router";
-import { Search, Loader2, Users } from "lucide-react";
-import { Button, GeneralError, Input, toastAction, getErrorMessage } from "@mochi/web";
+import { Users } from "lucide-react";
+import {
+  InlineEntitySearch,
+  toastAction,
+  getErrorMessage,
+  type InlineEntitySearchItem,
+} from "@mochi/web";
 import crmsApi from "@/api/crms";
 import { useCrmsStore } from "@/stores/crms-store";
 
-interface DirectoryEntry {
-  id: string;
-  name: string;
+interface DirectoryEntry extends InlineEntitySearchItem {
   fingerprint: string;
   location?: string;
   /** owner's peer from a mochi:// share-link probe; subscribe pins the same peer. */
@@ -29,189 +31,59 @@ export function InlineCrmSearch({
   subscribedIds,
   onRefresh,
 }: InlineCrmSearchProps) {
-  const { t } = useLingui()
-  const [searchQuery, setSearchQuery] = useState("");
-  const [debouncedQuery, setDebouncedQuery] = useState("");
-  const [results, setResults] = useState<DirectoryEntry[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [searchError, setSearchError] = useState<Error | null>(null);
-  const [pendingCrmId, setPendingCrmId] = useState<string | null>(null);
-  const requestSeqRef = useRef(0);
+  const { t } = useLingui();
   const navigate = useNavigate();
   const refresh = useCrmsStore((state) => state.refresh);
 
-  const runSearch = useCallback(async (query: string) => {
-    if (query.length === 0) {
-      setResults([]);
-      setSearchError(null);
-      return;
-    }
+  const search = async (query: string): Promise<DirectoryEntry[]> => {
+    const response = await crmsApi.search({ search: query });
+    return response.data ?? [];
+  };
 
-    const requestSeq = ++requestSeqRef.current;
-    setIsLoading(true);
-    setSearchError(null);
-    try {
-      // A pasted link (mochi://<peer>/<id> or a web URL) resolves via probe -
-      // a directory search can't find a private/unlisted crm or match a URL.
-      if (/^(mochi:|https?:\/\/)/i.test(query)) {
-        const probe = await crmsApi.probe(query).catch(() => null);
-        if (requestSeq !== requestSeqRef.current) return;
-        const data = probe?.data;
-        setResults(data?.id
-          ? [{ id: data.id, name: data.name ?? '', fingerprint: data.fingerprint ?? '',
-               location: data.server ?? '', peer: data.peer }]
-          : []);
-        return;
-      }
-      const response = await crmsApi.search({
-        search: query,
-      });
-      if (requestSeq !== requestSeqRef.current) {
-        return;
-      }
-      setResults(response.data ?? []);
-    } catch (error) {
-      if (requestSeq !== requestSeqRef.current) {
-        return;
-      }
-      setResults([]);
-      setSearchError(
-        error instanceof Error ? error : new Error("Failed to search CRMs"),
-      );
-    } finally {
-      if (requestSeq === requestSeqRef.current) {
-        setIsLoading(false);
-      }
-    }
-  }, []);
-
-  // Debounce search query
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedQuery(searchQuery);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [searchQuery]);
-
-  useEffect(() => {
-    if (debouncedQuery.length === 0) {
-      setResults([]);
-      setSearchError(null);
-      return;
-    }
-
-    void runSearch(debouncedQuery);
-  }, [debouncedQuery, runSearch]);
-
-  const retrySearch = useCallback(() => {
-    void runSearch(debouncedQuery);
-  }, [debouncedQuery, runSearch]);
+  const probe = async (url: string): Promise<DirectoryEntry[]> => {
+    const probed = await crmsApi.probe(url);
+    const data = probed?.data;
+    return data?.id
+      ? [
+          {
+            id: data.id,
+            name: data.name ?? "",
+            fingerprint: data.fingerprint ?? "",
+            location: data.server ?? "",
+            peer: data.peer,
+          },
+        ]
+      : [];
+  };
 
   const handleSubscribe = async (crm: DirectoryEntry) => {
-    setPendingCrmId(crm.id);
-    try {
-      await toastAction(crmsApi.subscribe(crm.id, crm.location || undefined, crm.peer), {
+    await toastAction(
+      crmsApi.subscribe(crm.id, crm.location || undefined, crm.peer),
+      {
         loading: t`Subscribing...`,
         success: t`Subscribed`,
         error: (e) => getErrorMessage(e, t`Failed to subscribe`),
-      });
-      void refresh();
-      onRefresh?.();
-      void navigate({
-        to: "/$crmId",
-        params: { crmId: crm.fingerprint || crm.id },
-      });
-    } catch {
-      setPendingCrmId(null);
-    }
+      },
+    );
+    void refresh();
+    onRefresh?.();
+    void navigate({
+      to: "/$crmId",
+      params: { crmId: crm.fingerprint || crm.id },
+    });
   };
 
-  const showResults = debouncedQuery.length > 0;
-  const showLoading = isLoading && debouncedQuery.length > 0;
-
   return (
-    <div className="mx-auto w-full max-w-md">
-      {/* Search Input */}
-      <div className="relative mb-4">
-        <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-        <Input
-          placeholder={t`Search for CRMs...`}
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="h-10 ps-9"
-          autoFocus
-        />
-      </div>
-
-      {/* Results */}
-      {showLoading && (
-        <div className="flex items-center justify-center py-8">
-          <Loader2 className="text-muted-foreground h-6 w-6 animate-spin" />
-        </div>
-      )}
-
-      {!isLoading && showResults && searchError && (
-        <GeneralError
-          error={searchError}
-          minimal
-          mode="inline"
-          reset={retrySearch}
-        />
-      )}
-
-      {!isLoading && showResults && !searchError && results.length === 0 && (
-        <p className="text-muted-foreground py-4 text-center text-sm">
-          <Trans>No CRMs found</Trans>
-        </p>
-      )}
-
-      {!isLoading && !searchError && results.length > 0 && (
-        <div className="divide-border divide-y rounded-lg border">
-          {results
-            .filter(
-              (crm) =>
-                !subscribedIds.has(crm.id) &&
-                !subscribedIds.has(crm.fingerprint),
-            )
-            .map((crm) => {
-              const isPending = pendingCrmId === crm.id;
-
-              return (
-                <div
-                  key={crm.id}
-                  className="hover:bg-hover flex items-center justify-between gap-3 px-4 py-3 transition-colors"
-                >
-                  <div className="flex min-w-0 flex-1 items-center gap-3">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary/10">
-                      <Users className="h-4 w-4 text-primary" />
-                    </div>
-                    <div className="flex min-w-0 flex-1 flex-col text-start">
-                      <span className="truncate text-sm font-medium">
-                        {crm.name}
-                      </span>
-                      {crm.fingerprint && (
-                        <span className="text-muted-foreground truncate text-xs">
-                          {crm.fingerprint.match(/.{1,3}/g)?.join("-")}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <Button
-                    size="sm"
-                    onClick={() => handleSubscribe(crm)}
-                    disabled={isPending}
-                  >
-                    {isPending ? (
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                    ) : (
-                      t`Subscribe`
-                    )}
-                  </Button>
-                </div>
-              );
-            })}
-        </div>
-      )}
-    </div>
+    <InlineEntitySearch
+      subscribedIds={subscribedIds}
+      search={search}
+      probe={probe}
+      onSubscribe={handleSubscribe}
+      icon={Users}
+      placeholder={t`Search for CRMs...`}
+      emptyMessage={t`No CRMs found`}
+      searchErrorMessage={t`Failed to search CRMs`}
+      subscribeLabel={t`Subscribe`}
+    />
   );
 }
