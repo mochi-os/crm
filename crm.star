@@ -570,18 +570,30 @@ def database_create():
 	# Attachments now live in this database, owned by the shared library.
 	attachment_schema_create()
 
-def row_merge(table, keys, row):
+# handle is an open mochi.db.transaction(); statements issued through it are
+# part of that transaction, and statements issued without it are not. A caller
+# replacing several tables as one unit has to pass it all the way down.
+def row_merge(table, keys, row, handle=None):
 	cols = list(row)
 	fields = [c for c in cols if c not in keys]
 	conflict = "do update set " + ", ".join(["\"" + c + "\"=excluded.\"" + c + "\"" for c in fields]) if fields else "do nothing"
-	mochi.db.execute("insert into \"" + table + "\" (" + ", ".join(["\"" + c + "\"" for c in cols]) + ") values (" + ", ".join(["?" for c in cols]) + ") on conflict (" + ", ".join(["\"" + k + "\"" for k in keys]) + ") " + conflict, *[row[c] for c in cols])
+	sql = "insert into \"" + table + "\" (" + ", ".join(["\"" + c + "\"" for c in cols]) + ") values (" + ", ".join(["?" for c in cols]) + ") on conflict (" + ", ".join(["\"" + k + "\"" for k in keys]) + ") " + conflict
+	params = [row[c] for c in cols]
+	if handle:
+		handle.execute(sql, *params)
+	else:
+		mochi.db.execute(sql, *params)
 
 def row_set(table, keys, where, args, updates):
 	fields = list(updates)
 	mochi.db.execute("update \"" + table + "\" set " + ", ".join(["\"" + c + "\"=?" for c in fields]) + " where (" + where + ")", *([updates[c] for c in fields] + list(args)))
 
-def row_remove(table, keys, where, args):
-	mochi.db.execute("delete from \"" + table + "\" where (" + where + ")", *args)
+def row_remove(table, keys, where, args, handle=None):
+	sql = "delete from \"" + table + "\" where (" + where + ")"
+	if handle:
+		handle.execute(sql, *args)
+	else:
+		mochi.db.execute(sql, *args)
 
 def row_rekey(table, keys, where, args, newkeys):
 	fields = list(newkeys)
@@ -768,7 +780,7 @@ def get_templates(lang="en"):
 # resolve correctly. Missing template_id or absent labels dir means no
 # substitution — literal strings pass through unchanged (back-compat with
 # user-exported templates).
-def apply_template(crm_id, data=None, lang="en", template_id="crm"):
+def apply_template(crm_id, data=None, lang="en", template_id="crm", handle=None):
 	# Load template JSON from file if no data provided
 	if not data:
 		if not template_id or ".." in template_id or "/" in template_id:
@@ -781,35 +793,35 @@ def apply_template(crm_id, data=None, lang="en", template_id="crm"):
 
 	# Create classes
 	for t in data.get("classes", []):
-		row_merge("classes", ["crm", "id"], {"crm": crm_id, "id": t["id"], "name": substitute_labels(t["name"], labels), "rank": t.get("rank", 0), "title": t.get("title", "title")})
+		row_merge("classes", ["crm", "id"], {"crm": crm_id, "id": t["id"], "name": substitute_labels(t["name"], labels), "rank": t.get("rank", 0), "title": t.get("title", "title")}, handle)
 
 	# Set hierarchy for each class
 	for cls_id, parents in data.get("hierarchy", {}).items():
 		for parent in parents:
-			row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": cls_id, "parent": parent})
+			row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": cls_id, "parent": parent}, handle)
 
 	# Create fields for each class
 	for cls_id, fields in data.get("fields", {}).items():
 		for f in fields:
-			row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": cls_id, "id": f["id"], "name": substitute_labels(f["name"], labels), "fieldtype": f.get("fieldtype", "text"), "flags": f.get("flags", ""), "multi": f.get("multi", 0), "rank": f.get("rank", 0), "min": f.get("min", ""), "max": f.get("max", ""), "pattern": f.get("pattern", ""), "minlength": f.get("minlength", 0), "maxlength": f.get("maxlength", 0), "prefix": f.get("prefix", ""), "suffix": f.get("suffix", ""), "format": f.get("format", ""), "card": f.get("card", 0), "position": f.get("position", ""), "rows": f.get("rows", 1)})
+			row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": cls_id, "id": f["id"], "name": substitute_labels(f["name"], labels), "fieldtype": f.get("fieldtype", "text"), "flags": f.get("flags", ""), "multi": f.get("multi", 0), "rank": f.get("rank", 0), "min": f.get("min", ""), "max": f.get("max", ""), "pattern": f.get("pattern", ""), "minlength": f.get("minlength", 0), "maxlength": f.get("maxlength", 0), "prefix": f.get("prefix", ""), "suffix": f.get("suffix", ""), "format": f.get("format", ""), "card": f.get("card", 0), "position": f.get("position", ""), "rows": f.get("rows", 1)}, handle)
 
 	# Create options for each class's enumerated fields
 	for cls_id, class_options in data.get("options", {}).items():
 		for field_id, field_options in class_options.items():
 			for opt in field_options:
-				row_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": cls_id, "field": field_id, "id": opt["id"], "name": substitute_labels(opt["name"], labels), "colour": opt.get("colour", "#94a3b8"), "icon": opt.get("icon", ""), "rank": opt.get("rank", 0)})
+				row_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": cls_id, "field": field_id, "id": opt["id"], "name": substitute_labels(opt["name"], labels), "colour": opt.get("colour", "#94a3b8"), "icon": opt.get("icon", ""), "rank": opt.get("rank", 0)}, handle)
 
 	# Create views
 	for i, v in enumerate(data.get("views", [])):
-		row_merge("views", ["crm", "id"], {"crm": crm_id, "id": v["id"], "name": substitute_labels(v["name"], labels), "viewtype": v.get("viewtype", "board"), "filter": v.get("filter", ""), "columns": v.get("columns", ""), "rows": v.get("rows", ""), "sort": v.get("sort", ""), "direction": v.get("direction", "asc"), "rank": i, "border": v.get("border", "")})
+		row_merge("views", ["crm", "id"], {"crm": crm_id, "id": v["id"], "name": substitute_labels(v["name"], labels), "viewtype": v.get("viewtype", "board"), "filter": v.get("filter", ""), "columns": v.get("columns", ""), "rows": v.get("rows", ""), "sort": v.get("sort", ""), "direction": v.get("direction", "asc"), "rank": i, "border": v.get("border", "")}, handle)
 		# Add view classes if specified
 		for vclass in v.get("classes", []):
-			row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": v["id"], "class": vclass})
+			row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": v["id"], "class": vclass}, handle)
 		# Add fields
 		fields = v.get("fields", "").split(",")
 		for j, field in enumerate(fields):
 			if field.strip():
-				row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": v["id"], "field": field.strip(), "rank": j})
+				row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": v["id"], "field": field.strip(), "rank": j}, handle)
 
 # Snapshot the crm design - classes, fields, options, hierarchy, and views -
 # as template JSON. The snapshot contains literal strings (whatever the CRM
@@ -962,14 +974,85 @@ def action_design_export(a):
 # unchanged because substitute_labels short-circuits when no placeholder is
 # present.
 def design_replace(crm_id, data, lang, template_id):
-	row_remove("view_fields", ["crm", "view", "field"], "crm=?", [crm_id])
-	row_remove("view_classes", ["crm", "view", "class"], "crm=?", [crm_id])
-	row_remove("views", ["crm", "id"], "crm=?", [crm_id])
-	row_remove("options", ["crm", "class", "field", "id"], "crm=?", [crm_id])
-	row_remove("fields", ["crm", "class", "id"], "crm=?", [crm_id])
-	row_remove("hierarchy", ["crm", "class", "parent"], "crm=?", [crm_id])
-	row_remove("classes", ["crm", "id"], "crm=?", [crm_id])
-	apply_template(crm_id, data, lang, template_id)
+	# One unit: the deletes strip the design and apply_template puts the new one
+	# back, so anything that fails in between must undo the deletes rather than
+	# leave a CRM with no fields, options, views or hierarchy. An uncommitted
+	# handle is rolled back when the Starlark thread tears down, so an error
+	# path needs no explicit rollback. Callers should still reject a design that
+	# cannot apply (design_invalid, design_classes_missing) so the user gets a
+	# reason instead of a failed write.
+	handle = mochi.db.transaction()
+	row_remove("view_fields", ["crm", "view", "field"], "crm=?", [crm_id], handle)
+	row_remove("view_classes", ["crm", "view", "class"], "crm=?", [crm_id], handle)
+	row_remove("views", ["crm", "id"], "crm=?", [crm_id], handle)
+	row_remove("options", ["crm", "class", "field", "id"], "crm=?", [crm_id], handle)
+	row_remove("fields", ["crm", "class", "id"], "crm=?", [crm_id], handle)
+	row_remove("hierarchy", ["crm", "class", "parent"], "crm=?", [crm_id], handle)
+	# Classes are the one design table that objects reference, and SQLite checks
+	# that foreign key as each row is deleted rather than at commit - so a class
+	# still holding records cannot be dropped and re-created, even by a design
+	# that keeps it. Remove only the classes the new design drops; apply_template
+	# upserts the ones it keeps. Callers refuse a design that drops a class still
+	# in use (design_classes_missing), so nothing removed here holds records.
+	keep = [c["id"] for c in data.get("classes", [])] if type(data) == "dict" else []
+	for row in handle.rows("select id from classes where crm=?", crm_id) or []:
+		if row["id"] not in keep:
+			row_remove("classes", ["crm", "id"], "crm=? and id=?", [crm_id, row["id"]], handle)
+	apply_template(crm_id, data, lang, template_id, handle)
+	handle.commit()
+
+# A design is arbitrary user-supplied JSON, and apply_template indexes into it
+# by shape - classes and views as lists, hierarchy, fields and options as dicts
+# keyed by class - so the wrong shape raises part-way through the replacement.
+# Returns an error key, or None when the design can be applied.
+def design_invalid(data):
+	if type(data) != "dict":
+		return "errors.invalid_design"
+	if type(data.get("classes", [])) != "list" or type(data.get("views", [])) != "list":
+		return "errors.invalid_design"
+	for key in ["hierarchy", "fields", "options"]:
+		if type(data.get(key, {})) != "dict":
+			return "errors.invalid_design"
+	for c in data.get("classes", []):
+		if type(c) != "dict" or type(c.get("id")) != "string" or type(c.get("name")) != "string":
+			return "errors.invalid_design"
+	for parents in data.get("hierarchy", {}).values():
+		if type(parents) not in ["list", "tuple"]:
+			return "errors.invalid_design"
+	for fields in data.get("fields", {}).values():
+		if type(fields) not in ["list", "tuple"]:
+			return "errors.invalid_design"
+		for f in fields:
+			if type(f) != "dict" or type(f.get("id")) != "string" or type(f.get("name")) != "string":
+				return "errors.invalid_design"
+	for class_options in data.get("options", {}).values():
+		if type(class_options) != "dict":
+			return "errors.invalid_design"
+		for field_options in class_options.values():
+			if type(field_options) not in ["list", "tuple"]:
+				return "errors.invalid_design"
+			for opt in field_options:
+				if type(opt) != "dict" or type(opt.get("id")) != "string" or type(opt.get("name")) != "string":
+					return "errors.invalid_design"
+	for v in data.get("views", []):
+		if type(v) != "dict" or type(v.get("id")) != "string" or type(v.get("name")) != "string":
+			return "errors.invalid_design"
+		if type(v.get("classes", [])) not in ["list", "tuple"]:
+			return "errors.invalid_design"
+		if type(v.get("fields", "")) != "string":
+			return "errors.invalid_design"
+	return None
+
+# objects carries a foreign key to classes, so a class that still holds records
+# cannot be deleted. Name the classes the incoming design drops while they are
+# still in use, so the caller can refuse before writing anything.
+def design_classes_missing(crm_id, data):
+	incoming = [c["id"] for c in data.get("classes", [])]
+	missing = []
+	for row in mochi.db.rows("select distinct class from objects where crm=?", crm_id) or []:
+		if row["class"] not in incoming:
+			missing.append(row["class"])
+	return sorted(missing, key=lambda name: mochi.text.sortkey(name))
 
 def action_design_import(a):
 
@@ -1007,17 +1090,28 @@ def action_design_import(a):
 	# Load design data from JSON string or from built-in template file
 	data = None
 	if data_str:
-		data = json.decode(data_str)
+		data = json.decode(data_str, None)
 	elif template_id:
 		templates = get_templates(lang)
 		if template_id not in templates:
 			a.error.label(400, "errors.invalid_template")
 			return
 		content = mochi.app.asset.read("templates/" + template_id + ".json")
-		data = json.decode(str(content))
+		data = json.decode(str(content), None)
 		template_version = templates[template_id]["version"]
 	else:
 		a.error.label(400, "errors.design_data_or_template_is_required")
+		return
+
+	# Everything that can refuse this design refuses it before the first write.
+	problem = design_invalid(data)
+	if problem:
+		a.error.label(400, problem)
+		return
+
+	missing = design_classes_missing(crm_id, data)
+	if missing:
+		a.error.label(400, "errors.design_class_in_use", classes=", ".join(missing))
 		return
 
 	design_replace(crm_id, data, lang, template_id)
@@ -1339,6 +1433,18 @@ def action_data_import(a):
 	# the file itself - which it cannot do once the attachments are archive
 	# entries rather than JSON.
 	if a.input("design") and type(data.get("design")) == "dict":
+		problem = design_invalid(data["design"])
+		if problem:
+			if archive:
+				mochi.file.delete(archive)
+			a.error.label(400, problem)
+			return
+		missing = design_classes_missing(crm_id, data["design"])
+		if missing:
+			if archive:
+				mochi.file.delete(archive)
+			a.error.label(400, "errors.design_class_in_use", classes=", ".join(missing))
+			return
 		design_replace(crm_id, data["design"], user_language(a), "")
 
 	objects = data.get("objects") or []
