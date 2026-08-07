@@ -1054,6 +1054,38 @@ def design_classes_missing(crm_id, data):
 			missing.append(row["class"])
 	return sorted(missing, key=lambda name: mochi.text.sortkey(name))
 
+# The design tables carry foreign keys - fields and hierarchy to classes,
+# options to fields, view classes to classes - so a design that references a
+# class or field it does not define fails mid-replacement with a raw
+# constraint error. Name the dangling references so the caller can refuse
+# before writing anything. Hierarchy parents and view field lists are not
+# checked: no foreign key covers them, and an export may legitimately carry
+# stale entries there.
+def design_references_missing(data):
+	classes = [c["id"] for c in data.get("classes", [])]
+	fields = {}
+	for cls, class_fields in data.get("fields", {}).items():
+		fields[cls] = [f["id"] for f in class_fields]
+	missing = []
+	for cls in data.get("hierarchy", {}):
+		if cls not in classes:
+			missing.append("hierarchy[" + cls + "]")
+	for cls in data.get("fields", {}):
+		if cls not in classes:
+			missing.append("fields[" + cls + "]")
+	for cls, class_options in data.get("options", {}).items():
+		if cls not in classes:
+			missing.append("options[" + cls + "]")
+			continue
+		for field in class_options:
+			if field not in fields.get(cls, []):
+				missing.append("options[" + cls + "][" + field + "]")
+	for v in data.get("views", []):
+		for cls in v.get("classes", []):
+			if type(cls) != "string" or cls not in classes:
+				missing.append("views[" + v["id"] + "][" + str(cls) + "]")
+	return sorted(missing, key=lambda name: mochi.text.sortkey(name))
+
 def action_design_import(a):
 
 	crm_id = resolve_crm(a)
@@ -1107,6 +1139,11 @@ def action_design_import(a):
 	problem = design_invalid(data)
 	if problem:
 		a.error.label(400, problem)
+		return
+
+	dangling = design_references_missing(data)
+	if dangling:
+		a.error.label(400, "errors.design_reference_unknown", references=", ".join(dangling))
 		return
 
 	missing = design_classes_missing(crm_id, data)
@@ -1438,6 +1475,12 @@ def action_data_import(a):
 			if archive:
 				mochi.file.delete(archive)
 			a.error.label(400, problem)
+			return
+		dangling = design_references_missing(data["design"])
+		if dangling:
+			if archive:
+				mochi.file.delete(archive)
+			a.error.label(400, "errors.design_reference_unknown", references=", ".join(dangling))
 			return
 		missing = design_classes_missing(crm_id, data["design"])
 		if missing:
