@@ -2771,6 +2771,11 @@ def action_object_delete(a):
 			"crm": crm_id, "object": object_id,
 		})
 		if result and object_id:
+			# Attachments too. The owner's path clears them in
+			# delete_object_cascade; this branch mirrors that cleanup by hand
+			# and had every table but this one, so a subscriber's copy of the
+			# object went away while its attachment rows and files stayed.
+			attachment_clear(object_id)
 			row_remove("values", ["object", "field"], "object=?", [object_id])
 			row_remove("watchers", ["object", "user"], "object=?", [object_id])
 			delete_object_comments(object_id, crm_id)
@@ -6940,6 +6945,29 @@ def event_field_delete(e):
 		mochi.websocket.write(fp, {"type": "field/delete", "crm": crm_id, "class_id": class_id, "id": field_id})
 
 # Field reorder
+def event_view_reorder(e):
+	"""View order from the owner.
+
+	action_view_reorder has always broadcast this, but no handler was declared
+	for it, so every subscriber dropped the event and view order converged
+	nowhere - the owner reordered and nobody else saw it. The two sibling
+	reorders beside this one were wired up correctly."""
+	crm_id = verify_subscription(e)
+	if not crm_id:
+		return
+	order = e.content("order")
+	# Sequences arrive from the P2P decode as a tuple, not a list - checking
+	# for "list" alone silently dropped every real event.
+	if type(order) not in ["list", "tuple"]:
+		return
+	for i, view_id in enumerate(order):
+		if type(view_id) != "string" or not view_id:
+			continue
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"rank": i})
+	fp = mochi.entity.fingerprint(crm_id)
+	if fp:
+		mochi.websocket.write(fp, {"type": "view/reorder", "crm": crm_id})
+
 def event_field_reorder(e):
 	crm_id = verify_subscription(e)
 	if not crm_id:
