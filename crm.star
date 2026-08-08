@@ -40,6 +40,20 @@ def p2p_headers(from_id, to_id, event):
 		"event": event
 	}
 
+# Helper: deliver a subscription-lifecycle event (subscribe, unsubscribe) to an
+# owner whose entity may no longer be resolvable: private entities never list
+# in the directory, and public entries expire while the owner is offline. A
+# stored directory-form "p2p/<peer>" server pins the queue row to that peer, so
+# an undeliverable send parks and revives when the peer reconnects, instead of
+# parking unresolvable forever. Hostname servers still route via the directory -
+# resolving one here would put a network dial on a view path.
+def registration_send(server, headers, content):
+	peer = server[len("p2p/"):] if server and server.startswith("p2p/") else ""
+	if peer:
+		mochi.message.send.peer(peer, headers, content)
+	else:
+		mochi.message.send(headers, content)
+
 # Helper: Broadcast event to all subscribers of a CRM via the durable
 # broadcast log. Sequence + log + gap-detection live in core.
 # Recheck view access per recipient on every send: revocation must cut the
@@ -151,11 +165,12 @@ def maybe_resubscribe(a, crm_id):
 	user_id = a.user.identity.id if a.user else None
 	if not user_id:
 		return
-	if not mochi.db.row("select 1 from crms where id=? and owner=0", crm_id):
+	row = mochi.db.row("select server from crms where id=? and owner=0", crm_id)
+	if not row:
 		return
 	if mochi.time.now() - mochi.broadcast.seen(crm_id) <= idle_resync_age:
 		return
-	mochi.message.send(p2p_headers(user_id, crm_id, "subscribe"), {"name": a.user.identity.name})
+	registration_send(row["server"], p2p_headers(user_id, crm_id, "subscribe"), {"name": a.user.identity.name})
 	mochi.broadcast.touch(crm_id)
 
 # --- Fractional-index rank keys (#53) ---------------------------------------
@@ -5560,7 +5575,7 @@ def action_unsubscribe(a):
 	# purge_crm clears the attachments, object and comment alike.
 	purge_crm(crm_id)
 	# Send P2P unsubscribe message
-	mochi.message.send(p2p_headers(user_id, crm_id, "unsubscribe"), {})
+	registration_send(crm["server"], p2p_headers(user_id, crm_id, "unsubscribe"), {})
 
 	return {"data": {"success": True}}
 
