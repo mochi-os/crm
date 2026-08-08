@@ -18,15 +18,15 @@ msgstr ""
 msgid "Please check your internet connection and try again."
 msgstr "Lütfen internet bağlantınızı kontrol edip tekrar deneyin."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:302
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:292
 msgid " or "
 msgstr " veya "
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:228
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:229
 msgid "(edited)"
 msgstr "(düzenlendi)"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:212
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:213
 msgid "(expand)"
 msgstr "(genişlet)"
 
@@ -88,6 +88,7 @@ msgstr "{selectedCount, plural, one {# seçildi} other {# seçildi}}"
 msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
 msgstr "{selectedCount, plural, one {# seçili {entityName} için toplu işlemler} other {# seçili {manyName} için toplu işlemler}}"
 
+#: ../../../lib/web/src/components/attachment-composer.tsx:150
 #: ../../../lib/web/src/components/ui/upload-progress.tsx:52
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} / {totalLabel}"
@@ -105,11 +106,11 @@ msgstr "{unreadCount, plural, one {Menüyü aç (# okunmamış bildirim)} other 
 msgid "+{0} nested"
 msgstr "+{0} iç içe"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:209
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:210
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} yanıt daha"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:208
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:209
 msgid "1 reply"
 msgstr "1 yanıt"
 
@@ -187,7 +188,7 @@ msgstr "Etkinlik"
 msgid "Add"
 msgstr "Ekle"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:360
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:363
 msgid "Add a comment..."
 msgstr "Yorum ekle..."
 
@@ -335,7 +336,7 @@ msgid "Anyone who is logged in"
 msgstr "Giriş yapmış herkes"
 
 #. placeholder {0}: deleteTarget?.name
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:271
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:308
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "\"{0}\" öğesini silmek istediğinizden emin misiniz?"
 
@@ -347,7 +348,7 @@ msgstr "\"{title}\" öğesini silmek istediğinizden emin misiniz? Bu işlem ger
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "\"{name}\" sütununu silmek istediğinizden emin misiniz? Bu geri alınamaz."
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:485
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:490
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "Bu yorumu silmek istediğinizden emin misiniz? Bu, tüm yanıtları da silecektir."
 
@@ -367,13 +368,13 @@ msgstr "Artan"
 msgid "Ascending"
 msgstr "Artan"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:398
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:403
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:405
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:410
 msgid "Attach comment files"
 msgstr "Yorum dosyalarını ekle"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:439
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:444
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:449
 msgid "Attach reply files"
 msgstr "Yanıt dosyalarını ekle"
 
@@ -461,7 +462,7 @@ msgid "Can be child of"
 msgstr "Şunun alt öğesi olabilir"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:249
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:250
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:169
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:186
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
@@ -479,13 +480,13 @@ msgstr "Şunun alt öğesi olabilir"
 msgid "Cancel"
 msgstr "İptal"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:415
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:420
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:422
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:427
 msgid "Cancel comment"
 msgstr "Yorumu iptal et"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:455
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:460
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:465
 msgid "Cancel reply"
 msgstr "Yanıtı iptal et"
 
@@ -574,8 +575,8 @@ msgstr "Seçimi temizle"
 msgid "Clear selection (Escape)"
 msgstr "Seçimi temizle (Escape)"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:485
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:490
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:477
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:482
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
@@ -646,8 +647,8 @@ msgstr "Yakında!"
 msgid "Command Palette"
 msgstr "Komut paleti"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:330
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:337
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:331
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:338
 msgid "Comment actions"
 msgstr "Yorum işlemleri"
 
@@ -748,8 +749,8 @@ msgstr "Bu hesapla doğrulama yapılamadı. Lütfen tekrar deneyin."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:564
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:703
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:475
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:647
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:467
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:616
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Oluştur"
@@ -796,7 +797,7 @@ msgstr "Oluşturuldu"
 msgid "Creating CRM..."
 msgstr "CRM oluşturuluyor..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:647
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:616
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
 #: src/features/crms/components/create-crm-dialog.tsx:339
 msgid "Creating..."
@@ -895,19 +896,19 @@ msgstr "Varsayılan sıralama"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:583
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:644
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:318
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:361
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:486
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:173
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:178
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:227
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:272
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:319
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:362
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:196
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:201
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:250
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:309
 #: src/features/objects/components/object-detail-panel.tsx:519
 #: src/routes/_authenticated/$crmId_.settings.tsx:343
 msgid "Delete"
 msgstr "Sil"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:270
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:307
 msgid "Delete attachment"
 msgstr "Eki sil"
 
@@ -919,7 +920,7 @@ msgstr "Sınıfı sil"
 msgid "Delete column"
 msgstr "Sütunu sil"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:484
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:489
 msgid "Delete comment"
 msgstr "Yorumu sil"
 
@@ -1015,11 +1016,11 @@ msgstr "Yön"
 msgid "Directory"
 msgstr "Dizin"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:304
+#: ../../../lib/web/src/components/comment-composer.tsx:284
 msgid "Discard"
 msgstr "Vazgeç"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:302
+#: ../../../lib/web/src/components/comment-composer.tsx:282
 msgid "Discard draft?"
 msgstr "Taslak silinsin mi?"
 
@@ -1053,7 +1054,7 @@ msgstr "Tamamlandı"
 msgid "Double click on a column to add content"
 msgstr "İçerik eklemek için sütuna çift tıklayın"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:214
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:237
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 msgid "Download"
@@ -1085,8 +1086,8 @@ msgstr "Yinelenenler"
 msgid "Dyslexia-friendly"
 msgstr "Disleksi dostu"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:307
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:352
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:308
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:353
 msgid "Edit"
 msgstr "Düzenle"
 
@@ -1218,11 +1219,11 @@ msgstr "Seçenek oluşturulamadı"
 msgid "Failed to create view"
 msgstr "Görünüm oluşturulamadı"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:110
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:128
 msgid "Failed to delete attachment"
 msgstr "Ek silinemedi"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:207
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:210
 msgid "Failed to delete comment"
 msgstr "Yorum silinemedi"
 
@@ -1300,7 +1301,7 @@ msgstr ""
 msgid "Failed to load video"
 msgstr "Video yüklenemedi"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:170
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:173
 msgid "Failed to post comment"
 msgstr "Yorum gönderilemedi"
 
@@ -1356,7 +1357,7 @@ msgstr "Abonelikten çıkılamadı"
 msgid "Failed to update access level"
 msgstr "Erişim düzeyi güncellenemedi"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:190
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:193
 msgid "Failed to update comment"
 msgstr "Yorum güncellenemedi"
 
@@ -1368,7 +1369,7 @@ msgstr "CRM güncellenemedi"
 msgid "Failed to update field"
 msgstr "Alan güncellenemedi"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:95
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:112
 msgid "Failed to upload attachment"
 msgstr "Ek yüklenemedi"
 
@@ -1376,9 +1377,9 @@ msgstr "Ek yüklenemedi"
 msgid "Fields"
 msgstr "Alanlar"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:133
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:150
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:559
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:153
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:173
 msgid "Files"
 msgstr "Dosyalar"
 
@@ -1762,7 +1763,7 @@ msgstr "Ad 1000 karakter veya daha az olmalı"
 msgid "Network error"
 msgstr "Ağ hatası"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:460
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:452
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/routes/_authenticated/$crmId/index.tsx:976
 #: src/routes/_authenticated/$crmId/index.tsx:993
@@ -1784,7 +1785,7 @@ msgstr "Yeni oyun"
 msgid "Next image"
 msgstr "Sonraki görsel"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:533
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:525
 msgid "No {parentClassNames} to add to"
 msgstr "Eklenecek {parentClassNames} yok"
 
@@ -1800,7 +1801,7 @@ msgstr "Erişim kuralı yapılandırılmamış. Bu kaynağa kimin erişebileceğ
 msgid "No activity yet"
 msgstr "Henüz aktivite yok"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:450
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:457
 msgid "No comments yet"
 msgstr "Henüz yorum yok"
 
@@ -1821,7 +1822,7 @@ msgstr "Henüz oyun yok"
 msgid "No groups available"
 msgstr "Grup yok"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:500
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:492
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Henüz oluşturulabilecek öge türü yok. Önce gerekli üst ögeleri oluşturun."
 
@@ -1888,9 +1889,9 @@ msgid "No views"
 msgstr "Görüntüleme yok"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:516
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:519
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:508
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:511
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:515
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:365
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:391
@@ -2042,7 +2043,7 @@ msgstr "Sahip"
 msgid "Page {currentPage} of {totalPages}"
 msgstr "Sayfa {currentPage} / {totalPages}"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:508
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:500
 #: src/features/objects/components/object-detail-panel.tsx:428
 #: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "Parent"
@@ -2073,7 +2074,7 @@ msgstr "Bir tarih seçin"
 msgid "Please add one or more classes to the CRM design."
 msgstr "Lütfen CRM tasarımına bir veya daha fazla sınıf ekleyin."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:99
+#: ../../../lib/web/src/components/comment-composer.tsx:84
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:323
 msgid "Please check your internet connection and try again."
@@ -2179,9 +2180,9 @@ msgstr "Göreceli (5d, 3s, 2g)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "24 saat içinde göreceli, aksi halde mutlak"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:236
+#: ../../../lib/web/src/components/attachment-composer.tsx:171
+#: ../../../lib/web/src/components/attachment-composer.tsx:208
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:598
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 #: src/features/crms/components/create-crm-dialog.tsx:321
@@ -2257,13 +2258,13 @@ msgstr "Tasarım değiştirilsin mi?"
 msgid "Replacing..."
 msgstr "Değiştiriliyor..."
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:294
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:342
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:295
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:343
 msgid "Reply"
 msgstr "Yanıtla"
 
 #. placeholder {0}: comment.name || comment.author
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:385
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:386
 msgid "Reply to {0}..."
 msgstr "{0} kullanıcısına yanıt ver..."
 
@@ -2289,7 +2290,7 @@ msgstr "{title} sıfırla"
 msgid "Reset all settings to default values"
 msgstr "Tüm ayarları varsayılan değerlere sıfırla"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:253
+#: ../../../lib/web/src/components/attachment-composer.tsx:225
 msgid "Retry"
 msgstr "Yeniden dene"
 
@@ -2338,7 +2339,7 @@ msgstr "Satış CRM'i"
 msgid "Saturday"
 msgstr "Cumartesi"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:270
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
@@ -2613,7 +2614,7 @@ msgstr "Kaynaklar"
 msgid "Spacious"
 msgstr "Geniş"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:451
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:458
 msgid "Start the discussion by adding the first comment."
 msgstr "İlk yorumu ekleyerek tartışmayı başlat."
 
@@ -2630,13 +2631,13 @@ msgstr "İzlemeyi bırak"
 msgid "Subject"
 msgstr "Konu"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:431
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:440
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:438
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:447
 msgid "Submit comment"
 msgstr "Yorum gönder"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:470
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:475
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:480
 msgid "Submit reply"
 msgstr "Yanıt gönder"
 
@@ -2923,7 +2924,7 @@ msgstr "Abonelik iptal edildi"
 msgid "Unsubscribing..."
 msgstr "Abonelik iptal ediliyor..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:286
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:276
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
 #: src/features/board/components/board-card.tsx:22
@@ -2947,8 +2948,8 @@ msgstr "Güncellendi"
 msgid "Updating access..."
 msgstr "Erişim güncelleniyor..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:630
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:259
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:599
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:296
 msgid "Upload"
 msgstr "Yükle"
 
@@ -3094,14 +3095,14 @@ msgstr "Her şeyi gördünüz!"
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Hesabınız {source} adresinden buraya taşındı. Orada silene kadar mesajlar ve bildirimler her iki sunucuya da ulaşabilir, bazı içerikleriniz eski sunucudan sunulmaya devam eder ve takipçileriniz sizi burada bulmak için birkaç dakika bekleyebilir."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:295
+#: ../../../lib/web/src/components/comment-composer.tsx:275
 msgid "Your attachments will be lost."
 msgstr "Ekleriniz kaybolacak."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:293
+#: ../../../lib/web/src/components/comment-composer.tsx:273
 msgid "Your text and attachments will be lost."
 msgstr "Metniniz ve ekleriniz kaybolacak."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:296
+#: ../../../lib/web/src/components/comment-composer.tsx:276
 msgid "Your text will be lost."
 msgstr "Metniniz kaybolacak."
