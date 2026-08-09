@@ -6138,6 +6138,23 @@ def event_access_revoke(e):
 # ============================================================================
 
 # Handle batched sync data from owner (single message with all CRM data)
+# Does a sync-batch element carry the keys the merge will index?
+#
+# A batch is one event: every class, view, object and link arrives together.
+# The merges index required keys with [...], which raises on a missing key or
+# on an element that is not a dict at all - and Starlark has no try/except, so
+# ONE malformed entry aborted the whole batch. The subscriber then held a
+# partial import with no error, and the next sync repeated it. Skipping the
+# bad element keeps the rest of the batch.
+def sync_element(item, keys):
+    if type(item) != "dict":
+        return False
+    for key in keys:
+        if item.get(key) == None:
+            return False
+    return True
+
+
 def event_sync_batch(e):
 	# Sync is sent from the CRM entity (p2p_headers(crm_id, ...)), so the
 	# authenticated sender is the CRM. Trust the from header, not a spoofable
@@ -6154,6 +6171,8 @@ def event_sync_batch(e):
 	# Process classes
 	classes = e.content("classes") or []
 	for t in classes:
+		if not sync_element(t, ["id", "name"]):
+			continue
 		row_merge("classes", ["crm", "id"], {"crm": crm_id, "id": t["id"], "name": t["name"], "rank": t.get("rank", 0), "title": t.get("title", "title")})
 		# Hierarchy
 		parents = t.get("parents")
@@ -6163,13 +6182,19 @@ def event_sync_batch(e):
 				row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": t["id"], "parent": p})
 		# Fields
 		for f in (t.get("fields") or []):
+			if not sync_element(f, ["id", "name", "fieldtype"]):
+				continue
 			row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": t["id"], "id": f["id"], "name": f["name"], "fieldtype": f["fieldtype"], "flags": f.get("flags", ""), "multi": f.get("multi", 0), "rank": f.get("rank", 0), "card": f.get("card", ""), "position": f.get("position", ""), "rows": f.get("rows", 0)})
 			# Options
 			for o in (f.get("options") or []):
+				if not sync_element(o, ["id", "name"]):
+					continue
 				row_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": t["id"], "field": f["id"], "id": o["id"], "name": o["name"], "colour": o.get("colour", "#94a3b8"), "icon": o.get("icon", ""), "rank": o.get("rank", 0)})
 
 	# Process views
 	for v in (e.content("views") or []):
+		if not sync_element(v, ["id", "name", "viewtype"]):
+			continue
 		row_merge("views", ["crm", "id"], {"crm": crm_id, "id": v["id"], "name": v["name"], "viewtype": v["viewtype"], "filter": v.get("filter", ""), "columns": v.get("columns", ""), "rows": v.get("rows", ""), "sort": v.get("sort", ""), "direction": v.get("direction", ""), "rank": v.get("rank", 0), "border": v.get("border", "")})
 		# View fields
 		row_remove("view_fields", ["crm", "view", "field"], "crm=? and view=?", [crm_id, v["id"]])
@@ -6187,6 +6212,8 @@ def event_sync_batch(e):
 					row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": v["id"], "class": class_id})
 	# Process objects
 	for obj in (e.content("objects") or []):
+		if not sync_element(obj, ["id"]):
+			continue
 		# Never adopt/reassign an object that already belongs to another CRM -
 		# a hijacking owner's batch could otherwise write values, comments and
 		# activity onto our other CRMs' rows via a colliding id (mirrors
@@ -6202,6 +6229,8 @@ def event_sync_batch(e):
 				row_merge("values", ["object", "field"], {"object": obj["id"], "field": field, "value": value})
 		# Comments
 		for c in (obj.get("comments") or []):
+			if not sync_element(c, ["id"]):
+				continue
 			# Skip a comment id already owned by another CRM's object.
 			if foreign_comment(c["id"], crm_id):
 				continue
@@ -6209,6 +6238,8 @@ def event_sync_batch(e):
 				row_merge("comments", ["id"], {"id": c["id"], "object": obj["id"], "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", now), "edited": c.get("edited", 0)})
 		# Activity history
 		for act in (obj.get("activity") or []):
+			if not sync_element(act, ["id"]):
+				continue
 			mochi.db.execute(
 				"insert or ignore into activity (id, object, user, action, field, oldvalue, newvalue, created) values (?, ?, ?, ?, ?, ?, ?, ?)",
 				act["id"], obj["id"], act.get("user", ""), act.get("action", ""),
@@ -6218,6 +6249,8 @@ def event_sync_batch(e):
 
 	# Process links
 	for l in (e.content("links") or []):
+		if not sync_element(l, ["source", "target"]):
+			continue
 		if not link_endpoints_bound(crm_id, l["source"], l["target"]):
 			continue
 		row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": l["source"], "target": l["target"], "linktype": l.get("linktype", "relates"), "created": l.get("created", 0)})
@@ -6559,6 +6592,9 @@ def event_comment_submit(e):
 	owner_id = get_owner_identity(crm_id)
 	excerpt = content.strip()[:80]
 	notify_watchers(object_id, crm_id, owner_id, sender, mochi.app.label("notifications.body.commented", name=name, excerpt=excerpt))
+	# A subscriber's comment can name someone too. Without this, being
+	# mentioned only notified you when the CRM's owner typed it.
+	notify_mentions(object_id, crm_id, content, sender, name)
 
 # Attachment submitted by subscriber
 def event_attachment_submit(e):
@@ -7262,6 +7298,11 @@ def do_comment_create(crm_id, crm, params, user_id, user_name):
 	owner_id = get_owner_identity(crm_id)
 	excerpt = (content.strip())[:80]
 	notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.commented", name=user_name, excerpt=excerpt))
+	# Mentions, here rather than only in action_comment_create: this is where
+	# the owner-side path and the P2P path (event_comment_submit) converge, so
+	# being named by a SUBSCRIBER used to notify nobody - the mention only
+	# fired when the owner typed it themselves.
+	notify_mentions(object_id, crm_id, content, user_id, user_name)
 	return {"id": comment_id, "author": user_id, "name": user_name,
 			"content": content.strip(), "created": now}
 

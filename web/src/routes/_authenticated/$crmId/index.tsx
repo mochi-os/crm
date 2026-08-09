@@ -71,6 +71,20 @@ const BUILT_IN_SORT_FIELDS = ["rank", "created", "updated", "number"];
 
 // The default sort a view was designed with (design → view → Default sort).
 // Empty means the designer left it unset, which is manual rank order.
+// Escape one CSV cell.
+//
+// Quoting and doubling embedded quotes makes the file parse correctly, but it
+// does not stop a spreadsheet EVALUATING it: Excel and Sheets strip the quotes
+// and treat a leading =, +, - or @ as a formula, so an object whose field
+// holds =HYPERLINK(...) or a DDE payload runs on whoever opens the export.
+// Prefixing with an apostrophe forces the cell to be read as text; the
+// apostrophe is not shown by the spreadsheet.
+function csvCell(value: unknown): string {
+  const text = String(value ?? "");
+  const escaped = text.replace(/"/g, '""');
+  return /^[=+\-@\t\r]/.test(text) ? `'${escaped}` : escaped;
+}
+
 function viewSortState(view?: { sort?: string; direction?: string } | null): SortState {
   const sort = view?.sort || "";
   if (!sort) return { field: "rank", direction: "asc" };
@@ -912,10 +926,10 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
           return raw;
         }),
       ];
-      return cells.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(",");
+      return cells.map((cell) => `"${csvCell(cell)}"`).join(",");
     });
 
-    const csv = [headers.map((h) => `"${h}"`).join(","), ...rows].join("\n");
+    const csv = [headers.map((h) => `"${csvCell(h)}"`).join(","), ...rows].join("\n");
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
     const filename = `${crm.crm.name}.csv`;
     // A bare anchor-click save silently no-ops in the shell's sandboxed
