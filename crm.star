@@ -8,6 +8,14 @@
 # This is what .isdigit() was reached for, but isdigit() also accepts Unicode
 # digit forms (Arabic-Indic "٣", Devanagari "३") that int() rejects,
 # which aborts the action as a 500 instead of taking the guard's else branch.
+# Ceiling on an imported manifest. The direct path is already bounded by the
+# 1MB request body, so the old 1000000000 could only ever fire on the ARCHIVE
+# path - and there it ran after the bytes were already in memory. 100MB is far
+# above any real CRM export and low enough to refuse a decompression bomb
+# before reading it.
+IMPORT_MAXIMUM = 100000000
+
+
 # Derive a structural id from a user-supplied name.
 #
 # The id becomes a database key, a URL segment, and - for fields - an element
@@ -1499,8 +1507,19 @@ def action_data_import(a):
 		import_staging_sweep()
 		staged = "imports/" + mochi.uid()
 		a.upload("file", staged)
-		if mochi.archive.list(staged) != None:
+		entries = mochi.archive.list(staged)
+		if entries != None:
 			archive = staged
+			# Check the DECLARED size before reading. The old bound ran after
+			# archive.read had already built the string, so it could report a
+			# problem but never prevent one - a small zip expanding to
+			# gigabytes had already been materialised by the time it fired.
+			# archive.list reports each entry's uncompressed size, so the
+			# decision can be made before any of it is allocated.
+			for entry in entries:
+				if entry.get("name") == "manifest.json" and entry.get("size", 0) > IMPORT_MAXIMUM:
+					a.error.label(400, "errors.data_too_large")
+					return
 			data_string = str(mochi.archive.read(staged, "manifest.json") or "")
 		else:
 			data_string = str(mochi.file.read(staged) or "")
@@ -1508,7 +1527,7 @@ def action_data_import(a):
 	if not data_string:
 		a.error.label(400, "errors.data_is_required")
 		return
-	if len(data_string) > 1000000000:
+	if len(data_string) > IMPORT_MAXIMUM:
 		a.error.label(400, "errors.data_too_large")
 		return
 	data = json.decode(data_string, None)
@@ -2144,8 +2163,11 @@ def action_access_list(a):
 	resource = "crm/" + crm_id
 	rules = mochi.access.list.resource(resource)
 
-	# Resolve names for rules and mark owner
+	# Resolve names for rules and mark owner. Cached per distinct subject:
+	# an access list commonly names the same person or group across several
+	# rules, and both lookups go to core.
 	filtered_rules = []
+	names = {}
 	for rule in rules:
 		subject = rule.get("subject", "")
 		# Mark owner rules
@@ -2153,15 +2175,17 @@ def action_access_list(a):
 			rule["isOwner"] = True
 		# Resolve names for non-special subjects
 		if subject and subject not in ("*", "+") and not subject.startswith("#"):
-			if subject.startswith("@"):
-				# Look up group name
-				group_id = subject[1:]
-				group = mochi.group.get(group_id)
-				rule["name"] = group.get("name", group_id) if group else subject
-			else:
-				# Look up entity name
-				name = mochi.entity.name(subject)
-				rule["name"] = name if name else subject[:9]
+			if subject not in names:
+				if subject.startswith("@"):
+					# Look up group name
+					group_id = subject[1:]
+					group = mochi.group.get(group_id)
+					names[subject] = group.get("name", group_id) if group else subject
+				else:
+					# Look up entity name
+					name = mochi.entity.name(subject)
+					names[subject] = name if name else subject[:9]
+			rule["name"] = names[subject]
 		filtered_rules.append(rule)
 
 	return {"data": {"rules": filtered_rules, "owner": owner}}
@@ -4011,11 +4035,17 @@ def action_activity_list(a):
 		object_id, limit, offset
 	) or []
 
-	# Resolve user names
+	# Resolve user names, once per DISTINCT user rather than once per row.
+	# An activity list is dozens of rows written by a handful of people, and
+	# mochi.entity.name is a lookup per call, so the unmemoised version cost a
+	# lookup per row for the same few answers.
 	activities = []
+	names = {}
 	for row in rows:
 		user = row["user"]
-		name = mochi.entity.name(user) or user[:9]
+		if user not in names:
+			names[user] = mochi.entity.name(user) or user[:9]
+		name = names[user]
 		activities.append({
 			"id": row["id"],
 			"user": user,
@@ -5258,7 +5288,10 @@ def action_search(a):
 					peer = mochi.remote.peer(server)
 					if peer:
 						response = mochi.remote.request(crm_id, "crm", "info", {"crm": crm_id}, peer)
-						if not response.get("error"):
+						# None when the peer is unreachable - an ordinary runtime
+						# condition, not an error dict. .get() on it raises and
+						# aborts the handler.
+						if response and not response.get("error"):
 							results.append({
 								"id": response.get("id", crm_id),
 								"name": response.get("name", ""),
@@ -5287,7 +5320,10 @@ def action_search(a):
 					peer = mochi.remote.peer(server)
 					if peer:
 						response = mochi.remote.request(crm_id, "crm", "info", {"crm": crm_id}, peer)
-						if not response.get("error"):
+						# None when the peer is unreachable - an ordinary runtime
+						# condition, not an error dict. .get() on it raises and
+						# aborts the handler.
+						if response and not response.get("error"):
 							results.append({
 								"id": response.get("id", crm_id),
 								"name": response.get("name", ""),
@@ -5354,7 +5390,7 @@ def action_probe(a):
 			a.error.label(400, "errors.invalid_data")
 			return
 		response = mochi.remote.request(link_crm, "crm", "info", {"crm": link_crm}, link_peer)
-		if response.get("error"):
+		if not response or response.get("error"):
 			remote_error(a, response, 404)
 			return
 		return {"data": {
@@ -5411,7 +5447,7 @@ def action_probe(a):
 		a.error.label(502, "errors.unable_to_connect_to_server")
 		return
 	response = mochi.remote.request(crm_id, "crm", "info", {"crm": crm_id}, peer)
-	if response.get("error"):
+	if not response or response.get("error"):
 		remote_error(a, response, 404)
 		return
 
@@ -5522,7 +5558,7 @@ def action_subscribe(a):
 			a.error.label(502, "errors.unable_to_connect_to_server")
 			return
 		response = mochi.remote.request(crm_id, "crm", "info", {"crm": crm_id}, peer)
-		if response.get("error"):
+		if not response or response.get("error"):
 			remote_error(a, response, 404)
 			return
 		crm_name = response.get("name", "")
