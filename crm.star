@@ -40,6 +40,20 @@ def p2p_headers(from_id, to_id, event):
 		"event": event
 	}
 
+# Helper: deliver a subscription-lifecycle event (subscribe, unsubscribe) to an
+# owner whose entity may no longer be resolvable: private entities never list
+# in the directory, and public entries expire while the owner is offline. A
+# stored directory-form "p2p/<peer>" server pins the queue row to that peer, so
+# an undeliverable send parks and revives when the peer reconnects, instead of
+# parking unresolvable forever. Hostname servers still route via the directory -
+# resolving one here would put a network dial on a view path.
+def registration_send(server, headers, content):
+	peer = server[len("p2p/"):] if server and server.startswith("p2p/") else ""
+	if peer:
+		mochi.message.send.peer(peer, headers, content)
+	else:
+		mochi.message.send(headers, content)
+
 # Helper: Broadcast event to all subscribers of a CRM via the durable
 # broadcast log. Sequence + log + gap-detection live in core.
 # Recheck view access per recipient on every send: revocation must cut the
@@ -151,11 +165,12 @@ def maybe_resubscribe(a, crm_id):
 	user_id = a.user.identity.id if a.user else None
 	if not user_id:
 		return
-	if not mochi.db.row("select 1 from crms where id=? and owner=0", crm_id):
+	row = mochi.db.row("select server from crms where id=? and owner=0", crm_id)
+	if not row:
 		return
 	if mochi.time.now() - mochi.broadcast.seen(crm_id) <= idle_resync_age:
 		return
-	mochi.message.send(p2p_headers(user_id, crm_id, "subscribe"), {"name": a.user.identity.name})
+	registration_send(row["server"], p2p_headers(user_id, crm_id, "subscribe"), {"name": a.user.identity.name})
 	mochi.broadcast.touch(crm_id)
 
 # --- Fractional-index rank keys (#53) ---------------------------------------
@@ -570,18 +585,30 @@ def database_create():
 	# Attachments now live in this database, owned by the shared library.
 	attachment_schema_create()
 
-def row_merge(table, keys, row):
+# handle is an open mochi.db.transaction(); statements issued through it are
+# part of that transaction, and statements issued without it are not. A caller
+# replacing several tables as one unit has to pass it all the way down.
+def row_merge(table, keys, row, handle=None):
 	cols = list(row)
 	fields = [c for c in cols if c not in keys]
 	conflict = "do update set " + ", ".join(["\"" + c + "\"=excluded.\"" + c + "\"" for c in fields]) if fields else "do nothing"
-	mochi.db.execute("insert into \"" + table + "\" (" + ", ".join(["\"" + c + "\"" for c in cols]) + ") values (" + ", ".join(["?" for c in cols]) + ") on conflict (" + ", ".join(["\"" + k + "\"" for k in keys]) + ") " + conflict, *[row[c] for c in cols])
+	sql = "insert into \"" + table + "\" (" + ", ".join(["\"" + c + "\"" for c in cols]) + ") values (" + ", ".join(["?" for c in cols]) + ") on conflict (" + ", ".join(["\"" + k + "\"" for k in keys]) + ") " + conflict
+	params = [row[c] for c in cols]
+	if handle:
+		handle.execute(sql, *params)
+	else:
+		mochi.db.execute(sql, *params)
 
 def row_set(table, keys, where, args, updates):
 	fields = list(updates)
 	mochi.db.execute("update \"" + table + "\" set " + ", ".join(["\"" + c + "\"=?" for c in fields]) + " where (" + where + ")", *([updates[c] for c in fields] + list(args)))
 
-def row_remove(table, keys, where, args):
-	mochi.db.execute("delete from \"" + table + "\" where (" + where + ")", *args)
+def row_remove(table, keys, where, args, handle=None):
+	sql = "delete from \"" + table + "\" where (" + where + ")"
+	if handle:
+		handle.execute(sql, *args)
+	else:
+		mochi.db.execute(sql, *args)
 
 def row_rekey(table, keys, where, args, newkeys):
 	fields = list(newkeys)
@@ -607,6 +634,43 @@ def foreign_comment(comment_id, crm_id):
 		return False
 	row = mochi.db.row("select o.crm from comments c join objects o on c.object=o.id where c.id=?", comment_id)
 	return row != None and row["crm"] != crm_id
+
+# A peer names a comment by id, and the id alone says nothing about which CRM
+# the comment belongs to. Where the handler has already checked the object
+# against the routed CRM, requiring the comment to hang off that same object
+# settles it: a comment id belonging to another CRM's object fails the pair
+# even though it exists.
+def comment_bound(comment_id, object_id):
+	if not comment_id or not object_id:
+		return False
+	return mochi.db.exists("select 1 from comments where id=? and object=?", comment_id, object_id)
+
+# Both ends of a link must be objects in this CRM. The links table is keyed
+# (source, target, linktype) with the CRM deliberately OUTSIDE the key, so a row
+# whose endpoints live in another CRM does not merely sit there unused - it
+# collides with, and overwrites, that CRM's own link. An importing subscriber
+# would find links injected across CRMs the sender has nothing to do with.
+# event_link_create and do_link_create have always checked this; the import and
+# sync paths did not.
+def link_endpoints_bound(crm_id, source, target):
+	if not source or not target:
+		return False
+	if not mochi.db.exists("select 1 from objects where id=? and crm=?", source, crm_id):
+		return False
+	return mochi.db.exists("select 1 from objects where id=? and crm=?", target, crm_id)
+
+# attachment_delete keys on the attachment id alone, across every CRM in this
+# database, so the id is not proof of anything on its own. Resolve the
+# attachment's own container and require it to sit in this CRM - an attachment
+# hangs off either an object or a comment.
+def attachment_in_crm(attachment_id, crm_id):
+	attachment = attachment_get(attachment_id)
+	container = attachment.get("object") if attachment else ""
+	if not container:
+		return False
+	if mochi.db.exists("select 1 from objects where id=? and crm=?", container, crm_id):
+		return True
+	return mochi.db.exists("select 1 from comments c join objects o on o.id=c.object where c.id=? and o.crm=?", container, crm_id)
 
 # ============================================================================
 # Templates
@@ -745,7 +809,7 @@ def get_templates(lang="en"):
 # resolve correctly. Missing template_id or absent labels dir means no
 # substitution — literal strings pass through unchanged (back-compat with
 # user-exported templates).
-def apply_template(crm_id, data=None, lang="en", template_id="crm"):
+def apply_template(crm_id, data=None, lang="en", template_id="crm", handle=None):
 	# Load template JSON from file if no data provided
 	if not data:
 		if not template_id or ".." in template_id or "/" in template_id:
@@ -758,35 +822,35 @@ def apply_template(crm_id, data=None, lang="en", template_id="crm"):
 
 	# Create classes
 	for t in data.get("classes", []):
-		row_merge("classes", ["crm", "id"], {"crm": crm_id, "id": t["id"], "name": substitute_labels(t["name"], labels), "rank": t.get("rank", 0), "title": t.get("title", "title")})
+		row_merge("classes", ["crm", "id"], {"crm": crm_id, "id": t["id"], "name": substitute_labels(t["name"], labels), "rank": t.get("rank", 0), "title": t.get("title", "title")}, handle)
 
 	# Set hierarchy for each class
 	for cls_id, parents in data.get("hierarchy", {}).items():
 		for parent in parents:
-			row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": cls_id, "parent": parent})
+			row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": cls_id, "parent": parent}, handle)
 
 	# Create fields for each class
 	for cls_id, fields in data.get("fields", {}).items():
 		for f in fields:
-			row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": cls_id, "id": f["id"], "name": substitute_labels(f["name"], labels), "fieldtype": f.get("fieldtype", "text"), "flags": f.get("flags", ""), "multi": f.get("multi", 0), "rank": f.get("rank", 0), "min": f.get("min", ""), "max": f.get("max", ""), "pattern": f.get("pattern", ""), "minlength": f.get("minlength", 0), "maxlength": f.get("maxlength", 0), "prefix": f.get("prefix", ""), "suffix": f.get("suffix", ""), "format": f.get("format", ""), "card": f.get("card", 0), "position": f.get("position", ""), "rows": f.get("rows", 1)})
+			row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": cls_id, "id": f["id"], "name": substitute_labels(f["name"], labels), "fieldtype": f.get("fieldtype", "text"), "flags": f.get("flags", ""), "multi": f.get("multi", 0), "rank": f.get("rank", 0), "min": f.get("min", ""), "max": f.get("max", ""), "pattern": f.get("pattern", ""), "minlength": f.get("minlength", 0), "maxlength": f.get("maxlength", 0), "prefix": f.get("prefix", ""), "suffix": f.get("suffix", ""), "format": f.get("format", ""), "card": f.get("card", 0), "position": f.get("position", ""), "rows": f.get("rows", 1)}, handle)
 
 	# Create options for each class's enumerated fields
 	for cls_id, class_options in data.get("options", {}).items():
 		for field_id, field_options in class_options.items():
 			for opt in field_options:
-				row_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": cls_id, "field": field_id, "id": opt["id"], "name": substitute_labels(opt["name"], labels), "colour": opt.get("colour", "#94a3b8"), "icon": opt.get("icon", ""), "rank": opt.get("rank", 0)})
+				row_merge("options", ["crm", "class", "field", "id"], {"crm": crm_id, "class": cls_id, "field": field_id, "id": opt["id"], "name": substitute_labels(opt["name"], labels), "colour": opt.get("colour", "#94a3b8"), "icon": opt.get("icon", ""), "rank": opt.get("rank", 0)}, handle)
 
 	# Create views
 	for i, v in enumerate(data.get("views", [])):
-		row_merge("views", ["crm", "id"], {"crm": crm_id, "id": v["id"], "name": substitute_labels(v["name"], labels), "viewtype": v.get("viewtype", "board"), "filter": v.get("filter", ""), "columns": v.get("columns", ""), "rows": v.get("rows", ""), "sort": v.get("sort", ""), "direction": v.get("direction", "asc"), "rank": i, "border": v.get("border", "")})
+		row_merge("views", ["crm", "id"], {"crm": crm_id, "id": v["id"], "name": substitute_labels(v["name"], labels), "viewtype": v.get("viewtype", "board"), "filter": v.get("filter", ""), "columns": v.get("columns", ""), "rows": v.get("rows", ""), "sort": v.get("sort", ""), "direction": v.get("direction", "asc"), "rank": i, "border": v.get("border", "")}, handle)
 		# Add view classes if specified
 		for vclass in v.get("classes", []):
-			row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": v["id"], "class": vclass})
+			row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": v["id"], "class": vclass}, handle)
 		# Add fields
 		fields = v.get("fields", "").split(",")
 		for j, field in enumerate(fields):
 			if field.strip():
-				row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": v["id"], "field": field.strip(), "rank": j})
+				row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": v["id"], "field": field.strip(), "rank": j}, handle)
 
 # Snapshot the crm design - classes, fields, options, hierarchy, and views -
 # as template JSON. The snapshot contains literal strings (whatever the CRM
@@ -939,14 +1003,117 @@ def action_design_export(a):
 # unchanged because substitute_labels short-circuits when no placeholder is
 # present.
 def design_replace(crm_id, data, lang, template_id):
-	row_remove("view_fields", ["crm", "view", "field"], "crm=?", [crm_id])
-	row_remove("view_classes", ["crm", "view", "class"], "crm=?", [crm_id])
-	row_remove("views", ["crm", "id"], "crm=?", [crm_id])
-	row_remove("options", ["crm", "class", "field", "id"], "crm=?", [crm_id])
-	row_remove("fields", ["crm", "class", "id"], "crm=?", [crm_id])
-	row_remove("hierarchy", ["crm", "class", "parent"], "crm=?", [crm_id])
-	row_remove("classes", ["crm", "id"], "crm=?", [crm_id])
-	apply_template(crm_id, data, lang, template_id)
+	# One unit: the deletes strip the design and apply_template puts the new one
+	# back, so anything that fails in between must undo the deletes rather than
+	# leave a CRM with no fields, options, views or hierarchy. An uncommitted
+	# handle is rolled back when the Starlark thread tears down, so an error
+	# path needs no explicit rollback. Callers should still reject a design that
+	# cannot apply (design_invalid, design_classes_missing) so the user gets a
+	# reason instead of a failed write.
+	handle = mochi.db.transaction()
+	row_remove("view_fields", ["crm", "view", "field"], "crm=?", [crm_id], handle)
+	row_remove("view_classes", ["crm", "view", "class"], "crm=?", [crm_id], handle)
+	row_remove("views", ["crm", "id"], "crm=?", [crm_id], handle)
+	row_remove("options", ["crm", "class", "field", "id"], "crm=?", [crm_id], handle)
+	row_remove("fields", ["crm", "class", "id"], "crm=?", [crm_id], handle)
+	row_remove("hierarchy", ["crm", "class", "parent"], "crm=?", [crm_id], handle)
+	# Classes are the one design table that objects reference, and SQLite checks
+	# that foreign key as each row is deleted rather than at commit - so a class
+	# still holding records cannot be dropped and re-created, even by a design
+	# that keeps it. Remove only the classes the new design drops; apply_template
+	# upserts the ones it keeps. Callers refuse a design that drops a class still
+	# in use (design_classes_missing), so nothing removed here holds records.
+	keep = [c["id"] for c in data.get("classes", [])] if type(data) == "dict" else []
+	for row in handle.rows("select id from classes where crm=?", crm_id) or []:
+		if row["id"] not in keep:
+			row_remove("classes", ["crm", "id"], "crm=? and id=?", [crm_id, row["id"]], handle)
+	apply_template(crm_id, data, lang, template_id, handle)
+	handle.commit()
+
+# A design is arbitrary user-supplied JSON, and apply_template indexes into it
+# by shape - classes and views as lists, hierarchy, fields and options as dicts
+# keyed by class - so the wrong shape raises part-way through the replacement.
+# Returns an error key, or None when the design can be applied.
+def design_invalid(data):
+	if type(data) != "dict":
+		return "errors.invalid_design"
+	if type(data.get("classes", [])) != "list" or type(data.get("views", [])) != "list":
+		return "errors.invalid_design"
+	for key in ["hierarchy", "fields", "options"]:
+		if type(data.get(key, {})) != "dict":
+			return "errors.invalid_design"
+	for c in data.get("classes", []):
+		if type(c) != "dict" or type(c.get("id")) != "string" or type(c.get("name")) != "string":
+			return "errors.invalid_design"
+	for parents in data.get("hierarchy", {}).values():
+		if type(parents) not in ["list", "tuple"]:
+			return "errors.invalid_design"
+	for fields in data.get("fields", {}).values():
+		if type(fields) not in ["list", "tuple"]:
+			return "errors.invalid_design"
+		for f in fields:
+			if type(f) != "dict" or type(f.get("id")) != "string" or type(f.get("name")) != "string":
+				return "errors.invalid_design"
+	for class_options in data.get("options", {}).values():
+		if type(class_options) != "dict":
+			return "errors.invalid_design"
+		for field_options in class_options.values():
+			if type(field_options) not in ["list", "tuple"]:
+				return "errors.invalid_design"
+			for opt in field_options:
+				if type(opt) != "dict" or type(opt.get("id")) != "string" or type(opt.get("name")) != "string":
+					return "errors.invalid_design"
+	for v in data.get("views", []):
+		if type(v) != "dict" or type(v.get("id")) != "string" or type(v.get("name")) != "string":
+			return "errors.invalid_design"
+		if type(v.get("classes", [])) not in ["list", "tuple"]:
+			return "errors.invalid_design"
+		if type(v.get("fields", "")) != "string":
+			return "errors.invalid_design"
+	return None
+
+# objects carries a foreign key to classes, so a class that still holds records
+# cannot be deleted. Name the classes the incoming design drops while they are
+# still in use, so the caller can refuse before writing anything.
+def design_classes_missing(crm_id, data):
+	incoming = [c["id"] for c in data.get("classes", [])]
+	missing = []
+	for row in mochi.db.rows("select distinct class from objects where crm=?", crm_id) or []:
+		if row["class"] not in incoming:
+			missing.append(row["class"])
+	return sorted(missing, key=lambda name: mochi.text.sortkey(name))
+
+# The design tables carry foreign keys - fields and hierarchy to classes,
+# options to fields, view classes to classes - so a design that references a
+# class or field it does not define fails mid-replacement with a raw
+# constraint error. Name the dangling references so the caller can refuse
+# before writing anything. Hierarchy parents and view field lists are not
+# checked: no foreign key covers them, and an export may legitimately carry
+# stale entries there.
+def design_references_missing(data):
+	classes = [c["id"] for c in data.get("classes", [])]
+	fields = {}
+	for cls, class_fields in data.get("fields", {}).items():
+		fields[cls] = [f["id"] for f in class_fields]
+	missing = []
+	for cls in data.get("hierarchy", {}):
+		if cls not in classes:
+			missing.append("hierarchy[" + cls + "]")
+	for cls in data.get("fields", {}):
+		if cls not in classes:
+			missing.append("fields[" + cls + "]")
+	for cls, class_options in data.get("options", {}).items():
+		if cls not in classes:
+			missing.append("options[" + cls + "]")
+			continue
+		for field in class_options:
+			if field not in fields.get(cls, []):
+				missing.append("options[" + cls + "][" + field + "]")
+	for v in data.get("views", []):
+		for cls in v.get("classes", []):
+			if type(cls) != "string" or cls not in classes:
+				missing.append("views[" + v["id"] + "][" + str(cls) + "]")
+	return sorted(missing, key=lambda name: mochi.text.sortkey(name))
 
 def action_design_import(a):
 
@@ -984,17 +1151,33 @@ def action_design_import(a):
 	# Load design data from JSON string or from built-in template file
 	data = None
 	if data_str:
-		data = json.decode(data_str)
+		data = json.decode(data_str, None)
 	elif template_id:
 		templates = get_templates(lang)
 		if template_id not in templates:
 			a.error.label(400, "errors.invalid_template")
 			return
 		content = mochi.app.asset.read("templates/" + template_id + ".json")
-		data = json.decode(str(content))
+		data = json.decode(str(content), None)
 		template_version = templates[template_id]["version"]
 	else:
 		a.error.label(400, "errors.design_data_or_template_is_required")
+		return
+
+	# Everything that can refuse this design refuses it before the first write.
+	problem = design_invalid(data)
+	if problem:
+		a.error.label(400, problem)
+		return
+
+	dangling = design_references_missing(data)
+	if dangling:
+		a.error.label(400, "errors.design_reference_unknown", references=", ".join(dangling))
+		return
+
+	missing = design_classes_missing(crm_id, data)
+	if missing:
+		a.error.label(400, "errors.design_class_in_use", classes=", ".join(missing))
 		return
 
 	design_replace(crm_id, data, lang, template_id)
@@ -1316,6 +1499,24 @@ def action_data_import(a):
 	# the file itself - which it cannot do once the attachments are archive
 	# entries rather than JSON.
 	if a.input("design") and type(data.get("design")) == "dict":
+		problem = design_invalid(data["design"])
+		if problem:
+			if archive:
+				mochi.file.delete(archive)
+			a.error.label(400, problem)
+			return
+		dangling = design_references_missing(data["design"])
+		if dangling:
+			if archive:
+				mochi.file.delete(archive)
+			a.error.label(400, "errors.design_reference_unknown", references=", ".join(dangling))
+			return
+		missing = design_classes_missing(crm_id, data["design"])
+		if missing:
+			if archive:
+				mochi.file.delete(archive)
+			a.error.label(400, "errors.design_class_in_use", classes=", ".join(missing))
+			return
 		design_replace(crm_id, data["design"], user_language(a), "")
 
 	objects = data.get("objects") or []
@@ -1463,6 +1664,8 @@ def action_data_import(a):
 	for l in links:
 		source = remap.get(l["source"], l["source"])
 		target = remap.get(l["target"], l["target"])
+		if not link_endpoints_bound(crm_id, source, target):
+			continue
 		row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": source, "target": target, "linktype": str(l["linktype"]), "created": safe_int(l.get("created")) or now})
 
 	if archive:
@@ -1748,6 +1951,16 @@ def action_crm_resync(a):
 # execute pair-replicates as one statement, so the user's own hosts purge
 # identically. Children before parents so the foreign keys stay satisfied.
 def purge_crm(crm_id):
+	# Attachments first, and inside purge rather than at one call site: they are
+	# addressed through the comment and object rows below, so clearing them
+	# afterwards finds nothing. Only action_crm_delete used to do this, which
+	# left the other three teardown paths - unsubscribe, the owner's deleted
+	# event, and access revocation - holding every object attachment and its
+	# bytes for good. For access revocation that defeats the point of the
+	# operation: the grant is withdrawn and the files stay on disk.
+	delete_crm_comment_attachments(crm_id)
+	for obj in (mochi.db.rows("select id from objects where crm=?", crm_id) or []):
+		attachment_clear(obj["id"])
 	mochi.db.execute("delete from watchers where object in (select id from objects where crm=?)", crm_id)
 	mochi.db.execute("delete from activity where object in (select id from objects where crm=?)", crm_id)
 	mochi.db.execute("delete from comments where object in (select id from objects where crm=?)", crm_id)
@@ -1784,9 +1997,7 @@ def action_crm_delete(a):
 		a.error.label(403, "errors.access_denied")
 		return
 
-	delete_crm_comment_attachments(crm_id)
-	for obj in (mochi.db.rows("select id from objects where crm=?", crm_id) or []):
-		attachment_clear(obj["id"])
+	# Attachment cleanup now lives in purge_crm, so every teardown path gets it.
 	# Notify subscribers that crm is being deleted (before purging the
 	# subscriber list). Send from the CRM entity so receivers can verify the
 	# sender, matching broadcast_event and the verify_subscription check.
@@ -2575,6 +2786,11 @@ def action_object_delete(a):
 			"crm": crm_id, "object": object_id,
 		})
 		if result and object_id:
+			# Attachments too. The owner's path clears them in
+			# delete_object_cascade; this branch mirrors that cleanup by hand
+			# and had every table but this one, so a subscriber's copy of the
+			# object went away while its attachment rows and files stayed.
+			attachment_clear(object_id)
 			row_remove("values", ["object", "field"], "object=?", [object_id])
 			row_remove("watchers", ["object", "user"], "object=?", [object_id])
 			delete_object_comments(object_id, crm_id)
@@ -3724,6 +3940,10 @@ def action_attachment_delete(a):
 			return
 
 	if not attachment_exists(attachment_id):
+		a.error.label(404, "errors.attachment_not_found")
+		return
+
+	if not attachment_in_crm(attachment_id, crm_id):
 		a.error.label(404, "errors.attachment_not_found")
 		return
 
@@ -5352,10 +5572,10 @@ def action_unsubscribe(a):
 
 	# Delete all local data for this remote crm — physical purge, so a later
 	# re-subscribe imports cleanly (see purge_crm).
-	delete_crm_comment_attachments(crm_id)
+	# purge_crm clears the attachments, object and comment alike.
 	purge_crm(crm_id)
 	# Send P2P unsubscribe message
-	mochi.message.send(p2p_headers(user_id, crm_id, "unsubscribe"), {})
+	registration_send(crm["server"], p2p_headers(user_id, crm_id, "unsubscribe"), {})
 
 	return {"data": {"success": True}}
 
@@ -5586,6 +5806,8 @@ def insert_schema(crm_id, schema):
 	for l in (schema.get("links") or []):
 		# (crm, source, target, linktype) is the full key; links are
 		# created/deleted, never edited in place.
+		if not link_endpoints_bound(crm_id, l.get("source", ""), l.get("target", "")):
+			continue
 		row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": l.get("source", ""), "target": l.get("target", ""), "linktype": l.get("linktype", ""), "created": 0})
 
 	# Reconcile deletions: the dump is the owner's canonical full state, so
@@ -5868,7 +6090,7 @@ def event_deleted(e):
 
 	# Delete all local data for this remote crm — physical purge, so a later
 	# re-share imports cleanly (see purge_crm).
-	delete_crm_comment_attachments(crm_id)
+	# purge_crm clears the attachments, object and comment alike.
 	purge_crm(crm_id)
 
 # Handle notification that the CRM owner has revoked our access. Sent
@@ -5884,7 +6106,7 @@ def event_access_revoke(e):
 	if not crm:
 		return
 
-	delete_crm_comment_attachments(crm_id)
+	# purge_crm clears the attachments, object and comment alike.
 	purge_crm(crm_id)
 # ============================================================================
 # Content Sync Event Handlers (received by subscribers)
@@ -5971,6 +6193,8 @@ def event_sync_batch(e):
 
 	# Process links
 	for l in (e.content("links") or []):
+		if not link_endpoints_bound(crm_id, l["source"], l["target"]):
+			continue
 		row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": l["source"], "target": l["target"], "linktype": l.get("linktype", "relates"), "created": l.get("created", 0)})
 
 	# Mark the subscription's initial bulk content as arrived so the board stops
@@ -6279,7 +6503,12 @@ def event_comment_submit(e):
 	now = mochi.time.now()
 	if not mochi.db.exists("select 1 from comments where id=?", comment_id):
 		row_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": sender, "name": name, "content": content.strip(), "created": now, "edited": 0})
-	# Store attachment metadata from the subscriber's event
+	# The existence test above is idempotence for a redelivered submission, and
+	# on its own it is also the way in: an id that already belongs to another
+	# CRM's comment skips the insert and then names that comment below. The
+	# object was checked against this CRM, so agreeing with it is proof.
+	if not comment_bound(comment_id, object_id):
+		return
 	# Store the submission's attachment metadata and take the bytes in from
 	# the sender now, while it is online; a pull that fails heals on serve.
 	attachments = e.content("attachments") or []
@@ -6390,6 +6619,11 @@ def event_comment_create(e):
 		return
 	if not mochi.db.exists("select 1 from comments where id=?", comment_id):
 		row_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": e.content("parent") or "", "author": e.content("author") or "", "name": e.content("name") or "", "content": e.content("content") or "", "created": e.content("created") or mochi.time.now(), "edited": 0})
+	# The object was checked against this CRM; the id was not. Without this the
+	# owner of a CRM we subscribe to names a comment in a different CRM, and its
+	# attachments then resolve to bytes held by that owner.
+	if not comment_bound(comment_id, object_id):
+		return
 	# Store attachment metadata from the event
 	attachments = e.content("attachments") or []
 	if attachments:
@@ -6726,6 +6960,29 @@ def event_field_delete(e):
 		mochi.websocket.write(fp, {"type": "field/delete", "crm": crm_id, "class_id": class_id, "id": field_id})
 
 # Field reorder
+def event_view_reorder(e):
+	"""View order from the owner.
+
+	action_view_reorder has always broadcast this, but no handler was declared
+	for it, so every subscriber dropped the event and view order converged
+	nowhere - the owner reordered and nobody else saw it. The two sibling
+	reorders beside this one were wired up correctly."""
+	crm_id = verify_subscription(e)
+	if not crm_id:
+		return
+	order = e.content("order")
+	# Sequences arrive from the P2P decode as a tuple, not a list - checking
+	# for "list" alone silently dropped every real event.
+	if type(order) not in ["list", "tuple"]:
+		return
+	for i, view_id in enumerate(order):
+		if type(view_id) != "string" or not view_id:
+			continue
+		row_set("views", ["crm", "id"], "crm=? and id=?", [crm_id, view_id], {"rank": i})
+	fp = mochi.entity.fingerprint(crm_id)
+	if fp:
+		mochi.websocket.write(fp, {"type": "view/reorder", "crm": crm_id})
+
 def event_field_reorder(e):
 	crm_id = verify_subscription(e)
 	if not crm_id:
@@ -6955,6 +7212,13 @@ def do_comment_create(crm_id, crm, params, user_id, user_name):
 	now = mochi.time.now()
 	if not mochi.db.exists("select 1 from comments where id=?", comment_id):
 		row_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": user_id, "name": user_name, "content": content.strip(), "created": now, "edited": 0})
+	# The existence test above is global, so a supplied id that already belongs
+	# to another CRM's comment skips the insert - and the attachment_list below
+	# would then read THAT comment's metadata and broadcast it here. The object
+	# was checked against this CRM, so agreeing with it is proof. Same guard as
+	# event_comment_submit and event_comment_create.
+	if not comment_bound(comment_id, object_id):
+		return {"error": "errors.comment_not_found", "code": 404}
 	row_set("objects", ["id"], "id=?", [object_id], {"updated": now})
 	log_activity(object_id, user_id, "commented")
 	# Auto-watch commenter on owner's server
@@ -7478,6 +7742,11 @@ def do_attachment_delete(crm_id, crm, params, user_id):
 		if not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
 			return {"error": "errors.object_not_found", "code": 404}
 	if not attachment_exists(attachment_id):
+		return {"error": "errors.attachment_not_found", "code": 404}
+	# Unconditional, not an else: an object the caller does hold says nothing
+	# about the attachment they named, so supplying one must not stand in for
+	# binding the attachment itself.
+	if not attachment_in_crm(attachment_id, crm_id):
 		return {"error": "errors.attachment_not_found", "code": 404}
 	attachment_delete(attachment_id)
 	broadcast_event(crm_id, "attachment/remove", {
