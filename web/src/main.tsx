@@ -12,8 +12,8 @@ import {
   createQueryClient,
   SearchProvider,
   ThemeProvider,
-  getAppPath,
-  getRouterBasepath,
+  getAppBasepath,
+  createAppHistory,
   I18nProvider,
   type Catalogs,
 } from "@mochi/web";
@@ -206,19 +206,16 @@ const catalogs: Catalogs = {
 
 const queryClient = createQueryClient();
 
-// Use app path as basepath, ignoring entity fingerprint.
-// Routes use $crmId to handle entity fingerprints — including the fingerprint
-// in the basepath would cause links to double it (e.g. /crms/<fp>/<fp>/...).
-function getBasepath(): string {
-  const appPath = getAppPath()
-  if (appPath) return appPath + "/"
-  return getRouterBasepath()
-}
-
+// getAppBasepath keeps the entity fingerprint out of the basepath — the routes
+// carry it as $crmId — and follows the domain route path when the page is
+// served through one. createAppHistory is what lets an entity domain route
+// leave the fingerprint out of the URL entirely; it is undefined everywhere
+// else, which leaves the router on its default history.
 const router = createRouter({
   routeTree,
   context: { queryClient },
-  basepath: getBasepath(),
+  basepath: getAppBasepath(),
+  history: createAppHistory(),
   defaultPreload: false,
 });
 
