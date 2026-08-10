@@ -14,19 +14,19 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: ../../../lib/web/src/lib/error-normalizer.ts:236
+#: ../../../lib/web/src/lib/error-normalizer.ts:244
 msgid "Please check your internet connection and try again."
 msgstr "Gaan asseblief jou internetverbinding na en probeer weer."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:302
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:293
 msgid " or "
 msgstr " of "
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:228
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:229
 msgid "(edited)"
 msgstr "(gewysig)"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:212
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:213
 msgid "(expand)"
 msgstr "(uitbrei)"
 
@@ -104,6 +104,7 @@ msgstr "{selectedCount, plural, one {# gekies} other {# gekies}}"
 msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
 msgstr "{selectedCount, plural, one {Massa-aksies vir # gekose {entityName}} other {Massa-aksies vir # gekose {manyName}}}"
 
+#: ../../../lib/web/src/components/attachment-composer.tsx:150
 #: ../../../lib/web/src/components/ui/upload-progress.tsx:52
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} van {totalLabel}"
@@ -121,11 +122,11 @@ msgstr "{unreadCount, plural, one {Open kieslys (# ongeleeste kennisgewing)} oth
 msgid "+{0} nested"
 msgstr "+{0} geneste"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:209
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:210
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} meer antwoorde"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:208
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:209
 msgid "1 reply"
 msgstr "1 antwoord"
 
@@ -203,7 +204,7 @@ msgstr "Aktiwiteit"
 msgid "Add"
 msgstr "Voeg by"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:360
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:363
 msgid "Add a comment..."
 msgstr "Voeg 'n kommentaar by..."
 
@@ -350,8 +351,12 @@ msgstr "Enigiemand"
 msgid "Anyone who is logged in"
 msgstr "Enigiemand wat aangemeld is"
 
+#: ../../../lib/web/src/components/options-menu.tsx:249
+msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
+msgstr ""
+
 #. placeholder {0}: deleteTarget?.name
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:271
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:308
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Is jy seker jy wil \"{0}\" verwyder?"
 
@@ -363,7 +368,7 @@ msgstr "Is jy seker jy wil \"{title}\" verwyder? Hierdie aksie kan nie ongedaan 
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Is jy seker jy wil die \"{name}\"-kolom verwyder? Dit kan nie ongedaan gemaak word nie."
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:485
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:490
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "Is jy seker jy wil hierdie kommentaar verwyder? Dit sal ook alle antwoorde verwyder."
 
@@ -383,13 +388,13 @@ msgstr "Stygend"
 msgid "Ascending"
 msgstr "Oplopend"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:398
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:403
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:405
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:410
 msgid "Attach comment files"
 msgstr "Heg kommentaarlêers aan"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:439
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:444
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:449
 msgid "Attach reply files"
 msgstr "Heg antwoordlêers aan"
 
@@ -398,7 +403,7 @@ msgstr "Heg antwoordlêers aan"
 msgid "Authenticated users"
 msgstr "Geverifieerde gebruikers"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:315
+#: ../../../lib/web/src/components/step-up-dialog.tsx:329
 msgid "Authenticator code"
 msgstr "Verifikasiekode"
 
@@ -477,11 +482,11 @@ msgid "Can be child of"
 msgstr "Kan kind wees van"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:249
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:250
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:169
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:186
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
-#: ../../../lib/web/src/components/step-up-dialog.tsx:363
+#: ../../../lib/web/src/components/step-up-dialog.tsx:377
 #: ../../../lib/web/src/components/travelling-picker.tsx:308
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:249
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:132
@@ -495,13 +500,13 @@ msgstr "Kan kind wees van"
 msgid "Cancel"
 msgstr "Kanselleer"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:415
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:420
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:422
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:427
 msgid "Cancel comment"
 msgstr "Kanselleer kommentaar"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:455
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:460
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:465
 msgid "Cancel reply"
 msgstr "Kanselleer antwoord"
 
@@ -590,8 +595,8 @@ msgstr "Maak keuse skoon"
 msgid "Clear selection (Escape)"
 msgstr "Maak keuse skoon (Escape)"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:485
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:490
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:478
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:483
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
@@ -662,8 +667,8 @@ msgstr "Kom binnekort!"
 msgid "Command Palette"
 msgstr "Opdragpalet"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:330
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:337
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:331
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:338
 msgid "Comment actions"
 msgstr "Kommentaaraksies"
 
@@ -726,7 +731,7 @@ msgstr "Kontekstuele inligting en besonderhede."
 msgid "Continue"
 msgstr "Gaan voort"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:352
+#: ../../../lib/web/src/components/step-up-dialog.tsx:366
 msgid "Continue with {label}"
 msgstr "Gaan voort met {label}"
 
@@ -750,22 +755,22 @@ msgstr "Kon nie hierdie dokument laai nie. Probeer asseblief later weer."
 msgid "Couldn't load notifications"
 msgstr "Kon nie kennisgewings laai nie"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:184
+#: ../../../lib/web/src/components/step-up-dialog.tsx:193
 msgid "Couldn't send the code. Please try again."
 msgstr "Kon nie die kode stuur nie. Probeer asseblief weer."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:136
+#: ../../../lib/web/src/components/step-up-dialog.tsx:145
 msgid "Couldn't start re-authentication. Please try again."
 msgstr "Kon nie herverifikasie begin nie. Probeer asseblief weer."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:221
+#: ../../../lib/web/src/components/step-up-dialog.tsx:235
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Kon nie met daardie rekening verifieer nie. Probeer asseblief weer."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:564
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:703
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:475
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:647
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:468
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:623
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Skep"
@@ -812,7 +817,7 @@ msgstr "Geskep"
 msgid "Creating CRM..."
 msgstr "CRM word geskep..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:647
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:623
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
 #: src/features/crms/components/create-crm-dialog.tsx:339
 msgid "Creating..."
@@ -911,19 +916,19 @@ msgstr "Verstek sortering"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:583
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:644
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:318
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:361
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:486
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:173
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:178
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:227
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:272
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:319
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:362
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:196
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:201
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:250
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:309
 #: src/features/objects/components/object-detail-panel.tsx:519
 #: src/routes/_authenticated/$crmId_.settings.tsx:343
 msgid "Delete"
 msgstr "Verwyder"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:270
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:307
 msgid "Delete attachment"
 msgstr "Verwyder aanhangsel"
 
@@ -935,7 +940,7 @@ msgstr "Verwyder klas"
 msgid "Delete column"
 msgstr "Verwyder kolom"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:484
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:489
 msgid "Delete comment"
 msgstr "Verwyder kommentaar"
 
@@ -1031,11 +1036,11 @@ msgstr "Rigting"
 msgid "Directory"
 msgstr "Gids"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:304
+#: ../../../lib/web/src/components/comment-composer.tsx:284
 msgid "Discard"
 msgstr "Gooi weg"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:302
+#: ../../../lib/web/src/components/comment-composer.tsx:282
 msgid "Discard draft?"
 msgstr "Konsep weggooi?"
 
@@ -1069,7 +1074,7 @@ msgstr "Klaar"
 msgid "Double click on a column to add content"
 msgstr "Dubbelklik op 'n kolom om inhoud by te voeg"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:214
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:237
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 msgid "Download"
@@ -1101,8 +1106,8 @@ msgstr "Dupliseer"
 msgid "Dyslexia-friendly"
 msgstr "Diksleksie-vriendelik"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:307
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:352
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:308
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:353
 msgid "Edit"
 msgstr "Wysig"
 
@@ -1144,15 +1149,15 @@ msgstr "Wysig aansig"
 msgid "Email"
 msgstr "E-pos"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:289
+#: ../../../lib/web/src/components/step-up-dialog.tsx:303
 msgid "Email code"
 msgstr "E-poskode"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:299
+#: ../../../lib/web/src/components/step-up-dialog.tsx:313
 msgid "Enter the code from your email"
 msgstr "Voer die kode uit jou e-pos in"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:324
+#: ../../../lib/web/src/components/step-up-dialog.tsx:338
 msgid "Enter your authenticator code"
 msgstr "Voer jou verifikator-kode in"
 
@@ -1221,7 +1226,7 @@ msgid "Failed to create field"
 msgstr "Kon nie veld skep nie"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
-#: ../../../lib/web/src/components/options-menu.tsx:99
+#: ../../../lib/web/src/components/options-menu.tsx:101
 #: src/routes/_authenticated/$crmId/index.tsx:190
 msgid "Failed to create link"
 msgstr "Kon nie skakel skep nie"
@@ -1234,11 +1239,11 @@ msgstr "Kon nie opsie skep nie"
 msgid "Failed to create view"
 msgstr "Kon nie aansig skep nie"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:110
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:128
 msgid "Failed to delete attachment"
 msgstr "Kon nie aanhangsel verwyder nie"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:207
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:210
 msgid "Failed to delete comment"
 msgstr "Kon nie kommentaar verwyder nie"
 
@@ -1265,7 +1270,7 @@ msgstr "Kon nie data uitvoer nie"
 msgid "Failed to export design"
 msgstr "Kon nie ontwerp uitvoer nie"
 
-#: ../../../lib/web/src/components/options-menu.tsx:123
+#: ../../../lib/web/src/components/options-menu.tsx:125
 msgid "Failed to get RSS token"
 msgstr "Kon nie RSS-token kry nie"
 
@@ -1308,11 +1313,15 @@ msgstr "Kon nie prent laai nie"
 msgid "Failed to load item"
 msgstr "Kon nie item laai nie"
 
+#: src/features/crms/components/recommended-crms.tsx:54
+msgid "Failed to load recommended CRMs"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
 msgid "Failed to load video"
 msgstr "Kon nie video laai nie"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:170
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:173
 msgid "Failed to post comment"
 msgstr "Kon nie kommentaar plaas nie"
 
@@ -1337,9 +1346,13 @@ msgstr "Kon nie velde herrangskik nie"
 msgid "Failed to reorder views"
 msgstr "Kon nie aansigte herrangskik nie"
 
-#: ../../../lib/web/src/components/options-menu.tsx:133
+#: ../../../lib/web/src/components/options-menu.tsx:136
 msgid "Failed to revoke RSS access"
 msgstr "Kon nie RSS-toegang herroep nie"
+
+#: src/features/crms/components/inline-crm-search.tsx:85
+msgid "Failed to search CRMs"
+msgstr ""
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:257
 msgid "Failed to send verification code"
@@ -1349,8 +1362,8 @@ msgstr "Kon nie verifikasiekode stuur nie"
 msgid "Failed to set access level"
 msgstr "Kon nie toegangsvlak stel nie"
 
-#: src/features/crms/components/inline-crm-search.tsx:116
-#: src/features/crms/components/recommended-crms.tsx:65
+#: src/features/crms/components/inline-crm-search.tsx:65
+#: src/features/crms/components/recommended-crms.tsx:42
 #: src/routes/_authenticated/find.tsx:58
 msgid "Failed to subscribe"
 msgstr "Kon nie inteken nie"
@@ -1364,7 +1377,7 @@ msgstr "Kon nie uitteken nie"
 msgid "Failed to update access level"
 msgstr "Kon nie toegangsvlak opdateer nie"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:190
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:193
 msgid "Failed to update comment"
 msgstr "Kon nie kommentaar opdateer nie"
 
@@ -1376,7 +1389,7 @@ msgstr "Kon nie CRM opdateer nie"
 msgid "Failed to update field"
 msgstr "Kon nie veld opdateer nie"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:95
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:112
 msgid "Failed to upload attachment"
 msgstr "Kon nie aanhangsel oplaai nie"
 
@@ -1384,9 +1397,9 @@ msgstr "Kon nie aanhangsel oplaai nie"
 msgid "Fields"
 msgstr "Velde"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:133
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:150
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:153
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:173
 msgid "Files"
 msgstr "Lêers"
 
@@ -1625,7 +1638,7 @@ msgstr "Slegs letters, syfers, spasies en koppeltekens"
 msgid "Light"
 msgstr "Lig"
 
-#: ../../../lib/web/src/components/options-menu.tsx:190
+#: ../../../lib/web/src/components/options-menu.tsx:193
 #: src/routes/_authenticated/$crmId/index.tsx:1042
 msgid "Link"
 msgstr "Skakel"
@@ -1729,7 +1742,7 @@ msgstr "Min lengte"
 msgid "Mochi web"
 msgstr "Mochi-web"
 
-#: ../../../lib/web/src/components/options-menu.tsx:164
+#: ../../../lib/web/src/components/options-menu.tsx:167
 msgid "Moderation"
 msgstr ""
 
@@ -1737,8 +1750,8 @@ msgstr ""
 msgid "Monday"
 msgstr "Maandag"
 
-#: ../../../lib/web/src/components/options-menu.tsx:145
-#: ../../../lib/web/src/components/options-menu.tsx:152
+#: ../../../lib/web/src/components/options-menu.tsx:148
+#: ../../../lib/web/src/components/options-menu.tsx:155
 msgid "More options"
 msgstr "Meer opsies"
 
@@ -1770,7 +1783,7 @@ msgstr "Naam moet 1000 karakters of minder wees"
 msgid "Network error"
 msgstr "Netwerkfout"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:460
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:453
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/routes/_authenticated/$crmId/index.tsx:976
 #: src/routes/_authenticated/$crmId/index.tsx:993
@@ -1792,7 +1805,7 @@ msgstr "Nuwe spel"
 msgid "Next image"
 msgstr "Volgende prent"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:533
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:526
 msgid "No {parentClassNames} to add to"
 msgstr "Geen {parentClassNames} om by te voeg nie"
 
@@ -1808,7 +1821,7 @@ msgstr "Geen toegangsreëls gekonfigureer nie. Voeg reëls by om te beheer wie t
 msgid "No activity yet"
 msgstr "Nog geen aktiwiteit nie"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:450
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:457
 msgid "No comments yet"
 msgstr "Nog geen kommentaar nie"
 
@@ -1816,7 +1829,7 @@ msgstr "Nog geen kommentaar nie"
 msgid "No connected accounts"
 msgstr "Geen gekoppelde rekeninge nie"
 
-#: src/features/crms/components/inline-crm-search.tsx:164
+#: src/features/crms/components/inline-crm-search.tsx:84
 #: src/routes/_authenticated/find.tsx:90
 msgid "No CRMs found"
 msgstr "Geen CRMs gevind nie"
@@ -1829,7 +1842,7 @@ msgstr "Nog geen speletjies nie"
 msgid "No groups available"
 msgstr "Geen groepe beskikbaar nie"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:500
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:493
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Geen itemtipes kan nog geskep word nie. Skep eers die vereiste ouer-items."
 
@@ -1858,6 +1871,7 @@ msgstr "Geen plekke gevind nie"
 msgid "No profile"
 msgstr "Geen profiel"
 
+#: ../../../lib/web/src/components/inline-entity-search.tsx:74
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:82
 #: ../../../lib/web/src/components/search-entity-page.tsx:73
 msgid "No results found"
@@ -1895,9 +1909,9 @@ msgid "No views"
 msgstr "Geen aansigte"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:509
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:512
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:516
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:519
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:365
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:391
@@ -2049,17 +2063,17 @@ msgstr "Eienaar"
 msgid "Page {currentPage} of {totalPages}"
 msgstr "Bladsy {currentPage} van {totalPages}"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:508
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:501
 #: src/features/objects/components/object-detail-panel.tsx:428
 #: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "Parent"
 msgstr "Ouer"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:334
+#: ../../../lib/web/src/components/step-up-dialog.tsx:348
 msgid "Passkey"
 msgstr "Toegangsleutel"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:209
+#: ../../../lib/web/src/components/step-up-dialog.tsx:218
 msgid "Passkey verification failed. Please try again."
 msgstr "Wagsleutel-verifikasie het misluk. Probeer asseblief weer."
 
@@ -2080,7 +2094,7 @@ msgstr "Kies 'n datum"
 msgid "Please add one or more classes to the CRM design."
 msgstr "Voeg asseblief een of meer klasse by die CRM-ontwerp."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:99
+#: ../../../lib/web/src/components/comment-composer.tsx:84
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:323
 msgid "Please check your internet connection and try again."
@@ -2098,11 +2112,11 @@ msgstr "Probeer asseblief weer."
 msgid "Please wait a moment and try again."
 msgstr "Wag asseblief 'n oomblik en probeer weer."
 
-#: ../../../lib/web/src/components/options-menu.tsx:175
+#: ../../../lib/web/src/components/options-menu.tsx:178
 msgid "Posts"
 msgstr "Plasings"
 
-#: ../../../lib/web/src/components/options-menu.tsx:178
+#: ../../../lib/web/src/components/options-menu.tsx:181
 msgid "Posts and comments"
 msgstr "Plasings en kommentaar"
 
@@ -2157,8 +2171,7 @@ msgstr "Herregistreer jou wagwoordsleutels op hierdie bediener"
 msgid "Recommended"
 msgstr "Aanbeveel"
 
-#: src/features/crms/components/recommended-crms.tsx:111
-#: src/features/crms/components/recommended-crms.tsx:133
+#: src/features/crms/components/recommended-crms.tsx:53
 msgid "Recommended CRMs"
 msgstr "Aanbevole CRMs"
 
@@ -2187,9 +2200,9 @@ msgstr "Relatief (5m, 3h, 2d)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Relatief binne 24 uur, andersins absoluut"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:236
+#: ../../../lib/web/src/components/attachment-composer.tsx:171
+#: ../../../lib/web/src/components/attachment-composer.tsx:208
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:598
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 #: src/features/crms/components/create-crm-dialog.tsx:321
@@ -2265,13 +2278,13 @@ msgstr "Vervang ontwerp?"
 msgid "Replacing..."
 msgstr "Besig om te vervang..."
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:294
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:342
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:295
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:343
 msgid "Reply"
 msgstr "Antwoord"
 
 #. placeholder {0}: comment.name || comment.author
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:385
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:386
 msgid "Reply to {0}..."
 msgstr "Antwoord aan {0}..."
 
@@ -2279,7 +2292,7 @@ msgstr "Antwoord aan {0}..."
 msgid "Required"
 msgstr "Vereis"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:367
+#: ../../../lib/web/src/components/step-up-dialog.tsx:381
 msgid "Resend email"
 msgstr "Stuur e-pos weer"
 
@@ -2297,7 +2310,7 @@ msgstr "Stel {title} terug"
 msgid "Reset all settings to default values"
 msgstr "Stel alle instellings terug na verstekwaardes"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:253
+#: ../../../lib/web/src/components/attachment-composer.tsx:225
 msgid "Retry"
 msgstr "Probeer weer"
 
@@ -2305,9 +2318,17 @@ msgstr "Probeer weer"
 msgid "Retry CRMs load"
 msgstr "Probeer weer om CRM's te laai"
 
-#: ../../../lib/web/src/components/options-menu.tsx:181
+#: ../../../lib/web/src/components/options-menu.tsx:250
+msgid "Revoke"
+msgstr ""
+
+#: ../../../lib/web/src/components/options-menu.tsx:184
 msgid "Revoke access"
 msgstr "Herroep toegang"
+
+#: ../../../lib/web/src/components/options-menu.tsx:244
+msgid "Revoke RSS access?"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:362
 msgid "Right to Left"
@@ -2326,15 +2347,15 @@ msgstr "Rye groepeer volgens"
 msgid "Rows per page"
 msgstr "Rye per bladsy"
 
-#: ../../../lib/web/src/components/options-menu.tsx:131
+#: ../../../lib/web/src/components/options-menu.tsx:134
 msgid "RSS access revoked"
 msgstr "RSS-toegang herroep"
 
-#: ../../../lib/web/src/components/options-menu.tsx:171
+#: ../../../lib/web/src/components/options-menu.tsx:174
 msgid "RSS feed"
 msgstr "RSS-feed"
 
-#: ../../../lib/web/src/components/options-menu.tsx:121
+#: ../../../lib/web/src/components/options-menu.tsx:123
 msgid "RSS URL copied to clipboard"
 msgstr "RSS-URL na knipbord gekopieer"
 
@@ -2346,7 +2367,7 @@ msgstr "Verkope CRM"
 msgid "Saturday"
 msgstr "Saterdag"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:270
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
@@ -2381,7 +2402,7 @@ msgstr "Soek vir 'n plek"
 msgid "Search for a place..."
 msgstr "Soek 'n plek..."
 
-#: src/features/crms/components/inline-crm-search.tsx:138
+#: src/features/crms/components/inline-crm-search.tsx:83
 msgid "Search for CRMs..."
 msgstr "Soek vir CRM's..."
 
@@ -2411,6 +2432,7 @@ msgstr "Soek, kyk en sorteer hierdie aansig."
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:181
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:257
+#: ../../../lib/web/src/components/inline-entity-search.tsx:73
 #: ../../../lib/web/src/components/person-picker.tsx:324
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:81
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
@@ -2510,7 +2532,7 @@ msgstr "Gekies: <0>{0}</0>"
 msgid "Send again"
 msgstr "Stuur weer"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:307
+#: ../../../lib/web/src/components/step-up-dialog.tsx:321
 msgid "Send email"
 msgstr "Stuur e-pos"
 
@@ -2551,7 +2573,7 @@ msgstr "Toegang word gestel..."
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:126
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
-#: ../../../lib/web/src/components/options-menu.tsx:196
+#: ../../../lib/web/src/components/options-menu.tsx:199
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:164
 #: src/routes/_authenticated/$crmId_.settings.tsx:187
@@ -2612,7 +2634,7 @@ msgstr "Klein"
 msgid "Sort"
 msgstr "Sorteer"
 
-#: ../../../lib/web/src/components/options-menu.tsx:158
+#: ../../../lib/web/src/components/options-menu.tsx:161
 msgid "Sources"
 msgstr "Bronne"
 
@@ -2620,7 +2642,7 @@ msgstr "Bronne"
 msgid "Spacious"
 msgstr "Ruim"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:451
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:458
 msgid "Start the discussion by adding the first comment."
 msgstr "Begin die bespreking deur die eerste kommentaar by te voeg."
 
@@ -2637,35 +2659,37 @@ msgstr "Hou op kyk"
 msgid "Subject"
 msgstr "Onderwerp"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:431
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:440
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:438
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:447
 msgid "Submit comment"
 msgstr "Dien kommentaar in"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:470
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:475
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:480
 msgid "Submit reply"
 msgstr "Dien antwoord in"
 
+#: ../../../lib/web/src/components/inline-entity-search.tsx:76
+#: ../../../lib/web/src/components/recommended-entities.tsx:66
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:83
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
-#: src/features/crms/components/inline-crm-search.tsx:207
-#: src/features/crms/components/recommended-crms.tsx:167
+#: src/features/crms/components/inline-crm-search.tsx:86
+#: src/features/crms/components/recommended-crms.tsx:55
 msgid "Subscribe"
 msgstr "Teken in"
 
-#: src/features/crms/components/inline-crm-search.tsx:115
+#: src/features/crms/components/inline-crm-search.tsx:64
 #: src/routes/_authenticated/find.tsx:57
 msgid "Subscribed"
 msgstr "Ingeteken"
 
 #. placeholder {0}: crm.name
-#: src/features/crms/components/recommended-crms.tsx:64
+#: src/features/crms/components/recommended-crms.tsx:41
 msgid "Subscribed to {0}"
 msgstr "Ingeteken op {0}"
 
-#: src/features/crms/components/inline-crm-search.tsx:114
-#: src/features/crms/components/recommended-crms.tsx:63
+#: src/features/crms/components/inline-crm-search.tsx:63
+#: src/features/crms/components/recommended-crms.tsx:40
 #: src/routes/_authenticated/find.tsx:56
 msgid "Subscribing..."
 msgstr "Besig om in te teken..."
@@ -2716,7 +2740,7 @@ msgstr "Bepalings en voorwaardes"
 msgid "Text"
 msgstr "Teks"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/components/step-up-dialog.tsx:204
 msgid "That code is incorrect or has expired."
 msgstr "Daardie kode is verkeerd of het verval."
 
@@ -2905,7 +2929,7 @@ msgstr "Verenigde State"
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: ../../../lib/web/src/components/options-menu.tsx:211
+#: ../../../lib/web/src/components/options-menu.tsx:214
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
@@ -2928,7 +2952,7 @@ msgstr "Uitgeteken"
 msgid "Unsubscribing..."
 msgstr "Besig om uit te teken..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:286
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:277
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
 #: src/features/board/components/board-card.tsx:22
@@ -2952,8 +2976,8 @@ msgstr "Opgedateer"
 msgid "Updating access..."
 msgstr "Toegang word opgedateer..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:630
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:259
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:606
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:296
 msgid "Upload"
 msgstr "Laai op"
 
@@ -2966,7 +2990,7 @@ msgstr "Laai .json-lêer op"
 msgid "Upload progress"
 msgstr "Oplaaivordering"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:338
+#: ../../../lib/web/src/components/step-up-dialog.tsx:352
 msgid "Use your passkey"
 msgstr "Gebruik jou wagsleutel"
 
@@ -2988,7 +3012,7 @@ msgstr "Verifikasiekode gestuur"
 msgid "Verification failed"
 msgstr "Verifikasie het misluk"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:388
+#: ../../../lib/web/src/components/step-up-dialog.tsx:402
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
@@ -3099,14 +3123,14 @@ msgstr "Jy is heeltemal op hoogte!"
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Jou rekening is hierheen geskuif vanaf {source}. Totdat jy dit daar uitvee, kan boodskappe en kennisgewings albei bedieners bereik, word sommige van jou inhoud steeds vanaf die ou bediener bedien, en kan volgelinge 'n paar minute neem om jou hier te vind."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:295
+#: ../../../lib/web/src/components/comment-composer.tsx:275
 msgid "Your attachments will be lost."
 msgstr "Jou aanhegsels sal verlore gaan."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:293
+#: ../../../lib/web/src/components/comment-composer.tsx:273
 msgid "Your text and attachments will be lost."
 msgstr "Jou teks en aanhegsels sal verlore gaan."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:296
+#: ../../../lib/web/src/components/comment-composer.tsx:276
 msgid "Your text will be lost."
 msgstr "Jou teks sal verlore gaan."

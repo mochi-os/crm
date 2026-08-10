@@ -14,19 +14,19 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: ../../../lib/web/src/lib/error-normalizer.ts:236
+#: ../../../lib/web/src/lib/error-normalizer.ts:244
 msgid "Please check your internet connection and try again."
 msgstr "Интернет холболтоо шалгаад дахин оролдоно уу."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:302
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:293
 msgid " or "
 msgstr " эсвэл "
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:228
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:229
 msgid "(edited)"
 msgstr "(засварласан)"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:212
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:213
 msgid "(expand)"
 msgstr "(дэлгэх)"
 
@@ -104,6 +104,7 @@ msgstr "{selectedCount, plural, one {# сонгогдсон} other {# сонго
 msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
 msgstr "{selectedCount, plural, one {# сонгосон {entityName}-д зориулсан бөөнөөр үйлдэл} other {# сонгосон {manyName}-д зориулсан бөөнөөр үйлдэл}}"
 
+#: ../../../lib/web/src/components/attachment-composer.tsx:150
 #: ../../../lib/web/src/components/ui/upload-progress.tsx:52
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel}-с {sentLabel}"
@@ -121,11 +122,11 @@ msgstr "{unreadCount, plural, one {Цэс нээх (# уншаагүй мэдэ�
 msgid "+{0} nested"
 msgstr "+{0} үүрлэсэн"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:209
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:210
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} нэмэлт хариулт"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:208
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:209
 msgid "1 reply"
 msgstr "1 хариулт"
 
@@ -203,7 +204,7 @@ msgstr "Үйл ажиллагаа"
 msgid "Add"
 msgstr "Нэмэх"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:360
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:363
 msgid "Add a comment..."
 msgstr "Сэтгэгдэл нэмэх..."
 
@@ -350,8 +351,12 @@ msgstr "Хэн ч"
 msgid "Anyone who is logged in"
 msgstr "Нэвтэрсэн хэн ч"
 
+#: ../../../lib/web/src/components/options-menu.tsx:249
+msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
+msgstr ""
+
 #. placeholder {0}: deleteTarget?.name
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:271
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:308
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "\"{0}\"-г устгахдаа итгэлтэй байна уу?"
 
@@ -363,7 +368,7 @@ msgstr "\"{title}\"-г устгахдаа итгэлтэй байна уу? Эн
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "\"{name}\" баганыг устгахдаа итгэлтэй байна уу? Энэ үйлдлийг буцаах боломжгүй."
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:485
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:490
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "Энэ сэтгэгдлийг устгахдаа итгэлтэй байна уу? Энэ нь бүх хариултыг бас устгана."
 
@@ -383,13 +388,13 @@ msgstr "Өсөх"
 msgid "Ascending"
 msgstr "Өсөхөөр"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:398
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:403
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:405
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:410
 msgid "Attach comment files"
 msgstr "Сэтгэгдлийн файл хавсаргах"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:439
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:444
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:449
 msgid "Attach reply files"
 msgstr "Хариултын файл хавсаргах"
 
@@ -398,7 +403,7 @@ msgstr "Хариултын файл хавсаргах"
 msgid "Authenticated users"
 msgstr "Баталгаажсан хэрэглэгчид"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:315
+#: ../../../lib/web/src/components/step-up-dialog.tsx:329
 msgid "Authenticator code"
 msgstr "Authenticator код"
 
@@ -477,11 +482,11 @@ msgid "Can be child of"
 msgstr "Хүүхэд байж болох"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:249
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:250
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:169
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:186
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
-#: ../../../lib/web/src/components/step-up-dialog.tsx:363
+#: ../../../lib/web/src/components/step-up-dialog.tsx:377
 #: ../../../lib/web/src/components/travelling-picker.tsx:308
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:249
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:132
@@ -495,13 +500,13 @@ msgstr "Хүүхэд байж болох"
 msgid "Cancel"
 msgstr "Цуцлах"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:415
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:420
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:422
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:427
 msgid "Cancel comment"
 msgstr "Сэтгэгдлийг цуцлах"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:455
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:460
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:465
 msgid "Cancel reply"
 msgstr "Хариултыг цуцлах"
 
@@ -590,8 +595,8 @@ msgstr "Сонголтыг цэвэрлэх"
 msgid "Clear selection (Escape)"
 msgstr "Сонголтыг цэвэрлэх (Escape)"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:485
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:490
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:478
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:483
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
@@ -662,8 +667,8 @@ msgstr "Удахгүй!"
 msgid "Command Palette"
 msgstr "Командын самбар"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:330
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:337
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:331
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:338
 msgid "Comment actions"
 msgstr "Сэтгэгдлийн үйлдлүүд"
 
@@ -726,7 +731,7 @@ msgstr "Контекст мэдээлэл ба дэлгэрэнгүй."
 msgid "Continue"
 msgstr "Үргэлжлүүлэх"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:352
+#: ../../../lib/web/src/components/step-up-dialog.tsx:366
 msgid "Continue with {label}"
 msgstr "{label}-р үргэлжлүүлэх"
 
@@ -750,22 +755,22 @@ msgstr "Энэ баримт бичгийг ачаалж чадсангүй. Да
 msgid "Couldn't load notifications"
 msgstr "Мэдэгдлийг ачаалж чадсангүй"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:184
+#: ../../../lib/web/src/components/step-up-dialog.tsx:193
 msgid "Couldn't send the code. Please try again."
 msgstr "Кодыг илгээж чадсангүй. Дахин оролдоно уу."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:136
+#: ../../../lib/web/src/components/step-up-dialog.tsx:145
 msgid "Couldn't start re-authentication. Please try again."
 msgstr "Дахин баталгаажуулалтыг эхлүүлж чадсангүй. Дахин оролдоно уу."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:221
+#: ../../../lib/web/src/components/step-up-dialog.tsx:235
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Тэр бүртгэлээр баталгаажуулж чадсангүй. Дахин оролдоно уу."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:564
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:703
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:475
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:647
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:468
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:623
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Үүсгэх"
@@ -812,7 +817,7 @@ msgstr "Үүсгэгдсэн"
 msgid "Creating CRM..."
 msgstr "CRM үүсгэж байна..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:647
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:623
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
 #: src/features/crms/components/create-crm-dialog.tsx:339
 msgid "Creating..."
@@ -911,19 +916,19 @@ msgstr "Үндсэн эрэмбэлэлт"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:583
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:644
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:318
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:361
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:486
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:173
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:178
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:227
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:272
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:319
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:362
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:196
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:201
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:250
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:309
 #: src/features/objects/components/object-detail-panel.tsx:519
 #: src/routes/_authenticated/$crmId_.settings.tsx:343
 msgid "Delete"
 msgstr "Устгах"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:270
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:307
 msgid "Delete attachment"
 msgstr "Хавсралт устгах"
 
@@ -935,7 +940,7 @@ msgstr "Анги устгах"
 msgid "Delete column"
 msgstr "Багана устгах"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:484
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:489
 msgid "Delete comment"
 msgstr "Сэтгэгдэл устгах"
 
@@ -1031,11 +1036,11 @@ msgstr "Чиглэл"
 msgid "Directory"
 msgstr "Лавлах"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:304
+#: ../../../lib/web/src/components/comment-composer.tsx:284
 msgid "Discard"
 msgstr "Хаях"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:302
+#: ../../../lib/web/src/components/comment-composer.tsx:282
 msgid "Discard draft?"
 msgstr "Ноорогийг хаах уу?"
 
@@ -1069,7 +1074,7 @@ msgstr "Дууссан"
 msgid "Double click on a column to add content"
 msgstr "Агуулга нэмэхийн тулд баганан дээр давхар товшино уу"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:214
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:237
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 msgid "Download"
@@ -1101,8 +1106,8 @@ msgstr "Давхардлууд"
 msgid "Dyslexia-friendly"
 msgstr "Дислексид зориулсан"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:307
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:352
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:308
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:353
 msgid "Edit"
 msgstr "Засах"
 
@@ -1144,15 +1149,15 @@ msgstr "Харагдац засах"
 msgid "Email"
 msgstr "Имэйл"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:289
+#: ../../../lib/web/src/components/step-up-dialog.tsx:303
 msgid "Email code"
 msgstr "Имэйл код"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:299
+#: ../../../lib/web/src/components/step-up-dialog.tsx:313
 msgid "Enter the code from your email"
 msgstr "Имэйлд ирсэн кодоо оруулна уу"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:324
+#: ../../../lib/web/src/components/step-up-dialog.tsx:338
 msgid "Enter your authenticator code"
 msgstr "Баталгаажуулагчийн кодоо оруулна уу"
 
@@ -1221,7 +1226,7 @@ msgid "Failed to create field"
 msgstr "Талбар үүсгэж чадсангүй"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
-#: ../../../lib/web/src/components/options-menu.tsx:99
+#: ../../../lib/web/src/components/options-menu.tsx:101
 #: src/routes/_authenticated/$crmId/index.tsx:190
 msgid "Failed to create link"
 msgstr "Холбоос үүсгэж чадсангүй"
@@ -1234,11 +1239,11 @@ msgstr "Сонголт үүсгэж чадсангүй"
 msgid "Failed to create view"
 msgstr "Харагдац үүсгэж чадсангүй"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:110
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:128
 msgid "Failed to delete attachment"
 msgstr "Хавсралт устгаж чадсангүй"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:207
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:210
 msgid "Failed to delete comment"
 msgstr "Сэтгэгдэл устгаж чадсангүй"
 
@@ -1265,7 +1270,7 @@ msgstr "Өгөгдөл экспортолж чадсангүй"
 msgid "Failed to export design"
 msgstr "Дизайн экспортлож чадсангүй"
 
-#: ../../../lib/web/src/components/options-menu.tsx:123
+#: ../../../lib/web/src/components/options-menu.tsx:125
 msgid "Failed to get RSS token"
 msgstr "RSS token авч чадсангүй"
 
@@ -1308,11 +1313,15 @@ msgstr "Зургийг ачаалж чадсангүй"
 msgid "Failed to load item"
 msgstr "Зүйл ачаалж чадсангүй"
 
+#: src/features/crms/components/recommended-crms.tsx:54
+msgid "Failed to load recommended CRMs"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
 msgid "Failed to load video"
 msgstr "Видеог ачаалж чадсангүй"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:170
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:173
 msgid "Failed to post comment"
 msgstr "Сэтгэгдэл нийтэлж чадсангүй"
 
@@ -1337,9 +1346,13 @@ msgstr "Талбаруудыг дахин эрэмбэлж чадсангүй"
 msgid "Failed to reorder views"
 msgstr "Харагдацыг дахин эрэмбэлж чадсангүй"
 
-#: ../../../lib/web/src/components/options-menu.tsx:133
+#: ../../../lib/web/src/components/options-menu.tsx:136
 msgid "Failed to revoke RSS access"
 msgstr "RSS хандалтыг цуцалж чадсангүй"
+
+#: src/features/crms/components/inline-crm-search.tsx:85
+msgid "Failed to search CRMs"
+msgstr ""
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:257
 msgid "Failed to send verification code"
@@ -1349,8 +1362,8 @@ msgstr "Баталгаажуулах код илгээж чадсангүй"
 msgid "Failed to set access level"
 msgstr "Хандалтын түвшинг тохируулж чадсангүй"
 
-#: src/features/crms/components/inline-crm-search.tsx:116
-#: src/features/crms/components/recommended-crms.tsx:65
+#: src/features/crms/components/inline-crm-search.tsx:65
+#: src/features/crms/components/recommended-crms.tsx:42
 #: src/routes/_authenticated/find.tsx:58
 msgid "Failed to subscribe"
 msgstr "Захиалж чадсангүй"
@@ -1364,7 +1377,7 @@ msgstr "Захиалга цуцалж чадсангүй"
 msgid "Failed to update access level"
 msgstr "Хандалтын түвшинг шинэчилж чадсангүй"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:190
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:193
 msgid "Failed to update comment"
 msgstr "Сэтгэгдэл шинэчилж чадсангүй"
 
@@ -1376,7 +1389,7 @@ msgstr "CRM шинэчилж чадсангүй"
 msgid "Failed to update field"
 msgstr "Талбар шинэчилж чадсангүй"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:95
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:112
 msgid "Failed to upload attachment"
 msgstr "Хавсралт байршуулж чадсангүй"
 
@@ -1384,9 +1397,9 @@ msgstr "Хавсралт байршуулж чадсангүй"
 msgid "Fields"
 msgstr "Талбарууд"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:133
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:150
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:153
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:173
 msgid "Files"
 msgstr "Файлууд"
 
@@ -1625,7 +1638,7 @@ msgstr "Зөвхөн үсэг, тоо, зай, зураас"
 msgid "Light"
 msgstr "Цайвар"
 
-#: ../../../lib/web/src/components/options-menu.tsx:190
+#: ../../../lib/web/src/components/options-menu.tsx:193
 #: src/routes/_authenticated/$crmId/index.tsx:1042
 msgid "Link"
 msgstr "Холбоос"
@@ -1729,7 +1742,7 @@ msgstr "Хамгийн бага урт"
 msgid "Mochi web"
 msgstr "Mochi веб"
 
-#: ../../../lib/web/src/components/options-menu.tsx:164
+#: ../../../lib/web/src/components/options-menu.tsx:167
 msgid "Moderation"
 msgstr ""
 
@@ -1737,8 +1750,8 @@ msgstr ""
 msgid "Monday"
 msgstr "Даваа"
 
-#: ../../../lib/web/src/components/options-menu.tsx:145
-#: ../../../lib/web/src/components/options-menu.tsx:152
+#: ../../../lib/web/src/components/options-menu.tsx:148
+#: ../../../lib/web/src/components/options-menu.tsx:155
 msgid "More options"
 msgstr "Бусад сонголтууд"
 
@@ -1770,7 +1783,7 @@ msgstr "Нэр 1000 тэмдэгтээс хэтрэхгүй байх ёстой"
 msgid "Network error"
 msgstr "Сүлжээний алдаа"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:460
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:453
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/routes/_authenticated/$crmId/index.tsx:976
 #: src/routes/_authenticated/$crmId/index.tsx:993
@@ -1792,7 +1805,7 @@ msgstr "Шинэ тоглоом"
 msgid "Next image"
 msgstr "Дараагийн зураг"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:533
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:526
 msgid "No {parentClassNames} to add to"
 msgstr "Нэмэх {parentClassNames} алга"
 
@@ -1808,7 +1821,7 @@ msgstr "Хандалтын дүрэм тохируулагдаагүй байн�
 msgid "No activity yet"
 msgstr "Үйл ажиллагаа алга"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:450
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:457
 msgid "No comments yet"
 msgstr "Сэтгэгдэл алга"
 
@@ -1816,7 +1829,7 @@ msgstr "Сэтгэгдэл алга"
 msgid "No connected accounts"
 msgstr "Холбогдсон бүртгэл байхгүй"
 
-#: src/features/crms/components/inline-crm-search.tsx:164
+#: src/features/crms/components/inline-crm-search.tsx:84
 #: src/routes/_authenticated/find.tsx:90
 msgid "No CRMs found"
 msgstr "CRM олдсонгүй"
@@ -1829,7 +1842,7 @@ msgstr "Тоглоом алга"
 msgid "No groups available"
 msgstr "Боломжит групп байхгүй"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:500
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:493
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Одоогоор зүйл үүсгэх боломжгүй. Эхлээд шаардлагатай эх зүйлийг үүсгэнэ үү."
 
@@ -1858,6 +1871,7 @@ msgstr "Газар олдсонгүй"
 msgid "No profile"
 msgstr "Профайл алга"
 
+#: ../../../lib/web/src/components/inline-entity-search.tsx:74
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:82
 #: ../../../lib/web/src/components/search-entity-page.tsx:73
 msgid "No results found"
@@ -1895,9 +1909,9 @@ msgid "No views"
 msgstr "Үзэлт алга"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:509
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:512
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:516
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:519
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:365
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:391
@@ -2049,17 +2063,17 @@ msgstr "Эзэмшигч"
 msgid "Page {currentPage} of {totalPages}"
 msgstr "{totalPages}-с {currentPage}-р хуудас"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:508
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:501
 #: src/features/objects/components/object-detail-panel.tsx:428
 #: src/routes/_authenticated/$crmId/index.tsx:901
 msgid "Parent"
 msgstr "Эх"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:334
+#: ../../../lib/web/src/components/step-up-dialog.tsx:348
 msgid "Passkey"
 msgstr "Нэвтрэх түлхүүр"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:209
+#: ../../../lib/web/src/components/step-up-dialog.tsx:218
 msgid "Passkey verification failed. Please try again."
 msgstr "Нэвтрэх түлхүүрийн баталгаажуулалт амжилтгүй боллоо. Дахин оролдоно уу."
 
@@ -2080,7 +2094,7 @@ msgstr "Огноо сонгох"
 msgid "Please add one or more classes to the CRM design."
 msgstr "CRM-ийн загварт нэг буюу хэд хэдэн анги нэмнэ үү."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:99
+#: ../../../lib/web/src/components/comment-composer.tsx:84
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:323
 msgid "Please check your internet connection and try again."
@@ -2098,11 +2112,11 @@ msgstr "Дахин оролдоно уу."
 msgid "Please wait a moment and try again."
 msgstr "Түр хүлээгээд дахин оролдоно уу."
 
-#: ../../../lib/web/src/components/options-menu.tsx:175
+#: ../../../lib/web/src/components/options-menu.tsx:178
 msgid "Posts"
 msgstr "Нийтлэлүүд"
 
-#: ../../../lib/web/src/components/options-menu.tsx:178
+#: ../../../lib/web/src/components/options-menu.tsx:181
 msgid "Posts and comments"
 msgstr "Нийтлэл болон сэтгэгдэл"
 
@@ -2157,8 +2171,7 @@ msgstr "Энэ серверт нэвтрэх түлхүүрээ дахин бү�
 msgid "Recommended"
 msgstr "Зөвлөмжтэй"
 
-#: src/features/crms/components/recommended-crms.tsx:111
-#: src/features/crms/components/recommended-crms.tsx:133
+#: src/features/crms/components/recommended-crms.tsx:53
 msgid "Recommended CRMs"
 msgstr "Зөвлөмжтэй CRM-ууд"
 
@@ -2187,9 +2200,9 @@ msgstr "Харьцангуй (5м, 3ц, 2ө)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "24 цагийн дотор харьцангуй, эс бөгөөс үнэмлэхүй"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:236
+#: ../../../lib/web/src/components/attachment-composer.tsx:171
+#: ../../../lib/web/src/components/attachment-composer.tsx:208
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:598
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 #: src/features/crms/components/create-crm-dialog.tsx:321
@@ -2265,13 +2278,13 @@ msgstr "Загвар солих уу?"
 msgid "Replacing..."
 msgstr "Сольж байна..."
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:294
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:342
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:295
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:343
 msgid "Reply"
 msgstr "Хариу"
 
 #. placeholder {0}: comment.name || comment.author
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:385
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:386
 msgid "Reply to {0}..."
 msgstr "{0}-д хариу..."
 
@@ -2279,7 +2292,7 @@ msgstr "{0}-д хариу..."
 msgid "Required"
 msgstr "Шаардлагатай"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:367
+#: ../../../lib/web/src/components/step-up-dialog.tsx:381
 msgid "Resend email"
 msgstr "Имэйлийг дахин илгээх"
 
@@ -2297,7 +2310,7 @@ msgstr "{title}-ийг шинэчлэх"
 msgid "Reset all settings to default values"
 msgstr "Бүх тохиргоог анхдагч утгад нь сэргээх"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:253
+#: ../../../lib/web/src/components/attachment-composer.tsx:225
 msgid "Retry"
 msgstr "Дахин оролдох"
 
@@ -2305,9 +2318,17 @@ msgstr "Дахин оролдох"
 msgid "Retry CRMs load"
 msgstr "CRM-ыг ачаалахад дахин оролдох"
 
-#: ../../../lib/web/src/components/options-menu.tsx:181
+#: ../../../lib/web/src/components/options-menu.tsx:250
+msgid "Revoke"
+msgstr ""
+
+#: ../../../lib/web/src/components/options-menu.tsx:184
 msgid "Revoke access"
 msgstr "Хандалтыг цуцлах"
+
+#: ../../../lib/web/src/components/options-menu.tsx:244
+msgid "Revoke RSS access?"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:362
 msgid "Right to Left"
@@ -2326,15 +2347,15 @@ msgstr "Мөрүүдийг группд хуваах"
 msgid "Rows per page"
 msgstr "Хуудас тутамын мөр"
 
-#: ../../../lib/web/src/components/options-menu.tsx:131
+#: ../../../lib/web/src/components/options-menu.tsx:134
 msgid "RSS access revoked"
 msgstr "RSS хандалтыг цуцаллаа"
 
-#: ../../../lib/web/src/components/options-menu.tsx:171
+#: ../../../lib/web/src/components/options-menu.tsx:174
 msgid "RSS feed"
 msgstr "RSS фид"
 
-#: ../../../lib/web/src/components/options-menu.tsx:121
+#: ../../../lib/web/src/components/options-menu.tsx:123
 msgid "RSS URL copied to clipboard"
 msgstr "RSS URL clipboard руу хуулагдсан"
 
@@ -2346,7 +2367,7 @@ msgstr "Борлуулалтын CRM"
 msgid "Saturday"
 msgstr "Бямба"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:270
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
@@ -2381,7 +2402,7 @@ msgstr "Газар хайх"
 msgid "Search for a place..."
 msgstr "Газар хайх..."
 
-#: src/features/crms/components/inline-crm-search.tsx:138
+#: src/features/crms/components/inline-crm-search.tsx:83
 msgid "Search for CRMs..."
 msgstr "CRM хайх..."
 
@@ -2411,6 +2432,7 @@ msgstr "Энэ үзэмжээр хайх, ажиглах, эрэмбэлэх."
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:181
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:257
+#: ../../../lib/web/src/components/inline-entity-search.tsx:73
 #: ../../../lib/web/src/components/person-picker.tsx:324
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:81
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
@@ -2510,7 +2532,7 @@ msgstr "Сонгогдсон: <0>{0}</0>"
 msgid "Send again"
 msgstr "Дахин илгээх"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:307
+#: ../../../lib/web/src/components/step-up-dialog.tsx:321
 msgid "Send email"
 msgstr "Имэйл илгээх"
 
@@ -2551,7 +2573,7 @@ msgstr "Хандалтыг тохируулж байна..."
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:126
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
-#: ../../../lib/web/src/components/options-menu.tsx:196
+#: ../../../lib/web/src/components/options-menu.tsx:199
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:164
 #: src/routes/_authenticated/$crmId_.settings.tsx:187
@@ -2612,7 +2634,7 @@ msgstr "Жижиг"
 msgid "Sort"
 msgstr "Эрэмбэлэх"
 
-#: ../../../lib/web/src/components/options-menu.tsx:158
+#: ../../../lib/web/src/components/options-menu.tsx:161
 msgid "Sources"
 msgstr "Эх сурвалжууд"
 
@@ -2620,7 +2642,7 @@ msgstr "Эх сурвалжууд"
 msgid "Spacious"
 msgstr "Уужим"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:451
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:458
 msgid "Start the discussion by adding the first comment."
 msgstr "Эхний сэтгэгдэл нэмж хэлэлцүүлэг эхлүүл."
 
@@ -2637,35 +2659,37 @@ msgstr "Үзэхээ зогсоох"
 msgid "Subject"
 msgstr "Сэдэв"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:431
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:440
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:438
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:447
 msgid "Submit comment"
 msgstr "Сэтгэгдэл илгээх"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:470
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:475
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:480
 msgid "Submit reply"
 msgstr "Хариу илгээх"
 
+#: ../../../lib/web/src/components/inline-entity-search.tsx:76
+#: ../../../lib/web/src/components/recommended-entities.tsx:66
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:83
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
-#: src/features/crms/components/inline-crm-search.tsx:207
-#: src/features/crms/components/recommended-crms.tsx:167
+#: src/features/crms/components/inline-crm-search.tsx:86
+#: src/features/crms/components/recommended-crms.tsx:55
 msgid "Subscribe"
 msgstr "Захиалах"
 
-#: src/features/crms/components/inline-crm-search.tsx:115
+#: src/features/crms/components/inline-crm-search.tsx:64
 #: src/routes/_authenticated/find.tsx:57
 msgid "Subscribed"
 msgstr "Захиалсан"
 
 #. placeholder {0}: crm.name
-#: src/features/crms/components/recommended-crms.tsx:64
+#: src/features/crms/components/recommended-crms.tsx:41
 msgid "Subscribed to {0}"
 msgstr "{0}-г захиалсан"
 
-#: src/features/crms/components/inline-crm-search.tsx:114
-#: src/features/crms/components/recommended-crms.tsx:63
+#: src/features/crms/components/inline-crm-search.tsx:63
+#: src/features/crms/components/recommended-crms.tsx:40
 #: src/routes/_authenticated/find.tsx:56
 msgid "Subscribing..."
 msgstr "Захиалж байна..."
@@ -2716,7 +2740,7 @@ msgstr "Нөхцөл"
 msgid "Text"
 msgstr "Текст"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/components/step-up-dialog.tsx:204
 msgid "That code is incorrect or has expired."
 msgstr "Энэ код буруу эсвэл хугацаа нь дууссан байна."
 
@@ -2905,7 +2929,7 @@ msgstr "АНУ"
 msgid "Unknown"
 msgstr "Үл мэдэгдэх"
 
-#: ../../../lib/web/src/components/options-menu.tsx:211
+#: ../../../lib/web/src/components/options-menu.tsx:214
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
@@ -2928,7 +2952,7 @@ msgstr "Захиалгаас гарсан"
 msgid "Unsubscribing..."
 msgstr "Захиалгаас гарч байна..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:286
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:277
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
 #: src/features/board/components/board-card.tsx:22
@@ -2952,8 +2976,8 @@ msgstr "Шинэчлэгдсэн"
 msgid "Updating access..."
 msgstr "Хандалтыг шинэчилж байна..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:630
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:259
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:606
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:296
 msgid "Upload"
 msgstr "Байршуулах"
 
@@ -2966,7 +2990,7 @@ msgstr ".json файл байршуулах"
 msgid "Upload progress"
 msgstr "Байршуулалтын явц"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:338
+#: ../../../lib/web/src/components/step-up-dialog.tsx:352
 msgid "Use your passkey"
 msgstr "Нэвтрэх түлхүүрээ ашиглах"
 
@@ -2988,7 +3012,7 @@ msgstr "Баталгаажуулах код илгээгдсэн"
 msgid "Verification failed"
 msgstr "Баталгаажуулалт амжилтгүй"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:388
+#: ../../../lib/web/src/components/step-up-dialog.tsx:402
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
@@ -3099,14 +3123,14 @@ msgstr "Та бүгдийг үзсэн!"
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Таны бүртгэл {source}-с энд шилжсэн. Тэнд устгах хүртэл мессеж, мэдэгдлүүд хоёр сервер рүү хүрч болно, таны зарим контент хуучин серверээс ирсээр байж болно, дагагчид таныг эндээс олоход хэдэн минут зарцуулж магадгүй."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:295
+#: ../../../lib/web/src/components/comment-composer.tsx:275
 msgid "Your attachments will be lost."
 msgstr "Таны хавсралтууд устах болно."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:293
+#: ../../../lib/web/src/components/comment-composer.tsx:273
 msgid "Your text and attachments will be lost."
 msgstr "Таны текст болон хавсралтууд устах болно."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:296
+#: ../../../lib/web/src/components/comment-composer.tsx:276
 msgid "Your text will be lost."
 msgstr "Чиний текст алдагдана."
