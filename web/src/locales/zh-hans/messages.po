@@ -104,7 +104,7 @@ msgstr "{selectedCount, plural, one {# 项已选择} other {# 项已选择}}"
 msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
 msgstr "{selectedCount, plural, one {对已选择的 # 个 {entityName} 执行批量操作} other {对已选择的 # 个 {manyName} 执行批量操作}}"
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:150
+#: ../../../lib/web/src/components/attachment-composer.tsx:189
 #: ../../../lib/web/src/components/ui/upload-progress.tsx:52
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} / {totalLabel}"
@@ -240,8 +240,8 @@ msgstr "添加清单项"
 msgid "Add class"
 msgstr "添加类"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1021
-#: src/routes/_authenticated/$crmId/index.tsx:1219
+#: src/routes/_authenticated/$crmId/index.tsx:1035
+#: src/routes/_authenticated/$crmId/index.tsx:1233
 msgid "Add column"
 msgstr "添加列"
 
@@ -353,7 +353,7 @@ msgstr "任何已登录的人"
 
 #: ../../../lib/web/src/components/options-menu.tsx:249
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
-msgstr ""
+msgstr "订阅此源的一切都将停止接收。之后你可以复制新的网址。"
 
 #. placeholder {0}: deleteTarget?.name
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:308
@@ -368,7 +368,7 @@ msgstr "确定要删除 \"{title}\" 吗?此操作无法撤销。"
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "确定要删除列 \"{name}\" 吗?此操作无法撤销。"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:490
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:491
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "确定要删除此评论吗?这将同时删除所有回复。"
 
@@ -388,13 +388,13 @@ msgstr "升序"
 msgid "Ascending"
 msgstr "升序"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:405
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:410
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:406
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:411
 msgid "Attach comment files"
 msgstr "附加评论文件"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:444
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:449
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:445
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:450
 msgid "Attach reply files"
 msgstr "附加回复文件"
 
@@ -432,7 +432,7 @@ msgid "Back to CRM"
 msgstr "返回 CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:138
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Back to CRMs"
 msgstr "返回 CRM 列表"
 
@@ -496,17 +496,17 @@ msgstr "可作为子项的父级"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:336
 #: src/routes/_authenticated/$crmId/design.tsx:305
-#: src/routes/_authenticated/$crmId/index.tsx:1098
+#: src/routes/_authenticated/$crmId/index.tsx:1112
 msgid "Cancel"
 msgstr "取消"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:422
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:427
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:423
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:428
 msgid "Cancel comment"
 msgstr "取消评论"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:460
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:465
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:461
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:466
 msgid "Cancel reply"
 msgstr "取消回复"
 
@@ -556,7 +556,7 @@ msgstr "在跟随系统、浅色模式或深色模式之间选择"
 msgid "Choose language"
 msgstr "选择语言"
 
-#: src/routes/_authenticated/$crmId/index.tsx:901
+#: src/routes/_authenticated/$crmId/index.tsx:915
 msgid "Class"
 msgstr "类"
 
@@ -770,7 +770,7 @@ msgstr "无法使用该账户进行验证。请重试。"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:564
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:703
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:468
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:623
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:624
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "创建"
@@ -817,7 +817,7 @@ msgstr "已创建"
 msgid "Creating CRM..."
 msgstr "正在创建 CRM..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:623
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:624
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
 #: src/features/crms/components/create-crm-dialog.tsx:339
 msgid "Creating..."
@@ -836,7 +836,7 @@ msgstr "CRM 已创建"
 msgid "CRM deleted"
 msgstr "已删除 CRM"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1224
+#: src/routes/_authenticated/$crmId/index.tsx:1238
 msgid "CRM link"
 msgstr "CRM 链接"
 
@@ -918,7 +918,7 @@ msgstr "默认排序"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:644
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:319
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:362
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:491
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:492
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:196
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:201
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:250
@@ -940,7 +940,7 @@ msgstr "删除类"
 msgid "Delete column"
 msgstr "删除列"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:489
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:490
 msgid "Delete comment"
 msgstr "删除评论"
 
@@ -1000,7 +1000,7 @@ msgstr "描述"
 
 #: src/routes/_authenticated/$crmId/design.tsx:65
 #: src/routes/_authenticated/$crmId/design.tsx:133
-#: src/routes/_authenticated/$crmId/index.tsx:1052
+#: src/routes/_authenticated/$crmId/index.tsx:1066
 msgid "Design"
 msgstr "设计"
 
@@ -1036,11 +1036,11 @@ msgstr "方向"
 msgid "Directory"
 msgstr "目录"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:284
+#: ../../../lib/web/src/components/comment-composer.tsx:288
 msgid "Discard"
 msgstr "放弃"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:282
+#: ../../../lib/web/src/components/comment-composer.tsx:286
 msgid "Discard draft?"
 msgstr "放弃草稿?"
 
@@ -1054,8 +1054,8 @@ msgstr "已断开"
 msgid "Dismiss"
 msgstr "关闭"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1127
-#: src/routes/_authenticated/$crmId/index.tsx:1132
+#: src/routes/_authenticated/$crmId/index.tsx:1141
+#: src/routes/_authenticated/$crmId/index.tsx:1146
 msgid "Dismiss board hint"
 msgstr "关闭看板提示"
 
@@ -1070,7 +1070,7 @@ msgstr "显示移动端侧边栏。"
 msgid "Done"
 msgstr "完成"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1118
+#: src/routes/_authenticated/$crmId/index.tsx:1132
 msgid "Double click on a column to add content"
 msgstr "双击列以添加内容"
 
@@ -1089,12 +1089,12 @@ msgid "Download failed"
 msgstr "下载失败"
 
 #: src/routes/_authenticated/$crmId/design.tsx:89
-#: src/routes/_authenticated/$crmId/index.tsx:220
-#: src/routes/_authenticated/$crmId/index.tsx:925
+#: src/routes/_authenticated/$crmId/index.tsx:234
+#: src/routes/_authenticated/$crmId/index.tsx:939
 msgid "Downloaded {filename}"
 msgstr "已下载 {filename}"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1094
+#: src/routes/_authenticated/$crmId/index.tsx:1108
 msgid "Drag columns to re-order them"
 msgstr "拖动列以重新排序"
 
@@ -1180,11 +1180,11 @@ msgstr "展开"
 msgid "Expand sidebar"
 msgstr "展开侧边栏"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1032
+#: src/routes/_authenticated/$crmId/index.tsx:1046
 msgid "Export CSV"
 msgstr "导出 CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1036
+#: src/routes/_authenticated/$crmId/index.tsx:1050
 msgid "Export data"
 msgstr "导出数据"
 
@@ -1227,7 +1227,7 @@ msgstr "创建字段失败"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
 #: ../../../lib/web/src/components/options-menu.tsx:101
-#: src/routes/_authenticated/$crmId/index.tsx:190
+#: src/routes/_authenticated/$crmId/index.tsx:204
 msgid "Failed to create link"
 msgstr "创建链接失败"
 
@@ -1259,9 +1259,9 @@ msgstr "删除链接失败"
 msgid "Failed to delete view"
 msgstr "删除视图失败"
 
-#: src/routes/_authenticated/$crmId/index.tsx:222
-#: src/routes/_authenticated/$crmId/index.tsx:225
-#: src/routes/_authenticated/$crmId/index.tsx:927
+#: src/routes/_authenticated/$crmId/index.tsx:236
+#: src/routes/_authenticated/$crmId/index.tsx:239
+#: src/routes/_authenticated/$crmId/index.tsx:941
 msgid "Failed to export data"
 msgstr "导出数据失败"
 
@@ -1289,7 +1289,7 @@ msgstr "加载失败"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:43
 #: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:102
+#: src/routes/_authenticated/$crmId/index.tsx:116
 msgid "Failed to load CRM"
 msgstr "加载 CRM 失败"
 
@@ -1315,7 +1315,7 @@ msgstr "加载条目失败"
 
 #: src/features/crms/components/recommended-crms.tsx:54
 msgid "Failed to load recommended CRMs"
-msgstr ""
+msgstr "加载推荐 CRM 失败"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
 msgid "Failed to load video"
@@ -1352,7 +1352,7 @@ msgstr "撤销 RSS 访问权限失败"
 
 #: src/features/crms/components/inline-crm-search.tsx:85
 msgid "Failed to search CRMs"
-msgstr ""
+msgstr "搜索 CRM 失败"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:257
 msgid "Failed to send verification code"
@@ -1369,7 +1369,7 @@ msgid "Failed to subscribe"
 msgstr "订阅失败"
 
 #: src/features/crms/pages/crms-list-page.tsx:177
-#: src/routes/_authenticated/$crmId/index.tsx:659
+#: src/routes/_authenticated/$crmId/index.tsx:673
 msgid "Failed to unsubscribe"
 msgstr "取消订阅失败"
 
@@ -1521,7 +1521,7 @@ msgstr "热门"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
 #: src/features/editor/components/edit-dialogs.tsx:266
-#: src/routes/_authenticated/$crmId/index.tsx:901
+#: src/routes/_authenticated/$crmId/index.tsx:915
 msgid "ID"
 msgstr "ID"
 
@@ -1639,7 +1639,7 @@ msgid "Light"
 msgstr "浅色"
 
 #: ../../../lib/web/src/components/options-menu.tsx:193
-#: src/routes/_authenticated/$crmId/index.tsx:1042
+#: src/routes/_authenticated/$crmId/index.tsx:1056
 msgid "Link"
 msgstr "链接"
 
@@ -1669,7 +1669,7 @@ msgstr "正在加载条目详情"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:35
 #: ../../../lib/web/src/features/document/document-page.tsx:90
-#: src/routes/_authenticated/$crmId/index.tsx:207
+#: src/routes/_authenticated/$crmId/index.tsx:221
 msgid "Loading..."
 msgstr "加载中..."
 
@@ -1785,13 +1785,13 @@ msgstr "网络错误"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:453
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:976
-#: src/routes/_authenticated/$crmId/index.tsx:993
+#: src/routes/_authenticated/$crmId/index.tsx:990
+#: src/routes/_authenticated/$crmId/index.tsx:1007
 msgid "New"
 msgstr "新建"
 
 #. placeholder {0}: cls.name.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:974
+#: src/routes/_authenticated/$crmId/index.tsx:988
 msgid "New {0}"
 msgstr "新建{0}"
 
@@ -1821,7 +1821,7 @@ msgstr "尚未配置访问规则。添加规则以控制谁可以访问此资源
 msgid "No activity yet"
 msgstr "暂无活动"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:457
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:458
 msgid "No comments yet"
 msgstr "暂无评论"
 
@@ -1854,7 +1854,7 @@ msgstr "无匹配的对象"
 msgid "No notifications yet"
 msgstr "暂无通知"
 
-#: src/routes/_authenticated/$crmId/index.tsx:886
+#: src/routes/_authenticated/$crmId/index.tsx:900
 msgid "No objects to export."
 msgstr "无可导出的对象。"
 
@@ -2017,7 +2017,7 @@ msgstr "打开导航菜单"
 msgid "Open option actions"
 msgstr "打开选项操作"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1001
+#: src/routes/_authenticated/$crmId/index.tsx:1015
 msgid "Open page actions"
 msgstr "打开页面操作"
 
@@ -2065,7 +2065,7 @@ msgstr "第 {currentPage} 页，共 {totalPages} 页"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:501
 #: src/features/objects/components/object-detail-panel.tsx:428
-#: src/routes/_authenticated/$crmId/index.tsx:901
+#: src/routes/_authenticated/$crmId/index.tsx:915
 msgid "Parent"
 msgstr "父级"
 
@@ -2089,8 +2089,8 @@ msgstr "模式(正则表达式)"
 msgid "Pick a date"
 msgstr "选择日期"
 
-#: src/routes/_authenticated/$crmId/index.tsx:767
-#: src/routes/_authenticated/$crmId/index.tsx:801
+#: src/routes/_authenticated/$crmId/index.tsx:781
+#: src/routes/_authenticated/$crmId/index.tsx:815
 msgid "Please add one or more classes to the CRM design."
 msgstr "请在 CRM 设计中添加一个或多个类。"
 
@@ -2158,7 +2158,7 @@ msgstr "凸起"
 msgid "Re-link your accounts on this server"
 msgstr "在此服务器上重新关联账户"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1025
+#: src/routes/_authenticated/$crmId/index.tsx:1039
 msgid "Re-order columns"
 msgstr "重新排序列"
 
@@ -2200,8 +2200,8 @@ msgstr "相对时间(5分钟、3小时、2天)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "24 小时内显示相对时间,否则显示绝对时间"
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:171
-#: ../../../lib/web/src/components/attachment-composer.tsx:208
+#: ../../../lib/web/src/components/attachment-composer.tsx:210
+#: ../../../lib/web/src/components/attachment-composer.tsx:247
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
@@ -2310,7 +2310,7 @@ msgstr "重置{title}"
 msgid "Reset all settings to default values"
 msgstr "将所有设置重置为默认值"
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:225
+#: ../../../lib/web/src/components/attachment-composer.tsx:264
 msgid "Retry"
 msgstr "重试"
 
@@ -2320,7 +2320,7 @@ msgstr "重试加载 CRM"
 
 #: ../../../lib/web/src/components/options-menu.tsx:250
 msgid "Revoke"
-msgstr ""
+msgstr "撤销"
 
 #: ../../../lib/web/src/components/options-menu.tsx:184
 msgid "Revoke access"
@@ -2328,7 +2328,7 @@ msgstr "撤销访问权限"
 
 #: ../../../lib/web/src/components/options-menu.tsx:244
 msgid "Revoke RSS access?"
-msgstr ""
+msgstr "撤销 RSS 访问权限吗？"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:362
 msgid "Right to Left"
@@ -2371,7 +2371,7 @@ msgstr "星期六"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/routes/_authenticated/$crmId/index.tsx:1110
+#: src/routes/_authenticated/$crmId/index.tsx:1124
 msgid "Save"
 msgstr "保存"
 
@@ -2577,7 +2577,7 @@ msgstr "正在设置访问权限..."
 #: src/routes/_authenticated/$crmId_.settings.tsx:83
 #: src/routes/_authenticated/$crmId_.settings.tsx:164
 #: src/routes/_authenticated/$crmId_.settings.tsx:187
-#: src/routes/_authenticated/$crmId/index.tsx:1062
+#: src/routes/_authenticated/$crmId/index.tsx:1076
 msgid "Settings"
 msgstr "设置"
 
@@ -2642,7 +2642,7 @@ msgstr "来源"
 msgid "Spacious"
 msgstr "宽松"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:458
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:459
 msgid "Start the discussion by adding the first comment."
 msgstr "添加第一条评论以开始讨论。"
 
@@ -2659,13 +2659,13 @@ msgstr "停止关注"
 msgid "Subject"
 msgstr "主题"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:438
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:447
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:439
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:448
 msgid "Submit comment"
 msgstr "提交评论"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:475
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:480
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:476
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:481
 msgid "Submit reply"
 msgstr "提交回复"
 
@@ -2782,7 +2782,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "这将永久删除“{0}”及其所有对象、评论和附件。此操作无法撤销。"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:1240
+#: src/routes/_authenticated/$crmId/index.tsx:1254
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "这将从您的侧边栏中移除“{0}”并停止此 CRM 的更新。"
 
@@ -2933,22 +2933,22 @@ msgstr "未知"
 #: src/features/crms/pages/crms-list-page.tsx:147
 #: src/features/crms/pages/crms-list-page.tsx:166
 #: src/features/crms/pages/crms-list-page.tsx:168
-#: src/routes/_authenticated/$crmId/index.tsx:1070
-#: src/routes/_authenticated/$crmId/index.tsx:1241
+#: src/routes/_authenticated/$crmId/index.tsx:1084
+#: src/routes/_authenticated/$crmId/index.tsx:1255
 msgid "Unsubscribe"
 msgstr "取消订阅"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1239
+#: src/routes/_authenticated/$crmId/index.tsx:1253
 msgid "Unsubscribe from CRM?"
 msgstr "取消订阅 CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:176
-#: src/routes/_authenticated/$crmId/index.tsx:658
+#: src/routes/_authenticated/$crmId/index.tsx:672
 msgid "Unsubscribed"
 msgstr "已取消订阅"
 
 #: src/features/crms/pages/crms-list-page.tsx:175
-#: src/routes/_authenticated/$crmId/index.tsx:657
+#: src/routes/_authenticated/$crmId/index.tsx:671
 msgid "Unsubscribing..."
 msgstr "正在取消订阅..."
 
@@ -2976,7 +2976,7 @@ msgstr "已更新"
 msgid "Updating access..."
 msgstr "正在更新访问权限..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:606
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:607
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:296
 msgid "Upload"
 msgstr "上传"
@@ -3056,7 +3056,7 @@ msgstr "视图控制"
 msgid "View only"
 msgstr "仅查看"
 
-#: src/routes/_authenticated/$crmId/index.tsx:1010
+#: src/routes/_authenticated/$crmId/index.tsx:1024
 msgid "View options"
 msgstr "查看选项"
 
@@ -3103,7 +3103,7 @@ msgstr "星期三"
 msgid "You do not have access to this section."
 msgstr "您无权访问此部分。"
 
-#: src/routes/_authenticated/$crmId/index.tsx:124
+#: src/routes/_authenticated/$crmId/index.tsx:138
 msgid "You don't have access to this CRM."
 msgstr "您无权访问此 CRM。"
 
@@ -3123,14 +3123,14 @@ msgstr "全部已读！"
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "您的账户已从 {source} 迁移至此。在您于那里删除之前，消息和通知可能会同时到达两个服务器，您的部分内容仍会从旧服务器提供，关注者可能需要几分钟才能在此找到您。"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:275
+#: ../../../lib/web/src/components/comment-composer.tsx:279
 msgid "Your attachments will be lost."
 msgstr "您的附件将丢失。"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:273
+#: ../../../lib/web/src/components/comment-composer.tsx:277
 msgid "Your text and attachments will be lost."
 msgstr "您的文本和附件将丢失。"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:276
+#: ../../../lib/web/src/components/comment-composer.tsx:280
 msgid "Your text will be lost."
 msgstr "你的内容将会丢失。"
