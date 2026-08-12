@@ -3512,7 +3512,28 @@ def action_user_asset(a):
 	if not check_crm_access(user_id, crm_id, "view"):
 		a.error.label(403, "errors.access_denied")
 		return
-	return stream_asset(a, a.input("user") or "", "people", asset)
+	# Bind the subject to someone who actually appears in the routed crm, the
+	# way the comment and activity variants above do. Taken from the path
+	# unchecked, this opened a stream to ANY entity id a caller named and
+	# relayed it back, with view access to any one crm as the only cost of
+	# entry - and the route is public, so that access can be the "*" grant.
+	subject = a.input("user") or ""
+	if not subject:
+		a.error.label(404, "errors.unknown_asset")
+		return
+	known = mochi.db.exists(
+		"select 1 from activity a2 join objects o on a2.object=o.id where a2.user=? and o.crm=?",
+		subject, crm_id)
+	if not known:
+		known = mochi.db.exists(
+			"select 1 from comments c join objects o on c.object=o.id where c.author=? and o.crm=?",
+			subject, crm_id)
+	if not known:
+		known = mochi.db.exists("select 1 from subscribers where crm=? and id=?", crm_id, subject)
+	if not known:
+		a.error.label(404, "errors.unknown_asset")
+		return
+	return stream_asset(a, subject, "people", asset)
 
 # ============================================================================
 # Comment Actions
