@@ -3703,6 +3703,17 @@ def action_comment_update(a):
 		a.error.label(400, "errors.object_and_comment_id_required")
 		return
 
+	# The object must belong to the CRM access was checked against. Object
+	# and comment both come from the caller, and binding comment to object
+	# alone leaves that pair free to name another crm entirely - so a
+	# caller reaching one crm could edit or delete their own comments in
+	# any other, and the broadcast below would announce it to the wrong one
+	# while the crm that holds the comment never heard. comment/create
+	# binds it exactly this way.
+	if not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
+		a.error.label(404, "errors.object_not_found")
+		return
+
 	comment = mochi.db.row("select * from comments where id=? and object=?", comment_id, object_id)
 	if not comment:
 		a.error.label(404, "errors.comment_not_found")
@@ -3768,6 +3779,11 @@ def action_comment_delete(a):
 
 	if not object_id or not comment_id:
 		a.error.label(400, "errors.object_and_comment_id_required")
+		return
+
+	# Same binding as above: the object must be in the routed crm.
+	if not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
+		a.error.label(404, "errors.object_not_found")
 		return
 
 	comment = mochi.db.row("select * from comments where id=? and object=?", comment_id, object_id)
@@ -7377,6 +7393,10 @@ def do_comment_update(crm_id, crm, params, user_id):
 	content = params.get("content")
 	if not object_id or not comment_id:
 		return {"error": "errors.object_and_comment_id_required", "code": 400}
+	# Same binding as above: the object must be in the routed crm.
+	if not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
+		return {"error": "errors.object_not_found", "code": 404}
+
 	comment = mochi.db.row("select * from comments where id=? and object=?", comment_id, object_id)
 	if not comment:
 		return {"error": "errors.comment_not_found", "code": 404}
@@ -7399,6 +7419,10 @@ def do_comment_delete(crm_id, crm, params, user_id):
 	comment_id = params.get("comment")
 	if not object_id or not comment_id:
 		return {"error": "errors.object_and_comment_id_required", "code": 400}
+	# Same binding as above: the object must be in the routed crm.
+	if not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
+		return {"error": "errors.object_not_found", "code": 404}
+
 	comment = mochi.db.row("select * from comments where id=? and object=?", comment_id, object_id)
 	if not comment:
 		return {"error": "errors.comment_not_found", "code": 404}
