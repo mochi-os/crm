@@ -3,98 +3,40 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useEffect, useMemo } from "react";
-import { useLingui } from '@lingui/react/macro'
-import {
-  AuthenticatedLayout,
-  naturalCompare,
-  type SidebarData,
-  type NavItem,
-} from "@mochi/web";
-import { Plus, RefreshCw, Search, Users } from "lucide-react";
+import { useLingui } from "@lingui/react/macro";
+import { EntityLayout } from "@mochi/web/components/entity/entity-layout";
+import { Users } from "lucide-react";
 import { useCrmsStore } from "@/stores/crms-store";
 import { SidebarProvider, useSidebarContext } from "@/context/sidebar-context";
 import { CreateCrmDialog } from "@/features/crms/components/create-crm-dialog";
 import { APP_ROUTES } from "@/config/routes";
 
 function CrmsLayoutInner() {
-  const { t } = useLingui()
+  const { t } = useLingui();
   const crms = useCrmsStore((state) => state.crms);
   const isLoading = useCrmsStore((state) => state.isLoading);
   const error = useCrmsStore((state) => state.error);
   const refresh = useCrmsStore((state) => state.refresh);
-  const {
-    createDialogOpen,
-    openCreateDialog,
-    closeCreateDialog,
-  } = useSidebarContext();
-
-  useEffect(() => {
-    void refresh();
-  }, [refresh]);
-
-  const sidebarData: SidebarData = useMemo(() => {
-    const sortedCrms = [...crms].sort((a, b) =>
-      naturalCompare(a.name, b.name),
-    );
-
-    const crmItems: NavItem[] = sortedCrms.map((crm) => {
-      const id = crm.fingerprint ?? crm.id;
-      return {
-        title: crm.name,
-        url: APP_ROUTES.CRMS.VIEW(id),
-        icon: Users,
-      };
-    });
-
-    const allCrmsItem: NavItem = {
-      title: t`All CRMs`,
-      url: "/",
-      icon: Users,
-      aggregate: true,
-    };
-
-    const actionItems: NavItem[] = [
-      { title: t`Find CRMs`, icon: Search, url: "/find" },
-      { title: t`Create CRM`, icon: Plus, onClick: openCreateDialog },
-    ];
-
-    const groups: SidebarData["navGroups"] = [
-      {
-        title: t`CRMs`,
-        items: [
-          allCrmsItem,
-          ...crmItems,
-          ...(error
-            ? [
-                {
-                  title: t`Retry CRMs load`,
-                  icon: RefreshCw,
-                  onClick: () => {
-                    void refresh();
-                  },
-                  className: "text-destructive",
-                },
-              ]
-            : []),
-        ],
-      },
-      {
-        title: "",
-        items: actionItems,
-        separator: true,
-      },
-    ];
-
-    return { navGroups: groups };
-  }, [crms, openCreateDialog, error, refresh, t]);
+  const { createDialogOpen, openCreateDialog, closeCreateDialog } =
+    useSidebarContext();
 
   return (
-    <>
-      <AuthenticatedLayout
-        sidebarData={sidebarData}
-        isLoadingSidebar={isLoading && crms.length === 0}
-      />
+    <EntityLayout
+      rows={crms}
+      isLoading={isLoading}
+      error={error}
+      refresh={refresh}
+      icon={Users}
+      onCreate={openCreateDialog}
+      viewUrl={APP_ROUTES.CRMS.VIEW}
+      labels={{
+        group: t`CRMs`,
+        all: t`All CRMs`,
+        find: t`Find CRMs`,
+        create: t`Create CRM`,
+        retry: t`Retry CRMs load`,
+      }}
+    >
       <CreateCrmDialog
         open={createDialogOpen}
         onOpenChange={(open) => {
@@ -102,7 +44,7 @@ function CrmsLayoutInner() {
         }}
         hideTrigger
       />
-    </>
+    </EntityLayout>
   );
 }
 

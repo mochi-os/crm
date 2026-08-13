@@ -17,6 +17,12 @@ import type {
   EntityFieldOption,
   EntityObject,
   EntityObjectLink,
+  EntityObjectListResponse,
+  EntityCommentListResponse,
+  EntityActivityListResponse,
+  EntityAttachmentListResponse,
+  EntityWatcherListResponse,
+  EntityLinkListResponse,
   EntitySortState,
   EntityView,
   EntityWatcher,
@@ -70,12 +76,16 @@ export type Watcher = EntityWatcher;
 export type SortState = EntitySortState;
 
 // API Response types
-export interface ObjectListResponse {
-  data: {
-    objects: CrmObject[];
-    watched?: string[];
-  };
-}
+//
+// The envelopes below are the shared client's own, re-exported under this
+// app's names so call sites keep reading `CommentListResponse`. Only the two
+// this app shapes differently are declared here.
+export type ObjectListResponse = EntityObjectListResponse<CrmObject>;
+export type CommentListResponse = EntityCommentListResponse;
+export type ActivityListResponse = EntityActivityListResponse;
+export type AttachmentListResponse = EntityAttachmentListResponse;
+export type WatcherListResponse = EntityWatcherListResponse;
+export type LinkListResponse = EntityLinkListResponse;
 
 export interface ObjectCreateResponse {
   data: {
@@ -91,38 +101,5 @@ export interface ObjectGetResponse {
     incoming: ObjectLink[];
     watching: boolean;
     comment_count: number;
-  };
-}
-
-export interface CommentListResponse {
-  data: {
-    comments: Comment[];
-    count: number;
-  };
-}
-
-export interface ActivityListResponse {
-  data: {
-    activities: Activity[];
-  };
-}
-
-export interface AttachmentListResponse {
-  data: {
-    attachments: Attachment[];
-  };
-}
-
-export interface WatcherListResponse {
-  data: {
-    watchers: Watcher[];
-    watching: boolean;
-  };
-}
-
-export interface LinkListResponse {
-  data: {
-    outgoing: ObjectLink[];
-    incoming: ObjectLink[];
   };
 }

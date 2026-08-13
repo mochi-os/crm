@@ -58,7 +58,10 @@ function FindCrmsPage() {
           error: (e) => getErrorMessage(e, t`Failed to subscribe`),
         })
         await refresh()
-        const id = entity.fingerprint ?? crmId
+        // `||`, not `??`: a probed remote with no fingerprint of its own comes
+        // back carrying "" rather than nothing (see action_search in crm.star),
+        // and an empty id routes to the list root instead of the CRM.
+        const id = entity.fingerprint || crmId
         await navigate({ to: APP_ROUTES.CRMS.VIEW(id) })
       } catch {
         // toast already shown
