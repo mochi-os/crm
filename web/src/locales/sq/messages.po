@@ -104,7 +104,7 @@ msgstr "{selectedCount, plural, one {# të zgjedhura} other {# të zgjedhura}}"
 msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
 msgstr "{selectedCount, plural, one {Veprime masive për # {entityName} të zgjedhur} other {Veprime masive për # {manyName} të zgjedhur}}"
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:252
+#: ../../../lib/web/src/components/attachment-composer.tsx:281
 #: ../../../lib/web/src/components/ui/upload-progress.tsx:52
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} nga {totalLabel}"
@@ -228,6 +228,10 @@ msgstr "Shto llogari"
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:297
 msgid "Add an account to receive notifications and use services."
 msgstr "Shto një llogari për të marrë njoftime dhe për të përdorur shërbime."
+
+#: ../../../lib/web/src/components/attachment-composer.tsx:324
+msgid "Add caption"
+msgstr "Shto legjendë"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
@@ -481,6 +485,7 @@ msgstr "Njoftime të shfletuesit"
 msgid "Can be child of"
 msgstr "Mund të jetë fëmijë i"
 
+#: ../../../lib/web/src/components/attachment-composer.tsx:461
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:250
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:169
@@ -509,6 +514,11 @@ msgstr "Anulo komentin"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:466
 msgid "Cancel reply"
 msgstr "Anulo përgjigjen"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx:421
+#: ../../../lib/web/src/components/attachment-composer.tsx:456
+msgid "Caption"
+msgstr "Legjenda"
 
 #: ../../../lib/web/src/components/notification-category-button.tsx:102
 msgid "Category for these notifications"
@@ -598,8 +608,8 @@ msgstr "Pastro përzgjedhjen (Escape)"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:506
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:511
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:376
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Mbyll"
@@ -1033,11 +1043,11 @@ msgstr "Drejtimi"
 msgid "Directory"
 msgstr "Drejtoria"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:300
+#: ../../../lib/web/src/components/comment-composer.tsx:313
 msgid "Discard"
 msgstr "Hidh"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:298
+#: ../../../lib/web/src/components/comment-composer.tsx:311
 msgid "Discard draft?"
 msgstr "Ta hedhësh draftin?"
 
@@ -1072,8 +1082,8 @@ msgid "Double click on a column to add content"
 msgstr "Klikoni dy herë mbi një kolonë për të shtuar përmbajtje"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:239
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:367
 msgid "Download"
 msgstr "Shkarko"
 
@@ -1081,7 +1091,7 @@ msgstr "Shkarko"
 msgid "Download backup first"
 msgstr "Shkarko fillimisht kopjen rezervë"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:68
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:69
 msgid "Download failed"
 msgstr "Shkarkimi dështoi"
 
@@ -1111,6 +1121,10 @@ msgstr "Modifiko"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:154
 msgid "Edit {label}"
 msgstr "Modifiko {label}"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx:324
+msgid "Edit caption"
+msgstr "Modifiko legjendën"
 
 #: src/features/editor/components/edit-dialogs.tsx:217
 msgid "Edit class"
@@ -1302,7 +1316,7 @@ msgstr "Ngarkimi i CRM-ve dështoi"
 msgid "Failed to load history"
 msgstr "Ngarkimi i historisë dështoi"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:264
 msgid "Failed to load image"
 msgstr "Ngarkimi i figurës dështoi"
 
@@ -1314,7 +1328,7 @@ msgstr "Ngarkimi i artikullit dështoi"
 msgid "Failed to load recommended CRMs"
 msgstr "Ngarkimi i CRM-ve të rekomanduara dështoi"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:264
 msgid "Failed to load video"
 msgstr "Ngarkimi i videos dështoi"
 
@@ -1527,7 +1541,7 @@ msgid "Identity"
 msgstr "Identiteti"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:248
 msgid "Image viewer: {0}"
 msgstr "Shikuesi i figurave: {0}"
 
@@ -1741,7 +1755,7 @@ msgstr "Mochi web"
 
 #: ../../../lib/web/src/components/options-menu.tsx:167
 msgid "Moderation"
-msgstr ""
+msgstr "Moderimi"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:59
 msgid "Monday"
@@ -1797,8 +1811,8 @@ msgstr "{0} i ri"
 msgid "New game"
 msgstr "Lojë e re"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:407
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:412
 msgid "Next image"
 msgstr "Imazhi tjetër"
 
@@ -2117,8 +2131,8 @@ msgstr "Postimet"
 msgid "Posts and comments"
 msgstr "Postimet dhe komentet"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Previous image"
 msgstr "Imazhi i mëparshëm"
 
@@ -2197,8 +2211,8 @@ msgstr "Relative (5m, 3h, 2d)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Relative brenda 24 orëve, përndryshe absolute"
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:289
-#: ../../../lib/web/src/components/attachment-composer.tsx:328
+#: ../../../lib/web/src/components/attachment-composer.tsx:318
+#: ../../../lib/web/src/components/attachment-composer.tsx:363
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
@@ -2307,7 +2321,7 @@ msgstr "Rivendos {title}"
 msgid "Reset all settings to default values"
 msgstr "Rivendos të gjitha cilësimet në vlerat parazgjedhura"
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:346
+#: ../../../lib/web/src/components/attachment-composer.tsx:381
 msgid "Retry"
 msgstr "Provo përsëri"
 
@@ -2364,6 +2378,7 @@ msgstr "CRM e shitjeve"
 msgid "Saturday"
 msgstr "E shtunë"
 
+#: ../../../lib/web/src/components/attachment-composer.tsx:465
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:270
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
@@ -3026,12 +3041,12 @@ msgstr "Verifiko"
 msgid "Verify email address"
 msgstr "Verifiko adresën e email-it"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:79
+#: ../../../lib/web/src/components/attachment-gallery.tsx:85
 msgid "Video thumbnail"
 msgstr "Miniatura e videos"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
 msgid "Video viewer: {0}"
 msgstr "Shikuesi i videove: {0}"
 
@@ -3127,14 +3142,14 @@ msgstr "I keni parë të gjitha!"
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Llogaria juaj u zhvendos këtu nga {source}. Derisa ta fshini atje, mesazhet dhe njoftimet mund të arrijnë në të dy serverët, një pjesë e përmbajtjes suaj vazhdon të shërbejë nga serveri i vjetër dhe ndjekësit mund të kenë nevojë për disa minuta që t'ju gjejnë këtu."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:291
+#: ../../../lib/web/src/components/comment-composer.tsx:304
 msgid "Your attachments will be lost."
 msgstr "Bashkëngjitjet tuaja do të humbasin."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:289
+#: ../../../lib/web/src/components/comment-composer.tsx:302
 msgid "Your text and attachments will be lost."
 msgstr "Teksti dhe bashkëngjitjet tuaja do të humbasin."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:292
+#: ../../../lib/web/src/components/comment-composer.tsx:305
 msgid "Your text will be lost."
 msgstr "Teksti yt do të humbasë."

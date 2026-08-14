@@ -104,7 +104,7 @@ msgstr "{selectedCount, plural, one {# избрани} other {# избрани}}
 msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
 msgstr "{selectedCount, plural, one {Групни дејства за # избран {entityName}} other {Групни дејства за # избрани {manyName}}}"
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:252
+#: ../../../lib/web/src/components/attachment-composer.tsx:281
 #: ../../../lib/web/src/components/ui/upload-progress.tsx:52
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} од {totalLabel}"
@@ -228,6 +228,10 @@ msgstr "Додај сметка"
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:297
 msgid "Add an account to receive notifications and use services."
 msgstr "Додај сметка за да примаш известувања и да користиш услуги."
+
+#: ../../../lib/web/src/components/attachment-composer.tsx:324
+msgid "Add caption"
+msgstr "Додај натпис"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
@@ -481,6 +485,7 @@ msgstr "Известувања во прелистувач"
 msgid "Can be child of"
 msgstr "Може да биде дете на"
 
+#: ../../../lib/web/src/components/attachment-composer.tsx:461
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:250
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:169
@@ -509,6 +514,11 @@ msgstr "Откажи коментар"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:466
 msgid "Cancel reply"
 msgstr "Откажи одговор"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx:421
+#: ../../../lib/web/src/components/attachment-composer.tsx:456
+msgid "Caption"
+msgstr "Натпис"
 
 #: ../../../lib/web/src/components/notification-category-button.tsx:102
 msgid "Category for these notifications"
@@ -598,8 +608,8 @@ msgstr "Исчисти избор (Escape)"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:506
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:511
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:376
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Затвори"
@@ -1033,11 +1043,11 @@ msgstr "Насока"
 msgid "Directory"
 msgstr "Именик"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:300
+#: ../../../lib/web/src/components/comment-composer.tsx:313
 msgid "Discard"
 msgstr "Отфрли"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:298
+#: ../../../lib/web/src/components/comment-composer.tsx:311
 msgid "Discard draft?"
 msgstr "Да се отфрли нацртот?"
 
@@ -1072,8 +1082,8 @@ msgid "Double click on a column to add content"
 msgstr "Двапати кликнете на колона за да додадете содржина"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:239
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:367
 msgid "Download"
 msgstr "Преземи"
 
@@ -1081,7 +1091,7 @@ msgstr "Преземи"
 msgid "Download backup first"
 msgstr "Прво преземете резерва"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:68
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:69
 msgid "Download failed"
 msgstr "Преземањето не успеа"
 
@@ -1111,6 +1121,10 @@ msgstr "Уреди"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:154
 msgid "Edit {label}"
 msgstr "Уреди {label}"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx:324
+msgid "Edit caption"
+msgstr "Уреди натпис"
 
 #: src/features/editor/components/edit-dialogs.tsx:217
 msgid "Edit class"
@@ -1302,7 +1316,7 @@ msgstr "Неуспешно вчитување на CRM-и"
 msgid "Failed to load history"
 msgstr "Неуспешно вчитување на историја"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:264
 msgid "Failed to load image"
 msgstr "Не успеа вчитувањето на сликата"
 
@@ -1314,7 +1328,7 @@ msgstr "Неуспешно вчитување на ставка"
 msgid "Failed to load recommended CRMs"
 msgstr "Вчитувањето препорачани CRM системи не успеа"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:264
 msgid "Failed to load video"
 msgstr "Не успеа вчитувањето на видеото"
 
@@ -1527,7 +1541,7 @@ msgid "Identity"
 msgstr "Идентитет"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:248
 msgid "Image viewer: {0}"
 msgstr "Прегледувач на слики: {0}"
 
@@ -1741,7 +1755,7 @@ msgstr "Mochi веб"
 
 #: ../../../lib/web/src/components/options-menu.tsx:167
 msgid "Moderation"
-msgstr ""
+msgstr "Модерација"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:59
 msgid "Monday"
@@ -1797,8 +1811,8 @@ msgstr "Ново {0}"
 msgid "New game"
 msgstr "Нова игра"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:407
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:412
 msgid "Next image"
 msgstr "Следна слика"
 
@@ -2117,8 +2131,8 @@ msgstr "Објави"
 msgid "Posts and comments"
 msgstr "Објави и коментари"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Previous image"
 msgstr "Претходна слика"
 
@@ -2197,8 +2211,8 @@ msgstr "Релативно (5m, 3h, 2d)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Релативно во рок од 24 часа, инаку апсолутно"
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:289
-#: ../../../lib/web/src/components/attachment-composer.tsx:328
+#: ../../../lib/web/src/components/attachment-composer.tsx:318
+#: ../../../lib/web/src/components/attachment-composer.tsx:363
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
@@ -2307,7 +2321,7 @@ msgstr "Ресетирај {title}"
 msgid "Reset all settings to default values"
 msgstr "Ресетирај ги сите поставки на стандардни вредности"
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:346
+#: ../../../lib/web/src/components/attachment-composer.tsx:381
 msgid "Retry"
 msgstr "Обиди се повторно"
 
@@ -2364,6 +2378,7 @@ msgstr "Sales CRM"
 msgid "Saturday"
 msgstr "Сабота"
 
+#: ../../../lib/web/src/components/attachment-composer.tsx:465
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:270
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
@@ -3026,12 +3041,12 @@ msgstr "Потврди"
 msgid "Verify email address"
 msgstr "Потврди ја адресата на е-пошта"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:79
+#: ../../../lib/web/src/components/attachment-gallery.tsx:85
 msgid "Video thumbnail"
 msgstr "Сликичка на видео"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
 msgid "Video viewer: {0}"
 msgstr "Прегледувач на видео: {0}"
 
@@ -3127,14 +3142,14 @@ msgstr "Сè видовте!"
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Вашиот профил беше преместен овде од {source}. Додека не го избришете таму, пораките и известувањата може да достигнат до двата сервера, дел од вашата содржина продолжува да се служи од старата сервер, а следбениците може да потребат неколку минути за да ве најдат овде."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:291
+#: ../../../lib/web/src/components/comment-composer.tsx:304
 msgid "Your attachments will be lost."
 msgstr "Вашите прилози ќе бидат изгубени."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:289
+#: ../../../lib/web/src/components/comment-composer.tsx:302
 msgid "Your text and attachments will be lost."
 msgstr "Вашиот текст и прилозите ќе бидат изгубени."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:292
+#: ../../../lib/web/src/components/comment-composer.tsx:305
 msgid "Your text will be lost."
 msgstr "Твојот текст ќе биде изгубен."
