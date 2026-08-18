@@ -3,32 +3,16 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { create } from "zustand";
-import { getErrorMessage } from "@mochi/web";
+// The store itself is createEntityListStore in @mochi/web, shared with the
+// projects app. Only the list call, the response key and the wording are ours.
+
+import { createEntityListStore } from "@mochi/web";
 import { t } from '@lingui/core/macro'
 import type { Crm } from "@/types";
 import crmsApi from "@/api/crms";
 
-interface CrmsState {
-  crms: Crm[];
-  isLoading: boolean;
-  error: string | null;
-  refresh: () => Promise<void>;
-}
-
-export const useCrmsStore = create<CrmsState>()((set) => ({
-  crms: [],
-  isLoading: false,
-  error: null,
-
-  refresh: async () => {
-    set({ isLoading: true, error: null });
-    try {
-      const response = await crmsApi.list();
-      const crms = response.data?.crms ?? [];
-      set({ crms, isLoading: false });
-    } catch (error) {
-      set({ error: getErrorMessage(error, t`Failed to load CRMs`), isLoading: false });
-    }
-  },
-}));
+export const useCrmsStore = createEntityListStore<Crm>({
+  list: crmsApi.list,
+  listKey: "crms",
+  errorMessage: () => t`Failed to load CRMs`,
+});

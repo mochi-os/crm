@@ -15,7 +15,7 @@ import crmsApi from "@/api/crms";
 
 export function CrmsListPage() {
   const { t } = useLingui();
-  const crms = useCrmsStore((state) => state.crms);
+  const crms = useCrmsStore((state) => state.rows);
   const isLoading = useCrmsStore((state) => state.isLoading);
   const error = useCrmsStore((state) => state.error);
   const refresh = useCrmsStore((state) => state.refresh);

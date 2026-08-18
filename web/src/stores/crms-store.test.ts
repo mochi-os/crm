@@ -4,12 +4,12 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 /* eslint-disable lingui/no-unlocalized-strings */
-// Tests for the crms store
+// The store behaviour is asserted once in @mochi/web
+// (create-entity-list-store.test.ts). What is left here is this app's wiring:
+// the list call it makes and the key it reads the rows out of.
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { useCrmsStore } from "./crms-store";
-import type { Crm } from "@/types";
 
-// Mock the API module
 vi.mock("@/api/crms", () => ({
   default: {
     list: vi.fn(),
@@ -18,115 +18,44 @@ vi.mock("@/api/crms", () => ({
 
 import crmsApi from "@/api/crms";
 
-describe("useCrmsStore", () => {
+describe("useCrmsStore wiring", () => {
   beforeEach(() => {
-    // Reset store state between tests
-    useCrmsStore.setState({
-      crms: [],
-      isLoading: false,
-      error: null,
-    });
+    useCrmsStore.setState({ rows: [], isLoading: false, error: null });
     vi.clearAllMocks();
   });
 
-  it("should have correct initial state", () => {
-    const state = useCrmsStore.getState();
-
-    expect(state.crms).toEqual([]);
-    expect(state.isLoading).toBe(false);
-    expect(state.error).toBeNull();
-  });
-
-  it("should set loading state when refreshing", async () => {
+  it("reads the rows out of the `crms` key this app's server answers under", async () => {
     vi.mocked(crmsApi.list).mockResolvedValue({
-      data: { crms: [] },
-    });
-
-    const refreshPromise = useCrmsStore.getState().refresh();
-
-    // Should be loading immediately
-    expect(useCrmsStore.getState().isLoading).toBe(true);
-
-    await refreshPromise;
-
-    // Should not be loading after completion
-    expect(useCrmsStore.getState().isLoading).toBe(false);
-  });
-
-  it("should load crms successfully", async () => {
-    const mockCrms: Crm[] = [
-      {
-        id: "1",
-        fingerprint: "abc123",
-        name: "Crm 1",
-        description: "",
-        owner: 1,
-        ownername: "testuser",
-        server: "local",
-        created: Date.now(),
-        updated: Date.now(),
-        populated: 1,
-        access: "owner",
+      data: {
+        crms: [
+          {
+            id: "1",
+            fingerprint: "abc",
+            name: "Crm 1",
+            description: "",
+            owner: 1,
+            ownername: "me",
+            server: "",
+            created: 0,
+            updated: 0,
+            populated: 1,
+            access: "owner",
+          },
+        ],
       },
-      {
-        id: "2",
-        fingerprint: "def456",
-        name: "Crm 2",
-        description: "Test crm",
-        owner: 1,
-        ownername: "testuser",
-        server: "local",
-        created: Date.now(),
-        updated: Date.now(),
-        populated: 1,
-        access: "owner",
-      },
-    ];
-
-    vi.mocked(crmsApi.list).mockResolvedValue({
-      data: { crms: mockCrms },
     });
 
     await useCrmsStore.getState().refresh();
 
-    const state = useCrmsStore.getState();
-    expect(state.crms).toEqual(mockCrms);
-    expect(state.isLoading).toBe(false);
-    expect(state.error).toBeNull();
+    expect(crmsApi.list).toHaveBeenCalled();
+    expect(useCrmsStore.getState().rows).toHaveLength(1);
   });
 
-  it("should handle API errors", async () => {
-    vi.mocked(crmsApi.list).mockRejectedValue(new Error("Network error"));
+  it("falls back to this app's wording when a load fails without a message", async () => {
+    vi.mocked(crmsApi.list).mockRejectedValue(new Error(""));
 
     await useCrmsStore.getState().refresh();
 
-    const state = useCrmsStore.getState();
-    expect(state.crms).toEqual([]);
-    expect(state.isLoading).toBe(false);
-    expect(state.error).toBe("Network error");
-  });
-
-  it("should handle empty crms list", async () => {
-    vi.mocked(crmsApi.list).mockResolvedValue({
-      data: { crms: [] },
-    });
-
-    await useCrmsStore.getState().refresh();
-
-    const state = useCrmsStore.getState();
-    expect(state.crms).toEqual([]);
-    expect(state.error).toBeNull();
-  });
-
-  it("should handle missing crms array gracefully", async () => {
-    vi.mocked(crmsApi.list).mockResolvedValue({
-      data: { crms: undefined as unknown as [] },
-    });
-
-    await useCrmsStore.getState().refresh();
-
-    const state = useCrmsStore.getState();
-    expect(state.crms).toEqual([]);
-    expect(state.error).toBeNull();
+    expect(useCrmsStore.getState().error).toBe("Failed to load CRMs");
   });
 });

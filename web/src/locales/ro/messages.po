@@ -43,9 +43,8 @@ msgstr "[nesetat]"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# selectat} few {# selectate} other {# selectate}}"
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/design.tsx:65
-#: src/routes/_authenticated/$crmId/design.tsx:158
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId/design.tsx:42
 msgid "{0} - Design"
 msgstr "{0} - Design"
 
@@ -54,9 +53,8 @@ msgstr "{0} - Design"
 msgid "{0} option preview"
 msgstr "Previzualizarea opțiunii {0}"
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
-#: src/routes/_authenticated/$crmId_.settings.tsx:219
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId_.settings.tsx:85
 msgid "{0} settings"
 msgstr "Setări {0}"
 
@@ -146,7 +144,7 @@ msgstr "Absolut (dată și oră)"
 msgid "Accept"
 msgstr "Acceptă"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:84
+#: src/routes/_authenticated/$crmId_.settings.tsx:81
 msgid "Access"
 msgstr "Acces"
 
@@ -162,19 +160,19 @@ msgstr "Acces interzis"
 msgid "Access level"
 msgstr "Nivel de acces"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:470
+#: src/routes/_authenticated/$crmId_.settings.tsx:117
 msgid "Access level updated"
 msgstr "Nivel de acces actualizat"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:481
+#: src/routes/_authenticated/$crmId_.settings.tsx:108
 msgid "Access management"
 msgstr "Gestionare acces"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:456
+#: src/routes/_authenticated/$crmId_.settings.tsx:114
 msgid "Access removed"
 msgstr "Acces eliminat"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:445
+#: src/routes/_authenticated/$crmId_.settings.tsx:111
 msgid "Access set for {subjectName}"
 msgstr "Acces configurat pentru {subjectName}"
 
@@ -244,7 +242,7 @@ msgstr "Adaugă element în listă"
 msgid "Add class"
 msgstr "Adaugă clasă"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Add column"
 msgstr "Adaugă coloană"
 
@@ -274,7 +272,7 @@ msgstr "Adaugă un cont nou"
 msgid "Add option"
 msgstr "Adaugă opțiune"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:487
+#: src/routes/_authenticated/$crmId_.settings.tsx:109
 msgid "Add rule"
 msgstr "Adaugă regulă"
 
@@ -426,16 +424,13 @@ msgstr "Avatar pentru {name}"
 msgid "Back"
 msgstr "Înapoi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:166
-#: src/routes/_authenticated/$crmId_.settings.tsx:189
-#: src/routes/_authenticated/$crmId_.settings.tsx:221
-#: src/routes/_authenticated/$crmId/design.tsx:135
-#: src/routes/_authenticated/$crmId/design.tsx:160
+#: src/routes/_authenticated/$crmId_.settings.tsx:82
+#: src/routes/_authenticated/$crmId/design.tsx:43
 msgid "Back to CRM"
 msgstr "Înapoi la CRM"
 
-#: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:96
+#: src/routes/_authenticated/$crmId/$objectId.tsx:64
+#: src/routes/_authenticated/$crmId/index.tsx:93
 msgid "Back to CRMs"
 msgstr "Înapoi la CRM-uri"
 
@@ -499,8 +494,8 @@ msgstr "Poate fi copilul lui"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:201
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:336
-#: src/routes/_authenticated/$crmId/design.tsx:305
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/design.tsx:57
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Cancel"
 msgstr "Anulează"
 
@@ -565,7 +560,7 @@ msgstr "Alege între preferința sistemului, mod luminos sau mod întunecat"
 msgid "Choose language"
 msgstr "Alege limba"
 
-#: src/routes/_authenticated/$crmId/index.tsx:183
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Class"
 msgstr "Clasă"
 
@@ -681,7 +676,7 @@ msgstr "Paleta de comenzi"
 msgid "Comment actions"
 msgstr "Acțiuni comentariu"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:383
+#: src/routes/_authenticated/$crmId_.settings.tsx:51
 msgid "Comment and view"
 msgstr "Comentează și vezi"
 
@@ -813,7 +808,7 @@ msgstr "Creează un element nou"
 msgid "Create object"
 msgstr "Creează obiect"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:382
+#: src/routes/_authenticated/$crmId_.settings.tsx:50
 msgid "Create, edit, comment, and view"
 msgstr "Creare, editare, comentare și vizualizare"
 
@@ -840,27 +835,31 @@ msgstr "Acțiuni CRM"
 msgid "CRM created"
 msgstr "CRM creat"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:130
+#: src/routes/_authenticated/$crmId_.settings.tsx:106
 msgid "CRM deleted"
 msgstr "CRM șters"
 
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "CRM link"
 msgstr "Link către CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:204
+#: src/routes/_authenticated/$crmId_.settings.tsx:73
+msgid "CRM name is required"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:86
 msgid "CRM not found"
 msgstr "CRM-ul nu a fost găsit"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:85
 msgid "CRM settings"
 msgstr "Setări CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:204
+#: src/routes/_authenticated/$crmId_.settings.tsx:88
 msgid "CRM unavailable"
 msgstr "CRM indisponibil"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:151
+#: src/routes/_authenticated/$crmId_.settings.tsx:97
 msgid "CRM updated"
 msgstr "CRM actualizat"
 
@@ -930,7 +929,7 @@ msgstr "Sortare implicită"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:314
 #: src/features/objects/components/object-detail-panel.tsx:519
-#: src/routes/_authenticated/$crmId_.settings.tsx:343
+#: src/routes/_authenticated/$crmId_.settings.tsx:100
 msgid "Delete"
 msgstr "Șterge"
 
@@ -950,12 +949,12 @@ msgstr "Șterge coloana"
 msgid "Delete comment"
 msgstr "Șterge comentariul"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:334
-#: src/routes/_authenticated/$crmId_.settings.tsx:354
+#: src/routes/_authenticated/$crmId_.settings.tsx:99
+#: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "Delete CRM"
 msgstr "Șterge CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:352
+#: src/routes/_authenticated/$crmId_.settings.tsx:101
 msgid "Delete CRM?"
 msgstr "Ștergi CRM?"
 
@@ -987,7 +986,7 @@ msgstr "Șterge vizualizarea"
 msgid "Delete your account on the old server"
 msgstr "Ștergeți contul de pe serverul vechi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:129
+#: src/routes/_authenticated/$crmId_.settings.tsx:105
 msgid "Deleting CRM..."
 msgstr "Se șterge CRM..."
 
@@ -1000,22 +999,22 @@ msgid "Descending"
 msgstr "Descrescător"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:304
+#: src/routes/_authenticated/$crmId_.settings.tsx:92
 msgid "Description"
 msgstr "Descriere"
 
-#: src/routes/_authenticated/$crmId/design.tsx:65
-#: src/routes/_authenticated/$crmId/design.tsx:133
-#: src/routes/_authenticated/$crmId/index.tsx:190
+#: src/routes/_authenticated/$crmId/design.tsx:39
+#: src/routes/_authenticated/$crmId/design.tsx:42
+#: src/routes/_authenticated/$crmId/index.tsx:180
 msgid "Design"
 msgstr "Design"
 
 #: src/features/crms/components/create-crm-dialog.tsx:143
-#: src/routes/_authenticated/$crmId/design.tsx:110
+#: src/routes/_authenticated/$crmId/design.tsx:50
 msgid "Design imported"
 msgstr "Design importat"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:381
+#: src/routes/_authenticated/$crmId_.settings.tsx:49
 msgid "Design, create, edit, comment, and view"
 msgstr "Proiectare, creare, editare, comentare și vizualizare"
 
@@ -1060,7 +1059,7 @@ msgstr "Deconectat"
 msgid "Dismiss"
 msgstr "Renunță"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Dismiss board hint"
 msgstr "Renunță la indicația tablei"
 
@@ -1075,7 +1074,7 @@ msgstr "Afișează bara laterală mobilă."
 msgid "Done"
 msgstr "Terminat"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Double click on a column to add content"
 msgstr "Dublu clic pe o coloană pentru a adăuga conținut"
 
@@ -1085,7 +1084,7 @@ msgstr "Dublu clic pe o coloană pentru a adăuga conținut"
 msgid "Download"
 msgstr "Descarcă"
 
-#: src/routes/_authenticated/$crmId/design.tsx:227
+#: src/routes/_authenticated/$crmId/design.tsx:71
 msgid "Download backup first"
 msgstr "Descarcă mai întâi backup-ul"
 
@@ -1093,12 +1092,12 @@ msgstr "Descarcă mai întâi backup-ul"
 msgid "Download failed"
 msgstr "Descărcarea a eșuat"
 
-#: src/routes/_authenticated/$crmId/design.tsx:89
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/design.tsx:48
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Downloaded {filename}"
 msgstr "S-a descărcat {filename}"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Drag columns to re-order them"
 msgstr "Trage coloanele pentru a le reordona"
 
@@ -1169,7 +1168,7 @@ msgstr "Introduceți codul din e-mailul dumneavoastră"
 msgid "Enter your authenticator code"
 msgstr "Introdu codul din aplicația de autentificare"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:311
+#: src/routes/_authenticated/$crmId_.settings.tsx:93
 msgid "Entity ID"
 msgstr "ID entitate"
 
@@ -1188,15 +1187,15 @@ msgstr "Extinde"
 msgid "Expand sidebar"
 msgstr "Extinde bara laterală"
 
-#: src/routes/_authenticated/$crmId/index.tsx:180
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Export CSV"
 msgstr "Exportă CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Export data"
 msgstr "Exportă datele"
 
-#: src/routes/_authenticated/$crmId/design.tsx:175
+#: src/routes/_authenticated/$crmId/design.tsx:46
 msgid "Export design"
 msgstr "Exportă designul"
 
@@ -1235,7 +1234,7 @@ msgstr "Crearea câmpului a eșuat"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
 #: ../../../lib/web/src/components/options-menu.tsx:101
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to create link"
 msgstr "Crearea linkului a eșuat"
 
@@ -1255,7 +1254,7 @@ msgstr "Ștergerea atașamentului a eșuat"
 msgid "Failed to delete comment"
 msgstr "Ștergerea comentariului a eșuat"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:131
+#: src/routes/_authenticated/$crmId_.settings.tsx:107
 msgid "Failed to delete CRM"
 msgstr "Ștergerea CRM a eșuat"
 
@@ -1267,12 +1266,11 @@ msgstr "Ștergerea linkului a eșuat"
 msgid "Failed to delete view"
 msgstr "Ștergerea vizualizării a eșuat"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "Failed to export data"
 msgstr "Exportul datelor a eșuat"
 
-#: src/routes/_authenticated/$crmId/design.tsx:91
-#: src/routes/_authenticated/$crmId/design.tsx:94
+#: src/routes/_authenticated/$crmId/design.tsx:49
 msgid "Failed to export design"
 msgstr "Exportul designului a eșuat"
 
@@ -1285,7 +1283,7 @@ msgstr "Obținerea tokenului RSS a eșuat"
 msgid "Failed to import data"
 msgstr "Importul datelor a eșuat"
 
-#: src/routes/_authenticated/$crmId/design.tsx:115
+#: src/routes/_authenticated/$crmId/design.tsx:51
 msgid "Failed to import design"
 msgstr "Importul designului a eșuat"
 
@@ -1293,17 +1291,18 @@ msgstr "Importul designului a eșuat"
 msgid "Failed to load"
 msgstr "Încărcarea a eșuat"
 
-#: src/routes/_authenticated/$crmId/$objectId.tsx:43
-#: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:60
+#: src/routes/_authenticated/$crmId/$objectId.tsx:41
+#: src/routes/_authenticated/$crmId/$objectId.tsx:65
+#: src/routes/_authenticated/$crmId/index.tsx:58
+#: src/routes/_authenticated/$crmId/index.tsx:94
 msgid "Failed to load CRM"
 msgstr "Încărcarea CRM-ului a eșuat"
 
-#: src/routes/_authenticated/$crmId/design.tsx:139
+#: src/routes/_authenticated/$crmId/design.tsx:44
 msgid "Failed to load CRM design"
 msgstr "Încărcarea designului CRM a eșuat"
 
-#: src/stores/crms-store.ts:31
+#: src/stores/crms-store.ts:17
 msgid "Failed to load CRMs"
 msgstr "Încărcarea CRM-urilor a eșuat"
 
@@ -1332,11 +1331,11 @@ msgid "Failed to post comment"
 msgstr "Postarea comentariului a eșuat"
 
 #: src/features/crms/components/create-crm-dialog.tsx:223
-#: src/routes/_authenticated/$crmId/design.tsx:267
+#: src/routes/_authenticated/$crmId/design.tsx:56
 msgid "Failed to read file"
 msgstr "Citirea fișierului a eșuat"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:457
+#: src/routes/_authenticated/$crmId_.settings.tsx:115
 msgid "Failed to remove access"
 msgstr "Eliminarea accesului a eșuat"
 
@@ -1364,22 +1363,22 @@ msgstr "Căutarea CRM-urilor a eșuat"
 msgid "Failed to send verification code"
 msgstr "Trimiterea codului de verificare a eșuat"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:446
+#: src/routes/_authenticated/$crmId_.settings.tsx:112
 msgid "Failed to set access level"
 msgstr "Setarea nivelului de acces a eșuat"
 
 #: src/features/crms/components/inline-crm-search.tsx:65
 #: src/features/crms/components/recommended-crms.tsx:42
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:46
 msgid "Failed to subscribe"
 msgstr "Abonarea a eșuat"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "Failed to unsubscribe"
 msgstr "Dezabonarea a eșuat"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:471
+#: src/routes/_authenticated/$crmId_.settings.tsx:118
 msgid "Failed to update access level"
 msgstr "Actualizarea nivelului de acces a eșuat"
 
@@ -1387,7 +1386,7 @@ msgstr "Actualizarea nivelului de acces a eșuat"
 msgid "Failed to update comment"
 msgstr "Actualizarea comentariului a eșuat"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Failed to update CRM"
 msgstr "Actualizarea CRM-ului a eșuat"
 
@@ -1414,11 +1413,11 @@ msgid "Filter..."
 msgstr "Filtrare..."
 
 #: src/components/layout/crms-layout.tsx:35
-#: src/routes/_authenticated/find.tsx:91
+#: src/routes/_authenticated/find.tsx:41
 msgid "Find CRMs"
 msgstr "Găsește CRM-uri"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:316
+#: src/routes/_authenticated/$crmId_.settings.tsx:94
 msgid "Fingerprint"
 msgstr "Amprentă"
 
@@ -1527,11 +1526,11 @@ msgstr "Popular"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
 #: src/features/editor/components/edit-dialogs.tsx:266
-#: src/routes/_authenticated/$crmId/index.tsx:182
+#: src/routes/_authenticated/$crmId/index.tsx:172
 msgid "ID"
 msgstr "ID"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:291
+#: src/routes/_authenticated/$crmId_.settings.tsx:90
 msgid "Identity"
 msgstr "Identitate"
 
@@ -1544,12 +1543,12 @@ msgstr "Vizualizator de imagini: {0}"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/routes/_authenticated/$crmId/design.tsx:280
+#: src/routes/_authenticated/$crmId/design.tsx:53
 msgid "Import a design configuration"
 msgstr "Importă o configurație de design"
 
-#: src/routes/_authenticated/$crmId/design.tsx:179
-#: src/routes/_authenticated/$crmId/design.tsx:279
+#: src/routes/_authenticated/$crmId/design.tsx:47
+#: src/routes/_authenticated/$crmId/design.tsx:52
 msgid "Import design"
 msgstr "Importă designul"
 
@@ -1587,7 +1586,7 @@ msgid "Invalid date"
 msgstr "Dată invalidă"
 
 #: src/features/crms/components/create-crm-dialog.tsx:216
-#: src/routes/_authenticated/$crmId/design.tsx:263
+#: src/routes/_authenticated/$crmId/design.tsx:55
 msgid "Invalid JSON file"
 msgstr "Fișier JSON invalid"
 
@@ -1645,7 +1644,7 @@ msgid "Light"
 msgstr "Luminos"
 
 #: ../../../lib/web/src/components/options-menu.tsx:193
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Link"
 msgstr "Link"
 
@@ -1675,7 +1674,7 @@ msgstr "Se încarcă detaliile elementului"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:35
 #: ../../../lib/web/src/features/document/document-page.tsx:90
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Loading..."
 msgstr "Se încarcă..."
 
@@ -1768,9 +1767,13 @@ msgstr "Mai multe opțiuni"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:299
 #: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/editor/components/edit-dialogs.tsx:252
-#: src/routes/_authenticated/$crmId_.settings.tsx:295
+#: src/routes/_authenticated/$crmId_.settings.tsx:91
 msgid "Name"
 msgstr "Nume"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:76
+msgid "Name cannot contain < or > characters"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
 msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
@@ -1781,6 +1784,7 @@ msgid "Name is required"
 msgstr "Numele este obligatoriu"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
+#: src/routes/_authenticated/$crmId_.settings.tsx:74
 msgid "Name must be 1000 characters or less"
 msgstr "Numele trebuie să aibă cel mult 1000 de caractere"
 
@@ -1791,13 +1795,13 @@ msgstr "Eroare de rețea"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:481
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:151
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:141
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "New"
 msgstr "Nou"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "New {0}"
 msgstr "{0} nou"
 
@@ -1815,7 +1819,7 @@ msgstr "Imaginea următoare"
 msgid "No {parentClassNames} to add to"
 msgstr "Niciun {parentClassNames} la care să adaugi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:385
+#: src/routes/_authenticated/$crmId_.settings.tsx:53
 msgid "No access"
 msgstr "Fără acces"
 
@@ -1836,7 +1840,7 @@ msgid "No connected accounts"
 msgstr "Niciun cont conectat"
 
 #: src/features/crms/components/inline-crm-search.tsx:84
-#: src/routes/_authenticated/find.tsx:93
+#: src/routes/_authenticated/find.tsx:43
 msgid "No CRMs found"
 msgstr "Nu s-au găsit CRM-uri"
 
@@ -1860,7 +1864,7 @@ msgstr "Niciun obiect potrivit"
 msgid "No notifications yet"
 msgstr "Încă nicio notificare"
 
-#: src/routes/_authenticated/$crmId/index.tsx:181
+#: src/routes/_authenticated/$crmId/index.tsx:171
 msgid "No objects to export."
 msgstr "Niciun obiect de exportat."
 
@@ -2000,7 +2004,7 @@ msgstr "Deschide acțiunile"
 msgid "Open class actions"
 msgstr "Deschide acțiuni clasă"
 
-#: src/routes/_authenticated/$crmId/design.tsx:167
+#: src/routes/_authenticated/$crmId/design.tsx:45
 msgid "Open design actions"
 msgstr "Deschide acțiuni design"
 
@@ -2023,7 +2027,7 @@ msgstr "Deschide meniul de navigare"
 msgid "Open option actions"
 msgstr "Deschide acțiuni opțiune"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:140
 msgid "Open page actions"
 msgstr "Deschide acțiuni pagină"
 
@@ -2071,7 +2075,7 @@ msgstr "Pagina {currentPage} din {totalPages}"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:535
 #: src/features/objects/components/object-detail-panel.tsx:428
-#: src/routes/_authenticated/$crmId/index.tsx:184
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "Parent"
 msgstr "Părinte"
 
@@ -2095,7 +2099,7 @@ msgstr "Model (regex)"
 msgid "Pick a date"
 msgstr "Alegeți o dată"
 
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Please add one or more classes to the CRM design."
 msgstr "Adaugă una sau mai multe clase la designul CRM."
 
@@ -2163,7 +2167,7 @@ msgstr "Ridicat"
 msgid "Re-link your accounts on this server"
 msgstr "Reconectați conturile pe acest server"
 
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Re-order columns"
 msgstr "Reordonează coloanele"
 
@@ -2254,7 +2258,7 @@ msgstr "Elimină articolul"
 msgid "Remove link"
 msgstr "Elimină linkul"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:455
+#: src/routes/_authenticated/$crmId_.settings.tsx:113
 msgid "Removing access..."
 msgstr "Se elimină accesul..."
 
@@ -2271,15 +2275,15 @@ msgstr "Redenumește coloana"
 msgid "Rename this board column"
 msgstr "Redenumește această coloană a tablei"
 
-#: src/routes/_authenticated/$crmId/design.tsx:219
+#: src/routes/_authenticated/$crmId/design.tsx:69
 msgid "Replace design"
 msgstr "Înlocuiește designul"
 
-#: src/routes/_authenticated/$crmId/design.tsx:203
+#: src/routes/_authenticated/$crmId/design.tsx:58
 msgid "Replace design?"
 msgstr "Înlocuiești designul?"
 
-#: src/routes/_authenticated/$crmId/design.tsx:216
+#: src/routes/_authenticated/$crmId/design.tsx:70
 msgid "Replacing..."
 msgstr "Se înlocuiește..."
 
@@ -2377,11 +2381,11 @@ msgstr "Sâmbătă"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Save"
 msgstr "Salvează"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:150
+#: src/routes/_authenticated/$crmId_.settings.tsx:96
 msgid "Saving..."
 msgstr "Se salvează..."
 
@@ -2392,7 +2396,7 @@ msgstr "Se salvează..."
 msgid "Search"
 msgstr "Caută"
 
-#: src/routes/_authenticated/find.tsx:92
+#: src/routes/_authenticated/find.tsx:42
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Caută după nume, ID, amprentă sau URL..."
 
@@ -2551,7 +2555,7 @@ msgstr "Trimite mesajul"
 msgid "Serif"
 msgstr "Cu serife"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:325
+#: src/routes/_authenticated/$crmId_.settings.tsx:95
 msgid "Server"
 msgstr "Server"
 
@@ -2573,17 +2577,15 @@ msgstr "Sesiunea a expirat. Autentificați-vă din nou."
 msgid "Set origin and destination"
 msgstr "Setează originea și destinația"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:444
+#: src/routes/_authenticated/$crmId_.settings.tsx:110
 msgid "Setting access..."
 msgstr "Se setează accesul..."
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:126
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
 #: ../../../lib/web/src/components/options-menu.tsx:199
-#: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:164
-#: src/routes/_authenticated/$crmId_.settings.tsx:187
-#: src/routes/_authenticated/$crmId/index.tsx:198
+#: src/routes/_authenticated/$crmId_.settings.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:188
 msgid "Settings"
 msgstr "Setări"
 
@@ -2685,7 +2687,7 @@ msgid "Subscribe"
 msgstr "Abonează-te"
 
 #: src/features/crms/components/inline-crm-search.tsx:64
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:45
 msgid "Subscribed"
 msgstr "Abonat"
 
@@ -2696,7 +2698,7 @@ msgstr "Abonat la {0}"
 
 #: src/features/crms/components/inline-crm-search.tsx:63
 #: src/features/crms/components/recommended-crms.tsx:40
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:44
 msgid "Subscribing..."
 msgstr "Se abonează..."
 
@@ -2779,11 +2781,11 @@ msgstr "Temă"
 msgid "Theme Settings"
 msgstr "Setări temă"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:207
+#: src/routes/_authenticated/$crmId_.settings.tsx:89
 msgid "This CRM could not be loaded right now."
 msgstr "Acest CRM nu a putut fi încărcat acum."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:207
+#: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Acest CRM poate să fi fost șters sau nu ai acces la el."
 
@@ -2791,18 +2793,18 @@ msgstr "Acest CRM poate să fi fost șters sau nu ai acces la el."
 msgid "This page has not been created yet."
 msgstr "Această pagină nu a fost creată încă."
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:353
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId_.settings.tsx:104
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Aceasta va șterge definitiv „{0}” și toate obiectele, comentariile și atașamentele sale. Această acțiune nu poate fi anulată."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:174
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Aceasta va elimina „{0}” din bara ta laterală și va opri actualizările pentru acest CRM."
 
-#. placeholder {0}: pendingImport?.label
-#: src/routes/_authenticated/$crmId/design.tsx:205
+#. placeholder {0}: String(label)
+#: src/routes/_authenticated/$crmId/design.tsx:62
 msgid "This will replace the current design with <0>{0}</0>. All existing classes, fields, options, and views will be deleted. Existing objects will not be deleted but may no longer appear in views."
 msgstr "Aceasta va înlocui designul curent cu <0>{0}</0>. Toate clasele, câmpurile, opțiunile și vizualizările existente vor fi șterse. Obiectele existente nu vor fi șterse, dar este posibil să nu mai apară în vizualizări."
 
@@ -2946,21 +2948,21 @@ msgstr "Necunoscut"
 
 #: ../../../lib/web/src/components/options-menu.tsx:214
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Unsubscribe"
 msgstr "Dezabonează-te"
 
-#: src/routes/_authenticated/$crmId/index.tsx:173
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Unsubscribe from CRM?"
 msgstr "Te dezabonezi de la CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribed"
 msgstr "Dezabonat"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribing..."
 msgstr "Se dezabonează..."
 
@@ -2984,7 +2986,7 @@ msgstr "Neverificat"
 msgid "Updated"
 msgstr "Actualizat"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:469
+#: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Updating access..."
 msgstr "Se actualizează accesul..."
 
@@ -2994,7 +2996,7 @@ msgid "Upload"
 msgstr "Încarcă"
 
 #: src/features/crms/components/create-crm-dialog.tsx:294
-#: src/routes/_authenticated/$crmId/design.tsx:298
+#: src/routes/_authenticated/$crmId/design.tsx:54
 msgid "Upload .json file"
 msgstr "Încarcă fișier .json"
 
@@ -3064,11 +3066,11 @@ msgstr "Vizualizează și editează detaliile elementului"
 msgid "View controls"
 msgstr "Controale de vizualizare"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:384
+#: src/routes/_authenticated/$crmId_.settings.tsx:52
 msgid "View only"
 msgstr "Doar vizualizare"
 
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "View options"
 msgstr "Opțiuni de vizualizare"
 
@@ -3115,7 +3117,7 @@ msgstr "Miercuri"
 msgid "You do not have access to this section."
 msgstr "Nu aveți acces la această secțiune."
 
-#: src/routes/_authenticated/$crmId/index.tsx:82
+#: src/routes/_authenticated/$crmId/index.tsx:80
 msgid "You don't have access to this CRM."
 msgstr "Nu ai acces la acest CRM."
 

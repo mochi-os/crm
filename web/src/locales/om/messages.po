@@ -43,9 +43,8 @@ msgstr "[hin qindoofne]"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# filatame} other {# filataman}}"
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/design.tsx:65
-#: src/routes/_authenticated/$crmId/design.tsx:158
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId/design.tsx:42
 msgid "{0} - Design"
 msgstr "{0} - Dizaayinii"
 
@@ -54,9 +53,8 @@ msgstr "{0} - Dizaayinii"
 msgid "{0} option preview"
 msgstr "Durduubbii filannoo {0}"
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
-#: src/routes/_authenticated/$crmId_.settings.tsx:219
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId_.settings.tsx:85
 msgid "{0} settings"
 msgstr "Qindaa'inoota {0}"
 
@@ -146,7 +144,7 @@ msgstr "Sirrii (guyyaa fi sa'aatii)"
 msgid "Accept"
 msgstr "Fudhadhu"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:84
+#: src/routes/_authenticated/$crmId_.settings.tsx:81
 msgid "Access"
 msgstr "Seensa"
 
@@ -162,19 +160,19 @@ msgstr "Seensi Dhorkamaadha"
 msgid "Access level"
 msgstr "Sadarkaa seensaa"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:470
+#: src/routes/_authenticated/$crmId_.settings.tsx:117
 msgid "Access level updated"
 msgstr "Sadarkaan seensaa haaromfame"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:481
+#: src/routes/_authenticated/$crmId_.settings.tsx:108
 msgid "Access management"
 msgstr "Bulchiinsa Seensaa"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:456
+#: src/routes/_authenticated/$crmId_.settings.tsx:114
 msgid "Access removed"
 msgstr "Seensi haqame"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:445
+#: src/routes/_authenticated/$crmId_.settings.tsx:111
 msgid "Access set for {subjectName}"
 msgstr "Seensi {subjectName} qabameera"
 
@@ -244,7 +242,7 @@ msgstr "Tarree shakkii dabali"
 msgid "Add class"
 msgstr "Daree dabali"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Add column"
 msgstr "Tarjaa dabali"
 
@@ -274,7 +272,7 @@ msgstr "Akkaawuntii haaraa dabali"
 msgid "Add option"
 msgstr "Filannoo dabali"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:487
+#: src/routes/_authenticated/$crmId_.settings.tsx:109
 msgid "Add rule"
 msgstr "Seera dabaluu"
 
@@ -426,16 +424,13 @@ msgstr "Fakkii {name}"
 msgid "Back"
 msgstr "Duuba"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:166
-#: src/routes/_authenticated/$crmId_.settings.tsx:189
-#: src/routes/_authenticated/$crmId_.settings.tsx:221
-#: src/routes/_authenticated/$crmId/design.tsx:135
-#: src/routes/_authenticated/$crmId/design.tsx:160
+#: src/routes/_authenticated/$crmId_.settings.tsx:82
+#: src/routes/_authenticated/$crmId/design.tsx:43
 msgid "Back to CRM"
 msgstr "Gara CRMtti deebi'i"
 
-#: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:96
+#: src/routes/_authenticated/$crmId/$objectId.tsx:64
+#: src/routes/_authenticated/$crmId/index.tsx:93
 msgid "Back to CRMs"
 msgstr "Gara CRMtti deebi'i"
 
@@ -499,8 +494,8 @@ msgstr "Bishaa kan ta'uu danda'u"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:201
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:336
-#: src/routes/_authenticated/$crmId/design.tsx:305
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/design.tsx:57
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Cancel"
 msgstr "Haquu"
 
@@ -565,7 +560,7 @@ msgstr "Filannoo sirnaa, ifaan, ykn dukkanaan gidduu filadhu"
 msgid "Choose language"
 msgstr "Afaan filadhu"
 
-#: src/routes/_authenticated/$crmId/index.tsx:183
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Class"
 msgstr "Daree"
 
@@ -681,7 +676,7 @@ msgstr "Paaleetii ajaja"
 msgid "Comment actions"
 msgstr "Gocha yaadaa"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:383
+#: src/routes/_authenticated/$crmId_.settings.tsx:51
 msgid "Comment and view"
 msgstr "Yaada fi mul'isi"
 
@@ -813,7 +808,7 @@ msgstr "Wanta haaraa uumi"
 msgid "Create object"
 msgstr "Galmee uumi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:382
+#: src/routes/_authenticated/$crmId_.settings.tsx:50
 msgid "Create, edit, comment, and view"
 msgstr "Uumuu, gulaaluu, yaada kennuu fi ilaaluu"
 
@@ -840,27 +835,31 @@ msgstr "Gochaawwan CRM"
 msgid "CRM created"
 msgstr "CRM uumame"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:130
+#: src/routes/_authenticated/$crmId_.settings.tsx:106
 msgid "CRM deleted"
 msgstr "CRM haqame"
 
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "CRM link"
 msgstr "Geessituu CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:204
+#: src/routes/_authenticated/$crmId_.settings.tsx:73
+msgid "CRM name is required"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:86
 msgid "CRM not found"
 msgstr "CRM hin argamne"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:85
 msgid "CRM settings"
 msgstr "Qindaa'ina CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:204
+#: src/routes/_authenticated/$crmId_.settings.tsx:88
 msgid "CRM unavailable"
 msgstr "CRM hin jiru"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:151
+#: src/routes/_authenticated/$crmId_.settings.tsx:97
 msgid "CRM updated"
 msgstr "CRM haaromfame"
 
@@ -930,7 +929,7 @@ msgstr "Tartiiba idilee"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:314
 #: src/features/objects/components/object-detail-panel.tsx:519
-#: src/routes/_authenticated/$crmId_.settings.tsx:343
+#: src/routes/_authenticated/$crmId_.settings.tsx:100
 msgid "Delete"
 msgstr "Haqi"
 
@@ -950,12 +949,12 @@ msgstr "Tarjaa haqi"
 msgid "Delete comment"
 msgstr "Yaada haqi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:334
-#: src/routes/_authenticated/$crmId_.settings.tsx:354
+#: src/routes/_authenticated/$crmId_.settings.tsx:99
+#: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "Delete CRM"
 msgstr "CRM haqi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:352
+#: src/routes/_authenticated/$crmId_.settings.tsx:101
 msgid "Delete CRM?"
 msgstr "CRM haqu?"
 
@@ -987,7 +986,7 @@ msgstr "Mul'ata haqi"
 msgid "Delete your account on the old server"
 msgstr "Akkaawuntii kee sarvaraa durii irraa haqi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:129
+#: src/routes/_authenticated/$crmId_.settings.tsx:105
 msgid "Deleting CRM..."
 msgstr "CRM haqaa jira..."
 
@@ -1000,22 +999,22 @@ msgid "Descending"
 msgstr "Gad buʼaa"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:304
+#: src/routes/_authenticated/$crmId_.settings.tsx:92
 msgid "Description"
 msgstr "Ibsa"
 
-#: src/routes/_authenticated/$crmId/design.tsx:65
-#: src/routes/_authenticated/$crmId/design.tsx:133
-#: src/routes/_authenticated/$crmId/index.tsx:190
+#: src/routes/_authenticated/$crmId/design.tsx:39
+#: src/routes/_authenticated/$crmId/design.tsx:42
+#: src/routes/_authenticated/$crmId/index.tsx:180
 msgid "Design"
 msgstr "Boci"
 
 #: src/features/crms/components/create-crm-dialog.tsx:143
-#: src/routes/_authenticated/$crmId/design.tsx:110
+#: src/routes/_authenticated/$crmId/design.tsx:50
 msgid "Design imported"
 msgstr "Bocni alaa galfame"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:381
+#: src/routes/_authenticated/$crmId_.settings.tsx:49
 msgid "Design, create, edit, comment, and view"
 msgstr "Dizaayinii, uumuu, gulaaluu, yaada kennuu fi ilaaluu"
 
@@ -1060,7 +1059,7 @@ msgstr "Hidhaan citeera"
 msgid "Dismiss"
 msgstr "Dhiisi"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Dismiss board hint"
 msgstr "Yaaddoo boordii dhiisi"
 
@@ -1075,7 +1074,7 @@ msgstr "Cinaa moobaayilaa mul'isa."
 msgid "Done"
 msgstr "Xumurame"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Double click on a column to add content"
 msgstr "Tarjaa irratti qabiyyee dabaluuf lama cuqaasi"
 
@@ -1085,7 +1084,7 @@ msgstr "Tarjaa irratti qabiyyee dabaluuf lama cuqaasi"
 msgid "Download"
 msgstr "Buufadhu"
 
-#: src/routes/_authenticated/$crmId/design.tsx:227
+#: src/routes/_authenticated/$crmId/design.tsx:71
 msgid "Download backup first"
 msgstr "Duraan dursaa kuusaa buufadhu"
 
@@ -1093,12 +1092,12 @@ msgstr "Duraan dursaa kuusaa buufadhu"
 msgid "Download failed"
 msgstr "Buufachuun hin milkoofne"
 
-#: src/routes/_authenticated/$crmId/design.tsx:89
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/design.tsx:48
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Downloaded {filename}"
 msgstr "{filename} buufatamee jira"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Drag columns to re-order them"
 msgstr "Tarreeffama jijjiiruuf tarjaalee harkisi"
 
@@ -1169,7 +1168,7 @@ msgstr "Koodii imeelii kee irraa galchi"
 msgid "Enter your authenticator code"
 msgstr "Koodii mirkaneessaa kee galchi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:311
+#: src/routes/_authenticated/$crmId_.settings.tsx:93
 msgid "Entity ID"
 msgstr "ID Iddoo"
 
@@ -1188,15 +1187,15 @@ msgstr "Babalʼisi"
 msgid "Expand sidebar"
 msgstr "Sidebar baldhisi"
 
-#: src/routes/_authenticated/$crmId/index.tsx:180
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Export CSV"
 msgstr "CSV ergi"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Export data"
 msgstr "Daataa baasi"
 
-#: src/routes/_authenticated/$crmId/design.tsx:175
+#: src/routes/_authenticated/$crmId/design.tsx:46
 msgid "Export design"
 msgstr "Bocii ergi"
 
@@ -1235,7 +1234,7 @@ msgstr "Iddoo uumuu hin dandeenye"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
 #: ../../../lib/web/src/components/options-menu.tsx:101
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to create link"
 msgstr "Hidhaa uumuu hin dandeenye"
 
@@ -1255,7 +1254,7 @@ msgstr "Maxxansa haquu hin dandeenye"
 msgid "Failed to delete comment"
 msgstr "Yaada haquu hin dandeenye"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:131
+#: src/routes/_authenticated/$crmId_.settings.tsx:107
 msgid "Failed to delete CRM"
 msgstr "CRM haquun hin milkoofne"
 
@@ -1267,12 +1266,11 @@ msgstr "Hidhaa haquu hin dandeenye"
 msgid "Failed to delete view"
 msgstr "Mul'annoo haquu hin dandeenye"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "Failed to export data"
 msgstr "Daataa baasuun hin milkoofne"
 
-#: src/routes/_authenticated/$crmId/design.tsx:91
-#: src/routes/_authenticated/$crmId/design.tsx:94
+#: src/routes/_authenticated/$crmId/design.tsx:49
 msgid "Failed to export design"
 msgstr "Bocii ergamsuu hin dandeenye"
 
@@ -1285,7 +1283,7 @@ msgstr "Mallattoo RSS argachuu hin dandeenye"
 msgid "Failed to import data"
 msgstr "Daataa galchuun hin milkoofne"
 
-#: src/routes/_authenticated/$crmId/design.tsx:115
+#: src/routes/_authenticated/$crmId/design.tsx:51
 msgid "Failed to import design"
 msgstr "Bocii fiduu hin dandeenye"
 
@@ -1293,17 +1291,18 @@ msgstr "Bocii fiduu hin dandeenye"
 msgid "Failed to load"
 msgstr "Fe'achuu hin dandeenye"
 
-#: src/routes/_authenticated/$crmId/$objectId.tsx:43
-#: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:60
+#: src/routes/_authenticated/$crmId/$objectId.tsx:41
+#: src/routes/_authenticated/$crmId/$objectId.tsx:65
+#: src/routes/_authenticated/$crmId/index.tsx:58
+#: src/routes/_authenticated/$crmId/index.tsx:94
 msgid "Failed to load CRM"
 msgstr "CRM fe'achuu hin dandeenye"
 
-#: src/routes/_authenticated/$crmId/design.tsx:139
+#: src/routes/_authenticated/$crmId/design.tsx:44
 msgid "Failed to load CRM design"
 msgstr "Bocii CRM fe'achuu hin dandeenye"
 
-#: src/stores/crms-store.ts:31
+#: src/stores/crms-store.ts:17
 msgid "Failed to load CRMs"
 msgstr "CRM-mota fe'achuu hin dandeenye"
 
@@ -1332,11 +1331,11 @@ msgid "Failed to post comment"
 msgstr "Yaada maxxansuu hin dandeenye"
 
 #: src/features/crms/components/create-crm-dialog.tsx:223
-#: src/routes/_authenticated/$crmId/design.tsx:267
+#: src/routes/_authenticated/$crmId/design.tsx:56
 msgid "Failed to read file"
 msgstr "Faayilii dubbisuu hin dandeenye"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:457
+#: src/routes/_authenticated/$crmId_.settings.tsx:115
 msgid "Failed to remove access"
 msgstr "Carraa fudhatamuu haquu hin dandeenye"
 
@@ -1364,22 +1363,22 @@ msgstr "CRMota barbaaduun hin milkoofne"
 msgid "Failed to send verification code"
 msgstr "Koodii mirkanaa ergamuu hin dandeenye"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:446
+#: src/routes/_authenticated/$crmId_.settings.tsx:112
 msgid "Failed to set access level"
 msgstr "Sadarkaa carraa fudhatamuu kaa'uu hin dandeenye"
 
 #: src/features/crms/components/inline-crm-search.tsx:65
 #: src/features/crms/components/recommended-crms.tsx:42
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:46
 msgid "Failed to subscribe"
 msgstr "Galmaa'uu hin dandeenye"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "Failed to unsubscribe"
 msgstr "Galmee dhaabuu hin dandeenye"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:471
+#: src/routes/_authenticated/$crmId_.settings.tsx:118
 msgid "Failed to update access level"
 msgstr "Sadarkaa carraa fudhatamuu toattaachuu hin dandeenye"
 
@@ -1387,7 +1386,7 @@ msgstr "Sadarkaa carraa fudhatamuu toattaachuu hin dandeenye"
 msgid "Failed to update comment"
 msgstr "Yaada toattaachuu hin dandeenye"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Failed to update CRM"
 msgstr "CRM toattaachuu hin dandeenye"
 
@@ -1414,11 +1413,11 @@ msgid "Filter..."
 msgstr "Gingilchaa..."
 
 #: src/components/layout/crms-layout.tsx:35
-#: src/routes/_authenticated/find.tsx:91
+#: src/routes/_authenticated/find.tsx:41
 msgid "Find CRMs"
 msgstr "CRM-mota argi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:316
+#: src/routes/_authenticated/$crmId_.settings.tsx:94
 msgid "Fingerprint"
 msgstr "Maxxansa quba"
 
@@ -1527,11 +1526,11 @@ msgstr "Ho'aa"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
 #: src/features/editor/components/edit-dialogs.tsx:266
-#: src/routes/_authenticated/$crmId/index.tsx:182
+#: src/routes/_authenticated/$crmId/index.tsx:172
 msgid "ID"
 msgstr "ID"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:291
+#: src/routes/_authenticated/$crmId_.settings.tsx:90
 msgid "Identity"
 msgstr "Eenyummaa"
 
@@ -1544,12 +1543,12 @@ msgstr "Ilaaltuu fakkii: {0}"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/routes/_authenticated/$crmId/design.tsx:280
+#: src/routes/_authenticated/$crmId/design.tsx:53
 msgid "Import a design configuration"
 msgstr "Sirreeffama bocii fidi"
 
-#: src/routes/_authenticated/$crmId/design.tsx:179
-#: src/routes/_authenticated/$crmId/design.tsx:279
+#: src/routes/_authenticated/$crmId/design.tsx:47
+#: src/routes/_authenticated/$crmId/design.tsx:52
 msgid "Import design"
 msgstr "Bocii fidi"
 
@@ -1587,7 +1586,7 @@ msgid "Invalid date"
 msgstr "Guyyaa sirrii hin taane"
 
 #: src/features/crms/components/create-crm-dialog.tsx:216
-#: src/routes/_authenticated/$crmId/design.tsx:263
+#: src/routes/_authenticated/$crmId/design.tsx:55
 msgid "Invalid JSON file"
 msgstr "Faayilii JSON sirrii hin taane"
 
@@ -1645,7 +1644,7 @@ msgid "Light"
 msgstr "Ifaa"
 
 #: ../../../lib/web/src/components/options-menu.tsx:193
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Link"
 msgstr "Hidhaa"
 
@@ -1675,7 +1674,7 @@ msgstr "Bal'ina iddoo fe'aa jiraa"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:35
 #: ../../../lib/web/src/features/document/document-page.tsx:90
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Loading..."
 msgstr "Fe'aa jiraa..."
 
@@ -1768,9 +1767,13 @@ msgstr "Filannoo dabalataa"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:299
 #: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/editor/components/edit-dialogs.tsx:252
-#: src/routes/_authenticated/$crmId_.settings.tsx:295
+#: src/routes/_authenticated/$crmId_.settings.tsx:91
 msgid "Name"
 msgstr "Maqaa"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:76
+msgid "Name cannot contain < or > characters"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
 msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
@@ -1781,6 +1784,7 @@ msgid "Name is required"
 msgstr "Maqaan barbaachisaa dha"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
+#: src/routes/_authenticated/$crmId_.settings.tsx:74
 msgid "Name must be 1000 characters or less"
 msgstr "Maqaan arfiilee 1000 ykn isaa gadi ta'uu qaba"
 
@@ -1791,13 +1795,13 @@ msgstr "Dogoggora networkii"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:481
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:151
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:141
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "New"
 msgstr "Haaraa"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "New {0}"
 msgstr "{0} haaraa"
 
@@ -1815,7 +1819,7 @@ msgstr "Suuraa itti aanu"
 msgid "No {parentClassNames} to add to"
 msgstr "{parentClassNames} itti dabaluuf hin jiru"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:385
+#: src/routes/_authenticated/$crmId_.settings.tsx:53
 msgid "No access"
 msgstr "Itti seenuun hin jiru"
 
@@ -1836,7 +1840,7 @@ msgid "No connected accounts"
 msgstr "Akkaawuntiiwwan walqabsiifaman hin jiran"
 
 #: src/features/crms/components/inline-crm-search.tsx:84
-#: src/routes/_authenticated/find.tsx:93
+#: src/routes/_authenticated/find.tsx:43
 msgid "No CRMs found"
 msgstr "CRMn hin argamne"
 
@@ -1860,7 +1864,7 @@ msgstr "Wantoonni walsiman hin jiran"
 msgid "No notifications yet"
 msgstr "Hanga ammaatti beeksisni hin jiru"
 
-#: src/routes/_authenticated/$crmId/index.tsx:181
+#: src/routes/_authenticated/$crmId/index.tsx:171
 msgid "No objects to export."
 msgstr "Wantoonni alaa baasuuf hin jiran."
 
@@ -2000,7 +2004,7 @@ msgstr "Gochaalee bani"
 msgid "Open class actions"
 msgstr "Sochiiwwan ramaddii bani"
 
-#: src/routes/_authenticated/$crmId/design.tsx:167
+#: src/routes/_authenticated/$crmId/design.tsx:45
 msgid "Open design actions"
 msgstr "Sochiiwwan dizaayinii bani"
 
@@ -2023,7 +2027,7 @@ msgstr "Menyuu naviigeeshinii bani"
 msgid "Open option actions"
 msgstr "Sochiiwwan filannoo bani"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:140
 msgid "Open page actions"
 msgstr "Sochiiwwan fuulaa bani"
 
@@ -2071,7 +2075,7 @@ msgstr "Fuula {currentPage} kan {totalPages}"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:535
 #: src/features/objects/components/object-detail-panel.tsx:428
-#: src/routes/_authenticated/$crmId/index.tsx:184
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "Parent"
 msgstr "Maatii"
 
@@ -2095,7 +2099,7 @@ msgstr "Bocaa (regex)"
 msgid "Pick a date"
 msgstr "Guyyaa filadhu"
 
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Please add one or more classes to the CRM design."
 msgstr "Maaloo dizaayinii CRM tti ramaddii tokko ykn hedduu dabali."
 
@@ -2163,7 +2167,7 @@ msgstr "Ol kaafame"
 msgid "Re-link your accounts on this server"
 msgstr "Akkaawuntiiwan kee sarvarri kana irratti irra deebi'ii walitti hidhi"
 
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Re-order columns"
 msgstr "Tarjaalee deebisanii tartiibessuu"
 
@@ -2254,7 +2258,7 @@ msgstr "Meeshaa haqi"
 msgid "Remove link"
 msgstr "Hidhata haquu"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:455
+#: src/routes/_authenticated/$crmId_.settings.tsx:113
 msgid "Removing access..."
 msgstr "Seensa balleessaa jira..."
 
@@ -2271,15 +2275,15 @@ msgstr "Maqaa tarjaa jijjiiri"
 msgid "Rename this board column"
 msgstr "Maqaa tarjaa gabatee kanaa jijjiiri"
 
-#: src/routes/_authenticated/$crmId/design.tsx:219
+#: src/routes/_authenticated/$crmId/design.tsx:69
 msgid "Replace design"
 msgstr "Dizaayinii bakka buusi"
 
-#: src/routes/_authenticated/$crmId/design.tsx:203
+#: src/routes/_authenticated/$crmId/design.tsx:58
 msgid "Replace design?"
 msgstr "Dizaayinii bakka buusuuf?"
 
-#: src/routes/_authenticated/$crmId/design.tsx:216
+#: src/routes/_authenticated/$crmId/design.tsx:70
 msgid "Replacing..."
 msgstr "Bakka buusaa jira..."
 
@@ -2377,11 +2381,11 @@ msgstr "Sanbata"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Save"
 msgstr "Olkaa'i"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:150
+#: src/routes/_authenticated/$crmId_.settings.tsx:96
 msgid "Saving..."
 msgstr "Olkaa'aa jira..."
 
@@ -2392,7 +2396,7 @@ msgstr "Olkaa'aa jira..."
 msgid "Search"
 msgstr "Barbaadi"
 
-#: src/routes/_authenticated/find.tsx:92
+#: src/routes/_authenticated/find.tsx:42
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Maqaa, ID, fingerprintii, ykn URL barbaadi..."
 
@@ -2551,7 +2555,7 @@ msgstr "Ergaa ergi"
 msgid "Serif"
 msgstr "Serif"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:325
+#: src/routes/_authenticated/$crmId_.settings.tsx:95
 msgid "Server"
 msgstr "Server"
 
@@ -2573,17 +2577,15 @@ msgstr "Seeshinichi dhumateera. Maaloo irra deebi'ii seeni."
 msgid "Set origin and destination"
 msgstr "Madda fi galma qindeessi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:444
+#: src/routes/_authenticated/$crmId_.settings.tsx:110
 msgid "Setting access..."
 msgstr "Seensa qindeessaa jira..."
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:126
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
 #: ../../../lib/web/src/components/options-menu.tsx:199
-#: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:164
-#: src/routes/_authenticated/$crmId_.settings.tsx:187
-#: src/routes/_authenticated/$crmId/index.tsx:198
+#: src/routes/_authenticated/$crmId_.settings.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:188
 msgid "Settings"
 msgstr "Qindaa'inoota"
 
@@ -2685,7 +2687,7 @@ msgid "Subscribe"
 msgstr "Galaa'i"
 
 #: src/features/crms/components/inline-crm-search.tsx:64
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:45
 msgid "Subscribed"
 msgstr "Galaa'eera"
 
@@ -2696,7 +2698,7 @@ msgstr "{0} galaa'eera"
 
 #: src/features/crms/components/inline-crm-search.tsx:63
 #: src/features/crms/components/recommended-crms.tsx:40
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:44
 msgid "Subscribing..."
 msgstr "Galaa'aa jira..."
 
@@ -2779,11 +2781,11 @@ msgstr "Akeeka"
 msgid "Theme Settings"
 msgstr "Qindaa'inoota Akeeka"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:207
+#: src/routes/_authenticated/$crmId_.settings.tsx:89
 msgid "This CRM could not be loaded right now."
 msgstr "CRMn kun yeroo ammaa hin fe'amu."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:207
+#: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "CRMn kun haqamuu mala ykn ittigaltee qabaachuu dhabuu mala."
 
@@ -2791,18 +2793,18 @@ msgstr "CRMn kun haqamuu mala ykn ittigaltee qabaachuu dhabuu mala."
 msgid "This page has not been created yet."
 msgstr "Fuulli kun hanga ammaatti hin uumamne."
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:353
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId_.settings.tsx:104
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Kun \"{0}\" fi qaamoota, yaadota fi maxxansa hunda isaa bara baraan haqa. Tarkaanfiin kun deebi'ee hin sirreessamu."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:174
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Kun \"{0}\" cinaa kee irraa haqa, fi haaromsa CRM kanaa dhaabsisa."
 
-#. placeholder {0}: pendingImport?.label
-#: src/routes/_authenticated/$crmId/design.tsx:205
+#. placeholder {0}: String(label)
+#: src/routes/_authenticated/$crmId/design.tsx:62
 msgid "This will replace the current design with <0>{0}</0>. All existing classes, fields, options, and views will be deleted. Existing objects will not be deleted but may no longer appear in views."
 msgstr "Kun dizaayinii ammaa \"<0>{0}</0>\" bakka buusa. Gareewwan, bakkawwan, filannoo fi argaalee hundi haqamu. Qaamoota duraan jiran hin haqaman, garuu argaalee keessatti boodaa hin mul'atu ta'a."
 
@@ -2946,21 +2948,21 @@ msgstr "Hin beekamu"
 
 #: ../../../lib/web/src/components/options-menu.tsx:214
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Unsubscribe"
 msgstr "Galaa'uu kaasi"
 
-#: src/routes/_authenticated/$crmId/index.tsx:173
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Unsubscribe from CRM?"
 msgstr "CRM irraa galaa'uu kaasita?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribed"
 msgstr "Galaa'uun kaafameera"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribing..."
 msgstr "Galaa'uu kaasaa jira..."
 
@@ -2984,7 +2986,7 @@ msgstr "Hin mirkanaa'amne"
 msgid "Updated"
 msgstr "Haaromfameera"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:469
+#: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Updating access..."
 msgstr "Seensa haaromsaa jira..."
 
@@ -2994,7 +2996,7 @@ msgid "Upload"
 msgstr "Olfe'i"
 
 #: src/features/crms/components/create-crm-dialog.tsx:294
-#: src/routes/_authenticated/$crmId/design.tsx:298
+#: src/routes/_authenticated/$crmId/design.tsx:54
 msgid "Upload .json file"
 msgstr "Faayilii .json olfe'i"
 
@@ -3064,11 +3066,11 @@ msgstr "Bal'ina wantichaa daawwadhu fi sirreessi"
 msgid "View controls"
 msgstr "Toofta daawwannaa"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:384
+#: src/routes/_authenticated/$crmId_.settings.tsx:52
 msgid "View only"
 msgstr "Daawwannaa qofa"
 
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "View options"
 msgstr "Filannoolee daawwannaa"
 
@@ -3115,7 +3117,7 @@ msgstr "Roobii"
 msgid "You do not have access to this section."
 msgstr "Kutaa kanaaf dhaqqabummaa hin qabdu."
 
-#: src/routes/_authenticated/$crmId/index.tsx:82
+#: src/routes/_authenticated/$crmId/index.tsx:80
 msgid "You don't have access to this CRM."
 msgstr "CRM kanaaf carraa hin qabdu."
 

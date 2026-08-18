@@ -43,9 +43,8 @@ msgstr "[gun shuidheachadh]"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# air a thaghadh} two {# air an taghadh} few {# air an taghadh} other {# air an taghadh}}"
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/design.tsx:65
-#: src/routes/_authenticated/$crmId/design.tsx:158
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId/design.tsx:42
 msgid "{0} - Design"
 msgstr "{0} - Dealbhadh"
 
@@ -54,9 +53,8 @@ msgstr "{0} - Dealbhadh"
 msgid "{0} option preview"
 msgstr "Ro-shealladh air roghainn {0}"
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
-#: src/routes/_authenticated/$crmId_.settings.tsx:219
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId_.settings.tsx:85
 msgid "{0} settings"
 msgstr "Roghainnean {0}"
 
@@ -146,7 +144,7 @@ msgstr "Iomlan (ceann-là agus àm)"
 msgid "Accept"
 msgstr "Gabh ris"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:84
+#: src/routes/_authenticated/$crmId_.settings.tsx:81
 msgid "Access"
 msgstr "Inntrigeadh"
 
@@ -162,19 +160,19 @@ msgstr "Inntrigeadh toirmisgte"
 msgid "Access level"
 msgstr "Ìre inntrigidh"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:470
+#: src/routes/_authenticated/$crmId_.settings.tsx:117
 msgid "Access level updated"
 msgstr "Ìre inntrigidh air ùrachadh"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:481
+#: src/routes/_authenticated/$crmId_.settings.tsx:108
 msgid "Access management"
 msgstr "Stiùireadh inntrigidh"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:456
+#: src/routes/_authenticated/$crmId_.settings.tsx:114
 msgid "Access removed"
 msgstr "Inntrigeadh air a thoirt air falbh"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:445
+#: src/routes/_authenticated/$crmId_.settings.tsx:111
 msgid "Access set for {subjectName}"
 msgstr "Inntrigeadh air a shuidheachadh airson {subjectName}"
 
@@ -244,7 +242,7 @@ msgstr "Cuir nì ris an liosta-dearbhaidh"
 msgid "Add class"
 msgstr "Cuir clas ris"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Add column"
 msgstr "Cuir colbh ris"
 
@@ -274,7 +272,7 @@ msgstr "Cuir cunntas ùr ris"
 msgid "Add option"
 msgstr "Cuir roghainn ris"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:487
+#: src/routes/_authenticated/$crmId_.settings.tsx:109
 msgid "Add rule"
 msgstr "Cuir riaghailt ris"
 
@@ -426,16 +424,13 @@ msgstr "Avatar airson {name}"
 msgid "Back"
 msgstr "Air ais"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:166
-#: src/routes/_authenticated/$crmId_.settings.tsx:189
-#: src/routes/_authenticated/$crmId_.settings.tsx:221
-#: src/routes/_authenticated/$crmId/design.tsx:135
-#: src/routes/_authenticated/$crmId/design.tsx:160
+#: src/routes/_authenticated/$crmId_.settings.tsx:82
+#: src/routes/_authenticated/$crmId/design.tsx:43
 msgid "Back to CRM"
 msgstr "Air ais gu CRM"
 
-#: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:96
+#: src/routes/_authenticated/$crmId/$objectId.tsx:64
+#: src/routes/_authenticated/$crmId/index.tsx:93
 msgid "Back to CRMs"
 msgstr "Air ais gu CRMan"
 
@@ -499,8 +494,8 @@ msgstr "Faodaidh e a bhith na phàiste de"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:201
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:336
-#: src/routes/_authenticated/$crmId/design.tsx:305
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/design.tsx:57
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Cancel"
 msgstr "Sguir dheth"
 
@@ -565,7 +560,7 @@ msgstr "Tagh eadar roghainn an t-siostaim, modh soilleir, no modh dorcha"
 msgid "Choose language"
 msgstr "Tagh cànan"
 
-#: src/routes/_authenticated/$crmId/index.tsx:183
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Class"
 msgstr "Clas"
 
@@ -681,7 +676,7 @@ msgstr "Pailead nan àithnean"
 msgid "Comment actions"
 msgstr "Gnìomhan beachd"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:383
+#: src/routes/_authenticated/$crmId_.settings.tsx:51
 msgid "Comment and view"
 msgstr "Cuir beachd ris agus seall"
 
@@ -813,7 +808,7 @@ msgstr "Cruthaich nì ùr"
 msgid "Create object"
 msgstr "Cruthaich nì"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:382
+#: src/routes/_authenticated/$crmId_.settings.tsx:50
 msgid "Create, edit, comment, and view"
 msgstr "Cruthaich, deasaich, thoir beachd agus seall"
 
@@ -840,27 +835,31 @@ msgstr "Gnìomhan CRM"
 msgid "CRM created"
 msgstr "CRM air a chruthachadh"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:130
+#: src/routes/_authenticated/$crmId_.settings.tsx:106
 msgid "CRM deleted"
 msgstr "Chaidh CRM a sguabadh às"
 
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "CRM link"
 msgstr "Ceangal an CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:204
+#: src/routes/_authenticated/$crmId_.settings.tsx:73
+msgid "CRM name is required"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:86
 msgid "CRM not found"
 msgstr "Cha deach CRM a lorg"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:85
 msgid "CRM settings"
 msgstr "Roghainnean CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:204
+#: src/routes/_authenticated/$crmId_.settings.tsx:88
 msgid "CRM unavailable"
 msgstr "Chan eil CRM ri làimh"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:151
+#: src/routes/_authenticated/$crmId_.settings.tsx:97
 msgid "CRM updated"
 msgstr "Chaidh CRM ùrachadh"
 
@@ -930,7 +929,7 @@ msgstr "Seòrsachadh bunaiteach"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:314
 #: src/features/objects/components/object-detail-panel.tsx:519
-#: src/routes/_authenticated/$crmId_.settings.tsx:343
+#: src/routes/_authenticated/$crmId_.settings.tsx:100
 msgid "Delete"
 msgstr "Sguab às"
 
@@ -950,12 +949,12 @@ msgstr "Sguab às colbh"
 msgid "Delete comment"
 msgstr "Sguab às beachd"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:334
-#: src/routes/_authenticated/$crmId_.settings.tsx:354
+#: src/routes/_authenticated/$crmId_.settings.tsx:99
+#: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "Delete CRM"
 msgstr "Sguab às CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:352
+#: src/routes/_authenticated/$crmId_.settings.tsx:101
 msgid "Delete CRM?"
 msgstr "Sguab às CRM?"
 
@@ -987,7 +986,7 @@ msgstr "Sguab às sealladh"
 msgid "Delete your account on the old server"
 msgstr "Sguab às do chunntas air an t-seann fhrithealaiche"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:129
+#: src/routes/_authenticated/$crmId_.settings.tsx:105
 msgid "Deleting CRM..."
 msgstr "A' sguabadh às CRM..."
 
@@ -1000,22 +999,22 @@ msgid "Descending"
 msgstr "A' teàrnadh"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:304
+#: src/routes/_authenticated/$crmId_.settings.tsx:92
 msgid "Description"
 msgstr "Tuairisgeul"
 
-#: src/routes/_authenticated/$crmId/design.tsx:65
-#: src/routes/_authenticated/$crmId/design.tsx:133
-#: src/routes/_authenticated/$crmId/index.tsx:190
+#: src/routes/_authenticated/$crmId/design.tsx:39
+#: src/routes/_authenticated/$crmId/design.tsx:42
+#: src/routes/_authenticated/$crmId/index.tsx:180
 msgid "Design"
 msgstr "Dealbhadh"
 
 #: src/features/crms/components/create-crm-dialog.tsx:143
-#: src/routes/_authenticated/$crmId/design.tsx:110
+#: src/routes/_authenticated/$crmId/design.tsx:50
 msgid "Design imported"
 msgstr "Dealbhadh air ion-phortadh"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:381
+#: src/routes/_authenticated/$crmId_.settings.tsx:49
 msgid "Design, create, edit, comment, and view"
 msgstr "Dealbhaich, cruthaich, deasaich, thoir beachd agus seall"
 
@@ -1060,7 +1059,7 @@ msgstr "Gun cheangal"
 msgid "Dismiss"
 msgstr "Leig seachad"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Dismiss board hint"
 msgstr "Leig seachad sanas a' bhùird"
 
@@ -1075,7 +1074,7 @@ msgstr "Seallaidh am bàr-thaobh fòn-làimhe."
 msgid "Done"
 msgstr "Deiseil"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Double click on a column to add content"
 msgstr "Dèan briogadh dùbailte air colbh gus susbaint a chur ris"
 
@@ -1085,7 +1084,7 @@ msgstr "Dèan briogadh dùbailte air colbh gus susbaint a chur ris"
 msgid "Download"
 msgstr "Luchdaich a-nuas"
 
-#: src/routes/_authenticated/$crmId/design.tsx:227
+#: src/routes/_authenticated/$crmId/design.tsx:71
 msgid "Download backup first"
 msgstr "Luchdaich lethbhreac-glèidhidh a-nuas an toiseach"
 
@@ -1093,12 +1092,12 @@ msgstr "Luchdaich lethbhreac-glèidhidh a-nuas an toiseach"
 msgid "Download failed"
 msgstr "Dh’fhàillig an luchdadh a-nuas"
 
-#: src/routes/_authenticated/$crmId/design.tsx:89
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/design.tsx:48
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Downloaded {filename}"
 msgstr "Chaidh {filename} a luchdadh a-nuas"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Drag columns to re-order them"
 msgstr "Slaod colbhan gus an òrdugh atharrachadh"
 
@@ -1169,7 +1168,7 @@ msgstr "Cuir a-steach an còd on phost-d agad"
 msgid "Enter your authenticator code"
 msgstr "Cuir a-steach còd na h-aplacaid dearbhaidh agad"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:311
+#: src/routes/_authenticated/$crmId_.settings.tsx:93
 msgid "Entity ID"
 msgstr "ID an aonaid"
 
@@ -1188,15 +1187,15 @@ msgstr "Leudaich"
 msgid "Expand sidebar"
 msgstr "Leudaich am bàr-taobh"
 
-#: src/routes/_authenticated/$crmId/index.tsx:180
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Export CSV"
 msgstr "Às-phortaich CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Export data"
 msgstr "Às-phortaich an dàta"
 
-#: src/routes/_authenticated/$crmId/design.tsx:175
+#: src/routes/_authenticated/$crmId/design.tsx:46
 msgid "Export design"
 msgstr "Às-phortaich an dealbhadh"
 
@@ -1235,7 +1234,7 @@ msgstr "Cha b' urrainn raon a chruthachadh"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
 #: ../../../lib/web/src/components/options-menu.tsx:101
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to create link"
 msgstr "Cha b' urrainn ceangal a chruthachadh"
 
@@ -1255,7 +1254,7 @@ msgstr "Cha b' urrainn ceangaltas a sguabadh às"
 msgid "Failed to delete comment"
 msgstr "Cha b' urrainn am beachd a sguabadh às"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:131
+#: src/routes/_authenticated/$crmId_.settings.tsx:107
 msgid "Failed to delete CRM"
 msgstr "Cha b' urrainn CRM a sguabadh às"
 
@@ -1267,12 +1266,11 @@ msgstr "Cha b' urrainn ceangal a sguabadh às"
 msgid "Failed to delete view"
 msgstr "Cha b' urrainn sealladh a sguabadh às"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "Failed to export data"
 msgstr "Cha b' urrainn an dàta às-phortadh"
 
-#: src/routes/_authenticated/$crmId/design.tsx:91
-#: src/routes/_authenticated/$crmId/design.tsx:94
+#: src/routes/_authenticated/$crmId/design.tsx:49
 msgid "Failed to export design"
 msgstr "Cha b' urrainn an dealbhadh às-phortadh"
 
@@ -1285,7 +1283,7 @@ msgstr "Cha b' urrainn tòcan RSS fhaighinn"
 msgid "Failed to import data"
 msgstr "Cha b' urrainn an dàta ion-phortadh"
 
-#: src/routes/_authenticated/$crmId/design.tsx:115
+#: src/routes/_authenticated/$crmId/design.tsx:51
 msgid "Failed to import design"
 msgstr "Cha b' urrainn an dealbhadh ion-phortadh"
 
@@ -1293,17 +1291,18 @@ msgstr "Cha b' urrainn an dealbhadh ion-phortadh"
 msgid "Failed to load"
 msgstr "Cha b' urrainn luchdadh"
 
-#: src/routes/_authenticated/$crmId/$objectId.tsx:43
-#: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:60
+#: src/routes/_authenticated/$crmId/$objectId.tsx:41
+#: src/routes/_authenticated/$crmId/$objectId.tsx:65
+#: src/routes/_authenticated/$crmId/index.tsx:58
+#: src/routes/_authenticated/$crmId/index.tsx:94
 msgid "Failed to load CRM"
 msgstr "Cha b' urrainn a' CRM a luchdadh"
 
-#: src/routes/_authenticated/$crmId/design.tsx:139
+#: src/routes/_authenticated/$crmId/design.tsx:44
 msgid "Failed to load CRM design"
 msgstr "Cha b' urrainn dealbhadh a' CRM a luchdadh"
 
-#: src/stores/crms-store.ts:31
+#: src/stores/crms-store.ts:17
 msgid "Failed to load CRMs"
 msgstr "Cha b' urrainn na CRMan a luchdadh"
 
@@ -1332,11 +1331,11 @@ msgid "Failed to post comment"
 msgstr "Cha b' urrainn beachd a phostadh"
 
 #: src/features/crms/components/create-crm-dialog.tsx:223
-#: src/routes/_authenticated/$crmId/design.tsx:267
+#: src/routes/_authenticated/$crmId/design.tsx:56
 msgid "Failed to read file"
 msgstr "Cha b' urrainn am faidhle a leughadh"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:457
+#: src/routes/_authenticated/$crmId_.settings.tsx:115
 msgid "Failed to remove access"
 msgstr "Cha b' urrainn inntrigeadh a thoirt air falbh"
 
@@ -1364,22 +1363,22 @@ msgstr "Dh'fhàillig lorg nan CRMan"
 msgid "Failed to send verification code"
 msgstr "Cha b' urrainn còd dearbhaidh a chur"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:446
+#: src/routes/_authenticated/$crmId_.settings.tsx:112
 msgid "Failed to set access level"
 msgstr "Cha b' urrainn ìre an inntrigidh a shuidheachadh"
 
 #: src/features/crms/components/inline-crm-search.tsx:65
 #: src/features/crms/components/recommended-crms.tsx:42
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:46
 msgid "Failed to subscribe"
 msgstr "Cha b' urrainn fo-sgrìobhadh"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "Failed to unsubscribe"
 msgstr "Cha b' urrainn dì-fho-sgrìobhadh"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:471
+#: src/routes/_authenticated/$crmId_.settings.tsx:118
 msgid "Failed to update access level"
 msgstr "Cha b' urrainn ìre an inntrigidh ùrachadh"
 
@@ -1387,7 +1386,7 @@ msgstr "Cha b' urrainn ìre an inntrigidh ùrachadh"
 msgid "Failed to update comment"
 msgstr "Cha b' urrainn am beachd ùrachadh"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Failed to update CRM"
 msgstr "Cha b' urrainn crm ùrachadh"
 
@@ -1414,11 +1413,11 @@ msgid "Filter..."
 msgstr "Criathraich..."
 
 #: src/components/layout/crms-layout.tsx:35
-#: src/routes/_authenticated/find.tsx:91
+#: src/routes/_authenticated/find.tsx:41
 msgid "Find CRMs"
 msgstr "Lorg CRMan"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:316
+#: src/routes/_authenticated/$crmId_.settings.tsx:94
 msgid "Fingerprint"
 msgstr "Meur-lorg"
 
@@ -1527,11 +1526,11 @@ msgstr "Teth"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
 #: src/features/editor/components/edit-dialogs.tsx:266
-#: src/routes/_authenticated/$crmId/index.tsx:182
+#: src/routes/_authenticated/$crmId/index.tsx:172
 msgid "ID"
 msgstr "ID"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:291
+#: src/routes/_authenticated/$crmId_.settings.tsx:90
 msgid "Identity"
 msgstr "Dearbh-aithne"
 
@@ -1544,12 +1543,12 @@ msgstr "Sealladair dhealbhan: {0}"
 msgid "Imperial"
 msgstr "Ìmpireach"
 
-#: src/routes/_authenticated/$crmId/design.tsx:280
+#: src/routes/_authenticated/$crmId/design.tsx:53
 msgid "Import a design configuration"
 msgstr "Ion-phortaich rèiteachadh dealbhaidh"
 
-#: src/routes/_authenticated/$crmId/design.tsx:179
-#: src/routes/_authenticated/$crmId/design.tsx:279
+#: src/routes/_authenticated/$crmId/design.tsx:47
+#: src/routes/_authenticated/$crmId/design.tsx:52
 msgid "Import design"
 msgstr "Ion-phortaich an dealbhadh"
 
@@ -1587,7 +1586,7 @@ msgid "Invalid date"
 msgstr "Ceann-latha mì-dhligheach"
 
 #: src/features/crms/components/create-crm-dialog.tsx:216
-#: src/routes/_authenticated/$crmId/design.tsx:263
+#: src/routes/_authenticated/$crmId/design.tsx:55
 msgid "Invalid JSON file"
 msgstr "Faidhle JSON mì-dhligheach"
 
@@ -1645,7 +1644,7 @@ msgid "Light"
 msgstr "Soilleir"
 
 #: ../../../lib/web/src/components/options-menu.tsx:193
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Link"
 msgstr "Ceangal"
 
@@ -1675,7 +1674,7 @@ msgstr "A' luchdadh mion-fhiosrachadh an nì"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:35
 #: ../../../lib/web/src/features/document/document-page.tsx:90
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Loading..."
 msgstr "A' luchdadh..."
 
@@ -1768,9 +1767,13 @@ msgstr "Barrachd roghainnean"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:299
 #: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/editor/components/edit-dialogs.tsx:252
-#: src/routes/_authenticated/$crmId_.settings.tsx:295
+#: src/routes/_authenticated/$crmId_.settings.tsx:91
 msgid "Name"
 msgstr "Ainm"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:76
+msgid "Name cannot contain < or > characters"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
 msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
@@ -1781,6 +1784,7 @@ msgid "Name is required"
 msgstr "Tha ainm a dhìth"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
+#: src/routes/_authenticated/$crmId_.settings.tsx:74
 msgid "Name must be 1000 characters or less"
 msgstr "Feumaidh an t-ainm a bhith 1000 caractaran no nas lugha"
 
@@ -1791,13 +1795,13 @@ msgstr "Mearachd lìonraidh"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:481
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:151
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:141
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "New"
 msgstr "Ùr"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "New {0}"
 msgstr "{0} ùr"
 
@@ -1815,7 +1819,7 @@ msgstr "An ath dhealbh"
 msgid "No {parentClassNames} to add to"
 msgstr "Chan eil {parentClassNames} ann ri chur ris"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:385
+#: src/routes/_authenticated/$crmId_.settings.tsx:53
 msgid "No access"
 msgstr "Gun chothrom"
 
@@ -1836,7 +1840,7 @@ msgid "No connected accounts"
 msgstr "Chan eil cunntasan ceangailte"
 
 #: src/features/crms/components/inline-crm-search.tsx:84
-#: src/routes/_authenticated/find.tsx:93
+#: src/routes/_authenticated/find.tsx:43
 msgid "No CRMs found"
 msgstr "Cha deach CRM a lorg"
 
@@ -1860,7 +1864,7 @@ msgstr "Chan eil nithean a' freagairt"
 msgid "No notifications yet"
 msgstr "Chan eil brath ann fhathast"
 
-#: src/routes/_authenticated/$crmId/index.tsx:181
+#: src/routes/_authenticated/$crmId/index.tsx:171
 msgid "No objects to export."
 msgstr "Chan eil nithean ri às-phortadh."
 
@@ -2000,7 +2004,7 @@ msgstr "Fosgail na gnìomhan"
 msgid "Open class actions"
 msgstr "Fosgail gnìomhan a' chlas"
 
-#: src/routes/_authenticated/$crmId/design.tsx:167
+#: src/routes/_authenticated/$crmId/design.tsx:45
 msgid "Open design actions"
 msgstr "Fosgail gnìomhan an dealbhaidh"
 
@@ -2023,7 +2027,7 @@ msgstr "Fosgail clàr-taice na seòladaireachd"
 msgid "Open option actions"
 msgstr "Fosgail gnìomhan na roghainn"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:140
 msgid "Open page actions"
 msgstr "Fosgail gnìomhan na duilleige"
 
@@ -2071,7 +2075,7 @@ msgstr "Duilleag {currentPage} à {totalPages}"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:535
 #: src/features/objects/components/object-detail-panel.tsx:428
-#: src/routes/_authenticated/$crmId/index.tsx:184
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "Parent"
 msgstr "Pàrant"
 
@@ -2095,7 +2099,7 @@ msgstr "Pàtran (regex)"
 msgid "Pick a date"
 msgstr "Tagh ceann-latha"
 
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Please add one or more classes to the CRM design."
 msgstr "Cuir a-steach aon clas no barrachd ri dealbhadh a' CRM."
 
@@ -2163,7 +2167,7 @@ msgstr "Togte"
 msgid "Re-link your accounts on this server"
 msgstr "Ath-cheangail do chunntasan air an fhrithealaiche seo"
 
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Re-order columns"
 msgstr "Ath-òrdaich colbhan"
 
@@ -2254,7 +2258,7 @@ msgstr "Thoir an nì air falbh"
 msgid "Remove link"
 msgstr "Thoir an ceangal air falbh"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:455
+#: src/routes/_authenticated/$crmId_.settings.tsx:113
 msgid "Removing access..."
 msgstr "A' toirt air falbh inntrigeadh..."
 
@@ -2271,15 +2275,15 @@ msgstr "Cuir ainm ùr air a' cholbh"
 msgid "Rename this board column"
 msgstr "Cuir ainm ùr air colbh a' bhùird seo"
 
-#: src/routes/_authenticated/$crmId/design.tsx:219
+#: src/routes/_authenticated/$crmId/design.tsx:69
 msgid "Replace design"
 msgstr "Cuir dealbhadh eile na àite"
 
-#: src/routes/_authenticated/$crmId/design.tsx:203
+#: src/routes/_authenticated/$crmId/design.tsx:58
 msgid "Replace design?"
 msgstr "An cuirear dealbhadh eile na àite?"
 
-#: src/routes/_authenticated/$crmId/design.tsx:216
+#: src/routes/_authenticated/$crmId/design.tsx:70
 msgid "Replacing..."
 msgstr "A' cur na àite..."
 
@@ -2377,11 +2381,11 @@ msgstr "Disathairne"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Save"
 msgstr "Sàbhail"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:150
+#: src/routes/_authenticated/$crmId_.settings.tsx:96
 msgid "Saving..."
 msgstr "A' sàbhaladh..."
 
@@ -2392,7 +2396,7 @@ msgstr "A' sàbhaladh..."
 msgid "Search"
 msgstr "Lorg"
 
-#: src/routes/_authenticated/find.tsx:92
+#: src/routes/_authenticated/find.tsx:42
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Lorg le ainm, ID, lorg-meòir, no URL..."
 
@@ -2551,7 +2555,7 @@ msgstr "Cuir teachdaireachd"
 msgid "Serif"
 msgstr "Serif"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:325
+#: src/routes/_authenticated/$crmId_.settings.tsx:95
 msgid "Server"
 msgstr "Frithealaiche"
 
@@ -2573,17 +2577,15 @@ msgstr "Dh'fhalbh an ùine air an t-seisean. Log a-steach a-rithist."
 msgid "Set origin and destination"
 msgstr "Suidhich tùs is ceann-uidhe"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:444
+#: src/routes/_authenticated/$crmId_.settings.tsx:110
 msgid "Setting access..."
 msgstr "A' suidheachadh inntrigidh..."
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:126
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
 #: ../../../lib/web/src/components/options-menu.tsx:199
-#: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:164
-#: src/routes/_authenticated/$crmId_.settings.tsx:187
-#: src/routes/_authenticated/$crmId/index.tsx:198
+#: src/routes/_authenticated/$crmId_.settings.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:188
 msgid "Settings"
 msgstr "Roghainnean"
 
@@ -2685,7 +2687,7 @@ msgid "Subscribe"
 msgstr "Fo-sgrìobh"
 
 #: src/features/crms/components/inline-crm-search.tsx:64
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:45
 msgid "Subscribed"
 msgstr "Fo-sgrìobhte"
 
@@ -2696,7 +2698,7 @@ msgstr "Fo-sgrìobhte ri {0}"
 
 #: src/features/crms/components/inline-crm-search.tsx:63
 #: src/features/crms/components/recommended-crms.tsx:40
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:44
 msgid "Subscribing..."
 msgstr "A' fo-sgrìobhadh..."
 
@@ -2779,11 +2781,11 @@ msgstr "Ùrlar"
 msgid "Theme Settings"
 msgstr "Roghainnean an ùrlair"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:207
+#: src/routes/_authenticated/$crmId_.settings.tsx:89
 msgid "This CRM could not be loaded right now."
 msgstr "Cha b' urrainnear an CRM seo a luchdadh an-dràsta."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:207
+#: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Dh'fhaodadh gun deach an CRM seo a sguabadh às no nach eil cead-inntrigidh agad."
 
@@ -2791,18 +2793,18 @@ msgstr "Dh'fhaodadh gun deach an CRM seo a sguabadh às no nach eil cead-inntrig
 msgid "This page has not been created yet."
 msgstr "Cha deach an duilleag seo a chruthachadh fhathast."
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:353
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId_.settings.tsx:104
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Sguabaidh seo às \"{0}\" gu buan agus a h-uile rud, beachdan, is ceanglachain aige. Chan urrainnear an gnìomh seo a thoirt air ais."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:174
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Bheir seo \"{0}\" air falbh bhon bhàr-taoibh agad agus stadaidh e ùrachaidhean airson a' CRM seo."
 
-#. placeholder {0}: pendingImport?.label
-#: src/routes/_authenticated/$crmId/design.tsx:205
+#. placeholder {0}: String(label)
+#: src/routes/_authenticated/$crmId/design.tsx:62
 msgid "This will replace the current design with <0>{0}</0>. All existing classes, fields, options, and views will be deleted. Existing objects will not be deleted but may no longer appear in views."
 msgstr "Cuiridh seo an dealbhadh làithreach an àite le <0>{0}</0>. Thèid a h-uile clas, raon, roghainn, is sealladh a tha ann a sguabadh às. Cha tèid rudan a tha ann a sguabadh às ach 's dòcha nach nochd iad ann an seallaidhean tuilleadh."
 
@@ -2946,21 +2948,21 @@ msgstr "Neo-aithnichte"
 
 #: ../../../lib/web/src/components/options-menu.tsx:214
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Unsubscribe"
 msgstr "Dì-fho-sgrìobh"
 
-#: src/routes/_authenticated/$crmId/index.tsx:173
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Unsubscribe from CRM?"
 msgstr "Dì-fho-sgrìobh bhon CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribed"
 msgstr "Dì-fho-sgrìobhte"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribing..."
 msgstr "A' dì-fho-sgrìobhadh..."
 
@@ -2984,7 +2986,7 @@ msgstr "Gun dearbhadh"
 msgid "Updated"
 msgstr "Ùraichte"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:469
+#: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Updating access..."
 msgstr "Ag ùrachadh inntrigidh..."
 
@@ -2994,7 +2996,7 @@ msgid "Upload"
 msgstr "Luchdaich suas"
 
 #: src/features/crms/components/create-crm-dialog.tsx:294
-#: src/routes/_authenticated/$crmId/design.tsx:298
+#: src/routes/_authenticated/$crmId/design.tsx:54
 msgid "Upload .json file"
 msgstr "Luchdaich suas faidhle .json"
 
@@ -3064,11 +3066,11 @@ msgstr "Seall is deasaich mion-fhiosrachadh an rud"
 msgid "View controls"
 msgstr "Smachdan seallaidh"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:384
+#: src/routes/_authenticated/$crmId_.settings.tsx:52
 msgid "View only"
 msgstr "Seall a-mhàin"
 
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "View options"
 msgstr "Roghainnean seallaidh"
 
@@ -3115,7 +3117,7 @@ msgstr "Diciadain"
 msgid "You do not have access to this section."
 msgstr "Chan eil cead-inntrigidh agad dhan earrann seo."
 
-#: src/routes/_authenticated/$crmId/index.tsx:82
+#: src/routes/_authenticated/$crmId/index.tsx:80
 msgid "You don't have access to this CRM."
 msgstr "Chan eil inntrigeadh agad dhan CRM seo."
 

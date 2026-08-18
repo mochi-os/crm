@@ -13,7 +13,7 @@ import { APP_ROUTES } from "@/config/routes";
 
 function CrmsLayoutInner() {
   const { t } = useLingui();
-  const crms = useCrmsStore((state) => state.crms);
+  const crms = useCrmsStore((state) => state.rows);
   const isLoading = useCrmsStore((state) => state.isLoading);
   const error = useCrmsStore((state) => state.error);
   const refresh = useCrmsStore((state) => state.refresh);

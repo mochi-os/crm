@@ -43,9 +43,8 @@ msgstr "[nincs beállítva]"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# kiválasztva} other {# kiválasztva}}"
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/design.tsx:65
-#: src/routes/_authenticated/$crmId/design.tsx:158
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId/design.tsx:42
 msgid "{0} - Design"
 msgstr "{0} - Tervezés"
 
@@ -54,9 +53,8 @@ msgstr "{0} - Tervezés"
 msgid "{0} option preview"
 msgstr "{0} beállítás előnézete"
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
-#: src/routes/_authenticated/$crmId_.settings.tsx:219
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId_.settings.tsx:85
 msgid "{0} settings"
 msgstr "{0} beállításai"
 
@@ -146,7 +144,7 @@ msgstr "Abszolút (dátum és idő)"
 msgid "Accept"
 msgstr "Elfogadás"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:84
+#: src/routes/_authenticated/$crmId_.settings.tsx:81
 msgid "Access"
 msgstr "Hozzáférés"
 
@@ -162,19 +160,19 @@ msgstr "Hozzáférés tiltva"
 msgid "Access level"
 msgstr "Hozzáférési szint"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:470
+#: src/routes/_authenticated/$crmId_.settings.tsx:117
 msgid "Access level updated"
 msgstr "Hozzáférési szint frissítve"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:481
+#: src/routes/_authenticated/$crmId_.settings.tsx:108
 msgid "Access management"
 msgstr "Hozzáférés-kezelés"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:456
+#: src/routes/_authenticated/$crmId_.settings.tsx:114
 msgid "Access removed"
 msgstr "Hozzáférés eltávolítva"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:445
+#: src/routes/_authenticated/$crmId_.settings.tsx:111
 msgid "Access set for {subjectName}"
 msgstr "Hozzáférés beállítva: {subjectName}"
 
@@ -244,7 +242,7 @@ msgstr "Ellenőrzőlista-elem hozzáadása"
 msgid "Add class"
 msgstr "Osztály hozzáadása"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Add column"
 msgstr "Oszlop hozzáadása"
 
@@ -274,7 +272,7 @@ msgstr "Új fiók hozzáadása"
 msgid "Add option"
 msgstr "Beállítás hozzáadása"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:487
+#: src/routes/_authenticated/$crmId_.settings.tsx:109
 msgid "Add rule"
 msgstr "Szabály hozzáadása"
 
@@ -426,16 +424,13 @@ msgstr "{name} profilképe"
 msgid "Back"
 msgstr "Vissza"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:166
-#: src/routes/_authenticated/$crmId_.settings.tsx:189
-#: src/routes/_authenticated/$crmId_.settings.tsx:221
-#: src/routes/_authenticated/$crmId/design.tsx:135
-#: src/routes/_authenticated/$crmId/design.tsx:160
+#: src/routes/_authenticated/$crmId_.settings.tsx:82
+#: src/routes/_authenticated/$crmId/design.tsx:43
 msgid "Back to CRM"
 msgstr "Vissza a CRM-hez"
 
-#: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:96
+#: src/routes/_authenticated/$crmId/$objectId.tsx:64
+#: src/routes/_authenticated/$crmId/index.tsx:93
 msgid "Back to CRMs"
 msgstr "Vissza a CRM-ekhez"
 
@@ -499,8 +494,8 @@ msgstr "Lehet gyermeke ennek"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:201
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:336
-#: src/routes/_authenticated/$crmId/design.tsx:305
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/design.tsx:57
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -565,7 +560,7 @@ msgstr "Választhat rendszerbeállítás, világos vagy sötét mód között"
 msgid "Choose language"
 msgstr "Nyelv kiválasztása"
 
-#: src/routes/_authenticated/$crmId/index.tsx:183
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Class"
 msgstr "Osztály"
 
@@ -681,7 +676,7 @@ msgstr "Parancspaletta"
 msgid "Comment actions"
 msgstr "Megjegyzésműveletek"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:383
+#: src/routes/_authenticated/$crmId_.settings.tsx:51
 msgid "Comment and view"
 msgstr "Megjegyzés és megtekintés"
 
@@ -813,7 +808,7 @@ msgstr "Új elem létrehozása"
 msgid "Create object"
 msgstr "Objektum létrehozása"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:382
+#: src/routes/_authenticated/$crmId_.settings.tsx:50
 msgid "Create, edit, comment, and view"
 msgstr "Létrehozás, szerkesztés, hozzászólás és megtekintés"
 
@@ -840,27 +835,31 @@ msgstr "CRM-műveletek"
 msgid "CRM created"
 msgstr "CRM létrehozva"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:130
+#: src/routes/_authenticated/$crmId_.settings.tsx:106
 msgid "CRM deleted"
 msgstr "CRM törölve"
 
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "CRM link"
 msgstr "CRM-hivatkozás"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:204
+#: src/routes/_authenticated/$crmId_.settings.tsx:73
+msgid "CRM name is required"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:86
 msgid "CRM not found"
 msgstr "A CRM nem található"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:85
 msgid "CRM settings"
 msgstr "CRM-beállítások"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:204
+#: src/routes/_authenticated/$crmId_.settings.tsx:88
 msgid "CRM unavailable"
 msgstr "A CRM nem érhető el"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:151
+#: src/routes/_authenticated/$crmId_.settings.tsx:97
 msgid "CRM updated"
 msgstr "CRM frissítve"
 
@@ -930,7 +929,7 @@ msgstr "Alapértelmezett rendezés"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:314
 #: src/features/objects/components/object-detail-panel.tsx:519
-#: src/routes/_authenticated/$crmId_.settings.tsx:343
+#: src/routes/_authenticated/$crmId_.settings.tsx:100
 msgid "Delete"
 msgstr "Törlés"
 
@@ -950,12 +949,12 @@ msgstr "Oszlop törlése"
 msgid "Delete comment"
 msgstr "Megjegyzés törlése"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:334
-#: src/routes/_authenticated/$crmId_.settings.tsx:354
+#: src/routes/_authenticated/$crmId_.settings.tsx:99
+#: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "Delete CRM"
 msgstr "CRM törlése"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:352
+#: src/routes/_authenticated/$crmId_.settings.tsx:101
 msgid "Delete CRM?"
 msgstr "Törli a CRM-et?"
 
@@ -987,7 +986,7 @@ msgstr "Nézet törlése"
 msgid "Delete your account on the old server"
 msgstr "Törölje fiókját a régi szerveren"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:129
+#: src/routes/_authenticated/$crmId_.settings.tsx:105
 msgid "Deleting CRM..."
 msgstr "CRM törlése..."
 
@@ -1000,22 +999,22 @@ msgid "Descending"
 msgstr "Csökkenő"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:304
+#: src/routes/_authenticated/$crmId_.settings.tsx:92
 msgid "Description"
 msgstr "Leírás"
 
-#: src/routes/_authenticated/$crmId/design.tsx:65
-#: src/routes/_authenticated/$crmId/design.tsx:133
-#: src/routes/_authenticated/$crmId/index.tsx:190
+#: src/routes/_authenticated/$crmId/design.tsx:39
+#: src/routes/_authenticated/$crmId/design.tsx:42
+#: src/routes/_authenticated/$crmId/index.tsx:180
 msgid "Design"
 msgstr "Tervezés"
 
 #: src/features/crms/components/create-crm-dialog.tsx:143
-#: src/routes/_authenticated/$crmId/design.tsx:110
+#: src/routes/_authenticated/$crmId/design.tsx:50
 msgid "Design imported"
 msgstr "Terv importálva"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:381
+#: src/routes/_authenticated/$crmId_.settings.tsx:49
 msgid "Design, create, edit, comment, and view"
 msgstr "Tervezés, létrehozás, szerkesztés, hozzászólás és megtekintés"
 
@@ -1060,7 +1059,7 @@ msgstr "Leválasztva"
 msgid "Dismiss"
 msgstr "Elvetés"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Dismiss board hint"
 msgstr "Tábla tipp elvetése"
 
@@ -1075,7 +1074,7 @@ msgstr "Megjeleníti a mobil oldalsávot."
 msgid "Done"
 msgstr "Kész"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Double click on a column to add content"
 msgstr "Kattintson duplán egy oszlopra a tartalom hozzáadásához"
 
@@ -1085,7 +1084,7 @@ msgstr "Kattintson duplán egy oszlopra a tartalom hozzáadásához"
 msgid "Download"
 msgstr "Letöltés"
 
-#: src/routes/_authenticated/$crmId/design.tsx:227
+#: src/routes/_authenticated/$crmId/design.tsx:71
 msgid "Download backup first"
 msgstr "Töltse le először a biztonsági mentést"
 
@@ -1093,12 +1092,12 @@ msgstr "Töltse le először a biztonsági mentést"
 msgid "Download failed"
 msgstr "A letöltés sikertelen"
 
-#: src/routes/_authenticated/$crmId/design.tsx:89
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/design.tsx:48
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Downloaded {filename}"
 msgstr "Letöltve: {filename}"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Drag columns to re-order them"
 msgstr "Húzza az oszlopokat az átrendezésükhöz"
 
@@ -1169,7 +1168,7 @@ msgstr "Adja meg az e-mailben kapott kódot"
 msgid "Enter your authenticator code"
 msgstr "Adja meg a hitelesítő kódját"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:311
+#: src/routes/_authenticated/$crmId_.settings.tsx:93
 msgid "Entity ID"
 msgstr "Entitás azonosító"
 
@@ -1188,15 +1187,15 @@ msgstr "Kibontás"
 msgid "Expand sidebar"
 msgstr "Oldalsáv kibontása"
 
-#: src/routes/_authenticated/$crmId/index.tsx:180
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Export CSV"
 msgstr "CSV exportálása"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Export data"
 msgstr "Adatok exportálása"
 
-#: src/routes/_authenticated/$crmId/design.tsx:175
+#: src/routes/_authenticated/$crmId/design.tsx:46
 msgid "Export design"
 msgstr "Terv exportálása"
 
@@ -1235,7 +1234,7 @@ msgstr "Nem sikerült létrehozni a mezőt"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
 #: ../../../lib/web/src/components/options-menu.tsx:101
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to create link"
 msgstr "Nem sikerült létrehozni a hivatkozást"
 
@@ -1255,7 +1254,7 @@ msgstr "Nem sikerült törölni a mellékletet"
 msgid "Failed to delete comment"
 msgstr "Nem sikerült törölni a hozzászólást"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:131
+#: src/routes/_authenticated/$crmId_.settings.tsx:107
 msgid "Failed to delete CRM"
 msgstr "Nem sikerült törölni a CRM-et"
 
@@ -1267,12 +1266,11 @@ msgstr "Nem sikerült törölni a hivatkozást"
 msgid "Failed to delete view"
 msgstr "Nem sikerült törölni a nézetet"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "Failed to export data"
 msgstr "Az adatok exportálása nem sikerült"
 
-#: src/routes/_authenticated/$crmId/design.tsx:91
-#: src/routes/_authenticated/$crmId/design.tsx:94
+#: src/routes/_authenticated/$crmId/design.tsx:49
 msgid "Failed to export design"
 msgstr "Nem sikerült exportálni a tervet"
 
@@ -1285,7 +1283,7 @@ msgstr "Nem sikerült megszerezni az RSS tokent"
 msgid "Failed to import data"
 msgstr "Az adatok importálása nem sikerült"
 
-#: src/routes/_authenticated/$crmId/design.tsx:115
+#: src/routes/_authenticated/$crmId/design.tsx:51
 msgid "Failed to import design"
 msgstr "Nem sikerült importálni a tervet"
 
@@ -1293,17 +1291,18 @@ msgstr "Nem sikerült importálni a tervet"
 msgid "Failed to load"
 msgstr "Nem sikerült betölteni"
 
-#: src/routes/_authenticated/$crmId/$objectId.tsx:43
-#: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:60
+#: src/routes/_authenticated/$crmId/$objectId.tsx:41
+#: src/routes/_authenticated/$crmId/$objectId.tsx:65
+#: src/routes/_authenticated/$crmId/index.tsx:58
+#: src/routes/_authenticated/$crmId/index.tsx:94
 msgid "Failed to load CRM"
 msgstr "Nem sikerült betölteni a CRM-et"
 
-#: src/routes/_authenticated/$crmId/design.tsx:139
+#: src/routes/_authenticated/$crmId/design.tsx:44
 msgid "Failed to load CRM design"
 msgstr "Nem sikerült betölteni a CRM tervet"
 
-#: src/stores/crms-store.ts:31
+#: src/stores/crms-store.ts:17
 msgid "Failed to load CRMs"
 msgstr "Nem sikerült betölteni a CRM-eket"
 
@@ -1332,11 +1331,11 @@ msgid "Failed to post comment"
 msgstr "Nem sikerült közzétenni a hozzászólást"
 
 #: src/features/crms/components/create-crm-dialog.tsx:223
-#: src/routes/_authenticated/$crmId/design.tsx:267
+#: src/routes/_authenticated/$crmId/design.tsx:56
 msgid "Failed to read file"
 msgstr "Nem sikerült olvasni a fájlt"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:457
+#: src/routes/_authenticated/$crmId_.settings.tsx:115
 msgid "Failed to remove access"
 msgstr "Nem sikerült eltávolítani a hozzáférést"
 
@@ -1364,22 +1363,22 @@ msgstr "A CRM-ek keresése nem sikerült"
 msgid "Failed to send verification code"
 msgstr "Nem sikerült elküldeni az ellenőrző kódot"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:446
+#: src/routes/_authenticated/$crmId_.settings.tsx:112
 msgid "Failed to set access level"
 msgstr "Nem sikerült beállítani a hozzáférési szintet"
 
 #: src/features/crms/components/inline-crm-search.tsx:65
 #: src/features/crms/components/recommended-crms.tsx:42
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:46
 msgid "Failed to subscribe"
 msgstr "Nem sikerült feliratkozni"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "Failed to unsubscribe"
 msgstr "Nem sikerült leiratkozni"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:471
+#: src/routes/_authenticated/$crmId_.settings.tsx:118
 msgid "Failed to update access level"
 msgstr "Nem sikerült frissíteni a hozzáférési szintet"
 
@@ -1387,7 +1386,7 @@ msgstr "Nem sikerült frissíteni a hozzáférési szintet"
 msgid "Failed to update comment"
 msgstr "Nem sikerült frissíteni a hozzászólást"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Failed to update CRM"
 msgstr "Nem sikerült frissíteni a CRM-et"
 
@@ -1414,11 +1413,11 @@ msgid "Filter..."
 msgstr "Szűrés…"
 
 #: src/components/layout/crms-layout.tsx:35
-#: src/routes/_authenticated/find.tsx:91
+#: src/routes/_authenticated/find.tsx:41
 msgid "Find CRMs"
 msgstr "CRM-ek keresése"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:316
+#: src/routes/_authenticated/$crmId_.settings.tsx:94
 msgid "Fingerprint"
 msgstr "Ujjlenyomat"
 
@@ -1527,11 +1526,11 @@ msgstr "Forró"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
 #: src/features/editor/components/edit-dialogs.tsx:266
-#: src/routes/_authenticated/$crmId/index.tsx:182
+#: src/routes/_authenticated/$crmId/index.tsx:172
 msgid "ID"
 msgstr "Azonosító"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:291
+#: src/routes/_authenticated/$crmId_.settings.tsx:90
 msgid "Identity"
 msgstr "Azonosító"
 
@@ -1544,12 +1543,12 @@ msgstr "Képnézegető: {0}"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/routes/_authenticated/$crmId/design.tsx:280
+#: src/routes/_authenticated/$crmId/design.tsx:53
 msgid "Import a design configuration"
 msgstr "Tervkonfiguráció importálása"
 
-#: src/routes/_authenticated/$crmId/design.tsx:179
-#: src/routes/_authenticated/$crmId/design.tsx:279
+#: src/routes/_authenticated/$crmId/design.tsx:47
+#: src/routes/_authenticated/$crmId/design.tsx:52
 msgid "Import design"
 msgstr "Terv importálása"
 
@@ -1587,7 +1586,7 @@ msgid "Invalid date"
 msgstr "Érvénytelen dátum"
 
 #: src/features/crms/components/create-crm-dialog.tsx:216
-#: src/routes/_authenticated/$crmId/design.tsx:263
+#: src/routes/_authenticated/$crmId/design.tsx:55
 msgid "Invalid JSON file"
 msgstr "Érvénytelen JSON fájl"
 
@@ -1645,7 +1644,7 @@ msgid "Light"
 msgstr "Világos"
 
 #: ../../../lib/web/src/components/options-menu.tsx:193
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Link"
 msgstr "Hivatkozás"
 
@@ -1675,7 +1674,7 @@ msgstr "Elem részleteinek betöltése"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:35
 #: ../../../lib/web/src/features/document/document-page.tsx:90
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Loading..."
 msgstr "Betöltés..."
 
@@ -1768,9 +1767,13 @@ msgstr "További lehetőségek"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:299
 #: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/editor/components/edit-dialogs.tsx:252
-#: src/routes/_authenticated/$crmId_.settings.tsx:295
+#: src/routes/_authenticated/$crmId_.settings.tsx:91
 msgid "Name"
 msgstr "Név"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:76
+msgid "Name cannot contain < or > characters"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
 msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
@@ -1781,6 +1784,7 @@ msgid "Name is required"
 msgstr "A név kötelező"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
+#: src/routes/_authenticated/$crmId_.settings.tsx:74
 msgid "Name must be 1000 characters or less"
 msgstr "A név legfeljebb 1000 karakter lehet"
 
@@ -1791,13 +1795,13 @@ msgstr "Hálózati hiba"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:481
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:151
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:141
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "New"
 msgstr "Új"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "New {0}"
 msgstr "Új {0}"
 
@@ -1815,7 +1819,7 @@ msgstr "Következő kép"
 msgid "No {parentClassNames} to add to"
 msgstr "Nincs {parentClassNames}, amelyhez hozzáadható"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:385
+#: src/routes/_authenticated/$crmId_.settings.tsx:53
 msgid "No access"
 msgstr "Nincs hozzáférés"
 
@@ -1836,7 +1840,7 @@ msgid "No connected accounts"
 msgstr "Nincsenek csatlakoztatott fiókok"
 
 #: src/features/crms/components/inline-crm-search.tsx:84
-#: src/routes/_authenticated/find.tsx:93
+#: src/routes/_authenticated/find.tsx:43
 msgid "No CRMs found"
 msgstr "Nem található CRM"
 
@@ -1860,7 +1864,7 @@ msgstr "Nincs egyező objektum"
 msgid "No notifications yet"
 msgstr "Még nincsenek értesítések"
 
-#: src/routes/_authenticated/$crmId/index.tsx:181
+#: src/routes/_authenticated/$crmId/index.tsx:171
 msgid "No objects to export."
 msgstr "Nincs exportálható objektum."
 
@@ -2000,7 +2004,7 @@ msgstr "Műveletek megnyitása"
 msgid "Open class actions"
 msgstr "Osztályműveletek megnyitása"
 
-#: src/routes/_authenticated/$crmId/design.tsx:167
+#: src/routes/_authenticated/$crmId/design.tsx:45
 msgid "Open design actions"
 msgstr "Tervezési műveletek megnyitása"
 
@@ -2023,7 +2027,7 @@ msgstr "Navigációs menü megnyitása"
 msgid "Open option actions"
 msgstr "Opcióműveletek megnyitása"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:140
 msgid "Open page actions"
 msgstr "Oldalműveletek megnyitása"
 
@@ -2071,7 +2075,7 @@ msgstr "{currentPage}. oldal, összesen {totalPages}"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:535
 #: src/features/objects/components/object-detail-panel.tsx:428
-#: src/routes/_authenticated/$crmId/index.tsx:184
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "Parent"
 msgstr "Szülő"
 
@@ -2095,7 +2099,7 @@ msgstr "Minta (regex)"
 msgid "Pick a date"
 msgstr "Válasszon dátumot"
 
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Please add one or more classes to the CRM design."
 msgstr "Adjon hozzá egy vagy több osztályt a CRM tervezéséhez."
 
@@ -2163,7 +2167,7 @@ msgstr "Kiemelt"
 msgid "Re-link your accounts on this server"
 msgstr "Kapcsolja újra össze fiókjait ezen a szerveren"
 
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Re-order columns"
 msgstr "Oszlopok újrarendezése"
 
@@ -2254,7 +2258,7 @@ msgstr "Elem eltávolítása"
 msgid "Remove link"
 msgstr "Hivatkozás eltávolítása"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:455
+#: src/routes/_authenticated/$crmId_.settings.tsx:113
 msgid "Removing access..."
 msgstr "Hozzáférés eltávolítása..."
 
@@ -2271,15 +2275,15 @@ msgstr "Oszlop átnevezése"
 msgid "Rename this board column"
 msgstr "Tábla oszlopának átnevezése"
 
-#: src/routes/_authenticated/$crmId/design.tsx:219
+#: src/routes/_authenticated/$crmId/design.tsx:69
 msgid "Replace design"
 msgstr "Tervezés cseréje"
 
-#: src/routes/_authenticated/$crmId/design.tsx:203
+#: src/routes/_authenticated/$crmId/design.tsx:58
 msgid "Replace design?"
 msgstr "Lecseréli a tervet?"
 
-#: src/routes/_authenticated/$crmId/design.tsx:216
+#: src/routes/_authenticated/$crmId/design.tsx:70
 msgid "Replacing..."
 msgstr "Csere..."
 
@@ -2377,11 +2381,11 @@ msgstr "Szombat"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Save"
 msgstr "Mentés"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:150
+#: src/routes/_authenticated/$crmId_.settings.tsx:96
 msgid "Saving..."
 msgstr "Mentés..."
 
@@ -2392,7 +2396,7 @@ msgstr "Mentés..."
 msgid "Search"
 msgstr "Keresés"
 
-#: src/routes/_authenticated/find.tsx:92
+#: src/routes/_authenticated/find.tsx:42
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Keresés név, azonosító, ujjlenyomat vagy URL alapján..."
 
@@ -2551,7 +2555,7 @@ msgstr "Üzenet küldése"
 msgid "Serif"
 msgstr "Talpas"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:325
+#: src/routes/_authenticated/$crmId_.settings.tsx:95
 msgid "Server"
 msgstr "Kiszolgáló"
 
@@ -2573,17 +2577,15 @@ msgstr "A munkamenet lejárt. Kérjük, jelentkezzen be újra."
 msgid "Set origin and destination"
 msgstr "Kiindulási és úti cél beállítása"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:444
+#: src/routes/_authenticated/$crmId_.settings.tsx:110
 msgid "Setting access..."
 msgstr "Hozzáférés beállítása..."
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:126
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
 #: ../../../lib/web/src/components/options-menu.tsx:199
-#: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:164
-#: src/routes/_authenticated/$crmId_.settings.tsx:187
-#: src/routes/_authenticated/$crmId/index.tsx:198
+#: src/routes/_authenticated/$crmId_.settings.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:188
 msgid "Settings"
 msgstr "Beállítások"
 
@@ -2685,7 +2687,7 @@ msgid "Subscribe"
 msgstr "Feliratkozás"
 
 #: src/features/crms/components/inline-crm-search.tsx:64
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:45
 msgid "Subscribed"
 msgstr "Feliratkozva"
 
@@ -2696,7 +2698,7 @@ msgstr "Feliratkozva: {0}"
 
 #: src/features/crms/components/inline-crm-search.tsx:63
 #: src/features/crms/components/recommended-crms.tsx:40
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:44
 msgid "Subscribing..."
 msgstr "Feliratkozás..."
 
@@ -2779,11 +2781,11 @@ msgstr "Téma"
 msgid "Theme Settings"
 msgstr "Témabeállítások"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:207
+#: src/routes/_authenticated/$crmId_.settings.tsx:89
 msgid "This CRM could not be loaded right now."
 msgstr "Ez a CRM jelenleg nem tölthető be."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:207
+#: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Lehet, hogy ez a CRM törlésre került, vagy nincs hozzáférése."
 
@@ -2791,18 +2793,18 @@ msgstr "Lehet, hogy ez a CRM törlésre került, vagy nincs hozzáférése."
 msgid "This page has not been created yet."
 msgstr "Ez az oldal még nem jött létre."
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:353
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId_.settings.tsx:104
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Ez véglegesen törli a következőt: „{0}”, és annak összes objektumát, hozzászólását és mellékletét. Ez a művelet nem vonható vissza."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:174
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Ez eltávolítja a következőt: „{0}” az oldalsávjáról, és leállítja a frissítéseket ehhez a CRM-hez."
 
-#. placeholder {0}: pendingImport?.label
-#: src/routes/_authenticated/$crmId/design.tsx:205
+#. placeholder {0}: String(label)
+#: src/routes/_authenticated/$crmId/design.tsx:62
 msgid "This will replace the current design with <0>{0}</0>. All existing classes, fields, options, and views will be deleted. Existing objects will not be deleted but may no longer appear in views."
 msgstr "Ez lecseréli az aktuális tervezést erre: <0>{0}</0>. Minden meglévő osztály, mező, beállítás és nézet törlődik. A meglévő objektumok nem törlődnek, de lehet, hogy többé nem jelennek meg a nézetekben."
 
@@ -2946,21 +2948,21 @@ msgstr "Ismeretlen"
 
 #: ../../../lib/web/src/components/options-menu.tsx:214
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Unsubscribe"
 msgstr "Leiratkozás"
 
-#: src/routes/_authenticated/$crmId/index.tsx:173
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Unsubscribe from CRM?"
 msgstr "Leiratkozik a CRM-ről?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribed"
 msgstr "Leiratkozva"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribing..."
 msgstr "Leiratkozás..."
 
@@ -2984,7 +2986,7 @@ msgstr "Nem ellenőrzött"
 msgid "Updated"
 msgstr "Frissítve"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:469
+#: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Updating access..."
 msgstr "Hozzáférés frissítése..."
 
@@ -2994,7 +2996,7 @@ msgid "Upload"
 msgstr "Feltöltés"
 
 #: src/features/crms/components/create-crm-dialog.tsx:294
-#: src/routes/_authenticated/$crmId/design.tsx:298
+#: src/routes/_authenticated/$crmId/design.tsx:54
 msgid "Upload .json file"
 msgstr ".json fájl feltöltése"
 
@@ -3064,11 +3066,11 @@ msgstr "Tétel adatainak megtekintése és szerkesztése"
 msgid "View controls"
 msgstr "Vezérlők megtekintése"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:384
+#: src/routes/_authenticated/$crmId_.settings.tsx:52
 msgid "View only"
 msgstr "Csak megtekintés"
 
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "View options"
 msgstr "Megtekintési beállítások"
 
@@ -3115,7 +3117,7 @@ msgstr "Szerda"
 msgid "You do not have access to this section."
 msgstr "Nincs hozzáférése ehhez a részhez."
 
-#: src/routes/_authenticated/$crmId/index.tsx:82
+#: src/routes/_authenticated/$crmId/index.tsx:80
 msgid "You don't have access to this CRM."
 msgstr "Nincs hozzáférésed ehhez a CRM-hez."
 

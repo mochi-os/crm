@@ -43,9 +43,8 @@ msgstr "[സജ്ജമാക്കിയിട്ടില്ല]"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# തിരഞ്ഞെടുത്തു} other {# തിരഞ്ഞെടുത്തു}}"
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/design.tsx:65
-#: src/routes/_authenticated/$crmId/design.tsx:158
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId/design.tsx:42
 msgid "{0} - Design"
 msgstr "{0} - ഡിസൈൻ"
 
@@ -54,9 +53,8 @@ msgstr "{0} - ഡിസൈൻ"
 msgid "{0} option preview"
 msgstr "{0} ഓപ്ഷന്റെ പ്രിവ്യൂ"
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
-#: src/routes/_authenticated/$crmId_.settings.tsx:219
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId_.settings.tsx:85
 msgid "{0} settings"
 msgstr "{0} ക്രമീകരണങ്ങൾ"
 
@@ -146,7 +144,7 @@ msgstr "സമ്പൂർണ്ണം (തീയതിയും സമയവു
 msgid "Accept"
 msgstr "സ്വീകരിക്കുക"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:84
+#: src/routes/_authenticated/$crmId_.settings.tsx:81
 msgid "Access"
 msgstr "ആക്സസ്"
 
@@ -162,19 +160,19 @@ msgstr "ആക്സസ് നിഷിദ്ധം"
 msgid "Access level"
 msgstr "ആക്സസ് ലെവൽ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:470
+#: src/routes/_authenticated/$crmId_.settings.tsx:117
 msgid "Access level updated"
 msgstr "ആക്സസ് ലെവൽ അപ്ഡേറ്റ് ചെയ്തു"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:481
+#: src/routes/_authenticated/$crmId_.settings.tsx:108
 msgid "Access management"
 msgstr "ആക്സസ് മാനേജ്മെന്റ്"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:456
+#: src/routes/_authenticated/$crmId_.settings.tsx:114
 msgid "Access removed"
 msgstr "ആക്സസ് നീക്കം ചെയ്തു"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:445
+#: src/routes/_authenticated/$crmId_.settings.tsx:111
 msgid "Access set for {subjectName}"
 msgstr "{subjectName}-നായി ആക്സസ് സജ്ജമാക്കി"
 
@@ -244,7 +242,7 @@ msgstr "ചെക്ക്‌ലിസ്റ്റ് ഇനം ചേർക്�
 msgid "Add class"
 msgstr "ക്ലാസ് ചേർക്കുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Add column"
 msgstr "കോളം ചേർക്കുക"
 
@@ -274,7 +272,7 @@ msgstr "പുതിയ അക്കൗണ്ട് ചേർക്കുക"
 msgid "Add option"
 msgstr "ഓപ്ഷൻ ചേർക്കുക"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:487
+#: src/routes/_authenticated/$crmId_.settings.tsx:109
 msgid "Add rule"
 msgstr "നിയമം ചേർക്കുക"
 
@@ -426,16 +424,13 @@ msgstr "{name}-ന്റെ അവതാർ"
 msgid "Back"
 msgstr "തിരികെ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:166
-#: src/routes/_authenticated/$crmId_.settings.tsx:189
-#: src/routes/_authenticated/$crmId_.settings.tsx:221
-#: src/routes/_authenticated/$crmId/design.tsx:135
-#: src/routes/_authenticated/$crmId/design.tsx:160
+#: src/routes/_authenticated/$crmId_.settings.tsx:82
+#: src/routes/_authenticated/$crmId/design.tsx:43
 msgid "Back to CRM"
 msgstr "CRM-ലേക്ക് തിരികെ"
 
-#: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:96
+#: src/routes/_authenticated/$crmId/$objectId.tsx:64
+#: src/routes/_authenticated/$crmId/index.tsx:93
 msgid "Back to CRMs"
 msgstr "CRM-കളിലേക്ക് തിരികെ"
 
@@ -499,8 +494,8 @@ msgstr "ഇതിന്റെ ചൈൽഡ് ആകാൻ കഴിയും"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:201
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:336
-#: src/routes/_authenticated/$crmId/design.tsx:305
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/design.tsx:57
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Cancel"
 msgstr "റദ്ദാക്കുക"
 
@@ -565,7 +560,7 @@ msgstr "സിസ്റ്റം മുൻഗണന, ലൈറ്റ് മോ�
 msgid "Choose language"
 msgstr "ഭാഷ തിരഞ്ഞെടുക്കുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:183
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Class"
 msgstr "ക്ലാസ്"
 
@@ -681,7 +676,7 @@ msgstr "കമാൻഡ് പാലറ്റ്"
 msgid "Comment actions"
 msgstr "അഭിപ്രായ പ്രവർത്തനങ്ങൾ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:383
+#: src/routes/_authenticated/$crmId_.settings.tsx:51
 msgid "Comment and view"
 msgstr "അഭിപ്രായം പറയുകയും കാണുകയും ചെയ്യുക"
 
@@ -813,7 +808,7 @@ msgstr "പുതിയ ഇനം സൃഷ്ടിക്കുക"
 msgid "Create object"
 msgstr "ഒബ്ജക്റ്റ് സൃഷ്ടിക്കുക"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:382
+#: src/routes/_authenticated/$crmId_.settings.tsx:50
 msgid "Create, edit, comment, and view"
 msgstr "സൃഷ്ടിക്കുക, എഡിറ്റ് ചെയ്യുക, അഭിപ്രായമിടുക, കാണുക"
 
@@ -840,27 +835,31 @@ msgstr "CRM പ്രവർത്തനങ്ങൾ"
 msgid "CRM created"
 msgstr "CRM സൃഷ്ടിച്ചു"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:130
+#: src/routes/_authenticated/$crmId_.settings.tsx:106
 msgid "CRM deleted"
 msgstr "CRM ഇല്ലാതാക്കി"
 
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "CRM link"
 msgstr "CRM ലിങ്ക്"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:204
+#: src/routes/_authenticated/$crmId_.settings.tsx:73
+msgid "CRM name is required"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:86
 msgid "CRM not found"
 msgstr "CRM കണ്ടെത്തിയില്ല"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:85
 msgid "CRM settings"
 msgstr "CRM ക്രമീകരണങ്ങൾ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:204
+#: src/routes/_authenticated/$crmId_.settings.tsx:88
 msgid "CRM unavailable"
 msgstr "CRM ലഭ്യമല്ല"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:151
+#: src/routes/_authenticated/$crmId_.settings.tsx:97
 msgid "CRM updated"
 msgstr "CRM പുതുക്കി"
 
@@ -930,7 +929,7 @@ msgstr "ഡിഫോൾട്ട് സോർട്ട്"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:314
 #: src/features/objects/components/object-detail-panel.tsx:519
-#: src/routes/_authenticated/$crmId_.settings.tsx:343
+#: src/routes/_authenticated/$crmId_.settings.tsx:100
 msgid "Delete"
 msgstr "ഇല്ലാതാക്കുക"
 
@@ -950,12 +949,12 @@ msgstr "കോളം ഇല്ലാതാക്കുക"
 msgid "Delete comment"
 msgstr "അഭിപ്രായം ഇല്ലാതാക്കുക"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:334
-#: src/routes/_authenticated/$crmId_.settings.tsx:354
+#: src/routes/_authenticated/$crmId_.settings.tsx:99
+#: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "Delete CRM"
 msgstr "CRM ഇല്ലാതാക്കുക"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:352
+#: src/routes/_authenticated/$crmId_.settings.tsx:101
 msgid "Delete CRM?"
 msgstr "CRM ഇല്ലാതാക്കണോ?"
 
@@ -987,7 +986,7 @@ msgstr "കാഴ്ച ഇല്ലാതാക്കുക"
 msgid "Delete your account on the old server"
 msgstr "പഴയ സെർവറിൽ നിങ്ങളുടെ അക്കൗണ്ട് ഇല്ലാതാക്കുക"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:129
+#: src/routes/_authenticated/$crmId_.settings.tsx:105
 msgid "Deleting CRM..."
 msgstr "CRM ഇല്ലാതാക്കുന്നു..."
 
@@ -1000,22 +999,22 @@ msgid "Descending"
 msgstr "അവരോഹണ ക്രമം"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:304
+#: src/routes/_authenticated/$crmId_.settings.tsx:92
 msgid "Description"
 msgstr "വിവരണം"
 
-#: src/routes/_authenticated/$crmId/design.tsx:65
-#: src/routes/_authenticated/$crmId/design.tsx:133
-#: src/routes/_authenticated/$crmId/index.tsx:190
+#: src/routes/_authenticated/$crmId/design.tsx:39
+#: src/routes/_authenticated/$crmId/design.tsx:42
+#: src/routes/_authenticated/$crmId/index.tsx:180
 msgid "Design"
 msgstr "ഡിസൈൻ"
 
 #: src/features/crms/components/create-crm-dialog.tsx:143
-#: src/routes/_authenticated/$crmId/design.tsx:110
+#: src/routes/_authenticated/$crmId/design.tsx:50
 msgid "Design imported"
 msgstr "ഡിസൈൻ ഇറക്കുമതി ചെയ്തു"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:381
+#: src/routes/_authenticated/$crmId_.settings.tsx:49
 msgid "Design, create, edit, comment, and view"
 msgstr "രൂപകൽപ്പന ചെയ്യുക, സൃഷ്ടിക്കുക, എഡിറ്റ് ചെയ്യുക, അഭിപ്രായമിടുക, കാണുക"
 
@@ -1060,7 +1059,7 @@ msgstr "വിച്ഛേദിച്ചു"
 msgid "Dismiss"
 msgstr "ഒഴിവാക്കുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Dismiss board hint"
 msgstr "ബോർഡ് സൂചന ഒഴിവാക്കുക"
 
@@ -1075,7 +1074,7 @@ msgstr "മൊബൈൽ സൈഡ്‌ബാർ പ്രദർശിപ്പ�
 msgid "Done"
 msgstr "പൂർത്തിയായി"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Double click on a column to add content"
 msgstr "ഉള്ളടക്കം ചേർക്കാൻ കോളത്തിൽ ഡബിൾ ക്ലിക്ക് ചെയ്യുക"
 
@@ -1085,7 +1084,7 @@ msgstr "ഉള്ളടക്കം ചേർക്കാൻ കോളത്ത�
 msgid "Download"
 msgstr "ഡൗൺലോഡ്"
 
-#: src/routes/_authenticated/$crmId/design.tsx:227
+#: src/routes/_authenticated/$crmId/design.tsx:71
 msgid "Download backup first"
 msgstr "ആദ്യം ബാക്കപ്പ് ഡൗൺലോഡ് ചെയ്യുക"
 
@@ -1093,12 +1092,12 @@ msgstr "ആദ്യം ബാക്കപ്പ് ഡൗൺലോഡ് ചെ
 msgid "Download failed"
 msgstr "ഡൗൺലോഡ് പരാജയപ്പെട്ടു"
 
-#: src/routes/_authenticated/$crmId/design.tsx:89
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/design.tsx:48
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Downloaded {filename}"
 msgstr "{filename} ഡൗൺലോഡ് ചെയ്തു"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Drag columns to re-order them"
 msgstr "പുനഃക്രമീകരിക്കാൻ കോളങ്ങൾ വലിച്ചിടുക"
 
@@ -1169,7 +1168,7 @@ msgstr "നിങ്ങളുടെ ഇമെയിലിലെ കോഡ് ന
 msgid "Enter your authenticator code"
 msgstr "നിങ്ങളുടെ ഓതെന്റിക്കേറ്റർ കോഡ് നൽകുക"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:311
+#: src/routes/_authenticated/$crmId_.settings.tsx:93
 msgid "Entity ID"
 msgstr "എന്റിറ്റി ID"
 
@@ -1188,15 +1187,15 @@ msgstr "വികസിപ്പിക്കുക"
 msgid "Expand sidebar"
 msgstr "സൈഡ്‌ബാർ വികസിപ്പിക്കുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:180
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Export CSV"
 msgstr "CSV എക്‌സ്‌പോർട്ട് ചെയ്യുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Export data"
 msgstr "ഡാറ്റ എക്സ്പോർട്ട് ചെയ്യുക"
 
-#: src/routes/_authenticated/$crmId/design.tsx:175
+#: src/routes/_authenticated/$crmId/design.tsx:46
 msgid "Export design"
 msgstr "ഡിസൈൻ എക്‌സ്‌പോർട്ട് ചെയ്യുക"
 
@@ -1235,7 +1234,7 @@ msgstr "ഫീൽഡ് സൃഷ്ടിക്കുന്നതിൽ പര�
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
 #: ../../../lib/web/src/components/options-menu.tsx:101
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to create link"
 msgstr "ലിങ്ക് സൃഷ്ടിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1255,7 +1254,7 @@ msgstr "അറ്റാച്ച്മെന്റ് ഇല്ലാതാക�
 msgid "Failed to delete comment"
 msgstr "അഭിപ്രായം ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:131
+#: src/routes/_authenticated/$crmId_.settings.tsx:107
 msgid "Failed to delete CRM"
 msgstr "CRM ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1267,12 +1266,11 @@ msgstr "ലിങ്ക് ഇല്ലാതാക്കുന്നതിൽ �
 msgid "Failed to delete view"
 msgstr "വ്യൂ ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "Failed to export data"
 msgstr "ഡാറ്റ എക്സ്പോർട്ട് ചെയ്യാനായില്ല"
 
-#: src/routes/_authenticated/$crmId/design.tsx:91
-#: src/routes/_authenticated/$crmId/design.tsx:94
+#: src/routes/_authenticated/$crmId/design.tsx:49
 msgid "Failed to export design"
 msgstr "ഡിസൈൻ എക്‌സ്‌പോർട്ട് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1285,7 +1283,7 @@ msgstr "RSS ടോക്കൺ നേടുന്നതിൽ പരാജയപ
 msgid "Failed to import data"
 msgstr "ഡാറ്റ ഇംപോർട്ട് ചെയ്യാനായില്ല"
 
-#: src/routes/_authenticated/$crmId/design.tsx:115
+#: src/routes/_authenticated/$crmId/design.tsx:51
 msgid "Failed to import design"
 msgstr "ഡിസൈൻ ഇംപോർട്ട് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1293,17 +1291,18 @@ msgstr "ഡിസൈൻ ഇംപോർട്ട് ചെയ്യുന്ന�
 msgid "Failed to load"
 msgstr "ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/routes/_authenticated/$crmId/$objectId.tsx:43
-#: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:60
+#: src/routes/_authenticated/$crmId/$objectId.tsx:41
+#: src/routes/_authenticated/$crmId/$objectId.tsx:65
+#: src/routes/_authenticated/$crmId/index.tsx:58
+#: src/routes/_authenticated/$crmId/index.tsx:94
 msgid "Failed to load CRM"
 msgstr "CRM ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/routes/_authenticated/$crmId/design.tsx:139
+#: src/routes/_authenticated/$crmId/design.tsx:44
 msgid "Failed to load CRM design"
 msgstr "CRM ഡിസൈൻ ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/stores/crms-store.ts:31
+#: src/stores/crms-store.ts:17
 msgid "Failed to load CRMs"
 msgstr "CRM-കൾ ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1332,11 +1331,11 @@ msgid "Failed to post comment"
 msgstr "അഭിപ്രായം പോസ്റ്റുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: src/features/crms/components/create-crm-dialog.tsx:223
-#: src/routes/_authenticated/$crmId/design.tsx:267
+#: src/routes/_authenticated/$crmId/design.tsx:56
 msgid "Failed to read file"
 msgstr "ഫയൽ വായിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:457
+#: src/routes/_authenticated/$crmId_.settings.tsx:115
 msgid "Failed to remove access"
 msgstr "ആക്സസ് നീക്കം ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1364,22 +1363,22 @@ msgstr "CRM-കൾ തിരയുന്നത് പരാജയപ്പെട
 msgid "Failed to send verification code"
 msgstr "സ്ഥിരീകരണ കോഡ് അയയ്ക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:446
+#: src/routes/_authenticated/$crmId_.settings.tsx:112
 msgid "Failed to set access level"
 msgstr "ആക്സസ് ലെവൽ സജ്ജമാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: src/features/crms/components/inline-crm-search.tsx:65
 #: src/features/crms/components/recommended-crms.tsx:42
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:46
 msgid "Failed to subscribe"
 msgstr "സബ്സ്ക്രൈബ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "Failed to unsubscribe"
 msgstr "അൺസബ്സ്ക്രൈബ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:471
+#: src/routes/_authenticated/$crmId_.settings.tsx:118
 msgid "Failed to update access level"
 msgstr "ആക്സസ് ലെവൽ പുതുക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1387,7 +1386,7 @@ msgstr "ആക്സസ് ലെവൽ പുതുക്കുന്നതി�
 msgid "Failed to update comment"
 msgstr "അഭിപ്രായം പുതുക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Failed to update CRM"
 msgstr "CRM പുതുക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1414,11 +1413,11 @@ msgid "Filter..."
 msgstr "ഫിൽട്ടർ..."
 
 #: src/components/layout/crms-layout.tsx:35
-#: src/routes/_authenticated/find.tsx:91
+#: src/routes/_authenticated/find.tsx:41
 msgid "Find CRMs"
 msgstr "CRM-കൾ കണ്ടെത്തുക"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:316
+#: src/routes/_authenticated/$crmId_.settings.tsx:94
 msgid "Fingerprint"
 msgstr "വിരലടയാളം"
 
@@ -1527,11 +1526,11 @@ msgstr "ഹോട്ട്"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
 #: src/features/editor/components/edit-dialogs.tsx:266
-#: src/routes/_authenticated/$crmId/index.tsx:182
+#: src/routes/_authenticated/$crmId/index.tsx:172
 msgid "ID"
 msgstr "ഐഡി"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:291
+#: src/routes/_authenticated/$crmId_.settings.tsx:90
 msgid "Identity"
 msgstr "സ്വത്വം"
 
@@ -1544,12 +1543,12 @@ msgstr "ചിത്ര വ്യൂവർ: {0}"
 msgid "Imperial"
 msgstr "ഇംപീരിയൽ"
 
-#: src/routes/_authenticated/$crmId/design.tsx:280
+#: src/routes/_authenticated/$crmId/design.tsx:53
 msgid "Import a design configuration"
 msgstr "ഒരു ഡിസൈൻ കോൺഫിഗറേഷൻ ഇംപോർട്ട് ചെയ്യുക"
 
-#: src/routes/_authenticated/$crmId/design.tsx:179
-#: src/routes/_authenticated/$crmId/design.tsx:279
+#: src/routes/_authenticated/$crmId/design.tsx:47
+#: src/routes/_authenticated/$crmId/design.tsx:52
 msgid "Import design"
 msgstr "ഡിസൈൻ ഇംപോർട്ട് ചെയ്യുക"
 
@@ -1587,7 +1586,7 @@ msgid "Invalid date"
 msgstr "അസാധുവായ തീയതി"
 
 #: src/features/crms/components/create-crm-dialog.tsx:216
-#: src/routes/_authenticated/$crmId/design.tsx:263
+#: src/routes/_authenticated/$crmId/design.tsx:55
 msgid "Invalid JSON file"
 msgstr "അസാധുവായ JSON ഫയൽ"
 
@@ -1645,7 +1644,7 @@ msgid "Light"
 msgstr "ലൈറ്റ്"
 
 #: ../../../lib/web/src/components/options-menu.tsx:193
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Link"
 msgstr "ലിങ്ക്"
 
@@ -1675,7 +1674,7 @@ msgstr "ഇനം വിശദാംശങ്ങൾ ലോഡുചെയ്യ�
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:35
 #: ../../../lib/web/src/features/document/document-page.tsx:90
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Loading..."
 msgstr "ലോഡുചെയ്യുന്നു..."
 
@@ -1768,9 +1767,13 @@ msgstr "കൂടുതൽ ഓപ്ഷനുകൾ"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:299
 #: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/editor/components/edit-dialogs.tsx:252
-#: src/routes/_authenticated/$crmId_.settings.tsx:295
+#: src/routes/_authenticated/$crmId_.settings.tsx:91
 msgid "Name"
 msgstr "പേര്"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:76
+msgid "Name cannot contain < or > characters"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
 msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
@@ -1781,6 +1784,7 @@ msgid "Name is required"
 msgstr "പേര് നൽകേണ്ടത് ആവശ്യമാണ്"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
+#: src/routes/_authenticated/$crmId_.settings.tsx:74
 msgid "Name must be 1000 characters or less"
 msgstr "പേര് 1000 പ്രതീകങ്ങൾ അല്ലെങ്കിൽ അതിൽ കുറവായിരിക്കണം"
 
@@ -1791,13 +1795,13 @@ msgstr "നെറ്റ്‌വർക്ക് പിശക്"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:481
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:151
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:141
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "New"
 msgstr "പുതിയത്"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "New {0}"
 msgstr "പുതിയ {0}"
 
@@ -1815,7 +1819,7 @@ msgstr "അടുത്ത ചിത്രം"
 msgid "No {parentClassNames} to add to"
 msgstr "ചേർക്കാൻ {parentClassNames} ഇല്ല"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:385
+#: src/routes/_authenticated/$crmId_.settings.tsx:53
 msgid "No access"
 msgstr "ആക്സസ് ഇല്ല"
 
@@ -1836,7 +1840,7 @@ msgid "No connected accounts"
 msgstr "ബന്ധിപ്പിച്ച അക്കൗണ്ടുകളൊന്നുമില്ല"
 
 #: src/features/crms/components/inline-crm-search.tsx:84
-#: src/routes/_authenticated/find.tsx:93
+#: src/routes/_authenticated/find.tsx:43
 msgid "No CRMs found"
 msgstr "CRM-കളൊന്നും കണ്ടെത്തിയില്ല"
 
@@ -1860,7 +1864,7 @@ msgstr "പൊരുത്തപ്പെടുന്ന ഒബ്ജക്ട�
 msgid "No notifications yet"
 msgstr "ഇതുവരെ അറിയിപ്പുകളൊന്നുമില്ല"
 
-#: src/routes/_authenticated/$crmId/index.tsx:181
+#: src/routes/_authenticated/$crmId/index.tsx:171
 msgid "No objects to export."
 msgstr "എക്സ്പോർട്ട് ചെയ്യാൻ ഒബ്ജക്ടുകളൊന്നുമില്ല."
 
@@ -2000,7 +2004,7 @@ msgstr "പ്രവർത്തനങ്ങൾ തുറക്കുക"
 msgid "Open class actions"
 msgstr "class പ്രവർത്തനങ്ങൾ തുറക്കുക"
 
-#: src/routes/_authenticated/$crmId/design.tsx:167
+#: src/routes/_authenticated/$crmId/design.tsx:45
 msgid "Open design actions"
 msgstr "design പ്രവർത്തനങ്ങൾ തുറക്കുക"
 
@@ -2023,7 +2027,7 @@ msgstr "navigation മെനു തുറക്കുക"
 msgid "Open option actions"
 msgstr "ഓപ്ഷൻ പ്രവർത്തനങ്ങൾ തുറക്കുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:140
 msgid "Open page actions"
 msgstr "പേജ് പ്രവർത്തനങ്ങൾ തുറക്കുക"
 
@@ -2071,7 +2075,7 @@ msgstr "പേജ് {currentPage} / {totalPages}"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:535
 #: src/features/objects/components/object-detail-panel.tsx:428
-#: src/routes/_authenticated/$crmId/index.tsx:184
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "Parent"
 msgstr "parent"
 
@@ -2095,7 +2099,7 @@ msgstr "പാറ്റേൺ (regex)"
 msgid "Pick a date"
 msgstr "തീയതി തിരഞ്ഞെടുക്കുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Please add one or more classes to the CRM design."
 msgstr "CRM design-ൽ ഒന്നോ അതിലധികമോ classes ചേർക്കുക."
 
@@ -2163,7 +2167,7 @@ msgstr "ഉയർന്നത്"
 msgid "Re-link your accounts on this server"
 msgstr "ഈ സെർവറിൽ നിങ്ങളുടെ അക്കൗണ്ടുകൾ വീണ്ടും ലിങ്ക് ചെയ്യുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Re-order columns"
 msgstr "വീണ്ടും subscribe ചെയ്യുക"
 
@@ -2254,7 +2258,7 @@ msgstr "ലിസ്റ്റിങ് നീക്കം ചെയ്യുക"
 msgid "Remove link"
 msgstr "ലിങ്ക് നീക്കം ചെയ്യുക"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:455
+#: src/routes/_authenticated/$crmId_.settings.tsx:113
 msgid "Removing access..."
 msgstr "ആക്സസ് നീക്കം ചെയ്യുന്നു..."
 
@@ -2271,15 +2275,15 @@ msgstr "പേജ് പുനർനാമകരണം ചെയ്യുക"
 msgid "Rename this board column"
 msgstr "design മാറ്റിസ്ഥാപിക്കണോ?"
 
-#: src/routes/_authenticated/$crmId/design.tsx:219
+#: src/routes/_authenticated/$crmId/design.tsx:69
 msgid "Replace design"
 msgstr "ഡിസൈൻ മാറ്റിസ്ഥാപിക്കുക"
 
-#: src/routes/_authenticated/$crmId/design.tsx:203
+#: src/routes/_authenticated/$crmId/design.tsx:58
 msgid "Replace design?"
 msgstr "മാറ്റിസ്ഥാപിക്കുന്നു..."
 
-#: src/routes/_authenticated/$crmId/design.tsx:216
+#: src/routes/_authenticated/$crmId/design.tsx:70
 msgid "Replacing..."
 msgstr "Replicas"
 
@@ -2377,11 +2381,11 @@ msgstr "ശനിയാഴ്ച"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Save"
 msgstr "സേവ് ചെയ്യുക"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:150
+#: src/routes/_authenticated/$crmId_.settings.tsx:96
 msgid "Saving..."
 msgstr "സേവ് ചെയ്യുന്നു..."
 
@@ -2392,7 +2396,7 @@ msgstr "സേവ് ചെയ്യുന്നു..."
 msgid "Search"
 msgstr "തിരയുക"
 
-#: src/routes/_authenticated/find.tsx:92
+#: src/routes/_authenticated/find.tsx:42
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "പേര്, ID, ഫിംഗർപ്രിന്റ് അല്ലെങ്കിൽ URL ഉപയോഗിച്ച് തിരയുക..."
 
@@ -2551,7 +2555,7 @@ msgstr "സന്ദേശം അയയ്ക്കുക"
 msgid "Serif"
 msgstr "സെരിഫ്"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:325
+#: src/routes/_authenticated/$crmId_.settings.tsx:95
 msgid "Server"
 msgstr "സെർവർ"
 
@@ -2573,17 +2577,15 @@ msgstr "സെഷൻ കാലഹരണപ്പെട്ടു. വീണ്ട
 msgid "Set origin and destination"
 msgstr "ഉത്ഭവവും ലക്ഷ്യസ്ഥാനവും സജ്ജമാക്കുക"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:444
+#: src/routes/_authenticated/$crmId_.settings.tsx:110
 msgid "Setting access..."
 msgstr "ആക്സസ് സജ്ജമാക്കുന്നു..."
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:126
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
 #: ../../../lib/web/src/components/options-menu.tsx:199
-#: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:164
-#: src/routes/_authenticated/$crmId_.settings.tsx:187
-#: src/routes/_authenticated/$crmId/index.tsx:198
+#: src/routes/_authenticated/$crmId_.settings.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:188
 msgid "Settings"
 msgstr "ക്രമീകരണങ്ങൾ"
 
@@ -2685,7 +2687,7 @@ msgid "Subscribe"
 msgstr "സബ്സ്ക്രൈബ് ചെയ്യുക"
 
 #: src/features/crms/components/inline-crm-search.tsx:64
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:45
 msgid "Subscribed"
 msgstr "സബ്സ്ക്രൈബ് ചെയ്തു"
 
@@ -2696,7 +2698,7 @@ msgstr "{0}-ലേക്ക് സബ്സ്ക്രൈബ് ചെയ്ത
 
 #: src/features/crms/components/inline-crm-search.tsx:63
 #: src/features/crms/components/recommended-crms.tsx:40
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:44
 msgid "Subscribing..."
 msgstr "സബ്സ്ക്രൈബ് ചെയ്യുന്നു..."
 
@@ -2779,11 +2781,11 @@ msgstr "തീം"
 msgid "Theme Settings"
 msgstr "തീം ക്രമീകരണങ്ങൾ"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:207
+#: src/routes/_authenticated/$crmId_.settings.tsx:89
 msgid "This CRM could not be loaded right now."
 msgstr "ഈ CRM ഇപ്പോൾ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:207
+#: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "ഈ CRM ഇല്ലാതാക്കിയിരിക്കാം അല്ലെങ്കിൽ നിങ്ങൾക്ക് അതിലേക്ക് ആക്സസ് ഇല്ല."
 
@@ -2791,18 +2793,18 @@ msgstr "ഈ CRM ഇല്ലാതാക്കിയിരിക്കാം അ
 msgid "This page has not been created yet."
 msgstr "ഈ പേജ് ഇതുവരെ സൃഷ്ടിച്ചിട്ടില്ല."
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:353
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId_.settings.tsx:104
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "ഇത് \"{0}\"-ഉം അതിന്റെ എല്ലാ ഒബ്ജക്ടുകൾ, കമന്റുകൾ, അറ്റാച്ച്മെന്റുകൾ എന്നിവയും സ്ഥിരമായി ഇല്ലാതാക്കും. ഈ പ്രവർത്തനം പഴയപടിയാക്കാൻ കഴിയില്ല."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:174
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "ഇത് നിങ്ങളുടെ സൈഡ്ബാറിൽ നിന്ന് \"{0}\" നീക്കും, ഈ CRM-നുള്ള അപ്ഡേറ്റുകൾ നിർത്തും."
 
-#. placeholder {0}: pendingImport?.label
-#: src/routes/_authenticated/$crmId/design.tsx:205
+#. placeholder {0}: String(label)
+#: src/routes/_authenticated/$crmId/design.tsx:62
 msgid "This will replace the current design with <0>{0}</0>. All existing classes, fields, options, and views will be deleted. Existing objects will not be deleted but may no longer appear in views."
 msgstr "ഇത് നിലവിലെ ഡിസൈനിനെ <0>{0}</0> ആയി മാറ്റും. നിലവിലുള്ള എല്ലാ ക്ലാസുകളും, ഫീൽഡുകളും, ഓപ്ഷനുകളും, കാഴ്ചകളും ഇല്ലാതാക്കും. നിലവിലുള്ള ഒബ്ജക്റ്റുകൾ ഇല്ലാതാക്കില്ല, പക്ഷേ കാഴ്ചകളിൽ ഇനി പ്രത്യക്ഷപ്പെടണമെന്നില്ല."
 
@@ -2946,21 +2948,21 @@ msgstr "അജ്ഞാതം"
 
 #: ../../../lib/web/src/components/options-menu.tsx:214
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Unsubscribe"
 msgstr "അൺസബ്സ്ക്രൈബ് ചെയ്യുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:173
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Unsubscribe from CRM?"
 msgstr "CRM-ൽ നിന്ന് അൺസബ്സ്ക്രൈബ് ചെയ്യണോ?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribed"
 msgstr "അൺസബ്സ്ക്രൈബ് ചെയ്തു"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribing..."
 msgstr "അൺസബ്സ്ക്രൈബ് ചെയ്യുന്നു..."
 
@@ -2984,7 +2986,7 @@ msgstr "സ്ഥിരീകരിച്ചിട്ടില്ല"
 msgid "Updated"
 msgstr "അപ്ഡേറ്റ് ചെയ്തു"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:469
+#: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Updating access..."
 msgstr "ആക്സസ് പുതുക്കുന്നു..."
 
@@ -2994,7 +2996,7 @@ msgid "Upload"
 msgstr "അപ്‌ലോഡ് ചെയ്യുക"
 
 #: src/features/crms/components/create-crm-dialog.tsx:294
-#: src/routes/_authenticated/$crmId/design.tsx:298
+#: src/routes/_authenticated/$crmId/design.tsx:54
 msgid "Upload .json file"
 msgstr ".json ഫയൽ അപ്‌ലോഡ് ചെയ്യുക"
 
@@ -3064,11 +3066,11 @@ msgstr "ഇനത്തിന്റെ വിശദാംശങ്ങൾ കാ�
 msgid "View controls"
 msgstr "നിയന്ത്രണങ്ങൾ കാണുക"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:384
+#: src/routes/_authenticated/$crmId_.settings.tsx:52
 msgid "View only"
 msgstr "കാണുക മാത്രം"
 
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "View options"
 msgstr "ഓപ്ഷനുകൾ കാണുക"
 
@@ -3115,7 +3117,7 @@ msgstr "ബുധനാഴ്ച"
 msgid "You do not have access to this section."
 msgstr "ഈ വിഭാഗത്തിലേക്ക് നിങ്ങൾക്ക് പ്രവേശനമില്ല."
 
-#: src/routes/_authenticated/$crmId/index.tsx:82
+#: src/routes/_authenticated/$crmId/index.tsx:80
 msgid "You don't have access to this CRM."
 msgstr "ഈ CRM-ലേക്ക് നിങ്ങൾക്ക് ആക്സസ് ഇല്ല."
 

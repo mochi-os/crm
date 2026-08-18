@@ -43,9 +43,8 @@ msgstr "[mana churasqa]"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# akllasqa} other {# akllasqa}}"
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/design.tsx:65
-#: src/routes/_authenticated/$crmId/design.tsx:158
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId/design.tsx:42
 msgid "{0} - Design"
 msgstr "{0} - Diseño"
 
@@ -54,9 +53,8 @@ msgstr "{0} - Diseño"
 msgid "{0} option preview"
 msgstr "{0} akllanapa ñawpaq qhaway"
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
-#: src/routes/_authenticated/$crmId_.settings.tsx:219
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId_.settings.tsx:85
 msgid "{0} settings"
 msgstr "{0} wakichiykuna"
 
@@ -146,7 +144,7 @@ msgstr "Sut'i (p'unchaw hinaspa hora)"
 msgid "Accept"
 msgstr "Chaskiy"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:84
+#: src/routes/_authenticated/$crmId_.settings.tsx:81
 msgid "Access"
 msgstr "Yaykuy"
 
@@ -162,19 +160,19 @@ msgstr "Yaykuy mana saqisqa"
 msgid "Access level"
 msgstr "Yaykuy patachan"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:470
+#: src/routes/_authenticated/$crmId_.settings.tsx:117
 msgid "Access level updated"
 msgstr "Yaykuy patachan musuqchasqa"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:481
+#: src/routes/_authenticated/$crmId_.settings.tsx:108
 msgid "Access management"
 msgstr "Yaykuy Kamachiy"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:456
+#: src/routes/_authenticated/$crmId_.settings.tsx:114
 msgid "Access removed"
 msgstr "Yaykuy hurqusqa"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:445
+#: src/routes/_authenticated/$crmId_.settings.tsx:111
 msgid "Access set for {subjectName}"
 msgstr "Yaykuy churasqa {subjectName}-paq"
 
@@ -244,7 +242,7 @@ msgstr "Lista item yapay"
 msgid "Add class"
 msgstr "Clase yapay"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Add column"
 msgstr "Columna yapay"
 
@@ -274,7 +272,7 @@ msgstr "Musuq cuenta yapay"
 msgid "Add option"
 msgstr "Akllana yapay"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:487
+#: src/routes/_authenticated/$crmId_.settings.tsx:109
 msgid "Add rule"
 msgstr "Kamachiyta yapay"
 
@@ -426,16 +424,13 @@ msgstr "{name} avatar"
 msgid "Back"
 msgstr "Kutichiy"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:166
-#: src/routes/_authenticated/$crmId_.settings.tsx:189
-#: src/routes/_authenticated/$crmId_.settings.tsx:221
-#: src/routes/_authenticated/$crmId/design.tsx:135
-#: src/routes/_authenticated/$crmId/design.tsx:160
+#: src/routes/_authenticated/$crmId_.settings.tsx:82
+#: src/routes/_authenticated/$crmId/design.tsx:43
 msgid "Back to CRM"
 msgstr "CRM-man kutichiy"
 
-#: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:96
+#: src/routes/_authenticated/$crmId/$objectId.tsx:64
+#: src/routes/_authenticated/$crmId/index.tsx:93
 msgid "Back to CRMs"
 msgstr "CRMs-man kutichiy"
 
@@ -499,8 +494,8 @@ msgstr "Wawan kayta atin"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:201
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:336
-#: src/routes/_authenticated/$crmId/design.tsx:305
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/design.tsx:57
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Cancel"
 msgstr "Mana ruway"
 
@@ -565,7 +560,7 @@ msgstr "Sistema munay, k'illa, utaq tutayaq pi akllay"
 msgid "Choose language"
 msgstr "Simi akllay"
 
-#: src/routes/_authenticated/$crmId/index.tsx:183
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Class"
 msgstr "Clase"
 
@@ -681,7 +676,7 @@ msgstr "Kamachiy paleta"
 msgid "Comment actions"
 msgstr "Rimanakuy ruraykuna"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:383
+#: src/routes/_authenticated/$crmId_.settings.tsx:51
 msgid "Comment and view"
 msgstr "Comentariy hinaspa qhaway"
 
@@ -813,7 +808,7 @@ msgstr "Musuq item kamariy"
 msgid "Create object"
 msgstr "Objeto kamariy"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:382
+#: src/routes/_authenticated/$crmId_.settings.tsx:50
 msgid "Create, edit, comment, and view"
 msgstr "Ruway, allichay, rimariy, qhaway ima"
 
@@ -840,27 +835,31 @@ msgstr "CRM ruraykuna"
 msgid "CRM created"
 msgstr "CRM kamarisqa"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:130
+#: src/routes/_authenticated/$crmId_.settings.tsx:106
 msgid "CRM deleted"
 msgstr "CRM pichasqa"
 
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "CRM link"
 msgstr "CRM t'inki"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:204
+#: src/routes/_authenticated/$crmId_.settings.tsx:73
+msgid "CRM name is required"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:86
 msgid "CRM not found"
 msgstr "CRM mana tarisqa"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:85
 msgid "CRM settings"
 msgstr "CRM allichaykuna"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:204
+#: src/routes/_authenticated/$crmId_.settings.tsx:88
 msgid "CRM unavailable"
 msgstr "CRM mana atikuq"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:151
+#: src/routes/_authenticated/$crmId_.settings.tsx:97
 msgid "CRM updated"
 msgstr "CRM musuqyachisqa"
 
@@ -930,7 +929,7 @@ msgstr "Default sort"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:314
 #: src/features/objects/components/object-detail-panel.tsx:519
-#: src/routes/_authenticated/$crmId_.settings.tsx:343
+#: src/routes/_authenticated/$crmId_.settings.tsx:100
 msgid "Delete"
 msgstr "Wischuy"
 
@@ -950,12 +949,12 @@ msgstr "Columna wischuy"
 msgid "Delete comment"
 msgstr "Comentario wischuy"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:334
-#: src/routes/_authenticated/$crmId_.settings.tsx:354
+#: src/routes/_authenticated/$crmId_.settings.tsx:99
+#: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "Delete CRM"
 msgstr "CRM Wischuy"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:352
+#: src/routes/_authenticated/$crmId_.settings.tsx:101
 msgid "Delete CRM?"
 msgstr "CRM Wischuy?"
 
@@ -987,7 +986,7 @@ msgstr "Vista wischuy"
 msgid "Delete your account on the old server"
 msgstr "Ñawpaq serverpi cuenta-ykita qichuy"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:129
+#: src/routes/_authenticated/$crmId_.settings.tsx:105
 msgid "Deleting CRM..."
 msgstr "CRM pichachkan..."
 
@@ -1000,22 +999,22 @@ msgid "Descending"
 msgstr "Uraykuspa"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:304
+#: src/routes/_authenticated/$crmId_.settings.tsx:92
 msgid "Description"
 msgstr "Willariy"
 
-#: src/routes/_authenticated/$crmId/design.tsx:65
-#: src/routes/_authenticated/$crmId/design.tsx:133
-#: src/routes/_authenticated/$crmId/index.tsx:190
+#: src/routes/_authenticated/$crmId/design.tsx:39
+#: src/routes/_authenticated/$crmId/design.tsx:42
+#: src/routes/_authenticated/$crmId/index.tsx:180
 msgid "Design"
 msgstr "Diseño"
 
 #: src/features/crms/components/create-crm-dialog.tsx:143
-#: src/routes/_authenticated/$crmId/design.tsx:110
+#: src/routes/_authenticated/$crmId/design.tsx:50
 msgid "Design imported"
 msgstr "Diseño importasqa"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:381
+#: src/routes/_authenticated/$crmId_.settings.tsx:49
 msgid "Design, create, edit, comment, and view"
 msgstr "Kamariy, ruway, allichay, rimariy, qhaway ima"
 
@@ -1060,7 +1059,7 @@ msgstr "Mana tinkichisqa"
 msgid "Dismiss"
 msgstr "Wischuy"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Dismiss board hint"
 msgstr "Tabla yuyaychay wischuy"
 
@@ -1075,7 +1074,7 @@ msgstr "Movil sidebar qhawachin."
 msgid "Done"
 msgstr "Tukurqun"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Double click on a column to add content"
 msgstr "Iskay kuti niqi columna patapi llamiy contenidota yapanaykipaq"
 
@@ -1085,7 +1084,7 @@ msgstr "Iskay kuti niqi columna patapi llamiy contenidota yapanaykipaq"
 msgid "Download"
 msgstr "Uray chaskiy"
 
-#: src/routes/_authenticated/$crmId/design.tsx:227
+#: src/routes/_authenticated/$crmId/design.tsx:71
 msgid "Download backup first"
 msgstr "Ñawpaqta backup uray chaskiy"
 
@@ -1093,12 +1092,12 @@ msgstr "Ñawpaqta backup uray chaskiy"
 msgid "Download failed"
 msgstr "Urayachiy mana atikurqanchu"
 
-#: src/routes/_authenticated/$crmId/design.tsx:89
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/design.tsx:48
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Downloaded {filename}"
 msgstr "{filename} uray chaskirqun"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Drag columns to re-order them"
 msgstr "Columnakunata aysay kaqmanta churanaykipaq"
 
@@ -1169,7 +1168,7 @@ msgstr "Email nikiymanta hamuq código yaykuchiy"
 msgid "Enter your authenticator code"
 msgstr "Takyachiqniykiq codigonta yaykuchiy"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:311
+#: src/routes/_authenticated/$crmId_.settings.tsx:93
 msgid "Entity ID"
 msgstr "Entity ID"
 
@@ -1188,15 +1187,15 @@ msgstr "Mastʼariy"
 msgid "Expand sidebar"
 msgstr "Sidebarta kichay"
 
-#: src/routes/_authenticated/$crmId/index.tsx:180
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Export CSV"
 msgstr "CSV-ta hurquy"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Export data"
 msgstr "Datokunata hurquy"
 
-#: src/routes/_authenticated/$crmId/design.tsx:175
+#: src/routes/_authenticated/$crmId/design.tsx:46
 msgid "Export design"
 msgstr "Diseñota hurquy"
 
@@ -1235,7 +1234,7 @@ msgstr "Mana campoyta paqarichiyta atinchu"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
 #: ../../../lib/web/src/components/options-menu.tsx:101
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to create link"
 msgstr "Mana enlaceta paqarichiyta atinchu"
 
@@ -1255,7 +1254,7 @@ msgstr "Mana adjuntota pichayta atinchu"
 msgid "Failed to delete comment"
 msgstr "Mana comentariota pichayta atinchu"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:131
+#: src/routes/_authenticated/$crmId_.settings.tsx:107
 msgid "Failed to delete CRM"
 msgstr "CRM mana pichachkanchu"
 
@@ -1267,12 +1266,11 @@ msgstr "Mana enlaceta pichayta atinchu"
 msgid "Failed to delete view"
 msgstr "Mana qhawayta pichayta atinchu"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "Failed to export data"
 msgstr "Datokunata hurquyqa mana atikurqanchu"
 
-#: src/routes/_authenticated/$crmId/design.tsx:91
-#: src/routes/_authenticated/$crmId/design.tsx:94
+#: src/routes/_authenticated/$crmId/design.tsx:49
 msgid "Failed to export design"
 msgstr "Mana diseñota hurquyta atinchu"
 
@@ -1285,7 +1283,7 @@ msgstr "Mana RSS tokenta chaskiyta atinchu"
 msgid "Failed to import data"
 msgstr "Datokunata apaykuyqa mana atikurqanchu"
 
-#: src/routes/_authenticated/$crmId/design.tsx:115
+#: src/routes/_authenticated/$crmId/design.tsx:51
 msgid "Failed to import design"
 msgstr "Mana diseñota apaykachiyta atinchu"
 
@@ -1293,17 +1291,18 @@ msgstr "Mana diseñota apaykachiyta atinchu"
 msgid "Failed to load"
 msgstr "Mana wichachiyta atinchu"
 
-#: src/routes/_authenticated/$crmId/$objectId.tsx:43
-#: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:60
+#: src/routes/_authenticated/$crmId/$objectId.tsx:41
+#: src/routes/_authenticated/$crmId/$objectId.tsx:65
+#: src/routes/_authenticated/$crmId/index.tsx:58
+#: src/routes/_authenticated/$crmId/index.tsx:94
 msgid "Failed to load CRM"
 msgstr "Mana CRMta wichachiyta atinchu"
 
-#: src/routes/_authenticated/$crmId/design.tsx:139
+#: src/routes/_authenticated/$crmId/design.tsx:44
 msgid "Failed to load CRM design"
 msgstr "Mana CRM diseñota wichachiyta atinchu"
 
-#: src/stores/crms-store.ts:31
+#: src/stores/crms-store.ts:17
 msgid "Failed to load CRMs"
 msgstr "Mana CRMkunata wichachiyta atinchu"
 
@@ -1332,11 +1331,11 @@ msgid "Failed to post comment"
 msgstr "Mana comentariota willakuyta atinchu"
 
 #: src/features/crms/components/create-crm-dialog.tsx:223
-#: src/routes/_authenticated/$crmId/design.tsx:267
+#: src/routes/_authenticated/$crmId/design.tsx:56
 msgid "Failed to read file"
 msgstr "Mana archivota ñawinchayta atinchu"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:457
+#: src/routes/_authenticated/$crmId_.settings.tsx:115
 msgid "Failed to remove access"
 msgstr "Mana yaykuyta pichayta atinchu"
 
@@ -1364,22 +1363,22 @@ msgstr "CRM maskayqa mana atikurqachu"
 msgid "Failed to send verification code"
 msgstr "Mana sut'inchay códigota apachiyta atinchu"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:446
+#: src/routes/_authenticated/$crmId_.settings.tsx:112
 msgid "Failed to set access level"
 msgstr "Mana yaykuy nivelta churayta atinchu"
 
 #: src/features/crms/components/inline-crm-search.tsx:65
 #: src/features/crms/components/recommended-crms.tsx:42
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:46
 msgid "Failed to subscribe"
 msgstr "Mana suscribiyta atinchu"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "Failed to unsubscribe"
 msgstr "Mana mana suscribiyta atinchu"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:471
+#: src/routes/_authenticated/$crmId_.settings.tsx:118
 msgid "Failed to update access level"
 msgstr "Mana yaykuy nivelta musuqyachiyta atinchu"
 
@@ -1387,7 +1386,7 @@ msgstr "Mana yaykuy nivelta musuqyachiyta atinchu"
 msgid "Failed to update comment"
 msgstr "Mana comentariota musuqyachiyta atinchu"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Failed to update CRM"
 msgstr "Mana crmta musuqyachiyta atinchu"
 
@@ -1414,11 +1413,11 @@ msgid "Filter..."
 msgstr "Suysuy..."
 
 #: src/components/layout/crms-layout.tsx:35
-#: src/routes/_authenticated/find.tsx:91
+#: src/routes/_authenticated/find.tsx:41
 msgid "Find CRMs"
 msgstr "CRMkunata tariy"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:316
+#: src/routes/_authenticated/$crmId_.settings.tsx:94
 msgid "Fingerprint"
 msgstr "Fingerprint"
 
@@ -1527,11 +1526,11 @@ msgstr "Q'uñi"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
 #: src/features/editor/components/edit-dialogs.tsx:266
-#: src/routes/_authenticated/$crmId/index.tsx:182
+#: src/routes/_authenticated/$crmId/index.tsx:172
 msgid "ID"
 msgstr "ID"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:291
+#: src/routes/_authenticated/$crmId_.settings.tsx:90
 msgid "Identity"
 msgstr "Identity"
 
@@ -1544,12 +1543,12 @@ msgstr "Rikcha qhawana: {0}"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/routes/_authenticated/$crmId/design.tsx:280
+#: src/routes/_authenticated/$crmId/design.tsx:53
 msgid "Import a design configuration"
 msgstr "Diseño configuracionta apaykachiy"
 
-#: src/routes/_authenticated/$crmId/design.tsx:179
-#: src/routes/_authenticated/$crmId/design.tsx:279
+#: src/routes/_authenticated/$crmId/design.tsx:47
+#: src/routes/_authenticated/$crmId/design.tsx:52
 msgid "Import design"
 msgstr "Diseñota apaykachiy"
 
@@ -1587,7 +1586,7 @@ msgid "Invalid date"
 msgstr "Mana allin pacha"
 
 #: src/features/crms/components/create-crm-dialog.tsx:216
-#: src/routes/_authenticated/$crmId/design.tsx:263
+#: src/routes/_authenticated/$crmId/design.tsx:55
 msgid "Invalid JSON file"
 msgstr "Mana allin JSON archivo"
 
@@ -1645,7 +1644,7 @@ msgid "Light"
 msgstr "Sut'i"
 
 #: ../../../lib/web/src/components/options-menu.tsx:193
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Link"
 msgstr "T'inki"
 
@@ -1675,7 +1674,7 @@ msgstr "Item willakuy wichachichkan"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:35
 #: ../../../lib/web/src/features/document/document-page.tsx:90
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Loading..."
 msgstr "Wichachichkan..."
 
@@ -1768,9 +1767,13 @@ msgstr "Astawan akllaykuna"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:299
 #: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/editor/components/edit-dialogs.tsx:252
-#: src/routes/_authenticated/$crmId_.settings.tsx:295
+#: src/routes/_authenticated/$crmId_.settings.tsx:91
 msgid "Name"
 msgstr "Sutin"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:76
+msgid "Name cannot contain < or > characters"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
 msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
@@ -1781,6 +1784,7 @@ msgid "Name is required"
 msgstr "Sutinmi munasqa"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
+#: src/routes/_authenticated/$crmId_.settings.tsx:74
 msgid "Name must be 1000 characters or less"
 msgstr "Sutinmi 1000 letrayoq utaq pisi kanan"
 
@@ -1791,13 +1795,13 @@ msgstr "Redpi pantay"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:481
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:151
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:141
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "New"
 msgstr "Musuq"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "New {0}"
 msgstr "Musuq {0}"
 
@@ -1815,7 +1819,7 @@ msgstr "Qatiqnin imagen"
 msgid "No {parentClassNames} to add to"
 msgstr "Mana yapanapaq {parentClassNames}"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:385
+#: src/routes/_authenticated/$crmId_.settings.tsx:53
 msgid "No access"
 msgstr "Mana yaykuy"
 
@@ -1836,7 +1840,7 @@ msgid "No connected accounts"
 msgstr "Mana huñusqa cuentakuna"
 
 #: src/features/crms/components/inline-crm-search.tsx:84
-#: src/routes/_authenticated/find.tsx:93
+#: src/routes/_authenticated/find.tsx:43
 msgid "No CRMs found"
 msgstr "Mana CRMkuna tarisqachu"
 
@@ -1860,7 +1864,7 @@ msgstr "Mana tupaq objetokuna"
 msgid "No notifications yet"
 msgstr "Manaraqmi willakuykuna kanchu"
 
-#: src/routes/_authenticated/$crmId/index.tsx:181
+#: src/routes/_authenticated/$crmId/index.tsx:171
 msgid "No objects to export."
 msgstr "Exportanapaq mana objetokuna."
 
@@ -2000,7 +2004,7 @@ msgstr "Ruwaykunata kichay"
 msgid "Open class actions"
 msgstr "Clase ruwaykunata kichay"
 
-#: src/routes/_authenticated/$crmId/design.tsx:167
+#: src/routes/_authenticated/$crmId/design.tsx:45
 msgid "Open design actions"
 msgstr "Diseño ruwaykunata kichay"
 
@@ -2023,7 +2027,7 @@ msgstr "Navegación menúta kichay"
 msgid "Open option actions"
 msgstr "Opción ruwaykunata kichay"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:140
 msgid "Open page actions"
 msgstr "Página ruwaykunata kichay"
 
@@ -2071,7 +2075,7 @@ msgstr "{totalPages} p'anqamanta {currentPage}"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:535
 #: src/features/objects/components/object-detail-panel.tsx:428
-#: src/routes/_authenticated/$crmId/index.tsx:184
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "Parent"
 msgstr "Yaya"
 
@@ -2095,7 +2099,7 @@ msgstr "Patrón (regex)"
 msgid "Pick a date"
 msgstr "Huk p'unchawta akllay"
 
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Please add one or more classes to the CRM design."
 msgstr "Ama hina, CRM diseñoman huk utaq aswan clasekunata yapay."
 
@@ -2163,7 +2167,7 @@ msgstr "Hoqarisqa"
 msgid "Re-link your accounts on this server"
 msgstr "Kay serverpi cuenta-ykikunata watiqmanta huñuy"
 
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Re-order columns"
 msgstr "Columnakunata huk niraq churay"
 
@@ -2254,7 +2258,7 @@ msgstr "Itemta qichuy"
 msgid "Remove link"
 msgstr "Tinkita qichuy"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:455
+#: src/routes/_authenticated/$crmId_.settings.tsx:113
 msgid "Removing access..."
 msgstr "Yaykunata hurquchkan..."
 
@@ -2271,15 +2275,15 @@ msgstr "Columnaman huk sutin churay"
 msgid "Rename this board column"
 msgstr "Kay tablero columnaman huk sutin churay"
 
-#: src/routes/_authenticated/$crmId/design.tsx:219
+#: src/routes/_authenticated/$crmId/design.tsx:69
 msgid "Replace design"
 msgstr "Diseñota cambiay"
 
-#: src/routes/_authenticated/$crmId/design.tsx:203
+#: src/routes/_authenticated/$crmId/design.tsx:58
 msgid "Replace design?"
 msgstr "Diseñota cambiay?"
 
-#: src/routes/_authenticated/$crmId/design.tsx:216
+#: src/routes/_authenticated/$crmId/design.tsx:70
 msgid "Replacing..."
 msgstr "Cambiashan..."
 
@@ -2377,11 +2381,11 @@ msgstr "Sábado"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Save"
 msgstr "Waqaychay"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:150
+#: src/routes/_authenticated/$crmId_.settings.tsx:96
 msgid "Saving..."
 msgstr "Waqaychashan..."
 
@@ -2392,7 +2396,7 @@ msgstr "Waqaychashan..."
 msgid "Search"
 msgstr "Maskay"
 
-#: src/routes/_authenticated/find.tsx:92
+#: src/routes/_authenticated/find.tsx:42
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Sutinwan, IDwan, fingerprintwan, utaq URLwan maskay..."
 
@@ -2551,7 +2555,7 @@ msgstr "Willakuyta apachiy"
 msgid "Serif"
 msgstr "Serif"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:325
+#: src/routes/_authenticated/$crmId_.settings.tsx:95
 msgid "Server"
 msgstr "Server"
 
@@ -2573,17 +2577,15 @@ msgstr "Sesionqa tukukunña. Ama hina kaspa, watiqmanta yaykuy."
 msgid "Set origin and destination"
 msgstr "Pukyu chayanata churay"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:444
+#: src/routes/_authenticated/$crmId_.settings.tsx:110
 msgid "Setting access..."
 msgstr "Yaykunata churachkan..."
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:126
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
 #: ../../../lib/web/src/components/options-menu.tsx:199
-#: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:164
-#: src/routes/_authenticated/$crmId_.settings.tsx:187
-#: src/routes/_authenticated/$crmId/index.tsx:198
+#: src/routes/_authenticated/$crmId_.settings.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:188
 msgid "Settings"
 msgstr "Wakichiykuna"
 
@@ -2685,7 +2687,7 @@ msgid "Subscribe"
 msgstr "Suscribiy"
 
 #: src/features/crms/components/inline-crm-search.tsx:64
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:45
 msgid "Subscribed"
 msgstr "Suscribisqa"
 
@@ -2696,7 +2698,7 @@ msgstr "{0}man suscribisqa"
 
 #: src/features/crms/components/inline-crm-search.tsx:63
 #: src/features/crms/components/recommended-crms.tsx:40
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:44
 msgid "Subscribing..."
 msgstr "Suscribichkan..."
 
@@ -2779,11 +2781,11 @@ msgstr "Tema"
 msgid "Theme Settings"
 msgstr "Tema Wakichiykuna"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:207
+#: src/routes/_authenticated/$crmId_.settings.tsx:89
 msgid "This CRM could not be loaded right now."
 msgstr "Kay CRM kunan mana cargachiyta atikurqanchu."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:207
+#: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Kay CRM qulluchisqa kanman karqan utaq mana yaykuyniyki kanchu."
 
@@ -2791,18 +2793,18 @@ msgstr "Kay CRM qulluchisqa kanman karqan utaq mana yaykuyniyki kanchu."
 msgid "This page has not been created yet."
 msgstr "Kay p'anqaqa manaraqmi kamasqachu."
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:353
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId_.settings.tsx:104
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Kayqa wiñaypaq \"{0}\"ta lliw objetokunatawan, comentariokunatawan, attachmentkunatawan qulluchinqa. Kay rurayqa mana kutichiyta atikunchu."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:174
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Kayqa sidebarniykimanta \"{0}\"ta qichunqa hinaspa kay CRMpaq musuqchaykunata sayachinqa."
 
-#. placeholder {0}: pendingImport?.label
-#: src/routes/_authenticated/$crmId/design.tsx:205
+#. placeholder {0}: String(label)
+#: src/routes/_authenticated/$crmId/design.tsx:62
 msgid "This will replace the current design with <0>{0}</0>. All existing classes, fields, options, and views will be deleted. Existing objects will not be deleted but may no longer appear in views."
 msgstr "Kayqa kunan diseñota <0>{0}</0>wan tikranqa. Lliw kaq clasekuna, campokuna, opcionkuna, vistakuna qulluchisqa kanqaku. Kaq objetokunaqa mana qulluchisqachu kanqaku ichaqa vistakunapi manaña rikukuyta atinqakuchu."
 
@@ -2946,21 +2948,21 @@ msgstr "Mana riqsisqa"
 
 #: ../../../lib/web/src/components/options-menu.tsx:214
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Unsubscribe"
 msgstr "Suscripcionta saqiy"
 
-#: src/routes/_authenticated/$crmId/index.tsx:173
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Unsubscribe from CRM?"
 msgstr "CRMmanta suscripcionta saqiy?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribed"
 msgstr "Suscripcion saqisqa"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribing..."
 msgstr "Suscripcionta saqichkan..."
 
@@ -2984,7 +2986,7 @@ msgstr "Mana qhawasqa"
 msgid "Updated"
 msgstr "Musuqchasqa"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:469
+#: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Updating access..."
 msgstr "Yaykunata musuqyachichkan..."
 
@@ -2994,7 +2996,7 @@ msgid "Upload"
 msgstr "Upload"
 
 #: src/features/crms/components/create-crm-dialog.tsx:294
-#: src/routes/_authenticated/$crmId/design.tsx:298
+#: src/routes/_authenticated/$crmId/design.tsx:54
 msgid "Upload .json file"
 msgstr ".json filta upload"
 
@@ -3064,11 +3066,11 @@ msgstr "Itemq detallenkunata qhaway hinaspa tikray"
 msgid "View controls"
 msgstr "Qhaway controlkuna"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:384
+#: src/routes/_authenticated/$crmId_.settings.tsx:52
 msgid "View only"
 msgstr "Qhawayllapaq"
 
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "View options"
 msgstr "Qhaway opcionkuna"
 
@@ -3115,7 +3117,7 @@ msgstr "Quyllurchaw"
 msgid "You do not have access to this section."
 msgstr "Kay t'aqamanqa mana yaykuyta atinkichu."
 
-#: src/routes/_authenticated/$crmId/index.tsx:82
+#: src/routes/_authenticated/$crmId/index.tsx:80
 msgid "You don't have access to this CRM."
 msgstr "Kay CRM ukhuman mana yaykuyta atinkichu."
 

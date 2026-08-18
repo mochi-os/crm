@@ -8,11 +8,9 @@ import { createFileRoute, redirect, useNavigate, useRouter } from "@tanstack/rea
 import { useLingui } from '@lingui/react/macro'
 import { t } from '@lingui/core/macro'
 import {
-  GeneralError,
+  EntityLoadError,
   extractStatus,
   getErrorMessage,
-  Main,
-  PageHeader,
 } from "@mochi/web";
 import { Users } from "lucide-react";
 import crmsApi from "@/api/crms";
@@ -60,21 +58,13 @@ function ObjectPage() {
 
   if (!crm) {
     return (
-      <>
-        <PageHeader
-          title="CRM"
-          icon={<Users className="size-4 md:size-5" />}
-          back={{ label: t`Back to CRMs`, onFallback: () => navigate({ to: "/" }) }}
-        />
-        <Main>
-          <GeneralError
-            error={new Error(loaderError ?? t`Failed to load CRM`)}
-            minimal
-            mode="inline"
-            reset={() => void router.invalidate()}
-          />
-        </Main>
-      </>
+      <EntityLoadError
+        title="CRM"
+        icon={<Users className="size-4 md:size-5" />}
+        back={{ label: t`Back to CRMs`, onFallback: () => navigate({ to: "/" }) }}
+        message={loaderError ?? t`Failed to load CRM`}
+        onRetry={() => void router.invalidate()}
+      />
     );
   }
 

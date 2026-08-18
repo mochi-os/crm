@@ -43,9 +43,8 @@ msgstr "[i pavendosur]"
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# zgjedhur} other {# zgjedhur}}"
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/design.tsx:65
-#: src/routes/_authenticated/$crmId/design.tsx:158
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId/design.tsx:42
 msgid "{0} - Design"
 msgstr "{0} - Dizajn"
 
@@ -54,9 +53,8 @@ msgstr "{0} - Dizajn"
 msgid "{0} option preview"
 msgstr "Pamja paraprake e opsionit {0}"
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
-#: src/routes/_authenticated/$crmId_.settings.tsx:219
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId_.settings.tsx:85
 msgid "{0} settings"
 msgstr "Cilësimet e {0}"
 
@@ -146,7 +144,7 @@ msgstr "Absolut (data dhe ora)"
 msgid "Accept"
 msgstr "Prano"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:84
+#: src/routes/_authenticated/$crmId_.settings.tsx:81
 msgid "Access"
 msgstr "Qasja"
 
@@ -162,19 +160,19 @@ msgstr "Qasja e ndaluar"
 msgid "Access level"
 msgstr "Niveli i qasjes"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:470
+#: src/routes/_authenticated/$crmId_.settings.tsx:117
 msgid "Access level updated"
 msgstr "Niveli i qasjes u përditësua"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:481
+#: src/routes/_authenticated/$crmId_.settings.tsx:108
 msgid "Access management"
 msgstr "Menaxhimi i qasjes"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:456
+#: src/routes/_authenticated/$crmId_.settings.tsx:114
 msgid "Access removed"
 msgstr "Qasja u hoq"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:445
+#: src/routes/_authenticated/$crmId_.settings.tsx:111
 msgid "Access set for {subjectName}"
 msgstr "Qasja u caktua për {subjectName}"
 
@@ -244,7 +242,7 @@ msgstr "Shto element të listës"
 msgid "Add class"
 msgstr "Shto klasë"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Add column"
 msgstr "Shto kolonë"
 
@@ -274,7 +272,7 @@ msgstr "Shto llogari të re"
 msgid "Add option"
 msgstr "Shto opsion"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:487
+#: src/routes/_authenticated/$crmId_.settings.tsx:109
 msgid "Add rule"
 msgstr "Shto rregull"
 
@@ -426,16 +424,13 @@ msgstr "Avatar për {name}"
 msgid "Back"
 msgstr "Mbrapa"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:166
-#: src/routes/_authenticated/$crmId_.settings.tsx:189
-#: src/routes/_authenticated/$crmId_.settings.tsx:221
-#: src/routes/_authenticated/$crmId/design.tsx:135
-#: src/routes/_authenticated/$crmId/design.tsx:160
+#: src/routes/_authenticated/$crmId_.settings.tsx:82
+#: src/routes/_authenticated/$crmId/design.tsx:43
 msgid "Back to CRM"
 msgstr "Mbrapa te CRM"
 
-#: src/routes/_authenticated/$crmId/$objectId.tsx:67
-#: src/routes/_authenticated/$crmId/index.tsx:96
+#: src/routes/_authenticated/$crmId/$objectId.tsx:64
+#: src/routes/_authenticated/$crmId/index.tsx:93
 msgid "Back to CRMs"
 msgstr "Mbrapa te CRM-të"
 
@@ -499,8 +494,8 @@ msgstr "Mund të jetë fëmijë i"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:201
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:336
-#: src/routes/_authenticated/$crmId/design.tsx:305
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/design.tsx:57
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Cancel"
 msgstr "Anulo"
 
@@ -565,7 +560,7 @@ msgstr "Zgjidh midis preferencës së sistemit, modës së ndritshme ose modës 
 msgid "Choose language"
 msgstr "Zgjidh gjuhën"
 
-#: src/routes/_authenticated/$crmId/index.tsx:183
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Class"
 msgstr "Klasa"
 
@@ -681,7 +676,7 @@ msgstr "Paleta e komandave"
 msgid "Comment actions"
 msgstr "Veprimet e komentit"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:383
+#: src/routes/_authenticated/$crmId_.settings.tsx:51
 msgid "Comment and view"
 msgstr "Komento dhe shih"
 
@@ -813,7 +808,7 @@ msgstr "Krijo element të ri"
 msgid "Create object"
 msgstr "Krijo objekt"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:382
+#: src/routes/_authenticated/$crmId_.settings.tsx:50
 msgid "Create, edit, comment, and view"
 msgstr "Krijo, redakto, komento dhe shiko"
 
@@ -840,27 +835,31 @@ msgstr "Veprime CRM"
 msgid "CRM created"
 msgstr "CRM u krijua"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:130
+#: src/routes/_authenticated/$crmId_.settings.tsx:106
 msgid "CRM deleted"
 msgstr "CRM u fshi"
 
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "CRM link"
 msgstr "Lidhja e CRM-së"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:204
+#: src/routes/_authenticated/$crmId_.settings.tsx:73
+msgid "CRM name is required"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:86
 msgid "CRM not found"
 msgstr "CRM nuk u gjet"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:120
+#: src/routes/_authenticated/$crmId_.settings.tsx:85
 msgid "CRM settings"
 msgstr "Cilësimet e CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:204
+#: src/routes/_authenticated/$crmId_.settings.tsx:88
 msgid "CRM unavailable"
 msgstr "CRM i padisponueshëm"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:151
+#: src/routes/_authenticated/$crmId_.settings.tsx:97
 msgid "CRM updated"
 msgstr "CRM u përditësua"
 
@@ -930,7 +929,7 @@ msgstr "Renditja e parazgjedhur"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:314
 #: src/features/objects/components/object-detail-panel.tsx:519
-#: src/routes/_authenticated/$crmId_.settings.tsx:343
+#: src/routes/_authenticated/$crmId_.settings.tsx:100
 msgid "Delete"
 msgstr "Fshi"
 
@@ -950,12 +949,12 @@ msgstr "Fshi kolonën"
 msgid "Delete comment"
 msgstr "Fshi komentin"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:334
-#: src/routes/_authenticated/$crmId_.settings.tsx:354
+#: src/routes/_authenticated/$crmId_.settings.tsx:99
+#: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "Delete CRM"
 msgstr "Fshi CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:352
+#: src/routes/_authenticated/$crmId_.settings.tsx:101
 msgid "Delete CRM?"
 msgstr "Të fshihet CRM-ja?"
 
@@ -987,7 +986,7 @@ msgstr "Fshi pamjen"
 msgid "Delete your account on the old server"
 msgstr "Fshini llogarinë tuaj në serverin e vjetër"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:129
+#: src/routes/_authenticated/$crmId_.settings.tsx:105
 msgid "Deleting CRM..."
 msgstr "Po fshihet CRM..."
 
@@ -1000,22 +999,22 @@ msgid "Descending"
 msgstr "Në zbritje"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:304
+#: src/routes/_authenticated/$crmId_.settings.tsx:92
 msgid "Description"
 msgstr "Përshkrimi"
 
-#: src/routes/_authenticated/$crmId/design.tsx:65
-#: src/routes/_authenticated/$crmId/design.tsx:133
-#: src/routes/_authenticated/$crmId/index.tsx:190
+#: src/routes/_authenticated/$crmId/design.tsx:39
+#: src/routes/_authenticated/$crmId/design.tsx:42
+#: src/routes/_authenticated/$crmId/index.tsx:180
 msgid "Design"
 msgstr "Dizajni"
 
 #: src/features/crms/components/create-crm-dialog.tsx:143
-#: src/routes/_authenticated/$crmId/design.tsx:110
+#: src/routes/_authenticated/$crmId/design.tsx:50
 msgid "Design imported"
 msgstr "Dizajni u importua"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:381
+#: src/routes/_authenticated/$crmId_.settings.tsx:49
 msgid "Design, create, edit, comment, and view"
 msgstr "Dizajno, krijo, redakto, komento dhe shiko"
 
@@ -1060,7 +1059,7 @@ msgstr "I shkëputur"
 msgid "Dismiss"
 msgstr "Hidhe"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Dismiss board hint"
 msgstr "Hidhe sugjerimin e tabelës"
 
@@ -1075,7 +1074,7 @@ msgstr "Shfaq anën mobile."
 msgid "Done"
 msgstr "Përfunduar"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Double click on a column to add content"
 msgstr "Klikoni dy herë mbi një kolonë për të shtuar përmbajtje"
 
@@ -1085,7 +1084,7 @@ msgstr "Klikoni dy herë mbi një kolonë për të shtuar përmbajtje"
 msgid "Download"
 msgstr "Shkarko"
 
-#: src/routes/_authenticated/$crmId/design.tsx:227
+#: src/routes/_authenticated/$crmId/design.tsx:71
 msgid "Download backup first"
 msgstr "Shkarko fillimisht kopjen rezervë"
 
@@ -1093,12 +1092,12 @@ msgstr "Shkarko fillimisht kopjen rezervë"
 msgid "Download failed"
 msgstr "Shkarkimi dështoi"
 
-#: src/routes/_authenticated/$crmId/design.tsx:89
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/design.tsx:48
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Downloaded {filename}"
 msgstr "U shkarkua {filename}"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Drag columns to re-order them"
 msgstr "Tërhiqni kolonat për t'i rirenditur"
 
@@ -1169,7 +1168,7 @@ msgstr "Vendosni kodin nga email-i juaj"
 msgid "Enter your authenticator code"
 msgstr "Vendosni kodin e aplikacionit të vërtetimit"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:311
+#: src/routes/_authenticated/$crmId_.settings.tsx:93
 msgid "Entity ID"
 msgstr "ID e entitetit"
 
@@ -1188,15 +1187,15 @@ msgstr "Zgjero"
 msgid "Expand sidebar"
 msgstr "Zgjero shiritin anësor"
 
-#: src/routes/_authenticated/$crmId/index.tsx:180
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Export CSV"
 msgstr "Eksporto CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Export data"
 msgstr "Eksporto të dhënat"
 
-#: src/routes/_authenticated/$crmId/design.tsx:175
+#: src/routes/_authenticated/$crmId/design.tsx:46
 msgid "Export design"
 msgstr "Eksporto modelin"
 
@@ -1235,7 +1234,7 @@ msgstr "Krijimi i fushës dështoi"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
 #: ../../../lib/web/src/components/options-menu.tsx:101
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to create link"
 msgstr "Krijimi i lidhjes dështoi"
 
@@ -1255,7 +1254,7 @@ msgstr "Fshirja e bashkëngjitjes dështoi"
 msgid "Failed to delete comment"
 msgstr "Fshirja e komentit dështoi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:131
+#: src/routes/_authenticated/$crmId_.settings.tsx:107
 msgid "Failed to delete CRM"
 msgstr "Fshirja e CRM dështoi"
 
@@ -1267,12 +1266,11 @@ msgstr "Fshirja e lidhjes dështoi"
 msgid "Failed to delete view"
 msgstr "Fshirja e pamjes dështoi"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "Failed to export data"
 msgstr "Eksportimi i të dhënave dështoi"
 
-#: src/routes/_authenticated/$crmId/design.tsx:91
-#: src/routes/_authenticated/$crmId/design.tsx:94
+#: src/routes/_authenticated/$crmId/design.tsx:49
 msgid "Failed to export design"
 msgstr "Eksportimi i modelit dështoi"
 
@@ -1285,7 +1283,7 @@ msgstr "Marrja e token RSS dështoi"
 msgid "Failed to import data"
 msgstr "Importimi i të dhënave dështoi"
 
-#: src/routes/_authenticated/$crmId/design.tsx:115
+#: src/routes/_authenticated/$crmId/design.tsx:51
 msgid "Failed to import design"
 msgstr "Importimi i modelit dështoi"
 
@@ -1293,17 +1291,18 @@ msgstr "Importimi i modelit dështoi"
 msgid "Failed to load"
 msgstr "Ngarkimi dështoi"
 
-#: src/routes/_authenticated/$crmId/$objectId.tsx:43
-#: src/routes/_authenticated/$crmId/$objectId.tsx:71
-#: src/routes/_authenticated/$crmId/index.tsx:60
+#: src/routes/_authenticated/$crmId/$objectId.tsx:41
+#: src/routes/_authenticated/$crmId/$objectId.tsx:65
+#: src/routes/_authenticated/$crmId/index.tsx:58
+#: src/routes/_authenticated/$crmId/index.tsx:94
 msgid "Failed to load CRM"
 msgstr "Ngarkimi i CRM dështoi"
 
-#: src/routes/_authenticated/$crmId/design.tsx:139
+#: src/routes/_authenticated/$crmId/design.tsx:44
 msgid "Failed to load CRM design"
 msgstr "Ngarkimi i modelit të CRM dështoi"
 
-#: src/stores/crms-store.ts:31
+#: src/stores/crms-store.ts:17
 msgid "Failed to load CRMs"
 msgstr "Ngarkimi i CRM-ve dështoi"
 
@@ -1332,11 +1331,11 @@ msgid "Failed to post comment"
 msgstr "Postimi i komentit dështoi"
 
 #: src/features/crms/components/create-crm-dialog.tsx:223
-#: src/routes/_authenticated/$crmId/design.tsx:267
+#: src/routes/_authenticated/$crmId/design.tsx:56
 msgid "Failed to read file"
 msgstr "Leximi i skedarit dështoi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:457
+#: src/routes/_authenticated/$crmId_.settings.tsx:115
 msgid "Failed to remove access"
 msgstr "Heqja e qasjes dështoi"
 
@@ -1364,22 +1363,22 @@ msgstr "Kërkimi i CRM-ve dështoi"
 msgid "Failed to send verification code"
 msgstr "Dërgimi i kodit të verifikimit dështoi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:446
+#: src/routes/_authenticated/$crmId_.settings.tsx:112
 msgid "Failed to set access level"
 msgstr "Vendosja e nivelit të qasjes dështoi"
 
 #: src/features/crms/components/inline-crm-search.tsx:65
 #: src/features/crms/components/recommended-crms.tsx:42
-#: src/routes/_authenticated/find.tsx:58
+#: src/routes/_authenticated/find.tsx:46
 msgid "Failed to subscribe"
 msgstr "Abonimi dështoi"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "Failed to unsubscribe"
 msgstr "Çabonimi dështoi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:471
+#: src/routes/_authenticated/$crmId_.settings.tsx:118
 msgid "Failed to update access level"
 msgstr "Përditësimi i nivelit të qasjes dështoi"
 
@@ -1387,7 +1386,7 @@ msgstr "Përditësimi i nivelit të qasjes dështoi"
 msgid "Failed to update comment"
 msgstr "Përditësimi i komentit dështoi"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:152
+#: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Failed to update CRM"
 msgstr "Përditësimi i crm dështoi"
 
@@ -1414,11 +1413,11 @@ msgid "Filter..."
 msgstr "Filtro..."
 
 #: src/components/layout/crms-layout.tsx:35
-#: src/routes/_authenticated/find.tsx:91
+#: src/routes/_authenticated/find.tsx:41
 msgid "Find CRMs"
 msgstr "Gjej CRM"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:316
+#: src/routes/_authenticated/$crmId_.settings.tsx:94
 msgid "Fingerprint"
 msgstr "Gjurma"
 
@@ -1527,11 +1526,11 @@ msgstr "Të nxehta"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
 #: src/features/editor/components/edit-dialogs.tsx:266
-#: src/routes/_authenticated/$crmId/index.tsx:182
+#: src/routes/_authenticated/$crmId/index.tsx:172
 msgid "ID"
 msgstr "ID"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:291
+#: src/routes/_authenticated/$crmId_.settings.tsx:90
 msgid "Identity"
 msgstr "Identiteti"
 
@@ -1544,12 +1543,12 @@ msgstr "Shikuesi i figurave: {0}"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/routes/_authenticated/$crmId/design.tsx:280
+#: src/routes/_authenticated/$crmId/design.tsx:53
 msgid "Import a design configuration"
 msgstr "Importo një konfigurim modeli"
 
-#: src/routes/_authenticated/$crmId/design.tsx:179
-#: src/routes/_authenticated/$crmId/design.tsx:279
+#: src/routes/_authenticated/$crmId/design.tsx:47
+#: src/routes/_authenticated/$crmId/design.tsx:52
 msgid "Import design"
 msgstr "Importo modelin"
 
@@ -1587,7 +1586,7 @@ msgid "Invalid date"
 msgstr "Datë e pavlefshme"
 
 #: src/features/crms/components/create-crm-dialog.tsx:216
-#: src/routes/_authenticated/$crmId/design.tsx:263
+#: src/routes/_authenticated/$crmId/design.tsx:55
 msgid "Invalid JSON file"
 msgstr "Skedar JSON i pavlefshëm"
 
@@ -1645,7 +1644,7 @@ msgid "Light"
 msgstr "E çelët"
 
 #: ../../../lib/web/src/components/options-menu.tsx:193
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Link"
 msgstr "Lidhje"
 
@@ -1675,7 +1674,7 @@ msgstr "Duke ngarkuar detajet e artikullit"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:35
 #: ../../../lib/web/src/features/document/document-page.tsx:90
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Loading..."
 msgstr "Duke ngarkuar..."
 
@@ -1768,9 +1767,13 @@ msgstr "Më shumë opsione"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:299
 #: src/features/crms/components/create-crm-dialog.tsx:256
 #: src/features/editor/components/edit-dialogs.tsx:252
-#: src/routes/_authenticated/$crmId_.settings.tsx:295
+#: src/routes/_authenticated/$crmId_.settings.tsx:91
 msgid "Name"
 msgstr "Emri"
+
+#: src/routes/_authenticated/$crmId_.settings.tsx:76
+msgid "Name cannot contain < or > characters"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
 msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
@@ -1781,6 +1784,7 @@ msgid "Name is required"
 msgstr "Emri është i detyrueshëm"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
+#: src/routes/_authenticated/$crmId_.settings.tsx:74
 msgid "Name must be 1000 characters or less"
 msgstr "Emri duhet të jetë 1000 karaktere ose më pak"
 
@@ -1791,13 +1795,13 @@ msgstr "Gabim rrjeti"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:481
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:151
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:141
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "New"
 msgstr "I ri"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "New {0}"
 msgstr "{0} i ri"
 
@@ -1815,7 +1819,7 @@ msgstr "Imazhi tjetër"
 msgid "No {parentClassNames} to add to"
 msgstr "Asnjë {parentClassNames} për të shtuar"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:385
+#: src/routes/_authenticated/$crmId_.settings.tsx:53
 msgid "No access"
 msgstr "Pa qasje"
 
@@ -1836,7 +1840,7 @@ msgid "No connected accounts"
 msgstr "Asnjë llogari e lidhur"
 
 #: src/features/crms/components/inline-crm-search.tsx:84
-#: src/routes/_authenticated/find.tsx:93
+#: src/routes/_authenticated/find.tsx:43
 msgid "No CRMs found"
 msgstr "S'u gjet asnjë CRM"
 
@@ -1860,7 +1864,7 @@ msgstr "Asnjë objekt përputhës"
 msgid "No notifications yet"
 msgstr "Ende asnjë njoftim"
 
-#: src/routes/_authenticated/$crmId/index.tsx:181
+#: src/routes/_authenticated/$crmId/index.tsx:171
 msgid "No objects to export."
 msgstr "Asnjë objekt për të eksportuar."
 
@@ -2000,7 +2004,7 @@ msgstr "Hap veprimet"
 msgid "Open class actions"
 msgstr "Hap veprimet e klasës"
 
-#: src/routes/_authenticated/$crmId/design.tsx:167
+#: src/routes/_authenticated/$crmId/design.tsx:45
 msgid "Open design actions"
 msgstr "Hap veprimet e dizajnit"
 
@@ -2023,7 +2027,7 @@ msgstr "Hap menynë e navigimit"
 msgid "Open option actions"
 msgstr "Hap veprimet e opsionit"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:140
 msgid "Open page actions"
 msgstr "Hap veprimet e faqes"
 
@@ -2071,7 +2075,7 @@ msgstr "Faqja {currentPage} nga {totalPages}"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:535
 #: src/features/objects/components/object-detail-panel.tsx:428
-#: src/routes/_authenticated/$crmId/index.tsx:184
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "Parent"
 msgstr "Prindi"
 
@@ -2095,7 +2099,7 @@ msgstr "Modeli (regex)"
 msgid "Pick a date"
 msgstr "Zgjidhni një datë"
 
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Please add one or more classes to the CRM design."
 msgstr "Ju lutemi shtoni një ose më shumë klasa në dizajnin e CRM-së."
 
@@ -2163,7 +2167,7 @@ msgstr "Ngritur"
 msgid "Re-link your accounts on this server"
 msgstr "Rilinkoni llogaritë tuaja në këtë server"
 
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Re-order columns"
 msgstr "Rirendit kolonat"
 
@@ -2254,7 +2258,7 @@ msgstr "Hiq artikullin"
 msgid "Remove link"
 msgstr "Hiq lidhjen"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:455
+#: src/routes/_authenticated/$crmId_.settings.tsx:113
 msgid "Removing access..."
 msgstr "Po hiqet qasja..."
 
@@ -2271,15 +2275,15 @@ msgstr "Riemërto kolonën"
 msgid "Rename this board column"
 msgstr "Riemërto këtë kolonë të tabelës"
 
-#: src/routes/_authenticated/$crmId/design.tsx:219
+#: src/routes/_authenticated/$crmId/design.tsx:69
 msgid "Replace design"
 msgstr "Zëvendëso dizajnin"
 
-#: src/routes/_authenticated/$crmId/design.tsx:203
+#: src/routes/_authenticated/$crmId/design.tsx:58
 msgid "Replace design?"
 msgstr "Të zëvendësohet dizajni?"
 
-#: src/routes/_authenticated/$crmId/design.tsx:216
+#: src/routes/_authenticated/$crmId/design.tsx:70
 msgid "Replacing..."
 msgstr "Duke zëvendësuar..."
 
@@ -2377,11 +2381,11 @@ msgstr "E shtunë"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Save"
 msgstr "Ruaj"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:150
+#: src/routes/_authenticated/$crmId_.settings.tsx:96
 msgid "Saving..."
 msgstr "Duke ruajtur..."
 
@@ -2392,7 +2396,7 @@ msgstr "Duke ruajtur..."
 msgid "Search"
 msgstr "Kërko"
 
-#: src/routes/_authenticated/find.tsx:92
+#: src/routes/_authenticated/find.tsx:42
 msgid "Search by name, ID, fingerprint, or URL..."
 msgstr "Kërko sipas emrit, ID-së, gjurmës ose URL-së..."
 
@@ -2551,7 +2555,7 @@ msgstr "Dërgo mesazhin"
 msgid "Serif"
 msgstr "Me serif"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:325
+#: src/routes/_authenticated/$crmId_.settings.tsx:95
 msgid "Server"
 msgstr "Serveri"
 
@@ -2573,17 +2577,15 @@ msgstr "Sesioni ka skaduar. Ju lutemi identifikohuni sërish."
 msgid "Set origin and destination"
 msgstr "Vendos origjinën dhe destinacionin"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:444
+#: src/routes/_authenticated/$crmId_.settings.tsx:110
 msgid "Setting access..."
 msgstr "Po caktohet qasja..."
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:126
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
 #: ../../../lib/web/src/components/options-menu.tsx:199
-#: src/routes/_authenticated/$crmId_.settings.tsx:83
-#: src/routes/_authenticated/$crmId_.settings.tsx:164
-#: src/routes/_authenticated/$crmId_.settings.tsx:187
-#: src/routes/_authenticated/$crmId/index.tsx:198
+#: src/routes/_authenticated/$crmId_.settings.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:188
 msgid "Settings"
 msgstr "Cilësimet"
 
@@ -2685,7 +2687,7 @@ msgid "Subscribe"
 msgstr "Abonohu"
 
 #: src/features/crms/components/inline-crm-search.tsx:64
-#: src/routes/_authenticated/find.tsx:57
+#: src/routes/_authenticated/find.tsx:45
 msgid "Subscribed"
 msgstr "I abonuar"
 
@@ -2696,7 +2698,7 @@ msgstr "I abonuar te {0}"
 
 #: src/features/crms/components/inline-crm-search.tsx:63
 #: src/features/crms/components/recommended-crms.tsx:40
-#: src/routes/_authenticated/find.tsx:56
+#: src/routes/_authenticated/find.tsx:44
 msgid "Subscribing..."
 msgstr "Duke u abonuar..."
 
@@ -2779,11 +2781,11 @@ msgstr "Tema"
 msgid "Theme Settings"
 msgstr "Cilësimet e temës"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:207
+#: src/routes/_authenticated/$crmId_.settings.tsx:89
 msgid "This CRM could not be loaded right now."
 msgstr "Ky CRM nuk mund të ngarkohet tani."
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:207
+#: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Ky CRM mund të jetë fshirë ose nuk ke akses në të."
 
@@ -2791,18 +2793,18 @@ msgstr "Ky CRM mund të jetë fshirë ose nuk ke akses në të."
 msgid "This page has not been created yet."
 msgstr "Kjo faqe nuk është krijuar ende."
 
-#. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId_.settings.tsx:353
+#. placeholder {0}: String(name)
+#: src/routes/_authenticated/$crmId_.settings.tsx:104
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Kjo do të fshijë përgjithmonë \"{0}\" dhe gjithë objektet, komentet dhe bashkëngjitjet e tij. Ky veprim nuk mund të zhbëhet."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:174
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Kjo do të heqë \"{0}\" nga shiriti yt anësor dhe do të ndalojë përditësimet për këtë CRM."
 
-#. placeholder {0}: pendingImport?.label
-#: src/routes/_authenticated/$crmId/design.tsx:205
+#. placeholder {0}: String(label)
+#: src/routes/_authenticated/$crmId/design.tsx:62
 msgid "This will replace the current design with <0>{0}</0>. All existing classes, fields, options, and views will be deleted. Existing objects will not be deleted but may no longer appear in views."
 msgstr "Kjo do të zëvendësojë dizajnin aktual me <0>{0}</0>. Të gjitha klasat, fushat, opsionet dhe pamjet ekzistuese do të fshihen. Objektet ekzistuese nuk do të fshihen, por mund të mos shfaqen më në pamje."
 
@@ -2946,21 +2948,21 @@ msgstr "I panjohur"
 
 #: ../../../lib/web/src/components/options-menu.tsx:214
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Unsubscribe"
 msgstr "Çabonohu"
 
-#: src/routes/_authenticated/$crmId/index.tsx:173
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Unsubscribe from CRM?"
 msgstr "Të çabonohesh nga CRM-ja?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribed"
 msgstr "Çabonuar"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribing..."
 msgstr "Duke u çabonuar..."
 
@@ -2984,7 +2986,7 @@ msgstr "I paverifikuar"
 msgid "Updated"
 msgstr "U përditësua"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:469
+#: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Updating access..."
 msgstr "Po përditësohet qasja..."
 
@@ -2994,7 +2996,7 @@ msgid "Upload"
 msgstr "Ngarko"
 
 #: src/features/crms/components/create-crm-dialog.tsx:294
-#: src/routes/_authenticated/$crmId/design.tsx:298
+#: src/routes/_authenticated/$crmId/design.tsx:54
 msgid "Upload .json file"
 msgstr "Ngarko skedar .json"
 
@@ -3064,11 +3066,11 @@ msgstr "Shiko dhe redakto detajet e artikullit"
 msgid "View controls"
 msgstr "Kontrollet e pamjes"
 
-#: src/routes/_authenticated/$crmId_.settings.tsx:384
+#: src/routes/_authenticated/$crmId_.settings.tsx:52
 msgid "View only"
 msgstr "Vetëm shikim"
 
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "View options"
 msgstr "Opsionet e pamjes"
 
@@ -3115,7 +3117,7 @@ msgstr "E mërkurë"
 msgid "You do not have access to this section."
 msgstr "Nuk keni qasje në këtë seksion."
 
-#: src/routes/_authenticated/$crmId/index.tsx:82
+#: src/routes/_authenticated/$crmId/index.tsx:80
 msgid "You don't have access to this CRM."
 msgstr "Nuk ke akses në këtë CRM."
 
