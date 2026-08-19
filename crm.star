@@ -407,9 +407,9 @@ def database_upgrade(version):
 		# schema with no attachments table. The step is idempotent, so a
 		# healthy database re-running it changes nothing.
 		# Attachments move into this database, owned by the shared library.
-		# Create the table and copy existing rows across the transition bridge;
-		# the migrate helper aborts without advancing the version if the bridge
-		# is gone, so the step retries later.
+		# Create the table and copy existing rows out of core's store - through
+		# the transition bridge while a core still has one, else from the
+		# export file core's cleanup wrote before dropping it.
 		attachment_schema_create()
 		attachment_migrate()
 
@@ -1226,7 +1226,7 @@ def action_design_import(a):
 	return {"data": {"success": True}}
 
 # Collect an object's (or comment's) attachments with base64-encoded file
-# bytes for a data export. mochi.attachment.data fetches remote bytes over
+# bytes for a data export. attachment_data pulls remote bytes over
 # P2P for subscribed crms. An attachment whose bytes cannot be read (deleted
 # file, unreachable owner) is skipped rather than failing the whole export.
 def export_attachments(object_id, crm_id, frm, entries):
@@ -3810,7 +3810,7 @@ def action_comment_delete(a):
 # ============================================================================
 
 # HTTP handlers serving a CRM's attachments (and thumbnails). Auth-only routes.
-# Core's a.write.attachment serves the bytes with no access check of its own, so
+# The library's attachment_serve performs no access check of its own, so
 # this handler is the gate: require_crm enforces CRM view access (for CRMs we
 # own), and the attachment must belong to an object or comment in THIS CRM, so
 # one CRM's attachment can't be fetched via another CRM's route.
