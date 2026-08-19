@@ -22,11 +22,11 @@ msgstr "Thoir sùil air a' cheangal eadar-lìn agad agus feuch ris a-rithist."
 msgid " or "
 msgstr " no "
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:229
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:190
 msgid "(edited)"
 msgstr "(deasaichte)"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:213
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:174
 msgid "(expand)"
 msgstr "(leudaich)"
 
@@ -120,11 +120,11 @@ msgstr "{unreadCount, plural, one {Fosgail an clàr-taice (# bhrath gun leughadh
 msgid "+{0} nested"
 msgstr "+{0} neadaichte"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:210
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:171
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} freagairtean a bharrachd"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:209
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:170
 msgid "1 reply"
 msgstr "1 fhreagairt"
 
@@ -202,7 +202,7 @@ msgstr "Gnìomhachd"
 msgid "Add"
 msgstr "Cuir ris"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:365
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:312
 msgid "Add a comment..."
 msgstr "Cuir beachd ris..."
 
@@ -369,7 +369,7 @@ msgstr "A bheil thu cinnteach gu bheil thu airson \"{title}\" a sguabadh às? Ch
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "A bheil thu cinnteach gu bheil thu airson an colbh \"{name}\" a sguabadh às? Cha ghabh seo a thilleadh."
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:491
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:352
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "A bheil thu cinnteach gu bheil thu airson am beachd seo a sguabadh às? Sguabaidh seo às na freagairtean uile cuideachd."
 
@@ -389,13 +389,11 @@ msgstr "Dìreadh"
 msgid "Ascending"
 msgstr "A' dìreadh"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:408
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:413
+#: ../../../lib/web/src/components/comment-composer.tsx:442
 msgid "Attach comment files"
 msgstr "Ceangail faidhlichean beachd"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:445
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:450
+#: ../../../lib/web/src/components/comment-composer.tsx:441
 msgid "Attach reply files"
 msgstr "Ceangail faidhlichean freagairt"
 
@@ -481,7 +479,7 @@ msgstr "Faodaidh e a bhith na phàiste de"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:461
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:250
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:211
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:169
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:186
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
@@ -499,13 +497,11 @@ msgstr "Faodaidh e a bhith na phàiste de"
 msgid "Cancel"
 msgstr "Sguir dheth"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:425
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:430
+#: ../../../lib/web/src/components/comment-composer.tsx:442
 msgid "Cancel comment"
 msgstr "Sguir den bheachd"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:461
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:466
+#: ../../../lib/web/src/components/comment-composer.tsx:441
 msgid "Cancel reply"
 msgstr "Sguir den fhreagairt"
 
@@ -602,8 +598,8 @@ msgstr "Falamhaich an taghadh (Escape)"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:506
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:511
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:402
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:405
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:488
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:491
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Dùin"
@@ -637,8 +633,8 @@ msgstr "Dùin an lorg"
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx:101
 #: ../../../lib/web/src/components/comment-tree-layout.tsx:110
-#: ../../../lib/web/src/components/tree-row.tsx:347
-#: ../../../lib/web/src/components/tree-row.tsx:361
+#: ../../../lib/web/src/components/tree-row.tsx:338
+#: ../../../lib/web/src/components/tree-row.tsx:352
 msgid "Collapse"
 msgstr "Lùb a-steach"
 
@@ -671,14 +667,19 @@ msgstr "A' tighinn a dh'aithghearr!"
 msgid "Command Palette"
 msgstr "Pailead nan àithnean"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:331
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:338
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:292
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:299
 msgid "Comment actions"
 msgstr "Gnìomhan beachd"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:51
 msgid "Comment and view"
 msgstr "Cuir beachd ris agus seall"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:451
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:463
+msgid "Comments"
+msgstr "Beachdan"
 
 #. placeholder {0}: data.comment_count || 0
 #: src/features/objects/components/object-detail-panel.tsx:307
@@ -775,7 +776,7 @@ msgstr "Cha b' urrainn dearbhadh leis a' chunntas sin. Feuch ris a-rithist."
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:703
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:496
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:665
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:679
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Cruthaich"
 
@@ -921,9 +922,9 @@ msgstr "Seòrsachadh bunaiteach"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:583
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:644
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:319
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:362
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:492
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:280
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:323
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:353
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:198
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:203
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
@@ -945,7 +946,7 @@ msgstr "Sguab às clas"
 msgid "Delete column"
 msgstr "Sguab às colbh"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:490
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:351
 msgid "Delete comment"
 msgstr "Sguab às beachd"
 
@@ -1041,11 +1042,11 @@ msgstr "Comhair"
 msgid "Directory"
 msgstr "Eòlaire"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:313
+#: ../../../lib/web/src/components/comment-composer.tsx:322
 msgid "Discard"
 msgstr "Tilg air falbh"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:311
+#: ../../../lib/web/src/components/comment-composer.tsx:320
 msgid "Discard draft?"
 msgstr "A bheil thu airson an dreachd a thilgeil air falbh?"
 
@@ -1079,8 +1080,8 @@ msgid "Double click on a column to add content"
 msgstr "Dèan briogadh dùbailte air colbh gus susbaint a chur ris"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:239
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:386
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:396
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:472
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:482
 msgid "Download"
 msgstr "Luchdaich a-nuas"
 
@@ -1088,7 +1089,7 @@ msgstr "Luchdaich a-nuas"
 msgid "Download backup first"
 msgstr "Luchdaich lethbhreac-glèidhidh a-nuas an toiseach"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:69
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:111
 msgid "Download failed"
 msgstr "Dh’fhàillig an luchdadh a-nuas"
 
@@ -1109,8 +1110,8 @@ msgstr "Dùblaichean"
 msgid "Dyslexia-friendly"
 msgstr "Freagarrach do dhisléicse"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:308
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:353
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:314
 msgid "Edit"
 msgstr "Deasaich"
 
@@ -1178,8 +1179,8 @@ msgstr "Mearachd"
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx:101
 #: ../../../lib/web/src/components/comment-tree-layout.tsx:110
-#: ../../../lib/web/src/components/tree-row.tsx:347
-#: ../../../lib/web/src/components/tree-row.tsx:361
+#: ../../../lib/web/src/components/tree-row.tsx:338
+#: ../../../lib/web/src/components/tree-row.tsx:352
 msgid "Expand"
 msgstr "Leudaich"
 
@@ -1250,7 +1251,7 @@ msgstr "Cha b' urrainn sealladh a chruthachadh"
 msgid "Failed to delete attachment"
 msgstr "Cha b' urrainn ceangaltas a sguabadh às"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:212
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:191
 msgid "Failed to delete comment"
 msgstr "Cha b' urrainn am beachd a sguabadh às"
 
@@ -1310,7 +1311,7 @@ msgstr "Cha b' urrainn na CRMan a luchdadh"
 msgid "Failed to load history"
 msgstr "Cha b' urrainn an eachdraidh a luchdadh"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:297
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
 msgid "Failed to load image"
 msgstr "Dh'fhàillig luchdachadh an deilbh"
 
@@ -1322,11 +1323,11 @@ msgstr "Cha b' urrainn an nì a luchdadh"
 msgid "Failed to load recommended CRMs"
 msgstr "Dh'fhàillig luchdadh nan CRMan a mholar"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:297
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
 msgid "Failed to load video"
 msgstr "Dh'fhàillig luchdachadh a' video"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:175
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:154
 msgid "Failed to post comment"
 msgstr "Cha b' urrainn beachd a phostadh"
 
@@ -1382,7 +1383,7 @@ msgstr "Cha b' urrainn dì-fho-sgrìobhadh"
 msgid "Failed to update access level"
 msgstr "Cha b' urrainn ìre an inntrigidh ùrachadh"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:195
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:174
 msgid "Failed to update comment"
 msgstr "Cha b' urrainn am beachd ùrachadh"
 
@@ -1535,7 +1536,7 @@ msgid "Identity"
 msgstr "Dearbh-aithne"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:281
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:336
 msgid "Image viewer: {0}"
 msgstr "Sealladair dhealbhan: {0}"
 
@@ -1810,8 +1811,8 @@ msgstr "{0} ùr"
 msgid "New game"
 msgstr "Geama ùr"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:442
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:447
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:549
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:554
 msgid "Next image"
 msgstr "An ath dhealbh"
 
@@ -1831,7 +1832,7 @@ msgstr "Cha deach riaghailtean cothraim a chur air dòigh. Cuir riaghailtean ris
 msgid "No activity yet"
 msgstr "Chan eil gnìomhachd ann fhathast"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:460
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:322
 msgid "No comments yet"
 msgstr "Chan eil beachdan ann fhathast"
 
@@ -1953,7 +1954,7 @@ msgstr "Cha deach a lorg"
 msgid "Not set"
 msgstr "Cha deach a shuidheachadh"
 
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:675
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:668
 msgid "Nothing found"
 msgstr "Cha deach dad a lorg"
 
@@ -2103,7 +2104,7 @@ msgstr "Tagh ceann-latha"
 msgid "Please add one or more classes to the CRM design."
 msgstr "Cuir a-steach aon clas no barrachd ri dealbhadh a' CRM."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:84
+#: ../../../lib/web/src/components/comment-composer.tsx:93
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:323
 msgid "Please check your internet connection and try again."
@@ -2129,8 +2130,8 @@ msgstr "Postaichean"
 msgid "Posts and comments"
 msgstr "Postaichean is beachdan"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:427
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:432
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:533
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:538
 msgid "Previous image"
 msgstr "An dealbh roimhe"
 
@@ -2287,13 +2288,13 @@ msgstr "An cuirear dealbhadh eile na àite?"
 msgid "Replacing..."
 msgstr "A' cur na àite..."
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:295
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:343
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:256
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:304
 msgid "Reply"
 msgstr "Freagair"
 
 #. placeholder {0}: comment.name || comment.author
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:386
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:343
 msgid "Reply to {0}..."
 msgstr "Freagair {0}..."
 
@@ -2377,7 +2378,7 @@ msgid "Saturday"
 msgstr "Disathairne"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:465
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:270
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
@@ -2650,7 +2651,7 @@ msgstr "Tùsan"
 msgid "Spacious"
 msgstr "Farsaing"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:461
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:323
 msgid "Start the discussion by adding the first comment."
 msgstr "Tòisich an deasbad le bhith a' cur a' chiad bheachd ris."
 
@@ -2667,13 +2668,11 @@ msgstr "Sguir a' coimhead"
 msgid "Subject"
 msgstr "Cuspair"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:441
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:450
+#: ../../../lib/web/src/components/comment-composer.tsx:442
 msgid "Submit comment"
 msgstr "Cuir a-steach beachd"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:476
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:481
+#: ../../../lib/web/src/components/comment-composer.tsx:441
 msgid "Submit reply"
 msgstr "Cuir a-steach freagairt"
 
@@ -3036,12 +3035,12 @@ msgstr "Dearbh"
 msgid "Verify email address"
 msgstr "Dearbh seòladh puist-d"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:85
+#: ../../../lib/web/src/components/attachment-gallery.tsx:94
 msgid "Video thumbnail"
 msgstr "Dealbhag video"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:280
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:335
 msgid "Video viewer: {0}"
 msgstr "Sealladair video: {0}"
 
@@ -3137,14 +3136,14 @@ msgstr "Chunnaic thu a h-uile càil!"
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Chaidh do chunntas a ghluasad an seo à {source}. Gus an sguab thu às e an sin, faodaidh teachdaireachdan agus brathan ruighinn air an dà fhrithealaiche, bidh cuid den susbaint agad ga frithealadh bhon t-seann fhrithealaiche, agus faodaidh luchd-leantainn beagan mhionaidean a ghabhail gus do lorg an seo."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:304
+#: ../../../lib/web/src/components/comment-composer.tsx:313
 msgid "Your attachments will be lost."
 msgstr "Thèid na ceanglachain agad air chall."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:302
+#: ../../../lib/web/src/components/comment-composer.tsx:311
 msgid "Your text and attachments will be lost."
 msgstr "Thèid an teacsa 's na ceanglachain agad air chall."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:305
+#: ../../../lib/web/src/components/comment-composer.tsx:314
 msgid "Your text will be lost."
 msgstr "Thèid an teacsa agad air chall."

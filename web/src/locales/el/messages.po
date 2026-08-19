@@ -22,11 +22,11 @@ msgstr "Ελέγξτε τη σύνδεσή σας στο διαδίκτυο κα
 msgid " or "
 msgstr " ή "
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:229
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:190
 msgid "(edited)"
 msgstr "(επεξεργάστηκε)"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:213
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:174
 msgid "(expand)"
 msgstr "(ανάπτυξη)"
 
@@ -120,11 +120,11 @@ msgstr "{unreadCount, plural, one {Άνοιγμα μενού (# μη αναγν�
 msgid "+{0} nested"
 msgstr "+{0} ένθετα"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:210
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:171
 msgid "+{totalDescendants} more replies"
 msgstr "+{totalDescendants} περισσότερες απαντήσεις"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:209
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:170
 msgid "1 reply"
 msgstr "1 απάντηση"
 
@@ -202,7 +202,7 @@ msgstr "Δραστηριότητα"
 msgid "Add"
 msgstr "Προσθήκη"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:365
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:312
 msgid "Add a comment..."
 msgstr "Προσθήκη σχολίου..."
 
@@ -369,7 +369,7 @@ msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε 
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε τη στήλη \"{name}\"; Αυτό δεν μπορεί να αναιρεθεί."
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:491
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:352
 msgid "Are you sure you want to delete this comment? This will also delete all replies."
 msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το σχόλιο; Αυτό θα διαγράψει και όλες τις απαντήσεις."
 
@@ -389,13 +389,11 @@ msgstr "Αύξουσα"
 msgid "Ascending"
 msgstr "Αύξουσα"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:408
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:413
+#: ../../../lib/web/src/components/comment-composer.tsx:442
 msgid "Attach comment files"
 msgstr "Επισύναψη αρχείων σχολίου"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:445
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:450
+#: ../../../lib/web/src/components/comment-composer.tsx:441
 msgid "Attach reply files"
 msgstr "Επισύναψη αρχείων απάντησης"
 
@@ -481,7 +479,7 @@ msgstr "Μπορεί να είναι θυγατρικό του"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:461
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:250
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:211
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:169
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:186
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
@@ -499,13 +497,11 @@ msgstr "Μπορεί να είναι θυγατρικό του"
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:425
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:430
+#: ../../../lib/web/src/components/comment-composer.tsx:442
 msgid "Cancel comment"
 msgstr "Ακύρωση σχολίου"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:461
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:466
+#: ../../../lib/web/src/components/comment-composer.tsx:441
 msgid "Cancel reply"
 msgstr "Ακύρωση απάντησης"
 
@@ -602,8 +598,8 @@ msgstr "Εκκαθάριση επιλογής (Escape)"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:506
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:511
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:402
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:405
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:488
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:491
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Κλείσιμο"
@@ -637,8 +633,8 @@ msgstr "Κλείσιμο αναζήτησης"
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx:101
 #: ../../../lib/web/src/components/comment-tree-layout.tsx:110
-#: ../../../lib/web/src/components/tree-row.tsx:347
-#: ../../../lib/web/src/components/tree-row.tsx:361
+#: ../../../lib/web/src/components/tree-row.tsx:338
+#: ../../../lib/web/src/components/tree-row.tsx:352
 msgid "Collapse"
 msgstr "Σύμπτυξη"
 
@@ -671,14 +667,19 @@ msgstr "Έρχεται σύντομα!"
 msgid "Command Palette"
 msgstr "Παλέτα εντολών"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:331
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:338
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:292
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:299
 msgid "Comment actions"
 msgstr "Ενέργειες σχολίου"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:51
 msgid "Comment and view"
 msgstr "Σχόλιο και προβολή"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:451
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:463
+msgid "Comments"
+msgstr "Σχόλια"
 
 #. placeholder {0}: data.comment_count || 0
 #: src/features/objects/components/object-detail-panel.tsx:307
@@ -775,7 +776,7 @@ msgstr "Δεν ήταν δυνατή η επαλήθευση με αυτόν τ�
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:703
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:496
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:665
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:679
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Δημιουργία"
 
@@ -921,9 +922,9 @@ msgstr "Προεπιλεγμένη ταξινόμηση"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:583
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:644
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:319
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:362
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:492
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:280
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:323
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:353
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:198
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:203
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
@@ -945,7 +946,7 @@ msgstr "Διαγραφή κλάσης"
 msgid "Delete column"
 msgstr "Διαγραφή στήλης"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:490
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:351
 msgid "Delete comment"
 msgstr "Διαγραφή σχολίου"
 
@@ -1041,11 +1042,11 @@ msgstr "Κατεύθυνση"
 msgid "Directory"
 msgstr "Κατάλογος"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:313
+#: ../../../lib/web/src/components/comment-composer.tsx:322
 msgid "Discard"
 msgstr "Απόρριψη"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:311
+#: ../../../lib/web/src/components/comment-composer.tsx:320
 msgid "Discard draft?"
 msgstr "Απόρριψη πρόχειρου;"
 
@@ -1079,8 +1080,8 @@ msgid "Double click on a column to add content"
 msgstr "Διπλό κλικ σε στήλη για προσθήκη περιεχομένου"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:239
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:386
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:396
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:472
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:482
 msgid "Download"
 msgstr "Λήψη"
 
@@ -1088,7 +1089,7 @@ msgstr "Λήψη"
 msgid "Download backup first"
 msgstr "Κάντε πρώτα λήψη αντιγράφου ασφαλείας"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:69
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:111
 msgid "Download failed"
 msgstr "Η λήψη απέτυχε"
 
@@ -1109,8 +1110,8 @@ msgstr "Διπλότυπο"
 msgid "Dyslexia-friendly"
 msgstr "Φιλικό προς δυσλεξία"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:308
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:353
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:314
 msgid "Edit"
 msgstr "Επεξεργασία"
 
@@ -1178,8 +1179,8 @@ msgstr "Σφάλμα"
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx:101
 #: ../../../lib/web/src/components/comment-tree-layout.tsx:110
-#: ../../../lib/web/src/components/tree-row.tsx:347
-#: ../../../lib/web/src/components/tree-row.tsx:361
+#: ../../../lib/web/src/components/tree-row.tsx:338
+#: ../../../lib/web/src/components/tree-row.tsx:352
 msgid "Expand"
 msgstr "Ανάπτυξη"
 
@@ -1250,7 +1251,7 @@ msgstr "Αποτυχία δημιουργίας προβολής"
 msgid "Failed to delete attachment"
 msgstr "Αποτυχία διαγραφής συνημμένου"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:212
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:191
 msgid "Failed to delete comment"
 msgstr "Αποτυχία διαγραφής σχολίου"
 
@@ -1310,7 +1311,7 @@ msgstr "Αποτυχία φόρτωσης CRM"
 msgid "Failed to load history"
 msgstr "Αποτυχία φόρτωσης ιστορικού"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:297
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
 msgid "Failed to load image"
 msgstr "Αποτυχία φόρτωσης εικόνας"
 
@@ -1322,11 +1323,11 @@ msgstr "Αποτυχία φόρτωσης στοιχείου"
 msgid "Failed to load recommended CRMs"
 msgstr "Η φόρτωση προτεινόμενων CRM απέτυχε"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:297
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
 msgid "Failed to load video"
 msgstr "Αποτυχία φόρτωσης βίντεο"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:175
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:154
 msgid "Failed to post comment"
 msgstr "Αποτυχία ανάρτησης σχολίου"
 
@@ -1382,7 +1383,7 @@ msgstr "Αποτυχία διαγραφής εγγραφής"
 msgid "Failed to update access level"
 msgstr "Αποτυχία ενημέρωσης επιπέδου πρόσβασης"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:195
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:174
 msgid "Failed to update comment"
 msgstr "Αποτυχία ενημέρωσης σχολίου"
 
@@ -1535,7 +1536,7 @@ msgid "Identity"
 msgstr "Ταυτότητα"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:281
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:336
 msgid "Image viewer: {0}"
 msgstr "Προβολή εικόνας: {0}"
 
@@ -1810,8 +1811,8 @@ msgstr "Νέο {0}"
 msgid "New game"
 msgstr "Νέο παιχνίδι"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:442
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:447
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:549
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:554
 msgid "Next image"
 msgstr "Επόμενη εικόνα"
 
@@ -1831,7 +1832,7 @@ msgstr "Δεν έχουν διαμορφωθεί κανόνες πρόσβαση
 msgid "No activity yet"
 msgstr "Δεν υπάρχει ακόμη δραστηριότητα"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:460
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:322
 msgid "No comments yet"
 msgstr "Δεν υπάρχουν ακόμη σχόλια"
 
@@ -1953,7 +1954,7 @@ msgstr "Δεν βρέθηκε"
 msgid "Not set"
 msgstr "Δεν έχει οριστεί"
 
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:675
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:668
 msgid "Nothing found"
 msgstr "Δεν βρέθηκε τίποτα"
 
@@ -2103,7 +2104,7 @@ msgstr "Επιλέξτε ημερομηνία"
 msgid "Please add one or more classes to the CRM design."
 msgstr "Προσθέστε μία ή περισσότερες κλάσεις στον σχεδιασμό CRM."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:84
+#: ../../../lib/web/src/components/comment-composer.tsx:93
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:323
 msgid "Please check your internet connection and try again."
@@ -2129,8 +2130,8 @@ msgstr "Αναρτήσεις"
 msgid "Posts and comments"
 msgstr "Αναρτήσεις και σχόλια"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:427
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:432
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:533
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:538
 msgid "Previous image"
 msgstr "Προηγούμενη εικόνα"
 
@@ -2287,13 +2288,13 @@ msgstr "Αντικατάσταση σχεδιασμού;"
 msgid "Replacing..."
 msgstr "Αντικατάσταση..."
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:295
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:343
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:256
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:304
 msgid "Reply"
 msgstr "Απάντηση"
 
 #. placeholder {0}: comment.name || comment.author
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:386
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:343
 msgid "Reply to {0}..."
 msgstr "Απάντηση σε {0}..."
 
@@ -2377,7 +2378,7 @@ msgid "Saturday"
 msgstr "Σάββατο"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:465
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:270
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
@@ -2650,7 +2651,7 @@ msgstr "Πηγές"
 msgid "Spacious"
 msgstr "Ευρύχωρο"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:461
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:323
 msgid "Start the discussion by adding the first comment."
 msgstr "Ξεκινήστε τη συζήτηση προσθέτοντας το πρώτο σχόλιο."
 
@@ -2667,13 +2668,11 @@ msgstr "Διακοπή παρακολούθησης"
 msgid "Subject"
 msgstr "Θέμα"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:441
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:450
+#: ../../../lib/web/src/components/comment-composer.tsx:442
 msgid "Submit comment"
 msgstr "Υποβολή σχολίου"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:476
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:481
+#: ../../../lib/web/src/components/comment-composer.tsx:441
 msgid "Submit reply"
 msgstr "Υποβολή απάντησης"
 
@@ -3036,12 +3035,12 @@ msgstr "Επαλήθευση"
 msgid "Verify email address"
 msgstr "Επαλήθευση διεύθυνσης email"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:85
+#: ../../../lib/web/src/components/attachment-gallery.tsx:94
 msgid "Video thumbnail"
 msgstr "Μικρογραφία βίντεο"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:280
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:335
 msgid "Video viewer: {0}"
 msgstr "Προβολή βίντεο: {0}"
 
@@ -3137,14 +3136,14 @@ msgstr "Τα είδατε όλα!"
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Ο λογαριασμός σας μεταφέρθηκε εδώ από {source}. Μέχρι να τον διαγράψετε εκεί, τα μηνύματα και οι ειδοποιήσεις μπορεί να φτάνουν και στους δύο διακομιστές, μέρος του περιεχομένου σας συνεχίζει να εξυπηρετείται από τον παλιό διακομιστή και οι ακόλουθοί σας ενδέχεται να χρειαστούν λίγα λεπτά για να σας βρουν εδώ."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:304
+#: ../../../lib/web/src/components/comment-composer.tsx:313
 msgid "Your attachments will be lost."
 msgstr "Τα συνημμένα σας θα χαθούν."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:302
+#: ../../../lib/web/src/components/comment-composer.tsx:311
 msgid "Your text and attachments will be lost."
 msgstr "Το κείμενο και τα συνημμένα σας θα χαθούν."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:305
+#: ../../../lib/web/src/components/comment-composer.tsx:314
 msgid "Your text will be lost."
 msgstr "Το κείμενό σας θα χαθεί."
