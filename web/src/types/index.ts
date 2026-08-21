@@ -75,11 +75,8 @@ export type Watcher = EntityWatcher;
 // Sort state for views
 export type SortState = EntitySortState;
 
-// API Response types
-//
-// The envelopes below are the shared client's own, re-exported under this
-// app's names so call sites keep reading `CommentListResponse`. Only the two
-// this app shapes differently are declared here.
+// API response envelopes are the shared client's, re-exported under this app's
+// names; only the two shaped differently are declared here.
 export type ObjectListResponse = EntityObjectListResponse<CrmObject>;
 export type CommentListResponse = EntityCommentListResponse;
 export type ActivityListResponse = EntityActivityListResponse;

@@ -4,13 +4,10 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 /* eslint-disable lingui/no-unlocalized-strings */
-// Six files in this app are thin bindings onto @mochi/web, and nothing in app
-// CI would notice if one broke: `lint` is `eslint .`, and the typecheck sits
-// in `build`, which the shared workflow never calls. So a library export that
-// gets renamed or dropped reaches main uncaught, and the app fails at run
-// time instead. Each block below asserts the binding exists and is the very
-// object the library exports. Both halves are needed: `toBe` on its own
-// passes when the two sides are undefined.
+// App CI never typechecks (lint is eslint only; tsc runs inside build), so a
+// renamed or dropped library export would reach main uncaught. Each block
+// checks the binding is defined AND is the library's object: `toBe` alone
+// passes when both sides are undefined.
 import { describe, expect, it } from "vitest";
 import * as lib from "@mochi/web";
 import { crmsRequest } from "@/api/request";

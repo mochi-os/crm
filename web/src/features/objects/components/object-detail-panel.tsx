@@ -61,21 +61,14 @@ export function ObjectDetailPanel({
   useShellOverlay(!!objectId)
   const [activeTab, setActiveTab] = useState<Tab>("properties");
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
-  // While the sheet plays its 500ms slide-in, cold queries (object detail,
-  // attachments, comments, people) resolve one after another and repeatedly
-  // reflow the panel — re-rasterizing the animating layer and stuttering the
-  // slide on the first open after a hard refresh. Hold the heavy tab body behind
-  // a stable skeleton until the slide settles; the body can't be read mid-slide
-  // anyway, so on a warm cache this is imperceptible.
+  // Hold the heavy tab body behind a skeleton until the 500ms slide-in settles:
+  // cold queries resolving mid-slide reflow the animating layer and stutter it.
   const [slideSettled, setSlideSettled] = useState(false);
   const queryClient = useQueryClient();
 
-  // Closing is always allowed. An unparseable date is never committed — the
-  // field keeps the last saved value — so there is nothing to protect here, and
-  // blocking produced dead ends instead: an emptied date input goes from "" to
-  // "" and fires no change event, so a guard latched while the date was
-  // half-cleared could never be released and the panel refused to close at all.
-  // The field still shows its own inline "Invalid date" message.
+  // Closing is never blocked on an invalid date: the field never commits one,
+  // and an emptied input fires no change event, so a guard could latch and
+  // never release.
   const handleClose = () => {
     onClose();
   };

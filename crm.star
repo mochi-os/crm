@@ -4,31 +4,17 @@
 # This file is part of Mochi, licensed under the GNU AGPL v3 with the
 # Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-# decimal(value) -> bool: whether value is a non-empty ASCII decimal string.
-# This is what .isdigit() was reached for, but isdigit() also accepts Unicode
-# digit forms (Arabic-Indic "٣", Devanagari "३") that int() rejects,
-# which aborts the action as a 500 instead of taking the guard's else branch.
-# Ceiling on an imported manifest. The direct path is already bounded by the
-# 1MB request body, so the old 1000000000 could only ever fire on the ARCHIVE
-# path - and there it ran after the bytes were already in memory. 100MB is far
-# above any real CRM export and low enough to refuse a decompression bomb
-# before reading it.
+# decimal(value) -> bool: non-empty ASCII decimal string. Not .isdigit(), which
+# accepts Unicode digits that int() rejects. Ceiling on an imported manifest,
+# checked against the declared entry size before reading: far above any real
+# export, low enough to refuse a decompression bomb.
 IMPORT_MAXIMUM = 100000000
 
 
-# Derive a structural id from a user-supplied name.
-#
-# The id becomes a database key, a URL segment, and - for fields - an element
-# of the COMMA-SEPARATED views.fields list. Lowercasing and swapping spaces
-# for underscores left everything else intact, so a name carrying a comma
-# produced an id that silently corrupts that list when it is encoded, and one
-# carrying a slash produced an id that breaks the route built from it. Only
-# rename validated; every create path derived and stored.
-#
-# Keep letters, digits, underscore and hyphen; fold anything else to an
-# underscore, then collapse and trim so "Sales, EU" and "Sales / EU" do not
-# both become unreadable. Returns "" when nothing usable survives, which the
-# callers already treat as a missing name.
+# Derive a structural id from a name. The id is a database key, a URL segment
+# and, for fields, an element of the comma-separated views.fields list, so only
+# letters, digits, underscore and hyphen survive; runs of anything else fold to
+# one underscore. "" when nothing usable remains.
 def structural_id(name):
     out = ""
     for ch in name.strip().lower().elems():
@@ -73,13 +59,10 @@ def p2p_headers(from_id, to_id, event):
 		"event": event
 	}
 
-# Helper: deliver a subscription-lifecycle event (subscribe, unsubscribe) to an
-# owner whose entity may no longer be resolvable: private entities never list
-# in the directory, and public entries expire while the owner is offline. A
-# stored directory-form "p2p/<peer>" server pins the queue row to that peer, so
-# an undeliverable send parks and revives when the peer reconnects, instead of
-# parking unresolvable forever. Hostname servers still route via the directory -
-# resolving one here would put a network dial on a view path.
+# Send a subscribe/unsubscribe to an owner whose entity may not resolve (private
+# entities never list, public entries expire offline). A stored "p2p/<peer>"
+# server pins the queue row to that peer so the send parks until it reconnects;
+# hostname servers still route via the directory.
 def registration_send(server, headers, content):
 	peer = server[len("p2p/"):] if server and server.startswith("p2p/") else ""
 	if peer:
@@ -87,12 +70,10 @@ def registration_send(server, headers, content):
 	else:
 		mochi.message.send(headers, content)
 
-# Helper: Broadcast event to all subscribers of a CRM via the durable
-# broadcast log. Sequence + log + gap-detection live in core.
-# Recheck view access per recipient on every send: revocation must cut the
-# flow even when the subscriber row is stale (access narrowed via a group
-# change the app never sees), so a failing recipient is withheld here and
-# the full revalidation runs to remove the row and purge the replica.
+# Broadcast to a CRM's subscribers through the durable log (sequence, log and
+# gap detection live in core). View access is rechecked per recipient on every
+# send so a revocation the app never saw (a group change) cuts the flow; a
+# failing one triggers subscribers_revalidate.
 def broadcast_event(crm_id, event, data, exclude=None):
 	if not crm_id:
 		return
@@ -108,13 +89,10 @@ def broadcast_event(crm_id, event, data, exclude=None):
 		subscribers_revalidate(crm_id)
 	mochi.broadcast.send(crm_id, crm_id, allowed, "crm", event, data, exclude or "")
 
-# Re-derive the subscriber list from the access rules. Access can be granted
-# via groups and wildcards, so a revoked subject never maps one-to-one to
-# subscriber rows; instead drop every subscriber that no longer passes the
-# view check. Each removed subscriber is sent an access/revoke event telling
-# its server to purge the replica - best-effort by nature (the server may be
-# offline or hostile), but the fan-out is cut here regardless. The owner's
-# own identity is always kept: it anchors get_owner_identity.
+# Drop every subscriber that no longer passes the view check (access comes via
+# groups and wildcards, so a revoked subject does not map to rows) and send each
+# an access/revoke so its server purges the replica. The owner's identity is
+# always kept: it anchors get_owner_identity.
 def subscribers_revalidate(crm_id):
 	owner = get_owner_identity(crm_id)
 	removed = False
@@ -158,13 +136,9 @@ def error_subscriber_unreachable(e):
 def error_broadcast_gap(e):
 	request_resync(e.entity)
 
-# request_resync pulls a fresh schema dump from the CRM owner when an
-# incoming event references data we don't have yet. Out-of-order delivery,
-# lost messages, and the strict FK enforcement on ncruces all surface as
-# the same symptom — a values/update or comment/create arriving for an
-# object the subscriber hasn't seen. The owner's event_schema is the
-# canonical source; insert_schema applies it idempotently. Throttled so a
-# burst of bad events can't spam the owner.
+# request_resync pulls a fresh schema dump from the owner when an inbound event
+# references an object the subscriber has not seen (lost or reordered delivery).
+# insert_schema applies it idempotently; throttled to once a minute.
 
 # idle_resync_age: how long without applying any broadcast from a subscribed
 # CRM before the next view re-subscribes (the owner may have pruned us after a
@@ -194,11 +168,9 @@ def request_resync(crm_id):
 		mochi.websocket.write(fp, {"type": "crm/resynced", "crm": crm_id})
 	return True
 
-# maybe_resubscribe re-establishes a subscribed CRM with its owner when the
-# subscription has gone idle (idle_resync_age). The owner's event_subscribe is
-# idempotent and pushes catch-up, so a bare re-subscribe re-adds us and re-syncs;
-# touch() stamps the idle timer so a quiet CRM re-subscribes at most once per
-# window and a dead owner isn't re-poked per view.
+# Re-subscribe to a CRM idle longer than idle_resync_age: the owner's
+# event_subscribe is idempotent and pushes catch-up. touch() stamps the timer so
+# a quiet CRM re-subscribes once per window.
 def maybe_resubscribe(a, crm_id):
 	user_id = a.user.identity.id if a.user else None
 	if not user_id:
@@ -319,13 +291,10 @@ def rank_canonical(key):
 	return rank_int_length(key[0]) <= len(key)
 
 def rank_between(a, b):
-	# A key strictly between a and b (either None = before-all / after-all).
-	# TRANSITIONAL tolerance (#53): during the migrate-on-replica window a paired
-	# host may still hold legacy INTEGER ranks. A legacy neighbour can't be placed
-	# on the canonical scale, so treat it as an open boundary instead of crashing
-	# in rank_int_part — the position self-heals once both hosts converge on
-	# canonical keys. REMOVE these two guards (and rank_canonical) once all hosts
-	# are migrated and every rank is a canonical key.
+	# A key strictly between a and b (None = before-all / after-all). A legacy
+	# integer rank cannot be placed on the canonical scale, so it is treated as an
+	# open boundary; drop these two guards and rank_canonical once every rank is
+	# canonical.
 	if not rank_canonical(a):
 		a = None
 	if not rank_canonical(b):
@@ -379,14 +348,10 @@ def rank_move_key(crm_id, object_id, field, target_value, scope_parent, pos):
 	return rank_between(before, after)
 
 def rank_after_all(crm_id, exclude_id):
-	# A new rank key strictly greater than every existing key in the CRM
-	# (excluding exclude_id, the row being moved). Appends and creates anchor on
-	# the crm-wide max — not a per-column/per-parent max — so a freshly minted end
-	# key is globally unique and can't collide with a key a card in another scope
-	# still holds. (The #53 duplicate-key source: incrementing a per-scope max
-	# re-mints keys departed cards keep; two columns whose local max was equal
-	# minted the same global key.) crm-max >= any scope's last, so the new key
-	# still sorts to the end of the target scope.
+	# A key greater than every key in the CRM (excluding the row being moved).
+	# Anchored on the crm-wide max, not the scope's: a per-scope max re-mints keys
+	# that cards moved elsewhere still hold. crm-max >= any scope's last, so the
+	# key still sorts last in the target scope.
 	if exclude_id != None:
 		row = mochi.db.row("select max(rank) as r from objects where crm=? and id!=?", crm_id, exclude_id)
 	else:
@@ -395,21 +360,14 @@ def rank_after_all(crm_id, exclude_id):
 
 def database_upgrade(version):
 	if version == 2:
-		# Drop the pre-2026-07 broadcast tables left in the app data DB when
-		# broadcast state moved to the per-app system DB - inert, but stale
-		# sequence/log copies mislead diagnosis.
+		# Drop the broadcast tables left in the app data DB when broadcast state moved
+		# to the per-app system DB - stale copies mislead diagnosis.
 		for table in ["sequence", "log", "acknowledged", "received"]:
 			mochi.db.execute("drop table if exists " + table)
 	if version == 3 or version == 4 or version == 5:
-		# The last number re-issues the step: a server that installed the
-		# first library version ahead of its core update paid both earlier
-		# numbers for a raise inside the bridge call and was left at full
-		# schema with no attachments table. The step is idempotent, so a
-		# healthy database re-running it changes nothing.
-		# Attachments move into this database, owned by the shared library.
-		# Create the table and copy existing rows out of core's store - through
-		# the transition bridge while a core still has one, else from the
-		# export file core's cleanup wrote before dropping it.
+		# Attachments move into this database, owned by the shared library: create the
+		# table and copy rows out of core's store (bridge or export file). Versions 6
+		# and 7 re-issue the step; idempotent.
 		attachment_schema_create()
 		attachment_migrate()
 
@@ -673,23 +631,16 @@ def foreign_comment(comment_id, crm_id):
 	row = mochi.db.row("select o.crm from comments c join objects o on c.object=o.id where c.id=?", comment_id)
 	return row != None and row["crm"] != crm_id
 
-# A peer names a comment by id, and the id alone says nothing about which CRM
-# the comment belongs to. Where the handler has already checked the object
-# against the routed CRM, requiring the comment to hang off that same object
-# settles it: a comment id belonging to another CRM's object fails the pair
-# even though it exists.
+# A comment id alone says nothing about its CRM; requiring it to hang off an
+# object already checked against the routed CRM settles it.
 def comment_bound(comment_id, object_id):
 	if not comment_id or not object_id:
 		return False
 	return mochi.db.exists("select 1 from comments where id=? and object=?", comment_id, object_id)
 
-# Both ends of a link must be objects in this CRM. The links table is keyed
-# (source, target, linktype) with the CRM deliberately OUTSIDE the key, so a row
-# whose endpoints live in another CRM does not merely sit there unused - it
-# collides with, and overwrites, that CRM's own link. An importing subscriber
-# would find links injected across CRMs the sender has nothing to do with.
-# event_link_create and do_link_create have always checked this; the import and
-# sync paths did not.
+# Both endpoints must be objects in this CRM: links are keyed (source, target,
+# linktype) with the CRM outside the key, so a row whose endpoints live
+# elsewhere overwrites that CRM's own link.
 def link_endpoints_bound(crm_id, source, target):
 	if not source or not target:
 		return False
@@ -841,12 +792,9 @@ def get_templates(lang="en"):
 				}
 	return templates
 
-# Apply a template to a crm by loading from JSON or from provided data.
-# `template_id` selects the labels directory for {labels.X} substitution; pass
-# the originating template's id when applying user-supplied data so placeholders
-# resolve correctly. Missing template_id or absent labels dir means no
-# substitution — literal strings pass through unchanged (back-compat with
-# user-exported templates).
+# Apply a template from its JSON file or from data. template_id selects the
+# labels directory for {labels.X} substitution; without it, or without a labels
+# directory, literal strings pass through unchanged.
 def apply_template(crm_id, data=None, lang="en", template_id="crm", handle=None):
 	# Load template JSON from file if no data provided
 	if not data:
@@ -890,12 +838,9 @@ def apply_template(crm_id, data=None, lang="en", template_id="crm", handle=None)
 			if field.strip():
 				row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": v["id"], "field": field.strip(), "rank": j}, handle)
 
-# Snapshot the crm design - classes, fields, options, hierarchy, and views -
-# as template JSON. The snapshot contains literal strings (whatever the CRM
-# DB currently holds) rather than {labels.X} placeholders — it is a copy of
-# the user's live CRM, not a Mochi-shipped multi-language template. Applying
-# it via design/import writes those literal names verbatim. Shared by
-# design/export and data/export.
+# Snapshot the design (classes, fields, options, hierarchy, views) as template
+# JSON holding the literal names the CRM currently holds, not {labels.X}
+# placeholders. Shared by design/export and data/export.
 def design_export(crm_id):
 
 	# Read classes
@@ -1034,20 +979,13 @@ def action_design_export(a):
 
 	return {"data": design_export(crm_id)}
 
-# Import a design from template JSON, replacing the current design
-# Replace a crm's design with data. The deletes run in foreign-key order.
-# template_id is passed through so {labels.X} placeholders in Mochi-shipped
-# templates resolve; user-exported designs with literal names pass through
-# unchanged because substitute_labels short-circuits when no placeholder is
-# present.
+# Replace a crm's design with data; deletes run in foreign-key order.
+# template_id lets {labels.X} placeholders resolve; literal names pass through
+# because substitute_labels short-circuits without one.
 def design_replace(crm_id, data, lang, template_id):
-	# One unit: the deletes strip the design and apply_template puts the new one
-	# back, so anything that fails in between must undo the deletes rather than
-	# leave a CRM with no fields, options, views or hierarchy. An uncommitted
-	# handle is rolled back when the Starlark thread tears down, so an error
-	# path needs no explicit rollback. Callers should still reject a design that
-	# cannot apply (design_invalid, design_classes_missing) so the user gets a
-	# reason instead of a failed write.
+	# One transaction: a failure between the deletes and apply_template must not
+	# leave a CRM with no design. An uncommitted handle is rolled back when the
+	# Starlark thread tears down, so error paths need no explicit rollback.
 	handle = mochi.db.transaction()
 	row_remove("view_fields", ["crm", "view", "field"], "crm=?", [crm_id], handle)
 	row_remove("view_classes", ["crm", "view", "class"], "crm=?", [crm_id], handle)
@@ -1055,12 +993,10 @@ def design_replace(crm_id, data, lang, template_id):
 	row_remove("options", ["crm", "class", "field", "id"], "crm=?", [crm_id], handle)
 	row_remove("fields", ["crm", "class", "id"], "crm=?", [crm_id], handle)
 	row_remove("hierarchy", ["crm", "class", "parent"], "crm=?", [crm_id], handle)
-	# Classes are the one design table that objects reference, and SQLite checks
-	# that foreign key as each row is deleted rather than at commit - so a class
-	# still holding records cannot be dropped and re-created, even by a design
-	# that keeps it. Remove only the classes the new design drops; apply_template
-	# upserts the ones it keeps. Callers refuse a design that drops a class still
-	# in use (design_classes_missing), so nothing removed here holds records.
+	# Objects reference classes and SQLite checks that foreign key per deleted row,
+	# not at commit, so a class still holding records cannot be dropped and
+	# re-created. Remove only the classes the new design drops; apply_template
+	# upserts the rest.
 	keep = [c["id"] for c in data.get("classes", [])] if type(data) == "dict" else []
 	for row in handle.rows("select id from classes where crm=?", crm_id) or []:
 		if row["id"] not in keep:
@@ -1121,13 +1057,10 @@ def design_classes_missing(crm_id, data):
 			missing.append(row["class"])
 	return sorted(missing, key=lambda name: mochi.text.sortkey(name))
 
-# The design tables carry foreign keys - fields and hierarchy to classes,
-# options to fields, view classes to classes - so a design that references a
-# class or field it does not define fails mid-replacement with a raw
-# constraint error. Name the dangling references so the caller can refuse
-# before writing anything. Hierarchy parents and view field lists are not
-# checked: no foreign key covers them, and an export may legitimately carry
-# stale entries there.
+# Name the classes and fields a design references without defining, so the
+# caller can refuse before the foreign keys fail mid-replacement. Hierarchy
+# parents and view field lists are not checked: no foreign key covers them and
+# an export may carry stale entries there.
 def design_references_missing(data):
 	classes = [c["id"] for c in data.get("classes", [])]
 	fields = {}
@@ -1246,11 +1179,9 @@ def export_attachments(object_id, crm_id, frm, entries):
 		})
 	return result
 
-# Pre-fetch attachment bytes for a data export. A remote crm fetches each
-# attachment's bytes over P2P on first use, and a large crm cannot fetch
-# them all inside one action's time budget - so this action warms the local
-# cache for up to a minute and reports how many attachments remain. Callers
-# loop until remaining is zero, then run data/export.
+# Warm the local attachment cache before a data export: a remote crm pulls bytes
+# over P2P on first use and a large one cannot fetch them all in one action.
+# Runs up to a minute and reports how many remain; callers loop until zero.
 def action_data_export_warm(a):
 
 	crm_id, crm = require_crm(a, "view")
@@ -1273,16 +1204,11 @@ def action_data_export_warm(a):
 
 	return {"data": {"attachments": len(identifiers), "remaining": 0}}
 
-# Export the crm's data as JSON (format 2), together with a design snapshot
-# so the file alone fully reproduces the crm on any instance (the source
-# design may be customized or from a different template version than the
-# destination's built-in templates). Includes the crm metadata, objects with
-# field values, comments, attachments (base64 file bytes), and activity
-# history, plus links. Watchers are per-user notification state and are not
-# included. Objects whose parent is missing locally - a subscriber replica
-# can drift when events are missed - are pruned along with links that
-# reference them, so the file always passes its own import. Objects are
-# ordered by rank so an import preserves their order.
+# Export the crm as format 2 JSON with a design snapshot, so the file reproduces
+# the crm on any instance: metadata, objects and values, comments, attachments,
+# activity and links, by rank. Watchers are per-user and excluded; objects whose
+# parent is missing locally are pruned with their links so the file passes its
+# own import.
 def action_data_export(a):
 
 	# Remote crms export from the subscriber's replica - the same tables the
@@ -1291,13 +1217,10 @@ def action_data_export(a):
 	if not crm_id:
 		return
 
-	# Values are filtered against the design snapshot: a field removed from
-	# the design can leave orphan value rows, which the app never renders -
-	# exporting them would make the file fail its own import.
-	# Attachment bytes travel as archive entries rather than inside the
-	# manifest: embedding them meant holding every attachment, base64-expanded
-	# by a third, in memory at once, and an attachment may be as large as the
-	# uploader's remaining quota.
+	# Values are filtered against the design snapshot: orphan rows for a removed
+	# field would fail the file's own import. Attachment bytes travel as archive
+	# entries, not inline base64, so no export holds every attachment in memory at
+	# once.
 	entries = []
 
 	design = design_export(crm_id)
@@ -1397,13 +1320,10 @@ def action_data_export(a):
 	if links:
 		result["links"] = links
 
-	# The archive is built under a name of our own and served straight back, so
-	# neither the manifest nor any attachment is held as a response value. It is
-	# removed once written: an export is a download, not stored state.
-	# Built in cache: an export is re-obtainable and transient, and cache is
-	# resolved for the requesting user where file storage is read as the entity
-	# owner - so a subscriber exporting someone else's container writes and
-	# reads the same place.
+	# Built in cache and deleted once served: an export is a download, not stored
+	# state, and cache resolves for the requesting user where file storage reads as
+	# the entity owner, so a subscriber exporting another's crm writes and reads
+	# the same place.
 	archive = "exports/" + mochi.uid() + ".zip"
 	entries.append({"name": "manifest.json", "data": json.encode(result)})
 	mochi.archive.write(archive, entries, cache=True)
@@ -1434,11 +1354,9 @@ def import_attachments_decode(container):
 		att["data"] = data
 	return True
 
-# Remove staged import archives an earlier import abandoned. An import has many
-# validation exits and Starlark has no finally, so rather than a delete at each
-# one, a later import collects what an earlier one left. The hour matches the
-# attachment sweep: no handler outlives the Starlark time limit, so anything
-# older has no writer.
+# Remove staged archives an earlier import abandoned: Starlark has no finally,
+# so a later import collects rather than each exit deleting. Anything over an
+# hour old has no writer - no handler outlives the Starlark time limit.
 def import_staging_sweep():
 	if not mochi.file.exists("imports"):
 		return
@@ -1450,11 +1368,9 @@ def import_staging_sweep():
 		if age != None and age > 3600:
 			mochi.file.delete("imports/" + name)
 
-# Store one imported attachment against object_id, reporting whether it landed.
-# A format 3 entry streams out of the archive; a format 2 one is the decoded
-# bytes already in hand. An entry the archive does not hold - a file deleted
-# between the manifest being built and the archive being written - stores
-# nothing, and the caller must not count it.
+# Store one imported attachment, returning whether it landed. Format 3 streams
+# from the archive, format 2 has the bytes in hand; an entry missing from the
+# archive stores nothing and must not be counted.
 def import_attachment_store(archive, object_id, att):
 	if archive and type(att.get("entry")) == "string":
 		return attachment_extract(archive, att["entry"], object_id, att["name"],
@@ -1465,23 +1381,13 @@ def import_attachment_store(archive, object_id, att):
 		return True
 	return False
 
-# Import data from a data/export snapshot: objects with field values,
-# comments, attachments (format 2, base64 file bytes), and activity history,
-# plus links. Objects and comments get fresh ids; in-file references
-# (parents, links, comment threads) are remapped to the new ids, so importing
-# the same snapshot twice creates two copies. Objects are appended below
-# existing objects in file order. The crm's design must already contain every
-# class and field id the snapshot references - apply the snapshot's embedded
-# design (or the matching design/export) first via design/import; any
-# "design" key in the snapshot itself is ignored here. Format 1 files (no
-# attachments or activity) import unchanged. Everything is validated before
-# anything is written.
-#
-# Comment/activity attribution (author, user, name) is taken from the file so
-# a genuine export round-trips its history intact. This is not an access
-# grant: import requires design access on a CRM the caller owns, the fields
-# are display-only, and the writes are confined to that one CRM - so a
-# hand-forged attribution only mislabels rows in the forger's own data.
+# Import a data/export snapshot. Objects and comments get fresh ids with in-file
+# references remapped, so importing twice creates two copies; objects append
+# below existing ones in file order. The design must already hold every class
+# and field the file references (apply its embedded design via design/import
+# first; a "design" key is ignored here). Everything is validated before
+# anything is written; attribution fields come from the file and are
+# display-only.
 def action_data_import(a):
 
 	crm_id = resolve_crm(a)
@@ -1515,12 +1421,8 @@ def action_data_import(a):
 		entries = mochi.archive.list(staged)
 		if entries != None:
 			archive = staged
-			# Check the DECLARED size before reading. The old bound ran after
-			# archive.read had already built the string, so it could report a
-			# problem but never prevent one - a small zip expanding to
-			# gigabytes had already been materialised by the time it fired.
-			# archive.list reports each entry's uncompressed size, so the
-			# decision can be made before any of it is allocated.
+			# Check the declared uncompressed size from archive.list before reading: a
+			# bound applied after archive.read has already materialised the string.
 			for entry in entries:
 				if entry.get("name") == "manifest.json" and entry.get("size", 0) > IMPORT_MAXIMUM:
 					a.error.label(400, "errors.data_too_large")
@@ -1542,11 +1444,9 @@ def action_data_import(a):
 		a.error.label(400, "errors.invalid_data")
 		return
 
-	# A container is self-contained: its manifest carries the design its objects
-	# were validated against. Applying it here on request restores a backup in
-	# one upload, where the client used to sequence design then data by parsing
-	# the file itself - which it cannot do once the attachments are archive
-	# entries rather than JSON.
+	# A container carries the design its objects were validated against; applying
+	# it here restores a backup in one upload (the client cannot parse
+	# archive-entry attachments to sequence it itself).
 	if a.input("design") and type(data.get("design")) == "dict":
 		problem = design_invalid(data["design"])
 		if problem:
@@ -1966,11 +1866,8 @@ def action_crm_update(a):
 
 	return {"data": {"success": True}}
 
-# Force a fresh schema pull from the CRM owner. Mirrors action_project_resync
-# in the projects app — subscribers fall behind when an inbound event
-# references data they don't have. The event handlers self-heal via
-# request_resync on the next bad event; this action lets the UI / a user
-# trigger it on demand.
+# Force a fresh schema pull from the owner on demand; the event handlers
+# self-heal through request_resync on the next bad event.
 def action_crm_resync(a):
 	if not a.user:
 		a.error.label(401, "errors.not_logged_in")
@@ -1989,24 +1886,14 @@ def action_crm_resync(a):
 	synced = request_resync(crm_id)
 	return {"data": {"synced": synced}}
 
-# Delete crm
-# Remove every local row of a CRM — physical deletes, NOT tombstones. Used
-# only by the whole-CRM cleanup paths (unsubscribe, owner delete, the owner's
-# deleted notice): those are per-host housekeeping, not user-intent removals
-# that must converge, and tombstones there poison a later re-subscribe — the
-# sync import (and the old insert-or-ignore) skips rows that still exist in
-# <t>_all, so a re-subscribed CRM would come back as an empty shell with every
-# object and comment invisible (#466 follow-up, mirrors projects). Each
-# execute pair-replicates as one statement, so the user's own hosts purge
-# identically. Children before parents so the foreign keys stay satisfied.
+# Remove every local row of a CRM with physical deletes, not tombstones: this is
+# per-host housekeeping for unsubscribe, owner delete and the owner's deleted
+# notice, and a tombstone would make a later re-subscribe skip the row. Children
+# before parents so the foreign keys hold.
 def purge_crm(crm_id):
-	# Attachments first, and inside purge rather than at one call site: they are
-	# addressed through the comment and object rows below, so clearing them
-	# afterwards finds nothing. Only action_crm_delete used to do this, which
-	# left the other three teardown paths - unsubscribe, the owner's deleted
-	# event, and access revocation - holding every object attachment and its
-	# bytes for good. For access revocation that defeats the point of the
-	# operation: the grant is withdrawn and the files stay on disk.
+	# Attachments first, and here rather than at a call site: they are addressed
+	# through the comment and object rows deleted below, so clearing them
+	# afterwards finds nothing.
 	delete_crm_comment_attachments(crm_id)
 	for obj in (mochi.db.rows("select id from objects where crm=?", crm_id) or []):
 		attachment_clear(obj["id"])
@@ -2467,15 +2354,9 @@ def delete_object_cascade(crm_id, object_id, user=""):
 	# Broadcast delete event for each object
 	broadcast_event(crm_id, "object/delete", {"crm": crm_id, "id": object_id, "user": user})
 
-# Delete an object and its children rows from the local database only - no
-# broadcast, no notifications, no recursion (callers name each object).
-# Shared by the subscriber-path delete event and the resync deletion
-# reconciliation in insert_schema.
 # Delete an object's attachments. `preserve` keeps rows whose bytes live here
-# (entity == ""): resync drift repair may drop references to files hosted
-# elsewhere, but must never destroy this replica's own uploads - the owner may
-# already have dropped its copy, leaving ours the only one. Explicit deletes
-# pass preserve=False and clear everything, as before.
+# (entity == ""): resync repair may drop references to files hosted elsewhere
+# but must never destroy this replica's own uploads, which may be the only copy.
 def prune_attachments(object_id, crm_id, preserve):
 	kept = 0
 	for att in (attachment_list(object_id, crm_id) or []):
@@ -3450,11 +3331,9 @@ def stream_asset(a, entity_id, service, asset):
 	if "data" in header:
 		return {"data": header["data"]}
 	a.header("Content-Type", header.get("content_type", "application/octet-stream"))
-	# Bytes to relay per slot, matching what the people app accepts on upload.
-	# Without a cap, a peer answering for a person can stream indefinitely through
-	# this route, which is public. Only the three binary slots reach here - style
-	# and information returned above as data - so an unrecognised slot falls back
-	# to the largest of them rather than breaking a route that would otherwise work.
+	# Per-slot byte caps matching what the people app accepts on upload; the route
+	# is public, so an uncapped stream could run indefinitely. Unknown slots fall
+	# back to the largest cap.
 	caps = {"avatar": 2 * 1024 * 1024, "banner": 10 * 1024 * 1024, "favicon": 64 * 1024}
 	a.write.stream(s, maximum=caps.get(asset, 10 * 1024 * 1024))
 	return None
@@ -3512,11 +3391,9 @@ def action_user_asset(a):
 	if not check_crm_access(user_id, crm_id, "view"):
 		a.error.label(403, "errors.access_denied")
 		return
-	# Bind the subject to someone who actually appears in the routed crm, the
-	# way the comment and activity variants above do. Taken from the path
-	# unchecked, this opened a stream to ANY entity id a caller named and
-	# relayed it back, with view access to any one crm as the only cost of
-	# entry - and the route is public, so that access can be the "*" grant.
+	# Bind the subject to someone who appears in the routed crm, as the comment and
+	# activity variants do: the route is public, so an unchecked id would relay any
+	# entity's stream to anyone with "*" view access.
 	subject = a.input("user") or ""
 	if not subject:
 		a.error.label(404, "errors.unknown_asset")
@@ -3703,13 +3580,10 @@ def action_comment_update(a):
 		a.error.label(400, "errors.object_and_comment_id_required")
 		return
 
-	# The object must belong to the CRM access was checked against. Object
-	# and comment both come from the caller, and binding comment to object
-	# alone leaves that pair free to name another crm entirely - so a
-	# caller reaching one crm could edit or delete their own comments in
-	# any other, and the broadcast below would announce it to the wrong one
-	# while the crm that holds the comment never heard. comment/create
-	# binds it exactly this way.
+	# The object must belong to the CRM access was checked against: binding the
+	# comment to the object alone lets the pair name another crm, so a caller could
+	# edit comments anywhere and the broadcast would go to the wrong crm.
+	# comment/create binds the same way.
 	if not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
 		a.error.label(404, "errors.object_not_found")
 		return
@@ -3759,12 +3633,9 @@ def action_comment_delete(a):
 			"comment": comment_id,
 		}, handled=["errors.comment_not_found"])
 		if result and result.get("error") == "errors.comment_not_found":
-			# The owner has no such comment. If a local copy authored by this
-			# user exists, it is a phantom — an optimistic write whose submit
-			# never reached the owner — and no remote delete can ever succeed,
-			# so clean it up locally instead of leaving it stuck forever
-			# (#466, mirrors projects). The local tombstone replicates only to
-			# this user's own hosts, where the phantom lives.
+			# The owner has no such comment. A local copy by this user is a phantom (an
+			# optimistic write whose submit never arrived) that no remote delete can ever
+			# clear, so delete it locally (#466).
 			comment = mochi.db.row("select * from comments where id=? and object=?", comment_id, object_id)
 			if comment and comment["author"] == a.user.identity.id:
 				delete_comment_tree(comment_id, crm_id)
@@ -3809,11 +3680,9 @@ def action_comment_delete(a):
 # Attachment Actions
 # ============================================================================
 
-# HTTP handlers serving a CRM's attachments (and thumbnails). Auth-only routes.
-# The library's attachment_serve performs no access check of its own, so
-# this handler is the gate: require_crm enforces CRM view access (for CRMs we
-# own), and the attachment must belong to an object or comment in THIS CRM, so
-# one CRM's attachment can't be fetched via another CRM's route.
+# Attachment routes. attachment_serve performs no access check of its own, so
+# this handler is the gate: require_crm enforces view access, and the attachment
+# must belong to an object or comment in THIS CRM.
 def action_attachment(a):
 	serve_attachment(a, "")
 
@@ -3829,11 +3698,9 @@ def serve_attachment(a, variant):
 		return
 	attachment = a.input("id")
 
-	# require_crm enforced view access on the ROUTE CRM. The library serves the
-	# bytes with no access check of its own; the per-attachment binding runs in
-	# the member predicate, for CRMs we own AND subscribed ones. Never defer to
-	# "the owner enforces access on pull": a subscribed CRM whose access was
-	# later revoked keeps a locally-cached copy reachable otherwise.
+	# The binding runs for owned AND subscribed CRMs. Never defer to the owner
+	# enforcing access on pull: a subscriber whose access was revoked would keep
+	# its cached copy reachable.
 	def in_crm(obj):
 		if mochi.db.exists("select 1 from objects where id=? and crm=?", obj, crm_id):
 			return True
@@ -5445,11 +5312,7 @@ def action_probe(a):
 			"remote": True
 		}}
 
-	# Parse URL to extract server and crm ID
-	# Expected formats:
-	#   https://example.com/crm/ENTITY_ID
-	#   http://example.com/crm/ENTITY_ID
-	#   example.com/crm/ENTITY_ID
+	# Accepts https://host/crm/ENTITY_ID, http://host/crm/ENTITY_ID or host/crm/ENTITY_ID.
 	server = ""
 	crm_id = ""
 	protocol = "https://"
@@ -5826,20 +5689,10 @@ def event_schema(e):
 		"links": links,
 	})
 
-# Insert crm schema and objects into local database.
-#
-# Pre-task-#86-port every insert was `insert or ignore`, so a resync
-# only filled GAPS in the subscriber's local state - renames, reorders,
-# edited comments, changed view configurations all stayed at their old
-# values until manually fixed. This converts to UPSERTs that update the
-# editable columns in place; primary-key identity stays stable so child
-# FKs (fields->classes, options->fields, etc.) are never broken by a
-# delete-then-insert.
-#
-# Append-only tables (activity) and natural-key tables that have no
-# editable columns once created (links, view_classes, hierarchy) stay
-# as `insert or ignore` - the row's existence IS the data; there's
-# nothing to reconcile.
+# Apply a schema dump from the owner. Editable tables are upserted in place
+# (primary keys stay stable so child foreign keys survive); append-only activity
+# and natural-key tables with nothing editable (links, view_classes, hierarchy)
+# stay insert-or-ignore.
 def insert_schema(crm_id, schema):
 	# Reconcile the crm row itself (name / description). UPDATE only -
 	# the crm row was created at subscribe time and we never want to
@@ -5913,17 +5766,11 @@ def insert_schema(crm_id, schema):
 			continue
 		row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": l.get("source", ""), "target": l.get("target", ""), "linktype": l.get("linktype", ""), "created": 0})
 
-	# Reconcile deletions: the dump is the owner's canonical full state, so
-	# any scoped local row it doesn't name was deleted owner-side - typically
-	# a delete event lost in a pruned broadcast gap, which is the case resync
-	# exists for. Upserts above run first and strays go children before
-	# parents, so a mid-apply failure leaves only surplus rows for the next
-	# resync to remove. Watchers aren't carried by the dump, and activity is
-	# append-only and may hold rows local to this replica, so those tables
-	# are only cleaned via the stray-object cascade. A row the owner created
-	# while the dump was in flight can be removed here when its broadcast
-	# overtakes the response; the next broadcast-gap or idle resync restores
-	# it.
+	# Reconcile deletions: the dump is the owner's full state, so any scoped local
+	# row it does not name was deleted owner-side. Runs after the upserts, children
+	# before parents, so a mid-apply failure leaves only surplus rows. Watchers and
+	# activity are cleaned only through the stray-object cascade; a row created
+	# while the dump was in flight returns on the next resync.
 	object_survivors = {}
 	comment_survivors = {}
 	for obj in (schema.get("objects") or []):
@@ -6199,11 +6046,8 @@ def event_deleted(e):
 	# purge_crm clears the attachments, object and comment alike.
 	purge_crm(crm_id)
 
-# Handle notification that the CRM owner has revoked our access. Sent
-# directly from the CRM entity by subscribers_revalidate, so the
-# authenticated sender IS the CRM - the same anti-spoof rule as
-# event_deleted. The owner has already cut the fan-out; purge the replica so
-# revoked data doesn't linger here.
+# Owner revoked our access. Sent from the CRM entity by subscribers_revalidate,
+# so the authenticated sender IS the CRM; purge the replica.
 def event_access_revoke(e):
 	crm_id = e.header("from")
 
@@ -6218,15 +6062,9 @@ def event_access_revoke(e):
 # Content Sync Event Handlers (received by subscribers)
 # ============================================================================
 
-# Handle batched sync data from owner (single message with all CRM data)
-# Does a sync-batch element carry the keys the merge will index?
-#
-# A batch is one event: every class, view, object and link arrives together.
-# The merges index required keys with [...], which raises on a missing key or
-# on an element that is not a dict at all - and Starlark has no try/except, so
-# ONE malformed entry aborted the whole batch. The subscriber then held a
-# partial import with no error, and the next sync repeated it. Skipping the
-# bad element keeps the rest of the batch.
+# Does a sync-batch element carry the keys the merge will index? Indexing with
+# [...] raises on a missing key or a non-dict, and Starlark has no try/except,
+# so one malformed entry would abort the whole batch.
 def sync_element(item, keys):
     if type(item) != "dict":
         return False
@@ -6344,14 +6182,10 @@ def event_sync_batch(e):
 	if fp:
 		mochi.websocket.write(fp, {"type": "crm/update", "crm": crm_id})
 
-# Helper to verify a content event is for a crm we subscribe to
-# unsubscribe_stale tells a CRM owner to drop this member when a broadcast
-# arrives for a CRM the member no longer holds locally. Subscribe writes the
-# local crms(owner=0) row before notifying the owner, so a missing row in a
-# broadcast handler always means a stale roster entry, never an in-flight
-# subscribe. event_unsubscribe deletes by (crm, member), so a non-member
-# unsubscribe is a harmless no-op. The broadcast headers invert: from=crm,
-# to=this member.
+# Tell the owner to drop this member when a broadcast arrives for a CRM not held
+# locally. Subscribe writes the local row before notifying the owner, so a
+# missing row here is always a stale roster entry, never an in-flight subscribe.
+# Broadcast headers invert: from=crm, to=member.
 def unsubscribe_stale(e):
 	crm_id = e.header("from")
 	member_id = e.header("to")
@@ -6451,12 +6285,9 @@ def event_object_update(e):
 		request_resync(crm_id)
 		return
 
-	# LWW gate: drop the event when its `updated` is no newer than the
-	# locally-stored row's updated. Concurrent reparenting / reclass on
-	# the same object from different subscriber hosts would otherwise
-	# overwrite each other; the gate makes the lower-timestamp event
-	# lose deterministically. Backwards-compatible with senders that
-	# don't yet include the field — we fall back to local now.
+	# LWW gate: drop the event when its `updated` is not newer than the local row,
+	# so concurrent reparent/reclass from different hosts lose deterministically.
+	# Senders without the field fall back to local now.
 	now = mochi.time.now()
 	incoming = str(e.content("updated", "0"))
 	if mochi.text.valid(incoming, "integer"):
@@ -6488,13 +6319,9 @@ def event_object_update(e):
 		if local_id:
 			notify_watchers(object_id, crm_id, local_id, user, mochi.app.label("notifications.body.updated"))
 
-# Batched rank update from a move. One inbound event carries the new rank
-# for every object in the affected scope; we apply them all under the same
-# subscription verification + websocket notification as a single
-# object/update. No LWW gate because rank-only updates are derived from
-# the owner's authoritative renumber — applying them out of order with
-# concurrent moves still converges since the next move re-broadcasts the
-# whole scope.
+# Batched rank update from a move, applied under the same subscription check and
+# websocket notice as object/update. No LWW gate: ranks come from the owner's
+# authoritative renumber, and the next move re-broadcasts the scope.
 def event_object_ranks(e):
 	crm_id = verify_subscription(e)
 	if not crm_id:
@@ -7103,12 +6930,6 @@ def event_field_delete(e):
 
 # Field reorder
 def event_view_reorder(e):
-	"""View order from the owner.
-
-	action_view_reorder has always broadcast this, but no handler was declared
-	for it, so every subscriber dropped the event and view order converged
-	nowhere - the owner reordered and nobody else saw it. The two sibling
-	reorders beside this one were wired up correctly."""
 	crm_id = verify_subscription(e)
 	if not crm_id:
 		return
@@ -7354,11 +7175,9 @@ def do_comment_create(crm_id, crm, params, user_id, user_name):
 	now = mochi.time.now()
 	if not mochi.db.exists("select 1 from comments where id=?", comment_id):
 		row_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": user_id, "name": user_name, "content": content.strip(), "created": now, "edited": 0})
-	# The existence test above is global, so a supplied id that already belongs
-	# to another CRM's comment skips the insert - and the attachment_list below
-	# would then read THAT comment's metadata and broadcast it here. The object
-	# was checked against this CRM, so agreeing with it is proof. Same guard as
-	# event_comment_submit and event_comment_create.
+	# The existence test above is global: a supplied id already held by another
+	# CRM's comment skips the insert, and attachment_list would then broadcast that
+	# comment's metadata here. Binding to the checked object proves it.
 	if not comment_bound(comment_id, object_id):
 		return {"error": "errors.comment_not_found", "code": 404}
 	row_set("objects", ["id"], "id=?", [object_id], {"updated": now})
@@ -7379,10 +7198,8 @@ def do_comment_create(crm_id, crm, params, user_id, user_name):
 	owner_id = get_owner_identity(crm_id)
 	excerpt = (content.strip())[:80]
 	notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.commented", name=user_name, excerpt=excerpt))
-	# Mentions, here rather than only in action_comment_create: this is where
-	# the owner-side path and the P2P path (event_comment_submit) converge, so
-	# being named by a SUBSCRIBER used to notify nobody - the mention only
-	# fired when the owner typed it themselves.
+	# Mentions fire here, where the owner-side and P2P comment paths converge, so a
+	# subscriber's mention notifies too.
 	notify_mentions(object_id, crm_id, content, user_id, user_name)
 	return {"id": comment_id, "author": user_id, "name": user_name,
 			"content": content.strip(), "created": now}
@@ -7700,11 +7517,9 @@ def is_iso_date(value):
 	day = int(parts[2])
 	return month >= 1 and month <= 12 and day >= 1 and day <= 31
 
-# Validate a value against a field's type and declared constraints. Returns
-# {"key", "args"} describing the first violation, or None if acceptable. Empty
-# values are always allowed (clearing the field); "required" is a separate
-# concern. The custom-regex `pattern` constraint is not enforced here - Starlark
-# has no general regex API.
+# First violation of a field's type and constraints as {"key", "args"}, or None.
+# Empty values always pass ("required" is checked elsewhere); the regex
+# `pattern` constraint is not enforced - Starlark has no regex API.
 def validate_field_value(crm_id, class_id, field_id, value):
 	value = "" if value == None else str(value)
 	if value == "":
