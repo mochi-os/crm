@@ -2016,15 +2016,15 @@ ACCESS_LEVELS = ["design", "write", "comment", "view"]
 # Check if a user has cumulative access to a crm at the given level
 def check_crm_access(user_id, crm_id, level):
 	resource = "crm/" + crm_id
-	if mochi.access.check(user_id, resource, "*"):
-		return True
+	# One call rather than one per level: core settles each operation the same
+	# way it would alone, but builds the subject list - which costs a
+	# group-membership walk - once instead of once per level. broadcast_event
+	# runs this per subscriber, so the walk was being repeated five times for
+	# every recipient of every event.
 	levels = ["view", "comment", "write", "design"]
-	if level in levels:
-		idx = levels.index(level)
-		for l in levels[idx:]:
-			if mochi.access.check(user_id, resource, l):
-				return True
-	return False
+	if level not in levels:
+		return mochi.access.check.any(user_id, resource, ["*"])
+	return mochi.access.check.any(user_id, resource, ["*"] + levels[levels.index(level):])
 
 # Forward a subscriber action to the crm owner via P2P. `handled` names error
 # keys the CALLER recovers from itself — those return the raw error dict
