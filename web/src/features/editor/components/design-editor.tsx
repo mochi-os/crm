@@ -118,14 +118,20 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
     mutationFn: ({ classId, name, title }: { classId: string; name: string; title?: string }) =>
       crmsApi.updateClass(crmId, classId, { name, title }),
     onSuccess: invalidateCrm,
+      onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to update class`));
+    },
   });
 
   const deleteClassMutation = useMutation({
     mutationFn: (classId: string) => crmsApi.deleteClass(crmId, classId),
-    onSuccess: () => {
+    onSuccess: (_result, classId) => {
       invalidateCrm();
-      setSelectedClassId(crm.classes[0]?.id || null);
+      setSelectedClassId(crm.classes.find((c) => c.id !== classId)?.id || null);
       setEditClassOpen(false);
+    },
+      onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to delete class`));
     },
   });
 
@@ -134,6 +140,9 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
     mutationFn: ({ classId, parents }: { classId: string; parents: string[] }) =>
       crmsApi.setHierarchy(crmId, classId, parents),
     onSuccess: invalidateCrm,
+      onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to update hierarchy`));
+    },
   });
 
   // Field mutations
@@ -150,6 +159,9 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       rows?: number;
     }) => crmsApi.createField(crmId, classId, { name, fieldtype, rows: rows?.toString() }),
     onSuccess: invalidateCrm,
+      onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to create field`));
+    },
   });
 
   const updateFieldMutation = useMutation({
@@ -190,6 +202,9 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       invalidateCrm();
       setEditFieldOpen(false);
     },
+      onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to delete field`));
+    },
   });
 
   const reorderFieldsMutation = useMutation({
@@ -216,6 +231,9 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
     }) =>
       crmsApi.createOption(crmId, classId, fieldId, { name, colour }),
     onSuccess: invalidateCrm,
+      onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to create option`));
+    },
   });
 
   const updateOptionMutation = useMutation({
@@ -232,6 +250,9 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
     }) =>
       crmsApi.updateOption(crmId, classId, fieldId, optionId, updates),
     onSuccess: invalidateCrm,
+      onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to update option`));
+    },
   });
 
   const deleteOptionMutation = useMutation({
@@ -247,6 +268,9 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
     onSuccess: () => {
       invalidateCrm();
       setEditOptionOpen(false);
+    },
+      onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to delete option`));
     },
   });
 
@@ -329,6 +353,9 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       return crmsApi.updateView(crmId, viewId, payload);
     },
     onSuccess: invalidateCrm,
+      onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to update view`));
+    },
   });
 
   const deleteViewMutation = useMutation({
@@ -619,11 +646,11 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
         open={addOptionOpen}
         onOpenChange={setAddOptionOpen}
         onAdd={async (name, colour) => {
-          if (selectedClassId && editingField) {
+          if (selectedClassId && resolvedEditingField) {
             try {
               await createOptionMutation.mutateAsync({
                 classId: selectedClassId,
-                fieldId: editingField.id,
+                fieldId: resolvedEditingField.id,
                 name,
                 colour,
               });
@@ -739,20 +766,20 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
         onOpenChange={setEditOptionOpen}
         option={editingOption}
         onUpdate={(updates) => {
-          if (selectedClassId && editingField && editingOption) {
+          if (selectedClassId && resolvedEditingField && editingOption) {
             updateOptionMutation.mutate({
               classId: selectedClassId,
-              fieldId: editingField.id,
+              fieldId: resolvedEditingField.id,
               optionId: editingOption.id,
               updates,
             });
           }
         }}
         onDelete={() => {
-          if (selectedClassId && editingField && editingOption) {
+          if (selectedClassId && resolvedEditingField && editingOption) {
             deleteOptionMutation.mutate({
               classId: selectedClassId,
-              fieldId: editingField.id,
+              fieldId: resolvedEditingField.id,
               optionId: editingOption.id,
             });
           }

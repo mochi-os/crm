@@ -93,7 +93,7 @@ export function ClassSheet({
   const [dropIndicator, setDropIndicator] = useState<{ fieldId: string; position: "before" | "after" } | null>(null);
 
   // Create mode state
-  const [pendingParents, setPendingParents] = useState<string[]>([""]);
+  const [pendingParents, setPendingParents] = useState<string[]>([]);
   const [pendingFields, setPendingFields] = useState<PendingField[]>([]);
   const [addFieldOpen, setAddFieldOpen] = useState(false);
 
@@ -102,7 +102,8 @@ export function ClassSheet({
     if (!open) return;
     if (mode === "create") {
       setName("");
-      setPendingParents([]);
+      // Root, matching what the server writes for a new class.
+      setPendingParents([""]);
       setPendingFields([{ id: "title", name: t`Title`, fieldtype: "text", flags: "required,sort" }]);
     } else if (cls) {
       setName(cls.name);

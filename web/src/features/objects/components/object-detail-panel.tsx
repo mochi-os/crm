@@ -23,6 +23,8 @@ import {
   SelectTrigger,
   SelectValue,
   cn,
+  toast,
+  getErrorMessage,
   GeneralError,
   ListSkeleton,
   useShellOverlay,
@@ -161,6 +163,9 @@ export function ObjectDetailPanel({
         queryKey: ["objects", crmId],
       });
     },
+    onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to save`));
+    },
   });
 
   const watchMutation = useMutation({
@@ -177,6 +182,9 @@ export function ObjectDetailPanel({
         queryKey: ["object", crmId, objectId],
       });
     },
+    onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to update watch`));
+    },
   });
 
   const deleteMutation = useMutation({
@@ -190,6 +198,9 @@ export function ObjectDetailPanel({
         queryKey: ["objects", crmId],
       });
       requestAnimationFrame(() => onClose());
+    },
+    onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to delete`));
     },
   });
 
@@ -205,6 +216,9 @@ export function ObjectDetailPanel({
       queryClient.invalidateQueries({
         queryKey: ["objects", crmId],
       });
+    },
+    onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to move`));
     },
   });
 

@@ -291,7 +291,7 @@ export function CreateCrmDialog({
                   onClick={() => fileInputRef.current?.click()}
                 >
                   <Upload className="size-4 me-1.5" />
-                  <Trans>Upload .json file</Trans>
+                  <Trans>Upload backup file</Trans>
                 </Button>
               </div>
               {importFileName && (
@@ -309,6 +309,8 @@ export function CreateCrmDialog({
                           variant="ghost"
                           onClick={() => {
                             setImportData(null);
+                            setImportFile(null);
+                            setImportArchive(false);
                             setImportFileName("");
                             if (fileInputRef.current) {
                               fileInputRef.current.value = "";
