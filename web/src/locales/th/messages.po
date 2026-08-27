@@ -14,11 +14,11 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: ../../../lib/web/src/lib/error-normalizer.ts:223
+#: ../../../lib/web/src/lib/error-normalizer.ts:215
 msgid "Please check your internet connection and try again."
 msgstr "โปรดตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณแล้วลองอีกครั้ง"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:300
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:301
 msgid " or "
 msgstr " หรือ "
 
@@ -30,47 +30,37 @@ msgstr "(แก้ไขแล้ว)"
 msgid "(expand)"
 msgstr "(ขยาย)"
 
-#: src/features/editor/components/edit-dialogs.tsx:320
+#: src/features/editor/components/edit-dialogs.tsx:321
 msgid "(itself)"
 msgstr "(ตัวเอง)"
 
-#: ../../../lib/web/src/components/entity/entity-board-container.tsx:752
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:753
 msgid "[not set]"
 msgstr "[ไม่ได้ตั้ง]"
-
-#. placeholder {0}: selectedValues.size
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
-msgid "{0, plural, one {# selected} other {# selected}}"
-msgstr "{0, plural, one {เลือกแล้ว #} other {เลือกแล้ว #}}"
 
 #. placeholder {0}: String(name)
 #: src/routes/_authenticated/$crmId/design.tsx:42
 msgid "{0} - Design"
 msgstr "{0} - การออกแบบ"
 
-#. placeholder {0}: item.label
-#: ../../../lib/web/src/components/config-drawer.tsx:160
-msgid "{0} option preview"
-msgstr "ตัวอย่างตัวเลือก {0}"
-
 #. placeholder {0}: String(name)
 #: src/routes/_authenticated/$crmId_.settings.tsx:85
 msgid "{0} settings"
 msgstr "การตั้งค่า {0}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:175
+#: ../../../lib/web/src/lib/locale-format.ts:176
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#ว} other {#ว}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:171
+#: ../../../lib/web/src/lib/locale-format.ts:172
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#ชม} other {#ชม}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:167
+#: ../../../lib/web/src/lib/locale-format.ts:168
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#น} other {#น}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:179
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#สัป} other {#สัป}}"
 
@@ -86,28 +76,12 @@ msgstr "ต้องระบุชื่อ{entityLabel}"
 msgid "{opponentName} offered a draw"
 msgstr "{opponentName} เสนอเสมอ"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:200
-msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
-msgstr "{selectedCount, plural, one {เลือก {entityName} แล้ว} other {เลือก {manyName} แล้ว}}"
-
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:42
-msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
-msgstr "{selectedCount, plural, one {เลือก {entityName} # รายการแล้ว แถบเครื่องมือดำเนินการเป็นกลุ่มพร้อมใช้งาน} other {เลือก {manyName} # รายการแล้ว แถบเครื่องมือดำเนินการเป็นกลุ่มพร้อมใช้งาน}}"
-
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:192
-msgid "{selectedCount, plural, one {# selected} other {# selected}}"
-msgstr "{selectedCount, plural, one {# ที่เลือก} other {# ที่เลือก}}"
-
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:139
-msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
-msgstr "{selectedCount, plural, one {การดำเนินการเป็นกลุ่มสำหรับ {entityName} # รายการที่เลือก} other {การดำเนินการเป็นกลุ่มสำหรับ {manyName} # รายการที่เลือก}}"
-
-#: ../../../lib/web/src/components/attachment-composer.tsx:241
+#: ../../../lib/web/src/components/attachment-composer.tsx:248
 #: ../../../lib/web/src/components/ui/upload-progress.tsx:52
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} จาก {totalLabel}"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:528
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:530
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# รายการ} other {# รายการ}}"
 
@@ -152,10 +126,6 @@ msgstr "การเข้าถึง"
 msgid "Access denied"
 msgstr "ปฏิเสธการเข้าถึง"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:16
-msgid "Access Forbidden"
-msgstr "ห้ามเข้าถึง"
-
 #: ../../../lib/web/src/features/access/access-list.tsx:197
 msgid "Access level"
 msgstr "ระดับการเข้าถึง"
@@ -176,27 +146,15 @@ msgstr "ลบการเข้าถึงแล้ว"
 msgid "Access set for {subjectName}"
 msgstr "ตั้งค่าการเข้าถึงสำหรับ{subjectName}แล้ว"
 
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:216
-msgid "Account added"
-msgstr "เพิ่มบัญชีแล้ว"
-
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:232
-msgid "Account removed"
-msgstr "ลบบัญชีแล้ว"
-
 #: ../../../lib/web/src/features/accounts/account-add.tsx:139
 msgid "Account type"
 msgstr "ประเภทบัญชี"
 
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:242
-msgid "Account verified"
-msgstr "ยืนยันบัญชีแล้ว"
-
-#: src/features/objects/components/object-detail-panel.tsx:300
+#: src/features/objects/components/object-detail-panel.tsx:315
 msgid "Activity"
 msgstr "กิจกรรม"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:711
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:720
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
 msgid "Add"
@@ -219,26 +177,21 @@ msgid "Add access"
 msgstr "เพิ่มการเข้าถึง"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx:132
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:288
 msgid "Add account"
 msgstr "เพิ่มบัญชี"
 
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:297
-msgid "Add an account to receive notifications and use services."
-msgstr "เพิ่มบัญชีเพื่อรับการแจ้งเตือนและใช้บริการ"
-
-#: ../../../lib/web/src/components/attachment-composer.tsx:284
+#: ../../../lib/web/src/components/attachment-composer.tsx:291
 msgid "Add caption"
 msgstr "เพิ่มคำบรรยายภาพ"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:681
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:690
 msgid "Add checklist item"
 msgstr "เพิ่มรายการเช็คลิสต์"
 
-#: src/features/editor/components/design-editor.tsx:518
-#: src/features/editor/components/design-editor.tsx:523
-#: src/features/editor/components/edit-dialogs.tsx:217
-#: src/features/editor/components/edit-dialogs.tsx:406
+#: src/features/editor/components/design-editor.tsx:545
+#: src/features/editor/components/design-editor.tsx:550
+#: src/features/editor/components/edit-dialogs.tsx:218
+#: src/features/editor/components/edit-dialogs.tsx:407
 msgid "Add class"
 msgstr "เพิ่มคลาส"
 
@@ -248,21 +201,17 @@ msgstr "เพิ่มคอลัมน์"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
-#: src/features/editor/components/edit-dialogs.tsx:401
+#: src/features/editor/components/edit-dialogs.tsx:402
 msgid "Add field"
 msgstr "เพิ่มฟิลด์"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:699
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:708
 msgid "Add item..."
 msgstr "เพิ่มรายการ..."
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
 msgid "Add link"
 msgstr "เพิ่มลิงก์"
-
-#: ../../../lib/web/src/features/accounts/account-picker.tsx:102
-msgid "Add new account"
-msgstr "เพิ่มบัญชีใหม่"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
@@ -277,13 +226,8 @@ msgid "Add rule"
 msgstr "เพิ่มกฎ"
 
 #: ../../../lib/web/src/components/post-tags.tsx:137
-#: ../../../lib/web/src/components/tag-input.tsx:40
 msgid "Add tag..."
 msgstr "เพิ่มแท็ก..."
-
-#: ../../../lib/web/src/components/layout/team-switcher.tsx:83
-msgid "Add team/app"
-msgstr "เพิ่มทีม/แอป"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx:175
 msgid "Add to existing notifications"
@@ -293,8 +237,8 @@ msgstr "เพิ่มไปยังการแจ้งเตือนที
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:513
 #: ../../../lib/web/src/components/view-tabs.tsx:87
 #: ../../../lib/web/src/components/view-tabs.tsx:93
-#: src/features/editor/components/design-editor.tsx:464
-#: src/features/editor/components/design-editor.tsx:469
+#: src/features/editor/components/design-editor.tsx:491
+#: src/features/editor/components/design-editor.tsx:496
 msgid "Add view"
 msgstr "เพิ่มมุมมอง"
 
@@ -302,17 +246,9 @@ msgstr "เพิ่มมุมมอง"
 msgid "Adding..."
 msgstr "กำลังเพิ่ม..."
 
-#: ../../../lib/web/src/components/config-drawer.tsx:72
-msgid "Adjust the appearance and layout to suit your preferences."
-msgstr "ปรับลักษณะและรูปแบบให้เหมาะกับความต้องการของคุณ"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:41
 msgid "AI"
 msgstr "AI"
-
-#: ../../../lib/web/src/components/notifications-dropdown.tsx:163
-msgid "All"
-msgstr "ทั้งหมด"
 
 #: src/components/layout/crms-layout.tsx:34
 msgid "All CRMs"
@@ -335,7 +271,7 @@ msgstr "อนุญาตให้เรียงตาม"
 msgid "An error occurred"
 msgstr "เกิดข้อผิดพลาด"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:275
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:266
 msgid "An unexpected error occurred"
 msgstr "เกิดข้อผิดพลาดที่ไม่คาดคิด"
 
@@ -344,11 +280,11 @@ msgid "Android push"
 msgstr "พุช Android"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:45
-#: ../../../lib/web/src/features/access/types.ts:42
+#: ../../../lib/web/src/features/access/types.ts:36
 msgid "Anyone"
 msgstr "ใครก็ได้"
 
-#: ../../../lib/web/src/features/access/types.ts:41
+#: ../../../lib/web/src/features/access/types.ts:35
 msgid "Anyone who is logged in"
 msgstr "ใครก็ตามที่เข้าสู่ระบบ"
 
@@ -361,11 +297,11 @@ msgstr "ทุกอย่างที่สมัครรับฟีดนี
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบ\"{0}\"?"
 
-#: src/features/objects/components/object-detail-panel.tsx:510
+#: src/features/objects/components/object-detail-panel.tsx:525
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบ\"{title}\"? การกระทำนี้ไม่สามารถยกเลิกได้"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:627
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:629
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบคอลัมน์\"{name}\"? การกระทำนี้ไม่สามารถยกเลิกได้"
 
@@ -381,10 +317,6 @@ msgstr "คุณแน่ใจหรือไม่ว่าต้องกา
 msgid "Are you sure you want to unsubscribe from this CRM?"
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการยกเลิกการสมัครสมาชิก CRM นี้?"
 
-#: ../../../lib/web/src/components/data-table/column-header.tsx:59
-msgid "Asc"
-msgstr "น้อยไปมาก"
-
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Ascending"
 msgstr "จากน้อยไปมาก"
@@ -398,11 +330,11 @@ msgid "Attach reply files"
 msgstr "แนบไฟล์ตอบกลับ"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:46
-#: ../../../lib/web/src/features/access/types.ts:41
+#: ../../../lib/web/src/features/access/types.ts:35
 msgid "Authenticated users"
 msgstr "ผู้ใช้ที่ยืนยันตัวตนแล้ว"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:317
+#: ../../../lib/web/src/components/step-up-dialog.tsx:318
 msgid "Authenticator code"
 msgstr "รหัส Authenticator"
 
@@ -432,7 +364,6 @@ msgstr "กลับไปยัง CRM"
 msgid "Back to CRMs"
 msgstr "กลับไปยัง CRM ทั้งหมด"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:28
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:28
 #: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
@@ -447,8 +378,8 @@ msgstr "แบนเนอร์"
 msgid "Blocked by"
 msgstr "ถูกบล็อกโดย"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:225
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:235
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:242
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:252
 msgid "Blocked navigation to untrusted link"
 msgstr "บล็อกการนำทางไปยังลิงก์ที่ไม่น่าเชื่อถือ"
 
@@ -473,17 +404,17 @@ msgstr "สีขอบ"
 msgid "Browser notifications"
 msgstr "การแจ้งเตือนของเบราว์เซอร์"
 
-#: src/features/editor/components/edit-dialogs.tsx:302
+#: src/features/editor/components/edit-dialogs.tsx:303
 msgid "Can be child of"
 msgstr "สามารถเป็นลูกของ"
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:419
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:612
+#: ../../../lib/web/src/components/attachment-composer.tsx:426
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:211
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:166
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
-#: ../../../lib/web/src/components/step-up-dialog.tsx:365
+#: ../../../lib/web/src/components/step-up-dialog.tsx:366
 #: ../../../lib/web/src/components/travelling-picker.tsx:308
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:249
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:132
@@ -491,7 +422,7 @@ msgstr "สามารถเป็นลูกของ"
 #: ../../../lib/web/src/features/access/access-list.tsx:268
 #: ../../../lib/web/src/features/accounts/account-add.tsx:201
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
-#: src/features/crms/components/create-crm-dialog.tsx:336
+#: src/features/crms/components/create-crm-dialog.tsx:338
 #: src/routes/_authenticated/$crmId/design.tsx:57
 #: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Cancel"
@@ -505,23 +436,19 @@ msgstr "ยกเลิกความคิดเห็น"
 msgid "Cancel reply"
 msgstr "ยกเลิกการตอบกลับ"
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:379
-#: ../../../lib/web/src/components/attachment-composer.tsx:414
+#: ../../../lib/web/src/components/attachment-composer.tsx:386
+#: ../../../lib/web/src/components/attachment-composer.tsx:421
 msgid "Caption"
 msgstr "คำบรรยายภาพ"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:97
+#: ../../../lib/web/src/components/notification-category-button.tsx:99
 msgid "Category for these notifications"
 msgstr "หมวดหมู่สำหรับการแจ้งเตือนเหล่านี้"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:78
-#: ../../../lib/web/src/components/notification-category-button.tsx:89
+#: ../../../lib/web/src/components/notification-category-button.tsx:80
+#: ../../../lib/web/src/components/notification-category-button.tsx:91
 msgid "Change notification category"
 msgstr "เปลี่ยนหมวดหมู่การแจ้งเตือน"
-
-#: ../../../lib/web/src/components/notifications-dropdown.tsx:198
-msgid "Check \"All\" to see your past notifications."
-msgstr "เลือก \"ทั้งหมด\" เพื่อดูการแจ้งเตือนที่ผ่านมา"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:137
 msgid "Checkbox"
@@ -531,28 +458,12 @@ msgstr "ช่องทำเครื่องหมาย"
 msgid "Checklist"
 msgstr "เช็คลิสต์"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:33
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:35
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "เลือกเกมจากแถบด้านข้างหรือเริ่มเกมใหม่"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:329
-msgid "Choose between default expanded, compact icon-only, or full layout mode"
-msgstr "เลือกระหว่างโหมดขยายปกติ ไอคอนกะทัดรัด หรือเต็มรูปแบบ"
-
-#: ../../../lib/web/src/components/config-drawer.tsx:271
-msgid "Choose between inset, floating, or standard sidebar layout"
-msgstr "เลือกระหว่างเลย์เอาต์แถบด้านข้างแบบฝัง ลอย หรือมาตรฐาน"
-
-#: ../../../lib/web/src/components/config-drawer.tsx:372
-msgid "Choose between left-to-right or right-to-left site direction"
-msgstr "เลือกระหว่างทิศทางเว็บไซต์จากซ้ายไปขวาหรือขวาไปซ้าย"
-
-#: ../../../lib/web/src/components/config-drawer.tsx:227
-msgid "Choose between system preference, light mode, or dark mode"
-msgstr "เลือกระหว่างการตั้งค่าระบบ โหมดสว่าง หรือโหมดมืด"
-
-#: ../../../lib/web/src/components/language-picker.tsx:263
-#: ../../../lib/web/src/components/language-picker.tsx:270
+#: ../../../lib/web/src/components/language-picker.tsx:264
+#: ../../../lib/web/src/components/language-picker.tsx:271
 msgid "Choose language"
 msgstr "เลือกภาษา"
 
@@ -560,7 +471,7 @@ msgstr "เลือกภาษา"
 msgid "Class"
 msgstr "คลาส"
 
-#: src/features/editor/components/design-editor.tsx:511
+#: src/features/editor/components/design-editor.tsx:538
 msgid "Classes"
 msgstr "คลาส"
 
@@ -577,26 +488,12 @@ msgstr "ล้าง"
 msgid "Clear all"
 msgstr "ล้างทั้งหมด"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
-msgid "Clear filters"
-msgstr "ล้างตัวกรอง"
-
 #: ../../../lib/web/src/components/search-input.tsx:26
 msgid "Clear search"
 msgstr "ล้างการค้นหา"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
-msgid "Clear selection"
-msgstr "ล้างการเลือก"
-
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:175
-msgid "Clear selection (Escape)"
-msgstr "ล้างการเลือก (Escape)"
-
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:500
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:505
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:501
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:506
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:468
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:471
@@ -608,8 +505,8 @@ msgstr "ปิด"
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:263
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:267
-#: src/features/editor/components/edit-dialogs.tsx:222
-#: src/features/editor/components/edit-dialogs.tsx:226
+#: src/features/editor/components/edit-dialogs.tsx:223
+#: src/features/editor/components/edit-dialogs.tsx:227
 msgid "Close dialog"
 msgstr "ปิดกล่องโต้ตอบ"
 
@@ -618,8 +515,8 @@ msgstr "ปิดกล่องโต้ตอบ"
 msgid "Close navigation"
 msgstr "ปิดการนำทาง"
 
-#: ../../../lib/web/src/components/layout/right-panel.tsx:265
-#: ../../../lib/web/src/components/layout/right-panel.tsx:268
+#: ../../../lib/web/src/components/layout/right-panel.tsx:234
+#: ../../../lib/web/src/components/layout/right-panel.tsx:237
 msgid "Close panel"
 msgstr "ปิดแผง"
 
@@ -646,8 +543,8 @@ msgstr "ย่อแถบด้านข้าง"
 msgid "Colour"
 msgstr "สี"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:537
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:542
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:539
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:544
 msgid "Column actions"
 msgstr "การดำเนินการคอลัมน์"
 
@@ -658,10 +555,6 @@ msgstr "คอลัมน์จัดกลุ่มตาม"
 #: ../../../lib/web/src/lib/preference-utils.ts:91
 msgid "Comfortable"
 msgstr "สบาย"
-
-#: ../../../lib/web/src/components/coming-soon.tsx:12
-msgid "Coming Soon!"
-msgstr "เร็วๆนี้!"
 
 #: ../../../lib/web/src/components/ui/command.tsx:34
 msgid "Command Palette"
@@ -682,16 +575,15 @@ msgid "Comments"
 msgstr "ความคิดเห็น"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:299
+#: src/features/objects/components/object-detail-panel.tsx:314
 msgid "Comments ({0})"
 msgstr "ความคิดเห็น ({0})"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:316
 #: ../../../lib/web/src/lib/preference-utils.ts:90
 msgid "Compact"
 msgstr "กะทัดรัด"
 
-#: src/features/editor/components/edit-dialogs.tsx:218
+#: src/features/editor/components/edit-dialogs.tsx:219
 msgid "Configure class settings"
 msgstr "ตั้งค่าคลาส"
 
@@ -711,10 +603,6 @@ msgstr "ยืนยัน"
 #: ../../../lib/web/src/lib/chat-ui.ts:18
 msgid "Connected"
 msgstr "เชื่อมต่อแล้ว"
-
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:191
-msgid "Connected accounts"
-msgstr "บัญชีที่เชื่อมต่อ"
 
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Connecting..."
@@ -736,7 +624,7 @@ msgstr "ข้อมูลบริบทและรายละเอียด
 msgid "Continue"
 msgstr "ดำเนินการต่อ"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:354
+#: ../../../lib/web/src/components/step-up-dialog.tsx:355
 msgid "Continue with {label}"
 msgstr "ดำเนินการต่อด้วย {label}"
 
@@ -756,26 +644,26 @@ msgstr "คัดลอก"
 msgid "Could not load this document. Please try again later."
 msgstr "ไม่สามารถโหลดเอกสารนี้ได้ โปรดลองอีกครั้งในภายหลัง"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:111
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:128
 msgid "Couldn't load notifications"
 msgstr "ไม่สามารถโหลดการแจ้งเตือนได้"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:181
+#: ../../../lib/web/src/components/step-up-dialog.tsx:182
 msgid "Couldn't send the code. Please try again."
 msgstr "ส่งรหัสไม่สำเร็จ โปรดลองอีกครั้ง"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:135
+#: ../../../lib/web/src/components/step-up-dialog.tsx:136
 msgid "Couldn't start re-authentication. Please try again."
 msgstr "เริ่มการยืนยันตัวตนอีกครั้งไม่สำเร็จ โปรดลองอีกครั้ง"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:223
+#: ../../../lib/web/src/components/step-up-dialog.tsx:224
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ไม่สามารถยืนยันด้วยบัญชีนั้นได้ โปรดลองอีกครั้ง"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:548
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:687
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:490
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:654
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:550
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:689
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:491
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:675
 msgid "Create"
 msgstr "สร้าง"
@@ -797,7 +685,7 @@ msgstr "สร้างวัตถุ CRM ใหม่"
 #: src/components/layout/crms-layout.tsx:36
 #: src/features/crms/components/create-crm-dialog.tsx:238
 #: src/features/crms/components/create-crm-dialog.tsx:248
-#: src/features/crms/components/create-crm-dialog.tsx:339
+#: src/features/crms/components/create-crm-dialog.tsx:341
 msgid "Create CRM"
 msgstr "สร้าง CRM"
 
@@ -822,9 +710,9 @@ msgstr "สร้างแล้ว"
 msgid "Creating CRM..."
 msgstr "กำลังสร้าง CRM..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:654
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
-#: src/features/crms/components/create-crm-dialog.tsx:339
+#: src/features/crms/components/create-crm-dialog.tsx:341
 msgid "Creating..."
 msgstr "กำลังสร้าง..."
 
@@ -877,18 +765,11 @@ msgstr "ตำแหน่งปัจจุบัน"
 msgid "Custom"
 msgstr "กำหนดเอง"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:219
-#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:15
 msgid "Dark"
 msgstr "มืด"
 
-#: ../../../lib/web/src/components/profile-dropdown.tsx:87
-#: ../../../lib/web/src/components/profile-dropdown.tsx:123
-msgid "Dark mode"
-msgstr "โหมดมืด"
-
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:259
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:250
 msgid "Data conflict"
 msgstr "ข้อมูลขัดแย้งกัน"
 
@@ -908,10 +789,6 @@ msgstr "วันที่"
 msgid "Decline"
 msgstr "ปฏิเสธ"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:311
-msgid "Default"
-msgstr "ค่าเริ่มต้น"
-
 #: ../../../lib/web/src/features/accounts/account-add.tsx:185
 msgid "Default AI account"
 msgstr "บัญชี AI เริ่มต้น"
@@ -920,8 +797,8 @@ msgstr "บัญชี AI เริ่มต้น"
 msgid "Default sort"
 msgstr "การเรียงลำดับเริ่มต้น"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:567
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:569
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:630
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:280
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:323
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:353
@@ -929,7 +806,7 @@ msgstr "การเรียงลำดับเริ่มต้น"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:203
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:314
-#: src/features/objects/components/object-detail-panel.tsx:511
+#: src/features/objects/components/object-detail-panel.tsx:526
 #: src/routes/_authenticated/$crmId_.settings.tsx:100
 msgid "Delete"
 msgstr "ลบ"
@@ -938,11 +815,11 @@ msgstr "ลบ"
 msgid "Delete attachment"
 msgstr "ลบไฟล์แนบ"
 
-#: src/features/editor/components/edit-dialogs.tsx:243
+#: src/features/editor/components/edit-dialogs.tsx:244
 msgid "Delete class"
 msgstr "ลบคลาส"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:626
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
 msgid "Delete column"
 msgstr "ลบคอลัมน์"
 
@@ -963,9 +840,9 @@ msgstr "ลบ CRM หรือไม่?"
 msgid "Delete field"
 msgstr "ลบฟิลด์"
 
-#: src/features/objects/components/object-detail-panel.tsx:348
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:509
+#: src/features/objects/components/object-detail-panel.tsx:363
+#: src/features/objects/components/object-detail-panel.tsx:368
+#: src/features/objects/components/object-detail-panel.tsx:524
 msgid "Delete item"
 msgstr "ลบรายการ"
 
@@ -990,10 +867,6 @@ msgstr "ลบบัญชีของคุณบนเซิร์ฟเวอ
 #: src/routes/_authenticated/$crmId_.settings.tsx:105
 msgid "Deleting CRM..."
 msgstr "กำลังลบ CRM..."
-
-#: ../../../lib/web/src/components/data-table/column-header.tsx:63
-msgid "Desc"
-msgstr "มากไปน้อย"
 
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Descending"
@@ -1023,7 +896,7 @@ msgstr "ออกแบบ สร้าง แก้ไข แสดงควา
 msgid "Details Panel"
 msgstr "แผงรายละเอียด"
 
-#: ../../../lib/web/src/components/language-picker.tsx:239
+#: ../../../lib/web/src/components/language-picker.tsx:240
 #: ../../../lib/web/src/components/timezone-select.tsx:46
 #: ../../../lib/web/src/components/timezone-select.tsx:83
 #: ../../../lib/web/src/lib/preference-utils.ts:23
@@ -1033,10 +906,6 @@ msgstr "แผงรายละเอียด"
 #: ../../../lib/web/src/lib/preference-utils.ts:79
 msgid "Detect from web browser"
 msgstr "ตรวจจับจากเว็บเบราว์เซอร์"
-
-#: ../../../lib/web/src/components/config-drawer.tsx:341
-msgid "Direction"
-msgstr "ทิศทาง"
 
 #: ../../../lib/web/src/components/person-picker.tsx:214
 msgid "Directory"
@@ -1064,14 +933,14 @@ msgstr "ปิด"
 msgid "Dismiss board hint"
 msgstr "ปิดคำแนะนำกระดาน"
 
-#: ../../../lib/web/src/components/ui/sidebar.tsx:238
+#: ../../../lib/web/src/components/ui/sidebar.tsx:258
 msgid "Displays the mobile sidebar."
 msgstr "แสดงแถบด้านข้างบนมือถือ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:305
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:518
-#: src/features/editor/components/edit-dialogs.tsx:411
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: src/features/editor/components/edit-dialogs.tsx:412
+#: src/features/objects/components/object-detail-panel.tsx:377
 msgid "Done"
 msgstr "เสร็จสิ้น"
 
@@ -1089,7 +958,7 @@ msgstr "ดาวน์โหลด"
 msgid "Download backup first"
 msgstr "ดาวน์โหลดสำรองข้อมูลก่อน"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:99
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:98
 msgid "Download failed"
 msgstr "ดาวน์โหลดไม่สำเร็จ"
 
@@ -1106,7 +975,7 @@ msgstr "ลากคอลัมน์เพื่อเรียงลำดั
 msgid "Duplicates"
 msgstr "ทำซ้ำ"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:141
+#: ../../../lib/web/src/lib/preference-utils.ts:134
 msgid "Dyslexia-friendly"
 msgstr "เหมาะสำหรับผู้บกพร่องการอ่าน"
 
@@ -1119,11 +988,11 @@ msgstr "แก้ไข"
 msgid "Edit {label}"
 msgstr "แก้ไข {label}"
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:284
+#: ../../../lib/web/src/components/attachment-composer.tsx:291
 msgid "Edit caption"
 msgstr "แก้ไขคำบรรยายภาพ"
 
-#: src/features/editor/components/edit-dialogs.tsx:217
+#: src/features/editor/components/edit-dialogs.tsx:218
 msgid "Edit class"
 msgstr "แก้ไขคลาส"
 
@@ -1157,15 +1026,15 @@ msgstr "แก้ไขมุมมอง"
 msgid "Email"
 msgstr "อีเมล"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:291
+#: ../../../lib/web/src/components/step-up-dialog.tsx:292
 msgid "Email code"
 msgstr "รหัสอีเมล"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:301
+#: ../../../lib/web/src/components/step-up-dialog.tsx:302
 msgid "Enter the code from your email"
 msgstr "ป้อนรหัสจากอีเมลของคุณ"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:326
+#: ../../../lib/web/src/components/step-up-dialog.tsx:327
 msgid "Enter your authenticator code"
 msgstr "ป้อนรหัสจากแอปยืนยันตัวตนของคุณ"
 
@@ -1173,7 +1042,7 @@ msgstr "ป้อนรหัสจากแอปยืนยันตัวต
 msgid "Entity ID"
 msgstr "Entity ID"
 
-#: src/features/objects/components/object-detail-panel.tsx:269
+#: src/features/objects/components/object-detail-panel.tsx:284
 msgid "Error"
 msgstr "ข้อผิดพลาด"
 
@@ -1204,17 +1073,9 @@ msgstr "ส่งออกการออกแบบ"
 msgid "External URL"
 msgstr "URL ภายนอก"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:131
+#: ../../../lib/web/src/lib/preference-utils.ts:124
 msgid "Extra large"
 msgstr "ใหญ่พิเศษ"
-
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:225
-msgid "Failed to add account"
-msgstr "ไม่สามารถเพิ่มบัญชีได้"
-
-#: ../../../lib/web/src/components/tag-input.tsx:39
-msgid "Failed to add tag"
-msgstr "ไม่สามารถเพิ่มแท็กได้"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx:26
 #: ../../../lib/web/src/lib/toast-utils.ts:44
@@ -1229,7 +1090,8 @@ msgstr "ไม่สามารถสร้างคลาสได้"
 msgid "Failed to create CRM"
 msgstr "ไม่สามารถสร้าง CRM ได้"
 
-#: src/features/editor/components/design-editor.tsx:611
+#: src/features/editor/components/design-editor.tsx:163
+#: src/features/editor/components/design-editor.tsx:638
 msgid "Failed to create field"
 msgstr "ไม่สามารถสร้างฟิลด์ได้"
 
@@ -1239,17 +1101,26 @@ msgstr "ไม่สามารถสร้างฟิลด์ได้"
 msgid "Failed to create link"
 msgstr "ไม่สามารถสร้างลิงก์ได้"
 
-#: src/features/editor/components/design-editor.tsx:631
+#: src/features/editor/components/design-editor.tsx:235
+#: src/features/editor/components/design-editor.tsx:658
 msgid "Failed to create option"
 msgstr "ไม่สามารถสร้างตัวเลือกได้"
 
-#: src/features/editor/components/design-editor.tsx:289
+#: src/features/editor/components/design-editor.tsx:313
 msgid "Failed to create view"
 msgstr "ไม่สามารถสร้างมุมมองได้"
+
+#: src/features/objects/components/object-detail-panel.tsx:203
+msgid "Failed to delete"
+msgstr "ไม่สามารถลบได้"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:130
 msgid "Failed to delete attachment"
 msgstr "ไม่สามารถลบไฟล์แนบได้"
+
+#: src/features/editor/components/design-editor.tsx:134
+msgid "Failed to delete class"
+msgstr "ไม่สามารถลบคลาสได้"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx:191
 msgid "Failed to delete comment"
@@ -1259,11 +1130,19 @@ msgstr "ไม่สามารถลบความคิดเห็นได
 msgid "Failed to delete CRM"
 msgstr "ลบ CRM ไม่สำเร็จ"
 
+#: src/features/editor/components/design-editor.tsx:206
+msgid "Failed to delete field"
+msgstr "ไม่สามารถลบฟิลด์ได้"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
 msgid "Failed to delete link"
 msgstr "ไม่สามารถลบลิงก์ได้"
 
-#: src/features/editor/components/design-editor.tsx:341
+#: src/features/editor/components/design-editor.tsx:273
+msgid "Failed to delete option"
+msgstr "ไม่สามารถลบตัวเลือกได้"
+
+#: src/features/editor/components/design-editor.tsx:368
 msgid "Failed to delete view"
 msgstr "ไม่สามารถลบมุมมองได้"
 
@@ -1288,7 +1167,7 @@ msgstr "นำเข้าข้อมูลไม่สำเร็จ"
 msgid "Failed to import design"
 msgstr "ไม่สามารถนำเข้าการออกแบบได้"
 
-#: ../../../lib/web/src/hooks/use-load-more.ts:77
+#: ../../../lib/web/src/hooks/use-load-more.ts:78
 msgid "Failed to load"
 msgstr "ไม่สามารถโหลดได้"
 
@@ -1307,7 +1186,7 @@ msgstr "ไม่สามารถโหลดการออกแบบ CRM �
 msgid "Failed to load CRMs"
 msgstr "ไม่สามารถโหลด CRM ได้"
 
-#: ../../../lib/web/src/components/audit-timeline.tsx:65
+#: ../../../lib/web/src/components/audit-timeline.tsx:68
 msgid "Failed to load history"
 msgstr "ไม่สามารถโหลดประวัติได้"
 
@@ -1315,7 +1194,7 @@ msgstr "ไม่สามารถโหลดประวัติได้"
 msgid "Failed to load image"
 msgstr "โหลดรูปภาพไม่สำเร็จ"
 
-#: src/features/objects/components/object-detail-panel.tsx:270
+#: src/features/objects/components/object-detail-panel.tsx:285
 msgid "Failed to load item"
 msgstr "ไม่สามารถโหลดรายการได้"
 
@@ -1326,6 +1205,10 @@ msgstr "โหลด CRM แนะนำไม่สำเร็จ"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
 msgid "Failed to load video"
 msgstr "โหลดวิดีโอไม่สำเร็จ"
+
+#: src/features/objects/components/object-detail-panel.tsx:221
+msgid "Failed to move"
+msgstr "ย้ายไม่สำเร็จ"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx:154
 msgid "Failed to post comment"
@@ -1340,15 +1223,11 @@ msgstr "ไม่สามารถอ่านไฟล์ได้"
 msgid "Failed to remove access"
 msgstr "ไม่สามารถเอาการเข้าถึงออกได้"
 
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:234
-msgid "Failed to remove account"
-msgstr "ไม่สามารถเอาบัญชีออกได้"
-
-#: src/features/editor/components/design-editor.tsx:200
+#: src/features/editor/components/design-editor.tsx:215
 msgid "Failed to reorder fields"
 msgstr "ไม่สามารถจัดเรียงฟิลด์ใหม่ได้"
 
-#: src/features/editor/components/design-editor.tsx:350
+#: src/features/editor/components/design-editor.tsx:377
 msgid "Failed to reorder views"
 msgstr "ไม่สามารถจัดเรียงมุมมองใหม่ได้"
 
@@ -1356,13 +1235,13 @@ msgstr "ไม่สามารถจัดเรียงมุมมองใ
 msgid "Failed to revoke RSS access"
 msgstr "ไม่สามารถเพิกถอนการเข้าถึง RSS ได้"
 
+#: src/features/objects/components/object-detail-panel.tsx:167
+msgid "Failed to save"
+msgstr "ไม่สามารถบันทึกได้"
+
 #: src/features/crms/components/inline-crm-search.tsx:85
 msgid "Failed to search CRMs"
 msgstr "ค้นหา CRM ไม่สำเร็จ"
-
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:257
-msgid "Failed to send verification code"
-msgstr "ไม่สามารถส่งรหัสยืนยันได้"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:112
 msgid "Failed to set access level"
@@ -1383,6 +1262,10 @@ msgstr "ไม่สามารถยกเลิกการติดตาม
 msgid "Failed to update access level"
 msgstr "ไม่สามารถอัปเดตระดับการเข้าถึงได้"
 
+#: src/features/editor/components/design-editor.tsx:122
+msgid "Failed to update class"
+msgstr "ไม่สามารถอัปเดตคลาสได้"
+
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx:174
 msgid "Failed to update comment"
 msgstr "ไม่สามารถอัปเดตความคิดเห็นได้"
@@ -1391,27 +1274,39 @@ msgstr "ไม่สามารถอัปเดตความคิดเห
 msgid "Failed to update CRM"
 msgstr "ไม่สามารถอัปเดต CRM ได้"
 
-#: src/features/editor/components/design-editor.tsx:182
+#: src/features/editor/components/design-editor.tsx:194
 msgid "Failed to update field"
 msgstr "ไม่สามารถอัปเดตฟิลด์ได้"
+
+#: src/features/editor/components/design-editor.tsx:144
+msgid "Failed to update hierarchy"
+msgstr ""
+
+#: src/features/editor/components/design-editor.tsx:254
+msgid "Failed to update option"
+msgstr "ไม่สามารถอัปเดตตัวเลือกได้"
+
+#: src/features/editor/components/design-editor.tsx:357
+msgid "Failed to update view"
+msgstr "ไม่สามารถอัปเดตมุมมองได้"
+
+#: src/features/objects/components/object-detail-panel.tsx:186
+msgid "Failed to update watch"
+msgstr "อัปเดตการติดตามไม่สำเร็จ"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
 msgid "Failed to upload attachment"
 msgstr "ไม่สามารถอัปโหลดไฟล์แนบได้"
 
-#: src/features/editor/components/edit-dialogs.tsx:327
+#: src/features/editor/components/edit-dialogs.tsx:328
 msgid "Fields"
 msgstr "ฟิลด์"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:588
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:589
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:155
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:175
 msgid "Files"
 msgstr "ไฟล์"
-
-#: ../../../lib/web/src/components/data-table/toolbar.tsx:30
-msgid "Filter..."
-msgstr "กรอง..."
 
 #: src/components/layout/crms-layout.tsx:35
 #: src/routes/_authenticated/find.tsx:41
@@ -1434,10 +1329,6 @@ msgstr "Flags"
 msgid "Flat"
 msgstr "แบน"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:258
-msgid "Floating"
-msgstr "ลอย"
-
 #: ../../../lib/web/src/lib/preference-utils.ts:58
 msgid "Friday"
 msgstr "วันศุกร์"
@@ -1453,41 +1344,15 @@ msgstr "จาก"
 #: ../../../lib/web/src/lib/preference-utils.ts:89
 #: ../../../lib/web/src/lib/preference-utils.ts:99
 #: ../../../lib/web/src/lib/preference-utils.ts:110
-#: ../../../lib/web/src/lib/preference-utils.ts:119
-#: ../../../lib/web/src/lib/preference-utils.ts:127
-#: ../../../lib/web/src/lib/preference-utils.ts:138
+#: ../../../lib/web/src/lib/preference-utils.ts:120
+#: ../../../lib/web/src/lib/preference-utils.ts:131
 msgid "From theme"
 msgstr "จากธีม"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:321
-msgid "Full layout"
-msgstr "เลย์เอาต์เต็ม"
-
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:26
 #: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "กลับ"
-
-#: ../../../lib/web/src/components/data-table/pagination.tsx:82
-msgid "Go to first page"
-msgstr "ไปหน้าแรก"
-
-#: ../../../lib/web/src/components/data-table/pagination.tsx:128
-msgid "Go to last page"
-msgstr "ไปหน้าสุดท้าย"
-
-#: ../../../lib/web/src/components/data-table/pagination.tsx:119
-msgid "Go to next page"
-msgstr "ไปหน้าถัดไป"
-
-#: ../../../lib/web/src/components/data-table/pagination.tsx:106
-msgid "Go to page {pageNumber}"
-msgstr "ไปที่หน้า {pageNumber}"
-
-#: ../../../lib/web/src/components/data-table/pagination.tsx:91
-msgid "Go to previous page"
-msgstr "ไปหน้าก่อนหน้า"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:162
 msgid "Group"
@@ -1502,15 +1367,7 @@ msgstr "จัดกลุ่มตาม"
 msgid "Group: {0}"
 msgstr "กลุ่ม: {0}"
 
-#: ../../../lib/web/src/components/data-table/column-header.tsx:70
-msgid "Hide"
-msgstr "ซ่อน"
-
-#: ../../../lib/web/src/components/password-input.tsx:27
-msgid "Hide password"
-msgstr "ซ่อนรหัสผ่าน"
-
-#: ../../../lib/web/src/components/audit-timeline.tsx:58
+#: ../../../lib/web/src/components/audit-timeline.tsx:61
 msgid "History"
 msgstr "ประวัติ"
 
@@ -1526,7 +1383,7 @@ msgid "Hot"
 msgstr "ยอดนิยม"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
-#: src/features/editor/components/edit-dialogs.tsx:266
+#: src/features/editor/components/edit-dialogs.tsx:267
 #: src/routes/_authenticated/$crmId/index.tsx:172
 msgid "ID"
 msgstr "รหัส"
@@ -1562,7 +1419,7 @@ msgstr "นำเข้าจากข้อมูลสำรอง (ไม่�
 msgid "Importing data..."
 msgstr "กำลังนำเข้าข้อมูล..."
 
-#: ../../../lib/web/src/features/access/types.ts:42
+#: ../../../lib/web/src/features/access/types.ts:36
 msgid "Including anonymous users"
 msgstr "รวมถึงผู้ใช้ที่ไม่ระบุตัวตน"
 
@@ -1574,15 +1431,11 @@ msgstr "อวาตาร์ตัวย่อ"
 msgid "Initials avatar for {name}"
 msgstr "อวาตาร์ตัวย่อของ {name}"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:253
-msgid "Inset"
-msgstr "ฝังเข้าด้านใน"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:42
 msgid "Interests"
 msgstr "ความสนใจ"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:544
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
 msgid "Invalid date"
 msgstr "วันที่ไม่ถูกต้อง"
 
@@ -1591,23 +1444,15 @@ msgstr "วันที่ไม่ถูกต้อง"
 msgid "Invalid JSON file"
 msgstr "ไฟล์ JSON ไม่ถูกต้อง"
 
-#: ../../../lib/web/src/components/tag-input.tsx:38
-msgid "Invalid tag: letters, numbers, spaces, hyphens, and slashes only (max 50 chars)"
-msgstr "แท็กไม่ถูกต้อง: ใช้ได้เฉพาะตัวอักษร ตัวเลข ช่องว่าง ยัติภังค์ และเครื่องหมายทับ (สูงสุด 50 อักขระ)"
-
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:245
-msgid "Invalid verification code"
-msgstr "รหัสยืนยันไม่ถูกต้อง"
-
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:18
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "ดูเหมือนว่าหน้าที่คุณกำลังมองหา <0/>ไม่มีอยู่หรืออาจถูกลบไปแล้ว"
 
-#: src/features/objects/components/object-detail-panel.tsx:312
+#: src/features/objects/components/object-detail-panel.tsx:327
 msgid "Item details"
 msgstr "รายละเอียดรายการ"
 
-#: ../../../lib/web/src/lib/locale-format.ts:164
+#: ../../../lib/web/src/lib/locale-format.ts:165
 msgid "Just now"
 msgstr "เมื่อสักครู่"
 
@@ -1616,30 +1461,18 @@ msgid "Keyboard shortcuts"
 msgstr "ทางลัดแป้นพิมพ์"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:103
-#: ../../../lib/web/src/lib/preference-utils.ts:130
+#: ../../../lib/web/src/lib/preference-utils.ts:123
 msgid "Large"
 msgstr "ใหญ่"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:287
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:306
 msgid "Layout"
 msgstr "เลย์เอาต์"
-
-#: ../../../lib/web/src/components/learn-more.tsx:33
-#: ../../../lib/web/src/components/learn-more.tsx:38
-msgid "Learn more"
-msgstr "เรียนรู้เพิ่มเติม"
-
-#: ../../../lib/web/src/components/config-drawer.tsx:355
-msgid "Left to Right"
-msgstr "ซ้ายไปขวา"
 
 #: ../../../lib/web/src/components/post-tags.tsx:72
 msgid "Letters, numbers, spaces, and hyphens only"
 msgstr "ตัวอักษร ตัวเลข เว้นวรรค และยัติภังค์เท่านั้น"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:214
-#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:14
 msgid "Light"
 msgstr "สว่าง"
@@ -1661,15 +1494,15 @@ msgstr "รายการ"
 msgid "Load more"
 msgstr "โหลดเพิ่ม"
 
-#: ../../../lib/web/src/components/ui/loading-content.tsx:25
+#: ../../../lib/web/src/components/ui/loading-content.tsx:26
 msgid "Loading content…"
 msgstr "กำลังโหลดเนื้อหา…"
 
-#: src/features/objects/components/object-detail-panel.tsx:253
+#: src/features/objects/components/object-detail-panel.tsx:268
 msgid "Loading item"
 msgstr "กำลังโหลดรายการ"
 
-#: src/features/objects/components/object-detail-panel.tsx:254
+#: src/features/objects/components/object-detail-panel.tsx:269
 msgid "Loading item details"
 msgstr "กำลังโหลดรายละเอียดรายการ"
 
@@ -1679,8 +1512,6 @@ msgstr "กำลังโหลดรายละเอียดรายกา
 msgid "Loading..."
 msgstr "กำลังโหลด..."
 
-#: ../../../lib/web/src/components/profile-dropdown.tsx:69
-#: ../../../lib/web/src/components/profile-dropdown.tsx:98
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:26
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:28
 msgid "Log out"
@@ -1698,21 +1529,16 @@ msgstr "ออกจากระบบเรียบร้อยแล้ว"
 msgid "Logging out…"
 msgstr "กำลังออกจากระบบ…"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
+#: ../../../lib/web/src/components/notification-category-button.tsx:127
 msgid "Manage categories"
 msgstr "จัดการหมวดหมู่"
-
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:192
-msgid "Manage your connected accounts for notifications and services."
-msgstr "จัดการบัญชีที่เชื่อมต่อของคุณสำหรับการแจ้งเตือนและบริการ"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:52
 msgid "Manual"
 msgstr "คู่มือ"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:190
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:197
-#: ../../../lib/web/src/components/notifications-dropdown.tsx:224
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:207
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:214
 msgid "Mark all as read"
 msgstr "ทำเครื่องหมายว่าอ่านแล้วทั้งหมด"
 
@@ -1762,12 +1588,12 @@ msgid "More options"
 msgstr "ตัวเลือกเพิ่มเติม"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:598
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:600
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:142
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:125
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:293
 #: src/features/crms/components/create-crm-dialog.tsx:256
-#: src/features/editor/components/edit-dialogs.tsx:252
+#: src/features/editor/components/edit-dialogs.tsx:253
 #: src/routes/_authenticated/$crmId_.settings.tsx:91
 msgid "Name"
 msgstr "ชื่อ"
@@ -1790,11 +1616,11 @@ msgid "Name must be 1000 characters or less"
 msgstr "ชื่อต้องไม่เกิน 1000 ตัวอักษร"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:53
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:322
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:313
 msgid "Network error"
 msgstr "ข้อผิดพลาดของเครือข่าย"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:475
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:476
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/routes/_authenticated/$crmId/index.tsx:141
 #: src/routes/_authenticated/$crmId/index.tsx:145
@@ -1806,8 +1632,8 @@ msgstr "ใหม่"
 msgid "New {0}"
 msgstr "{0} ใหม่"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:37
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:49
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:39
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:51
 msgid "New game"
 msgstr "เกมใหม่"
 
@@ -1816,7 +1642,7 @@ msgstr "เกมใหม่"
 msgid "Next image"
 msgstr "รูปถัดไป"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:554
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:555
 msgid "No {parentClassNames} to add to"
 msgstr "ไม่มี {parentClassNames} ให้เพิ่ม"
 
@@ -1836,16 +1662,12 @@ msgstr "ยังไม่มีกิจกรรม"
 msgid "No comments yet"
 msgstr "ยังไม่มีความคิดเห็น"
 
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:295
-msgid "No connected accounts"
-msgstr "ไม่มีบัญชีที่เชื่อมต่อ"
-
 #: src/features/crms/components/inline-crm-search.tsx:84
 #: src/routes/_authenticated/find.tsx:43
 msgid "No CRMs found"
 msgstr "ไม่พบ CRM"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:46
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:48
 msgid "No games yet"
 msgstr "ยังไม่มีเกม"
 
@@ -1853,7 +1675,7 @@ msgstr "ยังไม่มีเกม"
 msgid "No groups available"
 msgstr "ไม่มีกลุ่มที่ใช้งานได้"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:521
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "ยังไม่สามารถสร้างประเภทรายการได้ กรุณาสร้างรายการแม่ที่จำเป็นก่อน"
 
@@ -1861,15 +1683,11 @@ msgstr "ยังไม่สามารถสร้างประเภทร
 msgid "No matching objects"
 msgstr "ไม่มีออบเจกต์ที่ตรงกัน"
 
-#: ../../../lib/web/src/components/notifications-dropdown.tsx:193
-msgid "No notifications yet"
-msgstr "ยังไม่มีการแจ้งเตือน"
-
 #: src/routes/_authenticated/$crmId/index.tsx:171
 msgid "No objects to export."
 msgstr "ไม่มีออบเจกต์ให้ส่งออก"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:336
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:341
 #: ../../../lib/web/src/components/person-picker.tsx:84
 msgid "No people found"
 msgstr "ไม่พบผู้คน"
@@ -1878,23 +1696,17 @@ msgstr "ไม่พบผู้คน"
 msgid "No places found"
 msgstr "ไม่พบสถานที่"
 
-#: ../../../lib/web/src/components/profile-dropdown.tsx:58
-msgid "No profile"
-msgstr "ไม่มีโปรไฟล์"
-
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:82
 #: ../../../lib/web/src/components/search-entity-page.tsx:73
 msgid "No results found"
 msgstr "ไม่พบผลลัพธ์"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "ไม่พบผลลัพธ์"
 
-#: ../../../lib/web/src/components/entity/entity-board-container.tsx:823
-#: ../../../lib/web/src/components/entity/entity-board-container.tsx:868
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:824
+#: ../../../lib/web/src/components/entity/entity-board-container.tsx:869
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:339
 msgid "No status"
 msgstr "ไม่มีสถานะ"
@@ -1903,11 +1715,11 @@ msgstr "ไม่มีสถานะ"
 msgid "No time zone found."
 msgstr "ไม่พบเขตเวลา"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:104
+#: ../../../lib/web/src/components/notification-category-button.tsx:106
 msgid "No topic record yet — try again after the next notification."
 msgstr "ยังไม่มีบันทึกหัวข้อ — ลองอีกครั้งหลังการแจ้งเตือนครั้งถัดไป"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:122
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:139
 msgid "No unread notifications"
 msgstr "ไม่มีการแจ้งเตือนที่ยังไม่ได้อ่าน"
 
@@ -1920,9 +1732,9 @@ msgid "No views"
 msgstr "ไม่มีการเข้าชม"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:537
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:540
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:541
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:545
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:359
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:382
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
@@ -1932,21 +1744,20 @@ msgstr "ไม่มีการเข้าชม"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/person-picker.tsx:350
 #: ../../../lib/web/src/lib/preference-utils.ts:100
-#: ../../../lib/web/src/lib/preference-utils.ts:120
-#: src/features/editor/components/edit-dialogs.tsx:286
-#: src/features/editor/components/edit-dialogs.tsx:289
-#: src/features/objects/components/object-detail-panel.tsx:426
-#: src/features/objects/components/object-detail-panel.tsx:439
-#: src/features/objects/components/object-detail-panel.tsx:442
-#: src/features/objects/components/object-detail-panel.tsx:446
+#: src/features/editor/components/edit-dialogs.tsx:287
+#: src/features/editor/components/edit-dialogs.tsx:290
+#: src/features/objects/components/object-detail-panel.tsx:441
+#: src/features/objects/components/object-detail-panel.tsx:454
+#: src/features/objects/components/object-detail-panel.tsx:457
+#: src/features/objects/components/object-detail-panel.tsx:461
 msgid "None"
 msgstr "ไม่มี"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:129
+#: ../../../lib/web/src/lib/preference-utils.ts:122
 msgid "Normal"
 msgstr "ปกติ"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:267
+#: ../../../lib/web/src/components/attachment-image.tsx:50
 #: ../../../lib/web/src/features/errors/general-error.tsx:67
 msgid "Not found"
 msgstr "ไม่พบ"
@@ -1959,16 +1770,8 @@ msgstr "ยังไม่ได้ตั้งค่า"
 msgid "Nothing found"
 msgstr "ไม่พบสิ่งใด"
 
-#: ../../../lib/web/src/components/notifications-dropdown.tsx:136
-#: ../../../lib/web/src/components/notifications-dropdown.tsx:150
-#: ../../../lib/web/src/components/notifications-dropdown.tsx:236
-#: ../../../lib/web/src/components/notifications-dropdown.tsx:257
-#: ../../../lib/web/src/components/notifications-dropdown.tsx:261
-msgid "Notifications"
-msgstr "การแจ้งเตือน"
-
 #. placeholder {0}: unread.length
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:183
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:200
 msgid "Notifications: {0}"
 msgstr "การแจ้งเตือน: {0}"
 
@@ -1991,18 +1794,13 @@ msgstr "ขออภัย! ไม่พบหน้านี้!"
 msgid "Open {0}"
 msgstr "เปิด {0}"
 
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:156
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:166
-msgid "Open account actions"
-msgstr "เปิดการดำเนินการของบัญชี"
-
 #: ../../../lib/web/src/components/layout/nav-group.tsx:199
 #: ../../../lib/web/src/components/layout/nav-group.tsx:204
 msgid "Open actions"
 msgstr "เปิดการดำเนินการ"
 
-#: src/features/editor/components/edit-dialogs.tsx:233
-#: src/features/editor/components/edit-dialogs.tsx:238
+#: src/features/editor/components/edit-dialogs.tsx:234
+#: src/features/editor/components/edit-dialogs.tsx:239
 msgid "Open class actions"
 msgstr "เปิดการดำเนินการของคลาส"
 
@@ -2019,11 +1817,6 @@ msgstr "เปิดเมนู"
 msgid "Open navigation"
 msgstr "เปิดการนำทาง"
 
-#: ../../../lib/web/src/components/layout/top-nav.tsx:38
-#: ../../../lib/web/src/components/layout/top-nav.tsx:44
-msgid "Open navigation menu"
-msgstr "เปิดเมนูการนำทาง"
-
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:105
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:111
 msgid "Open option actions"
@@ -2036,11 +1829,6 @@ msgstr "เปิดการดำเนินการของหน้า"
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:30
 msgid "Open selected card"
 msgstr "เปิดการ์ดที่เลือก"
-
-#: ../../../lib/web/src/components/config-drawer.tsx:58
-#: ../../../lib/web/src/components/config-drawer.tsx:66
-msgid "Open theme settings"
-msgstr "เปิดการตั้งค่าธีม"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:274
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:279
@@ -2070,22 +1858,17 @@ msgstr "อื่น ๆ"
 msgid "Owner"
 msgstr "เจ้าของ"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:43
-#: ../../../lib/web/src/components/data-table/pagination.tsx:71
-msgid "Page {currentPage} of {totalPages}"
-msgstr "หน้า {currentPage} จาก {totalPages}"
-
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:529
-#: src/features/objects/components/object-detail-panel.tsx:420
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:530
+#: src/features/objects/components/object-detail-panel.tsx:435
 #: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "Parent"
 msgstr "แม่"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:336
+#: ../../../lib/web/src/components/step-up-dialog.tsx:337
 msgid "Passkey"
 msgstr "พาสคีย์"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:206
+#: ../../../lib/web/src/components/step-up-dialog.tsx:207
 msgid "Passkey verification failed. Please try again."
 msgstr "การยืนยันด้วยพาสคีย์ล้มเหลว โปรดลองอีกครั้ง"
 
@@ -2097,17 +1880,13 @@ msgstr "พาสคีย์"
 msgid "Pattern (regex)"
 msgstr "รูปแบบ (regex)"
 
-#: ../../../lib/web/src/components/date-picker.tsx:20
-msgid "Pick a date"
-msgstr "เลือกวันที่"
-
 #: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Please add one or more classes to the CRM design."
 msgstr "กรุณาเพิ่มคลาสอย่างน้อยหนึ่งคลาสในดีไซน์ CRM"
 
 #: ../../../lib/web/src/components/comment-composer.tsx:89
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:323
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:314
 msgid "Please check your internet connection and try again."
 msgstr "โปรดตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณแล้วลองอีกครั้ง"
 
@@ -2145,15 +1924,11 @@ msgstr "ความเป็นส่วนตัว"
 msgid "Processing…"
 msgstr "กำลังประมวลผล…"
 
-#: ../../../lib/web/src/components/profile-dropdown.tsx:114
-msgid "Profile"
-msgstr "โปรไฟล์"
-
 #: ../../../lib/web/src/components/person-picker.tsx:200
 msgid "Project members"
 msgstr "สมาชิกโครงการ"
 
-#: src/features/objects/components/object-detail-panel.tsx:298
+#: src/features/objects/components/object-detail-panel.tsx:313
 msgid "Properties"
 msgstr "คุณสมบัติ"
 
@@ -2177,7 +1952,6 @@ msgstr "จัดลำดับคอลัมน์ใหม่"
 msgid "Re-register your passkeys on this server"
 msgstr "ลงทะเบียนพาสคีย์ของคุณใหม่บนเซิร์ฟเวอร์นี้"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:220
 #: ../../../lib/web/src/components/search-entity-page.tsx:243
 msgid "Recommended"
 msgstr "แนะนำ"
@@ -2211,12 +1985,11 @@ msgstr "แบบสัมพัทธ์ (5m, 3h, 2d)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "สัมพัทธ์ภายใน 24 ชั่วโมง นอกนั้นแบบสัมบูรณ์"
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:278
-#: ../../../lib/web/src/components/attachment-composer.tsx:323
+#: ../../../lib/web/src/components/attachment-composer.tsx:285
+#: ../../../lib/web/src/components/attachment-composer.tsx:330
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
 #: ../../../lib/web/src/features/access/access-list.tsx:270
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:180
-#: src/features/crms/components/create-crm-dialog.tsx:321
+#: src/features/crms/components/create-crm-dialog.tsx:323
 msgid "Remove"
 msgstr "ลบ"
 
@@ -2241,8 +2014,8 @@ msgid "Remove access?"
 msgstr "ลบสิทธิ์การเข้าถึง?"
 
 #. placeholder {0}: field.name || field.id
-#: src/features/editor/components/edit-dialogs.tsx:369
-#: src/features/editor/components/edit-dialogs.tsx:374
+#: src/features/editor/components/edit-dialogs.tsx:370
+#: src/features/editor/components/edit-dialogs.tsx:375
 msgid "Remove field {0}"
 msgstr "ลบฟิลด์ {0}"
 
@@ -2251,7 +2024,7 @@ msgstr "ลบฟิลด์ {0}"
 msgid "Remove interest"
 msgstr "ลบความสนใจ"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:665
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:674
 msgid "Remove item"
 msgstr "ลบรายการ"
 
@@ -2264,16 +2037,16 @@ msgstr "ลบลิงก์"
 msgid "Removing access..."
 msgstr "กำลังลบสิทธิ์การเข้าถึง..."
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:559
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:616
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:561
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:618
 msgid "Rename"
 msgstr "เปลี่ยนชื่อ"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:594
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:596
 msgid "Rename column"
 msgstr "เปลี่ยนชื่อคอลัมน์"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:595
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:597
 msgid "Rename this board column"
 msgstr "เปลี่ยนชื่อคอลัมน์ของบอร์ดนี้"
 
@@ -2303,25 +2076,11 @@ msgstr "ตอบกลับ {0}..."
 msgid "Required"
 msgstr "จำเป็น"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:369
+#: ../../../lib/web/src/components/step-up-dialog.tsx:370
 msgid "Resend email"
 msgstr "ส่งอีเมลอีกครั้ง"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:87
-#: ../../../lib/web/src/components/data-table/toolbar.tsx:82
-msgid "Reset"
-msgstr "รีเซ็ต"
-
-#: ../../../lib/web/src/components/config-drawer.tsx:122
-#: ../../../lib/web/src/components/config-drawer.tsx:127
-msgid "Reset {title}"
-msgstr "รีเซ็ต{title}"
-
-#: ../../../lib/web/src/components/config-drawer.tsx:85
-msgid "Reset all settings to default values"
-msgstr "รีเซ็ตการตั้งค่าทั้งหมดเป็นค่าเริ่มต้น"
-
-#: ../../../lib/web/src/components/attachment-composer.tsx:341
+#: ../../../lib/web/src/components/attachment-composer.tsx:348
 msgid "Retry"
 msgstr "ลองอีกครั้ง"
 
@@ -2341,10 +2100,6 @@ msgstr "เพิกถอนการเข้าถึง"
 msgid "Revoke RSS access?"
 msgstr "เพิกถอนการเข้าถึง RSS หรือไม่"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:362
-msgid "Right to Left"
-msgstr "ขวาไปซ้าย"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:168
 msgid "Rows"
@@ -2353,10 +2108,6 @@ msgstr "แถว"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:373
 msgid "Rows group by"
 msgstr "จัดกลุ่มแถวตาม"
-
-#: ../../../lib/web/src/components/data-table/pagination.tsx:65
-msgid "Rows per page"
-msgstr "แถวต่อหน้า"
 
 #: ../../../lib/web/src/components/options-menu.tsx:131
 msgid "RSS access revoked"
@@ -2378,7 +2129,7 @@ msgstr "Sales CRM"
 msgid "Saturday"
 msgstr "วันเสาร์"
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:423
+#: ../../../lib/web/src/components/attachment-composer.tsx:430
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:170
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
@@ -2446,12 +2197,10 @@ msgstr "ค้นหา ติดตาม และจัดเรียงม�
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:63
 #: ../../../lib/web/src/components/person-picker.tsx:324
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:81
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "ค้นหา..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:178
 #: ../../../lib/web/src/components/search-entity-page.tsx:201
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
@@ -2461,16 +2210,11 @@ msgstr "กำลังค้นหา..."
 msgid "Select"
 msgstr "เลือก"
 
-#. placeholder {0}: item.label.toLowerCase()
-#: ../../../lib/web/src/components/config-drawer.tsx:149
-msgid "Select {0}"
-msgstr "เลือก{0}"
-
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:356
 msgid "Select a field"
 msgstr "เลือกฟิลด์"
 
-#: ../../../lib/web/src/components/game/game-empty-state.tsx:32
+#: ../../../lib/web/src/components/game/game-empty-state.tsx:34
 msgid "Select a game"
 msgstr "เลือกเกม"
 
@@ -2482,10 +2226,6 @@ msgstr "เลือกผู้ใช้ กลุ่ม หรือกฎอ�
 msgid "Select access rule"
 msgstr "เลือกกฎการเข้าถึง"
 
-#: ../../../lib/web/src/features/accounts/account-picker.tsx:34
-msgid "Select account"
-msgstr "เลือกบัญชี"
-
 #: ../../../lib/web/src/features/accounts/account-add.tsx:142
 msgid "Select account type"
 msgstr "เลือกประเภทบัญชี"
@@ -2493,10 +2233,6 @@ msgstr "เลือกประเภทบัญชี"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:231
 msgid "Select group"
 msgstr "เลือกกลุ่ม"
-
-#: ../../../lib/web/src/components/config-drawer.tsx:305
-msgid "Select layout style"
-msgstr "เลือกสไตล์เลย์เอาต์"
 
 #: ../../../lib/web/src/components/place-picker.tsx:49
 msgid "Select location"
@@ -2514,26 +2250,10 @@ msgstr "เลือกบุคคล..."
 msgid "Select previous card"
 msgstr "เลือกการ์ดก่อนหน้า"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:247
-msgid "Select sidebar style"
-msgstr "เลือกสไตล์แถบด้านข้าง"
-
-#: ../../../lib/web/src/components/config-drawer.tsx:349
-msgid "Select site direction"
-msgstr "เลือกทิศทางไซต์"
-
-#: ../../../lib/web/src/components/config-drawer.tsx:203
-msgid "Select theme preference"
-msgstr "เลือกการตั้งค่าธีม"
-
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:252
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:335
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:257
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:340
 msgid "Select..."
 msgstr "เลือก..."
-
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:206
-msgid "selected"
-msgstr "ที่เลือก"
 
 #. placeholder {0}: getSelectedName()
 #: ../../../lib/web/src/features/access/access-dialog.tsx:309
@@ -2544,7 +2264,7 @@ msgstr "เลือก: <0>{0}</0>"
 msgid "Send again"
 msgstr "ส่งอีกครั้ง"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:309
+#: ../../../lib/web/src/components/step-up-dialog.tsx:310
 msgid "Send email"
 msgstr "ส่งอีเมล"
 
@@ -2553,7 +2273,7 @@ msgstr "ส่งอีเมล"
 msgid "Send message"
 msgstr "ส่งข้อความ"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:140
+#: ../../../lib/web/src/lib/preference-utils.ts:133
 msgid "Serif"
 msgstr "เซริฟ"
 
@@ -2561,8 +2281,8 @@ msgstr "เซริฟ"
 msgid "Server"
 msgstr "เซิร์ฟเวอร์"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:279
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:305
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:270
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:296
 msgid "Server error"
 msgstr "ข้อผิดพลาดของเซิร์ฟเวอร์"
 
@@ -2571,7 +2291,7 @@ msgstr "ข้อผิดพลาดของเซิร์ฟเวอร์
 msgid "Server rules"
 msgstr "กฎของเซิร์ฟเวอร์"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:229
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:220
 msgid "Session expired. Please log in again."
 msgstr "เซสชันหมดอายุ โปรดเข้าสู่ระบบอีกครั้ง"
 
@@ -2599,10 +2319,6 @@ msgstr "แสดงคลาส"
 msgid "Show fields"
 msgstr "แสดงฟิลด์"
 
-#: ../../../lib/web/src/components/password-input.tsx:27
-msgid "Show password"
-msgstr "แสดงรหัสผ่าน"
-
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:33
 msgid "Show this help"
 msgstr "แสดงความช่วยเหลือนี้"
@@ -2611,9 +2327,7 @@ msgstr "แสดงความช่วยเหลือนี้"
 msgid "Showing {totalShown} of {total}"
 msgstr "แสดง {totalShown} จาก {total}"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:239
-#: ../../../lib/web/src/components/config-drawer.tsx:263
-#: ../../../lib/web/src/components/ui/sidebar.tsx:237
+#: ../../../lib/web/src/components/ui/sidebar.tsx:257
 msgid "Sidebar"
 msgstr "แถบด้านข้าง"
 
@@ -2631,12 +2345,8 @@ msgstr "กำลังออกจากระบบ..."
 msgid "Single line of text only"
 msgstr "ข้อความบรรทัดเดียวเท่านั้น"
 
-#: ../../../lib/web/src/components/skip-to-main.tsx:11
-msgid "Skip to Main"
-msgstr "ข้ามไปยังเนื้อหาหลัก"
-
 #: ../../../lib/web/src/lib/preference-utils.ts:101
-#: ../../../lib/web/src/lib/preference-utils.ts:128
+#: ../../../lib/web/src/lib/preference-utils.ts:121
 msgid "Small"
 msgstr "เล็ก"
 
@@ -2656,12 +2366,8 @@ msgstr "กว้างขวาง"
 msgid "Start the discussion by adding the first comment."
 msgstr "เริ่มการสนทนาโดยเพิ่มความคิดเห็นแรก"
 
-#: ../../../lib/web/src/components/coming-soon.tsx:15
-msgid "Stay tuned though!"
-msgstr "โปรดรอติดตาม!"
-
-#: src/features/objects/components/object-detail-panel.tsx:329
-#: src/features/objects/components/object-detail-panel.tsx:338
+#: src/features/objects/components/object-detail-panel.tsx:344
+#: src/features/objects/components/object-detail-panel.tsx:353
 msgid "Stop watching"
 msgstr "หยุดติดตาม"
 
@@ -2679,7 +2385,6 @@ msgstr "ส่งการตอบกลับ"
 
 #: ../../../lib/web/src/components/inline-entity-search.tsx:66
 #: ../../../lib/web/src/components/recommended-entities.tsx:58
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:83
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/crms/components/inline-crm-search.tsx:86
 #: src/features/crms/components/recommended-crms.tsx:55
@@ -2710,17 +2415,11 @@ msgstr "วันอาทิตย์"
 msgid "Switch to view 1-9"
 msgstr "เปลี่ยนเป็นมุมมอง 1-9"
 
-#: ../../../lib/web/src/components/audit-timeline.tsx:104
-#: ../../../lib/web/src/components/config-drawer.tsx:209
-#: ../../../lib/web/src/components/theme-switch.tsx:59
+#: ../../../lib/web/src/components/audit-timeline.tsx:107
 #: ../../../lib/web/src/lib/preference-utils.ts:16
-#: ../../../lib/web/src/lib/preference-utils.ts:139
+#: ../../../lib/web/src/lib/preference-utils.ts:132
 msgid "System"
 msgstr "ระบบ"
-
-#: ../../../lib/web/src/components/tag-input.tsx:95
-msgid "Tag"
-msgstr "แท็ก"
 
 #: ../../../lib/web/src/components/post-tags.tsx:76
 msgid "Tag already exists"
@@ -2735,10 +2434,6 @@ msgstr "แท็กต้องมีไม่เกิน 50 อักขร�
 msgid "Tags"
 msgstr "แท็ก"
 
-#: ../../../lib/web/src/components/layout/team-switcher.tsx:63
-msgid "Teams/Apps"
-msgstr "ทีม/แอป"
-
 #: ../../../lib/web/src/components/server-documents-footer.tsx:19
 #: ../../../lib/web/src/features/document/document-page.tsx:42
 msgid "Terms and conditions"
@@ -2748,7 +2443,7 @@ msgstr "ข้อกำหนดและเงื่อนไข"
 msgid "Text"
 msgstr "ข้อความ"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:192
+#: ../../../lib/web/src/components/step-up-dialog.tsx:193
 msgid "That code is incorrect or has expired."
 msgstr "รหัสนั้นไม่ถูกต้องหรือหมดอายุแล้ว"
 
@@ -2769,18 +2464,6 @@ msgstr "ไม่พบเนื้อหาที่ร้องขอ"
 msgid "The server returned a web page instead of data."
 msgstr "เซิร์ฟเวอร์ส่งคืนหน้าเว็บแทนข้อมูล"
 
-#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
-msgid "The site is not available at the moment."
-msgstr "ไซต์ไม่พร้อมใช้งานในขณะนี้"
-
-#: ../../../lib/web/src/components/config-drawer.tsx:195
-msgid "Theme"
-msgstr "ธีม"
-
-#: ../../../lib/web/src/components/config-drawer.tsx:70
-msgid "Theme Settings"
-msgstr "การตั้งค่าธีม"
-
 #: src/routes/_authenticated/$crmId_.settings.tsx:89
 msgid "This CRM could not be loaded right now."
 msgstr "ไม่สามารถโหลด CRM นี้ได้ในขณะนี้"
@@ -2788,10 +2471,6 @@ msgstr "ไม่สามารถโหลด CRM นี้ได้ในข�
 #: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "CRM นี้อาจถูกลบ หรือคุณไม่มีสิทธิ์เข้าถึง"
-
-#: ../../../lib/web/src/components/coming-soon.tsx:14
-msgid "This page has not been created yet."
-msgstr "ยังไม่ได้สร้างหน้านี้"
 
 #. placeholder {0}: String(name)
 #: src/routes/_authenticated/$crmId_.settings.tsx:104
@@ -2812,26 +2491,17 @@ msgstr "การดำเนินการนี้จะแทนที่ก
 msgid "Thursday"
 msgstr "วันพฤหัสบดี"
 
-#: src/features/editor/components/edit-dialogs.tsx:106
+#: src/features/editor/components/edit-dialogs.tsx:107
 msgid "Title"
 msgstr "ชื่อ"
 
-#: src/features/editor/components/edit-dialogs.tsx:275
+#: src/features/editor/components/edit-dialogs.tsx:276
 msgid "Title field"
 msgstr "ฟิลด์ชื่อ"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx:220
 msgid "To"
 msgstr "ไปยัง"
-
-#: ../../../lib/web/src/components/data-table/view-options.tsx:37
-msgid "Toggle columns"
-msgstr "สลับคอลัมน์"
-
-#: ../../../lib/web/src/components/layout/right-panel.tsx:233
-#: ../../../lib/web/src/components/layout/right-panel.tsx:236
-msgid "Toggle right panel"
-msgstr "สลับแผงด้านขวา"
 
 #: ../../../lib/web/src/components/layout/nav-group.tsx:365
 #: ../../../lib/web/src/components/layout/nav-group.tsx:372
@@ -2840,20 +2510,15 @@ msgstr "สลับแผงด้านขวา"
 msgid "Toggle section"
 msgstr "สลับส่วน"
 
-#: ../../../lib/web/src/components/ui/sidebar.tsx:317
-#: ../../../lib/web/src/components/ui/sidebar.tsx:320
+#: ../../../lib/web/src/components/ui/sidebar.tsx:337
+#: ../../../lib/web/src/components/ui/sidebar.tsx:340
 msgid "Toggle sidebar"
 msgstr "สลับแถบด้านข้าง"
 
-#: ../../../lib/web/src/components/ui/sidebar.tsx:332
-#: ../../../lib/web/src/components/ui/sidebar.tsx:335
+#: ../../../lib/web/src/components/ui/sidebar.tsx:352
+#: ../../../lib/web/src/components/ui/sidebar.tsx:355
 msgid "Toggle Sidebar"
 msgstr "สลับแถบด้านข้าง"
-
-#: ../../../lib/web/src/components/theme-switch.tsx:37
-#: ../../../lib/web/src/components/theme-switch.tsx:41
-msgid "Toggle theme"
-msgstr "สลับธีม"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:26
 msgid "Toggle view options"
@@ -2872,7 +2537,7 @@ msgstr "คำขอมากเกินไป"
 msgid "Top"
 msgstr "บนสุด"
 
-#: src/features/editor/components/edit-dialogs.tsx:309
+#: src/features/editor/components/edit-dialogs.tsx:310
 msgid "Top level"
 msgstr "ระดับบนสุด"
 
@@ -2880,14 +2545,12 @@ msgstr "ระดับบนสุด"
 msgid "Travelling"
 msgstr "กำลังเดินทาง"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:194
 #: ../../../lib/web/src/components/search-entity-page.tsx:217
 msgid "Try adjusting your search terms"
 msgstr "ลองปรับคำค้นหาของคุณ"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:140
 #: ../../../lib/web/src/features/errors/general-error.tsx:180
-#: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "ลองอีกครั้ง"
 
@@ -2916,7 +2579,7 @@ msgstr "พิมพ์เพื่อค้นหาผู้ใช้"
 msgid "Type to search..."
 msgstr "พิมพ์เพื่อค้นหา..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:292
 msgid "Unable to connect to remote server"
 msgstr "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ระยะไกลได้"
 
@@ -2925,7 +2588,7 @@ msgstr "ไม่สามารถเชื่อมต่อกับเซิ
 msgid "Unable to redirect to login. Please try again."
 msgstr "ไม่สามารถเปลี่ยนเส้นทางไปยังการเข้าสู่ระบบได้ โปรดลองอีกครั้ง"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:114
 msgid "Unassigned"
 msgstr "ยังไม่กำหนด"
 
@@ -2933,7 +2596,7 @@ msgstr "ยังไม่กำหนด"
 msgid "Unauthorized Access"
 msgstr "การเข้าถึงที่ไม่ได้รับอนุญาต"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:267
+#: ../../../lib/web/src/components/attachment-image.tsx:50
 msgid "Unavailable"
 msgstr "ไม่พร้อมใช้งาน"
 
@@ -2970,20 +2633,16 @@ msgstr "ยกเลิกการติดตามแล้ว"
 msgid "Unsubscribing..."
 msgstr "กำลังยกเลิกการติดตาม..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:284
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:285
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-container.tsx:29
 #: src/features/editor/components/design-preview.tsx:28
-#: src/features/objects/components/object-detail-panel.tsx:290
-#: src/features/objects/components/object-detail-panel.tsx:294
+#: src/features/objects/components/object-detail-panel.tsx:305
+#: src/features/objects/components/object-detail-panel.tsx:309
 msgid "Untitled"
 msgstr "ไม่มีชื่อ"
-
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:135
-msgid "Unverified"
-msgstr "ยังไม่ยืนยัน"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:57
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
@@ -2994,21 +2653,24 @@ msgstr "อัปเดตแล้ว"
 msgid "Updating access..."
 msgstr "กำลังอัปเดตสิทธิ์การเข้าถึง..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:637
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:639
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:301
 msgid "Upload"
 msgstr "อัปโหลด"
 
-#: src/features/crms/components/create-crm-dialog.tsx:294
 #: src/routes/_authenticated/$crmId/design.tsx:54
 msgid "Upload .json file"
 msgstr "อัปโหลดไฟล์ .json"
+
+#: src/features/crms/components/create-crm-dialog.tsx:294
+msgid "Upload backup file"
+msgstr ""
 
 #: ../../../lib/web/src/components/ui/upload-progress.tsx:34
 msgid "Upload progress"
 msgstr "ความคืบหน้าการอัปโหลด"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:340
+#: ../../../lib/web/src/components/step-up-dialog.tsx:341
 msgid "Use your passkey"
 msgstr "ใช้พาสคีย์ของคุณ"
 
@@ -3022,16 +2684,7 @@ msgstr "ผู้ใช้"
 msgid "Verification code"
 msgstr "รหัสยืนยัน"
 
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:255
-msgid "Verification code sent"
-msgstr "ส่งรหัสยืนยันแล้ว"
-
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:248
-msgid "Verification failed"
-msgstr "การยืนยันไม่สำเร็จ"
-
-#: ../../../lib/web/src/components/step-up-dialog.tsx:390
-#: ../../../lib/web/src/features/accounts/account-manager.tsx:172
+#: ../../../lib/web/src/components/step-up-dialog.tsx:391
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "ยืนยัน"
@@ -3040,7 +2693,7 @@ msgstr "ยืนยัน"
 msgid "Verify email address"
 msgstr "ยืนยันที่อยู่อีเมล"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:94
+#: ../../../lib/web/src/components/attachment-gallery.tsx:95
 msgid "Video thumbnail"
 msgstr "ภาพย่อวิดีโอ"
 
@@ -3049,20 +2702,12 @@ msgstr "ภาพย่อวิดีโอ"
 msgid "Video viewer: {0}"
 msgstr "โปรแกรมดูวิดีโอ: {0}"
 
-#: ../../../lib/web/src/components/data-table/view-options.tsx:33
-msgid "View"
-msgstr "ดู"
-
-#: ../../../lib/web/src/components/notifications-dropdown.tsx:177
-msgid "View all"
-msgstr "ดูทั้งหมด"
-
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:203
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:211
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:220
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:228
 msgid "View all notifications"
 msgstr "ดูการแจ้งเตือนทั้งหมด"
 
-#: src/features/objects/components/object-detail-panel.tsx:313
+#: src/features/objects/components/object-detail-panel.tsx:328
 msgid "View and edit item details"
 msgstr "ดูและแก้ไขรายละเอียดรายการ"
 
@@ -3078,12 +2723,12 @@ msgstr "ดูอย่างเดียว"
 msgid "View options"
 msgstr "ตัวเลือกการดู"
 
-#: src/features/editor/components/design-editor.tsx:457
+#: src/features/editor/components/design-editor.tsx:484
 msgid "Views"
 msgstr "การดู"
 
-#: src/features/objects/components/object-detail-panel.tsx:329
-#: src/features/objects/components/object-detail-panel.tsx:338
+#: src/features/objects/components/object-detail-panel.tsx:344
+#: src/features/objects/components/object-detail-panel.tsx:353
 msgid "Watch"
 msgstr "ติดตาม"
 
@@ -3101,18 +2746,6 @@ msgstr "ที่ติดตามเท่านั้น"
 msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
 msgstr "เราส่งรหัสยืนยันไปที่ <0>{0}</0> แล้ว ป้อนรหัสด้านล่างเพื่อยืนยันที่อยู่อีเมลของคุณ"
 
-#: ../../../lib/web/src/features/errors/maintenance-error.tsx:16
-msgid "We'll be back online shortly."
-msgstr "เราจะกลับมาออนไลน์เร็วๆ นี้"
-
-#: ../../../lib/web/src/components/notifications-dropdown.tsx:197
-msgid "We'll notify you when something important happens."
-msgstr "เราจะแจ้งให้คุณทราบเมื่อมีเรื่องสำคัญเกิดขึ้น"
-
-#: ../../../lib/web/src/features/errors/maintenance-error.tsx:13
-msgid "Website is under maintenance!"
-msgstr "เว็บไซต์อยู่ระหว่างการบำรุงรักษา!"
-
 #: ../../../lib/web/src/lib/preference-utils.ts:56
 msgid "Wednesday"
 msgstr "วันพุธ"
@@ -3125,17 +2758,9 @@ msgstr "คุณไม่มีสิทธิ์เข้าถึงส่ว
 msgid "You don't have access to this CRM."
 msgstr "คุณไม่มีสิทธิ์เข้าถึง CRM นี้"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:18
-msgid "You don't have necessary permission <0/>to view this resource."
-msgstr "คุณไม่มีสิทธิ์ที่จำเป็น <0/>ในการดูทรัพยากรนี้"
-
 #: src/features/crms/pages/crms-list-page.tsx:36
 msgid "You have no CRMs yet."
 msgstr "คุณยังไม่มี CRM"
-
-#: ../../../lib/web/src/components/notifications-dropdown.tsx:193
-msgid "You're all caught up!"
-msgstr "คุณดูครบแล้ว!"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:100
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
