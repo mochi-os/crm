@@ -18,7 +18,7 @@ msgstr ""
 msgid "Please check your internet connection and try again."
 msgstr "Athugaðu nettenginguna og reyndu aftur."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:301
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:295
 msgid " or "
 msgstr " eða "
 
@@ -150,7 +150,7 @@ msgstr "Aðgangur stilltur fyrir {subjectName}"
 msgid "Account type"
 msgstr "Tegund reiknings"
 
-#: src/features/objects/components/object-detail-panel.tsx:315
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:405
 msgid "Activity"
 msgstr "Virkni"
 
@@ -195,7 +195,7 @@ msgstr "Bæta við gátlistaratriði"
 msgid "Add class"
 msgstr "Bæta við flokki"
 
-#: src/routes/_authenticated/$crmId/index.tsx:148
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Add column"
 msgstr "Bæta við dálki"
 
@@ -209,7 +209,7 @@ msgstr "Bæta við sviði"
 msgid "Add item..."
 msgstr "Bæta við atriði..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "Bæta við tengli"
 
@@ -297,7 +297,7 @@ msgstr "Allt sem er áskrifandi að þessari veitu hættir að fá hana. Þú ge
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Ertu viss um að þú viljir eyða „{0}“?"
 
-#: src/features/objects/components/object-detail-panel.tsx:525
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:652
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Ertu viss um að þú viljir eyða „{title}“? Þessari aðgerð er ekki hægt að afturkalla."
 
@@ -360,7 +360,7 @@ msgid "Back to CRM"
 msgstr "Til baka í CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:93
+#: src/routes/_authenticated/$crmId/index.tsx:91
 msgid "Back to CRMs"
 msgstr "Til baka í CRM"
 
@@ -369,12 +369,21 @@ msgstr "Til baka í CRM"
 msgid "Back to home"
 msgstr "Til baka á forsíðu"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Borði"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr ""
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr ""
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "Lokað af"
 
@@ -383,7 +392,7 @@ msgstr "Lokað af"
 msgid "Blocked navigation to untrusted link"
 msgstr "Blokkaði leiðsögn á ótraustan tengil"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "Lokar"
 
@@ -424,7 +433,7 @@ msgstr "Getur verið barn af"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:338
 #: src/routes/_authenticated/$crmId/design.tsx:57
-#: src/routes/_authenticated/$crmId/index.tsx:151
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Cancel"
 msgstr "Hætta við"
 
@@ -462,12 +471,12 @@ msgstr "Gátlisti"
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Veldu leik úr hliðarstikunni eða byrjaðu nýjan."
 
-#: ../../../lib/web/src/components/language-picker.tsx:264
-#: ../../../lib/web/src/components/language-picker.tsx:271
+#: ../../../lib/web/src/components/language-picker.tsx:267
+#: ../../../lib/web/src/components/language-picker.tsx:274
 msgid "Choose language"
 msgstr "Veldu tungumál"
 
-#: src/routes/_authenticated/$crmId/index.tsx:173
+#: src/routes/_authenticated/$crmId/index.tsx:171
 msgid "Class"
 msgstr "Flokkur"
 
@@ -475,6 +484,7 @@ msgstr "Flokkur"
 msgid "Classes"
 msgstr "Flokkar"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:164
@@ -492,8 +502,8 @@ msgstr "Hreinsa allt"
 msgid "Clear search"
 msgstr "Hreinsa leit"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:501
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:506
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:495
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:500
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:468
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:471
@@ -575,7 +585,7 @@ msgid "Comments"
 msgstr "Athugasemdir"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:314
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:401
 msgid "Comments ({0})"
 msgstr "Athugasemdir ({0})"
 
@@ -662,8 +672,8 @@ msgstr "Ekki tókst að staðfesta með þeim reikningi. Reyndu aftur."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:550
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:689
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:491
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:485
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:650
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:675
 msgid "Create"
 msgstr "Búa til"
@@ -710,7 +720,7 @@ msgstr "Búið til"
 msgid "Creating CRM..."
 msgstr "Bý til CRM..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:650
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
 #: src/features/crms/components/create-crm-dialog.tsx:341
 msgid "Creating..."
@@ -728,7 +738,7 @@ msgstr "CRM búið til"
 msgid "CRM deleted"
 msgstr "CRM eytt"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "CRM link"
 msgstr "CRM-tengill"
 
@@ -761,6 +771,7 @@ msgstr "CRM"
 msgid "Current location"
 msgstr "Núverandi staðsetning"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:132
 #: ../../../lib/web/src/components/colour-picker.tsx:265
 msgid "Custom"
 msgstr "Sérsniðið"
@@ -789,6 +800,10 @@ msgstr "Dagsetning"
 msgid "Decline"
 msgstr "Hafna"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:129
+msgid "Default"
+msgstr ""
+
 #: ../../../lib/web/src/features/accounts/account-add.tsx:185
 msgid "Default AI account"
 msgstr "Sjálfgefinn gervigreindarreikningur"
@@ -806,7 +821,7 @@ msgstr "Sjálfgefin röðun"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:203
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:314
-#: src/features/objects/components/object-detail-panel.tsx:526
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:653
 #: src/routes/_authenticated/$crmId_.settings.tsx:100
 msgid "Delete"
 msgstr "Eyða"
@@ -840,9 +855,9 @@ msgstr "Eyða CRM?"
 msgid "Delete field"
 msgstr "Eyða sviði"
 
-#: src/features/objects/components/object-detail-panel.tsx:363
-#: src/features/objects/components/object-detail-panel.tsx:368
-#: src/features/objects/components/object-detail-panel.tsx:524
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:470
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:475
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:651
 msgid "Delete item"
 msgstr "Eyða atriði"
 
@@ -879,7 +894,7 @@ msgstr "Lýsing"
 
 #: src/routes/_authenticated/$crmId/design.tsx:39
 #: src/routes/_authenticated/$crmId/design.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:180
+#: src/routes/_authenticated/$crmId/index.tsx:178
 msgid "Design"
 msgstr "Hönnun"
 
@@ -896,7 +911,7 @@ msgstr "Hanna, búa til, breyta, gera athugasemdir og skoða"
 msgid "Details Panel"
 msgstr "Smáatriðaspjald"
 
-#: ../../../lib/web/src/components/language-picker.tsx:240
+#: ../../../lib/web/src/components/language-picker.tsx:243
 #: ../../../lib/web/src/components/timezone-select.tsx:46
 #: ../../../lib/web/src/components/timezone-select.tsx:83
 #: ../../../lib/web/src/lib/preference-utils.ts:23
@@ -929,7 +944,7 @@ msgstr "Aftengt"
 msgid "Dismiss"
 msgstr "Hafna"
 
-#: src/routes/_authenticated/$crmId/index.tsx:154
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Dismiss board hint"
 msgstr "Loka töfluábendingu"
 
@@ -938,13 +953,13 @@ msgid "Displays the mobile sidebar."
 msgstr "Sýnir hliðarstiku farsíma."
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:305
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:479
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:518
 #: src/features/editor/components/edit-dialogs.tsx:412
-#: src/features/objects/components/object-detail-panel.tsx:377
 msgid "Done"
 msgstr "Lokið"
 
-#: src/routes/_authenticated/$crmId/index.tsx:153
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Double click on a column to add content"
 msgstr "Tvísmelltu á dálk til að bæta við efni"
 
@@ -963,15 +978,15 @@ msgid "Download failed"
 msgstr "Niðurhal mistókst"
 
 #: src/routes/_authenticated/$crmId/design.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Downloaded {filename}"
 msgstr "Hlóð niður {filename}"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Drag columns to re-order them"
 msgstr "Dragðu dálka til að endurraða þeim"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "Tvítekur"
 
@@ -1030,6 +1045,10 @@ msgstr "Tölvupóstur"
 msgid "Email code"
 msgstr "Tölvupóstkóði"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:302
 msgid "Enter the code from your email"
 msgstr "Sláðu inn kóðann úr tölvupóstinum þínum"
@@ -1042,7 +1061,7 @@ msgstr "Sláðu inn auðkenniskóðann þinn"
 msgid "Entity ID"
 msgstr "Auðkenni einingar"
 
-#: src/features/objects/components/object-detail-panel.tsx:284
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:371
 msgid "Error"
 msgstr "Villa"
 
@@ -1057,11 +1076,11 @@ msgstr "Fletta út"
 msgid "Expand sidebar"
 msgstr "Útvíkka hliðarstiku"
 
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:168
 msgid "Export CSV"
 msgstr "Flytja út CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Export data"
 msgstr "Flytja út gögn"
 
@@ -1095,9 +1114,9 @@ msgstr "Tókst ekki að búa til CRM"
 msgid "Failed to create field"
 msgstr "Tókst ekki að búa til reit"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Failed to create link"
 msgstr "Tókst ekki að búa til tengil"
 
@@ -1110,7 +1129,7 @@ msgstr "Tókst ekki að búa til valkost"
 msgid "Failed to create view"
 msgstr "Tókst ekki að búa til skoðun"
 
-#: src/features/objects/components/object-detail-panel.tsx:203
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:293
 msgid "Failed to delete"
 msgstr "Tókst ekki að eyða"
 
@@ -1134,7 +1153,7 @@ msgstr "Tókst ekki að eyða CRM"
 msgid "Failed to delete field"
 msgstr "Tókst ekki að eyða reit"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "Tókst ekki að eyða tengli"
 
@@ -1146,7 +1165,7 @@ msgstr "Tókst ekki að eyða valkost"
 msgid "Failed to delete view"
 msgstr "Tókst ekki að eyða skoðun"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Failed to export data"
 msgstr "Ekki tókst að flytja út gögn"
 
@@ -1173,8 +1192,8 @@ msgstr "Tókst ekki að hlaða"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:41
 #: src/routes/_authenticated/$crmId/$objectId.tsx:65
-#: src/routes/_authenticated/$crmId/index.tsx:58
-#: src/routes/_authenticated/$crmId/index.tsx:94
+#: src/routes/_authenticated/$crmId/index.tsx:56
+#: src/routes/_authenticated/$crmId/index.tsx:92
 msgid "Failed to load CRM"
 msgstr "Tókst ekki að hlaða CRM"
 
@@ -1194,7 +1213,8 @@ msgstr "Tókst ekki að hlaða sögu"
 msgid "Failed to load image"
 msgstr "Ekki tókst að hlaða mynd"
 
-#: src/features/objects/components/object-detail-panel.tsx:285
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:372
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:375
 msgid "Failed to load item"
 msgstr "Tókst ekki að hlaða atriði"
 
@@ -1206,7 +1226,7 @@ msgstr "Ekki tókst að hlaða CRM-kerfum sem mælt er með"
 msgid "Failed to load video"
 msgstr "Ekki tókst að hlaða myndskeið"
 
-#: src/features/objects/components/object-detail-panel.tsx:221
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:307
 msgid "Failed to move"
 msgstr "Ekki tókst að færa"
 
@@ -1231,13 +1251,21 @@ msgstr "Tókst ekki að endurraða reitum"
 msgid "Failed to reorder views"
 msgstr "Tókst ekki að endurraða skoðunum"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:90
+msgid "Failed to reset prompt"
+msgstr ""
+
 #: ../../../lib/web/src/components/options-menu.tsx:133
 msgid "Failed to revoke RSS access"
 msgstr "Ekki tókst að afturkalla RSS-aðgang"
 
-#: src/features/objects/components/object-detail-panel.tsx:167
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:263
 msgid "Failed to save"
 msgstr "Tókst ekki að vista"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:111
+msgid "Failed to save prompt"
+msgstr ""
 
 #: src/features/crms/components/inline-crm-search.tsx:85
 msgid "Failed to search CRMs"
@@ -1254,13 +1282,17 @@ msgid "Failed to subscribe"
 msgstr "Tókst ekki að gerast áskrifandi"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Failed to unsubscribe"
 msgstr "Tókst ekki að segja upp áskrift"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:118
 msgid "Failed to update access level"
 msgstr "Tókst ekki að uppfæra aðgangsstig"
+
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr ""
 
 #: src/features/editor/components/design-editor.tsx:122
 msgid "Failed to update class"
@@ -1290,8 +1322,8 @@ msgstr "Tókst ekki að uppfæra valkost"
 msgid "Failed to update view"
 msgstr "Tókst ekki að uppfæra skoðun"
 
-#: src/features/objects/components/object-detail-panel.tsx:186
-msgid "Failed to update watch"
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:278
+msgid "Failed to update watching"
 msgstr "Ekki tókst að uppfæra vöktun"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
@@ -1302,7 +1334,7 @@ msgstr "Tókst ekki að hlaða upp viðhengi"
 msgid "Fields"
 msgstr "Reitir"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:589
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:583
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:155
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:175
 msgid "Files"
@@ -1384,7 +1416,7 @@ msgstr "Heitt"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
 #: src/features/editor/components/edit-dialogs.tsx:267
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "ID"
 msgstr "Auðkenni"
 
@@ -1448,7 +1480,7 @@ msgstr "Ógild JSON-skrá"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Svo virðist sem síðan sem þú leitar að <0/>sé ekki til eða hafi verið fjarlægð."
 
-#: src/features/objects/components/object-detail-panel.tsx:327
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:425
 msgid "Item details"
 msgstr "Upplýsingar um atriði"
 
@@ -1478,11 +1510,11 @@ msgid "Light"
 msgstr "Ljóst"
 
 #: ../../../lib/web/src/components/options-menu.tsx:190
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Link"
 msgstr "Tengill"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "Tenglar"
 
@@ -1498,17 +1530,17 @@ msgstr "Hlaða meiru"
 msgid "Loading content…"
 msgstr "Hleð inn efni…"
 
-#: src/features/objects/components/object-detail-panel.tsx:268
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:355
 msgid "Loading item"
 msgstr "Hleð atriði"
 
-#: src/features/objects/components/object-detail-panel.tsx:269
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:356
 msgid "Loading item details"
 msgstr "Hleð upplýsingum um atriði"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:35
 #: ../../../lib/web/src/features/document/document-page.tsx:88
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Loading..."
 msgstr "Hleð..."
 
@@ -1620,15 +1652,15 @@ msgstr "Nafn má ekki vera lengra en 1000 stafir"
 msgid "Network error"
 msgstr "Netvilla"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:476
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:470
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:141
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:139
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New"
 msgstr "Nýtt"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New {0}"
 msgstr "Nýtt {0}"
 
@@ -1642,7 +1674,7 @@ msgstr "Nýr leikur"
 msgid "Next image"
 msgstr "Næsta mynd"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:555
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:549
 msgid "No {parentClassNames} to add to"
 msgstr "Engin {parentClassNames} til að bæta við"
 
@@ -1675,15 +1707,15 @@ msgstr "Engir leikir ennþá"
 msgid "No groups available"
 msgstr "Engir hópar tiltækir"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:516
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Ekki er enn hægt að búa til neinar tegundir atriða. Búðu fyrst til nauðsynleg foreldraatriði."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "Engir samsvarandi hlutir"
 
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:169
 msgid "No objects to export."
 msgstr "Engir hlutir til að flytja út."
 
@@ -1732,9 +1764,13 @@ msgid "No views"
 msgstr "Engar skoðanir"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:541
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:545
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:532
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:535
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:539
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:540
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:554
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:558
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:359
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:382
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
@@ -1746,10 +1782,6 @@ msgstr "Engar skoðanir"
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/objects/components/object-detail-panel.tsx:441
-#: src/features/objects/components/object-detail-panel.tsx:454
-#: src/features/objects/components/object-detail-panel.tsx:457
-#: src/features/objects/components/object-detail-panel.tsx:461
 msgid "None"
 msgstr "Ekkert"
 
@@ -1822,7 +1854,7 @@ msgstr "Opna leiðsögn"
 msgid "Open option actions"
 msgstr "Opna valkostsaðgerðir"
 
-#: src/routes/_authenticated/$crmId/index.tsx:140
+#: src/routes/_authenticated/$crmId/index.tsx:138
 msgid "Open page actions"
 msgstr "Opna síðuaðgerðir"
 
@@ -1858,9 +1890,9 @@ msgstr "Annað"
 msgid "Owner"
 msgstr "Eigandi"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:530
-#: src/features/objects/components/object-detail-panel.tsx:435
-#: src/routes/_authenticated/$crmId/index.tsx:174
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:524
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:536
+#: src/routes/_authenticated/$crmId/index.tsx:172
 msgid "Parent"
 msgstr "Foreldri"
 
@@ -1880,7 +1912,7 @@ msgstr "Aðgangslyklar"
 msgid "Pattern (regex)"
 msgstr "Mynstur (regex)"
 
-#: src/routes/_authenticated/$crmId/index.tsx:146
+#: src/routes/_authenticated/$crmId/index.tsx:144
 msgid "Please add one or more classes to the CRM design."
 msgstr "Bættu við einum eða fleiri flokkum við CRM-hönnunina."
 
@@ -1928,7 +1960,11 @@ msgstr "Í vinnslu…"
 msgid "Project members"
 msgstr "Meðlimir verkefnis"
 
-#: src/features/objects/components/object-detail-panel.tsx:313
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:108
+msgid "Prompt saved"
+msgstr ""
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:398
 msgid "Properties"
 msgstr "Eiginleikar"
 
@@ -1944,7 +1980,7 @@ msgstr "Upphækkað"
 msgid "Re-link your accounts on this server"
 msgstr "Tengdu reikninga þína aftur á þessum þjóni"
 
-#: src/routes/_authenticated/$crmId/index.tsx:149
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "Re-order columns"
 msgstr "Endurraða dálkum"
 
@@ -1973,7 +2009,7 @@ msgstr "Áframsendi á innskráningu."
 msgid "Reduce interest"
 msgstr "Minnka áhuga"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "Tengist"
 
@@ -2028,8 +2064,8 @@ msgstr "Fjarlægja áhuga"
 msgid "Remove item"
 msgstr "Fjarlægja atriði"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "Fjarlægja tengil"
 
@@ -2129,15 +2165,18 @@ msgstr "Sölu-CRM"
 msgid "Saturday"
 msgstr "Laugardagur"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:170
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:152
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Save"
 msgstr "Vista"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/routes/_authenticated/$crmId_.settings.tsx:96
 msgid "Saving..."
 msgstr "Vista..."
@@ -2177,7 +2216,7 @@ msgstr "Leita að áfangastað..."
 msgid "Search for origin..."
 msgstr "Leita að upphafsstað..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "Leita að hlutum..."
 
@@ -2307,7 +2346,7 @@ msgstr "Stilli aðgang..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:125
 #: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:80
-#: src/routes/_authenticated/$crmId/index.tsx:188
+#: src/routes/_authenticated/$crmId/index.tsx:186
 msgid "Settings"
 msgstr "Stillingar"
 
@@ -2366,8 +2405,8 @@ msgstr "Rúmgott"
 msgid "Start the discussion by adding the first comment."
 msgstr "Hefjaðu umræðuna með því að bæta við fyrstu athugasemdinni."
 
-#: src/features/objects/components/object-detail-panel.tsx:344
-#: src/features/objects/components/object-detail-panel.tsx:353
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:455
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:460
 msgid "Stop watching"
 msgstr "Hætta að fylgjast með"
 
@@ -2478,7 +2517,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "Þetta mun eyða „{0}“ og öllum hlutum, athugasemdum og viðhengjum til frambúðar. Ekki er hægt að afturkalla þessa aðgerð."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Þetta mun fjarlægja „{0}“ úr hliðarstiku þinni og stöðva uppfærslur fyrir þetta CRM."
 
@@ -2615,32 +2654,29 @@ msgstr "Óþekkt"
 
 #: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "Unsubscribe"
 msgstr "Afskrá áskrift"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Unsubscribe from CRM?"
 msgstr "Afskrá áskrift að CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "Unsubscribed"
 msgstr "Áskrift afskráð"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Unsubscribing..."
 msgstr "Afskrái áskrift..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:285
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:36
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-container.tsx:29
 #: src/features/editor/components/design-preview.tsx:28
-#: src/features/objects/components/object-detail-panel.tsx:305
-#: src/features/objects/components/object-detail-panel.tsx:309
 msgid "Untitled"
 msgstr "Án titils"
 
@@ -2653,7 +2689,7 @@ msgstr "Uppfært"
 msgid "Updating access..."
 msgstr "Uppfæri aðgang..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:639
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:633
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:301
 msgid "Upload"
 msgstr "Hlaða upp"
@@ -2679,6 +2715,10 @@ msgstr "Notaðu aðgangslykilinn þinn"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
 msgid "User"
 msgstr "Notandi"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:159
+msgid "Variables: {variables}"
+msgstr ""
 
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
@@ -2707,7 +2747,7 @@ msgstr "Myndskeiðaskoðari: {0}"
 msgid "View all notifications"
 msgstr "Skoða allar tilkynningar"
 
-#: src/features/objects/components/object-detail-panel.tsx:328
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:426
 msgid "View and edit item details"
 msgstr "Skoða og breyta upplýsingum hlutarins"
 
@@ -2719,7 +2759,7 @@ msgstr "Skoða stjórntæki"
 msgid "View only"
 msgstr "Aðeins skoða"
 
-#: src/routes/_authenticated/$crmId/index.tsx:147
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "View options"
 msgstr "Skoða valkosti"
 
@@ -2727,8 +2767,8 @@ msgstr "Skoða valkosti"
 msgid "Views"
 msgstr "Áhorf"
 
-#: src/features/objects/components/object-detail-panel.tsx:344
-#: src/features/objects/components/object-detail-panel.tsx:353
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:455
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:460
 msgid "Watch"
 msgstr "Fylgjast með"
 
@@ -2754,7 +2794,7 @@ msgstr "Miðvikudagur"
 msgid "You do not have access to this section."
 msgstr "Þú hefur ekki aðgang að þessum hluta."
 
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:78
 msgid "You don't have access to this CRM."
 msgstr "Þú hefur ekki aðgang að þessu CRM-kerfi."
 

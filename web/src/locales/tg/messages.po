@@ -18,7 +18,7 @@ msgstr ""
 msgid "Please check your internet connection and try again."
 msgstr "Лутфан пайвасти интернети худро санҷед ва аз нав кӯшиш кунед."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:301
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:295
 msgid " or "
 msgstr " ё "
 
@@ -150,7 +150,7 @@ msgstr "Дастрасӣ барои {subjectName} танзим карда шуд
 msgid "Account type"
 msgstr "Намуди ҳисоб"
 
-#: src/features/objects/components/object-detail-panel.tsx:315
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:405
 msgid "Activity"
 msgstr "Фаъолият"
 
@@ -195,7 +195,7 @@ msgstr "Иловаи нуктаи рӯйхат"
 msgid "Add class"
 msgstr "Иловаи синф"
 
-#: src/routes/_authenticated/$crmId/index.tsx:148
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Add column"
 msgstr "Иловаи сутун"
 
@@ -209,7 +209,7 @@ msgstr "Иловаи майдон"
 msgid "Add item..."
 msgstr "Иловаи нукта..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "Иловаи пайванд"
 
@@ -297,7 +297,7 @@ msgstr "Ҳама чизе, ки ба ин ҷараён обуна шудааст
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Шумо мутмаин ҳастед, ки мехоҳед \"{0}\"-ро нест кунед?"
 
-#: src/features/objects/components/object-detail-panel.tsx:525
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:652
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Шумо мутмаин ҳастед, ки мехоҳед \"{title}\"-ро нест кунед? Ин амалро бекор кардан мумкин нест."
 
@@ -360,7 +360,7 @@ msgid "Back to CRM"
 msgstr "Бозгашт ба CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:93
+#: src/routes/_authenticated/$crmId/index.tsx:91
 msgid "Back to CRMs"
 msgstr "Бозгашт ба CRM-ҳо"
 
@@ -369,12 +369,21 @@ msgstr "Бозгашт ба CRM-ҳо"
 msgid "Back to home"
 msgstr "Бозгашт ба саҳифаи асосӣ"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Баннер"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr ""
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr ""
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "Манъ карда шуд аз ҷониби"
 
@@ -383,7 +392,7 @@ msgstr "Манъ карда шуд аз ҷониби"
 msgid "Blocked navigation to untrusted link"
 msgstr "Гузариш ба пайванди беэътимод манъ шуд"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "Блокҳо"
 
@@ -424,7 +433,7 @@ msgstr "Метавонад фарзанди ин бошад"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:338
 #: src/routes/_authenticated/$crmId/design.tsx:57
-#: src/routes/_authenticated/$crmId/index.tsx:151
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Cancel"
 msgstr "Бекор кардан"
 
@@ -462,12 +471,12 @@ msgstr "Рӯйхат"
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Аз панели канорӣ бозиеро интихоб кунед ё нав оғоз кунед."
 
-#: ../../../lib/web/src/components/language-picker.tsx:264
-#: ../../../lib/web/src/components/language-picker.tsx:271
+#: ../../../lib/web/src/components/language-picker.tsx:267
+#: ../../../lib/web/src/components/language-picker.tsx:274
 msgid "Choose language"
 msgstr "Забон интихоб кунед"
 
-#: src/routes/_authenticated/$crmId/index.tsx:173
+#: src/routes/_authenticated/$crmId/index.tsx:171
 msgid "Class"
 msgstr "Синф"
 
@@ -475,6 +484,7 @@ msgstr "Синф"
 msgid "Classes"
 msgstr "Синфҳо"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:164
@@ -492,8 +502,8 @@ msgstr "Ҳамаро тоза кардан"
 msgid "Clear search"
 msgstr "Тоза кардани ҷустуҷӯ"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:501
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:506
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:495
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:500
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:468
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:471
@@ -575,7 +585,7 @@ msgid "Comments"
 msgstr "Шарҳҳо"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:314
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:401
 msgid "Comments ({0})"
 msgstr "Шарҳҳо ({0})"
 
@@ -662,8 +672,8 @@ msgstr "Бо он ҳисоб тасдиқ кардан имконнопазир 
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:550
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:689
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:491
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:485
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:650
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:675
 msgid "Create"
 msgstr "Эҷод кардан"
@@ -710,7 +720,7 @@ msgstr "Эҷодшуда"
 msgid "Creating CRM..."
 msgstr "Эҷоди CRM..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:650
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
 #: src/features/crms/components/create-crm-dialog.tsx:341
 msgid "Creating..."
@@ -728,7 +738,7 @@ msgstr "CRM эҷод шуд"
 msgid "CRM deleted"
 msgstr "CRM нест карда шуд"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "CRM link"
 msgstr "Пайванди CRM"
 
@@ -761,6 +771,7 @@ msgstr "CRM-ҳо"
 msgid "Current location"
 msgstr "Ҷойгиршавии ҷорӣ"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:132
 #: ../../../lib/web/src/components/colour-picker.tsx:265
 msgid "Custom"
 msgstr "Танзимшаванда"
@@ -789,6 +800,10 @@ msgstr "Сана"
 msgid "Decline"
 msgstr "Рад кардан"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:129
+msgid "Default"
+msgstr ""
+
 #: ../../../lib/web/src/features/accounts/account-add.tsx:185
 msgid "Default AI account"
 msgstr "Ҳисоби пешфарз AI"
@@ -806,7 +821,7 @@ msgstr "Ҷобаҷогузории пешфарз"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:203
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:314
-#: src/features/objects/components/object-detail-panel.tsx:526
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:653
 #: src/routes/_authenticated/$crmId_.settings.tsx:100
 msgid "Delete"
 msgstr "Нест кардан"
@@ -840,9 +855,9 @@ msgstr "CRM-ро нест кунем?"
 msgid "Delete field"
 msgstr "Нест кардани майдон"
 
-#: src/features/objects/components/object-detail-panel.tsx:363
-#: src/features/objects/components/object-detail-panel.tsx:368
-#: src/features/objects/components/object-detail-panel.tsx:524
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:470
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:475
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:651
 msgid "Delete item"
 msgstr "Нест кардани нукта"
 
@@ -879,7 +894,7 @@ msgstr "Тавсиф"
 
 #: src/routes/_authenticated/$crmId/design.tsx:39
 #: src/routes/_authenticated/$crmId/design.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:180
+#: src/routes/_authenticated/$crmId/index.tsx:178
 msgid "Design"
 msgstr "Дизайн"
 
@@ -896,7 +911,7 @@ msgstr "Тарроҳӣ, эҷод, таҳрир, шарҳ ва дидан"
 msgid "Details Panel"
 msgstr "Панели тафсилот"
 
-#: ../../../lib/web/src/components/language-picker.tsx:240
+#: ../../../lib/web/src/components/language-picker.tsx:243
 #: ../../../lib/web/src/components/timezone-select.tsx:46
 #: ../../../lib/web/src/components/timezone-select.tsx:83
 #: ../../../lib/web/src/lib/preference-utils.ts:23
@@ -929,7 +944,7 @@ msgstr "Ҷудо шуда"
 msgid "Dismiss"
 msgstr "Рад кардан"
 
-#: src/routes/_authenticated/$crmId/index.tsx:154
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Dismiss board hint"
 msgstr "Рад кардани маслиҳати тахта"
 
@@ -938,13 +953,13 @@ msgid "Displays the mobile sidebar."
 msgstr "Панели канории мобилиро намоиш медиҳад."
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:305
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:479
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:518
 #: src/features/editor/components/edit-dialogs.tsx:412
-#: src/features/objects/components/object-detail-panel.tsx:377
 msgid "Done"
 msgstr "Иҷро шуд"
 
-#: src/routes/_authenticated/$crmId/index.tsx:153
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Double click on a column to add content"
 msgstr "Барои илова кардани мазмун ба сутун ду маротиба зер кунед"
 
@@ -963,15 +978,15 @@ msgid "Download failed"
 msgstr "Боргирӣ ноком шуд"
 
 #: src/routes/_authenticated/$crmId/design.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Downloaded {filename}"
 msgstr "{filename} боргирӣ шуд"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Drag columns to re-order them"
 msgstr "Барои аз нав мураттаб кардан сутунҳоро кашола кунед"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "Такрорҳо"
 
@@ -1030,6 +1045,10 @@ msgstr "Имейл"
 msgid "Email code"
 msgstr "Рамзи email"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:302
 msgid "Enter the code from your email"
 msgstr "Рамзро аз почтаи электронии худ ворид кунед"
@@ -1042,7 +1061,7 @@ msgstr "Рамзи аутентификатори худро ворид куне
 msgid "Entity ID"
 msgstr "ID-и объект"
 
-#: src/features/objects/components/object-detail-panel.tsx:284
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:371
 msgid "Error"
 msgstr "Хатогӣ"
 
@@ -1057,11 +1076,11 @@ msgstr "Васеъ кардан"
 msgid "Expand sidebar"
 msgstr "Васеъ кардани панели канорӣ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:168
 msgid "Export CSV"
 msgstr "Содироти CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Export data"
 msgstr "Содироти маълумот"
 
@@ -1095,9 +1114,9 @@ msgstr "Эҷоди CRM ба анҷом нарасид"
 msgid "Failed to create field"
 msgstr "Эҷоди майдон ба анҷом нарасид"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Failed to create link"
 msgstr "Эҷоди пайванд ба анҷом нарасид"
 
@@ -1110,7 +1129,7 @@ msgstr "Эҷоди интихоб ба анҷом нарасид"
 msgid "Failed to create view"
 msgstr "Эҷоди намуди намоиш ба анҷом нарасид"
 
-#: src/features/objects/components/object-detail-panel.tsx:203
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:293
 msgid "Failed to delete"
 msgstr "Ҳазф ба анҷом нарасид"
 
@@ -1134,7 +1153,7 @@ msgstr "Нест кардани CRM нашуд"
 msgid "Failed to delete field"
 msgstr "Ҳазфи майдон ба анҷом нарасид"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "Ҳазфи пайванд ба анҷом нарасид"
 
@@ -1146,7 +1165,7 @@ msgstr "Ҳазфи интихоб ба анҷом нарасид"
 msgid "Failed to delete view"
 msgstr "Ҳазфи намуди намоиш ба анҷом нарасид"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Failed to export data"
 msgstr "Маълумот содир карда нашуд"
 
@@ -1173,8 +1192,8 @@ msgstr "Боркунӣ ба анҷом нарасид"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:41
 #: src/routes/_authenticated/$crmId/$objectId.tsx:65
-#: src/routes/_authenticated/$crmId/index.tsx:58
-#: src/routes/_authenticated/$crmId/index.tsx:94
+#: src/routes/_authenticated/$crmId/index.tsx:56
+#: src/routes/_authenticated/$crmId/index.tsx:92
 msgid "Failed to load CRM"
 msgstr "Боркунии CRM ба анҷом нарасид"
 
@@ -1194,7 +1213,8 @@ msgstr "Боркунии таърих ба анҷом нарасид"
 msgid "Failed to load image"
 msgstr "Тасвир бор карда нашуд"
 
-#: src/features/objects/components/object-detail-panel.tsx:285
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:372
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:375
 msgid "Failed to load item"
 msgstr "Боркунии ашё ба анҷом нарасид"
 
@@ -1206,7 +1226,7 @@ msgstr "Боркунии CRM-ҳои тавсияшуда ноком шуд"
 msgid "Failed to load video"
 msgstr "Видео бор карда нашуд"
 
-#: src/features/objects/components/object-detail-panel.tsx:221
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:307
 msgid "Failed to move"
 msgstr "Интиқол ноком шуд"
 
@@ -1231,13 +1251,21 @@ msgstr "Аз нав мураттаб кардани майдонҳо ба анҷ
 msgid "Failed to reorder views"
 msgstr "Аз нав мураттаб кардани намудҳои намоиш ба анҷом нарасид"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:90
+msgid "Failed to reset prompt"
+msgstr ""
+
 #: ../../../lib/web/src/components/options-menu.tsx:133
 msgid "Failed to revoke RSS access"
 msgstr "Бекор кардани дастрасии RSS ноком шуд"
 
-#: src/features/objects/components/object-detail-panel.tsx:167
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:263
 msgid "Failed to save"
 msgstr "Захира ба анҷом нарасид"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:111
+msgid "Failed to save prompt"
+msgstr ""
 
 #: src/features/crms/components/inline-crm-search.tsx:85
 msgid "Failed to search CRMs"
@@ -1254,13 +1282,17 @@ msgid "Failed to subscribe"
 msgstr "Обуна ба анҷом нарасид"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Failed to unsubscribe"
 msgstr "Бекоркунии обуна ба анҷом нарасид"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:118
 msgid "Failed to update access level"
 msgstr "Навсозии сатҳи дастрасӣ ба анҷом нарасид"
+
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr ""
 
 #: src/features/editor/components/design-editor.tsx:122
 msgid "Failed to update class"
@@ -1290,8 +1322,8 @@ msgstr "Навсозии интихоб ба анҷом нарасид"
 msgid "Failed to update view"
 msgstr "Навсозии намуди намоиш ба анҷом нарасид"
 
-#: src/features/objects/components/object-detail-panel.tsx:186
-msgid "Failed to update watch"
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:278
+msgid "Failed to update watching"
 msgstr "Навсозии пайгирӣ ноком шуд"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
@@ -1302,7 +1334,7 @@ msgstr "Боркунии замима ба анҷом нарасид"
 msgid "Fields"
 msgstr "Майдонҳо"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:589
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:583
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:155
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:175
 msgid "Files"
@@ -1384,7 +1416,7 @@ msgstr "Доғ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
 #: src/features/editor/components/edit-dialogs.tsx:267
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "ID"
 msgstr "ID"
 
@@ -1448,7 +1480,7 @@ msgstr "Файли JSON нодуруст"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Чунин ба назар мерасад, ки саҳифае, ки шумо ҷустуҷӯ мекунед, <0/>вуҷуд надорад ё нест карда шудааст."
 
-#: src/features/objects/components/object-detail-panel.tsx:327
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:425
 msgid "Item details"
 msgstr "Тафсилоти ашё"
 
@@ -1478,11 +1510,11 @@ msgid "Light"
 msgstr "Равшан"
 
 #: ../../../lib/web/src/components/options-menu.tsx:190
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Link"
 msgstr "Пайванд"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "Пайвандҳо"
 
@@ -1498,17 +1530,17 @@ msgstr "Бештар бор кунед"
 msgid "Loading content…"
 msgstr "Боркунии муҳтаво…"
 
-#: src/features/objects/components/object-detail-panel.tsx:268
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:355
 msgid "Loading item"
 msgstr "Ашё бор карда мешавад"
 
-#: src/features/objects/components/object-detail-panel.tsx:269
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:356
 msgid "Loading item details"
 msgstr "Тафсилоти ашё бор карда мешаванд"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:35
 #: ../../../lib/web/src/features/document/document-page.tsx:88
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Loading..."
 msgstr "Бор карда мешавад..."
 
@@ -1620,15 +1652,15 @@ msgstr "Ном бояд 1000 аломат ё камтар бошад"
 msgid "Network error"
 msgstr "Хатогии шабака"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:476
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:470
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:141
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:139
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New"
 msgstr "Нав"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New {0}"
 msgstr "Нав {0}"
 
@@ -1642,7 +1674,7 @@ msgstr "Бозии нав"
 msgid "Next image"
 msgstr "Тасвири навбатӣ"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:555
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:549
 msgid "No {parentClassNames} to add to"
 msgstr "Ягон {parentClassNames} барои илова кардан нест"
 
@@ -1675,15 +1707,15 @@ msgstr "То ҳол ягон бозӣ нест"
 msgid "No groups available"
 msgstr "Ягон гурӯҳ дастрас нест"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:516
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Ҳеҷ як намуди ашё ҳоло сохта намешавад. Аввал ашёҳои волидайни заруриро эҷод кунед."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "Ягон объекти мувофиқ нест"
 
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:169
 msgid "No objects to export."
 msgstr "Ягон объект барои содирот нест."
 
@@ -1732,9 +1764,13 @@ msgid "No views"
 msgstr "Ягон намоиш нест"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:541
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:545
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:532
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:535
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:539
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:540
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:554
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:558
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:359
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:382
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
@@ -1746,10 +1782,6 @@ msgstr "Ягон намоиш нест"
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/objects/components/object-detail-panel.tsx:441
-#: src/features/objects/components/object-detail-panel.tsx:454
-#: src/features/objects/components/object-detail-panel.tsx:457
-#: src/features/objects/components/object-detail-panel.tsx:461
 msgid "None"
 msgstr "Ҳеҷ кадом"
 
@@ -1822,7 +1854,7 @@ msgstr "Кушодани навигатсия"
 msgid "Open option actions"
 msgstr "Кушодани амалҳои вариант"
 
-#: src/routes/_authenticated/$crmId/index.tsx:140
+#: src/routes/_authenticated/$crmId/index.tsx:138
 msgid "Open page actions"
 msgstr "Кушодани амалҳои саҳифа"
 
@@ -1858,9 +1890,9 @@ msgstr "Дигар"
 msgid "Owner"
 msgstr "Соҳиб"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:530
-#: src/features/objects/components/object-detail-panel.tsx:435
-#: src/routes/_authenticated/$crmId/index.tsx:174
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:524
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:536
+#: src/routes/_authenticated/$crmId/index.tsx:172
 msgid "Parent"
 msgstr "Волидайн"
 
@@ -1880,7 +1912,7 @@ msgstr "Калидҳои дастрасӣ"
 msgid "Pattern (regex)"
 msgstr "Намуна (regex)"
 
-#: src/routes/_authenticated/$crmId/index.tsx:146
+#: src/routes/_authenticated/$crmId/index.tsx:144
 msgid "Please add one or more classes to the CRM design."
 msgstr "Лутфан як ё якчанд синфҳоро ба тарҳи CRM илова кунед."
 
@@ -1928,7 +1960,11 @@ msgstr "Коркард шуда истодааст…"
 msgid "Project members"
 msgstr "Аъзои лоиҳа"
 
-#: src/features/objects/components/object-detail-panel.tsx:313
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:108
+msgid "Prompt saved"
+msgstr ""
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:398
 msgid "Properties"
 msgstr "Хусусиятҳо"
 
@@ -1944,7 +1980,7 @@ msgstr "Бардошта"
 msgid "Re-link your accounts on this server"
 msgstr "Ҳисобҳоятонро дар ин сервер аз нав пайванд кунед"
 
-#: src/routes/_authenticated/$crmId/index.tsx:149
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "Re-order columns"
 msgstr "Тартиби сутунҳоро тағйир диҳед"
 
@@ -1973,7 +2009,7 @@ msgstr "Тағйир ба воридшавӣ."
 msgid "Reduce interest"
 msgstr "Кам кардани шавқу ҳавас"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "Алоқа дорад"
 
@@ -2028,8 +2064,8 @@ msgstr "Хориҷ кардани шавқу ҳавас"
 msgid "Remove item"
 msgstr "Хориҷ кардани ашё"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "Истинодро тоза кунед"
 
@@ -2129,15 +2165,18 @@ msgstr "CRM-и фурӯш"
 msgid "Saturday"
 msgstr "Шанбе"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:170
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:152
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Save"
 msgstr "Захира"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/routes/_authenticated/$crmId_.settings.tsx:96
 msgid "Saving..."
 msgstr "Захира кардан..."
@@ -2177,7 +2216,7 @@ msgstr "Ҷустуҷӯи ҷои таъинот..."
 msgid "Search for origin..."
 msgstr "Ҷустуҷӯи манбаъ..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "Ҷустуҷӯи объектҳо..."
 
@@ -2307,7 +2346,7 @@ msgstr "Танзими дастрасӣ..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:125
 #: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:80
-#: src/routes/_authenticated/$crmId/index.tsx:188
+#: src/routes/_authenticated/$crmId/index.tsx:186
 msgid "Settings"
 msgstr "Танзимот"
 
@@ -2366,8 +2405,8 @@ msgstr "Васеъ"
 msgid "Start the discussion by adding the first comment."
 msgstr "Сӯҳбатро бо илова кардани шарҳи аввал оғоз кунед."
 
-#: src/features/objects/components/object-detail-panel.tsx:344
-#: src/features/objects/components/object-detail-panel.tsx:353
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:455
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:460
 msgid "Stop watching"
 msgstr "Назоратро қатъ кардан"
 
@@ -2478,7 +2517,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "Ин \"{0}\" ва ҳама объектҳо, шарҳҳо ва замимаҳои онро ба таври доимӣ нест мекунад. Ин амалро ботил кардан мумкин нест."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Ин \"{0}\"-ро аз панели паҳлӯи шумо хориҷ мекунад ва навсозиҳои ин CRM-ро қатъ мекунад."
 
@@ -2615,32 +2654,29 @@ msgstr "Номаълум"
 
 #: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "Unsubscribe"
 msgstr "Аз обуна баромадан"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Unsubscribe from CRM?"
 msgstr "Аз CRM хориҷ шудан?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "Unsubscribed"
 msgstr "Хориҷ шуд"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Unsubscribing..."
 msgstr "Хориҷ шуда истодааст..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:285
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:36
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-container.tsx:29
 #: src/features/editor/components/design-preview.tsx:28
-#: src/features/objects/components/object-detail-panel.tsx:305
-#: src/features/objects/components/object-detail-panel.tsx:309
 msgid "Untitled"
 msgstr "Беном"
 
@@ -2653,7 +2689,7 @@ msgstr "Навсозӣ шуд"
 msgid "Updating access..."
 msgstr "Навсозии дастрасӣ..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:639
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:633
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:301
 msgid "Upload"
 msgstr "Бор кардан"
@@ -2679,6 +2715,10 @@ msgstr "Калиди дастрасии худро истифода баред"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
 msgid "User"
 msgstr "Корбар"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:159
+msgid "Variables: {variables}"
+msgstr ""
 
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
@@ -2707,7 +2747,7 @@ msgstr "Тамошои видео: {0}"
 msgid "View all notifications"
 msgstr "Ҳама огоҳиҳоро дидан"
 
-#: src/features/objects/components/object-detail-panel.tsx:328
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:426
 msgid "View and edit item details"
 msgstr "Тафсилоти ҷузъро дидан ва таҳрир кардан"
 
@@ -2719,7 +2759,7 @@ msgstr "Назоратҳои намоиш"
 msgid "View only"
 msgstr "Танҳо назар"
 
-#: src/routes/_authenticated/$crmId/index.tsx:147
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "View options"
 msgstr "Имконоти намоиш"
 
@@ -2727,8 +2767,8 @@ msgstr "Имконоти намоиш"
 msgid "Views"
 msgstr "Назарҳо"
 
-#: src/features/objects/components/object-detail-panel.tsx:344
-#: src/features/objects/components/object-detail-panel.tsx:353
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:455
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:460
 msgid "Watch"
 msgstr "Назорат"
 
@@ -2754,7 +2794,7 @@ msgstr "Чоршанбе"
 msgid "You do not have access to this section."
 msgstr "Шумо ба ин бахш дастрасӣ надоред."
 
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:78
 msgid "You don't have access to this CRM."
 msgstr "Шумо ба ин CRM дастрасӣ надоред."
 
