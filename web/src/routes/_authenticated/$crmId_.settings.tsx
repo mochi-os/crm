@@ -14,14 +14,12 @@ import {
   EntitySettingsPage,
   type AccessLevel,
   type EntitySettingsTab,
+  DISALLOWED_NAME_CHARS,
 } from "@mochi/web";
 import { Users } from "lucide-react";
 import crmsApi from "@/api/crms";
 import type { CrmDetails } from "@/types";
 import { useCrmsStore } from "@/stores/crms-store";
-
-// Characters disallowed in CRM names (matches backend validation)
-const DISALLOWED_NAME_CHARS = /[<>\r\n]/;
 
 type SettingsSearch = {
   tab?: EntitySettingsTab;

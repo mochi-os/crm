@@ -33,7 +33,16 @@ import {
   TooltipContent,
   TooltipTrigger,
   textUnchanged,
+  getAppPath,
+  type Person,
 } from "@mochi/web";
+
+// A member's avatar and accent through this app's own user-asset route: the
+// picker cannot fetch the people app from inside the shell.
+function personAsset(container: string) {
+  return (person: Person, asset: "avatar" | "style") =>
+    `${getAppPath()}/${container}/-/user/${person.id}/asset/${asset}`;
+}
 import crmsApi from "@/api/crms";
 import type { CrmAccess, CrmDetails } from "@/types";
 import { canWrite, canComment } from "@/lib/access";
@@ -417,6 +426,7 @@ export function ObjectDetailPanel({
                     {titleField.name}
                   </label>
                   <FieldEditor
+                    personAsset={personAsset(crmId)}
                     field={titleField}
                     value={data.values[titleField.id] || ""}
                     options={classOptions[titleField.id] || []}
@@ -478,6 +488,7 @@ export function ObjectDetailPanel({
                       {field.name}
                     </label>
                     <FieldEditor
+                      personAsset={personAsset(crmId)}
                       field={field}
                       value={data.values[field.id] || ""}
                       options={classOptions[field.id] || []}
@@ -512,7 +523,7 @@ export function ObjectDetailPanel({
           </div>
 
           {activeTab === "activity" && <div className="max-w-2xl">
-              <ActivityList crmId={crmId} objectId={objectId} />
+              <ActivityList crmId={crmId} objectId={objectId} fields={classFields} />
           </div>}
             </>
           )}
