@@ -148,7 +148,7 @@ msgstr "Åtkomst inställd för {subjectName}"
 msgid "Account type"
 msgstr "Kontotyp"
 
-#: src/features/objects/components/object-detail-panel.tsx:324
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:415
 msgid "Activity"
 msgstr "Aktivitet"
 
@@ -193,7 +193,7 @@ msgstr "Lägg till checklistpunkt"
 msgid "Add class"
 msgstr "Lägg till klass"
 
-#: src/routes/_authenticated/$crmId/index.tsx:148
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Add column"
 msgstr "Lägg till kolumn"
 
@@ -207,7 +207,7 @@ msgstr "Lägg till fält"
 msgid "Add item..."
 msgstr "Lägg till objekt..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "Lägg till länk"
 
@@ -295,7 +295,7 @@ msgstr "Allt som prenumererar på det här flödet slutar ta emot det. Du kan ko
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Är du säker på att du vill ta bort \"{0}\"?"
 
-#: src/features/objects/components/object-detail-panel.tsx:536
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:671
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Är du säker på att du vill ta bort \"{title}\"? Denna åtgärd kan inte ångras."
 
@@ -310,6 +310,14 @@ msgstr "Är du säker på att du vill ta bort denna kommentar? Detta tar även b
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:27
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "Är du säker på att du vill logga ut? Du behöver logga in igen för att komma åt ditt konto."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:39
+msgid "Are you sure you want to resign?"
+msgstr "Är du säker på att du vill ge upp?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:38
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "Är du säker på att du vill ge upp? {opponentName} kommer att vinna partiet."
 
 #: src/features/crms/pages/crms-list-page.tsx:40
 msgid "Are you sure you want to unsubscribe from this CRM?"
@@ -358,7 +366,7 @@ msgid "Back to CRM"
 msgstr "Tillbaka till CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:93
+#: src/routes/_authenticated/$crmId/index.tsx:91
 msgid "Back to CRMs"
 msgstr "Tillbaka till CRM:er"
 
@@ -367,12 +375,21 @@ msgstr "Tillbaka till CRM:er"
 msgid "Back to home"
 msgstr "Tillbaka till start"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Banner"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr "Banner borttagen"
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr "Banner uppdaterad"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "Blockerad av"
 
@@ -381,7 +398,7 @@ msgstr "Blockerad av"
 msgid "Blocked navigation to untrusted link"
 msgstr "Blockerade navigering till opålitlig länk"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "Blockerar"
 
@@ -430,7 +447,7 @@ msgstr "Kan vara underordnad till"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:338
 #: src/routes/_authenticated/$crmId/design.tsx:57
-#: src/routes/_authenticated/$crmId/index.tsx:151
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -487,7 +504,7 @@ msgstr "Välj ett spel från sidofältet eller starta ett nytt."
 msgid "Choose language"
 msgstr "Välj språk"
 
-#: src/routes/_authenticated/$crmId/index.tsx:178
+#: src/routes/_authenticated/$crmId/index.tsx:176
 msgid "Class"
 msgstr "Klass"
 
@@ -495,6 +512,7 @@ msgstr "Klass"
 msgid "Classes"
 msgstr "Klasser"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -512,8 +530,8 @@ msgstr "Rensa allt"
 msgid "Clear search"
 msgstr "Rensa sökning"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:517
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
@@ -595,7 +613,7 @@ msgid "Comments"
 msgstr "Kommentarer"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:323
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:411
 msgid "Comments ({0})"
 msgstr "Kommentarer ({0})"
 
@@ -682,8 +700,8 @@ msgstr "Det gick inte att verifiera med det kontot. Försök igen."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Skapa"
@@ -734,7 +752,7 @@ msgstr "Skapade {field}"
 msgid "Creating CRM..."
 msgstr "Skapar CRM..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 #: src/features/crms/components/create-crm-dialog.tsx:341
 msgid "Creating..."
@@ -752,7 +770,7 @@ msgstr "CRM skapad"
 msgid "CRM deleted"
 msgstr "CRM raderad"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "CRM link"
 msgstr "CRM-länk"
 
@@ -835,7 +853,8 @@ msgstr "Standardsortering"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
-#: src/features/objects/components/object-detail-panel.tsx:537
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
 #: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Delete"
 msgstr "Ta bort"
@@ -869,9 +888,13 @@ msgstr "Ta bort CRM?"
 msgid "Delete field"
 msgstr "Ta bort fält"
 
-#: src/features/objects/components/object-detail-panel.tsx:372
-#: src/features/objects/components/object-detail-panel.tsx:377
-#: src/features/objects/components/object-detail-panel.tsx:535
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:69
+msgid "Delete game?"
+msgstr "Ta bort partiet?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:486
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:670
 msgid "Delete item"
 msgstr "Ta bort objekt"
 
@@ -905,6 +928,10 @@ msgstr "Raderade {field}"
 msgid "Deleting CRM..."
 msgstr "Raderar CRM..."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
+msgid "Deleting..."
+msgstr "Tar bort..."
+
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Descending"
 msgstr "Fallande"
@@ -916,7 +943,7 @@ msgstr "Beskrivning"
 
 #: src/routes/_authenticated/$crmId/design.tsx:39
 #: src/routes/_authenticated/$crmId/design.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:185
+#: src/routes/_authenticated/$crmId/index.tsx:183
 msgid "Design"
 msgstr "Design"
 
@@ -966,7 +993,7 @@ msgstr "Frånkopplad"
 msgid "Dismiss"
 msgstr "Avfärda"
 
-#: src/routes/_authenticated/$crmId/index.tsx:154
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Dismiss board hint"
 msgstr "Avfärda bräd-tips"
 
@@ -979,13 +1006,13 @@ msgid "Does not match the required pattern"
 msgstr "Matchar inte det obligatoriska mönstret"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:495
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 #: src/features/editor/components/edit-dialogs.tsx:412
-#: src/features/objects/components/object-detail-panel.tsx:386
 msgid "Done"
 msgstr "Klar"
 
-#: src/routes/_authenticated/$crmId/index.tsx:153
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Double click on a column to add content"
 msgstr "Dubbelklicka på en kolumn för att lägga till innehåll"
 
@@ -1005,15 +1032,15 @@ msgid "Download failed"
 msgstr "Nedladdningen misslyckades"
 
 #: src/routes/_authenticated/$crmId/design.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Downloaded {filename}"
 msgstr "Laddade ner {filename}"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Drag columns to re-order them"
 msgstr "Dra kolumner för att ändra ordning"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "Duplicerar"
 
@@ -1072,6 +1099,10 @@ msgstr "E-post"
 msgid "Email code"
 msgstr "E-postkod"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr "Ange bannertext (markdown stöds)..."
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "Ange koden från ditt e-postmeddelande"
@@ -1084,7 +1115,7 @@ msgstr "Ange din autentiseringskod"
 msgid "Entity ID"
 msgstr "Entitets-ID"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:381
 msgid "Error"
 msgstr "Fel"
 
@@ -1099,11 +1130,11 @@ msgstr "Expandera"
 msgid "Expand sidebar"
 msgstr "Expandera sidofält"
 
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Export CSV"
 msgstr "Exportera CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Export data"
 msgstr "Exportera data"
 
@@ -1123,7 +1154,7 @@ msgstr "Extra stor"
 msgid "Failed to add account"
 msgstr "Kunde inte lägga till konto"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to add column"
 msgstr "Det gick inte att lägga till kolumnen"
 
@@ -1145,9 +1176,9 @@ msgstr "Kunde inte skapa CRM"
 msgid "Failed to create field"
 msgstr "Kunde inte skapa fält"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Failed to create link"
 msgstr "Kunde inte skapa länk"
 
@@ -1160,7 +1191,7 @@ msgstr "Kunde inte skapa alternativ"
 msgid "Failed to create view"
 msgstr "Kunde inte skapa vy"
 
-#: src/features/objects/components/object-detail-panel.tsx:212
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
 msgid "Failed to delete"
 msgstr "Kunde inte radera"
 
@@ -1172,7 +1203,7 @@ msgstr "Kunde inte radera bilaga"
 msgid "Failed to delete class"
 msgstr "Kunde inte radera klass"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Failed to delete column"
 msgstr "Det gick inte att radera kolumnen"
 
@@ -1188,7 +1219,7 @@ msgstr "Det gick inte att radera CRM"
 msgid "Failed to delete field"
 msgstr "Kunde inte radera fält"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "Kunde inte radera länk"
 
@@ -1200,7 +1231,7 @@ msgstr "Kunde inte radera alternativ"
 msgid "Failed to delete view"
 msgstr "Kunde inte radera vy"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Failed to export data"
 msgstr "Det gick inte att exportera data"
 
@@ -1227,8 +1258,8 @@ msgstr "Kunde inte läsa in"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:41
 #: src/routes/_authenticated/$crmId/$objectId.tsx:65
-#: src/routes/_authenticated/$crmId/index.tsx:58
-#: src/routes/_authenticated/$crmId/index.tsx:94
+#: src/routes/_authenticated/$crmId/index.tsx:56
+#: src/routes/_authenticated/$crmId/index.tsx:92
 msgid "Failed to load CRM"
 msgstr "Kunde inte läsa in CRM"
 
@@ -1248,7 +1279,8 @@ msgstr "Kunde inte läsa in historik"
 msgid "Failed to load image"
 msgstr "Det gick inte att läsa in bilden"
 
-#: src/features/objects/components/object-detail-panel.tsx:294
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:382
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:385
 msgid "Failed to load item"
 msgstr "Kunde inte läsa in objekt"
 
@@ -1264,8 +1296,8 @@ msgstr "Det gick inte att läsa in rekommenderade CRM:er"
 msgid "Failed to load video"
 msgstr "Det gick inte att läsa in videon"
 
-#: src/features/objects/components/object-detail-panel.tsx:230
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:317
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "Failed to move"
 msgstr "Kunde inte flytta"
 
@@ -1273,7 +1305,7 @@ msgstr "Kunde inte flytta"
 msgid "Failed to post comment"
 msgstr "Kunde inte publicera kommentar"
 
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "Failed to re-order columns"
 msgstr "Det gick inte att ändra ordning på kolumnerna"
 
@@ -1286,7 +1318,7 @@ msgstr "Kunde inte läsa fil"
 msgid "Failed to remove access"
 msgstr "Kunde inte ta bort åtkomst"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Failed to rename column"
 msgstr "Det gick inte att byta namn på kolumnen"
 
@@ -1306,7 +1338,7 @@ msgstr "Kunde inte återställa uppmaning"
 msgid "Failed to revoke RSS access"
 msgstr "Det gick inte att återkalla RSS-åtkomst"
 
-#: src/features/objects/components/object-detail-panel.tsx:176
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
 msgid "Failed to save"
 msgstr "Kunde inte spara"
 
@@ -1329,13 +1361,17 @@ msgid "Failed to subscribe"
 msgstr "Kunde inte prenumerera"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Failed to unsubscribe"
 msgstr "Kunde inte avsluta prenumeration"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Failed to update access level"
 msgstr "Kunde inte uppdatera åtkomstnivå"
+
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr "Kunde inte uppdatera banner"
 
 #: src/features/editor/components/design-editor.tsx:122
 msgid "Failed to update class"
@@ -1365,8 +1401,8 @@ msgstr "Kunde inte uppdatera alternativ"
 msgid "Failed to update view"
 msgstr "Kunde inte uppdatera vy"
 
-#: src/features/objects/components/object-detail-panel.tsx:195
-msgid "Failed to update watch"
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:288
+msgid "Failed to update watching"
 msgstr "Kunde inte uppdatera bevakning"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
@@ -1377,7 +1413,7 @@ msgstr "Kunde inte ladda upp bilaga"
 msgid "Fields"
 msgstr "Fält"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:605
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
@@ -1459,7 +1495,7 @@ msgstr "Het"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 #: src/features/editor/components/edit-dialogs.tsx:267
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "ID"
 msgstr "ID"
 
@@ -1527,7 +1563,7 @@ msgstr "Ogiltig JSON-fil"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Det verkar som att sidan du letar efter <0/>inte finns eller har tagits bort."
 
-#: src/features/objects/components/object-detail-panel.tsx:336
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:441
 msgid "Item details"
 msgstr "Objektsdetaljer"
 
@@ -1557,11 +1593,11 @@ msgid "Light"
 msgstr "Ljust"
 
 #: ../../../lib/web/src/components/options-menu.tsx:190
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Link"
 msgstr "Länk"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "Länkar"
 
@@ -1577,17 +1613,17 @@ msgstr "Läs in fler"
 msgid "Loading content…"
 msgstr "Läser in innehåll…"
 
-#: src/features/objects/components/object-detail-panel.tsx:277
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:365
 msgid "Loading item"
 msgstr "Läser in objekt"
 
-#: src/features/objects/components/object-detail-panel.tsx:278
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:366
 msgid "Loading item details"
 msgstr "Läser in objektsdetaljer"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Loading..."
 msgstr "Läser in..."
 
@@ -1713,15 +1749,15 @@ msgstr "Namnet får vara högst 1000 tecken"
 msgid "Network error"
 msgstr "Nätverksfel"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:492
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:141
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:139
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New"
 msgstr "Ny"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New {0}"
 msgstr "Ny {0}"
 
@@ -1735,7 +1771,7 @@ msgstr "Nytt spel"
 msgid "Next image"
 msgstr "Nästa bild"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:571
 msgid "No {parentClassNames} to add to"
 msgstr "Inga {parentClassNames} att lägga till"
 
@@ -1768,15 +1804,15 @@ msgstr "Inga spel ännu"
 msgid "No groups available"
 msgstr "Inga grupper tillgängliga"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Inga objekttyper kan skapas ännu. Skapa de obligatoriska överordnade objekten först."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "Inga matchande objekt"
 
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "No objects to export."
 msgstr "Inga objekt att exportera."
 
@@ -1825,9 +1861,13 @@ msgid "No views"
 msgstr "Inga vyer"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:554
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:557
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:561
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:557
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:570
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:571
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:575
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
@@ -1839,10 +1879,6 @@ msgstr "Inga vyer"
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/objects/components/object-detail-panel.tsx:451
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:467
-#: src/features/objects/components/object-detail-panel.tsx:471
 msgid "None"
 msgstr "Ingen"
 
@@ -1915,7 +1951,7 @@ msgstr "Öppna navigering"
 msgid "Open option actions"
 msgstr "Öppna alternativåtgärder"
 
-#: src/routes/_authenticated/$crmId/index.tsx:140
+#: src/routes/_authenticated/$crmId/index.tsx:138
 msgid "Open page actions"
 msgstr "Öppna sidåtgärder"
 
@@ -1951,9 +1987,10 @@ msgstr "Övrigt"
 msgid "Owner"
 msgstr "Ägare"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
-#: src/features/objects/components/object-detail-panel.tsx:445
-#: src/routes/_authenticated/$crmId/index.tsx:179
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:546
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:569
+#: src/routes/_authenticated/$crmId/index.tsx:177
 msgid "Parent"
 msgstr "Överordnad"
 
@@ -1982,7 +2019,7 @@ msgstr "Mönster (regex)"
 msgid "People"
 msgstr "Personer"
 
-#: src/routes/_authenticated/$crmId/index.tsx:146
+#: src/routes/_authenticated/$crmId/index.tsx:144
 msgid "Please add one or more classes to the CRM design."
 msgstr "Lägg till en eller flera klasser i CRM-designen."
 
@@ -2026,7 +2063,7 @@ msgstr "Bearbetar…"
 msgid "Prompt saved"
 msgstr "Prompt sparad"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:408
 msgid "Properties"
 msgstr "Egenskaper"
 
@@ -2042,7 +2079,7 @@ msgstr "Upphöjd"
 msgid "Re-link your accounts on this server"
 msgstr "Återlänka dina konton på den här servern"
 
-#: src/routes/_authenticated/$crmId/index.tsx:149
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "Re-order columns"
 msgstr "Ordna om kolumner"
 
@@ -2079,7 +2116,7 @@ msgstr "Omdirigerar till inloggning."
 msgid "Reduce interest"
 msgstr "Minska intresse"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "Relaterar"
 
@@ -2142,8 +2179,8 @@ msgstr "Ta bort intresse"
 msgid "Remove item"
 msgstr "Ta bort objekt"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "Ta bort länk"
 
@@ -2193,6 +2230,18 @@ msgstr "Obligatorisk"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "Skicka e-post igen"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:48
+msgid "Resign"
+msgstr "Ge upp"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:35
+msgid "Resign game?"
+msgstr "Ge upp partiet?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:45
+msgid "Resigning..."
+msgstr "Ger upp..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:348
 msgid "Retry"
@@ -2245,11 +2294,12 @@ msgstr "Lördag"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:152
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Save"
 msgstr "Spara"
 
@@ -2293,7 +2343,7 @@ msgstr "Sök efter destination..."
 msgid "Search for origin..."
 msgstr "Sök efter ursprung..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "Sök objekt..."
 
@@ -2423,7 +2473,7 @@ msgstr "Ställer in åtkomst..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:125
 #: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:78
-#: src/routes/_authenticated/$crmId/index.tsx:193
+#: src/routes/_authenticated/$crmId/index.tsx:191
 msgid "Settings"
 msgstr "Inställningar"
 
@@ -2486,8 +2536,8 @@ msgstr "Rymlig"
 msgid "Start the discussion by adding the first comment."
 msgstr "Starta diskussionen genom att lägga till den första kommentaren."
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Stop watching"
 msgstr "Sluta bevaka"
 
@@ -2612,13 +2662,17 @@ msgstr "Det här CRM-systemet kunde inte laddas just nu."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Det här CRM-systemet kan ha tagits bort eller så har du inte åtkomst till det."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:70
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "Detta tar bort partiet och dess chatt permanent. Detta går inte att ångra."
+
 #. placeholder {0}: String(name)
 #: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Detta tar permanent bort \"{0}\" och alla dess objekt, kommentarer och bilagor. Den här åtgärden kan inte ångras."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Detta tar bort \"{0}\" från ditt sidofält och stoppar uppdateringar för detta CRM."
 
@@ -2753,32 +2807,29 @@ msgstr "Okänd"
 
 #: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribe"
 msgstr "Avsluta prenumeration"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribe from CRM?"
 msgstr "Avsluta prenumeration på CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:169
 msgid "Unsubscribed"
 msgstr "Prenumeration avslutad"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:168
 msgid "Unsubscribing..."
 msgstr "Avslutar prenumeration..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:40
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-container.tsx:29
 #: src/features/editor/components/design-preview.tsx:28
-#: src/features/objects/components/object-detail-panel.tsx:314
-#: src/features/objects/components/object-detail-panel.tsx:318
 msgid "Untitled"
 msgstr "Namnlös"
 
@@ -2796,7 +2847,7 @@ msgstr "Uppdaterade {field}"
 msgid "Updating access..."
 msgstr "Uppdaterar åtkomst..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:655
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 msgid "Upload"
 msgstr "Ladda upp"
@@ -2854,7 +2905,7 @@ msgstr "Videovisare: {0}"
 msgid "View all notifications"
 msgstr "Visa alla aviseringar"
 
-#: src/features/objects/components/object-detail-panel.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:442
 msgid "View and edit item details"
 msgstr "Visa och redigera artikeldetaljer"
 
@@ -2866,7 +2917,7 @@ msgstr "Visningskontroller"
 msgid "View only"
 msgstr "Endast visning"
 
-#: src/routes/_authenticated/$crmId/index.tsx:147
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "View options"
 msgstr "Visningsalternativ"
 
@@ -2878,8 +2929,8 @@ msgstr "Visningar"
 msgid "Voice recording is not supported in this browser"
 msgstr "Röstinspelning stöds inte i den här webbläsaren"
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Watch"
 msgstr "Bevaka"
 
@@ -2905,7 +2956,7 @@ msgstr "Onsdag"
 msgid "You do not have access to this section."
 msgstr "Du har inte åtkomst till det här avsnittet."
 
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:78
 msgid "You don't have access to this CRM."
 msgstr "Du har inte åtkomst till detta CRM."
 

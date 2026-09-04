@@ -148,7 +148,7 @@ msgstr "הוגדרה גישה עבור {subjectName}"
 msgid "Account type"
 msgstr "סוג חשבון"
 
-#: src/features/objects/components/object-detail-panel.tsx:324
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:415
 msgid "Activity"
 msgstr "פעילות"
 
@@ -193,7 +193,7 @@ msgstr "הוסף פריט לרשימת משימות"
 msgid "Add class"
 msgstr "הוסף מחלקה"
 
-#: src/routes/_authenticated/$crmId/index.tsx:148
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Add column"
 msgstr "הוסף עמודה"
 
@@ -207,7 +207,7 @@ msgstr "הוסף שדה"
 msgid "Add item..."
 msgstr "הוסף פריט..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "הוסף קישור"
 
@@ -295,7 +295,7 @@ msgstr "כל מה שרשום להזנה הזו יפסיק לקבל אותה. א�
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "האם אתה בטוח שברצונך למחוק את \"{0}\"?"
 
-#: src/features/objects/components/object-detail-panel.tsx:536
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:671
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "האם אתה בטוח שברצונך למחוק את \"{title}\"? לא ניתן לבטל פעולה זו."
 
@@ -310,6 +310,14 @@ msgstr "האם אתה בטוח שברצונך למחוק תגובה זו? פעו
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:27
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "האם אתה בטוח שברצונך להתנתק? יהיה עליך להתחבר שוב כדי לגשת לחשבונך."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:39
+msgid "Are you sure you want to resign?"
+msgstr "האם אתה בטוח שברצונך לפרוש?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:38
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "האם אתה בטוח שברצונך לפרוש? {opponentName} ינצח במשחק."
 
 #: src/features/crms/pages/crms-list-page.tsx:40
 msgid "Are you sure you want to unsubscribe from this CRM?"
@@ -358,7 +366,7 @@ msgid "Back to CRM"
 msgstr "חזור ל-CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:93
+#: src/routes/_authenticated/$crmId/index.tsx:91
 msgid "Back to CRMs"
 msgstr "חזור ל-CRMs"
 
@@ -367,12 +375,21 @@ msgstr "חזור ל-CRMs"
 msgid "Back to home"
 msgstr "חזרה לבית"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "באנר"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr "הבאנר הוסר"
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr "הבאנר עודכן"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "חסום על ידי"
 
@@ -381,7 +398,7 @@ msgstr "חסום על ידי"
 msgid "Blocked navigation to untrusted link"
 msgstr "ניווט לקישור לא מהימן נחסם"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "חוסם"
 
@@ -430,7 +447,7 @@ msgstr "יכול להיות צאצא של"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:338
 #: src/routes/_authenticated/$crmId/design.tsx:57
-#: src/routes/_authenticated/$crmId/index.tsx:151
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -487,7 +504,7 @@ msgstr "בחר משחק מהסרגל הצדדי או התחל אחד חדש."
 msgid "Choose language"
 msgstr "בחר שפה"
 
-#: src/routes/_authenticated/$crmId/index.tsx:178
+#: src/routes/_authenticated/$crmId/index.tsx:176
 msgid "Class"
 msgstr "מחלקה"
 
@@ -495,6 +512,7 @@ msgstr "מחלקה"
 msgid "Classes"
 msgstr "מחלקות"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -512,8 +530,8 @@ msgstr "נקה הכול"
 msgid "Clear search"
 msgstr "נקה חיפוש"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:517
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
@@ -595,7 +613,7 @@ msgid "Comments"
 msgstr "תגובות"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:323
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:411
 msgid "Comments ({0})"
 msgstr "תגובות ({0})"
 
@@ -682,8 +700,8 @@ msgstr "לא ניתן היה לאמת עם החשבון הזה. נסה שוב."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "צור"
@@ -734,7 +752,7 @@ msgstr "{field} נוצר"
 msgid "Creating CRM..."
 msgstr "יוצר CRM..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 #: src/features/crms/components/create-crm-dialog.tsx:341
 msgid "Creating..."
@@ -752,7 +770,7 @@ msgstr "ה-CRM נוצר"
 msgid "CRM deleted"
 msgstr "CRM נמחק"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "CRM link"
 msgstr "קישור ל-CRM"
 
@@ -835,7 +853,8 @@ msgstr "מיון ברירת מחדל"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
-#: src/features/objects/components/object-detail-panel.tsx:537
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
 #: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Delete"
 msgstr "מחק"
@@ -869,9 +888,13 @@ msgstr "למחוק CRM?"
 msgid "Delete field"
 msgstr "מחק שדה"
 
-#: src/features/objects/components/object-detail-panel.tsx:372
-#: src/features/objects/components/object-detail-panel.tsx:377
-#: src/features/objects/components/object-detail-panel.tsx:535
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:69
+msgid "Delete game?"
+msgstr "למחוק את המשחק?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:486
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:670
 msgid "Delete item"
 msgstr "מחק פריט"
 
@@ -905,6 +928,10 @@ msgstr "{field} נמחק"
 msgid "Deleting CRM..."
 msgstr "מוחק CRM..."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
+msgid "Deleting..."
+msgstr "מוחק..."
+
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Descending"
 msgstr "סדר יורד"
@@ -916,7 +943,7 @@ msgstr "תיאור"
 
 #: src/routes/_authenticated/$crmId/design.tsx:39
 #: src/routes/_authenticated/$crmId/design.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:185
+#: src/routes/_authenticated/$crmId/index.tsx:183
 msgid "Design"
 msgstr "עיצוב"
 
@@ -966,7 +993,7 @@ msgstr "מנותק"
 msgid "Dismiss"
 msgstr "סגור"
 
-#: src/routes/_authenticated/$crmId/index.tsx:154
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Dismiss board hint"
 msgstr "סגור רמז לוח"
 
@@ -979,13 +1006,13 @@ msgid "Does not match the required pattern"
 msgstr "לא תואם לתבנית הנדרשת"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:495
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 #: src/features/editor/components/edit-dialogs.tsx:412
-#: src/features/objects/components/object-detail-panel.tsx:386
 msgid "Done"
 msgstr "בוצע"
 
-#: src/routes/_authenticated/$crmId/index.tsx:153
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Double click on a column to add content"
 msgstr "לחץ פעמיים על עמודה כדי להוסיף תוכן"
 
@@ -1005,15 +1032,15 @@ msgid "Download failed"
 msgstr "ההורדה נכשלה"
 
 #: src/routes/_authenticated/$crmId/design.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Downloaded {filename}"
 msgstr "{filename} הורד"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Drag columns to re-order them"
 msgstr "גרור עמודות כדי לשנות את סדרן"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "משכפל"
 
@@ -1072,6 +1099,10 @@ msgstr "אימייל"
 msgid "Email code"
 msgstr "קוד אימייל"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr "הזן טקסט באנר (יש תמיכה ב-markdown)..."
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "הזן את הקוד מהאימייל שלך"
@@ -1084,7 +1115,7 @@ msgstr "הזן את הקוד מאפליקציית האימות"
 msgid "Entity ID"
 msgstr "מזהה ישות"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:381
 msgid "Error"
 msgstr "שגיאה"
 
@@ -1099,11 +1130,11 @@ msgstr "הרחבה"
 msgid "Expand sidebar"
 msgstr "הרחב סרגל צד"
 
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Export CSV"
 msgstr "ייצוא CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Export data"
 msgstr "ייצוא נתונים"
 
@@ -1123,7 +1154,7 @@ msgstr "גדול במיוחד"
 msgid "Failed to add account"
 msgstr "הוספת החשבון נכשלה"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to add column"
 msgstr "הוספת העמודה נכשלה"
 
@@ -1145,9 +1176,9 @@ msgstr "יצירת ה-CRM נכשלה"
 msgid "Failed to create field"
 msgstr "יצירת השדה נכשלה"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Failed to create link"
 msgstr "יצירת הקישור נכשלה"
 
@@ -1160,7 +1191,7 @@ msgstr "יצירת האפשרות נכשלה"
 msgid "Failed to create view"
 msgstr "יצירת התצוגה נכשלה"
 
-#: src/features/objects/components/object-detail-panel.tsx:212
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
 msgid "Failed to delete"
 msgstr "המחיקה נכשלה"
 
@@ -1172,7 +1203,7 @@ msgstr "מחיקת הקובץ המצורף נכשלה"
 msgid "Failed to delete class"
 msgstr "מחיקת המחלקה נכשלה"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Failed to delete column"
 msgstr "מחיקת העמודה נכשלה"
 
@@ -1188,7 +1219,7 @@ msgstr "מחיקת ה-CRM נכשלה"
 msgid "Failed to delete field"
 msgstr "מחיקת השדה נכשלה"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "מחיקת הקישור נכשלה"
 
@@ -1200,7 +1231,7 @@ msgstr "מחיקת האפשרות נכשלה"
 msgid "Failed to delete view"
 msgstr "מחיקת התצוגה נכשלה"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Failed to export data"
 msgstr "ייצוא הנתונים נכשל"
 
@@ -1227,8 +1258,8 @@ msgstr "הטעינה נכשלה"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:41
 #: src/routes/_authenticated/$crmId/$objectId.tsx:65
-#: src/routes/_authenticated/$crmId/index.tsx:58
-#: src/routes/_authenticated/$crmId/index.tsx:94
+#: src/routes/_authenticated/$crmId/index.tsx:56
+#: src/routes/_authenticated/$crmId/index.tsx:92
 msgid "Failed to load CRM"
 msgstr "טעינת ה-CRM נכשלה"
 
@@ -1248,7 +1279,8 @@ msgstr "טעינת ההיסטוריה נכשלה"
 msgid "Failed to load image"
 msgstr "טעינת התמונה נכשלה"
 
-#: src/features/objects/components/object-detail-panel.tsx:294
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:382
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:385
 msgid "Failed to load item"
 msgstr "טעינת הפריט נכשלה"
 
@@ -1264,8 +1296,8 @@ msgstr "טעינת מערכות ה-CRM המומלצות נכשלה"
 msgid "Failed to load video"
 msgstr "טעינת הווידאו נכשלה"
 
-#: src/features/objects/components/object-detail-panel.tsx:230
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:317
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "Failed to move"
 msgstr "ההעברה נכשלה"
 
@@ -1273,7 +1305,7 @@ msgstr "ההעברה נכשלה"
 msgid "Failed to post comment"
 msgstr "פרסום התגובה נכשל"
 
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "Failed to re-order columns"
 msgstr "שינוי סדר העמודות נכשל"
 
@@ -1286,7 +1318,7 @@ msgstr "קריאת הקובץ נכשלה"
 msgid "Failed to remove access"
 msgstr "הסרת הגישה נכשלה"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Failed to rename column"
 msgstr "שינוי שם העמודה נכשל"
 
@@ -1306,7 +1338,7 @@ msgstr "איפוס ה-prompt נכשל"
 msgid "Failed to revoke RSS access"
 msgstr "ביטול גישת RSS נכשל"
 
-#: src/features/objects/components/object-detail-panel.tsx:176
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
 msgid "Failed to save"
 msgstr "השמירה נכשלה"
 
@@ -1329,13 +1361,17 @@ msgid "Failed to subscribe"
 msgstr "ההרשמה נכשלה"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Failed to unsubscribe"
 msgstr "ביטול ההרשמה נכשל"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Failed to update access level"
 msgstr "עדכון רמת הגישה נכשל"
+
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr "עדכון הבאנר נכשל"
 
 #: src/features/editor/components/design-editor.tsx:122
 msgid "Failed to update class"
@@ -1365,8 +1401,8 @@ msgstr "עדכון האפשרות נכשל"
 msgid "Failed to update view"
 msgstr "עדכון התצוגה נכשל"
 
-#: src/features/objects/components/object-detail-panel.tsx:195
-msgid "Failed to update watch"
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:288
+msgid "Failed to update watching"
 msgstr "עדכון המעקב נכשל"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
@@ -1377,7 +1413,7 @@ msgstr "העלאת הקובץ המצורף נכשלה"
 msgid "Fields"
 msgstr "שדות"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:605
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
@@ -1459,7 +1495,7 @@ msgstr "חם"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 #: src/features/editor/components/edit-dialogs.tsx:267
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "ID"
 msgstr "מזהה"
 
@@ -1527,7 +1563,7 @@ msgstr "קובץ JSON לא תקין"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "נראה שהדף שאתה מחפש <0/>אינו קיים או שהוסר."
 
-#: src/features/objects/components/object-detail-panel.tsx:336
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:441
 msgid "Item details"
 msgstr "פרטי פריט"
 
@@ -1557,11 +1593,11 @@ msgid "Light"
 msgstr "בהיר"
 
 #: ../../../lib/web/src/components/options-menu.tsx:190
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Link"
 msgstr "קישור"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "קישורים"
 
@@ -1577,17 +1613,17 @@ msgstr "טען עוד"
 msgid "Loading content…"
 msgstr "טוען תוכן…"
 
-#: src/features/objects/components/object-detail-panel.tsx:277
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:365
 msgid "Loading item"
 msgstr "טוען פריט"
 
-#: src/features/objects/components/object-detail-panel.tsx:278
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:366
 msgid "Loading item details"
 msgstr "טוען פרטי פריט"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Loading..."
 msgstr "טוען..."
 
@@ -1713,15 +1749,15 @@ msgstr "השם חייב להיות 1000 תווים או פחות"
 msgid "Network error"
 msgstr "שגיאת רשת"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:492
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:141
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:139
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New"
 msgstr "חדש"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New {0}"
 msgstr "{0} חדש"
 
@@ -1735,7 +1771,7 @@ msgstr "משחק חדש"
 msgid "Next image"
 msgstr "התמונה הבאה"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:571
 msgid "No {parentClassNames} to add to"
 msgstr "אין {parentClassNames} להוסיף אליו"
 
@@ -1768,15 +1804,15 @@ msgstr "עדיין אין משחקים"
 msgid "No groups available"
 msgstr "אין קבוצות זמינות"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "עדיין לא ניתן ליצור סוגי פריטים. צור תחילה את פריטי האב הנדרשים."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "אין אובייקטים תואמים"
 
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "No objects to export."
 msgstr "אין אובייקטים לייצוא."
 
@@ -1825,9 +1861,13 @@ msgid "No views"
 msgstr "אין תצוגות"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:554
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:557
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:561
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:557
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:570
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:571
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:575
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
@@ -1839,10 +1879,6 @@ msgstr "אין תצוגות"
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/objects/components/object-detail-panel.tsx:451
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:467
-#: src/features/objects/components/object-detail-panel.tsx:471
 msgid "None"
 msgstr "ללא"
 
@@ -1915,7 +1951,7 @@ msgstr "פתח ניווט"
 msgid "Open option actions"
 msgstr "פתח פעולות אפשרות"
 
-#: src/routes/_authenticated/$crmId/index.tsx:140
+#: src/routes/_authenticated/$crmId/index.tsx:138
 msgid "Open page actions"
 msgstr "פתח פעולות דף"
 
@@ -1951,9 +1987,10 @@ msgstr "אחר"
 msgid "Owner"
 msgstr "בעלים"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
-#: src/features/objects/components/object-detail-panel.tsx:445
-#: src/routes/_authenticated/$crmId/index.tsx:179
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:546
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:569
+#: src/routes/_authenticated/$crmId/index.tsx:177
 msgid "Parent"
 msgstr "אב"
 
@@ -1982,7 +2019,7 @@ msgstr "תבנית (ביטוי רגולרי)"
 msgid "People"
 msgstr "אנשים"
 
-#: src/routes/_authenticated/$crmId/index.tsx:146
+#: src/routes/_authenticated/$crmId/index.tsx:144
 msgid "Please add one or more classes to the CRM design."
 msgstr "הוסף מחלקה אחת או יותר לעיצוב ה-CRM."
 
@@ -2026,7 +2063,7 @@ msgstr "מעבד…"
 msgid "Prompt saved"
 msgstr "הפרומפט נשמר"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:408
 msgid "Properties"
 msgstr "מאפיינים"
 
@@ -2042,7 +2079,7 @@ msgstr "מורם"
 msgid "Re-link your accounts on this server"
 msgstr "קשר מחדש את חשבונותיך בשרת זה"
 
-#: src/routes/_authenticated/$crmId/index.tsx:149
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "Re-order columns"
 msgstr "סדר מחדש עמודות"
 
@@ -2079,7 +2116,7 @@ msgstr "מפנה לדף ההתחברות."
 msgid "Reduce interest"
 msgstr "הפחת עניין"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "מתייחס"
 
@@ -2142,8 +2179,8 @@ msgstr "הסר עניין"
 msgid "Remove item"
 msgstr "הסר פריט"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "הסרת קישור"
 
@@ -2193,6 +2230,18 @@ msgstr "נדרש"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "שלח את האימייל שוב"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:48
+msgid "Resign"
+msgstr "פרוש"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:35
+msgid "Resign game?"
+msgstr "לפרוש מהמשחק?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:45
+msgid "Resigning..."
+msgstr "פורש..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:348
 msgid "Retry"
@@ -2245,11 +2294,12 @@ msgstr "שבת"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:152
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Save"
 msgstr "שמור"
 
@@ -2293,7 +2343,7 @@ msgstr "חפש יעד..."
 msgid "Search for origin..."
 msgstr "חפש מקור..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "חפש פריטים..."
 
@@ -2423,7 +2473,7 @@ msgstr "מגדיר גישה..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:125
 #: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:78
-#: src/routes/_authenticated/$crmId/index.tsx:193
+#: src/routes/_authenticated/$crmId/index.tsx:191
 msgid "Settings"
 msgstr "הגדרות"
 
@@ -2486,8 +2536,8 @@ msgstr "מרווח"
 msgid "Start the discussion by adding the first comment."
 msgstr "התחל את הדיון על ידי הוספת התגובה הראשונה."
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Stop watching"
 msgstr "הפסק לעקוב"
 
@@ -2612,13 +2662,17 @@ msgstr "לא ניתן לטעון את ה-CRM הזה כרגע."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "ייתכן שה-CRM הזה נמחק או שאין לך גישה אליו."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:70
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "פעולה זו תמחק לצמיתות את המשחק ואת הצ'אט שלו. לא ניתן לבטל פעולה זו."
+
 #. placeholder {0}: String(name)
 #: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "פעולה זו תמחק לצמיתות את \"{0}\" ואת כל הפריטים, התגובות והקבצים המצורפים שלו. לא ניתן לבטל פעולה זו."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "פעולה זו תסיר את \"{0}\" מסרגל הצד שלך ותעצור עדכונים עבור CRM זה."
 
@@ -2753,32 +2807,29 @@ msgstr "לא ידוע"
 
 #: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribe"
 msgstr "בטל הרשמה"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribe from CRM?"
 msgstr "לבטל הרשמה מ-CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:169
 msgid "Unsubscribed"
 msgstr "ההרשמה בוטלה"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:168
 msgid "Unsubscribing..."
 msgstr "מבטל הרשמה..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:40
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-container.tsx:29
 #: src/features/editor/components/design-preview.tsx:28
-#: src/features/objects/components/object-detail-panel.tsx:314
-#: src/features/objects/components/object-detail-panel.tsx:318
 msgid "Untitled"
 msgstr "ללא כותרת"
 
@@ -2796,7 +2847,7 @@ msgstr "{field} עודכן"
 msgid "Updating access..."
 msgstr "מעדכן גישה..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:655
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 msgid "Upload"
 msgstr "העלה"
@@ -2854,7 +2905,7 @@ msgstr "מציג וידאו: {0}"
 msgid "View all notifications"
 msgstr "הצג את כל ההתראות"
 
-#: src/features/objects/components/object-detail-panel.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:442
 msgid "View and edit item details"
 msgstr "הצג וערוך פרטי פריט"
 
@@ -2866,7 +2917,7 @@ msgstr "פקדי תצוגה"
 msgid "View only"
 msgstr "תצוגה בלבד"
 
-#: src/routes/_authenticated/$crmId/index.tsx:147
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "View options"
 msgstr "אפשרויות תצוגה"
 
@@ -2878,8 +2929,8 @@ msgstr "צפיות"
 msgid "Voice recording is not supported in this browser"
 msgstr "הקלטה קולית אינה נתמכת בדפדפן זה"
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Watch"
 msgstr "עקוב"
 
@@ -2905,7 +2956,7 @@ msgstr "יום רביעי"
 msgid "You do not have access to this section."
 msgstr "אין לך גישה לאזור זה."
 
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:78
 msgid "You don't have access to this CRM."
 msgstr "אין לכם גישה ל-CRM הזה."
 

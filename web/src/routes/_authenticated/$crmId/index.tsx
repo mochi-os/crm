@@ -19,6 +19,7 @@ import {
   extractStatus,
   getErrorMessage,
   toast,
+  EntityObjectDetailPanel,
 } from "@mochi/web";
 import { Settings, Settings2, Users } from "lucide-react";
 import crmsApi from "@/api/crms";
@@ -26,10 +27,7 @@ import type { CrmDetails, CrmObject } from "@/types";
 import { useCrmsStore } from "@/stores/crms-store";
 import { BoardContainer } from "@/features/board/components";
 import { TreeView } from "@/features/tree";
-import {
-  CreateObjectDialog,
-  ObjectDetailPanel,
-} from "@/features/objects/components";
+import { CreateObjectDialog } from "@/features/objects/components";
 import { ViewOptionsBar } from "@/components/view-options-bar";
 
 interface SearchParams {
@@ -201,11 +199,12 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         <CreateObjectDialog crmId={crmId} crm={crm} {...props} />
       )}
       renderDetailPanel={({ objectId, onClose }) => (
-        <ObjectDetailPanel
-          crmId={crmId}
+        <EntityObjectDetailPanel
+          containerId={crmId}
           objectId={objectId}
-          crm={crm}
+          design={crm}
           access={crm.crm.access}
+          api={crmsApi}
           onClose={onClose}
         />
       )}

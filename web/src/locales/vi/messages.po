@@ -148,7 +148,7 @@ msgstr "Đã thiết lập truy cập cho {subjectName}"
 msgid "Account type"
 msgstr "Loại tài khoản"
 
-#: src/features/objects/components/object-detail-panel.tsx:324
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:415
 msgid "Activity"
 msgstr "Hoạt động"
 
@@ -193,7 +193,7 @@ msgstr "Thêm mục danh sách kiểm tra"
 msgid "Add class"
 msgstr "Thêm class"
 
-#: src/routes/_authenticated/$crmId/index.tsx:148
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Add column"
 msgstr "Thêm cột"
 
@@ -207,7 +207,7 @@ msgstr "Thêm trường"
 msgid "Add item..."
 msgstr "Thêm mục..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "Thêm liên kết"
 
@@ -295,7 +295,7 @@ msgstr "Mọi thứ đã đăng ký nguồn cấp này sẽ ngừng nhận. Bạ
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Bạn có chắc muốn xóa \"{0}\"?"
 
-#: src/features/objects/components/object-detail-panel.tsx:536
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:671
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Bạn có chắc muốn xóa \"{title}\"? Hành động này không thể hoàn tác."
 
@@ -310,6 +310,14 @@ msgstr "Bạn có chắc muốn xóa bình luận này? Tất cả phản hồi 
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:27
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "Bạn có chắc muốn đăng xuất? Bạn sẽ cần đăng nhập lại để truy cập tài khoản."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:39
+msgid "Are you sure you want to resign?"
+msgstr "Bạn có chắc chắn muốn đầu hàng?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:38
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "Bạn có chắc muốn xin thua không? {opponentName} sẽ thắng ván cờ."
 
 #: src/features/crms/pages/crms-list-page.tsx:40
 msgid "Are you sure you want to unsubscribe from this CRM?"
@@ -358,7 +366,7 @@ msgid "Back to CRM"
 msgstr "Quay lại CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:93
+#: src/routes/_authenticated/$crmId/index.tsx:91
 msgid "Back to CRMs"
 msgstr "Quay lại danh sách CRM"
 
@@ -367,12 +375,21 @@ msgstr "Quay lại danh sách CRM"
 msgid "Back to home"
 msgstr "Về trang chủ"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Biểu ngữ"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr "Đã xóa banner"
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr "Đã cập nhật banner"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "Bị chặn bởi"
 
@@ -381,7 +398,7 @@ msgstr "Bị chặn bởi"
 msgid "Blocked navigation to untrusted link"
 msgstr "Đã chặn điều hướng tới liên kết không tin cậy"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "Chặn"
 
@@ -430,7 +447,7 @@ msgstr "Có thể là con của"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:338
 #: src/routes/_authenticated/$crmId/design.tsx:57
-#: src/routes/_authenticated/$crmId/index.tsx:151
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Cancel"
 msgstr "Hủy"
 
@@ -487,7 +504,7 @@ msgstr "Chọn một ván chơi ở thanh bên hoặc bắt đầu ván mới."
 msgid "Choose language"
 msgstr "Chọn ngôn ngữ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:178
+#: src/routes/_authenticated/$crmId/index.tsx:176
 msgid "Class"
 msgstr "Lớp"
 
@@ -495,6 +512,7 @@ msgstr "Lớp"
 msgid "Classes"
 msgstr "Class"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -512,8 +530,8 @@ msgstr "Xóa tất cả"
 msgid "Clear search"
 msgstr "Xóa tìm kiếm"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:517
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
@@ -595,7 +613,7 @@ msgid "Comments"
 msgstr "Bình luận"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:323
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:411
 msgid "Comments ({0})"
 msgstr "Bình luận ({0})"
 
@@ -682,8 +700,8 @@ msgstr "Không thể xác minh bằng tài khoản đó. Vui lòng thử lại."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Tạo"
@@ -734,7 +752,7 @@ msgstr "Đã tạo {field}"
 msgid "Creating CRM..."
 msgstr "Đang tạo CRM..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 #: src/features/crms/components/create-crm-dialog.tsx:341
 msgid "Creating..."
@@ -752,7 +770,7 @@ msgstr "Đã tạo CRM"
 msgid "CRM deleted"
 msgstr "Đã xóa CRM"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "CRM link"
 msgstr "Liên kết CRM"
 
@@ -835,7 +853,8 @@ msgstr "Sắp xếp mặc định"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
-#: src/features/objects/components/object-detail-panel.tsx:537
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
 #: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Delete"
 msgstr "Xóa"
@@ -869,9 +888,13 @@ msgstr "Xóa CRM?"
 msgid "Delete field"
 msgstr "Xóa trường"
 
-#: src/features/objects/components/object-detail-panel.tsx:372
-#: src/features/objects/components/object-detail-panel.tsx:377
-#: src/features/objects/components/object-detail-panel.tsx:535
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:69
+msgid "Delete game?"
+msgstr "Xóa trận đấu?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:486
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:670
 msgid "Delete item"
 msgstr "Xóa mục"
 
@@ -905,6 +928,10 @@ msgstr "Đã xóa {field}"
 msgid "Deleting CRM..."
 msgstr "Đang xóa CRM..."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
+msgid "Deleting..."
+msgstr "Đang xóa..."
+
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Descending"
 msgstr "Giảm dần"
@@ -916,7 +943,7 @@ msgstr "Mô tả"
 
 #: src/routes/_authenticated/$crmId/design.tsx:39
 #: src/routes/_authenticated/$crmId/design.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:185
+#: src/routes/_authenticated/$crmId/index.tsx:183
 msgid "Design"
 msgstr "Thiết kế"
 
@@ -966,7 +993,7 @@ msgstr "Đã ngắt kết nối"
 msgid "Dismiss"
 msgstr "Bỏ qua"
 
-#: src/routes/_authenticated/$crmId/index.tsx:154
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Dismiss board hint"
 msgstr "Bỏ qua gợi ý bảng"
 
@@ -979,13 +1006,13 @@ msgid "Does not match the required pattern"
 msgstr "Không khớp với mẫu bắt buộc"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:495
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 #: src/features/editor/components/edit-dialogs.tsx:412
-#: src/features/objects/components/object-detail-panel.tsx:386
 msgid "Done"
 msgstr "Xong"
 
-#: src/routes/_authenticated/$crmId/index.tsx:153
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Double click on a column to add content"
 msgstr "Nhấp đúp vào một cột để thêm nội dung"
 
@@ -1005,15 +1032,15 @@ msgid "Download failed"
 msgstr "Tải xuống thất bại"
 
 #: src/routes/_authenticated/$crmId/design.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Downloaded {filename}"
 msgstr "Đã tải xuống {filename}"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Drag columns to re-order them"
 msgstr "Kéo các cột để sắp xếp lại"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "Trùng lặp"
 
@@ -1072,6 +1099,10 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Mã email"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr "Nhập nội dung biểu ngữ (hỗ trợ markdown)..."
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "Nhập mã từ email của bạn"
@@ -1084,7 +1115,7 @@ msgstr "Nhập mã từ ứng dụng xác thực của bạn"
 msgid "Entity ID"
 msgstr "ID thực thể"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:381
 msgid "Error"
 msgstr "Lỗi"
 
@@ -1099,11 +1130,11 @@ msgstr "Mở rộng"
 msgid "Expand sidebar"
 msgstr "Mở rộng thanh bên"
 
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Export CSV"
 msgstr "Xuất CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Export data"
 msgstr "Xuất dữ liệu"
 
@@ -1123,7 +1154,7 @@ msgstr "Rất lớn"
 msgid "Failed to add account"
 msgstr "Không thêm tài khoản được"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to add column"
 msgstr "Không thêm được cột"
 
@@ -1145,9 +1176,9 @@ msgstr "Không tạo CRM được"
 msgid "Failed to create field"
 msgstr "Không tạo trường được"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Failed to create link"
 msgstr "Không tạo liên kết được"
 
@@ -1160,7 +1191,7 @@ msgstr "Không tạo tuỳ chọn được"
 msgid "Failed to create view"
 msgstr "Không tạo chế độ xem được"
 
-#: src/features/objects/components/object-detail-panel.tsx:212
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
 msgid "Failed to delete"
 msgstr "Không xoá được"
 
@@ -1172,7 +1203,7 @@ msgstr "Không xoá tệp đính kèm được"
 msgid "Failed to delete class"
 msgstr "Không xoá lớp được"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Failed to delete column"
 msgstr "Không xóa được cột"
 
@@ -1188,7 +1219,7 @@ msgstr "Không thể xóa CRM"
 msgid "Failed to delete field"
 msgstr "Không xoá trường được"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "Không xoá liên kết được"
 
@@ -1200,7 +1231,7 @@ msgstr "Không xoá tuỳ chọn được"
 msgid "Failed to delete view"
 msgstr "Không xoá chế độ xem được"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Failed to export data"
 msgstr "Không thể xuất dữ liệu"
 
@@ -1227,8 +1258,8 @@ msgstr "Không tải được"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:41
 #: src/routes/_authenticated/$crmId/$objectId.tsx:65
-#: src/routes/_authenticated/$crmId/index.tsx:58
-#: src/routes/_authenticated/$crmId/index.tsx:94
+#: src/routes/_authenticated/$crmId/index.tsx:56
+#: src/routes/_authenticated/$crmId/index.tsx:92
 msgid "Failed to load CRM"
 msgstr "Không tải CRM được"
 
@@ -1248,7 +1279,8 @@ msgstr "Không tải lịch sử được"
 msgid "Failed to load image"
 msgstr "Không tải được hình ảnh"
 
-#: src/features/objects/components/object-detail-panel.tsx:294
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:382
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:385
 msgid "Failed to load item"
 msgstr "Không tải mục được"
 
@@ -1264,8 +1296,8 @@ msgstr "Không tải được CRM được đề xuất"
 msgid "Failed to load video"
 msgstr "Không tải được video"
 
-#: src/features/objects/components/object-detail-panel.tsx:230
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:317
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "Failed to move"
 msgstr "Không thể di chuyển"
 
@@ -1273,7 +1305,7 @@ msgstr "Không thể di chuyển"
 msgid "Failed to post comment"
 msgstr "Không đăng bình luận được"
 
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "Failed to re-order columns"
 msgstr "Không sắp xếp lại được các cột"
 
@@ -1286,7 +1318,7 @@ msgstr "Không đọc tệp được"
 msgid "Failed to remove access"
 msgstr "Không xoá quyền truy cập được"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Failed to rename column"
 msgstr "Không đổi tên được cột"
 
@@ -1306,7 +1338,7 @@ msgstr "Không đặt lại lời nhắc được"
 msgid "Failed to revoke RSS access"
 msgstr "Không thể thu hồi quyền truy cập RSS"
 
-#: src/features/objects/components/object-detail-panel.tsx:176
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
 msgid "Failed to save"
 msgstr "Không lưu được"
 
@@ -1329,13 +1361,17 @@ msgid "Failed to subscribe"
 msgstr "Không đăng ký được"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Failed to unsubscribe"
 msgstr "Không huỷ đăng ký được"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Failed to update access level"
 msgstr "Không cập nhật mức truy cập được"
+
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr "Không cập nhật biểu ngữ được"
 
 #: src/features/editor/components/design-editor.tsx:122
 msgid "Failed to update class"
@@ -1365,8 +1401,8 @@ msgstr "Không cập nhật tuỳ chọn được"
 msgid "Failed to update view"
 msgstr "Không cập nhật chế độ xem được"
 
-#: src/features/objects/components/object-detail-panel.tsx:195
-msgid "Failed to update watch"
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:288
+msgid "Failed to update watching"
 msgstr "Không thể cập nhật theo dõi"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
@@ -1377,7 +1413,7 @@ msgstr "Không tải tệp đính kèm lên được"
 msgid "Fields"
 msgstr "Trường"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:605
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
@@ -1459,7 +1495,7 @@ msgstr "Nóng"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 #: src/features/editor/components/edit-dialogs.tsx:267
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "ID"
 msgstr "ID"
 
@@ -1527,7 +1563,7 @@ msgstr "Tệp JSON không hợp lệ"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Có vẻ như trang bạn đang tìm <0/>không tồn tại hoặc đã bị xóa."
 
-#: src/features/objects/components/object-detail-panel.tsx:336
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:441
 msgid "Item details"
 msgstr "Chi tiết mục"
 
@@ -1557,11 +1593,11 @@ msgid "Light"
 msgstr "Sáng"
 
 #: ../../../lib/web/src/components/options-menu.tsx:190
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Link"
 msgstr "Liên kết"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "Liên kết"
 
@@ -1577,17 +1613,17 @@ msgstr "Tải thêm"
 msgid "Loading content…"
 msgstr "Đang tải nội dung…"
 
-#: src/features/objects/components/object-detail-panel.tsx:277
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:365
 msgid "Loading item"
 msgstr "Đang tải mục"
 
-#: src/features/objects/components/object-detail-panel.tsx:278
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:366
 msgid "Loading item details"
 msgstr "Đang tải chi tiết mục"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Loading..."
 msgstr "Đang tải..."
 
@@ -1713,15 +1749,15 @@ msgstr "Tên phải có 1000 ký tự trở xuống"
 msgid "Network error"
 msgstr "Lỗi mạng"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:492
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:141
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:139
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New"
 msgstr "Mới"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New {0}"
 msgstr "{0} mới"
 
@@ -1735,7 +1771,7 @@ msgstr "Trò chơi mới"
 msgid "Next image"
 msgstr "Hình tiếp theo"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:571
 msgid "No {parentClassNames} to add to"
 msgstr "Không có {parentClassNames} để thêm vào"
 
@@ -1768,15 +1804,15 @@ msgstr "Chưa có trò chơi"
 msgid "No groups available"
 msgstr "Không có nhóm nào"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Chưa thể tạo loại mục nào. Hãy tạo các mục cha cần thiết trước."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "Không có đối tượng khớp"
 
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "No objects to export."
 msgstr "Không có đối tượng để xuất."
 
@@ -1825,9 +1861,13 @@ msgid "No views"
 msgstr "Không có lượt xem"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:554
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:557
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:561
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:557
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:570
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:571
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:575
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
@@ -1839,10 +1879,6 @@ msgstr "Không có lượt xem"
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/objects/components/object-detail-panel.tsx:451
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:467
-#: src/features/objects/components/object-detail-panel.tsx:471
 msgid "None"
 msgstr "Không có"
 
@@ -1915,7 +1951,7 @@ msgstr "Mở điều hướng"
 msgid "Open option actions"
 msgstr "Mở thao tác tuỳ chọn"
 
-#: src/routes/_authenticated/$crmId/index.tsx:140
+#: src/routes/_authenticated/$crmId/index.tsx:138
 msgid "Open page actions"
 msgstr "Mở thao tác trang"
 
@@ -1951,9 +1987,10 @@ msgstr "Khác"
 msgid "Owner"
 msgstr "Chủ sở hữu"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
-#: src/features/objects/components/object-detail-panel.tsx:445
-#: src/routes/_authenticated/$crmId/index.tsx:179
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:546
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:569
+#: src/routes/_authenticated/$crmId/index.tsx:177
 msgid "Parent"
 msgstr "Cha"
 
@@ -1982,7 +2019,7 @@ msgstr "Mẫu (biểu thức chính quy)"
 msgid "People"
 msgstr "Mọi người"
 
-#: src/routes/_authenticated/$crmId/index.tsx:146
+#: src/routes/_authenticated/$crmId/index.tsx:144
 msgid "Please add one or more classes to the CRM design."
 msgstr "Vui lòng thêm một hoặc nhiều lớp vào thiết kế CRM."
 
@@ -2026,7 +2063,7 @@ msgstr "Đang xử lý…"
 msgid "Prompt saved"
 msgstr "Đã lưu prompt"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:408
 msgid "Properties"
 msgstr "Thuộc tính"
 
@@ -2042,7 +2079,7 @@ msgstr "Nổi lên"
 msgid "Re-link your accounts on this server"
 msgstr "Liên kết lại các tài khoản của bạn trên máy chủ này"
 
-#: src/routes/_authenticated/$crmId/index.tsx:149
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "Re-order columns"
 msgstr "Sắp xếp lại cột"
 
@@ -2079,7 +2116,7 @@ msgstr "Đang chuyển hướng đến đăng nhập."
 msgid "Reduce interest"
 msgstr "Giảm sự quan tâm"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "Liên quan đến"
 
@@ -2142,8 +2179,8 @@ msgstr "Xoá sở thích"
 msgid "Remove item"
 msgstr "Xoá mục"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "Xóa liên kết"
 
@@ -2193,6 +2230,18 @@ msgstr "Bắt buộc"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "Gửi lại email"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:48
+msgid "Resign"
+msgstr "Đầu hàng"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:35
+msgid "Resign game?"
+msgstr "Đầu hàng trận đấu?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:45
+msgid "Resigning..."
+msgstr "Đang đầu hàng..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:348
 msgid "Retry"
@@ -2245,11 +2294,12 @@ msgstr "Thứ bảy"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:152
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Save"
 msgstr "Lưu"
 
@@ -2293,7 +2343,7 @@ msgstr "Tìm kiếm điểm đến..."
 msgid "Search for origin..."
 msgstr "Tìm kiếm điểm xuất phát..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "Tìm kiếm đối tượng..."
 
@@ -2423,7 +2473,7 @@ msgstr "Đang thiết lập quyền truy cập..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:125
 #: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:78
-#: src/routes/_authenticated/$crmId/index.tsx:193
+#: src/routes/_authenticated/$crmId/index.tsx:191
 msgid "Settings"
 msgstr "Cài đặt"
 
@@ -2486,8 +2536,8 @@ msgstr "Rộng rãi"
 msgid "Start the discussion by adding the first comment."
 msgstr "Bắt đầu thảo luận bằng cách thêm bình luận đầu tiên."
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Stop watching"
 msgstr "Ngừng theo dõi"
 
@@ -2612,13 +2662,17 @@ msgstr "Không thể tải CRM này lúc này."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "CRM này có thể đã bị xóa hoặc bạn không có quyền truy cập."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:70
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "Thao tác này sẽ xóa vĩnh viễn trận đấu và cuộc trò chuyện của nó. Không thể hoàn tác thao tác này."
+
 #. placeholder {0}: String(name)
 #: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Thao tác này sẽ xóa vĩnh viễn \"{0}\" cùng toàn bộ đối tượng, bình luận và tệp đính kèm. Hành động này không thể hoàn tác."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Thao tác này sẽ xóa \"{0}\" khỏi thanh bên và dừng cập nhật cho CRM này."
 
@@ -2753,32 +2807,29 @@ msgstr "Không rõ"
 
 #: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribe"
 msgstr "Hủy đăng ký"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribe from CRM?"
 msgstr "Hủy đăng ký CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:169
 msgid "Unsubscribed"
 msgstr "Đã hủy đăng ký"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:168
 msgid "Unsubscribing..."
 msgstr "Đang hủy đăng ký..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:40
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-container.tsx:29
 #: src/features/editor/components/design-preview.tsx:28
-#: src/features/objects/components/object-detail-panel.tsx:314
-#: src/features/objects/components/object-detail-panel.tsx:318
 msgid "Untitled"
 msgstr "Không có tiêu đề"
 
@@ -2796,7 +2847,7 @@ msgstr "Đã cập nhật {field}"
 msgid "Updating access..."
 msgstr "Đang cập nhật quyền truy cập..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:655
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 msgid "Upload"
 msgstr "Tải lên"
@@ -2854,7 +2905,7 @@ msgstr "Trình xem video: {0}"
 msgid "View all notifications"
 msgstr "Xem tất cả thông báo"
 
-#: src/features/objects/components/object-detail-panel.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:442
 msgid "View and edit item details"
 msgstr "Xem và chỉnh sửa chi tiết mục"
 
@@ -2866,7 +2917,7 @@ msgstr "Điều khiển xem"
 msgid "View only"
 msgstr "Chỉ xem"
 
-#: src/routes/_authenticated/$crmId/index.tsx:147
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "View options"
 msgstr "Tùy chọn xem"
 
@@ -2878,8 +2929,8 @@ msgstr "Lượt xem"
 msgid "Voice recording is not supported in this browser"
 msgstr "Trình duyệt này không hỗ trợ ghi âm giọng nói"
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Watch"
 msgstr "Theo dõi"
 
@@ -2905,7 +2956,7 @@ msgstr "Thứ tư"
 msgid "You do not have access to this section."
 msgstr "Bạn không có quyền truy cập vào phần này."
 
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:78
 msgid "You don't have access to this CRM."
 msgstr "Bạn không có quyền truy cập CRM này."
 

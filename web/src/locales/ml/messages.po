@@ -148,7 +148,7 @@ msgstr "{subjectName}-നായി ആക്സസ് സജ്ജമാക്�
 msgid "Account type"
 msgstr "അക്കൗണ്ട് തരം"
 
-#: src/features/objects/components/object-detail-panel.tsx:324
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:415
 msgid "Activity"
 msgstr "പ്രവർത്തനം"
 
@@ -193,7 +193,7 @@ msgstr "ചെക്ക്‌ലിസ്റ്റ് ഇനം ചേർക്�
 msgid "Add class"
 msgstr "ക്ലാസ് ചേർക്കുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:148
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Add column"
 msgstr "കോളം ചേർക്കുക"
 
@@ -207,7 +207,7 @@ msgstr "ഫീൽഡ് ചേർക്കുക"
 msgid "Add item..."
 msgstr "ഇനം ചേർക്കുക..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "ലിങ്ക് ചേർക്കുക"
 
@@ -295,7 +295,7 @@ msgstr "ഈ ഫീഡ് സബ്‌സ്‌ക്രൈബ് ചെയ്ത
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "\"{0}\" ഇല്ലാതാക്കണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ?"
 
-#: src/features/objects/components/object-detail-panel.tsx:536
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:671
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "\"{title}\" ഇല്ലാതാക്കണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ? ഈ പ്രവർത്തനം പഴയപടിയാക്കാൻ കഴിയില്ല."
 
@@ -310,6 +310,14 @@ msgstr "ഈ അഭിപ്രായം ഇല്ലാതാക്കണമെ�
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:27
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "ലോഗ് ഔട്ട് ചെയ്യണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ? നിങ്ങളുടെ അക്കൗണ്ട് ആക്സസ് ചെയ്യാൻ വീണ്ടും ലോഗിൻ ചെയ്യേണ്ടിവരും."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:39
+msgid "Are you sure you want to resign?"
+msgstr "നിങ്ങൾ തീർച്ചയായും രാജി വയ്ക്കാൻ ആഗ്രഹിക്കുന്നുവോ?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:38
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "നിങ്ങൾ കീഴടങ്ങാൻ തീർച്ചയാണോ? {opponentName} ഗെയിം ജയിക്കും."
 
 #: src/features/crms/pages/crms-list-page.tsx:40
 msgid "Are you sure you want to unsubscribe from this CRM?"
@@ -358,7 +366,7 @@ msgid "Back to CRM"
 msgstr "CRM-ലേക്ക് തിരികെ"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:93
+#: src/routes/_authenticated/$crmId/index.tsx:91
 msgid "Back to CRMs"
 msgstr "CRM-കളിലേക്ക് തിരികെ"
 
@@ -367,12 +375,21 @@ msgstr "CRM-കളിലേക്ക് തിരികെ"
 msgid "Back to home"
 msgstr "ഹോമിലേക്ക് മടങ്ങുക"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "ബാനർ"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr "ബാനർ നീക്കംചെയ്തു"
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr "ബാനർ അപ്ഡേറ്റുചെയ്തു"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "തടഞ്ഞത്"
 
@@ -381,7 +398,7 @@ msgstr "തടഞ്ഞത്"
 msgid "Blocked navigation to untrusted link"
 msgstr "വിശ്വസനീയമല്ലാത്ത ലിങ്കിലേക്കുള്ള നാവിഗേഷൻ തടഞ്ഞു"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "തടയുന്നു"
 
@@ -430,7 +447,7 @@ msgstr "ഇതിന്റെ ചൈൽഡ് ആകാൻ കഴിയും"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:338
 #: src/routes/_authenticated/$crmId/design.tsx:57
-#: src/routes/_authenticated/$crmId/index.tsx:151
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Cancel"
 msgstr "റദ്ദാക്കുക"
 
@@ -487,7 +504,7 @@ msgstr "സൈഡ്ബാറിൽ നിന്ന് ഒരു ഗെയിം
 msgid "Choose language"
 msgstr "ഭാഷ തിരഞ്ഞെടുക്കുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:178
+#: src/routes/_authenticated/$crmId/index.tsx:176
 msgid "Class"
 msgstr "ക്ലാസ്"
 
@@ -495,6 +512,7 @@ msgstr "ക്ലാസ്"
 msgid "Classes"
 msgstr "ക്ലാസുകൾ"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -512,8 +530,8 @@ msgstr "എല്ലാം മായ്ക്കുക"
 msgid "Clear search"
 msgstr "തിരയൽ മായ്ക്കുക"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:517
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
@@ -595,7 +613,7 @@ msgid "Comments"
 msgstr "അഭിപ്രായങ്ങൾ"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:323
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:411
 msgid "Comments ({0})"
 msgstr "കമന്റുകൾ ({0})"
 
@@ -682,8 +700,8 @@ msgstr "ആ അക്കൗണ്ട് ഉപയോഗിച്ച് പരി
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "സൃഷ്ടിക്കുക"
@@ -734,7 +752,7 @@ msgstr "{field} സൃഷ്ടിച്ചു"
 msgid "Creating CRM..."
 msgstr "CRM സൃഷ്ടിക്കുന്നു..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 #: src/features/crms/components/create-crm-dialog.tsx:341
 msgid "Creating..."
@@ -752,7 +770,7 @@ msgstr "CRM സൃഷ്ടിച്ചു"
 msgid "CRM deleted"
 msgstr "CRM ഇല്ലാതാക്കി"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "CRM link"
 msgstr "CRM ലിങ്ക്"
 
@@ -835,7 +853,8 @@ msgstr "ഡിഫോൾട്ട് സോർട്ട്"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
-#: src/features/objects/components/object-detail-panel.tsx:537
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
 #: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Delete"
 msgstr "ഇല്ലാതാക്കുക"
@@ -869,9 +888,13 @@ msgstr "CRM ഇല്ലാതാക്കണോ?"
 msgid "Delete field"
 msgstr "ഫീൽഡ് ഇല്ലാതാക്കുക"
 
-#: src/features/objects/components/object-detail-panel.tsx:372
-#: src/features/objects/components/object-detail-panel.tsx:377
-#: src/features/objects/components/object-detail-panel.tsx:535
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:69
+msgid "Delete game?"
+msgstr "ഗെയിം ഇല്ലാതാക്കണോ?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:486
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:670
 msgid "Delete item"
 msgstr "ഇനം ഇല്ലാതാക്കുക"
 
@@ -905,6 +928,10 @@ msgstr "{field} ഇല്ലാതാക്കി"
 msgid "Deleting CRM..."
 msgstr "CRM ഇല്ലാതാക്കുന്നു..."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
+msgid "Deleting..."
+msgstr "ഇല്ലാതാക്കുന്നു..."
+
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Descending"
 msgstr "അവരോഹണ ക്രമം"
@@ -916,7 +943,7 @@ msgstr "വിവരണം"
 
 #: src/routes/_authenticated/$crmId/design.tsx:39
 #: src/routes/_authenticated/$crmId/design.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:185
+#: src/routes/_authenticated/$crmId/index.tsx:183
 msgid "Design"
 msgstr "ഡിസൈൻ"
 
@@ -966,7 +993,7 @@ msgstr "വിച്ഛേദിച്ചു"
 msgid "Dismiss"
 msgstr "ഒഴിവാക്കുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:154
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Dismiss board hint"
 msgstr "ബോർഡ് സൂചന ഒഴിവാക്കുക"
 
@@ -979,13 +1006,13 @@ msgid "Does not match the required pattern"
 msgstr "ആവശ്യമായ മാതൃകയുമായി പൊരുത്തപ്പെടുന്നില്ല"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:495
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 #: src/features/editor/components/edit-dialogs.tsx:412
-#: src/features/objects/components/object-detail-panel.tsx:386
 msgid "Done"
 msgstr "പൂർത്തിയായി"
 
-#: src/routes/_authenticated/$crmId/index.tsx:153
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Double click on a column to add content"
 msgstr "ഉള്ളടക്കം ചേർക്കാൻ കോളത്തിൽ ഡബിൾ ക്ലിക്ക് ചെയ്യുക"
 
@@ -1005,15 +1032,15 @@ msgid "Download failed"
 msgstr "ഡൗൺലോഡ് പരാജയപ്പെട്ടു"
 
 #: src/routes/_authenticated/$crmId/design.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Downloaded {filename}"
 msgstr "{filename} ഡൗൺലോഡ് ചെയ്തു"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Drag columns to re-order them"
 msgstr "പുനഃക്രമീകരിക്കാൻ കോളങ്ങൾ വലിച്ചിടുക"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "ഡ്യൂപ്ലിക്കേറ്റ്"
 
@@ -1072,6 +1099,10 @@ msgstr "ഇമെയിൽ"
 msgid "Email code"
 msgstr "ഇമെയിൽ കോഡ്"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr "ബാനർ ടെക്സ്റ്റ് നൽകുക (മാർക്ക്ഡൗൺ പിന്തുണയ്‌ക്കുന്നു)..."
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "നിങ്ങളുടെ ഇമെയിലിലെ കോഡ് നൽകുക"
@@ -1084,7 +1115,7 @@ msgstr "നിങ്ങളുടെ ഓതെന്റിക്കേറ്റ�
 msgid "Entity ID"
 msgstr "എന്റിറ്റി ID"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:381
 msgid "Error"
 msgstr "പിശക്"
 
@@ -1099,11 +1130,11 @@ msgstr "വികസിപ്പിക്കുക"
 msgid "Expand sidebar"
 msgstr "സൈഡ്‌ബാർ വികസിപ്പിക്കുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Export CSV"
 msgstr "CSV എക്‌സ്‌പോർട്ട് ചെയ്യുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Export data"
 msgstr "ഡാറ്റ എക്സ്പോർട്ട് ചെയ്യുക"
 
@@ -1123,7 +1154,7 @@ msgstr "അധിക വലുത്"
 msgid "Failed to add account"
 msgstr "അക്കൗണ്ട് ചേർക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to add column"
 msgstr "കോളം ചേർക്കാനായില്ല"
 
@@ -1145,9 +1176,9 @@ msgstr "CRM സൃഷ്ടിക്കുന്നതിൽ പരാജയപ�
 msgid "Failed to create field"
 msgstr "ഫീൽഡ് സൃഷ്ടിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Failed to create link"
 msgstr "ലിങ്ക് സൃഷ്ടിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1160,7 +1191,7 @@ msgstr "ഓപ്ഷൻ സൃഷ്ടിക്കുന്നതിൽ പര�
 msgid "Failed to create view"
 msgstr "വ്യൂ സൃഷ്ടിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/features/objects/components/object-detail-panel.tsx:212
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
 msgid "Failed to delete"
 msgstr "ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1172,7 +1203,7 @@ msgstr "അറ്റാച്ച്മെന്റ് ഇല്ലാതാക�
 msgid "Failed to delete class"
 msgstr "ക്ലാസ് ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Failed to delete column"
 msgstr "കോളം ഇല്ലാതാക്കാനായില്ല"
 
@@ -1188,7 +1219,7 @@ msgstr "CRM ഇല്ലാതാക്കുന്നതിൽ പരാജയ�
 msgid "Failed to delete field"
 msgstr "ഫീൽഡ് ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "ലിങ്ക് ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1200,7 +1231,7 @@ msgstr "ഓപ്ഷൻ ഇല്ലാതാക്കുന്നതിൽ പ�
 msgid "Failed to delete view"
 msgstr "വ്യൂ ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Failed to export data"
 msgstr "ഡാറ്റ എക്സ്പോർട്ട് ചെയ്യാനായില്ല"
 
@@ -1227,8 +1258,8 @@ msgstr "ലോഡുചെയ്യുന്നതിൽ പരാജയപ്�
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:41
 #: src/routes/_authenticated/$crmId/$objectId.tsx:65
-#: src/routes/_authenticated/$crmId/index.tsx:58
-#: src/routes/_authenticated/$crmId/index.tsx:94
+#: src/routes/_authenticated/$crmId/index.tsx:56
+#: src/routes/_authenticated/$crmId/index.tsx:92
 msgid "Failed to load CRM"
 msgstr "CRM ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1248,7 +1279,8 @@ msgstr "ചരിത്രം ലോഡുചെയ്യുന്നതിൽ �
 msgid "Failed to load image"
 msgstr "ചിത്രം ലോഡ് ചെയ്യാനായില്ല"
 
-#: src/features/objects/components/object-detail-panel.tsx:294
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:382
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:385
 msgid "Failed to load item"
 msgstr "ഇനം ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1264,8 +1296,8 @@ msgstr "ശുപാർശ ചെയ്ത CRM-കൾ ലോഡ് ചെയ്�
 msgid "Failed to load video"
 msgstr "വീഡിയോ ലോഡ് ചെയ്യാനായില്ല"
 
-#: src/features/objects/components/object-detail-panel.tsx:230
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:317
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "Failed to move"
 msgstr "നീക്കാനായില്ല"
 
@@ -1273,7 +1305,7 @@ msgstr "നീക്കാനായില്ല"
 msgid "Failed to post comment"
 msgstr "അഭിപ്രായം പോസ്റ്റുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "Failed to re-order columns"
 msgstr "കോളങ്ങൾ പുനഃക്രമീകരിക്കാനായില്ല"
 
@@ -1286,7 +1318,7 @@ msgstr "ഫയൽ വായിക്കുന്നതിൽ പരാജയപ�
 msgid "Failed to remove access"
 msgstr "ആക്സസ് നീക്കം ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Failed to rename column"
 msgstr "കോളത്തിന്റെ പേര് മാറ്റാനായില്ല"
 
@@ -1306,7 +1338,7 @@ msgstr "പ്രോംപ്റ്റ് റീസെറ്റ് ചെയ്�
 msgid "Failed to revoke RSS access"
 msgstr "RSS ആക്‌സസ് പിൻവലിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/features/objects/components/object-detail-panel.tsx:176
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
 msgid "Failed to save"
 msgstr "സംരക്ഷിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1329,13 +1361,17 @@ msgid "Failed to subscribe"
 msgstr "സബ്സ്ക്രൈബ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Failed to unsubscribe"
 msgstr "അൺസബ്സ്ക്രൈബ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Failed to update access level"
 msgstr "ആക്സസ് ലെവൽ പുതുക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr "ബാനർ പുതുക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: src/features/editor/components/design-editor.tsx:122
 msgid "Failed to update class"
@@ -1365,8 +1401,8 @@ msgstr "ഓപ്ഷൻ പുതുക്കുന്നതിൽ പരാജ�
 msgid "Failed to update view"
 msgstr "വ്യൂ പുതുക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/features/objects/components/object-detail-panel.tsx:195
-msgid "Failed to update watch"
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:288
+msgid "Failed to update watching"
 msgstr "നിരീക്ഷണം അപ്‌ഡേറ്റ് ചെയ്യാനായില്ല"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
@@ -1377,7 +1413,7 @@ msgstr "അറ്റാച്ച്മെന്റ് അപ്‌ലോഡ് �
 msgid "Fields"
 msgstr "ഫീൽഡുകൾ"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:605
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
@@ -1459,7 +1495,7 @@ msgstr "ഹോട്ട്"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 #: src/features/editor/components/edit-dialogs.tsx:267
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "ID"
 msgstr "ഐഡി"
 
@@ -1527,7 +1563,7 @@ msgstr "അസാധുവായ JSON ഫയൽ"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "നിങ്ങൾ തിരയുന്ന പേജ് <0/>നിലവിലില്ല അല്ലെങ്കിൽ നീക്കംചെയ്തിരിക്കാം."
 
-#: src/features/objects/components/object-detail-panel.tsx:336
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:441
 msgid "Item details"
 msgstr "ഇനം വിശദാംശങ്ങൾ"
 
@@ -1557,11 +1593,11 @@ msgid "Light"
 msgstr "ലൈറ്റ്"
 
 #: ../../../lib/web/src/components/options-menu.tsx:190
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Link"
 msgstr "ലിങ്ക്"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "ലിങ്കുകൾ"
 
@@ -1577,17 +1613,17 @@ msgstr "കൂടുതൽ ലോഡുചെയ്യുക"
 msgid "Loading content…"
 msgstr "ഉള്ളടക്കം ലോഡ് ചെയ്യുന്നു…"
 
-#: src/features/objects/components/object-detail-panel.tsx:277
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:365
 msgid "Loading item"
 msgstr "ഇനം ലോഡുചെയ്യുന്നു"
 
-#: src/features/objects/components/object-detail-panel.tsx:278
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:366
 msgid "Loading item details"
 msgstr "ഇനം വിശദാംശങ്ങൾ ലോഡുചെയ്യുന്നു"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Loading..."
 msgstr "ലോഡുചെയ്യുന്നു..."
 
@@ -1713,15 +1749,15 @@ msgstr "പേര് 1000 പ്രതീകങ്ങൾ അല്ലെങ്�
 msgid "Network error"
 msgstr "നെറ്റ്‌വർക്ക് പിശക്"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:492
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:141
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:139
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New"
 msgstr "പുതിയത്"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New {0}"
 msgstr "പുതിയ {0}"
 
@@ -1735,7 +1771,7 @@ msgstr "പുതിയ ഗെയിം"
 msgid "Next image"
 msgstr "അടുത്ത ചിത്രം"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:571
 msgid "No {parentClassNames} to add to"
 msgstr "ചേർക്കാൻ {parentClassNames} ഇല്ല"
 
@@ -1768,15 +1804,15 @@ msgstr "ഗെയിമുകളൊന്നും ഇതുവരെ ഇല്�
 msgid "No groups available"
 msgstr "ഗ്രൂപ്പുകളൊന്നും ലഭ്യമല്ല"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "ഇതുവരെ ഒരു item type-ഉം സൃഷ്ടിക്കാൻ കഴിയില്ല. ആവശ്യമായ parent items ആദ്യം സൃഷ്ടിക്കുക."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "പൊരുത്തപ്പെടുന്ന ഒബ്ജക്ടുകളൊന്നുമില്ല"
 
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "No objects to export."
 msgstr "എക്സ്പോർട്ട് ചെയ്യാൻ ഒബ്ജക്ടുകളൊന്നുമില്ല."
 
@@ -1825,9 +1861,13 @@ msgid "No views"
 msgstr "വ്യൂകളൊന്നുമില്ല"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:554
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:557
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:561
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:557
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:570
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:571
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:575
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
@@ -1839,10 +1879,6 @@ msgstr "വ്യൂകളൊന്നുമില്ല"
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/objects/components/object-detail-panel.tsx:451
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:467
-#: src/features/objects/components/object-detail-panel.tsx:471
 msgid "None"
 msgstr "ഒന്നുമില്ല"
 
@@ -1915,7 +1951,7 @@ msgstr "navigation തുറക്കുക"
 msgid "Open option actions"
 msgstr "ഓപ്ഷൻ പ്രവർത്തനങ്ങൾ തുറക്കുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:140
+#: src/routes/_authenticated/$crmId/index.tsx:138
 msgid "Open page actions"
 msgstr "പേജ് പ്രവർത്തനങ്ങൾ തുറക്കുക"
 
@@ -1951,9 +1987,10 @@ msgstr "മറ്റുള്ളവ"
 msgid "Owner"
 msgstr "ഉടമ"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
-#: src/features/objects/components/object-detail-panel.tsx:445
-#: src/routes/_authenticated/$crmId/index.tsx:179
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:546
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:569
+#: src/routes/_authenticated/$crmId/index.tsx:177
 msgid "Parent"
 msgstr "parent"
 
@@ -1982,7 +2019,7 @@ msgstr "പാറ്റേൺ (regex)"
 msgid "People"
 msgstr "ആളുകൾ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:146
+#: src/routes/_authenticated/$crmId/index.tsx:144
 msgid "Please add one or more classes to the CRM design."
 msgstr "CRM design-ൽ ഒന്നോ അതിലധികമോ classes ചേർക്കുക."
 
@@ -2026,7 +2063,7 @@ msgstr "പ്രോസസ്സ് ചെയ്യുന്നു…"
 msgid "Prompt saved"
 msgstr "പ്രോംപ്റ്റ് സേവ് ചെയ്തു"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:408
 msgid "Properties"
 msgstr "സവിശേഷതകൾ"
 
@@ -2042,7 +2079,7 @@ msgstr "ഉയർന്നത്"
 msgid "Re-link your accounts on this server"
 msgstr "ഈ സെർവറിൽ നിങ്ങളുടെ അക്കൗണ്ടുകൾ വീണ്ടും ലിങ്ക് ചെയ്യുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:149
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "Re-order columns"
 msgstr "വീണ്ടും subscribe ചെയ്യുക"
 
@@ -2079,7 +2116,7 @@ msgstr "ലോഗിനിലേക്ക് തിരിച്ചുവിട�
 msgid "Reduce interest"
 msgstr "പുതുക്കുക"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "ബന്ധപ്പെട്ടത്"
 
@@ -2142,8 +2179,8 @@ msgstr "item നീക്കം ചെയ്യുക"
 msgid "Remove item"
 msgstr "ലിസ്റ്റിങ് നീക്കം ചെയ്യുക"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "ലിങ്ക് നീക്കം ചെയ്യുക"
 
@@ -2193,6 +2230,18 @@ msgstr "Reserve പൂർത്തിയായില്ല"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "ഇമെയിൽ വീണ്ടും അയയ്ക്കുക"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:48
+msgid "Resign"
+msgstr "ഗെയിം പിന്മാറണോ?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:35
+msgid "Resign game?"
+msgstr "പിന്മാറുന്നു..."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:45
+msgid "Resigning..."
+msgstr "റെസല്യൂഷൻ"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:348
 msgid "Retry"
@@ -2245,11 +2294,12 @@ msgstr "ശനിയാഴ്ച"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:152
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Save"
 msgstr "സേവ് ചെയ്യുക"
 
@@ -2293,7 +2343,7 @@ msgstr "ലക്ഷ്യസ്ഥാനം തിരയുക..."
 msgid "Search for origin..."
 msgstr "ഉത്ഭവ സ്ഥാനം തിരയുക..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "ഒബ്ജക്ടുകൾ തിരയുക..."
 
@@ -2423,7 +2473,7 @@ msgstr "ആക്സസ് സജ്ജമാക്കുന്നു..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:125
 #: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:78
-#: src/routes/_authenticated/$crmId/index.tsx:193
+#: src/routes/_authenticated/$crmId/index.tsx:191
 msgid "Settings"
 msgstr "ക്രമീകരണങ്ങൾ"
 
@@ -2486,8 +2536,8 @@ msgstr "വിശാലം"
 msgid "Start the discussion by adding the first comment."
 msgstr "ആദ്യത്തെ കമന്റ് ചേർത്ത് ചർച്ച ആരംഭിക്കുക."
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Stop watching"
 msgstr "നിരീക്ഷണം നിർത്തുക"
 
@@ -2612,13 +2662,17 @@ msgstr "ഈ CRM ഇപ്പോൾ ലോഡ് ചെയ്യാൻ കഴി�
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "ഈ CRM ഇല്ലാതാക്കിയിരിക്കാം അല്ലെങ്കിൽ നിങ്ങൾക്ക് അതിലേക്ക് ആക്സസ് ഇല്ല."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:70
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "ഇത് ഗെയിമും അതിന്റെ ചാറ്റും ശാശ്വതമായി ഇല്ലാതാക്കും. ഈ പ്രവർത്തി പഴയപടിയാക്കാൻ കഴിയില്ല."
+
 #. placeholder {0}: String(name)
 #: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "ഇത് \"{0}\"-ഉം അതിന്റെ എല്ലാ ഒബ്ജക്ടുകൾ, കമന്റുകൾ, അറ്റാച്ച്മെന്റുകൾ എന്നിവയും സ്ഥിരമായി ഇല്ലാതാക്കും. ഈ പ്രവർത്തനം പഴയപടിയാക്കാൻ കഴിയില്ല."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "ഇത് നിങ്ങളുടെ സൈഡ്ബാറിൽ നിന്ന് \"{0}\" നീക്കും, ഈ CRM-നുള്ള അപ്ഡേറ്റുകൾ നിർത്തും."
 
@@ -2753,32 +2807,29 @@ msgstr "അജ്ഞാതം"
 
 #: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribe"
 msgstr "അൺസബ്സ്ക്രൈബ് ചെയ്യുക"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribe from CRM?"
 msgstr "CRM-ൽ നിന്ന് അൺസബ്സ്ക്രൈബ് ചെയ്യണോ?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:169
 msgid "Unsubscribed"
 msgstr "അൺസബ്സ്ക്രൈബ് ചെയ്തു"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:168
 msgid "Unsubscribing..."
 msgstr "അൺസബ്സ്ക്രൈബ് ചെയ്യുന്നു..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:40
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-container.tsx:29
 #: src/features/editor/components/design-preview.tsx:28
-#: src/features/objects/components/object-detail-panel.tsx:314
-#: src/features/objects/components/object-detail-panel.tsx:318
 msgid "Untitled"
 msgstr "ശീർഷകമില്ലാത്തത്"
 
@@ -2796,7 +2847,7 @@ msgstr "{field} പുതുക്കി"
 msgid "Updating access..."
 msgstr "ആക്സസ് പുതുക്കുന്നു..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:655
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 msgid "Upload"
 msgstr "അപ്‌ലോഡ് ചെയ്യുക"
@@ -2854,7 +2905,7 @@ msgstr "വീഡിയോ വ്യൂവർ: {0}"
 msgid "View all notifications"
 msgstr "എല്ലാ അറിയിപ്പുകളും കാണുക"
 
-#: src/features/objects/components/object-detail-panel.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:442
 msgid "View and edit item details"
 msgstr "ഇനത്തിന്റെ വിശദാംശങ്ങൾ കാണുകയും എഡിറ്റ് ചെയ്യുകയും ചെയ്യുക"
 
@@ -2866,7 +2917,7 @@ msgstr "നിയന്ത്രണങ്ങൾ കാണുക"
 msgid "View only"
 msgstr "കാണുക മാത്രം"
 
-#: src/routes/_authenticated/$crmId/index.tsx:147
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "View options"
 msgstr "ഓപ്ഷനുകൾ കാണുക"
 
@@ -2878,8 +2929,8 @@ msgstr "കാഴ്ചകൾ"
 msgid "Voice recording is not supported in this browser"
 msgstr "ഈ ബ്രൗസറിൽ വോയ്സ് റെക്കോർഡിംഗ് പിന്തുണയ്ക്കുന്നില്ല"
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Watch"
 msgstr "നിരീക്ഷിക്കുക"
 
@@ -2905,7 +2956,7 @@ msgstr "ബുധനാഴ്ച"
 msgid "You do not have access to this section."
 msgstr "ഈ വിഭാഗത്തിലേക്ക് നിങ്ങൾക്ക് പ്രവേശനമില്ല."
 
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:78
 msgid "You don't have access to this CRM."
 msgstr "ഈ CRM-ലേക്ക് നിങ്ങൾക്ക് ആക്സസ് ഇല്ല."
 

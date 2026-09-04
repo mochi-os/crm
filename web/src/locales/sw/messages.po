@@ -148,7 +148,7 @@ msgstr "Ufikiaji umewekwa kwa {subjectName}"
 msgid "Account type"
 msgstr "Aina ya akaunti"
 
-#: src/features/objects/components/object-detail-panel.tsx:324
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:415
 msgid "Activity"
 msgstr "Shughuli"
 
@@ -193,7 +193,7 @@ msgstr "Ongeza kipengee cha orodha"
 msgid "Add class"
 msgstr "Ongeza darasa"
 
-#: src/routes/_authenticated/$crmId/index.tsx:148
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Add column"
 msgstr "Ongeza safu"
 
@@ -207,7 +207,7 @@ msgstr "Ongeza uga"
 msgid "Add item..."
 msgstr "Ongeza kipengee..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "Ongeza kiungo"
 
@@ -295,7 +295,7 @@ msgstr "Chochote kilichojiandikisha kwenye mlisho huu kitaacha kuupokea. Unaweza
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Una uhakika unataka kufuta \"{0}\"?"
 
-#: src/features/objects/components/object-detail-panel.tsx:536
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:671
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Una uhakika unataka kufuta \"{title}\"? Kitendo hiki hakiwezi kutenduliwa."
 
@@ -310,6 +310,14 @@ msgstr "Una uhakika unataka kufuta maoni haya? Hii pia itafuta majibu yote."
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:27
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "Una uhakika unataka kuondoka? Utahitaji kuingia tena kufikia akaunti yako."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:39
+msgid "Are you sure you want to resign?"
+msgstr "Una uhakika unataka kuachia?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:38
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "Una uhakika unataka kujisalimisha? {opponentName} atashinda mchezo."
 
 #: src/features/crms/pages/crms-list-page.tsx:40
 msgid "Are you sure you want to unsubscribe from this CRM?"
@@ -358,7 +366,7 @@ msgid "Back to CRM"
 msgstr "Rudi kwa CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:93
+#: src/routes/_authenticated/$crmId/index.tsx:91
 msgid "Back to CRMs"
 msgstr "Rudi kwa CRM"
 
@@ -367,12 +375,21 @@ msgstr "Rudi kwa CRM"
 msgid "Back to home"
 msgstr "Rudi mwanzo"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Bango"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr "Bango limeondolewa"
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr "Bango limesasishwa"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "Imezuiwa na"
 
@@ -381,7 +398,7 @@ msgstr "Imezuiwa na"
 msgid "Blocked navigation to untrusted link"
 msgstr "Imezuia urambazaji kwenda kiungo kisichoaminika"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "Inazuia"
 
@@ -430,7 +447,7 @@ msgstr "Inaweza kuwa mtoto wa"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:338
 #: src/routes/_authenticated/$crmId/design.tsx:57
-#: src/routes/_authenticated/$crmId/index.tsx:151
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Cancel"
 msgstr "Ghairi"
 
@@ -487,7 +504,7 @@ msgstr "Chagua mchezo kutoka upau wa pembeni au anzisha mpya."
 msgid "Choose language"
 msgstr "Chagua lugha"
 
-#: src/routes/_authenticated/$crmId/index.tsx:178
+#: src/routes/_authenticated/$crmId/index.tsx:176
 msgid "Class"
 msgstr "Darasa"
 
@@ -495,6 +512,7 @@ msgstr "Darasa"
 msgid "Classes"
 msgstr "Madarasa"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -512,8 +530,8 @@ msgstr "Futa vyote"
 msgid "Clear search"
 msgstr "Futa utafutaji"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:517
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
@@ -595,7 +613,7 @@ msgid "Comments"
 msgstr "Maoni"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:323
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:411
 msgid "Comments ({0})"
 msgstr "Maoni ({0})"
 
@@ -682,8 +700,8 @@ msgstr "Imeshindwa kuthibitisha kwa akaunti hiyo. Tafadhali jaribu tena."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Unda"
@@ -734,7 +752,7 @@ msgstr "Imeunda {field}"
 msgid "Creating CRM..."
 msgstr "Inaunda CRM..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 #: src/features/crms/components/create-crm-dialog.tsx:341
 msgid "Creating..."
@@ -752,7 +770,7 @@ msgstr "CRM imeundwa"
 msgid "CRM deleted"
 msgstr "CRM imefutwa"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "CRM link"
 msgstr "Kiungo cha CRM"
 
@@ -835,7 +853,8 @@ msgstr "Mpangilio chaguo-msingi"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
-#: src/features/objects/components/object-detail-panel.tsx:537
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
 #: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Delete"
 msgstr "Futa"
@@ -869,9 +888,13 @@ msgstr "Futa CRM?"
 msgid "Delete field"
 msgstr "Futa uga"
 
-#: src/features/objects/components/object-detail-panel.tsx:372
-#: src/features/objects/components/object-detail-panel.tsx:377
-#: src/features/objects/components/object-detail-panel.tsx:535
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:69
+msgid "Delete game?"
+msgstr "Futa mchezo?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:486
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:670
 msgid "Delete item"
 msgstr "Futa kipengee"
 
@@ -905,6 +928,10 @@ msgstr "Imefuta {field}"
 msgid "Deleting CRM..."
 msgstr "Inafuta CRM..."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
+msgid "Deleting..."
+msgstr "Inafuta..."
+
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Descending"
 msgstr "Kushuka"
@@ -916,7 +943,7 @@ msgstr "Maelezo"
 
 #: src/routes/_authenticated/$crmId/design.tsx:39
 #: src/routes/_authenticated/$crmId/design.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:185
+#: src/routes/_authenticated/$crmId/index.tsx:183
 msgid "Design"
 msgstr "Muundo"
 
@@ -966,7 +993,7 @@ msgstr "Imetenganishwa"
 msgid "Dismiss"
 msgstr "Ondoa"
 
-#: src/routes/_authenticated/$crmId/index.tsx:154
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Dismiss board hint"
 msgstr "Ondoa kidokezo cha ubao"
 
@@ -979,13 +1006,13 @@ msgid "Does not match the required pattern"
 msgstr "Hailingani na muundo unaohitajika"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:495
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 #: src/features/editor/components/edit-dialogs.tsx:412
-#: src/features/objects/components/object-detail-panel.tsx:386
 msgid "Done"
 msgstr "Imekamilika"
 
-#: src/routes/_authenticated/$crmId/index.tsx:153
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Double click on a column to add content"
 msgstr "Bofya mara mbili kwenye safuwima kuongeza maudhui"
 
@@ -1005,15 +1032,15 @@ msgid "Download failed"
 msgstr "Upakuaji umeshindwa"
 
 #: src/routes/_authenticated/$crmId/design.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Downloaded {filename}"
 msgstr "Imepakuliwa {filename}"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Drag columns to re-order them"
 msgstr "Buruta safuwima kuzipanga upya"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "Inarudia"
 
@@ -1072,6 +1099,10 @@ msgstr "Barua pepe"
 msgid "Email code"
 msgstr "Msimbo wa barua pepe"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr "Ingiza maandishi ya bango (markdown inakubaliwa)..."
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "Weka msimbo kutoka kwa barua pepe yako"
@@ -1084,7 +1115,7 @@ msgstr "Weka msimbo wako wa kithibitishaji"
 msgid "Entity ID"
 msgstr "Kitambulisho cha kitengo"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:381
 msgid "Error"
 msgstr "Hitilafu"
 
@@ -1099,11 +1130,11 @@ msgstr "Panua"
 msgid "Expand sidebar"
 msgstr "Panua utepe"
 
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Export CSV"
 msgstr "Hamisha CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Export data"
 msgstr "Hamisha data"
 
@@ -1123,7 +1154,7 @@ msgstr "Kubwa zaidi"
 msgid "Failed to add account"
 msgstr "Imeshindwa kuongeza akaunti"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to add column"
 msgstr "Imeshindwa kuongeza safu wima"
 
@@ -1145,9 +1176,9 @@ msgstr "Imeshindwa kuunda CRM"
 msgid "Failed to create field"
 msgstr "Imeshindwa kuunda uga"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Failed to create link"
 msgstr "Imeshindwa kuunda kiungo"
 
@@ -1160,7 +1191,7 @@ msgstr "Imeshindwa kuunda chaguo"
 msgid "Failed to create view"
 msgstr "Imeshindwa kuunda mwonekano"
 
-#: src/features/objects/components/object-detail-panel.tsx:212
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
 msgid "Failed to delete"
 msgstr "Imeshindwa kufuta"
 
@@ -1172,7 +1203,7 @@ msgstr "Imeshindwa kufuta kiambatisho"
 msgid "Failed to delete class"
 msgstr "Imeshindwa kufuta darasa"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Failed to delete column"
 msgstr "Imeshindwa kufuta safu wima"
 
@@ -1188,7 +1219,7 @@ msgstr "Imeshindwa kufuta CRM"
 msgid "Failed to delete field"
 msgstr "Imeshindwa kufuta uga"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "Imeshindwa kufuta kiungo"
 
@@ -1200,7 +1231,7 @@ msgstr "Imeshindwa kufuta chaguo"
 msgid "Failed to delete view"
 msgstr "Imeshindwa kufuta mwonekano"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Failed to export data"
 msgstr "Imeshindwa kuhamisha data"
 
@@ -1227,8 +1258,8 @@ msgstr "Imeshindwa kupakia"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:41
 #: src/routes/_authenticated/$crmId/$objectId.tsx:65
-#: src/routes/_authenticated/$crmId/index.tsx:58
-#: src/routes/_authenticated/$crmId/index.tsx:94
+#: src/routes/_authenticated/$crmId/index.tsx:56
+#: src/routes/_authenticated/$crmId/index.tsx:92
 msgid "Failed to load CRM"
 msgstr "Imeshindwa kupakia CRM"
 
@@ -1248,7 +1279,8 @@ msgstr "Imeshindwa kupakia historia"
 msgid "Failed to load image"
 msgstr "Imeshindwa kupakia picha"
 
-#: src/features/objects/components/object-detail-panel.tsx:294
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:382
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:385
 msgid "Failed to load item"
 msgstr "Imeshindwa kupakia kipengee"
 
@@ -1264,8 +1296,8 @@ msgstr "Imeshindwa kupakia CRM zilizopendekezwa"
 msgid "Failed to load video"
 msgstr "Imeshindwa kupakia video"
 
-#: src/features/objects/components/object-detail-panel.tsx:230
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:317
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "Failed to move"
 msgstr "Imeshindwa kuhamisha"
 
@@ -1273,7 +1305,7 @@ msgstr "Imeshindwa kuhamisha"
 msgid "Failed to post comment"
 msgstr "Imeshindwa kuchapisha maoni"
 
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "Failed to re-order columns"
 msgstr "Imeshindwa kupanga upya safu wima"
 
@@ -1286,7 +1318,7 @@ msgstr "Imeshindwa kusoma faili"
 msgid "Failed to remove access"
 msgstr "Imeshindwa kuondoa ufikiaji"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Failed to rename column"
 msgstr "Imeshindwa kubadilisha jina la safu wima"
 
@@ -1306,7 +1338,7 @@ msgstr "Imeshindwa kuweka upya kichocheo"
 msgid "Failed to revoke RSS access"
 msgstr "Imeshindwa kubatilisha ufikiaji wa RSS"
 
-#: src/features/objects/components/object-detail-panel.tsx:176
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
 msgid "Failed to save"
 msgstr "Imeshindwa kuhifadhi"
 
@@ -1329,13 +1361,17 @@ msgid "Failed to subscribe"
 msgstr "Imeshindwa kujisajili"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Failed to unsubscribe"
 msgstr "Imeshindwa kujiondoa"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Failed to update access level"
 msgstr "Imeshindwa kusasisha kiwango cha ufikiaji"
+
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr "Imeshindwa kusasisha bango"
 
 #: src/features/editor/components/design-editor.tsx:122
 msgid "Failed to update class"
@@ -1365,8 +1401,8 @@ msgstr "Imeshindwa kusasisha chaguo"
 msgid "Failed to update view"
 msgstr "Imeshindwa kusasisha mwonekano"
 
-#: src/features/objects/components/object-detail-panel.tsx:195
-msgid "Failed to update watch"
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:288
+msgid "Failed to update watching"
 msgstr "Imeshindwa kusasisha ufuatiliaji"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
@@ -1377,7 +1413,7 @@ msgstr "Imeshindwa kupakia kiambatisho"
 msgid "Fields"
 msgstr "Uga"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:605
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
@@ -1459,7 +1495,7 @@ msgstr "Moto"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 #: src/features/editor/components/edit-dialogs.tsx:267
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "ID"
 msgstr "Kitambulisho"
 
@@ -1527,7 +1563,7 @@ msgstr "Faili la JSON batili"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Inaonekana ukurasa unaoutafuta <0/>haupo au umeondolewa."
 
-#: src/features/objects/components/object-detail-panel.tsx:336
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:441
 msgid "Item details"
 msgstr "Maelezo ya kipengee"
 
@@ -1557,11 +1593,11 @@ msgid "Light"
 msgstr "Mwepesi"
 
 #: ../../../lib/web/src/components/options-menu.tsx:190
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Link"
 msgstr "Kiungo"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "Viungo"
 
@@ -1577,17 +1613,17 @@ msgstr "Pakia zaidi"
 msgid "Loading content…"
 msgstr "Inapakia maudhui…"
 
-#: src/features/objects/components/object-detail-panel.tsx:277
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:365
 msgid "Loading item"
 msgstr "Inapakia kipengee"
 
-#: src/features/objects/components/object-detail-panel.tsx:278
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:366
 msgid "Loading item details"
 msgstr "Inapakia maelezo ya kipengee"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Loading..."
 msgstr "Inapakia..."
 
@@ -1713,15 +1749,15 @@ msgstr "Jina lazima liwe na herufi 1000 au chini"
 msgid "Network error"
 msgstr "Hitilafu ya mtandao"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:492
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:141
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:139
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New"
 msgstr "Mpya"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New {0}"
 msgstr "{0} mpya"
 
@@ -1735,7 +1771,7 @@ msgstr "Mchezo mpya"
 msgid "Next image"
 msgstr "Picha inayofuata"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:571
 msgid "No {parentClassNames} to add to"
 msgstr "Hakuna {parentClassNames} cha kuongeza"
 
@@ -1768,15 +1804,15 @@ msgstr "Hakuna michezo bado"
 msgid "No groups available"
 msgstr "Hakuna vikundi vinavyopatikana"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Hakuna aina za vipengele zinazoweza kuundwa bado. Unda vipengele vya mzazi vinavyohitajika kwanza."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "Hakuna vitu vinavyoendana"
 
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "No objects to export."
 msgstr "Hakuna vitu vya kuhamisha."
 
@@ -1825,9 +1861,13 @@ msgid "No views"
 msgstr "Hakuna mwonekano"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:554
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:557
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:561
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:557
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:570
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:571
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:575
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
@@ -1839,10 +1879,6 @@ msgstr "Hakuna mwonekano"
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/objects/components/object-detail-panel.tsx:451
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:467
-#: src/features/objects/components/object-detail-panel.tsx:471
 msgid "None"
 msgstr "Hakuna"
 
@@ -1915,7 +1951,7 @@ msgstr "Fungua urambazaji"
 msgid "Open option actions"
 msgstr "Fungua vitendo vya chaguo"
 
-#: src/routes/_authenticated/$crmId/index.tsx:140
+#: src/routes/_authenticated/$crmId/index.tsx:138
 msgid "Open page actions"
 msgstr "Fungua vitendo vya ukurasa"
 
@@ -1951,9 +1987,10 @@ msgstr "Nyingine"
 msgid "Owner"
 msgstr "Mmiliki"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
-#: src/features/objects/components/object-detail-panel.tsx:445
-#: src/routes/_authenticated/$crmId/index.tsx:179
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:546
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:569
+#: src/routes/_authenticated/$crmId/index.tsx:177
 msgid "Parent"
 msgstr "Mzazi"
 
@@ -1982,7 +2019,7 @@ msgstr "Muundo (regex)"
 msgid "People"
 msgstr "Watu"
 
-#: src/routes/_authenticated/$crmId/index.tsx:146
+#: src/routes/_authenticated/$crmId/index.tsx:144
 msgid "Please add one or more classes to the CRM design."
 msgstr "Tafadhali ongeza darasa moja au zaidi kwa muundo wa CRM."
 
@@ -2026,7 +2063,7 @@ msgstr "Inachakata…"
 msgid "Prompt saved"
 msgstr "Kidokezo kimehifadhiwa"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:408
 msgid "Properties"
 msgstr "Sifa"
 
@@ -2042,7 +2079,7 @@ msgstr "Iliyoinuliwa"
 msgid "Re-link your accounts on this server"
 msgstr "Unganisha tena akaunti zako kwenye seva hii"
 
-#: src/routes/_authenticated/$crmId/index.tsx:149
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "Re-order columns"
 msgstr "Panga upya safuwima"
 
@@ -2079,7 +2116,7 @@ msgstr "Inaelekeza kwenye kuingia."
 msgid "Reduce interest"
 msgstr "Punguza shauku"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "Inahusiana"
 
@@ -2142,8 +2179,8 @@ msgstr "Ondoa shauku"
 msgid "Remove item"
 msgstr "Ondoa kipengele"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "Ondoa kiungo"
 
@@ -2193,6 +2230,18 @@ msgstr "Inahitajika"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "Tuma barua pepe tena"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:48
+msgid "Resign"
+msgstr "Jiuzulu"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:35
+msgid "Resign game?"
+msgstr "Jiuzulu mchezo?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:45
+msgid "Resigning..."
+msgstr "Inajiuzulu..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:348
 msgid "Retry"
@@ -2245,11 +2294,12 @@ msgstr "Jumamosi"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:152
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Save"
 msgstr "Hifadhi"
 
@@ -2293,7 +2343,7 @@ msgstr "Tafuta marudio..."
 msgid "Search for origin..."
 msgstr "Tafuta chanzo..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "Tafuta vitu..."
 
@@ -2423,7 +2473,7 @@ msgstr "Inaweka ufikiaji..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:125
 #: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:78
-#: src/routes/_authenticated/$crmId/index.tsx:193
+#: src/routes/_authenticated/$crmId/index.tsx:191
 msgid "Settings"
 msgstr "Mipangilio"
 
@@ -2486,8 +2536,8 @@ msgstr "Pana"
 msgid "Start the discussion by adding the first comment."
 msgstr "Anza majadiliano kwa kuongeza maoni ya kwanza."
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Stop watching"
 msgstr "Acha kufuatilia"
 
@@ -2612,13 +2662,17 @@ msgstr "CRM hii haikuweza kupakiwa sasa hivi."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "CRM hii inaweza kuwa imefutwa au huna ufikiaji."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:70
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "Hatua hii itafuta mchezo na mazungumzo yake kabisa. Hatua hii haiwezi kutenduliwa."
+
 #. placeholder {0}: String(name)
 #: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Hii itafuta \"{0}\" kabisa na vitu vyake vyote, maoni, na viambatisho. Kitendo hiki hakiwezi kutenduliwa."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Hii itaondoa \"{0}\" kutoka upau wako wa kando na kusimamisha masasisho ya CRM hii."
 
@@ -2753,32 +2807,29 @@ msgstr "Haijulikani"
 
 #: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribe"
 msgstr "Jiondoe"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribe from CRM?"
 msgstr "Jiondoe kutoka CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:169
 msgid "Unsubscribed"
 msgstr "Umejiondoa"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:168
 msgid "Unsubscribing..."
 msgstr "Inajiondoa..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:40
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-container.tsx:29
 #: src/features/editor/components/design-preview.tsx:28
-#: src/features/objects/components/object-detail-panel.tsx:314
-#: src/features/objects/components/object-detail-panel.tsx:318
 msgid "Untitled"
 msgstr "Bila kichwa"
 
@@ -2796,7 +2847,7 @@ msgstr "Imesasisha {field}"
 msgid "Updating access..."
 msgstr "Inasasisha ufikiaji..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:655
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 msgid "Upload"
 msgstr "Pakia"
@@ -2854,7 +2905,7 @@ msgstr "Kitazamaji video: {0}"
 msgid "View all notifications"
 msgstr "Tazama arifa zote"
 
-#: src/features/objects/components/object-detail-panel.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:442
 msgid "View and edit item details"
 msgstr "Tazama na hariri maelezo ya kipengee"
 
@@ -2866,7 +2917,7 @@ msgstr "Tazama udhibiti"
 msgid "View only"
 msgstr "Tazama tu"
 
-#: src/routes/_authenticated/$crmId/index.tsx:147
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "View options"
 msgstr "Tazama chaguo"
 
@@ -2878,8 +2929,8 @@ msgstr "Mwonekano"
 msgid "Voice recording is not supported in this browser"
 msgstr "Kurekodi sauti hakutumiki kwenye kivinjari hiki"
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Watch"
 msgstr "Fuatilia"
 
@@ -2905,7 +2956,7 @@ msgstr "Jumatano"
 msgid "You do not have access to this section."
 msgstr "Huna ruhusa ya kufikia sehemu hii."
 
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:78
 msgid "You don't have access to this CRM."
 msgstr "Huna ufikiaji wa CRM hii."
 

@@ -148,7 +148,7 @@ msgstr "Naitakda ang access para kay {subjectName}"
 msgid "Account type"
 msgstr "Uri ng account"
 
-#: src/features/objects/components/object-detail-panel.tsx:324
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:415
 msgid "Activity"
 msgstr "Aktibidad"
 
@@ -193,7 +193,7 @@ msgstr "Magdagdag ng checklist item"
 msgid "Add class"
 msgstr "Magdagdag ng class"
 
-#: src/routes/_authenticated/$crmId/index.tsx:148
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Add column"
 msgstr "Magdagdag ng column"
 
@@ -207,7 +207,7 @@ msgstr "Magdagdag ng field"
 msgid "Add item..."
 msgstr "Magdagdag ng item..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "Magdagdag ng link"
 
@@ -295,7 +295,7 @@ msgstr "Titigil sa pagtanggap nito ang lahat ng naka-subscribe sa feed na ito. M
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Sigurado ka bang gusto mong i-delete ang \"{0}\"?"
 
-#: src/features/objects/components/object-detail-panel.tsx:536
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:671
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Sigurado ka bang gusto mong i-delete ang \"{title}\"? Hindi na ito maibabalik."
 
@@ -310,6 +310,14 @@ msgstr "Sigurado ka bang gusto mong i-delete ang komentong ito? Made-delete din 
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:27
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "Sigurado ka bang gusto mong mag-log out? Kakailanganin mong mag-log in muli para ma-access ang iyong account."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:39
+msgid "Are you sure you want to resign?"
+msgstr "Sigurado kang gusto mong sumuko?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:38
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "Sigurado ka bang gusto mong sumuko? Mananalo si {opponentName} sa laro."
 
 #: src/features/crms/pages/crms-list-page.tsx:40
 msgid "Are you sure you want to unsubscribe from this CRM?"
@@ -358,7 +366,7 @@ msgid "Back to CRM"
 msgstr "Bumalik sa CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:93
+#: src/routes/_authenticated/$crmId/index.tsx:91
 msgid "Back to CRMs"
 msgstr "Bumalik sa mga CRM"
 
@@ -367,12 +375,21 @@ msgstr "Bumalik sa mga CRM"
 msgid "Back to home"
 msgstr "Bumalik sa home"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Banner"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr "Tinanggal ang banner"
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr "Na-update ang banner"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "Hinarang ng"
 
@@ -381,7 +398,7 @@ msgstr "Hinarang ng"
 msgid "Blocked navigation to untrusted link"
 msgstr "Hinarang ang pag-navigate sa di-pinagkakatiwalaang link"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "Hinaharangan"
 
@@ -430,7 +447,7 @@ msgstr "Maaaring maging child ng"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:338
 #: src/routes/_authenticated/$crmId/design.tsx:57
-#: src/routes/_authenticated/$crmId/index.tsx:151
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Cancel"
 msgstr "Kanselahin"
 
@@ -487,7 +504,7 @@ msgstr "Pumili ng laro mula sa sidebar o magsimula ng bago."
 msgid "Choose language"
 msgstr "Pumili ng wika"
 
-#: src/routes/_authenticated/$crmId/index.tsx:178
+#: src/routes/_authenticated/$crmId/index.tsx:176
 msgid "Class"
 msgstr "Klase"
 
@@ -495,6 +512,7 @@ msgstr "Klase"
 msgid "Classes"
 msgstr "Mga class"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -512,8 +530,8 @@ msgstr "Burahin lahat"
 msgid "Clear search"
 msgstr "Burahin ang paghahanap"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:517
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
@@ -595,7 +613,7 @@ msgid "Comments"
 msgstr "Mga komento"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:323
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:411
 msgid "Comments ({0})"
 msgstr "Mga komento ({0})"
 
@@ -682,8 +700,8 @@ msgstr "Hindi ma-verify gamit ang account na iyon. Pakisubukang muli."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Gumawa"
@@ -734,7 +752,7 @@ msgstr "Ginawa ang {field}"
 msgid "Creating CRM..."
 msgstr "Gumagawa ng CRM..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 #: src/features/crms/components/create-crm-dialog.tsx:341
 msgid "Creating..."
@@ -752,7 +770,7 @@ msgstr "Nagawa ang CRM"
 msgid "CRM deleted"
 msgstr "Natanggal ang CRM"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "CRM link"
 msgstr "Link ng CRM"
 
@@ -835,7 +853,8 @@ msgstr "Default na sort"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
-#: src/features/objects/components/object-detail-panel.tsx:537
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
 #: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Delete"
 msgstr "I-delete"
@@ -869,9 +888,13 @@ msgstr "I-delete ang CRM?"
 msgid "Delete field"
 msgstr "I-delete ang field"
 
-#: src/features/objects/components/object-detail-panel.tsx:372
-#: src/features/objects/components/object-detail-panel.tsx:377
-#: src/features/objects/components/object-detail-panel.tsx:535
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:69
+msgid "Delete game?"
+msgstr "I-delete ang laro?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:486
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:670
 msgid "Delete item"
 msgstr "I-delete ang item"
 
@@ -905,6 +928,10 @@ msgstr "Tinanggal ang {field}"
 msgid "Deleting CRM..."
 msgstr "Tinatanggal ang CRM..."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
+msgid "Deleting..."
+msgstr "Dini-delete..."
+
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Descending"
 msgstr "Pababa"
@@ -916,7 +943,7 @@ msgstr "Paglalarawan"
 
 #: src/routes/_authenticated/$crmId/design.tsx:39
 #: src/routes/_authenticated/$crmId/design.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:185
+#: src/routes/_authenticated/$crmId/index.tsx:183
 msgid "Design"
 msgstr "Disenyo"
 
@@ -966,7 +993,7 @@ msgstr "Nadiskonekta"
 msgid "Dismiss"
 msgstr "I-dismiss"
 
-#: src/routes/_authenticated/$crmId/index.tsx:154
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Dismiss board hint"
 msgstr "I-dismiss ang board hint"
 
@@ -979,13 +1006,13 @@ msgid "Does not match the required pattern"
 msgstr "Hindi tumutugma sa kinakailangang pattern"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:495
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 #: src/features/editor/components/edit-dialogs.tsx:412
-#: src/features/objects/components/object-detail-panel.tsx:386
 msgid "Done"
 msgstr "Tapos na"
 
-#: src/routes/_authenticated/$crmId/index.tsx:153
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Double click on a column to add content"
 msgstr "I-double click ang isang column para magdagdag ng content"
 
@@ -1005,15 +1032,15 @@ msgid "Download failed"
 msgstr "Nabigo ang pag-download"
 
 #: src/routes/_authenticated/$crmId/design.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Downloaded {filename}"
 msgstr "Na-download ang {filename}"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Drag columns to re-order them"
 msgstr "I-drag ang mga column para i-reorder"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "Duplicate"
 
@@ -1072,6 +1099,10 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Email code"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr "Maglagay ng banner text (suportado ang markdown)..."
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "Ilagay ang code mula sa iyong email"
@@ -1084,7 +1115,7 @@ msgstr "Ilagay ang iyong authenticator code"
 msgid "Entity ID"
 msgstr "Entity ID"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:381
 msgid "Error"
 msgstr "Error"
 
@@ -1099,11 +1130,11 @@ msgstr "Palawakin"
 msgid "Expand sidebar"
 msgstr "I-expand ang sidebar"
 
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Export CSV"
 msgstr "I-export ang CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Export data"
 msgstr "I-export ang data"
 
@@ -1123,7 +1154,7 @@ msgstr "Sobrang laki"
 msgid "Failed to add account"
 msgstr "Nabigong magdagdag ng account"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to add column"
 msgstr "Nabigong magdagdag ng column"
 
@@ -1145,9 +1176,9 @@ msgstr "Nabigong gumawa ng CRM"
 msgid "Failed to create field"
 msgstr "Nabigong gumawa ng field"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Failed to create link"
 msgstr "Nabigong gumawa ng link"
 
@@ -1160,7 +1191,7 @@ msgstr "Nabigong gumawa ng option"
 msgid "Failed to create view"
 msgstr "Nabigong gumawa ng view"
 
-#: src/features/objects/components/object-detail-panel.tsx:212
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
 msgid "Failed to delete"
 msgstr "Nabigong magdelete"
 
@@ -1172,7 +1203,7 @@ msgstr "Nabigong magdelete ng attachment"
 msgid "Failed to delete class"
 msgstr "Nabigong magdelete ng class"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Failed to delete column"
 msgstr "Nabigong tanggalin ang column"
 
@@ -1188,7 +1219,7 @@ msgstr "Nabigong tanggalin ang CRM"
 msgid "Failed to delete field"
 msgstr "Nabigong magdelete ng field"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "Nabigong magdelete ng link"
 
@@ -1200,7 +1231,7 @@ msgstr "Nabigong magdelete ng option"
 msgid "Failed to delete view"
 msgstr "Nabigong magdelete ng view"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Failed to export data"
 msgstr "Hindi na-export ang data"
 
@@ -1227,8 +1258,8 @@ msgstr "Nabigong i-load"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:41
 #: src/routes/_authenticated/$crmId/$objectId.tsx:65
-#: src/routes/_authenticated/$crmId/index.tsx:58
-#: src/routes/_authenticated/$crmId/index.tsx:94
+#: src/routes/_authenticated/$crmId/index.tsx:56
+#: src/routes/_authenticated/$crmId/index.tsx:92
 msgid "Failed to load CRM"
 msgstr "Nabigong i-load ang CRM"
 
@@ -1248,7 +1279,8 @@ msgstr "Nabigong i-load ang history"
 msgid "Failed to load image"
 msgstr "Nabigong i-load ang larawan"
 
-#: src/features/objects/components/object-detail-panel.tsx:294
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:382
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:385
 msgid "Failed to load item"
 msgstr "Nabigong i-load ang item"
 
@@ -1264,8 +1296,8 @@ msgstr "Hindi na-load ang mga inirerekomendang CRM"
 msgid "Failed to load video"
 msgstr "Nabigong i-load ang video"
 
-#: src/features/objects/components/object-detail-panel.tsx:230
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:317
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "Failed to move"
 msgstr "Nabigong ilipat"
 
@@ -1273,7 +1305,7 @@ msgstr "Nabigong ilipat"
 msgid "Failed to post comment"
 msgstr "Nabigong mag-post ng comment"
 
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "Failed to re-order columns"
 msgstr "Nabigong baguhin ang pagkakasunod-sunod ng mga column"
 
@@ -1286,7 +1318,7 @@ msgstr "Nabigong basahin ang file"
 msgid "Failed to remove access"
 msgstr "Nabigong tanggalin ang access"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Failed to rename column"
 msgstr "Nabigong palitan ang pangalan ng column"
 
@@ -1306,7 +1338,7 @@ msgstr "Nabigong i-reset ang prompt"
 msgid "Failed to revoke RSS access"
 msgstr "Nabigong bawiin ang RSS access"
 
-#: src/features/objects/components/object-detail-panel.tsx:176
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
 msgid "Failed to save"
 msgstr "Nabigong i-save"
 
@@ -1329,13 +1361,17 @@ msgid "Failed to subscribe"
 msgstr "Nabigong mag-subscribe"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Failed to unsubscribe"
 msgstr "Nabigong mag-unsubscribe"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Failed to update access level"
 msgstr "Nabigong i-update ang access level"
+
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr "Nabigong i-update ang banner"
 
 #: src/features/editor/components/design-editor.tsx:122
 msgid "Failed to update class"
@@ -1365,8 +1401,8 @@ msgstr "Nabigong i-update ang option"
 msgid "Failed to update view"
 msgstr "Nabigong i-update ang view"
 
-#: src/features/objects/components/object-detail-panel.tsx:195
-msgid "Failed to update watch"
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:288
+msgid "Failed to update watching"
 msgstr "Nabigong i-update ang pagsubaybay"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
@@ -1377,7 +1413,7 @@ msgstr "Nabigong mag-upload ng attachment"
 msgid "Fields"
 msgstr "Mga field"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:605
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
@@ -1459,7 +1495,7 @@ msgstr "Hot"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 #: src/features/editor/components/edit-dialogs.tsx:267
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "ID"
 msgstr "ID"
 
@@ -1527,7 +1563,7 @@ msgstr "Invalid na JSON file"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Mukhang ang pahinang hinahanap mo <0/>ay wala o maaaring inalis na."
 
-#: src/features/objects/components/object-detail-panel.tsx:336
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:441
 msgid "Item details"
 msgstr "Detalye ng item"
 
@@ -1557,11 +1593,11 @@ msgid "Light"
 msgstr "Light"
 
 #: ../../../lib/web/src/components/options-menu.tsx:190
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Link"
 msgstr "Link"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "Mga link"
 
@@ -1577,17 +1613,17 @@ msgstr "Mag-load ng higit pa"
 msgid "Loading content…"
 msgstr "Nilo-load ang nilalaman…"
 
-#: src/features/objects/components/object-detail-panel.tsx:277
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:365
 msgid "Loading item"
 msgstr "Nilo-load ang item"
 
-#: src/features/objects/components/object-detail-panel.tsx:278
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:366
 msgid "Loading item details"
 msgstr "Nilo-load ang detalye ng item"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Loading..."
 msgstr "Nilo-load..."
 
@@ -1713,15 +1749,15 @@ msgstr "Ang pangalan ay dapat 1000 karakter o mas mababa"
 msgid "Network error"
 msgstr "Error sa network"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:492
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:141
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:139
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New"
 msgstr "Bago"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New {0}"
 msgstr "Bagong {0}"
 
@@ -1735,7 +1771,7 @@ msgstr "Bagong laro"
 msgid "Next image"
 msgstr "Susunod na imahe"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:571
 msgid "No {parentClassNames} to add to"
 msgstr "Walang {parentClassNames} na maaaring idagdag"
 
@@ -1768,15 +1804,15 @@ msgstr "Wala pang laro"
 msgid "No groups available"
 msgstr "Walang available na grupo"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Wala pang uri ng item na magagawa. Gumawa muna ng kinakailangang parent item."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "Walang tugmang object"
 
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "No objects to export."
 msgstr "Walang object na i-e-export."
 
@@ -1825,9 +1861,13 @@ msgid "No views"
 msgstr "Walang view"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:554
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:557
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:561
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:557
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:570
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:571
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:575
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
@@ -1839,10 +1879,6 @@ msgstr "Walang view"
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/objects/components/object-detail-panel.tsx:451
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:467
-#: src/features/objects/components/object-detail-panel.tsx:471
 msgid "None"
 msgstr "Wala"
 
@@ -1915,7 +1951,7 @@ msgstr "Buksan ang navigation"
 msgid "Open option actions"
 msgstr "Buksan ang mga aksyon ng opsyon"
 
-#: src/routes/_authenticated/$crmId/index.tsx:140
+#: src/routes/_authenticated/$crmId/index.tsx:138
 msgid "Open page actions"
 msgstr "Buksan ang mga aksyon ng pahina"
 
@@ -1951,9 +1987,10 @@ msgstr "Iba pa"
 msgid "Owner"
 msgstr "May-ari"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
-#: src/features/objects/components/object-detail-panel.tsx:445
-#: src/routes/_authenticated/$crmId/index.tsx:179
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:546
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:569
+#: src/routes/_authenticated/$crmId/index.tsx:177
 msgid "Parent"
 msgstr "Magulang"
 
@@ -1982,7 +2019,7 @@ msgstr "Pattern (regex)"
 msgid "People"
 msgstr "Mga Tao"
 
-#: src/routes/_authenticated/$crmId/index.tsx:146
+#: src/routes/_authenticated/$crmId/index.tsx:144
 msgid "Please add one or more classes to the CRM design."
 msgstr "Mangyaring magdagdag ng isa o higit pang class sa CRM design."
 
@@ -2026,7 +2063,7 @@ msgstr "Pinoproseso…"
 msgid "Prompt saved"
 msgstr "Na-save ang prompt"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:408
 msgid "Properties"
 msgstr "Mga katangian"
 
@@ -2042,7 +2079,7 @@ msgstr "Nakaangat"
 msgid "Re-link your accounts on this server"
 msgstr "I-relink ang iyong mga account sa server na ito"
 
-#: src/routes/_authenticated/$crmId/index.tsx:149
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "Re-order columns"
 msgstr "Muling ayusin ang mga column"
 
@@ -2079,7 +2116,7 @@ msgstr "Nire-redirect sa login."
 msgid "Reduce interest"
 msgstr "Bawasan ang interes"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "May kaugnayan"
 
@@ -2142,8 +2179,8 @@ msgstr "Alisin ang interes"
 msgid "Remove item"
 msgstr "Alisin ang item"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "Alisin ang link"
 
@@ -2193,6 +2230,18 @@ msgstr "Kinakailangan"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "Muling ipadala ang email"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:48
+msgid "Resign"
+msgstr "Sumuko"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:35
+msgid "Resign game?"
+msgstr "Sumuko sa laro?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:45
+msgid "Resigning..."
+msgstr "Sumusuko..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:348
 msgid "Retry"
@@ -2245,11 +2294,12 @@ msgstr "Sabado"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:152
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Save"
 msgstr "I-save"
 
@@ -2293,7 +2343,7 @@ msgstr "Maghanap ng destination..."
 msgid "Search for origin..."
 msgstr "Maghanap ng origin..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "Maghanap ng object..."
 
@@ -2423,7 +2473,7 @@ msgstr "Itinatakda ang access..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:125
 #: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:78
-#: src/routes/_authenticated/$crmId/index.tsx:193
+#: src/routes/_authenticated/$crmId/index.tsx:191
 msgid "Settings"
 msgstr "Mga setting"
 
@@ -2486,8 +2536,8 @@ msgstr "Maluwag"
 msgid "Start the discussion by adding the first comment."
 msgstr "Simulan ang diskusyon sa pamamagitan ng pagdagdag ng unang komento."
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Stop watching"
 msgstr "Itigil ang pagmamasid"
 
@@ -2612,13 +2662,17 @@ msgstr "Hindi ma-load ang CRM na ito sa ngayon."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Maaaring natanggal ang CRM na ito o wala kang access dito."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:70
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "Permanenteng buburahin nito ang laro at ang chat nito. Hindi na maaaring bawiin ang aksyong ito."
+
 #. placeholder {0}: String(name)
 #: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Permanenteng tatanggalin nito ang \"{0}\" at lahat ng object, komento, at attachment nito. Hindi maaaring bawiin ang aksyong ito."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Tatanggalin nito ang \"{0}\" mula sa iyong sidebar at ihihinto ang mga update para sa CRM na ito."
 
@@ -2753,32 +2807,29 @@ msgstr "Hindi alam"
 
 #: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribe"
 msgstr "Mag-unsubscribe"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribe from CRM?"
 msgstr "Mag-unsubscribe sa CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:169
 msgid "Unsubscribed"
 msgstr "Hindi na naka-subscribe"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:168
 msgid "Unsubscribing..."
 msgstr "Nag-a-unsubscribe..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:40
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-container.tsx:29
 #: src/features/editor/components/design-preview.tsx:28
-#: src/features/objects/components/object-detail-panel.tsx:314
-#: src/features/objects/components/object-detail-panel.tsx:318
 msgid "Untitled"
 msgstr "Walang pamagat"
 
@@ -2796,7 +2847,7 @@ msgstr "Na-update ang {field}"
 msgid "Updating access..."
 msgstr "Ina-update ang access..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:655
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 msgid "Upload"
 msgstr "Mag-upload"
@@ -2854,7 +2905,7 @@ msgstr "Video viewer: {0}"
 msgid "View all notifications"
 msgstr "Tingnan lahat ng notification"
 
-#: src/features/objects/components/object-detail-panel.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:442
 msgid "View and edit item details"
 msgstr "Tingnan at i-edit ang mga detalye ng item"
 
@@ -2866,7 +2917,7 @@ msgstr "Mga view control"
 msgid "View only"
 msgstr "Tingnan lamang"
 
-#: src/routes/_authenticated/$crmId/index.tsx:147
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "View options"
 msgstr "Mga opsyon ng view"
 
@@ -2878,8 +2929,8 @@ msgstr "Mga view"
 msgid "Voice recording is not supported in this browser"
 msgstr "Hindi suportado ang voice recording sa browser na ito"
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Watch"
 msgstr "Manood"
 
@@ -2905,7 +2956,7 @@ msgstr "Miyerkules"
 msgid "You do not have access to this section."
 msgstr "Wala kang access sa seksyong ito."
 
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:78
 msgid "You don't have access to this CRM."
 msgstr "Wala kang access sa CRM na ito."
 

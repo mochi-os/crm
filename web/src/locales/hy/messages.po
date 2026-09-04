@@ -148,7 +148,7 @@ msgstr "Մուտքը սահմանված է {subjectName}-ի համար"
 msgid "Account type"
 msgstr "Հաշվի տեսակ"
 
-#: src/features/objects/components/object-detail-panel.tsx:324
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:415
 msgid "Activity"
 msgstr "Ակտիվություն"
 
@@ -193,7 +193,7 @@ msgstr "Ավելացնել ստուգաթերթիկի կետ"
 msgid "Add class"
 msgstr "Ավելացնել դաս"
 
-#: src/routes/_authenticated/$crmId/index.tsx:148
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Add column"
 msgstr "Ավելացնել սյունակ"
 
@@ -207,7 +207,7 @@ msgstr "Ավելացնել դաշտ"
 msgid "Add item..."
 msgstr "Ավելացնել տարր..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "Ավելացնել հղում"
 
@@ -295,7 +295,7 @@ msgstr "Այս հոսքին բաժանորդագրված ամեն ինչ կդա�
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Վստա՞հ եք, որ ուզում եք ջնջել «{0}»-ը։"
 
-#: src/features/objects/components/object-detail-panel.tsx:536
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:671
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Վստա՞հ եք, որ ուզում եք ջնջել «{title}»-ը։ Այս գործողությունը հնարավոր չէ հետարկել։"
 
@@ -310,6 +310,14 @@ msgstr "Վստա՞հ եք, որ ուզում եք ջնջել այս մեկնաբ
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:27
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "Վստա՞հ եք, որ ուզում եք դուրս գալ։ Հաշվին հասանելիություն ստանալու համար պետք է նորից մուտք գործեք։"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:39
+msgid "Are you sure you want to resign?"
+msgstr "Վստա՞հ եք, որ ուզում եք հանձնվել։"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:38
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "Վստա՞հ եք, որ ուզում եք հանձնվել։ {opponentName}-ը կհաղթի խաղում։"
 
 #: src/features/crms/pages/crms-list-page.tsx:40
 msgid "Are you sure you want to unsubscribe from this CRM?"
@@ -358,7 +366,7 @@ msgid "Back to CRM"
 msgstr "Հետ դեպի CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:93
+#: src/routes/_authenticated/$crmId/index.tsx:91
 msgid "Back to CRMs"
 msgstr "Հետ դեպի CRM-ներ"
 
@@ -367,12 +375,21 @@ msgstr "Հետ դեպի CRM-ներ"
 msgid "Back to home"
 msgstr "Վերադառնալ տուն"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Բաններ"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr "Բանները հեռացվեց"
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr "Բանները թարմացվեց"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "Արգելափակված է՝"
 
@@ -381,7 +398,7 @@ msgstr "Արգելափակված է՝"
 msgid "Blocked navigation to untrusted link"
 msgstr "Արգելափակվեց անցումը անվստահելի հղման"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "Արգելափակումներ"
 
@@ -430,7 +447,7 @@ msgstr "Կարող է լինել ենթակա"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:338
 #: src/routes/_authenticated/$crmId/design.tsx:57
-#: src/routes/_authenticated/$crmId/index.tsx:151
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Cancel"
 msgstr "Չեղարկել"
 
@@ -487,7 +504,7 @@ msgstr "Ընտրեք խաղ կողագոտուց կամ սկսեք նորը։"
 msgid "Choose language"
 msgstr "Ընտրել լեզուն"
 
-#: src/routes/_authenticated/$crmId/index.tsx:178
+#: src/routes/_authenticated/$crmId/index.tsx:176
 msgid "Class"
 msgstr "Դաս"
 
@@ -495,6 +512,7 @@ msgstr "Դաս"
 msgid "Classes"
 msgstr "Դասեր"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -512,8 +530,8 @@ msgstr "Մաքրել ամենը"
 msgid "Clear search"
 msgstr "Մաքրել որոնումը"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:517
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
@@ -595,7 +613,7 @@ msgid "Comments"
 msgstr "Մեկնաբանություններ"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:323
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:411
 msgid "Comments ({0})"
 msgstr "Մեկնաբանություններ ({0})"
 
@@ -682,8 +700,8 @@ msgstr "Չհաջողվեց ստուգել այդ հաշվով։ Խնդրում �
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Ստեղծել"
@@ -734,7 +752,7 @@ msgstr "Ստեղծվել է {field}"
 msgid "Creating CRM..."
 msgstr "CRM-ը ստեղծվում է..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 #: src/features/crms/components/create-crm-dialog.tsx:341
 msgid "Creating..."
@@ -752,7 +770,7 @@ msgstr "CRM-ը ստեղծվեց"
 msgid "CRM deleted"
 msgstr "CRM-ը ջնջվեց"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "CRM link"
 msgstr "CRM հղում"
 
@@ -835,7 +853,8 @@ msgstr "Լռելյայն տեսակավորում"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
-#: src/features/objects/components/object-detail-panel.tsx:537
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
 #: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Delete"
 msgstr "Ջնջել"
@@ -869,9 +888,13 @@ msgstr "Ջնջե՞լ CRM-ը։"
 msgid "Delete field"
 msgstr "Ջնջել դաշտը"
 
-#: src/features/objects/components/object-detail-panel.tsx:372
-#: src/features/objects/components/object-detail-panel.tsx:377
-#: src/features/objects/components/object-detail-panel.tsx:535
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:69
+msgid "Delete game?"
+msgstr "Ջնջե՞լ խաղը։"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:486
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:670
 msgid "Delete item"
 msgstr "Ջնջել կետը"
 
@@ -905,6 +928,10 @@ msgstr "Ջնջվել է {field}"
 msgid "Deleting CRM..."
 msgstr "CRM-ը ջնջվում է..."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
+msgid "Deleting..."
+msgstr "Ջնջվում է..."
+
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Descending"
 msgstr "Նվազման կարգով"
@@ -916,7 +943,7 @@ msgstr "Նկարագրություն"
 
 #: src/routes/_authenticated/$crmId/design.tsx:39
 #: src/routes/_authenticated/$crmId/design.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:185
+#: src/routes/_authenticated/$crmId/index.tsx:183
 msgid "Design"
 msgstr "Դիզայն"
 
@@ -966,7 +993,7 @@ msgstr "Անջատված"
 msgid "Dismiss"
 msgstr "Հեռացնել"
 
-#: src/routes/_authenticated/$crmId/index.tsx:154
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Dismiss board hint"
 msgstr "Հեռացնել տախտակի հուշումը"
 
@@ -979,13 +1006,13 @@ msgid "Does not match the required pattern"
 msgstr "Չի համապատասխանում պահանջվող ձևանմուշին"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:495
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 #: src/features/editor/components/edit-dialogs.tsx:412
-#: src/features/objects/components/object-detail-panel.tsx:386
 msgid "Done"
 msgstr "Կատարված է"
 
-#: src/routes/_authenticated/$crmId/index.tsx:153
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Double click on a column to add content"
 msgstr "Կրկնակի սեղմեք սյունակի վրա բովանդակություն ավելացնելու համար"
 
@@ -1005,15 +1032,15 @@ msgid "Download failed"
 msgstr "Ներբեռնումը ձախողվեց"
 
 #: src/routes/_authenticated/$crmId/design.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Downloaded {filename}"
 msgstr "Ներբեռնված է {filename}"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Drag columns to re-order them"
 msgstr "Քաշեք սյունակները՝ դրանք վերադասավորելու համար"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "Կրկնօրինակներ"
 
@@ -1072,6 +1099,10 @@ msgstr "Էլ․ փոստ"
 msgid "Email code"
 msgstr "Էլ․ փոստի կոդ"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr "Մուտքագրեք պաստառի տեքստը (markdown-ը աջակցվում է)..."
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "Մուտքագրեք ձեր էլ. փոստից ստացած կոդը"
@@ -1084,7 +1115,7 @@ msgstr "Մուտքագրեք ձեր նույնականացուցիչի կոդը"
 msgid "Entity ID"
 msgstr "Էնտիտետի ID"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:381
 msgid "Error"
 msgstr "Սխալ"
 
@@ -1099,11 +1130,11 @@ msgstr "Ծավալել"
 msgid "Expand sidebar"
 msgstr "Ընդարձակել կողագոտին"
 
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Export CSV"
 msgstr "Արտահանել CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Export data"
 msgstr "Արտահանել տվյալները"
 
@@ -1123,7 +1154,7 @@ msgstr "Շատ մեծ"
 msgid "Failed to add account"
 msgstr "Չհաջողվեց ավելացնել հաշիվը"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to add column"
 msgstr "Չհաջողվեց ավելացնել սյունակը"
 
@@ -1145,9 +1176,9 @@ msgstr "Չհաջողվեց ստեղծել CRM"
 msgid "Failed to create field"
 msgstr "Չհաջողվեց ստեղծել դաշտը"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Failed to create link"
 msgstr "Չհաջողվեց ստեղծել հղումը"
 
@@ -1160,7 +1191,7 @@ msgstr "Չհաջողվեց ստեղծել տարբերակը"
 msgid "Failed to create view"
 msgstr "Չհաջողվեց ստեղծել տեսքը"
 
-#: src/features/objects/components/object-detail-panel.tsx:212
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
 msgid "Failed to delete"
 msgstr "Չհաջողվեց ջնջել"
 
@@ -1172,7 +1203,7 @@ msgstr "Չհաջողվեց ջնջել կցորդը"
 msgid "Failed to delete class"
 msgstr "Չհաջողվեց ջնջել դասը"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Failed to delete column"
 msgstr "Չհաջողվեց ջնջել սյունակը"
 
@@ -1188,7 +1219,7 @@ msgstr "CRM-ը ջնջել չհաջողվեց"
 msgid "Failed to delete field"
 msgstr "Չհաջողվեց ջնջել դաշտը"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "Չհաջողվեց ջնջել հղումը"
 
@@ -1200,7 +1231,7 @@ msgstr "Չհաջողվեց ջնջել տարբերակը"
 msgid "Failed to delete view"
 msgstr "Չհաջողվեց ջնջել տեսքը"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Failed to export data"
 msgstr "Չհաջողվեց արտահանել տվյալները"
 
@@ -1227,8 +1258,8 @@ msgstr "Չհաջողվեց բեռնել"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:41
 #: src/routes/_authenticated/$crmId/$objectId.tsx:65
-#: src/routes/_authenticated/$crmId/index.tsx:58
-#: src/routes/_authenticated/$crmId/index.tsx:94
+#: src/routes/_authenticated/$crmId/index.tsx:56
+#: src/routes/_authenticated/$crmId/index.tsx:92
 msgid "Failed to load CRM"
 msgstr "Չհաջողվեց բեռնել CRM-ը"
 
@@ -1248,7 +1279,8 @@ msgstr "Չհաջողվեց բեռնել պատմությունը"
 msgid "Failed to load image"
 msgstr "Չհաջողվեց բեռնել պատկերը"
 
-#: src/features/objects/components/object-detail-panel.tsx:294
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:382
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:385
 msgid "Failed to load item"
 msgstr "Չհաջողվեց բեռնել տարրը"
 
@@ -1264,8 +1296,8 @@ msgstr "Առաջարկվող CRM-ների բեռնումը ձախողվեց"
 msgid "Failed to load video"
 msgstr "Չհաջողվեց բեռնել տեսանյութը"
 
-#: src/features/objects/components/object-detail-panel.tsx:230
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:317
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "Failed to move"
 msgstr "Չհաջողվեց տեղափոխել"
 
@@ -1273,7 +1305,7 @@ msgstr "Չհաջողվեց տեղափոխել"
 msgid "Failed to post comment"
 msgstr "Չհաջողվեց հրապարակել մեկնաբանությունը"
 
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "Failed to re-order columns"
 msgstr "Չհաջողվեց վերադասավորել սյունակները"
 
@@ -1286,7 +1318,7 @@ msgstr "Չհաջողվեց կարդալ ֆայլը"
 msgid "Failed to remove access"
 msgstr "Չհաջողվեց հեռացնել մուտքը"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Failed to rename column"
 msgstr "Չհաջողվեց վերանվանել սյունակը"
 
@@ -1306,7 +1338,7 @@ msgstr "Չհաջողվեց զրոյացնել հուշումը"
 msgid "Failed to revoke RSS access"
 msgstr "RSS մուտքի չեղարկումը ձախողվեց"
 
-#: src/features/objects/components/object-detail-panel.tsx:176
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
 msgid "Failed to save"
 msgstr "Չհաջողվեց պահպանել"
 
@@ -1329,13 +1361,17 @@ msgid "Failed to subscribe"
 msgstr "Չհաջողվեց բաժանորդագրվել"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Failed to unsubscribe"
 msgstr "Չհաջողվեց ապաբաժանորդագրվել"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Failed to update access level"
 msgstr "Չհաջողվեց թարմացնել մուտքի մակարդակը"
+
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr "Չհաջողվեց թարմացնել պաստառը"
 
 #: src/features/editor/components/design-editor.tsx:122
 msgid "Failed to update class"
@@ -1365,8 +1401,8 @@ msgstr "Չհաջողվեց թարմացնել տարբերակը"
 msgid "Failed to update view"
 msgstr "Չհաջողվեց թարմացնել տեսքը"
 
-#: src/features/objects/components/object-detail-panel.tsx:195
-msgid "Failed to update watch"
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:288
+msgid "Failed to update watching"
 msgstr "Չհաջողվեց թարմացնել հետևումը"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
@@ -1377,7 +1413,7 @@ msgstr "Չհաջողվեց վերբեռնել կցորդը"
 msgid "Fields"
 msgstr "Դաշտեր"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:605
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
@@ -1459,7 +1495,7 @@ msgstr "Թեժ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 #: src/features/editor/components/edit-dialogs.tsx:267
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "ID"
 msgstr "ID"
 
@@ -1527,7 +1563,7 @@ msgstr "Անվավեր JSON ֆայլ"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Կարծես թե ձեր փնտրած էջը <0/>գոյություն չունի կամ հեռացվել է։"
 
-#: src/features/objects/components/object-detail-panel.tsx:336
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:441
 msgid "Item details"
 msgstr "Տարրի մանրամասներ"
 
@@ -1557,11 +1593,11 @@ msgid "Light"
 msgstr "Լուսավոր"
 
 #: ../../../lib/web/src/components/options-menu.tsx:190
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Link"
 msgstr "Հղում"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "Հղումներ"
 
@@ -1577,17 +1613,17 @@ msgstr "Բեռնել ավելին"
 msgid "Loading content…"
 msgstr "Բովանդակությունը բեռնվում է…"
 
-#: src/features/objects/components/object-detail-panel.tsx:277
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:365
 msgid "Loading item"
 msgstr "Տարրը բեռնվում է"
 
-#: src/features/objects/components/object-detail-panel.tsx:278
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:366
 msgid "Loading item details"
 msgstr "Տարրի մանրամասները բեռնվում են"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Loading..."
 msgstr "Բեռնվում է..."
 
@@ -1713,15 +1749,15 @@ msgstr "Անունը պետք է լինի 1000 նիշից ոչ ավելի"
 msgid "Network error"
 msgstr "Ցանցի սխալ"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:492
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:141
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:139
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New"
 msgstr "Նոր"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New {0}"
 msgstr "Նոր {0}"
 
@@ -1735,7 +1771,7 @@ msgstr "Նոր խաղ"
 msgid "Next image"
 msgstr "Հաջորդ նկարը"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:571
 msgid "No {parentClassNames} to add to"
 msgstr "Ավելացնելու {parentClassNames} չկան"
 
@@ -1768,15 +1804,15 @@ msgstr "Դեռ խաղեր չկան"
 msgid "No groups available"
 msgstr "Հասանելի խմբեր չկան"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Տարրերի տեսակներ դեռ հնարավոր չէ ստեղծել։ Նախ ստեղծեք պահանջվող ծնող տարրերը։"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "Համապատասխան օբյեկտներ չկան"
 
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "No objects to export."
 msgstr "Արտահանելու օբյեկտներ չկան։"
 
@@ -1825,9 +1861,13 @@ msgid "No views"
 msgstr "Դիտումներ չկան"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:554
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:557
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:561
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:557
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:570
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:571
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:575
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
@@ -1839,10 +1879,6 @@ msgstr "Դիտումներ չկան"
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/objects/components/object-detail-panel.tsx:451
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:467
-#: src/features/objects/components/object-detail-panel.tsx:471
 msgid "None"
 msgstr "Ոչ մեկը"
 
@@ -1915,7 +1951,7 @@ msgstr "Բացել նավիգացիան"
 msgid "Open option actions"
 msgstr "Բացել տարբերակի գործողությունները"
 
-#: src/routes/_authenticated/$crmId/index.tsx:140
+#: src/routes/_authenticated/$crmId/index.tsx:138
 msgid "Open page actions"
 msgstr "Բացել էջի գործողությունները"
 
@@ -1951,9 +1987,10 @@ msgstr "Այլ"
 msgid "Owner"
 msgstr "Սեփականատեր"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
-#: src/features/objects/components/object-detail-panel.tsx:445
-#: src/routes/_authenticated/$crmId/index.tsx:179
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:546
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:569
+#: src/routes/_authenticated/$crmId/index.tsx:177
 msgid "Parent"
 msgstr "Ծնող"
 
@@ -1982,7 +2019,7 @@ msgstr "Ձևանմուշ (regex)"
 msgid "People"
 msgstr "Մարդիկ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:146
+#: src/routes/_authenticated/$crmId/index.tsx:144
 msgid "Please add one or more classes to the CRM design."
 msgstr "Խնդրում ենք ավելացնել մեկ կամ ավելի դասեր CRM-ի ձևավորմանը։"
 
@@ -2026,7 +2063,7 @@ msgstr "Մշակվում է…"
 msgid "Prompt saved"
 msgstr "Հուշումը պահպանվեց"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:408
 msgid "Properties"
 msgstr "Հատկություններ"
 
@@ -2042,7 +2079,7 @@ msgstr "Բարձրացված"
 msgid "Re-link your accounts on this server"
 msgstr "Նորից կապեք ձեր հաշիվները այս սերվերում"
 
-#: src/routes/_authenticated/$crmId/index.tsx:149
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "Re-order columns"
 msgstr "Վերադասավորել սյունակները"
 
@@ -2079,7 +2116,7 @@ msgstr "Վերահղում մուտք էջ։"
 msgid "Reduce interest"
 msgstr "Նվազեցնել հետաքրքրությունը"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "Կապված է"
 
@@ -2142,8 +2179,8 @@ msgstr "Հեռացնել հետաքրքրությունը"
 msgid "Remove item"
 msgstr "Հեռացնել տարրը"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "Հեռացնել հղումը"
 
@@ -2193,6 +2230,18 @@ msgstr "Պարտադիր է"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "Կրկին ուղարկել նամակը"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:48
+msgid "Resign"
+msgstr "Հանձնվել"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:35
+msgid "Resign game?"
+msgstr "Հանձնվե՞լ խաղում։"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:45
+msgid "Resigning..."
+msgstr "Հանձնվում..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:348
 msgid "Retry"
@@ -2245,11 +2294,12 @@ msgstr "Շաբաթ"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:152
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Save"
 msgstr "Պահպանել"
 
@@ -2293,7 +2343,7 @@ msgstr "Որոնել ուղղություն..."
 msgid "Search for origin..."
 msgstr "Որոնել ծագում..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "Որոնել օբյեկտներ..."
 
@@ -2423,7 +2473,7 @@ msgstr "Մուտքը սահմանվում է..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:125
 #: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:78
-#: src/routes/_authenticated/$crmId/index.tsx:193
+#: src/routes/_authenticated/$crmId/index.tsx:191
 msgid "Settings"
 msgstr "Կարգավորումներ"
 
@@ -2486,8 +2536,8 @@ msgstr "Ընդարձակ"
 msgid "Start the discussion by adding the first comment."
 msgstr "Սկսեք քննարկումը՝ ավելացնելով առաջին մեկնաբանությունը:"
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Stop watching"
 msgstr "Դադարեցնել դիտումը"
 
@@ -2612,13 +2662,17 @@ msgstr "Այս CRM-ը հնարավոր չէ բեռնել հենց հիմա:"
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Այս CRM-ը կարող է ջնջվել, կամ դուք մուտք չունեք դրան:"
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:70
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "Սա ընդմիշտ կջնջի խաղը և դրա չաթը։ Այս գործողությունը հնարավոր չէ հետարկել։"
+
 #. placeholder {0}: String(name)
 #: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Սա մշտապես կջնջի \"{0}\"-ը և նրա բոլոր օբյեկտները, մեկնաբանությունները և կցորդները: Այս գործողությունը հնարավոր չէ չեղարկել:"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Սա կհեռացնի \"{0}\"-ը ձեր կողագոտուց և կդադարեցնի թարմացումներն այս CRM-ի համար:"
 
@@ -2753,32 +2807,29 @@ msgstr "Անհայտ"
 
 #: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribe"
 msgstr "Բաժանորդագրությունից հրաժարվել"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribe from CRM?"
 msgstr "Հրաժարվե՞լ CRM-ի բաժանորդագրությունից:"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:169
 msgid "Unsubscribed"
 msgstr "Բաժանորդագրությունից հրաժարված"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:168
 msgid "Unsubscribing..."
 msgstr "Հրաժարվում է բաժանորդագրությունից..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:40
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-container.tsx:29
 #: src/features/editor/components/design-preview.tsx:28
-#: src/features/objects/components/object-detail-panel.tsx:314
-#: src/features/objects/components/object-detail-panel.tsx:318
 msgid "Untitled"
 msgstr "Անվերնագիր"
 
@@ -2796,7 +2847,7 @@ msgstr "Թարմացվել է {field}"
 msgid "Updating access..."
 msgstr "Մուտքը թարմացվում է..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:655
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 msgid "Upload"
 msgstr "Վերբեռնել"
@@ -2854,7 +2905,7 @@ msgstr "Տեսանյութի դիտիչ՝ {0}"
 msgid "View all notifications"
 msgstr "Դիտել բոլոր ծանուցումները"
 
-#: src/features/objects/components/object-detail-panel.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:442
 msgid "View and edit item details"
 msgstr "Դիտել և խմբագրել տարրի մանրամասները"
 
@@ -2866,7 +2917,7 @@ msgstr "Դիտել կառավարակետերը"
 msgid "View only"
 msgstr "Միայն դիտել"
 
-#: src/routes/_authenticated/$crmId/index.tsx:147
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "View options"
 msgstr "Դիտել տարբերակները"
 
@@ -2878,8 +2929,8 @@ msgstr "Դիտումներ"
 msgid "Voice recording is not supported in this browser"
 msgstr "Ձայնագրումն այս դիտարկիչում չի աջակցվում"
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Watch"
 msgstr "Հետևել"
 
@@ -2905,7 +2956,7 @@ msgstr "Չորեքշաբթի"
 msgid "You do not have access to this section."
 msgstr "Այս բաժինը ձեզ հասանելի չէ։"
 
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:78
 msgid "You don't have access to this CRM."
 msgstr "Դու այս CRM-ին հասանելիություն չունես։"
 

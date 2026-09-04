@@ -148,7 +148,7 @@ msgstr "{subjectName} အတွက် ဝင်ရောက်ခွင့် �
 msgid "Account type"
 msgstr "အကောင့်အမျိုးအစား"
 
-#: src/features/objects/components/object-detail-panel.tsx:324
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:415
 msgid "Activity"
 msgstr "လှုပ်ရှားမှု"
 
@@ -193,7 +193,7 @@ msgstr "checklist အရာ ထည့်မည်"
 msgid "Add class"
 msgstr "class ထည့်မည်"
 
-#: src/routes/_authenticated/$crmId/index.tsx:148
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Add column"
 msgstr "ကော်လံ ထည့်မည်"
 
@@ -207,7 +207,7 @@ msgstr "field ထည့်မည်"
 msgid "Add item..."
 msgstr "အရာ ထည့်ရန်..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "လင့်ခ် ထည့်မည်"
 
@@ -295,7 +295,7 @@ msgstr "ဤဖိဒ်ကို စာရင်းသွင်းထားသ�
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "\"{0}\" ကို ဖျက်မှာသေချာပါသလား?"
 
-#: src/features/objects/components/object-detail-panel.tsx:536
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:671
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "\"{title}\" ကို ဖျက်မှာသေချာပါသလား? ဤလုပ်ဆောင်ချက်ကို ပြန်လည်ပြုပြင်၍မရပါ။"
 
@@ -310,6 +310,14 @@ msgstr "ဤမှတ်ချက်ကို ဖျက်မှာသေချ�
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:27
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "log out လုပ်မှာသေချာပါသလား? သင့်အကောင့်ကို ပြန်ဝင်ရန် log in ပြန်လုပ်ရမည်။"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:39
+msgid "Are you sure you want to resign?"
+msgstr "လက်လျှော့မှာသေချာပါသလား?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:38
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "လက်လျှော့မှာသေချာပါသလား? {opponentName} က ပွဲကို နိုင်မည်ဖြစ်သည်။"
 
 #: src/features/crms/pages/crms-list-page.tsx:40
 msgid "Are you sure you want to unsubscribe from this CRM?"
@@ -358,7 +366,7 @@ msgid "Back to CRM"
 msgstr "CRM သို့ ပြန်သွားမည်"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:93
+#: src/routes/_authenticated/$crmId/index.tsx:91
 msgid "Back to CRMs"
 msgstr "CRM များသို့ ပြန်သွားမည်"
 
@@ -367,12 +375,21 @@ msgstr "CRM များသို့ ပြန်သွားမည်"
 msgid "Back to home"
 msgstr "ပင်မစာမျက်နှာ သို့ပြန်သွားရန်"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "ပိုစတာ"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr "ပိုစတာ ဖယ်ရှားပြီး"
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr "ပိုစတာ ပြောင်းပြီး"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "ပိတ်ဆို့သူ"
 
@@ -381,7 +398,7 @@ msgstr "ပိတ်ဆို့သူ"
 msgid "Blocked navigation to untrusted link"
 msgstr "မယုံကြည်ရသော လင့်ခ်သို့ သွားရောက်ခြင်းကို ပိတ်ဆို့ထားသည်"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "ပိတ်ဆို့မှုများ"
 
@@ -430,7 +447,7 @@ msgstr "ကလေးဖြစ်နိုင်သည်"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:338
 #: src/routes/_authenticated/$crmId/design.tsx:57
-#: src/routes/_authenticated/$crmId/index.tsx:151
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Cancel"
 msgstr "မလုပ်တော့ပါ"
 
@@ -487,7 +504,7 @@ msgstr "ဘေးဘားမှ ဂိမ်းတစ်ခုကို ရွ�
 msgid "Choose language"
 msgstr "ဘာသာစကား ရွေးချယ်ပါ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:178
+#: src/routes/_authenticated/$crmId/index.tsx:176
 msgid "Class"
 msgstr "Class"
 
@@ -495,6 +512,7 @@ msgstr "Class"
 msgid "Classes"
 msgstr "Class များ"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -512,8 +530,8 @@ msgstr "အားလုံး ရှင်းမည်"
 msgid "Clear search"
 msgstr "ရှာဖွေမှု ရှင်းမည်"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:517
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
@@ -595,7 +613,7 @@ msgid "Comments"
 msgstr "မှတ်ချက်များ"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:323
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:411
 msgid "Comments ({0})"
 msgstr "မှတ်ချက်များ ({0})"
 
@@ -682,8 +700,8 @@ msgstr "ထိုအကောင့်ဖြင့် အတည်ပြု၍�
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "ဖန်တီးမည်"
@@ -734,7 +752,7 @@ msgstr "{field} ကို ဖန်တီးခဲ့သည်"
 msgid "Creating CRM..."
 msgstr "CRM ကို ဖန်တီးနေသည်..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 #: src/features/crms/components/create-crm-dialog.tsx:341
 msgid "Creating..."
@@ -752,7 +770,7 @@ msgstr "CRM ဖန်တီးပြီး"
 msgid "CRM deleted"
 msgstr "CRM ကို ဖျက်ပြီးပါပြီ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "CRM link"
 msgstr "CRM လင့်ခ်"
 
@@ -835,7 +853,8 @@ msgstr "မူရင်း sort"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
-#: src/features/objects/components/object-detail-panel.tsx:537
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
 #: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Delete"
 msgstr "ဖျက်မည်"
@@ -869,9 +888,13 @@ msgstr "CRM ဖျက်မလား?"
 msgid "Delete field"
 msgstr "field ဖျက်မည်"
 
-#: src/features/objects/components/object-detail-panel.tsx:372
-#: src/features/objects/components/object-detail-panel.tsx:377
-#: src/features/objects/components/object-detail-panel.tsx:535
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:69
+msgid "Delete game?"
+msgstr "ဂိမ်းကို ဖျက်မလား?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:486
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:670
 msgid "Delete item"
 msgstr "အရာ ဖျက်မည်"
 
@@ -905,6 +928,10 @@ msgstr "{field} ကို ဖျက်ခဲ့သည်"
 msgid "Deleting CRM..."
 msgstr "CRM ကို ဖျက်နေသည်..."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
+msgid "Deleting..."
+msgstr "ဖျက်နေသည်..."
+
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Descending"
 msgstr "ကြီးစဉ်ငယ်လိုက်"
@@ -916,7 +943,7 @@ msgstr "ဖော်ပြချက်"
 
 #: src/routes/_authenticated/$crmId/design.tsx:39
 #: src/routes/_authenticated/$crmId/design.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:185
+#: src/routes/_authenticated/$crmId/index.tsx:183
 msgid "Design"
 msgstr "ဒီဇိုင်း"
 
@@ -966,7 +993,7 @@ msgstr "ချိတ်ဆက်မှု ပြတ်တောက်ပြီ�
 msgid "Dismiss"
 msgstr "ပယ်မည်"
 
-#: src/routes/_authenticated/$crmId/index.tsx:154
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Dismiss board hint"
 msgstr "ဘုတ် အကြံပေးချက် ပယ်မည်"
 
@@ -979,13 +1006,13 @@ msgid "Does not match the required pattern"
 msgstr "လိုအပ်သော ပုံစံနှင့် မကိုက်ညီပါ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:495
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 #: src/features/editor/components/edit-dialogs.tsx:412
-#: src/features/objects/components/object-detail-panel.tsx:386
 msgid "Done"
 msgstr "ပြီးပါပြီ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:153
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Double click on a column to add content"
 msgstr "အကြောင်းအရာထည့်ရန် ကော်လံကို နှစ်ချက်နှိပ်ပါ"
 
@@ -1005,15 +1032,15 @@ msgid "Download failed"
 msgstr "ဒေါင်းလုဒ် မအောင်မြင်ပါ"
 
 #: src/routes/_authenticated/$crmId/design.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Downloaded {filename}"
 msgstr "{filename} ကို ဒေါင်းလုဒ်လုပ်ပြီးပါပြီ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Drag columns to re-order them"
 msgstr "ကော်လံများကို ပြန်စီရန် ဆွဲပါ"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "ထပ်နေသော"
 
@@ -1072,6 +1099,10 @@ msgstr "အီးမေးလ်"
 msgid "Email code"
 msgstr "အီးမေးလ် ကုဒ်"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr "ဘန်နာ စာသား ထည့်ပါ (markdown ပံ့ပိုးသည်)..."
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "သင့်အီးမေးလ်မှ ကုဒ်ကို ထည့်ပါ"
@@ -1084,7 +1115,7 @@ msgstr "သင့်အထောက်အထားစိစစ်ရေးကု
 msgid "Entity ID"
 msgstr "အကောင့် ID"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:381
 msgid "Error"
 msgstr "အမှား"
 
@@ -1099,11 +1130,11 @@ msgstr "ချဲ့ရန်"
 msgid "Expand sidebar"
 msgstr "ဘေးဘားကို ချဲ့ပါ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Export CSV"
 msgstr "CSV ထုတ်ယူ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Export data"
 msgstr "ဒေတာ ထုတ်ယူရန်"
 
@@ -1123,7 +1154,7 @@ msgstr "အလွန်ကြီး"
 msgid "Failed to add account"
 msgstr "အကောင့် ထည့်၍ မရပါ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to add column"
 msgstr "ကော်လံ ထည့်၍မရပါ"
 
@@ -1145,9 +1176,9 @@ msgstr "CRM ဖန်တီး၍ မရပါ"
 msgid "Failed to create field"
 msgstr "အကွက် ဖန်တီး၍ မရပါ"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Failed to create link"
 msgstr "လင့် ဖန်တီး၍ မရပါ"
 
@@ -1160,7 +1191,7 @@ msgstr "ရွေးချယ်မှု ဖန်တီး၍ မရပါ"
 msgid "Failed to create view"
 msgstr "မြင်ကွင်း ဖန်တီး၍ မရပါ"
 
-#: src/features/objects/components/object-detail-panel.tsx:212
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
 msgid "Failed to delete"
 msgstr "ဖျက်၍ မရပါ"
 
@@ -1172,7 +1203,7 @@ msgstr "တွဲဖက်ဖိုင် ဖျက်၍ မရပါ"
 msgid "Failed to delete class"
 msgstr "အတန်း ဖျက်၍ မရပါ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Failed to delete column"
 msgstr "ကော်လံ ဖျက်၍မရပါ"
 
@@ -1188,7 +1219,7 @@ msgstr "CRM ဖျက်၍ မရပါ"
 msgid "Failed to delete field"
 msgstr "အကွက် ဖျက်၍ မရပါ"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "လင့် ဖျက်၍ မရပါ"
 
@@ -1200,7 +1231,7 @@ msgstr "ရွေးချယ်မှု ဖျက်၍ မရပါ"
 msgid "Failed to delete view"
 msgstr "မြင်ကွင်း ဖျက်၍ မရပါ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Failed to export data"
 msgstr "ဒေတာ ထုတ်ယူ၍ မရပါ"
 
@@ -1227,8 +1258,8 @@ msgstr "တင်၍ မရပါ"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:41
 #: src/routes/_authenticated/$crmId/$objectId.tsx:65
-#: src/routes/_authenticated/$crmId/index.tsx:58
-#: src/routes/_authenticated/$crmId/index.tsx:94
+#: src/routes/_authenticated/$crmId/index.tsx:56
+#: src/routes/_authenticated/$crmId/index.tsx:92
 msgid "Failed to load CRM"
 msgstr "CRM တင်၍ မရပါ"
 
@@ -1248,7 +1279,8 @@ msgstr "မှတ်တမ်း တင်၍ မရပါ"
 msgid "Failed to load image"
 msgstr "ပုံကို ဖွင့်၍မရပါ"
 
-#: src/features/objects/components/object-detail-panel.tsx:294
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:382
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:385
 msgid "Failed to load item"
 msgstr "ပစ္စည်း တင်၍ မရပါ"
 
@@ -1264,8 +1296,8 @@ msgstr "အကြံပြုထားသော CRM များ ဖွင့်
 msgid "Failed to load video"
 msgstr "ဗီဒီယိုကို ဖွင့်၍မရပါ"
 
-#: src/features/objects/components/object-detail-panel.tsx:230
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:317
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "Failed to move"
 msgstr "ရွှေ့၍ မရပါ"
 
@@ -1273,7 +1305,7 @@ msgstr "ရွှေ့၍ မရပါ"
 msgid "Failed to post comment"
 msgstr "မှတ်ချက် တင်၍ မရပါ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "Failed to re-order columns"
 msgstr "ကော်လံများ ပြန်စီ၍မရပါ"
 
@@ -1286,7 +1318,7 @@ msgstr "ဖိုင် ဖတ်၍ မရပါ"
 msgid "Failed to remove access"
 msgstr "ဝင်ရောက်ခွင့် ဖယ်ရှား၍ မရပါ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Failed to rename column"
 msgstr "ကော်လံအမည် ပြောင်း၍မရပါ"
 
@@ -1306,7 +1338,7 @@ msgstr "လမ်းညွှန် ပြန်လည်သတ်မှတ်�
 msgid "Failed to revoke RSS access"
 msgstr "RSS အသုံးပြုခွင့် ရုပ်သိမ်း၍ မရပါ"
 
-#: src/features/objects/components/object-detail-panel.tsx:176
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
 msgid "Failed to save"
 msgstr "သိမ်း၍ မရပါ"
 
@@ -1329,13 +1361,17 @@ msgid "Failed to subscribe"
 msgstr "စာရင်းသွင်း၍ မရပါ"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Failed to unsubscribe"
 msgstr "စာရင်းမှ ထွက်၍ မရပါ"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Failed to update access level"
 msgstr "ဝင်ရောက်ခွင့် အဆင့် ပြင်ဆင်၍ မရပါ"
+
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr "ဘန်နာ ပြင်ဆင်၍ မရပါ"
 
 #: src/features/editor/components/design-editor.tsx:122
 msgid "Failed to update class"
@@ -1365,8 +1401,8 @@ msgstr "ရွေးချယ်မှု ပြင်ဆင်၍ မရပါ"
 msgid "Failed to update view"
 msgstr "မြင်ကွင်း ပြင်ဆင်၍ မရပါ"
 
-#: src/features/objects/components/object-detail-panel.tsx:195
-msgid "Failed to update watch"
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:288
+msgid "Failed to update watching"
 msgstr "စောင့်ကြည့်မှု အပ်ဒိတ်လုပ်၍ မရပါ"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
@@ -1377,7 +1413,7 @@ msgstr "တွဲဖက်ဖိုင် တင်၍ မရပါ"
 msgid "Fields"
 msgstr "အကွက်များ"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:605
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
@@ -1459,7 +1495,7 @@ msgstr "လူကြိုက်များ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 #: src/features/editor/components/edit-dialogs.tsx:267
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "ID"
 msgstr "ID"
 
@@ -1527,7 +1563,7 @@ msgstr "မမှန်ကန်သော JSON ဖိုင်"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "သင်ရှာဖွေနေသော စာမျက်နှာသည် <0/>မရှိတော့ပါ သို့မဟုတ် ဖယ်ရှားခံရပုံရသည်။"
 
-#: src/features/objects/components/object-detail-panel.tsx:336
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:441
 msgid "Item details"
 msgstr "ပစ္စည်း အသေးစိတ်"
 
@@ -1557,11 +1593,11 @@ msgid "Light"
 msgstr "အလင်း"
 
 #: ../../../lib/web/src/components/options-menu.tsx:190
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Link"
 msgstr "လင့်ခ်"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "လင့်များ"
 
@@ -1577,17 +1613,17 @@ msgstr "ထပ်တင်"
 msgid "Loading content…"
 msgstr "အကြောင်းအရာ ဖွင့်နေသည်…"
 
-#: src/features/objects/components/object-detail-panel.tsx:277
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:365
 msgid "Loading item"
 msgstr "ပစ္စည်း တင်နေသည်"
 
-#: src/features/objects/components/object-detail-panel.tsx:278
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:366
 msgid "Loading item details"
 msgstr "ပစ္စည်း အသေးစိတ် တင်နေသည်"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Loading..."
 msgstr "တင်နေသည်..."
 
@@ -1713,15 +1749,15 @@ msgstr "အမည်သည် စာလုံး ၁၀၀၀ သို့မဟ
 msgid "Network error"
 msgstr "ကွန်ရက် အမှား"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:492
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:141
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:139
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New"
 msgstr "အသစ်"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New {0}"
 msgstr "{0} အသစ်"
 
@@ -1735,7 +1771,7 @@ msgstr "ဂိမ်းအသစ်"
 msgid "Next image"
 msgstr "နောက်ပုံ"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:571
 msgid "No {parentClassNames} to add to"
 msgstr "ထည့်ရန် {parentClassNames} မရှိပါ"
 
@@ -1768,15 +1804,15 @@ msgstr "ဂိမ်းများ မရှိသေးပါ"
 msgid "No groups available"
 msgstr "အုပ်စုများ မရရှိနိုင်ပါ"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "item အမျိုးအစားအသစ်များ မဖန်တီးနိုင်သေးပါ။ လိုအပ်သော parent item များကို ဦးစွာဖန်တီးပါ။"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "ကိုက်ညီသော object များ မရှိပါ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "No objects to export."
 msgstr "Export လုပ်ရန် object များ မရှိပါ။"
 
@@ -1825,9 +1861,13 @@ msgid "No views"
 msgstr "view များ မရှိ"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:554
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:557
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:561
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:557
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:570
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:571
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:575
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
@@ -1839,10 +1879,6 @@ msgstr "view များ မရှိ"
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/objects/components/object-detail-panel.tsx:451
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:467
-#: src/features/objects/components/object-detail-panel.tsx:471
 msgid "None"
 msgstr "မရှိ"
 
@@ -1915,7 +1951,7 @@ msgstr "navigation ကို ဖွင့်"
 msgid "Open option actions"
 msgstr "ရွေးချယ်စရာ လုပ်ဆောင်ချက်များကို ဖွင့်"
 
-#: src/routes/_authenticated/$crmId/index.tsx:140
+#: src/routes/_authenticated/$crmId/index.tsx:138
 msgid "Open page actions"
 msgstr "စာမျက်နှာ လုပ်ဆောင်ချက်များကို ဖွင့်"
 
@@ -1951,9 +1987,10 @@ msgstr "အခြား"
 msgid "Owner"
 msgstr "ပိုင်ရှင်"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
-#: src/features/objects/components/object-detail-panel.tsx:445
-#: src/routes/_authenticated/$crmId/index.tsx:179
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:546
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:569
+#: src/routes/_authenticated/$crmId/index.tsx:177
 msgid "Parent"
 msgstr "Parent"
 
@@ -1982,7 +2019,7 @@ msgstr "ပုံစံ (regex)"
 msgid "People"
 msgstr "လူများ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:146
+#: src/routes/_authenticated/$crmId/index.tsx:144
 msgid "Please add one or more classes to the CRM design."
 msgstr "CRM ဒီဇိုင်းတွင် class တစ်ခု သို့မဟုတ် ထို့ထက်ပိုပြီး ထည့်ပါ။"
 
@@ -2026,7 +2063,7 @@ msgstr "လုပ်ဆောင်နေသည်…"
 msgid "Prompt saved"
 msgstr "Prompt သိမ်းပြီးပါပြီ"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:408
 msgid "Properties"
 msgstr "ဂုဏ်သတ္တိများ"
 
@@ -2042,7 +2079,7 @@ msgstr "ဖော့တက်"
 msgid "Re-link your accounts on this server"
 msgstr "ဤဆာဗာပေါ်တွင် သင်၏အကောင့်များကို ပြန်လည်ချိတ်ဆက်ပါ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:149
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "Re-order columns"
 msgstr "ကော်လံများ ပြန်စီ"
 
@@ -2079,7 +2116,7 @@ msgstr "Login သို့ redirect လုပ်နေသည်။"
 msgid "Reduce interest"
 msgstr "စိတ်ဝင်စားမှု လျှော့ချ"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "ဆက်စပ်"
 
@@ -2142,8 +2179,8 @@ msgstr "စိတ်ဝင်စားမှု ဖယ်ရှား"
 msgid "Remove item"
 msgstr "item ဖယ်ရှား"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "လင့်ခ် ဖယ်ရှားရန်"
 
@@ -2193,6 +2230,18 @@ msgstr "လိုအပ်"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "အီးမေးလ်ပြန်ပို့ရန်"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:48
+msgid "Resign"
+msgstr "ရှုံးကြောင်းပြော"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:35
+msgid "Resign game?"
+msgstr "ဂိမ်း ရှုံးကြောင်းပြောမလား?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:45
+msgid "Resigning..."
+msgstr "ရှုံးကြောင်းပြောနေသည်..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:348
 msgid "Retry"
@@ -2245,11 +2294,12 @@ msgstr "စနေနေ့"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:152
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Save"
 msgstr "သိမ်းမည်"
 
@@ -2293,7 +2343,7 @@ msgstr "destination ရှာဖွေ..."
 msgid "Search for origin..."
 msgstr "Origin ရှာဖွေ..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "Object များ ရှာဖွေ..."
 
@@ -2423,7 +2473,7 @@ msgstr "ဝင်ရောက်ခွင့်ကို သတ်မှတ်�
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:125
 #: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:78
-#: src/routes/_authenticated/$crmId/index.tsx:193
+#: src/routes/_authenticated/$crmId/index.tsx:191
 msgid "Settings"
 msgstr "ဆက်တင်များ"
 
@@ -2486,8 +2536,8 @@ msgstr "ကျယ်ပြန့်သော"
 msgid "Start the discussion by adding the first comment."
 msgstr "ပထမမှတ်ချက် ထည့်၍ ဆွေးနွေးချက် စတင်ပါ။"
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Stop watching"
 msgstr "ကြည့်ရှုခြင်း ရပ်မည်"
 
@@ -2612,13 +2662,17 @@ msgstr "ဤ CRM ကို လောလောဆယ် ဝန်ပြီး မ�
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "ဤ CRM ကို ဖျက်ထားနိုင်သည် သို့မဟုတ် သင်ဝင်ခွင့်မရှိနိုင်ပါ။"
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:70
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "ဤလုပ်ဆောင်ချက်သည် ဂိမ်းနှင့် ၎င်း၏ ချတ်ကို အပြီးအပိုင် ဖျက်ပစ်မည်ဖြစ်သည်။ ဤလုပ်ဆောင်ချက်ကို ပြန်ပြောင်း၍မရပါ။"
+
 #. placeholder {0}: String(name)
 #: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "၎င်းသည် \"{0}\" နှင့် ၎င်း၏ object များ၊ မှတ်ချက်များနှင့် ပူးတွဲဖိုင်များ အားလုံးကို အပြီးတိုင် ဖျက်ပါမည်။ ဤလုပ်ဆောင်ချက်ကို ပြန်လုပ်၍မရပါ။"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "၎င်းသည် \"{0}\" ကို သင်၏ ဘေးဘားမှ ဖယ်ရှားပြီး ဤ CRM အတွက် အပ်ဒိတ်များကို ရပ်ပါမည်။"
 
@@ -2753,32 +2807,29 @@ msgstr "မသိရသော"
 
 #: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribe"
 msgstr "Subscribe ဖြုတ်မည်"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribe from CRM?"
 msgstr "CRM မှ subscribe ဖြုတ်မှာလား?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:169
 msgid "Unsubscribed"
 msgstr "Subscribe ဖြုတ်ပြီး"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:168
 msgid "Unsubscribing..."
 msgstr "Subscribe ဖြုတ်နေသည်..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:40
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-container.tsx:29
 #: src/features/editor/components/design-preview.tsx:28
-#: src/features/objects/components/object-detail-panel.tsx:314
-#: src/features/objects/components/object-detail-panel.tsx:318
 msgid "Untitled"
 msgstr "ခေါင်းစဉ်မရှိ"
 
@@ -2796,7 +2847,7 @@ msgstr "{field} ကို အပ်ဒိတ်လုပ်ခဲ့သည်"
 msgid "Updating access..."
 msgstr "ဝင်ရောက်ခွင့်ကို အပ်ဒိတ်လုပ်နေသည်..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:655
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 msgid "Upload"
 msgstr "Upload လုပ်မည်"
@@ -2854,7 +2905,7 @@ msgstr "ဗီဒီယိုကြည့်ရှုစနစ်- {0}"
 msgid "View all notifications"
 msgstr "အသိပေးချက်များ အားလုံး ကြည့်ရှုမည်"
 
-#: src/features/objects/components/object-detail-panel.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:442
 msgid "View and edit item details"
 msgstr "ပစ္စည်း အသေးစိတ်များကို ကြည့်ရှုပြီး တည်းဖြတ်ပါ"
 
@@ -2866,7 +2917,7 @@ msgstr "ထိန်းချုပ်မှုများ ကြည့်ရ�
 msgid "View only"
 msgstr "ကြည့်ရှုရုံသာ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:147
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "View options"
 msgstr "ကြည့်ရှုရွေးချယ်စရာများ"
 
@@ -2878,8 +2929,8 @@ msgstr "ကြည့်ရှုမှုများ"
 msgid "Voice recording is not supported in this browser"
 msgstr "ဤဘရောက်ဇာတွင် အသံဖမ်းယူခြင်းကို မထောက်ပံ့ပါ"
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Watch"
 msgstr "ကြည့်ရှုမည်"
 
@@ -2905,7 +2956,7 @@ msgstr "ဗုဒ္ဓဟူး"
 msgid "You do not have access to this section."
 msgstr "ဤအပိုင်းသို့ သင့်တွင် ဝင်ရောက်ခွင့်မရှိပါ။"
 
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:78
 msgid "You don't have access to this CRM."
 msgstr "ဤ CRM ကို သင် ဝင်ရောက်ခွင့် မရှိပါ။"
 

@@ -148,7 +148,7 @@ msgstr "Aċċess stabbilit għal {subjectName}"
 msgid "Account type"
 msgstr "Tip ta' kont"
 
-#: src/features/objects/components/object-detail-panel.tsx:324
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:415
 msgid "Activity"
 msgstr "Attività"
 
@@ -193,7 +193,7 @@ msgstr "Żid item għall-checklist"
 msgid "Add class"
 msgstr "Żid klassi"
 
-#: src/routes/_authenticated/$crmId/index.tsx:148
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Add column"
 msgstr "Żid kolonna"
 
@@ -207,7 +207,7 @@ msgstr "Żid kamp"
 msgid "Add item..."
 msgstr "Żid item..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "Żid link"
 
@@ -295,7 +295,7 @@ msgstr "Kull ma huwa abbonat għal din il-feed se jieqaf jirċeviha. Wara tista'
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Żgur trid tħassar \"{0}\"?"
 
-#: src/features/objects/components/object-detail-panel.tsx:536
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:671
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Żgur trid tħassar \"{title}\"? Din l-azzjoni ma tistax tiġi ndirizzata."
 
@@ -310,6 +310,14 @@ msgstr "Żgur trid tħassar dan il-kumment? Dan iħassar ukoll ir-risposti kollh
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:27
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "Żgur trid toħroġ? Trid terġa' tidħol biex taċċessa l-kont tiegħek."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:39
+msgid "Are you sure you want to resign?"
+msgstr "Żgur trid tirriżenja?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:38
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "Żgur trid tirriżenja? {opponentName} tirbaħ il-logħba."
 
 #: src/features/crms/pages/crms-list-page.tsx:40
 msgid "Are you sure you want to unsubscribe from this CRM?"
@@ -358,7 +366,7 @@ msgid "Back to CRM"
 msgstr "Lura għas-CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:93
+#: src/routes/_authenticated/$crmId/index.tsx:91
 msgid "Back to CRMs"
 msgstr "Lura għas-CRMs"
 
@@ -367,12 +375,21 @@ msgstr "Lura għas-CRMs"
 msgid "Back to home"
 msgstr "Lura għall-paġna ewlenija"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Banner"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr "Banner imneħħi"
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr "Banner aġġornat"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "Imblokkat minn"
 
@@ -381,7 +398,7 @@ msgstr "Imblokkat minn"
 msgid "Blocked navigation to untrusted link"
 msgstr "Navigazzjoni mblokkata lejn link mhux fdat"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "Blocks"
 
@@ -430,7 +447,7 @@ msgstr "Jista' jkun tifel ta'"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:338
 #: src/routes/_authenticated/$crmId/design.tsx:57
-#: src/routes/_authenticated/$crmId/index.tsx:151
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Cancel"
 msgstr "Ikkanċella"
 
@@ -487,7 +504,7 @@ msgstr "Agħżel logħba mill-barra tal-ġenb jew ibda waħda ġdida."
 msgid "Choose language"
 msgstr "Agħżel lingwa"
 
-#: src/routes/_authenticated/$crmId/index.tsx:178
+#: src/routes/_authenticated/$crmId/index.tsx:176
 msgid "Class"
 msgstr "Klassi"
 
@@ -495,6 +512,7 @@ msgstr "Klassi"
 msgid "Classes"
 msgstr "Klassijiet"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -512,8 +530,8 @@ msgstr "Naddaf kollox"
 msgid "Clear search"
 msgstr "Naddaf it-tiftix"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:517
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
@@ -595,7 +613,7 @@ msgid "Comments"
 msgstr "Kummenti"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:323
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:411
 msgid "Comments ({0})"
 msgstr "Kummenti ({0})"
 
@@ -682,8 +700,8 @@ msgstr "Ma stajniex nivverifikaw b'dak il-kont. Jekk jogħġbok erġa' pprova."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Oħloq"
@@ -734,7 +752,7 @@ msgstr "Inħoloq {field}"
 msgid "Creating CRM..."
 msgstr "Qed jinħoloq CRM..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 #: src/features/crms/components/create-crm-dialog.tsx:341
 msgid "Creating..."
@@ -752,7 +770,7 @@ msgstr "CRM maħluq"
 msgid "CRM deleted"
 msgstr "CRM imħassar"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "CRM link"
 msgstr "Link tas-CRM"
 
@@ -835,7 +853,8 @@ msgstr "Ssortjar default"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
-#: src/features/objects/components/object-detail-panel.tsx:537
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
 #: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Delete"
 msgstr "Ħassar"
@@ -869,9 +888,13 @@ msgstr "Tħassar CRM?"
 msgid "Delete field"
 msgstr "Ħassar kamp"
 
-#: src/features/objects/components/object-detail-panel.tsx:372
-#: src/features/objects/components/object-detail-panel.tsx:377
-#: src/features/objects/components/object-detail-panel.tsx:535
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:69
+msgid "Delete game?"
+msgstr "Ħassar il-logħba?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:486
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:670
 msgid "Delete item"
 msgstr "Ħassar item"
 
@@ -905,6 +928,10 @@ msgstr "Tħassar {field}"
 msgid "Deleting CRM..."
 msgstr "Qed jitħassar CRM..."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
+msgid "Deleting..."
+msgstr "Qed iħassar..."
+
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Descending"
 msgstr "Dixxendenti"
@@ -916,7 +943,7 @@ msgstr "Deskrizzjoni"
 
 #: src/routes/_authenticated/$crmId/design.tsx:39
 #: src/routes/_authenticated/$crmId/design.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:185
+#: src/routes/_authenticated/$crmId/index.tsx:183
 msgid "Design"
 msgstr "Disinn"
 
@@ -966,7 +993,7 @@ msgstr "Skonness"
 msgid "Dismiss"
 msgstr "Warrab"
 
-#: src/routes/_authenticated/$crmId/index.tsx:154
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Dismiss board hint"
 msgstr "Warrab is-suġġeriment tal-bord"
 
@@ -979,13 +1006,13 @@ msgid "Does not match the required pattern"
 msgstr "Ma jaqbilx mal-mudell meħtieġ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:495
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 #: src/features/editor/components/edit-dialogs.tsx:412
-#: src/features/objects/components/object-detail-panel.tsx:386
 msgid "Done"
 msgstr "Lest"
 
-#: src/routes/_authenticated/$crmId/index.tsx:153
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Double click on a column to add content"
 msgstr "Ikklikkja darbtejn fuq kolonna biex iżżid kontenut"
 
@@ -1005,15 +1032,15 @@ msgid "Download failed"
 msgstr "It-tniżżil falla"
 
 #: src/routes/_authenticated/$crmId/design.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Downloaded {filename}"
 msgstr "Tniżżel {filename}"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Drag columns to re-order them"
 msgstr "Iġbed il-kolonni biex tirranġahom"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "Duplikati"
 
@@ -1072,6 +1099,10 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Kodiċi tal-email"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr "Daħħal it-test tal-banner (markdown sapportit)..."
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "Daħħal il-kodiċi mill-email tiegħek"
@@ -1084,7 +1115,7 @@ msgstr "Daħħal il-kodiċi tal-awtentikatur tiegħek"
 msgid "Entity ID"
 msgstr "ID tal-entità"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:381
 msgid "Error"
 msgstr "Żball"
 
@@ -1099,11 +1130,11 @@ msgstr "Espandi"
 msgid "Expand sidebar"
 msgstr "Espandi s-sidebar"
 
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Export CSV"
 msgstr "Esporta CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Export data"
 msgstr "Esporta d-data"
 
@@ -1123,7 +1154,7 @@ msgstr "Kbir ħafna"
 msgid "Failed to add account"
 msgstr "Ma rnexxiex jiżdied il-kont"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to add column"
 msgstr "Ma rnexxielx iżid il-kolonna"
 
@@ -1145,9 +1176,9 @@ msgstr "Ma rnexxiex jinħoloq is-CRM"
 msgid "Failed to create field"
 msgstr "Ma rnexxiex jinħoloq il-kamp"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Failed to create link"
 msgstr "Ma rnexxiex jinħoloq il-link"
 
@@ -1160,7 +1191,7 @@ msgstr "Ma rnexxiex tinħoloq l-għażla"
 msgid "Failed to create view"
 msgstr "Ma rnexxiex tinħoloq il-veduta"
 
-#: src/features/objects/components/object-detail-panel.tsx:212
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
 msgid "Failed to delete"
 msgstr "Ma rnexxiex jitħassar"
 
@@ -1172,7 +1203,7 @@ msgstr "Ma rnexxiex jitħassar l-attachment"
 msgid "Failed to delete class"
 msgstr "Ma rnexxiex titħassar il-klassi"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Failed to delete column"
 msgstr "Ma rnexxielx iħassar il-kolonna"
 
@@ -1188,7 +1219,7 @@ msgstr "It-tħassir tas-CRM falla"
 msgid "Failed to delete field"
 msgstr "Ma rnexxiex jitħassar il-kamp"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "Ma rnexxiex jitħassar il-link"
 
@@ -1200,7 +1231,7 @@ msgstr "Ma rnexxiex titħassar l-għażla"
 msgid "Failed to delete view"
 msgstr "Ma rnexxiex titħassar il-veduta"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Failed to export data"
 msgstr "L-esportazzjoni tad-data falliet"
 
@@ -1227,8 +1258,8 @@ msgstr "Ma rnexxiex jitgħabba"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:41
 #: src/routes/_authenticated/$crmId/$objectId.tsx:65
-#: src/routes/_authenticated/$crmId/index.tsx:58
-#: src/routes/_authenticated/$crmId/index.tsx:94
+#: src/routes/_authenticated/$crmId/index.tsx:56
+#: src/routes/_authenticated/$crmId/index.tsx:92
 msgid "Failed to load CRM"
 msgstr "Ma rnexxiex jitgħabba s-CRM"
 
@@ -1248,7 +1279,8 @@ msgstr "Ma rnexxiex titgħabba l-istorja"
 msgid "Failed to load image"
 msgstr "Ma rnexxielux jitgħabba l-istampa"
 
-#: src/features/objects/components/object-detail-panel.tsx:294
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:382
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:385
 msgid "Failed to load item"
 msgstr "Ma rnexxiex jitgħabba l-oġġett"
 
@@ -1264,8 +1296,8 @@ msgstr "It-tagħbija tas-CRMs rakkomandati falliet"
 msgid "Failed to load video"
 msgstr "Ma rnexxielux jitgħabba l-vidjo"
 
-#: src/features/objects/components/object-detail-panel.tsx:230
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:317
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "Failed to move"
 msgstr "Ma rnexxiex jiġi mċaqlaq"
 
@@ -1273,7 +1305,7 @@ msgstr "Ma rnexxiex jiġi mċaqlaq"
 msgid "Failed to post comment"
 msgstr "Ma rnexxiex jiġi postjat il-kumment"
 
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "Failed to re-order columns"
 msgstr "Ma rnexxielx jerġa' jordna l-kolonni"
 
@@ -1286,7 +1318,7 @@ msgstr "Ma rnexxiex jinqara l-fajl"
 msgid "Failed to remove access"
 msgstr "Ma rnexxiex jitneħħa l-aċċess"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Failed to rename column"
 msgstr "Ma rnexxielx isemmi mill-ġdid il-kolonna"
 
@@ -1306,7 +1338,7 @@ msgstr "Ma rnexxiex jiġi reset il-prompt"
 msgid "Failed to revoke RSS access"
 msgstr "Ma rnexxiex jiġi rrevokat l-aċċess RSS"
 
-#: src/features/objects/components/object-detail-panel.tsx:176
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
 msgid "Failed to save"
 msgstr "Ma rnexxiex jiġi ssejvjat"
 
@@ -1329,13 +1361,17 @@ msgid "Failed to subscribe"
 msgstr "Ma rnexxiex tiġi sottoskritta"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Failed to unsubscribe"
 msgstr "Ma rnexxiex tiġi unsubscribed"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Failed to update access level"
 msgstr "Ma rnexxiex jiġi aġġornat il-livell tal-aċċess"
+
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr "Ma rnexxiex jiġi aġġornat il-banner"
 
 #: src/features/editor/components/design-editor.tsx:122
 msgid "Failed to update class"
@@ -1365,8 +1401,8 @@ msgstr "Ma rnexxiex tiġi aġġornat l-għażla"
 msgid "Failed to update view"
 msgstr "Ma rnexxiex tiġi aġġornat il-veduta"
 
-#: src/features/objects/components/object-detail-panel.tsx:195
-msgid "Failed to update watch"
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:288
+msgid "Failed to update watching"
 msgstr "Ma rnexxiex jiġi aġġornat is-segwitu"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
@@ -1377,7 +1413,7 @@ msgstr "Ma rnexxiex jittella' l-attachment"
 msgid "Fields"
 msgstr "Kampijiet"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:605
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
@@ -1459,7 +1495,7 @@ msgstr "Sħun"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 #: src/features/editor/components/edit-dialogs.tsx:267
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "ID"
 msgstr "ID"
 
@@ -1527,7 +1563,7 @@ msgstr "Fajl JSON invalidu"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Jidher li l-paġna li qed tfittex <0/>ma teżistix jew tneħħiet."
 
-#: src/features/objects/components/object-detail-panel.tsx:336
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:441
 msgid "Item details"
 msgstr "Dettalji tal-oġġett"
 
@@ -1557,11 +1593,11 @@ msgid "Light"
 msgstr "Ċar"
 
 #: ../../../lib/web/src/components/options-menu.tsx:190
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Link"
 msgstr "Ħolqa"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "Links"
 
@@ -1577,17 +1613,17 @@ msgstr "Tella' aktar"
 msgid "Loading content…"
 msgstr "Qed jitgħabba l-kontenut…"
 
-#: src/features/objects/components/object-detail-panel.tsx:277
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:365
 msgid "Loading item"
 msgstr "Qed jitgħabba l-oġġett"
 
-#: src/features/objects/components/object-detail-panel.tsx:278
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:366
 msgid "Loading item details"
 msgstr "Qed jitgħabbew id-dettalji tal-oġġett"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Loading..."
 msgstr "Qed jitgħabba..."
 
@@ -1713,15 +1749,15 @@ msgstr "L-isem irid ikun ta' 1000 karattru jew inqas"
 msgid "Network error"
 msgstr "Żball tan-network"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:492
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:141
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:139
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New"
 msgstr "Ġdid"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New {0}"
 msgstr "{0} ġdid"
 
@@ -1735,7 +1771,7 @@ msgstr "Logħba ġdida"
 msgid "Next image"
 msgstr "Stampa li jmiss"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:571
 msgid "No {parentClassNames} to add to"
 msgstr "L-ebda {parentClassNames} biex iżżid magħhom"
 
@@ -1768,15 +1804,15 @@ msgstr "L-ebda logħob s'issa"
 msgid "No groups available"
 msgstr "L-ebda gruppi disponibbli"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "L-ebda tipi ta' oġġetti jistgħu jinħolqu għadhom. Oħloq l-oġġetti tal-ġenitur meħtieġa l-ewwel."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "L-ebda oġġetti li jaqblu"
 
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "No objects to export."
 msgstr "L-ebda oġġetti x'jiġu esportati."
 
@@ -1825,9 +1861,13 @@ msgid "No views"
 msgstr "L-ebda views"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:554
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:557
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:561
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:557
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:570
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:571
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:575
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
@@ -1839,10 +1879,6 @@ msgstr "L-ebda views"
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/objects/components/object-detail-panel.tsx:451
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:467
-#: src/features/objects/components/object-detail-panel.tsx:471
 msgid "None"
 msgstr "Xejn"
 
@@ -1915,7 +1951,7 @@ msgstr "Iftaħ navigazzjoni"
 msgid "Open option actions"
 msgstr "Iftaħ azzjonijiet tal-għażla"
 
-#: src/routes/_authenticated/$crmId/index.tsx:140
+#: src/routes/_authenticated/$crmId/index.tsx:138
 msgid "Open page actions"
 msgstr "Iftaħ azzjonijiet tal-paġna"
 
@@ -1951,9 +1987,10 @@ msgstr "Oħra"
 msgid "Owner"
 msgstr "Sid"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
-#: src/features/objects/components/object-detail-panel.tsx:445
-#: src/routes/_authenticated/$crmId/index.tsx:179
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:546
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:569
+#: src/routes/_authenticated/$crmId/index.tsx:177
 msgid "Parent"
 msgstr "Ġenitur"
 
@@ -1982,7 +2019,7 @@ msgstr "Mudell (regex)"
 msgid "People"
 msgstr "Nies"
 
-#: src/routes/_authenticated/$crmId/index.tsx:146
+#: src/routes/_authenticated/$crmId/index.tsx:144
 msgid "Please add one or more classes to the CRM design."
 msgstr "Jekk jogħġbok żid klassi waħda jew aktar mad-disinn tas-CRM."
 
@@ -2026,7 +2063,7 @@ msgstr "Qed jiġi pproċessat…"
 msgid "Prompt saved"
 msgstr "Prompt issejvjat"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:408
 msgid "Properties"
 msgstr "Proprjetajiet"
 
@@ -2042,7 +2079,7 @@ msgstr "Imqajjem"
 msgid "Re-link your accounts on this server"
 msgstr "Erġa' għaqqad il-kontijiet tiegħek fuq dan is-server"
 
-#: src/routes/_authenticated/$crmId/index.tsx:149
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "Re-order columns"
 msgstr "Erġa' ordna l-kolonni"
 
@@ -2079,7 +2116,7 @@ msgstr "Qed nirredirezzjona għal-login."
 msgid "Reduce interest"
 msgstr "Naqqas l-interess"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "Relates"
 
@@ -2142,8 +2179,8 @@ msgstr "Neħħi interess"
 msgid "Remove item"
 msgstr "Neħħi oġġett"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "Neħħi l-link"
 
@@ -2193,6 +2230,18 @@ msgstr "Meħtieġ"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "Erġa' ibgħat l-email"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:48
+msgid "Resign"
+msgstr "Irriżenja"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:35
+msgid "Resign game?"
+msgstr "Tirriżenja l-logħba?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:45
+msgid "Resigning..."
+msgstr "Qed jirriżenja..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:348
 msgid "Retry"
@@ -2245,11 +2294,12 @@ msgstr "Is-Sibt"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:152
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Save"
 msgstr "Issejvja"
 
@@ -2293,7 +2343,7 @@ msgstr "Fittex destinazzjoni..."
 msgid "Search for origin..."
 msgstr "Fittex oriġini..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "Fittex oġġetti..."
 
@@ -2423,7 +2473,7 @@ msgstr "Qed jiġi stabbilit l-aċċess..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:125
 #: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:78
-#: src/routes/_authenticated/$crmId/index.tsx:193
+#: src/routes/_authenticated/$crmId/index.tsx:191
 msgid "Settings"
 msgstr "Settings"
 
@@ -2486,8 +2536,8 @@ msgstr "Wiesa'"
 msgid "Start the discussion by adding the first comment."
 msgstr "Ibda d-diskussjoni billi żżid l-ewwel kumment."
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Stop watching"
 msgstr "Ieqaf segwi"
 
@@ -2612,13 +2662,17 @@ msgstr "Dan is-CRM ma setax jiġi mtella' bħalissa."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Dan is-CRM jista' jkun ġie mħassar jew m'għandekx aċċess għalih."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:70
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "Dan għad iħassar il-logħba u ċ-chat tagħha b'mod permanenti. Din l-azzjoni ma tistax titħassar."
+
 #. placeholder {0}: String(name)
 #: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Dan iħassar permanentement \"{0}\" u l-oġġetti, kummenti, u attachments kollha tiegħu. Din l-azzjoni ma tistax titreġġa' lura."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Dan se jneħħi \"{0}\" mis-sidebar tiegħek u jieqaf l-aġġornamenti għal dan is-CRM."
 
@@ -2753,32 +2807,29 @@ msgstr "Mhux magħruf"
 
 #: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribe"
 msgstr "Iddiżabbona"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribe from CRM?"
 msgstr "Iddiżabbona minn CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:169
 msgid "Unsubscribed"
 msgstr "Diżabbonat"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:168
 msgid "Unsubscribing..."
 msgstr "Qed jiddiżabbona..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:40
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-container.tsx:29
 #: src/features/editor/components/design-preview.tsx:28
-#: src/features/objects/components/object-detail-panel.tsx:314
-#: src/features/objects/components/object-detail-panel.tsx:318
 msgid "Untitled"
 msgstr "Bla titlu"
 
@@ -2796,7 +2847,7 @@ msgstr "Ġie aġġornat {field}"
 msgid "Updating access..."
 msgstr "Qed jiġi aġġornat l-aċċess..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:655
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 msgid "Upload"
 msgstr "Tella'"
@@ -2854,7 +2905,7 @@ msgstr "Viewer tal-vidjo: {0}"
 msgid "View all notifications"
 msgstr "Ara n-notifiki kollha"
 
-#: src/features/objects/components/object-detail-panel.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:442
 msgid "View and edit item details"
 msgstr "Ara u editja d-dettalji tal-oġġett"
 
@@ -2866,7 +2917,7 @@ msgstr "Ara l-kontrolli"
 msgid "View only"
 msgstr "Ara biss"
 
-#: src/routes/_authenticated/$crmId/index.tsx:147
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "View options"
 msgstr "Għażliet tal-vista"
 
@@ -2878,8 +2929,8 @@ msgstr "Vista"
 msgid "Voice recording is not supported in this browser"
 msgstr "Ir-reġistrazzjoni tal-vuċi mhijiex appoġġjata f'dan il-brawżer"
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Watch"
 msgstr "Segwi"
 
@@ -2905,7 +2956,7 @@ msgstr "L-Erbgħa"
 msgid "You do not have access to this section."
 msgstr "M'għandekx aċċess għal din it-taqsima."
 
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:78
 msgid "You don't have access to this CRM."
 msgstr "M'għandekx aċċess għal dan is-CRM."
 

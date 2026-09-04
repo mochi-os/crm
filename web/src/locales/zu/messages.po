@@ -148,7 +148,7 @@ msgstr "Ukufinyelela kusethelwe u-{subjectName}"
 msgid "Account type"
 msgstr "Uhlobo lwe-akhawunti"
 
-#: src/features/objects/components/object-detail-panel.tsx:324
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:415
 msgid "Activity"
 msgstr "Umsebenzi"
 
@@ -193,7 +193,7 @@ msgstr "Engeza into ohlwini lokuhlola"
 msgid "Add class"
 msgstr "Engeza iklasi"
 
-#: src/routes/_authenticated/$crmId/index.tsx:148
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Add column"
 msgstr "Engeza ikholomu"
 
@@ -207,7 +207,7 @@ msgstr "Engeza inkambu"
 msgid "Add item..."
 msgstr "Engeza into..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "Engeza isixhumanisi"
 
@@ -295,7 +295,7 @@ msgstr "Konke okubhalisele lo mfudlana kuzoyeka ukukuthola. Ungakopisha i-URL en
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Uqinisekile ufuna ukususa okuthi \"{0}\"?"
 
-#: src/features/objects/components/object-detail-panel.tsx:536
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:671
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "Uqinisekile ufuna ukususa okuthi \"{title}\"? Lesi senzo asikwazi ukuhlehliswa."
 
@@ -310,6 +310,14 @@ msgstr "Uqinisekile ufuna ukususa lo mbono? Lokhu kuzosusa nazo zonke izimpendul
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:27
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "Uqinisekile ufuna ukuphuma? Kuzodingeka ungene futhi ukuze ufinyelele i-akhawunti yakho."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:39
+msgid "Are you sure you want to resign?"
+msgstr "Uqinisekile ufuna ukuyeka?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:38
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "Uqinisekile ukuthi ufuna ukushiya? {opponentName} uzowina umdlalo."
 
 #: src/features/crms/pages/crms-list-page.tsx:40
 msgid "Are you sure you want to unsubscribe from this CRM?"
@@ -358,7 +366,7 @@ msgid "Back to CRM"
 msgstr "Buyela ku-CRM"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:93
+#: src/routes/_authenticated/$crmId/index.tsx:91
 msgid "Back to CRMs"
 msgstr "Buyela kuma-CRM"
 
@@ -367,12 +375,21 @@ msgstr "Buyela kuma-CRM"
 msgid "Back to home"
 msgstr "Buyela ekhaya"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Ibhena"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr "Ibhena isusiwe"
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr "Ibhena ibuyekeziwe"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "Ivinjelwe ngu"
 
@@ -381,7 +398,7 @@ msgstr "Ivinjelwe ngu"
 msgid "Blocked navigation to untrusted link"
 msgstr "Kuvinjelwe ukuya esixhumanisini esingathembekile"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "Iyavimba"
 
@@ -430,7 +447,7 @@ msgstr "Ingaba ingane ka"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:338
 #: src/routes/_authenticated/$crmId/design.tsx:57
-#: src/routes/_authenticated/$crmId/index.tsx:151
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Cancel"
 msgstr "Khansela"
 
@@ -487,7 +504,7 @@ msgstr "Khetha umdlalo kubha eseceleni noma uqale omusha."
 msgid "Choose language"
 msgstr "Khetha ulimi"
 
-#: src/routes/_authenticated/$crmId/index.tsx:178
+#: src/routes/_authenticated/$crmId/index.tsx:176
 msgid "Class"
 msgstr "Iklasi"
 
@@ -495,6 +512,7 @@ msgstr "Iklasi"
 msgid "Classes"
 msgstr "Amaklasi"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -512,8 +530,8 @@ msgstr "Sula konke"
 msgid "Clear search"
 msgstr "Sula usesho"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:517
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
@@ -595,7 +613,7 @@ msgid "Comments"
 msgstr "Imibono"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:323
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:411
 msgid "Comments ({0})"
 msgstr "Amazwana ({0})"
 
@@ -682,8 +700,8 @@ msgstr "Ayikwazanga ukuqinisekisa ngaleyo akhawunti. Sicela uzame futhi."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Dala"
@@ -734,7 +752,7 @@ msgstr "Kudalwe {field}"
 msgid "Creating CRM..."
 msgstr "Kudalwa i-CRM..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 #: src/features/crms/components/create-crm-dialog.tsx:341
 msgid "Creating..."
@@ -752,7 +770,7 @@ msgstr "I-CRM idaliwe"
 msgid "CRM deleted"
 msgstr "I-CRM isusiwe"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "CRM link"
 msgstr "Isixhumanisi se-CRM"
 
@@ -835,7 +853,8 @@ msgstr "Ukuhlunga okuzenzakalelayo"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
-#: src/features/objects/components/object-detail-panel.tsx:537
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
 #: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Delete"
 msgstr "Susa"
@@ -869,9 +888,13 @@ msgstr "Susa i-CRM?"
 msgid "Delete field"
 msgstr "Susa inkambu"
 
-#: src/features/objects/components/object-detail-panel.tsx:372
-#: src/features/objects/components/object-detail-panel.tsx:377
-#: src/features/objects/components/object-detail-panel.tsx:535
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:69
+msgid "Delete game?"
+msgstr "Susa umdlalo?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:486
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:670
 msgid "Delete item"
 msgstr "Susa into"
 
@@ -905,6 +928,10 @@ msgstr "Kususiwe {field}"
 msgid "Deleting CRM..."
 msgstr "Kususwa i-CRM..."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
+msgid "Deleting..."
+msgstr "Kususwa..."
+
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Descending"
 msgstr "Ukwehla"
@@ -916,7 +943,7 @@ msgstr "Incazelo"
 
 #: src/routes/_authenticated/$crmId/design.tsx:39
 #: src/routes/_authenticated/$crmId/design.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:185
+#: src/routes/_authenticated/$crmId/index.tsx:183
 msgid "Design"
 msgstr "Idizayini"
 
@@ -966,7 +993,7 @@ msgstr "Kunqanyuliwe"
 msgid "Dismiss"
 msgstr "Cashisa"
 
-#: src/routes/_authenticated/$crmId/index.tsx:154
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Dismiss board hint"
 msgstr "Cashisa isexwayiso sebhodi"
 
@@ -979,13 +1006,13 @@ msgid "Does not match the required pattern"
 msgstr "Ayihambisani nephethini edingekayo"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:495
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 #: src/features/editor/components/edit-dialogs.tsx:412
-#: src/features/objects/components/object-detail-panel.tsx:386
 msgid "Done"
 msgstr "Kwenziwe"
 
-#: src/routes/_authenticated/$crmId/index.tsx:153
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Double click on a column to add content"
 msgstr "Chofoza kabili ekholomu ukungeza okuqukethwe"
 
@@ -1005,15 +1032,15 @@ msgid "Download failed"
 msgstr "Ukulanda kuhlulekile"
 
 #: src/routes/_authenticated/$crmId/design.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Downloaded {filename}"
 msgstr "Kulandwe i-{filename}"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Drag columns to re-order them"
 msgstr "Donsa amakholomu ukuze uwahlele kabusha"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "Iphinda kabili"
 
@@ -1072,6 +1099,10 @@ msgstr "I-imeyili"
 msgid "Email code"
 msgstr "Ikhodi ye-imeyili"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr "Faka umbhalo webhana (i-markdown isekelwa)..."
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "Faka ikhodi evela ku-imeyili yakho"
@@ -1084,7 +1115,7 @@ msgstr "Faka ikhodi yakho yesiqinisekisi"
 msgid "Entity ID"
 msgstr "I-ID yohlaka"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:381
 msgid "Error"
 msgstr "Iphutha"
 
@@ -1099,11 +1130,11 @@ msgstr "Nweba"
 msgid "Expand sidebar"
 msgstr "Nweba ibha eseceleni"
 
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Export CSV"
 msgstr "Thumela ngaphandle i-CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Export data"
 msgstr "Khipha idatha"
 
@@ -1123,7 +1154,7 @@ msgstr "Okukhulu kakhulu"
 msgid "Failed to add account"
 msgstr "Kuhlulekile ukungeza i-akhawunti"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to add column"
 msgstr "Yehlulekile ukungeza ikholomu"
 
@@ -1145,9 +1176,9 @@ msgstr "Kuhlulekile ukudala i-CRM"
 msgid "Failed to create field"
 msgstr "Kuhlulekile ukudala inkambu"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Failed to create link"
 msgstr "Kuhlulekile ukudala isixhumanisi"
 
@@ -1160,7 +1191,7 @@ msgstr "Kuhlulekile ukudala inketho"
 msgid "Failed to create view"
 msgstr "Kuhlulekile ukudala umbukiso"
 
-#: src/features/objects/components/object-detail-panel.tsx:212
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
 msgid "Failed to delete"
 msgstr "Kuhlulekile ukususa"
 
@@ -1172,7 +1203,7 @@ msgstr "Kuhlulekile ukususa okunanyathiselwe"
 msgid "Failed to delete class"
 msgstr "Kuhlulekile ukususa isigaba"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Failed to delete column"
 msgstr "Yehlulekile ukususa ikholomu"
 
@@ -1188,7 +1219,7 @@ msgstr "Yehlulekile ukususa i-CRM"
 msgid "Failed to delete field"
 msgstr "Kuhlulekile ukususa inkambu"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "Kuhlulekile ukususa isixhumanisi"
 
@@ -1200,7 +1231,7 @@ msgstr "Kuhlulekile ukususa inketho"
 msgid "Failed to delete view"
 msgstr "Kuhlulekile ukususa umbukiso"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Failed to export data"
 msgstr "Yehlulekile ukukhipha idatha"
 
@@ -1227,8 +1258,8 @@ msgstr "Kuhlulekile ukulayisha"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:41
 #: src/routes/_authenticated/$crmId/$objectId.tsx:65
-#: src/routes/_authenticated/$crmId/index.tsx:58
-#: src/routes/_authenticated/$crmId/index.tsx:94
+#: src/routes/_authenticated/$crmId/index.tsx:56
+#: src/routes/_authenticated/$crmId/index.tsx:92
 msgid "Failed to load CRM"
 msgstr "Kuhlulekile ukulayisha i-CRM"
 
@@ -1248,7 +1279,8 @@ msgstr "Kuhlulekile ukulayisha umlando"
 msgid "Failed to load image"
 msgstr "Yehlulekile ukulayisha isithombe"
 
-#: src/features/objects/components/object-detail-panel.tsx:294
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:382
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:385
 msgid "Failed to load item"
 msgstr "Kuhlulekile ukulayisha into"
 
@@ -1264,8 +1296,8 @@ msgstr "Ukulayisha ama-CRM anconyiwe kuhlulekile"
 msgid "Failed to load video"
 msgstr "Yehlulekile ukulayisha ividiyo"
 
-#: src/features/objects/components/object-detail-panel.tsx:230
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:317
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "Failed to move"
 msgstr "Yehlulekile ukuhambisa"
 
@@ -1273,7 +1305,7 @@ msgstr "Yehlulekile ukuhambisa"
 msgid "Failed to post comment"
 msgstr "Kuhlulekile ukuthumela ukuphawula"
 
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "Failed to re-order columns"
 msgstr "Yehlulekile ukuhlela kabusha amakholomu"
 
@@ -1286,7 +1318,7 @@ msgstr "Kuhlulekile ukufunda ifayela"
 msgid "Failed to remove access"
 msgstr "Kuhlulekile ukususa ukufinyelela"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Failed to rename column"
 msgstr "Yehlulekile ukuqamba kabusha ikholomu"
 
@@ -1306,7 +1338,7 @@ msgstr "Kuhlulekile ukusetha kabusha umyalo"
 msgid "Failed to revoke RSS access"
 msgstr "Yehlulekile ukubuyisela ukufinyelela kwe-RSS"
 
-#: src/features/objects/components/object-detail-panel.tsx:176
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
 msgid "Failed to save"
 msgstr "Kuhlulekile ukulondoloza"
 
@@ -1329,13 +1361,17 @@ msgid "Failed to subscribe"
 msgstr "Kuhlulekile ukubhalisa"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Failed to unsubscribe"
 msgstr "Kuhlulekile ukukhansela ukubhalisa"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Failed to update access level"
 msgstr "Kuhlulekile ukubuyekeza izinga lokufinyelela"
+
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr "Kuhlulekile ukubuyekeza ibhana"
 
 #: src/features/editor/components/design-editor.tsx:122
 msgid "Failed to update class"
@@ -1365,8 +1401,8 @@ msgstr "Kuhlulekile ukubuyekeza inketho"
 msgid "Failed to update view"
 msgstr "Kuhlulekile ukubuyekeza umbukiso"
 
-#: src/features/objects/components/object-detail-panel.tsx:195
-msgid "Failed to update watch"
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:288
+msgid "Failed to update watching"
 msgstr "Yehlulekile ukubuyekeza ukubuka"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
@@ -1377,7 +1413,7 @@ msgstr "Kuhlulekile ukulayisha okunanyathiselwe"
 msgid "Fields"
 msgstr "Izinkambu"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:605
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
@@ -1459,7 +1495,7 @@ msgstr "Okushisayo"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 #: src/features/editor/components/edit-dialogs.tsx:267
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "ID"
 msgstr "I-ID"
 
@@ -1527,7 +1563,7 @@ msgstr "Ifayela le-JSON elingalungile"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Kubonakala sengathi ikhasi olifunayo <0/>alikho noma lisusiwe."
 
-#: src/features/objects/components/object-detail-panel.tsx:336
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:441
 msgid "Item details"
 msgstr "Imininingwane yento"
 
@@ -1557,11 +1593,11 @@ msgid "Light"
 msgstr "Okukhanyayo"
 
 #: ../../../lib/web/src/components/options-menu.tsx:190
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Link"
 msgstr "Isixhumanisi"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "Izixhumanisi"
 
@@ -1577,17 +1613,17 @@ msgstr "Layisha okuningi"
 msgid "Loading content…"
 msgstr "Ilayisha okuqukethwe…"
 
-#: src/features/objects/components/object-detail-panel.tsx:277
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:365
 msgid "Loading item"
 msgstr "Kulayishwa into"
 
-#: src/features/objects/components/object-detail-panel.tsx:278
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:366
 msgid "Loading item details"
 msgstr "Kulayishwa imininingwane yento"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Loading..."
 msgstr "Kulayishwa..."
 
@@ -1713,15 +1749,15 @@ msgstr "Igama kufanele libe nezinhlamvu ezingu-1000 noma ngaphansi"
 msgid "Network error"
 msgstr "Iphutha lenethiwekhi"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:492
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:141
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:139
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New"
 msgstr "Okusha"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New {0}"
 msgstr "I-{0} entsha"
 
@@ -1735,7 +1771,7 @@ msgstr "Umdlalo omusha"
 msgid "Next image"
 msgstr "Isithombe esilandelayo"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:571
 msgid "No {parentClassNames} to add to"
 msgstr "Asikho i-{parentClassNames} okufanele kwengezwe kuyo"
 
@@ -1768,15 +1804,15 @@ msgstr "Ayikho imidlalo okwamanje"
 msgid "No groups available"
 msgstr "Awekho amaqembu atholakalayo"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Azikho izinhlobo zezinto ezingadalwa okwamanje. Dala izinto zomzali ezidingekayo kuqala."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "Azikho izinto ezifanayo"
 
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "No objects to export."
 msgstr "Azikho izinto zokuthekelisa."
 
@@ -1825,9 +1861,13 @@ msgid "No views"
 msgstr "Akukho ukubukwa"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:554
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:557
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:561
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:557
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:570
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:571
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:575
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
@@ -1839,10 +1879,6 @@ msgstr "Akukho ukubukwa"
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/objects/components/object-detail-panel.tsx:451
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:467
-#: src/features/objects/components/object-detail-panel.tsx:471
 msgid "None"
 msgstr "Lutho"
 
@@ -1915,7 +1951,7 @@ msgstr "Vula ukuzulazula"
 msgid "Open option actions"
 msgstr "Vula izenzo zenketho"
 
-#: src/routes/_authenticated/$crmId/index.tsx:140
+#: src/routes/_authenticated/$crmId/index.tsx:138
 msgid "Open page actions"
 msgstr "Vula izenzo zekhasi"
 
@@ -1951,9 +1987,10 @@ msgstr "Okunye"
 msgid "Owner"
 msgstr "Umnikazi"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
-#: src/features/objects/components/object-detail-panel.tsx:445
-#: src/routes/_authenticated/$crmId/index.tsx:179
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:546
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:569
+#: src/routes/_authenticated/$crmId/index.tsx:177
 msgid "Parent"
 msgstr "Umzali"
 
@@ -1982,7 +2019,7 @@ msgstr "Iphethini (i-regex)"
 msgid "People"
 msgstr "Abantu"
 
-#: src/routes/_authenticated/$crmId/index.tsx:146
+#: src/routes/_authenticated/$crmId/index.tsx:144
 msgid "Please add one or more classes to the CRM design."
 msgstr "Sicela wengeze amakilasi amaningi noma elilodwa kudizayini ye-CRM."
 
@@ -2026,7 +2063,7 @@ msgstr "Iyacutshungulwa…"
 msgid "Prompt saved"
 msgstr "Isikhuthazi silondoloziwe"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:408
 msgid "Properties"
 msgstr "Izici"
 
@@ -2042,7 +2079,7 @@ msgstr "Iphakanyisiwe"
 msgid "Re-link your accounts on this server"
 msgstr "Xhuma kabusha ama-akhawunti akho kule server"
 
-#: src/routes/_authenticated/$crmId/index.tsx:149
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "Re-order columns"
 msgstr "Hlela kabusha amakholomu"
 
@@ -2079,7 +2116,7 @@ msgstr "Iqondisa kabusha ekungeneni."
 msgid "Reduce interest"
 msgstr "Yehlisa intshisekelo"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "Iyahlobana"
 
@@ -2142,8 +2179,8 @@ msgstr "Khipha intshisekelo"
 msgid "Remove item"
 msgstr "Khipha into"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "Susa isixhumanisi"
 
@@ -2193,6 +2230,18 @@ msgstr "Kuyadingeka"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "Thumela i-imeyili futhi"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:48
+msgid "Resign"
+msgstr "Yeka"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:35
+msgid "Resign game?"
+msgstr "Yeka umdlalo?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:45
+msgid "Resigning..."
+msgstr "Iyayeka..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:348
 msgid "Retry"
@@ -2245,11 +2294,12 @@ msgstr "UMgqibelo"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:152
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Save"
 msgstr "Londoloza"
 
@@ -2293,7 +2343,7 @@ msgstr "Sesha indawo oya kuyo..."
 msgid "Search for origin..."
 msgstr "Sesha indawo yokuqala..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "Sesha izinto..."
 
@@ -2423,7 +2473,7 @@ msgstr "Kusethwa ukufinyelela..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:125
 #: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:78
-#: src/routes/_authenticated/$crmId/index.tsx:193
+#: src/routes/_authenticated/$crmId/index.tsx:191
 msgid "Settings"
 msgstr "Izilungiselelo"
 
@@ -2486,8 +2536,8 @@ msgstr "Ukukhula"
 msgid "Start the discussion by adding the first comment."
 msgstr "Qala ingxoxo ngokwengeza amazwana okuqala."
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Stop watching"
 msgstr "Misa ukubuka"
 
@@ -2612,13 +2662,17 @@ msgstr "Le CRM ayikwazi ukulayishwa njengamanje."
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "Le CRM ingase isuswe noma awunakho ukufinyelela kuyo."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:70
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "Lokhu kuzosusa umdlalo nengxoxo yawo unomphela. Lesi senzo asikwazi ukuhlehliswa."
+
 #. placeholder {0}: String(name)
 #: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "Lokhu kuzosusa \"{0}\" unomphela kanye nazo zonke izinto, amazwana, nokunamathiselwe. Lesi senzo asikwazi ukuhlehliswa."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Lokhu kuzosusa \"{0}\" ebhebhini lakho eliseceleni futhi kumise izibuyekezo zale CRM."
 
@@ -2753,32 +2807,29 @@ msgstr "Akwaziwa"
 
 #: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribe"
 msgstr "Susa ukubhalisa"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribe from CRM?"
 msgstr "Susa ukubhalisa kwi-CRM?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:169
 msgid "Unsubscribed"
 msgstr "Kususiwe ukubhalisa"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:168
 msgid "Unsubscribing..."
 msgstr "Kuyasuswa ukubhalisa..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:40
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-container.tsx:29
 #: src/features/editor/components/design-preview.tsx:28
-#: src/features/objects/components/object-detail-panel.tsx:314
-#: src/features/objects/components/object-detail-panel.tsx:318
 msgid "Untitled"
 msgstr "Akunasihloko"
 
@@ -2796,7 +2847,7 @@ msgstr "Kubuyekezwe {field}"
 msgid "Updating access..."
 msgstr "Kubuyekezwa ukufinyelela..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:655
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 msgid "Upload"
 msgstr "Layisha"
@@ -2854,7 +2905,7 @@ msgstr "Isibonisi sevidiyo: {0}"
 msgid "View all notifications"
 msgstr "Buka zonke izaziso"
 
-#: src/features/objects/components/object-detail-panel.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:442
 msgid "View and edit item details"
 msgstr "Buka futhi uhlele imininingwane yento"
 
@@ -2866,7 +2917,7 @@ msgstr "Buka izilawuli"
 msgid "View only"
 msgstr "Bukela kuphela"
 
-#: src/routes/_authenticated/$crmId/index.tsx:147
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "View options"
 msgstr "Buka izinketho"
 
@@ -2878,8 +2929,8 @@ msgstr "Ukubukwa"
 msgid "Voice recording is not supported in this browser"
 msgstr "Ukuqopha izwi akusekelwe kulesi siphequluli"
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Watch"
 msgstr "Buka"
 
@@ -2905,7 +2956,7 @@ msgstr "ULwesithathu"
 msgid "You do not have access to this section."
 msgstr "Awunakho ukufinyelela kule ngxenye."
 
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:78
 msgid "You don't have access to this CRM."
 msgstr "Awunalo ilungelo lokufinyelela kule CRM."
 

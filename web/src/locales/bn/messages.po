@@ -148,7 +148,7 @@ msgstr "{subjectName}-এর জন্য অ্যাক্সেস সেট 
 msgid "Account type"
 msgstr "অ্যাকাউন্টের ধরন"
 
-#: src/features/objects/components/object-detail-panel.tsx:324
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:415
 msgid "Activity"
 msgstr "কার্যকলাপ"
 
@@ -193,7 +193,7 @@ msgstr "চেকলিস্ট আইটেম যোগ করুন"
 msgid "Add class"
 msgstr "ক্লাস যোগ করুন"
 
-#: src/routes/_authenticated/$crmId/index.tsx:148
+#: src/routes/_authenticated/$crmId/index.tsx:146
 msgid "Add column"
 msgstr "কলাম যোগ করুন"
 
@@ -207,7 +207,7 @@ msgstr "ফিল্ড যোগ করুন"
 msgid "Add item..."
 msgstr "আইটেম যোগ করুন..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "লিঙ্ক যোগ করুন"
 
@@ -295,7 +295,7 @@ msgstr "এই ফিডে সাবস্ক্রাইব করা সব�
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "আপনি কি নিশ্চিত \"{0}\" মুছতে চান?"
 
-#: src/features/objects/components/object-detail-panel.tsx:536
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:671
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
 msgstr "আপনি কি নিশ্চিত \"{title}\" মুছতে চান? এই অ্যাকশন পূর্বাবস্থায় ফেরানো যাবে না।"
 
@@ -310,6 +310,14 @@ msgstr "আপনি কি নিশ্চিত এই মন্তব্য�
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:27
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "আপনি কি নিশ্চিত লগআউট করতে চান? আপনার অ্যাকাউন্টে অ্যাক্সেস করতে আবার লগইন করতে হবে।"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:39
+msgid "Are you sure you want to resign?"
+msgstr "আপনি কি সত্যিই হার মানতে চান?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:38
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "আপনি কি নিশ্চিত যে আপনি হার মানতে চান? {opponentName} খেলায় জিতবে।"
 
 #: src/features/crms/pages/crms-list-page.tsx:40
 msgid "Are you sure you want to unsubscribe from this CRM?"
@@ -358,7 +366,7 @@ msgid "Back to CRM"
 msgstr "CRM-এ ফিরে যান"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:64
-#: src/routes/_authenticated/$crmId/index.tsx:93
+#: src/routes/_authenticated/$crmId/index.tsx:91
 msgid "Back to CRMs"
 msgstr "CRM-এ ফিরে যান"
 
@@ -367,12 +375,21 @@ msgstr "CRM-এ ফিরে যান"
 msgid "Back to home"
 msgstr "হোমে ফিরে যান"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "ব্যানার"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr "ব্যানার সরানো হয়েছে"
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr "ব্যানার আপডেট হয়েছে"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "ব্লক করেছে"
 
@@ -381,7 +398,7 @@ msgstr "ব্লক করেছে"
 msgid "Blocked navigation to untrusted link"
 msgstr "অবিশ্বস্ত লিঙ্কে নেভিগেশন ব্লক করা হয়েছে"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "ব্লক করে"
 
@@ -430,7 +447,7 @@ msgstr "এর চাইল্ড হতে পারে"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/crms/components/create-crm-dialog.tsx:338
 #: src/routes/_authenticated/$crmId/design.tsx:57
-#: src/routes/_authenticated/$crmId/index.tsx:151
+#: src/routes/_authenticated/$crmId/index.tsx:149
 msgid "Cancel"
 msgstr "বাতিল করুন"
 
@@ -487,7 +504,7 @@ msgstr "সাইডবার থেকে একটি গেম বেছে �
 msgid "Choose language"
 msgstr "ভাষা বেছে নিন"
 
-#: src/routes/_authenticated/$crmId/index.tsx:178
+#: src/routes/_authenticated/$crmId/index.tsx:176
 msgid "Class"
 msgstr "শ্রেণী"
 
@@ -495,6 +512,7 @@ msgstr "শ্রেণী"
 msgid "Classes"
 msgstr "ক্লাস"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -512,8 +530,8 @@ msgstr "সব পরিষ্কার করুন"
 msgid "Clear search"
 msgstr "অনুসন্ধান পরিষ্কার করুন"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:517
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
@@ -595,7 +613,7 @@ msgid "Comments"
 msgstr "মন্তব্য"
 
 #. placeholder {0}: data.comment_count || 0
-#: src/features/objects/components/object-detail-panel.tsx:323
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:411
 msgid "Comments ({0})"
 msgstr "মন্তব্য ({0})"
 
@@ -682,8 +700,8 @@ msgstr "ওই অ্যাকাউন্ট দিয়ে যাচাই �
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "তৈরি করুন"
@@ -734,7 +752,7 @@ msgstr "{field} তৈরি করা হয়েছে"
 msgid "Creating CRM..."
 msgstr "CRM তৈরি করা হচ্ছে..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 #: src/features/crms/components/create-crm-dialog.tsx:341
 msgid "Creating..."
@@ -752,7 +770,7 @@ msgstr "CRM তৈরি হয়েছে"
 msgid "CRM deleted"
 msgstr "CRM মুছে ফেলা হয়েছে"
 
-#: src/routes/_authenticated/$crmId/index.tsx:160
+#: src/routes/_authenticated/$crmId/index.tsx:158
 msgid "CRM link"
 msgstr "CRM লিঙ্ক"
 
@@ -835,7 +853,8 @@ msgstr "ডিফল্ট সাজানো"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
-#: src/features/objects/components/object-detail-panel.tsx:537
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
 #: src/routes/_authenticated/$crmId_.settings.tsx:98
 msgid "Delete"
 msgstr "মুছুন"
@@ -869,9 +888,13 @@ msgstr "CRM মুছবেন?"
 msgid "Delete field"
 msgstr "ফিল্ড মুছুন"
 
-#: src/features/objects/components/object-detail-panel.tsx:372
-#: src/features/objects/components/object-detail-panel.tsx:377
-#: src/features/objects/components/object-detail-panel.tsx:535
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:69
+msgid "Delete game?"
+msgstr "গেম মুছবেন?"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:486
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:670
 msgid "Delete item"
 msgstr "আইটেম মুছুন"
 
@@ -905,6 +928,10 @@ msgstr "{field} মুছে ফেলা হয়েছে"
 msgid "Deleting CRM..."
 msgstr "CRM মুছে ফেলা হচ্ছে..."
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
+msgid "Deleting..."
+msgstr "মুছে ফেলা হচ্ছে..."
+
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Descending"
 msgstr "অধঃক্রম"
@@ -916,7 +943,7 @@ msgstr "বিবরণ"
 
 #: src/routes/_authenticated/$crmId/design.tsx:39
 #: src/routes/_authenticated/$crmId/design.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:185
+#: src/routes/_authenticated/$crmId/index.tsx:183
 msgid "Design"
 msgstr "ডিজাইন"
 
@@ -966,7 +993,7 @@ msgstr "সংযোগ বিচ্ছিন্ন"
 msgid "Dismiss"
 msgstr "বাতিল করুন"
 
-#: src/routes/_authenticated/$crmId/index.tsx:154
+#: src/routes/_authenticated/$crmId/index.tsx:152
 msgid "Dismiss board hint"
 msgstr "বোর্ড ইঙ্গিত বাতিল করুন"
 
@@ -979,13 +1006,13 @@ msgid "Does not match the required pattern"
 msgstr "প্রয়োজনীয় প্যাটার্নের সঙ্গে মেলে না"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:495
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 #: src/features/editor/components/edit-dialogs.tsx:412
-#: src/features/objects/components/object-detail-panel.tsx:386
 msgid "Done"
 msgstr "সম্পন্ন"
 
-#: src/routes/_authenticated/$crmId/index.tsx:153
+#: src/routes/_authenticated/$crmId/index.tsx:151
 msgid "Double click on a column to add content"
 msgstr "কন্টেন্ট যোগ করতে কলামে ডাবল ক্লিক করুন"
 
@@ -1005,15 +1032,15 @@ msgid "Download failed"
 msgstr "ডাউনলোড ব্যর্থ হয়েছে"
 
 #: src/routes/_authenticated/$crmId/design.tsx:48
-#: src/routes/_authenticated/$crmId/index.tsx:157
+#: src/routes/_authenticated/$crmId/index.tsx:155
 msgid "Downloaded {filename}"
 msgstr "{filename} ডাউনলোড করা হয়েছে"
 
-#: src/routes/_authenticated/$crmId/index.tsx:150
+#: src/routes/_authenticated/$crmId/index.tsx:148
 msgid "Drag columns to re-order them"
 msgstr "কলামগুলো পুনর্বিন্যাস করতে টেনে আনুন"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "নকল"
 
@@ -1072,6 +1099,10 @@ msgstr "ইমেইল"
 msgid "Email code"
 msgstr "ইমেইল কোড"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr "ব্যানার টেক্সট লিখুন (মার্কডাউন সমর্থিত)..."
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "আপনার ইমেল থেকে পাওয়া কোডটি লিখুন"
@@ -1084,7 +1115,7 @@ msgstr "আপনার প্রমাণীকরণকারী কোড ল
 msgid "Entity ID"
 msgstr "ইউনিট আইডি"
 
-#: src/features/objects/components/object-detail-panel.tsx:293
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:381
 msgid "Error"
 msgstr "ত্রুটি"
 
@@ -1099,11 +1130,11 @@ msgstr "প্রসারিত করুন"
 msgid "Expand sidebar"
 msgstr "সাইডবার প্রসারিত করুন"
 
-#: src/routes/_authenticated/$crmId/index.tsx:175
+#: src/routes/_authenticated/$crmId/index.tsx:173
 msgid "Export CSV"
 msgstr "CSV এক্সপোর্ট করুন"
 
-#: src/routes/_authenticated/$crmId/index.tsx:155
+#: src/routes/_authenticated/$crmId/index.tsx:153
 msgid "Export data"
 msgstr "ডেটা এক্সপোর্ট করুন"
 
@@ -1123,7 +1154,7 @@ msgstr "অতিরিক্ত বড়"
 msgid "Failed to add account"
 msgstr "অ্যাকাউন্ট যোগ করতে ব্যর্থ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:163
+#: src/routes/_authenticated/$crmId/index.tsx:161
 msgid "Failed to add column"
 msgstr "কলাম যোগ করা যায়নি"
 
@@ -1145,9 +1176,9 @@ msgstr "CRM তৈরি করতে ব্যর্থ"
 msgid "Failed to create field"
 msgstr "ফিল্ড তৈরি করতে ব্যর্থ"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
-#: src/routes/_authenticated/$crmId/index.tsx:161
+#: src/routes/_authenticated/$crmId/index.tsx:159
 msgid "Failed to create link"
 msgstr "লিঙ্ক তৈরি করতে ব্যর্থ"
 
@@ -1160,7 +1191,7 @@ msgstr "অপশন তৈরি করতে ব্যর্থ"
 msgid "Failed to create view"
 msgstr "ভিউ তৈরি করতে ব্যর্থ"
 
-#: src/features/objects/components/object-detail-panel.tsx:212
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
 msgid "Failed to delete"
 msgstr "মুছতে ব্যর্থ"
 
@@ -1172,7 +1203,7 @@ msgstr "সংযুক্তি মুছতে ব্যর্থ"
 msgid "Failed to delete class"
 msgstr "ক্লাস মুছতে ব্যর্থ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:165
+#: src/routes/_authenticated/$crmId/index.tsx:163
 msgid "Failed to delete column"
 msgstr "কলাম মোছা যায়নি"
 
@@ -1188,7 +1219,7 @@ msgstr "CRM মুছে ফেলা যায়নি"
 msgid "Failed to delete field"
 msgstr "ফিল্ড মুছতে ব্যর্থ"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "লিঙ্ক মুছতে ব্যর্থ"
 
@@ -1200,7 +1231,7 @@ msgstr "অপশন মুছতে ব্যর্থ"
 msgid "Failed to delete view"
 msgstr "ভিউ মুছতে ব্যর্থ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:158
+#: src/routes/_authenticated/$crmId/index.tsx:156
 msgid "Failed to export data"
 msgstr "ডেটা এক্সপোর্ট করা যায়নি"
 
@@ -1227,8 +1258,8 @@ msgstr "লোড করতে ব্যর্থ"
 
 #: src/routes/_authenticated/$crmId/$objectId.tsx:41
 #: src/routes/_authenticated/$crmId/$objectId.tsx:65
-#: src/routes/_authenticated/$crmId/index.tsx:58
-#: src/routes/_authenticated/$crmId/index.tsx:94
+#: src/routes/_authenticated/$crmId/index.tsx:56
+#: src/routes/_authenticated/$crmId/index.tsx:92
 msgid "Failed to load CRM"
 msgstr "CRM লোড করতে ব্যর্থ"
 
@@ -1248,7 +1279,8 @@ msgstr "ইতিহাস লোড করতে ব্যর্থ"
 msgid "Failed to load image"
 msgstr "ছবি লোড করা যায়নি"
 
-#: src/features/objects/components/object-detail-panel.tsx:294
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:382
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:385
 msgid "Failed to load item"
 msgstr "আইটেম লোড করতে ব্যর্থ"
 
@@ -1264,8 +1296,8 @@ msgstr "প্রস্তাবিত CRM লোড করা যায়ন�
 msgid "Failed to load video"
 msgstr "ভিডিও লোড করা যায়নি"
 
-#: src/features/objects/components/object-detail-panel.tsx:230
-#: src/routes/_authenticated/$crmId/index.tsx:162
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:317
+#: src/routes/_authenticated/$crmId/index.tsx:160
 msgid "Failed to move"
 msgstr "সরানো ব্যর্থ"
 
@@ -1273,7 +1305,7 @@ msgstr "সরানো ব্যর্থ"
 msgid "Failed to post comment"
 msgstr "মন্তব্য পোস্ট করতে ব্যর্থ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:166
+#: src/routes/_authenticated/$crmId/index.tsx:164
 msgid "Failed to re-order columns"
 msgstr "কলামের ক্রম পরিবর্তন করা যায়নি"
 
@@ -1286,7 +1318,7 @@ msgstr "ফাইল পড়তে ব্যর্থ"
 msgid "Failed to remove access"
 msgstr "অ্যাক্সেস সরাতে ব্যর্থ"
 
-#: src/routes/_authenticated/$crmId/index.tsx:164
+#: src/routes/_authenticated/$crmId/index.tsx:162
 msgid "Failed to rename column"
 msgstr "কলামের নাম পরিবর্তন করা যায়নি"
 
@@ -1306,7 +1338,7 @@ msgstr "প্রম্পট রিসেট করতে ব্যর্থ"
 msgid "Failed to revoke RSS access"
 msgstr "RSS অ্যাক্সেস প্রত্যাহার করা ব্যর্থ হয়েছে"
 
-#: src/features/objects/components/object-detail-panel.tsx:176
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
 msgid "Failed to save"
 msgstr "সংরক্ষণ করতে ব্যর্থ"
 
@@ -1329,13 +1361,17 @@ msgid "Failed to subscribe"
 msgstr "সাবস্ক্রাইব করতে ব্যর্থ"
 
 #: src/features/crms/pages/crms-list-page.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:172
+#: src/routes/_authenticated/$crmId/index.tsx:170
 msgid "Failed to unsubscribe"
 msgstr "আনসাবস্ক্রাইব করতে ব্যর্থ"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:116
 msgid "Failed to update access level"
 msgstr "অ্যাক্সেস স্তর আপডেট করতে ব্যর্থ"
+
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr "ব্যানার আপডেট করতে ব্যর্থ"
 
 #: src/features/editor/components/design-editor.tsx:122
 msgid "Failed to update class"
@@ -1365,8 +1401,8 @@ msgstr "অপশন আপডেট করতে ব্যর্থ"
 msgid "Failed to update view"
 msgstr "ভিউ আপডেট করতে ব্যর্থ"
 
-#: src/features/objects/components/object-detail-panel.tsx:195
-msgid "Failed to update watch"
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:288
+msgid "Failed to update watching"
 msgstr "পর্যবেক্ষণ আপডেট ব্যর্থ"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
@@ -1377,7 +1413,7 @@ msgstr "সংযুক্তি আপলোড করতে ব্যর্থ
 msgid "Fields"
 msgstr "ফিল্ডসমূহ"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:605
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
@@ -1459,7 +1495,7 @@ msgstr "জনপ্রিয়"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 #: src/features/editor/components/edit-dialogs.tsx:267
-#: src/routes/_authenticated/$crmId/index.tsx:177
+#: src/routes/_authenticated/$crmId/index.tsx:175
 msgid "ID"
 msgstr "আইডি"
 
@@ -1527,7 +1563,7 @@ msgstr "অবৈধ JSON ফাইল"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "আপনি যে পৃষ্ঠাটি খুঁজছেন <0/>সেটি নেই বা সরিয়ে ফেলা হয়েছে।"
 
-#: src/features/objects/components/object-detail-panel.tsx:336
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:441
 msgid "Item details"
 msgstr "আইটেমের বিবরণ"
 
@@ -1557,11 +1593,11 @@ msgid "Light"
 msgstr "হালকা"
 
 #: ../../../lib/web/src/components/options-menu.tsx:190
-#: src/routes/_authenticated/$crmId/index.tsx:159
+#: src/routes/_authenticated/$crmId/index.tsx:157
 msgid "Link"
 msgstr "লিঙ্ক"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "লিঙ্কসমূহ"
 
@@ -1577,17 +1613,17 @@ msgstr "আরও লোড করুন"
 msgid "Loading content…"
 msgstr "কন্টেন্ট লোড হচ্ছে…"
 
-#: src/features/objects/components/object-detail-panel.tsx:277
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:365
 msgid "Loading item"
 msgstr "আইটেম লোড হচ্ছে"
 
-#: src/features/objects/components/object-detail-panel.tsx:278
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:366
 msgid "Loading item details"
 msgstr "আইটেমের বিবরণ লোড হচ্ছে"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
-#: src/routes/_authenticated/$crmId/index.tsx:156
+#: src/routes/_authenticated/$crmId/index.tsx:154
 msgid "Loading..."
 msgstr "লোড হচ্ছে..."
 
@@ -1713,15 +1749,15 @@ msgstr "নাম অবশ্যই ১০০০ অক্ষর বা তা�
 msgid "Network error"
 msgstr "নেটওয়ার্ক ত্রুটি"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:492
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
-#: src/routes/_authenticated/$crmId/index.tsx:141
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:139
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New"
 msgstr "নতুন"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx:145
+#: src/routes/_authenticated/$crmId/index.tsx:143
 msgid "New {0}"
 msgstr "নতুন {0}"
 
@@ -1735,7 +1771,7 @@ msgstr "নতুন গেম"
 msgid "Next image"
 msgstr "পরবর্তী ছবি"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:571
 msgid "No {parentClassNames} to add to"
 msgstr "যোগ করার জন্য কোনো {parentClassNames} নেই"
 
@@ -1768,15 +1804,15 @@ msgstr "এখনও কোনো গেম নেই"
 msgid "No groups available"
 msgstr "কোনো গ্রুপ উপলব্ধ নেই"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "এখনও কোনো আইটেম টাইপ তৈরি করা যাবে না। প্রথমে প্রয়োজনীয় প্যারেন্ট আইটেম তৈরি করুন।"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "কোনো মিলে যাওয়া অবজেক্ট নেই"
 
-#: src/routes/_authenticated/$crmId/index.tsx:176
+#: src/routes/_authenticated/$crmId/index.tsx:174
 msgid "No objects to export."
 msgstr "এক্সপোর্ট করার মতো কোনো অবজেক্ট নেই।"
 
@@ -1825,9 +1861,13 @@ msgid "No views"
 msgstr "কোনো ভিউ নেই"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:554
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:557
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:561
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:557
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:570
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:571
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:575
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
@@ -1839,10 +1879,6 @@ msgstr "কোনো ভিউ নেই"
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
-#: src/features/objects/components/object-detail-panel.tsx:451
-#: src/features/objects/components/object-detail-panel.tsx:464
-#: src/features/objects/components/object-detail-panel.tsx:467
-#: src/features/objects/components/object-detail-panel.tsx:471
 msgid "None"
 msgstr "কোনোটি নয়"
 
@@ -1915,7 +1951,7 @@ msgstr "নেভিগেশন খুলুন"
 msgid "Open option actions"
 msgstr "অপশন অ্যাকশন খুলুন"
 
-#: src/routes/_authenticated/$crmId/index.tsx:140
+#: src/routes/_authenticated/$crmId/index.tsx:138
 msgid "Open page actions"
 msgstr "পৃষ্ঠা অ্যাকশন খুলুন"
 
@@ -1951,9 +1987,10 @@ msgstr "অন্যান্য"
 msgid "Owner"
 msgstr "মালিক"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
-#: src/features/objects/components/object-detail-panel.tsx:445
-#: src/routes/_authenticated/$crmId/index.tsx:179
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:546
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:569
+#: src/routes/_authenticated/$crmId/index.tsx:177
 msgid "Parent"
 msgstr "প্যারেন্ট"
 
@@ -1982,7 +2019,7 @@ msgstr "প্যাটার্ন (রেজেক্স)"
 msgid "People"
 msgstr "ব্যক্তিরা"
 
-#: src/routes/_authenticated/$crmId/index.tsx:146
+#: src/routes/_authenticated/$crmId/index.tsx:144
 msgid "Please add one or more classes to the CRM design."
 msgstr "অনুগ্রহ করে CRM ডিজাইনে এক বা একাধিক ক্লাস যোগ করুন।"
 
@@ -2026,7 +2063,7 @@ msgstr "প্রক্রিয়াকরণ চলছে…"
 msgid "Prompt saved"
 msgstr "প্রম্পট সংরক্ষণ করা হয়েছে"
 
-#: src/features/objects/components/object-detail-panel.tsx:322
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:408
 msgid "Properties"
 msgstr "বৈশিষ্ট্য"
 
@@ -2042,7 +2079,7 @@ msgstr "উঁচু"
 msgid "Re-link your accounts on this server"
 msgstr "এই সার্ভারে আপনার অ্যাকাউন্টগুলি পুনরায় লিঙ্ক করুন"
 
-#: src/routes/_authenticated/$crmId/index.tsx:149
+#: src/routes/_authenticated/$crmId/index.tsx:147
 msgid "Re-order columns"
 msgstr "কলাম পুনরায় সাজান"
 
@@ -2079,7 +2116,7 @@ msgstr "লগইনে রিডাইরেক্ট করা হচ্ছে
 msgid "Reduce interest"
 msgstr "আগ্রহ কমান"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "সম্পর্কিত"
 
@@ -2142,8 +2179,8 @@ msgstr "আগ্রহ সরান"
 msgid "Remove item"
 msgstr "আইটেম সরান"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "লিঙ্ক সরান"
 
@@ -2193,6 +2230,18 @@ msgstr "প্রয়োজনীয়"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "ইমেল আবার পাঠান"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:48
+msgid "Resign"
+msgstr "পদত্যাগ"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:35
+msgid "Resign game?"
+msgstr "গেম থেকে পদত্যাগ করবেন?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:45
+msgid "Resigning..."
+msgstr "পদত্যাগ করা হচ্ছে..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:348
 msgid "Retry"
@@ -2245,11 +2294,12 @@ msgstr "শনিবার"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
-#: src/routes/_authenticated/$crmId/index.tsx:152
+#: src/routes/_authenticated/$crmId/index.tsx:150
 msgid "Save"
 msgstr "সংরক্ষণ করুন"
 
@@ -2293,7 +2343,7 @@ msgstr "গন্তব্য অনুসন্ধান করুন..."
 msgid "Search for origin..."
 msgstr "উৎস অনুসন্ধান করুন..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "অবজেক্ট অনুসন্ধান করুন..."
 
@@ -2423,7 +2473,7 @@ msgstr "অ্যাক্সেস সেট করা হচ্ছে..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:125
 #: ../../../lib/web/src/components/options-menu.tsx:196
 #: src/routes/_authenticated/$crmId_.settings.tsx:78
-#: src/routes/_authenticated/$crmId/index.tsx:193
+#: src/routes/_authenticated/$crmId/index.tsx:191
 msgid "Settings"
 msgstr "সেটিংস"
 
@@ -2486,8 +2536,8 @@ msgstr "প্রশস্ত"
 msgid "Start the discussion by adding the first comment."
 msgstr "প্রথম মন্তব্য যোগ করে আলোচনা শুরু করুন।"
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Stop watching"
 msgstr "দেখা বন্ধ করুন"
 
@@ -2612,13 +2662,17 @@ msgstr "এই CRM এই মুহূর্তে লোড করা যায
 msgid "This CRM may have been deleted or you don't have access to it."
 msgstr "এই CRM মুছে ফেলা হতে পারে অথবা আপনার এতে অ্যাক্সেস নেই।"
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:70
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "এটি গেম এবং এর চ্যাট স্থায়ীভাবে মুছে ফেলবে। এটি ফিরিয়ে আনা যাবে না।"
+
 #. placeholder {0}: String(name)
 #: src/routes/_authenticated/$crmId_.settings.tsx:102
 msgid "This will permanently delete \"{0}\" and all its objects, comments, and attachments. This action cannot be undone."
 msgstr "এটি \"{0}\" এবং এর সমস্ত অবজেক্ট, মন্তব্য এবং সংযুক্তি স্থায়ীভাবে মুছে ফেলবে। এই অ্যাকশন পূর্বাবস্থায় ফিরিয়ে আনা যাবে না।"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx:169
+#: src/routes/_authenticated/$crmId/index.tsx:167
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "এটি আপনার সাইডবার থেকে \"{0}\" সরিয়ে ফেলবে এবং এই CRM-এর আপডেট বন্ধ করবে।"
 
@@ -2753,32 +2807,29 @@ msgstr "অজানা"
 
 #: ../../../lib/web/src/components/options-menu.tsx:211
 #: src/features/crms/pages/crms-list-page.tsx:39
-#: src/routes/_authenticated/$crmId/index.tsx:167
+#: src/routes/_authenticated/$crmId/index.tsx:165
 msgid "Unsubscribe"
 msgstr "আনসাবস্ক্রাইব করুন"
 
-#: src/routes/_authenticated/$crmId/index.tsx:168
+#: src/routes/_authenticated/$crmId/index.tsx:166
 msgid "Unsubscribe from CRM?"
 msgstr "CRM থেকে আনসাবস্ক্রাইব করবেন?"
 
 #: src/features/crms/pages/crms-list-page.tsx:42
-#: src/routes/_authenticated/$crmId/index.tsx:171
+#: src/routes/_authenticated/$crmId/index.tsx:169
 msgid "Unsubscribed"
 msgstr "আনসাবস্ক্রাইব করা হয়েছে"
 
 #: src/features/crms/pages/crms-list-page.tsx:41
-#: src/routes/_authenticated/$crmId/index.tsx:170
+#: src/routes/_authenticated/$crmId/index.tsx:168
 msgid "Unsubscribing..."
 msgstr "আনসাবস্ক্রাইব করা হচ্ছে..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:40
 #: src/features/board/components/board-card.tsx:22
 #: src/features/board/components/board-container.tsx:29
 #: src/features/editor/components/design-preview.tsx:28
-#: src/features/objects/components/object-detail-panel.tsx:314
-#: src/features/objects/components/object-detail-panel.tsx:318
 msgid "Untitled"
 msgstr "শিরোনামহীন"
 
@@ -2796,7 +2847,7 @@ msgstr "{field} হালনাগাদ করা হয়েছে"
 msgid "Updating access..."
 msgstr "অ্যাক্সেস আপডেট করা হচ্ছে..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:655
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 msgid "Upload"
 msgstr "আপলোড"
@@ -2854,7 +2905,7 @@ msgstr "ভিডিও দর্শক: {0}"
 msgid "View all notifications"
 msgstr "সব নোটিফিকেশন দেখুন"
 
-#: src/features/objects/components/object-detail-panel.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:442
 msgid "View and edit item details"
 msgstr "আইটেমের বিস্তারিত দেখুন এবং সম্পাদনা করুন"
 
@@ -2866,7 +2917,7 @@ msgstr "কন্ট্রোল দেখুন"
 msgid "View only"
 msgstr "শুধুমাত্র দেখুন"
 
-#: src/routes/_authenticated/$crmId/index.tsx:147
+#: src/routes/_authenticated/$crmId/index.tsx:145
 msgid "View options"
 msgstr "অপশন দেখুন"
 
@@ -2878,8 +2929,8 @@ msgstr "ভিউ"
 msgid "Voice recording is not supported in this browser"
 msgstr "এই ব্রাউজারে ভয়েস রেকর্ডিং সমর্থিত নয়"
 
-#: src/features/objects/components/object-detail-panel.tsx:353
-#: src/features/objects/components/object-detail-panel.tsx:362
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
 msgid "Watch"
 msgstr "দেখুন"
 
@@ -2905,7 +2956,7 @@ msgstr "বুধবার"
 msgid "You do not have access to this section."
 msgstr "এই বিভাগে আপনার অ্যাক্সেস নেই।"
 
-#: src/routes/_authenticated/$crmId/index.tsx:80
+#: src/routes/_authenticated/$crmId/index.tsx:78
 msgid "You don't have access to this CRM."
 msgstr "এই CRM-এ আপনার অ্যাক্সেস নেই।"
 
