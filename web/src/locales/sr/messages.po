@@ -35,7 +35,7 @@ msgid "[not set]"
 msgstr "[није постављено]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:259
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# изабрано} few {# изабрана} other {# изабраних}}"
 
@@ -54,19 +54,19 @@ msgstr "{0} - Дизајн"
 msgid "{0} settings"
 msgstr "{0} поставке"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#д} other {#д}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#ч} other {#ч}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#мин} other {#мин}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#нед} other {#нед}}"
 
@@ -102,6 +102,10 @@ msgstr "12 сати"
 #: ../../../lib/web/src/lib/preference-utils.ts:36
 msgid "24 hours"
 msgstr "24 сата"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "Снимање је већ у току."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -398,6 +402,14 @@ msgstr "Боја ивице"
 msgid "Browser notifications"
 msgstr "Обавештења прегледача"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "Дозвола за камеру је одбијена"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "Камера није доступна"
+
 #: src/features/editor/components/edit-dialogs.tsx:303
 msgid "Can be child of"
 msgstr "Може бити подређен"
@@ -429,6 +441,12 @@ msgstr "Откажи коментар"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "Откажи одговор"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "Отказано"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:386
 #: ../../../lib/web/src/components/attachment-composer.tsx:421
@@ -871,7 +889,7 @@ msgstr "Обриши опцију {0}"
 msgid "Delete view"
 msgstr "Обриши приказ"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "Обришите свој налог на старом серверу"
 
@@ -926,7 +944,7 @@ msgstr "Панел детаља"
 msgid "Detect from web browser"
 msgstr "Препознај из веб прегледача"
 
-#: ../../../lib/web/src/components/person-picker.tsx:192
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "Именик"
 
@@ -943,8 +961,8 @@ msgstr "Одбацити нацрт?"
 msgid "Disconnected"
 msgstr "Није повезано"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "Одбаци"
 
@@ -1374,7 +1392,7 @@ msgstr "Пронађи CRM-ове"
 msgid "Fingerprint"
 msgstr "Отисак прста"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "Завршите премештање налога"
 
@@ -1390,7 +1408,7 @@ msgstr "Равно"
 msgid "Friday"
 msgstr "Петак"
 
-#: ../../../lib/web/src/components/person-picker.tsx:185
+#: ../../../lib/web/src/components/person-picker.tsx:186
 msgid "Friends"
 msgstr "Пријатељи"
 
@@ -1513,7 +1531,7 @@ msgstr "Изгледа да страница коју тражите <0/>не п
 msgid "Item details"
 msgstr "Детаљи ставке"
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "Управо сада"
 
@@ -1630,6 +1648,10 @@ msgstr "Порука"
 #: ../../../lib/web/src/lib/preference-utils.ts:80
 msgid "Metric"
 msgstr "Метричке"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "Дозвола за микрофон је одбијена"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
@@ -1813,7 +1835,7 @@ msgstr "Нема прегледа"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:328
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
@@ -1940,18 +1962,23 @@ msgid "Passkey"
 msgstr "Приступни кључ"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "Провера приступног кључа није успела. Покушајте поново."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "Passkey-еви"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "Passkey-еви нису доступни у овом прегледачу"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "Šablon (regex)"
 
-#: ../../../lib/web/src/components/person-picker.tsx:178
+#: ../../../lib/web/src/components/person-picker.tsx:179
 msgid "People"
 msgstr "Људи"
 
@@ -2011,7 +2038,7 @@ msgstr "Push обавештење"
 msgid "Raised"
 msgstr "Издигнуто"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "Поново повежите налоге на овом серверу"
 
@@ -2019,7 +2046,7 @@ msgstr "Поново повежите налоге на овом серверу"
 msgid "Re-order columns"
 msgstr "Преуреди колоне"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "Поново региструјте своје приступне кључеве на овом серверу"
 
@@ -2034,6 +2061,14 @@ msgstr "Препоручени CRM-ови"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "Поновно повезивање ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "Снимање није успело. Покушајте поново."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "Снимак не садржи звук"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2277,7 +2312,7 @@ msgstr "Претражи, посматрај и сортирај овај при
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:302
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "Претражи..."
@@ -2541,6 +2576,22 @@ msgstr "Слање није успело. Датотеке су можда пр�
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Превелико за отпремање. Уклоните или смањите датотеке и покушајте поново."
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "Камера се већ користи"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "На захтев за камеру није одговорено"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "На захтев за микрофон није одговорено"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "На захтев за passkey није одговорено"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "Тражени садржај није пронађен."
@@ -2548,6 +2599,10 @@ msgstr "Тражени садржај није пронађен."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "Сервер је вратио веб страницу уместо података."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "Овој апликацији није дозвољено да користи ваш passkey. Дозволите јој то у Подешавањима, под Дозволе."
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM could not be loaded right now."
@@ -2819,6 +2874,10 @@ msgstr "Опције приказа"
 msgid "Views"
 msgstr "Прегледи"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "Снимање гласа није подржано у овом прегледачу"
+
 #: src/features/objects/components/object-detail-panel.tsx:353
 #: src/features/objects/components/object-detail-panel.tsx:362
 msgid "Watch"
@@ -2854,7 +2913,7 @@ msgstr "Немате приступ овом CRM-у."
 msgid "You have no CRMs yet."
 msgstr "Још немаш CRM-ова."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Ваш налог је премештен овде са {source}. Све док га тамо не обришете, поруке и обавештења могу стизати на оба сервера, неки ваш садржај ће и даље бити сервиран са старог сервера, а пратиоцима може требати неколико минута да вас пронађу овде."
 

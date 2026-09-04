@@ -35,7 +35,7 @@ msgid "[not set]"
 msgstr "[មិនបានកំណត់]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:259
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, other {# បានជ្រើសរើស}}"
 
@@ -54,19 +54,19 @@ msgstr "{0} - រចនា"
 msgid "{0} settings"
 msgstr "ការកំណត់ {0}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#ថ} other {#ថ}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#ម} other {#ម}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#នាទី} other {#នាទី}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#សប្ដាហ៍} other {#សប្ដាហ៍}}"
 
@@ -102,6 +102,10 @@ msgstr "១២ ម៉ោង"
 #: ../../../lib/web/src/lib/preference-utils.ts:36
 msgid "24 hours"
 msgstr "២៤ ម៉ោង"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "ការថតកំពុងដំណើរការរួចហើយ។"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -398,6 +402,14 @@ msgstr "ពណ៌ស៊ុម"
 msgid "Browser notifications"
 msgstr "ការជូនដំណឹងពីកម្មវិធីរុករក"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "សិទ្ធិកាមេរ៉ាត្រូវបានបដិសេធ"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "កាមេរ៉ាមិនអាចប្រើបាន"
+
 #: src/features/editor/components/edit-dialogs.tsx:303
 msgid "Can be child of"
 msgstr "អាចជាកូននៃ"
@@ -429,6 +441,12 @@ msgstr "បោះបង់មតិយោបល់"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "បោះបង់ការឆ្លើយតប"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "បានបោះបង់"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:386
 #: ../../../lib/web/src/components/attachment-composer.tsx:421
@@ -871,7 +889,7 @@ msgstr "លុបជម្រើស {0}"
 msgid "Delete view"
 msgstr "លុបទិដ្ឋភាព"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "លុបគណនីរបស់អ្នកនៅម៉ាស៊ីនមេចាស់"
 
@@ -926,7 +944,7 @@ msgstr "ផ្ទាំងព័ត៌មានលម្អិត"
 msgid "Detect from web browser"
 msgstr "រកឃើញពីកម្មវិធីរុករកគេហទំព័រ"
 
-#: ../../../lib/web/src/components/person-picker.tsx:192
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "ថត"
 
@@ -943,8 +961,8 @@ msgstr "បោះបង់សេចក្ដីព្រាងឬ?"
 msgid "Disconnected"
 msgstr "បានផ្ដាច់"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "បិទ"
 
@@ -1374,7 +1392,7 @@ msgstr "ស្វែងរក CRMs"
 msgid "Fingerprint"
 msgstr "ស្នាមម្រាមដៃ"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "បញ្ចប់ការផ្លាស់ប្តូរគណនីរបស់អ្នក"
 
@@ -1390,7 +1408,7 @@ msgstr "រាបស្មើ"
 msgid "Friday"
 msgstr "ថ្ងៃសុក្រ"
 
-#: ../../../lib/web/src/components/person-picker.tsx:185
+#: ../../../lib/web/src/components/person-picker.tsx:186
 msgid "Friends"
 msgstr "មិត្ត"
 
@@ -1513,7 +1531,7 @@ msgstr "ហាក់ដូចជាទំព័រដែលអ្នកកំព
 msgid "Item details"
 msgstr "ព័ត៌មានលម្អិតធាតុ"
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "អម្បាញ់មិញ"
 
@@ -1630,6 +1648,10 @@ msgstr "សារ"
 #: ../../../lib/web/src/lib/preference-utils.ts:80
 msgid "Metric"
 msgstr "ម៉ែត្រ"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "ការអនុញ្ញាតមីក្រូហ្វូនត្រូវបានបដិសេធ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
@@ -1813,7 +1835,7 @@ msgstr "មិនមានការមើល"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:328
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
@@ -1940,18 +1962,23 @@ msgid "Passkey"
 msgstr "Passkey"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "ការផ្ទៀងផ្ទាត់ passkey បានបរាជ័យ។ សូមព្យាយាមម្ដងទៀត។"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "កូនសោចូល"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "Passkeys មិនមាននៅក្នុងកម្មវិធីរុករកនេះទេ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "លំនាំ (regex)"
 
-#: ../../../lib/web/src/components/person-picker.tsx:178
+#: ../../../lib/web/src/components/person-picker.tsx:179
 msgid "People"
 msgstr "មនុស្ស"
 
@@ -2011,7 +2038,7 @@ msgstr "ការជូនដំណឹងរុញ"
 msgid "Raised"
 msgstr "លើកឡើង"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "ភ្ជាប់គណនីរបស់អ្នកឡើងវិញនៅម៉ាស៊ីនមេនេះ"
 
@@ -2019,7 +2046,7 @@ msgstr "ភ្ជាប់គណនីរបស់អ្នកឡើងវិញ
 msgid "Re-order columns"
 msgstr "តម្រៀបជួរឈរឡើងវិញ"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "ចុះឈ្មោះកូនសោចូលរបស់អ្នកឡើងវិញនៅលើម៉ាស៊ីនមេនេះ"
 
@@ -2034,6 +2061,14 @@ msgstr "CRM ដែលបានណែនាំ"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "កំពុងភ្ជាប់ឡើងវិញ ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "ការថតបានបរាជ័យ។ សូមព្យាយាមម្តងទៀត។"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "ការថតគ្មានសំឡេងទេ"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2277,7 +2312,7 @@ msgstr "ស្វែងរក មើល និងតម្រៀបទិដ្�
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:302
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "ស្វែងរក..."
@@ -2541,6 +2576,22 @@ msgstr "មិនអាចផ្ញើបានទេ។ ឯកសារប្�
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "ធំពេកមិនអាចផ្ទុកឡើងបានទេ។ លុប ឬបង្រួមឯកសារ ហើយព្យាយាមម្ដងទៀត។"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "កាមេរ៉ាកំពុងត្រូវបានប្រើរួចហើយ"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "សំណើកាមេរ៉ាមិនត្រូវបានឆ្លើយតបទេ"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "សំណើមីក្រូហ្វូនមិនត្រូវបានឆ្លើយតបទេ"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "សំណើ passkey មិនត្រូវបានឆ្លើយតបទេ"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "រកមិនឃើញខ្លឹមសារដែលបានស្នើសុំទេ។"
@@ -2548,6 +2599,10 @@ msgstr "រកមិនឃើញខ្លឹមសារដែលបានស្
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "ម៉ាស៊ីនមេបានបញ្ជូនត្រឡប់ទំព័របណ្តាញជំនួសឱ្យទិន្នន័យ។"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "កម្មវិធីនេះមិនត្រូវបានអនុញ្ញាតឱ្យប្រើ passkey របស់អ្នកទេ។ អនុញ្ញាតវានៅក្នុងការកំណត់ ក្រោមផ្នែកសិទ្ធិ។"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM could not be loaded right now."
@@ -2819,6 +2874,10 @@ msgstr "ជម្រើសទិដ្ឋភាព"
 msgid "Views"
 msgstr "ទិដ្ឋភាព"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "កម្មវិធីរុករកនេះមិនគាំទ្រការថតសំឡេងទេ"
+
 #: src/features/objects/components/object-detail-panel.tsx:353
 #: src/features/objects/components/object-detail-panel.tsx:362
 msgid "Watch"
@@ -2854,7 +2913,7 @@ msgstr "អ្នកមិនមានសិទ្ធិចូលប្រើ CR
 msgid "You have no CRMs yet."
 msgstr "អ្នកមិនទាន់មាន CRM ទេ។"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "គណនីរបស់អ្នកត្រូវបានផ្លាស់ប្តូរមកទីនេះពី {source}។ រហូតដល់អ្នកលុបវានៅទីនោះ សារ និងការជូនដំណឹងអាចទៅដល់ម៉ាស៊ីនមេទាំងពីរ មាតិកាមួយចំនួនរបស់អ្នកនៅតែត្រូវបានបម្រើពីម៉ាស៊ីនមេចាស់ ហើយអ្នកតាមដានអាចចំណាយពេលប៉ុន្មាននាទីដើម្បីរកអ្នកនៅទីនេះ។"
 

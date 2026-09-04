@@ -35,7 +35,7 @@ msgid "[not set]"
 msgstr "[ไม่ได้ตั้ง]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:259
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {เลือกแล้ว #} other {เลือกแล้ว #}}"
 
@@ -54,19 +54,19 @@ msgstr "{0} - การออกแบบ"
 msgid "{0} settings"
 msgstr "การตั้งค่า {0}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#ว} other {#ว}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#ชม} other {#ชม}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#น} other {#น}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#สัป} other {#สัป}}"
 
@@ -102,6 +102,10 @@ msgstr "12 ชั่วโมง"
 #: ../../../lib/web/src/lib/preference-utils.ts:36
 msgid "24 hours"
 msgstr "24 ชั่วโมง"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "กำลังบันทึกเสียงอยู่แล้ว"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -398,6 +402,14 @@ msgstr "สีขอบ"
 msgid "Browser notifications"
 msgstr "การแจ้งเตือนของเบราว์เซอร์"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "สิทธิ์กล้องถูกปฏิเสธ"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "กล้องไม่พร้อมใช้งาน"
+
 #: src/features/editor/components/edit-dialogs.tsx:303
 msgid "Can be child of"
 msgstr "สามารถเป็นลูกของ"
@@ -429,6 +441,12 @@ msgstr "ยกเลิกความคิดเห็น"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "ยกเลิกการตอบกลับ"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "ยกเลิกแล้ว"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:386
 #: ../../../lib/web/src/components/attachment-composer.tsx:421
@@ -871,7 +889,7 @@ msgstr "ลบตัวเลือก{0}"
 msgid "Delete view"
 msgstr "ลบมุมมอง"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "ลบบัญชีของคุณบนเซิร์ฟเวอร์เดิม"
 
@@ -926,7 +944,7 @@ msgstr "แผงรายละเอียด"
 msgid "Detect from web browser"
 msgstr "ตรวจจับจากเว็บเบราว์เซอร์"
 
-#: ../../../lib/web/src/components/person-picker.tsx:192
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "ไดเรกทอรี"
 
@@ -943,8 +961,8 @@ msgstr "ยกเลิกฉบับร่างใช่ไหม?"
 msgid "Disconnected"
 msgstr "ตัดการเชื่อมต่อแล้ว"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "ปิด"
 
@@ -1374,7 +1392,7 @@ msgstr "ค้นหา CRM"
 msgid "Fingerprint"
 msgstr "Fingerprint"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "เสร็จสิ้นการย้ายบัญชี"
 
@@ -1390,7 +1408,7 @@ msgstr "แบน"
 msgid "Friday"
 msgstr "วันศุกร์"
 
-#: ../../../lib/web/src/components/person-picker.tsx:185
+#: ../../../lib/web/src/components/person-picker.tsx:186
 msgid "Friends"
 msgstr "เพื่อน"
 
@@ -1513,7 +1531,7 @@ msgstr "ดูเหมือนว่าหน้าที่คุณกำล
 msgid "Item details"
 msgstr "รายละเอียดรายการ"
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "เมื่อสักครู่"
 
@@ -1630,6 +1648,10 @@ msgstr "ข้อความ"
 #: ../../../lib/web/src/lib/preference-utils.ts:80
 msgid "Metric"
 msgstr "เมตริก"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "สิทธิ์ไมโครโฟนถูกปฏิเสธ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
@@ -1813,7 +1835,7 @@ msgstr "ไม่มีการเข้าชม"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:328
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
@@ -1940,18 +1962,23 @@ msgid "Passkey"
 msgstr "พาสคีย์"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "การยืนยันด้วยพาสคีย์ล้มเหลว โปรดลองอีกครั้ง"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "พาสคีย์"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "Passkeys ไม่พร้อมใช้งานในเบราว์เซอร์นี้"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "รูปแบบ (regex)"
 
-#: ../../../lib/web/src/components/person-picker.tsx:178
+#: ../../../lib/web/src/components/person-picker.tsx:179
 msgid "People"
 msgstr "ผู้คน"
 
@@ -2011,7 +2038,7 @@ msgstr "การแจ้งเตือนแบบพุช"
 msgid "Raised"
 msgstr "ยกขึ้น"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "เชื่อมโยงบัญชีของคุณใหม่บนเซิร์ฟเวอร์นี้"
 
@@ -2019,7 +2046,7 @@ msgstr "เชื่อมโยงบัญชีของคุณใหม่
 msgid "Re-order columns"
 msgstr "จัดลำดับคอลัมน์ใหม่"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "ลงทะเบียนพาสคีย์ของคุณใหม่บนเซิร์ฟเวอร์นี้"
 
@@ -2034,6 +2061,14 @@ msgstr "CRM ที่แนะนำ"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "กำลังเชื่อมต่อใหม่ ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "การบันทึกล้มเหลว โปรดลองอีกครั้ง"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "การบันทึกไม่มีเสียง"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2277,7 +2312,7 @@ msgstr "ค้นหา ติดตาม และจัดเรียงม�
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:302
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "ค้นหา..."
@@ -2541,6 +2576,22 @@ msgstr "ส่งไม่ได้ ไฟล์อาจใหญ่เกิ�
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "ใหญ่เกินกว่าจะอัปโหลดได้ ลบหรือย่อไฟล์แล้วลองอีกครั้ง"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "กล้องกำลังถูกใช้งานอยู่แล้ว"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "คำขอกล้องไม่ได้รับการตอบกลับ"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "คำขอไมโครโฟนไม่ได้รับการตอบกลับ"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "คำขอ passkey ไม่ได้รับการตอบกลับ"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "ไม่พบเนื้อหาที่ร้องขอ"
@@ -2548,6 +2599,10 @@ msgstr "ไม่พบเนื้อหาที่ร้องขอ"
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "เซิร์ฟเวอร์ส่งคืนหน้าเว็บแทนข้อมูล"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "แอปนี้ไม่ได้รับอนุญาตให้ใช้ passkey ของคุณ อนุญาตได้ในการตั้งค่า ภายใต้สิทธิ์"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM could not be loaded right now."
@@ -2819,6 +2874,10 @@ msgstr "ตัวเลือกการดู"
 msgid "Views"
 msgstr "การดู"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "เบราว์เซอร์นี้ไม่รองรับการบันทึกเสียง"
+
 #: src/features/objects/components/object-detail-panel.tsx:353
 #: src/features/objects/components/object-detail-panel.tsx:362
 msgid "Watch"
@@ -2854,7 +2913,7 @@ msgstr "คุณไม่มีสิทธิ์เข้าถึง CRM น�
 msgid "You have no CRMs yet."
 msgstr "คุณยังไม่มี CRM"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "บัญชีของคุณถูกย้ายมาที่นี่จาก {source} จนกว่าคุณจะลบออกที่นั่น ข้อความและการแจ้งเตือนอาจไปถึงทั้งสองเซิร์ฟเวอร์ เนื้อหาบางส่วนของคุณยังคงให้บริการจากเซิร์ฟเวอร์เดิม และผู้ติดตามอาจต้องใช้เวลาสักครู่เพื่อพบคุณที่นี่"
 

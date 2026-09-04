@@ -35,7 +35,7 @@ msgid "[not set]"
 msgstr "[nie ustawiono]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:259
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# wybrany} few {# wybranych} many {# wybranych} other {# wybranych}}"
 
@@ -54,19 +54,19 @@ msgstr "{0} - Projekt"
 msgid "{0} settings"
 msgstr "Ustawienia {0}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#d} other {#d}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#godz} other {#godz}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#min} other {#min}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#tyg} other {#tyg}}"
 
@@ -102,6 +102,10 @@ msgstr "12 godzin"
 #: ../../../lib/web/src/lib/preference-utils.ts:36
 msgid "24 hours"
 msgstr "24 godziny"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "Nagrywanie już trwa."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -398,6 +402,14 @@ msgstr "Kolor obramowania"
 msgid "Browser notifications"
 msgstr "Powiadomienia przeglądarki"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "Odmówiono uprawnienia do kamery"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "Kamera niedostępna"
+
 #: src/features/editor/components/edit-dialogs.tsx:303
 msgid "Can be child of"
 msgstr "Może być dzieckiem"
@@ -429,6 +441,12 @@ msgstr "Anuluj komentarz"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "Anuluj odpowiedź"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "Anulowane"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:386
 #: ../../../lib/web/src/components/attachment-composer.tsx:421
@@ -871,7 +889,7 @@ msgstr "Usuń opcję {0}"
 msgid "Delete view"
 msgstr "Usuń widok"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "Usuń swoje konto na starym serwerze"
 
@@ -926,7 +944,7 @@ msgstr "Panel szczegółów"
 msgid "Detect from web browser"
 msgstr "Wykryj z przeglądarki internetowej"
 
-#: ../../../lib/web/src/components/person-picker.tsx:192
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "Katalog"
 
@@ -943,8 +961,8 @@ msgstr "Odrzucić wersję roboczą?"
 msgid "Disconnected"
 msgstr "Rozłączono"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "Odrzuć"
 
@@ -1374,7 +1392,7 @@ msgstr "Znajdź CRM-y"
 msgid "Fingerprint"
 msgstr "Odcisk palca"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "Zakończ przenoszenie konta"
 
@@ -1390,7 +1408,7 @@ msgstr "Płaska"
 msgid "Friday"
 msgstr "Piątek"
 
-#: ../../../lib/web/src/components/person-picker.tsx:185
+#: ../../../lib/web/src/components/person-picker.tsx:186
 msgid "Friends"
 msgstr "Znajomi"
 
@@ -1513,7 +1531,7 @@ msgstr "Wygląda na to, że strona, której szukasz, <0/>nie istnieje lub zosta�
 msgid "Item details"
 msgstr "Szczegóły elementu"
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "Przed chwilą"
 
@@ -1630,6 +1648,10 @@ msgstr "Wiadomość"
 #: ../../../lib/web/src/lib/preference-utils.ts:80
 msgid "Metric"
 msgstr "Metryczny"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "Odmowa uprawnienia do mikrofonu"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
@@ -1813,7 +1835,7 @@ msgstr "Brak wyświetleń"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:328
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
@@ -1940,18 +1962,23 @@ msgid "Passkey"
 msgstr "Klucz dostępu"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "Weryfikacja kluczem dostępu nie powiodła się. Spróbuj ponownie."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "Klucze dostępu"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "Klucze dostępu nie są dostępne w tej przeglądarce"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "Wzorzec (wyrażenie regularne)"
 
-#: ../../../lib/web/src/components/person-picker.tsx:178
+#: ../../../lib/web/src/components/person-picker.tsx:179
 msgid "People"
 msgstr "Osoby"
 
@@ -2011,7 +2038,7 @@ msgstr "Powiadomienie push"
 msgid "Raised"
 msgstr "Uniesiony"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "Ponownie powiąż swoje konta na tym serwerze"
 
@@ -2019,7 +2046,7 @@ msgstr "Ponownie powiąż swoje konta na tym serwerze"
 msgid "Re-order columns"
 msgstr "Zmień kolejność kolumn"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "Zarejestruj ponownie swoje klucze dostępu na tym serwerze"
 
@@ -2034,6 +2061,14 @@ msgstr "Polecane CRM-y"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "Ponowne łączenie ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "Nagrywanie nie powiodło się. Spróbuj ponownie."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "Nagranie nie zawiera dźwięku"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2277,7 +2312,7 @@ msgstr "Wyszukuj, obserwuj i sortuj ten widok."
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:302
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "Szukaj..."
@@ -2541,6 +2576,22 @@ msgstr "Nie udało się wysłać. Pliki mogą być za duże lub połączenie zos
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "To było za duże do przesłania. Usuń lub zmniejsz pliki i spróbuj ponownie."
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "Kamera jest już używana"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "Żądanie kamery pozostało bez odpowiedzi"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "Żądanie mikrofonu pozostało bez odpowiedzi"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "Żądanie klucza dostępu pozostało bez odpowiedzi"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "Nie można znaleźć żądanej treści."
@@ -2548,6 +2599,10 @@ msgstr "Nie można znaleźć żądanej treści."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "Serwer zwrócił stronę internetową zamiast danych."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "Ta aplikacja nie może używać Twojego klucza dostępu. Zezwól na to w Ustawieniach, w sekcji Uprawnienia."
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM could not be loaded right now."
@@ -2819,6 +2874,10 @@ msgstr "Zobacz opcje"
 msgid "Views"
 msgstr "Wyświetlenia"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "Nagrywanie głosu nie jest obsługiwane w tej przeglądarce"
+
 #: src/features/objects/components/object-detail-panel.tsx:353
 #: src/features/objects/components/object-detail-panel.tsx:362
 msgid "Watch"
@@ -2854,7 +2913,7 @@ msgstr "Nie masz dostępu do tego CRM."
 msgid "You have no CRMs yet."
 msgstr "Nie masz jeszcze żadnych CRM-ów."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Twoje konto zostało przeniesione tutaj z {source}. Dopóki go tam nie usuniesz, wiadomości i powiadomienia mogą docierać do obu serwerów, część twoich treści nadal jest serwowana ze starego serwera, a obserwujący mogą potrzebować kilku minut, aby cię tu znaleźć."
 

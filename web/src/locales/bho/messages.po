@@ -35,7 +35,7 @@ msgid "[not set]"
 msgstr "[सेट नइखे]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:259
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# चुनल} other {# चुनल}}"
 
@@ -54,19 +54,19 @@ msgstr "{0} - डिज़ाइन"
 msgid "{0} settings"
 msgstr "{0} सेटिंग"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#दि} other {#दि}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#घं} other {#घं}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#मि} other {#मि}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#सप्ता} other {#सप्ता}}"
 
@@ -102,6 +102,10 @@ msgstr "12 घंटा"
 #: ../../../lib/web/src/lib/preference-utils.ts:36
 msgid "24 hours"
 msgstr "24 घंटा"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "एगो रिकॉर्डिंग पहिलहीं से चलत बा।"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -398,6 +402,14 @@ msgstr "किनारा रंग"
 msgid "Browser notifications"
 msgstr "Browser सूचना"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "कैमरा अनुमति अस्वीकार कइल गइल"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "कैमरा उपलब्ध नइखे"
+
 #: src/features/editor/components/edit-dialogs.tsx:303
 msgid "Can be child of"
 msgstr "एकर बच्चा हो सके"
@@ -429,6 +441,12 @@ msgstr "टिप्पणी रद्द करीं"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "जवाब रद्द करीं"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "रद्द कइल गइल"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:386
 #: ../../../lib/web/src/components/attachment-composer.tsx:421
@@ -871,7 +889,7 @@ msgstr "विकल्प {0} मेटाईं"
 msgid "Delete view"
 msgstr "दृश्य मेटाईं"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "पुरान सर्वर पर आपन खाता मेटाईं"
 
@@ -926,7 +944,7 @@ msgstr "विवरण पैनल"
 msgid "Detect from web browser"
 msgstr "Web browser से पता लगाईं"
 
-#: ../../../lib/web/src/components/person-picker.tsx:192
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "निर्देशिका"
 
@@ -943,8 +961,8 @@ msgstr "ड्राफ्ट छोड़ दीं?"
 msgid "Disconnected"
 msgstr "जुड़ल नइखे"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "खारिज करीं"
 
@@ -1374,7 +1392,7 @@ msgstr "CRM खोजीं"
 msgid "Fingerprint"
 msgstr "फिंगरप्रिंट"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "आपन खाता हिलावल पूरा करीं"
 
@@ -1390,7 +1408,7 @@ msgstr "सपाट"
 msgid "Friday"
 msgstr "शुक्रवार"
 
-#: ../../../lib/web/src/components/person-picker.tsx:185
+#: ../../../lib/web/src/components/person-picker.tsx:186
 msgid "Friends"
 msgstr "दोस्त"
 
@@ -1513,7 +1531,7 @@ msgstr "लागत बा कि रउआ जवन पन्ना खोज
 msgid "Item details"
 msgstr "आइटम विवरण"
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "अबहीं"
 
@@ -1630,6 +1648,10 @@ msgstr "संदेश"
 #: ../../../lib/web/src/lib/preference-utils.ts:80
 msgid "Metric"
 msgstr "मीट्रिक"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "माइक्रोफोन के अनुमति अस्वीकार"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
@@ -1813,7 +1835,7 @@ msgstr "कौनो दृश्य नइखे"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:328
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
@@ -1940,18 +1962,23 @@ msgid "Passkey"
 msgstr "पासकी"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "पासकी सत्यापन विफल हो गइल। कृपया फिर से कोशिश करीं।"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "Passkey"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "ई ब्राउज़र में passkey उपलब्ध नइखे"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "पैटर्न (रेगेक्स)"
 
-#: ../../../lib/web/src/components/person-picker.tsx:178
+#: ../../../lib/web/src/components/person-picker.tsx:179
 msgid "People"
 msgstr "लोग"
 
@@ -2011,7 +2038,7 @@ msgstr "पुश सूचना"
 msgid "Raised"
 msgstr "उठल"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "एह सर्वर पर आपन खाता फिर से जोड़ीं"
 
@@ -2019,7 +2046,7 @@ msgstr "एह सर्वर पर आपन खाता फिर से �
 msgid "Re-order columns"
 msgstr "कॉलम के फेर से क्रम लगाईं"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "एह सर्वर पर आपन पासकी फिर से रजिस्टर करीं"
 
@@ -2034,6 +2061,14 @@ msgstr "सिफारिश कइल CRM"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "फेर से जुड़ रहल बा ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "रिकॉर्डिंग बिफल भइल। कृपया फेर से कोसिस करीं।"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "रिकॉर्डिंग में कवनो आवाज नइखे"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2277,7 +2312,7 @@ msgstr "ए दृश्य के खोजीं, देखीं, आ छा�
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:302
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "खोजीं..."
@@ -2541,6 +2576,22 @@ msgstr "भेजल ना जा सकल। फाइल बहुत बड
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "अपलोड खातिर बहुत बड़ रहे। फाइल हटाईं भा छोट करीं आ फेर से कोसिस करीं।"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "कैमरा पहिले से इस्तेमाल में बा"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "कैमरा अनुरोध के जवाब ना मिलल"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "माइक्रोफोन अनुरोध के जवाब ना मिलल"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "Passkey अनुरोध के जवाब ना मिलल"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "मांगल गइल सामग्री ना मिलल।"
@@ -2548,6 +2599,10 @@ msgstr "मांगल गइल सामग्री ना मिलल।"
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "सर्वर डेटा के बजाय एगो वेब पेज लौटवलस।"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "ई ऐप के रउआ passkey इस्तेमाल करे के अनुमति नइखे। सेटिंग में, अनुमति के नीचे एकरा के अनुमति दीं।"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM could not be loaded right now."
@@ -2819,6 +2874,10 @@ msgstr "विकल्प देखीं"
 msgid "Views"
 msgstr "दृश्य"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "ई ब्राउज़र में वॉयस रिकॉर्डिंग के समर्थन नइखे"
+
 #: src/features/objects/components/object-detail-panel.tsx:353
 #: src/features/objects/components/object-detail-panel.tsx:362
 msgid "Watch"
@@ -2854,7 +2913,7 @@ msgstr "रउरा लगे ई CRM के पहुँच नइखे।"
 msgid "You have no CRMs yet."
 msgstr "आपके अबही ले कवनो CRM नइखे।"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "आपन खाता {source} से इहाँ हिलावल गइल। जब तक उहाँ से ना मेटाईं, संदेश आ सूचना दुनो सर्वर पर पहुँच सकेला, कुछ सामग्री पुरान सर्वर से आवत रही, आ फॉलोअर्स के इहाँ ढूंढे में कुछ मिनट लाग सकेला।"
 

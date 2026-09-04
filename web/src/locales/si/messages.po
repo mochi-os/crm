@@ -35,7 +35,7 @@ msgid "[not set]"
 msgstr "[සකසා නැත]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:259
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# තෝරාගත්} other {# තෝරාගත්}}"
 
@@ -54,19 +54,19 @@ msgstr "{0} - මෝස්තරය"
 msgid "{0} settings"
 msgstr "{0} සැකසුම්"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#දි} other {#දි}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#පැ} other {#පැ}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#මි} other {#මි}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#සති} other {#සති}}"
 
@@ -102,6 +102,10 @@ msgstr "පැය 12"
 #: ../../../lib/web/src/lib/preference-utils.ts:36
 msgid "24 hours"
 msgstr "පැය 24"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "පටිගත කිරීමක් දැනටමත් සිදුවෙමින් පවතී."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -398,6 +402,14 @@ msgstr "මායිම් වර්ණය"
 msgid "Browser notifications"
 msgstr "බ්‍රවුසර දැනුම්දීම්"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "කැමරා අවසරය ප්‍රතික්ෂේප විය"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "කැමරාව නොමැත"
+
 #: src/features/editor/components/edit-dialogs.tsx:303
 msgid "Can be child of"
 msgstr "මෙහි දරුවෙකු විය හැක"
@@ -429,6 +441,12 @@ msgstr "අදහස අවලංගු කරන්න"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "පිළිතුර අවලංගු කරන්න"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "අවලංගු කරන ලදී"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:386
 #: ../../../lib/web/src/components/attachment-composer.tsx:421
@@ -871,7 +889,7 @@ msgstr "විකල්පය {0} මකන්න"
 msgid "Delete view"
 msgstr "දැක්ම මකන්න"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "පැරණි සේවාදායකයේ ඔබේ ගිණුම මකන්න"
 
@@ -926,7 +944,7 @@ msgstr "විස්තර Panel"
 msgid "Detect from web browser"
 msgstr "වෙබ් බ්‍රවුසරයෙන් හඳුනාගන්න"
 
-#: ../../../lib/web/src/components/person-picker.tsx:192
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "නාමාවලිය"
 
@@ -943,8 +961,8 @@ msgstr "කෙටුම්පත ඉවත ලන්නද?"
 msgid "Disconnected"
 msgstr "විසන්ධියි"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "ඉවත ලන්න"
 
@@ -1374,7 +1392,7 @@ msgstr "CRMs සොයන්න"
 msgid "Fingerprint"
 msgstr "ඇඟිලි සලකුණ"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "ඔබේ ගිණුම ගෙන යාම අවසන් කරන්න"
 
@@ -1390,7 +1408,7 @@ msgstr "පැතලි"
 msgid "Friday"
 msgstr "සිකුරාදා"
 
-#: ../../../lib/web/src/components/person-picker.tsx:185
+#: ../../../lib/web/src/components/person-picker.tsx:186
 msgid "Friends"
 msgstr "මිතුරන්"
 
@@ -1513,7 +1531,7 @@ msgstr "ඔබ සොයන පිටුව <0/>නොපවතින බවක�
 msgid "Item details"
 msgstr "අයිතම විස්තර"
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "මේ දැන්"
 
@@ -1630,6 +1648,10 @@ msgstr "පණිවිඩය"
 #: ../../../lib/web/src/lib/preference-utils.ts:80
 msgid "Metric"
 msgstr "මිනුම"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "මයික්‍රෆෝන අවසරය ප්‍රතික්ෂේප විය"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
@@ -1813,7 +1835,7 @@ msgstr "බැලීම් නැත"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:328
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
@@ -1940,18 +1962,23 @@ msgid "Passkey"
 msgstr "ප්‍රවේශ යතුර"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "මුරයතුර සත්‍යාපනය අසාර්ථක විය. නැවත උත්සාහ කරන්න."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "මුරයතුරු"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "මෙම බ්‍රව්සරයේ passkeys නොමැත"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "රටාව (regex)"
 
-#: ../../../lib/web/src/components/person-picker.tsx:178
+#: ../../../lib/web/src/components/person-picker.tsx:179
 msgid "People"
 msgstr "පුද්ගලයන්"
 
@@ -2011,7 +2038,7 @@ msgstr "තල්ලු දැනුම්දීම"
 msgid "Raised"
 msgstr "උස්කළ"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "මෙම සේවාදායකයේ ඔබේ ගිණුම් නැවත සම්බන්ධ කරන්න"
 
@@ -2019,7 +2046,7 @@ msgstr "මෙම සේවාදායකයේ ඔබේ ගිණුම් �
 msgid "Re-order columns"
 msgstr "තීරු නැවත අනුපිළිවෙළට සැකසීම"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "මෙම සේවාදායකයේ ඔබගේ මුරයතුරු නැවත ලියාපදිංචි කරන්න"
 
@@ -2034,6 +2061,14 @@ msgstr "නිර්දේශිත CRMs"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "නැවත සම්බන්ධ වෙමින් ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "පටිගත කිරීම අසාර්ථක විය. කරුණාකර නැවත උත්සාහ කරන්න."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "පටිගත කිරීමේ ශබ්දයක් නැත"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2277,7 +2312,7 @@ msgstr "මෙම දසුන සොයන්න, නරඹන්න, සහ �
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:302
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "සොයන්න..."
@@ -2541,6 +2576,22 @@ msgstr "යැවීමට නොහැකි විය. ගොනු ඉතා 
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "උඩුගත කිරීමට ඉතා විශාල විය. ගොනු ඉවත් කරන්න හෝ කුඩා කර නැවත උත්සාහ කරන්න."
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "කැමරාව දැනටමත් භාවිතයේ පවතී"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "කැමරා ඉල්ලීමට පිළිතුරු ලැබුණේ නැත"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "මයික්‍රොෆෝන ඉල්ලීමට පිළිතුරු ලැබුණේ නැත"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "Passkey ඉල්ලීමට පිළිතුරු ලැබුණේ නැත"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "ඉල්ලූ අන්තර්ගතය සොයාගත නොහැකි විය."
@@ -2548,6 +2599,10 @@ msgstr "ඉල්ලූ අන්තර්ගතය සොයාගත නොහ
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "සේවාදායකය දත්ත වෙනුවට වෙබ් පිටුවක් ලබා දුන්නේය."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "මෙම යෙදුමට ඔබගේ passkey භාවිතා කිරීමට අවසර නැත. සැකසුම් තුළ, අවසර යටතේ එයට ඉඩ දෙන්න."
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM could not be loaded right now."
@@ -2819,6 +2874,10 @@ msgstr "දසුන් විකල්ප"
 msgid "Views"
 msgstr "දසුන්"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "මෙම බ්‍රව්සරයේ හඬ පටිගත කිරීමට සහාය නැත"
+
 #: src/features/objects/components/object-detail-panel.tsx:353
 #: src/features/objects/components/object-detail-panel.tsx:362
 msgid "Watch"
@@ -2854,7 +2913,7 @@ msgstr "ඔබට මෙම CRM වෙත ප්‍රවේශය නැත."
 msgid "You have no CRMs yet."
 msgstr "ඔබට තවමත් CRMs නොමැත."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "ඔබේ ගිණුම {source} සිට මෙහි ගෙන ආවා. එතන ඉවත් කරන තෙක්, පණිවිඩ සහ දැනුම්දීම් සේවාදායකයන් දෙකටම ළඟා විය හැකිය, ඔබේ සමහර අන්තර්ගතය පැරණි සේවාදායකයෙන් ලබාදීම ඉදිරියටත් සිදු වේ, සහ අනුගාමිකයින්ට ඔබව මෙහිදී සොයා ගැනීමට මිනිත්තු කිහිපයක් ගත වනු ඇත."
 

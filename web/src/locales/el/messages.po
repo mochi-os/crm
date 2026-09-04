@@ -35,7 +35,7 @@ msgid "[not set]"
 msgstr "[χωρίς ορισμό]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:259
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# επιλεγμένο} other {# επιλεγμένα}}"
 
@@ -54,19 +54,19 @@ msgstr "{0} - Σχεδίαση"
 msgid "{0} settings"
 msgstr "Ρυθμίσεις {0}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#μ} other {#μ}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#ώ} other {#ώ}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#λ} other {#λ}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#εβδ} other {#εβδ}}"
 
@@ -102,6 +102,10 @@ msgstr "12 ώρες"
 #: ../../../lib/web/src/lib/preference-utils.ts:36
 msgid "24 hours"
 msgstr "24 ώρες"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "Μια εγγραφή βρίσκεται ήδη σε εξέλιξη."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -398,6 +402,14 @@ msgstr "Χρώμα περιγράμματος"
 msgid "Browser notifications"
 msgstr "Ειδοποιήσεις προγράμματος περιήγησης"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "Η άδεια κάμερας απορρίφθηκε"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "Η κάμερα δεν είναι διαθέσιμη"
+
 #: src/features/editor/components/edit-dialogs.tsx:303
 msgid "Can be child of"
 msgstr "Μπορεί να είναι θυγατρικό του"
@@ -429,6 +441,12 @@ msgstr "Ακύρωση σχολίου"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "Ακύρωση απάντησης"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "Ακυρώθηκε"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:386
 #: ../../../lib/web/src/components/attachment-composer.tsx:421
@@ -871,7 +889,7 @@ msgstr "Διαγραφή επιλογής {0}"
 msgid "Delete view"
 msgstr "Διαγραφή προβολής"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "Διαγράψτε τον λογαριασμό σας στον παλιό διακομιστή"
 
@@ -926,7 +944,7 @@ msgstr "Πίνακας λεπτομερειών"
 msgid "Detect from web browser"
 msgstr "Εντοπισμός από το πρόγραμμα περιήγησης"
 
-#: ../../../lib/web/src/components/person-picker.tsx:192
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "Κατάλογος"
 
@@ -943,8 +961,8 @@ msgstr "Απόρριψη πρόχειρου;"
 msgid "Disconnected"
 msgstr "Αποσυνδεδεμένο"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "Απόρριψη"
 
@@ -1374,7 +1392,7 @@ msgstr "Εύρεση CRM"
 msgid "Fingerprint"
 msgstr "Αποτύπωμα"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "Ολοκληρώστε τη μεταφορά του λογαριασμού σας"
 
@@ -1390,7 +1408,7 @@ msgstr "Επίπεδη"
 msgid "Friday"
 msgstr "Παρασκευή"
 
-#: ../../../lib/web/src/components/person-picker.tsx:185
+#: ../../../lib/web/src/components/person-picker.tsx:186
 msgid "Friends"
 msgstr "Φίλοι"
 
@@ -1513,7 +1531,7 @@ msgstr "Φαίνεται ότι η σελίδα που αναζητάτε <0/>δ
 msgid "Item details"
 msgstr "Λεπτομέρειες στοιχείου"
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "Μόλις τώρα"
 
@@ -1630,6 +1648,10 @@ msgstr "Μήνυμα"
 #: ../../../lib/web/src/lib/preference-utils.ts:80
 msgid "Metric"
 msgstr "Μετρικό"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "Η άδεια μικροφώνου απορρίφθηκε"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
@@ -1813,7 +1835,7 @@ msgstr "Χωρίς προβολές"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:328
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
@@ -1940,18 +1962,23 @@ msgid "Passkey"
 msgstr "Κλειδί πρόσβασης"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "Η επαλήθευση με κλειδί πρόσβασης απέτυχε. Δοκιμάστε ξανά."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "Κλειδιά πρόσβασης"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "Τα passkeys δεν είναι διαθέσιμα σε αυτό το πρόγραμμα περιήγησης"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "Μοτίβο (regex)"
 
-#: ../../../lib/web/src/components/person-picker.tsx:178
+#: ../../../lib/web/src/components/person-picker.tsx:179
 msgid "People"
 msgstr "Άτομα"
 
@@ -2011,7 +2038,7 @@ msgstr "Ειδοποίηση push"
 msgid "Raised"
 msgstr "Ανυψωμένη"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "Επανασυνδέστε τους λογαριασμούς σας σε αυτόν τον διακομιστή"
 
@@ -2019,7 +2046,7 @@ msgstr "Επανασυνδέστε τους λογαριασμούς σας σε
 msgid "Re-order columns"
 msgstr "Αναδιάταξη στηλών"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "Καταχωρίστε ξανά τα κλειδιά πρόσβασής σας σε αυτόν τον διακομιστή"
 
@@ -2034,6 +2061,14 @@ msgstr "Συνιστώμενα CRM"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "Επανασύνδεση ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "Η εγγραφή απέτυχε. Δοκιμάστε ξανά."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "Η εγγραφή δεν περιέχει ήχο"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2277,7 +2312,7 @@ msgstr "Αναζήτηση, παρακολούθηση και ταξινόμησ
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:302
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "Αναζήτηση..."
@@ -2541,6 +2576,22 @@ msgstr "Δεν ήταν δυνατή η αποστολή. Τα αρχεία μπ
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Ήταν πολύ μεγάλο για μεταφόρτωση. Αφαιρέστε ή μικρύνετε αρχεία και δοκιμάστε ξανά."
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "Η κάμερα χρησιμοποιείται ήδη"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "Το αίτημα κάμερας δεν απαντήθηκε"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "Το αίτημα μικροφώνου δεν απαντήθηκε"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "Το αίτημα passkey δεν απαντήθηκε"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "Το περιεχόμενο που ζητήσατε δεν βρέθηκε."
@@ -2548,6 +2599,10 @@ msgstr "Το περιεχόμενο που ζητήσατε δεν βρέθηκ�
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "Ο διακομιστής επέστρεψε ιστοσελίδα αντί για δεδομένα."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "Αυτή η εφαρμογή δεν επιτρέπεται να χρησιμοποιήσει το passkey σας. Επιτρέψτε το στις Ρυθμίσεις, στην ενότητα Δικαιώματα."
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM could not be loaded right now."
@@ -2819,6 +2874,10 @@ msgstr "Επιλογές προβολής"
 msgid "Views"
 msgstr "Προβολές"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "Η φωνητική εγγραφή δεν υποστηρίζεται σε αυτό το πρόγραμμα περιήγησης"
+
 #: src/features/objects/components/object-detail-panel.tsx:353
 #: src/features/objects/components/object-detail-panel.tsx:362
 msgid "Watch"
@@ -2854,7 +2913,7 @@ msgstr "Δεν έχετε πρόσβαση σε αυτό το CRM."
 msgid "You have no CRMs yet."
 msgstr "Δεν έχετε ακόμα CRM."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Ο λογαριασμός σας μεταφέρθηκε εδώ από {source}. Μέχρι να τον διαγράψετε εκεί, τα μηνύματα και οι ειδοποιήσεις μπορεί να φτάνουν και στους δύο διακομιστές, μέρος του περιεχομένου σας συνεχίζει να εξυπηρετείται από τον παλιό διακομιστή και οι ακόλουθοί σας ενδέχεται να χρειαστούν λίγα λεπτά για να σας βρουν εδώ."
 

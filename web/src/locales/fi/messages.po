@@ -35,7 +35,7 @@ msgid "[not set]"
 msgstr "[ei asetettu]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:259
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# valittu} other {# valittu}}"
 
@@ -54,19 +54,19 @@ msgstr "{0} - Malli"
 msgid "{0} settings"
 msgstr "{0}-asetukset"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#pv} other {#pv}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#t} other {#t}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#min} other {#min}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#vk} other {#vk}}"
 
@@ -102,6 +102,10 @@ msgstr "12 tuntia"
 #: ../../../lib/web/src/lib/preference-utils.ts:36
 msgid "24 hours"
 msgstr "24 tuntia"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "Tallennus on jo käynnissä."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -398,6 +402,14 @@ msgstr "Reunan väri"
 msgid "Browser notifications"
 msgstr "Selaimen ilmoitukset"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "Kameran käyttöoikeus evättiin"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "Kamera ei ole käytettävissä"
+
 #: src/features/editor/components/edit-dialogs.tsx:303
 msgid "Can be child of"
 msgstr "Voi olla alikohde kohteelle"
@@ -429,6 +441,12 @@ msgstr "Peruuta kommentti"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "Peruuta vastaus"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "Peruutettu"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:386
 #: ../../../lib/web/src/components/attachment-composer.tsx:421
@@ -871,7 +889,7 @@ msgstr "Poista vaihtoehto {0}"
 msgid "Delete view"
 msgstr "Poista näkymä"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "Poista tilisi vanhalta palvelimelta"
 
@@ -926,7 +944,7 @@ msgstr "Tietopaneeli"
 msgid "Detect from web browser"
 msgstr "Tunnista selaimesta"
 
-#: ../../../lib/web/src/components/person-picker.tsx:192
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "Hakemisto"
 
@@ -943,8 +961,8 @@ msgstr "Hylätäänkö luonnos?"
 msgid "Disconnected"
 msgstr "Ei yhteyttä"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "Hylkää"
 
@@ -1374,7 +1392,7 @@ msgstr "Etsi CRM:iä"
 msgid "Fingerprint"
 msgstr "Sormenjälki"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "Viimeistele tilin siirto"
 
@@ -1390,7 +1408,7 @@ msgstr "Litteä"
 msgid "Friday"
 msgstr "Perjantai"
 
-#: ../../../lib/web/src/components/person-picker.tsx:185
+#: ../../../lib/web/src/components/person-picker.tsx:186
 msgid "Friends"
 msgstr "Kaverit"
 
@@ -1513,7 +1531,7 @@ msgstr "Näyttää siltä, että etsimääsi sivua <0/>ei ole olemassa tai se on
 msgid "Item details"
 msgstr "Kohteen tiedot"
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "Juuri nyt"
 
@@ -1630,6 +1648,10 @@ msgstr "Viesti"
 #: ../../../lib/web/src/lib/preference-utils.ts:80
 msgid "Metric"
 msgstr "Metrinen"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "Mikrofonin käyttölupa evätty"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
@@ -1813,7 +1835,7 @@ msgstr "Ei näkymiä"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:328
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
@@ -1940,18 +1962,23 @@ msgid "Passkey"
 msgstr "Avainkoodi"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "Avainkoodin vahvistus epäonnistui. Yritä uudelleen."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "Avainkoodit"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "Avainkoodit eivät ole käytettävissä tässä selaimessa"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "Kuvio (regex)"
 
-#: ../../../lib/web/src/components/person-picker.tsx:178
+#: ../../../lib/web/src/components/person-picker.tsx:179
 msgid "People"
 msgstr "Henkilöt"
 
@@ -2011,7 +2038,7 @@ msgstr "Push-ilmoitus"
 msgid "Raised"
 msgstr "Korotettu"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "Yhdistä tilisi uudelleen tällä palvelimella"
 
@@ -2019,7 +2046,7 @@ msgstr "Yhdistä tilisi uudelleen tällä palvelimella"
 msgid "Re-order columns"
 msgstr "Järjestä sarakkeet uudelleen"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "Rekisteröi pääsyavaimesi uudelleen tällä palvelimella"
 
@@ -2034,6 +2061,14 @@ msgstr "Suositellut CRM:t"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "Yhdistetään uudelleen ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "Tallennus epäonnistui. Yritä uudelleen."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "Tallenne ei sisältänyt ääntä"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2277,7 +2312,7 @@ msgstr "Hae, seuraa ja lajittele tätä näkymää."
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:302
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "Hae..."
@@ -2541,6 +2576,22 @@ msgstr "Lähetys epäonnistui. Tiedostot voivat olla liian suuria tai yhteys kat
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Se oli liian suuri ladattavaksi. Poista tai pienennä tiedostoja ja yritä uudelleen."
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "Kamera on jo käytössä"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "Kamerapyyntöön ei vastattu"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "Mikrofonipyyntöön ei vastattu"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "Avainkoodipyyntöön ei vastattu"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "Pyydettyä sisältöä ei löytynyt."
@@ -2548,6 +2599,10 @@ msgstr "Pyydettyä sisältöä ei löytynyt."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "Palvelin palautti verkkosivun tietojen sijaan."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "Tämä sovellus ei saa käyttää avainkoodiasi. Salli se Asetuksissa kohdassa Käyttöoikeudet."
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM could not be loaded right now."
@@ -2819,6 +2874,10 @@ msgstr "Näytä vaihtoehdot"
 msgid "Views"
 msgstr "Katselukerrat"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "Äänitallennusta ei tueta tässä selaimessa"
+
 #: src/features/objects/components/object-detail-panel.tsx:353
 #: src/features/objects/components/object-detail-panel.tsx:362
 msgid "Watch"
@@ -2854,7 +2913,7 @@ msgstr "Sinulla ei ole pääsyä tähän CRM:ään."
 msgid "You have no CRMs yet."
 msgstr "Sinulla ei ole vielä CRM-järjestelmiä."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Tilisi siirrettiin tänne kohteesta {source}. Kunnes poistat sen sieltä, viestit ja ilmoitukset voivat tavoittaa molemmat palvelimet, osa sisällöstäsi toimitetaan edelleen vanhalta palvelimelta ja seuraajillasi voi kestää muutama minuutti löytää sinut täältä."
 

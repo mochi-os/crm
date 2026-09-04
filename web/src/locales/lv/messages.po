@@ -35,7 +35,7 @@ msgid "[not set]"
 msgstr "[nav iestatīts]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:259
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, zero {# atlasīti} one {# atlasīts} other {# atlasīti}}"
 
@@ -54,19 +54,19 @@ msgstr "{0} - Dizains"
 msgid "{0} settings"
 msgstr "{0} iestatījumi"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#d} other {#d}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#st} other {#st}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#min} other {#min}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ned} other {#ned}}"
 
@@ -102,6 +102,10 @@ msgstr "12 stundas"
 #: ../../../lib/web/src/lib/preference-utils.ts:36
 msgid "24 hours"
 msgstr "24 stundas"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "Ierakstīšana jau notiek."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -398,6 +402,14 @@ msgstr "Apmales krāsa"
 msgid "Browser notifications"
 msgstr "Pārlūka paziņojumi"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "Kameras atļauja noraidīta"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "Kamera nav pieejama"
+
 #: src/features/editor/components/edit-dialogs.tsx:303
 msgid "Can be child of"
 msgstr "Var būt apakšobjekts:"
@@ -429,6 +441,12 @@ msgstr "Atcelt komentāru"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "Atcelt atbildi"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "Atcelts"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:386
 #: ../../../lib/web/src/components/attachment-composer.tsx:421
@@ -871,7 +889,7 @@ msgstr "Dzēst opciju {0}"
 msgid "Delete view"
 msgstr "Dzēst skatu"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "Dzēsiet savu kontu vecajā serverī"
 
@@ -926,7 +944,7 @@ msgstr "Detaļu panelis"
 msgid "Detect from web browser"
 msgstr "Noteikt no tīmekļa pārlūka"
 
-#: ../../../lib/web/src/components/person-picker.tsx:192
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "Katalogs"
 
@@ -943,8 +961,8 @@ msgstr "Atmest melnrakstu?"
 msgid "Disconnected"
 msgstr "Atvienots"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "Aizvērt"
 
@@ -1374,7 +1392,7 @@ msgstr "Atrast CRM"
 msgid "Fingerprint"
 msgstr "Pirkstu nospiedums"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "Pabeidziet konta pārvietošanu"
 
@@ -1390,7 +1408,7 @@ msgstr "Plakana"
 msgid "Friday"
 msgstr "Piektdiena"
 
-#: ../../../lib/web/src/components/person-picker.tsx:185
+#: ../../../lib/web/src/components/person-picker.tsx:186
 msgid "Friends"
 msgstr "Draugi"
 
@@ -1513,7 +1531,7 @@ msgstr "Šķiet, ka meklētā lapa <0/>neeksistē vai ir noņemta."
 msgid "Item details"
 msgstr "Vienuma informācija"
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "Tikko"
 
@@ -1630,6 +1648,10 @@ msgstr "Ziņojums"
 #: ../../../lib/web/src/lib/preference-utils.ts:80
 msgid "Metric"
 msgstr "Metrisks"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "Mikrofona atļauja liegta"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
@@ -1813,7 +1835,7 @@ msgstr "Nav skatījumu"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:328
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
@@ -1940,18 +1962,23 @@ msgid "Passkey"
 msgstr "Piekļuves atslēga"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "Piekļuves atslēgas pārbaude neizdevās. Lūdzu, mēģiniet vēlreiz."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "Piekļuves atslēgas"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "Piekļuves atslēgas šajā pārlūkā nav pieejamas"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "Šablons (regex)"
 
-#: ../../../lib/web/src/components/person-picker.tsx:178
+#: ../../../lib/web/src/components/person-picker.tsx:179
 msgid "People"
 msgstr "Cilvēki"
 
@@ -2011,7 +2038,7 @@ msgstr "Push paziņojums"
 msgid "Raised"
 msgstr "Izcelts"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "Atkārtoti saistiet savus kontus šajā serverī"
 
@@ -2019,7 +2046,7 @@ msgstr "Atkārtoti saistiet savus kontus šajā serverī"
 msgid "Re-order columns"
 msgstr "Pārkārtot kolonnas"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "Atkārtoti reģistrējiet savas piekļuves atslēgas šajā serverī"
 
@@ -2034,6 +2061,14 @@ msgstr "Ieteiktie CRM"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "Notiek atkārtota savienošana ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "Ierakstīšana neizdevās. Lūdzu, mēģiniet vēlreiz."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "Ieraksts nesaturēja audio"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2277,7 +2312,7 @@ msgstr "Meklējiet, skatieties un kārtojiet šo skatu."
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:302
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "Meklēt..."
@@ -2541,6 +2576,22 @@ msgstr "Neizdevās nosūtīt. Faili var būt pārāk lieli, vai savienojums pār
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Pārāk liels, lai augšupielādētu. Noņemiet vai samaziniet failus un mēģiniet vēlreiz."
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "Kamera jau tiek izmantota"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "Uz kameras pieprasījumu netika atbildēts"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "Uz mikrofona pieprasījumu netika atbildēts"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "Uz piekļuves atslēgas pieprasījumu netika atbildēts"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "Pieprasīto saturu neizdevās atrast."
@@ -2548,6 +2599,10 @@ msgstr "Pieprasīto saturu neizdevās atrast."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "Serveris atgrieza tīmekļa lapu, nevis datus."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "Šai lietotnei nav atļauts izmantot jūsu piekļuves atslēgu. Atļaujiet to Iestatījumos, sadaļā Atļaujas."
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM could not be loaded right now."
@@ -2819,6 +2874,10 @@ msgstr "Skata opcijas"
 msgid "Views"
 msgstr "Skatījumi"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "Balss ierakstīšana šajā pārlūkā netiek atbalstīta"
+
 #: src/features/objects/components/object-detail-panel.tsx:353
 #: src/features/objects/components/object-detail-panel.tsx:362
 msgid "Watch"
@@ -2854,7 +2913,7 @@ msgstr "Jums nav piekļuves šim CRM."
 msgid "You have no CRMs yet."
 msgstr "Jums vēl nav neviena CRM."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Jūsu konts tika pārvietots šeit no {source}. Kamēr to tur nedzēšat, ziņojumi un paziņojumi var sasniegt abus serverus, daļa jūsu satura joprojām tiek apkalpota no vecā servera un sekotājiem var paiet dažas minūtes, lai atrastu jūs šeit."
 

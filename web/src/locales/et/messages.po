@@ -35,7 +35,7 @@ msgid "[not set]"
 msgstr "[määramata]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:259
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# valitud} other {# valitud}}"
 
@@ -54,19 +54,19 @@ msgstr "{0} - kujundus"
 msgid "{0} settings"
 msgstr "{0} seaded"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#p} other {#p}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#t} other {#t}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#min} other {#min}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#näd} other {#näd}}"
 
@@ -102,6 +102,10 @@ msgstr "12 tundi"
 #: ../../../lib/web/src/lib/preference-utils.ts:36
 msgid "24 hours"
 msgstr "24 tundi"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "Salvestamine on juba pooleli."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -398,6 +402,14 @@ msgstr "Äärise värv"
 msgid "Browser notifications"
 msgstr "Brauseri teavitused"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "Kaamera luba keelati"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "Kaamera pole saadaval"
+
 #: src/features/editor/components/edit-dialogs.tsx:303
 msgid "Can be child of"
 msgstr "Saab olla alamliik"
@@ -429,6 +441,12 @@ msgstr "Tühista kommentaar"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "Tühista vastus"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "Tühistatud"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:386
 #: ../../../lib/web/src/components/attachment-composer.tsx:421
@@ -871,7 +889,7 @@ msgstr "Kustuta valik {0}"
 msgid "Delete view"
 msgstr "Kustuta vaade"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "Kustuta konto vanalt serverilt"
 
@@ -926,7 +944,7 @@ msgstr "Üksikasjade paneel"
 msgid "Detect from web browser"
 msgstr "Tuvasta veebibrauserist"
 
-#: ../../../lib/web/src/components/person-picker.tsx:192
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "Kataloog"
 
@@ -943,8 +961,8 @@ msgstr "Kas loobuda mustandist?"
 msgid "Disconnected"
 msgstr "Ühendus puudub"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "Sulge"
 
@@ -1374,7 +1392,7 @@ msgstr "Otsi CRM-e"
 msgid "Fingerprint"
 msgstr "Sõrmejälg"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "Lõpeta konto koliminen"
 
@@ -1390,7 +1408,7 @@ msgstr "Lame"
 msgid "Friday"
 msgstr "Reede"
 
-#: ../../../lib/web/src/components/person-picker.tsx:185
+#: ../../../lib/web/src/components/person-picker.tsx:186
 msgid "Friends"
 msgstr "Sõbrad"
 
@@ -1513,7 +1531,7 @@ msgstr "Näib, et otsitavat lehte <0/>pole olemas või on see eemaldatud."
 msgid "Item details"
 msgstr "Elemendi üksikasjad"
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "Just praegu"
 
@@ -1630,6 +1648,10 @@ msgstr "Sõnum"
 #: ../../../lib/web/src/lib/preference-utils.ts:80
 msgid "Metric"
 msgstr "Meetermõõdustik"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "Mikrofoni luba keelatud"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
@@ -1813,7 +1835,7 @@ msgstr "Vaatamisi pole"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:328
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
@@ -1940,18 +1962,23 @@ msgid "Passkey"
 msgstr "Pääsuvõti"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "Pääsuvõtmega kinnitamine ebaõnnestus. Proovige uuesti."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "Pääsuvõtmed"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "Pääsuvõtmed pole selles brauseris saadaval"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "Muster (regex)"
 
-#: ../../../lib/web/src/components/person-picker.tsx:178
+#: ../../../lib/web/src/components/person-picker.tsx:179
 msgid "People"
 msgstr "Inimesed"
 
@@ -2011,7 +2038,7 @@ msgstr "Tõuketeatis"
 msgid "Raised"
 msgstr "Kõrgendatud"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "Ühenda kontod uuesti selle serveriga"
 
@@ -2019,7 +2046,7 @@ msgstr "Ühenda kontod uuesti selle serveriga"
 msgid "Re-order columns"
 msgstr "Järjesta veerud ümber"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "Registreerige oma pääsuvõtmed selles serveris uuesti"
 
@@ -2034,6 +2061,14 @@ msgstr "Soovitatud CRM-id"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "Taasühendamine ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "Salvestamine ebaõnnestus. Proovi uuesti."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "Salvestis ei sisaldanud heli"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2277,7 +2312,7 @@ msgstr "Otsi, jälgi ja sorteeri seda vaadet."
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:302
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "Otsi..."
@@ -2541,6 +2576,22 @@ msgstr "Saatmine ebaõnnestus. Failid võivad olla liiga suured või ühendus ka
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "See oli üleslaadimiseks liiga suur. Eemaldage või vähendage faile ja proovige uuesti."
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "Kaamera on juba kasutusel"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "Kaamera päringule ei vastatud"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "Mikrofoni päringule ei vastatud"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "Pääsuvõtme päringule ei vastatud"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "Soovitud sisu ei õnnestunud leida."
@@ -2548,6 +2599,10 @@ msgstr "Soovitud sisu ei õnnestunud leida."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "Server tagastas andmete asemel veebilehe."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "Sellel rakendusel pole luba sinu pääsuvõtit kasutada. Luba see Seadetes jaotises Õigused."
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM could not be loaded right now."
@@ -2819,6 +2874,10 @@ msgstr "Vaate valikud"
 msgid "Views"
 msgstr "Vaatamised"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "Häälsalvestust ei toetata selles brauseris"
+
 #: src/features/objects/components/object-detail-panel.tsx:353
 #: src/features/objects/components/object-detail-panel.tsx:362
 msgid "Watch"
@@ -2854,7 +2913,7 @@ msgstr "Sul puudub juurdepääs sellele CRM-ile."
 msgid "You have no CRMs yet."
 msgstr "Sul pole veel CRM-e."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Sinu konto liideti siia asukohast {source}. Kuni sa selle sealt ei kustuta, võivad sõnumid ja teavitused jõuda mõlemale serverile, osa sinu sisust tarbitakse jätkuvalt vanalt serverilt ning jälgijatel võib kuluda mõni minut, et sind siit leida."
 

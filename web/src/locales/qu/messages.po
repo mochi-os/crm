@@ -35,7 +35,7 @@ msgid "[not set]"
 msgstr "[mana churasqa]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:259
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# akllasqa} other {# akllasqa}}"
 
@@ -54,19 +54,19 @@ msgstr "{0} - Diseño"
 msgid "{0} settings"
 msgstr "{0} wakichiykuna"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#p} other {#p}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#h} other {#h}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#min} other {#min}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sem} other {#sem}}"
 
@@ -102,6 +102,10 @@ msgstr "12 hora"
 #: ../../../lib/web/src/lib/preference-utils.ts:36
 msgid "24 hours"
 msgstr "24 hora"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "Huk grabacionqa ñam ruwakuchkanña."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -398,6 +402,14 @@ msgstr "K'illa llinp'i"
 msgid "Browser notifications"
 msgstr "Browser willaykuna"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "Cámara permisoqa mana chaskisqachu"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "Cámara mana kanchu"
+
 #: src/features/editor/components/edit-dialogs.tsx:303
 msgid "Can be child of"
 msgstr "Wawan kayta atin"
@@ -429,6 +441,12 @@ msgstr "Comentario mana ruway"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "Kutichiy mana ruway"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "Mana ruwasqa"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:386
 #: ../../../lib/web/src/components/attachment-composer.tsx:421
@@ -871,7 +889,7 @@ msgstr "{0} akllana wischuy"
 msgid "Delete view"
 msgstr "Vista wischuy"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "Ñawpaq serverpi cuenta-ykita qichuy"
 
@@ -926,7 +944,7 @@ msgstr "Willariykuna Panel"
 msgid "Detect from web browser"
 msgstr "Web browser-manta tariy"
 
-#: ../../../lib/web/src/components/person-picker.tsx:192
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "Katalogo"
 
@@ -943,8 +961,8 @@ msgstr "¿Qillqa qallariyta wikch'unkichu?"
 msgid "Disconnected"
 msgstr "Mana tinkichisqa"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "Wischuy"
 
@@ -1374,7 +1392,7 @@ msgstr "CRMkunata tariy"
 msgid "Fingerprint"
 msgstr "Fingerprint"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "Cuenta-ykita apaykachay tukuchiy"
 
@@ -1390,7 +1408,7 @@ msgstr "Pampa"
 msgid "Friday"
 msgstr "Viernes"
 
-#: ../../../lib/web/src/components/person-picker.tsx:185
+#: ../../../lib/web/src/components/person-picker.tsx:186
 msgid "Friends"
 msgstr "Masikuna"
 
@@ -1513,7 +1531,7 @@ msgstr "Maskasqayki p'anqaqa <0/>manam kanchu icha qichusqam."
 msgid "Item details"
 msgstr "Item willakuy"
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "Kunanlla"
 
@@ -1630,6 +1648,10 @@ msgstr "Willakuy"
 #: ../../../lib/web/src/lib/preference-utils.ts:80
 msgid "Metric"
 msgstr "Metrico"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "Micrófono permisotaqa manam saqillankuchu"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
@@ -1813,7 +1835,7 @@ msgstr "Mana qhawaykuna"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:328
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
@@ -1940,18 +1962,23 @@ msgid "Passkey"
 msgstr "Passkey"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "Yaykuna llaveq takyachiynin mana atikurqanchu. Ama hina kaspa watiqmanta ruway."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "Passkeykuna"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "Passkeykunaqa manam kay navegadorpi kanchu"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "Patrón (regex)"
 
-#: ../../../lib/web/src/components/person-picker.tsx:178
+#: ../../../lib/web/src/components/person-picker.tsx:179
 msgid "People"
 msgstr "Runakuna"
 
@@ -2011,7 +2038,7 @@ msgstr "Push willakuy"
 msgid "Raised"
 msgstr "Hoqarisqa"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "Kay serverpi cuenta-ykikunata watiqmanta huñuy"
 
@@ -2019,7 +2046,7 @@ msgstr "Kay serverpi cuenta-ykikunata watiqmanta huñuy"
 msgid "Re-order columns"
 msgstr "Columnakunata huk niraq churay"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "Kay servidorpi passkeyniykita musukmanta qillqachiy"
 
@@ -2034,6 +2061,14 @@ msgstr "Munasqa CRMkuna"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "Kutimanta t'inkichkan ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "Grabacionqa manam allinchu karqan. Ama hina kaspa, wakmanta yanapay."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "Grabacionpiqa manam uyarina kanchu"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2277,7 +2312,7 @@ msgstr "Kay vistapi maskay, qhaway, hinaspa allichay."
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:302
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "Maskay..."
@@ -2541,6 +2576,22 @@ msgstr "Manam apachikuyta atikurqachu. Archivokunaqa ancha hatunchá kanku, utaq
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Ancha hatun karqa churanapaq. Archivokunata hurquy utaq huch'uyachiy, hinaspa wakmanta ruway."
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "Cámaraqa ñam llamk'achisqaña"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "Cámara mañakuyqa manam kutichisqachu karqan"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "Micrófono mañakuyqa manam kutichisqachu karqan"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "Passkey mañakuyqa manam kutichisqachu karqan"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "Mañakusqa willaykuna mana tarikunchu."
@@ -2548,6 +2599,10 @@ msgstr "Mañakusqa willaykuna mana tarikunchu."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "Servidorqa mana willakuykunatachu kutichirqan, huk web p'anqatam."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "Kay aplicacionqa manam passkeykita llamk'achiyta atinchu. Ajustes ukhupi, Permisos ukhupi saqiy."
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM could not be loaded right now."
@@ -2819,6 +2874,10 @@ msgstr "Qhaway opcionkuna"
 msgid "Views"
 msgstr "Qhawaykuna"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "Kay navegadorpiqa manam kunka grabay atikunchu"
+
 #: src/features/objects/components/object-detail-panel.tsx:353
 #: src/features/objects/components/object-detail-panel.tsx:362
 msgid "Watch"
@@ -2854,7 +2913,7 @@ msgstr "Kay CRM ukhuman mana yaykuyta atinkichu."
 msgid "You have no CRMs yet."
 msgstr "Manaraq CRMniyuqchu kanki."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Cuenta-yki {source} llaqtamanta kaypi churasqa karqan. Chaypeqa manaraj qichuykiptiyki, willakuykuna hinaspa sut'ichakuykuna iskay serverkunaman chayayta atinku, imaymayki wakin ñawpaq servermanta kamachikapusqanmi kachkan, hinaspa qhatiqniykim kaypi tarisunkaypaq huk minutokunata suyayta atinku."
 

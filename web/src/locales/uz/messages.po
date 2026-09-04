@@ -35,7 +35,7 @@ msgid "[not set]"
 msgstr "[oʻrnatilmagan]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:259
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# tanlangan} other {# tanlangan}}"
 
@@ -54,19 +54,19 @@ msgstr "{0} - Dizayn"
 msgid "{0} settings"
 msgstr "{0} sozlamalari"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#kun} other {#kun}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#soat} other {#soat}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#daq} other {#daq}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#hafta} other {#hafta}}"
 
@@ -102,6 +102,10 @@ msgstr "12 soat"
 #: ../../../lib/web/src/lib/preference-utils.ts:36
 msgid "24 hours"
 msgstr "24 soat"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "Yozib olish allaqachon davom etmoqda."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -398,6 +402,14 @@ msgstr "Hoshiya rangi"
 msgid "Browser notifications"
 msgstr "Brauzer bildirishnomalari"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "Kamera ruxsati rad etildi"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "Kamera mavjud emas"
+
 #: src/features/editor/components/edit-dialogs.tsx:303
 msgid "Can be child of"
 msgstr "Quyidagi elementining bolasi boʻlishi mumkin"
@@ -429,6 +441,12 @@ msgstr "Izohni bekor qilish"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "Javobni bekor qilish"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "Bekor qilindi"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:386
 #: ../../../lib/web/src/components/attachment-composer.tsx:421
@@ -871,7 +889,7 @@ msgstr "{0} variantni oʻchirish"
 msgid "Delete view"
 msgstr "Koʻrinishni oʻchirish"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "Eski serverdagi hisobingizni o'chiring"
 
@@ -926,7 +944,7 @@ msgstr "Tafsilotlar paneli"
 msgid "Detect from web browser"
 msgstr "Veb-brauzerdan aniqlash"
 
-#: ../../../lib/web/src/components/person-picker.tsx:192
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "Katalog"
 
@@ -943,8 +961,8 @@ msgstr "Qoralama bekor qilinsinmi?"
 msgid "Disconnected"
 msgstr "Uzilgan"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "Bekor qilish"
 
@@ -1374,7 +1392,7 @@ msgstr "CRM larni topish"
 msgid "Fingerprint"
 msgstr "Barmoq izi"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "Hisobni ko'chirishni yakunlang"
 
@@ -1390,7 +1408,7 @@ msgstr "Tekis"
 msgid "Friday"
 msgstr "Juma"
 
-#: ../../../lib/web/src/components/person-picker.tsx:185
+#: ../../../lib/web/src/components/person-picker.tsx:186
 msgid "Friends"
 msgstr "Doʻstlar"
 
@@ -1513,7 +1531,7 @@ msgstr "Siz qidirayotgan sahifa <0/>mavjud emas yoki o'chirilgan ko'rinadi."
 msgid "Item details"
 msgstr "Element tafsilotlari"
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "Hozirgina"
 
@@ -1630,6 +1648,10 @@ msgstr "Xabar"
 #: ../../../lib/web/src/lib/preference-utils.ts:80
 msgid "Metric"
 msgstr "Metrik"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "Mikrofon ruxsati rad etildi"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
@@ -1813,7 +1835,7 @@ msgstr "Koʻrishlar yoʻq"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:328
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
@@ -1940,18 +1962,23 @@ msgid "Passkey"
 msgstr "Kirish kaliti"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "Kirish kaliti tasdig'i muvaffaqiyatsiz tugadi. Iltimos, qaytadan urinib ko'ring."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "Passkey’lar"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "Passkey’lar bu brauzerda mavjud emas"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "Naqsh (regex)"
 
-#: ../../../lib/web/src/components/person-picker.tsx:178
+#: ../../../lib/web/src/components/person-picker.tsx:179
 msgid "People"
 msgstr "Odamlar"
 
@@ -2011,7 +2038,7 @@ msgstr "Push bildirishnoma"
 msgid "Raised"
 msgstr "Koʻtarilgan"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "Bu serverdagi hisoblaringizni qayta ulang"
 
@@ -2019,7 +2046,7 @@ msgstr "Bu serverdagi hisoblaringizni qayta ulang"
 msgid "Re-order columns"
 msgstr "Ustunlarni qayta tartiblash"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "Ushbu serverda kirish kalitlaringizni qayta ro'yxatdan o'tkazing"
 
@@ -2034,6 +2061,14 @@ msgstr "Tavsiya etilgan CRMlar"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "Qayta ulanmoqda ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "Yozib olish muvaffaqiyatsiz tugadi. Qayta urinib koʻring."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "Yozuvda ovoz yoʻq"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2277,7 +2312,7 @@ msgstr "Bu koʻrinishni qidirish, kuzatish va tartiblash."
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:302
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "Qidirish..."
@@ -2541,6 +2576,22 @@ msgstr "Yuborib bo‘lmadi. Fayllar juda katta bo‘lishi mumkin yoki aloqa uzil
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Yuklash uchun juda katta edi. Fayllarni olib tashlang yoki kichraytiring va qayta urinib ko‘ring."
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "Kamera allaqachon ishlatilmoqda"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "Kamera so‘roviga javob berilmadi"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "Mikrofon so‘roviga javob berilmadi"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "Passkey so‘roviga javob berilmadi"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "Soʻralgan kontent topilmadi."
@@ -2548,6 +2599,10 @@ msgstr "Soʻralgan kontent topilmadi."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "Server ma'lumot o'rniga veb-sahifani qaytardi."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "Bu ilovaga passkey’ingizdan foydalanishga ruxsat berilmagan. Sozlamalardagi Ruxsatlar bo‘limida ruxsat bering."
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM could not be loaded right now."
@@ -2819,6 +2874,10 @@ msgstr "Koʻrish variantlari"
 msgid "Views"
 msgstr "Koʻrishlar"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "Ovoz yozish bu brauzerda qoʻllab-quvvatlanmaydi"
+
 #: src/features/objects/components/object-detail-panel.tsx:353
 #: src/features/objects/components/object-detail-panel.tsx:362
 msgid "Watch"
@@ -2854,7 +2913,7 @@ msgstr "Sizda ushbu CRM'ga kirish huquqi yo'q."
 msgid "You have no CRMs yet."
 msgstr "Sizda hali CRM lar yoʻq."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Hisobingiz {source} dan bu yerga ko'chirildi. U yerdan o'chirmaguncha, xabarlar va bildirishnomalar ikkala serverga ham yetishi mumkin, ba'zi kontentingiz eski serverdan erilib berilishda davom etadi va kuzatuvchilar sizni bu yerda topish uchun bir necha daqiqa vaqt ketishi mumkin."
 

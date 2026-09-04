@@ -35,7 +35,7 @@ msgid "[not set]"
 msgstr "[မသတ်မှတ်ရသေး]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:259
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, other {# ရွေးထား}}"
 
@@ -54,19 +54,19 @@ msgstr "{0} - ဒီဇိုင်း"
 msgid "{0} settings"
 msgstr "{0} ဆက်တင်များ"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#ရ} other {#ရ}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#နာ} other {#နာ}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#မိ} other {#မိ}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ပတ်} other {#ပတ်}}"
 
@@ -102,6 +102,10 @@ msgstr "၁၂ နာရီ"
 #: ../../../lib/web/src/lib/preference-utils.ts:36
 msgid "24 hours"
 msgstr "၂၄ နာရီ"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "အသံဖမ်းယူမှု လုပ်ဆောင်နေပြီးဖြစ်သည်။"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -398,6 +402,14 @@ msgstr "ဘောင်အရောင်"
 msgid "Browser notifications"
 msgstr "Browser အကြောင်းကြားချက်များ"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "ကင်မရာခွင့်ပြုချက်ကို ငြင်းပယ်ခဲ့သည်"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "ကင်မရာ မရနိုင်ပါ"
+
 #: src/features/editor/components/edit-dialogs.tsx:303
 msgid "Can be child of"
 msgstr "ကလေးဖြစ်နိုင်သည်"
@@ -429,6 +441,12 @@ msgstr "မှတ်ချက် မလုပ်တော့ပါ"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "အကြောင်းပြန်ချက် မလုပ်တော့ပါ"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "ဖျက်သိမ်းပြီး"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:386
 #: ../../../lib/web/src/components/attachment-composer.tsx:421
@@ -871,7 +889,7 @@ msgstr "ရွေးချယ်စရာ {0} ဖျက်မည်"
 msgid "Delete view"
 msgstr "ကြည့်ရှုမှု ဖျက်မည်"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "ဟောင်းသောဆာဗာမှ သင်၏အကောင့်ကို ဖျက်ပါ"
 
@@ -926,7 +944,7 @@ msgstr "အသေးစိတ် Panel"
 msgid "Detect from web browser"
 msgstr "Web browser မှ ရှာဖွေဖော်ထုတ်မည်"
 
-#: ../../../lib/web/src/components/person-picker.tsx:192
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "လမ်းညွှန်"
 
@@ -943,8 +961,8 @@ msgstr "မူကြမ်းကို ဖျက်ပစ်မလား။"
 msgid "Disconnected"
 msgstr "ချိတ်ဆက်မှု ပြတ်တောက်ပြီး"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "ပယ်မည်"
 
@@ -1374,7 +1392,7 @@ msgstr "CRM များ ရှာ"
 msgid "Fingerprint"
 msgstr "လက်ဗွေ"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "အကောင့်ရွှေ့ပြောင်းခြင်း ပြီးဆုံးပါ"
 
@@ -1390,7 +1408,7 @@ msgstr "ပြားသော"
 msgid "Friday"
 msgstr "သောကြာ"
 
-#: ../../../lib/web/src/components/person-picker.tsx:185
+#: ../../../lib/web/src/components/person-picker.tsx:186
 msgid "Friends"
 msgstr "သူငယ်ချင်းများ"
 
@@ -1513,7 +1531,7 @@ msgstr "သင်ရှာဖွေနေသော စာမျက်နှာ�
 msgid "Item details"
 msgstr "ပစ္စည်း အသေးစိတ်"
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "အခုပဲ"
 
@@ -1630,6 +1648,10 @@ msgstr "မက်ဆေ့ဂျ်"
 #: ../../../lib/web/src/lib/preference-utils.ts:80
 msgid "Metric"
 msgstr "မက်ထရစ်"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "မိုက်ခရိုဖုန်း ခွင့်ပြုချက် ငြင်းပယ်ခံရသည်"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
@@ -1813,7 +1835,7 @@ msgstr "view များ မရှိ"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:328
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
@@ -1940,18 +1962,23 @@ msgid "Passkey"
 msgstr "Passkey"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "ပတ်စ်ကီးအတည်ပြုခြင်း မအောင်မြင်ပါ။ ကျေးဇူးပြု၍ ထပ်စမ်းကြည့်ပါ။"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "Passkey များ"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "ဤဘရောက်ဆာတွင် passkey များ မရရှိနိုင်ပါ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "ပုံစံ (regex)"
 
-#: ../../../lib/web/src/components/person-picker.tsx:178
+#: ../../../lib/web/src/components/person-picker.tsx:179
 msgid "People"
 msgstr "လူများ"
 
@@ -2011,7 +2038,7 @@ msgstr "Push အကြောင်းကြားချက်"
 msgid "Raised"
 msgstr "ဖော့တက်"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "ဤဆာဗာပေါ်တွင် သင်၏အကောင့်များကို ပြန်လည်ချိတ်ဆက်ပါ"
 
@@ -2019,7 +2046,7 @@ msgstr "ဤဆာဗာပေါ်တွင် သင်၏အကောင့�
 msgid "Re-order columns"
 msgstr "ကော်လံများ ပြန်စီ"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "ဤဆာဗာတွင် သင်၏ passkey များကို ပြန်လည်မှတ်ပုံတင်ပါ"
 
@@ -2034,6 +2061,14 @@ msgstr "အကြံပြု CRM များ"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "ပြန်လည်ချိတ်ဆက်နေသည် ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "အသံဖမ်းယူမှု မအောင်မြင်ပါ။ ထပ်စမ်းကြည့်ပါ။"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "အသံဖမ်းယူမှုတွင် အသံမပါရှိပါ"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2277,7 +2312,7 @@ msgstr "ဤ view ကို ရှာဖွေ၊ စောင့်ကြည့�
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:302
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "ရှာဖွေ..."
@@ -2541,6 +2576,22 @@ msgstr "ပို့၍မရပါ။ ဖိုင်များ ကြီး�
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "တင်ရန် အလွန်ကြီးလွန်းသည်။ ဖိုင်များကို ဖယ်ရှားပါ သို့မဟုတ် သေးအောင်လုပ်ပြီး ထပ်စမ်းကြည့်ပါ။"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "ကင်မရာကို အသုံးပြုနေပြီးဖြစ်သည်"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "ကင်မရာ တောင်းဆိုမှုကို မဖြေကြားခဲ့ပါ"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "မိုက်ခရိုဖုန်း တောင်းဆိုမှုကို မဖြေကြားခဲ့ပါ"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "Passkey တောင်းဆိုမှုကို မဖြေကြားခဲ့ပါ"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "တောင်းဆိုထားသော အကြောင်းအရာကို ရှာမတွေ့ပါ။"
@@ -2548,6 +2599,10 @@ msgstr "တောင်းဆိုထားသော အကြောင်း�
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "ဆာဗာသည် ဒေတာအစား ဝဘ်စာမျက်နှာကို ပြန်ပေးခဲ့သည်။"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "ဤအက်ပ်သည် သင့် passkey ကို အသုံးပြုခွင့်မရှိပါ။ ဆက်တင်များရှိ ခွင့်ပြုချက်များအောက်တွင် ခွင့်ပြုပါ။"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM could not be loaded right now."
@@ -2819,6 +2874,10 @@ msgstr "ကြည့်ရှုရွေးချယ်စရာများ"
 msgid "Views"
 msgstr "ကြည့်ရှုမှုများ"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "ဤဘရောက်ဇာတွင် အသံဖမ်းယူခြင်းကို မထောက်ပံ့ပါ"
+
 #: src/features/objects/components/object-detail-panel.tsx:353
 #: src/features/objects/components/object-detail-panel.tsx:362
 msgid "Watch"
@@ -2854,7 +2913,7 @@ msgstr "ဤ CRM ကို သင် ဝင်ရောက်ခွင့် မ�
 msgid "You have no CRMs yet."
 msgstr "သင့်တွင် CRM မရှိသေးပါ။"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "သင်၏အကောင့်ကို {source} မှ ဤနေရာသို့ ရွှေ့ပြောင်းခဲ့သည်။ သင်ကာကိုဖျက်မသည်အထိ၊ မက်ဆေ့ချ်များနှင့် အကြောင်းကြားချက်များ ဆာဗာနှစ်ခုလုံးသို့ ရောက်နိုင်သည်၊ သင်၏အချို့သောအကြောင်းအရာများကို ဟောင်းသောဆာဗာမှ ဆက်လက်ပေးဆောင်နေမည်ဖြစ်ပြီး ကြည့်ရှုသူများ သင်ကိုဤနေရာတွင် ရှာဖွေရန် မိနစ်အနည်းငယ် ကြာနိုင်သည်။"
 

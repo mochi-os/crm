@@ -35,7 +35,7 @@ msgid "[not set]"
 msgstr "[সেট নয়]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:259
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# নির্বাচিত} other {# নির্বাচিত}}"
 
@@ -54,19 +54,19 @@ msgstr "{0} - ডিজাইন"
 msgid "{0} settings"
 msgstr "{0} সেটিংস"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#দি} other {#দি}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#ঘ} other {#ঘ}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#মি} other {#মি}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#সপ্তা} other {#সপ্তা}}"
 
@@ -102,6 +102,10 @@ msgstr "১২ ঘণ্টা"
 #: ../../../lib/web/src/lib/preference-utils.ts:36
 msgid "24 hours"
 msgstr "২৪ ঘণ্টা"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "একটি রেকর্ডিং ইতিমধ্যে চলছে।"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -398,6 +402,14 @@ msgstr "বর্ডারের রঙ"
 msgid "Browser notifications"
 msgstr "ব্রাউজার নোটিফিকেশন"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "ক্যামেরার অনুমতি প্রত্যাখ্যান করা হয়েছে"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "ক্যামেরা অনুপলব্ধ"
+
 #: src/features/editor/components/edit-dialogs.tsx:303
 msgid "Can be child of"
 msgstr "এর চাইল্ড হতে পারে"
@@ -429,6 +441,12 @@ msgstr "মন্তব্য বাতিল করুন"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "উত্তর বাতিল করুন"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "বাতিল করা হয়েছে"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:386
 #: ../../../lib/web/src/components/attachment-composer.tsx:421
@@ -871,7 +889,7 @@ msgstr "অপশন {0} মুছুন"
 msgid "Delete view"
 msgstr "ভিউ মুছুন"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "পুরানো সার্ভারে আপনার অ্যাকাউন্ট মুছুন"
 
@@ -926,7 +944,7 @@ msgstr "বিবরণ প্যানেল"
 msgid "Detect from web browser"
 msgstr "ওয়েব ব্রাউজার থেকে শনাক্ত করুন"
 
-#: ../../../lib/web/src/components/person-picker.tsx:192
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "ডিরেক্টরি"
 
@@ -943,8 +961,8 @@ msgstr "খসড়া বাতিল করবেন?"
 msgid "Disconnected"
 msgstr "সংযোগ বিচ্ছিন্ন"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "বাতিল করুন"
 
@@ -1374,7 +1392,7 @@ msgstr "CRM খুঁজুন"
 msgid "Fingerprint"
 msgstr "ফিঙ্গারপ্রিন্ট"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "আপনার অ্যাকাউন্ট স্থানান্তর সম্পন্ন করুন"
 
@@ -1390,7 +1408,7 @@ msgstr "সমতল"
 msgid "Friday"
 msgstr "শুক্রবার"
 
-#: ../../../lib/web/src/components/person-picker.tsx:185
+#: ../../../lib/web/src/components/person-picker.tsx:186
 msgid "Friends"
 msgstr "বন্ধুরা"
 
@@ -1513,7 +1531,7 @@ msgstr "আপনি যে পৃষ্ঠাটি খুঁজছেন <0/>�
 msgid "Item details"
 msgstr "আইটেমের বিবরণ"
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "এইমাত্র"
 
@@ -1630,6 +1648,10 @@ msgstr "বার্তা"
 #: ../../../lib/web/src/lib/preference-utils.ts:80
 msgid "Metric"
 msgstr "মেট্রিক"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "মাইক্রোফোনের অনুমতি প্রত্যাখ্যাত"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
@@ -1813,7 +1835,7 @@ msgstr "কোনো ভিউ নেই"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:328
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/editor/components/edit-dialogs.tsx:287
 #: src/features/editor/components/edit-dialogs.tsx:290
@@ -1940,18 +1962,23 @@ msgid "Passkey"
 msgstr "পাসকি"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "পাসকি যাচাই ব্যর্থ হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "পাসকি"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "এই ব্রাউজারে পাসকি উপলব্ধ নেই"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "প্যাটার্ন (রেজেক্স)"
 
-#: ../../../lib/web/src/components/person-picker.tsx:178
+#: ../../../lib/web/src/components/person-picker.tsx:179
 msgid "People"
 msgstr "ব্যক্তিরা"
 
@@ -2011,7 +2038,7 @@ msgstr "পুশ বিজ্ঞপ্তি"
 msgid "Raised"
 msgstr "উঁচু"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "এই সার্ভারে আপনার অ্যাকাউন্টগুলি পুনরায় লিঙ্ক করুন"
 
@@ -2019,7 +2046,7 @@ msgstr "এই সার্ভারে আপনার অ্যাকাউন
 msgid "Re-order columns"
 msgstr "কলাম পুনরায় সাজান"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "এই সার্ভারে আপনার পাসকি পুনরায় নিবন্ধন করুন"
 
@@ -2034,6 +2061,14 @@ msgstr "সুপারিশকৃত CRM"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "পুনরায় সংযোগ করা হচ্ছে ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "রেকর্ডিং ব্যর্থ হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "রেকর্ডিংয়ে কোনো শব্দ নেই"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2277,7 +2312,7 @@ msgstr "এই ভিউ অনুসন্ধান, দেখুন এবং 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:302
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "অনুসন্ধান করুন..."
@@ -2541,6 +2576,22 @@ msgstr "পাঠানো যায়নি। ফাইলগুলি খু
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "আপলোডের জন্য খুব বড় ছিল। ফাইল সরান বা ছোট করুন এবং আবার চেষ্টা করুন।"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "ক্যামেরাটি ইতিমধ্যে ব্যবহারে আছে"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "ক্যামেরা অনুরোধের উত্তর দেওয়া হয়নি"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "মাইক্রোফোন অনুরোধের উত্তর দেওয়া হয়নি"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "পাসকি অনুরোধের উত্তর দেওয়া হয়নি"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "অনুরোধ করা কনটেন্ট খুঁজে পাওয়া যায়নি।"
@@ -2548,6 +2599,10 @@ msgstr "অনুরোধ করা কনটেন্ট খুঁজে প�
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "সার্ভার ডেটার পরিবর্তে একটি ওয়েব পেজ ফেরত দিয়েছে।"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "এই অ্যাপটিকে আপনার পাসকি ব্যবহারের অনুমতি নেই। সেটিংসে, অনুমতির অধীনে এটির অনুমতি দিন।"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx:87
 msgid "This CRM could not be loaded right now."
@@ -2819,6 +2874,10 @@ msgstr "অপশন দেখুন"
 msgid "Views"
 msgstr "ভিউ"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "এই ব্রাউজারে ভয়েস রেকর্ডিং সমর্থিত নয়"
+
 #: src/features/objects/components/object-detail-panel.tsx:353
 #: src/features/objects/components/object-detail-panel.tsx:362
 msgid "Watch"
@@ -2854,7 +2913,7 @@ msgstr "এই CRM-এ আপনার অ্যাক্সেস নেই।"
 msgid "You have no CRMs yet."
 msgstr "আপনার এখনও কোন CRM নেই।"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "আপনার অ্যাকাউন্ট {source} থেকে এখানে স্থানান্তরিত হয়েছে। আপনি সেখানে এটি মুছে না দেওয়া পর্যন্ত, বার্তা ও বিজ্ঞপ্তি উভয় সার্ভারে পৌঁছাতে পারে, আপনার কিছু বিষয়বস্তু পুরানো সার্ভার থেকে পরিবেশিত হতে পারে, এবং অনুসরণকারীদের আপনাকে এখানে খুঁজে পেতে কয়েক মিনিট লাগতে পারে।"
 
