@@ -15,14 +15,12 @@ import type { Crm, CrmDetails, CrmObject, ObjectLink } from "@/types";
 interface CreateCrmRequest {
   name: string;
   description?: string;
-  prefix?: string;
   privacy?: "public" | "private";
 }
 
 interface UpdateCrmRequest {
   name?: string;
   description?: string;
-  prefix?: string;
 }
 
 interface CrmApiShapes extends EntityApiShapes {
@@ -35,7 +33,7 @@ interface CrmApiShapes extends EntityApiShapes {
     outgoing: ObjectLink[];
     incoming: ObjectLink[];
     watching: boolean;
-    comment_count: number;
+    comments: { count: number };
   };
   objectCreated: { id: string };
   createRequest: CreateCrmRequest;

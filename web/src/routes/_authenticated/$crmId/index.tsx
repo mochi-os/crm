@@ -8,7 +8,6 @@
 // app. What stays here is the route, the loader, the wording, and the bindings
 // the shared page renders through its slots.
 
-import { useEffect } from "react";
 import { useLingui } from '@lingui/react/macro'
 import { t } from '@lingui/core/macro'
 import { createFileRoute, Link, redirect, useNavigate, useRouter } from "@tanstack/react-router";
@@ -41,11 +40,15 @@ export const Route = createFileRoute("/_authenticated/$crmId/")({
   loader: async ({ params }) => {
     try {
       const crmResponse = await crmsApi.get(params.crmId);
-      return { crm: crmResponse.data, loaderError: null, loaderStatus: null };
+      return { crm: crmResponse.data, loaderError: null };
     } catch (error) {
       const status = extractStatus(error);
+      // Redirect from the loader, not the component: a CRM-to-CRM navigation
+      // re-renders the same instance rather than remounting, so a mount
+      // effect never re-fires and the page is left blank.
       if (status === 403) {
-        return { crm: null as CrmDetails | null, loaderError: null, loaderStatus: 403 };
+        toast.error(t`You don't have access to this CRM.`);
+        throw redirect({ to: "/" });
       }
       if (status === 404) {
         throw redirect({ to: "/" });
@@ -54,7 +57,6 @@ export const Route = createFileRoute("/_authenticated/$crmId/")({
       return {
         crm: null as CrmDetails | null,
         loaderError: getErrorMessage(error, t`Failed to load CRM`),
-        loaderStatus: status,
       };
     }
   },
@@ -63,30 +65,19 @@ export const Route = createFileRoute("/_authenticated/$crmId/")({
 
 function CrmPage() {
   const { t } = useLingui()
-  const { crm, loaderError, loaderStatus } = Route.useLoaderData() as {
+  const { crm, loaderError } = Route.useLoaderData() as {
     crm: CrmDetails | null;
     loaderError: string | null;
-    loaderStatus: number | null;
   };
   const params = Route.useParams();
   const search = Route.useSearch();
   const navigate = useNavigate();
   const router = useRouter();
 
-  useEffect(() => {
-    if (loaderStatus === 403) {
-      toast.error(t`You don't have access to this CRM.`);
-      void navigate({ to: "/" });
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  if (loaderStatus === 403) return null;
-
   if (!crm) {
     return (
       <EntityLoadError
-        title="CRM"
+        title={t`CRM`}
         icon={<Users className="size-4 md:size-5" />}
         back={{ label: t`Back to CRMs`, onFallback: () => navigate({ to: "/" }) }}
         message={loaderError ?? t`Failed to load CRM`}
@@ -104,7 +95,7 @@ function CrmPage() {
   );
 }
 
-export interface CrmPageContentProps {
+interface CrmPageContentProps {
   crm: CrmDetails;
   crmId: string;
   search: SearchParams;

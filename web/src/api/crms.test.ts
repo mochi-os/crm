@@ -39,7 +39,7 @@ describe("crmsApi wiring", () => {
 
     await crmsApi.get("crm123");
 
-    expect(crmsRequest.get).toHaveBeenCalledWith("crm123/-/info");
+    expect(crmsRequest.get).toHaveBeenCalledWith("crm123/-/information");
   });
 
   it("names the resource `crm` when unsubscribing", async () => {

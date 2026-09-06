@@ -57,7 +57,7 @@ echo ""
 echo "--- CRM Creation ---"
 
 # Test: Create CRM
-RESULT=$(crm_curl POST "/-/create" -H "Content-Type: application/json" -d '{"name":"Test CRM","prefix":"TST"}')
+RESULT=$(crm_curl POST "/-/create" -H "Content-Type: application/json" -d '{"name":"Test CRM"}')
 if echo "$RESULT" | grep -q '"id":"'; then
     CRM_ENTITY=$(echo "$RESULT" | python3 -c "import sys, json; print(json.load(sys.stdin)['data']['id'])" 2>/dev/null)
     if [ -n "$CRM_ENTITY" ]; then
@@ -88,15 +88,15 @@ echo ""
 echo "--- CRM Info & Update ---"
 
 # Test: Get CRM info
-RESULT=$(crm_api_curl GET "/info")
-if echo "$RESULT" | grep -q '"name":"Test CRM"' && echo "$RESULT" | grep -q '"prefix":"TST"'; then
+RESULT=$(crm_api_curl GET "/information")
+if echo "$RESULT" | grep -q '"name":"Test CRM"'; then
     pass "Get CRM info"
 else
     fail "Get CRM info" "$RESULT"
 fi
 
 # Test: CRM has template-created classes
-RESULT=$(crm_api_curl GET "/info")
+RESULT=$(crm_api_curl GET "/information")
 if echo "$RESULT" | grep -q '"classes":\['; then
     pass "CRM has classes from template"
 else
@@ -119,7 +119,7 @@ else
 fi
 
 # Verify update
-RESULT=$(crm_api_curl GET "/info")
+RESULT=$(crm_api_curl GET "/information")
 if echo "$RESULT" | grep -q '"name":"Updated CRM"' && echo "$RESULT" | grep -q '"description":"A test CRM"'; then
     pass "Verify CRM update"
 else

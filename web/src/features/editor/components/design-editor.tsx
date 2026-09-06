@@ -26,7 +26,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
 
   // Fetch objects for preview
   const { data: objectsData } = useQuery({
-    queryKey: ["crm-objects", crmId],
+    queryKey: ["objects", crmId],
     queryFn: async () => {
       const response = await crmsApi.listObjects(crmId);
       return response.data.objects;
@@ -324,20 +324,10 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       updates?: Partial<CrmView>;
       types?: string[];
     }) => {
-      // Always send all view fields to prevent backend from clearing unmentioned fields
-      // (a.input() returns "" for missing fields, which passes the != None check)
-      const currentView = crm.views.find((v) => v.id === viewId);
-      const payload: Record<string, string> = {
-        name: currentView?.name || "",
-        viewtype: currentView?.viewtype || "board",
-        filter: currentView?.filter || "",
-        columns: currentView?.columns || "",
-        rows: currentView?.rows || "",
-        border: currentView?.border || "",
-        fields: currentView?.fields || "",
-        sort: currentView?.sort || "",
-        direction: currentView?.direction || "asc",
-      };
+      // Only what changed: view/update applies the fields it is sent and
+      // leaves the rest, so a full snapshot taken from the last fetched
+      // design raced a still-refetching earlier edit and reverted it.
+      const payload: Record<string, string> = {};
       if (updates) {
         if (updates.name !== undefined) payload.name = updates.name;
         if (updates.viewtype !== undefined) payload.viewtype = updates.viewtype;
@@ -400,30 +390,40 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
     const classId = result.data?.id;
     if (!classId) return;
 
-    if (parents.length > 0) {
-      await setHierarchyMutation.mutateAsync({ classId, parents });
-    }
+    try {
+      if (parents.length > 0) {
+        await setHierarchyMutation.mutateAsync({ classId, parents });
+      }
 
-    // Create each non-title field (title is auto-created by the backend)
-    for (const field of pendingFields) {
-      if (field.id === "title") continue;
-      const fieldResult = await createFieldMutation.mutateAsync({
-        classId,
-        name: field.name,
-        fieldtype: field.fieldtype,
-        rows: field.rows,
-      });
-      // Create options for enumerated fields
-      if (field.fieldtype === "enumerated" && field.options && fieldResult.data) {
-        for (const opt of field.options) {
-          await createOptionMutation.mutateAsync({
-            classId,
-            fieldId: fieldResult.data.id,
-            name: opt.name,
-            colour: opt.colour,
-          });
+      // Create each non-title field (title is auto-created by the backend)
+      for (const field of pendingFields) {
+        if (field.id === "title") continue;
+        const fieldResult = await createFieldMutation.mutateAsync({
+          classId,
+          name: field.name,
+          fieldtype: field.fieldtype,
+          rows: field.rows,
+        });
+        // Create options for enumerated fields
+        if (field.fieldtype === "enumerated" && field.options && fieldResult.data) {
+          for (const opt of field.options) {
+            await createOptionMutation.mutateAsync({
+              classId,
+              fieldId: fieldResult.data.id,
+              name: opt.name,
+              colour: opt.colour,
+            });
+          }
         }
       }
+    } catch (error) {
+      // The class already exists on the server and the sidebar shows it, so a
+      // retry from the still-open sheet would create a second one with the
+      // same name. Take the half-built class back out so the retry starts
+      // clean; the failed step's onError has already said what went wrong.
+      await crmsApi.deleteClass(crmId, classId).catch(() => {});
+      invalidateCrm();
+      throw error;
     }
   };
 
@@ -615,28 +615,25 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
         open={addFieldOpen}
         onOpenChange={setAddFieldOpen}
         onAdd={async (name, fieldtype, rows, options) => {
+          // The mutations' onError toasts, and a rejection reaches the dialog,
+          // which stays open; a second toast here doubled every failure.
           if (selectedClassId) {
-            try {
-              const result = await createFieldMutation.mutateAsync({
-                classId: selectedClassId,
-                name,
-                fieldtype,
-                rows,
-              });
-              // Create options for enumerated fields
-              if (fieldtype === "enumerated" && options && result.data) {
-                for (const opt of options) {
-                  await createOptionMutation.mutateAsync({
-                    classId: selectedClassId,
-                    fieldId: result.data.id,
-                    name: opt.name,
-                    colour: opt.colour,
-                  });
-                }
+            const result = await createFieldMutation.mutateAsync({
+              classId: selectedClassId,
+              name,
+              fieldtype,
+              rows,
+            });
+            // Create options for enumerated fields
+            if (fieldtype === "enumerated" && options && result.data) {
+              for (const opt of options) {
+                await createOptionMutation.mutateAsync({
+                  classId: selectedClassId,
+                  fieldId: result.data.id,
+                  name: opt.name,
+                  colour: opt.colour,
+                });
               }
-            } catch (error) {
-              toast.error(getErrorMessage(error, t`Failed to create field`));
-              throw error;
             }
           }
         }}
@@ -647,17 +644,12 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
         onOpenChange={setAddOptionOpen}
         onAdd={async (name, colour) => {
           if (selectedClassId && resolvedEditingField) {
-            try {
-              await createOptionMutation.mutateAsync({
-                classId: selectedClassId,
-                fieldId: resolvedEditingField.id,
-                name,
-                colour,
-              });
-            } catch (error) {
-              toast.error(getErrorMessage(error, t`Failed to create option`));
-              throw error;
-            }
+            await createOptionMutation.mutateAsync({
+              classId: selectedClassId,
+              fieldId: resolvedEditingField.id,
+              name,
+              colour,
+            });
           }
         }}
       />

@@ -10,10 +10,9 @@
 
 import { createFileRoute, Navigate, useNavigate } from "@tanstack/react-router";
 import { Trans, useLingui } from '@lingui/react/macro'
-import { EntityDesignPage } from "@mochi/web";
+import { EntityDesignPage, canDesign } from "@mochi/web";
 import crmsApi from "@/api/crms";
 import type { CrmDetails } from "@/types";
-import { canDesign } from "@/lib/access";
 import { DesignEditor } from "@/features/editor";
 
 export const Route = createFileRoute("/_authenticated/$crmId/design")({

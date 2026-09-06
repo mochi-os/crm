@@ -279,7 +279,10 @@ export function ClassSheet({
                   value={cls.title || NONE_SELECT_VALUE}
                   onValueChange={(value) => {
                     if (onUpdate) {
-                      onUpdate(cls.name, value === NONE_SELECT_VALUE ? "" : value);
+                      // The name input commits on blur, which this click fires,
+                      // so the two requests race: send the name as typed, not
+                      // the prop, or the second one restores the old name.
+                      onUpdate(name.trim() || cls.name, value === NONE_SELECT_VALUE ? "" : value);
                     }
                   }}
                 >
@@ -436,5 +439,3 @@ export function ClassSheet({
     </Sheet>
   );
 }
-
-// Edit Field Dialog (keep as dialog since it's nested)

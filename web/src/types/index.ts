@@ -8,24 +8,14 @@
 // envelopes are app-specific and defined here.
 import type {
   EntityAccess,
-  EntityActivity,
   EntityAttachment,
-  EntityChecklistItem,
   EntityClass,
   EntityComment,
   EntityField,
   EntityFieldOption,
   EntityObject,
   EntityObjectLink,
-  EntityObjectListResponse,
-  EntityCommentListResponse,
-  EntityActivityListResponse,
-  EntityAttachmentListResponse,
-  EntityWatcherListResponse,
-  EntityLinkListResponse,
-  EntitySortState,
   EntityView,
-  EntityWatcher,
 } from "@mochi/web";
 
 // Crm types
@@ -36,15 +26,10 @@ export interface Crm {
   fingerprint: string;
   name: string;
   description: string;
-  owner: number;
-  ownername: string;
+  owner: { local: boolean; name: string };
   server: string;
   created: number;
   updated: number;
-  // 0 while a freshly-subscribed CRM's bulk content is still arriving over P2P;
-  // 1 once it has landed. The board shows a loading state until then.
-  populated: number;
-  access: CrmAccess;
 }
 
 export type CrmClass = EntityClass;
@@ -52,8 +37,15 @@ export type CrmField = EntityField;
 export type FieldOption = EntityFieldOption;
 export type CrmView = EntityView;
 
+// The list endpoint emits a Crm; -/info adds the two fields only the detail
+// load knows.
 export interface CrmDetails {
-  crm: Crm;
+  crm: Crm & {
+    // 0 while a freshly-subscribed CRM's bulk content is still arriving over
+    // P2P; 1 once it has landed. The board shows a loading state until then.
+    populated: number;
+    access: CrmAccess;
+  };
   classes: CrmClass[];
   fields: Record<string, CrmField[]>;
   options: Record<string, Record<string, FieldOption[]>>;
@@ -65,38 +57,6 @@ export interface CrmDetails {
 export type CrmObject = EntityObject & { crm: string };
 
 export type ObjectLink = EntityObjectLink;
-export type CommentAttachment = EntityAttachment;
 export type Comment = EntityComment;
 export type Attachment = EntityAttachment;
-export type ChecklistItem = EntityChecklistItem;
-export type Activity = EntityActivity;
-export type Watcher = EntityWatcher;
 
-// Sort state for views
-export type SortState = EntitySortState;
-
-// API response envelopes are the shared client's, re-exported under this app's
-// names; only the two shaped differently are declared here.
-export type ObjectListResponse = EntityObjectListResponse<CrmObject>;
-export type CommentListResponse = EntityCommentListResponse;
-export type ActivityListResponse = EntityActivityListResponse;
-export type AttachmentListResponse = EntityAttachmentListResponse;
-export type WatcherListResponse = EntityWatcherListResponse;
-export type LinkListResponse = EntityLinkListResponse;
-
-export interface ObjectCreateResponse {
-  data: {
-    id: string;
-  };
-}
-
-export interface ObjectGetResponse {
-  data: {
-    object: CrmObject;
-    values: Record<string, string>;
-    outgoing: ObjectLink[];
-    incoming: ObjectLink[];
-    watching: boolean;
-    comment_count: number;
-  };
-}

@@ -3,7 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Trans, useLingui } from '@lingui/react/macro'
 import { plural } from '@lingui/core/macro'
 import { useNavigate } from "@tanstack/react-router";
@@ -32,8 +32,9 @@ import {
   TooltipTrigger,
   useUploadProgress,
   UploadProgress,
+  DISALLOWED_NAME_CHARS,
 } from "@mochi/web";
-import { Plus, Upload, Users, X } from "lucide-react";
+import { Loader2, Plus, Upload, Users, X } from "lucide-react";
 import crmsApi from "@/api/crms";
 import { useCrmsStore } from "@/stores/crms-store";
 
@@ -61,22 +62,39 @@ export function CreateCrmDialog({
   const refreshCrms = useCrmsStore((state) => state.refresh);
   const { progress: importProgress, upload } = useUploadProgress();
 
+  // The submit guards read pairs of these four, so clearing a subset leaves a
+  // removed file still importable - and the archive branch rolls the new CRM
+  // back on failure, deleting one the user never meant to import into.
+  const clearImport = useCallback(() => {
+    setImportData(null);
+    setImportFile(null);
+    setImportArchive(false);
+    setImportFileName("");
+  }, []);
+
   // Reset state when dialog closes
   useEffect(() => {
     if (!open) {
       setName("");
       setAllowSearch(true);
-      setImportData(null);
-      setImportFile(null);
-      setImportFileName("");
+      clearImport();
     }
-  }, [open]);
+  }, [open, clearImport]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!name.trim()) {
       toast.error(t`Name is required`);
+      return;
+    }
+    // The rule the settings page and the server apply.
+    if (name.length > 1000) {
+      toast.error(t`Name must be 1000 characters or less`);
+      return;
+    }
+    if (DISALLOWED_NAME_CHARS.test(name)) {
+      toast.error(t`Name cannot contain < or > characters`);
       return;
     }
 
@@ -177,9 +195,12 @@ export function CreateCrmDialog({
   const importDesign = useMemo(() => {
     if (!importData) return null;
     const design = importData.design;
-    return design && typeof design === "object" && !Array.isArray(design)
-      ? (design as Record<string, unknown>)
-      : null;
+    if (design && typeof design === "object" && !Array.isArray(design)) {
+      return design as Record<string, unknown>;
+    }
+    // A design export (Design page, Export) is the design itself with no
+    // wrapper: classes at the top level and nothing to import as data.
+    return Array.isArray(importData.classes) ? importData : null;
   }, [importData]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -200,30 +221,43 @@ export function CreateCrmDialog({
 
     const reader = new FileReader();
     reader.onload = () => {
+      let data: unknown;
       try {
-        const data = JSON.parse(reader.result as string);
-        setImportData(data);
-        setImportFile(file);
-        setImportFileName(file.name);
-        // Format 2 backups carry the source crm's metadata — prefill an
-        // untouched name field so recreating keeps the original name.
-        const metadata = data && typeof data === "object" && !Array.isArray(data) ? (data as Record<string, unknown>).crm : null;
-        if (metadata && typeof metadata === "object" && !Array.isArray(metadata)) {
-          const m = metadata as Record<string, unknown>;
-          if (typeof m.name === "string" && m.name && !name.trim()) setName(m.name);
-        }
+        data = JSON.parse(reader.result as string);
       } catch {
         toast.error(t`Invalid JSON file`);
-        setImportData(null);
-        setImportFile(null);
-        setImportFileName("");
+        clearImport();
+        return;
+      }
+      // Anything else parsed but carried nothing the import could act on, so
+      // the CRM was created from the default template with no word of it.
+      const record = data && typeof data === "object" && !Array.isArray(data) ? (data as Record<string, unknown>) : null;
+      const design = record?.design;
+      const usable =
+        record !== null &&
+        ((design !== undefined && design !== null && typeof design === "object" && !Array.isArray(design)) ||
+          Array.isArray(record.classes) ||
+          Array.isArray(record.objects) ||
+          Array.isArray(record.links));
+      if (!usable) {
+        toast.error(t`This file is not a CRM backup`);
+        clearImport();
+        return;
+      }
+      setImportData(record);
+      setImportFile(file);
+      setImportFileName(file.name);
+      // Format 2 backups carry the source crm's metadata — prefill an
+      // untouched name field so recreating keeps the original name.
+      const metadata = record.crm;
+      if (metadata && typeof metadata === "object" && !Array.isArray(metadata)) {
+        const m = metadata as Record<string, unknown>;
+        if (typeof m.name === "string" && m.name && !name.trim()) setName(m.name);
       }
     };
     reader.onerror = () => {
       toast.error(t`Failed to read file`);
-      setImportData(null);
-      setImportFile(null);
-      setImportFileName("");
+      clearImport();
     };
     reader.readAsText(file);
     e.target.value = "";
@@ -338,7 +372,8 @@ export function CreateCrmDialog({
               <Trans>Cancel</Trans>
             </Button>
             <Button type="submit" disabled={isPending}>
-              {isPending ? <Trans>Creating...</Trans> : <><Plus className="me-2 size-4" /><Trans>Create CRM</Trans></>}
+              {isPending ? <Loader2 className="me-2 size-4 animate-spin" /> : <Plus className="me-2 size-4" />}
+              <Trans>Create CRM</Trans>
             </Button>
           </ResponsiveDialogFooter>
         </form>

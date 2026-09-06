@@ -7,12 +7,10 @@
 import {
   EntityBoardContainer,
   type EntityBoardContainerProps,
-  type EntityDragPreview,
 } from "@mochi/web";
 import { useLingui } from "@lingui/react/macro";
 import type { CrmObject, CrmDetails } from "@/types";
 
-export type DragPreview = EntityDragPreview;
 
 type BoardContainerProps = Omit<
   EntityBoardContainerProps<CrmObject>,

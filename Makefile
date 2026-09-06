@@ -55,3 +55,4 @@ i18n-extract:
 .PHONY: test
 test:
 	python3 ../../claude/scripts/p2p-test.py --app $(APP)
+	bash test/test_crm.sh

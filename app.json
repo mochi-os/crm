@@ -16,7 +16,7 @@
 	"require": {"version": {"minimum": "0.4.231"}},
 
 	"database": {
-		"schema": 5,
+		"schema": 6,
 		"file": "crm.db",
 		"create": {"function": "database_create"},
 		"upgrade": {"function": "database_upgrade"},
@@ -49,7 +49,7 @@
 		":crm/settings": {"file": "web/dist/index.html"},
 		":crm/:object": {"file": "web/dist/index.html"},
 		":crm/-/share": {"function": "action_share"},
-		":crm/-/info": {"function": "action_crm_get"},
+		":crm/-/information": {"function": "action_crm_get"},
 		":crm/-/update": {"function": "action_crm_update"},
 		":crm/-/delete": {"function": "action_crm_delete"},
 		":crm/-/resync": {"function": "action_crm_resync"},
@@ -138,7 +138,7 @@
 	},
 
 	"events": {
-		"info": {"function": "event_info"},
+		"information": {"function": "event_information"},
 		"schema": {"function": "event_schema"},
 		"subscribe": {"function": "event_subscribe"},
 		"unsubscribe": {"function": "event_unsubscribe"},

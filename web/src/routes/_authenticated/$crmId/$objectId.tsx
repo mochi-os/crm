@@ -11,6 +11,7 @@ import {
   EntityLoadError,
   extractStatus,
   getErrorMessage,
+  toast,
 } from "@mochi/web";
 import { Users } from "lucide-react";
 import crmsApi from "@/api/crms";
@@ -31,7 +32,13 @@ export const Route = createFileRoute("/_authenticated/$crmId/$objectId")({
       return { crm: crmResponse.data, loaderError: null };
     } catch (error) {
       const status = extractStatus(error);
-      if (status === 403 || status === 404) {
+      // The URL a notification carries: say why it bounced, as the CRM route
+      // does, rather than landing on the list with no explanation.
+      if (status === 403) {
+        toast.error(t`You don't have access to this CRM.`);
+        throw redirect({ to: "/" });
+      }
+      if (status === 404) {
         throw redirect({ to: "/" });
       }
 
@@ -59,7 +66,7 @@ function ObjectPage() {
   if (!crm) {
     return (
       <EntityLoadError
-        title="CRM"
+        title={t`CRM`}
         icon={<Users className="size-4 md:size-5" />}
         back={{ label: t`Back to CRMs`, onFallback: () => navigate({ to: "/" }) }}
         message={loaderError ?? t`Failed to load CRM`}

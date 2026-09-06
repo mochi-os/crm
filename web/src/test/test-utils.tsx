@@ -28,23 +28,20 @@ export {
 
 export function createMockCrm(overrides?: Partial<Crm>): Crm {
   return {
-    id: "proj-1",
+    id: "crm-1",
     fingerprint: "abc123def",
     name: "Test Crm",
     description: "A test crm",
-    owner: 1,
-    ownername: "testuser",
+    owner: { local: true, name: "testuser" },
     server: "local",
     created: Date.now(),
     updated: Date.now(),
-    populated: 1,
-    access: "owner",
     ...overrides,
   };
 }
 
 export function createMockObject(overrides?: Partial<CrmObject>): CrmObject {
-  return { ...createMockEntityObject(), crm: "proj-1", ...overrides };
+  return { ...createMockEntityObject(), crm: "crm-1", ...overrides };
 }
 
 export function createMockObjects(count: number): CrmObject[] {
@@ -63,5 +60,5 @@ export function createMockObjects(count: number): CrmObject[] {
 export function createMockCrmDetails(
   overrides?: Partial<CrmDetails>,
 ): CrmDetails {
-  return { crm: createMockCrm(), ...createMockEntityDesign(), ...overrides };
+  return { crm: { ...createMockCrm(), populated: 1, access: "owner" }, ...createMockEntityDesign(), ...overrides };
 }
