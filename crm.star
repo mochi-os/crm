@@ -2376,7 +2376,7 @@ def would_create_cycle(object_id, new_parent_id):
 	current = new_parent_id
 	# Cap the walk like get_all_descendants: write-time guards keep the tree
 	# acyclic, but a pre-existing cycle among unrelated ancestors would
-	# otherwise spin to the 90s Starlark timeout. Treat exhaustion as a cycle.
+	# otherwise spin to the Starlark timeout. Treat exhaustion as a cycle.
 	for _ in range(100):
 		if current == object_id:
 			return True
