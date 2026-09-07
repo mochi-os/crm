@@ -2126,7 +2126,7 @@ def action_access_list(a):
 		subject = rule.get("subject", "")
 		# Mark owner rules
 		if subject == owner.get("id"):
-			rule["isOwner"] = True
+			rule["owner"] = True
 		# Resolve names for non-special subjects
 		if subject and subject not in ("*", "+") and not subject.startswith("#"):
 			if subject not in names:
@@ -6749,6 +6749,12 @@ def event_comment_create(e):
 			notify_watchers(object_id, crm_id, local_id, user, mochi.app.label("notifications.body.commented", name=name, excerpt=excerpt))
 
 # Comment updated
+# The object a comment belongs to, so a comment push can name it - the
+# detail sheet filters pushes on the object it shows.
+def comment_object(comment_id):
+	row = mochi.db.row("select object from comments where id=?", comment_id)
+	return row["object"] if row else ""
+
 def event_comment_update(e):
 	crm_id = verify_subscription(e)
 	if not crm_id:
@@ -6765,9 +6771,10 @@ def event_comment_update(e):
 	content = e.content("content")
 	if content:
 		row_set("comments", "id=?", [comment_id], {"content": content, "edited": mochi.time.now()})
+	object_id = comment_object(comment_id)
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
-		mochi.websocket.write(fp, {"type": "comment/update", "crm": crm_id, "id": comment_id})
+		mochi.websocket.write(fp, {"type": "comment/update", "crm": crm_id, "object": object_id, "id": comment_id})
 
 # Comment deleted
 def event_comment_delete(e):
@@ -6777,10 +6784,11 @@ def event_comment_delete(e):
 	comment_id = e.content("id")
 	if not comment_id:
 		return
+	object_id = comment_object(comment_id)
 	delete_comment_tree(comment_id, crm_id)
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
-		mochi.websocket.write(fp, {"type": "comment/delete", "crm": crm_id, "id": comment_id})
+		mochi.websocket.write(fp, {"type": "comment/delete", "crm": crm_id, "object": object_id, "id": comment_id})
 
 # Link created
 def event_link_create(e):
