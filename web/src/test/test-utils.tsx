@@ -10,23 +10,18 @@
 import {
   createMockEntityClass,
   createMockEntityDesign,
-  createMockEntityObject,
-  createMockEntityOption,
   createMockEntityField,
-  createMockEntityView,
 } from "@mochi/web/components/entity/entity-test-utils";
-import type { Crm, CrmDetails, CrmObject } from "@/types";
+import type { Crm, CrmDetails } from "@/types";
 
 export * from "@mochi/web/components/entity/entity-test-utils";
 
 export {
   createMockEntityClass as createMockClass,
   createMockEntityField as createMockField,
-  createMockEntityOption as createMockOption,
-  createMockEntityView as createMockView,
 };
 
-export function createMockCrm(overrides?: Partial<Crm>): Crm {
+function createMockCrm(overrides?: Partial<Crm>): Crm {
   return {
     id: "crm-1",
     fingerprint: "abc123def",
@@ -38,23 +33,6 @@ export function createMockCrm(overrides?: Partial<Crm>): Crm {
     updated: Date.now(),
     ...overrides,
   };
-}
-
-export function createMockObject(overrides?: Partial<CrmObject>): CrmObject {
-  return { ...createMockEntityObject(), crm: "crm-1", ...overrides };
-}
-
-export function createMockObjects(count: number): CrmObject[] {
-  return Array.from({ length: count }, (_, i) =>
-    createMockObject({
-      id: `obj-${i + 1}`,
-      values: {
-        title: `Task ${i + 1}`,
-        status: ["todo", "in_progress", "done"][i % 3],
-        priority: ["high", "medium", "low"][i % 3],
-      },
-    }),
-  );
 }
 
 export function createMockCrmDetails(

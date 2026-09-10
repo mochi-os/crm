@@ -8,9 +8,7 @@
 // envelopes are app-specific and defined here.
 import type {
   EntityAccess,
-  EntityAttachment,
   EntityClass,
-  EntityComment,
   EntityField,
   EntityFieldOption,
   EntityObject,
@@ -19,7 +17,7 @@ import type {
 } from "@mochi/web";
 
 // Crm types
-export type CrmAccess = EntityAccess;
+type CrmAccess = EntityAccess;
 
 export interface Crm {
   id: string;
@@ -57,6 +55,4 @@ export interface CrmDetails {
 export type CrmObject = EntityObject & { crm: string };
 
 export type ObjectLink = EntityObjectLink;
-export type Comment = EntityComment;
-export type Attachment = EntityAttachment;
 

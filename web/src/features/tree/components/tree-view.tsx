@@ -7,10 +7,8 @@
 // Binding for the shared tree view. CRMs issue no readable ids, so no prefix is
 // passed and the ID column stays off.
 
-import { EntityTreeView, type EntityTreeNode, type EntityTreeViewProps } from "@mochi/web";
+import { EntityTreeView, type EntityTreeViewProps } from "@mochi/web";
 import type { CrmDetails, CrmObject } from "@/types";
-
-export type TreeNode = EntityTreeNode<CrmObject>;
 
 type TreeViewProps = Omit<
   EntityTreeViewProps<CrmObject>,
