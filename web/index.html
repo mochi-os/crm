@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <script>
-      (function() {
+      ;(function () {
         var app = document.querySelector('meta[name="mochi:app"]')
         var fp = document.querySelector('meta[name="mochi:fingerprint"]')
         var domain = document.querySelector('meta[name="mochi:domain"]')
@@ -11,7 +11,10 @@
         if (domain) base = '/'
         else if (app) base = '/' + app.content + '/'
         else if (fp) base = '/' + fp.content + '/'
-        else { var m = location.pathname.match(/^\/([^/]+)/); if (m) base = '/' + m[1] + '/' }
+        else {
+          var m = location.pathname.match(/^\/([^/]+)/)
+          if (m) base = '/' + m[1] + '/'
+        }
         var el = document.createElement('base')
         el.href = base
         document.head.appendChild(el)

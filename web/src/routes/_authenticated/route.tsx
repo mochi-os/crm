@@ -2,17 +2,16 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
+import { createFileRoute } from '@tanstack/react-router'
+import { useAuthStore } from '@mochi/web'
+import { CrmsLayout } from '@/components/layout/crms-layout'
 
-import { createFileRoute } from "@tanstack/react-router";
-import { useAuthStore } from "@mochi/web";
-import { CrmsLayout } from "@/components/layout/crms-layout";
-
-export const Route = createFileRoute("/_authenticated")({
+export const Route = createFileRoute('/_authenticated')({
   beforeLoad: async () => {
-    const store = useAuthStore.getState();
+    const store = useAuthStore.getState()
     if (!store.isInitialized) {
-      await store.initialize();
+      await store.initialize()
     }
   },
   component: CrmsLayout,
-});
+})

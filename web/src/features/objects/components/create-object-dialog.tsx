@@ -3,33 +3,36 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
-import { Trans } from "@lingui/react/macro";
+import type { CrmDetails, CrmObject } from '@/types'
+import { Trans } from '@lingui/react/macro'
 import {
   EntityCreateObjectDialog,
   type EntityCreateObjectDialogProps,
-} from "@mochi/web";
-import crmsApi from "@/api/crms";
-import type { CrmDetails, CrmObject } from "@/types";
+} from '@mochi/web'
+import crmsApi from '@/api/crms'
 
 type CreateObjectDialogProps = Omit<
   EntityCreateObjectDialogProps<CrmObject>,
-  | "containerId"
-  | "recordId"
-  | "design"
-  | "prefix"
-  | "srTitle"
-  | "srDescription"
-  | "buildObject"
-  | "listObjects"
-  | "listPeople"
-  | "createObject"
-  | "setValue"
-  | "uploadAttachments"
-  | "searchUsers"
-> & { crmId: string; crm: CrmDetails };
+  | 'containerId'
+  | 'recordId'
+  | 'design'
+  | 'prefix'
+  | 'srTitle'
+  | 'srDescription'
+  | 'buildObject'
+  | 'listObjects'
+  | 'listPeople'
+  | 'createObject'
+  | 'setValue'
+  | 'uploadAttachments'
+  | 'searchUsers'
+> & { crmId: string; crm: CrmDetails }
 
-export function CreateObjectDialog({ crmId, crm, ...props }: CreateObjectDialogProps) {
+export function CreateObjectDialog({
+  crmId,
+  crm,
+  ...props
+}: CreateObjectDialogProps) {
   return (
     <EntityCreateObjectDialog
       {...props}
@@ -46,5 +49,5 @@ export function CreateObjectDialog({ crmId, crm, ...props }: CreateObjectDialogP
       uploadAttachments={crmsApi.uploadAttachments}
       searchUsers={crmsApi.searchUsers}
     />
-  );
+  )
 }

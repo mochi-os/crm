@@ -3,14 +3,19 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 // The page body is EntityObjectsPage in @mochi/web, shared with the projects
 // app. What stays here is the route, the loader, the wording, and the bindings
 // the shared page renders through its slots.
-
-import { useLingui } from '@lingui/react/macro'
+import {
+  createFileRoute,
+  Link,
+  redirect,
+  useNavigate,
+  useRouter,
+} from '@tanstack/react-router'
+import type { CrmDetails, CrmObject } from '@/types'
 import { t } from '@lingui/core/macro'
-import { createFileRoute, Link, redirect, useNavigate, useRouter } from "@tanstack/react-router";
+import { useLingui } from '@lingui/react/macro'
 import {
   DropdownMenuItem,
   EntityLoadError,
@@ -19,93 +24,94 @@ import {
   getErrorMessage,
   toast,
   EntityObjectDetailPanel,
-} from "@mochi/web";
-import { Settings, Settings2, Users } from "lucide-react";
-import crmsApi from "@/api/crms";
-import type { CrmDetails, CrmObject } from "@/types";
-import { useCrmsStore } from "@/stores/crms-store";
-import { BoardContainer } from "@/features/board/components";
-import { TreeView } from "@/features/tree";
-import { CreateObjectDialog } from "@/features/objects/components";
-import { ViewOptionsBar } from "@/components/view-options-bar";
+} from '@mochi/web'
+import { Settings, Settings2, Users } from 'lucide-react'
+import crmsApi from '@/api/crms'
+import { useCrmsStore } from '@/stores/crms-store'
+import { ViewOptionsBar } from '@/components/view-options-bar'
+import { BoardContainer } from '@/features/board/components'
+import { CreateObjectDialog } from '@/features/objects/components'
+import { TreeView } from '@/features/tree'
 
 interface SearchParams {
-  view?: string;
+  view?: string
 }
 
-export const Route = createFileRoute("/_authenticated/$crmId/")({
+export const Route = createFileRoute('/_authenticated/$crmId/')({
   validateSearch: (search: Record<string, unknown>): SearchParams => ({
-    view: typeof search.view === "string" ? search.view : undefined,
+    view: typeof search.view === 'string' ? search.view : undefined,
   }),
   loader: async ({ params }) => {
     try {
-      const crmResponse = await crmsApi.get(params.crmId);
-      return { crm: crmResponse.data, loaderError: null };
+      const crmResponse = await crmsApi.get(params.crmId)
+      return { crm: crmResponse.data, loaderError: null }
     } catch (error) {
-      const status = extractStatus(error);
+      const status = extractStatus(error)
       // Redirect from the loader, not the component: a CRM-to-CRM navigation
       // re-renders the same instance rather than remounting, so a mount
       // effect never re-fires and the page is left blank.
       if (status === 403) {
-        toast.error(t`You don't have access to this CRM.`);
-        throw redirect({ to: "/" });
+        toast.error(t`You don't have access to this CRM.`)
+        throw redirect({ to: '/' })
       }
       if (status === 404) {
-        throw redirect({ to: "/" });
+        throw redirect({ to: '/' })
       }
 
       return {
         crm: null as CrmDetails | null,
         loaderError: getErrorMessage(error, t`Failed to load CRM`),
-      };
+      }
     }
   },
   component: CrmPage,
-});
+})
 
 function CrmPage() {
   const { t } = useLingui()
   const { crm, loaderError } = Route.useLoaderData() as {
-    crm: CrmDetails | null;
-    loaderError: string | null;
-  };
-  const params = Route.useParams();
-  const search = Route.useSearch();
-  const navigate = useNavigate();
-  const router = useRouter();
+    crm: CrmDetails | null
+    loaderError: string | null
+  }
+  const params = Route.useParams()
+  const search = Route.useSearch()
+  const navigate = useNavigate()
+  const router = useRouter()
 
   if (!crm) {
     return (
       <EntityLoadError
         title={t`CRM`}
-        icon={<Users className="size-4 md:size-5" />}
-        back={{ label: t`Back to CRMs`, onFallback: () => navigate({ to: "/" }) }}
+        icon={<Users className='size-4 md:size-5' />}
+        back={{
+          label: t`Back to CRMs`,
+          onFallback: () => navigate({ to: '/' }),
+        }}
         message={loaderError ?? t`Failed to load CRM`}
         onRetry={() => void router.invalidate()}
       />
-    );
+    )
   }
 
-  return (
-    <CrmPageContent
-      crm={crm}
-      crmId={params.crmId}
-      search={search}
-    />
-  );
+  return <CrmPageContent crm={crm} crmId={params.crmId} search={search} />
 }
 
 interface CrmPageContentProps {
-  crm: CrmDetails;
-  crmId: string;
-  search: SearchParams;
-  initialObjectId?: string;
+  crm: CrmDetails
+  crmId: string
+  search: SearchParams
+  initialObjectId?: string
 }
 
-export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageContentProps) {
+export function CrmPageContent({
+  crm,
+  crmId,
+  search,
+  initialObjectId,
+}: CrmPageContentProps) {
   const { t } = useLingui()
-  const navigate = useNavigate();
-  const refreshSidebar = useCrmsStore((state) => state.refresh);
+  const navigate = useNavigate()
+  const refreshSidebar = useCrmsStore((state) => state.refresh)
 
   return (
     <EntityObjectsPage<CrmObject>
@@ -116,15 +122,15 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
       initialObjectId={initialObjectId}
       icon={Users}
       api={crmsApi}
-      entity="crm"
-      storagePrefix="crms"
-      listKey="crms"
-      backupSlug="crm"
+      entity='crm'
+      storagePrefix='crms'
+      listKey='crms'
+      backupSlug='crm'
       refreshSidebar={refreshSidebar}
-      onLeave={() => void navigate({ to: "/" })}
+      onLeave={() => void navigate({ to: '/' })}
       // An empty CRM opens on its companies view: the first thing to add is a
       // company, and the default view has nothing to show until one exists.
-      emptyViewClass="company"
+      emptyViewClass='company'
       labels={{
         pageActions: t`Open page actions`,
         createShort: t`New`,
@@ -169,16 +175,16 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
       }}
       designMenuItem={
         <DropdownMenuItem asChild>
-          <Link to="/$crmId/design" params={{ crmId }}>
-            <Settings2 className="size-4 me-2" />
+          <Link to='/$crmId/design' params={{ crmId }}>
+            <Settings2 className='me-2 size-4' />
             {t`Design`}
           </Link>
         </DropdownMenuItem>
       }
       settingsMenuItem={
         <DropdownMenuItem asChild>
-          <Link to="/$crmId/settings" params={{ crmId }}>
-            <Settings className="size-4 me-2" />
+          <Link to='/$crmId/settings' params={{ crmId }}>
+            <Settings className='me-2 size-4' />
             {t`Settings`}
           </Link>
         </DropdownMenuItem>
@@ -200,5 +206,5 @@ export function CrmPageContent({ crm, crmId, search, initialObjectId }: CrmPageC
         />
       )}
     />
-  );
+  )
 }

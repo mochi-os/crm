@@ -2,83 +2,86 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
+import { dirname } from 'path'
+import globals from 'globals'
+import js from '@eslint/js'
+import i18nConfig from '@mochi/web/eslint-i18n-config'
+import pluginQuery from '@tanstack/eslint-plugin-query'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import { defineConfig } from 'eslint/config'
+import { createRequire } from 'module'
+import tseslint from 'typescript-eslint'
+import { fileURLToPath } from 'url'
 
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-import globals from "globals";
-import js from "@eslint/js";
-import pluginQuery from "@tanstack/eslint-plugin-query";
-import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
-import { defineConfig } from "eslint/config";
-import i18nConfig from "@mochi/web/eslint-i18n-config"
-import tseslint from "typescript-eslint";
-import { createRequire } from 'module';
+const require = createRequire(import.meta.url)
 
-const require = createRequire(import.meta.url);
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 export default defineConfig(
-  { ignores: ["dist", "src/components/ui", "vitest.config.ts", "coverage"] },
+  { ignores: ['dist', 'src/components/ui', 'vitest.config.ts', 'coverage'] },
   {
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommended,
-      ...pluginQuery.configs["flat/recommended"],
+      ...pluginQuery.configs['flat/recommended'],
     ],
-    files: ["**/*.{ts,tsx}"],
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
       parserOptions: {
-        project: ["./tsconfig.app.json", "./tsconfig.node.json", "./tsconfig.eslint.json"],
+        project: [
+          './tsconfig.app.json',
+          './tsconfig.node.json',
+          './tsconfig.eslint.json',
+        ],
         tsconfigRootDir: __dirname,
       },
     },
     plugins: {
-      "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": [
-        "warn",
+      'react-refresh/only-export-components': [
+        'warn',
         { allowConstantExport: true },
       ],
-      "no-console": "error",
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "error",
+      'no-console': 'error',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
         {
-          args: "all",
-          argsIgnorePattern: "^_",
-          caughtErrors: "all",
-          caughtErrorsIgnorePattern: "^_",
-          destructuredArrayIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
+          args: 'all',
+          argsIgnorePattern: '^_',
+          caughtErrors: 'all',
+          caughtErrorsIgnorePattern: '^_',
+          destructuredArrayIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
           ignoreRestSiblings: true,
         },
       ],
       // Enforce type-only imports for TypeScript types
-      "@typescript-eslint/consistent-type-imports": [
-        "error",
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
         {
-          prefer: "type-imports",
-          fixStyle: "inline-type-imports",
+          prefer: 'type-imports',
+          fixStyle: 'inline-type-imports',
           disallowTypeAnnotations: false,
         },
       ],
       // Prevent duplicate imports from the same module
-      "no-duplicate-imports": "error",
+      'no-duplicate-imports': 'error',
       // Use wrapped toast/Toaster from @mochi/web
-      "no-restricted-imports": [
-        "error",
+      'no-restricted-imports': [
+        'error',
         {
           paths: [
             {
-              name: "sonner",
+              name: 'sonner',
               message: "Import toast/Toaster from '@mochi/web' instead.",
             },
           ],
@@ -87,9 +90,13 @@ export default defineConfig(
     },
   },
   {
-    files: ["src/routes/**/*.{ts,tsx}", "src/context/**/*.{ts,tsx}", "src/test/**/*.{ts,tsx}"],
+    files: [
+      'src/routes/**/*.{ts,tsx}',
+      'src/context/**/*.{ts,tsx}',
+      'src/test/**/*.{ts,tsx}',
+    ],
     rules: {
-      "react-refresh/only-export-components": "off",
+      'react-refresh/only-export-components': 'off',
     },
   },
   {
@@ -106,4 +113,4 @@ export default defineConfig(
       ],
     },
   }
-);
+)

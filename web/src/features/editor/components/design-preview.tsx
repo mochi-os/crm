@@ -3,20 +3,24 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
-import { EntityDesignPreview } from "@mochi/web";
-import { useLingui } from "@lingui/react/macro";
-import type { CrmDetails, CrmObject } from "@/types";
+import type { CrmDetails, CrmObject } from '@/types'
+import { useLingui } from '@lingui/react/macro'
+import { EntityDesignPreview } from '@mochi/web'
 
 interface DesignPreviewProps {
-  crm: CrmDetails;
-  crmId: string;
-  objects: CrmObject[];
-  selectedClassId: string | null;
+  crm: CrmDetails
+  crmId: string
+  objects: CrmObject[]
+  selectedClassId: string | null
 }
 
-export function DesignPreview({ crm, crmId, objects, selectedClassId }: DesignPreviewProps) {
-  const { t } = useLingui();
+export function DesignPreview({
+  crm,
+  crmId,
+  objects,
+  selectedClassId,
+}: DesignPreviewProps) {
+  const { t } = useLingui()
   return (
     <EntityDesignPreview
       design={crm}
@@ -24,8 +28,8 @@ export function DesignPreview({ crm, crmId, objects, selectedClassId }: DesignPr
       selectedClassId={selectedClassId}
       boardContainerId={crm.crm.id}
       treeContainerId={crmId}
-      storagePrefix="crms"
+      storagePrefix='crms'
       fallbackTitle={() => t`Untitled`}
     />
-  );
+  )
 }

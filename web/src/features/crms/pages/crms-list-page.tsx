@@ -2,24 +2,23 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
-import { Trans, useLingui } from "@lingui/react/macro";
-import { Link } from "@tanstack/react-router";
-import { EntityListPage } from "@mochi/web/components/entity/entity-list-page";
-import { Users } from "lucide-react";
-import { useCrmsStore } from "@/stores/crms-store";
-import { useSidebarContext } from "@/context/sidebar-context";
-import { InlineCrmSearch } from "../components/inline-crm-search";
-import { RecommendedCrms } from "../components/recommended-crms";
-import crmsApi from "@/api/crms";
+import { Link } from '@tanstack/react-router'
+import { Trans, useLingui } from '@lingui/react/macro'
+import { EntityListPage } from '@mochi/web/components/entity/entity-list-page'
+import { Users } from 'lucide-react'
+import crmsApi from '@/api/crms'
+import { useCrmsStore } from '@/stores/crms-store'
+import { useSidebarContext } from '@/context/sidebar-context'
+import { InlineCrmSearch } from '../components/inline-crm-search'
+import { RecommendedCrms } from '../components/recommended-crms'
 
 export function CrmsListPage() {
-  const { t } = useLingui();
-  const crms = useCrmsStore((state) => state.rows);
-  const isLoading = useCrmsStore((state) => state.isLoading);
-  const error = useCrmsStore((state) => state.error);
-  const refresh = useCrmsStore((state) => state.refresh);
-  const { openCreateDialog } = useSidebarContext();
+  const { t } = useLingui()
+  const crms = useCrmsStore((state) => state.rows)
+  const isLoading = useCrmsStore((state) => state.isLoading)
+  const error = useCrmsStore((state) => state.error)
+  const refresh = useCrmsStore((state) => state.refresh)
+  const { openCreateDialog } = useSidebarContext()
 
   return (
     <EntityListPage
@@ -30,7 +29,7 @@ export function CrmsListPage() {
       icon={Users}
       onCreate={openCreateDialog}
       unsubscribe={(crmId) => crmsApi.unsubscribe(crmId)}
-      invalidateKey="crms"
+      invalidateKey='crms'
       labels={{
         title: t`CRMs`,
         emptyDescription: t`You have no CRMs yet.`,
@@ -45,11 +44,11 @@ export function CrmsListPage() {
       renderLink={(crm, className) => (
         <Link
           preload={false}
-          to="/$crmId"
+          to='/$crmId'
           params={{ crmId: crm.fingerprint }}
           className={className}
         >
-          <span className="sr-only">
+          <span className='sr-only'>
             <Trans>Open {crm.name}</Trans>
           </span>
         </Link>
@@ -64,5 +63,5 @@ export function CrmsListPage() {
         />
       )}
     />
-  );
+  )
 }

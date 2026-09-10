@@ -3,4 +3,4 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-export { CrmsListPage } from "./crms-list-page";
+export { CrmsListPage } from './crms-list-page'

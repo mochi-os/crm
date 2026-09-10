@@ -3,36 +3,34 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 // The page body is EntityDesignPage in @mochi/web, shared with the projects
 // app. What stays here is the route, the wording and this app's design editor.
 // CRM offers no built-in templates, so the import dialog is the file half only.
-
-import { createFileRoute, Navigate, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Navigate, useNavigate } from '@tanstack/react-router'
+import type { CrmDetails } from '@/types'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { EntityDesignPage, canDesign } from "@mochi/web";
-import crmsApi from "@/api/crms";
-import type { CrmDetails } from "@/types";
-import { DesignEditor } from "@/features/editor";
+import { EntityDesignPage, canDesign } from '@mochi/web'
+import crmsApi from '@/api/crms'
+import { DesignEditor } from '@/features/editor'
 
-export const Route = createFileRoute("/_authenticated/$crmId/design")({
+export const Route = createFileRoute('/_authenticated/$crmId/design')({
   component: DesignPage,
-});
+})
 
 function DesignPage() {
   const { t } = useLingui()
-  const { crmId } = Route.useParams();
-  const navigate = useNavigate();
+  const { crmId } = Route.useParams()
+  const navigate = useNavigate()
 
   return (
-    <EntityDesignPage<CrmDetails["crm"], CrmDetails>
+    <EntityDesignPage<CrmDetails['crm'], CrmDetails>
       containerId={crmId}
       selectContainer={(details) => details.crm}
-      queryKey="crm"
+      queryKey='crm'
       api={crmsApi}
       canDesign={(details) => canDesign(details.crm.access)}
-      renderRedirect={() => <Navigate to="/$crmId" params={{ crmId }} />}
-      onBack={() => void navigate({ to: "/$crmId", params: { crmId } })}
+      renderRedirect={() => <Navigate to='/$crmId' params={{ crmId }} />}
+      onBack={() => void navigate({ to: '/$crmId', params: { crmId } })}
       renderEditor={(details) => <DesignEditor crmId={crmId} crm={details} />}
       labels={{
         design: t`Design`,
@@ -59,10 +57,10 @@ function DesignPage() {
         // message keeps the positional placeholder this app already ships.
         replaceDescription: (label) => (
           <Trans>
-            This will replace the current design with{" "}
-            <strong>{String(label)}</strong>. All existing classes,
-            fields, options, and views will be deleted. Existing objects will
-            not be deleted but may no longer appear in views.
+            This will replace the current design with{' '}
+            <strong>{String(label)}</strong>. All existing classes, fields,
+            options, and views will be deleted. Existing objects will not be
+            deleted but may no longer appear in views.
           </Trans>
         ),
         replaceConfirm: t`Replace design`,
@@ -70,5 +68,5 @@ function DesignPage() {
         downloadBackup: t`Download backup first`,
       }}
     />
-  );
+  )
 }

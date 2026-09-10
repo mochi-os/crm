@@ -7,4 +7,4 @@
 export {
   EntitySidebarProvider as SidebarProvider,
   useEntitySidebarContext as useSidebarContext,
-} from "@mochi/web";
+} from '@mochi/web'

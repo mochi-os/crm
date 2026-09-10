@@ -3,147 +3,170 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
-import { useState, useMemo } from "react";
+import { useState, useMemo } from 'react'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import type { CrmDetails, CrmField, CrmView, FieldOption } from '@/types'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Button, Label, toast, getErrorMessage, Tooltip, TooltipContent, TooltipTrigger } from "@mochi/web";
-import { Blocks, GripVertical, Plus } from "lucide-react";
-import crmsApi from "@/api/crms";
-import type { CrmDetails, CrmField, CrmView, FieldOption } from "@/types";
-import { DesignPreview } from "./design-preview";
-import { AddFieldDialog } from "./add-dialogs";
-import { ViewSheet, ClassSheet, EditFieldDialog, type PendingField } from "./edit-dialogs"
-import { OptionDialog } from "./option-dialog";
+import {
+  Button,
+  Label,
+  toast,
+  getErrorMessage,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@mochi/web'
+import { Blocks, GripVertical, Plus } from 'lucide-react'
+import crmsApi from '@/api/crms'
+import { AddFieldDialog } from './add-dialogs'
+import { DesignPreview } from './design-preview'
+import {
+  ViewSheet,
+  ClassSheet,
+  EditFieldDialog,
+  type PendingField,
+} from './edit-dialogs'
+import { OptionDialog } from './option-dialog'
+
 interface DesignEditorProps {
-  crmId: string;
-  crm: CrmDetails;
+  crmId: string
+  crm: CrmDetails
 }
 
 export function DesignEditor({ crmId, crm }: DesignEditorProps) {
   const { t } = useLingui()
-  const queryClient = useQueryClient();
+  const queryClient = useQueryClient()
 
   // Fetch objects for preview
   const { data: objectsData } = useQuery({
-    queryKey: ["objects", crmId],
+    queryKey: ['objects', crmId],
     queryFn: async () => {
-      const response = await crmsApi.listObjects(crmId);
-      return response.data.objects;
+      const response = await crmsApi.listObjects(crmId)
+      return response.data.objects
     },
-  });
-  const objects = objectsData || [];
+  })
+  const objects = objectsData || []
 
   // Selection state
   const [selectedClassId, setSelectedClassId] = useState<string | null>(
-    crm.classes[0]?.id || null,
-  );
+    crm.classes[0]?.id || null
+  )
 
   // Add dialog state
-  const [addClassOpen, setAddClassOpen] = useState(false);
-  const [addFieldOpen, setAddFieldOpen] = useState(false);
-  const [addOptionOpen, setAddOptionOpen] = useState(false);
-  const [addViewOpen, setAddViewOpen] = useState(false);
+  const [addClassOpen, setAddClassOpen] = useState(false)
+  const [addFieldOpen, setAddFieldOpen] = useState(false)
+  const [addOptionOpen, setAddOptionOpen] = useState(false)
+  const [addViewOpen, setAddViewOpen] = useState(false)
 
   // Edit dialog state
-  const [editViewOpen, setEditViewOpen] = useState(false);
-  const [editClassOpen, setEditClassOpen] = useState(false);
-  const [editFieldOpen, setEditFieldOpen] = useState(false);
-  const [editOptionOpen, setEditOptionOpen] = useState(false);
-  const [editingView, setEditingView] = useState<CrmView | null>(null);
-  const [editingField, setEditingField] = useState<CrmField | null>(null);
-  const [editingOption, setEditingOption] = useState<FieldOption | null>(null);
+  const [editViewOpen, setEditViewOpen] = useState(false)
+  const [editClassOpen, setEditClassOpen] = useState(false)
+  const [editFieldOpen, setEditFieldOpen] = useState(false)
+  const [editOptionOpen, setEditOptionOpen] = useState(false)
+  const [editingView, setEditingView] = useState<CrmView | null>(null)
+  const [editingField, setEditingField] = useState<CrmField | null>(null)
+  const [editingOption, setEditingOption] = useState<FieldOption | null>(null)
 
   // View drag state
-  const [draggedViewId, setDraggedViewId] = useState<string | null>(null);
+  const [draggedViewId, setDraggedViewId] = useState<string | null>(null)
   const [viewDropIndicator, setViewDropIndicator] = useState<{
-    viewId: string;
-    position: "before" | "after";
-  } | null>(null);
+    viewId: string
+    position: 'before' | 'after'
+  } | null>(null)
 
   // Get current selections
-  const selectedClass = crm.classes.find((c) => c.id === selectedClassId);
+  const selectedClass = crm.classes.find((c) => c.id === selectedClassId)
   const selectedFields = selectedClassId
     ? crm.fields[selectedClassId] || []
-    : [];
-  const hierarchy = selectedClassId
-    ? crm.hierarchy[selectedClassId] || []
-    : [];
+    : []
+  const hierarchy = selectedClassId ? crm.hierarchy[selectedClassId] || [] : []
 
   // Get all fields across all classes for view editing
   const allFields = useMemo(() => {
-    const fieldsMap = new Map<string, CrmField>();
+    const fieldsMap = new Map<string, CrmField>()
     for (const classId of Object.keys(crm.fields)) {
       for (const field of crm.fields[classId]) {
         if (!fieldsMap.has(field.id)) {
-          fieldsMap.set(field.id, field);
+          fieldsMap.set(field.id, field)
         }
       }
     }
-    return Array.from(fieldsMap.values());
-  }, [crm.fields]);
+    return Array.from(fieldsMap.values())
+  }, [crm.fields])
 
   // Keep editingField in sync with refetched crm data
   const resolvedEditingField = useMemo(() => {
-    if (!editingField || !selectedClassId) return editingField;
-    const fields = crm.fields[selectedClassId] || [];
-    return fields.find((f) => f.id === editingField.id) || editingField;
-  }, [editingField, selectedClassId, crm.fields]);
+    if (!editingField || !selectedClassId) return editingField
+    const fields = crm.fields[selectedClassId] || []
+    return fields.find((f) => f.id === editingField.id) || editingField
+  }, [editingField, selectedClassId, crm.fields])
 
   // Get options for editing field
   const editingFieldOptions =
     selectedClassId && resolvedEditingField
       ? crm.options[selectedClassId]?.[resolvedEditingField.id] || []
-      : [];
+      : []
 
   // Invalidate crm data
   const invalidateCrm = () => {
-    queryClient.invalidateQueries({ queryKey: ["crm", crmId] });
-  };
+    queryClient.invalidateQueries({ queryKey: ['crm', crmId] })
+  }
 
   // Class mutations
   const createClassMutation = useMutation({
     mutationFn: ({ name }: { name: string }) =>
       crmsApi.createClass(crmId, { name }),
     onSuccess: (data) => {
-      invalidateCrm();
-      setSelectedClassId(data.data.id);
+      invalidateCrm()
+      setSelectedClassId(data.data.id)
     },
     onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to create class`));
+      toast.error(getErrorMessage(error, t`Failed to create class`))
     },
-  });
+  })
 
   const updateClassMutation = useMutation({
-    mutationFn: ({ classId, name, title }: { classId: string; name: string; title?: string }) =>
-      crmsApi.updateClass(crmId, classId, { name, title }),
+    mutationFn: ({
+      classId,
+      name,
+      title,
+    }: {
+      classId: string
+      name: string
+      title?: string
+    }) => crmsApi.updateClass(crmId, classId, { name, title }),
     onSuccess: invalidateCrm,
-      onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to update class`));
+    onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to update class`))
     },
-  });
+  })
 
   const deleteClassMutation = useMutation({
     mutationFn: (classId: string) => crmsApi.deleteClass(crmId, classId),
     onSuccess: (_result, classId) => {
-      invalidateCrm();
-      setSelectedClassId(crm.classes.find((c) => c.id !== classId)?.id || null);
-      setEditClassOpen(false);
+      invalidateCrm()
+      setSelectedClassId(crm.classes.find((c) => c.id !== classId)?.id || null)
+      setEditClassOpen(false)
     },
-      onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to delete class`));
+    onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to delete class`))
     },
-  });
+  })
 
   // Hierarchy mutation
   const setHierarchyMutation = useMutation({
-    mutationFn: ({ classId, parents }: { classId: string; parents: string[] }) =>
-      crmsApi.setHierarchy(crmId, classId, parents),
+    mutationFn: ({
+      classId,
+      parents,
+    }: {
+      classId: string
+      parents: string[]
+    }) => crmsApi.setHierarchy(crmId, classId, parents),
     onSuccess: invalidateCrm,
-      onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to update hierarchy`));
+    onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to update hierarchy`))
     },
-  });
+  })
 
   // Field mutations
   const createFieldMutation = useMutation({
@@ -153,16 +176,21 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       fieldtype,
       rows,
     }: {
-      classId: string;
-      name: string;
-      fieldtype: string;
-      rows?: number;
-    }) => crmsApi.createField(crmId, classId, { name, fieldtype, rows: rows?.toString() }),
+      classId: string
+      name: string
+      fieldtype: string
+      rows?: number
+    }) =>
+      crmsApi.createField(crmId, classId, {
+        name,
+        fieldtype,
+        rows: rows?.toString(),
+      }),
     onSuccess: invalidateCrm,
-      onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to create field`));
+    onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to create field`))
     },
-  });
+  })
 
   const updateFieldMutation = useMutation({
     mutationFn: ({
@@ -170,9 +198,9 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       fieldId,
       updates,
     }: {
-      classId: string;
-      fieldId: string;
-      updates: Partial<CrmField>;
+      classId: string
+      fieldId: string
+      updates: Partial<CrmField>
     }) =>
       crmsApi.updateField(crmId, classId, fieldId, {
         id: updates.id,
@@ -186,35 +214,37 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
     onSuccess: (_, variables) => {
       // If the field was renamed, update editingField to point to the new ID
       if (variables.updates.id && variables.updates.id !== variables.fieldId) {
-        setEditingField((prev) => prev ? { ...prev, id: variables.updates.id! } : prev);
+        setEditingField((prev) =>
+          prev ? { ...prev, id: variables.updates.id! } : prev
+        )
       }
-      invalidateCrm();
+      invalidateCrm()
     },
     onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to update field`));
+      toast.error(getErrorMessage(error, t`Failed to update field`))
     },
-  });
+  })
 
   const deleteFieldMutation = useMutation({
     mutationFn: ({ classId, fieldId }: { classId: string; fieldId: string }) =>
       crmsApi.deleteField(crmId, classId, fieldId),
     onSuccess: () => {
-      invalidateCrm();
-      setEditFieldOpen(false);
+      invalidateCrm()
+      setEditFieldOpen(false)
     },
-      onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to delete field`));
+    onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to delete field`))
     },
-  });
+  })
 
   const reorderFieldsMutation = useMutation({
     mutationFn: ({ classId, order }: { classId: string; order: string[] }) =>
       crmsApi.reorderFields(crmId, classId, order),
     onSuccess: invalidateCrm,
     onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to reorder fields`));
+      toast.error(getErrorMessage(error, t`Failed to reorder fields`))
     },
-  });
+  })
 
   // Option mutations
   const createOptionMutation = useMutation({
@@ -224,17 +254,16 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       name,
       colour,
     }: {
-      classId: string;
-      fieldId: string;
-      name: string;
-      colour: string;
-    }) =>
-      crmsApi.createOption(crmId, classId, fieldId, { name, colour }),
+      classId: string
+      fieldId: string
+      name: string
+      colour: string
+    }) => crmsApi.createOption(crmId, classId, fieldId, { name, colour }),
     onSuccess: invalidateCrm,
-      onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to create option`));
+    onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to create option`))
     },
-  });
+  })
 
   const updateOptionMutation = useMutation({
     mutationFn: ({
@@ -243,17 +272,16 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       optionId,
       updates,
     }: {
-      classId: string;
-      fieldId: string;
-      optionId: string;
-      updates: { name?: string; colour?: string };
-    }) =>
-      crmsApi.updateOption(crmId, classId, fieldId, optionId, updates),
+      classId: string
+      fieldId: string
+      optionId: string
+      updates: { name?: string; colour?: string }
+    }) => crmsApi.updateOption(crmId, classId, fieldId, optionId, updates),
     onSuccess: invalidateCrm,
-      onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to update option`));
+    onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to update option`))
     },
-  });
+  })
 
   const deleteOptionMutation = useMutation({
     mutationFn: ({
@@ -261,18 +289,18 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       fieldId,
       optionId,
     }: {
-      classId: string;
-      fieldId: string;
-      optionId: string;
+      classId: string
+      fieldId: string
+      optionId: string
     }) => crmsApi.deleteOption(crmId, classId, fieldId, optionId),
     onSuccess: () => {
-      invalidateCrm();
-      setEditOptionOpen(false);
+      invalidateCrm()
+      setEditOptionOpen(false)
     },
-      onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to delete option`));
+    onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to delete option`))
     },
-  });
+  })
 
   // View mutations
   const createViewMutation = useMutation({
@@ -287,20 +315,20 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       direction,
       classes,
     }: {
-      name: string;
-      viewtype: string;
-      columns?: string;
-      rows?: string;
-      border?: string;
-      fields?: string;
-      sort?: string;
-      direction?: "asc" | "desc";
-      classes?: string;
+      name: string
+      viewtype: string
+      columns?: string
+      rows?: string
+      border?: string
+      fields?: string
+      sort?: string
+      direction?: 'asc' | 'desc'
+      classes?: string
     }) =>
       crmsApi.createView(crmId, {
         name,
-        viewtype: viewtype as "board" | "list",
-        fields: fields || allFields.map((f) => f.id).join(","),
+        viewtype: viewtype as 'board' | 'list',
+        fields: fields || allFields.map((f) => f.id).join(','),
         columns,
         rows,
         border,
@@ -310,9 +338,9 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       }),
     onSuccess: invalidateCrm,
     onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to create view`));
+      toast.error(getErrorMessage(error, t`Failed to create view`))
     },
-  });
+  })
 
   const updateViewMutation = useMutation({
     mutationFn: ({
@@ -320,99 +348,109 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       updates,
       types,
     }: {
-      viewId: string;
-      updates?: Partial<CrmView>;
-      types?: string[];
+      viewId: string
+      updates?: Partial<CrmView>
+      types?: string[]
     }) => {
       // Only what changed: view/update applies the fields it is sent and
       // leaves the rest, so a full snapshot taken from the last fetched
       // design raced a still-refetching earlier edit and reverted it.
-      const payload: Record<string, string> = {};
+      const payload: Record<string, string> = {}
       if (updates) {
-        if (updates.name !== undefined) payload.name = updates.name;
-        if (updates.viewtype !== undefined) payload.viewtype = updates.viewtype;
-        if (updates.filter !== undefined) payload.filter = updates.filter;
-        if (updates.columns !== undefined) payload.columns = updates.columns;
-        if (updates.rows !== undefined) payload.rows = updates.rows;
-        if (updates.border !== undefined) payload.border = updates.border;
-        if (updates.fields !== undefined) payload.fields = updates.fields;
-        if (updates.sort !== undefined) payload.sort = updates.sort;
-        if (updates.direction !== undefined) payload.direction = updates.direction;
+        if (updates.name !== undefined) payload.name = updates.name
+        if (updates.viewtype !== undefined) payload.viewtype = updates.viewtype
+        if (updates.filter !== undefined) payload.filter = updates.filter
+        if (updates.columns !== undefined) payload.columns = updates.columns
+        if (updates.rows !== undefined) payload.rows = updates.rows
+        if (updates.border !== undefined) payload.border = updates.border
+        if (updates.fields !== undefined) payload.fields = updates.fields
+        if (updates.sort !== undefined) payload.sort = updates.sort
+        if (updates.direction !== undefined)
+          payload.direction = updates.direction
       }
-      if (types !== undefined) payload.classes = types.length === crm.classes.length ? "" : types.join(",");
-      return crmsApi.updateView(crmId, viewId, payload);
+      if (types !== undefined)
+        payload.classes =
+          types.length === crm.classes.length ? '' : types.join(',')
+      return crmsApi.updateView(crmId, viewId, payload)
     },
     onSuccess: invalidateCrm,
-      onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to update view`));
+    onError: (error) => {
+      toast.error(getErrorMessage(error, t`Failed to update view`))
     },
-  });
+  })
 
   const deleteViewMutation = useMutation({
     mutationFn: (viewId: string) => crmsApi.deleteView(crmId, viewId),
     onSuccess: () => {
-      invalidateCrm();
-      setEditViewOpen(false);
+      invalidateCrm()
+      setEditViewOpen(false)
     },
     onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to delete view`));
+      toast.error(getErrorMessage(error, t`Failed to delete view`))
     },
-  });
+  })
 
   const reorderViewsMutation = useMutation({
-    mutationFn: (order: string[]) =>
-      crmsApi.reorderViews(crmId, order),
+    mutationFn: (order: string[]) => crmsApi.reorderViews(crmId, order),
     onSuccess: invalidateCrm,
     onError: (error) => {
-      toast.error(getErrorMessage(error, t`Failed to reorder views`));
+      toast.error(getErrorMessage(error, t`Failed to reorder views`))
     },
-  });
+  })
 
   // Handlers
   const handleEditView = (view: CrmView) => {
-    setEditingView(view);
-    setEditViewOpen(true);
-  };
+    setEditingView(view)
+    setEditViewOpen(true)
+  }
 
   const handleEditField = (field: CrmField) => {
-    setEditingField(field);
-    setEditFieldOpen(true);
-  };
+    setEditingField(field)
+    setEditFieldOpen(true)
+  }
 
   const handleEditOption = (option: FieldOption) => {
-    setEditingOption(option);
-    setEditOptionOpen(true);
-  };
+    setEditingOption(option)
+    setEditOptionOpen(true)
+  }
 
   // Create class with chained API calls
-  const handleCreateClass = async (name: string, parents: string[], pendingFields: PendingField[]) => {
-    const result = await createClassMutation.mutateAsync({ name });
-    const classId = result.data?.id;
-    if (!classId) return;
+  const handleCreateClass = async (
+    name: string,
+    parents: string[],
+    pendingFields: PendingField[]
+  ) => {
+    const result = await createClassMutation.mutateAsync({ name })
+    const classId = result.data?.id
+    if (!classId) return
 
     try {
       if (parents.length > 0) {
-        await setHierarchyMutation.mutateAsync({ classId, parents });
+        await setHierarchyMutation.mutateAsync({ classId, parents })
       }
 
       // Create each non-title field (title is auto-created by the backend)
       for (const field of pendingFields) {
-        if (field.id === "title") continue;
+        if (field.id === 'title') continue
         const fieldResult = await createFieldMutation.mutateAsync({
           classId,
           name: field.name,
           fieldtype: field.fieldtype,
           rows: field.rows,
-        });
+        })
         // Create options for enumerated fields
-        if (field.fieldtype === "enumerated" && field.options && fieldResult.data) {
+        if (
+          field.fieldtype === 'enumerated' &&
+          field.options &&
+          fieldResult.data
+        ) {
           for (const opt of field.options) {
             await createOptionMutation.mutateAsync({
               classId,
               fieldId: fieldResult.data.id,
               name: opt.name,
               colour: opt.colour,
-            });
+            })
           }
         }
       }
@@ -421,87 +459,94 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       // retry from the still-open sheet would create a second one with the
       // same name. Take the half-built class back out so the retry starts
       // clean; the failed step's onError has already said what went wrong.
-      await crmsApi.deleteClass(crmId, classId).catch(() => {});
-      invalidateCrm();
-      throw error;
+      await crmsApi.deleteClass(crmId, classId).catch(() => {})
+      invalidateCrm()
+      throw error
     }
-  };
+  }
 
   // View drag handlers
   const handleViewDragStart = (e: React.DragEvent, viewId: string) => {
-    setDraggedViewId(viewId);
-    e.dataTransfer.effectAllowed = "move";
-    e.dataTransfer.setData("text/plain", viewId);
-  };
+    setDraggedViewId(viewId)
+    e.dataTransfer.effectAllowed = 'move'
+    e.dataTransfer.setData('text/plain', viewId)
+  }
 
   const handleViewDragEnd = () => {
-    setDraggedViewId(null);
-    setViewDropIndicator(null);
-  };
+    setDraggedViewId(null)
+    setViewDropIndicator(null)
+  }
 
   const handleViewDragOver = (e: React.DragEvent, viewId: string) => {
-    e.preventDefault();
-    if (viewId === draggedViewId) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const midY = rect.top + rect.height / 2;
-    const position = e.clientY < midY ? "before" : "after";
-    setViewDropIndicator({ viewId, position });
-  };
+    e.preventDefault()
+    if (viewId === draggedViewId) return
+    const rect = e.currentTarget.getBoundingClientRect()
+    const midY = rect.top + rect.height / 2
+    const position = e.clientY < midY ? 'before' : 'after'
+    setViewDropIndicator({ viewId, position })
+  }
 
   const handleViewDragLeave = () => {
-    setViewDropIndicator(null);
-  };
+    setViewDropIndicator(null)
+  }
 
   const handleViewDrop = (e: React.DragEvent, targetViewId: string) => {
-    e.preventDefault();
-    if (!draggedViewId || draggedViewId === targetViewId) return;
+    e.preventDefault()
+    if (!draggedViewId || draggedViewId === targetViewId) return
 
-    const currentOrder = crm.views.map((v) => v.id);
-    const draggedIndex = currentOrder.indexOf(draggedViewId);
-    const targetIndex = currentOrder.indexOf(targetViewId);
-    if (draggedIndex === -1 || targetIndex === -1) return;
+    const currentOrder = crm.views.map((v) => v.id)
+    const draggedIndex = currentOrder.indexOf(draggedViewId)
+    const targetIndex = currentOrder.indexOf(targetViewId)
+    if (draggedIndex === -1 || targetIndex === -1) return
 
-    const newOrder = [...currentOrder];
-    newOrder.splice(draggedIndex, 1);
-    const insertIndex = viewDropIndicator?.position === "after"
-      ? currentOrder.indexOf(targetViewId) - (draggedIndex < targetIndex ? 1 : 0) + 1
-      : currentOrder.indexOf(targetViewId) - (draggedIndex < targetIndex ? 1 : 0);
-    newOrder.splice(insertIndex, 0, draggedViewId);
+    const newOrder = [...currentOrder]
+    newOrder.splice(draggedIndex, 1)
+    const insertIndex =
+      viewDropIndicator?.position === 'after'
+        ? currentOrder.indexOf(targetViewId) -
+          (draggedIndex < targetIndex ? 1 : 0) +
+          1
+        : currentOrder.indexOf(targetViewId) -
+          (draggedIndex < targetIndex ? 1 : 0)
+    newOrder.splice(insertIndex, 0, draggedViewId)
 
-    reorderViewsMutation.mutate(newOrder);
-    setDraggedViewId(null);
-    setViewDropIndicator(null);
-  };
+    reorderViewsMutation.mutate(newOrder)
+    setDraggedViewId(null)
+    setViewDropIndicator(null)
+  }
 
   return (
-    <div className="flex h-full">
+    <div className='flex h-full'>
       {/* Editor panel (left) */}
-      <div className="w-80 border-e flex flex-col overflow-hidden">
-        <div className="flex-1 overflow-auto p-4 space-y-6">
+      <div className='flex w-80 flex-col overflow-hidden border-e'>
+        <div className='flex-1 space-y-6 overflow-auto p-4'>
           {/* Views Section */}
           <section>
-            <div className="flex items-center justify-between mb-2">
-              <Label className="text-sm font-medium"><Trans>Views</Trans></Label>
+            <div className='mb-2 flex items-center justify-between'>
+              <Label className='text-sm font-medium'>
+                <Trans>Views</Trans>
+              </Label>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
-                    variant="ghost"
-                    size="sm"
+                    variant='ghost'
+                    size='sm'
                     onClick={() => setAddViewOpen(true)}
                     aria-label={t`Add view`}
                   >
-                    <Plus className="size-4" />
+                    <Plus className='size-4' />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>{t`Add view`}</TooltipContent>
               </Tooltip>
             </div>
-            <div className="space-y-1">
+            <div className='space-y-1'>
               {crm.views.map((view) => (
                 <div key={view.id}>
-                  {viewDropIndicator?.viewId === view.id && viewDropIndicator.position === "before" && (
-                    <div className="h-0.5 bg-primary mx-3 rounded-full" />
-                  )}
+                  {viewDropIndicator?.viewId === view.id &&
+                    viewDropIndicator.position === 'before' && (
+                      <div className='bg-primary mx-3 h-0.5 rounded-full' />
+                    )}
                   <div
                     draggable
                     onDragStart={(e) => handleViewDragStart(e, view.id)}
@@ -509,69 +554,71 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
                     onDragOver={(e) => handleViewDragOver(e, view.id)}
                     onDragLeave={handleViewDragLeave}
                     onDrop={(e) => handleViewDrop(e, view.id)}
-                    className={`flex items-center gap-2 px-3 py-2 text-sm rounded-md hover:bg-hover transition-colors cursor-grab ${
-                      draggedViewId === view.id ? "opacity-50" : ""
+                    className={`hover:bg-hover flex cursor-grab items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors ${
+                      draggedViewId === view.id ? 'opacity-50' : ''
                     }`}
                   >
-                    <GripVertical className="size-4 text-muted-foreground shrink-0" />
+                    <GripVertical className='text-muted-foreground size-4 shrink-0' />
                     <button
-                      type="button"
+                      type='button'
                       onClick={() => handleEditView(view)}
-                      className="flex-1 text-start"
+                      className='flex-1 text-start'
                     >
-                      <span className="font-medium">{view.name}</span>
+                      <span className='font-medium'>{view.name}</span>
                     </button>
                   </div>
-                  {viewDropIndicator?.viewId === view.id && viewDropIndicator.position === "after" && (
-                    <div className="h-0.5 bg-primary mx-3 rounded-full" />
-                  )}
+                  {viewDropIndicator?.viewId === view.id &&
+                    viewDropIndicator.position === 'after' && (
+                      <div className='bg-primary mx-3 h-0.5 rounded-full' />
+                    )}
                 </div>
               ))}
             </div>
           </section>
 
-          <hr className="border-border" />
+          <hr className='border-border' />
 
           {/* Classes Section */}
           <section>
-            <div className="flex items-center justify-between mb-2">
-              <Label className="text-sm font-medium"><Trans>Classes</Trans></Label>
+            <div className='mb-2 flex items-center justify-between'>
+              <Label className='text-sm font-medium'>
+                <Trans>Classes</Trans>
+              </Label>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
-                    variant="ghost"
-                    size="sm"
+                    variant='ghost'
+                    size='sm'
                     onClick={() => setAddClassOpen(true)}
                     aria-label={t`Add class`}
                   >
-                    <Plus className="size-4" />
+                    <Plus className='size-4' />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>{t`Add class`}</TooltipContent>
               </Tooltip>
             </div>
-            <div className="space-y-1">
+            <div className='space-y-1'>
               {crm.classes.map((cls) => (
                 <button
                   key={cls.id}
                   onClick={() => {
-                    setSelectedClassId(cls.id);
-                    setEditClassOpen(true);
+                    setSelectedClassId(cls.id)
+                    setEditClassOpen(true)
                   }}
-                  className="w-full text-start px-3 py-2 text-sm rounded-md transition-colors hover:bg-hover flex items-center gap-2"
+                  className='hover:bg-hover flex w-full items-center gap-2 rounded-md px-3 py-2 text-start text-sm transition-colors'
                 >
-                  <Blocks className="size-4 text-muted-foreground shrink-0" />
+                  <Blocks className='text-muted-foreground size-4 shrink-0' />
                   {cls.name}
                 </button>
               ))}
             </div>
           </section>
-
         </div>
       </div>
 
       {/* Preview panel (right) */}
-      <div className="flex-1 overflow-hidden">
+      <div className='flex-1 overflow-hidden'>
         <DesignPreview
           crm={crm}
           crmId={crmId}
@@ -584,21 +631,34 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       <ViewSheet
         open={addViewOpen}
         onOpenChange={setAddViewOpen}
-        mode="create"
+        mode='create'
         fields={allFields}
         classes={crm.classes}
-        onCreate={async (name, viewtype, columns, rows, selectedFields, sort, direction, selectedClasses, border) => {
+        onCreate={async (
+          name,
+          viewtype,
+          columns,
+          rows,
+          selectedFields,
+          sort,
+          direction,
+          selectedClasses,
+          border
+        ) => {
           await createViewMutation.mutateAsync({
             name,
             viewtype,
             columns: columns || undefined,
             rows: rows || undefined,
             border: border || undefined,
-            fields: selectedFields.join(","),
+            fields: selectedFields.join(','),
             sort: sort || undefined,
-            direction: direction as "asc" | "desc",
-            classes: selectedClasses.length === crm.classes.length ? "" : selectedClasses.join(","),
-          });
+            direction: direction as 'asc' | 'desc',
+            classes:
+              selectedClasses.length === crm.classes.length
+                ? ''
+                : selectedClasses.join(','),
+          })
         }}
       />
 
@@ -606,7 +666,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
       <ClassSheet
         open={addClassOpen}
         onOpenChange={setAddClassOpen}
-        mode="create"
+        mode='create'
         classes={crm.classes}
         onCreate={handleCreateClass}
       />
@@ -623,16 +683,16 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
               name,
               fieldtype,
               rows,
-            });
+            })
             // Create options for enumerated fields
-            if (fieldtype === "enumerated" && options && result.data) {
+            if (fieldtype === 'enumerated' && options && result.data) {
               for (const opt of options) {
                 await createOptionMutation.mutateAsync({
                   classId: selectedClassId,
                   fieldId: result.data.id,
                   name: opt.name,
                   colour: opt.colour,
-                });
+                })
               }
             }
           }
@@ -649,7 +709,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
               fieldId: resolvedEditingField.id,
               name,
               colour,
-            });
+            })
           }
         }}
       />
@@ -663,17 +723,20 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
         classes={crm.classes}
         onUpdate={(updates) => {
           if (editingView) {
-            updateViewMutation.mutate({ viewId: editingView.id, updates });
+            updateViewMutation.mutate({ viewId: editingView.id, updates })
           }
         }}
         onUpdateClasses={(classes) => {
           if (editingView) {
-            updateViewMutation.mutate({ viewId: editingView.id, types: classes });
+            updateViewMutation.mutate({
+              viewId: editingView.id,
+              types: classes,
+            })
           }
         }}
         onDelete={() => {
           if (editingView) {
-            deleteViewMutation.mutate(editingView.id);
+            deleteViewMutation.mutate(editingView.id)
           }
         }}
       />
@@ -688,24 +751,28 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
         fields={selectedFields}
         onUpdate={(name, title) => {
           if (selectedClassId) {
-            updateClassMutation.mutate({ classId: selectedClassId, name, title });
+            updateClassMutation.mutate({
+              classId: selectedClassId,
+              name,
+              title,
+            })
           }
         }}
         onUpdateHierarchy={(parents) => {
           if (selectedClassId) {
-            setHierarchyMutation.mutate({ classId: selectedClassId, parents });
+            setHierarchyMutation.mutate({ classId: selectedClassId, parents })
           }
         }}
         onDelete={() => {
           if (selectedClassId) {
-            deleteClassMutation.mutate(selectedClassId);
+            deleteClassMutation.mutate(selectedClassId)
           }
         }}
         onAddField={() => setAddFieldOpen(true)}
         onEditField={handleEditField}
         onReorderFields={(order) => {
           if (selectedClassId) {
-            reorderFieldsMutation.mutate({ classId: selectedClassId, order });
+            reorderFieldsMutation.mutate({ classId: selectedClassId, order })
           }
         }}
       />
@@ -719,17 +786,19 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
         onUpdate={(updates) => {
           if (selectedClassId && resolvedEditingField) {
             if (updates.id) {
-              return updateFieldMutation.mutateAsync({
-                classId: selectedClassId,
-                fieldId: resolvedEditingField.id,
-                updates,
-              }).then(() => {});
+              return updateFieldMutation
+                .mutateAsync({
+                  classId: selectedClassId,
+                  fieldId: resolvedEditingField.id,
+                  updates,
+                })
+                .then(() => {})
             }
             updateFieldMutation.mutate({
               classId: selectedClassId,
               fieldId: resolvedEditingField.id,
               updates,
-            });
+            })
           }
         }}
         onDelete={() => {
@@ -737,7 +806,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
             deleteFieldMutation.mutate({
               classId: selectedClassId,
               fieldId: resolvedEditingField.id,
-            });
+            })
           }
         }}
         onAddOption={() => setAddOptionOpen(true)}
@@ -748,7 +817,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
               classId: selectedClassId,
               fieldId: resolvedEditingField.id,
               optionId,
-            });
+            })
           }
         }}
       />
@@ -764,7 +833,7 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
               fieldId: resolvedEditingField.id,
               optionId: editingOption.id,
               updates,
-            });
+            })
           }
         }}
         onDelete={() => {
@@ -773,10 +842,10 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
               classId: selectedClassId,
               fieldId: resolvedEditingField.id,
               optionId: editingOption.id,
-            });
+            })
           }
         }}
       />
     </div>
-  );
+  )
 }
