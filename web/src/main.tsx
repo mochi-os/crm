@@ -10,6 +10,7 @@ import { RouterProvider, createRouter } from "@tanstack/react-router";
 import {
   CommandMenu,
   createQueryClient,
+  GeneralError,
   SearchProvider,
   ThemeProvider,
   getAppBasepath,
@@ -210,12 +211,17 @@ const queryClient = createQueryClient();
 // follows the domain route path when served through one; createAppHistory is
 // defined only for an entity domain route, else the router keeps its default
 // history.
+// A route without its own errorComponent gets no boundary at all, so a crash in
+// the page body climbed to __root and replaced the sidebar along with it. The
+// default gives every route its own boundary, so the error stays in the content
+// pane and the CRM list, search and settings remain reachable.
 const router = createRouter({
   routeTree,
   context: { queryClient },
   basepath: getAppBasepath(),
   history: createAppHistory(),
   defaultPreload: false,
+  defaultErrorComponent: GeneralError,
 });
 
 // Register the router instance for type safety

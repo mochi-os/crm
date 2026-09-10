@@ -108,7 +108,10 @@ export function ClassSheet({
     } else if (cls) {
       setName(cls.name);
     }
-  }, [open, cls, mode]);
+    // cls?.id, not cls: the object is fresh on every refetch, so depending on it
+    // re-ran this reset and wiped a name the user was still editing.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, cls?.id, mode]);
 
   if (mode === "edit" && !cls) return null;
 
