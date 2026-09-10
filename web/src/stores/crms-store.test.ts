@@ -3,7 +3,6 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-/* eslint-disable lingui/no-unlocalized-strings */
 // The store behaviour is asserted once in @mochi/web, in
 // src/lib/create-entity-list-store.test.ts. What is left here is this app's
 // wiring: the list call it makes and the key it reads the rows out of.

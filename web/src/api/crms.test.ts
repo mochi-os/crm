@@ -3,7 +3,6 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-/* eslint-disable lingui/no-unlocalized-strings */
 // The CRM api is createEntityApi with nothing added, and the shared client is
 // asserted once in @mochi/web, in src/lib/entity-api.test.ts. What is left to
 // check here is this app's own wiring: its request module, its endpoint table,

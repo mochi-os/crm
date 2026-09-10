@@ -3,7 +3,6 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-/* eslint-disable lingui/no-unlocalized-strings */
 // The routes themselves are asserted once in @mochi/web, in
 // lib/entity-endpoints.test.ts. The CRM server exposes exactly that table and
 // nothing more, so all this file has left to check is that the binding hands
