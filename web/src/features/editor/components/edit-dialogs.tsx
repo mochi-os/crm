@@ -283,21 +283,16 @@ export function ClassSheet({
             </Tooltip>
             {mode === 'edit' && onDelete && (
               <DropdownMenu>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <DropdownMenuTrigger asChild>
-                      <Button
-                        variant='ghost'
-                        size='icon'
-                        className='size-8'
-                        aria-label={t`Open class actions`}
-                      >
-                        <MoreHorizontal className='size-4' />
-                      </Button>
-                    </DropdownMenuTrigger>
-                  </TooltipTrigger>
-                  <TooltipContent>{t`Open class actions`}</TooltipContent>
-                </Tooltip>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant='ghost'
+                    size='icon'
+                    className='size-8'
+                    aria-label={t`Open class actions`}
+                  >
+                    <MoreHorizontal className='size-4' />
+                  </Button>
+                </DropdownMenuTrigger>
                 <DropdownMenuContent
                   align='end'
                   onCloseAutoFocus={(e) => e.preventDefault()}
