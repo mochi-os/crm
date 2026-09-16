@@ -33,7 +33,7 @@ import {
   UploadProgress,
   DISALLOWED_NAME_CHARS,
 } from '@mochi/web'
-import { Loader2, Plus, Upload, Users, X } from 'lucide-react'
+import { Plus, Upload, Users, X } from 'lucide-react'
 import crmsApi from '@/api/crms'
 import { useCrmsStore } from '@/stores/crms-store'
 
@@ -395,12 +395,11 @@ export function CreateCrmDialog({
             >
               <Trans>Cancel</Trans>
             </Button>
-            <Button type='submit' disabled={isPending}>
-              {isPending ? (
-                <Loader2 className='me-2 size-4 animate-spin' />
-              ) : (
-                <Plus className='me-2 size-4' />
-              )}
+            <Button
+              type='submit'
+              loading={isPending}
+              icon={<Plus className='me-2 size-4' />}
+            >
               <Trans>Create CRM</Trans>
             </Button>
           </ResponsiveDialogFooter>
