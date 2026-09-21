@@ -37,15 +37,16 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
   const { t } = useLingui()
   const queryClient = useQueryClient()
 
-  // Fetch objects for preview
-  const { data: objectsData } = useQuery({
+  // Fetch objects for preview. The shared objects page caches the whole list
+  // response under this key, so cache the same shape and read .objects from it.
+  const { data: objectListData } = useQuery({
     queryKey: ['objects', crmId],
     queryFn: async () => {
       const response = await crmsApi.listObjects(crmId)
-      return response.data.objects
+      return response.data
     },
   })
-  const objects = objectsData || []
+  const objects = objectListData?.objects ?? []
 
   // Selection state
   const [selectedClassId, setSelectedClassId] = useState<string | null>(
