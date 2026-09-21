@@ -11,11 +11,11 @@ import type { CrmField, CrmClass } from '@/types'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetTitle,
-  SheetFooter,
+  SidePanel,
+  SidePanelBody,
+  SidePanelFooter,
+  SidePanelHeader,
+  SidePanelTitle,
   Button,
   Input,
   Label,
@@ -250,269 +250,249 @@ export function ClassSheet({
   }
 
   return (
-    <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent
-        className='flex w-full flex-col p-0 sm:max-w-md [&>button:last-child]:hidden'
-        onOpenAutoFocus={(event) => event.preventDefault()}
-      >
-        <div className='flex items-center justify-between border-b px-6 py-4'>
-          <SheetTitle>
-            {mode === 'create' ? (
-              <Trans>Add class</Trans>
-            ) : (
-              <Trans>Edit class</Trans>
-            )}
-          </SheetTitle>
-          <SheetDescription className='sr-only'>
-            <Trans>Configure class settings</Trans>
-          </SheetDescription>
-          <div className='flex items-center gap-1'>
-            <Tooltip>
-              <TooltipTrigger asChild>
+    <SidePanel
+      open={open}
+      onOpenChange={onOpenChange}
+      description={t`Configure class settings`}
+      onOpenAutoFocus={(event) => event.preventDefault()}
+    >
+      <SidePanelHeader
+        actions={
+          mode === 'edit' && onDelete ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
                 <Button
                   variant='ghost'
                   size='icon'
                   className='size-8'
-                  onClick={() => onOpenChange(false)}
-                  aria-label={t`Close dialog`}
+                  aria-label={t`Open class actions`}
                 >
-                  <X className='size-4' />
+                  <MoreHorizontal className='size-4' />
                 </Button>
-              </TooltipTrigger>
-              <TooltipContent>{t`Close dialog`}</TooltipContent>
-            </Tooltip>
-            {mode === 'edit' && onDelete && (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant='ghost'
-                    size='icon'
-                    className='size-8'
-                    aria-label={t`Open class actions`}
-                  >
-                    <MoreHorizontal className='size-4' />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  align='end'
-                  onCloseAutoFocus={(e) => e.preventDefault()}
-                >
-                  <DropdownMenuItem onSelect={onDelete}>
-                    <Minus className='size-4' />
-                    <Trans>Delete class</Trans>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            )}
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align='end'
+                onCloseAutoFocus={(e) => e.preventDefault()}
+              >
+                <DropdownMenuItem onSelect={onDelete}>
+                  <Minus className='size-4' />
+                  <Trans>Delete class</Trans>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : undefined
+        }
+      >
+        <SidePanelTitle>
+          {mode === 'create' ? (
+            <Trans>Add class</Trans>
+          ) : (
+            <Trans>Edit class</Trans>
+          )}
+        </SidePanelTitle>
+      </SidePanelHeader>
+      <SidePanelBody className='space-y-6'>
+        <div className='space-y-2'>
+          <Label htmlFor='class-name'>
+            <Trans>Name</Trans>
+          </Label>
+          <div className='ps-4'>
+            <Input
+              id='class-name'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              onBlur={mode === 'edit' ? handleNameBlur : undefined}
+              autoFocus={mode === 'create'}
+            />
           </div>
         </div>
-        <div className='flex-1 space-y-6 overflow-y-auto p-6'>
+
+        {mode === 'edit' && cls && (
           <div className='space-y-2'>
-            <Label htmlFor='class-name'>
-              <Trans>Name</Trans>
+            <Label htmlFor='class-id'>
+              <Trans>ID</Trans>
             </Label>
             <div className='ps-4'>
               <Input
-                id='class-name'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                onBlur={mode === 'edit' ? handleNameBlur : undefined}
-                autoFocus={mode === 'create'}
+                id='class-id'
+                value={cls.id}
+                readOnly
+                className='text-muted-foreground'
               />
             </div>
           </div>
+        )}
 
-          {mode === 'edit' && cls && (
-            <div className='space-y-2'>
-              <Label htmlFor='class-id'>
-                <Trans>ID</Trans>
-              </Label>
-              <div className='ps-4'>
-                <Input
-                  id='class-id'
-                  value={cls.id}
-                  readOnly
-                  className='text-muted-foreground'
-                />
-              </div>
-            </div>
-          )}
-
-          {mode === 'edit' && cls && fields && fields.length > 0 && (
-            <div className='space-y-2'>
-              <Label>
-                <Trans>Title field</Trans>
-              </Label>
-              <div className='ps-4'>
-                <Select
-                  value={cls.title || NONE_SELECT_VALUE}
-                  onValueChange={(value) => {
-                    if (onUpdate) {
-                      // The name input commits on blur, which this click fires,
-                      // so the two requests race: send the name as typed, not
-                      // the prop, or the second one restores the old name.
-                      onUpdate(
-                        name.trim() || cls.name,
-                        value === NONE_SELECT_VALUE ? '' : value
-                      )
-                    }
-                  }}
-                >
-                  <SelectTrigger className='w-full'>
-                    <SelectValue placeholder={t`None`} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value={NONE_SELECT_VALUE}>
-                      <Trans>None</Trans>
-                    </SelectItem>
-                    {fields.map((field) => (
-                      <SelectItem key={field.id} value={field.id}>
-                        {field.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          )}
-
+        {mode === 'edit' && cls && fields && fields.length > 0 && (
           <div className='space-y-2'>
             <Label>
-              <Trans>Can be child of</Trans>
+              <Trans>Title field</Trans>
             </Label>
-            <div className='space-y-2 ps-4'>
-              <label className='flex cursor-pointer items-center gap-2 text-sm'>
-                <Switch
-                  checked={currentHierarchy.includes('')}
-                  onCheckedChange={() => toggleParent('')}
-                />
-                <Trans>Top level</Trans>
-              </label>
-              {[...classes]
-                .sort((a, b) => naturalCompare(a.name, b.name))
-                .map((c) => (
-                  <label
-                    key={c.id}
-                    className='flex cursor-pointer items-center gap-2 text-sm'
-                  >
-                    <Switch
-                      checked={currentHierarchy.includes(c.id)}
-                      onCheckedChange={() => toggleParent(c.id)}
-                    />
-                    {c.name}
-                    {c.id === cls?.id ? (
-                      <>
-                        {' '}
-                        <Trans>(itself)</Trans>
-                      </>
-                    ) : (
-                      ''
-                    )}
-                  </label>
-                ))}
+            <div className='ps-4'>
+              <Select
+                value={cls.title || NONE_SELECT_VALUE}
+                onValueChange={(value) => {
+                  if (onUpdate) {
+                    // The name input commits on blur, which this click fires,
+                    // so the two requests race: send the name as typed, not
+                    // the prop, or the second one restores the old name.
+                    onUpdate(
+                      name.trim() || cls.name,
+                      value === NONE_SELECT_VALUE ? '' : value
+                    )
+                  }
+                }}
+              >
+                <SelectTrigger className='w-full'>
+                  <SelectValue placeholder={t`None`} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value={NONE_SELECT_VALUE}>
+                    <Trans>None</Trans>
+                  </SelectItem>
+                  {fields.map((field) => (
+                    <SelectItem key={field.id} value={field.id}>
+                      {field.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           </div>
+        )}
 
-          <div className='space-y-2'>
-            <Label>
-              <Trans>Fields</Trans>
-            </Label>
-            <div className='space-y-2 ps-4'>
-              <div className='space-y-1'>
-                {displayFields.map((field) => (
-                  <div key={field.id}>
-                    {dropIndicator?.fieldId === field.id &&
-                      dropIndicator.position === 'before' && (
-                        <div className='bg-primary mx-3 h-0.5 rounded-full' />
-                      )}
-                    <div
-                      draggable
-                      onDragStart={(e) => handleDragStart(e, field.id)}
-                      onDragEnd={handleDragEnd}
-                      onDragOver={(e) => handleDragOver(e, field.id)}
-                      onDragLeave={handleDragLeave}
-                      onDrop={(e) => handleDrop(e, field.id)}
-                      className={`hover:bg-hover flex cursor-grab items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors ${
-                        draggedFieldId === field.id ? 'opacity-50' : ''
-                      }`}
-                    >
-                      <GripVertical className='text-muted-foreground size-4 shrink-0' />
-                      {mode === 'edit' && onEditField ? (
-                        <button
-                          type='button'
-                          onClick={() => onEditField(field as CrmField)}
-                          className='flex-1 text-start'
-                        >
-                          <span className='font-medium'>
-                            {field.name || field.id}
-                          </span>
-                        </button>
-                      ) : (
-                        <span className='flex-1 text-start font-medium'>
+        <div className='space-y-2'>
+          <Label>
+            <Trans>Can be child of</Trans>
+          </Label>
+          <div className='space-y-2 ps-4'>
+            <label className='flex cursor-pointer items-center gap-2 text-sm'>
+              <Switch
+                checked={currentHierarchy.includes('')}
+                onCheckedChange={() => toggleParent('')}
+              />
+              <Trans>Top level</Trans>
+            </label>
+            {[...classes]
+              .sort((a, b) => naturalCompare(a.name, b.name))
+              .map((c) => (
+                <label
+                  key={c.id}
+                  className='flex cursor-pointer items-center gap-2 text-sm'
+                >
+                  <Switch
+                    checked={currentHierarchy.includes(c.id)}
+                    onCheckedChange={() => toggleParent(c.id)}
+                  />
+                  {c.name}
+                  {c.id === cls?.id ? (
+                    <>
+                      {' '}
+                      <Trans>(itself)</Trans>
+                    </>
+                  ) : (
+                    ''
+                  )}
+                </label>
+              ))}
+          </div>
+        </div>
+
+        <div className='space-y-2'>
+          <Label>
+            <Trans>Fields</Trans>
+          </Label>
+          <div className='space-y-2 ps-4'>
+            <div className='space-y-1'>
+              {displayFields.map((field) => (
+                <div key={field.id}>
+                  {dropIndicator?.fieldId === field.id &&
+                    dropIndicator.position === 'before' && (
+                      <div className='bg-primary mx-3 h-0.5 rounded-full' />
+                    )}
+                  <div
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, field.id)}
+                    onDragEnd={handleDragEnd}
+                    onDragOver={(e) => handleDragOver(e, field.id)}
+                    onDragLeave={handleDragLeave}
+                    onDrop={(e) => handleDrop(e, field.id)}
+                    className={`hover:bg-hover flex cursor-grab items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors ${
+                      draggedFieldId === field.id ? 'opacity-50' : ''
+                    }`}
+                  >
+                    <GripVertical className='text-muted-foreground size-4 shrink-0' />
+                    {mode === 'edit' && onEditField ? (
+                      <button
+                        type='button'
+                        onClick={() => onEditField(field as CrmField)}
+                        className='flex-1 text-start'
+                      >
+                        <span className='font-medium'>
                           {field.name || field.id}
                         </span>
-                      )}
-                      {mode === 'create' && field.id !== 'title' && (
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <Button
-                              type='button'
-                              variant='ghost'
-                              size='icon'
-                              className='size-6 shrink-0'
-                              onClick={() => removePendingField(field.id)}
-                              aria-label={t`Remove field ${field.name || field.id}`}
-                            >
-                              <X className='size-3' />
-                            </Button>
-                          </TooltipTrigger>
-                          <TooltipContent>{t`Remove field ${field.name || field.id}`}</TooltipContent>
-                        </Tooltip>
-                      )}
-                    </div>
-                    {dropIndicator?.fieldId === field.id &&
-                      dropIndicator.position === 'after' && (
-                        <div className='bg-primary mx-3 h-0.5 rounded-full' />
-                      )}
+                      </button>
+                    ) : (
+                      <span className='flex-1 text-start font-medium'>
+                        {field.name || field.id}
+                      </span>
+                    )}
+                    {mode === 'create' && field.id !== 'title' && (
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button
+                            type='button'
+                            variant='ghost'
+                            size='icon'
+                            className='size-6 shrink-0'
+                            onClick={() => removePendingField(field.id)}
+                            aria-label={t`Remove field ${field.name || field.id}`}
+                          >
+                            <X className='size-3' />
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>{t`Remove field ${field.name || field.id}`}</TooltipContent>
+                      </Tooltip>
+                    )}
                   </div>
-                ))}
-              </div>
+                  {dropIndicator?.fieldId === field.id &&
+                    dropIndicator.position === 'after' && (
+                      <div className='bg-primary mx-3 h-0.5 rounded-full' />
+                    )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
-        <SheetFooter className='justify-between border-t px-6 py-4'>
-          <Button
-            type='button'
-            variant='outline'
-            size='sm'
-            onClick={() => {
-              if (mode === 'create') {
-                setAddFieldOpen(true)
-              } else if (onAddField) {
-                onAddField()
-              }
-            }}
-          >
-            <Plus className='size-4' />
-            <Trans>Add field</Trans>
+      </SidePanelBody>
+      <SidePanelFooter>
+        <Button
+          type='button'
+          variant='outline'
+          size='sm'
+          onClick={() => {
+            if (mode === 'create') {
+              setAddFieldOpen(true)
+            } else if (onAddField) {
+              onAddField()
+            }
+          }}
+        >
+          <Plus className='size-4' />
+          <Trans>Add field</Trans>
+        </Button>
+        {mode === 'create' ? (
+          <Button type='button' onClick={handleCreate} disabled={!name.trim()}>
+            <Check className='size-4' />
+            <Trans>Add class</Trans>
           </Button>
-          {mode === 'create' ? (
-            <Button
-              type='button'
-              onClick={handleCreate}
-              disabled={!name.trim()}
-            >
-              <Check className='size-4' />
-              <Trans>Add class</Trans>
-            </Button>
-          ) : (
-            <Button type='button' onClick={() => onOpenChange(false)}>
-              <Check className='size-4' />
-              <Trans>Done</Trans>
-            </Button>
-          )}
-        </SheetFooter>
-      </SheetContent>
+        ) : (
+          <Button type='button' onClick={() => onOpenChange(false)}>
+            <Check className='size-4' />
+            <Trans>Done</Trans>
+          </Button>
+        )}
+      </SidePanelFooter>
 
       {mode === 'create' && (
         <AddFieldDialog
@@ -535,6 +515,6 @@ export function ClassSheet({
           }}
         />
       )}
-    </Sheet>
+    </SidePanel>
   )
 }
