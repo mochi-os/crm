@@ -79,9 +79,21 @@ msgstr "{count, plural, one {#मि} other {#मि}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#आठ} other {#आठ}}"
 
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr "{day}, {from} ते {to}"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} नाव"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr "{from} ते {to}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr "{hidden, plural, one {+# आणखी} other {+# आणखी}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -256,6 +268,10 @@ msgstr "AI"
 #: src/components/layout/crms-layout.tsx
 msgid "All CRMs"
 msgstr "सर्व CRM"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr "संपूर्ण दिवस"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -497,6 +513,11 @@ msgstr "बदलले"
 msgid "Changed {field}"
 msgstr "{field} बदलले"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr "बदललेली पुनरावृत्ती"
+
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
 msgstr "चेकबॉक्स"
@@ -504,6 +525,10 @@ msgstr "चेकबॉक्स"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "चेकलिस्ट"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "तारीख निवडा"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -588,6 +613,7 @@ msgid "Collapse sidebar"
 msgstr "साइडबार कोलॅप्स करा"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "रंग"
 
@@ -1709,6 +1735,10 @@ msgstr "नियमन"
 msgid "Monday"
 msgstr "सोमवार"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "महिना"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
 msgstr "अधिक पर्याय"
@@ -1720,6 +1750,11 @@ msgstr "हलवले"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Moved {field}"
 msgstr "{field} हलवले"
+
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr "{0} वर हलवत आहे"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -1775,6 +1810,14 @@ msgstr "नवीन गेम"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "पुढील इमेज"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next month"
+msgstr "पुढील महिना"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "पुढील वर्ष"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -2052,6 +2095,14 @@ msgstr "पोस्ट्स आणि कमेंट्स"
 msgid "Previous image"
 msgstr "मागील इमेज"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous month"
+msgstr "मागील महिना"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "मागील वर्ष"
+
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Privacy"
@@ -2207,6 +2258,11 @@ msgstr "कॉलमचे नाव बदला"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "या बोर्ड कॉलमचे नाव बदला"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr "पुनरावृत्ती होते"
 
 #: src/routes/_authenticated/$crmId/design.tsx
 msgid "Replace design"
@@ -2956,6 +3012,10 @@ msgstr "आम्ही <0>{0}</0> वर एक पडताळणी कोड
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "बुधवार"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "वर्ष"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
