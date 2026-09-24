@@ -79,6 +79,7 @@ msgstr "{count, plural, one {#分} other {#分}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#週間} other {#週間}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
 msgstr "{day} {from}～{to}"
@@ -87,6 +88,7 @@ msgstr "{day} {from}～{to}"
 msgid "{entityLabel} name"
 msgstr "{entityLabel} の名前"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from}～{to}"
@@ -270,6 +272,7 @@ msgid "All CRMs"
 msgstr "すべての CRM"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
 msgstr "終日"
 
@@ -347,6 +350,10 @@ msgstr "このCRMの購読を解除しますか？"
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "昇順"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "海上"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -444,6 +451,10 @@ msgstr "枠線の色"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Browser notifications"
 msgstr "ブラウザ通知"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "カレンダーサーバー"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -700,6 +711,10 @@ msgstr "続行"
 msgid "Continue with {label}"
 msgstr "{label} で続行"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel}で続行"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "コピーしました"
@@ -708,6 +723,10 @@ msgstr "コピーしました"
 msgid "Copied to clipboard"
 msgstr "クリップボードにコピーしました"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "コピー"
@@ -1127,6 +1146,10 @@ msgstr "メールアドレス"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Email code"
 msgstr "メールコード"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "開始より前に終了"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1751,8 +1774,10 @@ msgstr "移動しました"
 msgid "Moved {field}"
 msgstr "{field}を移動しました"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "{0} に移動しています"
 

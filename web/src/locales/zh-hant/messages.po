@@ -79,6 +79,7 @@ msgstr "{count, plural, one {#分鐘} other {#分鐘}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#週} other {#週}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
 msgstr "{day} {from} 至 {to}"
@@ -87,6 +88,7 @@ msgstr "{day} {from} 至 {to}"
 msgid "{entityLabel} name"
 msgstr "{entityLabel}名稱"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} 至 {to}"
@@ -270,6 +272,7 @@ msgid "All CRMs"
 msgstr "所有 CRM"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
 msgstr "整天"
 
@@ -347,6 +350,10 @@ msgstr "您確定要取消訂閱此 CRM 嗎?"
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "升冪"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "海上"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -444,6 +451,10 @@ msgstr "邊框顏色"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Browser notifications"
 msgstr "瀏覽器通知"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "行事曆伺服器"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -700,6 +711,10 @@ msgstr "繼續"
 msgid "Continue with {label}"
 msgstr "使用 {label} 繼續"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "使用 {providerLabel} 繼續"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "已複製"
@@ -708,6 +723,10 @@ msgstr "已複製"
 msgid "Copied to clipboard"
 msgstr "已複製到剪貼簿"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "複製"
@@ -1127,6 +1146,10 @@ msgstr "電子郵件"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Email code"
 msgstr "電子郵件代碼"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "結束早於開始"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1751,8 +1774,10 @@ msgstr "已移動"
 msgid "Moved {field}"
 msgstr "已移動{field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "正在移動到 {0}"
 

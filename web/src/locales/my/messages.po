@@ -79,6 +79,7 @@ msgstr "{count, plural, one {#မိ} other {#မိ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ပတ်} other {#ပတ်}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
 msgstr "{day} {from} မှ {to}"
@@ -87,6 +88,7 @@ msgstr "{day} {from} မှ {to}"
 msgid "{entityLabel} name"
 msgstr "{entityLabel} အမည်"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} မှ {to}"
@@ -270,6 +272,7 @@ msgid "All CRMs"
 msgstr "CRM အားလုံး"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
 msgstr "တစ်နေကုန်"
 
@@ -347,6 +350,10 @@ msgstr "ဤ CRM မှ subscription ဖြုတ်မှာသေချာပ�
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "ငယ်စဉ်ကြီးလိုက်"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "ပင်လယ်ပြင်တွင်"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -444,6 +451,10 @@ msgstr "ဘောင်အရောင်"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Browser notifications"
 msgstr "Browser အကြောင်းကြားချက်များ"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "ပြက္ခဒိန် ဆာဗာ"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -700,6 +711,10 @@ msgstr "ဆက်လက်လုပ်ဆောင်မည်"
 msgid "Continue with {label}"
 msgstr "{label} ဖြင့် ဆက်လက်လုပ်ဆောင်ပါ"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} ဖြင့် ဆက်လုပ်မည်"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "ကူးယူပြီးပါပြီ"
@@ -708,6 +723,10 @@ msgstr "ကူးယူပြီးပါပြီ"
 msgid "Copied to clipboard"
 msgstr "ကလစ်ဘုတ်သို့ ကူးပြီး"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "ကူးမည်"
@@ -1127,6 +1146,10 @@ msgstr "အီးမေးလ်"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Email code"
 msgstr "အီးမေးလ် ကုဒ်"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "မစတင်မီ ပြီးဆုံးသည်"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1751,8 +1774,10 @@ msgstr "ရွှေ့ခဲ့သည်"
 msgid "Moved {field}"
 msgstr "{field} ကို ရွှေ့ခဲ့သည်"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "{0} သို့ ရွှေ့နေသည်"
 

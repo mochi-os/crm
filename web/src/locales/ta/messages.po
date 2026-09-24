@@ -79,6 +79,7 @@ msgstr "{count, plural, one {#நி} other {#நி}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#வா} other {#வா}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
 msgstr "{day}, {from} முதல் {to} வரை"
@@ -87,6 +88,7 @@ msgstr "{day}, {from} முதல் {to} வரை"
 msgid "{entityLabel} name"
 msgstr "{entityLabel} பெயர்"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} முதல் {to} வரை"
@@ -270,6 +272,7 @@ msgid "All CRMs"
 msgstr "அனைத்து CRM-கள்"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
 msgstr "நாள் முழுவதும்"
 
@@ -347,6 +350,10 @@ msgstr "இந்த CRM-இலிருந்து சந்தா நீக�
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "ஏறுவரிசை"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "கடலில்"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -444,6 +451,10 @@ msgstr "எல்லை நிறம்"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Browser notifications"
 msgstr "உலாவி அறிவிப்புகள்"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "நாட்காட்டி சர்வர்"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -700,6 +711,10 @@ msgstr "தொடர்"
 msgid "Continue with {label}"
 msgstr "{label} மூலம் தொடரவும்"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} மூலம் தொடரவும்"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "நகலெடுக்கப்பட்டது"
@@ -708,6 +723,10 @@ msgstr "நகலெடுக்கப்பட்டது"
 msgid "Copied to clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "நகலெடு"
@@ -1127,6 +1146,10 @@ msgstr "மின்னஞ்சல்"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Email code"
 msgstr "மின்னஞ்சல் குறியீடு"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "தொடங்குவதற்கு முன்பே முடிகிறது"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1751,8 +1774,10 @@ msgstr "நகர்த்தப்பட்டது"
 msgid "Moved {field}"
 msgstr "{field} நகர்த்தப்பட்டது"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "{0} க்கு நகர்த்தப்படுகிறது"
 

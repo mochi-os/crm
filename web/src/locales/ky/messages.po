@@ -79,6 +79,7 @@ msgstr "{count, plural, one {#мүн} other {#мүн}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#жума} other {#жума}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
 msgstr "{day}, {from} - {to}"
@@ -87,6 +88,7 @@ msgstr "{day}, {from} - {to}"
 msgid "{entityLabel} name"
 msgstr "{entityLabel} аты"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} - {to}"
@@ -270,6 +272,7 @@ msgid "All CRMs"
 msgstr "Бардык CRM"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
 msgstr "Күн бою"
 
@@ -347,6 +350,10 @@ msgstr "Бул CRMден жазылбоону каалайсызбы?"
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Өсүү тартибинде"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Деңизде"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -444,6 +451,10 @@ msgstr "Чек ара түсү"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Browser notifications"
 msgstr "Браузер эскертүүлөрү"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Календарь сервери"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -700,6 +711,10 @@ msgstr "Улантуу"
 msgid "Continue with {label}"
 msgstr "{label} менен улантуу"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} менен улантуу"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Көчүрүлдү"
@@ -708,6 +723,10 @@ msgstr "Көчүрүлдү"
 msgid "Copied to clipboard"
 msgstr "Алмашуу буферине көчүрүлдү"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Көчүрүү"
@@ -1127,6 +1146,10 @@ msgstr "Электрондук почта"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Email code"
 msgstr "Электрондук почта коду"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Башталганга чейин аяктайт"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1751,8 +1774,10 @@ msgstr "Жылдырылды"
 msgid "Moved {field}"
 msgstr "{field} жылдырылды"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "{0} күнүнө жылдырылууда"
 

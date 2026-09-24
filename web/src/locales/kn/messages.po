@@ -79,6 +79,7 @@ msgstr "{count, plural, one {#ನಿ} other {#ನಿ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ವಾ} other {#ವಾ}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
 msgstr "{day}, {from} ರಿಂದ {to} ವರೆಗೆ"
@@ -87,6 +88,7 @@ msgstr "{day}, {from} ರಿಂದ {to} ವರೆಗೆ"
 msgid "{entityLabel} name"
 msgstr "{entityLabel} ಹೆಸರು"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} ರಿಂದ {to} ವರೆಗೆ"
@@ -270,6 +272,7 @@ msgid "All CRMs"
 msgstr "ಎಲ್ಲಾ CRMಗಳು"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
 msgstr "ಇಡೀ ದಿನ"
 
@@ -347,6 +350,10 @@ msgstr "ಈ CRM ನಿಂದ ಅನ್‌ಸಬ್‌ಸ್ಕ್ರೈಬ್ �
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "ಆರೋಹಣ"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "ಸಮುದ್ರದಲ್ಲಿ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -444,6 +451,10 @@ msgstr "ಗಡಿ ಬಣ್ಣ"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Browser notifications"
 msgstr "ಬ್ರೌಸರ್ ಅಧಿಸೂಚನೆಗಳು"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "ಕ್ಯಾಲೆಂಡರ್ ಸರ್ವರ್"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -700,6 +711,10 @@ msgstr "ಮುಂದುವರಿಸಿ"
 msgid "Continue with {label}"
 msgstr "{label} ಮೂಲಕ ಮುಂದುವರಿಸಿ"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} ಜೊತೆ ಮುಂದುವರಿಸಿ"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "ನಕಲಿಸಲಾಗಿದೆ"
@@ -708,6 +723,10 @@ msgstr "ನಕಲಿಸಲಾಗಿದೆ"
 msgid "Copied to clipboard"
 msgstr "ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸಲಾಗಿದೆ"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "ನಕಲಿಸಿ"
@@ -1127,6 +1146,10 @@ msgstr "ಇಮೇಲ್"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Email code"
 msgstr "ಇಮೇಲ್ ಕೋಡ್"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "ಆರಂಭವಾಗುವ ಮೊದಲೇ ಕೊನೆಗೊಳ್ಳುತ್ತದೆ"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1751,8 +1774,10 @@ msgstr "ಸರಿಸಲಾಗಿದೆ"
 msgid "Moved {field}"
 msgstr "{field} ಸರಿಸಲಾಗಿದೆ"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "{0} ಗೆ ಸರಿಸಲಾಗುತ್ತಿದೆ"
 

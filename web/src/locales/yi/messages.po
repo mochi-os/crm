@@ -79,6 +79,7 @@ msgstr "{count, plural, one {#מינ} other {#מינ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#וואָך} other {#וואָך}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
 msgstr "{day}, {from} ביז {to}"
@@ -87,6 +88,7 @@ msgstr "{day}, {from} ביז {to}"
 msgid "{entityLabel} name"
 msgstr "{entityLabel} נאָמען"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} ביז {to}"
@@ -270,6 +272,7 @@ msgid "All CRMs"
 msgstr "אַלע CRMs"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
 msgstr "אַ גאַנצן טאָג"
 
@@ -347,6 +350,10 @@ msgstr "זענט איר זיכער איר ווילט אַראָפּשרײַבן 
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "אַרויפֿגייענדיק"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "אויפֿן ים"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -444,6 +451,10 @@ msgstr "ראַנד פֿאַרב"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Browser notifications"
 msgstr "בראָוזער נאָטיפֿיקאַציעס"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "קאַלענדאַר־סערווער"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -700,6 +711,10 @@ msgstr "ממשיך"
 msgid "Continue with {label}"
 msgstr "המשך מיט {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "ווײַטער מיט {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "קאָפּירט"
@@ -708,6 +723,10 @@ msgstr "קאָפּירט"
 msgid "Copied to clipboard"
 msgstr "קאָפּירט צו קליפּברעט"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "קאָפּירן"
@@ -1127,6 +1146,10 @@ msgstr "בליצפּאָסט"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Email code"
 msgstr "בליצפּאָסט־קאָד"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "ענדיקט זיך איידער עס הייבט זיך אָן"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1751,8 +1774,10 @@ msgstr "אַריבערגעפֿירט"
 msgid "Moved {field}"
 msgstr "אַריבערגעפֿירט {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "פֿאַררוקן צו {0}"
 

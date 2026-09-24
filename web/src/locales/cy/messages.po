@@ -79,6 +79,7 @@ msgstr "{count, plural, one {#mun} other {#mun}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#wyth} other {#wyth}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
 msgstr "{day}, {from} i {to}"
@@ -87,6 +88,7 @@ msgstr "{day}, {from} i {to}"
 msgid "{entityLabel} name"
 msgstr "Enw {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} i {to}"
@@ -270,6 +272,7 @@ msgid "All CRMs"
 msgstr "Pob CRM"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
 msgstr "Trwy'r dydd"
 
@@ -347,6 +350,10 @@ msgstr "Ydych chi'n siŵr eich bod am ddad-danysgrifio o'r CRM hwn?"
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Esgynnol"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Ar y môr"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -444,6 +451,10 @@ msgstr "Lliw ymyl"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Browser notifications"
 msgstr "Hysbysiadau porwr"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Gweinydd calendr"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -700,6 +711,10 @@ msgstr "Parhau"
 msgid "Continue with {label}"
 msgstr "Parhau gyda {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Parhau gyda {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Copïwyd"
@@ -708,6 +723,10 @@ msgstr "Copïwyd"
 msgid "Copied to clipboard"
 msgstr "Wedi'i gopïo i'r clipfwrdd"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Copïo"
@@ -1127,6 +1146,10 @@ msgstr "E-bost"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Email code"
 msgstr "Cod e-bost"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Yn gorffen cyn iddo ddechrau"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1751,8 +1774,10 @@ msgstr "Symudwyd"
 msgid "Moved {field}"
 msgstr "Symudwyd {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "Yn symud i {0}"
 

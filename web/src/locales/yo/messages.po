@@ -79,6 +79,7 @@ msgstr "{count, plural, one {#ìṣ} other {#ìṣ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ọs} other {#ọs}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
 msgstr "{day}, láti {from} sí {to}"
@@ -87,6 +88,7 @@ msgstr "{day}, láti {from} sí {to}"
 msgid "{entityLabel} name"
 msgstr "Orúkọ {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "láti {from} sí {to}"
@@ -270,6 +272,7 @@ msgid "All CRMs"
 msgstr "Gbogbo CRM"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
 msgstr "Gbogbo ọjọ́"
 
@@ -347,6 +350,10 @@ msgstr "Ṣé o dájú pé o fẹ́ yọ orúkọ rẹ kúrò nínú CRM yìí?"
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Gòkè"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Lórí òkun"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -444,6 +451,10 @@ msgstr "Àwọ̀ ààlà"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Browser notifications"
 msgstr "Àwọn ìfitónilétí browser"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Sáfà kàlẹ́ńdà"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -700,6 +711,10 @@ msgstr "Tẹ̀síwájú"
 msgid "Continue with {label}"
 msgstr "Tẹ̀síwájú pẹ̀lú {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Tẹ̀síwájú pẹ̀lú {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Ti dàkọ"
@@ -708,6 +723,10 @@ msgstr "Ti dàkọ"
 msgid "Copied to clipboard"
 msgstr "A ti ṣe àdàkọ sí clipboard"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Ṣe àdàkọ"
@@ -1127,6 +1146,10 @@ msgstr "Ímẹ́ẹ̀lì"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Email code"
 msgstr "Kóòdù ímẹ́ẹ̀lì"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Ó parí kí ó tó bẹ̀rẹ̀"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1751,8 +1774,10 @@ msgstr "A gbé lọ"
 msgid "Moved {field}"
 msgstr "A gbé {field} lọ"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "Ń kó lọ sí {0}"
 

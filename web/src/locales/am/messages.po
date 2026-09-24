@@ -79,6 +79,7 @@ msgstr "{count, plural, one {#ደ} other {#ደ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ሳ} other {#ሳ}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
 msgstr "{day}, ከ{from} እስከ {to}"
@@ -87,6 +88,7 @@ msgstr "{day}, ከ{from} እስከ {to}"
 msgid "{entityLabel} name"
 msgstr "የ{entityLabel} ስም"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "ከ{from} እስከ {to}"
@@ -270,6 +272,7 @@ msgid "All CRMs"
 msgstr "ሁሉም CRMs"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
 msgstr "ሙሉ ቀን"
 
@@ -347,6 +350,10 @@ msgstr "ከዚህ CRM መውጣት እንደምትፈልግ እርግጠኛ ነ�
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "ከታች ወደ ላይ"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "በባሕር ላይ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -444,6 +451,10 @@ msgstr "የጠርዝ ቀለም"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Browser notifications"
 msgstr "የአሳሽ ማሳወቂያዎች"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "የቀን መቁጠሪያ ሰርቨር"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -700,6 +711,10 @@ msgstr "ቀጥል"
 msgid "Continue with {label}"
 msgstr "በ{label} ይቀጥሉ"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "በ{providerLabel} ይቀጥሉ"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "ተቀድቷል"
@@ -708,6 +723,10 @@ msgstr "ተቀድቷል"
 msgid "Copied to clipboard"
 msgstr "ወደ ቅንጥብ ሰሌዳ ተቀድቷል"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "ቅዳ"
@@ -1127,6 +1146,10 @@ msgstr "ኢሜይል"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Email code"
 msgstr "የኢሜይል ኮድ"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "ከመጀመሩ በፊት ያበቃል"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1751,8 +1774,10 @@ msgstr "ተንቀሳቅሷል"
 msgid "Moved {field}"
 msgstr "{field} ተንቀሳቅሷል"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "ወደ {0} በማንቀሳቀስ ላይ"
 

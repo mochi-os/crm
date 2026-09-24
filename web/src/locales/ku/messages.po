@@ -79,6 +79,7 @@ msgstr "{count, plural, one {#xul} other {#xul}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#hef} other {#hef}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
 msgstr "{day}, ji {from} heta {to}"
@@ -87,6 +88,7 @@ msgstr "{day}, ji {from} heta {to}"
 msgid "{entityLabel} name"
 msgstr "Navê {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "ji {from} heta {to}"
@@ -270,6 +272,7 @@ msgid "All CRMs"
 msgstr "Hemû CRM"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
 msgstr "Tevahiya rojê"
 
@@ -347,6 +350,10 @@ msgstr "Tu bawer î ku dixwazî abonetiya vê CRMê betal bikî?"
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Hilkişandî"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Li deryayê"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -444,6 +451,10 @@ msgstr "Rengê sînor"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Browser notifications"
 msgstr "Agahdariyên geroka"
+
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Servera salnameyê"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -700,6 +711,10 @@ msgstr "Berdewam bike"
 msgid "Continue with {label}"
 msgstr "Bi {label} berdewam be"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Bi {providerLabel} bidomîne"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Hat kopîkirin"
@@ -708,6 +723,10 @@ msgstr "Hat kopîkirin"
 msgid "Copied to clipboard"
 msgstr "Hat kopîkirin li clipboard"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopî bike"
@@ -1127,6 +1146,10 @@ msgstr "E-name"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Email code"
 msgstr "Koda e-nameyê"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Berî ku dest pê bike diqede"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1751,8 +1774,10 @@ msgstr "Hate guhastin"
 msgid "Moved {field}"
 msgstr "{field} hate guhastin"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "Tê veguhastin bo {0}"
 
