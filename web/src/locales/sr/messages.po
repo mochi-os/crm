@@ -299,7 +299,7 @@ msgstr "Дошло је до неочекиване грешке"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Push за Android"
+msgstr "Пуш за Android"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
@@ -370,7 +370,7 @@ msgstr "Аутентификовани корисници"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Authenticator code"
-msgstr "Authenticator код"
+msgstr "Код аутентификатора"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Available keyboard shortcuts"
@@ -1712,7 +1712,7 @@ msgstr "Означи све као прочитано"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
-msgstr "Najveća dužina"
+msgstr "Највећа дужина"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "MCP server"
@@ -1744,7 +1744,7 @@ msgstr "Дозвола за микрофон је одбијена"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
-msgstr "Najmanja dužina"
+msgstr "Најмања дужина"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1815,11 +1815,15 @@ msgid "Network error"
 msgstr "Грешка мреже"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "New"
 msgstr "Ново"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Најновије"
 
 #. placeholder {0}: className.toLowerCase()
 #: src/routes/_authenticated/$crmId/index.tsx
@@ -1977,9 +1981,13 @@ msgstr "Ништа није пронађено"
 msgid "Notifications: {0}"
 msgstr "Обавештења: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Број"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Број"
 
@@ -2083,7 +2091,7 @@ msgstr "Passkey-еви нису доступни у овом прегледач�
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
-msgstr "Šablon (regex)"
+msgstr "Шаблон (regex)"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "People"
@@ -2139,7 +2147,7 @@ msgstr "Обрада…"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Prompt saved"
-msgstr "Prompt сачуван"
+msgstr "Упит сачуван"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
@@ -2147,7 +2155,7 @@ msgstr "Својства"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
-msgstr "Push обавештење"
+msgstr "Пуш обавештење"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Raised"
@@ -2370,7 +2378,7 @@ msgstr "RSS URL копиран у клипборд"
 
 #: src/features/crms/components/create-crm-dialog.tsx
 msgid "Sales CRM"
-msgstr "Sales CRM"
+msgstr "CRM за продају"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Saturday"
@@ -2457,7 +2465,7 @@ msgstr "Претраживање..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Изабери"
+msgstr "Избор"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2626,7 +2634,7 @@ msgstr "Престани да пратиш"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Тема"
+msgstr "Корисник или група"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2668,9 +2676,13 @@ msgstr "Недеља"
 msgid "Switch to view 1-9"
 msgstr "Пребаци на приказ 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Систем"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Систем"
 
@@ -2723,7 +2735,7 @@ msgstr "На захтев за микрофон није одговорено"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "На захтев за passkey није одговорено"
+msgstr "На захтев за приступни кључ није одговорено"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -2735,7 +2747,7 @@ msgstr "Сервер је вратио веб страницу уместо по
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Овој апликацији није дозвољено да користи ваш passkey. Дозволите јој то у Подешавањима, под Дозволе."
+msgstr "Овој апликацији није дозвољено да користи ваш приступни кључ. Дозволите јој то у Подешавањима, под Дозволе."
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "This CRM could not be loaded right now."
@@ -2813,7 +2825,7 @@ msgstr "Превише захтева"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Врх"
+msgstr "Најбоље"
 
 #: src/features/editor/components/edit-dialogs.tsx
 msgid "Top level"
@@ -3009,7 +3021,7 @@ msgstr "Опције приказа"
 
 #: src/features/editor/components/design-editor.tsx
 msgid "Views"
-msgstr "Прегледи"
+msgstr "Прикази"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

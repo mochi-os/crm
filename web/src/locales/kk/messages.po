@@ -370,7 +370,7 @@ msgstr "Аутентификацияланған пайдаланушылар"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Authenticator code"
-msgstr "Authenticator коды"
+msgstr "Аутентификатор коды"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Available keyboard shortcuts"
@@ -433,7 +433,7 @@ msgstr "Сенімсіз сілтемеге өту бөгелді"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocks"
-msgstr "Bloks"
+msgstr "Бөгейді"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Board"
@@ -1161,7 +1161,7 @@ msgstr "Электрондық поштаңыздағы кодты енгізі�
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Enter your authenticator code"
-msgstr "Authenticator кодын енгізіңіз"
+msgstr "Аутентификатор кодын енгізіңіз"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "Entity ID"
@@ -1815,11 +1815,15 @@ msgid "Network error"
 msgstr "Желі қатесі"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "New"
 msgstr "Жаңа"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Ең жаңа"
 
 #. placeholder {0}: className.toLowerCase()
 #: src/routes/_authenticated/$crmId/index.tsx
@@ -1977,11 +1981,15 @@ msgstr "Ештеңе табылмады"
 msgid "Notifications: {0}"
 msgstr "Хабарландырулар: {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "Сан"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "Нөмір"
 
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
@@ -2071,7 +2079,7 @@ msgstr "Кіру кілті"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkey verification failed. Please try again."
-msgstr "Passkey тексеруі сәтсіз аяқталды. Қайталап көріңіз."
+msgstr "Кіру кілтін тексеру сәтсіз аяқталды. Қайталап көріңіз."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Passkeys"
@@ -2400,7 +2408,7 @@ msgstr "Іздеу"
 
 #: src/routes/_authenticated/find.tsx
 msgid "Search by name, ID, fingerprint, or URL..."
-msgstr "Аты, ID, fingerprint немесе URL бойынша іздеу..."
+msgstr "Аты, ID, саусақ ізі немесе URL бойынша іздеу..."
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2626,7 +2634,7 @@ msgstr "Қарауды тоқтату"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Тақырып"
+msgstr "Пайдаланушы немесе топ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -2668,9 +2676,13 @@ msgstr "Жексенбі"
 msgid "Switch to view 1-9"
 msgstr "1-9 көрінісіне ауысу"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Жүйе"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Жүйе"
 
@@ -2723,7 +2735,7 @@ msgstr "Микрофон сұрауына жауап берілмеді"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "Passkey сұрауына жауап берілмеді"
+msgstr "Кіру кілті сұрауына жауап берілмеді"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -2735,7 +2747,7 @@ msgstr "Сервер деректердің орнына веб-бетті қа�
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Бұл қолданбаға сіздің passkey-іңізді пайдалануға рұқсат жоқ. Параметрлердегі Рұқсаттар бөлімінде рұқсат беріңіз."
+msgstr "Бұл қолданбаға сіздің кіру кілтіңізді пайдалануға рұқсат жоқ. Параметрлердегі Рұқсаттар бөлімінде рұқсат беріңіз."
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "This CRM could not be loaded right now."
@@ -2813,7 +2825,7 @@ msgstr "Сұраулар тым көп"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Жоғары"
+msgstr "Үздіктер"
 
 #: src/features/editor/components/edit-dialogs.tsx
 msgid "Top level"
@@ -2952,7 +2964,7 @@ msgstr "Жүктеп салу барысы"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
-msgstr "Passkey пайдаланыңыз"
+msgstr "Кіру кілтін пайдаланыңыз"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
@@ -3009,7 +3021,7 @@ msgstr "Көру опциялары"
 
 #: src/features/editor/components/design-editor.tsx
 msgid "Views"
-msgstr "Көрулер"
+msgstr "Көріністер"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
