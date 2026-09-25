@@ -5,7 +5,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 {
-	"version": "2.121",
+	"version": "2.124",
 	"label": "app.name",
 	"classes": ["crm"],
 	"paths": ["crm"],
@@ -76,17 +76,17 @@
 		":crm/-/objects/:object/comments/create": {"function": "action_comment_create"},
 		":crm/-/objects/:object/comments/:comment/update": {"function": "action_comment_update"},
 		":crm/-/objects/:object/comments/:comment/delete": {"function": "action_comment_delete"},
-		":crm/-/comment/:comment/asset/:asset": {"function": "action_comment_asset", "public": true},
-		":crm/-/activity/:activity/asset/:asset": {"function": "action_activity_asset", "public": true},
-		":crm/-/user/:user/asset/:asset": {"function": "action_user_asset", "public": true},
+		":crm/-/comment/:comment/asset/:asset": {"function": "action_comment_asset", "public": true, "asset": true},
+		":crm/-/activity/:activity/asset/:asset": {"function": "action_activity_asset", "public": true, "asset": true},
+		":crm/-/user/:user/asset/:asset": {"function": "action_user_asset", "public": true, "asset": true},
 
 		":crm/-/objects/:object/attachments": {"function": "action_attachment_list"},
 		":crm/-/objects/:object/attachments/create": {"function": "action_attachment_create"},
 		":crm/-/objects/:object/attachments/:attachment/delete": {"function": "action_attachment_delete"},
 
-		":crm/-/attachments/:id": {"function": "action_attachment"},
-		":crm/-/attachments/:id/thumbnail": {"function": "action_attachment_thumbnail"},
-		":crm/-/attachments/:id/preview": {"function": "action_attachment_preview"},
+		":crm/-/attachments/:id": {"function": "action_attachment", "asset": true},
+		":crm/-/attachments/:id/thumbnail": {"function": "action_attachment_thumbnail", "asset": true},
+		":crm/-/attachments/:id/preview": {"function": "action_attachment_preview", "asset": true},
 
 		":crm/-/objects/:object/activity": {"function": "action_activity_list"},
 
