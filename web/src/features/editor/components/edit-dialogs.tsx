@@ -30,6 +30,7 @@ import {
   SelectTrigger,
   SelectValue,
   Switch,
+  SwitchLabel,
   Tooltip,
   TooltipTrigger,
   TooltipContent,
@@ -366,34 +367,36 @@ export function ClassSheet({
             <Trans>Can be child of</Trans>
           </Label>
           <div className='space-y-2 ps-4'>
-            <label className='flex cursor-pointer items-center gap-2 text-sm'>
+            <SwitchLabel label={<Trans>Top level</Trans>}>
               <Switch
                 checked={currentHierarchy.includes('')}
                 onCheckedChange={() => toggleParent('')}
               />
-              <Trans>Top level</Trans>
-            </label>
+            </SwitchLabel>
             {[...classes]
               .sort((a, b) => naturalCompare(a.name, b.name))
               .map((c) => (
-                <label
+                <SwitchLabel
                   key={c.id}
-                  className='flex cursor-pointer items-center gap-2 text-sm'
+                  label={
+                    <>
+                      {c.name}
+                      {c.id === cls?.id ? (
+                        <>
+                          {' '}
+                          <Trans>(itself)</Trans>
+                        </>
+                      ) : (
+                        ''
+                      )}
+                    </>
+                  }
                 >
                   <Switch
                     checked={currentHierarchy.includes(c.id)}
                     onCheckedChange={() => toggleParent(c.id)}
                   />
-                  {c.name}
-                  {c.id === cls?.id ? (
-                    <>
-                      {' '}
-                      <Trans>(itself)</Trans>
-                    </>
-                  ) : (
-                    ''
-                  )}
-                </label>
+                </SwitchLabel>
               ))}
           </div>
         </div>
