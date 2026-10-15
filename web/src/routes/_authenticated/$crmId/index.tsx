@@ -24,6 +24,7 @@ import {
   getErrorMessage,
   toast,
   EntityObjectDetailPanel,
+  absoluteRouteUrl,
 } from '@mochi/web'
 import { Settings, Settings2, Users } from 'lucide-react'
 import crmsApi from '@/api/crms'
@@ -111,6 +112,7 @@ export function CrmPageContent({
 }: CrmPageContentProps) {
   const { t } = useLingui()
   const navigate = useNavigate()
+  const router = useRouter()
   const refreshSidebar = useCrmsStore((state) => state.refresh)
 
   return (
@@ -202,6 +204,13 @@ export function CrmPageContent({
           design={crm}
           access={crm.crm.access}
           api={crmsApi}
+          itemUrl={(objectId) =>
+            absoluteRouteUrl(router, {
+              to: '/$crmId/$objectId',
+              params: { crmId, objectId },
+            })
+          }
+          labels={{ copyLink: t`Copy link` }}
           onClose={onClose}
         />
       )}
