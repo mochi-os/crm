@@ -14,7 +14,7 @@ import {
   useRouter,
 } from '@tanstack/react-router'
 import type { CrmDetails, CrmObject } from '@/types'
-import { t } from '@lingui/core/macro'
+import { plural, t } from '@lingui/core/macro'
 import { useLingui } from '@lingui/react/macro'
 import {
   DropdownMenuItem,
@@ -210,7 +210,12 @@ export function CrmPageContent({
               params: { crmId, objectId },
             })
           }
-          labels={{ copyLink: t`Copy link` }}
+          labels={{
+            copyLink: t`Copy link`,
+            // The server deletes everything under an item with it.
+            deleteWithChildren: (title, count) =>
+              t`Are you sure you want to delete "${title}" and the ${plural(count, { one: '# item', other: '# items' })} under it? This action cannot be undone.`,
+          }}
           onClose={onClose}
         />
       )}
