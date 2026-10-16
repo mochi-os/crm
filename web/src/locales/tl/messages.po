@@ -308,6 +308,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "Payagan ang sinuman na maghanap ng {entityLabel}"
 
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Allow anyone to search for CRM"
 msgstr "Payagan ang sinuman na maghanap ng CRM"
 
@@ -518,6 +519,7 @@ msgstr "Maaaring maging child ng"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "Kanselahin"
@@ -785,6 +787,10 @@ msgstr ""
 msgid "Could not load this document. Please try again later."
 msgstr "Hindi ma-load ang document na ito. Subukan muli mamaya."
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Could not remove the unfinished copy"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
 msgstr "Hindi ma-load ang mga notification"
@@ -873,10 +879,15 @@ msgid "CRM deleted"
 msgstr "Natanggal ang CRM"
 
 #: src/routes/_authenticated/$crmId/index.tsx
+msgid "CRM duplicated"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM link"
 msgstr "Link ng CRM"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "Kailangan ang pangalan ng CRM"
 
@@ -1050,6 +1061,10 @@ msgstr "Disenyo"
 msgid "Design imported"
 msgstr "Na-import ang disenyo"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Design only"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "Design, create, edit, comment, and view"
 msgstr "Magdisenyo, gumawa, mag-edit, magkomento, at tumingin"
@@ -1137,9 +1152,26 @@ msgstr "Na-download ang {filename}"
 msgid "Drag columns to re-order them"
 msgstr "I-drag ang mga column para i-reorder"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate CRM"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate of {name}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "Duplicate"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicating CRM..."
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Dyslexia-friendly"
@@ -1224,6 +1256,10 @@ msgstr "Error"
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
 msgstr "Bawat minuto"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Everything"
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
@@ -1338,6 +1374,11 @@ msgstr "Nabigong magdelete ng option"
 #: src/features/editor/components/design-editor.tsx
 msgid "Failed to delete view"
 msgstr "Nabigong magdelete ng view"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Failed to duplicate CRM"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Failed to export data"
@@ -1856,12 +1897,14 @@ msgstr "Inililipat sa {0}"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "Pangalan"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "Hindi maaaring maglaman ng < o > na karakter ang pangalan"
 
@@ -1873,6 +1916,7 @@ msgstr "Kailangan ang pangalan"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "Ang pangalan ay dapat 1000 karakter o mas mababa"
 

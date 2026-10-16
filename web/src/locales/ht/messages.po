@@ -308,6 +308,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "Pèmèt tout moun chèche {entityLabel}"
 
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Allow anyone to search for CRM"
 msgstr "Pèmèt nenpòt moun chèche CRM"
 
@@ -518,6 +519,7 @@ msgstr "Ka pitit"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "Anile"
@@ -785,6 +787,10 @@ msgstr ""
 msgid "Could not load this document. Please try again later."
 msgstr "Pa t kapab chaje dokiman sa a. Tanpri eseye ankò pita."
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Could not remove the unfinished copy"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
 msgstr "Pa t kapab chaje notifikasyon yo"
@@ -873,10 +879,15 @@ msgid "CRM deleted"
 msgstr "CRM efase"
 
 #: src/routes/_authenticated/$crmId/index.tsx
+msgid "CRM duplicated"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM link"
 msgstr "Lyen CRM"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "Non CRM obligatwa"
 
@@ -1050,6 +1061,10 @@ msgstr "Konsepsyon"
 msgid "Design imported"
 msgstr "Konsepsyon enpòte"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Design only"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "Design, create, edit, comment, and view"
 msgstr "Konsevwa, kreye, modifye, kòmante, epi gade"
@@ -1137,9 +1152,26 @@ msgstr "Telechaje {filename}"
 msgid "Drag columns to re-order them"
 msgstr "Trennen kolòn yo pou reòganize yo"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate CRM"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate of {name}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "Doublon"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicating CRM..."
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Dyslexia-friendly"
@@ -1224,6 +1256,10 @@ msgstr "Erè"
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
 msgstr "Chak minit"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Everything"
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
@@ -1338,6 +1374,11 @@ msgstr "Echwe pou efase opsyon"
 #: src/features/editor/components/design-editor.tsx
 msgid "Failed to delete view"
 msgstr "Echwe pou efase vi"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Failed to duplicate CRM"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Failed to export data"
@@ -1856,12 +1897,14 @@ msgstr "Ap deplase nan {0}"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "Non"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "Non pa ka gen karaktè < oswa >"
 
@@ -1873,6 +1916,7 @@ msgstr "Non obligatwa"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "Non dwe gen 1000 karaktè oswa mwens"
 

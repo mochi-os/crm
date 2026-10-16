@@ -308,6 +308,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "{entityLabel} ကို မည်သူမဆို ရှာဖွေခွင့်ပြုပါ"
 
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Allow anyone to search for CRM"
 msgstr "မည်သူမဆို CRM ကို ရှာဖွေခွင့်ပြုမည်"
 
@@ -518,6 +519,7 @@ msgstr "ကလေးဖြစ်နိုင်သည်"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "မလုပ်တော့ပါ"
@@ -785,6 +787,10 @@ msgstr ""
 msgid "Could not load this document. Please try again later."
 msgstr "ဤစာရွက်စာတမ်းကို ဖွင့်၍ မရပါ။ နောက်မှ ထပ်စမ်းကြည့်ပါ။"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Could not remove the unfinished copy"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
 msgstr "အကြောင်းကြားချက်များ ဖွင့်၍မရပါ"
@@ -873,10 +879,15 @@ msgid "CRM deleted"
 msgstr "CRM ကို ဖျက်ပြီးပါပြီ"
 
 #: src/routes/_authenticated/$crmId/index.tsx
+msgid "CRM duplicated"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM link"
 msgstr "CRM လင့်ခ်"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "CRM အမည် လိုအပ်သည်"
 
@@ -1050,6 +1061,10 @@ msgstr "ဒီဇိုင်း"
 msgid "Design imported"
 msgstr "ဒီဇိုင်း တင်သွင်းပြီး"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Design only"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "Design, create, edit, comment, and view"
 msgstr "ဒီဇိုင်းဆွဲ၊ ဖန်တီး၊ တည်းဖြတ်၊ မှတ်ချက်ပေး၊ ကြည့်ရှု"
@@ -1137,9 +1152,26 @@ msgstr "{filename} ကို ဒေါင်းလုဒ်လုပ်ပြီ
 msgid "Drag columns to re-order them"
 msgstr "ကော်လံများကို ပြန်စီရန် ဆွဲပါ"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate CRM"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate of {name}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "ထပ်နေသော"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicating CRM..."
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Dyslexia-friendly"
@@ -1224,6 +1256,10 @@ msgstr "အမှား"
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
 msgstr "မိနစ်တိုင်း"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Everything"
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
@@ -1338,6 +1374,11 @@ msgstr "ရွေးချယ်မှု ဖျက်၍ မရပါ"
 #: src/features/editor/components/design-editor.tsx
 msgid "Failed to delete view"
 msgstr "မြင်ကွင်း ဖျက်၍ မရပါ"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Failed to duplicate CRM"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Failed to export data"
@@ -1856,12 +1897,14 @@ msgstr "{0} သို့ ရွှေ့နေသည်"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "အမည်"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "အမည်တွင် < သို့မဟုတ် > စာလုံးများ မပါဝင်ရ"
 
@@ -1873,6 +1916,7 @@ msgstr "အမည် လိုအပ်သည်"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "အမည်သည် စာလုံး ၁၀၀၀ သို့မဟုတ် ထိုထက်နည်းရမည်"
 

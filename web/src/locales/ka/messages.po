@@ -308,6 +308,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "ყველას შეეძლოს მოძებნოს {entityLabel}"
 
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Allow anyone to search for CRM"
 msgstr "ნებისმიერს CRM-ის ძიების ნება დართე"
 
@@ -518,6 +519,7 @@ msgstr "შეიძლება იყოს შვილი"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "გაუქმება"
@@ -785,6 +787,10 @@ msgstr ""
 msgid "Could not load this document. Please try again later."
 msgstr "ამ დოკუმენტის ჩატვირთვა ვერ მოხერხდა. სცადეთ მოგვიანებით."
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Could not remove the unfinished copy"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
 msgstr "შეტყობინებების ჩატვირთვა ვერ მოხერხდა"
@@ -873,10 +879,15 @@ msgid "CRM deleted"
 msgstr "CRM წაიშალა"
 
 #: src/routes/_authenticated/$crmId/index.tsx
+msgid "CRM duplicated"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM link"
 msgstr "CRM-ის ბმული"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "CRM-ის სახელი აუცილებელია"
 
@@ -1050,6 +1061,10 @@ msgstr "დიზაინი"
 msgid "Design imported"
 msgstr "დიზაინი იმპორტირებულია"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Design only"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "Design, create, edit, comment, and view"
 msgstr "დიზაინი, შექმნა, რედაქტირება, კომენტირება და ნახვა"
@@ -1137,9 +1152,26 @@ msgstr "ჩამოტვირთულია {filename}"
 msgid "Drag columns to re-order them"
 msgstr "ჩავლებით გადააადგილეთ სვეტები მათი რიგის შესაცვლელად"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate CRM"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate of {name}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "დუბლიკატები"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicating CRM..."
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Dyslexia-friendly"
@@ -1224,6 +1256,10 @@ msgstr "შეცდომა"
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
 msgstr "ყოველი წუთი"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Everything"
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
@@ -1338,6 +1374,11 @@ msgstr "ვარიანტის წაშლა ვერ მოხერხ
 #: src/features/editor/components/design-editor.tsx
 msgid "Failed to delete view"
 msgstr "ხედის წაშლა ვერ მოხერხდა"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Failed to duplicate CRM"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Failed to export data"
@@ -1856,12 +1897,14 @@ msgstr "მიმდინარეობს გადატანა {0}-ზე
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "სახელი"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "სახელი ვერ შეიცავს < ან > სიმბოლოებს"
 
@@ -1873,6 +1916,7 @@ msgstr "სახელი აუცილებელია"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "სახელი უნდა იყოს 1000 სიმბოლო ან ნაკლები"
 

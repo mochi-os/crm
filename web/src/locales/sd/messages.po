@@ -308,6 +308,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "سڀ ڪنهن کي {entityLabel} ڳولڻ جي اجازت ڏيو"
 
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Allow anyone to search for CRM"
 msgstr "ڪنهن کي به CRM ڳولڻ جي اجازت ڏيو"
 
@@ -518,6 +519,7 @@ msgstr "جي اولاد ٿي سگهي ٿو"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "منسوخ ڪريو"
@@ -785,6 +787,10 @@ msgstr ""
 msgid "Could not load this document. Please try again later."
 msgstr "هي دستاويز لوڊ نه ٿي سگهيو. مهرباني ڪري بعد ۾ ٻيهر ڪوشش ڪريو."
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Could not remove the unfinished copy"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
 msgstr "اطلاعون لوڊ نه ٿي سگهيا"
@@ -873,10 +879,15 @@ msgid "CRM deleted"
 msgstr "CRM ڊاهيو ويو"
 
 #: src/routes/_authenticated/$crmId/index.tsx
+msgid "CRM duplicated"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM link"
 msgstr "CRM لنڪ"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "CRM جو نالو گهربل آهي"
 
@@ -1050,6 +1061,10 @@ msgstr "ڊزائن"
 msgid "Design imported"
 msgstr "ڊزائن درآمد ڪئي وئي"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Design only"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "Design, create, edit, comment, and view"
 msgstr "ڊيزائن، تخليق، ترميم، تبصرو ۽ ڏسڻ"
@@ -1137,9 +1152,26 @@ msgstr "{filename} ڊائون لوڊ ٿيو"
 msgid "Drag columns to re-order them"
 msgstr "ڪالمن کي ٻيهر ترتيب ڏيڻ لاءِ ڇڪيو"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate CRM"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate of {name}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "ڊپليڪيٽ"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicating CRM..."
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Dyslexia-friendly"
@@ -1224,6 +1256,10 @@ msgstr "خرابي"
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
 msgstr "هر منٽ"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Everything"
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
@@ -1338,6 +1374,11 @@ msgstr "آپشن ختم ڪرڻ ۾ ناڪام"
 #: src/features/editor/components/design-editor.tsx
 msgid "Failed to delete view"
 msgstr "ڏيک ختم ڪرڻ ۾ ناڪام"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Failed to duplicate CRM"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Failed to export data"
@@ -1856,12 +1897,14 @@ msgstr "{0} ڏانهن منتقل ٿي رهيو آهي"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "نالو"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "نالي ۾ < يا > اکر شامل نه ٿي سگھن ٿا"
 
@@ -1873,6 +1916,7 @@ msgstr "نالو گهربل آهي"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "نالو 1000 اکرن يا گهٽ هجڻ گهرجي"
 

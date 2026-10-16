@@ -308,6 +308,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "{entityLabel} தேட அனைவரையும் அனுமதி"
 
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Allow anyone to search for CRM"
 msgstr "CRM-ஐ யாராவது தேட அனுமதி"
 
@@ -518,6 +519,7 @@ msgstr "ஒரு குழந்தையாக இருக்க முடி
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "ரத்துசெய்"
@@ -785,6 +787,10 @@ msgstr ""
 msgid "Could not load this document. Please try again later."
 msgstr "இந்த ஆவணத்தை ஏற்ற முடியவில்லை. பிறகு மீண்டும் முயற்சிக்கவும்."
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Could not remove the unfinished copy"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
 msgstr "அறிவிப்புகளை ஏற்ற முடியவில்லை"
@@ -873,10 +879,15 @@ msgid "CRM deleted"
 msgstr "CRM நீக்கப்பட்டது"
 
 #: src/routes/_authenticated/$crmId/index.tsx
+msgid "CRM duplicated"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM link"
 msgstr "CRM இணைப்பு"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "CRM பெயர் தேவை"
 
@@ -1050,6 +1061,10 @@ msgstr "வடிவமைப்பு"
 msgid "Design imported"
 msgstr "வடிவமைப்பு இறக்குமதி செய்யப்பட்டது"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Design only"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "Design, create, edit, comment, and view"
 msgstr "வடிவமைத்தல், உருவாக்குதல், திருத்துதல், கருத்திடுதல் மற்றும் பார்வையிடுதல்"
@@ -1137,9 +1152,26 @@ msgstr "{filename} பதிவிறக்கப்பட்டது"
 msgid "Drag columns to re-order them"
 msgstr "நெடுவரிசைகளை மறுவரிசைப்படுத்த இழுக்கவும்"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate CRM"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate of {name}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "நகலெடுக்கிறது"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicating CRM..."
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Dyslexia-friendly"
@@ -1224,6 +1256,10 @@ msgstr "பிழை"
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
 msgstr "ஒவ்வொரு நிமிடமும்"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Everything"
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
@@ -1338,6 +1374,11 @@ msgstr "விருப்பத்தை நீக்க முடியவி�
 #: src/features/editor/components/design-editor.tsx
 msgid "Failed to delete view"
 msgstr "காட்சியை நீக்க முடியவில்லை"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Failed to duplicate CRM"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Failed to export data"
@@ -1856,12 +1897,14 @@ msgstr "{0} க்கு நகர்த்தப்படுகிறது"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "பெயர்"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "பெயரில் < அல்லது > எழுத்துக்கள் இருக்கக்கூடாது"
 
@@ -1873,6 +1916,7 @@ msgstr "பெயர் தேவை"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "பெயர் 1000 எழுத்துக்கள் அல்லது அதற்கும் குறைவாக இருக்க வேண்டும்"
 

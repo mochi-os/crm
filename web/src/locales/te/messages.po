@@ -308,6 +308,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "{entityLabel} కోసం వెతకడానికి ఎవరినైనా అనుమతించు"
 
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Allow anyone to search for CRM"
 msgstr "CRM కోసం ఎవరైనా శోధించడానికి అనుమతించండి"
 
@@ -518,6 +519,7 @@ msgstr "దీని చైల్డ్ కావచ్చు"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "రద్దు చేయండి"
@@ -785,6 +787,10 @@ msgstr ""
 msgid "Could not load this document. Please try again later."
 msgstr "ఈ పత్రాన్ని లోడ్ చేయలేకపోయింది. దయచేసి తర్వాత మళ్లీ ప్రయత్నించండి."
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Could not remove the unfinished copy"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
 msgstr "నోటిఫికేషన్‌లను లోడ్ చేయడం సాధ్యపడలేదు"
@@ -873,10 +879,15 @@ msgid "CRM deleted"
 msgstr "CRM తొలగించబడింది"
 
 #: src/routes/_authenticated/$crmId/index.tsx
+msgid "CRM duplicated"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM link"
 msgstr "CRM లింక్"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "CRM పేరు అవసరం"
 
@@ -1050,6 +1061,10 @@ msgstr "డిజైన్"
 msgid "Design imported"
 msgstr "డిజైన్ దిగుమతి చేయబడింది"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Design only"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "Design, create, edit, comment, and view"
 msgstr "రూపకల్పన, సృష్టి, సవరణ, వ్యాఖ్య మరియు వీక్షణ"
@@ -1137,9 +1152,26 @@ msgstr "{filename} డౌన్‌లోడ్ చేయబడింది"
 msgid "Drag columns to re-order them"
 msgstr "కాలమ్‌లను తిరిగి అమర్చడానికి వాటిని డ్రాగ్ చేయండి"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate CRM"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate of {name}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "నకలు చేస్తుంది"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicating CRM..."
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Dyslexia-friendly"
@@ -1224,6 +1256,10 @@ msgstr "లోపం"
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
 msgstr "ప్రతి నిమిషం"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Everything"
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
@@ -1338,6 +1374,11 @@ msgstr "ఎంపికను తొలగించడంలో విఫలమ�
 #: src/features/editor/components/design-editor.tsx
 msgid "Failed to delete view"
 msgstr "వీక్షణను తొలగించడంలో విఫలమైంది"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Failed to duplicate CRM"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Failed to export data"
@@ -1856,12 +1897,14 @@ msgstr "{0}కి తరలిస్తోంది"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "పేరు"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "పేరులో < లేదా > క్యారెక్టర్‌లు ఉండకూడదు"
 
@@ -1873,6 +1916,7 @@ msgstr "పేరు అవసరం"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "పేరు 1000 క్యారెక్టర్‌లు లేదా అంతకంటే తక్కువ ఉండాలి"
 

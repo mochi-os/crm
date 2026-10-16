@@ -25,6 +25,7 @@ import {
   toast,
   EntityObjectDetailPanel,
   absoluteRouteUrl,
+  DISALLOWED_NAME_CHARS,
 } from '@mochi/web'
 import { Settings, Settings2, Users } from 'lucide-react'
 import crmsApi from '@/api/crms'
@@ -174,6 +175,44 @@ export function CrmPageContent({
         idColumn: t`ID`,
         classColumn: t`Class`,
         parentColumn: t`Parent`,
+      }}
+      // Duplicate runs the backup export and the create-from-backup import as
+      // one step. A failed import removes the half-made copy.
+      duplicate={{
+        menuAction: t`Duplicate`,
+        api: crmsApi,
+        create: async (name, privacy) => {
+          const response = await crmsApi.create({ name, privacy })
+          const id = response.data?.fingerprint
+          if (!id) throw new Error(t`Failed to duplicate CRM`)
+          return id
+        },
+        remove: (id) => crmsApi.delete(id),
+        onDuplicated: (id) => {
+          void refreshSidebar()
+          void navigate({ to: '/$crmId', params: { crmId: id } })
+        },
+        validateName: (name) => {
+          if (!name.trim()) return t`CRM name is required`
+          if (name.length > 1000) return t`Name must be 1000 characters or less`
+          if (DISALLOWED_NAME_CHARS.test(name))
+            return t`Name cannot contain < or > characters`
+          return null
+        },
+        labels: {
+          title: t`Duplicate CRM`,
+          name: t`Name`,
+          everything: t`Everything`,
+          designOnly: t`Design only`,
+          allowSearch: t`Allow anyone to search for CRM`,
+          cancel: t`Cancel`,
+          confirm: t`Duplicate`,
+          duplicating: t`Duplicating CRM...`,
+          duplicated: t`CRM duplicated`,
+          failed: t`Failed to duplicate CRM`,
+          defaultName: (name) => t`Duplicate of ${name}`,
+          leftBehind: t`Could not remove the unfinished copy`,
+        },
       }}
       designMenuItem={
         <DropdownMenuItem asChild>

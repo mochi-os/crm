@@ -308,6 +308,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "ອະນຸຍາດໃຫ້ທຸກຄົນຄົ້ນຫາ {entityLabel}"
 
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Allow anyone to search for CRM"
 msgstr "ອະນຸຍາດໃຫ້ໃຜກໍຕາມຊອກຫາ CRM"
 
@@ -518,6 +519,7 @@ msgstr "ສາມາດເປັນລູກຂອງ"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "ຍົກເລີກ"
@@ -785,6 +787,10 @@ msgstr ""
 msgid "Could not load this document. Please try again later."
 msgstr "ບໍ່ສາມາດໂຫລດເອກະສານນີ້ໄດ້. ກະລຸນາລອງອີກຄັ້ງໃນພາຍຫຼັງ."
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Could not remove the unfinished copy"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
 msgstr "ບໍ່ສາມາດໂຫຼດການແຈ້ງເຕືອນໄດ້"
@@ -873,10 +879,15 @@ msgid "CRM deleted"
 msgstr "ລຶບ CRM ແລ້ວ"
 
 #: src/routes/_authenticated/$crmId/index.tsx
+msgid "CRM duplicated"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM link"
 msgstr "ລິ້ງ CRM"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "ຕ້ອງການຊື່ CRM"
 
@@ -1050,6 +1061,10 @@ msgstr "ການອອກແບບ"
 msgid "Design imported"
 msgstr "ນຳເຂົ້າການອອກແບບແລ້ວ"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Design only"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "Design, create, edit, comment, and view"
 msgstr "ອອກແບບ, ສ້າງ, ແກ້ໄຂ, ໃຫ້ຄຳເຫັນ ແລະ ເບິ່ງ"
@@ -1137,9 +1152,26 @@ msgstr "ດາວໂຫຼດ {filename} ແລ້ວ"
 msgid "Drag columns to re-order them"
 msgstr "ລາກຖັນເພື່ອຈັດລຽງຄືນໃໝ່"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate CRM"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate of {name}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "ຊ້ຳກັນ"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicating CRM..."
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Dyslexia-friendly"
@@ -1224,6 +1256,10 @@ msgstr "ຂໍ້ຜິດພາດ"
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
 msgstr "ທຸກນາທີ"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Everything"
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
@@ -1338,6 +1374,11 @@ msgstr "ລຶບຕົວເລືອກລົ້ມເຫຼວ"
 #: src/features/editor/components/design-editor.tsx
 msgid "Failed to delete view"
 msgstr "ລຶບມຸມມອງລົ້ມເຫຼວ"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Failed to duplicate CRM"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Failed to export data"
@@ -1856,12 +1897,14 @@ msgstr "ກຳລັງຍ້າຍໄປ {0}"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "ຊື່"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "ຊື່ບໍ່ສາມາດມີຕົວອັກສອນ < ຫຼື >"
 
@@ -1873,6 +1916,7 @@ msgstr "ຕ້ອງການຊື່"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "ຊື່ຕ້ອງມີ 1000 ຕົວອັກສອນຫຼືໜ້ອຍກວ່າ"
 

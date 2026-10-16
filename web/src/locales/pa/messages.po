@@ -308,6 +308,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "ਕਿਸੇ ਨੂੰ ਵੀ {entityLabel} ਖੋਜਣ ਦੀ ਆਗਿਆ ਦਿਓ"
 
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Allow anyone to search for CRM"
 msgstr "ਕਿਸੇ ਨੂੰ ਵੀ CRM ਖੋਜਣ ਦੀ ਆਗਿਆ ਦਿਓ"
 
@@ -518,6 +519,7 @@ msgstr "ਇਸਦਾ ਚਾਈਲਡ ਹੋ ਸਕਦਾ ਹੈ"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "ਰੱਦ ਕਰੋ"
@@ -785,6 +787,10 @@ msgstr ""
 msgid "Could not load this document. Please try again later."
 msgstr "ਇਹ ਦਸਤਾਵੇਜ਼ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਬਾਅਦ ਵਿੱਚ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Could not remove the unfinished copy"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
 msgstr "ਸੂਚਨਾਵਾਂ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕੀਆਂ"
@@ -873,10 +879,15 @@ msgid "CRM deleted"
 msgstr "CRM ਮਿਟਾਇਆ ਗਿਆ"
 
 #: src/routes/_authenticated/$crmId/index.tsx
+msgid "CRM duplicated"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM link"
 msgstr "CRM ਲਿੰਕ"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "CRM ਨਾਮ ਜ਼ਰੂਰੀ ਹੈ"
 
@@ -1050,6 +1061,10 @@ msgstr "ਡਿਜ਼ਾਈਨ"
 msgid "Design imported"
 msgstr "ਡਿਜ਼ਾਈਨ ਆਯਾਤ ਕੀਤਾ ਗਿਆ"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Design only"
+msgstr ""
+
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "Design, create, edit, comment, and view"
 msgstr "ਡਿਜ਼ਾਈਨ ਕਰੋ, ਬਣਾਓ, ਸੋਧੋ, ਟਿੱਪਣੀ ਕਰੋ ਅਤੇ ਵੇਖੋ"
@@ -1137,9 +1152,26 @@ msgstr "{filename} ਡਾਊਨਲੋਡ ਕੀਤੀ ਗਈ"
 msgid "Drag columns to re-order them"
 msgstr "ਮੁੜ ਕ੍ਰਮਬੱਧ ਕਰਨ ਲਈ ਕਾਲਮ ਡ੍ਰੈਗ ਕਰੋ"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate CRM"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicate of {name}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "ਡੁਪਲੀਕੇਟ"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Duplicating CRM..."
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Dyslexia-friendly"
@@ -1224,6 +1256,10 @@ msgstr "ਗ਼ਲਤੀ"
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
 msgstr "ਹਰ ਮਿੰਟ"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Everything"
+msgstr ""
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
@@ -1338,6 +1374,11 @@ msgstr "ਵਿਕਲਪ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 #: src/features/editor/components/design-editor.tsx
 msgid "Failed to delete view"
 msgstr "ਵਿਊ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Failed to duplicate CRM"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Failed to export data"
@@ -1856,12 +1897,14 @@ msgstr "{0} ਉੱਤੇ ਲਿਜਾਇਆ ਜਾ ਰਿਹਾ ਹੈ"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "ਨਾਮ"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "ਨਾਮ ਵਿੱਚ < ਜਾਂ > ਅੱਖਰ ਨਹੀਂ ਹੋ ਸਕਦੇ"
 
@@ -1873,6 +1916,7 @@ msgstr "ਨਾਮ ਜ਼ਰੂਰੀ ਹੈ"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "ਨਾਮ 1000 ਅੱਖਰਾਂ ਜਾਂ ਘੱਟ ਦਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ"
 
