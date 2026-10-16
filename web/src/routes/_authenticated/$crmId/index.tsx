@@ -197,7 +197,7 @@ export function CrmPageContent({
       renderCreateDialog={(props) => (
         <CreateObjectDialog crmId={crmId} crm={crm} {...props} />
       )}
-      renderDetailPanel={({ objectId, onClose }) => (
+      renderDetailPanel={({ objectId, onCopy, onClose }) => (
         <EntityObjectDetailPanel
           containerId={crmId}
           objectId={objectId}
@@ -216,6 +216,7 @@ export function CrmPageContent({
             deleteWithChildren: (title, count) =>
               t`Are you sure you want to delete "${title}" and the ${plural(count, { one: '# item', other: '# items' })} under it? This action cannot be undone.`,
           }}
+          onCopy={onCopy}
           onClose={onClose}
         />
       )}

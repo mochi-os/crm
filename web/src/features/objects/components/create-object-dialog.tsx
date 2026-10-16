@@ -25,6 +25,7 @@ type CreateObjectDialogProps = Omit<
   | 'createObject'
   | 'setValue'
   | 'uploadAttachments'
+  | 'copyAttachments'
   | 'searchUsers'
 > & { crmId: string; crm: CrmDetails }
 
@@ -47,6 +48,7 @@ export function CreateObjectDialog({
       createObject={crmsApi.createObject}
       setValue={crmsApi.setValue}
       uploadAttachments={crmsApi.uploadAttachments}
+      copyAttachments={crmsApi.copyAttachments}
       searchUsers={crmsApi.searchUsers}
     />
   )
