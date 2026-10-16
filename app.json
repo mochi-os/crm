@@ -5,7 +5,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 {
-	"version": "2.127",
+	"version": "2.128",
 	"label": "app.name",
 	"classes": ["crm"],
 	"paths": ["crm"],
@@ -82,6 +82,7 @@
 
 		":crm/-/objects/:object/attachments": {"function": "action_attachment_list"},
 		":crm/-/objects/:object/attachments/create": {"function": "action_attachment_create"},
+		":crm/-/objects/:object/attachments/copy": {"function": "action_attachment_copy"},
 		":crm/-/objects/:object/attachments/:attachment/delete": {"function": "action_attachment_delete"},
 
 		":crm/-/attachments/:id": {"function": "action_attachment", "asset": true},

@@ -195,13 +195,14 @@ export function CrmPageContent({
       renderCreateDialog={(props) => (
         <CreateObjectDialog crmId={crmId} crm={crm} {...props} />
       )}
-      renderDetailPanel={({ objectId, onClose }) => (
+      renderDetailPanel={({ objectId, onCopy, onClose }) => (
         <EntityObjectDetailPanel
           containerId={crmId}
           objectId={objectId}
           design={crm}
           access={crm.crm.access}
           api={crmsApi}
+          onCopy={onCopy}
           onClose={onClose}
         />
       )}
