@@ -176,15 +176,15 @@ export function CrmPageContent({
         classColumn: t`Class`,
         parentColumn: t`Parent`,
       }}
-      // Duplicate runs the backup export and the create-from-backup import as
+      // Copy runs the backup export and the create-from-backup import as
       // one step. A failed import removes the half-made copy.
       duplicate={{
-        menuAction: t`Duplicate`,
+        menuAction: t`Copy`,
         api: crmsApi,
         create: async (name, privacy) => {
           const response = await crmsApi.create({ name, privacy })
           const id = response.data?.fingerprint
-          if (!id) throw new Error(t`Failed to duplicate CRM`)
+          if (!id) throw new Error(t`Failed to copy CRM`)
           return id
         },
         remove: (id) => crmsApi.delete(id),
@@ -200,17 +200,17 @@ export function CrmPageContent({
           return null
         },
         labels: {
-          title: t`Duplicate CRM`,
+          title: t`Copy CRM`,
           name: t`Name`,
           everything: t`Everything`,
           designOnly: t`Design only`,
           allowSearch: t`Allow anyone to search for CRM`,
           cancel: t`Cancel`,
-          confirm: t`Duplicate`,
-          duplicating: t`Duplicating CRM...`,
-          duplicated: t`CRM duplicated`,
-          failed: t`Failed to duplicate CRM`,
-          defaultName: (name) => t`Duplicate of ${name}`,
+          confirm: t`Copy`,
+          duplicating: t`Copying CRM...`,
+          duplicated: t`CRM copied`,
+          failed: t`Failed to copy CRM`,
+          defaultName: (name) => t`Copy of ${name}`,
           leftBehind: t`Could not remove the unfinished copy`,
         },
       }}
