@@ -182,7 +182,12 @@ export function CrmPageContent({
         menuAction: t`Copy`,
         api: crmsApi,
         create: async (name, privacy) => {
-          const response = await crmsApi.create({ name, privacy })
+          const response = await crmsApi.create({
+            name,
+            privacy,
+            // The import does not carry the description, so it is set here.
+            description: crm.crm.description,
+          })
           const id = response.data?.fingerprint
           if (!id) throw new Error(t`Failed to copy CRM`)
           return id
@@ -212,6 +217,7 @@ export function CrmPageContent({
           failed: t`Failed to copy CRM`,
           defaultName: (name) => t`Copy of ${name}`,
           leftBehind: t`Could not remove the unfinished copy`,
+          incomplete: t`The copy may be incomplete. Check it before you use it.`,
         },
       }}
       designMenuItem={
