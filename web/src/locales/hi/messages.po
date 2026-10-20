@@ -308,6 +308,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "किसी को भी {entityLabel} खोजने की अनुमति दें"
 
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Allow anyone to search for CRM"
 msgstr "किसी को भी CRM खोजने की अनुमति दें"
 
@@ -345,6 +346,10 @@ msgstr "इस फ़ीड की सदस्यता लेने वाल�
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "क्या आप \"{0}\" को हटाना चाहते हैं?"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Are you sure you want to delete \"{title}\" and the {count, plural, one {# item} other {# items}} under it? This action cannot be undone."
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
@@ -515,6 +520,7 @@ msgstr "इसका चाइल्ड हो सकता है"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "रद्द करें"
 
@@ -654,6 +660,10 @@ msgstr "खोज बंद करें"
 msgid "Collapse"
 msgstr "संक्षिप्त करें"
 
+#: src/features/board/components/board-container.tsx
+msgid "Collapse {columnName}"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "साइडबार समेटें"
@@ -766,12 +776,34 @@ msgstr "क्लिपबोर्ड पर कॉपी किया गय�
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy"
 msgstr "कॉपी करें"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copy CRM"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copy link"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copy of {name}"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copying CRM..."
+msgstr ""
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "यह दस्तावेज़ लोड नहीं किया जा सका। कृपया बाद में पुनः प्रयास करें।"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Could not remove the unfinished copy"
+msgstr ""
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -852,6 +884,10 @@ msgstr ""
 msgid "CRM actions"
 msgstr "CRM क्रियाएँ"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "CRM copied"
+msgstr ""
+
 #: src/features/crms/components/create-crm-dialog.tsx
 msgid "CRM created"
 msgstr "CRM बनाया गया"
@@ -865,6 +901,7 @@ msgid "CRM link"
 msgstr "CRM लिंक"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "CRM नाम आवश्यक है"
 
@@ -1037,6 +1074,10 @@ msgstr "डिज़ाइन"
 #: src/routes/_authenticated/$crmId/design.tsx
 msgid "Design imported"
 msgstr "डिज़ाइन आयात किया गया"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Design only"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "Design, create, edit, comment, and view"
@@ -1213,12 +1254,20 @@ msgstr "त्रुटि"
 msgid "Every minute"
 msgstr "हर मिनट"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Everything"
+msgstr ""
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 msgid "Expand"
 msgstr "विस्तृत करें"
+
+#: src/features/board/components/board-container.tsx
+msgid "Expand {columnName}"
+msgstr ""
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
@@ -1256,6 +1305,11 @@ msgstr "कॉलम जोड़ने में विफल"
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "कॉपी करने में विफल"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Failed to copy CRM"
+msgstr ""
 
 #: src/features/editor/components/design-editor.tsx
 msgid "Failed to create class"
@@ -1840,12 +1894,14 @@ msgstr "{0} पर ले जाया जा रहा है"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "नाम"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "नाम में < या > अक्षर नहीं हो सकते"
 
@@ -1857,6 +1913,7 @@ msgstr "नाम आवश्यक है"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "नाम 1000 अक्षर या उससे कम होना चाहिए"
 
@@ -2807,6 +2864,10 @@ msgstr "कैमरा पहले से उपयोग में है"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "कैमरा अनुरोध का उत्तर नहीं मिला"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "The copy may be incomplete. Check it before you use it."
+msgstr ""
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"

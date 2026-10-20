@@ -308,6 +308,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "Cho phép mọi người tìm kiếm {entityLabel}"
 
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Allow anyone to search for CRM"
 msgstr "Cho phép mọi người tìm kiếm CRM"
 
@@ -345,6 +346,10 @@ msgstr "Mọi thứ đã đăng ký nguồn cấp này sẽ ngừng nhận. Bạ
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Bạn có chắc muốn xóa \"{0}\"?"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Are you sure you want to delete \"{title}\" and the {count, plural, one {# item} other {# items}} under it? This action cannot be undone."
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
@@ -515,6 +520,7 @@ msgstr "Có thể là con của"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "Hủy"
 
@@ -654,6 +660,10 @@ msgstr "Đóng tìm kiếm"
 msgid "Collapse"
 msgstr "Thu gọn"
 
+#: src/features/board/components/board-container.tsx
+msgid "Collapse {columnName}"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "Thu gọn thanh bên"
@@ -766,12 +776,34 @@ msgstr "Đã sao chép vào bộ nhớ tạm"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy"
 msgstr "Sao chép"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copy CRM"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copy link"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copy of {name}"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copying CRM..."
+msgstr ""
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Không thể tải tài liệu này. Vui lòng thử lại sau."
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Could not remove the unfinished copy"
+msgstr ""
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -852,6 +884,10 @@ msgstr ""
 msgid "CRM actions"
 msgstr "Thao tác CRM"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "CRM copied"
+msgstr ""
+
 #: src/features/crms/components/create-crm-dialog.tsx
 msgid "CRM created"
 msgstr "Đã tạo CRM"
@@ -865,6 +901,7 @@ msgid "CRM link"
 msgstr "Liên kết CRM"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "Tên CRM là bắt buộc"
 
@@ -1037,6 +1074,10 @@ msgstr "Thiết kế"
 #: src/routes/_authenticated/$crmId/design.tsx
 msgid "Design imported"
 msgstr "Đã nhập thiết kế"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Design only"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "Design, create, edit, comment, and view"
@@ -1213,12 +1254,20 @@ msgstr "Lỗi"
 msgid "Every minute"
 msgstr "Từng phút"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Everything"
+msgstr ""
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 msgid "Expand"
 msgstr "Mở rộng"
+
+#: src/features/board/components/board-container.tsx
+msgid "Expand {columnName}"
+msgstr ""
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
@@ -1256,6 +1305,11 @@ msgstr "Không thêm được cột"
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "Không sao chép được"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Failed to copy CRM"
+msgstr ""
 
 #: src/features/editor/components/design-editor.tsx
 msgid "Failed to create class"
@@ -1840,12 +1894,14 @@ msgstr "Đang chuyển đến {0}"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "Tên"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "Tên không được chứa ký tự < hoặc >"
 
@@ -1857,6 +1913,7 @@ msgstr "Tên là bắt buộc"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "Tên phải có 1000 ký tự trở xuống"
 
@@ -2807,6 +2864,10 @@ msgstr "Máy ảnh đang được sử dụng"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Yêu cầu máy ảnh không được trả lời"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "The copy may be incomplete. Check it before you use it."
+msgstr ""
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"

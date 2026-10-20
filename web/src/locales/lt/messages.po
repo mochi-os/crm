@@ -308,6 +308,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "Leisti visiems ieškoti: {entityLabel}"
 
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Allow anyone to search for CRM"
 msgstr "Leisti bet kam ieškoti CRM"
 
@@ -345,6 +346,10 @@ msgstr "Viskas, kas prenumeruoja šį srautą, nustos jį gauti. Vėliau galėsi
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Ar tikrai norite ištrinti „{0}“?"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Are you sure you want to delete \"{title}\" and the {count, plural, one {# item} other {# items}} under it? This action cannot be undone."
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
@@ -515,6 +520,7 @@ msgstr "Gali būti vaikas"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "Atšaukti"
 
@@ -654,6 +660,10 @@ msgstr "Uždaryti paiešką"
 msgid "Collapse"
 msgstr "Sutraukti"
 
+#: src/features/board/components/board-container.tsx
+msgid "Collapse {columnName}"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "Sutraukti šoninę juostą"
@@ -766,12 +776,34 @@ msgstr "Nukopijuota į iškarpinę"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy"
 msgstr "Kopijuoti"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copy CRM"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copy link"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copy of {name}"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copying CRM..."
+msgstr ""
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Nepavyko įkelti šio dokumento. Pabandykite dar kartą vėliau."
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Could not remove the unfinished copy"
+msgstr ""
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -852,6 +884,10 @@ msgstr ""
 msgid "CRM actions"
 msgstr "CRM veiksmai"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "CRM copied"
+msgstr ""
+
 #: src/features/crms/components/create-crm-dialog.tsx
 msgid "CRM created"
 msgstr "CRM sukurtas"
@@ -865,6 +901,7 @@ msgid "CRM link"
 msgstr "CRM nuoroda"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "CRM pavadinimas yra privalomas"
 
@@ -1037,6 +1074,10 @@ msgstr "Dizainas"
 #: src/routes/_authenticated/$crmId/design.tsx
 msgid "Design imported"
 msgstr "Dizainas importuotas"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Design only"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "Design, create, edit, comment, and view"
@@ -1213,12 +1254,20 @@ msgstr "Klaida"
 msgid "Every minute"
 msgstr "Kiekviena minutė"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Everything"
+msgstr ""
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 msgid "Expand"
 msgstr "Išskleisti"
+
+#: src/features/board/components/board-container.tsx
+msgid "Expand {columnName}"
+msgstr ""
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
@@ -1256,6 +1305,11 @@ msgstr "Nepavyko pridėti stulpelio"
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "Nepavyko nukopijuoti"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Failed to copy CRM"
+msgstr ""
 
 #: src/features/editor/components/design-editor.tsx
 msgid "Failed to create class"
@@ -1840,12 +1894,14 @@ msgstr "Perkeliama į {0}"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "Pavadinimas"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "Pavadinime negali būti < ar > simbolių"
 
@@ -1857,6 +1913,7 @@ msgstr "Pavadinimas yra privalomas"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "Pavadinimas turi būti ne ilgesnis nei 1000 simbolių"
 
@@ -2807,6 +2864,10 @@ msgstr "Kamera jau naudojama"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Į kameros užklausą neatsakyta"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "The copy may be incomplete. Check it before you use it."
+msgstr ""
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"

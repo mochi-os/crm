@@ -308,6 +308,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "Разрешаване на всеки да търси {entityLabel}"
 
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Allow anyone to search for CRM"
 msgstr "Позволи на всеки да търси CRM"
 
@@ -345,6 +346,10 @@ msgstr "Всичко, абонирано за този канал, ще спре
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Сигурни ли сте, че искате да изтриете \"{0}\"?"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Are you sure you want to delete \"{title}\" and the {count, plural, one {# item} other {# items}} under it? This action cannot be undone."
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
@@ -515,6 +520,7 @@ msgstr "Може да бъде дъщерен на"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "Отказ"
 
@@ -654,6 +660,10 @@ msgstr "Затвори търсенето"
 msgid "Collapse"
 msgstr "Свиване"
 
+#: src/features/board/components/board-container.tsx
+msgid "Collapse {columnName}"
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
 msgstr "Сгъни страничната лента"
@@ -766,12 +776,34 @@ msgstr "Копирано в клипборда"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy"
 msgstr "Копирай"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copy CRM"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copy link"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copy of {name}"
+msgstr ""
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Copying CRM..."
+msgstr ""
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "Документът не може да бъде зареден. Моля, опитайте по-късно."
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Could not remove the unfinished copy"
+msgstr ""
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -852,6 +884,10 @@ msgstr ""
 msgid "CRM actions"
 msgstr "CRM действия"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "CRM copied"
+msgstr ""
+
 #: src/features/crms/components/create-crm-dialog.tsx
 msgid "CRM created"
 msgstr "CRM е създаден"
@@ -865,6 +901,7 @@ msgid "CRM link"
 msgstr "Връзка към CRM"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "Името на CRM е задължително"
 
@@ -1037,6 +1074,10 @@ msgstr "Дизайн"
 #: src/routes/_authenticated/$crmId/design.tsx
 msgid "Design imported"
 msgstr "Дизайнът е импортиран"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Design only"
+msgstr ""
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "Design, create, edit, comment, and view"
@@ -1213,12 +1254,20 @@ msgstr "Грешка"
 msgid "Every minute"
 msgstr "Всяка минута"
 
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Everything"
+msgstr ""
+
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/comment-tree-layout.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 msgid "Expand"
 msgstr "Разгъване"
+
+#: src/features/board/components/board-container.tsx
+msgid "Expand {columnName}"
+msgstr ""
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
@@ -1256,6 +1305,11 @@ msgstr "Колоната не беше добавена"
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
 msgstr "Неуспешно копиране"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "Failed to copy CRM"
+msgstr ""
 
 #: src/features/editor/components/design-editor.tsx
 msgid "Failed to create class"
@@ -1840,12 +1894,14 @@ msgstr "Преместване на {0}"
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "Име"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "Името не може да съдържа символи < или >"
 
@@ -1857,6 +1913,7 @@ msgstr "Името е задължително"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
+#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "Името трябва да е до 1000 символа"
 
@@ -2807,6 +2864,10 @@ msgstr "Камерата вече се използва"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Заявката за камера остана без отговор"
+
+#: src/routes/_authenticated/$crmId/index.tsx
+msgid "The copy may be incomplete. Check it before you use it."
+msgstr ""
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"

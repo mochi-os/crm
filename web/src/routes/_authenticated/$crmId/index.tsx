@@ -14,7 +14,7 @@ import {
   useRouter,
 } from '@tanstack/react-router'
 import type { CrmDetails, CrmObject } from '@/types'
-import { t } from '@lingui/core/macro'
+import { plural, t } from '@lingui/core/macro'
 import { useLingui } from '@lingui/react/macro'
 import {
   DropdownMenuItem,
@@ -24,6 +24,8 @@ import {
   getErrorMessage,
   toast,
   EntityObjectDetailPanel,
+  absoluteRouteUrl,
+  DISALLOWED_NAME_CHARS,
 } from '@mochi/web'
 import { Settings, Settings2, Users } from 'lucide-react'
 import crmsApi from '@/api/crms'
@@ -111,6 +113,7 @@ export function CrmPageContent({
 }: CrmPageContentProps) {
   const { t } = useLingui()
   const navigate = useNavigate()
+  const router = useRouter()
   const refreshSidebar = useCrmsStore((state) => state.refresh)
 
   return (
@@ -173,6 +176,50 @@ export function CrmPageContent({
         classColumn: t`Class`,
         parentColumn: t`Parent`,
       }}
+      // Copy runs the backup export and the create-from-backup import as
+      // one step. A failed import removes the half-made copy.
+      duplicate={{
+        menuAction: t`Copy`,
+        api: crmsApi,
+        create: async (name, privacy) => {
+          const response = await crmsApi.create({
+            name,
+            privacy,
+            // The import does not carry the description, so it is set here.
+            description: crm.crm.description,
+          })
+          const id = response.data?.fingerprint
+          if (!id) throw new Error(t`Failed to copy CRM`)
+          return id
+        },
+        remove: (id) => crmsApi.delete(id),
+        onDuplicated: (id) => {
+          void refreshSidebar()
+          void navigate({ to: '/$crmId', params: { crmId: id } })
+        },
+        validateName: (name) => {
+          if (!name.trim()) return t`CRM name is required`
+          if (name.length > 1000) return t`Name must be 1000 characters or less`
+          if (DISALLOWED_NAME_CHARS.test(name))
+            return t`Name cannot contain < or > characters`
+          return null
+        },
+        labels: {
+          title: t`Copy CRM`,
+          name: t`Name`,
+          everything: t`Everything`,
+          designOnly: t`Design only`,
+          allowSearch: t`Allow anyone to search for CRM`,
+          cancel: t`Cancel`,
+          confirm: t`Copy`,
+          duplicating: t`Copying CRM...`,
+          duplicated: t`CRM copied`,
+          failed: t`Failed to copy CRM`,
+          defaultName: (name) => t`Copy of ${name}`,
+          leftBehind: t`Could not remove the unfinished copy`,
+          incomplete: t`The copy may be incomplete. Check it before you use it.`,
+        },
+      }}
       designMenuItem={
         <DropdownMenuItem asChild>
           <Link to='/$crmId/design' params={{ crmId }}>
@@ -202,6 +249,18 @@ export function CrmPageContent({
           design={crm}
           access={crm.crm.access}
           api={crmsApi}
+          itemUrl={(objectId) =>
+            absoluteRouteUrl(router, {
+              to: '/$crmId/$objectId',
+              params: { crmId, objectId },
+            })
+          }
+          labels={{
+            copyLink: t`Copy link`,
+            // The server deletes everything under an item with it.
+            deleteWithChildren: (title, count) =>
+              t`Are you sure you want to delete "${title}" and the ${plural(count, { one: '# item', other: '# items' })} under it? This action cannot be undone.`,
+          }}
           onCopy={onCopy}
           onClose={onClose}
         />

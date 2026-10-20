@@ -23,6 +23,10 @@ export function BoardContainer({ crm, ...props }: BoardContainerProps) {
       design={crm}
       containerId={crm.crm.id}
       fallbackTitle={() => t`Untitled`}
+      collapseLabels={{
+        collapse: (columnName) => t`Collapse ${columnName}`,
+        expand: (columnName) => t`Expand ${columnName}`,
+      }}
     />
   )
 }
