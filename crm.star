@@ -2431,6 +2431,46 @@ def would_create_cycle(object_id, new_parent_id):
 		current = parent_row["parent"] if parent_row else ""
 	return True
 
+# Makes `parent` the parent of the object in `row` (its id, class and parent),
+# for a move or an update by `user`: the change must not make a cycle, and the
+# hierarchy must allow the object's class under the new parent's class, ""
+# being the top level. The object and its descendants then take the new
+# parent's board column and row values, so it shows among its new siblings.
+# Answers an error label and status, or None once the parent is set or when it
+# was that one already.
+def object_reparent(crm_id, row, parent, user, now):
+	object_id = row["id"]
+	old_parent = row["parent"]
+	if parent == old_parent:
+		return None
+	if parent and would_create_cycle(object_id, parent):
+		return ("errors.cannot_set_parent_would_create_a_cycle", 400)
+	parent_class = ""
+	if parent:
+		parent_row = mochi.db.row("select class from objects where id=? and crm=?", parent, crm_id)
+		if not parent_row:
+			return ("errors.parent_object_not_found", 404)
+		parent_class = parent_row["class"]
+	if not mochi.db.exists("select 1 from hierarchy where crm=? and class=? and parent=?", crm_id, row["class"], parent_class):
+		return ("errors.parent_hierarchy_disallowed", 400)
+	row_set("objects", "id=?", [object_id], {"parent": parent, "updated": now})
+	log_activity(object_id, user, "moved", "parent", old_parent, parent)
+	if parent:
+		parent_values = mochi.db.rows('select field, value from "values" where object=?', parent) or []
+		parent_val_map = {v["field"]: v["value"] for v in parent_values}
+		views = mochi.db.rows("select columns, rows from views where crm=?", crm_id) or []
+		sync_fields = {}
+		for view in views:
+			if view["columns"]:
+				sync_fields[view["columns"]] = True
+			if view["rows"]:
+				sync_fields[view["rows"]] = True
+		all_ids = [object_id] + get_all_descendants(object_id)
+		for sync_id in all_ids:
+			for field_id in sync_fields:
+				row_merge("values", ["object", "field"], {"object": sync_id, "field": field_id, "value": parent_val_map.get(field_id, "")})
+	return None
+
 def get_all_descendants(object_id, depth=0):
 	"""Get all descendant object IDs recursively."""
 	if depth >= 100:
@@ -2754,45 +2794,11 @@ def action_object_update(a):
 
 	# Update parent if provided
 	parent = a.input("parent")
-	if a.input("parent") != None:
-		old_parent = row["parent"]
-		if parent != old_parent:
-			# Check for cycles
-			if parent and would_create_cycle(object_id, parent):
-				a.error.label(400, "errors.cannot_set_parent_would_create_a_cycle")
-				return
-			# Check hierarchy rules
-			if parent:
-				parent_row = mochi.db.row("select class from objects where id=? and crm=?", parent, crm_id)
-				if not parent_row:
-					a.error.label(404, "errors.parent_object_not_found")
-					return
-				parent_class = parent_row["class"]
-			else:
-				parent_class = ""
-			allowed = mochi.db.exists("select 1 from hierarchy where crm=? and class=? and parent=?", crm_id, row["class"], parent_class)
-			if not allowed:
-				a.error.label(400, "errors.parent_hierarchy_disallowed")
-				return
-			row_set("objects", "id=?", [object_id], {"parent": parent, "updated": now})
-			log_activity(object_id, a.user.identity.id, "moved", "parent", old_parent, parent)
-
-			# Sync child's column/row values to match new parent
-			if parent:
-				parent_values = mochi.db.rows('select field, value from "values" where object=?', parent) or []
-				parent_val_map = {v["field"]: v["value"] for v in parent_values}
-				views = mochi.db.rows("select columns, rows from views where crm=?", crm_id) or []
-				sync_fields = {}
-				for view in views:
-					if view["columns"]:
-						sync_fields[view["columns"]] = True
-					if view["rows"]:
-						sync_fields[view["rows"]] = True
-				all_ids = [object_id] + get_all_descendants(object_id)
-				for sync_id in all_ids:
-					for field_id in sync_fields:
-						parent_val = parent_val_map.get(field_id, "")
-						row_merge("values", ["object", "field"], {"object": sync_id, "field": field_id, "value": parent_val})
+	if parent != None:
+		problem = object_reparent(crm_id, row, parent, a.user.identity.id, now)
+		if problem:
+			a.error.label(problem[1], problem[0])
+			return
 	# Update class if provided
 	if new_class and new_class != row["class"]:
 		row_set("objects", "id=?", [object_id], {"class": new_class, "updated": now})
@@ -2888,7 +2894,12 @@ def action_object_move(a):
 		rf, rv = row_input(a.input("row"))
 		if rf:
 			params["row"] = {"field": rf, "value": rv}
+		parent = a.input("parent")
+		if parent != None:
+			params["parent"] = parent
 		sp = a.input("scope")
+		if sp == None:
+			sp = parent
 		if sp != None:
 			params["scope"] = sp
 		if a.input("promote") == "true":
@@ -2901,6 +2912,9 @@ def action_object_move(a):
 			rank = a.input("rank")
 			if value:
 				row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": value})
+			# Before the rank: the key is placed among the new parent's children.
+			if parent != None:
+				row_set("objects", "id=?", [object_id], {"parent": parent, "updated": now})
 			if rank:
 				old_value_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field)
 				old_value = old_value_row["value"] if old_value_row else ""
@@ -2924,7 +2938,7 @@ def action_object_move(a):
 		a.error.label(400, "errors.object_id_required")
 		return
 
-	row = mochi.db.row("select id, class, rank from objects where id=? and crm=?", object_id, crm_id)
+	row = mochi.db.row("select id, class, rank, parent from objects where id=? and crm=?", object_id, crm_id)
 	if not row:
 		a.error.label(404, "errors.object_not_found")
 		return
@@ -2956,6 +2970,21 @@ def action_object_move(a):
 		a.error.label(400, "errors.value_too_long")
 		return
 
+	# A drop into another parent's children at a position: the new parent and
+	# the place among its children go in one move, not an update and then a
+	# move. A promote is the same change to the top level, so not both.
+	parent = a.input("parent")
+	if parent != None and a.input("promote") == "true":
+		a.error.label(400, "errors.invalid_value")
+		return
+	parent_changed = False
+	if parent != None:
+		problem = object_reparent(crm_id, row, parent, a.user.identity.id, mochi.time.now())
+		if problem:
+			a.error.label(problem[1], problem[0])
+			return
+		parent_changed = parent != row["parent"]
+
 	# Get old field value
 	old_value_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field)
 	old_value = old_value_row["value"] if old_value_row else ""
@@ -2971,6 +3000,8 @@ def action_object_move(a):
 
 	# Handle rank change
 	scope_parent = a.input("scope")
+	if scope_parent == None:
+		scope_parent = parent
 	# Handle rank change. Fractional key between the neighbours at the drop slot
 	# (#53): one write, converges under multi-master — no whole-scope renumber.
 	if a.input("rank") != None:
@@ -3010,8 +3041,18 @@ def action_object_move(a):
 		if old_parent:
 			row_set("objects", "id=?", [object_id], {"parent": '', "updated": mochi.time.now()})
 			log_activity(object_id, a.user.identity.id, "moved", "parent", old_parent, "")
+			parent = ""
+			parent_changed = True
 
-	row_set("objects", "id=?", [object_id], {"updated": mochi.time.now()})
+	now = mochi.time.now()
+	row_set("objects", "id=?", [object_id], {"updated": now})
+
+	# Subscribers learn a new parent the way object/update tells them of one.
+	if parent_changed:
+		broadcast_event(crm_id, "object/update", {
+			"crm": crm_id, "id": object_id, "parent": parent,
+			"class": row["class"], "user": a.user.identity.id, "updated": now,
+		})
 	# Cascade status/row changes to all descendants
 	if value_changed or row_changed:
 		descendants = get_all_descendants(object_id)
@@ -7517,39 +7558,11 @@ def do_object_update(crm_id, crm, params, user_id):
 		return {"error": "errors.class_not_found", "code": 404}
 	parent = params.get("parent")
 	if parent != None:
-		old_parent = row["parent"]
-		if parent != old_parent:
-			if parent and would_create_cycle(object_id, parent):
-				return {"error": "errors.cannot_set_parent_would_create_a_cycle", "code": 400}
-			if parent:
-				parent_row = mochi.db.row("select class from objects where id=? and crm=?", parent, crm_id)
-				if not parent_row:
-					return {"error": "errors.parent_object_not_found", "code": 404}
-				parent_class = parent_row["class"]
-			else:
-				parent_class = ""
-			allowed = mochi.db.exists("select 1 from hierarchy where crm=? and class=? and parent=?", crm_id, row["class"], parent_class)
-			if not allowed:
-				return {"error": "errors.parent_hierarchy_disallowed", "code": 400}
-			row_set("objects", "id=?", [object_id], {"parent": parent, "updated": now})
-			log_activity(object_id, user_id, "moved", "parent", old_parent, parent)
-
-			# Sync child's column/row values to match new parent
-			if parent:
-				parent_values = mochi.db.rows('select field, value from "values" where object=?', parent) or []
-				parent_val_map = {v["field"]: v["value"] for v in parent_values}
-				views = mochi.db.rows("select columns, rows from views where crm=?", crm_id) or []
-				sync_fields = {}
-				for view in views:
-					if view["columns"]:
-						sync_fields[view["columns"]] = True
-					if view["rows"]:
-						sync_fields[view["rows"]] = True
-				all_ids = [object_id] + get_all_descendants(object_id)
-				for sync_id in all_ids:
-					for field_id in sync_fields:
-						parent_val = parent_val_map.get(field_id, "")
-						row_merge("values", ["object", "field"], {"object": sync_id, "field": field_id, "value": parent_val})
+		if type(parent) != "string":
+			return {"error": "errors.invalid_value", "code": 400}
+		problem = object_reparent(crm_id, row, parent, user_id, now)
+		if problem:
+			return {"error": problem[0], "code": problem[1]}
 	if new_class and new_class != row["class"]:
 		row_set("objects", "id=?", [object_id], {"class": new_class, "updated": now})
 		log_activity(object_id, user_id, "updated", "class", row["class"], new_class)
@@ -7582,7 +7595,7 @@ def do_object_move(crm_id, crm, params, user_id):
 	object_id = params.get("object")
 	if not object_id:
 		return {"error": "errors.object_id_required", "code": 400}
-	row = mochi.db.row("select id, class, rank from objects where id=? and crm=?", object_id, crm_id)
+	row = mochi.db.row("select id, class, rank, parent from objects where id=? and crm=?", object_id, crm_id)
 	if not row:
 		return {"error": "errors.object_not_found", "code": 404}
 	if params.get("promote", "") == "true" and not promotable(crm_id, object_id, row["class"]):
@@ -7611,6 +7624,18 @@ def do_object_move(crm_id, crm, params, user_id):
 	# non-integer would abort the owner-side handler, so answer a clean 400.
 	if new_rank != None and not mochi.text.valid(str(new_rank), "integer"):
 		return {"error": "errors.invalid_value", "code": 400}
+	# The HTTP twin's parent and place among its children in one move.
+	parent = params.get("parent")
+	if parent != None and type(parent) != "string":
+		return {"error": "errors.invalid_value", "code": 400}
+	if parent != None and params.get("promote", "") == "true":
+		return {"error": "errors.invalid_value", "code": 400}
+	parent_changed = False
+	if parent != None:
+		problem = object_reparent(crm_id, row, parent, user_id, mochi.time.now())
+		if problem:
+			return {"error": problem[0], "code": problem[1]}
+		parent_changed = parent != row["parent"]
 	old_value_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field)
 	old_value = old_value_row["value"] if old_value_row else ""
 	target_value = value if value else old_value
@@ -7619,6 +7644,8 @@ def do_object_move(crm_id, crm, params, user_id):
 		row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": target_value})
 		log_activity(object_id, user_id, "updated", field, old_value, target_value)
 	scope_parent = params.get("scope", None)
+	if scope_parent == None:
+		scope_parent = parent
 	if new_rank != None:
 		# Fractional key between the neighbours at the drop slot (#53): one write,
 		# converges under multi-master — no whole-scope renumber.
@@ -7651,8 +7678,18 @@ def do_object_move(crm_id, crm, params, user_id):
 		if old_parent:
 			row_set("objects", "id=?", [object_id], {"parent": '', "updated": mochi.time.now()})
 			log_activity(object_id, user_id, "moved", "parent", old_parent, "")
+			parent = ""
+			parent_changed = True
 
-	row_set("objects", "id=?", [object_id], {"updated": mochi.time.now()})
+	now = mochi.time.now()
+	row_set("objects", "id=?", [object_id], {"updated": now})
+
+	# Subscribers learn a new parent the way object/update tells them of one.
+	if parent_changed:
+		broadcast_event(crm_id, "object/update", {
+			"crm": crm_id, "id": object_id, "parent": parent,
+			"class": row["class"], "user": user_id, "updated": now,
+		})
 	# Cascade status/row changes to all descendants
 	if value_changed or row_changed:
 		descendants = get_all_descendants(object_id)
