@@ -9,7 +9,7 @@ import { RouterProvider, createRouter } from '@tanstack/react-router'
 import {
   CommandMenu,
   createQueryClient,
-  GeneralError,
+  RouteError,
   SearchProvider,
   ThemeProvider,
   getAppBasepath,
@@ -199,7 +199,7 @@ const router = createRouter({
   basepath: getAppBasepath(),
   history: createAppHistory(),
   defaultPreload: false,
-  defaultErrorComponent: GeneralError,
+  defaultErrorComponent: RouteError,
 })
 
 // Fetch page code on hover, press or focus; never route data

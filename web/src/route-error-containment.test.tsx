@@ -16,7 +16,7 @@ import {
   RouterProvider,
 } from '@tanstack/react-router'
 import { render, screen, waitFor } from '@/test/test-utils'
-import { GeneralError } from '@mochi/web'
+import { GeneralError, RouteError } from '@mochi/web'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { describe, it, expect, vi, afterEach } from 'vitest'
@@ -26,7 +26,7 @@ const CRASH_MESSAGE = "Cannot read properties of undefined (reading 'name')"
 // The shape of the real tree: __root carries an errorComponent, the
 // _authenticated layout renders the sidebar around an Outlet, and the page sits
 // under it. Only the router option under test differs between the two cases.
-function buildRouter(defaultErrorComponent?: typeof GeneralError) {
+function buildRouter(defaultErrorComponent?: typeof RouteError) {
   const rootRoute = createRootRoute({
     component: Outlet,
     errorComponent: GeneralError,
@@ -71,7 +71,7 @@ describe('route error containment', () => {
   })
 
   it('keeps the sidebar mounted when the page body throws', async () => {
-    render(<RouterProvider router={buildRouter(GeneralError)} />)
+    render(<RouterProvider router={buildRouter(RouteError)} />)
 
     await waitFor(() => {
       expect(screen.getByText(CRASH_MESSAGE)).toBeInTheDocument()
@@ -103,6 +103,6 @@ describe('route error containment', () => {
       path.resolve(process.cwd(), 'src/main.tsx'),
       'utf8'
     )
-    expect(source).toMatch(/defaultErrorComponent:\s*GeneralError/)
+    expect(source).toMatch(/defaultErrorComponent:\s*RouteError/)
   })
 })
