@@ -26,6 +26,8 @@ import {
   EntityObjectDetailPanel,
   absoluteRouteUrl,
   DISALLOWED_NAME_CHARS,
+  entityObjectsQuery,
+  entityPeopleQuery,
 } from '@mochi/web'
 import { Settings, Settings2, Users } from 'lucide-react'
 import crmsApi from '@/api/crms'
@@ -43,7 +45,15 @@ export const Route = createFileRoute('/_authenticated/$crmId/')({
   validateSearch: (search: Record<string, unknown>): SearchParams => ({
     view: typeof search.view === 'string' ? search.view : undefined,
   }),
-  loader: async ({ params }) => {
+  loader: async ({ params, context }) => {
+    // The items and people need only the address, so they start beside the
+    // details rather than after them; the page's queries join them.
+    void context.queryClient.prefetchQuery(
+      entityObjectsQuery(crmsApi.listObjects, params.crmId)
+    )
+    void context.queryClient.prefetchQuery(
+      entityPeopleQuery(crmsApi.listPeople, params.crmId)
+    )
     try {
       const crmResponse = await crmsApi.get(params.crmId)
       return { crm: crmResponse.data, loaderError: null }

@@ -16,6 +16,7 @@ function CrmsLayoutInner() {
   const isLoading = useCrmsStore((state) => state.isLoading)
   const error = useCrmsStore((state) => state.error)
   const refresh = useCrmsStore((state) => state.refresh)
+  const load = useCrmsStore((state) => state.load)
   const { createDialogOpen, openCreateDialog, closeCreateDialog } =
     useSidebarContext()
 
@@ -25,6 +26,7 @@ function CrmsLayoutInner() {
       isLoading={isLoading}
       error={error}
       refresh={refresh}
+      load={load}
       icon={Users}
       onCreate={openCreateDialog}
       viewUrl={APP_ROUTES.CRMS.VIEW}
