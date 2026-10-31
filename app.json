@@ -12,11 +12,11 @@
 	"services": ["crm"],
 
 	"architecture": {"engine": "starlark", "version": 4},
-	"execute": ["lib/attachments.star", "crm.star"],
-	"require": {"version": {"minimum": "0.4.231"}},
+	"execute": ["lib/attachments.star", "lib/assets.star", "lib/recommendations.star", "crm.star"],
+	"require": {"version": {"minimum": "0.4.244"}},
 
 	"database": {
-		"schema": 6,
+		"schema": 8,
 		"file": "crm.db",
 		"create": {"function": "database_create"},
 		"upgrade": {"function": "database_upgrade"},
