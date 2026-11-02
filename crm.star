@@ -39,11 +39,65 @@ def decimal(value):
             return False
     return True
 
+def remote_dict(response):
+	"""A remote response is usable only if it is a dict. mochi.remote.request
+	returns whatever the far end encoded, so a hostile or buggy peer answering
+	with a list or a string gives a value with no .get - and subscripting it
+	aborts the handler part-done. Callers keep their existing falsy tests."""
+	return response if type(response) == "dict" else None
+
+# access_ask asks the owner of a subscribed CRM what this user may do there,
+# and keeps the answer in crms.access. Answers (level, response): the level,
+# "" when the owner allows nothing, or None when there is no answer, with
+# response saying why (remote_error).
+def access_ask(crm_id, row):
+	server = row["server"] or ""
+	peer = mochi.remote.peer(server) if server else None
+	# The owner checks the authenticated sender, which remote.request
+	# stamps with this user's identity - no payload needed.
+	response = remote_dict(mochi.remote.request(crm_id, "crm", "access/check", {}, peer))
+	if not response or response.get("transport") or response.get("error"):
+		return None, response
+	access = ""
+	for level in ["design", "write", "comment", "view"]:
+		if response.get(level):
+			access = level
+			break
+	mochi.db.execute("update crms set access=?, checked=? where id=?", access, mochi.time.now(), crm_id)
+	return access, response
+
+# access_interval: how often a view of a subscribed crm asks its owner again
+# for this user's level, in seconds.
+access_interval = 60
+
+# schedule_access asks the owner again after -/information has answered with
+# the level it last confirmed, and tells an open page when the level moved.
+def schedule_access(e):
+	if e.source != "schedule":
+		return
+	crm_id = e.data.get("crm", "")
+	if not mochi.text.valid(crm_id, "entity"):
+		return
+	row = mochi.db.row("select access, server from crms where id=? and owner=0", crm_id)
+	if not row:
+		return
+	access, _ = access_ask(crm_id, row)
+	if access == None or access == row["access"]:
+		return
+	fingerprint = mochi.entity.fingerprint(crm_id)
+	if fingerprint:
+		mochi.websocket.write(fingerprint, {"type": "crm/update", "crm": crm_id})
+
 # remote_error surfaces a failed mochi.remote.request: core-authored
 # transport failures (marked "transport") become a translated generic
 # error with the detail kept in the server log; far-end app answers
 # pass through unchanged.
 def remote_error(a, response, code=502):
+	# response is None when remote_dict refused the far end's shape; that is a
+	# transport-class failure as far as the caller is concerned.
+	if not response:
+		a.error.label(code, "errors.remote")
+		return
 	if response.get("transport"):
 		mochi.log.info("Remote transport error: %s", response.get("error", ""))
 		a.error.label(response.get("code", code), "errors.remote")
@@ -380,6 +434,18 @@ def database_upgrade(version):
 		mochi.db.execute("create index if not exists links_crm on links(crm)")
 		mochi.db.execute("create index if not exists activity_user on activity(user)")
 		mochi.db.execute("create index if not exists values_field on \"values\"(field)")
+	if version == 7:
+		# The access level the owner last confirmed, so -/information answers
+		# without asking first and a replica stays readable while the owner is
+		# unreachable. Idempotent via the column list.
+		if "access" not in [c["name"] for c in mochi.db.table("crms")]:
+			mochi.db.execute("alter table crms add column access text not null default ''")
+	if version == 8:
+		# When the owner was last asked for this user's level, so a view asks
+		# again at most once a minute (schedule_access). Idempotent via the
+		# column list.
+		if "checked" not in [c["name"] for c in mochi.db.table("crms")]:
+			mochi.db.execute("alter table crms add column checked integer not null default 0")
 
 # Create database with all 17 tables
 def database_create():
@@ -396,7 +462,9 @@ def database_create():
 		created integer not null,
 		updated integer not null,
 		synced integer not null default 0,
-		populated integer not null default 1
+		populated integer not null default 1,
+		access text not null default '',
+		checked integer not null default 0
 	)""")
 	mochi.db.execute("create index if not exists crms_fingerprint on crms(fingerprint)")
 
@@ -1759,7 +1827,7 @@ def action_crm_get(a):
 		a.error.label(400, "errors.crm_id_required")
 		return
 
-	row = mochi.db.row("select id, name, description, owner, server, template, template_version, created, updated, populated from crms where id=?", crm_id)
+	row = mochi.db.row("select id, name, description, owner, server, template, template_version, created, updated, populated, access, checked from crms where id=?", crm_id)
 	if not row:
 		a.error.label(404, "errors.crm_not_found")
 		return
@@ -1820,25 +1888,29 @@ def action_crm_get(a):
 		else:
 			a.error.label(403, "errors.access_denied")
 			return
+	elif row["access"]:
+		# The level the owner last confirmed answers at once, and the owner is
+		# asked again after answering (schedule_access), at most once per
+		# access_interval: stamped first, and only by the view that moves the
+		# stamp, so views arriving together - or a page reloading every few
+		# seconds while it fills - schedule one. The level only decides which
+		# controls show: every write goes to the owner, which checks it, and a
+		# revoke purges the replica (access/revoke). It also keeps the replica
+		# readable while the owner is unreachable. A level that moves reaches a
+		# page already listening as crm/update; one opened after the frame shows
+		# it on its next load.
+		access = row["access"]
+		now = mochi.time.now()
+		if now - row["checked"] >= access_interval and mochi.db.execute("update crms set checked=? where id=? and checked=?", now, crm_id, row["checked"]) > 0:
+			mochi.schedule.after("schedule_access", {"crm": crm_id}, 0)
 	else:
-		server = row["server"] or ""
-		peer = mochi.remote.peer(server) if server else None
-		# The owner checks the authenticated sender, which remote.request
-		# stamps with this user's identity - no payload needed.
-		response = mochi.remote.request(crm_id, "crm", "access/check", {}, peer)
-		if response:
-			if response.get("design"):
-				access = "design"
-			elif response.get("write"):
-				access = "write"
-			elif response.get("comment"):
-				access = "comment"
-			elif response.get("view"):
-				access = "view"
-			else:
-				a.error.label(403, "errors.access_denied")
-				return
-		else:
+		access, response = access_ask(crm_id, row)
+		if access == None:
+			# The owner's own status code is not passed on: a hostile one could
+			# answer 401 and sign the reader out.
+			remote_error(a, response if response and response.get("transport") else None)
+			return
+		if not access:
 			a.error.label(403, "errors.access_denied")
 			return
 
@@ -3492,38 +3564,6 @@ def delete_crm_comment_attachments(crm_id):
 # Person asset proxy (avatar, banner, favicon, style, information)
 # ============================================================================
 
-# Stream an entity's asset from its owning service via a Mochi stream.
-# Location-transparent: mochi.remote.stream() loops back in-process when the
-# entity lives on this server, or goes over P2P otherwise.
-def stream_asset(a, entity_id, service, asset):
-	if not entity_id:
-		a.error.label(404, "errors.asset_unavailable", asset=asset)
-		return None
-	# Reject a malformed id before opening a stream: mochi.remote.stream errors
-	# out on an invalid entity, which aborts the whole action as a 500. The
-	# user-asset routes pass a caller-supplied id here. Mirrors market/staff.
-	if not mochi.text.valid(entity_id, "entity") and not mochi.text.valid(entity_id, "fingerprint"):
-		a.error.label(404, "errors.asset_unavailable", asset=asset)
-		return None
-	s = mochi.remote.stream(entity_id, service, asset, {})
-	if not s:
-		a.error.label(404, "errors.asset_unavailable", asset=asset)
-		return None
-	header = s.read()
-	if not header or header.get("status") != "200":
-		a.error.label(404, "errors.asset_not_set", asset=asset)
-		return None
-	a.header("Cache-Control", "private, max-age=300")
-	if "data" in header:
-		return {"data": header["data"]}
-	a.header("Content-Type", header.get("content_type", "application/octet-stream"))
-	# Per-slot byte caps matching what the people app accepts on upload; the route
-	# is public, so an uncapped stream could run indefinitely. Unknown slots fall
-	# back to the largest cap.
-	caps = {"avatar": 2 * 1024 * 1024, "banner": 10 * 1024 * 1024, "favicon": 64 * 1024}
-	a.write.stream(s, maximum=caps.get(asset, 10 * 1024 * 1024))
-	return None
-
 def asset_crm(a):
 	"""Resolve the routed CRM for a public asset route, or None to refuse.
 
@@ -3558,7 +3598,7 @@ def action_comment_asset(a):
 	# Bind the comment to the route crm (via its object) so this can't resolve a
 	# comment author in a crm the URL doesn't name.
 	row = mochi.db.row("select c.author from comments c join objects o on c.object=o.id where c.id=? and o.crm=?", a.input("comment"), crm_id)
-	return stream_asset(a, row["author"] if row else "", "people", asset)
+	return asset_serve(a, row["author"] if row else "", "people", asset)
 
 def action_activity_asset(a):
 	asset = a.input("asset")
@@ -3571,7 +3611,7 @@ def action_activity_asset(a):
 		return
 	# Bind the activity to the route crm (via its object).
 	row = mochi.db.row("select a2.user from activity a2 join objects o on a2.object=o.id where a2.id=? and o.crm=?", a.input("activity"), crm_id)
-	return stream_asset(a, row["user"] if row else "", "people", asset)
+	return asset_serve(a, row["user"] if row else "", "people", asset)
 
 def action_user_asset(a):
 	asset = a.input("asset")
@@ -3601,7 +3641,7 @@ def action_user_asset(a):
 	if not known:
 		a.error.label(404, "errors.unknown_asset")
 		return
-	return stream_asset(a, subject, "people", asset)
+	return asset_serve(a, subject, "people", asset)
 
 # ============================================================================
 # Comment Actions
@@ -5623,22 +5663,15 @@ def action_recommendations(a):
 	for row in rows or []:
 		existing_ids.add(row["id"])
 
-	# Connect to recommendations service
-	s = mochi.remote.stream("1JYmMpQU7fxvTrwHpNpiwKCgUg3odWqX7s9t1cLswSMAro5M2P", "recommendations", "list", {"type": "crm", "language": user_language(a)})
-	if not s:
-		return {"data": {"crms": []}}
-
-	r = s.read()
-	if not r or r.get("status") != "200":
+	# Recommendations from the service, cached for an hour
+	items = recommendation_list("crm", user_language(a))
+	if items == None:
 		return {"data": {"crms": []}}
 
 	recommendations = []
-	items = s.read()
-	if type(items) not in ["list", "tuple"]:
-		return {"data": {"crms": []}}
 
 	# Get the server location from the recommendations entity so subscribers can reach the CRMs
-	rec_dir = mochi.directory.get("1JYmMpQU7fxvTrwHpNpiwKCgUg3odWqX7s9t1cLswSMAro5M2P")
+	rec_dir = mochi.directory.get(recommendation_entity)
 	rec_server = ""
 	if rec_dir:
 		rec_server = rec_dir.get("location", "")

@@ -17,6 +17,7 @@ import {
   TooltipTrigger,
   EntityDesignLayout,
   optimistic,
+  entityObjectsQuery,
 } from '@mochi/web'
 import { Blocks, GripVertical, Plus } from 'lucide-react'
 import crmsApi from '@/api/crms'
@@ -51,13 +52,9 @@ export function DesignEditor({ crmId, crm }: DesignEditorProps) {
 
   // Fetch objects for preview. The shared objects page caches the whole list
   // response under this key, so cache the same shape and read .objects from it.
-  const { data: objectListData } = useQuery({
-    queryKey: ['objects', crmId],
-    queryFn: async () => {
-      const response = await crmsApi.listObjects(crmId)
-      return response.data
-    },
-  })
+  const { data: objectListData } = useQuery(
+    entityObjectsQuery(crmsApi.listObjects, crmId)
+  )
   const objects = objectListData?.objects ?? []
 
   // Selection state
