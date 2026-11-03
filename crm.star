@@ -204,7 +204,9 @@ def error_broadcast_gap(e):
 idle_resync_age = 7 * 86400
 
 def request_resync(crm_id):
-	"""Returns True iff a fresh schema was actually fetched and applied."""
+	"""Returns True iff every part of a fresh schema was fetched and applied
+	within this call. A pull that runs out of time is continued by
+	schedule_schema; one that fails waits for the next resync."""
 	row = mochi.db.row("select server, synced from crms where id=? and owner=0", crm_id)
 	if not row:
 		return False
@@ -216,14 +218,15 @@ def request_resync(crm_id):
 	peer = ""
 	if server:
 		peer = mochi.remote.peer(server)
-	schema = mochi.remote.request(crm_id, "crm", "schema", {}, peer)
+	# What the replica holds before the first part is read: only those rows may
+	# be pruned once the pull completes.
+	held = schema_holdings(crm_id)
+	schema = schema_fetch(crm_id, peer, SCHEMA_START)
 	if not schema or schema.get("error"):
 		return False
-	insert_schema(crm_id, schema)
-	mochi.broadcast.touch(crm_id)
-	fp = mochi.entity.fingerprint(crm_id)
-	if fp:
-		mochi.websocket.write(fp, {"type": "crm/resynced", "crm": crm_id})
+	if not insert_schema(crm_id, schema, peer, now, held):
+		return False
+	schema_completed(crm_id)
 	return True
 
 # Re-subscribe to a CRM idle longer than idle_resync_age: the owner's
@@ -446,8 +449,12 @@ def database_upgrade(version):
 		# column list.
 		if "checked" not in [c["name"] for c in mochi.db.table("crms")]:
 			mochi.db.execute("alter table crms add column checked integer not null default 0")
+	if version == 9:
+		# The chunks of an owner's sync batch a subscriber holds, so it marks a
+		# replica populated only once every chunk of one sync has landed.
+		mochi.db.execute("create table if not exists chunks ( crm text not null, sync text not null, chunk integer not null, created integer not null default 0, primary key ( crm, sync, chunk ) )")
 
-# Create database with all 17 tables
+# Create database with all 18 tables
 def database_create():
 	# 1. crms - the container, a Mochi entity
 	mochi.db.execute("""create table if not exists crms (
@@ -658,6 +665,9 @@ def database_create():
 		primary key (object, user)
 	)""")
 	mochi.db.execute("create index if not exists watchers_user on watchers(user)")
+
+	# The chunks of an owner's sync batch a subscriber holds
+	mochi.db.execute("create table if not exists chunks ( crm text not null, sync text not null, chunk integer not null, created integer not null default 0, primary key ( crm, sync, chunk ) )")
 
 	# Attachments now live in this database, owned by the shared library.
 	attachment_schema_create()
@@ -2028,6 +2038,7 @@ def purge_crm(crm_id):
 	mochi.db.execute("delete from hierarchy where crm=?", crm_id)
 	mochi.db.execute("delete from classes where crm=?", crm_id)
 	mochi.db.execute("delete from subscribers where crm=?", crm_id)
+	mochi.db.execute("delete from chunks where crm=?", crm_id)
 	mochi.db.execute("delete from crms where id=?", crm_id)
 
 def action_crm_delete(a):
@@ -3578,7 +3589,11 @@ def asset_crm(a):
 	if not crm:
 		return None
 	if crm["owner"] != 1:
-		return crm_id
+		# A replica lives in the subscriber's own database, so a signed-in caller
+		# reaching it is its holder. An anonymous request arrives through a hosted
+		# domain, in the route owner's database, where it would otherwise see
+		# every private crm that user subscribes to.
+		return crm_id if a.user else None
 	user_id = a.user.identity.id if a.user and a.user.identity else None
 	if not check_crm_access(user_id, crm_id, "view"):
 		return None
@@ -3598,6 +3613,7 @@ def action_comment_asset(a):
 	# Bind the comment to the route crm (via its object) so this can't resolve a
 	# comment author in a crm the URL doesn't name.
 	row = mochi.db.row("select c.author from comments c join objects o on c.object=o.id where c.id=? and o.crm=?", a.input("comment"), crm_id)
+	# attachment-ok: asset_crm checks view access (a signed-in holder for a replica), and the comment is bound to the routed crm
 	return asset_serve(a, row["author"] if row else "", "people", asset)
 
 def action_activity_asset(a):
@@ -3611,6 +3627,7 @@ def action_activity_asset(a):
 		return
 	# Bind the activity to the route crm (via its object).
 	row = mochi.db.row("select a2.user from activity a2 join objects o on a2.object=o.id where a2.id=? and o.crm=?", a.input("activity"), crm_id)
+	# attachment-ok: asset_crm checks view access (a signed-in holder for a replica), and the activity is bound to the routed crm
 	return asset_serve(a, row["user"] if row else "", "people", asset)
 
 def action_user_asset(a):
@@ -3629,18 +3646,15 @@ def action_user_asset(a):
 	if not subject:
 		a.error.label(404, "errors.unknown_asset")
 		return
-	known = mochi.db.exists(
-		"select 1 from activity a2 join objects o on a2.object=o.id where a2.user=? and o.crm=?",
-		subject, crm_id)
-	if not known:
-		known = mochi.db.exists(
-			"select 1 from comments c join objects o on c.object=o.id where c.author=? and o.crm=?",
-			subject, crm_id)
-	if not known:
-		known = mochi.db.exists("select 1 from subscribers where crm=? and id=?", crm_id, subject)
+	# Membership only. activity.user and comments.author are both written
+	# verbatim from an uploaded backup by action_data_import, so testing those
+	# would let a design-access user seed any entity id and have this public
+	# route proxy that entity's people assets.
+	known = mochi.db.exists("select 1 from subscribers where crm=? and id=?", crm_id, subject)
 	if not known:
 		a.error.label(404, "errors.unknown_asset")
 		return
+	# attachment-ok: asset_crm checks view access (a signed-in holder for a replica), and the subject must subscribe to the routed crm
 	return asset_serve(a, subject, "people", asset)
 
 # ============================================================================
@@ -5718,6 +5732,7 @@ def action_share(a): # crm_share
 
 def action_subscribe(a):
 	user_id = a.user.identity.id
+	started = mochi.time.now()
 
 	crm_id = a.input("crm")
 	server = a.input("server")
@@ -5756,7 +5771,7 @@ def action_subscribe(a):
 		crm_name = response.get("name", "")
 		crm_desc = response.get("description", "")
 		# Fetch schema so it is available before the frontend navigates
-		schema = mochi.remote.request(crm_id, "crm", "schema", {}, peer)
+		schema = schema_fetch(crm_id, peer, SCHEMA_START)
 	else:
 		# Use directory lookup when no server specified
 		directory = mochi.directory.get(crm_id)
@@ -5774,28 +5789,30 @@ def action_subscribe(a):
 				if response and not response.get("error"):
 					crm_name = response.get("name", crm_name)
 					crm_desc = response.get("description", "")
-				schema = mochi.remote.request(crm_id, "crm", "schema", {}, peer)
+				schema = schema_fetch(crm_id, peer, SCHEMA_START)
 
 	now = mochi.time.now()
 	fp = mochi.entity.fingerprint(crm_id) or ""
 
-	# Insert the remote crm. populated=0: the schema is fetched synchronously
-	# below, but the bulk object data arrives asynchronously via the owner's
-	# sync/batch. The board shows a loading state until event_sync_batch flips
-	# this to 1.
+	# Insert the remote crm. populated=0: the board shows a loading state until
+	# the schema pull below reaches its last part, or every chunk of the owner's
+	# sync/batch has landed (event_sync_batch), whichever is first.
 	row_merge("crms", ["id"], {"id": crm_id, "name": crm_name, "description": crm_desc, "owner": 0, "server": server or "", "fingerprint": fp, "created": now, "updated": now, "populated": 0})
-
-	# Insert schema so the crm page has content immediately
-	if schema and not schema.get("error"):
-		insert_schema(crm_id, schema)
 
 	# Send P2P subscribe message to crm owner. A private CRM is not in the
 	# directory, so when the subscription came via a share link, pin that peer.
+	# It goes before the schema is applied, so a pull that stops short still
+	# leaves a subscription the owner's sync batch fills.
 	if peer:
 		mochi.message.send.peer(peer, p2p_headers(user_id, crm_id, "subscribe"), {"name": a.user.identity.name})
 	else:
 		mochi.message.send(p2p_headers(user_id, crm_id, "subscribe"), {"name": a.user.identity.name})
 	mochi.broadcast.touch(crm_id)
+
+	# Insert schema so the crm page has content immediately, for as long as the
+	# pull's time allows; a continuation takes the rest.
+	if schema and not schema.get("error"):
+		insert_schema(crm_id, schema, peer, started)
 
 	return {"data": {"fingerprint": fp}}
 
@@ -5930,6 +5947,170 @@ def crm_dump(crm_id):
 	links = mochi.db.rows("select l.source, l.target, l.linktype from links l join objects o on l.source = o.id where o.crm=?", crm_id) or []
 	return {"classes": classes, "fields": fields, "options": options, "hierarchy": hierarchy, "views": views, "objects": objects, "links": links}
 
+# Core decodes at most 10,000 elements in one array and 100 MB on one stream,
+# each read within 30 seconds, so a large CRM's schema cannot travel as one
+# reply. A request carrying `part` (a cursor) is answered with one bounded part:
+# at most SCHEMA_ROWS rows and about SCHEMA_BYTES bytes, taken in key order from
+# the flat lists in SCHEMA_LISTS, with `next` naming the cursor of the part
+# after it. The last part carries no `next`. A request without `part` gets the
+# whole schema in the nested shape, as owners before parts answered every one.
+SCHEMA_ROWS = 1000
+SCHEMA_BYTES = 8388608
+SCHEMA_START = {"list": "classes", "after": []}
+SCHEMA_LISTS = ["classes", "fields", "options", "hierarchy", "views", "objects", "values", "comments", "activity", "attachments", "links"]
+# The most parts one pull follows, across its continuations. Core allows an
+# app 600 remote calls a minute to one target.
+SCHEMA_PARTS = 500
+# The most bytes a cursor key holds. A row whose key is longer could not be
+# resumed after, so the owner never pages one.
+SCHEMA_KEY = 256
+# The seconds a pull runs before it leaves the rest to a continuation, well
+# under the time limit of the action or event it runs in.
+SCHEMA_TIME = 60
+# How many times in a row a continuation whose part went unanswered is tried
+# again before the pull waits for the next resync.
+SCHEMA_RETRIES = 3
+
+# Each list: the columns a part sends, the rows it reads (bound to the CRM
+# by `scope` parameters), the key it is ordered and resumed by, and what a row
+# costs in bytes beyond a fixed allowance.
+SCHEMA_SPECS = {
+	"classes": {"columns": "id, name, rank, title", "source": "classes where crm=?", "scope": 1, "keys": ["id"], "size": "length(cast(name as blob)) + length(cast(title as blob))"},
+	"fields": {"columns": "class, id, name, fieldtype, flags, multi, rank, card, position, rows", "source": "fields where crm=?", "scope": 1, "keys": ["class", "id"], "size": "length(cast(name as blob)) + length(cast(flags as blob)) + length(cast(position as blob))"},
+	"options": {"columns": "class, field, id, name, colour, icon, rank", "source": "options where crm=?", "scope": 1, "keys": ["class", "field", "id"], "size": "length(cast(name as blob)) + length(cast(icon as blob))"},
+	"hierarchy": {"columns": "class, parent", "source": "hierarchy where crm=?", "scope": 1, "keys": ["class", "parent"], "size": "0"},
+	"views": {"columns": "id, name, viewtype, filter, columns, rows, sort, direction, rank, border", "source": "views where crm=?", "scope": 1, "keys": ["id"], "size": "length(cast(name as blob)) + length(cast(filter as blob)) + length(cast(columns as blob)) + length(cast(rows as blob)) + length(cast(sort as blob))"},
+	"objects": {"columns": "id, class, parent, rank, created, updated", "source": "objects where crm=?", "scope": 1, "keys": ["id"], "size": "0"},
+	"values": {"columns": "v.object as object, v.field as field, v.value as value", "source": "\"values\" v join objects o on o.id=v.object where o.crm=?", "scope": 1, "keys": ["v.object", "v.field"], "size": "length(cast(v.value as blob))"},
+	"comments": {"columns": "c.object as object, c.id as id, c.parent as parent, c.author as author, c.name as name, c.content as content, c.created as created, c.edited as edited", "source": "comments c join objects o on o.id=c.object where o.crm=?", "scope": 1, "keys": ["c.id"], "size": "length(cast(c.content as blob)) + length(cast(c.name as blob))"},
+	"activity": {"columns": "a.object as object, a.id as id, a.user as user, a.action as action, a.field as field, a.oldvalue as oldvalue, a.newvalue as newvalue, a.created as created", "source": "activity a join objects o on o.id=a.object where o.crm=?", "scope": 1, "keys": ["a.id"], "size": "length(cast(a.oldvalue as blob)) + length(cast(a.newvalue as blob))"},
+	"attachments": {"columns": "*", "source": "attachments where (object in (select id from objects where crm=?) or object in (select c.id from comments c join objects o on o.id=c.object where o.crm=?))", "scope": 2, "keys": ["id"], "size": "960"},
+	"links": {"columns": "l.source as source, l.target as target, l.linktype as linktype", "source": "links l join objects o on o.id=l.source where o.crm=?", "scope": 1, "keys": ["l.source", "l.target", "l.linktype"], "size": "0"},
+}
+
+# schema_cursor(value) -> bool: whether value is a part cursor: the list the
+# part starts in, and the key of the last row already sent from it (empty at the
+# start of the list).
+def schema_cursor(value):
+	if type(value) != "dict" or len(value) != 2:
+		return False
+	if value.get("list") not in SCHEMA_LISTS:
+		return False
+	after = value.get("after")
+	if type(after) not in ["list", "tuple"]:
+		return False
+	if after and len(after) != len(SCHEMA_SPECS[value["list"]]["keys"]):
+		return False
+	for key in after:
+		if type(key) != "string" or len(key) > SCHEMA_KEY:
+			return False
+	return True
+
+# schema_compare(keys, values, last) -> (condition, args): rows whose key sorts
+# after values, or, with last, at or before them.
+def schema_compare(keys, values, last=False):
+	clauses = []
+	args = []
+	for index in range(len(keys)):
+		terms = []
+		for earlier in range(index):
+			terms.append(keys[earlier] + "=?")
+			args.append(values[earlier])
+		final = index == len(keys) - 1
+		terms.append(keys[index] + ("<=?" if last and final else ("<?" if last else ">?")))
+		args.append(values[index])
+		clauses.append("(" + " and ".join(terms) + ")")
+	return "(" + " or ".join(clauses) + ")", args
+
+# schema_window(sizes, budget) -> how many of sizes (rows in key order, each
+# with its size in bytes) fit the part, charging them to the budget. The part's
+# first row always fits, so a row larger than the byte budget travels alone.
+def schema_window(sizes, budget):
+	count = 0
+	for row in sizes:
+		if budget["rows"] <= 0:
+			break
+		if budget["taken"] > 0 and row["size"] > budget["bytes"]:
+			break
+		budget["rows"] -= 1
+		budget["bytes"] -= row["size"]
+		budget["taken"] += 1
+		count += 1
+	return count
+
+# schema_list(crm_id, name, after, budget) -> (rows, key): one list's share
+# of a part, and the key to resume it from, or None when the list is done. The
+# resume key is the last row sent, not the last row sized, so a row written
+# between the two queries is never stepped over, and the list is done only when
+# every row sized was sent. A row whose key a cursor cannot carry is never paged.
+def schema_list(crm_id, name, after, budget):
+	if budget["rows"] <= 0:
+		return [], list(after)
+	spec = SCHEMA_SPECS[name]
+	scope = [crm_id] * spec["scope"]
+	names = [k.split(".")[-1] for k in spec["keys"]]
+	beyond, beyond_args = ("1=1", []) if not after else schema_compare(spec["keys"], after)
+	fits = " and ".join(["length(cast(" + k + " as blob))<=?" for k in spec["keys"]])
+	fits_args = [SCHEMA_KEY] * len(spec["keys"])
+	order = ", ".join(spec["keys"])
+	selected = ", ".join([k + " as " + n for k, n in zip(spec["keys"], names)])
+	sizes = mochi.db.rows("select " + selected + ", 64 + " + spec["size"] + " as size from " + spec["source"] + " and " + beyond + " and " + fits + " order by " + order + " limit ?", *(scope + beyond_args + fits_args + [budget["rows"] + 1])) or []
+	count = schema_window(sizes, budget)
+	rows = []
+	if count:
+		upto, upto_args = schema_compare(spec["keys"], [sizes[count - 1][n] for n in names], True)
+		rows = list(mochi.db.rows("select " + spec["columns"] + " from " + spec["source"] + " and " + beyond + " and " + upto + " and " + fits + " order by " + order + " limit ?", *(scope + beyond_args + upto_args + fits_args + [count])) or [])
+	if count >= len(sizes) and len(rows) >= count:
+		last = None
+	elif rows:
+		last = [str(rows[-1][n]) for n in names]
+	elif count:
+		last = [str(sizes[count - 1][n]) for n in names]
+	else:
+		last = list(after)
+	return schema_shape(crm_id, name, rows), last
+
+# schema_shape(crm_id, name, rows) -> rows in the shape design_merge and
+# schema_merge read: hierarchy as {class, parents}, views with their field and
+# class lists, attachments as the library maps them.
+def schema_shape(crm_id, name, rows):
+	if name == "hierarchy":
+		return [{"class": r["class"], "parents": [r["parent"]]} for r in rows]
+	if name == "views" and rows:
+		ids = [v["id"] for v in rows]
+		marks = ",".join(["?" for _ in ids])
+		fields = {}
+		for vf in mochi.db.rows("select view, field from view_fields where crm=? and view in (" + marks + ") order by rank", crm_id, *ids) or []:
+			fields.setdefault(vf["view"], []).append(vf["field"])
+		classes = {}
+		for vc in mochi.db.rows("select view, class from view_classes where crm=? and view in (" + marks + ")", crm_id, *ids) or []:
+			classes.setdefault(vc["view"], []).append(vc["class"])
+		for v in rows:
+			v["fields"] = ",".join(fields.get(v["id"], []))
+			v["classes"] = ",".join(classes.get(v["id"], []))
+		return rows
+	if name == "attachments":
+		prefix = mochi.app.url()
+		return [attachment_map(row, prefix, crm_id) for row in rows]
+	return rows
+
+# schema_part(crm_id, cursor) -> (lists, next): one bounded part of the
+# schema from cursor on, and the cursor of the part after it, or None after the
+# last.
+def schema_part(crm_id, cursor):
+	budget = {"rows": SCHEMA_ROWS, "bytes": SCHEMA_BYTES, "taken": 0}
+	lists = {}
+	for name in SCHEMA_LISTS:
+		lists[name] = []
+	after = list(cursor["after"])
+	for name in SCHEMA_LISTS[SCHEMA_LISTS.index(cursor["list"]):]:
+		rows, last = schema_list(crm_id, name, after, budget)
+		lists[name] = rows
+		if last != None:
+			return lists, {"list": name, "after": last}
+		after = []
+	return lists, None
+
 def event_schema(e):
 	crm_id = e.header("to")
 	# Include the crm row's own metadata (name/description) so the
@@ -5946,15 +6127,33 @@ def event_schema(e):
 		e.stream.write({"error": "errors.access_denied"})
 		return
 
+	# CRM row first so subscribers can reconcile metadata (name /
+	# description) on resync without waiting for a crm/update broadcast that
+	# might never come.
+	metadata = {
+		"name": crm.get("name", ""),
+		"description": crm.get("description", ""),
+	}
+
+	# One part of the schema. The gate above runs for every part, so a peer
+	# that loses view access stops at its next part; the part echoes its
+	# cursor, which tells the requester the reply is held to SCHEMA_ROWS.
+	part = e.content("part")
+	if part != None:
+		if not schema_cursor(part):
+			e.stream.write({"error": "errors.invalid_data"})
+			return
+		lists, next = schema_part(crm_id, part)
+		reply = {"crm": metadata, "part": part}
+		reply.update(lists)
+		if next:
+			reply["next"] = next
+		e.stream.write(reply)
+		return
+
 	dump = crm_dump(crm_id)
 	e.stream.write({
-		# CRM row first so subscribers can reconcile metadata
-		# (name / description) on resync without waiting for a
-		# crm/update broadcast that might never come.
-		"crm": {
-			"name": crm.get("name", ""),
-			"description": crm.get("description", ""),
-		},
+		"crm": metadata,
 		"classes": dump["classes"],
 		"fields": dump["fields"],
 		"options": dump["options"],
@@ -5964,17 +6163,170 @@ def event_schema(e):
 		"links": dump["links"],
 	})
 
-# Apply a schema dump from the owner. Editable tables are upserted in place
-# (primary keys stay stable so child foreign keys survive); append-only activity
-# and natural-key tables with nothing editable (links, view_classes, hierarchy)
-# stay insert-or-ignore.
-def insert_schema(crm_id, schema):
+# schema_fetch(crm_id, peer, part) -> one part of the owner's schema, or None.
+# An owner that predates parts ignores `part` and answers the whole schema,
+# which carries no `next` and so is complete on its own.
+def schema_fetch(crm_id, peer, part):
+	return remote_dict(mochi.remote.request(crm_id, "crm", "schema", {"part": part}, peer))
+
+# A part (a reply echoing its cursor) is held to the rows a part may carry,
+# across all its lists. A whole schema from an owner that predates parts is not.
+def schema_bounded(schema):
+	if schema.get("part") == None:
+		return True
+	rows = 0
+	for name in SCHEMA_LISTS:
+		value = schema.get(name)
+		if value != None and type(value) not in ["list", "tuple"]:
+			return False
+		rows += len(value or [])
+	return rows <= SCHEMA_ROWS
+
+# Apply a schema from the owner: schema is a part already received, or a whole
+# schema, and the parts after it are pulled and applied in turn until
+# SCHEMA_TIME has passed since started; parts counts the parts the pull took
+# before this one. Editable tables are upserted in place (primary keys stay
+# stable so child foreign keys survive); append-only activity and natural-key
+# tables with nothing editable (links, view_classes, hierarchy) stay
+# insert-or-ignore. Returns whether the last part arrived, and the replica is
+# then populated.
+#
+# held is what the replica held before the pull began (schema_holdings), or
+# None for a pull that does not prune. Once the last part has landed, a held row
+# the pull did not name was deleted owner-side and goes; a row that arrived
+# while the pull ran is never pruned, since a part read before it existed could
+# not name it. A pull that stops early prunes nothing: it names too little. One
+# that runs out of time is continued by schedule_schema, and one whose part goes
+# unanswered is tried again a few times.
+def insert_schema(crm_id, schema, peer="", started=None, held=None, parts=0):
+	if started == None:
+		started = mochi.time.now()
+	survivors = {"design": {"classes": [], "fields": [], "options": [], "hierarchy": [], "views": []},
+		"objects": {}, "comments": {}, "values": {}, "attachments": {}, "links": {}}
+	for _ in range(SCHEMA_PARTS):
+		if parts >= SCHEMA_PARTS:
+			break
+		parts += 1
+		if not schema_bounded(schema):
+			return False
+		schema_merge(crm_id, schema, survivors)
+		next = schema.get("next")
+		if next == None:
+			if held != None:
+				schema_prune(crm_id, survivors, held)
+			row_set("crms", "id=? and owner=0", [crm_id], {"populated": 1})
+			return True
+		if not schema_cursor(next):
+			return False
+		if mochi.time.now() - started >= SCHEMA_TIME:
+			schema_resume(crm_id, "stopped", next, parts)
+			return False
+		schema = schema_fetch(crm_id, peer, next)
+		if not schema or schema.get("error"):
+			schema_resume(crm_id, schema_outcome(schema), next, parts)
+			return False
+	return False
+
+# schema_outcome(reply) -> "unanswered" when a part could not be fetched at all,
+# "failed" when the owner answered with a refusal.
+def schema_outcome(reply):
+	return "unanswered" if not reply or reply.get("transport") else "failed"
+
+# schema_resume(crm_id, outcome, cursor, parts, attempt) leaves the rest of a
+# pull that stopped short to a continuation: at once when its time ran out, and
+# after a pause when a part went unanswered, SCHEMA_RETRIES times in a row at
+# most. A pull the owner refused waits for the next resync.
+def schema_resume(crm_id, outcome, cursor, parts, attempt=0):
+	data = {"crm": crm_id, "cursor": cursor, "parts": parts}
+	if outcome == "stopped":
+		data["attempt"] = 0
+		mochi.schedule.after("schedule_schema", data, 0)
+	elif outcome == "unanswered" and attempt < SCHEMA_RETRIES:
+		data["attempt"] = attempt + 1
+		mochi.schedule.after("schedule_schema", data, 60 * (attempt + 1) * (attempt + 1))
+
+# schema_completed(crm_id): a pull reached the last part, so the replica holds
+# the owner's state and its idle timer starts again.
+def schema_completed(crm_id):
+	mochi.broadcast.touch(crm_id)
+	fp = mochi.entity.fingerprint(crm_id)
+	if fp:
+		mochi.websocket.write(fp, {"type": "crm/resynced", "crm": crm_id})
+
+# schedule_schema(e): a continuation of a pull schema_resume left, taking the
+# parts from its cursor on, within its own time. It prunes nothing: its
+# survivors are only the parts it took.
+def schedule_schema(e):
+	if e.source != "schedule":
+		return
+	crm_id = e.data.get("crm", "")
+	cursor = e.data.get("cursor")
+	if not mochi.text.valid(crm_id, "entity") or not schema_cursor(cursor):
+		return
+	row = mochi.db.row("select server from crms where id=? and owner=0", crm_id)
+	if not row:
+		return
+	parts = schema_count(e.data.get("parts"))
+	attempt = schema_count(e.data.get("attempt"))
+	started = mochi.time.now()
+	row_set("crms", "id=?", [crm_id], {"synced": started})
+	server = row["server"] or ""
+	peer = mochi.remote.peer(server) if server else ""
+	schema = schema_fetch(crm_id, peer, cursor)
+	if not schema or schema.get("error"):
+		schema_resume(crm_id, schema_outcome(schema), cursor, parts, attempt)
+		return
+	if insert_schema(crm_id, schema, peer, started, None, parts):
+		schema_completed(crm_id)
+
+# schema_count(value) -> a count carried in a schedule's data, or 0.
+def schema_count(value):
+	if type(value) in ["int", "float"] and value > 0:
+		return int(value)
+	return 0
+
+# schema_holdings(crm_id) -> what the replica holds of the CRM, keyed as
+# schema_prune compares it: the rows a complete pull may prune.
+def schema_holdings(crm_id):
+	held = {"objects": {}, "comments": {}, "values": {}, "attachments": {}, "links": {},
+		"classes": {}, "fields": {}, "options": {}, "hierarchy": {}, "views": {}, "view_fields": {}, "view_classes": {}}
+	for row in mochi.db.rows("select id from objects where crm=?", crm_id) or []:
+		held["objects"][row["id"]] = True
+	for row in mochi.db.rows("select c.id as id from comments c join objects o on c.object=o.id where o.crm=?", crm_id) or []:
+		held["comments"][row["id"]] = True
+	for row in mochi.db.rows("select v.object as object, v.field as field from \"values\" v join objects o on o.id=v.object where o.crm=?", crm_id) or []:
+		held["values"][(row["object"], row["field"])] = True
+	for row in mochi.db.rows("select id from attachments where entity!='' and (object in (select id from objects where crm=?) or object in (select c.id from comments c join objects o on o.id=c.object where o.crm=?))", crm_id, crm_id) or []:
+		held["attachments"][row["id"]] = True
+	for row in mochi.db.rows("select source, target, linktype from links where crm=?", crm_id) or []:
+		held["links"][(row["source"], row["target"], row["linktype"])] = True
+	for row in mochi.db.rows("select id from classes where crm=?", crm_id) or []:
+		held["classes"][row["id"]] = True
+	for row in mochi.db.rows("select class, id from fields where crm=?", crm_id) or []:
+		held["fields"][(row["class"], row["id"])] = True
+	for row in mochi.db.rows("select class, field, id from options where crm=?", crm_id) or []:
+		held["options"][(row["class"], row["field"], row["id"])] = True
+	for row in mochi.db.rows("select class, parent from hierarchy where crm=?", crm_id) or []:
+		held["hierarchy"][(row["class"], row["parent"])] = True
+	for row in mochi.db.rows("select id from views where crm=?", crm_id) or []:
+		held["views"][row["id"]] = True
+	for row in mochi.db.rows("select view, field from view_fields where crm=?", crm_id) or []:
+		held["view_fields"][(row["view"], row["field"])] = True
+	for row in mochi.db.rows("select view, class from view_classes where crm=?", crm_id) or []:
+		held["view_classes"][(row["view"], row["class"])] = True
+	return held
+
+# schema_merge(crm_id, schema, survivors) applies one part, or a whole schema,
+# recording every row it names in survivors. A whole schema from an owner that
+# predates parts nests values, comments, activity and attachments in each
+# object; a part sends them as flat lists of their own.
+def schema_merge(crm_id, schema, survivors):
 	# Reconcile the crm row itself (name / description). UPDATE only -
 	# the crm row was created at subscribe time and we never want to
 	# flip owner away from 0 on a resync. Idempotent when the
 	# subscriber's row already matches.
 	crm_data = schema.get("crm")
-	if crm_data:
+	if type(crm_data) == "dict":
 		row_set("crms", "id=? and owner=0", [crm_id], {"name": crm_data.get("name", ""), "description": crm_data.get("description", "")})
 	for c in sequence(schema.get("classes")):
 		row_merge("classes", ["crm", "id"], {"id": c.get("id", ""), "crm": crm_id, "name": c.get("name", ""), "rank": c.get("rank", 0), "title": c.get("title", "")})
@@ -6004,89 +6356,131 @@ def insert_schema(crm_id, schema):
 				if class_id:
 					# (crm, view, class) has no payload columns.
 					row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": view_id, "class": class_id})
+	for name in survivors["design"]:
+		survivors["design"][name].extend(sequence(schema.get(name)))
 	for obj in sequence(schema.get("objects")):
+		if type(obj) != "dict":
+			continue
+		identifier = obj.get("id", "")
+		survivors["objects"][identifier] = True
 		# Never adopt/reassign an object that already belongs to another crm -
 		# a malicious owner's dump could otherwise hijack our other crms' rows.
-		if foreign_object(obj.get("id", ""), crm_id):
+		if foreign_object(identifier, crm_id):
 			continue
-		object_merge({"id": obj.get("id", ""), "crm": crm_id, "class": obj.get("class", ""), "parent": obj.get("parent", ""), "rank": obj.get("rank", 0), "created": obj.get("created", 0), "updated": obj.get("updated", 0)})
-		obj_atts = obj.get("attachments") or []
-		if obj_atts:
-			attachment_store(obj_atts, crm_id, obj.get("id", ""))
+		object_merge({"id": identifier, "crm": crm_id, "class": obj.get("class", ""), "parent": obj.get("parent", ""), "rank": obj.get("rank", 0), "created": obj.get("created", 0), "updated": obj.get("updated", 0)})
+		schema_attachments(crm_id, survivors, identifier, obj.get("attachments"))
 		values = obj.get("values")
-		if values:
+		if type(values) == "dict":
 			for field in values:
-				row_merge("values", ["object", "field"], {"object": obj.get("id", ""), "field": field, "value": values[field]})
+				schema_value(crm_id, survivors, {"object": identifier, "field": field, "value": values[field]})
 		for c in sequence(obj.get("comments")):
-			# Skip a comment id that already belongs to another crm's object.
-			if foreign_comment(c.get("id", ""), crm_id):
-				continue
-			comment_merge({"id": c.get("id", ""), "object": obj.get("id", ""), "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", ""), "edited": c.get("edited", 0)})
-			c_atts = c.get("attachments") or []
-			if c_atts:
-				attachment_store(c_atts, crm_id, c.get("id", ""))
+			if type(c) == "dict":
+				schema_comment(crm_id, survivors, dict(c, object=identifier))
 		for act in sequence(obj.get("activity")):
-			# Activity is append-only; ignore is correct.
-			mochi.db.execute(
-				"insert or ignore into activity (id, object, user, action, field, oldvalue, newvalue, created) values (?, ?, ?, ?, ?, ?, ?, ?)",
-				act.get("id", ""), obj.get("id", ""), act.get("user", ""),
-				act.get("action", ""), act.get("field", ""),
-				act.get("oldvalue", ""), act.get("newvalue", ""),
-				act.get("created", 0)
-			)
+			if type(act) == "dict":
+				schema_activity(crm_id, dict(act, object=identifier))
+	for v in sequence(schema.get("values")):
+		if type(v) == "dict":
+			schema_value(crm_id, survivors, v)
+	for c in sequence(schema.get("comments")):
+		if type(c) == "dict":
+			schema_comment(crm_id, survivors, c)
+	for act in sequence(schema.get("activity")):
+		if type(act) == "dict":
+			schema_activity(crm_id, act)
+	containers = {}
+	for att in sequence(schema.get("attachments")):
+		if type(att) == "dict" and type(att.get("object")) == "string":
+			containers.setdefault(att["object"], []).append(att)
+	for container in containers:
+		schema_attachments(crm_id, survivors, container, containers[container])
 	for l in sequence(schema.get("links")):
+		if type(l) != "dict":
+			continue
+		survivors["links"][(l.get("source", ""), l.get("target", ""), l.get("linktype", ""))] = True
 		# (crm, source, target, linktype) is the full key; links are
 		# created/deleted, never edited in place.
 		if not link_endpoints_bound(crm_id, l.get("source", ""), l.get("target", "")):
 			continue
 		row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": l.get("source", ""), "target": l.get("target", ""), "linktype": l.get("linktype", ""), "created": 0})
 
-	# Reconcile deletions: the dump is the owner's full state, so any scoped local
-	# row it does not name was deleted owner-side. Runs after the upserts, children
-	# before parents, so a mid-apply failure leaves only surplus rows. Watchers and
-	# activity are cleaned only through the stray-object cascade; a row created
-	# while the dump was in flight returns on the next resync.
-	object_survivors = {}
-	comment_survivors = {}
-	for obj in sequence(schema.get("objects")):
-		object_survivors[obj.get("id", "")] = True
-		for c in sequence(obj.get("comments")):
-			comment_survivors[c.get("id", "")] = True
+# Does the object belong to this CRM? A value, comment or activity row lands
+# only on one that does.
+def schema_object(crm_id, object_id):
+	return type(object_id) == "string" and object_id != "" and mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id)
+
+def schema_value(crm_id, survivors, v):
+	field = v.get("field")
+	if type(field) != "string" or not field:
+		return
+	survivors["values"][(v.get("object", ""), field)] = True
+	if not schema_object(crm_id, v.get("object", "")):
+		return
+	row_merge("values", ["object", "field"], {"object": v["object"], "field": field, "value": v.get("value", "")})
+
+def schema_comment(crm_id, survivors, c):
+	identifier = c.get("id", "")
+	survivors["comments"][identifier] = True
+	# Skip a comment id that already belongs to another crm's object.
+	if foreign_comment(identifier, crm_id):
+		return
+	if not schema_object(crm_id, c.get("object", "")):
+		return
+	comment_merge({"id": identifier, "object": c["object"], "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", ""), "edited": c.get("edited", 0)})
+	schema_attachments(crm_id, survivors, identifier, c.get("attachments"))
+
+def schema_activity(crm_id, act):
+	if not schema_object(crm_id, act.get("object", "")):
+		return
+	# Activity is append-only; ignore is correct.
+	mochi.db.execute(
+		"insert or ignore into activity (id, object, user, action, field, oldvalue, newvalue, created) values (?, ?, ?, ?, ?, ?, ?, ?)",
+		act.get("id", ""), act["object"], act.get("user", ""),
+		act.get("action", ""), act.get("field", ""),
+		act.get("oldvalue", ""), act.get("newvalue", ""),
+		act.get("created", 0)
+	)
+
+# Attachments land only on an object or comment of this CRM.
+def schema_attachments(crm_id, survivors, container, rows):
+	rows = sequence(rows)
+	if not rows:
+		return
+	for att in rows:
+		if type(att) == "dict":
+			survivors["attachments"][att.get("id", "")] = True
+	if not schema_object(crm_id, container) and not mochi.db.exists("select 1 from comments c join objects o on o.id=c.object where c.id=? and o.crm=?", container, crm_id):
+		return
+	attachment_store(rows, crm_id, container)
+
+# schema_prune(crm_id, survivors, held) reconciles deletions once a complete
+# schema has landed: the schema is the owner's full state, so a row the replica
+# held before the pull began (held) that it does not name was deleted
+# owner-side. A row that arrived while the pull ran is never pruned, since a
+# part read before it existed could not name it. Runs after the upserts,
+# children before parents, so a mid-apply failure leaves only surplus rows.
+# Watchers and activity are cleaned only through the stray-object cascade.
+def schema_prune(crm_id, survivors, held):
+	def stray(table, key, named):
+		return key not in named and key in held[table]
+
 	for row in (mochi.db.rows("select id from objects where crm=?", crm_id) or []):
-		if row["id"] not in object_survivors:
+		if stray("objects", row["id"], survivors["objects"]):
 			delete_object_local(crm_id, row["id"], True)
 	for row in (mochi.db.rows("select c.id from comments c join objects o on c.object=o.id where o.crm=?", crm_id) or []):
-		if row["id"] not in comment_survivors:
+		if stray("comments", row["id"], survivors["comments"]):
 			prune_attachments(row["id"], crm_id, True)
 			row_remove("comments", "id=?", [row["id"]])
-	for obj in sequence(schema.get("objects")):
-		identifier = obj.get("id", "")
-		if not identifier or foreign_object(identifier, crm_id):
-			continue
-		# Values the owner cleared, and attachments the owner deleted, on
-		# surviving objects and comments.
-		values = obj.get("values") or {}
-		for row in (mochi.db.rows("select field from \"values\" where object=?", identifier) or []):
-			if row["field"] not in values:
-				row_remove("values", "object=? and field=?", [identifier, row["field"]])
-		remaining = {}
-		for att in sequence(obj.get("attachments")):
-			remaining[att.get("id", "")] = True
-		for att in (attachment_list(identifier, crm_id) or []):
-			# Only drop references to files hosted elsewhere; never this
-			# replica's own uploads (see prune_attachments).
-			if att["id"] not in remaining and att["entity"]:
-				attachment_delete(att["id"])
-		for c in sequence(obj.get("comments")):
-			comment_id = c.get("id", "")
-			if not comment_id or foreign_comment(comment_id, crm_id):
-				continue
-			remaining = {}
-			for att in sequence(c.get("attachments")):
-				remaining[att.get("id", "")] = True
-			for att in (attachment_list(comment_id, crm_id) or []):
-				if att["id"] not in remaining and att["entity"]:
-					attachment_delete(att["id"])
+	# Values the owner cleared, and attachments the owner deleted, on surviving
+	# objects and comments. Only references to files hosted elsewhere go; never
+	# this replica's own uploads (see prune_attachments).
+	for row in (mochi.db.rows("select v.object as object, v.field as field from \"values\" v join objects o on o.id=v.object where o.crm=?", crm_id) or []):
+		if stray("values", (row["object"], row["field"]), survivors["values"]):
+			row_remove("values", "object=? and field=?", [row["object"], row["field"]])
+	for row in (mochi.db.rows("select id from attachments where entity!='' and (object in (select id from objects where crm=?) or object in (select c.id from comments c join objects o on o.id=c.object where o.crm=?))", crm_id, crm_id) or []):
+		if stray("attachments", row["id"], survivors["attachments"]):
+			attachment_delete(row["id"])
+	schema = survivors["design"]
 	class_survivors = {}
 	for c in sequence(schema.get("classes")):
 		class_survivors[c.get("id", "")] = True
@@ -6112,32 +6506,29 @@ def insert_schema(crm_id, schema):
 		for class_id in (v.get("classes", "") or "").split(","):
 			if class_id:
 				view_class_survivors[(view_id, class_id)] = True
-	link_survivors = {}
-	for l in sequence(schema.get("links")):
-		link_survivors[(l.get("source", ""), l.get("target", ""), l.get("linktype", ""))] = True
 	for row in (mochi.db.rows("select view, field from view_fields where crm=?", crm_id) or []):
-		if (row["view"], row["field"]) not in view_field_survivors:
+		if stray("view_fields", (row["view"], row["field"]), view_field_survivors):
 			row_remove("view_fields", "crm=? and view=? and field=?", [crm_id, row["view"], row["field"]])
 	for row in (mochi.db.rows("select view, class from view_classes where crm=?", crm_id) or []):
-		if (row["view"], row["class"]) not in view_class_survivors:
+		if stray("view_classes", (row["view"], row["class"]), view_class_survivors):
 			row_remove("view_classes", "crm=? and view=? and class=?", [crm_id, row["view"], row["class"]])
 	for row in (mochi.db.rows("select id from views where crm=?", crm_id) or []):
-		if row["id"] not in view_survivors:
+		if stray("views", row["id"], view_survivors):
 			row_remove("views", "crm=? and id=?", [crm_id, row["id"]])
 	for row in (mochi.db.rows("select class, field, id from options where crm=?", crm_id) or []):
-		if (row["class"], row["field"], row["id"]) not in option_survivors:
+		if stray("options", (row["class"], row["field"], row["id"]), option_survivors):
 			row_remove("options", "crm=? and class=? and field=? and id=?", [crm_id, row["class"], row["field"], row["id"]])
 	for row in (mochi.db.rows("select class, id from fields where crm=?", crm_id) or []):
-		if (row["class"], row["id"]) not in field_survivors:
+		if stray("fields", (row["class"], row["id"]), field_survivors):
 			row_remove("fields", "crm=? and class=? and id=?", [crm_id, row["class"], row["id"]])
 	for row in (mochi.db.rows("select class, parent from hierarchy where crm=?", crm_id) or []):
-		if (row["class"], row["parent"]) not in hierarchy_survivors:
+		if stray("hierarchy", (row["class"], row["parent"]), hierarchy_survivors):
 			row_remove("hierarchy", "crm=? and class=? and parent=?", [crm_id, row["class"], row["parent"]])
 	for row in (mochi.db.rows("select id from classes where crm=?", crm_id) or []):
-		if row["id"] not in class_survivors:
+		if stray("classes", row["id"], class_survivors):
 			row_remove("classes", "crm=? and id=?", [crm_id, row["id"]])
 	for row in (mochi.db.rows("select source, target, linktype from links where crm=?", crm_id) or []):
-		if (row["source"], row["target"], row["linktype"]) not in link_survivors:
+		if stray("links", (row["source"], row["target"], row["linktype"]), survivors["links"]):
 			row_remove("links", "crm=? and source=? and target=? and linktype=?", [crm_id, row["source"], row["target"], row["linktype"]])
 
 # Send all existing crm data to a new subscriber
@@ -6165,28 +6556,139 @@ def send_crm_data(crm_id, subscriber_id):
 		if t["id"] in parents_map:
 			class_data["parents"] = parents_map[t["id"]]
 		classes.append(class_data)
-	objects = dump["objects"]
-	for obj in objects:
-		for c in obj.get("comments") or []:
-			c["object"] = obj["id"]
-			c["attachments"] = c.get("attachments") or []
-	# Core refuses a frame over 16 MB, and a CRM of a few thousand objects
-	# with comments and activity exceeds that in one message: the design goes
-	# first, the objects follow in bounded chunks, the links and the final
-	# marker last. event_sync_batch marks the replica populated on the final
-	# chunk only.
-	starts = list(range(0, len(objects), SYNC_CHUNK)) or [0]
-	for index, start in enumerate(starts):
-		final = index == len(starts) - 1
-		batch = {
+	# Core refuses a frame over 16 MB and decodes at most 10,000 elements in
+	# one array, and a CRM of a few thousand objects with comments and activity
+	# exceeds that in one message: the objects go in chunks of at most
+	# SYNC_CHUNK objects and SCHEMA_ROWS rows, the links in chunks of their
+	# own. Messages may arrive in any order and an object lands only on a class
+	# the subscriber holds, so every chunk carries the design. event_sync_batch
+	# marks the replica populated once every chunk of the sync has landed.
+	chunks = batch_chunks(dump["objects"], dump["links"])
+	sync = mochi.uid()
+	for index, chunk in enumerate(chunks):
+		mochi.message.send(h, {
 			"crm": crm_id,
-			"classes": classes if index == 0 else [],
-			"views": dump["views"] if index == 0 else [],
-			"objects": objects[start:start + SYNC_CHUNK],
-			"links": dump["links"] if final else [],
-			"chunk": {"index": index, "final": final},
-		}
-		mochi.message.send(h, batch)
+			"classes": classes,
+			"views": dump["views"],
+			"objects": chunk["objects"],
+			"links": chunk["links"],
+			"chunk": batch_chunk(sync, index, len(chunks)),
+		})
+
+# batch_fragments(obj) -> [(fragment, rows, bytes)]: an object of crm_dump cut
+# into pieces of at most SCHEMA_ROWS rows and about SCHEMA_BYTES bytes, each
+# piece carrying the object's own row and a share of its values, comments and
+# activity, so an object with a long history still travels. A subscriber merges
+# every piece onto the one object. Attachments stay behind: a batch never
+# applied them, and the schema carries them.
+def batch_fragments(obj):
+	base = {"id": obj["id"], "class": obj["class"], "parent": obj["parent"], "rank": obj["rank"], "created": obj["created"], "updated": obj["updated"]}
+	items = []
+	values = obj.get("values") or {}
+	for field in values:
+		items.append(("values", (field, values[field]), 64 + len(str(values[field]))))
+	for c in obj.get("comments") or []:
+		comment = {k: c[k] for k in c if k != "attachments"}
+		comment["object"] = obj["id"]
+		items.append(("comments", comment, 64 + len(c.get("content", ""))))
+	for act in obj.get("activity") or []:
+		items.append(("activity", act, 64 + len(act.get("oldvalue", "")) + len(act.get("newvalue", ""))))
+	fragments = []
+	current = dict(base)
+	rows = 1
+	size = 64
+	for kind, item, cost in items:
+		if rows > 1 and (rows >= SCHEMA_ROWS or size + cost > SCHEMA_BYTES):
+			fragments.append((current, rows, size))
+			current = dict(base)
+			rows = 1
+			size = 64
+		if kind == "values":
+			current.setdefault("values", {})[item[0]] = item[1]
+		else:
+			current.setdefault(kind, []).append(item)
+		rows += 1
+		size += cost
+	fragments.append((current, rows, size))
+	return fragments
+
+# batch_chunks(objects, links) -> [{objects, links}]: the sync batch cut into
+# chunks within SYNC_CHUNK objects, SCHEMA_ROWS rows and about SCHEMA_BYTES
+# bytes, objects first, then the links once every object they join has gone.
+# Always at least one.
+def batch_chunks(objects, links):
+	chunks = []
+	current = []
+	rows = 0
+	size = 0
+	for obj in objects:
+		for fragment, fragment_rows, fragment_size in batch_fragments(obj):
+			if current and (len(current) >= SYNC_CHUNK or rows + fragment_rows > SCHEMA_ROWS or size + fragment_size > SCHEMA_BYTES):
+				chunks.append({"objects": current, "links": []})
+				current = []
+				rows = 0
+				size = 0
+			current.append(fragment)
+			rows += fragment_rows
+			size += fragment_size
+	if current or not chunks:
+		chunks.append({"objects": current, "links": []})
+	# Messages may arrive in any order, and a link lands only between objects
+	# the subscriber holds, so each chunk of links carries the rows of the
+	# objects it joins, at most two per link.
+	rows = {}
+	for obj in objects:
+		rows[obj["id"]] = batch_fragments({k: obj[k] for k in obj if k not in ["values", "comments", "activity", "attachments"]})[0][0]
+	step = SCHEMA_ROWS // 3 or 1
+	for start in range(0, len(links), step):
+		chunk = links[start:start + step]
+		ends = {}
+		for l in chunk:
+			for end in [l["source"], l["target"]]:
+				if end in rows:
+					ends[end] = rows[end]
+		chunks.append({"objects": list(ends.values()), "links": chunk})
+	return chunks
+
+# The most chunks one sync batch may name.
+BATCH_CHUNKS = 100000
+# How long a sync's chunks are held waiting for the rest. A sync that has not
+# completed in that time lost a chunk; its rows go when the next chunk of the
+# CRM arrives.
+BATCH_AGE = 86400
+
+# batch_chunk(sync, index, total) -> the chunk marker of one message of a sync
+# batch: which sync it belongs to, where it falls, and how many there are.
+# final names the sync's last chunk by index: a subscriber that predates
+# counting marks its replica populated on it, whatever order the chunks came in.
+def batch_chunk(sync, index, total):
+	return {"sync": sync, "index": index, "total": total, "final": index == total - 1}
+
+# batch_complete(key, chunk) -> whether this batch completes the owner's sync,
+# recording it among the chunks held for key. Messages may arrive in any order,
+# so a replica is complete only once it holds every chunk of one sync; chunks
+# of another sync, an earlier or a later one, never count toward it, and
+# completing one clears only its own rows. An owner that predates counting
+# marks only its final chunk, and one that predates chunks sends one batch.
+def batch_complete(key, chunk):
+	if type(chunk) != "dict":
+		return True
+	total = chunk.get("total")
+	if total == None:
+		return chunk.get("final", True) == True
+	index = chunk.get("index")
+	sync = chunk.get("sync")
+	if type(total) != "int" or type(index) != "int" or total < 1 or total > BATCH_CHUNKS or index < 0 or index >= total:
+		return False
+	if type(sync) != "string" or not mochi.text.valid(sync, "id"):
+		return False
+	now = mochi.time.now()
+	mochi.db.execute("delete from chunks where crm=? and sync!=? and created<?", key, sync, now - BATCH_AGE)
+	mochi.db.execute("insert or ignore into chunks ( crm, sync, chunk, created ) values ( ?, ?, ?, ? )", key, sync, index, now)
+	if mochi.db.row("select count(*) as held from chunks where crm=? and sync=?", key, sync)["held"] < total:
+		return False
+	mochi.db.execute("delete from chunks where crm=? and sync=?", key, sync)
+	return True
 
 # Handle subscribe event from a remote user
 def event_subscribe(e):
@@ -6303,6 +6805,33 @@ def sync_element(item, keys):
     return True
 
 
+# batch_design_reconcile(crm_id, e) removes, for each class a complete sync
+# batch names with its parents, the parents it no longer names, and for each
+# view it names, the fields and classes the view no longer names.
+def batch_design_reconcile(crm_id, e):
+	for t in sequence(e.content("classes")):
+		if not sync_element(t, ["id", "name"]):
+			continue
+		parents = [p for p in sequence(t.get("parents")) if type(p) == "string"]
+		if not parents:
+			continue
+		for row in mochi.db.rows("select parent from hierarchy where crm=? and class=?", crm_id, t["id"]) or []:
+			if row["parent"] not in parents:
+				row_remove("hierarchy", "crm=? and class=? and parent=?", [crm_id, t["id"], row["parent"]])
+	for v in sequence(e.content("views")):
+		if not sync_element(v, ["id", "name", "viewtype"]):
+			continue
+		fields_csv = v.get("fields", "")
+		fields = fields_csv.split(",") if type(fields_csv) == "string" else []
+		for row in mochi.db.rows("select field from view_fields where crm=? and view=?", crm_id, v["id"]) or []:
+			if row["field"] not in fields:
+				row_remove("view_fields", "crm=? and view=? and field=?", [crm_id, v["id"], row["field"]])
+		classes_csv = v.get("classes", "")
+		classes = classes_csv.split(",") if type(classes_csv) == "string" else []
+		for row in mochi.db.rows("select class from view_classes where crm=? and view=?", crm_id, v["id"]) or []:
+			if row["class"] not in classes:
+				row_remove("view_classes", "crm=? and view=? and class=?", [crm_id, v["id"], row["class"]])
+
 def event_sync_batch(e):
 	# Sync is sent from the CRM entity (p2p_headers(crm_id, ...)), so the
 	# authenticated sender is the CRM. Trust the from header, not a spoofable
@@ -6321,14 +6850,12 @@ def event_sync_batch(e):
 		if not sync_element(t, ["id", "name"]):
 			continue
 		row_merge("classes", ["crm", "id"], {"crm": crm_id, "id": t["id"], "name": t["name"], "rank": t.get("rank", 0), "title": t.get("title", "title")})
-		# Hierarchy
-		parents = sequence(t.get("parents"))
-		if parents:
-			row_remove("hierarchy", "crm=? and class=?", [crm_id, t["id"]])
-			for p in parents:
-				if type(p) != "string":
-					continue
-				row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": t["id"], "parent": p})
+		# Hierarchy, added here; the parents it no longer names go once the
+		# sync is complete (batch_design_reconcile).
+		for p in sequence(t.get("parents")):
+			if type(p) != "string":
+				continue
+			row_merge("hierarchy", ["crm", "class", "parent"], {"crm": crm_id, "class": t["id"], "parent": p})
 		# Fields
 		for f in sequence(t.get("fields")):
 			if not sync_element(f, ["id", "name", "fieldtype"]):
@@ -6345,15 +6872,13 @@ def event_sync_batch(e):
 		if not sync_element(v, ["id", "name", "viewtype"]):
 			continue
 		row_merge("views", ["crm", "id"], {"crm": crm_id, "id": v["id"], "name": v["name"], "viewtype": v["viewtype"], "filter": v.get("filter", ""), "columns": v.get("columns", ""), "rows": v.get("rows", ""), "sort": v.get("sort", ""), "direction": v.get("direction", ""), "rank": v.get("rank", 0), "border": v.get("border", "")})
-		# View fields
-		row_remove("view_fields", "crm=? and view=?", [crm_id, v["id"]])
+		# View fields and classes, added here; the ones a view no longer names
+		# go once the sync is complete (batch_design_reconcile).
 		fields_csv = v.get("fields", "")
 		if type(fields_csv) == "string" and fields_csv:
 			for i, field_id in enumerate(fields_csv.split(",")):
 				if field_id:
 					row_merge("view_fields", ["crm", "view", "field"], {"crm": crm_id, "view": v["id"], "field": field_id, "rank": i})
-		# View classes
-		row_remove("view_classes", "crm=? and view=?", [crm_id, v["id"]])
 		classes_csv = v.get("classes", "")
 		if type(classes_csv) == "string" and classes_csv:
 			for class_id in classes_csv.split(","):
@@ -6404,11 +6929,18 @@ def event_sync_batch(e):
 			continue
 		row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": l["source"], "target": l["target"], "linktype": l.get("linktype", "relates"), "created": l.get("created", 0)})
 
-	# Mark the subscription's initial bulk content as arrived so the board stops
-	# showing its loading state and renders the now-complete data. A chunked
-	# sync marks it on its final message only; an unchunked one is complete.
+	# Once every chunk of the sync has landed, whatever order they arrived in:
+	# drop the parents, view fields and view classes the batch no longer names,
+	# and mark the subscription's initial bulk content as arrived so the board
+	# stops showing its loading state. A counted sync carries the design in
+	# every chunk, and reconciling on each let a chunk delivered after a design
+	# change take that change away again. An owner before counting sends the
+	# design in its first chunk only, so that chunk is reconciled as it lands.
 	chunk = e.content("chunk")
-	if type(chunk) != "dict" or chunk.get("final", True):
+	complete = batch_complete(crm_id, chunk)
+	if complete or type(chunk) != "dict" or chunk.get("total") == None:
+		batch_design_reconcile(crm_id, e)
+	if complete:
 		row_set("crms", "id=? and owner=0", [crm_id], {"populated": 1})
 	# Notify UI
 	fp = mochi.entity.fingerprint(crm_id)
