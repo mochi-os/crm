@@ -203,16 +203,27 @@ def error_broadcast_gap(e):
 # long idle). Matches core's broadcast_log_age.
 idle_resync_age = 7 * 86400
 
-def request_resync(crm_id, repeat=False):
+def request_resync(crm_id, repeat=False, budget=None, force=False):
 	"""Returns True iff every part of a fresh schema was fetched and applied
 	within this call. A pull that runs out of time is continued by
 	schedule_schema; one that fails waits for the next resync. repeat marks
-	the fresh pull a pull that skipped late rows asked for (schedule_resync)."""
+	the fresh pull a pull that skipped late rows asked for (schedule_resync).
+	budget is the seconds the call may spend on parts after the first,
+	SCHEMA_TIME when None (it is defined after this). force, for a resync the
+	user asks for, starts it at once whatever is under way."""
 	row = mochi.db.row("select server, synced from crms where id=? and owner=0", crm_id)
 	if not row:
 		return False
 	now = mochi.time.now()
-	if row["synced"] and now - row["synced"] < 60:
+	# A pull under way, its continuation pending, finishes first: one started
+	# beside it would replace it and take the CRM again from the start, and
+	# with steady events nothing would ever be pruned. One within the last
+	# minute stands. What asked for this one - a gap, an event naming what is
+	# not held - may need what they read before it, so it runs after them
+	# rather than not at all.
+	pending = schema_continuing(crm_id)
+	if not force and (pending or (row["synced"] and now - row["synced"] < 60)):
+		resync_defer(crm_id, repeat, 61 if pending else 61 - (now - row["synced"]))
 		return False
 	row_set("crms", "id=?", [crm_id], {"synced": now})
 	server = row["server"] or ""
@@ -229,20 +240,45 @@ def request_resync(crm_id, repeat=False):
 		schema_end(crm_id, pull)
 		return False
 	schema_claim(crm_id, pull)
-	if not insert_schema(crm_id, schema, peer, now, held, 0, SCHEMA_TIME, pull):
+	if not insert_schema(crm_id, schema, peer, now, held, 0, SCHEMA_TIME if budget == None else budget, pull):
 		return False
 	schema_completed(crm_id)
 	return True
 
+# schema_continuing(crm_id) -> bool: whether a continuation of the CRM's own
+# pull is pending. One of a pull replaced since, or of a subscription dropped,
+# does nothing when it comes due, and holds no resync off.
+def schema_continuing(crm_id):
+	for scheduled in mochi.schedule.list():
+		if scheduled.event == "schedule_schema" and scheduled.data.get("crm") == crm_id and schema_current(crm_id, schema_pull(scheduled.data.get("pull"))):
+			return True
+	return False
+
+# schema_pending(crm_id, event) -> bool: whether a scheduled event of the
+# CRM is pending.
+def schema_pending(crm_id, event):
+	for scheduled in mochi.schedule.list():
+		if scheduled.event == event and scheduled.data.get("crm") == crm_id:
+			return True
+	return False
+
+# resync_defer(crm_id, repeat, wait) puts off a resync request_resync could not
+# start for wait seconds, once a CRM however often it is asked for
+# meanwhile.
+def resync_defer(crm_id, repeat, wait):
+	if not schema_pending(crm_id, "schedule_resync"):
+		mochi.schedule.after("schedule_resync", {"crm": crm_id, "repeat": repeat}, wait)
+
 # schedule_resync(e): the fresh pull a pull that skipped late rows asked for,
-# once request_resync's throttle has passed. It asks for none after it.
+# once request_resync's throttle has passed, which asks for none after it; or a
+# resync put off (resync_defer), put off again while a pull still runs.
 def schedule_resync(e):
 	if e.source != "schedule":
 		return
 	crm_id = e.data.get("crm", "")
 	if not mochi.text.valid(crm_id, "entity"):
 		return
-	request_resync(crm_id, True)
+	request_resync(crm_id, e.data.get("repeat", True) != False)
 
 # Re-subscribe to a CRM idle longer than idle_resync_age: the owner's
 # event_subscribe is idempotent and pushes catch-up. touch() stamps the timer so
@@ -2042,8 +2078,11 @@ def action_crm_resync(a):
 		return
 	if row["owner"] != 0:
 		return {"data": {"synced": False}}
-	row_set("crms", "id=?", [crm_id], {"synced": 0})
-	synced = request_resync(crm_id)
+	# Answered after the first part, as a subscribe is: each further part may
+	# take 30 seconds to arrive, past what a client waits. A continuation takes
+	# the rest, and synced says whether the first was the last. It starts at
+	# once, whatever pull is under way or ran in the last minute.
+	synced = request_resync(crm_id, False, 0, True)
 	return {"data": {"synced": synced}}
 
 # Remove every local row of a CRM with physical deletes, not tombstones: this is
@@ -6292,6 +6331,9 @@ def insert_schema(crm_id, schema, peer="", started=None, held=None, parts=0, bud
 			schema_keep(crm_id, survivors, held, pull)
 			schema_resume(crm_id, "stopped", next, parts, 0, pull)
 			return False
+		# The pull is under way for as long as it fetches: request_resync
+		# starts no second one beside it.
+		row_set("crms", "id=?", [crm_id], {"synced": mochi.time.now()})
 		schema = schema_fetch(crm_id, peer, next)
 		if not schema or schema.get("error"):
 			outcome = schema_outcome(schema)
