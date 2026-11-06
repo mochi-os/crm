@@ -6718,6 +6718,8 @@ def schema_value(crm_id, survivors, v):
 	survivors["values"][(v.get("object", ""), field)] = True
 	if not schema_object(crm_id, v.get("object", "")):
 		return
+	if value_refused(crm_id, v["object"], field, v.get("value", "")):
+		return
 	row_merge("values", ["object", "field"], {"object": v["object"], "field": field, "value": v.get("value", "")}, None, schema_guard("objects", "id=?", v["object"]))
 
 def schema_comment(crm_id, survivors, c):
@@ -7473,6 +7475,8 @@ def event_values_update(e):
 		request_resync(crm_id)
 		return
 	for field in values:
+		if value_refused(crm_id, object_id, field, values[field]):
+			continue
 		row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": values[field]})
 	row_set("objects", "id=? and crm=?", [object_id, crm_id], {"updated": mochi.time.now()})
 	fp = mochi.entity.fingerprint(crm_id)
@@ -8631,6 +8635,16 @@ def is_iso_date(value):
 	day = int(parts[2])
 	return month >= 1 and month <= 12 and day >= 1 and day <= 31
 
+# value_refused(crm_id, object_id, field, value) -> whether a value a peer sent
+# for a field of an object cannot be one. A user field holds an entity id or
+# nothing: clients build the person's avatar address from it, and fetch it with
+# the session, so a path there would name another action.
+def value_refused(crm_id, object_id, field, value):
+	if value == None or str(value) == "":
+		return False
+	row = mochi.db.row("select f.fieldtype as fieldtype from objects o join fields f on f.crm=o.crm and f.class=o.class and f.id=? where o.id=? and o.crm=?", field, object_id, crm_id)
+	return row != None and row["fieldtype"] == "user" and not mochi.text.valid(str(value), "entity")
+
 # First violation of a field's type and constraints as {"key", "args"}, or None.
 # Empty values always pass ("required" is checked elsewhere); the regex
 # `pattern` constraint is not enforced - Starlark has no regex API.
@@ -8674,6 +8688,10 @@ def validate_field_value(crm_id, class_id, field_id, value):
 
 	elif ftype == "checkbox":
 		if value not in ("0", "1", "true", "false"):
+			return {"key": "errors.invalid_value"}
+
+	elif ftype == "user":
+		if not mochi.text.valid(value, "entity"):
 			return {"key": "errors.invalid_value"}
 
 	return None
