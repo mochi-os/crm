@@ -79,7 +79,7 @@ export function InlineCrmSearch({
       probe={probe}
       onSubscribe={handleSubscribe}
       icon={Users}
-      placeholder={t`Search for CRMs...`}
+      placeholder={t`Search for CRMs`}
       emptyMessage={t`No CRMs found`}
       searchErrorMessage={t`Failed to search CRMs`}
       subscribeLabel={t`Subscribe`}

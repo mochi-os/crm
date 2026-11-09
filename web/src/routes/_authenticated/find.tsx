@@ -37,7 +37,7 @@ function FindCrmsPage() {
       onOpen={(id) => navigate({ to: APP_ROUTES.CRMS.VIEW(id) })}
       labels={{
         title: t`Find CRMs`,
-        placeholder: t`Search by name, ID, fingerprint, or URL...`,
+        placeholder: t`Search by name, ID, fingerprint, or URL`,
         emptyMessage: t`No CRMs found`,
         subscribing: t`Subscribing...`,
         subscribed: t`Subscribed`,
