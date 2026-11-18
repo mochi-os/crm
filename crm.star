@@ -5822,6 +5822,7 @@ def action_subscribe(a):
 	crm_id = a.input("crm")
 	server = a.input("server")
 	peer = a.input("peer")  # from a mochi://<peer>/<crm> share link
+	pin = peer
 	if not mochi.text.valid(crm_id, "entity"):
 		a.error.label(400, "errors.invalid_crm_id")
 		return
@@ -5882,12 +5883,16 @@ def action_subscribe(a):
 	# Insert the remote crm. populated=0: the board shows a loading state until
 	# the schema pull below reaches its last part, or every chunk of the owner's
 	# sync/batch has landed (event_sync_batch), whichever is first.
-	row_merge("crms", ["id"], {"id": crm_id, "name": crm_name, "description": crm_desc, "owner": 0, "server": server or "", "fingerprint": fp, "created": now, "updated": now, "populated": 0})
+	row_merge("crms", ["id"], {"id": crm_id, "name": crm_name, "description": crm_desc, "owner": 0, "server": ("p2p/" + pin) if pin else (server or ""), "fingerprint": fp, "created": now, "updated": now, "populated": 0})
 
 	# Send P2P subscribe message to crm owner. A private CRM is not in the
-	# directory, so when the subscription came via a share link, pin that peer.
-	# It goes before the schema is applied, so a pull that stops short still
-	# leaves a subscription the owner's sync batch fills.
+	# directory, so when the subscription came via a share link, pin that
+	# peer - here and, as the stored "p2p/<peer>" server, for every later view,
+	# access check, resync, re-subscribe and unsubscribe (see registration_send).
+	# Without it they found the owner only once the user's learned directory
+	# caught up, and a view just after subscribing answered 502. It goes before
+	# the schema is applied, so a pull that stops short still leaves a
+	# subscription the owner's sync batch fills.
 	if peer:
 		mochi.message.send.peer(peer, p2p_headers(user_id, crm_id, "subscribe"), {"name": a.user.identity.name})
 	else:
