@@ -16,7 +16,7 @@
 	"require": {"version": {"minimum": "2.0.19"}},
 
 	"database": {
-		"schema": 10,
+		"schema": 11,
 		"file": "crm.db",
 		"create": {"function": "database_create"},
 		"upgrade": {"function": "database_upgrade"},
@@ -35,12 +35,12 @@
 		":crm/assets": {"files": "web/dist/assets", "public": true},
 		":crm/images": {"files": "web/dist/images", "public": true},
 
-		"-/list": {"function": "action_crm_list"},
+		"-/list": {"function": "action_crm_list", "read": true},
 		"-/create": {"function": "action_crm_create"},
-		"-/directory/search": {"function": "action_search"},
+		"-/directory/search": {"function": "action_search", "read": true},
 		"-/probe": {"function": "action_probe"},
-		"-/recommendations": {"function": "action_recommendations"},
-		"-/templates": {"function": "action_templates"},
+		"-/recommendations": {"function": "action_recommendations", "read": true},
+		"-/templates": {"function": "action_templates", "read": true},
 		"-/subscribe": {"function": "action_subscribe"},
 		"-/unsubscribe": {"function": "action_unsubscribe"},
 
@@ -49,18 +49,18 @@
 		":crm/settings": {"file": "web/dist/index.html"},
 		":crm/:object": {"file": "web/dist/index.html"},
 		":crm/-/share": {"function": "action_share"},
-		":crm/-/information": {"function": "action_crm_get"},
+		":crm/-/information": {"function": "action_crm_get", "read": true},
 		":crm/-/update": {"function": "action_crm_update"},
 		":crm/-/delete": {"function": "action_crm_delete"},
 		":crm/-/resync": {"function": "action_crm_resync"},
-		":crm/-/people": {"function": "action_people_list"},
-		":crm/-/access": {"function": "action_access_list"},
+		":crm/-/people": {"function": "action_people_list", "read": true},
+		":crm/-/access": {"function": "action_access_list", "read": true},
 		":crm/-/access/set": {"function": "action_access_set"},
 		":crm/-/access/revoke": {"function": "action_access_revoke"},
 
-		":crm/-/objects": {"function": "action_object_list"},
+		":crm/-/objects": {"function": "action_object_list", "read": true},
 		":crm/-/objects/create": {"function": "action_object_create"},
-		":crm/-/objects/:object": {"function": "action_object_get"},
+		":crm/-/objects/:object": {"function": "action_object_get", "read": true},
 		":crm/-/objects/:object/update": {"function": "action_object_update"},
 		":crm/-/objects/:object/delete": {"function": "action_object_delete"},
 		":crm/-/objects/:object/move": {"function": "action_object_move"},
@@ -68,11 +68,11 @@
 		":crm/-/objects/:object/values": {"function": "action_values_set"},
 		":crm/-/objects/:object/values/:field": {"function": "action_value_set"},
 
-		":crm/-/objects/:object/links": {"function": "action_link_list"},
+		":crm/-/objects/:object/links": {"function": "action_link_list", "read": true},
 		":crm/-/objects/:object/links/create": {"function": "action_link_create"},
 		":crm/-/objects/:object/links/delete": {"function": "action_link_delete"},
 
-		":crm/-/objects/:object/comments": {"function": "action_comment_list"},
+		":crm/-/objects/:object/comments": {"function": "action_comment_list", "read": true},
 		":crm/-/objects/:object/comments/create": {"function": "action_comment_create"},
 		":crm/-/objects/:object/comments/:comment/update": {"function": "action_comment_update"},
 		":crm/-/objects/:object/comments/:comment/delete": {"function": "action_comment_delete"},
@@ -80,7 +80,7 @@
 		":crm/-/activity/:activity/asset/:asset": {"function": "action_activity_asset", "public": true, "asset": true},
 		":crm/-/user/:user/asset/:asset": {"function": "action_user_asset", "public": true, "asset": true},
 
-		":crm/-/objects/:object/attachments": {"function": "action_attachment_list"},
+		":crm/-/objects/:object/attachments": {"function": "action_attachment_list", "read": true},
 		":crm/-/objects/:object/attachments/create": {"function": "action_attachment_create"},
 		":crm/-/objects/:object/attachments/copy": {"function": "action_attachment_copy"},
 		":crm/-/objects/:object/attachments/:attachment/delete": {"function": "action_attachment_delete"},
@@ -89,47 +89,47 @@
 		":crm/-/attachments/:id/thumbnail": {"function": "action_attachment_thumbnail", "asset": true},
 		":crm/-/attachments/:id/preview": {"function": "action_attachment_preview", "asset": true},
 
-		":crm/-/objects/:object/activity": {"function": "action_activity_list"},
+		":crm/-/objects/:object/activity": {"function": "action_activity_list", "read": true},
 
-		":crm/-/objects/:object/watchers": {"function": "action_watcher_list"},
+		":crm/-/objects/:object/watchers": {"function": "action_watcher_list", "read": true},
 		":crm/-/objects/:object/watchers/add": {"function": "action_watcher_add"},
 		":crm/-/objects/:object/watchers/remove": {"function": "action_watcher_remove"},
 
-		":crm/-/design/export": {"function": "action_design_export"},
+		":crm/-/design/export": {"function": "action_design_export", "read": true},
 		":crm/-/design/import": {"function": "action_design_import"},
 
-		":crm/-/data/export": {"function": "action_data_export"},
+		":crm/-/data/export": {"function": "action_data_export", "read": true},
 		":crm/-/data/export/warm": {"function": "action_data_export_warm"},
 		":crm/-/data/import": {"function": "action_data_import"},
 
-		":crm/-/views": {"function": "action_view_list"},
+		":crm/-/views": {"function": "action_view_list", "read": true},
 		":crm/-/views/create": {"function": "action_view_create"},
 		":crm/-/views/reorder": {"function": "action_view_reorder"},
 		":crm/-/views/:view/update": {"function": "action_view_update"},
 		":crm/-/views/:view/delete": {"function": "action_view_delete"},
 
-		":crm/-/classes": {"function": "action_class_list"},
+		":crm/-/classes": {"function": "action_class_list", "read": true},
 		":crm/-/classes/create": {"function": "action_class_create"},
 		":crm/-/classes/:class/update": {"function": "action_class_update"},
 		":crm/-/classes/:class/delete": {"function": "action_class_delete"},
 
-		":crm/-/classes/:class/hierarchy": {"function": "action_hierarchy_get"},
+		":crm/-/classes/:class/hierarchy": {"function": "action_hierarchy_get", "read": true},
 		":crm/-/classes/:class/hierarchy/set": {"function": "action_hierarchy_set"},
 
-		":crm/-/classes/:class/fields": {"function": "action_field_list"},
+		":crm/-/classes/:class/fields": {"function": "action_field_list", "read": true},
 		":crm/-/classes/:class/fields/create": {"function": "action_field_create"},
 		":crm/-/classes/:class/fields/reorder": {"function": "action_field_reorder"},
 		":crm/-/classes/:class/fields/:field/update": {"function": "action_field_update"},
 		":crm/-/classes/:class/fields/:field/delete": {"function": "action_field_delete"},
 
-		":crm/-/classes/:class/fields/:field/options": {"function": "action_option_list"},
+		":crm/-/classes/:class/fields/:field/options": {"function": "action_option_list", "read": true},
 		":crm/-/classes/:class/fields/:field/options/create": {"function": "action_option_create"},
 		":crm/-/classes/:class/fields/:field/options/reorder": {"function": "action_option_reorder"},
 		":crm/-/classes/:class/fields/:field/options/:option/update": {"function": "action_option_update"},
 		":crm/-/classes/:class/fields/:field/options/:option/delete": {"function": "action_option_delete"},
 
-		"-/users/search": {"function": "action_users_search"},
-		"-/groups": {"function": "action_groups"}
+		"-/users/search": {"function": "action_users_search", "read": true},
+		"-/groups": {"function": "action_groups", "read": true}
 	},
 
 	"errors": {

@@ -509,6 +509,13 @@ def database_upgrade(version):
 		# the replica held before the pull began that no part has named yet, so
 		# the continuation that takes its last part reconciles deletions.
 		mochi.db.execute("create table if not exists holdings ( crm text not null, pull text not null, list text not null, key text not null, primary key ( crm, pull, list, key ) )")
+	if version == 11:
+		# Attachment rows name the kind of thing they belong to; the rows filed
+		# on a comment's id become the comment's. An id an object holds too came
+		# from a peer's choice, as did the comment's author and any remote row's
+		# creator, so its rows stay the object's.
+		attachment_schema_kind()
+		mochi.db.execute("update attachments set kind='comment' where object in (select id from comments) and object not in (select id from objects)")
 
 # Create database with all 18 tables
 def database_create():
@@ -730,6 +737,7 @@ def database_create():
 
 	# Attachments now live in this database, owned by the shared library.
 	attachment_schema_create()
+	attachment_schema_kind()
 
 # handle is an open mochi.db.transaction(); statements issued through it are
 # part of that transaction, and statements issued without it are not. A caller
@@ -776,18 +784,37 @@ def object_merge(row, guard=None):
 def comment_merge(row, guard=None):
 	row_merge("comments", ["id"], row, None, guard)
 
-# True if this object/comment id already exists under a DIFFERENT crm. Used
-# to reject subscriber-path writes (schema apply) that a malicious crm owner
-# could aim at the local user's OTHER crms by naming a colliding global id.
+# Whether value is an id in the shape mochi.uid() mints. Every object, comment
+# and activity id a peer sends keys rows here and becomes a segment of the
+# addresses the client fetches with the viewer's token, so nothing else is
+# accepted from one.
+def identifier(value):
+	return type(value) == "string" and mochi.text.valid(value, "id")
+
+# Whether an object or a comment, in any CRM of this database, holds id.
+# Attachments and everything else keyed on a bare id would treat a new comment
+# under such an id as that row.
+def identifier_held(id):
+	return mochi.db.exists("select 1 from objects where id=? union all select 1 from comments where id=?", id, id)
+
+# True if this object/comment id names a row it may not: one of the other
+# table, in any crm, or one of its own table under a DIFFERENT crm. Used to
+# reject subscriber-path writes that a malicious crm owner could aim at the
+# local user's OTHER crms, or at the other kind of row, by naming a colliding
+# global id.
 def foreign_object(object_id, crm_id):
 	if not object_id:
 		return False
+	if mochi.db.exists("select 1 from comments where id=?", object_id):
+		return True
 	row = mochi.db.row("select crm from objects where id=?", object_id)
 	return row != None and row["crm"] != crm_id
 
 def foreign_comment(comment_id, crm_id):
 	if not comment_id:
 		return False
+	if mochi.db.exists("select 1 from objects where id=?", comment_id):
+		return True
 	row = mochi.db.row("select o.crm from comments c join objects o on c.object=o.id where c.id=?", comment_id)
 	return row != None and row["crm"] != crm_id
 
@@ -808,18 +835,26 @@ def link_endpoints_bound(crm_id, source, target):
 		return False
 	return mochi.db.exists("select 1 from objects where id=? and crm=?", target, crm_id)
 
-# attachment_delete keys on the attachment id alone, across every CRM in this
-# database, so the id is not proof of anything on its own. Resolve the
-# attachment's own container and require it to sit in this CRM - an attachment
-# hangs off either an object or a comment.
-def attachment_in_crm(attachment_id, crm_id):
-	attachment = attachment_get(attachment_id)
-	container = attachment.get("object") if attachment else ""
+# Whether an attachment owner, container of that kind, sits in this CRM: an
+# object of it, or a comment on one of its objects. A comment's attachments are
+# never judged as an object's, or the reverse.
+def container_in_crm(container, kind, crm_id):
 	if not container:
 		return False
-	if mochi.db.exists("select 1 from objects where id=? and crm=?", container, crm_id):
-		return True
-	return mochi.db.exists("select 1 from comments c join objects o on o.id=c.object where c.id=? and o.crm=?", container, crm_id)
+	if kind == "object":
+		return mochi.db.exists("select 1 from objects where id=? and crm=?", container, crm_id)
+	if kind == "comment":
+		return mochi.db.exists("select 1 from comments c join objects o on o.id=c.object where c.id=? and o.crm=?", container, crm_id)
+	return False
+
+# attachment_delete keys on the attachment id alone, across every CRM in this
+# database, so the id is not proof of anything on its own. Resolve the
+# attachment's own owner and require it to sit in this CRM.
+def attachment_in_crm(attachment_id, crm_id):
+	attachment = attachment_row(attachment_id)
+	if not attachment:
+		return False
+	return container_in_crm(attachment["object"], attachment.get("kind", "object"), crm_id)
 
 # ============================================================================
 # Templates
@@ -1284,13 +1319,14 @@ def action_design_import(a):
 
 	return {"data": {"success": True}}
 
-# Collect an object's (or comment's) attachments with base64-encoded file
-# bytes for a data export. attachment_data pulls remote bytes over
-# P2P for subscribed crms. An attachment whose bytes cannot be read (deleted
-# file, unreachable owner) is skipped rather than failing the whole export.
-def export_attachments(object_id, crm_id, frm, entries):
+# Collect an object's (or, with kind "comment", a comment's) attachments with
+# base64-encoded file bytes for a data export. attachment_data pulls remote
+# bytes over P2P for subscribed crms. An attachment whose bytes cannot be read
+# (deleted file, unreachable owner) is skipped rather than failing the whole
+# export.
+def export_attachments(object_id, crm_id, frm, entries, kind="object"):
 	result = []
-	for att in attachment_list(object_id, crm_id) or []:
+	for att in attachment_list(object_id, crm_id, kind) or []:
 		name = "files/" + att["id"]
 		entry = attachment_entry(att["id"], name, frm)
 		if entry == None:
@@ -1319,7 +1355,7 @@ def action_data_export_warm(a):
 		for att in attachment_list(row["id"], crm_id) or []:
 			identifiers.append(att["id"])
 		for c in mochi.db.rows("select id from comments where object=?", row["id"]) or []:
-			for att in attachment_list(c["id"], crm_id) or []:
+			for att in attachment_list(c["id"], crm_id, "comment") or []:
 				identifiers.append(att["id"])
 
 	start = mochi.time.now()
@@ -1417,7 +1453,7 @@ def action_data_export(a):
 				comment["parent"] = c["parent"]
 			if c["edited"]:
 				comment["edited"] = c["edited"]
-			attachments = export_attachments(c["id"], crm_id, a.user.identity.id, entries)
+			attachments = export_attachments(c["id"], crm_id, a.user.identity.id, entries, "comment")
 			if attachments:
 				comment["attachments"] = attachments
 			comments.append(comment)
@@ -1514,16 +1550,18 @@ def import_staging_sweep():
 		if age != None and age > 3600:
 			mochi.file.delete("imports/" + name)
 
-# Store one imported attachment, returning whether it landed. Format 3 streams
-# from the archive, format 2 has the bytes in hand; an entry missing from the
-# archive stores nothing and must not be counted.
-def import_attachment_store(archive, object_id, att):
+# Store one imported attachment of object_id, a thing of that kind, returning
+# whether it landed. Format 3 streams from the archive, format 2 has the bytes
+# in hand; an entry missing from the archive stores nothing and must not be
+# counted. The file nests a comment's attachments in the comment, which is how
+# the caller knows the kind.
+def import_attachment_store(archive, object_id, att, kind="object"):
 	if archive and type(att.get("entry")) == "string":
 		return attachment_extract(archive, att["entry"], object_id, att["name"],
-			att.get("content_type") or "", att.get("caption") or "", att.get("description") or "") != None
+			att.get("content_type") or "", att.get("caption") or "", att.get("description") or "", kind=kind) != None
 	if att.get("data") != None:
 		attachment_create(object_id, att["name"], att["data"], att.get("content_type") or "",
-			att.get("caption") or "", att.get("description") or "")
+			att.get("caption") or "", att.get("description") or "", kind=kind)
 		return True
 	return False
 
@@ -1783,7 +1821,7 @@ def action_data_import(a):
 			row_merge("comments", ["id"], {"id": comment_ids[i], "object": object_id, "parent": comment_parent, "author": import_author(c.get("author"), user), "name": c.get("name") or a.user.identity.name, "content": str(c["content"]), "created": safe_int(c.get("created")) or now, "edited": safe_int(c.get("edited"))})
 			comment_count += 1
 			for att in sequence(c.get("attachments")):
-				if import_attachment_store(archive, comment_ids[i], att):
+				if import_attachment_store(archive, comment_ids[i], att, "comment"):
 					attachment_count += 1
 		for att in (o.get("attachments") or []):
 			if import_attachment_store(archive, object_id, att):
@@ -2107,7 +2145,7 @@ def purge_crm(crm_id):
 	# The attachments a part stored after the clearing above go here too.
 	handle = mochi.db.transaction()
 	handle.execute("delete from holdings where crm=?", crm_id)
-	handle.execute("delete from attachments where entity!='' and (object in (select id from objects where crm=?) or object in (select c.id from comments c join objects o on o.id=c.object where o.crm=?))", crm_id, crm_id)
+	handle.execute("delete from attachments where entity!='' and ((kind='object' and object in (select id from objects where crm=?)) or (kind='comment' and object in (select c.id from comments c join objects o on o.id=c.object where o.crm=?)))", crm_id, crm_id)
 	handle.execute("delete from watchers where object in (select id from objects where crm=?)", crm_id)
 	handle.execute("delete from activity where object in (select id from objects where crm=?)", crm_id)
 	handle.execute("delete from comments where object in (select id from objects where crm=?)", crm_id)
@@ -2668,12 +2706,13 @@ def delete_object_cascade(crm_id, object_id, user=""):
 	# Broadcast delete event for each object
 	broadcast_event(crm_id, "object/delete", {"crm": crm_id, "id": object_id, "user": user})
 
-# Delete an object's attachments. `preserve` keeps rows whose bytes live here
-# (entity == ""): resync repair may drop references to files hosted elsewhere
-# but must never destroy this replica's own uploads, which may be the only copy.
-def prune_attachments(object_id, crm_id, preserve):
+# Delete an object's attachments, or with kind "comment" a comment's. `preserve`
+# keeps rows whose bytes live here (entity == ""): resync repair may drop
+# references to files hosted elsewhere but must never destroy this replica's
+# own uploads, which may be the only copy.
+def prune_attachments(object_id, crm_id, preserve, kind="object"):
 	kept = 0
-	for att in (attachment_list(object_id, crm_id) or []):
+	for att in (attachment_list(object_id, crm_id, kind) or []):
 		if preserve and not att["entity"]:
 			kept += 1
 			continue
@@ -2689,6 +2728,32 @@ def delete_object_local(crm_id, object_id, preserve=False):
 	row_remove("values", "object=?", [object_id])
 	row_remove("links", "source=? or target=?", [object_id, object_id])
 	row_remove("objects", "id=? and crm=?", [object_id, crm_id])
+
+# object_replicate(crm_id, answer, obj_class, parent, title, title_field,
+# user_id) writes the replica's copy of an object the owner has just created
+# for this user, from the owner's answer, and returns whether it did. The owner
+# names the id: one not in the shape mochi.uid() mints, or one naming a comment
+# or another CRM's object, is refused, since the title and the watcher would
+# otherwise land on that row. The canonical rank and timestamps are taken from
+# the answer so every subscriber agrees on the order, reduced to their types; an
+# old owner replying without them gets local now().
+def object_replicate(crm_id, answer, obj_class, parent, title, title_field, user_id):
+	if type(answer) != "dict":
+		return False
+	object_id = answer.get("id")
+	if not identifier(object_id) or foreign_object(object_id, crm_id):
+		return False
+	now = mochi.time.now()
+	rank = answer.get("rank")
+	if not rank_canonical(rank):
+		rank = safe_int(rank)
+	if not mochi.db.exists("select 1 from objects where id=?", object_id):
+		row_merge("objects", ["id"], {"id": object_id, "crm": crm_id, "class": obj_class, "parent": parent, "rank": rank, "created": safe_int(answer.get("created")) or now, "updated": safe_int(answer.get("updated")) or now})
+	if title and title_field:
+		row_merge("values", ["object", "field"], {"object": object_id, "field": title_field, "value": title})
+	# Auto-watch creator locally so subscriber gets notifications
+	row_merge("watchers", ["object", "user"], {"object": object_id, "user": user_id, "created": now})
+	return True
 
 # ============================================================================
 # Object Actions
@@ -2776,21 +2841,9 @@ def action_object_create(a):
 			"title": title, "parent": parent,
 		})
 		if result and result.get("data"):
-			d = result["data"]
-			if d.get("id"):
-				# Use the canonical rank/timestamps from the owner's response so
-				# every subscriber agrees on the order. Falling back to local now()
-				# only if an old owner is replying without these fields.
-				now = mochi.time.now()
-				rank = d.get("rank", 0)
-				created = d.get("created") or now
-				updated = d.get("updated") or now
-				if not mochi.db.exists("select 1 from objects where id=?", d["id"]):
-					row_merge("objects", ["id"], {"id": d["id"], "crm": crm_id, "class": obj_class, "parent": parent, "rank": rank, "created": created, "updated": updated})
-				if title and title_field:
-					row_merge("values", ["object", "field"], {"object": d["id"], "field": title_field, "value": title})
-				# Auto-watch creator locally so subscriber gets notifications
-				row_merge("watchers", ["object", "user"], {"object": d["id"], "user": a.user.identity.id, "created": now})
+			if not object_replicate(crm_id, result["data"], obj_class, parent, title, title_field, a.user.identity.id):
+				a.error.label(502, "errors.invalid_data")
+				return
 		return result
 
 	if not check_crm_access(a.user.identity.id, crm_id, "write"):
@@ -3611,7 +3664,7 @@ def object_comments(crm_id, object_id, parent_id, depth):
 		"select id, parent, author, name, content, created, edited from comments where object=? order by created desc",
 		object_id
 	) or []
-	attachments = attachments_many([row["id"] for row in rows], crm_id)
+	attachments = attachments_many([row["id"] for row in rows], crm_id, "comment")
 	children = {}
 	for row in rows:
 		key = row["parent"] or ""
@@ -3638,14 +3691,14 @@ def delete_comment_tree(comment_id, crm_id):
 	children = mochi.db.rows("select id from comments where parent=?", comment_id) or []
 	for child in children:
 		delete_comment_tree(child["id"], crm_id)
-	for att in (attachment_list(comment_id, crm_id) or []):
+	for att in (attachment_list(comment_id, crm_id, "comment") or []):
 		attachment_delete(att["id"])
 	row_remove("comments", "id=?", [comment_id])
 # Delete all comments and their attachments for an object
 def delete_object_comments(object_id, crm_id, preserve=False):
 	comments = mochi.db.rows("select id from comments where object=?", object_id) or []
 	for c in comments:
-		prune_attachments(c["id"], crm_id, preserve)
+		prune_attachments(c["id"], crm_id, preserve, "comment")
 	row_remove("comments", "object=?", [object_id])
 # Delete all comment attachments for all objects in a crm
 def delete_crm_comment_attachments(crm_id):
@@ -3653,7 +3706,7 @@ def delete_crm_comment_attachments(crm_id):
 		"select c.id from comments c join objects o on c.object=o.id where o.crm=?", crm_id
 	) or []
 	for c in comments:
-		for att in (attachment_list(c["id"], crm_id) or []):
+		for att in (attachment_list(c["id"], crm_id, "comment") or []):
 			attachment_delete(att["id"])
 
 # ============================================================================
@@ -3803,7 +3856,7 @@ def action_comment_create(a):
 		# Save locally for optimistic UI
 		row_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": a.user.identity.id, "name": a.user.identity.name, "content": content.strip(), "created": now, "edited": 0})
 		# Save attachments locally
-		attachments = attachment_save(a, comment_id)
+		attachments = attachment_save(a, comment_id, kind="comment")
 		# Fire-and-forget to crm owner with attachment metadata
 		submit_data = {"id": comment_id, "object": object_id, "parent": parent,
 			 "content": content.strip(), "name": a.user.identity.name}
@@ -3819,7 +3872,7 @@ def action_comment_create(a):
 			"id": comment_id, "parent": parent,
 			"author": a.user.identity.id, "name": a.user.identity.name,
 			"content": content.strip(), "created": now, "edited": 0,
-			"children": [], "attachments": attachment_list(comment_id, crm_id) or [],
+			"children": [], "attachments": attachment_list(comment_id, crm_id, "comment") or [],
 		}}
 
 	if not check_crm_access(a.user.identity.id, crm_id, "comment"):
@@ -3849,7 +3902,7 @@ def action_comment_create(a):
 
 	row_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": a.user.identity.id, "name": a.user.identity.name, "content": content.strip(), "created": now, "edited": 0})
 
-	attachments = attachment_save(a, comment_id) or []
+	attachments = attachment_save(a, comment_id, kind="comment") or []
 
 	row_set("objects", "id=?", [object_id], {"updated": now})
 	log_activity(object_id, a.user.identity.id, "commented")
@@ -4031,10 +4084,8 @@ def serve_attachment(a, variant):
 	# The binding runs for owned AND subscribed CRMs. Never defer to the owner
 	# enforcing access on pull: a subscriber whose access was revoked would keep
 	# its cached copy reachable.
-	def in_crm(obj):
-		if mochi.db.exists("select 1 from objects where id=? and crm=?", obj, crm_id):
-			return True
-		return mochi.db.exists("select 1 from comments c join objects o on o.id=c.object where c.id=? and o.crm=?", obj, crm_id)
+	def in_crm(object, kind):
+		return container_in_crm(object, kind, crm_id)
 
 	# The owner adopts legacy remote-provenance rows on first serve, taking
 	# the bytes in so the CRM's canonical host serves its own file from then
@@ -4048,22 +4099,22 @@ def event_attachment_fetch(e):
 	# `to` is routing only - the entity the puller dialled to reach these
 	# bytes. For a subscriber-held upload that is this user's own identity,
 	# not a CRM, so the container comes from the requested row: the
-	# attachment's object, resolved to the CRM it belongs to here.
+	# attachment's object or comment, as its kind says, resolved to the CRM it
+	# belongs to here.
 	id = e.content("id")
 	crm_id = ""
 	if attachment_identifier(id):
 		row = attachment_row(id)
 		if row:
-			obj = mochi.db.row("select crm from objects where id=?", row["object"])
-			if not obj:
-				obj = mochi.db.row("select o.crm from comments c join objects o on o.id=c.object where c.id=?", row["object"])
-			if obj:
-				crm_id = obj["crm"]
+			if row.get("kind") == "comment":
+				owner = mochi.db.row("select o.crm from comments c join objects o on o.id=c.object where c.id=?", row["object"])
+			else:
+				owner = mochi.db.row("select crm from objects where id=?", row["object"])
+			if owner:
+				crm_id = owner["crm"]
 
-	def in_crm(obj):
-		if mochi.db.exists("select 1 from objects where id=? and crm=?", obj, crm_id):
-			return True
-		return mochi.db.exists("select 1 from comments c join objects o on o.id=c.object where c.id=? and o.crm=?", obj, crm_id)
+	def in_crm(object, kind):
+		return container_in_crm(object, kind, crm_id)
 
 	# The CRM's own entity may always fetch bytes bound to it - that is the
 	# owner taking a subscriber's upload in (attachment_accept / adopt).
@@ -5974,12 +6025,13 @@ def event_information(e):
 	})
 
 # Return the full crm schema (classes, fields, options, hierarchy, views)
-# attachments_many(ids, crm_id) -> {id: [attachment]}: attachment_list_many
-# over any number of ids, chunked to stay under SQLite's parameter cap.
-def attachments_many(ids, crm_id):
+# attachments_many(ids, crm_id, kind) -> {id: [attachment]}: attachment_list_many
+# over any number of ids, all things of that kind, chunked to stay under
+# SQLite's parameter cap.
+def attachments_many(ids, crm_id, kind="object"):
 	result = {}
 	for start in range(0, len(ids), IN_CHUNK):
-		result.update(attachment_list_many(ids[start:start + IN_CHUNK], crm_id))
+		result.update(attachment_list_many(ids[start:start + IN_CHUNK], crm_id, kind))
 	return result
 
 # crm_dump(crm_id) -> dict: the whole CRM in the flat shape event_schema
@@ -6023,13 +6075,14 @@ def crm_dump(crm_id):
 			comment_ids.append(c["id"])
 		for act in rows_in("select object, id, user, action, field, oldvalue, newvalue, created from activity where object in (", ids, ") order by created"):
 			activity_map.setdefault(act["object"], []).append(act)
-	attachments = attachments_many(ids + comment_ids, crm_id)
+	attachments = attachments_many(ids, crm_id)
+	comment_attachments = attachments_many(comment_ids, crm_id, "comment")
 	for obj in objects:
 		if obj["id"] in values_map:
 			obj["values"] = values_map[obj["id"]]
 		if obj["id"] in comments_map:
 			for c in comments_map[obj["id"]]:
-				c_atts = attachments.get(c["id"])
+				c_atts = comment_attachments.get(c["id"])
 				if c_atts:
 					c["attachments"] = c_atts
 			obj["comments"] = comments_map[obj["id"]]
@@ -6087,7 +6140,7 @@ SCHEMA_SPECS = {
 	"values": {"columns": "v.object as object, v.field as field, v.value as value", "source": "\"values\" v join objects o on o.id=v.object where o.crm=?", "scope": 1, "keys": ["v.object", "v.field"], "size": "length(cast(v.value as blob))"},
 	"comments": {"columns": "c.object as object, c.id as id, c.parent as parent, c.author as author, c.name as name, c.content as content, c.created as created, c.edited as edited", "source": "comments c join objects o on o.id=c.object where o.crm=?", "scope": 1, "keys": ["c.id"], "size": "length(cast(c.content as blob)) + length(cast(c.name as blob))"},
 	"activity": {"columns": "a.object as object, a.id as id, a.user as user, a.action as action, a.field as field, a.oldvalue as oldvalue, a.newvalue as newvalue, a.created as created", "source": "activity a join objects o on o.id=a.object where o.crm=?", "scope": 1, "keys": ["a.id"], "size": "length(cast(a.oldvalue as blob)) + length(cast(a.newvalue as blob))"},
-	"attachments": {"columns": "*", "source": "attachments where (object in (select id from objects where crm=?) or object in (select c.id from comments c join objects o on o.id=c.object where o.crm=?))", "scope": 2, "keys": ["id"], "size": "960"},
+	"attachments": {"columns": "*", "source": "attachments where ((kind='object' and object in (select id from objects where crm=?)) or (kind='comment' and object in (select c.id from comments c join objects o on o.id=c.object where o.crm=?)))", "scope": 2, "keys": ["id"], "size": "960"},
 	"links": {"columns": "l.source as source, l.target as target, l.linktype as linktype", "source": "links l join objects o on o.id=l.source where o.crm=?", "scope": 1, "keys": ["l.source", "l.target", "l.linktype"], "size": "0"},
 }
 
@@ -6481,7 +6534,7 @@ def schema_stray(survivors):
 	ids = [id for id in survivors["attachments"] if type(id) == "string" and id]
 	for start in range(0, len(ids), SCHEMA_BATCH):
 		batch = ids[start:start + SCHEMA_BATCH]
-		mochi.db.execute("delete from attachments where entity!='' and id in (" + ", ".join(["?"] * len(batch)) + ") and object not in (select id from objects) and object not in (select id from comments)", batch)
+		mochi.db.execute("delete from attachments where entity!='' and id in (" + ", ".join(["?"] * len(batch)) + ") and ((kind='object' and object not in (select id from objects)) or (kind='comment' and object not in (select id from comments)))", batch)
 
 # schema_outcome(reply) -> "unanswered" when a part could not be fetched at all,
 # "failed" when the owner answered with a refusal.
@@ -6563,7 +6616,7 @@ def schema_holdings(crm_id):
 		held["comments"][row["id"]] = True
 	for row in mochi.db.rows("select v.object as object, v.field as field from \"values\" v join objects o on o.id=v.object where o.crm=?", crm_id) or []:
 		held["values"][(row["object"], row["field"])] = True
-	for row in mochi.db.rows("select id from attachments where entity!='' and (object in (select id from objects where crm=?) or object in (select c.id from comments c join objects o on o.id=c.object where o.crm=?))", crm_id, crm_id) or []:
+	for row in mochi.db.rows("select id from attachments where entity!='' and ((kind='object' and object in (select id from objects where crm=?)) or (kind='comment' and object in (select c.id from comments c join objects o on o.id=c.object where o.crm=?)))", crm_id, crm_id) or []:
 		held["attachments"][row["id"]] = True
 	for row in mochi.db.rows("select source, target, linktype from links where crm=?", crm_id) or []:
 		held["links"][(row["source"], row["target"], row["linktype"])] = True
@@ -6649,29 +6702,32 @@ def schema_merge(crm_id, schema, survivors):
 	for obj in sequence(schema.get("objects")):
 		if type(obj) != "dict":
 			continue
-		identifier = obj.get("id", "")
-		survivors["objects"][identifier] = True
-		# Never adopt/reassign an object that already belongs to another crm -
-		# a malicious owner's dump could otherwise hijack our other crms' rows.
-		if foreign_object(identifier, crm_id):
+		object_id = obj.get("id", "")
+		if not identifier(object_id):
+			continue
+		survivors["objects"][object_id] = True
+		# Never adopt/reassign an object that already belongs to another crm, or
+		# an id a comment holds - a malicious owner's dump could otherwise
+		# hijack our other crms' rows.
+		if foreign_object(object_id, crm_id):
 			continue
 		# A late object is skipped; the rows nested in it below are still
 		# named, and land only on an object the replica holds.
 		if schema_class(crm_id, obj.get("class", "")):
-			object_merge({"id": identifier, "crm": crm_id, "class": obj.get("class", ""), "parent": obj.get("parent", ""), "rank": obj.get("rank", 0), "created": obj.get("created", 0), "updated": obj.get("updated", 0)}, schema_guard("classes", "crm=? and id=?", crm_id, obj.get("class", "")))
+			object_merge({"id": object_id, "crm": crm_id, "class": obj.get("class", ""), "parent": obj.get("parent", ""), "rank": obj.get("rank", 0), "created": obj.get("created", 0), "updated": obj.get("updated", 0)}, schema_guard("classes", "crm=? and id=?", crm_id, obj.get("class", "")))
 		else:
 			late = True
-		schema_attachments(crm_id, survivors, identifier, obj.get("attachments"))
+		schema_attachments(crm_id, survivors, object_id, obj.get("attachments"), "object")
 		values = obj.get("values")
 		if type(values) == "dict":
 			for field in values:
-				schema_value(crm_id, survivors, {"object": identifier, "field": field, "value": values[field]})
+				schema_value(crm_id, survivors, {"object": object_id, "field": field, "value": values[field]})
 		for c in sequence(obj.get("comments")):
 			if type(c) == "dict":
-				schema_comment(crm_id, survivors, dict(c, object=identifier))
+				schema_comment(crm_id, survivors, dict(c, object=object_id))
 		for act in sequence(obj.get("activity")):
 			if type(act) == "dict":
-				schema_activity(crm_id, dict(act, object=identifier))
+				schema_activity(crm_id, dict(act, object=object_id))
 	for v in sequence(schema.get("values")):
 		if type(v) == "dict":
 			schema_value(crm_id, survivors, v)
@@ -6686,7 +6742,10 @@ def schema_merge(crm_id, schema, survivors):
 		if type(att) == "dict" and type(att.get("object")) == "string":
 			containers.setdefault(att["object"], []).append(att)
 	for container in containers:
-		schema_attachments(crm_id, survivors, container, containers[container])
+		# The table holding the container decides its kind, never the row's
+		# claim; an id both tables hold in the CRM answers to neither.
+		kinds = [kind for kind in attachment_kinds if container_in_crm(container, kind, crm_id)]
+		schema_attachments(crm_id, survivors, container, containers[container], kinds[0] if len(kinds) == 1 else None)
 	for l in sequence(schema.get("links")):
 		if type(l) != "dict":
 			continue
@@ -6728,17 +6787,22 @@ def schema_value(crm_id, survivors, v):
 	row_merge("values", ["object", "field"], {"object": v["object"], "field": field, "value": v.get("value", "")}, None, schema_guard("objects", "id=?", v["object"]))
 
 def schema_comment(crm_id, survivors, c):
-	identifier = c.get("id", "")
-	survivors["comments"][identifier] = True
-	# Skip a comment id that already belongs to another crm's object.
-	if foreign_comment(identifier, crm_id):
+	comment_id = c.get("id", "")
+	if not identifier(comment_id):
+		return
+	survivors["comments"][comment_id] = True
+	# Skip a comment id that already belongs to another crm's object, or that
+	# an object holds.
+	if foreign_comment(comment_id, crm_id):
 		return
 	if not schema_object(crm_id, c.get("object", "")):
 		return
-	comment_merge({"id": identifier, "object": c["object"], "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", ""), "edited": c.get("edited", 0)}, schema_guard("objects", "id=?", c["object"]))
-	schema_attachments(crm_id, survivors, identifier, c.get("attachments"))
+	comment_merge({"id": comment_id, "object": c["object"], "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", ""), "edited": c.get("edited", 0)}, schema_guard("objects", "id=?", c["object"]))
+	schema_attachments(crm_id, survivors, comment_id, c.get("attachments"), "comment")
 
 def schema_activity(crm_id, act):
+	if not identifier(act.get("id")):
+		return
 	if not schema_object(crm_id, act.get("object", "")):
 		return
 	# Activity is append-only; ignore is correct. Written while its object is
@@ -6751,17 +6815,18 @@ def schema_activity(crm_id, act):
 		act.get("created", 0), act["object"]
 	)
 
-# Attachments land only on an object or comment of this CRM.
-def schema_attachments(crm_id, survivors, container, rows):
+# Attachments land only on an object or comment of this CRM, as the kind the
+# caller knows container to be; None stores nothing.
+def schema_attachments(crm_id, survivors, container, rows, kind):
 	rows = sequence(rows)
 	if not rows:
 		return
 	for att in rows:
 		if type(att) == "dict":
 			survivors["attachments"][att.get("id", "")] = True
-	if not schema_object(crm_id, container) and not mochi.db.exists("select 1 from comments c join objects o on o.id=c.object where c.id=? and o.crm=?", container, crm_id):
+	if not kind or not container_in_crm(container, kind, crm_id):
 		return
-	attachment_store(rows, crm_id, container)
+	attachment_store(rows, crm_id, container, kind)
 
 # schema_named(survivors) -> the key of every row a pull's parts named, list by
 # list (SCHEMA_HELD) as schema_holdings keys what the replica holds.
@@ -6822,7 +6887,7 @@ def schema_prune(crm_id, survivors, held, pull):
 			delete_object_local(crm_id, row["id"], True)
 	for row in (mochi.db.rows("select c.id from comments c join objects o on c.object=o.id where o.crm=?", crm_id) or []):
 		if stray("comments", row["id"]) and permitted():
-			prune_attachments(row["id"], crm_id, True)
+			prune_attachments(row["id"], crm_id, True, "comment")
 			row_remove("comments", "id=?", [row["id"]])
 	# Values the owner cleared, and attachments the owner deleted, on surviving
 	# objects and comments. Only references to files hosted elsewhere go; never
@@ -6830,7 +6895,7 @@ def schema_prune(crm_id, survivors, held, pull):
 	for row in (mochi.db.rows("select v.object as object, v.field as field from \"values\" v join objects o on o.id=v.object where o.crm=?", crm_id) or []):
 		if stray("values", (row["object"], row["field"])):
 			remove("values", "object=? and field=?", [row["object"], row["field"]])
-	for row in (mochi.db.rows("select id from attachments where entity!='' and (object in (select id from objects where crm=?) or object in (select c.id from comments c join objects o on o.id=c.object where o.crm=?))", crm_id, crm_id) or []):
+	for row in (mochi.db.rows("select id from attachments where entity!='' and ((kind='object' and object in (select id from objects where crm=?)) or (kind='comment' and object in (select c.id from comments c join objects o on o.id=c.object where o.crm=?)))", crm_id, crm_id) or []):
 		if stray("attachments", row["id"]) and permitted():
 			attachment_delete(row["id"])
 	for row in (mochi.db.rows("select view, field from view_fields where crm=?", crm_id) or []):
@@ -7215,12 +7280,12 @@ def event_sync_batch(e):
 					row_merge("view_classes", ["crm", "view", "class"], {"crm": crm_id, "view": v["id"], "class": class_id})
 	# Process objects
 	for obj in sequence(e.content("objects")):
-		if not sync_element(obj, ["id"]):
+		if not sync_element(obj, ["id"]) or not identifier(obj["id"]):
 			continue
-		# Never adopt/reassign an object that already belongs to another CRM -
-		# a hijacking owner's batch could otherwise write values, comments and
-		# activity onto our other CRMs' rows via a colliding id (mirrors
-		# insert_schema's foreign_object guard).
+		# Never adopt/reassign an object that already belongs to another CRM, or
+		# an id a comment holds - a hijacking owner's batch could otherwise
+		# write values, comments and activity onto our other CRMs' rows via a
+		# colliding id (mirrors insert_schema's foreign_object guard).
 		if foreign_object(obj["id"], crm_id):
 			continue
 		if not mochi.db.exists("select 1 from objects where id=?", obj["id"]):
@@ -7232,16 +7297,17 @@ def event_sync_batch(e):
 				row_merge("values", ["object", "field"], {"object": obj["id"], "field": field, "value": value})
 		# Comments
 		for c in sequence(obj.get("comments")):
-			if not sync_element(c, ["id"]):
+			if not sync_element(c, ["id"]) or not identifier(c["id"]):
 				continue
-			# Skip a comment id already owned by another CRM's object.
+			# Skip a comment id already owned by another CRM's object, or held
+			# by an object.
 			if foreign_comment(c["id"], crm_id):
 				continue
 			if not mochi.db.exists("select 1 from comments where id=?", c["id"]):
 				row_merge("comments", ["id"], {"id": c["id"], "object": obj["id"], "parent": c.get("parent", ""), "author": c.get("author", ""), "name": c.get("name", ""), "content": c.get("content", ""), "created": c.get("created", now), "edited": c.get("edited", 0)})
 		# Activity history
 		for act in sequence(obj.get("activity")):
-			if not sync_element(act, ["id"]):
+			if not sync_element(act, ["id"]) or not identifier(act["id"]):
 				continue
 			mochi.db.execute(
 				"insert or ignore into activity (id, object, user, action, field, oldvalue, newvalue, created) values (?, ?, ?, ?, ?, ?, ?, ?)",
@@ -7325,11 +7391,11 @@ def event_object_create(e):
 	if not crm_id:
 		return
 	object_id = e.content("id")
-	if type(object_id) != "string" or not object_id:
+	if not identifier(object_id):
 		return
-	# A colliding global id that already belongs to another CRM is a hijack
-	# attempt by the sending owner - never let its payload (values, watcher,
-	# notification) touch our other CRMs' rows. Mirrors insert_schema's
+	# A colliding global id that already belongs to another CRM, or to a
+	# comment, is a hijack attempt by the sending owner - never let its payload
+	# (values, watcher, notification) touch that row. Mirrors insert_schema's
 	# foreign_object guard.
 	if foreign_object(object_id, crm_id):
 		return
@@ -7526,7 +7592,7 @@ def event_activity_log(e):
 		return
 	activity_id = e.content("id")
 	object_id = e.content("object")
-	if not activity_id or not object_id:
+	if not identifier(activity_id) or not object_id:
 		return
 	if not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
 		request_resync(crm_id)
@@ -7558,7 +7624,9 @@ def event_comment_submit(e):
 		return
 	comment_id = e.content("id")
 	object_id = e.content("object")
-	if not comment_id or not object_id:
+	# The submitter minted the id with mochi.uid on its host; anything else is
+	# a hand-built frame, and the id becomes a primary key and a URL segment.
+	if not identifier(comment_id) or not object_id:
 		return
 	if not mochi.db.row("select id from objects where id=? and crm=?", object_id, crm_id):
 		return
@@ -7584,20 +7652,26 @@ def event_comment_submit(e):
 	# object_comments never walks and nothing ever renders it.
 	if parent and not mochi.db.exists("select 1 from comments where id=? and object=?", parent, object_id):
 		return
+	# The id is the sender's choice, so it must be one no row holds: an object's
+	# or another comment's, in any CRM, would make this comment that row and its
+	# attachments this comment's. The one row it may name is this sender's own
+	# comment on this object: a redelivery after a failure past the insert,
+	# which carries on with what follows rather than leave the comment
+	# unannounced.
 	now = mochi.time.now()
-	if not mochi.db.exists("select 1 from comments where id=?", comment_id):
-		row_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": sender, "name": name, "content": content.strip(), "created": now, "edited": 0})
-	# The existence test above is idempotence for a redelivered submission, and
-	# on its own it is also the way in: an id that already belongs to another
-	# CRM's comment skips the insert and then names that comment below. The
-	# object was checked against this CRM, so agreeing with it is proof.
-	if not comment_bound(comment_id, object_id):
+	landed = mochi.db.row("select object, author from comments where id=?", comment_id)
+	if landed:
+		if landed["object"] != object_id or landed["author"] != sender:
+			return
+	elif identifier_held(comment_id):
 		return
+	else:
+		row_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": sender, "name": name, "content": content.strip(), "created": now, "edited": 0})
 	# Store the submission's attachment metadata and take the bytes in from
 	# the sender now, while it is online; a pull that fails heals on serve.
 	attachments = e.content("attachments") or []
 	if attachments:
-		attachment_accept(attachments, sender, comment_id, crm_id)
+		attachment_accept(attachments, sender, comment_id, crm_id, kind="comment")
 	row_set("objects", "id=?", [object_id], {"updated": now})
 	log_activity(object_id, sender, "commented")
 	row_merge("watchers", ["object", "user"], {"object": object_id, "user": sender, "created": now})
@@ -7677,17 +7751,10 @@ def event_attachment_remove(e):
 	if not crm_id:
 		return
 	attachment_id = e.content("attachment")
-	if attachment_id:
-		# Bind the attachment to an object/comment in this crm before deleting
-		# (mirrors serve_attachment) so a colliding id can't reach another crm's.
-		att = attachment_get(attachment_id)
-		if att:
-			obj = att.get("object")
-			in_crm = mochi.db.exists("select 1 from objects where id=? and crm=?", obj, crm_id)
-			if not in_crm:
-				in_crm = mochi.db.exists("select 1 from comments c join objects o on o.id=c.object where c.id=? and o.crm=?", obj, crm_id)
-			if in_crm:
-				attachment_delete(attachment_id)
+	# Bind the attachment to an object/comment in this crm before deleting
+	# (mirrors serve_attachment) so a colliding id can't reach another crm's.
+	if attachment_id and attachment_in_crm(attachment_id, crm_id):
+		attachment_delete(attachment_id)
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "attachment/delete", "crm": crm_id, "attachment": attachment_id})
@@ -7699,6 +7766,10 @@ def event_comment_create(e):
 		return
 	comment_id = e.content("id")
 	object_id = e.content("object") or ""
+	# The owner chose the id: one not in the shape mochi.uid() mints, one an
+	# object holds, or one of another CRM's comments is refused.
+	if not identifier(comment_id) or foreign_comment(comment_id, crm_id):
+		return
 	# Skip when the comment's object isn't local yet — comments.object FK
 	# would otherwise abort the handler and the comment would be lost.
 	if not object_id or not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
@@ -7714,7 +7785,7 @@ def event_comment_create(e):
 	# Store attachment metadata from the event
 	attachments = e.content("attachments") or []
 	if attachments:
-		attachment_store(attachments, e.header("from"), comment_id)
+		attachment_store(attachments, e.header("from"), comment_id, kind="comment")
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "comment/create", "crm": crm_id, "object": e.content("object")})
@@ -8313,21 +8384,17 @@ def do_comment_create(crm_id, crm, params, user_id, user_name):
 	# thread is stored, broadcast, and rendered nowhere.
 	if parent and not mochi.db.exists("select 1 from comments where id=? and object=?", parent, object_id):
 		return {"error": "errors.comment_not_found", "code": 404}
-	comment_id = params.get("id") or mochi.uid()
+	# Minted here and returned, never the caller's: a chosen id could name an
+	# object's or another comment's row, and everything keyed on it.
+	comment_id = mochi.uid()
 	now = mochi.time.now()
-	if not mochi.db.exists("select 1 from comments where id=?", comment_id):
-		row_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": user_id, "name": user_name, "content": content.strip(), "created": now, "edited": 0})
-	# The existence test above is global: a supplied id already held by another
-	# CRM's comment skips the insert, and attachment_list would then broadcast that
-	# comment's metadata here. Binding to the checked object proves it.
-	if not comment_bound(comment_id, object_id):
-		return {"error": "errors.comment_not_found", "code": 404}
+	row_merge("comments", ["id"], {"id": comment_id, "object": object_id, "parent": parent, "author": user_id, "name": user_name, "content": content.strip(), "created": now, "edited": 0})
 	row_set("objects", "id=?", [object_id], {"updated": now})
 	log_activity(object_id, user_id, "commented")
 	# Auto-watch commenter on owner's server
 	row_merge("watchers", ["object", "user"], {"object": object_id, "user": user_id, "created": now})
 	# Include attachments in broadcast
-	comment_attachments = attachment_list(comment_id, crm_id) or []
+	comment_attachments = attachment_list(comment_id, crm_id, "comment") or []
 	comment_event = {
 		"crm": crm_id, "object": object_id, "id": comment_id,
 		"parent": parent, "author": user_id, "name": user_name,
