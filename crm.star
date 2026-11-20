@@ -88,10 +88,24 @@ def schedule_access(e):
 	if fingerprint:
 		mochi.websocket.write(fingerprint, {"type": "crm/update", "crm": crm_id})
 
+# remote_status is the status a far end's refusal is answered with here: its
+# own code when that is an error status, else [code]. A 401 becomes 502: to
+# every client of this server 401 means the caller's own session has ended,
+# and a peer's answer says nothing about that session.
+def remote_status(response, code=502):
+	status = response.get("code", code)
+	if type(status) == "float":
+		status = int(status)
+	if type(status) != "int" or status < 400 or status > 599:
+		return code
+	if status == 401:
+		return 502
+	return status
+
 # remote_error surfaces a failed mochi.remote.request: core-authored
 # transport failures (marked "transport") become a translated generic
 # error with the detail kept in the server log; far-end app answers
-# pass through unchanged.
+# pass through with their label, under remote_status.
 def remote_error(a, response, code=502):
 	# response is None when remote_dict refused the far end's shape; that is a
 	# transport-class failure as far as the caller is concerned.
@@ -100,10 +114,10 @@ def remote_error(a, response, code=502):
 		return
 	if response.get("transport"):
 		mochi.log.info("Remote transport error: %s", response.get("error", ""))
-		a.error.label(response.get("code", code), "errors.remote")
+		a.error.label(remote_status(response, code), "errors.remote")
 	else:
 		# The remote sends a stable label key; localise it in the caller's language.
-		a.error.label(response.get("code", code), response.get("error", "errors.remote"))
+		a.error.label(remote_status(response, code), response.get("error", "errors.remote"))
 
 def notify(topic, object="", title="", body="", url="", event_id=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), "", "", None, event_id)
@@ -2290,10 +2304,10 @@ def forward_to_owner(a, crm_id, action, params, handled=None):
 		return None
 	if result.get("error"):
 		if handled and result["error"] in handled:
-			return {"error": result["error"], "code": result.get("code", 500), "args": result.get("args")}
+			return {"error": result["error"], "code": remote_status(result, 500), "args": result.get("args")}
 		# The error field is a label key; resolve it in the requester's language,
 		# with any ICU args the owner returned alongside it.
-		a.error.label(result.get("code", 500), result["error"], **(result.get("args") or {}))
+		a.error.label(remote_status(result, 500), result["error"], **(result.get("args") or {}))
 		return None
 	return {"data": result}
 
