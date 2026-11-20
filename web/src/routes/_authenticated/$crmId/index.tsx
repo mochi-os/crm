@@ -219,7 +219,7 @@ export function CrmPageContent({
           name: t`Name`,
           everything: t`Everything`,
           designOnly: t`Design only`,
-          allowSearch: t`Allow anyone to search for CRM`,
+          allowSearch: t`Allow anyone to view and comment on CRM`,
           cancel: t`Cancel`,
           confirm: t`Copy`,
           duplicating: t`Copying CRM...`,

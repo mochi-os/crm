@@ -54,7 +54,7 @@ describe('CreateCrmDialog', () => {
     await waitFor(() => {
       expect(mockCreate).toHaveBeenCalledWith({
         name: 'Test CRM',
-        privacy: 'public',
+        privacy: 'private',
       })
     })
   })
@@ -67,12 +67,53 @@ describe('CreateCrmDialog', () => {
     ).toBeInTheDocument()
   })
 
-  it('should have privacy toggle defaulting to public', () => {
+  it('should have privacy toggle defaulting to private', () => {
     render(<CreateCrmDialog open={true} onOpenChange={vi.fn()} hideTrigger />)
 
     expect(
-      screen.getByText('Allow anyone to search for CRM')
-    ).toBeInTheDocument()
+      screen.getByRole('switch', {
+        name: 'Allow anyone to view and comment on CRM',
+      })
+    ).not.toBeChecked()
+  })
+
+  it('creates a public CRM with the switch on', async () => {
+    mockCreate.mockResolvedValue({ data: { id: '123', fingerprint: 'abc' } })
+
+    render(<CreateCrmDialog open={true} onOpenChange={vi.fn()} hideTrigger />)
+
+    fireEvent.change(screen.getByLabelText('Name'), {
+      target: { value: 'Open CRM' },
+    })
+    fireEvent.click(
+      screen.getByRole('switch', {
+        name: 'Allow anyone to view and comment on CRM',
+      })
+    )
+    fireEvent.click(screen.getByRole('button', { name: /Create CRM/i }))
+
+    await waitFor(() => {
+      expect(mockCreate).toHaveBeenCalledWith({
+        name: 'Open CRM',
+        privacy: 'public',
+      })
+    })
+  })
+
+  it('turns the switch off again when the dialog closes', () => {
+    const name = 'Allow anyone to view and comment on CRM'
+    const { rerender } = render(
+      <CreateCrmDialog open={true} onOpenChange={vi.fn()} hideTrigger />
+    )
+    fireEvent.click(screen.getByRole('switch', { name }))
+    expect(screen.getByRole('switch', { name })).toBeChecked()
+
+    rerender(
+      <CreateCrmDialog open={false} onOpenChange={vi.fn()} hideTrigger />
+    )
+    rerender(<CreateCrmDialog open={true} onOpenChange={vi.fn()} hideTrigger />)
+
+    expect(screen.getByRole('switch', { name })).not.toBeChecked()
   })
 
   it('should include descriptive dialog text for assistive tech', () => {

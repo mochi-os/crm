@@ -51,7 +51,7 @@ export function CreateCrmDialog({
   const { t } = useLingui()
   const [isPending, setIsPending] = useState(false)
   const [name, setName] = useState('')
-  const [allowSearch, setAllowSearch] = useState(true)
+  const [allowSearch, setAllowSearch] = useState(false)
   const [importData, setImportData] = useState<Record<string, unknown> | null>(
     null
   )
@@ -77,7 +77,7 @@ export function CreateCrmDialog({
   useEffect(() => {
     if (!open) {
       setName('')
-      setAllowSearch(true)
+      setAllowSearch(false)
       clearImport()
     }
   }, [open, clearImport])
@@ -319,7 +319,7 @@ export function CreateCrmDialog({
                 htmlFor='allow-search'
                 className='cursor-pointer text-sm font-medium'
               >
-                <Trans>Allow anyone to search for CRM</Trans>
+                <Trans>Allow anyone to view and comment on CRM</Trans>
               </Label>
               <Switch
                 id='allow-search'
