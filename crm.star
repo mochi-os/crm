@@ -1972,7 +1972,7 @@ def action_crm_get(a):
 
 	# Get all fields in one query, group by class
 	fields = {}
-	all_fields = mochi.db.rows("select class, id, name, fieldtype, flags, multi, rank, card, position, rows from fields where crm=? order by class, rank", crm_id) or []
+	all_fields = mochi.db.rows("select class, id, name, fieldtype, flags, multi, rank, card, position, rows, min, max, pattern, minlength, maxlength from fields where crm=? order by class, rank", crm_id) or []
 	for f in all_fields:
 		fields.setdefault(f["class"], []).append(f)
 
@@ -2230,21 +2230,28 @@ def action_people_list(a):
 	subscribers = mochi.db.rows("select id, name from subscribers where crm=?", crm_id) or []
 	for sub in subscribers:
 		if sub["id"] not in people:
-			people[sub["id"]] = {"id": sub["id"], "name": sub["name"]}
+			people[sub["id"]] = {"id": sub["id"], "name": sub["name"] or person_name(sub["id"])}
 
-	# Add unique owners from object values
-	owners = mochi.db.rows(
-		"select distinct value from \"values\" where field='owner' and value != '' and object in (select id from objects where crm=?)",
+	# Everyone a user field of an object names, whatever the field is called
+	values = mochi.db.rows(
+		"select distinct v.value as value from \"values\" v join objects o on o.id=v.object join fields f on f.crm=o.crm and f.class=o.class and f.id=v.field where o.crm=? and f.fieldtype='user' and v.value!=''",
 		crm_id
 	) or []
-	for owner in owners:
-		owner_id = owner["value"]
-		if owner_id and owner_id not in people:
-			# Resolve owner name from entity
-			name = mochi.entity.name(owner_id) or owner_id[:9]
-			people[owner_id] = {"id": owner_id, "name": name}
+	for row in values:
+		person = row["value"]
+		if person not in people and mochi.text.valid(person, "entity"):
+			people[person] = {"id": person, "name": person_name(person)}
 
 	return {"data": {"people": list(people.values())}}
+
+# person_name(id) -> string: what a person is called, their entity's name or
+# else its fingerprint; "" for an id that names no entity.
+def person_name(id):
+	if mochi.text.valid(id, "entity"):
+		return mochi.entity.name(id) or mochi.entity.fingerprint(id)
+	if mochi.text.valid(id, "fingerprint"):
+		return mochi.entity.name(id) or id
+	return ""
 
 # ============================================================================
 # Access Control
@@ -2357,9 +2364,7 @@ def action_access_list(a):
 					group = mochi.group.get(group_id)
 					names[subject] = group.get("name", group_id) if group else subject
 				else:
-					# Look up entity name
-					name = mochi.entity.name(subject)
-					names[subject] = name if name else subject[:9]
+					names[subject] = person_name(subject)
 			rule["name"] = names[subject]
 		filtered_rules.append(rule)
 
@@ -2658,8 +2663,9 @@ def would_create_cycle(object_id, new_parent_id):
 # being the top level. The object and its descendants then take the new
 # parent's board column and row values, so it shows among its new siblings.
 # Answers an error label and status, or None once the parent is set or when it
-# was that one already.
-def object_reparent(crm_id, row, parent, user, now):
+# was that one already. The values written are added to changes, which the
+# caller passes to values_broadcast after telling subscribers of the parent.
+def object_reparent(crm_id, row, parent, user, now, changes):
 	object_id = row["id"]
 	old_parent = row["parent"]
 	if parent == old_parent:
@@ -2683,14 +2689,48 @@ def object_reparent(crm_id, row, parent, user, now):
 		sync_fields = {}
 		for view in views:
 			if view["columns"]:
-				sync_fields[view["columns"]] = True
+				sync_fields[view["columns"]] = parent_val_map.get(view["columns"], "")
 			if view["rows"]:
-				sync_fields[view["rows"]] = True
-		all_ids = [object_id] + get_all_descendants(object_id)
-		for sync_id in all_ids:
-			for field_id in sync_fields:
-				row_merge("values", ["object", "field"], {"object": sync_id, "field": field_id, "value": parent_val_map.get(field_id, "")})
+				sync_fields[view["rows"]] = parent_val_map.get(view["rows"], "")
+		values_cascade(crm_id, [object_id] + get_all_descendants(object_id), sync_fields, now, changes)
 	return None
+
+# values_cascade(crm_id, ids, values, now, changes): give each object of ids
+# those of values ({field: value}) its own class has the field for and
+# accepts, and leave it the rest. Fields are per class, so a child of another
+# class may lack the field, or not offer the option, its parent's move names.
+# Each object whose values change is added to changes as {"id", "values"}.
+def values_cascade(crm_id, ids, values, now, changes):
+	accepted = {}
+	for object_id in ids:
+		row = mochi.db.row("select class from objects where id=? and crm=?", object_id, crm_id)
+		if not row:
+			continue
+		taken = {}
+		for field, value in values.items():
+			key = (row["class"], field)
+			if key not in accepted:
+				accepted[key] = mochi.db.exists("select 1 from fields where crm=? and class=? and id=?", crm_id, row["class"], field) and validate_field_value(crm_id, row["class"], field, value) == None
+			if not accepted[key]:
+				continue
+			current = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field)
+			if (current["value"] if current else "") == value:
+				continue
+			row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": value})
+			taken[field] = value
+		if taken:
+			row_set("objects", "id=?", [object_id], {"updated": now})
+			changes.append({"id": object_id, "values": taken})
+
+# values_broadcast(crm_id, changes, user): tell subscribers the values
+# values_cascade wrote, one values/update per object. Marked sync, as the
+# owner notifies no watcher of an object a cascade reached either.
+def values_broadcast(crm_id, changes, user):
+	for change in changes:
+		broadcast_event(crm_id, "values/update", {
+			"crm": crm_id, "id": change["id"],
+			"values": change["values"], "user": user, "sync": True,
+		})
 
 def get_all_descendants(object_id, depth=0):
 	"""Get all descendant object IDs recursively."""
@@ -2996,8 +3036,9 @@ def action_object_update(a):
 
 	# Update parent if provided
 	parent = a.input("parent")
+	changes = []
 	if parent != None:
-		problem = object_reparent(crm_id, row, parent, a.user.identity.id, now)
+		problem = object_reparent(crm_id, row, parent, a.user.identity.id, now, changes)
 		if problem:
 			a.error.label(problem[1], problem[0])
 			return
@@ -3014,6 +3055,9 @@ def action_object_update(a):
 		"user": a.user.identity.id,
 		"updated": now
 	})
+	# After the parent: a subscriber applying a value stamps the object with its
+	# own time, which an object/update sent after it would then lose to.
+	values_broadcast(crm_id, changes, a.user.identity.id)
 
 	return {"data": {"success": True}}
 
@@ -3169,8 +3213,9 @@ def action_object_move(a):
 		a.error.label(400, "errors.invalid_value")
 		return
 	parent_changed = False
+	changes = []
 	if parent != None:
-		problem = object_reparent(crm_id, row, parent, a.user.identity.id, mochi.time.now())
+		problem = object_reparent(crm_id, row, parent, a.user.identity.id, mochi.time.now(), changes)
 		if problem:
 			a.error.label(problem[1], problem[0])
 			return
@@ -3234,21 +3279,15 @@ def action_object_move(a):
 			"crm": crm_id, "id": object_id, "parent": parent,
 			"class": row["class"], "user": a.user.identity.id, "updated": now,
 		})
-	# Cascade status/row changes to all descendants
-	if value_changed or row_changed:
-		descendants = get_all_descendants(object_id)
-		now = mochi.time.now()
-		for desc_id in descendants:
-			if value_changed:
-				row_merge("values", ["object", "field"], {"object": desc_id, "field": field, "value": target_value})
-			if row_changed:
-				row_merge("values", ["object", "field"], {"object": desc_id, "field": row_field, "value": row_value})
-			row_set("objects", "id=?", [desc_id], {"updated": now})
+	# Cascade status/row changes to the descendants that take them
 	updated_values = {}
 	if value_changed:
 		updated_values[field] = target_value
 	if row_changed:
 		updated_values[row_field] = row_value
+	if updated_values:
+		values_cascade(crm_id, get_all_descendants(object_id), updated_values, mochi.time.now(), changes)
+	values_broadcast(crm_id, changes, a.user.identity.id)
 	if updated_values:
 		broadcast_event(crm_id, "values/update", {
 			"crm": crm_id, "id": object_id,
@@ -4301,7 +4340,7 @@ def action_activity_list(a):
 		a.error.label(400, "errors.object_id_required")
 		return
 
-	row = mochi.db.row("select id from objects where id=? and crm=?", object_id, crm_id)
+	row = mochi.db.row("select id, class from objects where id=? and crm=?", object_id, crm_id)
 	if not row:
 		a.error.label(404, "errors.object_not_found")
 		return
@@ -4311,34 +4350,102 @@ def action_activity_list(a):
 	if limit < 1 or limit > 500:
 		limit = 100
 
+	# Newest first; the id settles entries logged in the same second, so a
+	# page boundary neither repeats nor skips one.
 	rows = mochi.db.rows(
-		"select id, user, action, field, oldvalue, newvalue, created from activity where object=? order by created desc limit ? offset ?",
+		"select id, user, action, field, oldvalue, newvalue, created from activity where object=? order by created desc, id desc limit ? offset ?",
 		object_id, limit, offset
 	) or []
 
-	# Resolve user names, once per DISTINCT user rather than once per row.
-	# An activity list is dozens of rows written by a handful of people, and
-	# mochi.entity.name is a lookup per call, so the unmemoised version cost a
-	# lookup per row for the same few answers.
+	# Field and option ids are unique only within a class, so what an entry
+	# names is looked up in the object's own class. Names are resolved once
+	# per distinct person, as each is a lookup in core.
+	lookup = {
+		"crm": crm_id,
+		"fields": {f["id"]: f for f in mochi.db.rows("select id, name, fieldtype from fields where crm=? and class=?", crm_id, row["class"]) or []},
+		"options": {},
+		"classes": {c["id"]: c["name"] for c in mochi.db.rows("select id, name from classes where crm=?", crm_id) or []},
+		"titles": {},
+		"names": {},
+	}
+	for o in mochi.db.rows("select field, id, name from options where crm=? and class=?", crm_id, row["class"]) or []:
+		lookup["options"].setdefault(o["field"], {})[o["id"]] = o["name"]
+
 	activities = []
-	names = {}
 	for row in rows:
 		user = row["user"]
-		if user not in names:
-			names[user] = mochi.entity.name(user) or user[:9]
-		name = names[user]
+		if user not in lookup["names"]:
+			lookup["names"][user] = person_name(user)
 		activities.append({
 			"id": row["id"],
 			"user": user,
-			"name": name,
+			"name": lookup["names"][user],
 			"action": row["action"],
 			"field": row["field"],
 			"oldvalue": row["oldvalue"],
 			"newvalue": row["newvalue"],
 			"created": row["created"],
+			"display": activity_display(row, lookup),
 		})
 
 	return {"data": {"activities": activities}}
+
+# activity_display(entry, lookup) -> dict: what an activity entry names, as
+# readable text: "field" the name of the field of the object's class it
+# changed and "type" that field's type, "old" and "new" an option's name, a
+# person's name, an object's title (a move's parents, a link's target, an
+# object field) or a class's name (a change of class). A side is left out
+# where the client formats the stored value by the field's type, or where it
+# names nothing that still exists or has a title.
+def activity_display(entry, lookup):
+	display = {}
+	action = entry["action"]
+	field = entry["field"]
+	sides = (("old", entry["oldvalue"]), ("new", entry["newvalue"]))
+	fields = lookup["fields"]
+	if action in ("moved", "linked"):
+		for side, value in sides:
+			title = activity_title(value, lookup)
+			if title:
+				display[side] = title
+	elif action == "updated" and field == "class" and "class" not in fields:
+		for side, value in sides:
+			if value in lookup["classes"]:
+				display[side] = lookup["classes"][value]
+	elif field in fields:
+		definition = fields[field]
+		display["field"] = definition["name"]
+		display["type"] = definition["fieldtype"]
+		for side, value in sides:
+			if not value:
+				continue
+			name = ""
+			if definition["fieldtype"] == "enumerated":
+				name = lookup["options"].get(field, {}).get(value, "")
+			elif definition["fieldtype"] == "user":
+				if value not in lookup["names"]:
+					lookup["names"][value] = person_name(value)
+				name = lookup["names"][value]
+			elif definition["fieldtype"] == "object":
+				name = activity_title(value, lookup)
+			if name:
+				display[side] = name
+	return display
+
+# activity_title(id, lookup) -> string: an object's title; "" for an object
+# with none or one this crm does not hold.
+def activity_title(id, lookup):
+	if not id:
+		return ""
+	titles = lookup["titles"]
+	if id not in titles:
+		row = mochi.db.row("select c.title as field from objects o left join classes c on c.crm=o.crm and c.id=o.class where o.id=? and o.crm=?", id, lookup["crm"])
+		title = ""
+		if row and row["field"]:
+			value = mochi.db.row("select value from \"values\" where object=? and field=?", id, row["field"])
+			title = value["value"] if value else ""
+		titles[id] = title
+	return titles[id]
 
 # ============================================================================
 # Watcher Actions
@@ -6003,7 +6110,7 @@ def attachments_many(ids, crm_id, kind="object"):
 # five per object. send_crm_data reshapes it into the sync/batch form.
 def crm_dump(crm_id):
 	classes = mochi.db.rows("select id, name, rank, title from classes where crm=? order by rank", crm_id) or []
-	fields = mochi.db.rows("select class, id, name, fieldtype, flags, multi, rank, card, position, rows from fields where crm=? order by class, rank", crm_id) or []
+	fields = mochi.db.rows("select class, id, name, fieldtype, flags, multi, rank, card, position, rows, min, max, pattern, minlength, maxlength from fields where crm=? order by class, rank", crm_id) or []
 	options = mochi.db.rows("select class, field, id, name, colour, icon, rank from options where crm=? order by class, field, rank", crm_id) or []
 	hierarchy = []
 	hierarchy_map = {}
@@ -6092,7 +6199,7 @@ SCHEMA_RETRIES = 3
 # costs in bytes beyond a fixed allowance.
 SCHEMA_SPECS = {
 	"classes": {"columns": "id, name, rank, title", "source": "classes where crm=?", "scope": 1, "keys": ["id"], "size": "length(cast(name as blob)) + length(cast(title as blob))"},
-	"fields": {"columns": "class, id, name, fieldtype, flags, multi, rank, card, position, rows", "source": "fields where crm=?", "scope": 1, "keys": ["class", "id"], "size": "length(cast(name as blob)) + length(cast(flags as blob)) + length(cast(position as blob))"},
+	"fields": {"columns": "class, id, name, fieldtype, flags, multi, rank, card, position, rows, min, max, pattern, minlength, maxlength", "source": "fields where crm=?", "scope": 1, "keys": ["class", "id"], "size": "length(cast(name as blob)) + length(cast(flags as blob)) + length(cast(position as blob)) + length(cast(min as blob)) + length(cast(max as blob)) + length(cast(pattern as blob))"},
 	"options": {"columns": "class, field, id, name, colour, icon, rank", "source": "options where crm=?", "scope": 1, "keys": ["class", "field", "id"], "size": "length(cast(name as blob)) + length(cast(icon as blob))"},
 	"hierarchy": {"columns": "class, parent", "source": "hierarchy where crm=?", "scope": 1, "keys": ["class", "parent"], "size": "0"},
 	"views": {"columns": "id, name, viewtype, filter, columns, rows, sort, direction, rank, border", "source": "views where crm=?", "scope": 1, "keys": ["id"], "size": "length(cast(name as blob)) + length(cast(filter as blob)) + length(cast(columns as blob)) + length(cast(rows as blob)) + length(cast(sort as blob))"},
@@ -6596,6 +6703,24 @@ def schema_holdings(crm_id):
 		held["view_classes"][(row["view"], row["class"])] = True
 	return held
 
+# field_limits(field) -> dict: the validation limits a field row from the owner
+# carries - min, max and pattern as text, minlength and maxlength as whole
+# numbers - each only when present and of its type, so a row without them
+# leaves the replica's own.
+def field_limits(field):
+	limits = {}
+	for name in ("min", "max", "pattern"):
+		value = field.get(name)
+		if type(value) == "string" and len(value) <= 1000:
+			limits[name] = value
+	for name in ("minlength", "maxlength"):
+		value = field.get(name)
+		if type(value) == "float" and value >= 0 and value < 1000000000 and value == int(value):
+			value = int(value)
+		if type(value) == "int" and value >= 0 and value < 1000000000:
+			limits[name] = value
+	return limits
+
 # schema_merge(crm_id, schema, survivors) -> whether it skipped a late row:
 # applies one part, or a whole schema, recording every row it names in
 # survivors. A whole schema from an owner that predates parts nests values,
@@ -6622,7 +6747,9 @@ def schema_merge(crm_id, schema, survivors):
 		if not schema_class(crm_id, f.get("class", "")):
 			late = True
 			continue
-		row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": f.get("class", ""), "id": f.get("id", ""), "name": f.get("name", ""), "fieldtype": f.get("fieldtype", "text"), "flags": f.get("flags", ""), "multi": f.get("multi", 0), "rank": f.get("rank", 0), "card": f.get("card", 1), "position": f.get("position", ""), "rows": f.get("rows", 1)}, None, schema_guard("classes", "crm=? and id=?", crm_id, f.get("class", "")))
+		field = {"crm": crm_id, "class": f.get("class", ""), "id": f.get("id", ""), "name": f.get("name", ""), "fieldtype": f.get("fieldtype", "text"), "flags": f.get("flags", ""), "multi": f.get("multi", 0), "rank": f.get("rank", 0), "card": f.get("card", 1), "position": f.get("position", ""), "rows": f.get("rows", 1)}
+		field.update(field_limits(f))
+		row_merge("fields", ["crm", "class", "id"], field, None, schema_guard("classes", "crm=? and id=?", crm_id, f.get("class", "")))
 	for o in sequence(schema.get("options")):
 		if not mochi.db.exists("select 1 from fields where crm=? and class=? and id=?", crm_id, o.get("class", ""), o.get("field", "")):
 			late = True
@@ -6898,7 +7025,7 @@ def send_crm_data(crm_id, subscriber_id):
 		options_map.setdefault((o["class"], o["field"]), []).append({"id": o["id"], "name": o["name"], "colour": o["colour"], "icon": o["icon"], "rank": o["rank"]})
 	fields_map = {}
 	for f in dump["fields"]:
-		field_data = {"id": f["id"], "name": f["name"], "fieldtype": f["fieldtype"], "flags": f["flags"], "multi": f["multi"], "rank": f["rank"], "card": f["card"], "position": f["position"], "rows": f["rows"]}
+		field_data = {"id": f["id"], "name": f["name"], "fieldtype": f["fieldtype"], "flags": f["flags"], "multi": f["multi"], "rank": f["rank"], "card": f["card"], "position": f["position"], "rows": f["rows"], "min": f["min"], "max": f["max"], "pattern": f["pattern"], "minlength": f["minlength"], "maxlength": f["maxlength"]}
 		if (f["class"], f["id"]) in options_map:
 			field_data["options"] = options_map[(f["class"], f["id"])]
 		fields_map.setdefault(f["class"], []).append(field_data)
@@ -7214,7 +7341,9 @@ def event_sync_batch(e):
 		for f in sequence(t.get("fields")):
 			if not sync_element(f, ["id", "name", "fieldtype"]):
 				continue
-			row_merge("fields", ["crm", "class", "id"], {"crm": crm_id, "class": t["id"], "id": f["id"], "name": f["name"], "fieldtype": f["fieldtype"], "flags": f.get("flags", ""), "multi": f.get("multi", 0), "rank": f.get("rank", 0), "card": f.get("card", ""), "position": f.get("position", ""), "rows": f.get("rows", 0)})
+			field = {"crm": crm_id, "class": t["id"], "id": f["id"], "name": f["name"], "fieldtype": f["fieldtype"], "flags": f.get("flags", ""), "multi": f.get("multi", 0), "rank": f.get("rank", 0), "card": f.get("card", ""), "position": f.get("position", ""), "rows": f.get("rows", 0)}
+			field.update(field_limits(f))
+			row_merge("fields", ["crm", "class", "id"], field)
 			# Options
 			for o in sequence(f.get("options")):
 				if not sync_element(o, ["id", "name"]):
@@ -8501,10 +8630,11 @@ def do_object_update(crm_id, crm, params, user_id):
 	if new_class and new_class != row["class"] and not mochi.db.exists("select 1 from classes where crm=? and id=?", crm_id, new_class):
 		return {"error": "errors.class_not_found", "code": 404}
 	parent = params.get("parent")
+	changes = []
 	if parent != None:
 		if type(parent) != "string":
 			return {"error": "errors.invalid_value", "code": 400}
-		problem = object_reparent(crm_id, row, parent, user_id, now)
+		problem = object_reparent(crm_id, row, parent, user_id, now, changes)
 		if problem:
 			return {"error": problem[0], "code": problem[1]}
 	if new_class and new_class != row["class"]:
@@ -8517,6 +8647,7 @@ def do_object_update(crm_id, crm, params, user_id):
 		"class": new_class if new_class and new_class != row["class"] else row["class"],
 		"user": user_id
 	})
+	values_broadcast(crm_id, changes, user_id)
 	# Notify owner if watching
 	owner_id = get_owner_identity(crm_id)
 	notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.updated"))
@@ -8569,8 +8700,9 @@ def do_object_move(crm_id, crm, params, user_id):
 	if parent != None and params.get("promote", "") == "true":
 		return {"error": "errors.invalid_value", "code": 400}
 	parent_changed = False
+	changes = []
 	if parent != None:
-		problem = object_reparent(crm_id, row, parent, user_id, mochi.time.now())
+		problem = object_reparent(crm_id, row, parent, user_id, mochi.time.now(), changes)
 		if problem:
 			return {"error": problem[0], "code": problem[1]}
 		parent_changed = parent != row["parent"]
@@ -8624,21 +8756,15 @@ def do_object_move(crm_id, crm, params, user_id):
 			"crm": crm_id, "id": object_id, "parent": parent,
 			"class": row["class"], "user": user_id, "updated": now,
 		})
-	# Cascade status/row changes to all descendants
-	if value_changed or row_changed:
-		descendants = get_all_descendants(object_id)
-		now = mochi.time.now()
-		for desc_id in descendants:
-			if value_changed:
-				row_merge("values", ["object", "field"], {"object": desc_id, "field": field, "value": target_value})
-			if row_changed:
-				row_merge("values", ["object", "field"], {"object": desc_id, "field": row_field, "value": row_value})
-			row_set("objects", "id=?", [desc_id], {"updated": now})
+	# Cascade status/row changes to the descendants that take them
 	updated_values = {}
 	if value_changed:
 		updated_values[field] = target_value
 	if row_changed:
 		updated_values[row_field] = row_value
+	if updated_values:
+		values_cascade(crm_id, get_all_descendants(object_id), updated_values, mochi.time.now(), changes)
+	values_broadcast(crm_id, changes, user_id)
 	if updated_values:
 		broadcast_event(crm_id, "values/update", {
 			"crm": crm_id, "id": object_id,
@@ -9261,17 +9387,18 @@ def do_field_update(crm_id, crm, params):
 	if rows_number != None:
 		update_data["rows"] = rows_number
 	# The validation attributes, matching the owner HTTP path field for field.
-	# minlength/maxlength go through safe_int there, so they do here too.
+	# minlength/maxlength go through safe_int there, so they do here too. They
+	# are written under the id the field has now, after any rename above.
 	for key in ["min", "max", "pattern", "prefix", "suffix", "format"]:
 		value = params.get(key)
 		if value != None:
-			row_set("fields", "crm=? and class=? and id=?", [crm_id, class_id, field_id], {key: value})
+			row_set("fields", "crm=? and class=? and id=?", [crm_id, class_id, update_data["id"]], {key: value})
 			update_data[key] = value
 	for key in ["minlength", "maxlength"]:
 		value = params.get(key)
 		if value != None:
 			number = safe_int(value)
-			row_set("fields", "crm=? and class=? and id=?", [crm_id, class_id, field_id], {key: number})
+			row_set("fields", "crm=? and class=? and id=?", [crm_id, class_id, update_data["id"]], {key: number})
 			update_data[key] = number
 	broadcast_event(crm_id, "field/update", update_data)
 	return {"success": True}
