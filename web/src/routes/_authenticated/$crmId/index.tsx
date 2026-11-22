@@ -32,6 +32,7 @@ import {
 import { Settings, Settings2, Users } from 'lucide-react'
 import crmsApi from '@/api/crms'
 import { useCrmsStore } from '@/stores/crms-store'
+import { useShareLabels } from '@/lib/share-labels'
 import { ViewOptionsBar } from '@/components/view-options-bar'
 import { BoardContainer } from '@/features/board/components'
 import { CreateObjectDialog } from '@/features/objects/components'
@@ -125,6 +126,7 @@ export function CrmPageContent({
   const navigate = useNavigate()
   const router = useRouter()
   const refreshSidebar = useCrmsStore((state) => state.refresh)
+  const share = useShareLabels()
 
   return (
     <EntityObjectsPage<CrmObject>
@@ -144,6 +146,9 @@ export function CrmPageContent({
       // An empty CRM opens on its companies view: the first thing to add is a
       // company, and the default view has nothing to show until one exists.
       emptyViewClass='company'
+      shareUrl={() =>
+        absoluteRouteUrl(router, { to: '/$crmId', params: { crmId } })
+      }
       labels={{
         pageActions: t`Open page actions`,
         createShort: t`New`,
@@ -164,9 +169,7 @@ export function CrmPageContent({
         loading: t`Loading...`,
         downloaded: (filename) => t`Downloaded ${filename}`,
         exportFailed: t`Failed to export data`,
-        shareAction: t`Link`,
-        shareTitle: t`CRM link`,
-        shareFailed: t`Failed to create link`,
+        share,
         moveFailed: t`Failed to move`,
         columnCreateFailed: t`Failed to add column`,
         columnRenameFailed: t`Failed to rename column`,
