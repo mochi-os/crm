@@ -55,6 +55,7 @@ describe('CreateCrmDialog', () => {
       expect(mockCreate).toHaveBeenCalledWith({
         name: 'Test CRM',
         privacy: 'private',
+        readable: 'false',
       })
     })
   })
@@ -67,17 +68,18 @@ describe('CreateCrmDialog', () => {
     ).toBeInTheDocument()
   })
 
-  it('should have privacy toggle defaulting to private', () => {
+  it('should have both switches defaulting to off', () => {
     render(<CreateCrmDialog open={true} onOpenChange={vi.fn()} hideTrigger />)
 
     expect(
-      screen.getByRole('switch', {
-        name: 'Allow anyone to view and comment on CRM',
-      })
+      screen.getByRole('switch', { name: 'Allow anyone to search for CRM' })
+    ).not.toBeChecked()
+    expect(
+      screen.getByRole('switch', { name: 'Allow anyone to view CRM' })
     ).not.toBeChecked()
   })
 
-  it('creates a public CRM with the switch on', async () => {
+  it('lists the CRM with the search switch on, still for members only', async () => {
     mockCreate.mockResolvedValue({ data: { id: '123', fingerprint: 'abc' } })
 
     render(<CreateCrmDialog open={true} onOpenChange={vi.fn()} hideTrigger />)
@@ -86,9 +88,7 @@ describe('CreateCrmDialog', () => {
       target: { value: 'Open CRM' },
     })
     fireEvent.click(
-      screen.getByRole('switch', {
-        name: 'Allow anyone to view and comment on CRM',
-      })
+      screen.getByRole('switch', { name: 'Allow anyone to search for CRM' })
     )
     fireEvent.click(screen.getByRole('button', { name: /Create CRM/i }))
 
@@ -96,24 +96,51 @@ describe('CreateCrmDialog', () => {
       expect(mockCreate).toHaveBeenCalledWith({
         name: 'Open CRM',
         privacy: 'public',
+        readable: 'false',
       })
     })
   })
 
-  it('turns the switch off again when the dialog closes', () => {
-    const name = 'Allow anyone to view and comment on CRM'
+  it('lets anyone view the CRM with the view switch on, unlisted', async () => {
+    mockCreate.mockResolvedValue({ data: { id: '123', fingerprint: 'abc' } })
+
+    render(<CreateCrmDialog open={true} onOpenChange={vi.fn()} hideTrigger />)
+
+    fireEvent.change(screen.getByLabelText('Name'), {
+      target: { value: 'Read CRM' },
+    })
+    fireEvent.click(
+      screen.getByRole('switch', { name: 'Allow anyone to view CRM' })
+    )
+    fireEvent.click(screen.getByRole('button', { name: /Create CRM/i }))
+
+    await waitFor(() => {
+      expect(mockCreate).toHaveBeenCalledWith({
+        name: 'Read CRM',
+        privacy: 'private',
+        readable: 'true',
+      })
+    })
+  })
+
+  it('turns both switches off again when the dialog closes', () => {
+    const names = ['Allow anyone to search for CRM', 'Allow anyone to view CRM']
     const { rerender } = render(
       <CreateCrmDialog open={true} onOpenChange={vi.fn()} hideTrigger />
     )
-    fireEvent.click(screen.getByRole('switch', { name }))
-    expect(screen.getByRole('switch', { name })).toBeChecked()
+    for (const name of names) {
+      fireEvent.click(screen.getByRole('switch', { name }))
+      expect(screen.getByRole('switch', { name })).toBeChecked()
+    }
 
     rerender(
       <CreateCrmDialog open={false} onOpenChange={vi.fn()} hideTrigger />
     )
     rerender(<CreateCrmDialog open={true} onOpenChange={vi.fn()} hideTrigger />)
 
-    expect(screen.getByRole('switch', { name })).not.toBeChecked()
+    for (const name of names) {
+      expect(screen.getByRole('switch', { name })).not.toBeChecked()
+    }
   })
 
   it('should include descriptive dialog text for assistive tech', () => {

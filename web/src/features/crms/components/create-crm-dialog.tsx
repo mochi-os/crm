@@ -52,6 +52,7 @@ export function CreateCrmDialog({
   const [isPending, setIsPending] = useState(false)
   const [name, setName] = useState('')
   const [allowSearch, setAllowSearch] = useState(false)
+  const [readable, setReadable] = useState(false)
   const [importData, setImportData] = useState<Record<string, unknown> | null>(
     null
   )
@@ -78,6 +79,7 @@ export function CreateCrmDialog({
     if (!open) {
       setName('')
       setAllowSearch(false)
+      setReadable(false)
       clearImport()
     }
   }, [open, clearImport])
@@ -105,6 +107,7 @@ export function CreateCrmDialog({
         crmsApi.create({
           name: name.trim(),
           privacy: allowSearch ? 'public' : 'private',
+          readable: readable ? 'true' : 'false',
         }),
         {
           loading: t`Creating CRM...`,
@@ -319,12 +322,26 @@ export function CreateCrmDialog({
                 htmlFor='allow-search'
                 className='cursor-pointer text-sm font-medium'
               >
-                <Trans>Allow anyone to view and comment on CRM</Trans>
+                <Trans>Allow anyone to search for CRM</Trans>
               </Label>
               <Switch
                 id='allow-search'
                 checked={allowSearch}
                 onCheckedChange={setAllowSearch}
+              />
+            </div>
+
+            <div className='flex items-center justify-between rounded-lg border px-4 py-3'>
+              <Label
+                htmlFor='readable'
+                className='cursor-pointer text-sm font-medium'
+              >
+                <Trans>Allow anyone to view CRM</Trans>
+              </Label>
+              <Switch
+                id='readable'
+                checked={readable}
+                onCheckedChange={setReadable}
               />
             </div>
 

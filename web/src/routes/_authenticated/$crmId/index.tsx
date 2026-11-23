@@ -194,10 +194,11 @@ export function CrmPageContent({
       duplicate={{
         menuAction: t`Copy`,
         api: crmsApi,
-        create: async (name, privacy) => {
+        create: async (name, privacy, readable) => {
           const response = await crmsApi.create({
             name,
             privacy,
+            readable: readable ? 'true' : 'false',
             // The import does not carry the description, so it is set here.
             description: crm.crm.description,
           })
@@ -222,7 +223,8 @@ export function CrmPageContent({
           name: t`Name`,
           everything: t`Everything`,
           designOnly: t`Design only`,
-          allowSearch: t`Allow anyone to view and comment on CRM`,
+          allowSearch: t`Allow anyone to search for CRM`,
+          readable: t`Allow anyone to view CRM`,
           cancel: t`Cancel`,
           confirm: t`Copy`,
           duplicating: t`Copying CRM...`,

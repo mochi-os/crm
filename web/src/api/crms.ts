@@ -13,7 +13,10 @@ import { crmsRequest } from './request'
 interface CreateCrmRequest {
   name: string
   description?: string
+  /** Whether the directory lists the CRM; nothing else. */
   privacy?: 'public' | 'private'
+  /** Whether anyone may view it; members only when absent. */
+  readable?: 'true' | 'false'
 }
 
 interface UpdateCrmRequest {
