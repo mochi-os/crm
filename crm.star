@@ -325,6 +325,10 @@ RANK_ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 RANK_HEADERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 RANK_SMALLEST = "A00000000000000000000000000"  # 'A' + 26 zeros: smallest integer header
 RANK_LENGTH = 1024  # the longest key a copy takes from its owner
+# A move that writes a key longer than RANK_SPREAD spreads its neighbours' keys
+# again (rank_respread); one object/ranks event carries at most RANK_CHUNK keys.
+RANK_SPREAD = 96
+RANK_CHUNK = 200
 
 def rank_int_length(head):
 	i = RANK_HEADERS.index(head)
@@ -565,37 +569,159 @@ def move_place_check(object_id, after, before):
 			return {"key": "errors.invalid_value"}
 	return None
 
-def move_rank(crm_id, object_id, field, target_value, moved, place):
-	# Write the key a move gives object_id and return every key written, as
-	# {id, rank} rows for object/ranks. place holds the move's after and before,
-	# the objects it was dropped directly after and before, and the key goes
-	# beside the first of them still in the CRM: one deleted since the board was
-	# read leaves the other. A client that predates them sends rank, a 1-based
-	# position within scope. With no neighbour, a move to another column (moved)
-	# goes to the end, and anything else keeps its key.
-	handle = rank_transaction(object_id)
+# rank_scope(scope) -> (joins, conditions, join arguments, condition arguments):
+# the SQL that keeps, of the objects o of a statement, those in a move's scope
+# (see move_rank).
+def rank_scope(scope):
+	joins = ""
+	conditions = ""
+	joined = []
+	conditioned = []
+	if scope["field"]:
+		joins += " left join \"values\" c on c.object=o.id and c.field=?"
+		joined.append(scope["field"])
+		conditions += " and coalesce(c.value, '')=?"
+		conditioned.append(scope["value"])
+	if scope["lane"]:
+		joins += " left join \"values\" l on l.object=o.id and l.field=?"
+		joined.append(scope["lane"])
+		conditions += " and coalesce(l.value, '')=?"
+		conditioned.append(scope["row"])
+	if scope["parent"] != None:
+		conditions += " and o.parent=?"
+		conditioned.append(scope["parent"])
+	return joins, conditions, joined, conditioned
+
+# rank_member(crm_id, anchor, scope, handle) -> whether anchor is an object of
+# the CRM in the move's scope: a neighbour moved to another column, lane or
+# parent since the board was read is no neighbour there.
+def rank_member(crm_id, anchor, scope, handle):
+	joins, conditions, joined, conditioned = rank_scope(scope)
+	return handle.exists("select 1 from objects o" + joins + " where o.id=? and o.crm=?" + conditions, *(joined + [anchor, crm_id] + conditioned))
+
+# rank_edge(crm_id, object_id, key, scope, after, handle) -> a key past the CRM's
+# last (after) or below its first, when the anchor holding key is the last or
+# first object of the move's scope; else None. A drop at a column's end beside
+# its last card would otherwise take the gap to the next key in the whole CRM,
+# usually another column's, and each such drop halves it, so a column appended
+# to grows its keys by a character every six or so drops. None too when the
+# CRM's end holds a key no owner mints, which has no place on the scale.
+def rank_edge(crm_id, object_id, key, scope, after, handle):
+	joins, conditions, joined, conditioned = rank_scope(scope)
+	beyond = " and o.rank>?" if after else " and o.rank<?"
+	if handle.exists("select 1 from objects o" + joins + " where o.crm=? and o.id!=?" + beyond + conditions, *(joined + [crm_id, object_id, key] + conditioned)):
+		return None
+	if after:
+		row = handle.row("select max(rank) as r from objects where crm=? and id!=?", crm_id, object_id)
+	else:
+		row = handle.row("select min(rank) as r from objects where crm=? and id!=? and typeof(rank)='text'", crm_id, object_id)
+	edge = row["r"] if row else None
+	if not rank_valid(edge):
+		return None
+	return rank_between(edge, None) if after else rank_between(None, edge)
+
+# rank_bound(key) -> whether a spread of keys may stand beside key: none, an
+# integer from before keys were canonical, a key a copy takes, or text that
+# sorts below or above every such key. Anything else, a key past RANK_LENGTH or
+# off the alphabet, cannot be bisected, and is spread over itself.
+def rank_bound(key):
+	if key == None or type(key) != "string":
+		return True
+	return rank_valid(key) or key < "A" or key >= "{"
+
+# rank_respread(crm_id, ranks, handle): when a key in ranks, the keys a move
+# wrote as {id, rank}, is past RANK_SPREAD, give the objects around them new
+# keys spread evenly through a wider gap, in the order lists show them (rank
+# asc, created desc, id desc), so none is past half of RANK_SPREAD. Repeated
+# drops into one gap halve it each time, and a key there grows by a character
+# every six or so; past RANK_LENGTH a copy takes none, and would show the object
+# first. The objects taken are those between the lowest and highest key in
+# ranks and as many either side, from eight, doubling until the spread is short
+# enough, which it always is once they reach both ends of the CRM. Each key
+# rewritten is added to ranks, or replaces the one there for its object. Runs in
+# the move's transaction (rank_transaction).
+def rank_respread(crm_id, ranks, handle):
+	if not ranks or max([len(r["rank"]) for r in ranks]) <= RANK_SPREAD:
+		return
+	keys = [r["rank"] for r in ranks]
+	lowest = min(keys)
+	highest = max(keys)
+	middle = handle.rows("select id, rank from objects where crm=? and rank>=? and rank<=? order by rank asc, created desc, id desc", crm_id, lowest, highest) or []
+	width = 8
+	window = None
+	spread = None
+	for _ in range(64):
+		below = handle.rows("select id, rank from objects where crm=? and rank<? order by rank desc, created asc, id asc limit ?", crm_id, lowest, width + 1) or []
+		above = handle.rows("select id, rank from objects where crm=? and rank>? order by rank asc, created desc, id desc limit ?", crm_id, highest, width + 1) or []
+		low = below[width]["rank"] if len(below) > width else None
+		high = above[width]["rank"] if len(above) > width else None
+		if rank_bound(low) and rank_bound(high):
+			window = list(reversed(below[:width])) + list(middle) + list(above[:width])
+			spread = rank_spread(low if rank_valid(low) else None, high if rank_valid(high) else None, len(window))
+			if (low == None and high == None) or max([len(k) for k in spread]) <= RANK_SPREAD // 2:
+				break
+		width *= 2
+	if not window:
+		return
+	written = {}
+	for i, r in enumerate(ranks):
+		written[r["id"]] = i
+	for o, k in zip(window, spread):
+		if o["rank"] == k:
+			continue
+		handle.execute("update objects set rank=? where id=?", k, o["id"])
+		if o["id"] in written:
+			ranks[written[o["id"]]]["rank"] = k
+		else:
+			written[o["id"]] = len(ranks)
+			ranks.append({"id": o["id"], "rank": k})
+
+# rank_broadcast(crm_id, ranks, now, user_id): tell subscribers the keys a move
+# wrote, at most RANK_CHUNK in one object/ranks event, with the owner's time for
+# the move, which a copy holding a later change of an object skips.
+def rank_broadcast(crm_id, ranks, now, user_id):
+	for start in range(0, len(ranks), RANK_CHUNK):
+		broadcast_event(crm_id, "object/ranks", {
+			"crm": crm_id, "ranks": ranks[start:start + RANK_CHUNK], "user": user_id, "updated": now,
+		})
+
+# move_rank(crm_id, object_id, scope, place, moved, handle) -> every key the move
+# writes, as {id, rank} rows: object_id's, any a neighbour's tie took and any
+# spread again around them. scope is where the move puts the object, as
+# {"field", "value", "lane", "row", "parent"}: the board's field and the value
+# it takes there, its lane field and that value, each "" where the move names
+# none, and the parent whose children it goes among, None for none. place holds
+# after and before, the objects it was dropped directly after and before, and
+# the key goes beside the first of them still in that scope: one deleted or
+# moved elsewhere since the board was read leaves the other. Beside the scope's
+# last object, or above its first, it goes past the CRM's last key or below its
+# first (rank_edge). A client that predates them sends rank, a 1-based position
+# within scope. With no neighbour, a move to another column (moved) goes to the
+# end, and anything else keeps its key. Every read and write is the move's
+# transaction's (handle).
+def move_rank(crm_id, object_id, scope, place, moved, handle):
 	after = place.get("after") or None
 	before = place.get("before") or None
 	rank = place.get("rank")
 	if after == None and before == None and rank != None:
-		after, before = rank_neighbours(crm_id, object_id, field, target_value, place.get("scope"), int(rank), handle)
+		after, before = rank_neighbours(crm_id, object_id, scope["field"], scope["value"], scope["parent"], int(rank), handle)
 		if after == None and before == None:
 			moved = True
 	ranks = []
 	key = None
 	for anchor, beside in [(after, True), (before, False)]:
-		if anchor == None:
+		if anchor == None or not rank_member(crm_id, anchor, scope, handle):
 			continue
 		found = rank_untie(crm_id, object_id, anchor, ranks, handle)
 		if found != None:
-			key = rank_beside(crm_id, object_id, found, beside, handle)
+			key = rank_edge(crm_id, object_id, found, scope, beside, handle) or rank_beside(crm_id, object_id, found, beside, handle)
 			break
 	if key == None and moved:
 		key = rank_after_all(crm_id, object_id, handle)
 	if key != None:
 		handle.execute("update objects set rank=? where id=?", key, object_id)
 		ranks.append({"id": object_id, "rank": key})
-	handle.commit()
+	rank_respread(crm_id, ranks, handle)
 	return ranks
 
 def rank_after_all(crm_id, exclude_id, handle):
@@ -915,9 +1041,9 @@ def row_merge(table, keys, row, handle=None, guard=None):
 	else:
 		mochi.db.execute(sql, *params)
 
-def row_set(table, where, args, updates):
+def row_set(table, where, args, updates, handle=None):
 	fields = list(updates)
-	mochi.db.execute("update \"" + table + "\" set " + ", ".join(["\"" + c + "\"=?" for c in fields]) + " where (" + where + ")", *([updates[c] for c in fields] + list(args)))
+	(handle or mochi.db).execute("update \"" + table + "\" set " + ", ".join(["\"" + c + "\"=?" for c in fields]) + " where (" + where + ")", *([updates[c] for c in fields] + list(args)))
 
 def row_remove(table, where, args, handle=None):
 	sql = "delete from \"" + table + "\" where (" + where + ")"
@@ -2052,13 +2178,18 @@ def action_crm_create(a):
 
 	description = a.input("description") or ""
 	# privacy decides whether the directory lists the CRM and nothing else;
-	# readable whether anyone may view it. Without readable, as a client that
-	# predates it sends, the CRM is for its members alone.
+	# readable whether anyone may view it.
 	privacy = a.input("privacy") or "private"
 	if privacy not in ("public", "private"):
 		a.error.label(400, "errors.invalid_data")
 		return
-	readable = a.input("readable") or "false"
+	readable = a.input("readable")
+	if readable == None:
+		# A client that predates readable sends none, and by public it meant
+		# anyone may view. Drop this once clients that send readable have
+		# shipped, leaving a missing readable members-only.
+		readable = "true" if privacy == "public" else "false"
+	readable = readable or "false"
 	if readable not in ("true", "false"):
 		a.error.label(400, "errors.invalid_data")
 		return
@@ -2431,14 +2562,29 @@ def check_crm_access(user_id, crm_id, level):
 # denies all four), so its own rows decide every operation before a group's,
 # "+"'s or "*"'s broader grant is reached.
 def access_ceiling(subject, resource, level, granter):
+	included = ACCESS_LEVELS[ACCESS_LEVELS.index(level):] if level in ACCESS_LEVELS else []
+	# In one write where core offers it, so a failure part way cannot leave the
+	# subject with some of its rules or none.
+	if hasattr(mochi.access, "replace"):
+		mochi.access.replace(subject, resource, {op: op in included for op in ACCESS_LEVELS}, granter)
+		return
 	for op in ACCESS_LEVELS + ["*"]:
 		mochi.access.revoke(subject, resource, op)
-	included = ACCESS_LEVELS[ACCESS_LEVELS.index(level):] if level in ACCESS_LEVELS else []
 	for op in ACCESS_LEVELS:
 		if op in included:
 			mochi.access.allow(subject, resource, op, granter)
 		else:
 			mochi.access.deny(subject, resource, op, granter)
+
+# access_widen(resource): after "*" is given a level, drop the deny of view "+"
+# holds when that is all it holds, as a CRM made without readable has it. "+"
+# decides before "*", so the row would keep every signed-in non-member out
+# while anonymous visitors took the level; without it "+" falls through to
+# "*", as the Access tab then shows. A level the owner gave "+" stays.
+def access_widen(resource):
+	rules = [r for r in (mochi.access.list.resource(resource) or []) if r.get("subject") == "+"]
+	if len(rules) == 1 and rules[0].get("operation") == "view" and not rules[0].get("grant"):
+		mochi.access.revoke("+", resource, "view")
 
 # access_fold(rules) -> list: one rule per subject, in the order core lists
 # them, whose operation is the level the subject's rows amount to: the "*" row
@@ -2637,6 +2783,8 @@ def action_access_set(a):
 	# The level is a ceiling: what a group, "+" or "*" grants beyond it does
 	# not reach the subject.
 	access_ceiling(subject, resource, level, a.user.identity.id)
+	if subject == "*" and level != "none":
+		access_widen(resource)
 
 	# A level of "none", or replacing a broader rule, narrows access - drop
 	# any subscriber the change cut off and purge their replica.
@@ -2680,8 +2828,10 @@ def action_access_revoke(a):
 	for op in ACCESS_LEVELS + ["*"]:
 		mochi.access.revoke(subject, resource, op)
 
-	# Removing rules can only narrow access - drop any subscriber the change
-	# cut off, stop their fan-out, and tell their server to purge its replica.
+	# Removing a subject's rules narrows its access, or widens it to what a
+	# group, "+" or "*" rule gives it once its own ceiling is gone - drop any
+	# subscriber the change cut off, stop their fan-out, and tell their server
+	# to purge its replica.
 	subscribers_revalidate(crm_id)
 
 	return {"data": {"success": True}}
@@ -2728,26 +2878,39 @@ def require_crm(a, level="view"):
 		return None, None
 	return crm_id, crm
 
-def log_activity(object_id, user, action, field="", oldvalue="", newvalue=""):
+def log_activity(object_id, user, action, field="", oldvalue="", newvalue="", handle=None, events=None):
 	"""Log an activity entry for an object and replicate it to subscribers
 	when this host owns the CRM. Subscribers insert the same row by UID
-	so the activity table stays a converged append-only log."""
+	so the activity table stays a converged append-only log. Within a
+	transaction (handle) the entry is written through it and its broadcast
+	added to events, for events_broadcast once it commits."""
+	database = handle or mochi.db
 	activity_id = mochi.uid()
 	now = mochi.time.now()
-	mochi.db.execute(
+	database.execute(
 		"insert into activity (id, object, user, action, field, oldvalue, newvalue, created) values (?, ?, ?, ?, ?, ?, ?, ?)",
 		activity_id, object_id, user, action, field, str(oldvalue), str(newvalue), now
 	)
-	owned = mochi.db.row(
+	owned = database.row(
 		"select o.crm from objects o join crms c on c.id=o.crm where o.id=? and c.owner=1",
 		object_id
 	)
 	if owned:
-		broadcast_event(owned["crm"], "activity/log", {
+		data = {
 			"crm": owned["crm"], "id": activity_id, "object": object_id,
 			"user": user, "action": action, "field": field,
 			"oldvalue": str(oldvalue), "newvalue": str(newvalue), "created": now,
-		})
+		}
+		if events != None:
+			events.append({"event": "activity/log", "data": data})
+		else:
+			broadcast_event(owned["crm"], "activity/log", data)
+
+# events_broadcast(crm_id, events): send subscribers the events a transaction
+# gathered, in order, once it has committed.
+def events_broadcast(crm_id, events):
+	for event in events:
+		broadcast_event(crm_id, event["event"], event["data"])
 
 def get_owner_identity(crm_id):
 	"""Get the crm owner's identity from the first subscriber. The owner row
@@ -2846,7 +3009,7 @@ def promotable(crm_id, object_id, obj_class):
 		return True
 	return mochi.db.exists("select 1 from hierarchy where crm=? and class=? and parent=''", crm_id, obj_class)
 
-def would_create_cycle(object_id, new_parent_id):
+def would_create_cycle(object_id, new_parent_id, handle=None):
 	"""Check if setting new_parent_id as parent of object_id would create a cycle."""
 	if not new_parent_id:
 		return False
@@ -2859,7 +3022,7 @@ def would_create_cycle(object_id, new_parent_id):
 			return True
 		if not current:
 			return False
-		parent_row = mochi.db.row("select parent from objects where id=?", current)
+		parent_row = (handle or mochi.db).row("select parent from objects where id=?", current)
 		current = parent_row["parent"] if parent_row else ""
 	return True
 
@@ -2871,82 +3034,88 @@ def would_create_cycle(object_id, new_parent_id):
 # Answers an error label and status, or None once the parent is set or when it
 # was that one already. The values written are added to changes, which the
 # caller passes to values_broadcast after telling subscribers of the parent.
-def object_reparent(crm_id, row, parent, user, now, changes):
+# Every read and write goes through handle, the caller's open transaction, and
+# the activity entry's broadcast is added to events (log_activity).
+def object_reparent(crm_id, row, parent, user, now, changes, handle, events):
 	object_id = row["id"]
 	old_parent = row["parent"]
 	if parent == old_parent:
 		return None
-	if parent and would_create_cycle(object_id, parent):
+	if parent and would_create_cycle(object_id, parent, handle):
 		return ("errors.cannot_set_parent_would_create_a_cycle", 400)
 	parent_class = ""
 	if parent:
-		parent_row = mochi.db.row("select class from objects where id=? and crm=?", parent, crm_id)
+		parent_row = handle.row("select class from objects where id=? and crm=?", parent, crm_id)
 		if not parent_row:
 			return ("errors.parent_object_not_found", 404)
 		parent_class = parent_row["class"]
-	if not mochi.db.exists("select 1 from hierarchy where crm=? and class=? and parent=?", crm_id, row["class"], parent_class):
+	if not handle.exists("select 1 from hierarchy where crm=? and class=? and parent=?", crm_id, row["class"], parent_class):
 		return ("errors.parent_hierarchy_disallowed", 400)
-	row_set("objects", "id=?", [object_id], {"parent": parent, "updated": now})
-	log_activity(object_id, user, "moved", "parent", old_parent, parent)
+	row_set("objects", "id=?", [object_id], {"parent": parent, "updated": now}, handle)
+	log_activity(object_id, user, "moved", "parent", old_parent, parent, handle, events)
 	if parent:
-		parent_values = mochi.db.rows('select field, value from "values" where object=?', parent) or []
+		parent_values = handle.rows('select field, value from "values" where object=?', parent) or []
 		parent_val_map = {v["field"]: v["value"] for v in parent_values}
-		views = mochi.db.rows("select columns, rows from views where crm=?", crm_id) or []
+		views = handle.rows("select columns, rows from views where crm=?", crm_id) or []
 		sync_fields = {}
 		for view in views:
 			if view["columns"]:
 				sync_fields[view["columns"]] = parent_val_map.get(view["columns"], "")
 			if view["rows"]:
 				sync_fields[view["rows"]] = parent_val_map.get(view["rows"], "")
-		values_cascade(crm_id, [object_id] + get_all_descendants(object_id), sync_fields, now, changes)
+		values_cascade(crm_id, [object_id] + get_all_descendants(object_id, 0, handle), sync_fields, now, changes, handle)
 	return None
 
-# values_cascade(crm_id, ids, values, now, changes): give each object of ids
-# those of values ({field: value}) its own class has the field for and
+# values_cascade(crm_id, ids, values, now, changes, handle): give each object of
+# ids those of values ({field: value}) its own class has the field for and
 # accepts, and leave it the rest. Fields are per class, so a child of another
 # class may lack the field, or not offer the option, its parent's move names.
 # Each object whose values change is added to changes as {"id", "values"}.
-def values_cascade(crm_id, ids, values, now, changes):
+# Within a transaction (handle) every read and write goes through it.
+def values_cascade(crm_id, ids, values, now, changes, handle=None):
+	database = handle or mochi.db
 	accepted = {}
 	for object_id in ids:
-		row = mochi.db.row("select class from objects where id=? and crm=?", object_id, crm_id)
+		row = database.row("select class from objects where id=? and crm=?", object_id, crm_id)
 		if not row:
 			continue
 		taken = {}
 		for field, value in values.items():
 			key = (row["class"], field)
 			if key not in accepted:
-				accepted[key] = mochi.db.exists("select 1 from fields where crm=? and class=? and id=?", crm_id, row["class"], field) and validate_field_value(crm_id, row["class"], field, value) == None
+				accepted[key] = database.exists("select 1 from fields where crm=? and class=? and id=?", crm_id, row["class"], field) and validate_field_value(crm_id, row["class"], field, value, handle) == None
 			if not accepted[key]:
 				continue
-			current = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field)
+			current = database.row("select value from \"values\" where object=? and field=?", object_id, field)
 			if (current["value"] if current else "") == value:
 				continue
-			row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": value})
+			row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": value}, handle)
 			taken[field] = value
 		if taken:
-			row_set("objects", "id=?", [object_id], {"updated": now})
-			changes.append({"id": object_id, "values": taken})
+			row_set("objects", "id=?", [object_id], {"updated": now}, handle)
+			changes.append({"id": object_id, "values": taken, "updated": now})
 
 # values_broadcast(crm_id, changes, user): tell subscribers the values
-# values_cascade wrote, one values/update per object. Marked sync, as the
-# owner notifies no watcher of an object a cascade reached either.
+# values_cascade wrote, one values/update per object, with the owner's time.
+# Marked sync, as the owner notifies no watcher of an object a cascade reached
+# either.
 def values_broadcast(crm_id, changes, user):
 	for change in changes:
 		broadcast_event(crm_id, "values/update", {
-			"crm": crm_id, "id": change["id"],
+			"crm": crm_id, "id": change["id"], "updated": change["updated"],
 			"values": change["values"], "user": user, "sync": True,
 		})
 
-def get_all_descendants(object_id, depth=0):
-	"""Get all descendant object IDs recursively."""
+def get_all_descendants(object_id, depth=0, handle=None):
+	"""Get all descendant object IDs recursively, through handle when one is
+	given."""
 	if depth >= 100:
 		return []
 	result = []
-	children = mochi.db.rows("select id from objects where parent=?", object_id)
+	children = (handle or mochi.db).rows("select id from objects where parent=?", object_id)
 	for child in (children or []):
 		result.append(child["id"])
-		result.extend(get_all_descendants(child["id"], depth + 1))
+		result.extend(get_all_descendants(child["id"], depth + 1, handle))
 	return result
 
 def delete_object_cascade(crm_id, object_id, user=""):
@@ -3185,6 +3354,80 @@ def action_object_get(a):
 		"comments": {"count": comment_count},
 	}}
 
+# object_update(crm_id, row, parent, new_class, user_id) -> the answer, or
+# {"error", "code"}: give the object in row (the whole row) the parent (None
+# keeps it) and class (None or "" keeps it) an update action or a forwarded one
+# asks for. A new parent names no place among its children, so the object goes
+# after the last of them, under the write lock that mints its key, with the
+# values the reparent cascades, in one transaction; subscribers are told after
+# it commits. The answer names the parent, class and keys written, with the
+# owner's time for them, which the subscriber that forwarded the update writes.
+def object_update(crm_id, row, parent, new_class, user_id):
+	object_id = row["id"]
+	now = mochi.time.now()
+	changes = []
+	events = []
+	ranks = []
+	handle = rank_transaction(object_id)
+	if parent != None:
+		problem = object_reparent(crm_id, row, parent, user_id, now, changes, handle, events)
+		if problem:
+			handle.rollback()
+			return {"error": problem[0], "code": problem[1]}
+		if parent != row["parent"]:
+			key = rank_after_all(crm_id, object_id, handle)
+			handle.execute("update objects set rank=? where id=?", key, object_id)
+			ranks.append({"id": object_id, "rank": key, "updated": now})
+	if new_class and new_class != row["class"]:
+		row_set("objects", "id=?", [object_id], {"class": new_class}, handle)
+		log_activity(object_id, user_id, "updated", "class", row["class"], new_class, handle, events)
+	row_set("objects", "id=?", [object_id], {"updated": now}, handle)
+	handle.commit()
+
+	events_broadcast(crm_id, events)
+	parent = parent if parent != None else row["parent"]
+	new_class = new_class if new_class else row["class"]
+	broadcast_event(crm_id, "object/update", {
+		"crm": crm_id, "id": object_id, "parent": parent, "class": new_class,
+		"user": user_id, "updated": now,
+	})
+	# After the parent: a value names an object, which a subscriber pulls the
+	# CRM for when it lacks one.
+	values_broadcast(crm_id, changes, user_id)
+	rank_broadcast(crm_id, ranks, now, user_id)
+	return {"success": True, "updated": now, "parent": parent, "class": new_class, "ranks": ranks}
+
+# update_answer(crm_id, object_id, answer, parent, new_class): write to this
+# copy what the owner's answer to a forwarded update says it wrote, with the
+# owner's time, so this copy's updated does not run ahead of the owner's next
+# object/update and drop it at the LWW gate. An answer older than this copy's
+# time, which a later change the owner broadcast has already reached, changes
+# nothing. An owner that predates naming the parent and class it wrote is taken
+# to have written those asked for (parent and new_class). A class this copy
+# does not hold yet, from a class event that has not landed, would fail the
+# write's foreign key after the owner made the change, so it is left to a pull
+# of the CRM, which brings both.
+def update_answer(crm_id, object_id, answer, parent, new_class):
+	answer = answer if type(answer) == "dict" else {}
+	now = owner_time(answer.get("updated")) or mochi.time.now()
+	if type(answer.get("parent")) == "string":
+		parent = answer["parent"]
+	if type(answer.get("class")) == "string":
+		new_class = answer["class"]
+	local = mochi.db.row("select updated from objects where id=? and crm=?", object_id, crm_id)
+	if not local or (local["updated"] or 0) > now:
+		return
+	changes = {"updated": now}
+	if parent != None:
+		changes["parent"] = parent
+	if new_class:
+		if mochi.db.exists("select 1 from classes where crm=? and id=?", crm_id, new_class):
+			changes["class"] = new_class
+		else:
+			request_resync(crm_id)
+	row_set("objects", "id=? and crm=?", [object_id, crm_id], changes)
+	ranks_apply(crm_id, answer.get("ranks"), now)
+
 def action_object_update(a):
 
 	crm_id = resolve_crm(a)
@@ -3212,14 +3455,7 @@ def action_object_update(a):
 		# id one of this user's other CRMs holds, which a write by id alone would
 		# rewrite.
 		if result and object_id and mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
-			# The owner's time for the update, as a move takes, so this copy's
-			# updated does not run ahead of the owner's next object/update and
-			# drop it at the LWW gate.
-			now = owner_time((result.get("data") or {}).get("updated")) or mochi.time.now()
-			if a.input("parent") != None:
-				row_set("objects", "id=? and crm=?", [object_id, crm_id], {"parent": p, "updated": now})
-			if c:
-				row_set("objects", "id=? and crm=?", [object_id, crm_id], {"class": c, "updated": now})
+			update_answer(crm_id, object_id, result.get("data"), p, c)
 		return result
 
 	if not check_crm_access(a.user.identity.id, crm_id, "write"):
@@ -3235,40 +3471,17 @@ def action_object_update(a):
 		a.error.label(404, "errors.object_not_found")
 		return
 
-	now = mochi.time.now()
-
 	# Checked before any write, so a bad class refuses the whole update.
 	new_class = a.input("class")
 	if new_class and new_class != row["class"] and not mochi.db.exists("select 1 from classes where crm=? and id=?", crm_id, new_class):
 		a.error.label(404, "errors.class_not_found")
 		return
 
-	# Update parent if provided
-	parent = a.input("parent")
-	changes = []
-	if parent != None:
-		problem = object_reparent(crm_id, row, parent, a.user.identity.id, now, changes)
-		if problem:
-			a.error.label(problem[1], problem[0])
-			return
-	# Update class if provided
-	if new_class and new_class != row["class"]:
-		row_set("objects", "id=?", [object_id], {"class": new_class, "updated": now})
-		log_activity(object_id, a.user.identity.id, "updated", "class", row["class"], new_class)
-
-	row_set("objects", "id=?", [object_id], {"updated": now})
-	broadcast_event(crm_id, "object/update", {
-		"crm": crm_id, "id": object_id,
-		"parent": parent if a.input("parent") != None else row["parent"],
-		"class": new_class if new_class and new_class != row["class"] else row["class"],
-		"user": a.user.identity.id,
-		"updated": now
-	})
-	# After the parent: a subscriber applying a value stamps the object with its
-	# own time, which an object/update sent after it would then lose to.
-	values_broadcast(crm_id, changes, a.user.identity.id)
-
-	return {"data": {"success": True}}
+	answer = object_update(crm_id, row, a.input("parent"), new_class, a.user.identity.id)
+	if answer.get("error"):
+		a.error.label(answer["code"], answer["error"])
+		return
+	return {"data": answer}
 
 def action_object_delete(a):
 
@@ -3369,26 +3582,7 @@ def action_object_move(a):
 			params["clear"] = "true"
 		result = forward_to_owner(a, crm_id, "object/move", params)
 		if result and object_id and mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
-			data = result.get("data") or {}
-			# The owner's time for the move, so this copy's updated does not run
-			# ahead of the owner's next object/update and drop it at the LWW gate.
-			now = owner_time(data.get("updated")) or mochi.time.now()
-			field = a.input("field") or ""
-			value = a.input("value")
-			if value:
-				row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": value})
-			elif clear and field:
-				row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": ""})
-			if parent != None:
-				row_set("objects", "id=?", [object_id], {"parent": parent, "updated": now})
-			# The keys the owner wrote, the moved object's and any it untied, so
-			# this copy orders the objects as the owner does.
-			ranks_apply(crm_id, data.get("ranks"))
-			if rf:
-				row_merge("values", ["object", "field"], {"object": object_id, "field": rf, "value": rv})
-			if a.input("promote") == "true":
-				row_set("objects", "id=?", [object_id], {"parent": '', "updated": now})
-			row_set("objects", "id=?", [object_id], {"updated": now})
+			move_answer(crm_id, object_id, result.get("data"))
 		return result
 
 	if not check_crm_access(a.user.identity.id, crm_id, "write"):
@@ -3407,17 +3601,15 @@ def action_object_move(a):
 		a.error.label(400, "errors.parent_hierarchy_disallowed")
 		return
 
-	obj_class = row["class"]
 	field = a.input("field") or ""
 	value = a.input("value")  # New column value
 	# A drop on the column for no value clears the field: an empty value
 	# keeps it, as a reorder sends.
 	clear = a.input("clear") == "true"
-	new_rank = a.input("rank")
 
 	# Every value the move writes is checked before it changes anything.
 	row_field, row_value = row_input(a.input("row"))
-	invalid = move_check(crm_id, obj_class, field, value, row_field, row_value, clear) or move_place_check(object_id, a.input("after"), a.input("before"))
+	invalid = move_check(crm_id, row["class"], field, value, row_field, row_value, clear) or move_place_check(object_id, a.input("after"), a.input("before"))
 	if invalid:
 		a.error.label(400, invalid["key"], **(invalid.get("args") or {}))
 		return
@@ -3429,91 +3621,151 @@ def action_object_move(a):
 	if parent != None and a.input("promote") == "true":
 		a.error.label(400, "errors.invalid_value")
 		return
-	parent_changed = False
+
+	answer = object_move(crm_id, row, {
+		"field": field, "value": value, "clear": clear, "lane": row_field, "row": row_value,
+		"parent": parent, "promote": a.input("promote") == "true", "scope": a.input("scope"),
+		"after": a.input("after"), "before": a.input("before"), "rank": a.input("rank"),
+	}, a.user.identity.id)
+	if answer.get("error"):
+		a.error.label(answer["code"], answer["error"])
+		return
+	return {"data": answer}
+
+# object_move(crm_id, row, move, user_id, notify=False) -> the answer, or
+# {"error", "code"}: move the object in row (its id, class and parent) as a move
+# action or a forwarded one asks, once its inputs are checked. move holds the
+# field and value of the column it goes into (clear empties it, an empty value
+# keeps it), its lane as lane and row, the parent it goes under (None keeps it)
+# or promote to the top level, and its place (move_rank): after and before, the
+# objects it was dropped between, or rank, a position within scope, which is
+# the parent when none is named. The parent, the values, the lane and the keys
+# are written in one transaction, under the write lock its keys are minted
+# under, so a failure leaves no change subscribers are not told of; they are
+# told after it commits. notify tells the owner when watching. The answer names
+# the parent and values the move wrote and every key, with the owner's time.
+def object_move(crm_id, row, move, user_id, notify=False):
+	object_id = row["id"]
+	field = move["field"]
+	parent = move["parent"]
+	scope = move["scope"] if move["scope"] != None else parent
+	now = mochi.time.now()
 	changes = []
+	events = []
+	handle = rank_transaction(object_id)
+	parent_changed = False
 	if parent != None:
-		problem = object_reparent(crm_id, row, parent, a.user.identity.id, mochi.time.now(), changes)
+		problem = object_reparent(crm_id, row, parent, user_id, now, changes, handle, events)
 		if problem:
-			a.error.label(problem[1], problem[0])
-			return
+			handle.rollback()
+			return {"error": problem[0], "code": problem[1]}
 		parent_changed = parent != row["parent"]
 
-	# Get old field value
-	old_value_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field)
-	old_value = old_value_row["value"] if old_value_row else ""
-
-	# The value it moves into: none for a clear, the one sent, or its own
-	target_value = "" if clear else (value if value else old_value)
+	# The value it moves into: none for a clear, the one sent, or its own, which
+	# the reparent above may have given it.
+	current = handle.row("select value from \"values\" where object=? and field=?", object_id, field)
+	old_value = current["value"] if current else ""
+	target_value = "" if move["clear"] else (move["value"] if move["value"] else old_value)
 	value_changed = old_value != target_value
-
-	# Handle field value change
 	if value_changed:
-		row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": target_value})
-		log_activity(object_id, a.user.identity.id, "updated", field, old_value, target_value)
+		row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": target_value}, handle)
+		log_activity(object_id, user_id, "updated", field, old_value, target_value, handle, events)
 
-	scope_parent = a.input("scope")
-	if scope_parent == None:
-		scope_parent = parent
-	ranks = move_rank(crm_id, object_id, field, target_value, value_changed, {
-		"after": a.input("after"), "before": a.input("before"),
-		"rank": new_rank, "scope": scope_parent,
-	})
-	# Handle row field change (for swimlane drag-drop)
-	row_changed = False
-	if row_field:
-		old_row_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, row_field)
-		old_row_value = old_row_row["value"] if old_row_row else ""
-		if old_row_value != row_value:
-			row_merge("values", ["object", "field"], {"object": object_id, "field": row_field, "value": row_value})
-			log_activity(object_id, a.user.identity.id, "updated", row_field, old_row_value, row_value)
-			row_changed = True
+	# The lane, for a drop in a board's swimlane
+	lane = move["lane"]
+	lane_changed = False
+	if lane:
+		current = handle.row("select value from \"values\" where object=? and field=?", object_id, lane)
+		old_lane = current["value"] if current else ""
+		if old_lane != move["row"]:
+			row_merge("values", ["object", "field"], {"object": object_id, "field": lane, "value": move["row"]}, handle)
+			log_activity(object_id, user_id, "updated", lane, old_lane, move["row"], handle, events)
+			lane_changed = True
 
-	# Handle promote (clear parent — for child dragged to different column/row)
-	promote = a.input("promote") == "true"
-	if promote:
-		old_parent_row = mochi.db.row("select parent from objects where id=?", object_id)
-		old_parent = old_parent_row["parent"] if old_parent_row else ""
+	# A promote clears the parent, for a child dragged to a column or lane
+	if move["promote"]:
+		current = handle.row("select parent from objects where id=?", object_id)
+		old_parent = current["parent"] if current else ""
 		if old_parent:
-			row_set("objects", "id=?", [object_id], {"parent": '', "updated": mochi.time.now()})
-			log_activity(object_id, a.user.identity.id, "moved", "parent", old_parent, "")
+			row_set("objects", "id=?", [object_id], {"parent": ""}, handle)
+			log_activity(object_id, user_id, "moved", "parent", old_parent, "", handle, events)
 			parent = ""
 			parent_changed = True
 
-	now = mochi.time.now()
-	row_set("objects", "id=?", [object_id], {"updated": now})
+	ranks = move_rank(crm_id, object_id, {
+		"field": field, "value": target_value, "lane": lane, "row": move["row"], "parent": scope,
+	}, {"after": move["after"], "before": move["before"], "rank": move["rank"]}, value_changed, handle)
 
-	# Subscribers learn a new parent the way object/update tells them of one.
-	if parent_changed:
-		broadcast_event(crm_id, "object/update", {
-			"crm": crm_id, "id": object_id, "parent": parent,
-			"class": row["class"], "user": a.user.identity.id, "updated": now,
-		})
-	# Cascade status/row changes to the descendants that take them
+	# Cascade the column and lane to the descendants that take them
 	updated_values = {}
 	if value_changed:
 		updated_values[field] = target_value
-	if row_changed:
-		updated_values[row_field] = row_value
+	if lane_changed:
+		updated_values[lane] = move["row"]
 	if updated_values:
-		values_cascade(crm_id, get_all_descendants(object_id), updated_values, mochi.time.now(), changes)
-	values_broadcast(crm_id, changes, a.user.identity.id)
+		values_cascade(crm_id, get_all_descendants(object_id, 0, handle), updated_values, now, changes, handle)
+	row_set("objects", "id=?", [object_id], {"updated": now}, handle)
+	final = handle.row("select parent from objects where id=?", object_id)
+	handle.commit()
+
+	events_broadcast(crm_id, events)
+	# Subscribers learn a new parent the way object/update tells them of one.
+	if parent_changed:
+		broadcast_event(crm_id, "object/update", {
+			"crm": crm_id, "id": object_id, "parent": final["parent"],
+			"class": row["class"], "user": user_id, "updated": now,
+		})
+	values_broadcast(crm_id, changes, user_id)
 	if updated_values:
 		broadcast_event(crm_id, "values/update", {
-			"crm": crm_id, "id": object_id,
-			"values": updated_values, "user": a.user.identity.id
+			"crm": crm_id, "id": object_id, "updated": now,
+			"values": updated_values, "user": user_id
 		})
+		if notify:
+			notify_watchers(object_id, crm_id, get_owner_identity(crm_id), user_id, mochi.app.label("notifications.body.updated"))
 
 	# The keys the move wrote: the moved object's, with the time it changed, and
-	# any a tied neighbour took.
+	# any a tied neighbour or a spread took.
 	for r in ranks:
 		if r["id"] == object_id:
 			r["updated"] = now
-	if ranks:
-		broadcast_event(crm_id, "object/ranks", {
-			"crm": crm_id, "ranks": ranks, "user": a.user.identity.id,
-		})
+	rank_broadcast(crm_id, ranks, now, user_id)
 
-	return {"data": {"success": True, "ranks": ranks, "updated": now}}
+	# The values the move wrote on the object, those its new parent gave it
+	# first, for the subscriber that forwarded it to write as they are.
+	written = {}
+	for change in changes:
+		if change["id"] == object_id:
+			written.update(change["values"])
+	if field:
+		written[field] = target_value
+	if lane:
+		written[lane] = move["row"]
+	return {"success": True, "ranks": ranks, "updated": now, "parent": final["parent"], "values": written}
+
+# move_answer(crm_id, object_id, answer): write to this copy what the owner's
+# answer to a forwarded move says it wrote: the object's parent and values and
+# every key, with the owner's time, so this copy's updated does not run ahead of
+# the owner's next object/update and drop it at the LWW gate. An answer older
+# than this copy's time for the object, which a later change the owner
+# broadcast has already reached, changes nothing of it. An owner that predates
+# naming the parent and values it wrote may not have written those asked for,
+# so nothing is written and the CRM is pulled again.
+def move_answer(crm_id, object_id, answer):
+	answer = answer if type(answer) == "dict" else {}
+	now = owner_time(answer.get("updated"))
+	if not now or type(answer.get("parent")) != "string" or type(answer.get("values")) != "dict":
+		request_resync(crm_id)
+		return
+	local = mochi.db.row("select updated from objects where id=? and crm=?", object_id, crm_id)
+	if local and (local["updated"] or 0) <= now:
+		for field, value in answer["values"].items():
+			if type(field) == "string" and type(value) == "string" and not value_refused(crm_id, object_id, field, value):
+				row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": value})
+		row_set("objects", "id=? and crm=?", [object_id, crm_id], {"parent": answer["parent"], "updated": now})
+	# The keys the owner wrote, the moved object's and any it untied or spread,
+	# so this copy orders the objects as the owner does.
+	ranks_apply(crm_id, answer.get("ranks"), now)
 
 # ============================================================================
 # Value Actions
@@ -3614,7 +3866,7 @@ def action_values_set(a):
 				changed_values[fid] = val["value"]
 		broadcast_event(crm_id, "values/update", {
 			"crm": crm_id, "id": object_id, "values": changed_values,
-			"user": a.user.identity.id
+			"user": a.user.identity.id, "updated": now
 		})
 		# Auto-watch assigned users
 		for fid in changes:
@@ -3695,7 +3947,7 @@ def action_value_set(a):
 		log_activity(object_id, a.user.identity.id, "updated", field_id, old_value, str(new_value))
 		broadcast_event(crm_id, "values/update", {
 			"crm": crm_id, "id": object_id,
-			"values": {field_id: str(new_value)}, "user": a.user.identity.id
+			"values": {field_id: str(new_value)}, "user": a.user.identity.id, "updated": now
 		})
 		# Auto-watch assigned user
 		if field_row["fieldtype"] == "user" and str(new_value):
@@ -7802,35 +8054,52 @@ def owner_time(value):
 	value = str(value) if value != None else ""
 	return int(value) if mochi.text.valid(value, "integer") else None
 
-# ranks_apply(crm_id, ranks) -> whether any: write the owner's keys, a list of
-# {id, rank}, to the CRM's objects they name, with the owner's updated time on
-# the one the move changed. An object the owner only re-keyed keeps its time:
-# this server's clock would run ahead of the owner's and drop the owner's next
-# object/update for it at the LWW gate. A key no owner mints, one not canonical
-# or past RANK_LENGTH, is skipped, as object_replicate takes only a canonical one.
-def ranks_apply(crm_id, ranks):
+# ranks_apply(crm_id, ranks, time=None) -> whether any: write the owner's keys, a
+# list of {id, rank}, to the CRM's objects they name, with the owner's updated
+# time on the one the move changed. An object the owner only re-keyed keeps its
+# time: this server's clock would run ahead of the owner's and drop the owner's
+# next object/update for it at the LWW gate. A key no owner mints, one not
+# canonical or past RANK_LENGTH, is skipped, as object_replicate takes only a
+# canonical one. An entry is skipped too when this copy's time for its object is
+# later than the owner's for the key, the entry's own or the move's (time): a
+# forwarded move's answer can land after the owner's broadcast of a later move
+# of the same object, and would put it back. An object this copy does not hold
+# has the CRM pulled again, as values/update does.
+def ranks_apply(crm_id, ranks, time=None):
 	if type(ranks) not in ("list", "tuple") or not ranks:
 		return False
+	missing = False
 	for r in ranks:
 		if type(r) != "dict":
 			continue
 		obj_id = r.get("id")
 		rank = r.get("rank")
-		if type(obj_id) == "string" and obj_id and rank_valid(rank):
-			changes = {"rank": rank}
-			updated = owner_time(r.get("updated"))
-			if updated:
-				changes["updated"] = updated
-			row_set("objects", "id=? and crm=?", [obj_id, crm_id], changes)
+		if type(obj_id) != "string" or not obj_id or not rank_valid(rank):
+			continue
+		local = mochi.db.row("select updated from objects where id=? and crm=?", obj_id, crm_id)
+		if not local:
+			missing = True
+			continue
+		updated = owner_time(r.get("updated"))
+		since = updated or time
+		if since and (local["updated"] or 0) > since:
+			continue
+		changes = {"rank": rank}
+		if updated:
+			changes["updated"] = updated
+		row_set("objects", "id=? and crm=?", [obj_id, crm_id], changes)
+	if missing:
+		request_resync(crm_id)
 	return True
 
 # The keys a move wrote, applied under the same subscription check and websocket
-# notice as object/update. No LWW gate: the owner mints every key.
+# notice as object/update, each unless this copy holds a later change of its
+# object (ranks_apply).
 def event_object_ranks(e):
 	crm_id = verify_subscription(e)
 	if not crm_id:
 		return
-	if not ranks_apply(crm_id, e.content("ranks")):
+	if not ranks_apply(crm_id, e.content("ranks"), owner_time(e.content("updated"))):
 		return
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
@@ -7881,7 +8150,13 @@ def event_values_update(e):
 		if value_refused(crm_id, object_id, field, values[field]):
 			continue
 		row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": values[field]})
-	row_set("objects", "id=? and crm=?", [object_id, crm_id], {"updated": mochi.time.now()})
+	# The owner's time for the change, as object/update and object/ranks carry
+	# it: this server's own would run ahead of the owner's after a change that
+	# wrote no key, and drop the owner's next object/update at the LWW gate. An
+	# owner that predates sending it leaves the copy's time as it was.
+	updated = owner_time(e.content("updated"))
+	if updated:
+		row_set("objects", "id=? and crm=?", [object_id, crm_id], {"updated": updated})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "values/update", "crm": crm_id, "id": object_id})
@@ -8870,37 +9145,23 @@ def do_object_update(crm_id, crm, params, user_id):
 	row = mochi.db.row("select * from objects where id=? and crm=?", object_id, crm_id)
 	if not row:
 		return {"error": "errors.object_not_found", "code": 404}
-	now = mochi.time.now()
 	new_class = params.get("class")
 	if new_class and type(new_class) != "string":
 		return {"error": "errors.invalid_value", "code": 400}
 	if new_class and new_class != row["class"] and not mochi.db.exists("select 1 from classes where crm=? and id=?", crm_id, new_class):
 		return {"error": "errors.class_not_found", "code": 404}
 	parent = params.get("parent")
-	changes = []
-	if parent != None:
-		if type(parent) != "string":
-			return {"error": "errors.invalid_value", "code": 400}
-		problem = object_reparent(crm_id, row, parent, user_id, now, changes)
-		if problem:
-			return {"error": problem[0], "code": problem[1]}
-	if new_class and new_class != row["class"]:
-		row_set("objects", "id=?", [object_id], {"class": new_class, "updated": now})
-		log_activity(object_id, user_id, "updated", "class", row["class"], new_class)
-	row_set("objects", "id=?", [object_id], {"updated": now})
-	broadcast_event(crm_id, "object/update", {
-		"crm": crm_id, "id": object_id,
-		"parent": parent if parent != None else row["parent"],
-		"class": new_class if new_class and new_class != row["class"] else row["class"],
-		"user": user_id, "updated": now
-	})
-	values_broadcast(crm_id, changes, user_id)
+	if parent != None and type(parent) != "string":
+		return {"error": "errors.invalid_value", "code": 400}
+	answer = object_update(crm_id, row, parent, new_class, user_id)
+	if answer.get("error"):
+		return answer
 	# Notify owner if watching
 	owner_id = get_owner_identity(crm_id)
 	notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.updated"))
-	# The time it wrote, which the subscriber that forwarded it stamps its copy
-	# with, as a move's answer carries.
-	return {"success": True, "updated": now}
+	# What it wrote, with its time, which the subscriber that forwarded it
+	# stamps its copy with, as a move's answer carries.
+	return answer
 
 def do_object_delete(crm_id, crm, params, user_id):
 	object_id = params.get("object")
@@ -8924,7 +9185,6 @@ def do_object_move(crm_id, crm, params, user_id):
 		return {"error": "errors.object_not_found", "code": 404}
 	if params.get("promote", "") == "true" and not promotable(crm_id, object_id, row["class"]):
 		return {"error": "errors.parent_hierarchy_disallowed", "code": 400}
-	obj_class = row["class"]
 	field = params.get("field", "")
 	if type(field) != "string":
 		return {"error": "errors.invalid_value", "code": 400}
@@ -8934,7 +9194,7 @@ def do_object_move(crm_id, crm, params, user_id):
 	clear = params.get("clear", "") == "true"
 	# Same as the HTTP twin: every value is checked before anything changes.
 	row_field, row_value = row_input(params.get("row"))
-	invalid = move_check(crm_id, obj_class, field, value, row_field, row_value, clear) or move_place_check(object_id, params.get("after"), params.get("before"))
+	invalid = move_check(crm_id, row["class"], field, value, row_field, row_value, clear) or move_place_check(object_id, params.get("after"), params.get("before"))
 	if invalid:
 		return {"error": invalid["key"], "args": invalid.get("args"), "code": 400}
 	new_rank = params.get("rank")
@@ -8950,86 +9210,13 @@ def do_object_move(crm_id, crm, params, user_id):
 		return {"error": "errors.invalid_value", "code": 400}
 	if parent != None and params.get("promote", "") == "true":
 		return {"error": "errors.invalid_value", "code": 400}
-	parent_changed = False
-	changes = []
-	if parent != None:
-		problem = object_reparent(crm_id, row, parent, user_id, mochi.time.now(), changes)
-		if problem:
-			return {"error": problem[0], "code": problem[1]}
-		parent_changed = parent != row["parent"]
-	old_value_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, field)
-	old_value = old_value_row["value"] if old_value_row else ""
-	target_value = "" if clear else (value if value else old_value)
-	value_changed = old_value != target_value
-	if value_changed:
-		row_merge("values", ["object", "field"], {"object": object_id, "field": field, "value": target_value})
-		log_activity(object_id, user_id, "updated", field, old_value, target_value)
-	scope_parent = params.get("scope", None)
-	if scope_parent == None:
-		scope_parent = parent
-	ranks = move_rank(crm_id, object_id, field, target_value, value_changed, {
-		"after": params.get("after"), "before": params.get("before"),
-		"rank": new_rank, "scope": scope_parent,
-	})
-	row_changed = False
-	if row_field:
-		old_row_row = mochi.db.row("select value from \"values\" where object=? and field=?", object_id, row_field)
-		old_row_value = old_row_row["value"] if old_row_row else ""
-		if old_row_value != row_value:
-			row_merge("values", ["object", "field"], {"object": object_id, "field": row_field, "value": row_value})
-			log_activity(object_id, user_id, "updated", row_field, old_row_value, row_value)
-			row_changed = True
-
-	# Handle promote (clear parent)
-	promote = params.get("promote", "") == "true"
-	if promote:
-		old_parent_row = mochi.db.row("select parent from objects where id=?", object_id)
-		old_parent = old_parent_row["parent"] if old_parent_row else ""
-		if old_parent:
-			row_set("objects", "id=?", [object_id], {"parent": '', "updated": mochi.time.now()})
-			log_activity(object_id, user_id, "moved", "parent", old_parent, "")
-			parent = ""
-			parent_changed = True
-
-	now = mochi.time.now()
-	row_set("objects", "id=?", [object_id], {"updated": now})
-
-	# Subscribers learn a new parent the way object/update tells them of one.
-	if parent_changed:
-		broadcast_event(crm_id, "object/update", {
-			"crm": crm_id, "id": object_id, "parent": parent,
-			"class": row["class"], "user": user_id, "updated": now,
-		})
-	# Cascade status/row changes to the descendants that take them
-	updated_values = {}
-	if value_changed:
-		updated_values[field] = target_value
-	if row_changed:
-		updated_values[row_field] = row_value
-	if updated_values:
-		values_cascade(crm_id, get_all_descendants(object_id), updated_values, mochi.time.now(), changes)
-	values_broadcast(crm_id, changes, user_id)
-	if updated_values:
-		broadcast_event(crm_id, "values/update", {
-			"crm": crm_id, "id": object_id,
-			"values": updated_values, "user": user_id
-		})
-		# Notify owner if watching
-		owner_id = get_owner_identity(crm_id)
-		notify_watchers(object_id, crm_id, owner_id, user_id, mochi.app.label("notifications.body.updated"))
-
-	# The keys the move wrote: the moved object's, with the time it changed, and
-	# any a tied neighbour took. The subscriber that asked for the move applies
-	# them, and that time, from the answer.
-	for r in ranks:
-		if r["id"] == object_id:
-			r["updated"] = now
-	if ranks:
-		broadcast_event(crm_id, "object/ranks", {
-			"crm": crm_id, "ranks": ranks, "user": user_id,
-		})
-
-	return {"success": True, "ranks": ranks, "updated": now}
+	# The subscriber that asked for the move writes what the answer names, and
+	# the owner is told when watching.
+	return object_move(crm_id, row, {
+		"field": field, "value": value, "clear": clear, "lane": row_field, "row": row_value,
+		"parent": parent, "promote": params.get("promote", "") == "true", "scope": params.get("scope"),
+		"after": params.get("after"), "before": params.get("before"), "rank": new_rank,
+	}, user_id, True)
 
 # Validate a YYYY-MM-DD calendar date.
 def is_iso_date(value):
@@ -9057,18 +9244,20 @@ def value_refused(crm_id, object_id, field, value):
 
 # First violation of a field's type and constraints as {"key", "args"}, or None.
 # Empty values always pass ("required" is checked elsewhere); the regex
-# `pattern` constraint is not enforced - Starlark has no regex API.
-def validate_field_value(crm_id, class_id, field_id, value):
+# `pattern` constraint is not enforced - Starlark has no regex API. Reads go
+# through handle, within a transaction.
+def validate_field_value(crm_id, class_id, field_id, value, handle=None):
+	database = handle or mochi.db
 	value = "" if value == None else str(value)
 	if value == "":
 		return None
-	field = mochi.db.row("select fieldtype, min, max, minlength, maxlength from fields where crm=? and class=? and id=?", crm_id, class_id, field_id)
+	field = database.row("select fieldtype, min, max, minlength, maxlength from fields where crm=? and class=? and id=?", crm_id, class_id, field_id)
 	if not field:
 		return None
 	ftype = field["fieldtype"]
 
 	if ftype == "enumerated":
-		if not mochi.db.exists("select 1 from options where crm=? and class=? and field=? and id=?", crm_id, class_id, field_id, value):
+		if not database.exists("select 1 from options where crm=? and class=? and field=? and id=?", crm_id, class_id, field_id, value):
 			return {"key": "errors.invalid_option"}
 
 	elif ftype == "number":
@@ -9231,7 +9420,7 @@ def do_values_set(crm_id, crm, params, user_id):
 			if val:
 				changed_values[fid] = val["value"]
 		broadcast_event(crm_id, "values/update", {
-			"crm": crm_id, "id": object_id, "values": changed_values, "user": user_id
+			"crm": crm_id, "id": object_id, "values": changed_values, "user": user_id, "updated": now
 		})
 		# Notify owner if watching
 		owner_id = get_owner_identity(crm_id)
@@ -9272,7 +9461,7 @@ def do_value_set(crm_id, crm, params, user_id):
 		log_activity(object_id, user_id, "updated", field_id, old_value, str(new_value))
 		broadcast_event(crm_id, "values/update", {
 			"crm": crm_id, "id": object_id,
-			"values": {field_id: str(new_value)}, "user": user_id
+			"values": {field_id: str(new_value)}, "user": user_id, "updated": now
 		})
 		# Notify owner if watching
 		owner_id = get_owner_identity(crm_id)
