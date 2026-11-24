@@ -1167,15 +1167,24 @@ def strip_subtag(lang):
 		return ""
 	return lang[:i]
 
-# Build the BCP 47 fallback chain for a language tag. Mirrors core's
-# language_fallbacks (lower-cased, parents stripped one subtag at a time,
-# always ending with "en"). The resolver caller skips uninstalled tags.
+# Build the BCP 47 fallback chain for a language tag, as core resolves its own
+# labels (language_fallbacks in core/server/labels.go): the tag, then the
+# catalogue core redirects a variant to where stripping a subtag would not reach
+# it (zh-hk and yue read zh-hant, es-ar reads es-419, nn reads nb), then parents
+# one subtag at a time, always ending with "en". The resolver caller skips
+# uninstalled tags. redirects is core's variant_redirects;
+# claude/scripts/test_i18n_glossary.py holds the two together.
 def language_fallbacks(lang):
+	redirects = {"en-ph": "en-us", "zh-hk": "zh-hant", "yue": "zh-hant", "es-ar": "es-419", "nn": "nb"}
 	lang = lang.strip().lower() if lang else ""
 	if lang == "" or lang == "en":
 		return ["en"]
 	chain = [lang]
-	parent = strip_subtag(lang)
+	parent = lang
+	if lang in redirects:
+		parent = redirects[lang]
+		chain.append(parent)
+	parent = strip_subtag(parent)
 	for _ in range(8):
 		if parent == "" or parent == "en":
 			break
