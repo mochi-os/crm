@@ -8116,7 +8116,9 @@ def schema_merge(crm_id, schema, survivors):
 			continue
 		source = text(l.get("source"))
 		target = text(l.get("target"))
-		linktype = text(l.get("linktype"))
+		# A type the link handlers do not know is read as they read it: a link
+		# stored under it could not be matched by a delete.
+		linktype = link_type(l.get("linktype"))
 		survivors["links"][(source, target, linktype)] = True
 		# (crm, source, target, linktype) is the full key; links are
 		# created/deleted, never edited in place.
@@ -8988,7 +8990,7 @@ def event_object_create(e):
 	# Auto-watch creator locally (safety net for when forward_to_owner response is lost)
 	local_id = e.header("to")
 	if user and user == local_id:
-		row_merge("watchers", ["object", "user"], {"object": object_id, "user": local_id, "created": e.content("created") or mochi.time.now()})
+		row_merge("watchers", ["object", "user"], {"object": object_id, "user": local_id, "created": number(e.content("created")) or mochi.time.now()})
 	# Notify local user about new object
 	if local_id and local_id != user:
 		crm = get_crm(crm_id)
@@ -9253,7 +9255,7 @@ def event_activity_log(e):
 		return
 	activity_id = e.content("id")
 	object_id = e.content("object")
-	if not identifier(activity_id) or not object_id:
+	if not identifier(activity_id) or type(object_id) != "string" or not object_id:
 		return
 	if not mochi.db.exists("select 1 from objects where id=? and crm=?", object_id, crm_id):
 		request_resync(crm_id)
@@ -9263,11 +9265,13 @@ def event_activity_log(e):
 		created = mochi.time.now()
 	else:
 		created = int(created)
+	# Each column is reduced to its type before it is bound: a list is spread
+	# over the placeholders after it, misaligning the row's own columns.
 	mochi.db.execute(
 		"insert or ignore into activity (id, object, user, action, field, oldvalue, newvalue, created) values (?, ?, ?, ?, ?, ?, ?, ?)",
-		activity_id, object_id, e.content("user") or "",
-		e.content("action") or "", e.content("field") or "",
-		e.content("oldvalue") or "", e.content("newvalue") or "",
+		activity_id, object_id, text(e.content("user")),
+		text(e.content("action")), text(e.content("field")),
+		text(e.content("oldvalue")), text(e.content("newvalue")),
 		created
 	)
 	fp = mochi.entity.fingerprint(crm_id)
@@ -9468,9 +9472,9 @@ def event_comment_create(e):
 		if object_id and local_id:
 			# Auto-watch commenter locally (safety net for when forward_to_owner response is lost)
 			if user and user == local_id:
-				row_merge("watchers", ["object", "user"], {"object": object_id, "user": local_id, "created": e.content("created") or mochi.time.now()})
-			name = e.content("name") or mochi.app.label("notifications.mention.author_unknown")
-			excerpt = (e.content("content") or "")[:80]
+				row_merge("watchers", ["object", "user"], {"object": object_id, "user": local_id, "created": number(e.content("created")) or mochi.time.now()})
+			name = text(e.content("name")) or mochi.app.label("notifications.mention.author_unknown")
+			excerpt = text(e.content("content"))[:80]
 			notify_watchers(object_id, crm_id, local_id, user, mochi.app.label("notifications.body.commented", name=name, excerpt=excerpt))
 
 # Comment updated
@@ -9520,8 +9524,8 @@ def event_link_create(e):
 	crm_id = verify_subscription(e)
 	if not crm_id:
 		return
-	source = e.content("source") or ""
-	target = e.content("target") or ""
+	source = text(e.content("source"))
+	target = text(e.content("target"))
 	# Skip when either endpoint isn't local yet — links FKs would abort.
 	if not source or not target:
 		return
@@ -9529,7 +9533,7 @@ def event_link_create(e):
 		not mochi.db.exists("select 1 from objects where id=? and crm=?", target, crm_id):
 		request_resync(crm_id)
 		return
-	row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": source, "target": target, "linktype": link_type(e.content("linktype")), "created": e.content("created") or mochi.time.now()})
+	row_merge("links", ["source", "target", "linktype"], {"crm": crm_id, "source": source, "target": target, "linktype": link_type(e.content("linktype")), "created": number(e.content("created")) or mochi.time.now()})
 	fp = mochi.entity.fingerprint(crm_id)
 	if fp:
 		mochi.websocket.write(fp, {"type": "link/create", "crm": crm_id})
