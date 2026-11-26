@@ -16,7 +16,7 @@
 	"require": {"version": {"minimum": "2.0.19"}},
 
 	"database": {
-		"schema": 13,
+		"schema": 15,
 		"file": "crm.db",
 		"create": {"function": "database_create"},
 		"upgrade": {"function": "database_upgrade"},
@@ -146,6 +146,9 @@
 		"deleted": {"function": "event_deleted"},
 		"access/revoke": {"function": "event_access_revoke"},
 		"sync/batch": {"function": "event_sync_batch"},
+		"design/replace": {"function": "event_design_replace"},
+		"member/add": {"function": "event_member_add"},
+		"member/remove": {"function": "event_member_remove"},
 
 		"crm/update": {"function": "event_crm_update"},
 		"object/create": {"function": "event_object_create"},

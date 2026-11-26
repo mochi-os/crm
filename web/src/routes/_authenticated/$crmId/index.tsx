@@ -168,6 +168,11 @@ export function CrmPageContent({
         exportData: t`Export data`,
         loading: t`Loading...`,
         downloaded: (filename) => t`Downloaded ${filename}`,
+        exportMissing: (count) =>
+          plural(count, {
+            one: 'Exported without # attachment',
+            other: 'Exported without # attachments',
+          }),
         exportFailed: t`Failed to export data`,
         share,
         moveFailed: t`Failed to move`,
@@ -229,6 +234,11 @@ export function CrmPageContent({
           confirm: t`Copy`,
           duplicating: t`Copying CRM...`,
           duplicated: t`CRM copied`,
+          missing: (count) =>
+            plural(count, {
+              one: 'Copied without # attachment',
+              other: 'Copied without # attachments',
+            }),
           failed: t`Failed to copy CRM`,
           defaultName: (name) => t`Copy of ${name}`,
           leftBehind: t`Could not remove the unfinished copy`,
