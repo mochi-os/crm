@@ -243,7 +243,7 @@ msgstr "පරීක්ෂා ලැයිස්තු අයිතමයක් 
 msgid "Add class"
 msgstr "පන්තියක් එක් කරන්න"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Add column"
 msgstr "තීරුවක් එක් කරන්න"
 
@@ -312,7 +312,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "ඕනෑම කෙනෙකුට {entityLabel} සෙවීමට ඉඩ දෙන්න"
 
 #: src/features/crms/components/create-crm-dialog.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Allow anyone to view and comment on CRM"
 msgstr "CRM බැලීමට සහ එයට අදහස් දැක්වීමට ඕනෑම කෙනෙකුට අවසර දෙන්න"
 
@@ -351,7 +351,7 @@ msgstr "මෙම සංග්‍රහයට දායක වූ සියල�
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "ඔබට \"{0}\" මැකීමට අවශ්‍ය බව විශ්වාසද?"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Are you sure you want to delete \"{title}\" and the {count, plural, one {# item} other {# items}} under it? This action cannot be undone."
 msgstr "ඔබට \"{title}\" සහ ඊට යටතේ ඇති {count, plural, one {අයිතම #} other {අයිතම #}} මැකීමට අවශ්‍ය බව විශ්වාසද? මෙම ක්‍රියාව අහෝසි කළ නොහැක."
 
@@ -524,9 +524,9 @@ msgstr "මෙහි දරුවෙකු විය හැක"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "අවලංගු කරන්න"
 
@@ -605,7 +605,7 @@ msgstr "වේලාවක් තෝරන්න"
 msgid "Choose language"
 msgstr "භාෂාව තෝරන්න"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Class"
 msgstr "පංතිය"
 
@@ -792,25 +792,25 @@ msgstr "ක්ලිප්බෝඩ් වෙත පිටපත් කරන �
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy"
 msgstr "පිටපත් කරන්න"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy CRM"
 msgstr "CRM එක පිටපත් කරන්න"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/lib/share-labels.ts
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy link"
 msgstr "සබැඳිය පිටපත් කරන්න"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy of {name}"
 msgstr "{name} හි පිටපත"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copying CRM..."
 msgstr "CRM එක පිටපත් කරමින්..."
 
@@ -818,7 +818,7 @@ msgstr "CRM එක පිටපත් කරමින්..."
 msgid "Could not load this document. Please try again later."
 msgstr "මෙම ලේඛනය පූරණය කළ නොහැකි විය. කරුණාකර පසුව නැවත උත්සාහ කරන්න."
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Could not remove the unfinished copy"
 msgstr "අසම්පූර්ණ පිටපත ඉවත් කළ නොහැකි විය"
 
@@ -901,7 +901,7 @@ msgstr ""
 msgid "CRM actions"
 msgstr "CRM ක්‍රියා"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "CRM copied"
 msgstr "CRM එක පිටපත් කරන ලදී"
 
@@ -913,8 +913,8 @@ msgstr "CRM නිර්මාණය කරන ලදී"
 msgid "CRM deleted"
 msgstr "CRM මකා දැමීය"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "CRM නම අවශ්‍යයි"
 
@@ -1077,9 +1077,9 @@ msgstr "අවරෝහණ"
 msgid "Description"
 msgstr "විස්තරය"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Design"
 msgstr "සැලසුම"
 
@@ -1088,7 +1088,7 @@ msgstr "සැලසුම"
 msgid "Design imported"
 msgstr "සැලසුම ආයාත කරන ලදී"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Design only"
 msgstr "සැලසුම පමණි"
 
@@ -1133,7 +1133,7 @@ msgstr "විසන්ධියි"
 msgid "Dismiss"
 msgstr "ඉවත ලන්න"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Dismiss board hint"
 msgstr "පුවරු ඉඟිය ඉවත ලන්න"
 
@@ -1151,7 +1151,7 @@ msgstr "අවශ්‍ය රටාවට නොගැළපේ"
 msgid "Done"
 msgstr "නිමයි"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Double click on a column to add content"
 msgstr "අන්තර්ගතය එක් කිරීමට තීරුවක් මත දෙවරක් ක්ලික් කරන්න"
 
@@ -1170,12 +1170,12 @@ msgstr "පළමුව උපස්ථය බාගත කරන්න"
 msgid "Download failed"
 msgstr "බාගත කිරීම අසාර්ථක විය"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Downloaded {filename}"
 msgstr "{filename} බාගත කළා"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Drag columns to re-order them"
 msgstr "තීරු නැවත අනුපිළිවෙල කිරීමට ඒවා ඇදගෙන යන්න"
 
@@ -1260,7 +1260,7 @@ msgstr "දෝෂයක්"
 msgid "Every minute"
 msgstr "සෑම මිනිත්තුවක්ම"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Everything"
 msgstr "සියල්ල"
 
@@ -1283,11 +1283,11 @@ msgstr "සියල්ල විහිදන්න"
 msgid "Expand sidebar"
 msgstr "පැති තීරුව ප්‍රසාරණය කරන්න"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Export CSV"
 msgstr "CSV අපනයනය කරන්න"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Export data"
 msgstr "දත්ත නිර්යාත කරන්න"
 
@@ -1307,7 +1307,7 @@ msgstr "අමතර විශාල"
 msgid "Failed to add account"
 msgstr "ගිණුම එක් කිරීමට අසමත් විය"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to add column"
 msgstr "තීරුව එක් කිරීම අසාර්ථක විය"
 
@@ -1318,8 +1318,8 @@ msgstr "තීරුව එක් කිරීම අසාර්ථක වි�
 msgid "Failed to copy"
 msgstr "පිටපත් කිරීමට අසමත් විය"
 
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to copy CRM"
 msgstr "CRM එක පිටපත් කිරීමට අසමත් විය"
 
@@ -1336,6 +1336,7 @@ msgid "Failed to create field"
 msgstr "ක්ෂේත්‍රයක් සෑදීමට අසමත් විය"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/share-menu.tsx
 msgid "Failed to create link"
 msgstr "සබැඳියක් සෑදීමට අසමත් විය"
@@ -1360,7 +1361,7 @@ msgstr "ඇමුණුම මැකීමට අසමත් විය"
 msgid "Failed to delete class"
 msgstr "පන්තිය මැකීමට අසමත් විය"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to delete column"
 msgstr "තීරුව මැකීම අසාර්ථක විය"
 
@@ -1388,7 +1389,7 @@ msgstr "විකල්පය මැකීමට අසමත් විය"
 msgid "Failed to delete view"
 msgstr "දසුන මැකීමට අසමත් විය"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to export data"
 msgstr "දත්ත නිර්යාත කිරීමට අසමත් විය"
 
@@ -1463,7 +1464,7 @@ msgid "Failed to load video"
 msgstr "වීඩියෝව පූරණය කිරීමට අසමත් විය"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to move"
 msgstr "ගෙනයාම අසාර්ථකයි"
 
@@ -1471,7 +1472,7 @@ msgstr "ගෙනයාම අසාර්ථකයි"
 msgid "Failed to post comment"
 msgstr "අදහස පළ කිරීමට අසමත් විය"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to re-order columns"
 msgstr "තීරු නැවත පිළිවෙළට සැකසීම අසාර්ථක විය"
 
@@ -1484,7 +1485,7 @@ msgstr "ගොනුව කියවීමට අසමත් විය"
 msgid "Failed to remove access"
 msgstr "ප්‍රවේශය ඉවත් කිරීමට අසමත් විය"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to rename column"
 msgstr "තීරුව නැවත නම් කිරීම අසාර්ථක විය"
 
@@ -1526,8 +1527,8 @@ msgstr "ප්‍රවේශ මට්ටම සැකසීමට අසමත
 msgid "Failed to subscribe"
 msgstr "දායක වීමට අසමත් විය"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Failed to unsubscribe"
 msgstr "දායකත්වයෙන් ඉවත් වීමට අසමත් විය"
 
@@ -1664,8 +1665,8 @@ msgid "Hot"
 msgstr "උණුසුම්"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/editor/components/edit-dialogs.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "ID"
 msgstr "හැඳුනුම"
 
@@ -1792,7 +1793,7 @@ msgid "Loading item details"
 msgstr "අයිතම විස්තර පූරණය වෙමින්"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Loading..."
 msgstr "පූරණය වෙමින්..."
 
@@ -1899,16 +1900,16 @@ msgstr "{0} වෙත ගෙන යමින්"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "නම"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "නම තුළ < හෝ > අක්ෂර තිබිය නොහැක"
 
@@ -1919,8 +1920,8 @@ msgstr "නම අවශ්‍යයි"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "නම අක්ෂර 1000 ක් හෝ ඊට අඩු විය යුතුය"
 
@@ -1930,8 +1931,8 @@ msgid "Network error"
 msgstr "ජාල දෝෂය"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "New"
 msgstr "අලුත්"
 
@@ -1941,7 +1942,7 @@ msgid "New"
 msgstr "නවතම"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "New {0}"
 msgstr "නව {0}"
 
@@ -2012,7 +2013,7 @@ msgstr "තවම අයිතම වර්ග සෑදිය නොහැක. 
 msgid "No matching objects"
 msgstr "ගැලපෙන වස්තු නැත"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "No objects to export."
 msgstr "අපනයනය කිරීමට වස්තු නැත."
 
@@ -2155,7 +2156,7 @@ msgstr "සංචාලනය විවෘත කරන්න"
 msgid "Open option actions"
 msgstr "විකල්ප ක්‍රියා විවෘත කරන්න"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Open page actions"
 msgstr "පිටු ක්‍රියා විවෘත කරන්න"
 
@@ -2194,7 +2195,7 @@ msgstr "හිමිකරු"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Parent"
 msgstr "මව්"
 
@@ -2223,7 +2224,7 @@ msgstr "රටාව (regex)"
 msgid "People"
 msgstr "පුද්ගලයන්"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Please add one or more classes to the CRM design."
 msgstr "කරුණාකර CRM සැලසුමට එක් හෝ වැඩි පන්ති එක් කරන්න."
 
@@ -2300,7 +2301,7 @@ msgstr "උස්කළ"
 msgid "Re-link your accounts on this server"
 msgstr "මෙම සේවාදායකයේ ඔබේ ගිණුම් නැවත සම්බන්ධ කරන්න"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Re-order columns"
 msgstr "තීරු නැවත අනුපිළිවෙළට සැකසීම"
 
@@ -2535,7 +2536,7 @@ msgstr "සෙනසුරාදා"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Save"
 msgstr "සුරකින්න"
 
@@ -2685,8 +2686,8 @@ msgstr "ප්‍රවේශය සකසමින්..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Settings"
 msgstr "සැකසුම්"
 
@@ -2866,7 +2867,7 @@ msgstr "කැමරාව දැනටමත් භාවිතයේ පවත
 msgid "The camera request was not answered"
 msgstr "කැමරා ඉල්ලීමට පිළිතුරු ලැබුණේ නැත"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "The copy may be incomplete. Check it before you use it."
 msgstr "පිටපත අසම්පූර්ණ විය හැක. භාවිත කිරීමට පෙර එය පරීක්ෂා කරන්න."
 
@@ -2912,7 +2913,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "මෙය \"{0}\" සහ එහි සියලුම වස්තු, අදහස්, සහ ඇමුණුම් ස්ථිරවම මකා දමනු ඇත. මෙම ක්‍රියාව ආපසු හැරවිය නොහැක."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "මෙය ඔබේ පැති තීරුවෙන් \"{0}\" ඉවත් කර මෙම CRM සඳහා යාවත්කාලීන නවත්වනු ඇත."
 
@@ -3047,22 +3048,22 @@ msgid "Unknown"
 msgstr "නොදන්නා"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribe"
 msgstr "දායකත්වය ඉවත් කරන්න"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Unsubscribe from CRM?"
 msgstr "CRM වෙතින් දායකත්වය ඉවත් කරන්නද?"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribed"
 msgstr "දායකත්වය ඉවත් කරන ලදී"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribing..."
 msgstr "දායකත්වය ඉවත් කරමින්..."
 
@@ -3157,7 +3158,7 @@ msgstr "පාලන බලන්න"
 msgid "View only"
 msgstr "බැලීම පමණි"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "View options"
 msgstr "දසුන් විකල්ප"
 

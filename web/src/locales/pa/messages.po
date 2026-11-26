@@ -243,7 +243,7 @@ msgstr "ਚੈੱਕਲਿਸਟ ਆਈਟਮ ਜੋੜੋ"
 msgid "Add class"
 msgstr "ਕਲਾਸ ਜੋੜੋ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Add column"
 msgstr "ਕਾਲਮ ਜੋੜੋ"
 
@@ -312,7 +312,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "ਕਿਸੇ ਨੂੰ ਵੀ {entityLabel} ਖੋਜਣ ਦੀ ਆਗਿਆ ਦਿਓ"
 
 #: src/features/crms/components/create-crm-dialog.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Allow anyone to view and comment on CRM"
 msgstr "ਕਿਸੇ ਨੂੰ ਵੀ CRM ਵੇਖਣ ਅਤੇ ਉਸ ਉੱਤੇ ਟਿੱਪਣੀ ਕਰਨ ਦੀ ਆਗਿਆ ਦਿਓ"
 
@@ -351,7 +351,7 @@ msgstr "ਇਸ ਫੀਡ ਦੀ ਗਾਹਕੀ ਲੈਣ ਵਾਲਾ ਸਭ �
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "ਕੀ ਤੁਸੀਂ ਯਕੀਨੀ ਹੋ ਕਿ ਤੁਸੀਂ \"{0}\" ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Are you sure you want to delete \"{title}\" and the {count, plural, one {# item} other {# items}} under it? This action cannot be undone."
 msgstr "ਕੀ ਤੁਸੀਂ ਯਕੀਨੀ ਹੋ ਕਿ ਤੁਸੀਂ \"{title}\" ਅਤੇ ਇਸਦੇ ਹੇਠਾਂ ਮੌਜੂਦ {count, plural, one {# ਆਈਟਮ} other {# ਆਈਟਮਾਂ}} ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ? ਇਹ ਕਾਰਵਾਈ ਵਾਪਸ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ।"
 
@@ -524,9 +524,9 @@ msgstr "ਇਸਦਾ ਚਾਈਲਡ ਹੋ ਸਕਦਾ ਹੈ"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "ਰੱਦ ਕਰੋ"
 
@@ -605,7 +605,7 @@ msgstr "ਸਮਾਂ ਚੁਣੋ"
 msgid "Choose language"
 msgstr "ਭਾਸ਼ਾ ਚੁਣੋ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Class"
 msgstr "ਕਲਾਸ"
 
@@ -792,25 +792,25 @@ msgstr "ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਹੋਇਆ"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy"
 msgstr "ਕਾਪੀ ਕਰੋ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy CRM"
 msgstr "CRM ਕਾਪੀ ਕਰੋ"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/lib/share-labels.ts
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy link"
 msgstr "ਲਿੰਕ ਕਾਪੀ ਕਰੋ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy of {name}"
 msgstr "{name} ਦੀ ਕਾਪੀ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copying CRM..."
 msgstr "CRM ਕਾਪੀ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
 
@@ -818,7 +818,7 @@ msgstr "CRM ਕਾਪੀ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
 msgid "Could not load this document. Please try again later."
 msgstr "ਇਹ ਦਸਤਾਵੇਜ਼ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਬਾਅਦ ਵਿੱਚ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Could not remove the unfinished copy"
 msgstr "ਅਧੂਰੀ ਕਾਪੀ ਹਟਾਈ ਨਹੀਂ ਜਾ ਸਕੀ"
 
@@ -901,7 +901,7 @@ msgstr ""
 msgid "CRM actions"
 msgstr "CRM ਕਾਰਵਾਈਆਂ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "CRM copied"
 msgstr "CRM ਕਾਪੀ ਕੀਤਾ ਗਿਆ"
 
@@ -913,8 +913,8 @@ msgstr "CRM ਬਣਾਇਆ ਗਿਆ"
 msgid "CRM deleted"
 msgstr "CRM ਮਿਟਾਇਆ ਗਿਆ"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "CRM ਨਾਮ ਜ਼ਰੂਰੀ ਹੈ"
 
@@ -1077,9 +1077,9 @@ msgstr "ਘਟਦੇ ਕ੍ਰਮ ਵਿੱਚ"
 msgid "Description"
 msgstr "ਵੇਰਵਾ"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Design"
 msgstr "ਡਿਜ਼ਾਈਨ"
 
@@ -1088,7 +1088,7 @@ msgstr "ਡਿਜ਼ਾਈਨ"
 msgid "Design imported"
 msgstr "ਡਿਜ਼ਾਈਨ ਆਯਾਤ ਕੀਤਾ ਗਿਆ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Design only"
 msgstr "ਸਿਰਫ਼ ਡਿਜ਼ਾਈਨ"
 
@@ -1133,7 +1133,7 @@ msgstr "ਡਿਸਕਨੈਕਟ ਹੋ ਗਿਆ"
 msgid "Dismiss"
 msgstr "ਖਾਰਜ ਕਰੋ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Dismiss board hint"
 msgstr "ਬੋਰਡ ਸੰਕੇਤ ਖਾਰਜ ਕਰੋ"
 
@@ -1151,7 +1151,7 @@ msgstr "ਲੋੜੀਂਦੇ ਪੈਟਰਨ ਨਾਲ ਮੇਲ ਨਹੀਂ �
 msgid "Done"
 msgstr "ਹੋ ਗਿਆ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Double click on a column to add content"
 msgstr "ਸਮੱਗਰੀ ਜੋੜਨ ਲਈ ਕਾਲਮ ਉੱਤੇ ਡਬਲ ਕਲਿੱਕ ਕਰੋ"
 
@@ -1170,12 +1170,12 @@ msgstr "ਪਹਿਲਾਂ ਬੈਕਅੱਪ ਡਾਊਨਲੋਡ ਕਰੋ"
 msgid "Download failed"
 msgstr "ਡਾਊਨਲੋਡ ਅਸਫਲ ਰਿਹਾ"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Downloaded {filename}"
 msgstr "{filename} ਡਾਊਨਲੋਡ ਕੀਤੀ ਗਈ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Drag columns to re-order them"
 msgstr "ਮੁੜ ਕ੍ਰਮਬੱਧ ਕਰਨ ਲਈ ਕਾਲਮ ਡ੍ਰੈਗ ਕਰੋ"
 
@@ -1260,7 +1260,7 @@ msgstr "ਗ਼ਲਤੀ"
 msgid "Every minute"
 msgstr "ਹਰ ਮਿੰਟ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Everything"
 msgstr "ਸਭ ਕੁਝ"
 
@@ -1283,11 +1283,11 @@ msgstr "ਸਭ ਫੈਲਾਓ"
 msgid "Expand sidebar"
 msgstr "ਸਾਈਡਬਾਰ ਫੈਲਾਓ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Export CSV"
 msgstr "CSV ਨਿਰਯਾਤ ਕਰੋ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Export data"
 msgstr "ਡਾਟਾ ਐਕਸਪੋਰਟ ਕਰੋ"
 
@@ -1307,7 +1307,7 @@ msgstr "ਵਾਧੂ ਵੱਡਾ"
 msgid "Failed to add account"
 msgstr "ਖਾਤਾ ਜੋੜਨ ਵਿੱਚ ਅਸਫਲ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to add column"
 msgstr "ਕਾਲਮ ਜੋੜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"
 
@@ -1318,8 +1318,8 @@ msgstr "ਕਾਲਮ ਜੋੜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"
 msgid "Failed to copy"
 msgstr "ਕਾਪੀ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to copy CRM"
 msgstr "CRM ਕਾਪੀ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 
@@ -1336,6 +1336,7 @@ msgid "Failed to create field"
 msgstr "ਫੀਲਡ ਬਣਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/share-menu.tsx
 msgid "Failed to create link"
 msgstr "ਲਿੰਕ ਬਣਾਉਣ ਵਿੱਚ ਅਸਫਲ"
@@ -1360,7 +1361,7 @@ msgstr "ਅਟੈਚਮੈਂਟ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 msgid "Failed to delete class"
 msgstr "ਕਲਾਸ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to delete column"
 msgstr "ਕਾਲਮ ਮਿਟਾਇਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"
 
@@ -1388,7 +1389,7 @@ msgstr "ਵਿਕਲਪ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 msgid "Failed to delete view"
 msgstr "ਵਿਊ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to export data"
 msgstr "ਡਾਟਾ ਐਕਸਪੋਰਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ"
 
@@ -1463,7 +1464,7 @@ msgid "Failed to load video"
 msgstr "ਵੀਡੀਓ ਲੋਡ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to move"
 msgstr "ਹਿਲਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 
@@ -1471,7 +1472,7 @@ msgstr "ਹਿਲਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 msgid "Failed to post comment"
 msgstr "ਟਿੱਪਣੀ ਪੋਸਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to re-order columns"
 msgstr "ਕਾਲਮਾਂ ਦਾ ਕ੍ਰਮ ਬਦਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"
 
@@ -1484,7 +1485,7 @@ msgstr "ਫਾਈਲ ਪੜ੍ਹਨ ਵਿੱਚ ਅਸਫਲ"
 msgid "Failed to remove access"
 msgstr "ਪਹੁੰਚ ਹਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to rename column"
 msgstr "ਕਾਲਮ ਦਾ ਨਾਂ ਬਦਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"
 
@@ -1526,8 +1527,8 @@ msgstr "ਪਹੁੰਚ ਪੱਧਰ ਸੈੱਟ ਕਰਨ ਵਿੱਚ ਅਸ�
 msgid "Failed to subscribe"
 msgstr "ਗਾਹਕੀ ਲੈਣ ਵਿੱਚ ਅਸਫਲ"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Failed to unsubscribe"
 msgstr "ਗਾਹਕੀ ਖਤਮ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 
@@ -1664,8 +1665,8 @@ msgid "Hot"
 msgstr "ਪ੍ਰਸਿੱਧ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/editor/components/edit-dialogs.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "ID"
 msgstr "ਆਈਡੀ"
 
@@ -1792,7 +1793,7 @@ msgid "Loading item details"
 msgstr "ਆਈਟਮ ਦੇ ਵੇਰਵੇ ਲੋਡ ਹੋ ਰਹੇ ਹਨ"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Loading..."
 msgstr "ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ..."
 
@@ -1899,16 +1900,16 @@ msgstr "{0} ਉੱਤੇ ਲਿਜਾਇਆ ਜਾ ਰਿਹਾ ਹੈ"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "ਨਾਮ"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "ਨਾਮ ਵਿੱਚ < ਜਾਂ > ਅੱਖਰ ਨਹੀਂ ਹੋ ਸਕਦੇ"
 
@@ -1919,8 +1920,8 @@ msgstr "ਨਾਮ ਜ਼ਰੂਰੀ ਹੈ"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "ਨਾਮ 1000 ਅੱਖਰਾਂ ਜਾਂ ਘੱਟ ਦਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ"
 
@@ -1930,8 +1931,8 @@ msgid "Network error"
 msgstr "ਨੈੱਟਵਰਕ ਗੜਬੜ"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "New"
 msgstr "ਨਵਾਂ"
 
@@ -1941,7 +1942,7 @@ msgid "New"
 msgstr "ਸਭ ਤੋਂ ਨਵੇਂ"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "New {0}"
 msgstr "ਨਵਾਂ {0}"
 
@@ -2012,7 +2013,7 @@ msgstr "ਅਜੇ ਕੋਈ ਆਈਟਮ ਕਿਸਮ ਨਹੀਂ ਬਣਾਈ 
 msgid "No matching objects"
 msgstr "ਕੋਈ ਮੇਲ ਖਾਂਦਾ ਆਬਜੈਕਟ ਨਹੀਂ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "No objects to export."
 msgstr "ਐਕਸਪੋਰਟ ਕਰਨ ਲਈ ਕੋਈ ਆਬਜੈਕਟ ਨਹੀਂ।"
 
@@ -2155,7 +2156,7 @@ msgstr "ਨੈਵੀਗੇਸ਼ਨ ਖੋਲ੍ਹੋ"
 msgid "Open option actions"
 msgstr "ਵਿਕਲਪ ਐਕਸ਼ਨ ਖੋਲ੍ਹੋ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Open page actions"
 msgstr "ਪੇਜ ਐਕਸ਼ਨ ਖੋਲ੍ਹੋ"
 
@@ -2194,7 +2195,7 @@ msgstr "ਮਾਲਕ"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Parent"
 msgstr "ਪੇਰੈਂਟ"
 
@@ -2223,7 +2224,7 @@ msgstr "ਪੈਟਰਨ (regex)"
 msgid "People"
 msgstr "ਲੋਕ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Please add one or more classes to the CRM design."
 msgstr "ਕਿਰਪਾ ਕਰਕੇ CRM ਡਿਜ਼ਾਈਨ ਵਿੱਚ ਇੱਕ ਜਾਂ ਵੱਧ ਕਲਾਸਾਂ ਸ਼ਾਮਲ ਕਰੋ।"
 
@@ -2300,7 +2301,7 @@ msgstr "ਉੱਚਾ"
 msgid "Re-link your accounts on this server"
 msgstr "ਇਸ ਸਰਵਰ 'ਤੇ ਆਪਣੇ ਖਾਤੇ ਮੁੜ-ਲਿੰਕ ਕਰੋ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Re-order columns"
 msgstr "ਕਾਲਮ ਮੁੜ-ਆਰਡਰ ਕਰੋ"
 
@@ -2535,7 +2536,7 @@ msgstr "ਸ਼ਨੀਵਾਰ"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Save"
 msgstr "ਸੰਭਾਲੋ"
 
@@ -2685,8 +2686,8 @@ msgstr "ਪਹੁੰਚ ਸੈੱਟ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Settings"
 msgstr "ਸੈਟਿੰਗਾਂ"
 
@@ -2866,7 +2867,7 @@ msgstr "ਕੈਮਰਾ ਪਹਿਲਾਂ ਹੀ ਵਰਤੋਂ ਵਿੱਚ �
 msgid "The camera request was not answered"
 msgstr "ਕੈਮਰਾ ਬੇਨਤੀ ਦਾ ਜਵਾਬ ਨਹੀਂ ਮਿਲਿਆ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "The copy may be incomplete. Check it before you use it."
 msgstr "ਕਾਪੀ ਅਧੂਰੀ ਹੋ ਸਕਦੀ ਹੈ। ਵਰਤਣ ਤੋਂ ਪਹਿਲਾਂ ਇਸਦੀ ਜਾਂਚ ਕਰੋ।"
 
@@ -2912,7 +2913,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "ਇਹ \"{0}\" ਅਤੇ ਇਸ ਦੀਆਂ ਸਾਰੀਆਂ ਆਬਜੈਕਟਾਂ, ਟਿੱਪਣੀਆਂ ਅਤੇ ਅਟੈਚਮੈਂਟ ਨੂੰ ਪੱਕੇ ਤੌਰ 'ਤੇ ਮਿਟਾ ਦੇਵੇਗਾ। ਇਸ ਕਾਰਵਾਈ ਨੂੰ ਵਾਪਸ ਨਹੀਂ ਲਿਆ ਜਾ ਸਕਦਾ।"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "ਇਹ ਤੁਹਾਡੀ ਸਾਈਡਬਾਰ ਤੋਂ \"{0}\" ਨੂੰ ਹਟਾ ਦੇਵੇਗਾ ਅਤੇ ਇਸ CRM ਲਈ ਅੱਪਡੇਟ ਬੰਦ ਕਰ ਦੇਵੇਗਾ।"
 
@@ -3047,22 +3048,22 @@ msgid "Unknown"
 msgstr "ਅਣਜਾਣ"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribe"
 msgstr "ਗਾਹਕੀ ਖਤਮ ਕਰੋ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Unsubscribe from CRM?"
 msgstr "CRM ਤੋਂ ਗਾਹਕੀ ਖਤਮ ਕਰੋ?"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribed"
 msgstr "ਗਾਹਕੀ ਖਤਮ ਕੀਤੀ"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribing..."
 msgstr "ਗਾਹਕੀ ਖਤਮ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ..."
 
@@ -3157,7 +3158,7 @@ msgstr "ਨਿਯੰਤਰਣ ਦੇਖੋ"
 msgid "View only"
 msgstr "ਸਿਰਫ਼ ਦੇਖੋ"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "View options"
 msgstr "ਵਿਕਲਪ ਦੇਖੋ"
 

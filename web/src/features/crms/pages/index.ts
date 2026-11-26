@@ -4,3 +4,4 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 export { CrmsListPage } from './crms-list-page'
+export { CrmPageContent } from './crm-page'

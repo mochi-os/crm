@@ -243,7 +243,7 @@ msgstr "Ajouter un élément"
 msgid "Add class"
 msgstr "Ajouter une classe"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Add column"
 msgstr "Ajouter une colonne"
 
@@ -312,7 +312,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "Autoriser tout le monde à rechercher {entityLabel}"
 
 #: src/features/crms/components/create-crm-dialog.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Allow anyone to view and comment on CRM"
 msgstr "Autoriser tout le monde à voir et commenter le CRM"
 
@@ -351,7 +351,7 @@ msgstr "Tout ce qui est abonné à ce flux cessera de le recevoir. Vous pourrez 
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Voulez-vous vraiment supprimer « {0} » ?"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Are you sure you want to delete \"{title}\" and the {count, plural, one {# item} other {# items}} under it? This action cannot be undone."
 msgstr "Voulez-vous vraiment supprimer « {title} » et {count, plural, one {# élément situé} other {# éléments situés}} en dessous ? Cette action est irréversible."
 
@@ -524,9 +524,9 @@ msgstr "Peut être enfant de"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -605,7 +605,7 @@ msgstr "Choisir une heure"
 msgid "Choose language"
 msgstr "Choisir la langue"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Class"
 msgstr "Classe"
 
@@ -792,25 +792,25 @@ msgstr "Copié dans le presse-papiers"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy"
 msgstr "Copier"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy CRM"
 msgstr "Copier le CRM"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/lib/share-labels.ts
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy link"
 msgstr "Copier le lien"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy of {name}"
 msgstr "Copie de {name}"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copying CRM..."
 msgstr "Copie du CRM..."
 
@@ -818,7 +818,7 @@ msgstr "Copie du CRM..."
 msgid "Could not load this document. Please try again later."
 msgstr "Impossible de charger ce document. Veuillez réessayer plus tard."
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Could not remove the unfinished copy"
 msgstr "Impossible de supprimer la copie inachevée"
 
@@ -901,7 +901,7 @@ msgstr ""
 msgid "CRM actions"
 msgstr "Actions CRM"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "CRM copied"
 msgstr "CRM copié"
 
@@ -913,8 +913,8 @@ msgstr "CRM créé"
 msgid "CRM deleted"
 msgstr "CRM supprimé"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "Le nom du CRM est obligatoire"
 
@@ -1077,9 +1077,9 @@ msgstr "Décroissant"
 msgid "Description"
 msgstr "Description"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Design"
 msgstr "Conception"
 
@@ -1088,7 +1088,7 @@ msgstr "Conception"
 msgid "Design imported"
 msgstr "Conception importée"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Design only"
 msgstr "Conception uniquement"
 
@@ -1133,7 +1133,7 @@ msgstr "Déconnecté"
 msgid "Dismiss"
 msgstr "Ignorer"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Dismiss board hint"
 msgstr "Masquer l'aide du tableau"
 
@@ -1151,7 +1151,7 @@ msgstr "Ne correspond pas au motif requis"
 msgid "Done"
 msgstr "Terminé"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Double click on a column to add content"
 msgstr "Double-cliquez sur une colonne pour ajouter du contenu"
 
@@ -1170,12 +1170,12 @@ msgstr "Télécharger d'abord la sauvegarde"
 msgid "Download failed"
 msgstr "Échec du téléchargement"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Downloaded {filename}"
 msgstr "{filename} téléchargé"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Drag columns to re-order them"
 msgstr "Faites glisser les colonnes pour les réorganiser"
 
@@ -1260,7 +1260,7 @@ msgstr "Erreur"
 msgid "Every minute"
 msgstr "Chaque minute"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Everything"
 msgstr "Tout"
 
@@ -1283,11 +1283,11 @@ msgstr "Tout développer"
 msgid "Expand sidebar"
 msgstr "Développer la barre latérale"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Export CSV"
 msgstr "Exporter en CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Export data"
 msgstr "Exporter les données"
 
@@ -1307,7 +1307,7 @@ msgstr "Très grand"
 msgid "Failed to add account"
 msgstr "Échec de l'ajout du compte"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to add column"
 msgstr "Échec de l'ajout de la colonne"
 
@@ -1318,8 +1318,8 @@ msgstr "Échec de l'ajout de la colonne"
 msgid "Failed to copy"
 msgstr "Échec de la copie"
 
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to copy CRM"
 msgstr "Échec de la copie du CRM"
 
@@ -1336,6 +1336,7 @@ msgid "Failed to create field"
 msgstr "Échec de la création du champ"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/share-menu.tsx
 msgid "Failed to create link"
 msgstr "Échec de la création du lien"
@@ -1360,7 +1361,7 @@ msgstr "Échec de la suppression de la pièce jointe"
 msgid "Failed to delete class"
 msgstr "Échec de la suppression de la classe"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to delete column"
 msgstr "Échec de la suppression de la colonne"
 
@@ -1388,7 +1389,7 @@ msgstr "Échec de la suppression de l'option"
 msgid "Failed to delete view"
 msgstr "Échec de la suppression de la vue"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to export data"
 msgstr "Échec de l'exportation des données"
 
@@ -1463,7 +1464,7 @@ msgid "Failed to load video"
 msgstr "Échec du chargement de la vidéo"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to move"
 msgstr "Échec du déplacement"
 
@@ -1471,7 +1472,7 @@ msgstr "Échec du déplacement"
 msgid "Failed to post comment"
 msgstr "Échec de la publication du commentaire"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to re-order columns"
 msgstr "Échec de la réorganisation des colonnes"
 
@@ -1484,7 +1485,7 @@ msgstr "Échec de la lecture du fichier"
 msgid "Failed to remove access"
 msgstr "Échec du retrait de l'accès"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to rename column"
 msgstr "Échec du renommage de la colonne"
 
@@ -1526,8 +1527,8 @@ msgstr "Échec de la définition du niveau d'accès"
 msgid "Failed to subscribe"
 msgstr "Échec de l'abonnement"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Failed to unsubscribe"
 msgstr "Échec du désabonnement"
 
@@ -1664,8 +1665,8 @@ msgid "Hot"
 msgstr "Populaire"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/editor/components/edit-dialogs.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "ID"
 msgstr "Identifiant"
 
@@ -1792,7 +1793,7 @@ msgid "Loading item details"
 msgstr "Chargement des détails de l'élément"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Loading..."
 msgstr "Chargement..."
 
@@ -1899,16 +1900,16 @@ msgstr "Déplacement vers {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "Nom"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "Le nom ne peut pas contenir les caractères < ou >"
 
@@ -1919,8 +1920,8 @@ msgstr "Le nom est obligatoire"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "Le nom doit comporter 1000 caractères ou moins"
 
@@ -1930,8 +1931,8 @@ msgid "Network error"
 msgstr "Erreur réseau"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "New"
 msgstr "Nouveau"
 
@@ -1941,7 +1942,7 @@ msgid "New"
 msgstr "Récent"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "New {0}"
 msgstr "Nouveau {0}"
 
@@ -2012,7 +2013,7 @@ msgstr "Aucun type d'élément ne peut encore être créé. Créez d'abord les �
 msgid "No matching objects"
 msgstr "Aucun objet correspondant"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "No objects to export."
 msgstr "Aucun objet à exporter."
 
@@ -2155,7 +2156,7 @@ msgstr "Ouvrir la navigation"
 msgid "Open option actions"
 msgstr "Ouvrir les actions de l'option"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Open page actions"
 msgstr "Ouvrir les actions de la page"
 
@@ -2194,7 +2195,7 @@ msgstr "Propriétaire"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Parent"
 msgstr "Parent"
 
@@ -2223,7 +2224,7 @@ msgstr "Motif (regex)"
 msgid "People"
 msgstr "Personnes"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Please add one or more classes to the CRM design."
 msgstr "Ajoutez d'abord une ou plusieurs classes au design du CRM."
 
@@ -2300,7 +2301,7 @@ msgstr "Surélevé"
 msgid "Re-link your accounts on this server"
 msgstr "Relinkez vos comptes sur ce serveur"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Re-order columns"
 msgstr "Réorganiser les colonnes"
 
@@ -2535,7 +2536,7 @@ msgstr "Samedi"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -2685,8 +2686,8 @@ msgstr "Définition de l'accès..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -2866,7 +2867,7 @@ msgstr "La caméra est déjà utilisée"
 msgid "The camera request was not answered"
 msgstr "La demande de caméra est restée sans réponse"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "The copy may be incomplete. Check it before you use it."
 msgstr "La copie est peut-être incomplète. Vérifiez-la avant de l'utiliser."
 
@@ -2912,7 +2913,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "Cette action supprimera définitivement « {0} » ainsi que tous ses objets, commentaires et pièces jointes. Cette action est irréversible."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Cette action retirera « {0} » de votre barre latérale et arrêtera les mises à jour pour ce CRM."
 
@@ -3047,22 +3048,22 @@ msgid "Unknown"
 msgstr "Inconnu"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribe"
 msgstr "Se désabonner"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Unsubscribe from CRM?"
 msgstr "Se désabonner du CRM ?"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribed"
 msgstr "Désabonné"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribing..."
 msgstr "Désabonnement..."
 
@@ -3157,7 +3158,7 @@ msgstr "Contrôles de la vue"
 msgid "View only"
 msgstr "Lecture seule"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "View options"
 msgstr "Options d'affichage"
 

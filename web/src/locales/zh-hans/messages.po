@@ -243,7 +243,7 @@ msgstr "添加清单项"
 msgid "Add class"
 msgstr "添加类"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Add column"
 msgstr "添加列"
 
@@ -312,7 +312,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "允许任何人搜索{entityLabel}"
 
 #: src/features/crms/components/create-crm-dialog.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Allow anyone to view and comment on CRM"
 msgstr "允许任何人查看和评论 CRM"
 
@@ -351,7 +351,7 @@ msgstr "订阅此源的一切都将停止接收。之后你可以复制新的网
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "确定要删除 \"{0}\" 吗?"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Are you sure you want to delete \"{title}\" and the {count, plural, one {# item} other {# items}} under it? This action cannot be undone."
 msgstr "确定要删除 \"{title}\" 及其下的 {count, plural, one {# 项} other {# 项}}吗?此操作无法撤销。"
 
@@ -524,9 +524,9 @@ msgstr "可作为子项的父级"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "取消"
 
@@ -605,7 +605,7 @@ msgstr "选择时间"
 msgid "Choose language"
 msgstr "选择语言"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Class"
 msgstr "类"
 
@@ -792,25 +792,25 @@ msgstr "已复制到剪贴板"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy"
 msgstr "复制"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy CRM"
 msgstr "复制 CRM"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/lib/share-labels.ts
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy link"
 msgstr "复制链接"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy of {name}"
 msgstr "{name} 的副本"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copying CRM..."
 msgstr "正在复制 CRM..."
 
@@ -818,7 +818,7 @@ msgstr "正在复制 CRM..."
 msgid "Could not load this document. Please try again later."
 msgstr "无法加载此文档。请稍后重试。"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Could not remove the unfinished copy"
 msgstr "无法移除未完成的副本"
 
@@ -901,7 +901,7 @@ msgstr ""
 msgid "CRM actions"
 msgstr "CRM 操作"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "CRM copied"
 msgstr "CRM 已复制"
 
@@ -913,8 +913,8 @@ msgstr "CRM 已创建"
 msgid "CRM deleted"
 msgstr "已删除 CRM"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "CRM 名称为必填项"
 
@@ -1077,9 +1077,9 @@ msgstr "降序"
 msgid "Description"
 msgstr "描述"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Design"
 msgstr "设计"
 
@@ -1088,7 +1088,7 @@ msgstr "设计"
 msgid "Design imported"
 msgstr "设计已导入"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Design only"
 msgstr "仅设计"
 
@@ -1133,7 +1133,7 @@ msgstr "已断开"
 msgid "Dismiss"
 msgstr "关闭"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Dismiss board hint"
 msgstr "关闭看板提示"
 
@@ -1151,7 +1151,7 @@ msgstr "与所需的模式不匹配"
 msgid "Done"
 msgstr "完成"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Double click on a column to add content"
 msgstr "双击列以添加内容"
 
@@ -1170,12 +1170,12 @@ msgstr "请先下载备份"
 msgid "Download failed"
 msgstr "下载失败"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Downloaded {filename}"
 msgstr "已下载 {filename}"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Drag columns to re-order them"
 msgstr "拖动列以重新排序"
 
@@ -1260,7 +1260,7 @@ msgstr "错误"
 msgid "Every minute"
 msgstr "每分钟"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Everything"
 msgstr "全部"
 
@@ -1283,11 +1283,11 @@ msgstr "全部展开"
 msgid "Expand sidebar"
 msgstr "展开侧边栏"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Export CSV"
 msgstr "导出 CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Export data"
 msgstr "导出数据"
 
@@ -1307,7 +1307,7 @@ msgstr "特大"
 msgid "Failed to add account"
 msgstr "添加账户失败"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to add column"
 msgstr "添加列失败"
 
@@ -1318,8 +1318,8 @@ msgstr "添加列失败"
 msgid "Failed to copy"
 msgstr "复制失败"
 
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to copy CRM"
 msgstr "复制 CRM 失败"
 
@@ -1336,6 +1336,7 @@ msgid "Failed to create field"
 msgstr "创建字段失败"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/share-menu.tsx
 msgid "Failed to create link"
 msgstr "创建链接失败"
@@ -1360,7 +1361,7 @@ msgstr "删除附件失败"
 msgid "Failed to delete class"
 msgstr "删除类别失败"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to delete column"
 msgstr "删除列失败"
 
@@ -1388,7 +1389,7 @@ msgstr "删除选项失败"
 msgid "Failed to delete view"
 msgstr "删除视图失败"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to export data"
 msgstr "导出数据失败"
 
@@ -1463,7 +1464,7 @@ msgid "Failed to load video"
 msgstr "无法加载视频"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to move"
 msgstr "移动失败"
 
@@ -1471,7 +1472,7 @@ msgstr "移动失败"
 msgid "Failed to post comment"
 msgstr "发布评论失败"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to re-order columns"
 msgstr "重新排序列失败"
 
@@ -1484,7 +1485,7 @@ msgstr "读取文件失败"
 msgid "Failed to remove access"
 msgstr "移除访问权限失败"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to rename column"
 msgstr "重命名列失败"
 
@@ -1526,8 +1527,8 @@ msgstr "设置访问级别失败"
 msgid "Failed to subscribe"
 msgstr "订阅失败"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Failed to unsubscribe"
 msgstr "退订失败"
 
@@ -1664,8 +1665,8 @@ msgid "Hot"
 msgstr "热门"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/editor/components/edit-dialogs.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "ID"
 msgstr "ID"
 
@@ -1792,7 +1793,7 @@ msgid "Loading item details"
 msgstr "正在加载条目详情"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Loading..."
 msgstr "加载中..."
 
@@ -1899,16 +1900,16 @@ msgstr "正在移动到 {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "名称"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "名称不能包含 < 或 > 字符"
 
@@ -1919,8 +1920,8 @@ msgstr "名称为必填项"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "名称不能超过 1000 个字符"
 
@@ -1930,8 +1931,8 @@ msgid "Network error"
 msgstr "网络错误"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "New"
 msgstr "新建"
 
@@ -1941,7 +1942,7 @@ msgid "New"
 msgstr "最新"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "New {0}"
 msgstr "新建{0}"
 
@@ -2012,7 +2013,7 @@ msgstr "尚无可创建的条目类型。请先创建所需的父级条目。"
 msgid "No matching objects"
 msgstr "无匹配的对象"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "No objects to export."
 msgstr "无可导出的对象。"
 
@@ -2155,7 +2156,7 @@ msgstr "打开导航"
 msgid "Open option actions"
 msgstr "打开选项操作"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Open page actions"
 msgstr "打开页面操作"
 
@@ -2194,7 +2195,7 @@ msgstr "所有者"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Parent"
 msgstr "父级"
 
@@ -2223,7 +2224,7 @@ msgstr "模式(正则表达式)"
 msgid "People"
 msgstr "人员"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Please add one or more classes to the CRM design."
 msgstr "请在 CRM 设计中添加一个或多个类。"
 
@@ -2300,7 +2301,7 @@ msgstr "凸起"
 msgid "Re-link your accounts on this server"
 msgstr "在此服务器上重新关联账户"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Re-order columns"
 msgstr "重新排序列"
 
@@ -2535,7 +2536,7 @@ msgstr "星期六"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Save"
 msgstr "保存"
 
@@ -2685,8 +2686,8 @@ msgstr "正在设置访问权限..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Settings"
 msgstr "设置"
 
@@ -2866,7 +2867,7 @@ msgstr "相机已在使用中"
 msgid "The camera request was not answered"
 msgstr "相机请求未获回应"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "The copy may be incomplete. Check it before you use it."
 msgstr "副本可能不完整。使用前请先检查。"
 
@@ -2912,7 +2913,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "这将永久删除“{0}”及其所有对象、评论和附件。此操作无法撤销。"
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "这将从您的侧边栏中移除“{0}”并停止此 CRM 的更新。"
 
@@ -3047,22 +3048,22 @@ msgid "Unknown"
 msgstr "未知"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribe"
 msgstr "退订"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Unsubscribe from CRM?"
 msgstr "退订 CRM?"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribed"
 msgstr "已退订"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribing..."
 msgstr "正在退订..."
 
@@ -3157,7 +3158,7 @@ msgstr "视图控制"
 msgid "View only"
 msgstr "仅查看"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "View options"
 msgstr "查看选项"
 

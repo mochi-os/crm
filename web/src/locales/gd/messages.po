@@ -243,7 +243,7 @@ msgstr "Cuir nì ris an liosta-dearbhaidh"
 msgid "Add class"
 msgstr "Cuir clas ris"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Add column"
 msgstr "Cuir colbh ris"
 
@@ -312,7 +312,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "Ceadaich do dhuine sam bith {entityLabel} a lorg"
 
 #: src/features/crms/components/create-crm-dialog.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Allow anyone to view and comment on CRM"
 msgstr "Ceadaich do dhuine sam bith an CRM fhaicinn agus beachdan a chur ris"
 
@@ -351,7 +351,7 @@ msgstr "Sguiridh rud sam bith a tha air fo-sgrìobhadh ris an inbhir seo ga fhai
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "A bheil thu cinnteach gu bheil thu airson \"{0}\" a sguabadh às?"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Are you sure you want to delete \"{title}\" and the {count, plural, one {# item} other {# items}} under it? This action cannot be undone."
 msgstr "A bheil thu cinnteach gu bheil thu airson \"{title}\" agus {count, plural, one {# nì} two {# nì} few {# nithean} other {# nì}} fodha a sguabadh às? Cha ghabh an gnìomh seo a thilleadh."
 
@@ -524,9 +524,9 @@ msgstr "Faodaidh e a bhith na phàiste de"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "Sguir dheth"
 
@@ -605,7 +605,7 @@ msgstr "Tagh àm"
 msgid "Choose language"
 msgstr "Tagh cànan"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Class"
 msgstr "Clas"
 
@@ -792,25 +792,25 @@ msgstr "Air a chopaigeadh chun a' chliopaboird"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy"
 msgstr "Dèan lethbhreac"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy CRM"
 msgstr "Dèan lethbhreac de CRM"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/lib/share-labels.ts
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy link"
 msgstr "Dèan lethbhreac den cheangal"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy of {name}"
 msgstr "Lethbhreac de {name}"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copying CRM..."
 msgstr "A' dèanamh lethbhreac de CRM..."
 
@@ -818,7 +818,7 @@ msgstr "A' dèanamh lethbhreac de CRM..."
 msgid "Could not load this document. Please try again later."
 msgstr "Cha b' urrainn an sgrìobhainn seo a luchdachadh. Feuch ris a-rithist nas anmoiche."
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Could not remove the unfinished copy"
 msgstr "Cha b' urrainn an lethbhreac neo-chrìochnaichte a thoirt air falbh"
 
@@ -901,7 +901,7 @@ msgstr ""
 msgid "CRM actions"
 msgstr "Gnìomhan CRM"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "CRM copied"
 msgstr "Chaidh lethbhreac a dhèanamh de CRM"
 
@@ -913,8 +913,8 @@ msgstr "CRM air a chruthachadh"
 msgid "CRM deleted"
 msgstr "Chaidh CRM a sguabadh às"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "Tha ainm CRM a dhìth"
 
@@ -1077,9 +1077,9 @@ msgstr "A' teàrnadh"
 msgid "Description"
 msgstr "Tuairisgeul"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Design"
 msgstr "Dealbhadh"
 
@@ -1088,7 +1088,7 @@ msgstr "Dealbhadh"
 msgid "Design imported"
 msgstr "Dealbhadh air ion-phortadh"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Design only"
 msgstr "Dealbhadh a-mhàin"
 
@@ -1133,7 +1133,7 @@ msgstr "Gun cheangal"
 msgid "Dismiss"
 msgstr "Leig seachad"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Dismiss board hint"
 msgstr "Leig seachad sanas a' bhùird"
 
@@ -1151,7 +1151,7 @@ msgstr "Chan eil e a' freagairt ris a' phàtran riatanach"
 msgid "Done"
 msgstr "Deiseil"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Double click on a column to add content"
 msgstr "Dèan briogadh dùbailte air colbh gus susbaint a chur ris"
 
@@ -1170,12 +1170,12 @@ msgstr "Luchdaich lethbhreac-glèidhidh a-nuas an toiseach"
 msgid "Download failed"
 msgstr "Dh’fhàillig an luchdadh a-nuas"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Downloaded {filename}"
 msgstr "Chaidh {filename} a luchdadh a-nuas"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Drag columns to re-order them"
 msgstr "Slaod colbhan gus an òrdugh atharrachadh"
 
@@ -1260,7 +1260,7 @@ msgstr "Mearachd"
 msgid "Every minute"
 msgstr "Gach mionaid"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Everything"
 msgstr "A h-uile càil"
 
@@ -1283,11 +1283,11 @@ msgstr "Leudaich na h-uile"
 msgid "Expand sidebar"
 msgstr "Leudaich am bàr-taobh"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Export CSV"
 msgstr "Às-phortaich CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Export data"
 msgstr "Às-phortaich an dàta"
 
@@ -1307,7 +1307,7 @@ msgstr "A bharrachd mòr"
 msgid "Failed to add account"
 msgstr "Cha b' urrainn an cunntas a chur ris"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to add column"
 msgstr "Cha b' urrainn dhuinn colbh a chur ris"
 
@@ -1318,8 +1318,8 @@ msgstr "Cha b' urrainn dhuinn colbh a chur ris"
 msgid "Failed to copy"
 msgstr "Cha b' urrainn copaigeadh"
 
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to copy CRM"
 msgstr "Cha b' urrainn lethbhreac a dhèanamh de CRM"
 
@@ -1336,6 +1336,7 @@ msgid "Failed to create field"
 msgstr "Cha b' urrainn raon a chruthachadh"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/share-menu.tsx
 msgid "Failed to create link"
 msgstr "Cha b' urrainn ceangal a chruthachadh"
@@ -1360,7 +1361,7 @@ msgstr "Cha b' urrainn ceangaltas a sguabadh às"
 msgid "Failed to delete class"
 msgstr "Cha b' urrainn clas a sguabadh às"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to delete column"
 msgstr "Cha b' urrainn dhuinn an colbh a sguabadh às"
 
@@ -1388,7 +1389,7 @@ msgstr "Cha b' urrainn roghainn a sguabadh às"
 msgid "Failed to delete view"
 msgstr "Cha b' urrainn sealladh a sguabadh às"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to export data"
 msgstr "Cha b' urrainn an dàta às-phortadh"
 
@@ -1463,7 +1464,7 @@ msgid "Failed to load video"
 msgstr "Dh'fhàillig luchdachadh a' video"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to move"
 msgstr "Dh'fhàillig an gluasad"
 
@@ -1471,7 +1472,7 @@ msgstr "Dh'fhàillig an gluasad"
 msgid "Failed to post comment"
 msgstr "Cha b' urrainn beachd a phostadh"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to re-order columns"
 msgstr "Cha b' urrainn dhuinn na colbhan ath-òrdachadh"
 
@@ -1484,7 +1485,7 @@ msgstr "Cha b' urrainn am faidhle a leughadh"
 msgid "Failed to remove access"
 msgstr "Cha b' urrainn inntrigeadh a thoirt air falbh"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to rename column"
 msgstr "Cha b' urrainn dhuinn an colbh ath-ainmeachadh"
 
@@ -1526,8 +1527,8 @@ msgstr "Cha b' urrainn ìre an inntrigidh a shuidheachadh"
 msgid "Failed to subscribe"
 msgstr "Cha b' urrainn fo-sgrìobhadh"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Failed to unsubscribe"
 msgstr "Cha b' urrainn dì-fho-sgrìobhadh"
 
@@ -1664,8 +1665,8 @@ msgid "Hot"
 msgstr "Teth"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/editor/components/edit-dialogs.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "ID"
 msgstr "ID"
 
@@ -1792,7 +1793,7 @@ msgid "Loading item details"
 msgstr "A' luchdadh mion-fhiosrachadh an nì"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Loading..."
 msgstr "A' luchdadh..."
 
@@ -1899,16 +1900,16 @@ msgstr "Ga ghluasad gu {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "Ainm"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "Chan fhaod < no > a bhith san ainm"
 
@@ -1919,8 +1920,8 @@ msgstr "Tha ainm a dhìth"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "Feumaidh an t-ainm a bhith 1000 caractaran no nas lugha"
 
@@ -1930,8 +1931,8 @@ msgid "Network error"
 msgstr "Mearachd lìonraidh"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "New"
 msgstr "Ùr"
 
@@ -1941,7 +1942,7 @@ msgid "New"
 msgstr "As ùire"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "New {0}"
 msgstr "{0} ùr"
 
@@ -2012,7 +2013,7 @@ msgstr "Chan urrainnear seòrsa nì sam bith a chruthachadh fhathast. Cruthaich 
 msgid "No matching objects"
 msgstr "Chan eil nithean a' freagairt"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "No objects to export."
 msgstr "Chan eil nithean ri às-phortadh."
 
@@ -2155,7 +2156,7 @@ msgstr "Fosgail seòladaireachd"
 msgid "Open option actions"
 msgstr "Fosgail gnìomhan na roghainn"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Open page actions"
 msgstr "Fosgail gnìomhan na duilleige"
 
@@ -2194,7 +2195,7 @@ msgstr "Sealbhadair"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Parent"
 msgstr "Pàrant"
 
@@ -2223,7 +2224,7 @@ msgstr "Pàtran (regex)"
 msgid "People"
 msgstr "Daoine"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Please add one or more classes to the CRM design."
 msgstr "Cuir a-steach aon clas no barrachd ri dealbhadh a' CRM."
 
@@ -2300,7 +2301,7 @@ msgstr "Togte"
 msgid "Re-link your accounts on this server"
 msgstr "Ath-cheangail do chunntasan air an fhrithealaiche seo"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Re-order columns"
 msgstr "Ath-òrdaich colbhan"
 
@@ -2535,7 +2536,7 @@ msgstr "Disathairne"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Save"
 msgstr "Sàbhail"
 
@@ -2685,8 +2686,8 @@ msgstr "A' suidheachadh inntrigidh..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Settings"
 msgstr "Roghainnean"
 
@@ -2866,7 +2867,7 @@ msgstr "Tha an camara ga chleachdadh mu thràth"
 msgid "The camera request was not answered"
 msgstr "Cha deach an t-iarrtas camara a fhreagairt"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "The copy may be incomplete. Check it before you use it."
 msgstr "Dh'fhaoidte nach eil an lethbhreac coileanta. Thoir sùil air mus cleachd thu e."
 
@@ -2912,7 +2913,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "Sguabaidh seo às \"{0}\" gu buan agus a h-uile rud, beachdan, is ceanglachain aige. Chan urrainnear an gnìomh seo a thoirt air ais."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Bheir seo \"{0}\" air falbh bhon bhàr-taoibh agad agus stadaidh e ùrachaidhean airson a' CRM seo."
 
@@ -3047,22 +3048,22 @@ msgid "Unknown"
 msgstr "Neo-aithnichte"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribe"
 msgstr "Dì-fho-sgrìobh"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Unsubscribe from CRM?"
 msgstr "Dì-fho-sgrìobh bhon CRM?"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribed"
 msgstr "Dì-fho-sgrìobhte"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribing..."
 msgstr "A' dì-fho-sgrìobhadh..."
 
@@ -3157,7 +3158,7 @@ msgstr "Smachdan seallaidh"
 msgid "View only"
 msgstr "Seall a-mhàin"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "View options"
 msgstr "Roghainnean seallaidh"
 

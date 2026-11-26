@@ -1,0 +1,204 @@
+// Mochi CRM: CRM page body, shared by the CRM and item routes
+// Copyright © 2026 Mochisoft OÜ
+// SPDX-License-Identifier: AGPL-3.0-only
+// This file is part of Mochi, licensed under the GNU AGPL v3 with the
+// Mochi Application Interface Exception - see license.txt and license-exception.md.
+// The page body is EntityObjectsPage in @mochi/web, shared with the projects
+// app. What lives here is the wording and the bindings the shared page
+// renders through its slots. The routes keep the loader.
+import { Link, useNavigate, useRouter } from '@tanstack/react-router'
+import type { CrmDetails, CrmObject } from '@/types'
+import { plural } from '@lingui/core/macro'
+import { useLingui } from '@lingui/react/macro'
+import {
+  DropdownMenuItem,
+  EntityObjectsPage,
+  EntityObjectDetailPanel,
+  absoluteRouteUrl,
+  DISALLOWED_NAME_CHARS,
+} from '@mochi/web'
+import { Settings, Settings2, Users } from 'lucide-react'
+import crmsApi from '@/api/crms'
+import { useCrmsStore } from '@/stores/crms-store'
+import { useShareLabels } from '@/lib/share-labels'
+import { ViewOptionsBar } from '@/components/view-options-bar'
+import { BoardContainer } from '@/features/board/components'
+import { CreateObjectDialog } from '@/features/objects/components'
+import { TreeView } from '@/features/tree'
+
+interface SearchParams {
+  view?: string
+}
+
+interface CrmPageContentProps {
+  crm: CrmDetails
+  crmId: string
+  search: SearchParams
+  initialObjectId?: string
+}
+
+export function CrmPageContent({
+  crm,
+  crmId,
+  search,
+  initialObjectId,
+}: CrmPageContentProps) {
+  const { t } = useLingui()
+  const navigate = useNavigate()
+  const router = useRouter()
+  const refreshSidebar = useCrmsStore((state) => state.refresh)
+  const share = useShareLabels()
+
+  return (
+    <EntityObjectsPage<CrmObject>
+      design={crm}
+      container={crm.crm}
+      containerId={crmId}
+      search={search}
+      initialObjectId={initialObjectId}
+      icon={Users}
+      api={crmsApi}
+      entity='crm'
+      storagePrefix='crms'
+      listKey='crms'
+      backupSlug='crm'
+      refreshSidebar={refreshSidebar}
+      onLeave={() => void navigate({ to: '/' })}
+      // An empty CRM opens on its companies view: the first thing to add is a
+      // company, and the default view has nothing to show until one exists.
+      emptyViewClass='company'
+      shareUrl={() =>
+        absoluteRouteUrl(router, { to: '/$crmId', params: { crmId } })
+      }
+      labels={{
+        pageActions: t`Open page actions`,
+        createShort: t`New`,
+        // `className.toLowerCase()` rather than a variable, so the extracted
+        // message keeps the positional placeholder this app already ships.
+        createAction: (className) =>
+          className ? t`New ${className.toLowerCase()}` : t`New`,
+        noClasses: t`Please add one or more classes to the CRM design.`,
+        viewOptions: t`View options`,
+        addColumn: t`Add column`,
+        reorderColumns: t`Re-order columns`,
+        reorderHint: t`Drag columns to re-order them`,
+        cancel: t`Cancel`,
+        save: t`Save`,
+        boardHint: t`Double click on a column to add content`,
+        dismissBoardHint: t`Dismiss board hint`,
+        exportData: t`Export data`,
+        loading: t`Loading...`,
+        downloaded: (filename) => t`Downloaded ${filename}`,
+        exportFailed: t`Failed to export data`,
+        share,
+        moveFailed: t`Failed to move`,
+        columnCreateFailed: t`Failed to add column`,
+        columnRenameFailed: t`Failed to rename column`,
+        columnDeleteFailed: t`Failed to delete column`,
+        columnReorderFailed: t`Failed to re-order columns`,
+        unsubscribe: t`Unsubscribe`,
+        unsubscribeTitle: t`Unsubscribe from CRM?`,
+        unsubscribeDescription: t`This will remove "${crm.crm.name}" from your sidebar and stop updates for this CRM.`,
+        unsubscribing: t`Unsubscribing...`,
+        unsubscribed: t`Unsubscribed`,
+        unsubscribeFailed: t`Failed to unsubscribe`,
+      }}
+      csvExport={{
+        menuAction: t`Export CSV`,
+        noObjects: t`No objects to export.`,
+        idColumn: t`ID`,
+        classColumn: t`Class`,
+        parentColumn: t`Parent`,
+      }}
+      // Copy runs the backup export and the create-from-backup import as
+      // one step. A failed import removes the half-made copy.
+      duplicate={{
+        menuAction: t`Copy`,
+        api: crmsApi,
+        create: async (name, privacy) => {
+          const response = await crmsApi.create({
+            name,
+            privacy,
+            // The import does not carry the description, so it is set here.
+            description: crm.crm.description,
+          })
+          const id = response.data?.fingerprint
+          if (!id) throw new Error(t`Failed to copy CRM`)
+          return id
+        },
+        remove: (id) => crmsApi.delete(id),
+        onDuplicated: (id) => {
+          void refreshSidebar()
+          void navigate({ to: '/$crmId', params: { crmId: id } })
+        },
+        validateName: (name) => {
+          if (!name.trim()) return t`CRM name is required`
+          if (name.length > 1000) return t`Name must be 1000 characters or less`
+          if (DISALLOWED_NAME_CHARS.test(name))
+            return t`Name cannot contain < or > characters`
+          return null
+        },
+        labels: {
+          title: t`Copy CRM`,
+          name: t`Name`,
+          everything: t`Everything`,
+          designOnly: t`Design only`,
+          allowSearch: t`Allow anyone to view and comment on CRM`,
+          cancel: t`Cancel`,
+          confirm: t`Copy`,
+          duplicating: t`Copying CRM...`,
+          duplicated: t`CRM copied`,
+          failed: t`Failed to copy CRM`,
+          defaultName: (name) => t`Copy of ${name}`,
+          leftBehind: t`Could not remove the unfinished copy`,
+          incomplete: t`The copy may be incomplete. Check it before you use it.`,
+        },
+      }}
+      designMenuItem={
+        <DropdownMenuItem asChild>
+          <Link to='/$crmId/design' params={{ crmId }}>
+            <Settings2 className='me-2 size-4' />
+            {t`Design`}
+          </Link>
+        </DropdownMenuItem>
+      }
+      settingsMenuItem={
+        <DropdownMenuItem asChild>
+          <Link to='/$crmId/settings' params={{ crmId }}>
+            <Settings className='me-2 size-4' />
+            {t`Settings`}
+          </Link>
+        </DropdownMenuItem>
+      }
+      renderViewOptionsBar={(props) => <ViewOptionsBar crm={crm} {...props} />}
+      renderBoard={(props) => <BoardContainer crm={crm} {...props} />}
+      renderTree={(props) => <TreeView crm={crm} crmId={crmId} {...props} />}
+      renderCreateDialog={(props) => (
+        <CreateObjectDialog crmId={crmId} crm={crm} {...props} />
+      )}
+      renderDetailPanel={({ objectId, onCopy, onClose }) => (
+        <EntityObjectDetailPanel
+          containerId={crmId}
+          objectId={objectId}
+          design={crm}
+          access={crm.crm.access}
+          api={crmsApi}
+          itemUrl={(objectId) =>
+            absoluteRouteUrl(router, {
+              to: '/$crmId/$objectId',
+              params: { crmId, objectId },
+            })
+          }
+          labels={{
+            copyLink: t`Copy link`,
+            // The server deletes everything under an item with it.
+            deleteWithChildren: (title, count) =>
+              t`Are you sure you want to delete "${title}" and the ${plural(count, { one: '# item', other: '# items' })} under it? This action cannot be undone.`,
+          }}
+          onCopy={onCopy}
+          onClose={onClose}
+        />
+      )}
+    />
+  )
+}

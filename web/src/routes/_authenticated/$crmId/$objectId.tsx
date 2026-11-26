@@ -22,7 +22,7 @@ import {
 } from '@mochi/web'
 import { Users } from 'lucide-react'
 import crmsApi from '@/api/crms'
-import { CrmPageContent } from './index'
+import { CrmPageContent } from '@/features/crms/pages'
 
 interface SearchParams {
   view?: string

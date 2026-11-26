@@ -243,7 +243,7 @@ msgstr "Legg til sjekklisteelement"
 msgid "Add class"
 msgstr "Legg til klasse"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Add column"
 msgstr "Legg til kolonne"
 
@@ -312,7 +312,7 @@ msgid "Allow anyone to search for {entityLabel}"
 msgstr "La hvem som helst søke etter {entityLabel}"
 
 #: src/features/crms/components/create-crm-dialog.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Allow anyone to view and comment on CRM"
 msgstr "Tillat hvem som helst å se og kommentere CRM"
 
@@ -351,7 +351,7 @@ msgstr "Alt som abonnerer på denne strømmen slutter å motta den. Du kan kopie
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Er du sikker på at du vil slette «{0}»?"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Are you sure you want to delete \"{title}\" and the {count, plural, one {# item} other {# items}} under it? This action cannot be undone."
 msgstr "Er du sikker på at du vil slette «{title}» og {count, plural, one {# element} other {# elementer}} under det? Denne handlingen kan ikke angres."
 
@@ -524,9 +524,9 @@ msgstr "Kan være underordnet"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -605,7 +605,7 @@ msgstr "Velg et klokkeslett"
 msgid "Choose language"
 msgstr "Velg språk"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Class"
 msgstr "Klasse"
 
@@ -792,25 +792,25 @@ msgstr "Kopiert til utklippstavlen"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy"
 msgstr "Kopier"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy CRM"
 msgstr "Kopier CRM"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/lib/share-labels.ts
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy link"
 msgstr "Kopier lenke"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copy of {name}"
 msgstr "Kopi av {name}"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Copying CRM..."
 msgstr "Kopierer CRM..."
 
@@ -818,7 +818,7 @@ msgstr "Kopierer CRM..."
 msgid "Could not load this document. Please try again later."
 msgstr "Kunne ikke laste dette dokumentet. Prøv igjen senere."
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Could not remove the unfinished copy"
 msgstr "Kunne ikke fjerne den uferdige kopien"
 
@@ -901,7 +901,7 @@ msgstr ""
 msgid "CRM actions"
 msgstr "CRM-handlinger"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "CRM copied"
 msgstr "CRM kopiert"
 
@@ -913,8 +913,8 @@ msgstr "CRM opprettet"
 msgid "CRM deleted"
 msgstr "CRM slettet"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "CRM name is required"
 msgstr "CRM-navn er påkrevd"
 
@@ -1077,9 +1077,9 @@ msgstr "Synkende"
 msgid "Description"
 msgstr "Beskrivelse"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Design"
 msgstr "Design"
 
@@ -1088,7 +1088,7 @@ msgstr "Design"
 msgid "Design imported"
 msgstr "Design importert"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Design only"
 msgstr "Bare design"
 
@@ -1133,7 +1133,7 @@ msgstr "Frakoblet"
 msgid "Dismiss"
 msgstr "Lukk"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Dismiss board hint"
 msgstr "Lukk tavletips"
 
@@ -1151,7 +1151,7 @@ msgstr "Samsvarer ikke med det påkrevde mønsteret"
 msgid "Done"
 msgstr "Ferdig"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Double click on a column to add content"
 msgstr "Dobbeltklikk på en kolonne for å legge til innhold"
 
@@ -1170,12 +1170,12 @@ msgstr "Last ned sikkerhetskopi først"
 msgid "Download failed"
 msgstr "Nedlastingen mislyktes"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId/design.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Downloaded {filename}"
 msgstr "Lastet ned {filename}"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Drag columns to re-order them"
 msgstr "Dra kolonner for å endre rekkefølgen"
 
@@ -1260,7 +1260,7 @@ msgstr "Feil"
 msgid "Every minute"
 msgstr "Hvert minutt"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Everything"
 msgstr "Alt"
 
@@ -1283,11 +1283,11 @@ msgstr "Utvid alle"
 msgid "Expand sidebar"
 msgstr "Utvid sidefelt"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Export CSV"
 msgstr "Eksporter CSV"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Export data"
 msgstr "Eksporter data"
 
@@ -1307,7 +1307,7 @@ msgstr "Ekstra stor"
 msgid "Failed to add account"
 msgstr "Kunne ikke legge til konto"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to add column"
 msgstr "Kunne ikke legge til kolonne"
 
@@ -1318,8 +1318,8 @@ msgstr "Kunne ikke legge til kolonne"
 msgid "Failed to copy"
 msgstr "Kunne ikke kopiere"
 
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to copy CRM"
 msgstr "Kunne ikke kopiere CRM"
 
@@ -1336,6 +1336,7 @@ msgid "Failed to create field"
 msgstr "Kunne ikke opprette felt"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/share-menu.tsx
 msgid "Failed to create link"
 msgstr "Kunne ikke opprette lenke"
@@ -1360,7 +1361,7 @@ msgstr "Kunne ikke slette vedlegg"
 msgid "Failed to delete class"
 msgstr "Kunne ikke slette klasse"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to delete column"
 msgstr "Kunne ikke slette kolonne"
 
@@ -1388,7 +1389,7 @@ msgstr "Kunne ikke slette alternativ"
 msgid "Failed to delete view"
 msgstr "Kunne ikke slette visning"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to export data"
 msgstr "Kunne ikke eksportere data"
 
@@ -1463,7 +1464,7 @@ msgid "Failed to load video"
 msgstr "Kunne ikke laste videoen"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to move"
 msgstr "Kunne ikke flytte"
 
@@ -1471,7 +1472,7 @@ msgstr "Kunne ikke flytte"
 msgid "Failed to post comment"
 msgstr "Kunne ikke legge ut kommentar"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to re-order columns"
 msgstr "Kunne ikke endre rekkefølgen på kolonner"
 
@@ -1484,7 +1485,7 @@ msgstr "Kunne ikke lese fil"
 msgid "Failed to remove access"
 msgstr "Kunne ikke fjerne tilgang"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Failed to rename column"
 msgstr "Kunne ikke gi kolonnen nytt navn"
 
@@ -1526,8 +1527,8 @@ msgstr "Kunne ikke angi tilgangsnivå"
 msgid "Failed to subscribe"
 msgstr "Kunne ikke abonnere"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Failed to unsubscribe"
 msgstr "Kunne ikke avslutte abonnement"
 
@@ -1664,8 +1665,8 @@ msgid "Hot"
 msgstr "Populært"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/editor/components/edit-dialogs.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "ID"
 msgstr "ID"
 
@@ -1792,7 +1793,7 @@ msgid "Loading item details"
 msgstr "Laster elementdetaljer"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Loading..."
 msgstr "Laster ..."
 
@@ -1899,16 +1900,16 @@ msgstr "Flytter til {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name"
 msgstr "Navn"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name cannot contain < or > characters"
 msgstr "Navn kan ikke inneholde tegnene < eller >"
 
@@ -1919,8 +1920,8 @@ msgstr "Navn er påkrevd"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/crms/components/create-crm-dialog.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Name must be 1000 characters or less"
 msgstr "Navn må være 1000 tegn eller kortere"
 
@@ -1930,8 +1931,8 @@ msgid "Network error"
 msgstr "Nettverksfeil"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "New"
 msgstr "Ny"
 
@@ -1941,7 +1942,7 @@ msgid "New"
 msgstr "Nyeste"
 
 #. placeholder {0}: className.toLowerCase()
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "New {0}"
 msgstr "Ny {0}"
 
@@ -2012,7 +2013,7 @@ msgstr "Ingen elementtyper kan opprettes ennå. Opprett de nødvendige overordne
 msgid "No matching objects"
 msgstr "Ingen samsvarende objekter"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "No objects to export."
 msgstr "Ingen objekter å eksportere."
 
@@ -2155,7 +2156,7 @@ msgstr "Åpne navigasjon"
 msgid "Open option actions"
 msgstr "Åpne valghandlinger"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Open page actions"
 msgstr "Åpne sidehandlinger"
 
@@ -2194,7 +2195,7 @@ msgstr "Eier"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Parent"
 msgstr "Overordnet"
 
@@ -2223,7 +2224,7 @@ msgstr "Mønster (regex)"
 msgid "People"
 msgstr "Personer"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Please add one or more classes to the CRM design."
 msgstr "Legg til én eller flere klasser i CRM-designet."
 
@@ -2300,7 +2301,7 @@ msgstr "Hevet"
 msgid "Re-link your accounts on this server"
 msgstr "Koble kontoene dine til på nytt på denne serveren"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Re-order columns"
 msgstr "Endre rekkefølge på kolonner"
 
@@ -2535,7 +2536,7 @@ msgstr "Lørdag"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Save"
 msgstr "Lagre"
 
@@ -2685,8 +2686,8 @@ msgstr "Angir tilgang..."
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/routes/_authenticated/$crmId_.settings.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Settings"
 msgstr "Innstillinger"
 
@@ -2866,7 +2867,7 @@ msgstr "Kameraet er allerede i bruk"
 msgid "The camera request was not answered"
 msgstr "Kameraforespørselen ble ikke besvart"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "The copy may be incomplete. Check it before you use it."
 msgstr "Kopien kan være ufullstendig. Sjekk den før du bruker den."
 
@@ -2912,7 +2913,7 @@ msgid "This will permanently delete \"{0}\" and all its objects, comments, and a
 msgstr "Dette sletter «{0}» og alle dens objekter, kommentarer og vedlegg permanent. Denne handlingen kan ikke angres."
 
 #. placeholder {0}: crm.crm.name
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "This will remove \"{0}\" from your sidebar and stop updates for this CRM."
 msgstr "Dette fjerner «{0}» fra sidefeltet og stopper oppdateringer for denne CRM-en."
 
@@ -3047,22 +3048,22 @@ msgid "Unknown"
 msgstr "Ukjent"
 
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribe"
 msgstr "Avslutt abonnement"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "Unsubscribe from CRM?"
 msgstr "Avslutte abonnement på CRM?"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribed"
 msgstr "Abonnement avsluttet"
 
+#: src/features/crms/pages/crm-page.tsx
 #: src/features/crms/pages/crms-list-page.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
 msgid "Unsubscribing..."
 msgstr "Avslutter abonnement ..."
 
@@ -3157,7 +3158,7 @@ msgstr "Visningskontroller"
 msgid "View only"
 msgstr "Bare visning"
 
-#: src/routes/_authenticated/$crmId/index.tsx
+#: src/features/crms/pages/crm-page.tsx
 msgid "View options"
 msgstr "Visningsalternativer"
 
