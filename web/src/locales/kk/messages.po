@@ -313,8 +313,8 @@ msgstr "Кез келген адам {entityLabel} іздей алсын"
 
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
-msgid "Allow anyone to search for CRM"
-msgstr "Кез келгенге CRM іздеуге рұқсат ету"
+msgid "Allow anyone to view and comment on CRM"
+msgstr "Кез келгенге CRM көруге және оған пікір қалдыруға рұқсат ету"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
@@ -461,6 +461,7 @@ msgstr "Екілік файл көрсетілмейді"
 msgid "Block {name}"
 msgstr "{name} бұғаттау"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocked by"
@@ -471,6 +472,7 @@ msgstr "Бөгелді"
 msgid "Blocked navigation to untrusted link"
 msgstr "Сенімсіз сілтемеге өту бөгелді"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocks"
 msgstr "Бөгейді"
@@ -568,6 +570,10 @@ msgstr "Өзгертілді"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Changed {field}"
 msgstr "{field} өзгертілді"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed class"
+msgstr "Сынып өзгертілді"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -773,6 +779,7 @@ msgid "Copied"
 msgstr "Көшірілді"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Алмасу буферіне көшірілді"
@@ -794,6 +801,7 @@ msgstr "Көшіру"
 msgid "Copy CRM"
 msgstr "CRM көшіру"
 
+#: src/lib/share-labels.ts
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy link"
 msgstr "Сілтемені көшіру"
@@ -904,10 +912,6 @@ msgstr "CRM құрылды"
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "CRM deleted"
 msgstr "CRM жойылды"
-
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "CRM link"
-msgstr "CRM сілтемесі"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
@@ -1175,6 +1179,7 @@ msgstr "{filename} жүктеп алынды"
 msgid "Drag columns to re-order them"
 msgstr "Бағандарды қайта реттеу үшін сүйреңіз"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "Қайталанулар"
@@ -1307,6 +1312,7 @@ msgid "Failed to add column"
 msgstr "Бағанды қосу мүмкін болмады"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
@@ -1330,8 +1336,7 @@ msgid "Failed to create field"
 msgstr "Өріс жасау сәтсіз аяқталды"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Failed to create link"
 msgstr "Сілтеме жасау сәтсіз аяқталды"
 
@@ -1757,11 +1762,7 @@ msgstr "Тек әріптер, сандар, бос орындар, дефист
 msgid "Light"
 msgstr "Ашық"
 
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "Link"
-msgstr "Сілтеме"
-
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
 msgstr "Сілтемелер"
@@ -1885,10 +1886,6 @@ msgstr "Қосымша опциялар"
 msgid "Moved"
 msgstr "Жылжытылды"
 
-#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
-msgid "Moved {field}"
-msgstr "{field} жылжытылды"
-
 #. placeholder {0}: dayName(dragging.day)
 #. placeholder {0}: dayName(opening(current, format.zonedDay))
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -1965,6 +1962,10 @@ msgstr "Келесі ай"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next year"
 msgstr "Келесі жыл"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "No"
+msgstr "Жоқ"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -2241,6 +2242,10 @@ msgstr "Қайталап көріңіз."
 msgid "Please wait a moment and try again."
 msgstr "Сәл күтіп, әрекетті қайталаңыз."
 
+#: src/lib/share-labels.ts
+msgid "Post to a feed"
+msgstr "Таспада жариялау"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Жазбалар"
@@ -2332,6 +2337,7 @@ msgstr "Кіруге қайта бағыттау."
 msgid "Reduce interest"
 msgstr "Қызығушылықты азайту"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Relates"
 msgstr "Байланысты"
@@ -2641,6 +2647,10 @@ msgstr "Қайта жіберу"
 msgid "Send email"
 msgstr "Электрондық пошта жіберу"
 
+#: src/lib/share-labels.ts
+msgid "Send in a chat"
+msgstr "Чатта жіберу"
+
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 msgid "Send message"
@@ -2686,6 +2696,7 @@ msgstr "Параметрлер"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Share"
 msgstr "Бөлісу"
 
@@ -2960,6 +2971,7 @@ msgstr "Сұраулар тым көп"
 msgid "Top"
 msgstr "Үздіктер"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 msgid "Top level"
 msgstr "Үстіңгі деңгей"
@@ -3025,6 +3037,11 @@ msgid "United States"
 msgstr "Америка Құрама Штаттары"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -3182,6 +3199,10 @@ msgstr "Сәрсенбі"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"
 msgstr "Жыл"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Yes"
+msgstr "Иә"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

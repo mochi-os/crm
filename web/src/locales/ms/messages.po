@@ -313,8 +313,8 @@ msgstr "Benarkan sesiapa sahaja mencari {entityLabel}"
 
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
-msgid "Allow anyone to search for CRM"
-msgstr "Benarkan sesiapa sahaja mencari CRM"
+msgid "Allow anyone to view and comment on CRM"
+msgstr "Benarkan sesiapa sahaja melihat dan mengulas CRM"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
@@ -461,6 +461,7 @@ msgstr "Fail binari tidak ditunjukkan"
 msgid "Block {name}"
 msgstr "Sekat {name}"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocked by"
@@ -471,6 +472,7 @@ msgstr "Disekat oleh"
 msgid "Blocked navigation to untrusted link"
 msgstr "Navigasi ke pautan tidak dipercayai disekat"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocks"
 msgstr "Sekat"
@@ -568,6 +570,10 @@ msgstr "Diubah"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Changed {field}"
 msgstr "{field} diubah"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed class"
+msgstr "Kelas ditukar"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -773,6 +779,7 @@ msgid "Copied"
 msgstr "Disalin"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Disalin ke papan keratan"
@@ -794,6 +801,7 @@ msgstr "Salin"
 msgid "Copy CRM"
 msgstr "Salin CRM"
 
+#: src/lib/share-labels.ts
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy link"
 msgstr "Salin pautan"
@@ -904,10 +912,6 @@ msgstr "CRM dicipta"
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "CRM deleted"
 msgstr "CRM dipadam"
-
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "CRM link"
-msgstr "Pautan CRM"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
@@ -1175,6 +1179,7 @@ msgstr "{filename} dimuat turun"
 msgid "Drag columns to re-order them"
 msgstr "Seret lajur untuk menyusun semula"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "Pendua"
@@ -1307,6 +1312,7 @@ msgid "Failed to add column"
 msgstr "Gagal menambah lajur"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
@@ -1330,8 +1336,7 @@ msgid "Failed to create field"
 msgstr "Gagal mencipta medan"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Failed to create link"
 msgstr "Gagal mencipta pautan"
 
@@ -1757,11 +1762,7 @@ msgstr "Huruf, nombor, ruang, sengkang dan garis miring sahaja"
 msgid "Light"
 msgstr "Terang"
 
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "Link"
-msgstr "Pautan"
-
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
 msgstr "Pautan"
@@ -1885,10 +1886,6 @@ msgstr "Lagi pilihan"
 msgid "Moved"
 msgstr "Dipindahkan"
 
-#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
-msgid "Moved {field}"
-msgstr "{field} dipindahkan"
-
 #. placeholder {0}: dayName(dragging.day)
 #. placeholder {0}: dayName(opening(current, format.zonedDay))
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -1965,6 +1962,10 @@ msgstr "Bulan hadapan"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next year"
 msgstr "Tahun hadapan"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "No"
+msgstr "Tidak"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -2241,6 +2242,10 @@ msgstr "Sila cuba lagi."
 msgid "Please wait a moment and try again."
 msgstr "Sila tunggu sebentar dan cuba lagi."
 
+#: src/lib/share-labels.ts
+msgid "Post to a feed"
+msgstr "Hantar ke suapan"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Hantaran"
@@ -2332,6 +2337,7 @@ msgstr "Melencongkan ke log masuk."
 msgid "Reduce interest"
 msgstr "Kurangkan minat"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Relates"
 msgstr "Berkaitan"
@@ -2641,6 +2647,10 @@ msgstr "Hantar semula"
 msgid "Send email"
 msgstr "Hantar e-mel"
 
+#: src/lib/share-labels.ts
+msgid "Send in a chat"
+msgstr "Hantar dalam sembang"
+
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 msgid "Send message"
@@ -2686,6 +2696,7 @@ msgstr "Tetapan"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Share"
 msgstr "Kongsi"
 
@@ -2960,6 +2971,7 @@ msgstr "Terlalu banyak permintaan"
 msgid "Top"
 msgstr "Teratas"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 msgid "Top level"
 msgstr "Aras atas"
@@ -3025,6 +3037,11 @@ msgid "United States"
 msgstr "Amerika Syarikat"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -3182,6 +3199,10 @@ msgstr "Rabu"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"
 msgstr "Tahun"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Yes"
+msgstr "Ya"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

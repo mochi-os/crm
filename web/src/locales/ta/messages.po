@@ -313,8 +313,8 @@ msgstr "{entityLabel} தேட அனைவரையும் அனுமத�
 
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
-msgid "Allow anyone to search for CRM"
-msgstr "CRM-ஐ யாராவது தேட அனுமதி"
+msgid "Allow anyone to view and comment on CRM"
+msgstr "CRM-ஐ யாரும் பார்க்கவும் அதில் கருத்து தெரிவிக்கவும் அனுமதி"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
@@ -461,6 +461,7 @@ msgstr "பைனரி கோப்பு காட்டப்படவில�
 msgid "Block {name}"
 msgstr "{name} ஐத் தடு"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocked by"
@@ -471,6 +472,7 @@ msgstr "தடுக்கப்பட்டது"
 msgid "Blocked navigation to untrusted link"
 msgstr "நம்பகமற்ற இணைப்புக்கு வழிசெலுத்தல் தடுக்கப்பட்டது"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocks"
 msgstr "தடுக்கிறது"
@@ -568,6 +570,10 @@ msgstr "மாற்றப்பட்டது"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Changed {field}"
 msgstr "{field} மாற்றப்பட்டது"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed class"
+msgstr "வகுப்பு மாற்றப்பட்டது"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -773,6 +779,7 @@ msgid "Copied"
 msgstr "நகலெடுக்கப்பட்டது"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
@@ -794,6 +801,7 @@ msgstr "நகலெடு"
 msgid "Copy CRM"
 msgstr "CRM-ஐ நகலெடு"
 
+#: src/lib/share-labels.ts
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy link"
 msgstr "இணைப்பை நகலெடு"
@@ -904,10 +912,6 @@ msgstr "CRM உருவாக்கப்பட்டது"
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "CRM deleted"
 msgstr "CRM நீக்கப்பட்டது"
-
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "CRM link"
-msgstr "CRM இணைப்பு"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
@@ -1175,6 +1179,7 @@ msgstr "{filename} பதிவிறக்கப்பட்டது"
 msgid "Drag columns to re-order them"
 msgstr "நெடுவரிசைகளை மறுவரிசைப்படுத்த இழுக்கவும்"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "நகலெடுக்கிறது"
@@ -1307,6 +1312,7 @@ msgid "Failed to add column"
 msgstr "நெடுவரிசையைச் சேர்க்க முடியவில்லை"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
@@ -1330,8 +1336,7 @@ msgid "Failed to create field"
 msgstr "புலத்தை உருவாக்க முடியவில்லை"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Failed to create link"
 msgstr "இணைப்பை உருவாக்க முடியவில்லை"
 
@@ -1757,11 +1762,7 @@ msgstr "எழுத்துகள், எண்கள், இடைவெள�
 msgid "Light"
 msgstr "லைட்"
 
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "Link"
-msgstr "இணைப்பு"
-
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
 msgstr "இணைப்புகள்"
@@ -1885,10 +1886,6 @@ msgstr "மேலும் விருப்பங்கள்"
 msgid "Moved"
 msgstr "நகர்த்தப்பட்டது"
 
-#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
-msgid "Moved {field}"
-msgstr "{field} நகர்த்தப்பட்டது"
-
 #. placeholder {0}: dayName(dragging.day)
 #. placeholder {0}: dayName(opening(current, format.zonedDay))
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -1965,6 +1962,10 @@ msgstr "அடுத்த மாதம்"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next year"
 msgstr "அடுத்த ஆண்டு"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "No"
+msgstr "இல்லை"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -2241,6 +2242,10 @@ msgstr "தயவுசெய்து மீண்டும் முயற்�
 msgid "Please wait a moment and try again."
 msgstr "சிறிது நேரம் காத்திருந்து மீண்டும் முயற்சிக்கவும்."
 
+#: src/lib/share-labels.ts
+msgid "Post to a feed"
+msgstr "ஊட்டத்தில் பதிவிடு"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "பதிவுகள்"
@@ -2332,6 +2337,7 @@ msgstr "உள்நுழைவுக்கு redirect ஆகிறது."
 msgid "Reduce interest"
 msgstr "ஆர்வத்தைக் குறைக்கவும்"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Relates"
 msgstr "தொடர்புடையது"
@@ -2641,6 +2647,10 @@ msgstr "மீண்டும் அனுப்பு"
 msgid "Send email"
 msgstr "மின்னஞ்சல் அனுப்பு"
 
+#: src/lib/share-labels.ts
+msgid "Send in a chat"
+msgstr "அரட்டையில் அனுப்பு"
+
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 msgid "Send message"
@@ -2686,6 +2696,7 @@ msgstr "அமைப்புகள்"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Share"
 msgstr "பகிர்"
 
@@ -2960,6 +2971,7 @@ msgstr "மிக அதிகமான கோரிக்கைகள்"
 msgid "Top"
 msgstr "சிறந்தவை"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 msgid "Top level"
 msgstr "உச்ச நிலை"
@@ -3025,6 +3037,11 @@ msgid "United States"
 msgstr "ஐக்கிய அமெரிக்கா"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -3182,6 +3199,10 @@ msgstr "புதன்கிழமை"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"
 msgstr "ஆண்டு"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Yes"
+msgstr "ஆம்"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

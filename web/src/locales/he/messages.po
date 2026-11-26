@@ -313,8 +313,8 @@ msgstr "לאפשר לכל אחד לחפש {entityLabel}"
 
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
-msgid "Allow anyone to search for CRM"
-msgstr "אפשר לכולם לחפש את ה-CRM"
+msgid "Allow anyone to view and comment on CRM"
+msgstr "אפשר לכולם לצפות ב-CRM ולהגיב עליו"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
@@ -461,6 +461,7 @@ msgstr "קובץ בינארי אינו מוצג"
 msgid "Block {name}"
 msgstr "חסום את {name}"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocked by"
@@ -471,6 +472,7 @@ msgstr "חסום על ידי"
 msgid "Blocked navigation to untrusted link"
 msgstr "ניווט לקישור לא מהימן נחסם"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocks"
 msgstr "חוסם"
@@ -568,6 +570,10 @@ msgstr "שונה"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Changed {field}"
 msgstr "{field} שונה"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed class"
+msgstr "המחלקה שונתה"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -773,6 +779,7 @@ msgid "Copied"
 msgstr "הועתק"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "הועתק ללוח"
@@ -794,6 +801,7 @@ msgstr "העתק"
 msgid "Copy CRM"
 msgstr "העתק CRM"
 
+#: src/lib/share-labels.ts
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy link"
 msgstr "העתק קישור"
@@ -904,10 +912,6 @@ msgstr "ה-CRM נוצר"
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "CRM deleted"
 msgstr "CRM נמחק"
-
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "CRM link"
-msgstr "קישור ל-CRM"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
@@ -1175,6 +1179,7 @@ msgstr "{filename} הורד"
 msgid "Drag columns to re-order them"
 msgstr "גרור עמודות כדי לשנות את סדרן"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "משכפל"
@@ -1307,6 +1312,7 @@ msgid "Failed to add column"
 msgstr "הוספת העמודה נכשלה"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
@@ -1330,8 +1336,7 @@ msgid "Failed to create field"
 msgstr "יצירת השדה נכשלה"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Failed to create link"
 msgstr "יצירת הקישור נכשלה"
 
@@ -1757,11 +1762,7 @@ msgstr "אותיות, ספרות, רווחים, מקפים ולוכסנים בל
 msgid "Light"
 msgstr "בהיר"
 
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "Link"
-msgstr "קישור"
-
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
 msgstr "קישורים"
@@ -1885,10 +1886,6 @@ msgstr "אפשרויות נוספות"
 msgid "Moved"
 msgstr "הועבר"
 
-#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
-msgid "Moved {field}"
-msgstr "{field} הועבר"
-
 #. placeholder {0}: dayName(dragging.day)
 #. placeholder {0}: dayName(opening(current, format.zonedDay))
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -1965,6 +1962,10 @@ msgstr "החודש הבא"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next year"
 msgstr "השנה הבאה"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "No"
+msgstr "לא"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -2241,6 +2242,10 @@ msgstr "אנא נסה שוב."
 msgid "Please wait a moment and try again."
 msgstr "יש להמתין מעט ולנסות שוב."
 
+#: src/lib/share-labels.ts
+msgid "Post to a feed"
+msgstr "פרסום בפיד"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "פוסטים"
@@ -2332,6 +2337,7 @@ msgstr "מפנה לדף ההתחברות."
 msgid "Reduce interest"
 msgstr "הפחת עניין"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Relates"
 msgstr "מתייחס"
@@ -2641,6 +2647,10 @@ msgstr "שלח שוב"
 msgid "Send email"
 msgstr "שלח אימייל"
 
+#: src/lib/share-labels.ts
+msgid "Send in a chat"
+msgstr "שליחה בצ'אט"
+
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 msgid "Send message"
@@ -2686,6 +2696,7 @@ msgstr "הגדרות"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Share"
 msgstr "שתף"
 
@@ -2960,6 +2971,7 @@ msgstr "יותר מדי בקשות"
 msgid "Top"
 msgstr "מובילים"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 msgid "Top level"
 msgstr "רמה עליונה"
@@ -3025,6 +3037,11 @@ msgid "United States"
 msgstr "ארצות הברית"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -3182,6 +3199,10 @@ msgstr "יום רביעי"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"
 msgstr "שנה"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Yes"
+msgstr "כן"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

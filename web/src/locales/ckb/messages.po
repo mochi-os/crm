@@ -313,8 +313,8 @@ msgstr "ڕێگە بدە بە هەموان بۆ گەڕان بەدوای {entityLa
 
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
-msgid "Allow anyone to search for CRM"
-msgstr "ڕێگە بدە بە هەرکەسێک بگەڕێت بۆ CRM"
+msgid "Allow anyone to view and comment on CRM"
+msgstr "ڕێگە بدە بە هەرکەسێک CRM ببینێت و لێدوانی لەسەر بدات"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
@@ -461,6 +461,7 @@ msgstr "فایلی دووانەیی پیشان نەدراوە"
 msgid "Block {name}"
 msgstr "بلۆککردنی {name}"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocked by"
@@ -471,6 +472,7 @@ msgstr "بلۆککرا لەلایەن"
 msgid "Blocked navigation to untrusted link"
 msgstr "ڕێگەنەدرا بە چوون بۆ بەستەری نامتمانە"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocks"
 msgstr "بلۆکەکان"
@@ -568,6 +570,10 @@ msgstr "گۆڕدرا"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Changed {field}"
 msgstr "{field} گۆڕدرا"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed class"
+msgstr "پۆل گۆڕدرا"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -773,6 +779,7 @@ msgid "Copied"
 msgstr "کۆپی کرا"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "کۆپی کرا بۆ کلیپبۆرد"
@@ -794,6 +801,7 @@ msgstr "کۆپیکردن"
 msgid "Copy CRM"
 msgstr "کۆپیکردنی CRM"
 
+#: src/lib/share-labels.ts
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy link"
 msgstr "کۆپیکردنی بەستەر"
@@ -904,10 +912,6 @@ msgstr "CRM دروستکرا"
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "CRM deleted"
 msgstr "CRM سڕایەوە"
-
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "CRM link"
-msgstr "بەستەری CRM"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
@@ -1175,6 +1179,7 @@ msgstr "{filename} داگیرا"
 msgid "Drag columns to re-order them"
 msgstr "ستوونەکان ڕابکێشە بۆ ڕێکخستنەوەیان"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "دووبارەکان"
@@ -1307,6 +1312,7 @@ msgid "Failed to add column"
 msgstr "زیادکردنی ستوون سەرکەوتوو نەبوو"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
@@ -1330,8 +1336,7 @@ msgid "Failed to create field"
 msgstr "دروستکردنی خانە سەرکەوتوو نەبوو"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Failed to create link"
 msgstr "دروستکردنی بەستەر سەرکەوتوو نەبوو"
 
@@ -1757,11 +1762,7 @@ msgstr "تەنها پیت، ژمارە، بۆشایی، هێڵی بچووک و �
 msgid "Light"
 msgstr "ڕووناک"
 
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "Link"
-msgstr "بەستەر"
-
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
 msgstr "بەستەرەکان"
@@ -1885,10 +1886,6 @@ msgstr "بژاردەی زیاتر"
 msgid "Moved"
 msgstr "گواسترایەوە"
 
-#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
-msgid "Moved {field}"
-msgstr "{field} گواسترایەوە"
-
 #. placeholder {0}: dayName(dragging.day)
 #. placeholder {0}: dayName(opening(current, format.zonedDay))
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -1965,6 +1962,10 @@ msgstr "مانگی داهاتوو"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next year"
 msgstr "ساڵی داهاتوو"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "No"
+msgstr "نەخێر"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -2241,6 +2242,10 @@ msgstr "تکایە دووبارە هەوڵ بدەرەوە."
 msgid "Please wait a moment and try again."
 msgstr "تکایە کەمێک چاوەڕوان بە و دووبارە هەوڵ بدەوە."
 
+#: src/lib/share-labels.ts
+msgid "Post to a feed"
+msgstr "لە فیدێکدا بڵاوی بکەرەوە"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "پۆستەکان"
@@ -2332,6 +2337,7 @@ msgstr "ڕەوانەکردنەوە بۆ چونەژوورەوە."
 msgid "Reduce interest"
 msgstr "کەمکردنەوەی بەرژەوەندی"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Relates"
 msgstr "پەیوەندیدارە"
@@ -2641,6 +2647,10 @@ msgstr "دیسان بنێرە"
 msgid "Send email"
 msgstr "ئیمەیڵ بنێرە"
 
+#: src/lib/share-labels.ts
+msgid "Send in a chat"
+msgstr "لە گفتوگۆیەکدا بینێرە"
+
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 msgid "Send message"
@@ -2686,6 +2696,7 @@ msgstr "ڕێکخستنەکان"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Share"
 msgstr "هاوبەش بکە"
 
@@ -2960,6 +2971,7 @@ msgstr "داواکاری زۆر زیاد"
 msgid "Top"
 msgstr "باشترین"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 msgid "Top level"
 msgstr "ئاستی سەرەوە"
@@ -3025,6 +3037,11 @@ msgid "United States"
 msgstr "ویلایەتە یەکگرتووەکان"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -3182,6 +3199,10 @@ msgstr "چوارشەممە"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"
 msgstr "ساڵ"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Yes"
+msgstr "بەڵێ"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

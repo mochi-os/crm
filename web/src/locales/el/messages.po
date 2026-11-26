@@ -313,8 +313,8 @@ msgstr "Να επιτρέπεται σε οποιονδήποτε η αναζή�
 
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
-msgid "Allow anyone to search for CRM"
-msgstr "Να επιτρέπεται σε όλους η αναζήτηση CRM"
+msgid "Allow anyone to view and comment on CRM"
+msgstr "Να επιτρέπεται σε όλους η προβολή του CRM και ο σχολιασμός του"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
@@ -461,6 +461,7 @@ msgstr "Το δυαδικό αρχείο δεν εμφανίζεται"
 msgid "Block {name}"
 msgstr "Αποκλεισμός {name}"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocked by"
@@ -471,6 +472,7 @@ msgstr "Αποκλείεται από"
 msgid "Blocked navigation to untrusted link"
 msgstr "Αποκλείστηκε η πλοήγηση σε μη αξιόπιστο σύνδεσμο"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocks"
 msgstr "Αποκλείει"
@@ -568,6 +570,10 @@ msgstr "Άλλαξε"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Changed {field}"
 msgstr "Άλλαξε {field}"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed class"
+msgstr "Η κλάση άλλαξε"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -773,6 +779,7 @@ msgid "Copied"
 msgstr "Αντιγράφηκε"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "Αντιγράφηκε στο πρόχειρο"
@@ -794,6 +801,7 @@ msgstr "Αντιγραφή"
 msgid "Copy CRM"
 msgstr "Αντιγραφή CRM"
 
+#: src/lib/share-labels.ts
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy link"
 msgstr "Αντιγραφή συνδέσμου"
@@ -904,10 +912,6 @@ msgstr "Το CRM δημιουργήθηκε"
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "CRM deleted"
 msgstr "Το CRM διαγράφηκε"
-
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "CRM link"
-msgstr "Σύνδεσμος CRM"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
@@ -1175,6 +1179,7 @@ msgstr "Έγινε λήψη του {filename}"
 msgid "Drag columns to re-order them"
 msgstr "Σύρετε τις στήλες για να τις αναδιατάξετε"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "Διπλότυπο"
@@ -1307,6 +1312,7 @@ msgid "Failed to add column"
 msgstr "Αποτυχία προσθήκης στήλης"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
@@ -1330,8 +1336,7 @@ msgid "Failed to create field"
 msgstr "Αποτυχία δημιουργίας πεδίου"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Failed to create link"
 msgstr "Αποτυχία δημιουργίας συνδέσμου"
 
@@ -1757,11 +1762,7 @@ msgstr "Μόνο γράμματα, αριθμοί, κενά, παύλες και
 msgid "Light"
 msgstr "Φωτεινό"
 
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "Link"
-msgstr "Σύνδεσμος"
-
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
 msgstr "Σύνδεσμοι"
@@ -1885,10 +1886,6 @@ msgstr "Περισσότερες επιλογές"
 msgid "Moved"
 msgstr "Μετακινήθηκε"
 
-#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
-msgid "Moved {field}"
-msgstr "Μετακινήθηκε {field}"
-
 #. placeholder {0}: dayName(dragging.day)
 #. placeholder {0}: dayName(opening(current, format.zonedDay))
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -1965,6 +1962,10 @@ msgstr "Επόμενος μήνας"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next year"
 msgstr "Επόμενο έτος"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "No"
+msgstr "Όχι"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -2241,6 +2242,10 @@ msgstr "Δοκιμάστε ξανά."
 msgid "Please wait a moment and try again."
 msgstr "Περιμένετε λίγο και δοκιμάστε ξανά."
 
+#: src/lib/share-labels.ts
+msgid "Post to a feed"
+msgstr "Ανάρτηση σε ροή"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Αναρτήσεις"
@@ -2332,6 +2337,7 @@ msgstr "Ανακατεύθυνση στη σύνδεση."
 msgid "Reduce interest"
 msgstr "Μείωση ενδιαφέροντος"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Relates"
 msgstr "Σχετίζεται"
@@ -2641,6 +2647,10 @@ msgstr "Αποστολή ξανά"
 msgid "Send email"
 msgstr "Αποστολή email"
 
+#: src/lib/share-labels.ts
+msgid "Send in a chat"
+msgstr "Αποστολή σε συνομιλία"
+
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 msgid "Send message"
@@ -2686,6 +2696,7 @@ msgstr "Ρυθμίσεις"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Share"
 msgstr "Κοινοποίηση"
 
@@ -2960,6 +2971,7 @@ msgstr "Πάρα πολλά αιτήματα"
 msgid "Top"
 msgstr "Κορυφαία"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 msgid "Top level"
 msgstr "Ανώτατο επίπεδο"
@@ -3025,6 +3037,11 @@ msgid "United States"
 msgstr "Ηνωμένες Πολιτείες"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -3182,6 +3199,10 @@ msgstr "Τετάρτη"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"
 msgstr "Έτος"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Yes"
+msgstr "Ναι"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

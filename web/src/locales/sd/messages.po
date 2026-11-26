@@ -313,8 +313,8 @@ msgstr "سڀ ڪنهن کي {entityLabel} ڳولڻ جي اجازت ڏيو"
 
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
-msgid "Allow anyone to search for CRM"
-msgstr "ڪنهن کي به CRM ڳولڻ جي اجازت ڏيو"
+msgid "Allow anyone to view and comment on CRM"
+msgstr "ڪنهن کي به CRM ڏسڻ ۽ ان تي تبصرو ڪرڻ جي اجازت ڏيو"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
@@ -461,6 +461,7 @@ msgstr "بائنري فائل نه ڏيکاري وئي"
 msgid "Block {name}"
 msgstr "{name} کي بلاڪ ڪريو"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocked by"
@@ -471,6 +472,7 @@ msgstr "بلاڪ ڪندڙ"
 msgid "Blocked navigation to untrusted link"
 msgstr "غير قابل اعتماد لنڪ ڏانهن ناقابل اعتماد ناقابل تشريح روڪي"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocks"
 msgstr "بلاڪ"
@@ -568,6 +570,10 @@ msgstr "تبديل ٿيو"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Changed {field}"
 msgstr "{field} تبديل ٿيو"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed class"
+msgstr "ڪلاس تبديل ٿيو"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -773,6 +779,7 @@ msgid "Copied"
 msgstr "ڪاپي ٿيو"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "ڪلپ بورڊ تي ڪاپي ٿيو"
@@ -794,6 +801,7 @@ msgstr "ڪاپي ڪريو"
 msgid "Copy CRM"
 msgstr "CRM ڪاپي ڪريو"
 
+#: src/lib/share-labels.ts
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy link"
 msgstr "لنڪ ڪاپي ڪريو"
@@ -904,10 +912,6 @@ msgstr "CRM ٺاهيو ويو"
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "CRM deleted"
 msgstr "CRM ڊاهيو ويو"
-
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "CRM link"
-msgstr "CRM لنڪ"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
@@ -1175,6 +1179,7 @@ msgstr "{filename} ڊائون لوڊ ٿيو"
 msgid "Drag columns to re-order them"
 msgstr "ڪالمن کي ٻيهر ترتيب ڏيڻ لاءِ ڇڪيو"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "ڊپليڪيٽ"
@@ -1307,6 +1312,7 @@ msgid "Failed to add column"
 msgstr "ڪالم شامل ڪرڻ ۾ ناڪامي"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
@@ -1330,8 +1336,7 @@ msgid "Failed to create field"
 msgstr "فيلڊ ٺاهڻ ۾ ناڪام"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Failed to create link"
 msgstr "لنڪ ٺاهڻ ۾ ناڪام"
 
@@ -1757,11 +1762,7 @@ msgstr "رڳو اکر، انگ، خالي جايون، ڊيش ۽ ترڇيون ل
 msgid "Light"
 msgstr "روشن"
 
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "Link"
-msgstr "لنڪ"
-
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
 msgstr "لنڪس"
@@ -1885,10 +1886,6 @@ msgstr "وڌيڪ اختيار"
 msgid "Moved"
 msgstr "منتقل ٿيو"
 
-#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
-msgid "Moved {field}"
-msgstr "{field} منتقل ٿيو"
-
 #. placeholder {0}: dayName(dragging.day)
 #. placeholder {0}: dayName(opening(current, format.zonedDay))
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -1965,6 +1962,10 @@ msgstr "ايندڙ مهينو"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next year"
 msgstr "ايندڙ سال"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "No"
+msgstr "نه"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -2241,6 +2242,10 @@ msgstr "مهرباني ڪري ٻيهر ڪوشش ڪريو."
 msgid "Please wait a moment and try again."
 msgstr "مهرباني ڪري ٿورو انتظار ڪريو ۽ ٻيهر ڪوشش ڪريو."
 
+#: src/lib/share-labels.ts
+msgid "Post to a feed"
+msgstr "فيڊ تي پوسٽ ڪريو"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "پوسٽون"
@@ -2332,6 +2337,7 @@ msgstr "لاگ ان ڏانهن ريڊائريڪٽ ٿي رهيو آهي."
 msgid "Reduce interest"
 msgstr "دلچسپي گهٽايو"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Relates"
 msgstr "تعلق رکي ٿو"
@@ -2641,6 +2647,10 @@ msgstr "ٻيهر موڪليو"
 msgid "Send email"
 msgstr "اي ميل موڪليو"
 
+#: src/lib/share-labels.ts
+msgid "Send in a chat"
+msgstr "چيٽ ۾ موڪليو"
+
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 msgid "Send message"
@@ -2686,6 +2696,7 @@ msgstr "سيٽنگون"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Share"
 msgstr "شيئر ڪريو"
 
@@ -2960,6 +2971,7 @@ msgstr "تمام گهڻيون درخواستون"
 msgid "Top"
 msgstr "بهترين"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 msgid "Top level"
 msgstr "مٿين سطح"
@@ -3025,6 +3037,11 @@ msgid "United States"
 msgstr "آمريڪا"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -3182,6 +3199,10 @@ msgstr "اربع"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"
 msgstr "سال"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Yes"
+msgstr "ها"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

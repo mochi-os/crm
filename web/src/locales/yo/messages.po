@@ -313,8 +313,8 @@ msgstr "Gba ẹnikẹ́ni láàyè láti wá {entityLabel}"
 
 #: src/features/crms/components/create-crm-dialog.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
-msgid "Allow anyone to search for CRM"
-msgstr "Jẹ́ kí ẹnikẹ́ni wá CRM"
+msgid "Allow anyone to view and comment on CRM"
+msgstr "Jẹ́ kí ẹnikẹ́ni wo CRM náà kí ó sì sọ àsọyé lórí rẹ̀"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
@@ -461,6 +461,7 @@ msgstr "Fáìlì binary kò hàn"
 msgid "Block {name}"
 msgstr "Dènà {name}"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocked by"
@@ -471,6 +472,7 @@ msgstr "Dídènà nípasẹ̀"
 msgid "Blocked navigation to untrusted link"
 msgstr "A dí ìrìnnà sí ọ̀nà tí a kò gbẹ́kẹ̀lé"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocks"
 msgstr "Dí"
@@ -568,6 +570,10 @@ msgstr "A yí padà"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Changed {field}"
 msgstr "A yí {field} padà"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Changed class"
+msgstr "A yí kilaasi padà"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -773,6 +779,7 @@ msgid "Copied"
 msgstr "Ti dàkọ"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copied to clipboard"
 msgstr "A ti ṣe àdàkọ sí clipboard"
@@ -794,6 +801,7 @@ msgstr "Ṣe àdàkọ"
 msgid "Copy CRM"
 msgstr "Ṣe àdàkọ CRM"
 
+#: src/lib/share-labels.ts
 #: src/routes/_authenticated/$crmId/index.tsx
 msgid "Copy link"
 msgstr "Ṣe àdàkọ ìjápọ̀"
@@ -904,10 +912,6 @@ msgstr "A ti dá CRM"
 #: src/routes/_authenticated/$crmId_.settings.tsx
 msgid "CRM deleted"
 msgstr "CRM ti parẹ́"
-
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "CRM link"
-msgstr "Ìjápọ̀ CRM"
 
 #: src/routes/_authenticated/$crmId_.settings.tsx
 #: src/routes/_authenticated/$crmId/index.tsx
@@ -1175,6 +1179,7 @@ msgstr "Tí a gbà sílẹ̀ {filename}"
 msgid "Drag columns to re-order them"
 msgstr "Wọ́ àwọn kọ́lọ́mù láti tún wọ́n tò"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
 msgstr "Ẹ̀dà"
@@ -1307,6 +1312,7 @@ msgid "Failed to add column"
 msgstr "Kò ṣeé ṣe láti fi ọwọ̀n kún un"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Failed to copy"
@@ -1330,8 +1336,7 @@ msgid "Failed to create field"
 msgstr "Kò lè dá field"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Failed to create link"
 msgstr "Kò lè dá ìjápọ̀"
 
@@ -1757,11 +1762,7 @@ msgstr "Àwọn lẹ́tà, nọ́mbà, àyè, ìlà-àsopọ̀, àti ìlà-ìt�
 msgid "Light"
 msgstr "Ìmọ́lẹ̀"
 
-#: ../../../lib/web/src/components/options-menu.tsx
-#: src/routes/_authenticated/$crmId/index.tsx
-msgid "Link"
-msgstr "Ọna asopọ"
-
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
 msgstr "Àwọn ìjápọ̀"
@@ -1885,10 +1886,6 @@ msgstr "Àwọn àṣàyàn síwájú sí i"
 msgid "Moved"
 msgstr "A gbé lọ"
 
-#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
-msgid "Moved {field}"
-msgstr "A gbé {field} lọ"
-
 #. placeholder {0}: dayName(dragging.day)
 #. placeholder {0}: dayName(opening(current, format.zonedDay))
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
@@ -1965,6 +1962,10 @@ msgstr "Oṣù tó ń bọ̀"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next year"
 msgstr "Ọdún tó ń bọ̀"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "No"
+msgstr "Bẹ́ẹ̀ kọ́"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -2241,6 +2242,10 @@ msgstr "Jọ̀wọ́ gbìyànjú lẹ́ẹ̀kan sí i."
 msgid "Please wait a moment and try again."
 msgstr "Jọ̀wọ́ dúró díẹ̀ kí o sì gbìyànjú lẹ́ẹ̀kansí."
 
+#: src/lib/share-labels.ts
+msgid "Post to a feed"
+msgstr "Fi ránṣẹ́ sí feed kan"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Àwọn ìfìránṣẹ́"
@@ -2332,6 +2337,7 @@ msgstr "Ń redirect sí ìwọlé."
 msgid "Reduce interest"
 msgstr "Dín ìfẹ́ kù"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Relates"
 msgstr "Ṣe pẹ̀lú"
@@ -2641,6 +2647,10 @@ msgstr "Fi ránṣẹ́ lẹ́ẹ̀kan sí i"
 msgid "Send email"
 msgstr "Fi ímeèlì ránṣẹ́"
 
+#: src/lib/share-labels.ts
+msgid "Send in a chat"
+msgstr "Fi ránṣẹ́ nínú chat"
+
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 msgid "Send message"
@@ -2686,6 +2696,7 @@ msgstr "Àwọn ìṣètò"
 
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
+#: ../../../lib/web/src/components/share-menu.tsx
 msgid "Share"
 msgstr "Pín"
 
@@ -2960,6 +2971,7 @@ msgstr "Àwọn ìbéèrè ti pọ̀ jù"
 msgid "Top"
 msgstr "Tó dára jùlọ"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: src/features/editor/components/edit-dialogs.tsx
 msgid "Top level"
 msgstr "Ipele òkè"
@@ -3025,6 +3037,11 @@ msgid "United States"
 msgstr "Orílẹ̀-èdè Amẹ́ríkà"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
@@ -3182,6 +3199,10 @@ msgstr "Ọjọ́rú"
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"
 msgstr "Ọdún"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx
+msgid "Yes"
+msgstr "Bẹ́ẹ̀ ni"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."
