@@ -509,10 +509,12 @@ def rank_midpoint(a, b):
 	return RANK_ALPHABET[da] + rank_midpoint(a[1:] if len(a) > 0 else "", None)
 
 def rank_canonical(key):
-	# True if key is a valid canonical fractional-index key, vs a legacy INTEGER
-	# rank from before #53 (read from the DB as a Starlark int, or as a numeric
-	# string). TRANSITIONAL — remove with the tolerance guards in rank_between
-	# once every host has migrated.
+	# True if key is a valid canonical fractional-index key, vs an integer rank
+	# from before keys were canonical (read from the database as a Starlark int,
+	# or as a numeric string). Kept for good: a copy stores an unusable key an
+	# owner sends as an integer (rank_copy), and a server whose own data predates
+	# canonical keys may still hold one, so a key read back is never assumed
+	# canonical.
 	if key == None or type(key) != "string" or len(key) == 0:
 		return False
 	if RANK_HEADERS.find(key[0]) < 0:
@@ -520,10 +522,9 @@ def rank_canonical(key):
 	return rank_int_length(key[0]) <= len(key)
 
 def rank_between(a, b):
-	# A key strictly between a and b (None = before-all / after-all). A legacy
-	# integer rank cannot be placed on the canonical scale, so it is treated as an
-	# open boundary; drop these two guards and rank_canonical once every rank is
-	# canonical.
+	# A key strictly between a and b (None = before-all / after-all). An integer
+	# rank cannot be placed on the canonical scale, so it is treated as an open
+	# boundary (rank_canonical).
 	if not rank_canonical(a):
 		a = None
 	if not rank_canonical(b):
